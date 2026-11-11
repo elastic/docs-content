@@ -14,14 +14,14 @@ products:
 
 Elastic Profiling is a whole-system, always-on, continuous profiling solution that eliminates the need for code instrumentation, recompilation, on-host debug symbols, and service restarts. Leveraging eBPF technology, it operates within the Linux kernel space, capturing only the needed data with minimal overhead in an unobtrusive manner. For a quick overview, see the [Universal Profiling product page](https://www.elastic.co/observability/ebpf-continuous-code-profiling).
 
-## Choose how to collect profiling data [profiling-collection-options]
+## Select how to collect profiling data [profiling-collection-options]
 
 You can send profiling data to Elastic in two ways. Both populate the same views in {{kib}}:
 
-* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` **OpenTelemetry profiling** uses the OpenTelemetry eBPF profiler, deployed with {{agent}}. It needs no setup step in {{kib}}: install the **OpenTelemetry Profiling** integration on your hosts and the data starts flowing. This is the recommended option for new deployments and the only option on {{serverless-short}}. For the host requirements and the deployment steps, refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md).
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` **OpenTelemetry profiling** uses the OpenTelemetry eBPF profiler, deployed with {{agent}}. It needs no setup step in {{kib}}: install the **OpenTelemetry Profiling** integration on your hosts and the data starts flowing. This is the recommended option for new deployments and the only option on {{obs-serverless}}. For the host requirements and the deployment steps, refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md).
 * **Universal Profiling** uses Elastic's original profiling agent and backend. It requires a one-time setup step in {{kib}} and isn't available on {{serverless-short}}. For the setup step and the agent installation, refer to [Get started with Universal Profiling](get-started-with-universal-profiling.md).
 
-Both can run side by side in the same deployment. When they do, you choose which data to look at with the [schema selector](#profiling-schema-selector).
+Both can run side by side in the same deployment. When they do, you select which data to look at with the [schema selector](#profiling-schema-selector).
 
 The {{kib}} app is called **Profiling** (**Universal Profiling** in earlier versions). On this page, Universal Profiling refers to the original agent, its backend, and the data they produce.
 
@@ -35,7 +35,7 @@ On this page, you’ll find information on:
 
 ## Inspecting data in {{kib}} [profiling-inspecting-data-in-kibana]
 
-To open **Profiling** (or **Universal Profiling** in earlier versions), find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+To open **Profiling** (or **Universal Profiling** in earlier versions), find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Under **Profiling**, click **Stacktraces** to open the [stacktraces view](#profiling-stacktraces-intro).
 
@@ -59,7 +59,7 @@ Your stacktrace can be:
 
 In the following screenshot, you can see that unsymbolized frames *do not* show a filename and line number, but a hexadecimal number such as `0x80d2f4` or `<unsymbolized>`.
 
-Adding symbols for unsymbolized frames is currently a manual operation. See [Add symbols for native frames](add-symbols-for-native-frames.md).
+For Universal Profiling data, adding symbols for unsymbolized frames is currently a manual operation. See [Add symbols for native frames](add-symbols-for-native-frames.md).
 
 :::{image} /solutions/images/observability-profiling-stacktraces-unsymbolized.png
 :alt: profiling stacktraces unsymbolized
@@ -81,10 +81,11 @@ The stacktraces view shows graphs of stacktraces grouped by threads, traces, hos
 
 The different views on the stacktraces page show:
 
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` **Executables:** stacktraces grouped by executable name
 * **Threads:** stacktraces grouped by the process' thread name
 * **Traces:** un-grouped stacktraces
 * **Hosts:** stacktraces grouped by machine’s hostname or IP address
-* **Deployments:** stacktraces grouped by deployment name set by the container orchestration (e.g. {{k8s}} `ReplicaSet`, `DaemonSet`, or `StatefulSet` name)
+* **Deployments:** for Universal Profiling, stacktraces grouped by deployment name set by the container orchestration (e.g. {{k8s}} `ReplicaSet`, `DaemonSet`, or `StatefulSet` name). For OpenTelemetry profiling, this view groups by {{k8s}} pod name.
 * **Containers:** stacktraces grouped by container name discovered by the host-agent
 
 The stacktraces view provides valuable information that you can use to:
@@ -186,7 +187,7 @@ Most notably, you may want to filter on:
 
 * `profiling.project.id`: the corresponding value of `project-id` host-agent flag, logical group of deployed host-agents (Universal Profiling data only)
 * `process.thread.name`: the process' thread name, e.g. `python`, `java`, or `kauditd`
-* `orchestrator.resource.name`: the name of the group of the containerized deployment as set by the orchestrator
+* `orchestrator.resource.name`: the name of the group of the containerized deployment as set by the orchestrator. For OpenTelemetry data, this field is an alias for `resource.attributes.k8s.pod.name`.
 * `container.name`: the name of the single container instance, as set by the container engine
 * `host.name` or `host.ip`: the machine’s hostname or IP address (useful for debugging issues on a single Virtual Machine)
 
@@ -201,12 +202,12 @@ OpenTelemetry profiling and Universal Profiling store their data in different fo
 
 The selector works as follows:
 
-* It only lists schemas that have data for the current time range and query. If neither schema has data, it shows **No schema available**.
+* It lists schemas that have data for the current time range and query. If neither schema has data, it shows **No schema available**. If your selected schema has no matching data but another schema does, the selector warns that the selected schema is unavailable. Select the other schema to view its data.
 * By default, **OpenTelemetry** is selected. If only Universal Profiling data is available, **Universal Profiling** is selected instead.
 * Your choice is stored in the page URL, so it survives reloads and stays with you as you move between the Profiling views.
 * In the differential views, the baseline time range and query determine which schemas are available, and the comparison uses the same schema on both sides.
 
-On {{serverless-short}}, only OpenTelemetry profiling is supported, so the selector always shows **OpenTelemetry**.
+On {{serverless-short}}, only OpenTelemetry profiling is supported. The selector shows **OpenTelemetry** when matching data is available, or **No schema available** when it is not.
 
 **Storage Explorer** covers Universal Profiling data only. Until you set up Universal Profiling, the **Storage Explorer** link stays disabled, and when a deployment has data in both schemas, a message in **Storage Explorer** reminds you that OpenTelemetry profiling data isn't included. To manage the retention of OpenTelemetry profiling data, refer to [Where profiles are stored](get-started-with-otel-profiling.md#profiling-otel-data-streams).
 
