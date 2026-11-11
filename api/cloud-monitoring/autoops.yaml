@@ -41,6 +41,7 @@ paths:
         connected cluster named in the path, and the resource must belong to the organization
         of the caller. Access is checked for that single resource on every request.
       operationId: searchInsights
+      x-state: Beta
       tags:
         - Insights
       parameters:
@@ -95,7 +96,7 @@ paths:
               next-page:
                 summary: Next page of a previous search
                 value:
-                  cursor: k7Qm2vXz9Rt4LpN8wYcA1eHsJf6UbDgO3iVxZ0nTqEy5MhKrWd2SaB8uCjPo7lNvG4tFxQ1
+                  cursor: eyJzdCI6MTc1NDA0NDQ0MDAwMCwiaWQiOiI1ZjRmM2UyZC0xYzBiLTBhMDktMDAwMC1hYWJiY2MxMTAwMDEiLCJvIjoiZGVzYyIsImYiOjE3NTQwMDY0MDAwMDAsInQiOjE3NTUzMDIzOTk5OTksInR5IjpbXSwic3YiOltdLCJpYyI6dHJ1ZSwiYW8iOmZhbHNlLCJ0ZyI6W10sIm1vIjpmYWxzZX0
                   size: 10
       responses:
         '200':
@@ -160,7 +161,7 @@ paths:
                               description: Enable search slow logs with the action below, then review logs on instance-0000000002 for long-running or repeatedly executed queries. Tune or rewrite expensive queries to reduce CPU load. On 8.14+, set <code>index.search.slowlog.include.user</code> to <code>true</code> to identify which user triggered slow searches.
                               command: |-
                                 // this command requires the manage index privilege
-                                curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
+                                curl -X PUT "https://my-production-cluster.es.example.com:9243/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
                                 { "index.search.slowlog.threshold.query.warn": "10s", "index.search.slowlog.threshold.query.info": "5s", "index.search.slowlog.threshold.query.debug": "2s", "index.search.slowlog.threshold.query.trace": "500ms", "index.search.slowlog.threshold.fetch.warn": "1s", "index.search.slowlog.threshold.fetch.info": "800ms", "index.search.slowlog.threshold.fetch.debug": "500ms", "index.search.slowlog.threshold.fetch.trace": "200ms" }
                                 JSON
                       - '@timestamp': '2025-08-01T10:34:00.000Z'
@@ -209,7 +210,7 @@ paths:
                               description: Enable search slow logs with the action below, then review logs on instance-0000000001 for long-running or repeatedly executed queries. Tune or rewrite expensive queries to reduce CPU load. On 8.14+, set <code>index.search.slowlog.include.user</code> to <code>true</code> to identify which user triggered slow searches.
                               command: |-
                                 // this command requires the manage index privilege
-                                curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
+                                curl -X PUT "https://my-production-cluster.es.example.com:9243/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
                                 { "index.search.slowlog.threshold.query.warn": "10s", "index.search.slowlog.threshold.query.info": "5s", "index.search.slowlog.threshold.query.debug": "2s", "index.search.slowlog.threshold.query.trace": "500ms", "index.search.slowlog.threshold.fetch.warn": "1s", "index.search.slowlog.threshold.fetch.info": "800ms", "index.search.slowlog.threshold.fetch.debug": "500ms", "index.search.slowlog.threshold.fetch.trace": "200ms" }
                                 JSON
         '400':
@@ -271,6 +272,7 @@ paths:
         connected cluster named in the path, and the resource must belong to the organization
         of the caller. Access is checked for that single resource on every request.
       operationId: getInsightById
+      x-state: Beta
       tags:
         - Insights
       parameters:
@@ -356,7 +358,7 @@ paths:
                             description: Enable search slow logs with the action below, then review logs on instance-0000000001 for long-running or repeatedly executed queries. Tune or rewrite expensive queries to reduce CPU load. On 8.14+, set <code>index.search.slowlog.include.user</code> to <code>true</code> to identify which user triggered slow searches.
                             command: |-
                               // this command requires the manage index privilege
-                              curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
+                              curl -X PUT "https://my-production-cluster.es.example.com:9243/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
                               { "index.search.slowlog.threshold.query.warn": "10s", "index.search.slowlog.threshold.query.info": "5s", "index.search.slowlog.threshold.query.debug": "2s", "index.search.slowlog.threshold.query.trace": "500ms", "index.search.slowlog.threshold.fetch.warn": "1s", "index.search.slowlog.threshold.fetch.info": "800ms", "index.search.slowlog.threshold.fetch.debug": "500ms", "index.search.slowlog.threshold.fetch.trace": "200ms" }
                               JSON
                 high-cpu-closed:
@@ -412,7 +414,7 @@ paths:
                             description: Enable search slow logs with the action below, then review logs on instance-0000000002 for long-running or repeatedly executed queries. Tune or rewrite expensive queries to reduce CPU load. On 8.14+, set <code>index.search.slowlog.include.user</code> to <code>true</code> to identify which user triggered slow searches.
                             command: |-
                               // this command requires the manage index privilege
-                              curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
+                              curl -X PUT "https://my-production-cluster.es.example.com:9243/_settings" -H "Content-Type: application/json" --data @- <<'JSON'
                               { "index.search.slowlog.threshold.query.warn": "10s", "index.search.slowlog.threshold.query.info": "5s", "index.search.slowlog.threshold.query.debug": "2s", "index.search.slowlog.threshold.query.trace": "500ms", "index.search.slowlog.threshold.fetch.warn": "1s", "index.search.slowlog.threshold.fetch.info": "800ms", "index.search.slowlog.threshold.fetch.debug": "500ms", "index.search.slowlog.threshold.fetch.trace": "200ms" }
                               JSON
         '400':
@@ -546,10 +548,8 @@ components:
             When paginating over a list of insights, the cursor found in the previous page
             leads to the next page of insights. When this parameter is set, the search
             criteria and the order of the request that returned the cursor are used, and all
-            the other parameters except `size` are validated but otherwise ignored. The cursor is
-            an opaque value: pass it back exactly as received, and do not parse it or build one
-            yourself, because its format can change without notice.
-          example: k7Qm2vXz9Rt4LpN8wYcA1eHsJf6UbDgO3iVxZ0nTqEy5MhKrWd2SaB8uCjPo7lNvG4tFxQ1
+            the other parameters except `size` are validated but otherwise ignored.
+          example: eyJzdCI6MTc1NDA0NDQ0MDAwMCwiaWQiOiI1ZjRmM2UyZC0xYzBiLTBhMDktMDAwMC1hYWJiY2MxMTAwMDEiLCJvIjoiZGVzYyIsImYiOjE3NTQwMDY0MDAwMDAsInQiOjE3NTUzMDIzOTk5OTksInR5IjpbXSwic3YiOltdLCJpYyI6dHJ1ZSwiYW8iOmZhbHNlLCJ0ZyI6W10sIm1vIjpmYWxzZX0
         size:
           type: integer
           format: int64
@@ -644,10 +644,8 @@ components:
             The cursor to the next page of insights. Pass it in the `cursor` field of the
             next search request. It is omitted when the page has fewer insights than the page
             size, which is the requested `size` capped at 5000. For example, a request with a
-            `size` of 6000 that returns 5000 insights carries a cursor. The cursor is an opaque
-            value: do not parse it or build one yourself, because its format can change without
-            notice.
-          example: k7Qm2vXz9Rt4LpN8wYcA1eHsJf6UbDgO3iVxZ0nTqEy5MhKrWd2SaB8uCjPo7lNvG4tFxQ1
+            `size` of 6000 that returns 5000 insights carries a cursor.
+          example: eyJzdCI6MTc1NDA0NDQ0MDAwMCwiaWQiOiI1ZjRmM2UyZC0xYzBiLTBhMDktMDAwMC1hYWJiY2MxMTAwMDEiLCJvIjoiZGVzYyIsImYiOjE3NTQwMDY0MDAwMDAsInQiOjE3NTUzMDIzOTk5OTksInR5IjpbXSwic3YiOltdLCJpYyI6dHJ1ZSwiYW8iOmZhbHNlLCJ0ZyI6W10sIm1vIjpmYWxzZX0
         insights:
           type: array
           items:
@@ -904,7 +902,7 @@ components:
         command:
           type: string
           description: A command that carries out the action. Omitted when the action has no command.
-          example: 'curl -X PUT "https://my-production-cluster.es.example.com:9243/my-index/_settings" -H "Content-Type: application/json" -d ''{ "index.search.slowlog.threshold.query.warn": "10s" }'''
+          example: 'curl -X PUT "https://my-production-cluster.es.example.com:9243/_settings" -H "Content-Type: application/json" -d ''{ "index.search.slowlog.threshold.query.warn": "10s" }'''
     ResourceType:
       type: string
       enum:
