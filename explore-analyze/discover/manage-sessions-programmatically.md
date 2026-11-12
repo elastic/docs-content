@@ -21,7 +21,7 @@ If you keep your {{kib}} content in version control or deploy it from a pipeline
 
 ## Discover sessions API [discover-sessions-api]
 
-To get a definition to start from, [export a session as JSON](export-discover-session.md#export-discover-session-json). If you have access to **Dev Tools**, **Open in Console** opens {{kib}} Dev Tools with a request that creates the session from that JSON.
+Use the Discover sessions API to deploy the same sessions to several spaces or environments from a CI/CD pipeline, or to keep their definitions in version control next to the rest of your configuration. To get a definition to start from, [export a session as JSON](export-discover-session.md#export-discover-session-json). If you have access to **Dev Tools**, **Open in Console** opens {{kib}} Dev Tools with a request that creates the session from that JSON.
 
 Refer to the [Discover sessions API reference]({{kib-apis}}group/endpoint-discover-sessions) for the request schema, the data sources that a tab can use, authentication, spaces, and an example request that you can run as is.
 
