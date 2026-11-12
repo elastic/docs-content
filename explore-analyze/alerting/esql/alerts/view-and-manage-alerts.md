@@ -2,7 +2,8 @@
 navigation_title: View and manage alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Monitor alerts with KPI panels, a histogram, and filters. Triage and investigate alerts from the same page."
@@ -10,7 +11,7 @@ description: "Monitor alerts with KPI panels, a histogram, and filters. Triage a
 
 # View and manage alerts in {{alerting-v2-system}} [view-manage-alerts]
 
-In {{alerting-v2-system}}, use the **Alerts** page to monitor alerts with KPI panels, a histogram, and filters. To open it, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+In {{alerting-v2-system-short}}, use the **Alerts** page to monitor alerts with KPI panels, a histogram, and filters. To open it, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 The page also lists alerts from {{alerting-v1-system}} rules, so you can monitor and triage alerts from both systems in one table. Refer to [View alerts from both alerting systems](#alerts-from-both-systems).
 
@@ -48,22 +49,22 @@ Narrow the time range when filters return too many results or tag options need r
 
 ## View alerts from both alerting systems [alerts-from-both-systems]
 
-To tell alerts from the two systems apart, check the **Source** column: **Universal** for {{alerting-v2-system}} or **Classic** for {{alerting-v1-system}}. To act on {{alerting-v1-system}} alerts from the **Alerts** page, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
+To tell alerts from the two systems apart, check the **Source** column: **Universal** for {{alerting-v2-system-short}} or **Classic** for {{alerting-v1-system-short}}. To act on {{alerting-v1-system-short}} alerts from the **Alerts** page, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
 
-### Which alerts from {{alerting-v1-system}} appear [classic-alerts-included]
+### Which alerts from {{alerting-v1-system-short}} appear [classic-alerts-included]
 
-You see a {{alerting-v1-system}} alert only if your role can view alerts from its rule type. For the privileges, refer to [Configure access](../manage/configure-access.md#alerting-classic-alert-privileges).
+You see a {{alerting-v1-system-short}} alert only if your role can view alerts from its rule type. For the privileges, refer to [Configure access](../manage/configure-access.md#alerting-classic-alert-privileges).
 
-The table includes {{alerting-v1-system}} alerts from these rule types:
+The table includes {{alerting-v1-system-short}} alerts from these rule types:
 
 - **Observability rules**: APM, Synthetics, Uptime, Metric threshold, Inventory, Log threshold, SLO burn rate, and Custom threshold
 - **Stack rules**: {{es}} query, Index threshold, Tracking containment, Transform health, and Anomaly detection
 
-### How alerts from {{alerting-v1-system}} differ [classic-alert-differences]
+### How alerts from {{alerting-v1-system-short}} differ [classic-alert-differences]
 
-{{alerting-v1-system-cap}} alerts appear in the KPI panels, histogram, and filters like any other alert, with these differences:
+{{alerting-v1-system-short}} alerts appear in the KPI panels, histogram, and filters like any other alert, with these differences:
 
 - They use only the **Active** and **Inactive** statuses. A recovered or [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status) alert shows as **Inactive**.
 - They can have the **Warning**, **Minor**, and **Major** severity levels, and can show the [**Flapping**](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details) icon in the **Status** column.
 - You can't assign them, so the **Assignee** filter doesn't apply to them and the KPI panels count them as unassigned.
-- A search matches each alert's own fields. For example, a query on `kibana.alert.rule.name` matches {{alerting-v1-system}} alerts but not {{alerting-v2-system}} alerts.
+- A search matches each alert's own fields. For example, a query on `kibana.alert.rule.name` matches {{alerting-v1-system-short}} alerts but not {{alerting-v2-system-short}} alerts.
