@@ -200,6 +200,11 @@ serverless: preview
 
 OpenTelemetry profiling and Universal Profiling store their data in different formats, called schemas, and the views show one schema at a time. The schema selector at the top of the **Stacktraces**, **Flamegraphs**, and **Functions** views, including the differential views, lets you pick which one to look at. The same selector appears in the profiling views embedded in **Applications** and **Infrastructure**.
 
+:::{image} /solutions/images/observability-profiling-schema-selector.jpg
+:alt: Profiling schema selector with OpenTelemetry selected.
+:screenshot:
+:::
+
 The selector works as follows:
 
 * It lists schemas that have data for the current time range and query. If neither schema has data, it shows **No schema available**. If your selected schema has no matching data but another schema does, the selector warns that the selected schema is unavailable. Select the other schema to view its data.
@@ -207,9 +212,9 @@ The selector works as follows:
 * Your choice is stored in the page URL, so it survives reloads and stays with you as you move between the Profiling views.
 * In the differential views, the baseline time range and query determine which schemas are available, and the comparison uses the same schema on both sides.
 
-On {{serverless-short}}, only OpenTelemetry profiling is supported. The selector shows **OpenTelemetry** when matching data is available, or **No schema available** when it is not.
+On {{serverless-short}}, only OpenTelemetry profiling is supported. The **Add profiling data** page shows only the OpenTelemetry instructions, and the selector shows **OpenTelemetry** when matching data is available, or **No schema available** when it is not.
 
-**Storage Explorer** covers Universal Profiling data only. Until you set up Universal Profiling, the **Storage Explorer** link stays disabled, and when a deployment has data in both schemas, a message in **Storage Explorer** reminds you that OpenTelemetry profiling data isn't included. To manage the retention of OpenTelemetry profiling data, refer to [Where profiles are stored](get-started-with-otel-profiling.md#profiling-otel-data-streams).
+**Storage explorer** covers Universal Profiling data only. Until you set up Universal Profiling, the **Storage explorer** link stays disabled. When a deployment has data in both schemas, a dismissible **OpenTelemetry profiling data isn't shown here yet** callout in **Storage explorer** reminds you that the view reports Universal Profiling data only. On {{serverless-short}}, the link is always disabled. To manage the retention of OpenTelemetry profiling data, refer to [Where profiles are stored](get-started-with-otel-profiling.md#profiling-otel-data-streams).
 
 
 ## Differential views [profiling-differential-views-intro]

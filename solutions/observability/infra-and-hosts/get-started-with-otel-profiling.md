@@ -90,6 +90,7 @@ Whichever option you select, run exactly one profiler per host. Running it in mo
 
 1. In {{kib}}, find **Profiling** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Add data**. If your deployment has no profiling data yet, the **Add profiling data** page opens directly.
 2. On the **Profiling** tab, click **Add OpenTelemetry Profiling integration**. The integration page opens in **{{integrations}}**. You can also find it by searching for **OpenTelemetry Profiling** in **{{integrations}}**.
+
 3. Click **Add OpenTelemetry Profiling** and configure the integration:
     * Optionally, expand the settings for **OpenTelemetry Profiling receiver**, then **Advanced options**, and set `samples_per_second` to change how often the profiler samples each CPU. Lower values reduce overhead and storage at the cost of detail.
     * Select an existing agent policy or create a new one. Every {{agent}} enrolled in this policy runs the profiler, so use a policy for hosts that meet the [host requirements](#profiling-otel-requirements-hosts).
@@ -221,7 +222,7 @@ OpenTelemetry profiles are stored in data streams that follow the OpenTelemetry 
 | Executables | `profiling-executables.otel-default` |
 | Host metadata | `profiling-hosts.otel-default` |
 
-Retention is managed with the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) rather than {{ilm}}. The Universal Profiling pages about [{{ilm}}](universal-profiling-index-life-cycle-management.md) and the **Storage Explorer** don't apply to these data streams. Data that you collected earlier with Universal Profiling is not migrated.
+Retention is managed with the [data stream lifecycle](/manage-data/lifecycle/data-stream.md) rather than {{ilm}}. The Universal Profiling pages about [{{ilm}}](universal-profiling-index-life-cycle-management.md) and the **Storage explorer** don't apply to these data streams. Data that you collected earlier with Universal Profiling is not migrated.
 
 ## Troubleshoot [profiling-otel-troubleshoot]
 

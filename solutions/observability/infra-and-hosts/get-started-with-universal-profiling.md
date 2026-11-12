@@ -80,7 +80,19 @@ To set up Universal Profiling on your {{ecloud}} deployment, you need to [config
 
 ### Configure data ingestion [profiling-configure-data-ingestion]
 
-After enabling Universal Profiling on your deployment for the first time, select any subheading under **Universal Profiling** in the navigation menu to open the following page:
+Universal Profiling needs a one-time setup step in {{kib}} that creates the {{es}} resources it ingests into. Where you run it depends on your version:
+
+:::::{applies-switch}
+::::{applies-item} stack: ga 9.6+
+
+Find **Profiling** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Add data**. If your deployment has no profiling data yet, the **Add profiling data** page opens directly. Select the **Universal Profiling (legacy)** tab and click **Set up Universal Profiling**. When the setup completes, the tab shows the instructions for installing the Universal Profiling Agent.
+
+The setup step no longer blocks the rest of the app. Until you run it, the Profiling views work with OpenTelemetry profiling data, and only the **Storage explorer** link stays disabled. If Universal Profiling already has data but the resources it needs are missing or out of date, the views show a **Universal Profiling setup is incomplete** callout. Click **Complete setup** to return to this tab.
+
+::::
+::::{applies-item} stack: ga 9.0-9.5
+
+Select any view under **Universal Profiling** in the navigation menu to open the following page:
 
 :::{image} /solutions/images/observability-profiling-setup-popup.png
 :alt: profiling setup popup
@@ -89,10 +101,12 @@ After enabling Universal Profiling on your deployment for the first time, select
 
 Click **Set up Universal Profiling** to configure data ingestion.
 
-::::{note}
-To configure data ingestion, you need elevated privileges, typically the `elastic` user.
 ::::
+:::::
 
+::::{note}
+To configure data ingestion, you need the `superuser` role, typically the `elastic` user.
+::::
 
 If you’re upgrading from a previous version with Universal Profiling enabled, see the [upgrade guide](upgrade-universal-profiling.md).
 
@@ -176,6 +190,8 @@ securityContext:
 The Universal Profiling Agent profiles your fleet. You need to install and configure it on every machine that you want to profile. The Universal Profiling Agent needs  `root` / `CAP_SYS_ADMIN` privileges to run.
 
 After clicking **Set up Universal Profiling** in the previous step, you’ll see the instructions for installing the Universal Profiling Agent. You can also find these instructions by clicking the **Add data** button in the top-right corner of the page.
+
+{applies_to}`stack: ga 9.6+` The instructions are on the **Universal Profiling (legacy)** tab of the **Add profiling data** page.
 
 The following is an example of the provided instructions for {{k8s}}:
 
