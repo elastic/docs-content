@@ -59,6 +59,12 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If you've added several fields and want to remove them all at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count that appears in the fields list once you add a field.
 
+   :::{image} /explore-analyze/images/kibana-discover-clear-selected-fields.png
+   :alt: Selected fields group in the fields list with the Clear selected fields button next to the count of selected fields
+   :screenshot:
+   :width: 40%
+   :::
+
 4. Optional: To keep the fields you care about in view, resize or reorder columns, expand the table to full screen, or collapse the chart and the fields list. Refer to [Customize the Discover view](document-explorer.md) for all options.
 5. Optional: To reopen this view later, [save your work as a Discover session](save-open-search.md#_save_a_discover_session).
 
