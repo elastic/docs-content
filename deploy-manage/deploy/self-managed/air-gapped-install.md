@@ -87,7 +87,7 @@ Air-gapped install of the {{package-registry}} (EPR) is possible using any OCI-c
 After you set up the EPR, [connect {{kib}} to it](/reference/fleet/air-gapped.md#air-gapped-diy-epr-kibana). If the EPR uses a self-signed certificate or a custom CA, also [configure {{kib}} to trust that CA](/reference/fleet/air-gapped.md#_using_custom_ca_certificates).
 ::::
 
-For {{eck}}, follow the instructions in [Deploy {{package-registry}} on {{eck}}](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
+For {{eck}}, follow the instructions in [](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
 
 ### Additional {{package-registry}} examples
 
