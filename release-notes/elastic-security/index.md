@@ -27,6 +27,46 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 % *
 
+## 9.5.7 [elastic-security-9.5.7-release-notes]
+
+### Features and enhancements [elastic-security-9.5.7-features-enhancements]
+
+* Adds a `--force` option to the {{elastic-defend}} `get-file` response action on Windows. The option is also available through the `parameters.force` field of the get file API [#303948]({{kib-pull}}303948).
+% The Kibana change (#303948) is in 9.5.7 BC1, but the endpoint-dev change that adds the `get_file_force` capability (endpoint-dev#23067) is still open. Should this entry be in the 9.5.7 release notes?
+* Adds the `POST /api/entity_analytics/watchlists/{watchlist_id}/entity_source/{id}/_update_api_key` API, which replaces the API key that syncs a watchlist's index entity source with a key granted from the calling user [#303648]({{kib-pull}}303648).
+* Adds the `POST /api/security/entity_store/update_api_key` API, which replaces the API key that the entity store tasks run with by a key granted from the calling user [#303566]({{kib-pull}}303566).
+* Reduces {{elastic-defend}} CPU usage on Windows during video calls.
+* Populates `process.ai_agent.name` and `process.ai_agent.is_descendant` on {{elastic-defend}} file, network, and DNS events on Linux, so you can attribute activity to AI agent tools and their descendant processes.
+
+### Fixes [elastic-security-9.5.7-fixes]
+
+* Fixes searching cases by comment text, alert ID, or event ID, which returned no matching cases [#304470]({{kib-pull}}304470).
+* Fixes `GET /api/osquery/live_queries` returning a 400 error when called without the `sort` query parameter [#304469]({{kib-pull}}304469).
+* Fixes the Security AI Assistant delete-all conversations action so it deletes only the conversations you own, and no longer returns an error when there are none to delete [#303365]({{kib-pull}}303365).
+* Fixes the Security AI Assistant so only the owner of a conversation can delete it. Other users get a `403` error [#303363]({{kib-pull}}303363).
+* Fixes the Analyzer details panel not scrolling in the new flyout when a document has many fields [#303358]({{kib-pull}}303358).
+* Fixes **Add to Case** on the Osquery scheduled query results page so the case shows the results, instead of "No items found" and an error fetching action details [#303324]({{kib-pull}}303324).
+* Fixes Automatic Import so generated ingest pipelines remove temporary fields from documents that fail processing, and so custom field names must use snake_case [#303129]({{kib-pull}}303129).
+* Fixes the Automatic Import privilege so the base **All** and **Read** {{kib}} privileges grant the matching Automatic Import access. Users with **Read** no longer see create, edit, delete, and approve controls they can't use [#303093]({{kib-pull}}303093).
+* Fixes an issue where the attack flyout didn't open from the **Notes** page for notes added to an attack [#302875]({{kib-pull}}302875).
+* Fixes Attack Discovery runs that lost alerts, or failed with `No alerts were available to analyze for the selected time range`, when the agent that retrieves alerts found fewer than 10. Also skips unnecessary LLM calls when there are no open alerts to analyze [#302303]({{kib-pull}}302303).
+* Fixes ES|QL rules losing alerts, and failing, when the query returns a reserved metadata column such as `_source` or `_ignored`. {{kib}} now drops those columns from the alert, and the rule execution reports a warning that names them [#302055]({{kib-pull}}302055).
+* Fixes an issue where you couldn't close a case that had reached the limit of 10,000 user actions. Closing a case no longer counts toward the limit [#301378]({{kib-pull}}301378).
+* Fixes an issue where users who lost a privileged role stayed on the prebuilt Privileged Users watchlist, and kept an inflated risk score, when they were synced from the `okta` and `ad` integration sources [#301374]({{kib-pull}}301374).
+* Fixes entities missing risk scores when an alert field used to identify the entity has multiple values. Previously, the risk score calculation evaluated only the first value [#301344]({{kib-pull}}301344).
+* Fixes a privilege check gap so that enabling a rule, or bulk-enabling rules, re-checks the privileges that the rule's parameters require, such as {{elastic-defend}} response actions, for the user who enables it [#301111]({{kib-pull}}301111).
+* Fixes the **Install selected** button on the **Translated rules** page so it's disabled when you select only partially translated rules, which can't be installed. Previously, it showed a misleading "0 rules installed successfully" message [#276696]({{kib-pull}}276696).
+* Improves the stability of {{elastic-defend}} when processing malformed data.
+* Fixes {{elastic-defend}} increasing the memory usage of scanned processes on some older Linux kernels.
+* Fixes {{elastic-defend}} on Windows so a failure to start one Event Tracing for Windows (ETW)-based event source no longer turns off the others. The policy response now reports the reason for the failure.
+* Fixes {{elastic-defend}} on Linux restarting event collection, and sending duplicate process events for all processes, each time it applies a policy. This occurred on hosts that use eBPF or kprobe event capture and have ransomware protection enabled.
+* Fixes {{elastic-defend}} failing to compress a file that grows during compression, such as a log that is still being written. The file is now captured at its size when compression started. This affects the Endpoint diagnostics bundle and the `get-file` response action.
+* Fixes the {{elastic-defend}} status page that Windows Security displays, which could show corrupted content at the end of the page.
+* Fixes {{elastic-defend}} on Linux so policy responses report failures to enable event collection, instead of reporting success when an explicitly selected event source, such as eBPF, is unavailable.
+* Fixes the `get-file` response action in {{elastic-defend}} to return "The path defined is not a file" for named pipes, devices, and sockets on Linux and macOS, and for files under Linux pseudo-filesystems such as `/proc` and `/sys`. Files under these pseudo-filesystems, such as ACPI tables in `/sys/firmware/acpi/tables`, can no longer be retrieved.
+* Improves the accuracy of process names that {{elastic-defend}} reports on Linux, including for processes that run in a `chroot`.
+* Fixes {{elastic-defend}} so it no longer logs the signature of request URLs that carry a credential in their query string, which keeps sensitive tokens out of debug logs and diagnostics bundles.
+
 ## 9.5.6 [elastic-security-9.5.6-release-notes]
 
 ### Features and enhancements [elastic-security-9.5.6-features-enhancements]
