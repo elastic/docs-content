@@ -254,7 +254,7 @@ Amazon also releases new client SDK versions from time to time. {{es}} recognise
 
 Before each release {{es}} passes through some checks to detect unexpected changes in its interactions with the Amazon S3 API, but cannot foresee all possible incompatibilities in third-party storage products. Before upgrading your {{es}} clusters:
 
-* Contact your storage supplier and confirm that your specific configuration of storage, including its firmware version, is fully compatible with the current version of Amazon S3.
+* Contact your storage supplier and confirm that your specific configuration of storage, including its software or firmware version, is fully compatible with the current version of Amazon S3.
 
 * If your storage is known to be incompatible with features of Amazon S3 which were added very recently, consult the {{es}} release notes to determine whether those features are needed. If they are, determine the temporary configuration options required to reinstate the previous behavior.
 
