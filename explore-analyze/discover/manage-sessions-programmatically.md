@@ -19,13 +19,10 @@ If you keep your {{kib}} content in version control or deploy it from a pipeline
 | Dashboards API | [Open](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) | [Open](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) | Showing a session on a dashboard that you also manage as code | Dashboard with a Discover session panel |
 | Data views v2 API | [Open]({{kib-apis}}group/endpoint-data-views-v2) | [Open]({{kib-serverless-apis}}group/endpoint-data-views-v2) | Creating a saved data view that a session tab can use as its data source, before you deploy the session | Data view |
 
-## Next steps
-
-- [Create dashboards programmatically](../dashboards/create-dashboards-programmatically.md): Build the dashboards that show your sessions.
-
 ## Related pages
 
 - [Save and manage Discover sessions](save-open-search.md)
 - [Use Discover sessions in dashboards](use-sessions-in-dashboards.md)
+- [Create dashboards programmatically](../dashboards/create-dashboards-programmatically.md)
 - [Manage dashboards as code](../dashboards/manage-dashboards-as-code.md)
 - [{{kib}} data views](../find-and-organize/data-views.md)
