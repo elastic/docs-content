@@ -244,7 +244,8 @@ Ensure that your storage supplier offers a full compatibility guarantee, and wor
 
 You can perform some basic checks of the suitability of your storage system using the [repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, a successful response from this API does not guarantee full compatibility.
 
-::::{admonition} {{es}} upgrades and S3-compatible services
+### {{es}} upgrades with S3-compatible services
+
 Throughout each major release series Elastic strives to maintain a stable experience for customers who depend on a fully-compatible third-party implementation of the Amazon S3 API for their snapshot storage.
 
 Amazon adds new features to the S3 API from time to time. {{es}} usually waits more than a year before it starts to use new API features, allowing third-party implementations ample time to catch up. In rare cases {{es}} adopts a new API feature sooner after its release. This can even happen in a minor or patch release, particularly if the feature strengthens protections of the integrity of your snapshot data. In those cases, whenever possible, there are configuration options to temporarily reinstate the previous behavior. Notify your storage supplier of the incompatibility, and cease using the temporary configuration options in {{es}} as soon as they are no longer needed. These temporary configuration options will be supported for the rest of the current major series and will be removed in the next major release.
@@ -260,7 +261,6 @@ Before each release {{es}} passes through some checks to detect unexpected chang
 * In all cases, verify that your storage passes [repository analysis]({{es-apis}}operation/operation-snapshot-repository-analyze) in a test cluster running the upgraded version before upgrading any production clusters.
 
 * Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using Amazon S3.
-::::
 
 ### Investigating incompatibilities
 
