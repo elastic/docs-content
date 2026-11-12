@@ -11,13 +11,13 @@ type: overview
 
 # Manage Discover sessions programmatically [manage-discover-sessions-programmatically]
 
-If you keep your {{kib}} content in version control or deploy it from a pipeline, you can create and manage Discover sessions from code instead of saving each one by hand in **Discover**. The Discover sessions API covers the sessions themselves. Two other APIs cover what sessions connect to: the Dashboards API, to show a session on a dashboard, and the data views APIs, for the saved data views that a session tab can refer to.
+If you keep your {{kib}} content in version control or deploy it from a pipeline, you can create and manage Discover sessions from code instead of saving each one by hand in **Discover**. The Discover sessions API covers the sessions themselves. Two other APIs cover what sessions connect to: the Dashboards API, to show a session on a dashboard, and the data views APIs, for the saved data views that a session tab can use as its data source.
 
 | API | When to use it | What you get |
 |---|---|---|
 | [Discover sessions API](#discover-sessions-api) | Keeping sessions in version control and deploying them from CI/CD | Saved Discover session |
 | [Dashboards API](#sessions-on-dashboards) | Showing a session on a dashboard that you also manage as code | Dashboard with a Discover session panel |
-| [Data views v2 API](#sessions-and-data-views) | Creating a saved data view that a session tab can refer to | Data view |
+| [Data views v2 API](#sessions-and-data-views) | Creating a saved data view that a session tab can use as its data source | Data view |
 
 ## Discover sessions API [discover-sessions-api]
 
