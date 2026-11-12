@@ -38,7 +38,7 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
 
    To split the chart by that field, select **Add breakdown** in the field details. In {{esql}} mode, this works only when the data source has a time field and your query doesn't reshape the results with a command such as `STATS` or `KEEP`.
 
-3. Next to a field in the fields list, select {icon}`plus` to add it to the results table as a column. You can also drag the field from the list into the table.
+3. Next to a field in the fields list, select {icon}`plus` to add it to the results table as a column. You can also drag the field from the list into the table. To manage the columns after you add them, refer to [Manage the columns in the table](document-explorer.md#document-explorer-columns).
 
    :::{image} /explore-analyze/images/kibana-discover-add-field.png
    :alt: Plus icon next to a field in the fields list that adds the field as a column in the table
@@ -54,8 +54,6 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
    :::
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
-
-   To keep the fields you care about in view, manage the columns, expand the table to full screen, or collapse the chart and the fields list. Refer to [Manage the columns in the table](document-explorer.md#document-explorer-columns) and [Customize the Discover view](document-explorer.md) for all options.
 
    ::::{tip}
    The fields you add as columns are also the fields that **Discover** includes when you export the results as CSV. Refer to [Export Discover session results as CSV](export-discover-session.md#export-discover-session-csv).
