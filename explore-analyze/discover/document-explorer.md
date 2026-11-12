@@ -64,7 +64,7 @@ Choose which columns the table shows and how they're arranged, so the data that 
 * To move a single column, drag its header and drop it to the position you want. You can also open the column's contextual options, and select **Move left** or **Move right**.
 * To move multiple columns, select **Columns**. In the pop-up, drag the column names to their new order.
 * To resize a column, drag the right edge of the column header until the column is the width that you want.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To remove all the fields you added at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count in the fields list. The **Selected fields** group appears after you add a field.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To remove all the selected fields at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count in the fields list. The **Selected fields** group lists the fields that the table shows as columns, and it appears after you add a field.
 
   :::{image} /explore-analyze/images/kibana-discover-clear-selected-fields.png
   :alt: Selected fields group in the fields list with the Clear selected fields button next to the count of selected fields

@@ -46,7 +46,7 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
    :width: 50%
    :::
 
-   By default, the table shows a **Summary** column with each document's key-value pairs, and adding a field replaces it. In {{esql}} mode, the columns that the table starts with depend on your query. Refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
+   When the table shows a **Summary** column with each document's key-value pairs, adding a field replaces it. In {{esql}} mode, the columns that the table starts with depend on your query. Refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
 
    :::{image} /explore-analyze/images/kibana-document-table.png
    :alt: Document table with the manufacturer field added as a column
@@ -56,7 +56,7 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
    ::::{tip}
-   The fields you add as columns are also the fields that **Discover** includes when you export the results as CSV. Refer to [Export Discover session results as CSV](export-discover-session.md#export-discover-session-csv).
+   The fields shown as columns in the table are also the fields that **Discover** includes when you export the results as CSV. Refer to [Export Discover session results as CSV](export-discover-session.md#export-discover-session-csv).
    ::::
 
 4. Optional: To reopen this view later, [save your work as a Discover session](save-open-search.md#_save_a_discover_session).
