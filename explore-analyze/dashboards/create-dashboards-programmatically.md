@@ -40,7 +40,7 @@ Use the Dashboards API when you need to:
 The API supports any panel type that has a defined schema:
 
 - Visualizations
-- [Discover sessions](../discover/manage-sessions-programmatically.md#sessions-on-dashboards)
+- Discover sessions
 - Markdown
 - Image
 - Controls: options list, range slider, time slider, and {{esql}}
