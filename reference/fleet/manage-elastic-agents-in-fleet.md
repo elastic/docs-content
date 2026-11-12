@@ -20,7 +20,7 @@ The {{fleet}} app in {{kib}} supports both {{agent}} infrastructure management a
 Advanced users who don’t want to use {{fleet}} for central management can use an external infrastructure management solution and [install {{agent}} in standalone mode](/reference/fleet/install-standalone-elastic-agent.md) instead.
 
 ::::{important}
-{{fleet}} currently requires a {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces. Refer to [Required roles and privileges](/reference/fleet/fleet-roles-privileges.md) to learn how to create a user role with the required privileges to access {{fleet}} and {{integrations}}.
+To manage agents, agent policies, and integrations in {{fleet}}, you need a {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. To create a role with more limited access, and to learn how the privileges apply across spaces, refer to [](/reference/fleet/fleet-roles-privileges.md).
 ::::
 
 To learn how to add {{agents}} to {{fleet}}, refer to [Install {{fleet}}-managed {{agents}}](/reference/fleet/install-fleet-managed-elastic-agent.md).

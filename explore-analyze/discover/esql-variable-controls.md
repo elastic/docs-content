@@ -11,11 +11,12 @@ description: Add variable controls to an ES|QL query in Discover so you can chan
 
 # Add variable controls to Discover queries
 
-Variable controls make your queries dynamic, so you don't need to keep several versions of almost identical queries. You change the value from the control, and the query stays the same.
+If you run the same query again and again with a different value each time, a variable control lets you pick that value from a list instead of editing the query. For example, a control can switch the field that a query groups by. The query holds a variable, such as `?field`, and the control fills it in.
 
 ## Before you begin
 
-- You need an {{esql}} query in **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
+- Make sure **Discover** is in {{esql}} mode. Classic mode doesn't support this functionality. To switch, refer to [Switch to Discover's {{esql}} mode](switch-esql-mode.md#switch-discover-query-mode).
+- If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Create a variable control from the Discover editor [add-variable-control]
 
@@ -52,19 +53,15 @@ stack: preview 9.3
 
 ### Edit a variable control in Discover [edit-a-variable-control]
 
-After a control is active for your query, you can still edit it. Hover over the control, then select the {icon}`pencil` **Edit** option.
+To change a control, hover over it and select the {icon}`pencil` edit button. You can change every option except the name, so the `?` or `??` prefix stays the same. For the options, refer to [](#add-variable-control). When you save your edits, Discover updates the control for your query.
 
-You can edit all the options described in [](#add-variable-control).
-
-When you save your edits, Discover updates the control for your query.
-
-### Import a Discover query along with its controls into a dashboard [import-discover-query-with-controls]
+### Add a Discover query and its controls to a dashboard [import-discover-query-with-controls]
 
 :::{include} ../_snippets/import-discover-query-controls-into-dashboard.md
 :::
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
+- [How to query in Discover's {{esql}} mode](use-esql.md)
 - [Add variable controls to dashboards](../visualize/add-variable-controls.md)
-- [Save a Discover session for reuse](save-open-search.md)
+- [Save and manage Discover sessions](save-open-search.md)

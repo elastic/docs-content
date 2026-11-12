@@ -3,6 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-privileges.html
 applies_to:
   stack: all
+  serverless: ga
 products:
   - id: kibana
 ---
@@ -11,7 +12,9 @@ products:
 
 {{kib}} privileges grant users access to features within {{kib}}. Roles have privileges to determine whether users have write or read access.
 
-To learn how to assign privileges to a role, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+To learn how to assign privileges to a role, refer to [Define roles in {{stack}} deployments](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) or [{{serverless-short}} project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
+
+Available features and privilege groups depend on the deployment type and, in {{serverless-short}}, the project type.
 
 ## Base privileges [_base_privileges]
 
@@ -31,7 +34,7 @@ $$$kibana-privileges-all$$$
 
 ### Assigning base privileges [_assigning_base_privileges]
 
-From the role management screen:
+From the role management screen in {{stack}} deployments:
 
 :::{image} /deploy-manage/images/kibana-assign-base-privilege.png
 :alt: Assign base privilege
@@ -80,7 +83,7 @@ In role management, features are organized into the following groups.
 | Group | What it contains |
 | --- | --- |
 | **Analytics** | Privileges for the features you use to explore and visualize data. Refer to [Privileges in the Analytics group](#kibana-privileges-analytics). |
-| **Universal Alerting** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). |
+| **Universal Alerting** {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` | Privileges for {{alerting-v2-system}}. Refer to [Configure access to {{alerting-v2-system}}](/explore-analyze/alerting/esql/manage/configure-access.md). |
 | **Elasticsearch** | Privileges for {{es}} features. |
 | **Observability** | Privileges for Elastic {{observability}} features. Refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md). |
 | **Security** | Privileges for {{elastic-sec}} features. Refer to [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md). |
@@ -89,12 +92,12 @@ In role management, features are organized into the following groups.
 
 ### Sub-feature privileges [_sub_feature_privileges]
 
-Some features allow for finer access control than the **All** and **Read** privileges. This additional level of control is a [subscription feature](https://www.elastic.co/subscriptions).
+Some features allow for finer access control than the **All** and **Read** privileges. On {{stack}} deployments, this additional level of control is a [subscription feature](https://www.elastic.co/subscriptions).
 
 
 ### Assigning feature privileges [_assigning_feature_privileges]
 
-From the role management screen:
+From the role management screen in {{stack}} deployments:
 
 :::{image} /deploy-manage/images/kibana-assign-subfeature-privilege.png
 :alt: Assign feature privilege
@@ -135,10 +138,10 @@ Each of the following privileges controls access to a different feature.
 | --- | --- |
 | **Discover** | Access [Discover](/explore-analyze/discover.md), and save and manage Discover sessions. Turn on **Customize sub-feature privileges** to grant individual Discover privileges. For the full list, refer to [Discover sub-feature privileges](#kibana-privileges-discover-subfeatures). |
 | **Dashboard** | Access [dashboards](/explore-analyze/dashboards.md), and create and edit them. To add new visualizations or maps to a dashboard, users also need the **Visualize library** or **Maps** privilege. Turn on **Customize sub-feature privileges** to grant individual dashboard privileges. For the full list, refer to [Dashboard sub-feature privileges](#kibana-privileges-dashboard-subfeatures). |
-| **Canvas** | Access [Canvas](/explore-analyze/visualize/canvas.md), and create and edit workpads. Turn on **Customize sub-feature privileges** to grant the reporting privilege. For details, refer to [Canvas sub-feature privileges](#kibana-privileges-canvas-subfeatures). |
+| **Canvas** {applies_to}`serverless: unavailable` | Access [Canvas](/explore-analyze/visualize/canvas.md), and create and edit workpads. Turn on **Customize sub-feature privileges** to grant the reporting privilege. For details, refer to [Canvas sub-feature privileges](#kibana-privileges-canvas-subfeatures). |
 | **Maps** | Access [Maps](/explore-analyze/visualize/maps.md), create and edit maps, and add maps to dashboards. |
 | **Machine Learning** | Access [{{ml}}](/explore-analyze/machine-learning.md), and create and manage jobs and trained models. This privilege grants the same access level to {{data-sources}}, dashboards, Discover sessions, and visualizations. |
-| **Graph** | Access [Graph](/explore-analyze/visualize/graph.md), and create and edit graphs. |
+| **Graph** {applies_to}`serverless: unavailable` | Access [Graph](/explore-analyze/visualize/graph.md), and create and edit graphs. |
 | **Visualize library** | Access the [Visualize library](/explore-analyze/visualize.md), create and edit visualizations, and add visualizations to dashboards. Turn on **Customize sub-feature privileges** to grant individual Visualize library privileges. For the full list, refer to [Visualize library sub-feature privileges](#kibana-privileges-visualize-subfeatures). |
 | **Agent Builder** {applies_to}`stack: ga 9.2+` | Access [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md), including agents, tools, and conversations.<br> {applies_to}`stack: ga 9.4+` Turn on **Customize sub-feature privileges** to grant individual {{agent-builder}} privileges. For the full list, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md). |
 | **Context Engine** {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` | Access [{{context-engine}}](/explore-analyze/ai-features/context-engine.md). **Read** allows viewing AI indices and retrieving context. **All** also allows creating, editing, and deleting AI indices. Users need separate {{es}} index privileges to access backing indices and source data. |
@@ -178,6 +181,9 @@ These privileges control specific actions on dashboards. Selecting **All** inclu
 :::
 
 ### Canvas sub-feature privileges [kibana-privileges-canvas-subfeatures]
+```{applies_to}
+serverless: unavailable
+```
 
 This privilege controls a specific action in Canvas. Selecting **All** includes everything in the following table.
 
@@ -271,16 +277,16 @@ Each of the following privileges controls access to a different feature.
 | **Actions and Connectors** | Create and manage [connectors](/deploy-manage/manage-connectors.md), and run the actions that rules and cases trigger. Turn on **Customize sub-feature privileges** to grant the endpoint security privilege. For details, refer to [Actions and Connectors sub-feature privileges](#kibana-privileges-actions-subfeatures). |
 | **Cases** | Access [cases](/explore-analyze/cases.md), and create and edit them. Turn on **Customize sub-feature privileges** to grant individual case privileges. For the full list, refer to [Customize sub-feature privileges for cases](/explore-analyze/cases/control-case-access.md#cases-sub-feature-privileges). |
 | **Inference Endpoints** | Create and manage [{{infer}} endpoints](/explore-analyze/elastic-inference/inference-api.md).<br> {applies_to}`stack: ga 9.0-9.3` This privilege is in the **Elasticsearch** group. |
-| **Cloud Connect** {applies_to}`stack: ga 9.3+` | Connect a cluster to {{ecloud}} services. This privilege appears on {{ece}} and self-managed clusters, but not on {{ech}}. |
+| **Cloud Connect** {applies_to}`{stack: ga 9.3+, serverless: unavailable}` | Connect a cluster to {{ecloud}} services. This privilege appears on {{ece}} and self-managed clusters, but not on {{ech}}. |
 | **Automatic Import** {applies_to}`stack: ga 9.4+` | Access [Automatic Import](/solutions/security/get-started/automatic-import.md), and create custom integrations from sample data. |
 | **Data Set Quality** | Access the [Data Set Quality](/solutions/observability/data-set-quality-monitoring.md) page. Turn on **Customize sub-feature privileges** to grant individual data set quality privileges. For the full list, refer to [Data Set Quality sub-feature privileges](#kibana-privileges-data-set-quality-subfeatures). |
-| **Fleet** | Access [{{fleet}}](/reference/fleet/index.md), and manage agents and agent policies. Turn on **Customize sub-feature privileges** to grant individual {{fleet}} privileges. For the full list, refer to [{{fleet}} privileges and available actions](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features-table). |
-| **Integrations** | Browse and install [integrations](/reference/fleet/index.md). |
+| **Fleet** | Access [{{fleet}}](/reference/fleet/manage-elastic-agents-in-fleet.md), and manage agents, agent policies, and {{fleet}} settings. Turn on **Customize sub-feature privileges** to grant individual {{fleet}} privileges. For the full list, refer to [{{fleet}} privileges and available actions](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features-table). |
+| **Integrations** | Browse and install [integrations](/reference/fleet/manage-integrations.md). To install integrations or add them to agent policies, users also need [**All** for **Fleet** or its **Agent policies** sub-feature](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-integrations). |
 | **Maintenance Windows** | Create and manage [maintenance windows](/explore-analyze/alerting/alerts/maintenance-windows.md), which suppress rule notifications for a scheduled period. |
 | **Manage Scheduled Reports** {applies_to}`stack: ga 9.1+` | View and manage the [scheduled reports](/explore-analyze/report-and-share/automating-report-generation.md) of every user in the space. |
 | **Query activity** {applies_to}`stack: ga 9.4+` | Access [Query activity](/deploy-manage/monitor/query-activity.md), and cancel long-running queries. |
 | **Rules Settings** | Change the settings that apply to all rules in a space. Turn on **Customize sub-feature privileges** to grant individual rule settings privileges. For the full list, refer to [Rules Settings sub-feature privileges](#kibana-privileges-rules-settings-subfeatures). |
-| **Stack Monitoring** | Access [{{stack}} monitoring](/deploy-manage/monitor/stack-monitoring.md). This privilege has no access levels to select: to grant access, assign the `monitoring_user` role. |
+| **Stack Monitoring** {applies_to}`serverless: unavailable` | Access [{{stack}} monitoring](/deploy-manage/monitor/stack-monitoring.md). This privilege has no access levels to select: to grant access, assign the `monitoring_user` role. |
 | **AI Assistant** {applies_to}`stack: removed 9.3+` | Change which AI Assistants are available, from the AI Assistant settings in {{stack}} Management.<br> {applies_to}`stack: ga =9.2` This privilege is called **AI Assistant Settings**. |
 | **Setup guides** {applies_to}`stack: removed 9.2+` | Access the getting-started page that helps you ingest data and start using Search, {{observability}}, or Security. |
 | **Entity Manager** {applies_to}`stack: removed 9.1+` | Access the Elastic Entity Model of hosts, containers, and services in {{observability}}. |
