@@ -26,7 +26,7 @@ The top half of the **Indexing Tier** page offers general insights at the projec
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
 * Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
 * Gain insights from **performance charts** depicting indexing rate and latency trends over time.
-* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to see how [ingest VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) usage compares to indexing rate and latency.
+* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to see how [ingest VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#vcu-types) usage compares to indexing rate and latency.
 
 ## Index and data stream-level insights
  
@@ -56,7 +56,7 @@ This table is interactive and can be:
 ## Factors affecting indexing performance
 The **Indexing Tier** view shows how your project's indexing rate and latency change over time. This section explains what might cause those changes so you can manage your indexing workload.
 
-{applies_to}`elasticsearch:` On {{es-serverless}} projects, indexing performance is tied to [autoscaling](/deploy-manage/autoscaling.md) which depends on your ingest rate, the complexity of your data, and the number of indices in your project. Each index adds to [ingest VCU consumption](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml), even when your ingest rate is unchanged. When your project scales up, more ingest VCUs are consumed, and when it scales down, fewer are consumed. When no data is being indexed, the indexing tier scales down to zero (with some [exceptions](https://www.elastic.co/search-labs/pt/blog/elasticsearch-serverless-pricing-vcus-ecus#minimum-ingest-vcus)).
+{applies_to}`elasticsearch:` On {{es-serverless}} projects, indexing performance is tied to [autoscaling](/deploy-manage/autoscaling.md) which depends on your ingest rate, the complexity of your data, and the number of indices in your project. Each index adds to [ingest VCU consumption](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#vcu-types), even when your ingest rate is unchanged. When your project scales up, more ingest VCUs are consumed, and when it scales down, fewer are consumed. When no data is being indexed, the indexing tier scales down to zero (with some [exceptions](https://www.elastic.co/search-labs/pt/blog/elasticsearch-serverless-pricing-vcus-ecus#minimum-ingest-vcus)).
 
 ### Indexing rate
 A higher indexing rate leads to a larger [ingestion load](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling#ingestion-load). A lower indexing rate reduces that load.

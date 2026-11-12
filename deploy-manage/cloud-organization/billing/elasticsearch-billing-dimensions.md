@@ -30,7 +30,7 @@ Refer to [](serverless-project-billing-dimensions.md) and the [{{es-serverless}}
 
 ## Project charges [elasticsearch-billing-project-charges]
 
-Project charges are based on the capabilities you use in your {{es-serverless}} project, starting with [VCUs](#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) and [data storage](#elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb). Some features are also priced differently depending on the project type, such as [Agent Builder](#elasticsearch-billing-agent-builder-executions) and [{{cps}}](#elasticsearch-billing-cps).
+Project charges are based on the capabilities you use in your {{es-serverless}} project, starting with [VCUs](#vcu-types) and [data storage](#elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb). Some features are also priced differently depending on the project type, such as [Agent Builder](#elasticsearch-billing-agent-builder-executions) and [{{cps}}](#elasticsearch-billing-cps).
 
 ### VCU types: search, ingest, and ML [vcu-types]
 
