@@ -25,7 +25,7 @@ PersistentVolumes can be of two types: **Network-attached** or **Local**. ECK ha
 In both cases, the performance depends on the underlying hardware and implementation. In general, local SSDs give the best performance. The fastest network-attached volumes from major Cloud providers can also provide acceptable performance, depending on your {{es}} use cases. To better evaluate your performance requirements, you can [benchmark](https://github.com/elastic/rally) your storage options against the expected {{es}} usage.
 
 ::::{warning}
-Versions of NFS older than 4.1 don't support the file system locking semantics that {{es}} relies on, and are known not to work. Don't use NFS volumes older than 4.1 for {{es}} data. Prefer block storage or local disks.
+{{es}} requires storage that behaves no differently from local storage, including file locking. NFS configurations that don't provide file locking, such as NFS 3 or mounts that use the `nolock` option, don't meet this requirement. Network storage can also add latency that affects {{es}} performance, so benchmark with a realistic workload before you rely on it. Block storage or local disks are preferred. For more information, refer to [`path.data`](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#data-path).
 ::::
 
 
