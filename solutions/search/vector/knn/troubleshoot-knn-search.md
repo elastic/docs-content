@@ -38,10 +38,10 @@ Use the example for your field type. For a `semantic_text` field, select your de
 
 :::::::{tab-set}
 ::::::{tab-item} `dense_vector`
-Retrieve the document by ID and include only the `dense_vector` field. Replace `my-index`, `1`, and `dense-vector-field` with the values for your document:
+Retrieve the document by ID and include only the `embedding` field. Replace `my-index` and `1` with the values for your document:
 
 ```console
-GET my-index/_doc/1?_source_includes=dense-vector-field
+GET my-index/_doc/1?_source_includes=embedding
 ```
 
 A stored vector appears in `_source` as an array of numbers.
@@ -57,16 +57,18 @@ A stored vector appears in `_source` as an array of numbers.
   "_primary_term": 1,
   "found": true,
   "_source": {
-    "dense-vector-field": [ <1>
-      1,
-      0,
-      0
+    "embedding": [ <1>
+      -0.026611328,
+      0.045166016,
+      -0.006439209,
+      ...
+      -0.036621094
     ]
   }
 }
 ```
 
-1. The stored vector values. The presence of this array confirms that the document has a vector in the requested field.
+1. The stored 1024-dimension vector. The example omits most values.
 :::
 ::::::
 
@@ -285,7 +287,7 @@ Confirm the following:
       "properties": {
         "embedding": {
           "type": "dense_vector", <1>
-          "dims": 3, <2>
+          "dims": 1024, <2>
           "index": true, <3>
           "similarity": "cosine",
           "index_options": {
@@ -299,8 +301,8 @@ Confirm the following:
             "bits": 4
           }
         },
-        "title": {
-          "type": "keyword"
+        "content": {
+          "type": "text"
         }
       }
     }
