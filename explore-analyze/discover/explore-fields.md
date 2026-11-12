@@ -55,12 +55,8 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
-4. Optional: To manage the columns in the results table, refer to [Manage the columns in the table](document-explorer.md#document-explorer-columns). You can:
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Keep the **Summary** column next to the fields you add.
-   - Reorder and resize the columns.
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Remove all the fields you added at once.
-5. Optional: To make room for the table, expand it to full screen or collapse the chart and the fields list. Refer to [Customize the Discover view](document-explorer.md) for all options.
-6. Optional: To reopen this view later, [save your work as a Discover session](save-open-search.md#_save_a_discover_session).
+4. Optional: To keep the fields you care about in view, manage the columns, expand the table to full screen, or collapse the chart and the fields list. Refer to [Manage the columns in the table](document-explorer.md#document-explorer-columns) and [Customize the Discover view](document-explorer.md) for all options.
+5. Optional: To reopen this view later, [save your work as a Discover session](save-open-search.md#_save_a_discover_session).
 
 **Result:** You can see what your data contains, and the table shows the fields you added as columns.
 
