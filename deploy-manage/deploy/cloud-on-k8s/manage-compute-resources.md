@@ -86,11 +86,10 @@ spec:
 
 #### CPU resources [k8s-elasticsearch-cpu]
 
-ECK does not set the {{es}} `node.processors` setting. {{es}} automatically detects the number of processors available to the JVM and sets the thread pool sizes based on it. The following table shows what {{es}} detects, given the CPU limits and requests set on the `elasticsearch` container:
+ECK does not set the {{es}} `node.processors` setting. {{es}} automatically detects the number of processors available to the JVM and sets the thread pool sizes based on it:
 
-|  | No CPU limit | With CPU limit |
-| --- | --- | --- |
-| Any CPU request, or none | All the available cores on the {{k8s}} node | The CPU limit, rounded up |
+* With a CPU limit, {{es}} detects the CPU limit, rounded up.
+* Without a CPU limit, {{es}} detects all the available cores on the {{k8s}} node, whatever the CPU request is.
 
 CPU requests do not affect the processors detected by {{es}}. If you set CPU requests without a CPU limit, {{es}} sizes its thread pools for all the cores of the {{k8s}} node, which can be much more than the CPU time the Pod is guaranteed. This can cause thread contention and higher latencies on nodes with many cores.
 
