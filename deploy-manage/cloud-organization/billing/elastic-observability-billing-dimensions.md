@@ -29,7 +29,7 @@ sub:
 * **Observability Logs Essentials**: Includes everything you need to store and analyze logs at scale.
 * **Observability Complete**: Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.
 
-Your bill is made up of [project charges](#observability-billing-project-charges), [add-ons](#observability-billing-add-ons), and [organization charges](#observability-billing-organization-charges).
+Your bill is made up of [project charges](#observability-billing-project-charges), [organization charges](#observability-billing-organization-charges), and [add-ons](#observability-billing-add-ons).
 
 Refer to [](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=observability) for more details about {{obs-serverless}} billing dimensions and rates, or you can create a [Serverless estimate](https://cloud.elastic.co/pricing/serverless?s=observability).
 
@@ -55,7 +55,7 @@ Volume tier usage resets at the start of each month. As a result, the same usage
 
 **Tiers:** Observability Complete
 
-[Synthetic monitoring](/solutions/observability/synthetics/index.md) is an optional add-on to Observability Serverless projects that allows you to periodically check the status of your services and applications as a part of the "Observability Complete" feature tier. In addition to the core ingest and retention dimensions, there is a charge to execute synthetic monitors on our testing infrastructure. Browser (journey) based tests are charged per-test-run, and ping (lightweight) tests have an all-you-can-use model per location used.
+[Synthetic monitoring](/solutions/observability/synthetics/index.md) is an optional add-on to Observability Serverless projects that allows you to periodically check the status of your services and applications as a part of the Observability Complete feature tier. In addition to the core ingest and retention dimensions, there is a charge to execute synthetic monitors on our testing infrastructure. Browser (journey) based tests are charged per-test-run, and ping (lightweight) tests have an all-you-can-use model per location used.
 
 ### Agent Builder executions [observability-billing-agent-builder-executions]
 
@@ -71,6 +71,13 @@ Volume tier usage resets at the start of each month. As a result, the same usage
 [{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
 
 :::{include} /deploy-manage/_snippets/cps-billing.md
+:::
+
+## Organization charges [observability-billing-organization-charges]
+
+These charges apply regardless of which project type you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
 :::
 
 ## Add-ons [observability-billing-add-ons]
@@ -89,11 +96,4 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::{include} _snippets/eis-billing.md
 :::
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder and other applicable AI features as a part of the "Observability Complete" feature tier.
-
-## Organization charges [observability-billing-organization-charges]
-
-These charges apply regardless of which project type you use, and include data out and support.
-
-:::{include} _snippets/serverless-organization-charges.md
-:::
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder and other applicable AI features as a part of the Observability Complete feature tier.

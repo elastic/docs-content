@@ -16,7 +16,7 @@ products:
 * [Organization charges](#organization-charges)
 * [Add-ons](#add-ons)
 
-Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or you can create an [Elastic Cloud Serverless Estimate](https://cloud.elastic.co/pricing/serverless).
+Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless) or you can create a [Serverless estimate](https://cloud.elastic.co/pricing/serverless).
 
 This page describes each category and how it applies to your projects. For details, refer to the billing dimensions page for your project type:
 
@@ -44,6 +44,9 @@ These charges apply regardless of which project type you use, and include data o
 
 ## Add-ons [add-ons]
 
-Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project. Add-ons include [Workflows](/explore-analyze/workflows.md), which are billed based on the number of successful workflow executions, and the [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md), which is billed based on the tokens used with its models, including embedding models, rerankers, and [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md). 
+Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project. Add-ons include:
+
+* [Workflows](/explore-analyze/workflows.md): Billed based on the number of successful workflow executions.
+* [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md): Billed based on the tokens used with its models, including embedding models, rerankers, and [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md).
 
 Add-ons are priced the same for all project types, but their availability depends on your project type and [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md). For details, refer to the billing dimensions page for your project type.

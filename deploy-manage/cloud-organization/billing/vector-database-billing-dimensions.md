@@ -24,7 +24,7 @@ sub:
 
 [{{es}} {{vectordb}}](/solutions/vector-database.md) projects on {{serverless-full}} are priced based on consumption across storage, search, ingest, and infrastructure.
 
-Your bill is made up of [project charges](#vector-database-billing-project-charges), [add-ons](#vector-database-billing-add-ons), and [organization charges](#vector-database-billing-organization-charges). This page also explains how to [manage costs](#vector-database-billing-managing-costs) related to project charges.
+Your bill is made up of [project charges](#vector-database-billing-project-charges), [organization charges](#vector-database-billing-organization-charges), and [add-ons](#vector-database-billing-add-ons). This page also explains how to [manage costs](#vector-database-billing-managing-costs) related to project charges.
 
 Refer to [](serverless-project-billing-dimensions.md), the [Cloud Pricing Table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless), or the [{{serverless-full}} pricing](https://cloud.elastic.co/pricing/serverless?s=vectordb) page for more details.
 
@@ -83,6 +83,13 @@ There is no separate control to pause or make a project unavailable. To stop inf
 
 [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) reserves search capacity for your project. Start at the default of **100**, measure latency and throughput for your workload, then increase Search Power if you need more capacity. You increase Search Power in increments of 100. Higher Search Power increases search charges in proportion to the setting and your active storage. You can increase Search Power up to **1900**.
 
+## Organization charges [vector-database-billing-organization-charges]
+
+These charges apply regardless of which project type you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
+:::
+
 ## Add-ons [vector-database-billing-add-ons]
 
 Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
@@ -98,10 +105,3 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. For current rates, refer to the [{{es}} {{vectordb}} pricing page](https://cloud.elastic.co/pricing/serverless?s=vectordb).
-
-## Organization charges [vector-database-billing-organization-charges]
-
-These charges apply regardless of which project type you use, and include data out and support.
-
-:::{include} _snippets/serverless-organization-charges.md
-:::

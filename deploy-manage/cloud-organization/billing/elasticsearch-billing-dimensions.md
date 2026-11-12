@@ -24,7 +24,7 @@ sub:
 
 [{{es-serverless}}](/solutions/elasticsearch-solution-project.md) projects are priced based on consumption of the underlying infrastructure that supports your use case with the performance characteristics you need.
 
-Your bill is made up of [project charges](#elasticsearch-billing-project-charges), [add-ons](#elasticsearch-billing-add-ons), and [organization charges](#elasticsearch-billing-organization-charges). This page also explains how to [manage costs](#elasticsearch-billing-managing-elasticsearch-costs) related to project charges.
+Your bill is made up of [project charges](#elasticsearch-billing-project-charges), [organization charges](#elasticsearch-billing-organization-charges), and [add-ons](#elasticsearch-billing-add-ons). This page also explains how to [manage costs](#elasticsearch-billing-managing-elasticsearch-costs) related to project charges.
 
 Refer to [](serverless-project-billing-dimensions.md) and the [{{es-serverless}} pricing page](https://www.elastic.co/pricing/serverless-search) for more details.
 
@@ -120,6 +120,13 @@ When you use the [API]({{cloud-serverless-apis}}operation/operation-createelasti
 
   The `vector` option is recommended only for uncompressed dense vectors ([dense_vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) fields with `int4` or `int8` quantization strategies) and high dimensionality. Though the per VCU cost is the same for general purpose and vector profiles, the latter allocates more VCUs for searchable data. This leads to higher VCU consumption in order to improve the performance for uncompressed vector data.
 
+## Organization charges [elasticsearch-billing-organization-charges]
+
+These charges apply regardless of which project type you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
+:::
+
 ## Add-ons [elasticsearch-billing-add-ons]
 
 Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project.
@@ -135,10 +142,3 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::
 
 [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) can power AI features in {{es-serverless}} projects, such as Agent Builder and AI Assistant, and are enabled by default.
-
-## Organization charges [elasticsearch-billing-organization-charges]
-
-These charges apply regardless of which project type you use, and include data out and support.
-
-:::{include} _snippets/serverless-organization-charges.md
-:::

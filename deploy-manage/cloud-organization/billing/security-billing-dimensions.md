@@ -31,9 +31,9 @@ sub:
 
 Projects that complement a third-party SIEM can use the Elastic AI SOC Engine (EASE) tier instead, which provides AI-powered threat hunting and alert triage capabilities.
 
-Your bill is made up of [project charges](#security-billing-project-charges), [add-ons](#security-billing-add-ons), and [organization charges](#security-billing-organization-charges).
+Your bill is made up of [project charges](#security-billing-project-charges), [organization charges](#security-billing-organization-charges), and [add-ons](#security-billing-add-ons).
 
-Refer to [](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for more details, or [create a serverless estimate](https://cloud.elastic.co/pricing/serverless?s=security).
+Refer to [](serverless-project-billing-dimensions.md) and the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security) for more details, or [create a Serverless estimate](https://cloud.elastic.co/pricing/serverless?s=security).
 
 ## Project charges [security-billing-project-charges]
 
@@ -123,6 +123,13 @@ For more details about {{elastic-sec}} serverless project rates and billable ass
 :::{include} /deploy-manage/_snippets/cps-billing.md
 :::
 
+## Organization charges [security-billing-organization-charges]
+
+These charges apply regardless of which project type you use, and include data out and support.
+
+:::{include} _snippets/serverless-organization-charges.md
+:::
+
 ## Add-ons [security-billing-add-ons]
 
 Add-ons are capabilities that are available across your {{serverless-short}} projects. They're billed based on usage, in addition to the other billing dimensions of your project. Some add-ons apply only in the [feature tiers](/deploy-manage/deploy/elastic-cloud/project-settings.md) where the related feature is available.
@@ -139,11 +146,4 @@ Add-ons are capabilities that are available across your {{serverless-short}} pro
 :::{include} _snippets/eis-billing.md
 :::
 
-[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder, Attack Discovery, and other applicable AI features as a part of the "Security Analytics Complete" and "Elastic AI SOC Engine" feature tiers.
-
-## Organization charges [security-billing-organization-charges]
-
-These charges apply regardless of which project type you use, and include data out and support.
-
-:::{include} _snippets/serverless-organization-charges.md
-:::
+[Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md) enable you to use AI-powered features without deploying a model in your project. The models are configured by default to use with Agent Builder, Attack Discovery, and other applicable AI features as a part of the Security Analytics Complete and Elastic AI SOC Engine feature tiers.

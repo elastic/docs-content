@@ -6,4 +6,4 @@ Data transferred as a result of [{{cps}} queries](/deploy-manage/cross-project-s
 
 ### Support [general-serverless-billing-support]
 
-If your subscription level is Standard, there is no separate charge for Support reflected on your bill. If your subscription level is Gold, Platinum, or Enterprise, a charge is made for Support as a percentage (%) of the ECUs. To find out more about our support levels, go to [https://www.elastic.co/support](https://www.elastic.co/support).
+If your subscription level is Standard, there is no separate charge for Support reflected on your bill. If your subscription level is Gold, Platinum, or Enterprise, a charge is made for Support as a percentage (%) of the [Elastic Consumption Units (ECUs)](/deploy-manage/cloud-organization/billing/ecu.md). To find out more about our support levels, go to [https://www.elastic.co/support](https://www.elastic.co/support).
