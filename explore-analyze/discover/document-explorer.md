@@ -55,6 +55,22 @@ Change the appearance of the document table and its contents so the data that ma
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To inspect documents as a tree, set **View mode** to **JSON**. Refer to [View documents as JSON](#document-explorer-view-mode).
 
 
+### Keep the Summary column next to added fields [document-explorer-pin-summary]
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, adding fields to the table replaces the **Summary** column, which shows each document's key-value pairs. To keep that context next to the fields you add, turn on **Pin summary** in the **Columns** menu.
+
+
+### Remove all added fields at once [document-explorer-clear-fields]
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If you've [added several fields to the table](explore-fields.md) and want to remove them all at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count in the fields list. The **Selected fields** group appears after you add a field.
+
+:::{image} /explore-analyze/images/kibana-discover-clear-selected-fields.png
+:alt: Selected fields group in the fields list with the Clear selected fields button next to the count of selected fields
+:screenshot:
+:width: 40%
+:::
+
+
 ### Reorder and resize the columns [document-explorer-columns]
 
 To put the most important fields first and give each one the width it needs:

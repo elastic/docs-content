@@ -55,17 +55,12 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
-4. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Optional: To keep the **Summary** column next to the fields you add, turn on **Pin summary** in the **Columns** menu.
-5. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Optional: If you've added several fields and want to remove them all at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count in the fields list. The **Selected fields** group appears after you add a field.
-
-   :::{image} /explore-analyze/images/kibana-discover-clear-selected-fields.png
-   :alt: Selected fields group in the fields list with the Clear selected fields button next to the count of selected fields
-   :screenshot:
-   :width: 40%
-   :::
-
-6. Optional: To keep the fields you care about in view, resize or reorder columns, expand the table to full screen, or collapse the chart and the fields list. Refer to [Customize the Discover view](document-explorer.md) for all options.
-7. Optional: To reopen this view later, [save your work as a Discover session](save-open-search.md#_save_a_discover_session).
+4. Optional: To manage the columns in the results table, use the following actions:
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Keep the Summary column next to added fields](document-explorer.md#document-explorer-pin-summary): Show each document's key-value pairs next to the fields you add.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Remove all added fields at once](document-explorer.md#document-explorer-clear-fields): Take every selected field out of the table in one action.
+   - [Reorder and resize the columns](document-explorer.md#document-explorer-columns): Put the most important fields first and give each one the width it needs.
+   - [Customize the Discover view](document-explorer.md): Expand the table to full screen, collapse the chart and the fields list, and change other table settings.
+5. Optional: To reopen this view later, [save your work as a Discover session](save-open-search.md#_save_a_discover_session).
 
 **Result:** You can see what your data contains, and the table shows the fields you added as columns.
 
