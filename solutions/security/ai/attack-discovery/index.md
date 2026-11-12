@@ -45,4 +45,4 @@ Each discovery includes the following information describing the potential threa
 
 ## Get started with Attack Discovery [attack-discovery-get-started]
 
-Choose how to start a run from the **Attacks** view, a workflow, {{agent-builder}}, or the **Attack Discovery** page in [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
+Choose how to start a run in [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md). Depending on your version and deployment, you can use the **Attacks** view, a workflow, {{agent-builder}}, or the standalone **Attack Discovery** page.

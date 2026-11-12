@@ -1,7 +1,7 @@
 ---
 navigation_title: Manage from Attack Discovery page
 applies_to:
-  stack: ga 9.1
+  stack: removed 9.6+, deprecated =9.5, ga 9.1-9.4
   serverless:
     security: ga
 products:
@@ -11,11 +11,13 @@ products:
 
 # Manage discoveries from the Attack Discovery page [manage-discoveries]
 
-This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page. For a unified, alert-correlated view that also supports triage actions like assignment and tagging, use the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) instead.
-
+This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page.
 :::{note}
-:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
-Manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+This page isn't available in every version and deployment.
+
+- {applies_to}`serverless: ga` {{sec-serverless}} includes this page only in Elastic AI SOC Engine (EASE) projects, which don't have the **Attacks** view. Other projects manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+- {applies_to}`stack: removed 9.6+` The page is no longer available. Manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+- {applies_to}`stack: deprecated =9.5` Opening the page shows a notice that points to the **Attacks** view. To keep using this page, refer to [](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md).
 :::
 
 ## Check Attack Discovery run status [attack-discovery-page-generations]

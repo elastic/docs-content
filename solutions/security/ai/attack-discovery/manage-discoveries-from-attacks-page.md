@@ -66,7 +66,7 @@ The Attacks table lists both manually generated and scheduled discoveries. Both 
 | Type | What it is | How to recognize it |
 |---|---|---|
 | **Scheduled** | Created by a recurring Attack Discovery schedule. | A calendar icon appears in the attack title column and in the Attack flyout header. Hover for the **Scheduled Attack discovery** tooltip. Select the icon to open schedule details, including execution history and configuration. |
-| **Manually generated** | Created when you select **Run** on the Attacks view or the Attack Discovery page. | The attack subtitle shows who ran it: detected time, **Run by** with the user's avatar, and the attack summary. The same **Run by** details appear in the Attack flyout summary. |
+| **Manually generated** | Created when you select **Run** on the Attacks view. | The attack subtitle shows who ran it: detected time, **Run by** with the user's avatar, and the attack summary. The same **Run by** details appear in the Attack flyout summary. |
 
 :::
 

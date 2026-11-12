@@ -20,8 +20,8 @@ Each Attack Discovery finding groups related alerts into a single attack narrati
 
 Before you start, make sure you have the following:
 
-- Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries). See [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) if you need to set one up.
-- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries).
+- Attack Discovery is configured with an LLM connector. See [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) if you need to set one up.
+- At least one finding has been generated, either manually or through a schedule. To start a run, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
 - Your role has the [required privileges](/solutions/security/ai/attack-discovery/grant-access.md) to view and modify Attack Discovery alerts.
 
 :::{tip}
@@ -41,9 +41,9 @@ Start by retrieving all open findings and prioritizing them by risk score. This 
 
 :::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
-1. Go to **Detections** → **Views** → **Attacks** (or **Attack Discovery** if you prefer that page).
+1. Go to **Detections** → **Views** → **Attacks**.
 2. Use the **Status** filter to show only **Open** findings.
-3. Sort to prioritize what to review first. On **Attacks**, use **Most recent** or **Most alerts**. On **Attack Discovery**, sort by risk score (highest first).
+3. Sort to prioritize what to review first. Use **Most recent** or **Most alerts**.
 
 For each finding, note the following key signals:
 
