@@ -1,8 +1,15 @@
-A value is missing when its field is `null` or the document doesn't have the field. {{kib}} then shows a placeholder instead of leaving the cell empty. In a table, such as the results table in **Discover** or a table panel on a dashboard, the placeholder depends on your version:
+A value is missing when its field is `null` or the document doesn't have the field. Instead of leaving the cell empty, {{kib}} shows a placeholder. The placeholder depends on where you see the value.
+
+**In tables**, such as the results table in **Discover** or a table panel on a dashboard, the placeholder also depends on your version:
 
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` A dash (`-`). Hover over the dash to see `(null)`.
 - {applies_to}`stack: ga 9.2-9.5` The label `(null)`.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` Charts show `(null)` for a missing value. Tables and charts show `(blank)` for an empty string (`""`), which is a value that exists but has no characters.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` **In charts**, a missing value shows as the label `(null)`.
 
-You can't change the placeholder, but you can leave missing values out of your results by filtering them out. In {{esql}}, add `WHERE <field> IS NOT NULL` to your query. In KQL, use `<field>: *`.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` **Empty strings** (`""`) are values, not missing values. Tables and charts show them as the label `(blank)`.
+
+You can't change the placeholder, but you can filter missing values out of your results:
+
+- In {{esql}}, add `WHERE <field> IS NOT NULL` to your query.
+- In KQL, use `<field>: *`.
