@@ -107,7 +107,7 @@ To ensure optimal performance and cost-effectiveness for your project, it's impo
 * **Index count and size**: Consolidate small indices for better efficiency.
   In general, avoid a design where your project contains hundreds of very small indices, specifically those under 1GB each.
   Avoiding small indices is important because every index in {{es}} has a certain amount of resource overhead.
-  {{es}} needs to maintain metadata for each index to keep it running smoothly. Each index also uses shards to keep indexing and search efficient, and each shard adds to this overhead.
+  {{es}} needs to maintain metadata for each index to keep it running smoothly.
   When you have a very large number of small indices, the combined overhead from all of them can consume more CPU resources than if the same data were stored in fewer, larger indices.
   Higher resource consumption can lead to higher costs and potentially impact the overall performance of your project.
   
