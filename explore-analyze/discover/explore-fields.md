@@ -46,7 +46,7 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
    :width: 50%
    :::
 
-   By default, when you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field, refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
+   By default, the table shows a **Summary** column with each document's key-value pairs, and adding a field replaces it. In {{esql}} mode, the columns that the table starts with depend on your query. Refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
 
    :::{image} /explore-analyze/images/kibana-document-table.png
    :alt: Document table with the manufacturer field added as a column
