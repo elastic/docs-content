@@ -27,8 +27,6 @@ The Discover sessions API, available at `/api/discover_sessions`, creates, reads
 - Track session definitions in version control, next to the rest of your configuration
 - Create or update sessions from your own tooling
 
-Because a `PUT` request with an ID that you choose creates the session if it doesn't exist and fully replaces it if it does, you can run the same request in every environment.
-
 To get a definition to start from, [export a session as JSON](export-discover-session.md#export-discover-session-json). If you have access to **Dev Tools**, **Open in Console** opens {{kib}} Dev Tools with a request that creates the session from that JSON.
 
 For the request schema, the data sources that a tab can use, authentication, spaces, and an example request that you can run as is, refer to the [Discover sessions API reference]({{kib-apis}}group/endpoint-discover-sessions).
