@@ -30,7 +30,7 @@ This page shows you how to:
 ### Elastic deployment [profiling-otel-requirements-deployment]
 
 * {{stack}} 9.6 or later on {{ech}}, {{ece}}, {{eck}}, or a self-managed deployment, or an {{obs-serverless}} project on the {{observability}} Complete tier. For the serverless tiers, refer to [{{obs-serverless}} feature tiers](/solutions/observability/observability-serverless-feature-tiers.md).
-* On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, an [Enterprise subscription]({{subscriptions}}) or a trial license. Ingesting profiles works on any subscription, but viewing profiling data in {{kib}} requires Enterprise.
+* On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, a [subscription]({{subscriptions}}) that includes Profiling.
 * On self-managed and {{eck}} deployments, the Profiling app must be turned on in {{kib}}, as described in [Turn on Profiling](#profiling-otel-enable-self-managed).
 * {{kib}} privileges to add integrations and manage agent policies in {{fleet}} if you deploy the profiler with {{fleet}}. Refer to [Required roles and privileges](/reference/fleet/fleet-roles-privileges.md) for the roles that grant them.
 
@@ -40,7 +40,7 @@ The profiler runs on each host you want to profile. Every host must meet these r
 
 * Linux with an x86_64 or ARM64 CPU. The profiler doesn't run on other operating systems.
 * Linux kernel 5.10 or later with eBPF support.
-* Access to the host's tracefs or debugfs filesystem. If the profiler runs in a container, mount the host's `/sys/kernel/tracing` directory at the same path in the container, read-only.
+* Access to the host's `tracefs` or `debugfs` filesystem. If the profiler runs in a container, mount the host's `/sys/kernel/tracing` directory at the same path in the container, read-only.
 * Root privileges, or the `CAP_SYS_ADMIN` capability, for the profiler process. If you use {{agent}}, run it as root rather than in [unprivileged mode](/reference/fleet/elastic-agent-unprivileged.md).
 * {{agent}} 9.4 or later if you deploy the profiler with {{fleet}}.
 
@@ -109,7 +109,7 @@ securityContext:
       - SYS_ADMIN
 ```
 
-Also mount the host's `/sys/kernel/tracing` directory read-only at `/sys/kernel/tracing` in the Agent container. The security context alone does not expose tracefs.
+Also mount the host's `/sys/kernel/tracing` directory read-only at `/sys/kernel/tracing` in the Agent container. The security context alone does not expose `tracefs`.
 
 ### Deploy with a standalone {{agent}} configured as an OTel Collector [profiling-otel-deploy-standalone]
 
@@ -233,7 +233,7 @@ failed to load eBPF tracer: failed to read kernel symbols: unable to read kallsy
 
 Run the agent as root, or grant the `CAP_SYS_ADMIN` capability, and confirm that the host meets the [kernel requirements](#profiling-otel-requirements-hosts).
 
-**The receiver reports that neither debugfs nor tracefs is mounted.** The profiler needs access to scheduler tracepoints. Mount tracefs on the Linux host:
+**The receiver reports that neither `debugfs` nor `tracefs` is mounted.** The profiler needs access to scheduler tracepoints. Mount `tracefs` on the Linux host:
 
 ```bash
 sudo mount -t tracefs tracefs /sys/kernel/tracing
