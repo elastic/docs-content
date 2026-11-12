@@ -1,0 +1,43 @@
+name: "PRs: Docs review"
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, converted_to_draft]
+  issue_comment:
+    types: [created]
+
+# Same-repository pull request events and authorized /docs-review commands share one group per pull
+# request, so converting a pull request to draft cancels a review in progress. Everything else gets
+# its own group: a discussion comment, an unauthorized command, or an event from a fork pull
+# request, which the job skips, never cancels a review.
+concurrency:
+  group: docs-review-${{ github.event.pull_request.number || github.event.issue.number }}-${{ ((github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) || (startsWith(github.event.comment.body, '/docs-review') && contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))) && 'pr' || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  actions: read
+  contents: read
+  discussions: write
+  issues: write
+  pull-requests: write
+  copilot-requests: write
+  id-token: write
+
+jobs:
+  run:
+    # Automatic: ready pull requests from this repository. Fork pull requests get no token, so they
+    # use the slash command or the AI PR menu instead.
+    # Manual: /docs-review from a member, owner, or collaborator.
+    if: >-
+      (github.event_name == 'pull_request' &&
+       !github.event.pull_request.draft &&
+       github.event.pull_request.head.repo.full_name == github.repository) ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request != null &&
+       startsWith(github.event.comment.body, '/docs-review') &&
+       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
+    uses: elastic/docs-actions/.github/workflows/gh-aw-docs-review.lock.yml@v1
+    with:
+      review-scope: repo-wide-markdown
+      additional-instructions: |
+        This repository stores documentation as markdown across the repository, not only under `docs/`.
+        Prefer concise, high-signal review comments with exact replacement text when possible.
