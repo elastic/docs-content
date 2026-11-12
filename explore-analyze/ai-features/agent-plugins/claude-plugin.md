@@ -24,22 +24,20 @@ You install the plugin in Claude, not in {{es}}, {{kib}}, or your {{serverless-s
 
 ### Work with {{es}} and {{kib}} from a Claude environment
 
-The plugin contains **Agent skills** — skill packages synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
-See [AI agent skills for Elastic](../agent-skills.md) for the full list and how skills work.
+The plugin contains agent skills, which are skill packages synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
+Refer to [AI agent skills for Elastic](../agent-skills.md) for the full list and how skills work.
 
 Once installed, these skills give Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
 
-- Write and run ES|QL queries against a live cluster.
+- Write and run {{esql}} queries against a live cluster.
 - Build and manage {{kib}} dashboards, alerting rules, and workflows.
 - Onboard a service into {{observability}} using {{edot}}.
 - Triage {{elastic-sec}} alerts and manage cases.
 - Provision Elastic Cloud resources and manage user access.
 
-::::{note}
-The [elastic/agent-skills](https://github.com/elastic/agent-skills) repository is the authoritative source for Elastic agent skills.
-You can install skills directly from that repository into _any_ compatible AI coding agent, including Claude.
-The plugin provides a smoother in-app installation experience.
-::::
+Most of these skills run their operations through the [Elastic CLI](cli://index.md), which you install and configure separately. The plugin doesn't include credentials or a connection to your deployment or project.
+
+To compare the plugin with installing skills directly from [elastic/agent-skills](https://github.com/elastic/agent-skills), refer to [Elastic plugins for AI agents](../agent-plugins.md#plugins-compared-to-installing-skills-directly).
 
 ### Access Elastic documentation in conversations
 
@@ -68,7 +66,7 @@ See the official [Claude documentation on synced plugins](https://code.claude.co
 
 ## Next steps
 
-- [AI agent skills for Elastic](../agent-skills.md) — install individual skills without a plugin, or learn about the skills format.
-- [Elastic Cloud Serverless connector for Claude](../claude-connector.md) — connect Claude to the data in your {{serverless-short}} project.
-- [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server) — connect other agents or tools to the same documentation server the plugin registers.
-- [elastic/claude-plugin on GitHub](https://github.com/elastic/claude-plugin) — source code, changelog, and contribution guide.
+- [AI agent skills for Elastic](../agent-skills.md): Install individual skills without a plugin, or learn about the skills format.
+- [Elastic Cloud Serverless connector for Claude](../claude-connector.md): Connect Claude to the data in your {{serverless-short}} project.
+- [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server): Connect other agents or tools to the same documentation server the plugin registers.
+- [elastic/claude-plugin on GitHub](https://github.com/elastic/claude-plugin): Source code, changelog, and contribution guide.

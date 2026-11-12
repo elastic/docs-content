@@ -1,6 +1,6 @@
 ---
 navigation_title: Agent plugins
-description: "Install official Elastic plugins for Claude and Cursor to give AI agents Elastic agent skills and access to Elastic documentation through the Elastic Docs MCP server."
+description: "Official Elastic plugins for Claude and Cursor package Elastic agent skills and the Elastic Docs MCP server, so AI agents can perform Elastic tasks and look up documentation."
 type: overview
 applies_to:
   stack: ga
@@ -36,8 +36,9 @@ Agent skills
 Elastic Docs MCP server
 :   A connection to the public [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server), which lets the agent search and retrieve Elastic documentation during a conversation.
 
-The plugins give the agent knowledge about Elastic. They don't give it access to the data in your deployment or project.
-To work with your data, connect the agent to the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) of your deployment or project. Claude users can add the [Elastic Cloud Serverless connector for Claude](claude-connector.md) instead.
+The plugins don't include credentials or a connection to your deployment or project.
+Most skills that act on a cluster or on {{ecloud}} run their operations through the [Elastic CLI](cli://index.md), which you install and configure separately.
+To give the agent tools that work directly with your data, you can also connect it to the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) {applies_to}`stack: preview =9.2, ga 9.3+` of your deployment or project. Claude users can add the [Elastic Cloud Serverless connector for Claude](claude-connector.md) instead.
 
 ## Plugins compared to installing skills directly
 

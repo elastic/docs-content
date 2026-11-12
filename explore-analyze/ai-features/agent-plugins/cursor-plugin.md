@@ -17,7 +17,7 @@ products:
 
 The [Elastic plugin for Cursor](https://cursor.com/marketplace/elastic) is an official, open-source [Cursor plugin](https://cursor.com/docs/plugins) that bundles Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit.
 It gives the Cursor agent specialized knowledge of the {{stack}} so it can perform Elastic tasks more accurately and efficiently.
-The plugin is listed in the Cursor Marketplace, and its source is in the [elastic/cursor-plugins](https://github.com/elastic/cursor-plugins) repository.
+Its source is in the [elastic/cursor-plugins](https://github.com/elastic/cursor-plugins) repository.
 You install the plugin in Cursor, not in {{es}}, {{kib}}, or your {{serverless-short}} project.
 
 ## Use cases
@@ -35,7 +35,9 @@ After you install the plugin, these skills give the Cursor agent the procedural 
 - Triage {{elastic-sec}} alerts and manage cases.
 - Provision Elastic Cloud resources and manage user access.
 
-The Cursor agent loads a skill automatically when your request matches it.
+Most of these skills run their operations through the [Elastic CLI](cli://index.md), which you install and configure separately. The plugin doesn't include credentials or a connection to your deployment or project.
+
+The Cursor agent decides when to use a skill based on your request.
 You can also run a skill directly by typing `/` followed by the skill name in the chat, for example `/elasticsearch-esql`.
 
 ### Access Elastic documentation in Cursor
@@ -45,7 +47,7 @@ The agent can look up configuration options, API references, and feature guides 
 
 ::::{note}
 The Elastic Docs MCP server only gives the Cursor agent access to Elastic documentation, not to your data.
-To let the agent work with the data in your deployment or project, also connect Cursor to the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md).
+To give the agent tools that work directly with the data in your deployment or project, also connect Cursor to the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) {applies_to}`stack: preview =9.2, ga 9.3+`.
 ::::
 
 ## Install the plugin
@@ -54,16 +56,17 @@ To install the plugin from Cursor:
 
 1. Open **Customize** in the Cursor sidebar.
 2. Search for **Elastic** and select the Elastic plugin.
-3. Select **Install**, then choose whether to install the plugin for the current project or for your user.
+3. Select **Install**, then choose the project or user scope.
 
 You can also open the [Elastic plugin page in the Cursor Marketplace](https://cursor.com/marketplace/elastic) and install it from there.
 
-After installation, the plugin's skills and the Elastic Docs MCP server appear in **Customize**, where you can turn them on or off.
+After installation, the plugin's skills and the Elastic Docs MCP server appear in **Customize**, where you can manage them and turn the Elastic Docs MCP server on or off.
 For more about installing and managing plugins, including distributing plugins to a team, refer to the [Cursor plugins documentation](https://cursor.com/docs/plugins).
 
 ## Next steps
 
 - [AI agent skills for Elastic](../agent-skills.md): Install individual skills without a plugin, or learn about the skills format.
+- [Elastic CLI](cli://index.md): Install and configure the CLI that most skills use to work with your deployment or project.
 - [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md): Connect Cursor to the data in your deployment or project.
 - [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server): Connect other agents or tools to the same documentation server that the plugin registers.
 - [elastic/cursor-plugins on GitHub](https://github.com/elastic/cursor-plugins): Source code and release history.
