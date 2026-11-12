@@ -35,11 +35,14 @@ Resolution group relationships are also visible as **Resolved to** connections i
 
 Entity resolution runs an automated process that matches user entities across identity providers and other sources based on shared identifiers. For example, if an Okta user and an Active Directory user share the same email address, they are automatically linked into a resolution group. Automated resolution does not override manual resolution.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Automated resolution also matches user entities on identifiers other than email addresses, such as a Windows security identifier (SID) or a Microsoft Entra ID globally unique identifier (GUID), through the built-in rules in the following section.
+Automated resolution matches user entities on the following identifiers:
+
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Email addresses and other identifiers, such as a Windows security identifier (SID) or a Microsoft Entra ID globally unique identifier (GUID), through the built-in rules in the following section.
+* {applies_to}`stack: ga =9.5` By default, email addresses only. You can also turn on matching on related users listed in identity provider records through the `related_user_alias_resolution` rule in the following section.
+* {applies_to}`stack: ga =9.4` Email addresses only.
 
 ::::{note}
-:applies_to: {"stack": "ga 9.4-9.5"}
-In these versions, automated resolution matches on email addresses only by default. Automated resolution might produce false-positive links when non-IDP entities happen to share an email address with an IDP entity.
+Matching on email addresses might produce false-positive links when non-IDP entities share an email address with an IDP entity.
 ::::
 
 ### Built-in automated resolution rules [entity-resolution-built-in-rules]
