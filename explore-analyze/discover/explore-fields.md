@@ -56,7 +56,7 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
 4. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Optional: To keep the **Summary** column next to the fields you add, turn on **Pin summary** in the **Columns** menu.
-5. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Optional: If you've added several fields and want to remove them all at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count in the fields list. This group appears after you add a field.
+5. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Optional: If you've added several fields and want to remove them all at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count in the fields list. The **Selected fields** group appears after you add a field.
 
    :::{image} /explore-analyze/images/kibana-discover-clear-selected-fields.png
    :alt: Selected fields group in the fields list with the Clear selected fields button next to the count of selected fields
