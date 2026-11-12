@@ -21,7 +21,7 @@ If you keep your {{kib}} content in version control or deploy it from a pipeline
 
 ## Discover sessions API [discover-sessions-api]
 
-The Discover sessions API, available at `/api/discover_sessions`, creates, reads, searches, updates, and deletes saved Discover sessions outside the {{kib}} UI. Use it when you need to:
+The Discover sessions API, available at `/api/discover_sessions`, creates, reads, searches, updates, and deletes saved Discover sessions. Use it when you need to:
 
 - Deploy the same sessions to several spaces or environments from a CI/CD pipeline
 - Track session definitions in version control, next to the rest of your configuration
@@ -40,7 +40,7 @@ A dashboard that you manage with the [Dashboards API](../dashboards/create-dashb
 - **Link a saved session:** Set `ref_id` to the ID of a saved session. Several dashboards can then share the session, and a change to the session shows on every panel that links it.
 - **Define the tab in the panel:** Describe the tab inside the dashboard definition. The tab is stored with the dashboard and doesn't create a saved session, so the dashboard stays self-contained.
 
-For the other panel options, such as choosing which tab a linked session shows, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards). To add a session to a dashboard from the UI, refer to [Use Discover sessions in dashboards](use-sessions-in-dashboards.md).
+For the other panel options, such as choosing which tab a linked session shows, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards). To add a session to a dashboard without writing API requests, refer to [Use Discover sessions in dashboards](use-sessions-in-dashboards.md).
 
 ## Use data views in sessions [sessions-and-data-views]
 
