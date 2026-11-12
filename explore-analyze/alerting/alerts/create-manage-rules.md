@@ -75,6 +75,8 @@ Each rule type provides its own way of defining the conditions to detect, but an
 
 All rules must have a check interval, which defines how often to evaluate the rule conditions. Checks are queued; they run as close to the defined value as capacity allows.
 
+Short check intervals and long time windows add search load. To keep rules running on time as you add more of them, refer to [](/explore-analyze/alerting/alerts/plan-rule-performance.md).
+
 For details on what types of rules are available and how to configure them, refer to [*Rule types*](rule-types.md).
 
 ### Alert flapping [defining-rules-flapping-details]

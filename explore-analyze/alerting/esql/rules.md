@@ -25,4 +25,5 @@ A rule doesn't send notifications. [Action policies](action-policies/about-actio
 - [Create a rule](rules/create-a-rule.md): Compare creation paths and select the one that fits your workflow.
 - [Configure a rule](rules/configure-a-rule.md): Set the schedule, grouping, alert delay, recovery condition, and no-data behavior.
 - [Rule mode](rules/configure-rule-mode.md): Set whether matches are grouped into an alert or remain available for later analysis.
+- [Plan for rule performance](rules/plan-rule-performance.md): Set schedules, lookback windows, and queries that keep rules running on time.
 - [View and manage rules](rules/view-manage-rules.md): Enable, disable, clone, delete, and bulk-manage rules from the **Rules** page.

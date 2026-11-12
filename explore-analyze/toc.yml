@@ -517,6 +517,7 @@ toc:
                   - file: alerting/esql/rules/configure-rule-recovery.md
                   - file: alerting/esql/rules/configure-no-data-handling.md
                   - file: alerting/esql/rules/configure-rule-artifacts.md
+              - file: alerting/esql/rules/plan-rule-performance.md
               - file: alerting/esql/rules/view-manage-rules.md
               - file: alerting/esql/rules/review-rule-execution-history.md
               - file: alerting/esql/rules/review-rule-change-history.md
@@ -558,6 +559,7 @@ toc:
           - file: alerting/alerts/alerting-setup.md
           - file: alerting/alerts/rules-and-elastic-cloud-api-keys.md
           - file: alerting/alerts/create-manage-rules.md
+          - file: alerting/alerts/plan-rule-performance.md
           - file: alerting/alerts/view-alerts.md
           - file: alerting/alerts/query-alerts.md
           - file: alerting/alerts/rule-types.md

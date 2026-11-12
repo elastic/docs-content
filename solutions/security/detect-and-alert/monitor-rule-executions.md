@@ -27,7 +27,7 @@ Detection rules only protect your environment when they run reliably. This page 
 | Run a rule manually for a specific time range | [Run rules manually](/solutions/security/detect-and-alert/manage-detection-rules.md#manually-run-rules) |
 | View rule performance metrics in a dashboard | [Detection rule monitoring dashboard](../dashboards/detection-rule-monitoring-dashboard.md) |
 | Investigate missing alerts | [Troubleshoot missing alerts](../../../troubleshoot/security/detection-rules.md#troubleshoot-signals) |
-| {applies_to}`security: ga` Understand why rules time out or run slowly | [Troubleshoot rule timeouts caused by search load](/troubleshoot/security/detection-rules.md#security-search-capacity) |
+| Understand why rules time out or run slowly | [Troubleshoot rule timeouts caused by search load](/troubleshoot/security/detection-rules.md#security-search-capacity) |
 
 
 ## Rule execution status [rule-status]
