@@ -54,5 +54,5 @@ Use a plugin when your agent supports one. A plugin installs all Elastic skills 
 
 - [AI agent skills for Elastic](agent-skills.md): Install individual skills without a plugin, or learn about the skills format.
 - [Elastic CLI](cli://index.md): Install and configure the CLI that most skills use to work with your deployment or project.
-- [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md): Connect an agent to the data in your deployment or project.
+- {applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga` [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md): Connect an agent to the data in your deployment or project.
 - [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server): Connect other agents or tools to the same documentation server that the plugins register.
