@@ -59,18 +59,18 @@ Change the appearance of the document table and its contents so the data that ma
 
 Choose which columns the table shows and how they're arranged, so the data that matters stands out:
 
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To remove all the fields you [added from the fields list](explore-fields.md) at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count in the fields list. The **Selected fields** group appears after you add a field.
+* To add a field as a column, select {icon}`plus` **Add field as column** next to it in the fields list, or drag it into the table. In {{esql}} mode, you can also return the fields you want with `KEEP` in your query. Refer to [Explore fields in Discover](explore-fields.md) and [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, adding fields to the table replaces the **Summary** column. To keep it next to the fields you add, turn on **Pin summary** in the **Columns** menu.
+* To move a single column, drag its header and drop it to the position you want. You can also open the column's contextual options, and select **Move left** or **Move right**.
+* To move multiple columns, select **Columns**. In the pop-up, drag the column names to their new order.
+* To resize a column, drag the right edge of the column header until the column is the width that you want.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To remove all the fields you added at once, select {icon}`undo` **Clear selected fields** next to the **Selected fields** count in the fields list. The **Selected fields** group appears after you add a field.
 
   :::{image} /explore-analyze/images/kibana-discover-clear-selected-fields.png
   :alt: Selected fields group in the fields list with the Clear selected fields button next to the count of selected fields
   :screenshot:
   :width: 40%
   :::
-
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, adding fields to the table replaces the **Summary** column. To keep it next to the fields you add, turn on **Pin summary** in the **Columns** menu.
-* To move a single column, drag its header and drop it to the position you want. You can also open the column's contextual options, and select **Move left** or **Move right**.
-* To move multiple columns, select **Columns**. In the pop-up, drag the column names to their new order.
-* To resize a column, drag the right edge of the column header until the column is the width that you want.
 
 **Result:** The table shows the columns you chose, in the order and width you set.
 
