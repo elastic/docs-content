@@ -60,6 +60,7 @@ Change the appearance of the document table and its contents so the data that ma
 Choose which columns the table shows and how they're arranged, so the data that matters stands out:
 
 * To add a field as a column, select {icon}`plus` **Add field as column** next to it in the fields list, or drag it into the table. In {{esql}} mode, you can also return the fields you want with `KEEP` in your query. Refer to [Explore fields in Discover](explore-fields.md) and [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
+* To remove a single field from the table, select {icon}`cross` **Remove field from table** next to it in the fields list.
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` By default, adding fields to the table replaces the **Summary** column. To keep it next to the fields you add, turn on **Pin summary** in the **Columns** menu.
 * To move a single column, drag its header and drop it to the position you want. You can also open the column's contextual options, and select **Move left** or **Move right**.
 * To move multiple columns, select **Columns**. In the pop-up, drag the column names to their new order.
