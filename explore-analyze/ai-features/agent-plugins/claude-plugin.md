@@ -27,13 +27,13 @@ You install the plugin in Claude, not in {{es}}, {{kib}}, or your {{serverless-s
 The plugin contains agent skills, which are skill packages synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
 Refer to [AI agent skills for Elastic](../agent-skills.md) for the full list and how skills work.
 
-Once installed, these skills give Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
+After you install the plugin, these skills give Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
 
 - Write and run {{esql}} queries against a live cluster.
 - Build and manage {{kib}} dashboards, alerting rules, and workflows.
 - Onboard a service into {{observability}} using {{edot}}.
 - Triage {{elastic-sec}} alerts and manage cases.
-- Provision Elastic Cloud resources and manage user access.
+- Provision {{ecloud}} resources and manage user access.
 
 Most of these skills run their operations through the [Elastic CLI](cli://index.md), which you install and configure separately. The plugin doesn't include credentials or a connection to your deployment or project.
 
