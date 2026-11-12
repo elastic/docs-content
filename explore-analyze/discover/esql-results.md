@@ -56,7 +56,7 @@ stack: ga 9.6+
 
 If one message in your results looks unusual, you can check how common it is without writing a `STATS` query that uses `CATEGORIZE`. **Discover** shows the pattern the message follows, which describes the structure that similar messages share. It also shows the other documents that match the pattern and when they occurred. You can then keep those documents in your query or filter them out.
 
-The **Find similar values** button appears only for text fields from a data source that has a time field. It also has these requirements:
+The **Find similar values** button appears only for text fields, such as `message` or `error.message`, from a data source that has a time field. It also has these requirements:
 
 - {applies_to}`serverless: ga` Your project type must include pattern analysis. {{es}}, Observability, and Security projects include it, except Observability projects on the Logs Essentials tier.
 - {applies_to}`stack: ga 9.6+` You need a [Platinum or higher subscription](https://www.elastic.co/subscriptions) or an active trial.

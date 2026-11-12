@@ -19,7 +19,7 @@ If your logs are free-form messages, pattern analysis groups similar messages in
 
 - Make sure **Discover** is in classic mode. {{esql}} mode doesn't have the **Patterns** view. To switch, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
 - {applies_to}`serverless: ga` Pattern analysis is available in {{es}}, Observability, and Security projects, except Observability projects on the Logs Essentials tier.
-- {applies_to}`stack: ga` You need a [Platinum or higher subscription](https://www.elastic.co/subscriptions) or an active trial. Pattern analysis relies on a feature that requires it.
+- {applies_to}`stack: ga` You need a [Platinum or higher subscription](https://www.elastic.co/subscriptions) or an active trial. Pattern analysis groups messages with the [categorize text aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-categorize-text-aggregation.md), which requires it.
 - **Discover** must have a [data view](../find-and-organize/data-views.md) selected that has a time field and contains a text field, and a time range that contains data.
 - This example uses the [web logs sample data](/manage-data/ingest/sample-data.md). To follow along, add it and select its data view, or use your own log data.
 
@@ -55,7 +55,7 @@ stack: ga 9.6+
 
 If one message in your results looks unusual, you can check how common it is without running a pattern analysis on the whole list first. **Discover** shows the pattern the message follows, the other documents that match it, and when they occurred. You can then open those documents or filter them out.
 
-The **Find similar values** button appears only for text fields in a data view that has a time field. It has the same subscription and project requirements as pattern analysis. Refer to [Before you begin](#before-you-begin).
+The **Find similar values** button appears only for text fields, such as `message` or `error.message`, in a data view that has a time field. It has the same subscription and project requirements as pattern analysis. Refer to [Before you begin](#before-you-begin).
 
 1. In classic mode, run a query that returns log messages. For example, select **Kibana Sample Data Logs** and expand the time range if the table is empty.
 2. In the table, hover over a value in a text field column, such as `message`, and select **Find similar values**.
