@@ -63,6 +63,16 @@ api:
     - spec: cloud-connect.yml
       product: ess
       repository: elastic/cloud-connected-api
+  # One-time static copy of the spec. It overrides the remote `main` version, so remove it
+  # once elastic/autoops-services publishes autoops.yaml to the spec index.
+  cloud-monitoring:
+    - spec: api/cloud-monitoring/autoops.yaml
+      product: ess
+      repository: elastic/autoops-services
+      catalog:
+        categories:
+          - ess
+          - serverless
   cloud-serverless:
     - spec: elastic-cloud-serverless.yml
       product: cloud-serverless
