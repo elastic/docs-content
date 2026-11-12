@@ -43,6 +43,10 @@ Data volume charges have these components:
 
 * **Ingest** — Measured by the number of GB of data that you send to your Observability project over the course of a month. Metrics data ingested in [time series index mode](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) is priced at 25% of the standard per-GB ingest rate. All other data, including logs and traces, are priced at the standard rate.
 * **Retention** — Measured by the total amount of ingested data stored in your Observability project. Metrics data stored in time series index mode is priced at 25% of the standard per-GB retention rate. All other data, including logs and traces, are priced at the standard rate.
+ 
+Volume tier reductions apply at higher usage levels. Each tier's rate applies only to the data in its range.
+
+Volume tier usage resets at the start of each month. As a result, the same usage can cost more at the start of a month than at the end of the previous one. Refer to the [{{pricing-label}}]({{pricing-url}}) for specific rates and tier breakpoints.
 
 :::{include} _snippets/note-data-volumes-ingest-retention.md
 :::

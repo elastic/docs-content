@@ -46,6 +46,11 @@ Data volume charges have these components:
 * **Ingest** — Measured by the number of GB of log/event/info data that you send to your Security project over the course of a month.
 * **Retention** — Measured by the total amount of ingested data stored in your Security project.
 
+Volume tier reductions apply at higher usage levels. Each tier's rate applies only to the data in its range.
+
+Volume tier usage resets at the start of each month. As a result, the same usage can cost more at the start of a month than at the end of the previous one. Refer to the [{{pricing-label}}]({{pricing-url}}) for specific rates and tier breakpoints.
+
+
 :::{include} _snippets/note-data-volumes-ingest-retention.md
 :::
 
@@ -69,7 +74,9 @@ Cloud Protection is an *optional* add-on to Security Analytics that provides val
 * **Cloud Protection Essentials** — Protects your cloud workloads, continuously tracks posture of your cloud assets, and helps you manage risks by detecting configuration issues per CIS benchmarks.
 * **Cloud Protection Complete** — Adds response capabilities.
 
-Your total cost depends on the number of protected cloud workloads and other billable cloud assets you configure for use with {{ecloud}} Security.
+Your total cost depends on the number of protected cloud workloads and other billable cloud assets you configure for use with {{ecloud}} Security. Volume tier reductions apply at higher usage levels. Each tier's rate applies only to the assets in its range.
+
+Volume tier usage resets at the start of each month. As a result, the same usage can cost more at the start of a month than at the end of the previous one.
 
 For [CSPM](../../../solutions/security/cloud/cloud-security-posture-management.md), billing is based on how many billable resources (`resource.id` s) you monitor. The following types of assets are considered billable:
 
