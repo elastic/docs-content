@@ -28,7 +28,7 @@ To analyze the rows of a session in a spreadsheet or another tool, export them a
 
 **Result:** {{kib}} queues a CSV report of the results of the current tab. To download the file when it's ready, refer to [Manually generate reports](../report-and-share.md#manually-generate-reports).
 
-In the CSV file, a missing value is a dash (`-`) in classic mode and an empty cell in {{esql}} mode.
+If a cell in the CSV file shows a dash or stays empty, the result has no value for that field. Refer to [What a dash or `(null)` in your results means](discover-get-started.md#missing-values-in-results).
 
 ### Row and file size limits [export-csv-limits]
 

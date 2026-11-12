@@ -228,8 +228,6 @@ This action is possible for all charts created using **Lens** or {{esql}}. It is
 :::{include} ../_snippets/missing-value-placeholders.md
 :::
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In a **Formatted CSV** file, a table's missing values appear as a dash. In a chart, they appear as `(null)`.
-
 #### View the requests that collect the data
 
 :::{include} ../_snippets/inspect-request.md
