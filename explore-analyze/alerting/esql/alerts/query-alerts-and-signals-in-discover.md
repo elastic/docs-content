@@ -2,7 +2,8 @@
 navigation_title: Query alert history
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alerts."
@@ -10,7 +11,7 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 # Query {{alerting-v2-system}} alert history in Discover [query-alert-history-discover]
 
-In {{alerting-v2-system}}, use {{esql}} in Discover to replay how an incident unfolded, see who acknowledged or snoozed an alert, measure time-to-acknowledge trends, or correlate alert history with other data in your environment. To check the current state of alerts instead, use the [**Alerts** page](view-and-manage-alerts.md).
+In {{alerting-v2-system-short}}, use {{esql}} in Discover to replay how an incident unfolded, see who acknowledged or snoozed an alert, measure time-to-acknowledge trends, or correlate alert history with other data in your environment. To check the current state of alerts instead, use the [**Alerts** page](view-and-manage-alerts.md).
 
 For events with `type: signal`, including basic queries and using them as input to a rule that opens an alert, refer to [Query rule events](query-signals.md).
 

@@ -64,6 +64,7 @@ To configure an integration policy:
     * [Memory threat protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection)
     * [Malicious behavior protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#behavior-protection)
     * [Attack surface reduction](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#attack-surface-reduction)
+    * [AI data collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#ai-data-collection)
     * [Device control](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#device-control)
     * [Event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection)
     * [Register {{elastic-sec}} as antivirus (optional)](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#register-as-antivirus)
@@ -240,8 +241,26 @@ In {{serverless-short}}, attack surface reduction requires the Endpoint Protecti
 
 **Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the SAM, SECURITY, and SYSTEM registry hives on Windows endpoints, a common credential dumping technique. Trusted applications are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the Security Account Manager (`SAM`), `SECURITY`, and `SYSTEM` registry hives on Windows endpoints, a common credential dumping technique. [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
+
+
+## AI data collection [ai-data-collection]
+```yaml {applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+{{elastic-defend}} can identify AI tools running on your hosts and add that context to the events it collects from them, which improves visibility into AI activity on your hosts.
+
+In the **AI data collection** section, turn on **AI event enrichment** for each operating system where you want {{elastic-defend}} to add this context.
+
+New policies have this setting turned on for every operating system by default. Existing policies don't collect AI data until you turn this on for the operating systems you want.
+
+::::{note}
+For AI event enrichment to take effect on a host, the host must be running {{elastic-endpoint}} version 9.6 or later.
+::::
+
+
 ## Device control [device-control]
 
 ```yaml {applies_to}
