@@ -85,7 +85,11 @@ Replace these values:
 
 1. `<KIBANA-VERSION>` with your version of {{kib}}.
 2. `<POLICY-ID>` with the agent policy ID you received in step 1.
-3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, [open the {{elastic-defend}} integration's details](/reference/fleet/open-integration-details.md) and check **Version** on the **Overview** page.
+3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it:
+
+    1. Select the **{{elastic-defend}}** tile on the **Browse integrations** tab.
+    2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
+    3. Check **Version** on the **Overview** page.
 
 This adds the {{elastic-defend}} integration to your agent policy with the default settings.
 
@@ -503,7 +507,11 @@ Include the resulting JSON object in the following call to save your customized 
 
 1. `<PACKAGE-POLICY-ID>` with the {{elastic-defend}} policy ID you received in step 2.
 2. `<KIBANA-VERSION>` with your version of {{kib}}.
-3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it, [open the {{elastic-defend}} integration's details](/reference/fleet/open-integration-details.md) and check **Version** on the **Overview** page.
+3. `<LATEST-ELASTIC-DEFEND-PACKAGE-VERSION>` with the latest {{elastic-defend}} package version (for example, `8.9.1`). To find it:
+
+    1. Select the **{{elastic-defend}}** tile on the **Browse integrations** tab.
+    2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
+    3. Check **Version** on the **Overview** page.
 
 ```console
 curl --user <username>:<password> --request PUT \

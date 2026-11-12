@@ -151,7 +151,7 @@ Manage and monitor {{managed-integrations}} from the **{{integrations}}** app:
 1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
    - Open the **Installed integrations** tab and select **View policies** for the integration you want.
-   - [Open the integration's details](/reference/fleet/open-integration-details.md) and go to its **Integration policies** tab.
+   - Select the integration, then go to its **Integration policies** tab.
 
 Each integration policy shows the integration's status, so you can check its health and take action — such as updating credentials — without using {{fleet}}.
 

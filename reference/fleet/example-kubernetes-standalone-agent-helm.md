@@ -189,10 +189,12 @@ If your organization requires administrators to manage SCCs and role bindings se
     kube-state-metrics-6bc97757c4-x9rkg       1/1     Running   0          5m35s
     ```
 
-2. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
-3. Search for `Kubernetes`, then [open the {{k8s}} integration's details](/reference/fleet/open-integration-details.md).
-4. Select the **Settings** tab and click **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
-5. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
+2. In your {{ecloud}} deployment, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Kubernetes, then select **Kubernetes** from the results.
+
+    If **Kubernetes** doesn't appear in the results, go to `/app/integrations/detail/kubernetes/overview` in {{kib}}.
+
+3. Select the **Settings** tab, then select **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
+4. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
 
     On the dashboard, you can view the status of your {{k8s}} nodes, including metrics on memory, CPU, and filesystem usage, network throughput, and more.
 
@@ -201,7 +203,7 @@ If your organization requires administrators to manage SCCs and role bindings se
     :screenshot:
     :::
 
-6. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashboard you can view the status of your {{k8s}} pods, including various metrics on memory, CPU, and network throughput.
+5. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashboard you can view the status of your {{k8s}} pods, including various metrics on memory, CPU, and network throughput.
 
     :::{image} images/helm-example-pods-metrics-dashboard.png
     :alt: Screen capture of the Metrics Kubernetes pods dashboard

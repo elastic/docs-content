@@ -14,7 +14,7 @@ type: how-to
 
 An integration's details open on the **Overview** page, which shows the integration's documentation. Other tabs cover the integration's policies, assets, settings, and more. Open an integration's details to learn what it collects, or to manage an integration that you've already added.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Selecting an integration on the **Browse integrations** tab opens the **Add <integration>** page instead, so you can [add the integration](/reference/fleet/add-integration-to-policy.md) right away. To open the integration's details, follow the steps on this page.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Selecting an integration on the **Browse integrations** tab opens the **Add <integration>** page instead, so you can [add the integration](/reference/fleet/add-integration-to-policy.md) right away. To open the integration's details, use the instructions on this page.
 
 ## Before you begin [integration-details-prerequisites]
 
@@ -26,15 +26,16 @@ Your role needs these privileges:
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` If you [customize sub-feature privileges for {{fleet}}](/reference/fleet/fleet-roles-privileges.md#fleet-roles-and-privileges-sub-features), the **Integration policies** tab needs `Read` or `All` for **Agent policies**, and the **Configs** tab needs `All` for **Agents**.
 
-## Open the integration's details [integration-details-steps]
+## Open the integration's details [integration-details-open]
 
-1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select the integration:
-    * If the integration is installed, select it on the **Installed integrations** tab.
-    * If the integration isn't installed yet, select it on the **Browse integrations** tab.
+Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-        {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the integration is part of a collection, such as **Nginx**, select the collection tile, then select the integration in the flyout.
-3. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
+If the integration is installed, select it on the **Installed integrations** tab. Its details open on the **Overview** page.
+
+If the integration isn't installed yet, select it on the **Browse integrations** tab:
+
+1. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the integration is part of a collection, such as **Nginx**, select the collection tile, then select the integration in the flyout.
+2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
 
     Integrations that only install assets, such as dashboards, or only provide setup documentation open their **Overview** page directly. The **Overview** page also opens directly if your role has `Read` access to **Integrations** instead of `All`.
 

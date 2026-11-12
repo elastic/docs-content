@@ -28,13 +28,13 @@ To add an integration to an {{agent}} policy, your role needs the `All` privileg
 2. Search for and select an integration. You can select a category to narrow your search.
 3. Open the **Add <integration>** page:
 
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Selecting the integration opens the **Add <integration>** page. To learn what data the integration collects and how to configure it, click **View documentation** in the **New to this integration?** panel, if the page shows it. Some integrations open their [**Overview** page](/reference/fleet/open-integration-details.md) instead.
-    * {applies_to}`stack: ga 9.0-9.5` Selecting the integration opens its **Overview** page. Click **Add <integration>**.
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Selecting the integration opens the **Add <integration>** page. To learn what data the integration collects and how to configure it, select **View documentation** in the **New to this integration?** panel, if the page shows it. Some integrations open their [**Overview** page](/reference/fleet/open-integration-details.md) instead.
+    * {applies_to}`stack: ga 9.0-9.5` Selecting the integration opens its **Overview** page. Select **Add <integration>**.
 
-4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**. You can add an {{agent}} after you add the integration.
+4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**. You can add an {{agent}} after you add the integration.
 5. In the **Configure integration** section, configure the settings specific to the integration.
 
-    If the integration can run as an [{{managed-integration}}](/manage-data/ingest/managed-integrations/managed-integrations.md), also select a deployment type, either in a separate **Deployment** section or in the **Deployment options** field. Select **Agent-based** to run the integration on {{agent}}s that you manage. The Elastic managed option doesn't use an {{agent}} policy, so if you select it, skip the next step:
+    If the integration can run as an [{{managed-integration}}](/reference/managed-integrations/index.md), also select a deployment type, either in a separate **Deployment** section or in the **Deployment options** field. Select **Agent-based** to run the integration on {{agent}}s that you manage. The Elastic managed option doesn't use an {{agent}} policy, so if you select it, skip the next step:
 
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` **Elastic Managed Integration**
     * {applies_to}`stack: preview 9.0-9.4` **Agentless**
@@ -49,9 +49,9 @@ To add an integration to an {{agent}} policy, your role needs the `All` privileg
     ::::{include} _snippets/version-specific-policy-integration-warning.md
     ::::
 
-7. Click **Save and continue**.
+7. Select **Save and continue**.
 
-    A notification confirms that the integration was added. If the agent policies have no {{agent}}s enrolled yet, a dialog prompts you to add one. To install an agent now, click **Add {{agent}} to your hosts** and follow the instructions in the **Add agent** flyout. To skip this step, click **Add {{agent}} later**. You can add an agent later from the integration's **Integration policies** tab by clicking **Add agent** in the integration policy's row.
+    A notification confirms that the integration was added. If the agent policies have no {{agent}}s enrolled yet, a dialog prompts you to add one. To install an agent now, select **Add {{agent}} to your hosts** and follow the instructions in the **Add agent** flyout. To skip this step, select **Add {{agent}} later**. You can add an agent later from the integration's **Integration policies** tab by selecting **Add agent** in the integration policy's row.
 
 Saving installs the integration if it isn't installed yet. For agent-based deployments, {{fleet}} adds the new integration policy to the {{agent}} policies that you selected and distributes it to all {{agent}}s enrolled in those policies.
 

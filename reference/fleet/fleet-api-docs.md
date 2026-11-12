@@ -167,7 +167,11 @@ curl --request POST \
 
     7. Click **Open in Console** and run the request (or requests).
 
-* To find out which inputs, streams, and variables are available for an integration, [open the integration's details](/reference/fleet/open-integration-details.md), then select the **API reference** tab.
+* To find out which inputs, streams, and variables are available for an integration:
+
+    1. Find the integration on the **Browse integrations** tab and select it.
+    2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
+    3. Select the **API reference** tab.
 
 ::::
 
