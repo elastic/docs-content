@@ -395,6 +395,7 @@ Tune cluster performance by monitoring thread pools and refresh interval.       
 
 ## Related pages[semantic-text-further-examples]
 
+* If a kNN search fails or returns unexpected results, [troubleshoot your indexed vectors](../vector/knn/troubleshoot-knn-search.md). `semantic_text` stores embeddings internally, so a missing vector in `_source` does not mean indexing failed.
 * For an overview of all query types supported by `semantic_text` fields and guidance on when to use them, refer to [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
 * For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.

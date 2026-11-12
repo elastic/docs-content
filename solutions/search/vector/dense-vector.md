@@ -40,6 +40,7 @@ To implement dense vector search in {{es}}, you need both an index configuration
 
 2. **Query the index with k-NN search**
    - Use the [`knn` query](knn.md) to retrieve results based on vector similarity
+   - If a kNN search fails or returns unexpected results, [troubleshoot your indexed vectors](knn/troubleshoot-knn-search.md)
 
 ## Better Binary Quantization (BBQ) [bbq]
 
