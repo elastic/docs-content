@@ -46,7 +46,7 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
    :width: 50%
    :::
 
-   By default, when you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field and CSV exports, refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
+   By default, when you add fields to the table, the **Summary** column is replaced. For {{esql}}-specific details about the time field, refer to [Show specific columns in the results table](esql-results.md#esql-kibana-results-table).
 
    :::{image} /explore-analyze/images/kibana-document-table.png
    :alt: Document table with the manufacturer field added as a column
@@ -55,8 +55,13 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
 
    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, adding fields limits the tree to those fields. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
 
-4. Optional: To keep the fields you care about in view, manage the columns, expand the table to full screen, or collapse the chart and the fields list. Refer to [Manage the columns in the table](document-explorer.md#document-explorer-columns) and [Customize the Discover view](document-explorer.md) for all options.
-5. Optional: To reopen this view later, [save your work as a Discover session](save-open-search.md#_save_a_discover_session).
+   To keep the fields you care about in view, manage the columns, expand the table to full screen, or collapse the chart and the fields list. Refer to [Manage the columns in the table](document-explorer.md#document-explorer-columns) and [Customize the Discover view](document-explorer.md) for all options.
+
+   ::::{tip}
+   The fields you add as columns are also the fields that **Discover** includes when you export the results as CSV. Refer to [Export Discover session results as CSV](export-discover-session.md#export-discover-session-csv).
+   ::::
+
+4. Optional: To reopen this view later, [save your work as a Discover session](save-open-search.md#_save_a_discover_session).
 
 **Result:** You can see what your data contains, and the table shows the fields you added as columns.
 
