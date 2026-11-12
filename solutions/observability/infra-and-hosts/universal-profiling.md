@@ -94,7 +94,7 @@ The stacktraces view provides valuable information that you can use to:
 * Discover how much relative overhead comes from third-party software running on your machines.
 * Detect unexpected CPU spikes across threads, and drill-down into a smaller time range to investigate further with a flamegraph.
 
-Stacktraces are grouped based on the origin of collected stacktraces. You may find an empty view in containers and deployments if your host-agent deployment is profiling systems that do not run any containers or container orchestrators. In a deployment where Profiling is correctly receiving data from the profiling agents you should always see a graph in the threads, hosts, and traces view.
+Stacktraces are grouped based on the origin of collected stacktraces. You might find an empty view in containers and deployments if your host-agent deployment is profiling systems that do not run any containers or container orchestrators. In a deployment where Profiling is correctly receiving data from the profiling agents you should always see a graph in the threads, hosts, and traces view.
 
 
 #### Navigating the stacktraces view [profiling-navigating-stacktraces]
@@ -111,7 +111,7 @@ Below the top graph, there are individual graphs that show the individual trend-
 The percentage displayed in the top-right corner of every individual graph is the relative number of occurrences of every time over the total of samples in the group.
 
 ::::{note}
-The displayed percentage is different from the percentage of CPU usage. Profiling is not meant to show absolute monitoring data. Instead, it allows for relative comparisons between software running in your infrastructure (e.g. which is the most expensive?)
+The displayed percentage is different from the percentage of CPU usage. Profiling is not meant to show absolute monitoring data. Instead, it allows for relative comparisons between software running in your infrastructure (for example, which is the most expensive?)
 ::::
 
 
@@ -181,7 +181,7 @@ The functions view presents an ordered list of functions that Profiling samples 
 
 ## Filtering [profiling-filtering-intro]
 
-In all of the Profiling views, the search bar accepts a filter in the {{kib}} Query Language [KQL](/explore-analyze/query-filter/languages/kql.md).
+In all the Profiling views, the search bar accepts a filter in the {{kib}} Query Language [KQL](/explore-analyze/query-filter/languages/kql.md).
 
 Most notably, you may want to filter on:
 
