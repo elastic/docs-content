@@ -21,14 +21,14 @@ Use the [explain API]({{es-apis}}operation/operation-explain) to see exactly how
 
 ### Find out why a document ranks unexpectedly high or low [troubleshooting-relevance-explain-ranking]
 
-When a document ranks higher or lower than you expect, run the explain API against it. Replace `2` with the `_id` of the document you want to inspect:
+When a document ranks higher or lower than you expect, run the explain API against it with the same query that returned the unexpected result. Replace `2` with the `_id` of the document you want to inspect, and replace the example `match` query with your own:
 
 ```console
 GET /my-index-000001/_explain/2
 {
   "query": {
     "match": {
-      "title": "search relevance"
+      "title": "elasticsearch tutorial"
     }
   }
 }
@@ -47,7 +47,7 @@ The response shows whether the document matched and breaks the score down by ter
     "details": [
       {
         "value": 1.0922639,
-        "description": "weight(title:search in 1) [PerFieldSimilarity], result of:",
+        "description": "weight(title:elasticsearch in 1) [PerFieldSimilarity], result of:",
         "details": [
           {
             "value": 1.0922639,
@@ -62,7 +62,7 @@ The response shows whether the document matched and breaks the score down by ter
       },
       {
         "value": 1.0922639,
-        "description": "weight(title:relevance in 1) [PerFieldSimilarity], result of: ..."
+        "description": "weight(title:tutorial in 1) [PerFieldSimilarity], result of: ..."
       }
     ]
   }
@@ -72,16 +72,22 @@ The response shows whether the document matched and breaks the score down by ter
 2. The `boost` value (here `2.2`) is the effective boost passed to the BM25 scorer. For an unmodified field, this equals `1.0 × (1 + k1) = 2.2` by default. A higher value, for example `6.6` for a `^3` field boost, indicates a user-specified boost was applied.
 3. Each entry in `details` shows one term's contribution. `boost`, `idf` (how rare the term is), and `tf` (how often it appears) multiply together to produce the term score.
 
+Use the breakdown to find what's driving the ranking:
+
+- If the `boost` value is higher or lower than you expect, a field or query boost is changing the score. Refer to [Fix boosting not working as expected](#troubleshooting-relevance-boosting).
+- If a term you expect is missing from `details`, the query isn't searching the field you intended. Refer to [Fix the wrong fields being searched](#troubleshooting-relevance-fields).
+- If a term has a low `idf`, it appears in many documents and contributes little to the score. Rank is driven by the rarer terms, so consider whether the query terms are specific enough.
+
 ### Find out why a document doesn't match [troubleshooting-relevance-explain-no-match]
 
-When a document you expect in the results is missing, run the explain API against it. Replace `4` with the `_id` of the document you want to inspect:
+When a document you expect in the results is missing, run the explain API against it with the same query that failed to return it. Replace `4` with the `_id` of the document you want to inspect, and replace the example `match` query with your own:
 
 ```console
 GET /my-index-000001/_explain/4
 {
   "query": {
     "match": {
-      "title": "search relevance"
+      "title": "elasticsearch tutorial"
     }
   }
 }
@@ -96,14 +102,18 @@ GET /my-index-000001/_explain/4
     "value": 0.0,
     "description": "No matching clauses",
     "details": [
-      { "value": 0.0, "description": "no match on optional clause (title:search)" },
-      { "value": 0.0, "description": "no match on optional clause (title:relevance)" }
+      { "value": 0.0, "description": "no match on optional clause (title:elasticsearch)" },
+      { "value": 0.0, "description": "no match on optional clause (title:tutorial)" }
     ]
   }
 }
 ```
 
-`"matched": false` with `"No matching clauses"` means the tokens in the query did not appear in the indexed field. This is usually a token mismatch. Refer to [Fix token mismatches between index and query](#troubleshooting-relevance-tokens).
+`"matched": false` with `"No matching clauses"` means none of the query's tokens appear in the indexed field. Use this to decide where to go next:
+
+- If the document contains the words you searched for, the index and query are probably tokenizing text differently. Refer to [Fix token mismatches between index and query](#troubleshooting-relevance-tokens).
+- If you expect a synonym to bridge the gap, refer to [Fix synonyms not applying](#troubleshooting-relevance-synonyms).
+- If the words appear in a different field from the one you queried, refer to [Fix the wrong fields being searched](#troubleshooting-relevance-fields).
 
 ## Fix token mismatches between index and query [troubleshooting-relevance-tokens]
 
@@ -191,35 +201,39 @@ Refer to [Test an analyzer](../../manage-data/data-store/text-analysis/test-an-a
 
 ## Fix synonyms not applying [troubleshooting-relevance-synonyms]
 
-Synonyms are usually applied at search time, which is the recommended approach because you can update synonym sets without reindexing. Synonym sets managed through the synonyms API or {{kib}} work only in search analyzers. Index-time synonyms are also supported with the `synonym` filter (not `synonym_graph`), but changing them requires a reindex. {{serverless-short}} supports only synonym sets managed through the synonyms API or {{kib}}, not index-time or file-based synonyms. If synonyms aren't matching, check:
+Synonyms are usually applied at search time, which is the recommended approach because you can update synonym sets without reindexing. Synonym sets managed through the synonyms API or {{kib}} work only in search analyzers. Index-time synonyms are also supported with the `synonym` filter (not `synonym_graph`), but changing them requires a reindex.
 
-1. Use the analyze API with the analyzer that applies your synonyms, usually your index's search analyzer, to confirm the synonym expansion is happening:
+{{serverless-short}} supports only synonym sets managed through the synonyms API or {{kib}}, not index-time or file-based synonyms.
 
-   ```console
-   GET /my-index-000001/_analyze
-   {
-     "analyzer": "my_search_analyzer",
-     "text": "car"
-   }
-   ```
+If synonyms aren't matching, check the following. These checks are independent, so start with whichever fits your situation:
 
-   If synonyms are working, the response includes extra tokens with `"type": "SYNONYM"`:
+- **The synonym filter is part of the analyzer.** Use the analyze API with the analyzer that applies your synonyms, usually your index's search analyzer, to confirm the synonym expansion is happening:
 
-   ```console-result
-   {
-     "tokens": [
-       { "token": "car",        "position": 0, "type": "<ALPHANUM>" },
-       { "token": "automobile", "position": 0, "type": "SYNONYM" },
-       { "token": "vehicle",    "position": 0, "type": "SYNONYM" }
-     ]
-   }
-   ```
+  ```console
+  GET /my-index-000001/_analyze
+  {
+    "analyzer": "my_search_analyzer",
+    "text": "car"
+  }
+  ```
 
-   If you only see the original token and no `SYNONYM` entries, the synonym filter is not part of that analyzer's chain.
+  If synonyms are working, the response includes extra tokens with `"type": "SYNONYM"`:
 
-2. If you updated the synonym set, confirm whether you need to reload or reindex:
-   - Synonym sets managed through the [synonyms API]({{es-apis}}group/endpoint-synonyms) reload automatically when you update the set. You don't need to reload manually or reindex, as long as the synonym filter sets `"updateable": true`.
-   - {applies_to}`serverless: unavailable` Custom synonym files configured as index-time analyzers require a full reindex to take effect on already-indexed documents. If the file is configured as a search-time analyzer with `"updateable": true`, you can reload it without reindexing by calling the [reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers) after you update the file on every node.
+  ```console-result
+  {
+    "tokens": [
+      { "token": "car",        "position": 0, "type": "<ALPHANUM>" },
+      { "token": "automobile", "position": 0, "type": "SYNONYM" },
+      { "token": "vehicle",    "position": 0, "type": "SYNONYM" }
+    ]
+  }
+  ```
+
+  If you only see the original token and no `SYNONYM` entries, the synonym filter is not part of that analyzer's chain.
+
+- **Your recent synonym update took effect.** If you updated the synonym set, confirm whether you need to reload or reindex:
+  - Synonym sets managed through the [synonyms API]({{es-apis}}group/endpoint-synonyms) reload automatically when you update the set. You don't need to reload manually or reindex, as long as the synonym filter sets `"updateable": true`.
+  - {applies_to}`serverless: unavailable` Custom synonym files configured as index-time analyzers require a full reindex to take effect on already-indexed documents. If the file is configured as a search-time analyzer with `"updateable": true`, you can reload it without reindexing by calling the [reload search analyzers API]({{es-apis}}operation/operation-indices-reload-search-analyzers) after you update the file on every node.
 
 Refer to [Search with synonyms](../../solutions/search/full-text/search-with-synonyms.md) for setup and reload guidance.
 
@@ -228,8 +242,8 @@ Refer to [Search with synonyms](../../solutions/search/full-text/search-with-syn
 If boosted fields or documents aren't ranking as expected, use the explain API to confirm the boost applies. Common causes:
 
 - **Field boosts in `multi_match`**: verify the `^` syntax is correct and the field exists in the mapping.
-- **`function_score`**: check that the filter on each function matches the documents you expect.
-- **`script_score`**: confirm the script returns the value you intend. Log the script output with a test query.
+- **`function_score`**: check that the `filter` on each function matches the documents you expect. Also check that `score_mode` (how the function scores combine) and `boost_mode` (how the result combines with the query score) are set the way you intend. Refer to [Function score query](elasticsearch://reference/query-languages/query-dsl/query-dsl-function-score-query.md).
+- **`script_score`**: confirm the script returns the value you intend. The final score can't be negative, and a script that returns `NaN`, a negative value, or infinity can give documents a score of `0`. Refer to [Script score query](elasticsearch://reference/query-languages/query-dsl/query-dsl-script-score-query.md) and [Debug script score calculation errors in Painless](../../explore-analyze/scripting/painless-script-score-calculation-errors.md).
 
 Run your query with `"explain": true` in the request body to see per-result score breakdowns inline:
 
@@ -239,7 +253,7 @@ GET /my-index-000001/_search
   "explain": true,
   "query": {
     "multi_match": {
-      "query": "search relevance",
+      "query": "elasticsearch tutorial",
       "fields": ["title^3", "body"]
     }
   }
@@ -265,7 +279,7 @@ Each result in the response includes an `_explanation` block showing how the boo
               "details": [
                 {
                   "value": 3.276792,
-                  "description": "weight(title:search in 1) [PerFieldSimilarity], result of:",
+                  "description": "weight(title:elasticsearch in 1) [PerFieldSimilarity], result of:",
                   "details": [
                     {
                       "value": 3.276792,
@@ -294,9 +308,9 @@ The `boost` value here is `6.6` (the BM25 default `2.2` multiplied by the `^3` f
 
 When a `multi_match` query returns irrelevant results, the field list might be too broad or misconfigured. Check:
 
-- The `fields` array in your `multi_match`: remove low-signal fields or add explicit boosts to prioritize the right ones.
-- Whether `copy_to` is pulling unrelated content into a combined field. Use the [get mapping API]({{es-apis}}operation/operation-indices-get-mapping) to inspect which fields copy into your target field.
-- The `type` parameter: `best_fields` ranks by the single best matching field, while `most_fields` sums scores across fields. Switch between them to see which fits your use case.
+- The `fields` array in your `multi_match`: remove low-signal fields or add explicit boosts to prioritize the right ones. Refer to [Multi-match query](elasticsearch://reference/query-languages/query-dsl/query-dsl-multi-match-query.md).
+- Whether `copy_to` is pulling unrelated content into a combined field. Use the [get mapping API]({{es-apis}}operation/operation-indices-get-mapping) to inspect which fields copy into your target field. Refer to [`copy_to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md).
+- The `type` parameter: `best_fields` ranks by the single best matching field, while `most_fields` sums scores across fields. Switch between them to see which fits your use case. Refer to [Multi-match query types](elasticsearch://reference/query-languages/query-dsl/query-dsl-multi-match-query.md).
 
 ## Fix poor semantic search results [troubleshooting-relevance-semantic]
 
