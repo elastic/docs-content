@@ -1688,11 +1688,14 @@ redirects:
   'deploy-manage/monitor/stack-audit-logging/auditing-search-queries.md': 'deploy-manage/monitor/stack-audit-logging/auditing-http-request-bodies.md'
 
   # Related to https://github.com/elastic/docs-content/pull/8717
-  'solutions/observability/streams/significant-events/index.md': 'solutions/observability/nightshift/core-components/detection-engine.md'
-  'solutions/observability/nightshift/significant-events/index.md': 'solutions/observability/nightshift/core-components/detection-engine.md'
+  'solutions/observability/streams/significant-events/index.md': 'solutions/observability/nightshift/detection/index.md'
+  'solutions/observability/nightshift/significant-events/index.md': 'solutions/observability/nightshift/detection/index.md'
   'solutions/observability/streams/significant-events/how-it-works.md': 'solutions/observability/nightshift/significant-events/how-it-works.md'
   'solutions/observability/streams/significant-events/operator-guide.md': 'solutions/observability/nightshift/significant-events/operator-guide.md'
-  'solutions/observability/streams/significant-events/knowledge-indicators.md': 'solutions/observability/nightshift/significant-events/knowledge-indicators.md'
+  'solutions/observability/streams/significant-events/knowledge-indicators.md': 'solutions/observability/nightshift/context/knowledge-indicators.md'
+  'solutions/observability/nightshift/significant-events/knowledge-indicators.md': 'solutions/observability/nightshift/context/knowledge-indicators.md'
+  'solutions/observability/nightshift/investigations.md': 'solutions/observability/nightshift/investigation/index.md'
+  'solutions/observability/nightshift/memory.md': 'solutions/observability/nightshift/context/memory.md'
 
   # related to https://github.com/elastic/docs-content/issues/7421
   'cloud-account/change-interface-language.md': 'explore-analyze/find-and-organize/personal-preferences/change-interface-language.md'

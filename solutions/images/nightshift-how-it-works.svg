@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-labelledby="hiw-title hiw-desc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" >
+<title id="hiw-title">How nightshift works</title>
+<desc id="hiw-desc">An investigation starts from a trigger: an alert fires, you ask a question with Investigate on the home page, you mention @Elastic in Slack, an automation runs on an alert or a schedule, or Detection finds a significant event. Detection is its own engine: it watches your logs and learns Knowledge Indicators about your services, infrastructure, and dependencies. Knowledge Indicators become rules, and the rules raise significant events. The investigation queries your logs, metrics, and traces, reads code in a temporary sandbox when GitHub is connected, and tests several hypotheses, confirming or dismissing each one with a confidence level. Before it starts, it reads the Wiki and Memory; when it ends, it writes back what it learned, so each investigation improves the next. The result is a likely cause, the evidence, and proposed actions. You decide whether to apply or decline each action; nightshift does not change your systems.</desc>
+<rect x="0.75" y="0.75" width="1198.5" height="518.5" fill="#FFFFFF" stroke="#B7C2DC" stroke-width="1.5"/>
+<rect x="40" y="40" width="230" height="46" fill="#DCE2EE"/>
+<rect x="36" y="36" width="230" height="46" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="84" y1="36" x2="84" y2="82" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="37.25" y="37.25" width="45.5" height="43.5" fill="#F1F4FA"/>
+<path d="M50,66.0 L52,63.0 L52,56.0 Q52,48.0 60,48.0 Q68,48.0 68,56.0 L68,63.0 L70,66.0 Z" fill="#0B64DD" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" />
+<line x1="56" y1="70.0" x2="64" y2="70.0" stroke="#101C3F" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="98" y="65.5" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Alert fires</text>
+<line x1="270" y1="59.0" x2="300" y2="59.0" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="40" y="96" width="230" height="46" fill="#DCE2EE"/>
+<rect x="36" y="92" width="230" height="46" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="84" y1="92" x2="84" y2="138" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="37.25" y="93.25" width="45.5" height="43.5" fill="#F1F4FA"/>
+<path d="M48,105.0 H72 V121.0 H58 L52,127.0 V121.0 H48 Z" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" />
+<path d="M56.5,110.5 Q56.5,107.5 60,107.5 Q63.5,107.5 63.5,110.5 Q63.5,113.0 60,114.0 V116.0" fill="none" stroke="#101C3F" stroke-width="2.2" stroke-linejoin="miter" stroke-linecap="butt" />
+<rect x="58.7" y="117.2" width="2.6" height="2.6" fill="#101C3F"/>
+<text x="98" y="121.5" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Investigate</text>
+<line x1="270" y1="115.0" x2="300" y2="115.0" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="40" y="152" width="230" height="46" fill="#DCE2EE"/>
+<rect x="36" y="148" width="230" height="46" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="84" y1="148" x2="84" y2="194" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="37.25" y="149.25" width="45.5" height="43.5" fill="#F1F4FA"/>
+<path d="M48,161.0 H72 V177.0 H58 L52,183.0 V177.0 H48 Z" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" />
+<circle cx="60" cy="169.0" r="2.6" fill="none" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M62.6,166.0 V170.0 Q62.6,172.0 64.5,172.0 Q66.2,172.0 66.2,169.0 A6.2,6.2 0 1 0 63.1,174.4" fill="none" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt" />
+<text x="98" y="177.5" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">@Elastic in Slack</text>
+<line x1="270" y1="171.0" x2="300" y2="171.0" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="40" y="208" width="230" height="46" fill="#DCE2EE"/>
+<rect x="36" y="204" width="230" height="46" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="84" y1="204" x2="84" y2="250" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="37.25" y="205.25" width="45.5" height="43.5" fill="#F1F4FA"/>
+<polygon points="68.9,224.8 71.9,225.2 71.9,228.8 68.9,229.2 67.8,231.7 69.7,234.1 67.1,236.7 64.7,234.8 62.2,235.9 61.8,238.9 58.2,238.9 57.8,235.9 55.3,234.8 52.9,236.7 50.3,234.1 52.2,231.7 51.1,229.2 48.1,228.8 48.1,225.2 51.1,224.8 52.2,222.3 50.3,219.9 52.9,217.3 55.3,219.2 57.8,218.1 58.2,215.1 61.8,215.1 62.2,218.1 64.7,219.2 67.1,217.3 69.7,219.9 67.8,222.3" fill="#0B64DD" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<circle cx="60" cy="227.0" r="3.84" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="98" y="233.5" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Automation</text>
+<line x1="270" y1="227.0" x2="300" y2="227.0" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="40" y="264" width="230" height="46" fill="#DCE2EE"/>
+<rect x="36" y="260" width="230" height="46" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="84" y1="260" x2="84" y2="306" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="37.25" y="261.25" width="45.5" height="43.5" fill="#F1F4FA"/>
+<path d="M47,290.0 H55 L59,274.0 L63,290.0 H73" fill="none" stroke="#101C3F" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<circle cx="59" cy="274.0" r="3.5" fill="#0B64DD" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="98" y="289.5" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Significant event</text>
+<line x1="270" y1="283.0" x2="300" y2="283.0" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="300" y1="59" x2="300" y2="283" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M300.0,171.0 L328.0,171.0" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<polygon points="336,171 324.9,176.0 324.9,166.0" fill="#0B64DD"/>
+<rect x="40" y="424" width="230" height="60" fill="#DCE2EE"/>
+<rect x="36" y="420" width="230" height="60" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="58" y1="430" x2="98.0" y2="430" stroke="#101C3F" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="58" y1="443" x2="85.5" y2="443" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="58" y1="456" x2="93.0" y2="456" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="58" y1="469" x2="80.5" y2="469" stroke="#101C3F" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="50" y="436" width="62" height="28" fill="none" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" stroke-dasharray="4 3"/>
+<text x="128" y="457" text-anchor="start" font-size="21" font-weight="700" fill="#101C3F">Detection</text>
+<path d="M151.0,420.0 L151.0,403.1" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<polygon points="151,392 156.0,403.1 146.0,403.1" fill="#0B64DD"/>
+<rect x="40" y="344" width="230" height="46" fill="#DCE2EE"/>
+<rect x="36" y="340" width="230" height="46" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="151" y="369" text-anchor="middle" font-size="17" font-weight="600" fill="#101C3F">Knowledge Indicators</text>
+<path d="M151.0,340.0 L151.0,323.1" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<polygon points="151,312 156.0,323.1 146.0,323.1" fill="#0B64DD"/>
+<rect x="340" y="36" width="400" height="278" fill="#B7C2DC"/>
+<rect x="336" y="32" width="400" height="278" fill="#48EFCF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="375.77817459305203" y1="75.77817459305203" x2="383.77817459305203" y2="83.77817459305203" stroke="#101C3F" stroke-width="6" stroke-linejoin="miter" stroke-linecap="butt"/>
+<circle cx="368" cy="68" r="10" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<circle cx="368" cy="68" r="5.5" fill="#48EFCF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="392" y="77" text-anchor="start" font-size="25" font-weight="700" fill="#101C3F">Investigation</text>
+<rect x="356" y="102" width="360" height="56" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="484" y="136.5" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Logs, metrics, traces</text>
+<rect x="356" y="168" width="360" height="56" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" stroke-dasharray="7 5"/>
+<text x="484" y="202.5" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Code sandbox</text>
+<rect x="356" y="234" width="360" height="58" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="484" y="269.5" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Hypotheses</text>
+<line x1="370" y1="121" x2="392" y2="121" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="370" y1="129" x2="386" y2="129" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="370" y1="137" x2="390" y2="137" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="404" y="129" width="5" height="10" fill="#0B64DD" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="412" y="121" width="5" height="18" fill="#0B64DD" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="420" y="126" width="5" height="13" fill="#0B64DD" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="436" y="121" width="26" height="4.5" fill="#F1F4FA" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="441" y="128" width="14" height="4.5" fill="#F1F4FA" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="448" y="135" width="12" height="4.5" fill="#F1F4FA" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="370" y="179" width="52" height="34" fill="#101C3F" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M386,189 L379,196 L386,203 M406,189 L413,196 L406,203" fill="none" stroke="#48EFCF" stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="butt" />
+<line x1="399" y1="187" x2="393" y2="205" stroke="#48EFCF" stroke-width="2.4" stroke-linejoin="miter" stroke-linecap="butt"/>
+<circle cx="374" cy="247" r="6.5" fill="#0B64DD" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M371,247 L373.2,249.5 L377.2,244.5" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt" />
+<rect x="388" y="243.5" width="72" height="7" fill="#F1F4FA" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="388" y="243.5" width="61" height="7" fill="#0B64DD" stroke="#101C3F" stroke-width="1.5"/>
+<circle cx="374" cy="263" r="6.5" fill="#FFFFFF" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M371.4,260.4 L376.6,265.6 M376.6,260.4 L371.4,265.6" fill="none" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt" />
+<rect x="388" y="259.5" width="72" height="7" fill="#F1F4FA" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="388" y="259.5" width="18" height="7" fill="#5E6C91" stroke="#101C3F" stroke-width="1.5"/>
+<circle cx="374" cy="279" r="6.5" fill="#FFFFFF" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M371.4,276.4 L376.6,281.6 M376.6,276.4 L371.4,281.6" fill="none" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt" />
+<rect x="388" y="275.5" width="72" height="7" fill="#F1F4FA" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="388" y="275.5" width="29" height="7" fill="#5E6C91" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="336" y="370" width="400" height="120" fill="#F1F4FA" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="360" y="388" width="170" height="92" fill="#DCE2EE"/>
+<rect x="356" y="384" width="170" height="92" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="441.0" y="452" text-anchor="middle" font-size="18" font-weight="600" fill="#101C3F">Wiki</text>
+<rect x="550" y="388" width="170" height="92" fill="#DCE2EE"/>
+<rect x="546" y="384" width="170" height="92" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="631.0" y="452" text-anchor="middle" font-size="18" font-weight="600" fill="#101C3F">Memory</text>
+<path d="M430,396 H445 L452,403 V424 H430 Z" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" />
+<path d="M445,396 V403 H452" fill="#F1F4FA" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" />
+<line x1="435" y1="409" x2="447" y2="409" stroke="#101C3F" stroke-width="1.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="435" y1="414" x2="447" y2="414" stroke="#101C3F" stroke-width="1.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="435" y1="419" x2="442.2" y2="419" stroke="#101C3F" stroke-width="1.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="624" y="404" width="22" height="18" fill="#F1F4FA" stroke="#101C3F" stroke-width="2"/>
+<rect x="620" y="400" width="22" height="18" fill="#F1F4FA" stroke="#101C3F" stroke-width="2"/>
+<rect x="616" y="396" width="22" height="18" fill="#FFFFFF" stroke="#101C3F" stroke-width="2"/>
+<line x1="621" y1="403" x2="633" y2="403" stroke="#101C3F" stroke-width="1.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="621" y1="408" x2="629" y2="408" stroke="#101C3F" stroke-width="1.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M450.0,370.0 L450.0,324.0" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<polygon points="450,316 455.0,327.1 445.0,327.1" fill="#0B64DD"/>
+<path d="M622.0,314.0 L622.0,362.0" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<polygon points="622,370 617.0,358.9 627.0,358.9" fill="#0B64DD"/>
+<text x="438" y="348.0" text-anchor="end" font-size="16" font-weight="600" fill="#5E6C91">reads</text>
+<text x="634" y="348.0" text-anchor="start" font-size="16" font-weight="600" fill="#5E6C91">learns</text>
+<path d="M521.0,342.0 A15,15 0 0 1 546.5,331.4" fill="none" stroke="#101C3F" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<path d="M551.0,342.0 A15,15 0 0 1 525.5,352.6" fill="none" stroke="#101C3F" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<polygon points="552.5,332.4 544.5,325.4 544.5,337.4" fill="#101C3F"/>
+<polygon points="519.5,351.6 527.5,358.6 527.5,346.6" fill="#101C3F"/>
+<path d="M740.0,171.0 L845.0,171.0" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<polygon points="853,171 841.9,176.0 841.9,166.0" fill="#0B64DD"/>
+<rect x="857" y="65" width="250" height="220" fill="#DCE2EE"/>
+<rect x="853" y="61" width="250" height="220" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="853" y1="134.33333333333331" x2="1103" y2="134.33333333333331" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="853" y1="207.66666666666666" x2="1103" y2="207.66666666666666" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<text x="907" y="104.16666666666666" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Likely cause</text>
+<text x="907" y="177.49999999999997" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Evidence</text>
+<text x="907" y="250.83333333333331" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Proposed actions</text>
+<circle cx="880" cy="97.66666666666666" r="12" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<circle cx="880" cy="97.66666666666666" r="6.5" fill="#F1F4FA" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<circle cx="880" cy="97.66666666666666" r="2.6" fill="#101C3F"/>
+<path d="M869,156.99999999999997 H884 L891,163.99999999999997 V184.99999999999997 H869 Z" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" />
+<path d="M884,156.99999999999997 V163.99999999999997 H891" fill="#F1F4FA" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt" />
+<line x1="874" y1="169.99999999999997" x2="886" y2="169.99999999999997" stroke="#101C3F" stroke-width="1.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="874" y1="174.99999999999997" x2="886" y2="174.99999999999997" stroke="#101C3F" stroke-width="1.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="874" y1="179.99999999999997" x2="881.2" y2="179.99999999999997" stroke="#101C3F" stroke-width="1.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="868" y="232.83333333333331" width="9" height="9" fill="#FFFFFF" stroke="#101C3F" stroke-width="1.8"/>
+<line x1="881" y1="237.33333333333331" x2="893" y2="237.33333333333331" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="868" y="246.83333333333331" width="9" height="9" fill="#FFFFFF" stroke="#101C3F" stroke-width="1.8"/>
+<line x1="881" y1="251.33333333333331" x2="893" y2="251.33333333333331" stroke="#101C3F" stroke-width="1.8" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="790" y="370" width="376" height="120" fill="none" stroke="#5E6C91" stroke-width="1.5" stroke-dasharray="6 4"/>
+<path d="M978.0,285.0 L978.0,389.0" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt" />
+<polygon points="978.0,397.0 973.0,385.9 983.0,385.9" fill="#0B64DD"/>
+<circle cx="978.0" cy="430.0" r="30" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<circle cx="978.0" cy="423.4" r="8.4" fill="#0B64DD"/>
+<path d="M963.0,446.5 Q978.0,428.5 993.0,446.5 Z" fill="#0B64DD"/>
+<text x="930.0" y="437.0" text-anchor="end" font-size="20" font-weight="700" fill="#101C3F">You decide</text>
+<rect x="1034.0" y="417.0" width="42" height="34" fill="#DCE2EE"/>
+<rect x="1030.0" y="413.0" width="42" height="34" fill="#0B64DD" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M1041.0,430.0 L1048.0,437.0 L1061.0,424.0" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+<rect x="1092.0" y="417.0" width="42" height="34" fill="#DCE2EE"/>
+<rect x="1088.0" y="413.0" width="42" height="34" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M1102.0,423.0 L1116.0,437.0 M1116.0,423.0 L1102.0,437.0" fill="none" stroke="#101C3F" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+</svg>
