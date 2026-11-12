@@ -21,15 +21,9 @@ If you keep your {{kib}} content in version control or deploy it from a pipeline
 
 ## Discover sessions API [discover-sessions-api]
 
-The Discover sessions API, available at `/api/discover_sessions`, creates, reads, searches, updates, and deletes saved Discover sessions. Use it when you need to:
-
-- Deploy the same sessions to several spaces or environments from a CI/CD pipeline
-- Track session definitions in version control, next to the rest of your configuration
-- Create or update sessions from your own tooling
-
 To get a definition to start from, [export a session as JSON](export-discover-session.md#export-discover-session-json). If you have access to **Dev Tools**, **Open in Console** opens {{kib}} Dev Tools with a request that creates the session from that JSON.
 
-For the request schema, the data sources that a tab can use, authentication, spaces, and an example request that you can run as is, refer to the [Discover sessions API reference]({{kib-apis}}group/endpoint-discover-sessions).
+Refer to the [Discover sessions API reference]({{kib-apis}}group/endpoint-discover-sessions) for the request schema, the data sources that a tab can use, authentication, spaces, and an example request that you can run as is.
 
 ## Show a session on a dashboard [sessions-on-dashboards]
 
@@ -44,9 +38,7 @@ For the other panel options, such as choosing which tab a linked session shows, 
 
 A tab that references a saved data view by ID only works in an environment where a data view with that ID exists. {{esql}} tabs and tabs that define their data view inline don't depend on anything else in the target environment.
 
-Create the data views before the sessions that reference them. To create them with the IDs that your sessions reference, use the [Data views v2 API]({{kib-apis}}group/endpoint-data-views-v2). Its reference explains when to use it instead of the earlier [Data views API]({{kib-apis}}group/endpoint-data-views).
-
-For more on keeping references consistent between environments, refer to [Manage data views from code](../find-and-organize/data-views.md#data-views-from-code) and [Keep references portable across environments](../dashboards/manage-dashboards-as-code.md#dashboards-as-code-portability).
+Create the data views before the sessions that reference them, with the [Data views v2 API]({{kib-apis}}group/endpoint-data-views-v2). For more on keeping references consistent between environments, refer to [Manage data views from code](../find-and-organize/data-views.md#data-views-from-code) and [Keep references portable across environments](../dashboards/manage-dashboards-as-code.md#dashboards-as-code-portability).
 
 ## Next steps
 
