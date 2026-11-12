@@ -6,7 +6,10 @@ A value is missing when its field is `null` or the document doesn't have the fie
 - {applies_to}`stack: ga 9.2-9.5` The label `(null)`.
 - {applies_to}`stack: ga 9.0-9.1` A dash (`-`).
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` **In charts**, a missing value shows as the label `(null)`.
+**In charts**, the label for a missing value depends on your version:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` `(null)`
+- {applies_to}`stack: ga 9.0-9.1` A dash (`-`) in bar, line, area, heat map, and tag cloud charts, and `(empty)` in pie, donut, treemap, mosaic, and waffle charts.
 
 **Empty strings** (`""`) are values, not missing values. Tables and charts show them as a label that depends on your version:
 
