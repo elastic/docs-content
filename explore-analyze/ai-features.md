@@ -188,4 +188,4 @@ The recommended way to install these skills depends on your AI tool:
 - **Cursor**: Use the [Elastic plugin for Cursor](/explore-analyze/ai-features/agent-plugins/cursor-plugin.md).
 - **Other agents**: [Install the skills directly](/explore-analyze/ai-features/agent-skills.md#installation) from the elastic/agent-skills repository.
 
-Each [Elastic plugin for AI agents](/explore-analyze/ai-features/agent-plugins.md) bundles all Elastic agent skills with other Elastic components, such as a connection to the Elastic Docs MCP server, in a single installable unit.
+[Elastic plugins for AI agents](/explore-analyze/ai-features/agent-plugins.md) bundle Elastic agent skills with other Elastic components, such as a connection to the Elastic Docs MCP server, in a single installable unit.
