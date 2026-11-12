@@ -137,7 +137,7 @@ Events start flowing when you enable delivery. Historical cloud audit logs are n
 
 After enabling delivery, explore your audit logs in the destination deployment:
 
-* Use the **{{ecloud}} audit logs** data view in **Discover** to browse individual events.
+* Use **Discover** to browse individual events. In {{esql}} mode, enter `FROM logs-elastic_govcloud.org_audit-*`. In classic mode, use the **{{ecloud}} audit logs** data view.
 * Open the **[{{ecloud}}] Audit Logs** dashboard to visualize and filter audit activity.
 :::::
 :::::::

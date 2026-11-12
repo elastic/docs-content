@@ -12,7 +12,7 @@ products:
 
 # Quickstart for hosts and VMs on {{product.cloud-hosted}}
 
-Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](opentelemetry://reference/motlp.md), which is the recommended ingestion path for ECH.
+Learn how to set up the {{agent}} and EDOT SDKs on hosts and VMs with {{ech}} (ECH) to collect host metrics, logs, and application traces. This quickstart uses the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md), which is the recommended ingestion path for ECH.
 
 ## Prerequisites
 

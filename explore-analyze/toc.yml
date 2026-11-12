@@ -256,6 +256,7 @@ toc:
               - file: ai-features/agent-builder/troubleshooting/context-length-exceeded.md
               - file: ai-features/agent-builder/troubleshooting/api-calls-return-403-forbidden.md
               - file: ai-features/agent-builder/troubleshooting/pre-execution-workflow-disabled.md
+              - file: ai-features/agent-builder/troubleshooting/gemini-3-vertex-tool-calls.md
           - file: ai-features/agent-builder/limitations-known-issues.md
           - file: ai-features/agent-builder/glossary.md
           - hidden: ai-features/agent-builder/connectors.md
@@ -284,6 +285,10 @@ toc:
                 children:
                   - hidden: ai-features/context-engine/use-context-engine-with-agent-builder.md
                   - hidden: ai-features/context-engine/langchain-integration.md
+                  - hidden: ai-features/context-engine/use-context-engine-with-claude-code.md
+                    # children:
+                    #   # Tracked by https://github.com/elastic/search-team/issues/16315.
+                    #   - file: ai-features/context-engine/send-claude-code-telemetry.md
           - hidden: ai-features/context-engine/context-engine-api.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
@@ -304,6 +309,18 @@ toc:
     children:
       - file: discover/discover-get-started.md
       - file: discover/switch-esql-mode.md
+      - file: discover/explore-data.md
+        children:
+          - file: discover/explore-fields.md
+          - file: discover/inspect-documents.md
+          - file: discover/compare-documents.md
+          - file: discover/discover-search-for-relevance.md
+          - file: discover/inspect-grouped-stats.md
+          - file: discover/detect-change-points.md
+          - file: discover/analyze-discover-data-with-ai.md
+          - file: discover/run-pattern-analysis-discover.md
+          - file: discover/show-field-statistics.md
+          - file: discover/visualize-field.md
       - file: discover/use-esql.md
         children:
           - file: discover/try-esql.md
@@ -311,14 +328,20 @@ toc:
           - file: discover/esql-results.md
           - file: discover/esql-variable-controls.md
           - file: discover/create-lookup-indices.md
-          - file: discover/inspect-grouped-stats.md
-          - file: discover/detect-change-points.md
-      - file: discover/document-explorer.md
-      - file: discover/discover-search-for-relevance.md
-      - file: discover/save-open-search.md
-      - file: discover/show-field-statistics.md
-      - file: discover/run-pattern-analysis-discover.md
-      - file: discover/background-search.md
+      - file: discover/use-classic-mode.md
+        children:
+          - file: discover/search-and-filter-classic.md
+          - file: discover/add-fields-to-data-views.md
+      - file: discover/manage-discover.md
+        children:
+          - file: discover/document-explorer.md
+          - file: discover/work-with-tabs.md
+          - file: discover/save-open-search.md
+          - file: discover/export-discover-session.md
+          - file: discover/use-sessions-in-dashboards.md
+          - file: discover/copy-and-share-documents.md
+          - file: discover/background-search.md
+          - file: discover/generate-alerts-from-discover.md
   - file: dashboards.md
     children:
       - file: dashboards/using.md

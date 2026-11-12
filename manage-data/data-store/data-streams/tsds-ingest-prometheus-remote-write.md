@@ -16,7 +16,7 @@ In addition to the ingestion of metrics data through the bulk API,
 The endpoint is available under `/_prometheus/api/v1/write`.
 
 :::{note}
-On {{serverless-full}} and {{ech}}, the recommended way to send Prometheus metrics is the [Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) rather than this {{es}} endpoint. Managed inputs provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}.
+On {{serverless-full}} and {{ech}}, the recommended way to send Prometheus metrics is the [Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md) rather than this {{es}} endpoint. Managed inputs provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}.
 
 For how Prometheus remote write fits alongside the other ways to ingest Prometheus metrics, such as scraping with an OpenTelemetry Collector or using the {{agent}} Prometheus integration, refer to [Ingest Prometheus metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-prometheus).
 :::
@@ -230,7 +230,7 @@ serverless: ga
 
 [Exemplars](https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars) are individual observations that Prometheus can attach to a time series, such as a histogram bucket observation together with the trace ID of the request that produced it.
 The remote write endpoint stores the exemplars included in a `WriteRequest`, so you can navigate from a metric to a trace that contributed to it.
-Exemplars are only stored when you send remote write requests directly to the {{es}} endpoint. The [managed Prometheus remote write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) doesn't forward exemplars yet.
+Exemplars are only stored when you send remote write requests directly to the {{es}} endpoint. The [managed Prometheus remote write endpoint](/reference/managed-inputs/prometheus-remote-write.md) doesn't forward exemplars yet.
 
 {{es}} stores exemplars in a time series data stream named after the metrics data stream of their time series: exemplars of time series routed to `metrics-<dataset>.prometheus-<namespace>` are written to `exemplars-<dataset>.prometheus-<namespace>`.
 [Routing](#send-data-to-different-data-streams) by URL path or by labels applies to exemplars in the same way as to samples.

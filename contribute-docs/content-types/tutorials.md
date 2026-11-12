@@ -50,9 +50,10 @@ Review the required elements that every tutorial must include.
 3. A clear **title:** A descriptive title that indicates what users will learn or accomplish
    - For example, "Build an ingest pipeline with processors"
 
-4. An **overview:** Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
+4. An **introduction:** Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
    - A brief description of what users will learn
    - The intended audience and their expected skill level
+   - A benefit statement: what's in it for the user, and why they would want to complete the tutorial
    - Learning objectives as a bulleted list
 
 5. A **before you begin** section: List all prerequisites including:

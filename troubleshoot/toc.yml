@@ -53,6 +53,8 @@ toc:
               - file: elasticsearch/diagnosing-invalid-repositories.md
           - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
+        children:
+          - file: elasticsearch/troubleshooting-search-relevance.md
       - file: elasticsearch/data-lifecycle.md
         children:
           - file: elasticsearch/start-ilm.md
@@ -112,6 +114,7 @@ toc:
       - file: kibana/maps.md
       - file: kibana/graph.md
       - file: kibana/discover-dashboards-no-data-screen.md
+      - file: kibana/discover-empty-fields.md
       - file: kibana/migration-failures.md
       - file: kibana/capturing-diagnostics.md
   - file: observability.md
@@ -149,6 +152,7 @@ toc:
           - file: observability/troubleshooting-infrastructure-monitoring/understanding-no-results-found-message.md
           - file: observability/troubleshooting-infrastructure-monitoring/kubernetes-pods-docker-containers-empty-otel.md
       - file: observability/troubleshoot-service-level-objectives-slos.md
+      - file: observability/search-capacity.md
   - file: security.md
     children:
       - file: security/detection-rules.md

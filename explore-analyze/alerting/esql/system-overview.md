@@ -1,29 +1,30 @@
 ---
-navigation_title: "{{alerting-v2-system-cap}}"
+navigation_title: "{{alerting-v2-system}}"
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
 description: Kibana Universal Alerting writes each match as a rule event, then either groups those events into an alert with notifications or keeps them available for later analysis.
 ---
 
-# {{alerting-v2-system-cap}} overview [system-overview]
+# {{alerting-v2-system}} overview [system-overview]
 
-Use {{alerting-v2-system}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
+Use {{alerting-v2-system-short}} to detect conditions in your {{es}} data with {{esql}} rules. You can track each problem as an alert from first detection through recovery and route its notifications through reusable action policies, or record matches for later analysis without sending notifications.
 
-To open {{alerting-v2-system}}, go to **Alerting** in the {{observability}} navigation menu.
+To open {{alerting-v2-system-short}}, go to **Alerting** in the {{observability}} navigation menu.
 
 :::{note}
-Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system-cap}} overview](/explore-analyze/alerting/alerts.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
+Looking for {{alerting-v1-system}}? Refer to the [{{alerting-v1-system}} overview](/explore-analyze/alerting/alerts.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
 
-If you tried {{alerting-v2-system}} while it was experimental in {{stack}} 9.5, upgrade to 9.6 or later to use the generally available version. The system changed significantly between 9.5 and 9.6. This documentation covers only the generally available version.
+If you tried {{alerting-v2-system-short}} while it was experimental in {{stack}} 9.5, upgrade to 9.6 or later to use the generally available version. The system changed significantly between 9.5 and 9.6. This documentation covers only the generally available version.
 :::
 
 ## The building blocks
 
-In {{alerting-v2-system}}, you create and configure rules, action policies, and workflows. {{kib}} generates the other two building blocks, rule events and alerts, from your rules' matches.
+In {{alerting-v2-system-short}}, you create and configure rules, action policies, and workflows. {{kib}} generates the other two building blocks, rule events and alerts, from your rules' matches.
 
 - [Rules](rules.md): Define what to watch for in your data and how often to check.
 - [Rule events](rules/rule-event-field-reference.md): Record each match as a document in `.rule-events`.
@@ -45,7 +46,7 @@ For a step-by-step walkthrough of what happens after a rule runs, refer to [How 
 ## Get started or go deeper [system-overview-next-steps]
 
 - [Get started](get-started.md): Learn how the system works and its key terms, then create your first rule in a hands-on tutorial.
-- [Set up {{alerting-v2-system}}](setup.md): Check the requirements and turn on optional features.
+- [Set up {{alerting-v2-system-short}}](setup.md): Check the requirements and turn on optional features.
 - [Manage](manage.md): Give your team the role privileges it needs, and manage the API keys that authorize rules, action policies, and workflows.
 - [Rules](rules.md): Define what to watch for in {{esql}}, and decide which creation path fits your use case.
 - [Alerts](alerts.md): Learn how alerts track a problem from first detection through recovery, and how to triage them.

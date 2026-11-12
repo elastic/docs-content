@@ -35,11 +35,11 @@ An index is made up of the following components:
 
 * [**Documents**](#elasticsearch-intro-documents-fields): The JSON objects that hold your data, including system-managed metadata fields like `_index` and `_id`.
 * [**Mappings**](#elasticsearch-intro-documents-fields-mappings): Definitions that specify field data types, and control how data is indexed and queried. Understanding field data types helps you write effective queries and avoid indexing problems.
-* [**Settings**](#index-settings): Index-level configuration such as shard count, replica count, and refresh interval that controls storage and performance behavior.
+* [**Settings**](#index-settings): Index-level configuration such as shard count, replica count, refresh interval, and mode that controls storage and performance behavior.
 
 ### Documents [elasticsearch-intro-documents-fields]
 
-{{es}} serializes and stores data in the form of JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can specify explicitly or have {{es}} auto-generate. An indexed document includes both document fields you define and system-managed metadata.
+{{es}} serializes data as JSON documents. A document is a set of fields, which are key-value pairs that contain your data. Each document has a unique ID, which you can specify explicitly or have {{es}} auto-generate. An indexed document includes both document fields you define and system-managed metadata.
 
 A simple {{es}} document might look like this:
 
@@ -67,8 +67,9 @@ A simple {{es}} document might look like this:
   }
 }
 ```
+
 1. [Metadata fields](elasticsearch://reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system-managed fields prefixed with an underscore. `_index` identifies which index stores the document and `_id` is the document's unique identifier within that index.
-2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested. Some [index modes](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting), such as [columnar](/manage-data/data-store/columnar.md), change how `_source` and field indexes are stored while keeping the same document and query APIs.
+2. The `_source` field contains the original document body as submitted. The fields inside `_source` are the ones you control through [mappings](#elasticsearch-intro-documents-fields-mappings). You can define these mappings explicitly or have {{es}} create them for you dynamically when your data is ingested. Some [index modes](#index-mode) reconstruct `_source` instead of storing the JSON you sent, or omit values such as vectors. The document and query APIs stay the same.
 
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
@@ -88,15 +89,18 @@ For example, the following mapping defines field types for a few common data typ
 
 ### Settings [index-settings]
 
-Each index has settings that control its storage and performance behavior. Settings are configured when the index is created, either directly in the [create index request]({{es-apis}}operation/operation-indices-create) or through an [index template](/manage-data/data-store/templates.md). Some index settings can be [updated dynamically]({{es-apis}}operation/operation-indices-put-settings) on a live index.
+Each index has settings that control its storage and performance behavior.
+Settings are configured when the index is created or in an [index template](/manage-data/data-store/templates.md).
+Some index settings can be updated dynamically on a live index.
 
 Common settings include:
 
-* `index.number_of_shards`: The number of primary shards. Fixed at creation.
+* `index.number_of_shards`: The number of primary shards. Cannot be changed after you create the index.
 * `index.number_of_replicas`: The number of replica copies per primary shard. Can be changed at any time.
-* `index.refresh_interval`: How often new data becomes searchable. Defaults to `1s`.
+* `index.refresh_interval`: How often new data becomes searchable. Can be changed at any time.
 
-To configure index settings at creation time, include a `settings` object in the create index request. The following example creates `my-index` with a refresh interval of 30 seconds:
+To configure settings at creation time, include a `settings` object in the [create index API]({{es-apis}}operation/operation-indices-create) request or in an index template.
+The following example creates `my-index` with a refresh interval of 30 seconds:
 
 ```console
 PUT /my-index
@@ -107,7 +111,28 @@ PUT /my-index
 }
 ```
 
+To change a dynamic index setting, use the [update index settings API]({{es-apis}}operation/operation-indices-put-settings).
+You can also use the **{{index-manage-app}}** app in {{kib}} to manage indices, templates, and index settings.
+
 For the full list of available settings, refer to [Index settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md).
+
+#### Index mode [index-mode]
+
+The `index.mode` setting affects the storage and query profile for an index or for the backing indices of a data stream.
+It changes default settings, how {{es}} stores fields on disk, and whether it keeps the original JSON ([`_source`](#elasticsearch-intro-documents-fields)) or reconstructs it.
+It also turns on optimizations for certain queries and workloads.
+For example, the TSDB index mode unlocks the use of time series aggregations in {{esql}}.
+
+The following modes are available:
+
+- Standard (`standard`) mode is optimized for search and any type of retrieval.
+- Columnar (`columnar`) mode is optimized for storage efficiency and analytics. Refer to [Columnar index mode](/manage-data/data-store/columnar.md).
+- LogsDB (`logsdb`) mode is optimized for logs use cases with log-oriented defaults. [Logs data streams](/manage-data/data-store/data-streams/logs-data-stream.md) use this mode. LogsDB columnar (`logsdb_columnar`) is optimized for logs use cases that align with [columnar semantics](/manage-data/data-store/columnar.md) and [limitations](elasticsearch://reference/elasticsearch/columnar/index.md#columnar-limitations).
+- TSDB (`time_series`) mode is optimized for metrics and time series use cases. [Time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use this mode. It is only applicable to data streams.
+- VectorDB (`vectordb_document`) mode is optimized for vector search use cases, enabling similarity search on dense vectors. Refer to [Vector index mode](/solutions/search/vector.md#vector-index-mode). VectorDB columnar (`vectordb_columnar`) mode is optimized for vector search with columnar storage. It applies the same vector search defaults as `vectordb_document` and keeps `dense_vector` and `text` fields indexed. Refer to [`vectordb_columnar`](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-vectordb-columnar-mode).
+- Lookup (`lookup`) mode is optimized for reference data you join in {{esql}}, for example a list of users, hosts, or known threat IPs. Refer to [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md). Only the lookup index needs this mode, not the source index.
+
+For every supported value and where they're available, refer to [`index.mode`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-mode-setting).
 
 ## How an index stores data
 
@@ -135,6 +160,7 @@ When working with indices, you typically make decisions that focus on:
 * **Naming and aliases**: Use clear naming patterns for your indices and [aliases](/manage-data/data-store/aliases.md) to simplify query targets and support index changes with minimal disruption.
 * **Mapping strategy**: Use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md) for speed when exploring data, and [explicit mappings](/manage-data/data-store/mapping/explicit-mapping.md) for production use cases. Choosing the right [field type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) up front matters because it controls what queries and aggregations are available, and [changing a field type later requires reindexing](/manage-data/data-store/mapping/update-mappings-examples.md).
 * **Index or data stream**: Use a regular index when you need frequent updates or deletes. For append-only, time series data such as logs, events, and metrics, use a [data stream](/manage-data/data-store/data-streams.md) instead, since data streams manage rolling indices automatically.
+* **Index mode**: Choose a storage and query profile for the workload (logs, metrics, vectors, lookup, or general documents). The mode is fixed when the index is created. Refer to [Index mode](#index-mode).
 * **Shard sizing**: For production workloads, the number and size of shards affect query speed and cluster stability. Refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for guidelines.
 * **Data lifecycle**: Decide how long to keep data, when to move it to cheaper tiers, and when to delete it. Refer to [Data lifecycle](/manage-data/lifecycle.md) for more information.
 
