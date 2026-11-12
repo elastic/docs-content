@@ -14,7 +14,7 @@ A value is missing when its field is `null` or the document doesn't have the fie
 **In CSV files**, the placeholder depends on the kind of file:
 
 - **Formatted CSV** files from a panel or visualization, including files from the **Download CSV** action in a panel menu:
-  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Tables built with the point-and-click editor write a dash (`-`). Charts and other tables, such as aggregation-based data tables, write `(null)`.
+  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Tables that you build with the point-and-click editor or an {{esql}} query write a dash (`-`). Charts and other visualizations write `(null)`.
   - {applies_to}`stack: ga 9.2-9.5` Tables and charts write `(null)`.
   - {applies_to}`stack: ga 9.0-9.1` Tables and charts write a dash.
 - **Raw CSV** files from a panel or visualization write an empty cell.
