@@ -31,7 +31,7 @@ To edit or delete an integration policy, your role needs the `All` privilege for
 
     If you clear the **Agent policies** field, the integration policy is removed from all the {{agent}} policies that it was added to.
 
-5. Click **Save integration**.
+5. Select **Save integration**.
 
 {{fleet}} distributes the saved changes to all {{agent}}s enrolled in the affected agent policies.
 
@@ -44,4 +44,4 @@ Deleting an integration policy can't be undone. The {{agent}}s enrolled in the a
 1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Installed integrations** tab, select the integration.
 3. On the **Integration policies** tab, find the integration policy that you want to delete. From its **Actions** menu, select **Delete integration**.
-4. In the confirmation dialog, click **Delete integration**.
+4. In the confirmation dialog, select **Delete integration**.

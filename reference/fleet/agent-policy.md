@@ -95,7 +95,7 @@ An {{agent}} policy consists of one or more integrations that are applied to the
 To add a new integration to an {{agent}} policy:
 
 1. In {{fleet}}, click **Agent policies**. Click the name of a policy you want to add an integration to.
-2. Click **Add integration**.
+2. Select **Add integration**.
 
     :::{note}
     :applies_to: stack: ga =9.0
@@ -104,7 +104,7 @@ To add a new integration to an {{agent}} policy:
 
 3. In the **Add integration to policy** flyout, under **Select integration**, search for and select an integration.
 4. Under **Configure integration**, configure the settings specific to the integration.
-5. Click **Add integration**.
+5. Select **Add integration**.
 
 To add the integration to several agent policies at once, [add it from the **Integrations** page](/reference/fleet/add-integration-to-policy.md) instead, and select the policies on the **Existing hosts** tab. This feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
@@ -144,7 +144,7 @@ When you assign an agent to a policy that contains an integration with a minimum
 
 To edit or delete an integration policy from the {{agent}} policy that it's added to:
 
-1. In {{fleet}}, click **Agent policies**. Click the name of the {{agent}} policy that includes the integration policy.
+1. In {{fleet}}, select **Agent policies**. Select the name of the {{agent}} policy that includes the integration policy.
 2. Find the integration policy. From its **Actions** menu, select **Edit integration** or **Delete integration**.
 
 For the full steps, and what happens when you delete an integration policy, refer to [](/reference/fleet/edit-delete-integration-policy.md).

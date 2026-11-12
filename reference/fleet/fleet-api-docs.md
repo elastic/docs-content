@@ -158,8 +158,8 @@ curl --request POST \
 
     1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     2. Search for and select an {{agent}} integration.
-    3. If the integration's **Overview** page opens, click **Add <integration>**.
-    4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
+    3. If the integration's **Overview** page opens, select **Add <integration>**.
+    4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
     5. Configure the integration settings and select which agent policy to use.
     6. Click **Preview API request**.
 

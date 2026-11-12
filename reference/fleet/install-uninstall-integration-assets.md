@@ -22,7 +22,7 @@ products:
 2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the integration is part of a collection, select the collection tile, then select the integration in the flyout.
 3. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
 4. Select the **Settings** tab.
-5. Click **Install <integration>** to set up the {{kib}} and {{es}} assets. In the confirmation dialog, click **Install <integration>**.
+5. Select **Install <integration>** to set up the {{kib}} and {{es}} assets. In the confirmation dialog, select **Install <integration>**.
 
 It's currently not possible to have multiple versions of the same integration installed. When you upgrade an integration, the previous version assets are removed and replaced by the current version.
 

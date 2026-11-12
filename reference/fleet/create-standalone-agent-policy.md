@@ -14,7 +14,7 @@ products:
 To get started quickly, use {{kib}} to add integrations to an agent policy, then download the policy to use as a starting point for your standalone {{agent}} policy. This approach saves time, is less error prone, and populates the policy with a lot of details that are tedious to add manually. Also, adding integrations in {{kib}} loads required assets, such as index templates, and ingest pipelines, before you start your {{agent}}s.
 
 ::::{tip}
-If you’re a {{fleet}} user and already have an agent policy you want to use in standalone mode, go to **{{fleet}} > Agents** and click **Add agent**. Follow the steps under **Run standalone** to download the policy file.
+If you’re a {{fleet}} user and already have an agent policy you want to use in standalone mode, go to **{{fleet}} → Agents** and click **Add agent**. Follow the steps under **Run standalone** to download the policy file.
 ::::
 
 
@@ -24,17 +24,18 @@ You don’t need {{fleet}} to perform the following steps, but on self-managed c
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select the {{agent}} integration you want to use.
-3. If the integration's **Overview** page opens, click **Add <integration>**.
-4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**. You add {{agent}} after you save the integration.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the integration is part of a collection, select the collection tile, then select the integration in the flyout.
+
+3. If the integration's **Overview** page opens, select **Add <integration>**.
+4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**. You add {{agent}} after you save the integration.
 5. Under **Configure integration**, enter a name and description for the integration.
-
-    :::{image} images/add-integration-standalone.png
-    :alt: Add Nginx integration screen with agent policy selected
-    :screenshot:
-    :::
-
 6. Click the down arrow next to enabled streams and make sure the settings are correct for your host.
-7. Under **Apply to agent policy**, select an existing policy, or click **Create agent policy** and create a new one.
+7. In the **Where to add this integration?** section, select where to add the integration:
+
+    * To use an existing {{agent}} policy, select the **Existing hosts** tab. In the **Agent policies** field, select the policy.
+    * To create a new {{agent}} policy, select the **New hosts** tab and enter a name for the new policy.
+
 8. When you’re done, click **Save and continue**.
 
     A popup window gives you the option to add {{agent}} to your hosts.
