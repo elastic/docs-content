@@ -22,7 +22,8 @@ If you keep your {{kib}} content in version control or deploy it from a pipeline
 ## Related pages
 
 - [Save and manage Discover sessions](save-open-search.md)
+- [Export results and sessions from Discover](export-discover-session.md)
 - [Use Discover sessions in dashboards](use-sessions-in-dashboards.md)
 - [Create dashboards programmatically](../dashboards/create-dashboards-programmatically.md)
 - [Manage dashboards as code](../dashboards/manage-dashboards-as-code.md)
-- [{{kib}} data views](../find-and-organize/data-views.md)
+- [Manage data views from code](../find-and-organize/data-views.md#data-views-from-code)
