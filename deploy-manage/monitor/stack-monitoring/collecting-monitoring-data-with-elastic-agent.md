@@ -25,16 +25,11 @@ You can use {{agent}} to collect data about {{es}} and ship it to the monitoring
 
 To collect {{es}} monitoring data, add an {{es}} integration to an {{agent}} and deploy it to the host where {{es}} is running.
 
-1. Go to the {{kib}} home page and click **Add integrations**.
-2. In the query bar, search for and select the **{{es}}** integration for {{agent}}.
-3. Read the overview to make sure you understand integration requirements and other considerations.
-4. Click **Add Elasticsearch**.
-
-    ::::{tip}
-    If you’re installing an integration for the first time, you may be prompted to install {{agent}}. Click **Add integration only (skip agent installation)**.
-    ::::
-
-5. Configure the integration name and optionally add a description. Make sure you configure all required settings:
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **{{es}}**.
+3. If the integration's **Overview** page opens, click **Add Elasticsearch**.
+4. If the **Ready to add your first integration?** page opens, click **Add integration only (skip agent installation)**.
+5. Configure the integration name and optionally add a description. Then update the following settings:
 
     1. Under **Logs**, modify the log paths to match your {{es}} environment.
     2. Under **Metrics (Stack Monitoring)**, make sure the hosts setting points to your {{es}} host URLs. By default, the integration collects {{es}} monitoring metrics from `localhost:9200`. If that host and port number are not correct, update the `hosts` setting. If you configured {{es}} to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://localhost:9200`.
@@ -48,7 +43,7 @@ To collect {{es}} monitoring data, add an {{es}} integration to an {{agent}} and
 7. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an integration for collecting monitoring data from {{es}}.
 8. If an {{agent}} is already assigned to the policy and deployed to the host where {{es}} is running, you’re done. Otherwise, you need to deploy an {{agent}}. To deploy an {{agent}}:
 
-    1. Go to **{{fleet}} > Agents**, then click **Add agent**.
+    1. Go to **{{fleet}} → Agents**, then click **Add agent**.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}. Make sure you choose the agent policy you created earlier.
 
 9. Wait a minute or two until incoming data is confirmed.

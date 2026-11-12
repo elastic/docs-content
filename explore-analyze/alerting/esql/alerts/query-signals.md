@@ -2,7 +2,8 @@
 navigation_title: Query rule events
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Use ES|QL in Discover to query signal events. Filter .rule-events by rule, build dashboards from detection history, and use them as input to a follow-on rule."

@@ -55,15 +55,17 @@ To deploy an agent policy to a standalone {{agent}}, start by creating the polic
 ::::{step} Configure log collection with the Nginx integration
 
 1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for "nginx", then select the **Nginx** integration.
-3. Select **Add Nginx**, then configure the integration. Log collection from NGINX instances is enabled by default.
+2. Search for and select **Nginx**.
+3. If the integration's **Overview** page opens, select **Add Nginx**.
+4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+5. Configure the integration. Log collection from NGINX instances is enabled by default.
 
    1. Confirm the **Paths** fields for access and error logs match your NGINX configuration.
    2. Turn off **Collect metrics from Nginx instances**. In this tutorial, you'll use the OpenTelemetry input package for metrics collection.
 
-4. In the **Where to add this integration?** section, select **Existing hosts**.
-5. Select the agent policy you created for your standalone agent (for example, `nginx-telemetry-standalone`).
-6. Select **Save and continue**.
+6. In the **Where to add this integration?** section, select **Existing hosts**.
+7. Select the agent policy you created for your standalone agent (for example, `nginx-telemetry-standalone`).
+8. Select **Save and continue**.
 
 For more details, refer to [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md).
 
@@ -71,18 +73,20 @@ For more details, refer to [Add an integration to an {{agent}} policy](/referenc
 
 ::::{step} Configure metrics collection with the NGINX OpenTelemetry input package
 
-1. In {{kib}}, go to **Integrations**.
+1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Display beta integrations** (the NGINX OpenTelemetry packages are in technical preview).
-3. Search for "nginx", then select **NGINX OpenTelemetry Input Package**.
-4. Select **Add NGINX OpenTelemetry Input Package**, then configure the integration. **NGINX OpenTelemetry Input** is enabled by default.
+3. Search for and select **NGINX OpenTelemetry Input Package**.
+4. If the integration's **Overview** page opens, select **Add NGINX OpenTelemetry Input Package**.
+5. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+6. Configure the integration. **NGINX OpenTelemetry Input** is enabled by default.
 
    1. Select **Change defaults**, then expand **Advanced options**.
    2. Set the data stream type to **Metrics**.
    3. Set **endpoint** to your NGINX `stub_status` URL (for example, `http://localhost:80/status`).
 
-5. In the **Where to add this integration?** section, select **Existing hosts**.
-6. Select the agent policy you created for your standalone agent (for example, `nginx-telemetry-standalone`).
-7. Select **Save and continue**.
+7. In the **Where to add this integration?** section, select **Existing hosts**.
+8. Select the agent policy you created for your standalone agent (for example, `nginx-telemetry-standalone`).
+9. Select **Save and continue**.
 
 :::{note}
 The NGINX OpenTelemetry Assets content package is installed automatically when data is ingested through the NGINX OpenTelemetry Input Package. You can find it in the **Installed integrations** list and use it to visualize OTel-based metrics.
@@ -126,12 +130,21 @@ After you deploy the agent policy to your standalone {{agent}}, validate that bo
 
 ::::{step} Validate the log collection
 
-1. In {{kib}}, go to **Discover**, then filter the results using the KQL search bar.
-2. Search for NGINX data stream datasets such as `nginx.access` and `nginx.error`, or enter:
+1. In {{kib}}, go to **Discover**.
+2. Filter the results to NGINX data stream datasets such as `nginx.access` and `nginx.error`:
 
-   ```text
-   data_stream.dataset : "nginx.access" or "nginx.error"
-   ```
+   * In {{esql}} mode, enter:
+
+     ```esql
+     FROM logs-*
+     | WHERE data_stream.dataset IN ("nginx.access", "nginx.error")
+     ```
+
+   * In classic mode, enter the following query in the KQL search bar:
+
+     ```text
+     data_stream.dataset : ("nginx.access" or "nginx.error")
+     ```
 
 3. Go to **Dashboards**, then select **[Logs Nginx] Access and error logs** to view the dashboard installed by the Nginx integration.
 

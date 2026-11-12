@@ -49,7 +49,7 @@ Every how-to guide must include the following elements:
 3. A clear **title:** A precise description of the task using an action verb
    - For example, "Run {{es}} in Docker"
 
-4. An **introduction:** Briefly explain what the guide helps the user accomplish and the outcome they can expect.
+4. An **introduction:** Briefly explain what the guide helps the user accomplish and the outcome they can expect. Include a benefit statement: what's in it for the user, and why they would want to do this task.
 
 5. A **Before you begin** section: List any special permissions or data/configuration needed. Assume basic feature access. You can also link to background knowledge or highlight known pitfalls.
 

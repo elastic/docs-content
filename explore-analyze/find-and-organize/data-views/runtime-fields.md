@@ -23,7 +23,7 @@ You need a role with the **Data View Management** {{kib}} privilege and the `vie
 
 ## Add runtime fields [create-runtime-fields]
 
-Add a runtime field on the data view you want to change by emitting a value with the [Painless scripting language](/explore-analyze/scripting/modules-scripting-painless.md). You can also add runtime fields in [**Discover**](/explore-analyze/discover/discover-get-started.md#add-field-in-discover) and [**Lens**](/explore-analyze/visualize/lens.md#change-the-fields).
+Add a runtime field on the data view you want to change by emitting a value with the [Painless scripting language](/explore-analyze/scripting/modules-scripting-painless.md). You can also add runtime fields in [**Discover**](/explore-analyze/discover/add-fields-to-data-views.md) and [**Lens**](/explore-analyze/visualize/lens.md#change-the-fields).
 
 Runtime fields created against a data view are not applied to the underlying index mapping in {{es}}.
 
