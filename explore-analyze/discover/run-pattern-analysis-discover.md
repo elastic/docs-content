@@ -53,13 +53,13 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-If one message in your results looks unusual, you can check how common it is without running a pattern analysis on the whole list first. **Discover** shows the pattern the message follows, the other documents that match it, and when they occurred. You can then open those documents or filter them out.
+If a text value in your results looks unusual, such as a log message, you can check how common it is without running a pattern analysis on the whole list first. **Discover** shows the pattern the value follows, the other documents that match it, and when they occurred. You can then open those documents or filter them out.
 
 The **Find similar values** button appears only for text fields, such as `message` or `error.message`, in a data view that has a time field. It has the same subscription and project requirements as pattern analysis. Refer to [Before you begin](#before-you-begin).
 
 1. In classic mode, run a query that returns log messages. For example, select **Kibana Sample Data Logs** and expand the time range if the table is empty.
 2. In the table, hover over a value in a text field column, such as `message`, and select **Find similar values**.
-3. In the flyout, read the pattern that the message follows, the number of documents that match it, and the chart that shows when they occurred. The table in the flyout lists the matching documents. The analysis uses the query, filters, and time range of your table.
+3. In the flyout, read the pattern that the value follows, the number of documents that match it, and the chart that shows when they occurred. The table in the flyout lists the matching documents. The analysis uses the query, filters, and time range of your table.
 
    :::{image} /explore-analyze/images/kibana-discover-find-similar-values-classic.png
    :alt: Similar values flyout in classic mode, with the pattern of a message, the chart and table of matching documents, and the sampling button
@@ -70,7 +70,7 @@ The **Find similar values** button appears only for text fields, such as `messag
 4. Optional: To trade speed against accuracy, select the sampling button at the top of the flyout. It reads **Auto sampling** by default, which sets the share of documents to analyze for you. To choose the share yourself, set **Random sampling** to **On - manual**, enter a **Sampling percentage** between 0.001 and 50, and select **Apply**. A lower percentage is faster but less accurate. To analyze every document, set **Random sampling** to **Off**.
 5. Optional: To keep working with these documents, select **Open documents in Discover** to see only the documents that match the pattern. To see everything else instead, select **Filter out documents in Discover**.
 
-**Result:** The flyout shows how common the message is and when it occurred. If you select one of the buttons in step 5, **Discover** opens a new tab, labeled **Pattern** followed by the field name, with your query and filters plus a filter that keeps or excludes the matching documents. Your original tab stays as it was.
+**Result:** The flyout shows how common the value is and when it occurred. If you select one of the buttons in step 5, **Discover** opens a new tab, labeled **Pattern** followed by the field name, with your query and filters plus a filter that keeps or excludes the matching documents. Your original tab stays as it was.
 
 In the **Summary** column, which gives an overview of each result, **Find similar values** analyzes the message of the document. For example, it uses `message`, `error.message`, or `event.original`, depending on which of these fields the document has.
 
