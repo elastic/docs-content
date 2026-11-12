@@ -89,7 +89,7 @@ To inspect a session's definition, or to use it as the starting point for managi
 
 **Result:** You have the JSON of the session, as a copy, as a request in **Console**, or as a file.
 
-To deploy the session to another space or environment from code, send the JSON to the Discover sessions API. Refer to [Manage Discover sessions programmatically](manage-sessions-programmatically.md).
+To deploy the session to another space or environment from code, send the JSON to the [Discover sessions API]({{kib-apis}}group/endpoint-discover-sessions).
 
 ## Next steps
 
