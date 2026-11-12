@@ -9,7 +9,7 @@ products:
 
 # Query alert indices [query-alert-indices-kibana]
 
-This page explains how you should query alert indices when building rule queries, custom dashboards, or visualizations. It also lists index names and aliases by rule type and includes sample {{es}} queries for common cases. 
+Alert indices store the alerts that {{alerting-v1-system}} rules and {{elastic-sec}} detection rules create. This page explains how you should query alert indices when building rule queries, custom dashboards, or visualizations. It also lists index names and aliases by rule type and includes sample {{es}} queries for common cases. 
 
 
 ::::{important}

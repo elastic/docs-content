@@ -23,10 +23,11 @@ For general **Discover** concepts and features, refer to [](/explore-analyze/dis
 
 ## Access the Security Discover experience
 
-How the Security experience activates depends on your deployment type:
+How the Security experience activates depends on your deployment type and {{kib}} solution view:
 
 - {applies_to}`security: ga` The Security experience activates automatically when you open **Discover** from your {{sec-serverless}} project.
 - {applies_to}`stack: ga` The Security experience activates when you open **Discover** from the {{elastic-sec}} [solution view](/deploy-manage/manage-spaces.md).
+- {applies_to}`stack: ga 9.6+` In a space that uses the Classic [solution view](/deploy-manage/manage-spaces.md), the Security experience also activates when you use a Security {{data-source}}, such as the default {{elastic-sec}} {{data-source}}. It also activates when your {{data-source}} or {{esql}} query targets only Security data, such as alerts and endpoint events. If a custom {{data-source}} or query also targets other data, **Discover** shows the default experience. To always use the default experience in these spaces, turn off the [**Contextual profiles in Classic navigation**](kibana://reference/advanced-settings.md#discover-enablesolutionprofilesinclassic) advanced setting.
 
 ## Security-specific Discover features
 

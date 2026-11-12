@@ -2,7 +2,8 @@
 navigation_title: Grouping
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Configure rule grouping to track multiple subjects as independent alert series."
@@ -10,7 +11,7 @@ description: "Configure rule grouping to track multiple subjects as independent 
 
 # Rule grouping in {{alerting-v2-system}} [rule-grouping]
 
-Rule grouping is an optional {{alerting-v2-system}} setting that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
+Rule grouping is an optional {{alerting-v2-system-short}} setting that lets a single rule track multiple things independently. For example, a rule monitoring CPU usage across hosts can produce a separate alert series for each host, rather than one alert for everything combined.
 
 When matches are grouped into alerts, each group becomes its own alert with an independent lifecycle. One group can be active while another has recovered, and notifications apply per alert, not across all groups combined. Snooze state is also per series. Snoozing one group doesn't affect other groups tracked by the same rule.
 
@@ -31,7 +32,7 @@ Rule grouping controls how alert series are created. Notification grouping, conf
 
 ## Configure grouping fields [grouping-fields-config]
 
-{{alerting-v2-system-cap}} does not automatically infer grouping from your {{esql}} query. You must declare which fields define series identity in `grouping.fields`; those are what the system uses to separate rows into independent alert series and track each one through its own lifecycle. Without that declaration, the system treats all query rows as a single series, even if your query uses `BY` to produce one row per group.
+{{alerting-v2-system-short}} does not automatically infer grouping from your {{esql}} query. You must declare which fields define series identity in `grouping.fields`; those are what the system uses to separate rows into independent alert series and track each one through its own lifecycle. Without that declaration, the system treats all query rows as a single series, even if your query uses `BY` to produce one row per group.
 
 The fields you declare in `grouping.fields` must match the column names produced by the `BY` clause in your {{esql}} `STATS` command. When they don't match, the grouping configuration has no effect—the system can't correlate query rows to alert series.
 
