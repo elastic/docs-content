@@ -17,9 +17,17 @@ To open the **Rules** page, go to **Alerting** → **Rules** in the {{observabil
 
 ## Find and filter rules [find-filter-rules]
 
-Use the search bar to find rules by name or description. Each space-separated term is matched independently using prefix matching. Tags and grouping fields appear in results but aren't searchable.
+Use the search bar to find rules by name or description. Each space-separated term is matched independently using prefix matching. Tags, routing tags, and grouping fields appear in results but aren't searchable.
 
 Combine text search with filter controls to narrow by rule type, status, or tags. Select any column header to sort. Use bulk actions to enable, disable, or delete several rules at once, or to [rotate their API keys](#rotate-rule-api-key).
+
+The table shows each rule's tags in two columns. A dash means the rule has no tags.
+
+**Tags**
+:   Free-form labels for organizing rules. Add them to filter the **Rules** page or to mark which team owns a rule. Tags don't affect which action policies apply.
+
+**Routing tags**
+:   Labels that link a rule to [action policies](../action-policies/create-configure-action-policy.md#routing-tags). An action policy applies to a rule's alerts when the rule and the policy share at least one routing tag. You can't filter the **Rules** page by routing tags.
 
 ## Edit a rule inline [quick-edit-rule]
 

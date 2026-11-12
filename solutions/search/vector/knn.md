@@ -1,6 +1,7 @@
 ---
 navigation_title: kNN search in Elasticsearch
 description: Find semantically similar documents using k-nearest neighbor (kNN) vector search in Elasticsearch.
+type: overview
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-knn-search.html
@@ -44,6 +45,8 @@ To run a kNN search in {{es}}:
 
 :::{tip}
 Query vectors must have the same dimension and be created with the same model as the document vectors.
+
+If a kNN search fails or returns no results, [troubleshoot the indexed vectors](knn/troubleshoot-knn-search.md).
 :::
 
 - Required [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices):
@@ -168,6 +171,10 @@ POST image-index/_search
 For approximate kNN similarity thresholds, hybrid search, multiple vector fields, and aggregations, refer to [Approximate kNN query examples](knn/approximate-knn-query-examples.md). For filtering, refer to [Filter approximate kNN results](knn/filtered-knn-search.md).
 
 For exact kNN filtering and scoring examples, refer to [Exact kNN search](knn/exact-knn.md).
+
+## Troubleshoot kNN search results [verify-embeddings]
+
+If a kNN search fails, returns no results, or does not return the expected document, verify that your indexed vectors are available and compatible with the query. Follow [Resolve missing or unexpected kNN search results](knn/troubleshoot-knn-search.md) to check the stored embeddings, field mapping, model, and query.
 
 ## Next steps
 
