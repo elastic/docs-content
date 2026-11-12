@@ -246,11 +246,11 @@ You can perform some basic checks of the suitability of your storage system usin
 
 ### {{es}} upgrades with S3-compatible services
 
-Throughout each major release series Elastic strives to maintain a stable experience for customers who depend on a fully-compatible third-party implementation of the Amazon S3 API for their snapshot storage.
+Throughout each major release series Elastic strives to maintain stability across upgrades if you depend on a fully-compatible third-party implementation of the Amazon S3 API for their snapshot storage.
 
-Amazon adds new features to the S3 API from time to time. {{es}} usually waits more than a year before it starts to use new API features, allowing third-party implementations ample time to catch up. In rare cases {{es}} adopts a new API feature sooner after its release. This can even happen in a minor or patch release, particularly if the feature strengthens protections of the integrity of your snapshot data. In those cases, whenever possible, there are configuration options to temporarily reinstate the previous behavior. Notify your storage supplier of the incompatibility, and cease using the temporary configuration options in {{es}} as soon as they are no longer needed. These temporary configuration options will be supported for the rest of the current major series and will be removed in the next major release.
+Amazon adds new features to the S3 API from time to time. {{es}} usually waits more than a year before it starts to use new API features, allowing third-party implementations ample time to catch up. In rare cases {{es}} adopts a new API feature sooner than a year after its release. This can even happen in a minor or patch release, particularly if the feature strengthens protections of the integrity of your snapshot data. In those cases, whenever possible, {{es}} has configuration options to temporarily reinstate the previous behavior. Use of these options can put the integrity of your snapshot data at risk. These options will not be supported beyond the end of the current major series. Use these options only if your storage is not fully compatible with Amazon S3 due to recent changes in the S3 API. Your supplier needs time to release a new fully-compatible version of their product. We therefore recommend you work with your supplier to address all incompatibilities as a matter of urgency. As soon as the incompatibility is addressed, cease using the temporary configuration options in {{es}}.
 
-Amazon also releases new client SDK versions from time to time. {{es}} recognises that client SDK upgrades can inadvertently change how it interacts with the S3 API, and performs such upgrades in a minor or patch release only when they are unavoidable. Usually this occurs when a security vulnerability is discovered in the version of the client SDK in use.
+Amazon also releases new client SDK versions from time to time. {{es}} recognizes that client SDK upgrades can inadvertently change how it interacts with the S3 API, and performs such upgrades in a minor or patch release only when they are unavoidable. Usually this occurs when a security vulnerability is discovered in the version of the client SDK in use.
 
 Before each release {{es}} passes through some checks to detect unexpected changes in its interactions with the Amazon S3 API, but cannot foresee all possible incompatibilities in third-party storage products. Before upgrading your {{es}} clusters:
 
@@ -260,7 +260,7 @@ Before each release {{es}} passes through some checks to detect unexpected chang
 
 * In all cases, verify that your storage passes [repository analysis]({{es-apis}}operation/operation-snapshot-repository-analyze) in a test cluster running the upgraded version before upgrading any production clusters.
 
-* Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using Amazon S3.
+Don't report {{es}} upgrade issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using Amazon S3.
 
 ### Investigating incompatibilities
 
