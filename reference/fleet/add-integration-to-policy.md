@@ -26,6 +26,9 @@ To add an integration to an {{agent}} policy, your role needs the `All` privileg
 
 1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for and select an integration. You can select a category to narrow your search.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the integration is part of a collection, select the collection tile, then select the integration in the flyout.
+
 3. Open the **Add <integration>** page:
 
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Selecting the integration opens the **Add <integration>** page. To learn what data the integration collects and how to configure it, select **View documentation** in the **New to this integration?** panel, if the page shows it. Some integrations open their [**Overview** page](/reference/fleet/open-integration-details.md) instead.

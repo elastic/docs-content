@@ -170,8 +170,9 @@ curl --request POST \
 * To find out which inputs, streams, and variables are available for an integration:
 
     1. Find the integration on the **Browse integrations** tab and select it.
-    2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
-    3. Select the **API reference** tab.
+    2. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the integration is part of a collection, select the collection tile, then select the integration in the flyout.
+    3. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the **Add <integration>** page opens, select **View documentation** in the **New to this integration?** panel, then select **Integration details**.
+    4. Select the **API reference** tab.
 
 ::::
 
