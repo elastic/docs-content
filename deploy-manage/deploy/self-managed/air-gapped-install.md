@@ -79,7 +79,7 @@ Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-conne
 
 ## {{package-registry}} [air-gapped-elastic-package-registry]
 
-Air-gapped install of the {{package-registry}} (EPR) is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Refer to [Run {{agents}} in an air-gapped environment](/reference/fleet/air-gapped.md) for more information.
+Air-gapped install of the {{package-registry}} (EPR) is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Usage instructions, along with container image names and pull instructions are available on [Run {{agents}} in an air-gapped environment](/reference/fleet/air-gapped.md).
 
 {applies_to}`stack: ga 9.6+` If your environment requires FIPS 140-3 validated cryptography, use the [FIPS 140-3 images](/reference/fleet/air-gapped.md#air-gapped-diy-epr-fips) of the {{package-registry}}.
 
