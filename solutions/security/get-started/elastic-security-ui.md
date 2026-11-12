@@ -187,7 +187,12 @@ Create and manage workflows that automate tasks such as incident response, case 
 
 ### Attack discovery
 
-Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery/index.md) for more information.
+```yaml {applies_to}
+stack: removed 9.6+, deprecated =9.5, ga 9.0-9.4
+serverless: ga
+```
+
+Use large language models (LLMs) to analyze alerts in your environment and identify threats. Refer to [](/solutions/security/ai/attack-discovery/index.md) for more information. In {{serverless-short}}, only [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects include this section.
 
 
 ### Assets [security-ui-assets]

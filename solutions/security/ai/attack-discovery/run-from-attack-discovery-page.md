@@ -17,9 +17,9 @@ This page describes how to run Attack Discovery from the **Attack Discovery** pa
 :::{note}
 This page isn't available in every version and deployment.
 
-- {applies_to}`serverless: ga` {{sec-serverless}} includes this page only in Elastic AI SOC Engine (EASE) projects, which don't have the **Attacks** view. Other projects use the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
+- {applies_to}`serverless: ga` In {{sec-serverless}}, [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects use this page in place of the **Attacks** view. Security Analytics Complete projects use the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
 - {applies_to}`stack: removed 9.6+` The page is no longer available. Use the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
-- {applies_to}`stack: deprecated =9.5` Opening the page shows a notice that points to the **Attacks** view. To keep using this page, turn off **Enable alerts and attacks alignment** in [Advanced Settings](kibana://reference/advanced-settings.md#kibana-siem-settings). This also hides the **Attacks** view.
+- {applies_to}`stack: deprecated =9.5` When you open the page, a notice points to the **Attacks** view. To keep using this page, turn off **Enable alerts and attacks alignment** in [Advanced Settings](kibana://reference/advanced-settings.md#kibana-siem-settings). Turning off this setting also hides the **Attacks** view.
 :::
 
 ## Set up Attack Discovery [set-up-attack-discovery]
@@ -84,7 +84,7 @@ serverless: ga
 ```
 
 :::{note}
-{applies_to}`stack: preview =9.4` You can also [create and manage schedules from the Attacks page](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Schedules created on either page appear on both.
+{applies_to}`stack: preview =9.4` You can also [create and manage schedules from the Attacks view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Schedules created on either page appear on both.
 :::
 
 You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.

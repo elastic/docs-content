@@ -41,13 +41,13 @@ Start by retrieving all open findings and prioritizing them by risk score. This 
 
 :::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
-1. Go to **Detections** → **Views** → **Attacks**.
+1. Go to **Detections** → **Views** → **Attacks**. In [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects, which don't have the **Attacks** view, go to **Attack Discovery** instead.
 2. Use the **Status** filter to show only **Open** findings.
-3. Sort to prioritize what to review first. Use **Most recent** or **Most alerts**.
+3. Sort to prioritize what to review first. On **Attacks**, use **Most recent** or **Most alerts**. In EASE projects, sort by risk score (highest first).
 
 For each finding, note the following key signals:
 
-- **Risk score** (Attack Discovery page): The overall severity assigned to the discovery.
+- **Risk score** (EASE projects): The overall severity assigned to the discovery.
 - **Alert count**: How many underlying security alerts the discovery groups together.
 - **MITRE ATT&CK tactics**: Which tactics the discovery maps to. More tactics suggest a broader attack.
 - **Entities**: Which users and hosts are involved.

@@ -1,6 +1,6 @@
 ---
 navigation_title: Review and triage discoveries
-description: "Choose where to triage saved Attack Discovery findings: the Attacks view or the Attack Discovery page."
+description: "Find where to triage saved Attack Discovery findings in your version and deployment, in the Attacks view or on the Attack Discovery page."
 applies_to:
   stack: ga 9.1
   serverless:
@@ -16,5 +16,5 @@ Attack Discovery saves findings automatically after each run. From there you can
 
 | Best for | Available in | Go to |
 |---|---|---|
-| Day-to-day triage of attack findings together with their related alerts, including assign, tag, filter, and case actions. The **Attacks** view isn't available in Elastic AI SOC Engine (EASE) projects. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Manage from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) |
+| Day-to-day triage of attack findings together with their related alerts, including assign, tag, filter, and case actions. The **Attacks** view isn't available in [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Manage from the Attacks view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) |
 | Update status, share findings, run bulk actions, and search discoveries on the Attack Discovery page. In {{serverless-short}}, only EASE projects include this page. | {applies_to}`serverless: ga` {applies_to}`stack: deprecated =9.5, ga 9.1-9.4` | [Manage from the Attack Discovery page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) |

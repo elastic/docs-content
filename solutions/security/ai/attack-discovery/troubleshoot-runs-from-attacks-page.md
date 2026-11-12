@@ -39,6 +39,6 @@ The report includes failure details, step timing, configuration context, and how
 The same diagnostic report is attached automatically when you start AI troubleshooting, so the agent has that context in the conversation.
 
 :::{note}
-:applies_to: {"serverless": {"security": "ga"}, "stack": "deprecated =9.5"}
-On the **Attack Discovery** page, after a run finishes, a details button on the success or failure banner opens the workflow execution details flyout if you have workflow-read privileges. From there, the same AI troubleshooting option and diagnostic report actions are available. In {{serverless-short}}, only EASE projects include this page.
+:applies_to: {"stack": "removed 9.6+, deprecated =9.5", "serverless": {"security": "ga"}}
+On the **Attack Discovery** page, after a run finishes, a details button on the success or failure banner opens the workflow execution details flyout if you have workflow-read privileges. From there, the same AI troubleshooting option and diagnostic report actions are available. In {{serverless-short}}, only [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects include the **Attack Discovery** page.
 :::

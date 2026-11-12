@@ -149,12 +149,11 @@ Attack group statistics in the Attacks table, such as the total alert count, con
 Access actions from the **Take actions** menu on an attack's row in the Attacks table.
 
 :::{note}
-When you change an attack's status, assign or unassign it, or apply attack tags, a modal lets you apply the action to the attack only, or to both the attack and its associated alerts. This is the same choice available when [changing a discovery's status](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md#discovery-status).
-:::
+When you change an attack's status, assign or unassign it, or apply attack tags, a modal lets you apply the action to the attack only, or to both the attack and its associated alerts.:::
 
 | Action | How to do it | Notes |
 |--------|--------------|-------|
-| Change status | **Take actions** → **Mark as acknowledged** or **Mark as closed** | Status lifecycle matches [discoveries](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md#discovery-status): **Open** (default), **Acknowledged**, or **Closed**. |
+| Change status | **Take actions** → **Mark as acknowledged** or **Mark as closed** | Status values are **Open** (default), **Acknowledged**, or **Closed**. |
 | Run workflow | **Take actions** → **Run workflow** → select a workflow → **Run workflow** | Requires [workflows prerequisites](/explore-analyze/workflows/get-started.md). You can select only enabled workflows. |
 | Assign or unassign | **Take actions** → **Assign attack** or **Unassign attack** | Users are not notified when assigned or unassigned. |
 | Apply attack tags | **Take actions** → **Apply attack tags** | Use tags to categorize attacks for filtering. |
