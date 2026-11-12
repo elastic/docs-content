@@ -42,8 +42,7 @@ The agent can look up configuration options, API references, and feature guides 
 
 ::::{note}
 The Elastic Docs MCP server only gives the Cursor agent access to Elastic documentation, not to your data.
-
-{applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga` To give the agent tools that work directly with the data in your deployment or project, also connect Cursor to the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md).
+To let the agent work with your data, install and configure the [Elastic CLI](cli://index.md).
 ::::
 
 ## Install the plugin
@@ -63,6 +62,5 @@ For more about installing and managing plugins, including distributing plugins t
 
 - [AI agent skills for Elastic](../agent-skills.md): Install individual skills without a plugin, or learn about the skills format.
 - [Elastic CLI](cli://index.md): Install and configure the CLI that most skills use to work with your deployment or project.
-- {applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga` [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md): Connect Cursor to the data in your deployment or project.
 - [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server): Connect other agents or tools to the same documentation server that the plugin registers.
 - [elastic/cursor-plugins on GitHub](https://github.com/elastic/cursor-plugins): Source code and release history.

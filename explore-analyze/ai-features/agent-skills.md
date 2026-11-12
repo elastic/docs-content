@@ -63,7 +63,15 @@ npx skills add elastic/agent-skills -a cursor -a codex
 ```
 
 ::::{note}
-For Claude and Cursor, we recommend installing the skills using the [Elastic plugin for Claude](agent-plugins/claude-plugin.md) or the [Elastic plugin for Cursor](agent-plugins/cursor-plugin.md).
+Some AI tools have an official Elastic plugin, which installs all Elastic skills for you. Use the method recommended for your tool:
+
+| AI tool | Recommended installation |
+| --- | --- |
+| Claude | [Elastic plugin for Claude](agent-plugins/claude-plugin.md) |
+| Cursor | [Elastic plugin for Cursor](agent-plugins/cursor-plugin.md) |
+| Other agents | The `skills` CLI or a local clone, as described on this page |
+
+For more about the plugins, refer to [Elastic plugins for AI agents](agent-plugins.md).
 ::::
 
 List available skills without installing:

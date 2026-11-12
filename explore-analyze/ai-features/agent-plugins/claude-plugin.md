@@ -39,7 +39,8 @@ Claude can look up configuration options, API references, and feature guides wit
 
 ::::{note}
 The Elastic Docs MCP server only gives Claude access to Elastic documentation, not to your data.
-To let Claude work with the data in an {{serverless-full}} project, also add the [Elastic Cloud Serverless connector for Claude](../claude-connector.md).
+To let Claude work with your data, install and configure the [Elastic CLI](cli://index.md).
+For an {{serverless-full}} project, you can also add the [Elastic Cloud Serverless connector for Claude](../claude-connector.md).
 ::::
 
 ## Install the plugin
@@ -60,6 +61,7 @@ See the official [Claude documentation on synced plugins](https://code.claude.co
 ## Next steps
 
 - [AI agent skills for Elastic](../agent-skills.md): Install individual skills without a plugin, or learn about the skills format.
+- [Elastic CLI](cli://index.md): Install and configure the CLI that most skills use to work with your deployment or project.
 - [Elastic Cloud Serverless connector for Claude](../claude-connector.md): Connect Claude to the data in your {{serverless-short}} project.
 - [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server): Connect other agents or tools to the same documentation server the plugin registers.
 - [elastic/claude-plugin on GitHub](https://github.com/elastic/claude-plugin): Source code, changelog, and contribution guide.
