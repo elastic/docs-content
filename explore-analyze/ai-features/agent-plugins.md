@@ -39,7 +39,7 @@ Agent skills
 Elastic Docs MCP server
 :   A connection to the public [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server), which lets the agent search and retrieve Elastic documentation during a conversation.
 
-The plugins don't include credentials or a connection to your deployment or project.
+Elastic plugins currently don't include credentials or a connection to your deployment or project.
 To let the agent work with your data, install and configure the [Elastic CLI](cli://index.md). Most skills that act on a cluster or on {{ecloud}} run their operations through it.
 
 ## Plugins compared to installing skills directly
@@ -53,4 +53,4 @@ Use a plugin when Elastic publishes one for your tool, as listed in [Available p
 
 - [AI agent skills for Elastic](agent-skills.md): Install individual skills without a plugin, or learn about the skills format.
 - [Elastic CLI](cli://index.md): Install and configure the CLI that most skills use to work with your deployment or project.
-- [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server): Connect other agents or tools to the same documentation server that the plugins register.
+- [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server): Connect other agents or tools to the same documentation server that Elastic plugins commonly register.

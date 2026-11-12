@@ -25,7 +25,7 @@ You install the plugin in Claude, not in {{es}}, {{kib}}, or your {{serverless-s
 ### Work with {{es}} and {{kib}} from a Claude environment
 
 The plugin contains agent skills that are synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
-Refer to [AI agent skills for Elastic](../agent-skills.md) for the full list and how skills work.
+Refer to [AI agent skills for Elastic](../agent-skills.md) for how skills work and the areas they cover.
 
 After you install the plugin, these skills give Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
 

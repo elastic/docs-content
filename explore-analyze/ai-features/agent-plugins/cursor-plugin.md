@@ -25,15 +25,15 @@ You install the plugin in Cursor, not in {{es}}, {{kib}}, or your {{serverless-s
 ### Work with {{es}} and {{kib}} from Cursor
 
 The plugin contains agent skills that are synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
-Refer to [AI agent skills for Elastic](../agent-skills.md) for the full list and how skills work.
+Refer to [AI agent skills for Elastic](../agent-skills.md) for how skills work and the areas they cover.
+
+The Cursor agent decides when to use a skill based on your request.
+You can also run a skill directly by typing `/` followed by the skill name in the chat, for example `/elasticsearch-esql`.
 
 After you install the plugin, these skills give the Cursor agent the procedural knowledge to perform common Elastic tasks without leaving your editor:
 
 :::{include} _snippets/plugin-skill-tasks.md
 :::
-
-The Cursor agent decides when to use a skill based on your request.
-You can also run a skill directly by typing `/` followed by the skill name in the chat, for example `/elasticsearch-esql`.
 
 ### Access Elastic documentation in Cursor
 
