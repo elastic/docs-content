@@ -4,8 +4,8 @@ meta_title: Troubleshoot search relevance in Elasticsearch
 description: Diagnose and fix common Elasticsearch search relevance problems including unexpected scoring, token mismatches, synonyms not applying, and poor semantic search results.
 type: troubleshooting
 applies_to:
-  stack:
-  serverless:
+  stack: ga
+  serverless: ga
 products:
   - id: elasticsearch
   - id: cloud-serverless
