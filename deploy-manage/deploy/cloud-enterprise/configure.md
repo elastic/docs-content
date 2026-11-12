@@ -27,6 +27,7 @@ Other sections of the documentation describe important ECE features to consider:
 
 * [Configure ECE users and roles](../../users-roles/cloud-enterprise-orchestrator.md) - Manage authentication and authorization at ECE platform level.
 * [Manage security certificates](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) - Configure Cloud UI and Proxy TLS/SSL certificates.
+* {applies_to}`ece: ga 4.3+` [Configure an install password](../../security/secure-your-elastic-cloud-enterprise-installation/configure-ece-install-password.md) - Protect the bootstrap secrets that additional hosts read when they join your installation.
 * [Manage licenses](../../license/manage-your-license-in-ece.md) - Keep {{ece}} current with a valid license.
 * [Manage snapshot repositories](../../tools/snapshot-and-restore/cloud-enterprise.md) - To back up your {{es}} clusters automatically, you need to configure a snapshot repository.
 

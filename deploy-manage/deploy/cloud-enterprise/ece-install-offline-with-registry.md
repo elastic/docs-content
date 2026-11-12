@@ -88,12 +88,18 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
 
     1. On the first host:
 
+        ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-first-host.md
+        ::::
+
         ```sh
         bash elastic-cloud-enterprise.sh install
           --docker-registry REGISTRY
         ```
 
     2. On additional hosts, include the `--coordinator-host HOST_IP` and `--roles-token 'TOKEN'` parameters provided to you when you installed on the first host, along with the `--docker-registry REGISTRY` parameter:
+
+        ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-additional-hosts.md
+        ::::
 
         ```sh
         bash elastic-cloud-enterprise.sh install
