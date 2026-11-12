@@ -32,7 +32,7 @@ To paste results into another tool, copy the rows you need from the table.
 :::{tip}
 To copy the content of a single cell, use the quick actions that appear when you hover over the cell.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the **Summary** column, select **Copy value** to copy the whole document, in classic mode and in {{esql}} mode.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the **Summary** column, select **Copy value** to copy the whole document.
 :::
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, you can also copy a field, a nested object, or the whole document from the tree. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).
