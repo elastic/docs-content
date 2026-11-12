@@ -27,7 +27,7 @@ This page describes each category and how it applies to your projects. For detai
 
 ## Project charges [project-charges]
 
-Project charges are based on dimensions that best reflect how each project type, or *offering*, is used. For example, an {{obs-serverless}} project is billed based on the volume of data it ingests and retains. An {{es-serverless}} project is billed for the compute it uses to ingest and search your data, measured in VCUs.
+Project charges are based on dimensions that best reflect how each project type, or *offering*, is used. For example, an {{obs-serverless}} project is billed based on the volume of data it ingests and retains. An {{es-serverless}} project is billed for the compute it uses to ingest and search your data, measured in virtual compute units (VCUs).
 
 Some features that are specific to a project type, such as [Synthetics](elastic-observability-billing-dimensions.md#synthetics-billing) for {{observability}}, and [Cloud Protection](security-billing-dimensions.md#security-billing-cloud-protection) for {{elastic-sec}}, have dedicated billing dimensions.
 

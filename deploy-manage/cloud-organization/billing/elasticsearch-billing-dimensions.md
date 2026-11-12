@@ -32,7 +32,7 @@ Refer to [](serverless-project-billing-dimensions.md) and the [{{es-serverless}}
 
 Project charges are based on the capabilities you use in your {{es-serverless}} project, starting with [VCUs](#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) and [data storage](#elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb). Some features are also priced differently depending on the project type, such as [Agent Builder](#elasticsearch-billing-agent-builder-executions) and [{{cps}}](#elasticsearch-billing-cps).
 
-### VCU types: search, ingest, and ML [elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]
+### VCU types: search, ingest, and ML [vcu-types]
 
 Measurements are in virtual compute units (VCUs).
 Each VCU represents a fraction of RAM, CPU, and local disk for caching.
@@ -40,6 +40,7 @@ Each VCU represents a fraction of RAM, CPU, and local disk for caching.
 The number of VCUs you need is determined by:
 
 * Volume and ingestion rate of your data
+* Number of indices, for ingest VCUs
 * Data retention requirements
 * Search query volume
 * Search Power setting
@@ -47,7 +48,11 @@ The number of VCUs you need is determined by:
 
 {{es-serverless}} uses the following VCU types:
 
-* **Ingest:** The VCUs used to index incoming documents. Ingest VCUs account for compute resources consumed for ingestion. This is based on ingestion rate and amount of data ingested at any given time. Transforms and ingest pipelines also contribute to ingest VCU consumption. Ingest VCU billing scales to zero during periods with no ingest activity.
+* **Ingest:** The VCUs used to index incoming documents. Ingest VCUs account for compute resources consumed for ingestion. This is based on ingestion rate and amount of data ingested at any given time. Transforms and ingest pipelines also contribute to ingest VCU consumption.
+
+  Because a small amount of memory is allocated for every index, the number of indices also affects ingest VCU consumption. A high index count can raise Ingest VCU use when the ingest rate is unchanged. To reduce this overhead, refer to [Indexing strategies](#elasticsearch-billing-indexing-strategies).
+
+  Ingest VCU billing scales to zero during periods with no ingest activity.
 * **Search:** The VCUs used to return search results with the latency and queries per second (QPS) you require. Search VCUs are calculated as a factor of the compute resources needed to run search queries, search throughput, and latency. Search VCUs are not charged per search request. Instead, they are a factor of the compute resources that scale up and down based on amount of searchable data, search load (QPS), and performance (latency and availability).
 
   Unlike ingest, Search VCU billing does not scale to zero during idle periods. A baseline of search capacity is always provisioned so your data remains instantly queryable, and you are billed a reduced rate for this baseline when no search activity is occurring. The baseline is determined primarily by your Search Power setting and your [search-ready](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#elasticsearch-manage-project-search-ai-lake-settings) dataset size.
@@ -102,7 +107,7 @@ To ensure optimal performance and cost-effectiveness for your project, it's impo
 * **Index count and size**: Consolidate small indices for better efficiency.
   In general, avoid a design where your project contains hundreds of very small indices, specifically those under 1GB each.
   Avoiding small indices is important because every index in {{es}} has a certain amount of resource overhead.
-  {{es}} needs to maintain metadata for each index to keep it running smoothly.
+  {{es}} needs to maintain metadata for each index to keep it running smoothly. Each index also uses shards to keep indexing and search efficient, and each shard adds to this overhead.
   When you have a very large number of small indices, the combined overhead from all of them can consume more CPU resources than if the same data were stored in fewer, larger indices.
   Higher resource consumption can lead to higher costs and potentially impact the overall performance of your project.
   
