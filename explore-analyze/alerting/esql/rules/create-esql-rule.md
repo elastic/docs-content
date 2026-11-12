@@ -2,7 +2,8 @@
 navigation_title: Create an ES|QL rule
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Write ES|QL detection queries for rules using the rule form or YAML editor, with a live query sandbox for previewing results."
@@ -10,7 +11,7 @@ description: "Write ES|QL detection queries for rules using the rule form or YAM
 
 # Create an {{esql}} rule in {{alerting-v2-system}} [create-esql-rule]
 
-Creating an {{esql}} rule in {{alerting-v2-system}} lets you write the detection query directly instead of going through the rule builder's structured inputs.
+Creating an {{esql}} rule in {{alerting-v2-system-short}} lets you write the detection query directly instead of going through the rule builder's structured inputs.
 
 To create a rule, go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
