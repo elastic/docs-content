@@ -129,43 +129,64 @@ FROM .ml-anomalies
    GET _query/view/.ml-anomalies
    ```
 
-2. Create a view with that query, and replace `.ml-anomalies-*` with `*:.ml-anomalies-*`. For example:
+   :::{dropdown} Example response
+   :open:
+   ```json
+   {
+     "views": [
+       {
+         "name": ".ml-anomalies",
+         "query": """ <1>
+   FROM .ml-anomalies-* METADATA _index
+   | WHERE result_type IN ("bucket", "record", "influencer")
+   | EVAL score = COALESCE(anomaly_score, record_score, influencer_score),
+          initial_score = COALESCE(initial_anomaly_score, initial_record_score, initial_influencer_score)
+   | KEEP timestamp,
+          event.ingested,
+          job_id,
+          result_type,
+          is_interim,
+          score,
+          initial_score,
+          bucket_span,
+          function,
+          function_description,
+          field_name,
+          by_field_name,
+          by_field_value,
+          over_field_name,
+          over_field_value,
+          partition_field_name,
+          partition_field_value,
+          influencer_field_name,
+          influencer_field_value,
+          detector_index,
+          actual,
+          typical,
+          event_count,
+          processing_time_ms,
+          _index
+   """,
+         "description": "View that contains the results of machine learning anomaly detection jobs.",
+         "reserved": true
+       }
+     ]
+   }
+   ```
+   1. Copy this query.
+   :::
+
+2. Create a view with that query. Replace `.ml-anomalies-*` with `*:.ml-anomalies-*`, and leave the rest of the query unchanged:
 
    ```console
    PUT _query/view/.ml-anomalies-ccs
    {
      "query": """
          FROM *:.ml-anomalies-* METADATA _index
-         | WHERE result_type IN ("bucket", "record", "influencer")
-         | EVAL score = COALESCE(anomaly_score, record_score, influencer_score),
-                initial_score = COALESCE(initial_anomaly_score, initial_record_score, initial_influencer_score)
-         | KEEP timestamp,
-                event.ingested,
-                job_id,
-                result_type,
-                is_interim,
-                score,
-                initial_score,
-                bucket_span,
-                function,
-                function_description,
-                field_name,
-                by_field_name,
-                by_field_value,
-                over_field_name,
-                over_field_value,
-                partition_field_name,
-                partition_field_value,
-                influencer_field_name,
-                influencer_field_value,
-                detector_index,
-                actual,
-                typical,
-                event_count,
-                processing_time_ms,
-                _index
+         | WHERE ... <1>
          """
    }
    ```
+   1. Copy the rest of the query from step 1. The `...` is a placeholder.
 
 You can then query the new view with `FROM .ml-anomalies-ccs`.
