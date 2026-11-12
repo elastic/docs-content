@@ -16,15 +16,15 @@ The {{security-features}} provide the following built-in token-based authenticat
 *service-accounts*
 :   The [service accounts](service-accounts.md) use either the [create service account token API]({{es-apis}}operation/operation-security-create-service-token) or the [elasticsearch-service-tokens](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool to generate service account tokens.
 
-To use a service account token, include the generated token value in a request with an `Authorization: Bearer` header:
+    To use a service account token, include the generated token value in a request with an `Authorization: Bearer` header:
 
-```shell
-curl -H "Authorization: Bearer AAEAAWVsYXN0aWMvZ...mXQtc2VydmMTpyNXdkYmRib1FTZTl2R09Ld2FKR0F3" http://localhost:9200/_cluster/health
-```
+    ```shell
+    curl -H "Authorization: Bearer AAEAAWVsYXN0aWMvZ...mXQtc2VydmMTpyNXdkYmRib1FTZTl2R09Ld2FKR0F3" http://localhost:9200/_cluster/health
+    ```
 
-::::{important}
-Do not attempt to use service accounts for authenticating individual users. Service accounts can only be authenticated with service tokens, which are not applicable to regular users.
-::::
+    ::::{important}
+    Do not attempt to use service accounts for authenticating individual users. Service accounts can only be authenticated with service tokens, which are not applicable to regular users.
+    ::::
 
 
 
