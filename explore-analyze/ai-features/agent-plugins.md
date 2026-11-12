@@ -15,7 +15,7 @@ products:
 
 # Elastic plugins for AI agents [elastic-agent-plugins]
 
-Elastic publishes official, open-source plugins for AI agent tools such as Claude and Cursor.
+Elastic publishes official, open-source plugins for AI agent tools, currently Claude and Cursor.
 Each plugin packages [Elastic agent skills](agent-skills.md) and a connection to the [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server) so you can add them to your agent in one step, from the tool's own plugin marketplace.
 You install a plugin in the AI tool, not in {{es}}, {{kib}}, or your {{serverless-short}} project.
 
@@ -41,7 +41,7 @@ Most skills that act on a cluster or on {{ecloud}} run their operations through 
 
 {applies_to}`stack: preview =9.2, ga 9.3+` {applies_to}`serverless: ga` To give the agent tools that work directly with your data, you can also connect it to the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md) of your deployment or project.
 
-Claude users can add the [Elastic Cloud Serverless connector for Claude](claude-connector.md) instead.
+{applies_to}`serverless: ga` For an {{serverless-full}} project, Claude users can connect through the [Elastic Cloud Serverless connector for Claude](claude-connector.md), which connects Claude to the project's {{agent-builder}} MCP server without manual configuration.
 
 ## Plugins compared to installing skills directly
 

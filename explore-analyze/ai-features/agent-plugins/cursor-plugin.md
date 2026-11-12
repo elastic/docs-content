@@ -58,7 +58,7 @@ The Elastic Docs MCP server only gives the Cursor agent access to Elastic docume
 To install the plugin from Cursor:
 
 1. Open **Customize** in the Cursor sidebar.
-2. Search for **Elastic** and select the Elastic plugin.
+2. Find the **Elastic** plugin and select it.
 3. Select **Install**, then choose the project or user scope.
 
 You can also open the [Elastic plugin page in the Cursor Marketplace](https://cursor.com/marketplace/elastic) and install it from there.
