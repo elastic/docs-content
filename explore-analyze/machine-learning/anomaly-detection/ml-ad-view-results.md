@@ -80,7 +80,7 @@ stack: ga 9.6+
 serverless: ga
 ```
 
-You can also query bucket, record, and influencer results with {{esql}}, using the `.ml-anomalies` [reserved view](elasticsearch://reference/query-languages/esql/esql-views.md#esql-views-reserved). The following examples show how to query this view.
+You can also query bucket, record, and influencer results with {{esql}}, using the `.ml-anomalies` [reserved view](elasticsearch://reference/query-languages/esql/esql-views.md#esql-views-reserved). You can run the query anywhere you use {{esql}}, such as [Discover](/explore-analyze/discover/use-esql.md), [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md), or the [{{esql}} REST API](elasticsearch://reference/query-languages/esql/esql-rest.md). The following examples show how to query this view.
 
 Get the maximum record score for each 10-minute interval for one job. Replace `response_code_rates` with the ID of your job:
 
@@ -128,53 +128,6 @@ FROM .ml-anomalies
    ```console
    GET _query/view/.ml-anomalies
    ```
-
-   :::{dropdown} Example response
-   :open:
-   ```json
-   {
-     "views": [
-       {
-         "name": ".ml-anomalies",
-         "query": """ <1>
-   FROM .ml-anomalies-* METADATA _index
-   | WHERE result_type IN ("bucket", "record", "influencer")
-   | EVAL score = COALESCE(anomaly_score, record_score, influencer_score),
-          initial_score = COALESCE(initial_anomaly_score, initial_record_score, initial_influencer_score)
-   | KEEP timestamp,
-          event.ingested,
-          job_id,
-          result_type,
-          is_interim,
-          score,
-          initial_score,
-          bucket_span,
-          function,
-          function_description,
-          field_name,
-          by_field_name,
-          by_field_value,
-          over_field_name,
-          over_field_value,
-          partition_field_name,
-          partition_field_value,
-          influencer_field_name,
-          influencer_field_value,
-          detector_index,
-          actual,
-          typical,
-          event_count,
-          processing_time_ms,
-          _index
-   """,
-         "description": "View that contains the results of machine learning anomaly detection jobs.",
-         "reserved": true
-       }
-     ]
-   }
-   ```
-   1. Copy this query.
-   :::
 
 2. Create a view with that query. Replace `.ml-anomalies-*` with `*:.ml-anomalies-*`, and leave the rest of the query unchanged:
 
