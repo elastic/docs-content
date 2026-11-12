@@ -63,7 +63,10 @@ With **Role mappings**, you can:
 * View your configured role mappings
 * Create, edit, or delete role mappings
 
-![Role mappings](/deploy-manage/images/kibana-role-mappings-grid.png "")
+:::{image} /deploy-manage/images/kibana-role-mappings-grid.png
+:alt: Role mappings
+:screenshot:
+:::
 
 ### Required permissions [_required_permissions_8]
 

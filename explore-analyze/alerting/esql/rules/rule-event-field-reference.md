@@ -2,7 +2,8 @@
 navigation_title: Rule events
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Rule events are the append-only documents Kibana writes to .rule-events for every matching row. Use them to replay alerts, investigate type signal events, and build dashboards."
@@ -10,7 +11,7 @@ description: "Rule events are the append-only documents Kibana writes to .rule-e
 
 # Understand rule events [rule-reference]
 
-{{alerting-v2-system-cap}} writes a rule event to `.rule-events` for each match. An event's `type` determines whether it belongs to an [alert](../alerts.md), and you can query the full history. For the stored schema, refer to [How {{kib}} stores rule events](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
+{{alerting-v2-system}} writes a rule event to `.rule-events` for each match. An event's `type` determines whether it belongs to an [alert](../alerts.md), and you can query the full history. For the stored schema, refer to [How {{kib}} stores rule events](../alerts/rule-event-data-model.md). For the complete field list, refer to [Field reference](../alerts/field-reference.md#rule-events-field-schema).
 
 :::{important}
 The `.rule-events` and `.alert-actions` data streams are [system indices](/reference/glossary/index.md#glossary-system-index). {{kib}} manages their versioning, retention, and lifecycle through [index lifecycle management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md). Older backing indices are deleted automatically when the retention window expires. Do not change mappings or index settings for these streams yourself.

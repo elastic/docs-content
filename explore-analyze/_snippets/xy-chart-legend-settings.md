@@ -3,7 +3,10 @@ You can customize the way the legend is displayed and the data it shows. Select 
 
 Use **Visibility** and **Position** to control where the legend appears.
 
-For legends positioned outside the chart on the left or right, use **Width** to set the legend size.
+For legends positioned outside the chart on the left or right, use **Width** to control the width of the legend panel. Select **Auto**, **Small**, **Medium**, **Large**, or **Extra large**. **Auto** sizes the legend to fit its labels, and the other options set a fixed width. The default depends on your environment:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Auto** is the default.
+- {applies_to}`stack: ga 9.0-9.5` **Medium** is the default.
 
 **Layout** {applies_to}`stack: ga 9.4` {applies_to}`serverless: ga`
 :   For legends positioned outside the chart at the top or bottom, choose how series labels are arranged:

@@ -52,14 +52,18 @@ The following elements are required in troubleshooting pages:
    - `product`: The relevant Elastic product(s) the page relates to.
 3. A clear **title:** A brief description of the problem, written from the user's perspective.
    - For example: "{{agent}} doesn't propagate client metadata", "No application-level telemetry visible in {{kib}}", or "Logs are missing after upgrading {{agent}}".
-4. A **Symptoms** section: Describe what users can observe when the problem occurs.
+4. An **introduction:** Briefly summarize the problem the page helps resolve, so users can quickly confirm they're in the right place.
+   - Focus on the problem, not the solution.
+   - Where it helps, include a benefit statement: what's in it for the user, such as getting back to a working state.
+   - Keep it concise. Don't repeat the details that belong in the **Symptoms** section.
+5. A **Symptoms** section: Describe what users can observe when the problem occurs.
    - Focus only on user-visible behavior.
    - Do not explain causes.
    - Use bullet points.
    - Include error messages, log output, or UI behavior when helpful:
      - If the problem manifests as a specific error message, include the exact error text (or common variations) in the symptoms. Error messages are often how users identify and search for troubleshooting content.
      - If the problem manifests as undesirable behavior without a specific error, clearly describe the observable symptoms (for example, "No data appears in {{kib}}" or "Service status shows as unhealthy").
-5. A **Resolution** section: Provide clear, actionable steps to resolve the issue. Each step should move the reader closer to a working system or help rule out possible causes or assumptions.
+6. A **Resolution** section: Provide clear, actionable steps to resolve the issue. Each step should move the reader closer to a working system or help rule out possible causes or assumptions.
    - Use numbered steps.
    - Be prescriptive and opinionated.
    - Include minimal configuration examples when relevant.

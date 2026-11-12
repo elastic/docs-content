@@ -52,9 +52,9 @@ Need an API key? Refer to [Create API keys for {{agent-builder}} APIs](api-keys.
 
 ### Working with spaces
 
-To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space_name>` before `/api/agent_builder` in your requests.
+To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space-id>` before `/api/agent_builder` in your requests.
 
-For example, to list tools in a space named `my-space`:
+For example, to list tools in a space with the ID `my-space`:
 
 ```bash
 curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
@@ -63,7 +63,7 @@ curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
 
 The default space does not require the `/s/default` prefix.
 
-Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space_name>` prefix.
+Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and doesn't require the `/s/<space-id>` prefix.
 
 ### Use APIs with data from multiple projects [agent-builder-api-cps]
 ```{applies_to}
@@ -71,7 +71,7 @@ stack: unavailable
 serverless: ga
 ```
 
-  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the default space.
+  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the default space.
 
 To override that default, include a `project_routing` expression in the body of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) or the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async). The [run a tool API]({{kib-apis}}operation/operation-post-agent-builder-tools-execute) uses the space default and does not accept this field. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md). For an example, refer to [Chat and conversations](#chat-and-conversations).
 
@@ -1065,6 +1065,47 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 ::::
 
+**Example:** Chat as a service account $$$chat-as-a-service-account$$$ {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable`
+
+This example calls the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) as a user-managed service account. The account needs the privileges described in [Service accounts](permissions.md#service-accounts).
+
+Send this request with `curl` or another HTTP client. Dev Tools Console runs as the signed-in user, not as the service account, so this example has no Console version.
+
+Before you send the request, set `SERVICE_ACCOUNT_TOKEN` to the account's service token. The request sends the token in a `Bearer` authorization header, which {{kib}} accepts by default. If you changed the accepted schemes, refer to [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#http-authentication).
+
+% After elastic/docs-content#8921 merges, replace the Bearer sentences with a link to authenticate-kibana-api-with-service-account.md.
+
+This example creates a public conversation. To create a private conversation that only the account can access, omit `access_control`.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
+     -H "Authorization: Bearer ${SERVICE_ACCOUNT_TOKEN}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "input": "What is Elasticsearch?",
+       "agent_id": "elastic-ai-agent",
+       "access_control": { "access_mode": "public" }
+     }'
+```
+
+:::{include} _snippets/spaces-api-note.md
+:::
+
+The response's `author` object identifies the service account as the author of the message:
+
+```json
+{
+  "author": {
+    "id": "service_account:kibana/automation",
+    "type": "service_account",
+    "username": "kibana/automation"
+  }
+}
+```
+
+When you [get the conversation]({{kib-apis}}operation/operation-get-agent-builder-conversations-conversation-id), its `user` object, which identifies the owner, has the same values.
+
 **Example:** Chat with an agent and stream events
 
 This example uses the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async).
@@ -1147,7 +1188,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 **Example:** Scope a chat across projects {applies_to}`serverless: ga`
 
-By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the {{cps-init}} scope from the default space. 
+By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the {{cps-init}} scope from the default space.
 
 Include a `project_routing` expression in the body to override the space's {{cps-init}} scope. The `_alias:my_search_project` expression in this example searches only the project with that alias. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
@@ -1418,6 +1459,8 @@ Each request replaces the entire access control. To stop sharing, send `private`
 
 The `id` of each entry is a {{kib}} user profile ID, not a username.
 
+{applies_to}`serverless: unavailable` To add a [service account](permissions.md#service-accounts) as a member, use `service_account:` followed by the account's principal as the `id`, such as `service_account:kibana/automation`. Keep `type` set to `user`.
+
 ::::{tab-set}
 :group: api-examples
 
@@ -1476,7 +1519,7 @@ Keep these constraints in mind:
 - Each user can appear only once. Repeated IDs are rejected.
 - `member` is the only supported role, and `user` is the only supported entry type.
 - An entry that names the owner is accepted but not stored.
-- Entry IDs are not validated. An ID that does not match a real user profile is stored and simply never grants access to anyone.
+- Entry IDs are not validated. An ID that does not match a real user profile is stored and simply never grants access to anyone. {applies_to}`serverless: unavailable` An ID that does not match a service account is also stored, and it grants access if a matching service account is created later.
 - If you do not own the conversation, the request fails with a `404` error rather than a permissions error.
 
 ### Get A2A agent card configuration

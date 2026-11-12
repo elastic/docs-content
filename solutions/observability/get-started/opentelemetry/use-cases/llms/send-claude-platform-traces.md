@@ -167,6 +167,6 @@ FROM traces-*
 ## Related pages
 
 * [OpenTelemetry for the Claude API](https://platform.claude.com/docs/en/manage-claude/opentelemetry) (Anthropic documentation)
-* [{{motlp}} reference](opentelemetry://reference/motlp.md)
+* [{{motlp}} reference](/reference/managed-inputs/managed-otlp-endpoint.md)
 * [LLM and agentic AI observability](/solutions/observability/applications/llm-observability.md)
 * To collect other Anthropic data, use the [Anthropic](integration-docs://reference/anthropic.md) integration for compliance audit logs, the [Anthropic Metrics](integration-docs://reference/anthropic_metrics.md) integration for usage, cost, and rate limits, or the [Claude Code](integration-docs://reference/claude_code.md) integration for Claude Code telemetry.

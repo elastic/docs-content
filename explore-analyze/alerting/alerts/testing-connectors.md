@@ -20,7 +20,7 @@ In **{{stack-manage-app}} > {{connectors-ui}}**, you can test a newly created co
 or by directly opening the proper connector edit flyout:
 
 :::{image} /explore-analyze/images/kibana-email-connector-test.png
-:alt: Rule management page with the errors banner
+:alt: Test tab of the Edit connector flyout for an email connector, with the Fixed test message callout
 :screenshot:
 :::
 
@@ -88,3 +88,6 @@ $ kbn-action execute a692dc89-15b9-4a3c-9e47-9fb6872e49ce '{subject: "hallo", me
     "actionId": "a692dc89-15b9-4a3c-9e47-9fb6872e49ce"
 }
 ```
+
+:::{include} /explore-analyze/alerting/alerts/_snippets/email-connector-test-message.md
+:::

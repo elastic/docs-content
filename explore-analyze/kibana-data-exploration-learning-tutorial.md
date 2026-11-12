@@ -59,16 +59,16 @@ When you're ready to explore your own data, refer to [Ingest data](/manage-data/
 
 **Discover** is the starting point for data exploration. You can search, filter, and visualize your data interactively.
 
-Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasticsearch Query Language), a piped query language that lets you chain operations like filtering, aggregating, and sorting in a single query. Unlike the default classic, KQL-based mode, {{esql}} doesn't require you to set up a {{data-source}} first: you query indices directly by name, so you can start exploring right away.
+Discover supports two exploration modes. This tutorial uses **{{esql}}** (Elasticsearch Query Language), a piped query language that lets you chain operations like filtering, aggregating, and sorting in a single query. Unlike classic mode, {{esql}} doesn't require you to set up a {{data-source}} first: you query your data sources directly by name, so you can start exploring right away.
 
 ::::::{stepper}
 
-:::::{step} Open Discover and switch to {{esql}}
+:::::{step} Open Discover in {{esql}} mode
 
 1. From the navigation menu, go to **Discover**.
-2. In the application menu, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) to switch to {{esql}} mode.
+2. If **Discover** doesn't open in {{esql}} mode, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) in the application menu.
 
-**Result:** The query bar changes to an {{esql}} editor where you can write piped queries.
+**Result:** **Discover** is in {{esql}} mode, with an editor where you can write piped queries.
 :::::
 
 :::::{step} Run your first query
@@ -141,7 +141,7 @@ FROM kibana_sample_data_logs
 
 The aggregation query produced a chart showing event counts by response code. You can save this chart directly to a dashboard:
 
-1. Select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions) next to the chart. You can also select {icon}`pencil` **Edit visualization** to open the Lens editor inline and customize the chart before saving it.
+1. Select {icon}`add_to_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions) next to the chart. You can also select {icon}`pencil` **Edit visualization** to open the Lens editor inline and customize the chart before saving it.
 2. Enter a title, for example `Events by response code`.
 3. Under **Add to dashboard**, select **New**.
 4. Select **Save and go to dashboard**.
@@ -1033,7 +1033,7 @@ For the full request schema, including sections, filter controls, and library-li
 One of {{kib}}'s strengths is how you can move between exploring raw data and visualizing it. Here are the key navigation paths:
 
 **From Discover to a dashboard**
-:   When a classic search or an {{esql}} aggregation produces a chart in Discover, select {icon}`app_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions) next to the chart, then choose **Add to dashboard** to send it to an existing or new dashboard. You can also save the current view of the table to a dashboard from the Discover table toolbar, or save the entire Discover session to the library and add it as a panel from a dashboard.
+:   When an {{esql}} aggregation produces a chart in Discover, select {icon}`add_to_dashboard` **Save visualization to dashboard** (or {icon}`save` **Save visualization** in earlier versions) next to the chart, then select **Add to dashboard** to send it to an existing or new dashboard. In classic mode, the chart has no save button. Select {icon}`pencil` **Edit visualization** to open the chart in **Lens**, then save it from there, as [Add Discover visualizations to dashboards](discover/use-sessions-in-dashboards.md#add-discover-visualization-classic) describes. You can also save the current view of the table to a dashboard from the Discover table toolbar, or save the entire Discover session to the library and add it as a panel from a dashboard.
 
 **From a dashboard panel back to Discover**
 :   Open the context menu on any Lens panel and select **Explore in Discover**. {{kib}} opens Discover with the panel's query and filters already applied, so you can drill into the underlying data.

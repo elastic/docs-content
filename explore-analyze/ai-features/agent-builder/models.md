@@ -71,6 +71,8 @@ When you call an agent through the [Converse API](kibana-api.md#chat-and-convers
 
 Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the request uses the default model for {{agent-builder}}, as set on the **Feature settings** page.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` You can also pass `reasoning_level` to set how much reasoning the model does for that request. It accepts the same values as the [`reasoning-level` workflow step field](/explore-analyze/workflows/steps/ai-steps.md#ai-reasoning-level).
+
 For an example request, refer to [Route a request to a specific model](kibana-api.md#chat-and-conversations).
 
 ## Change the default model
@@ -146,7 +148,12 @@ If no fast model is available, {{agent-builder}} uses your default model instead
 
 ## Use additional models
 
-You can configure additional models for {{agent-builder}} in two ways:
+:::{important}
+:applies_to: {"stack": "preview =9.2, ga =9.3", "serverless": "unavailable"}
+On Stack 9.2 and 9.3, tool calls with Gemini 3.x models are not supported on a Google Vertex AI endpoint added in [External {{infer}}](/explore-analyze/elastic-inference/external.md). To troubleshoot this error, refer to [](troubleshooting/gemini-3-vertex-tool-calls.md).
+:::
+
+You can configure additional models for {{agent-builder}} in the following ways:
 
 ### Add an {{infer}} endpoint [add-an-inference-endpoint]
 
@@ -160,7 +167,7 @@ Configure an {{infer}} endpoint for your model provider. The endpoint must suppo
 Choose based on how the model is hosted:
 
 - **Elastic-managed models**: Add an endpoint in [**Elastic {{infer}}**](/explore-analyze/elastic-inference/eis.md).
-- **Third-party providers** (such as OpenAI, Anthropic, or Amazon Bedrock): Add an endpoint in [**External {{infer}}**](/explore-analyze/elastic-inference/external.md).
+- **Third-party providers** (such as OpenAI, Anthropic, or Amazon Bedrock): Add an endpoint in [External {{infer}}](/explore-analyze/elastic-inference/external.md).
 
 If you prefer not to use the UI, you can also create endpoints with the {{infer}} APIs. See [Create models programmatically](#create-models-programmatically).
 
@@ -172,10 +179,12 @@ serverless: deprecated
 ```
 
 ::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-Generative AI connectors are deprecated. Existing connectors and their rule actions continue to work, and you can still create and edit connectors through the API.
+Generative AI connectors are deprecated and will be removed in a future release. To connect a model provider, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
 
-In 9.6 and later, deprecated connector types are hidden from the **Create connector** UI. For new models, [add an {{infer}} endpoint](#add-an-inference-endpoint) instead.
+Availability of connectors depends on your deployment and version:
+
+- {applies_to}`serverless: deprecated` {applies_to}`stack: deprecated 9.6+` You can no longer create connectors in the {{kib}} UI, but you can still create them through the API. Existing connectors continue to work, and the **Connectors** page hides them by default. To show them, refer to [Connectors](/deploy-manage/manage-connectors.md#connectors-list).
+- {applies_to}`stack: deprecated =9.5` Connectors are still available, but deprecated.
 ::::
 
 To use additional models that aren't preconfigured, create a connector for your model provider.
@@ -238,6 +247,8 @@ The following models are known to work well with {{agent-builder}}. These catego
 | Extended reasoning | - Gemini 3.1 Pro <br>- Claude 4.6 Opus | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
 | Balanced performance | - GPT-5.2 <br>- Claude 4.6 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
 | High throughput | - Claude 4.5 Haiku <br>- Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+
+{applies_to}`stack: preview =9.2, ga =9.3` {applies_to}`serverless: unavailable` On Stack 9.2 and 9.3, tool calls with Gemini 3.x models are not supported on a Google Vertex AI endpoint added in [External {{infer}}](/explore-analyze/elastic-inference/external.md). To troubleshoot this error, refer to [](troubleshooting/gemini-3-vertex-tool-calls.md).
 
 :::{note}
 {{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model for low-effort tasks](#fast-model).

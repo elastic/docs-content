@@ -101,7 +101,7 @@ Conversations, custom agents, and custom tools are scoped to the current {{kib}}
 
 In a role or API key descriptor, specify the space in the application privilege resource. For example, use `"resources": ["space:production"]` for the `production` space. Users and API keys cannot access resources in spaces outside their assigned resources.
 
-When calling the {{agent-builder}} APIs or MCP server in a custom space, include `/s/<space-name>` before the API path. The default space does not use this prefix.
+When calling the {{agent-builder}} APIs or MCP server in a custom space, include `/s/<space-id>` before the API path. The default space doesn't use this prefix.
 
 Learn more about [{{kib}} Spaces](/deploy-manage/manage-spaces.md).
 
@@ -114,7 +114,7 @@ serverless: ga
 
 The {{kib}} privileges described above control who can use {{agent-builder}} at all. Individual conversations have a second layer of access control on top of that, so the owner of a conversation can decide who else can read it.
 
-Conversations are private by default. Only the user who created a conversation, its owner, can see it.
+Conversations are private by default. Only the owner, who created the conversation, can see it.
 
 ### Access modes
 
@@ -139,6 +139,8 @@ Members cannot rename the conversation, delete it, or change who it is shared wi
 You can share with individual users only. Granting access to an {{es}} role is not supported.
 
 Members are identified by their {{kib}} user profile ID, not by username. A user who has never logged in to {{kib}} has no profile and cannot be added.
+
+{applies_to}`serverless: unavailable` Service accounts also have no user profile, but you can add them as members with the API. Refer to [Service accounts in conversations](#service-account-conversations).
 
 ### Who can do what
 
@@ -169,6 +171,22 @@ When a user cannot access a conversation, {{agent-builder}} reports it as not fo
 
 To share a conversation, use the [sharing button in Agent Chat](chat.md#share-a-conversation) or the [{{kib}} API](kibana-api.md#update-conversation-access-control).
 
+### Service accounts in conversations [service-account-conversations]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: unavailable
+```
+
+A [service account](#service-accounts) follows the same conversation rules as a user. It owns the conversations it creates, including private ones, and it can read and continue public conversations that other users own.
+
+A service account has no {{kib}} user profile, so you cannot add it as a member from Agent Chat. To give it access to a private conversation it does not own, the owner can do one of the following:
+
+- Make the conversation public.
+- Add the account as a member with the [update conversation access control API](kibana-api.md#update-conversation-access-control). Use `service_account:` followed by the account's principal as the member ID, such as `service_account:kibana/automation`.
+
+To learn how service account members appear in Agent Chat, refer to [Share a conversation](chat.md#share-a-conversation).
+
 ## Configure access
 
 After choosing privileges and space scope, assign them based on who or what needs access.
@@ -183,10 +201,33 @@ Use [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles
 When configuring roles in the {{kib}} UI, {{agent-builder}} privileges appear under **Analytics**. In {{serverless-short}} {{es}} projects, they appear under **{{es}}**.
 :::
 
-On Serverless, roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The client inherits the permissions of the user who authorizes the connection. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md). {applies_to}`serverless: ga`
+{applies_to}`serverless: ga` On {{serverless-short}}, roles also determine what an MCP client can do when it connects to the {{agent-builder}} MCP server through OAuth. The client acts with the permissions of the user who authorizes the connection, within the OAuth client's {{kib}} space. To learn more, refer to [OAuth for MCP clients](/deploy-manage/app-connections/oauth-clients.md).
 
 ### API keys for programmatic clients [#api-keys-for-clients]
 
 Use API keys for custom clients, scripts, MCP clients, and A2A clients. API key role descriptors combine the same {{kib}} application privileges, {{es}} privileges, and space scope described on this page. An API key cannot grant privileges that its owner does not have.
 
 Refer to [Create API keys for {{agent-builder}} APIs](api-keys.md) for complete examples for read-only clients, management clients, and unrestricted development keys. To learn more about API key behavior and management, refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
+
+### Service accounts [service-accounts]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: unavailable
+```
+
+A user-managed service account can call the {{agent-builder}} APIs with its own identity and privileges. It authenticates by sending its [service token](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#service-accounts-tokens) in a `Bearer` authorization header. A service account cannot sign in to the {{kib}} UI.
+
+% After elastic/docs-content#8921 merges, link token setup to authenticate-kibana-api-with-service-account.md. The published service accounts page still documents built-in accounts only.
+
+Built-in service accounts, such as `elastic/fleet-server`, have fixed privileges and cannot be granted {{agent-builder}} access.
+
+Assign the account a role with the same {{kib}} and {{es}} privileges you give a user who chats with the agent, scoped to the space the client calls. For the privilege names, refer to [Privilege reference](#privilege-reference). The account needs:
+
+- At least **Agent Builder: Read**. Without it, requests return `403`.
+- The `monitor_inference` cluster privilege, if the agent uses a model that calls the {{es}} Inference API, such as the default Elastic Managed LLM. Without it, requests return a `404` error that says the connector or inference endpoint wasn't found.
+- [Access to the agent](custom-agents.md#access-control-settings) it calls. Without it, chat requests return `404`. Continuing an existing conversation reports the conversation as not found, and starting a new one reports that the agent is not found or not available.
+
+The agent runs with the service account's privileges, so its tools can read only the indices the role allows.
+
+To learn how a service account owns and joins conversations, refer to [Service accounts in conversations](#service-account-conversations). For a request example, refer to [Chat as a service account](kibana-api.md#chat-as-a-service-account).
