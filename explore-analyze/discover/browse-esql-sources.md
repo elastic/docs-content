@@ -23,7 +23,7 @@ If you don't remember the exact name of an index or field, the {{esql}} editor c
 The browsers are:
 
 - **Data source browser**: Lists the data sources you can query in one list, with the type of each source next to its name. To narrow the list, search by name or filter by type. The types are **Alias**, **Index**, **Integration**, **Lookup Index**, **Stream**, and **Timeseries**, plus the following types when your deployment supports them:
-  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [**View**](elasticsearch://reference/query-languages/esql/esql-views.md): The browser lists views only if your role can read {{esql}} views.
+  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [**View**](elasticsearch://reference/query-languages/esql/esql-views.md): {{esql}} views, if your role allows you to read them.
   - {applies_to}`stack: preview 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` [**External data**](elasticsearch://reference/query-languages/esql/esql-data-federation.md): The browser lists the datasets that {{esql}} data federation provides.
 
   You can add or remove several sources in one session, and sources already in your query appear preselected. The browser inserts your selections into the `FROM` or `TS` command, which sets the data your query reads, and keeps the existing sources. When the query starts with `TS`, the browser lists only time series data sources.
