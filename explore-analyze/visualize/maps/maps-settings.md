@@ -23,6 +23,9 @@ Add, edit, or delete custom icons for the map. Icons added to the map can be use
 **Background color**
 :   Set the map background color.
 
+**Projection** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+`
+:   Choose how the map draws the world. **Globe** is the default for new maps. It shows a globe when you zoom out and gradually flattens as you zoom in, until the map is flat at zoom level 9. **Mercator** shows a flat map at every zoom level. Maps saved before this setting existed use **Mercator**, so their appearance doesn't change.
+
 **Show scale**
 :   When enabled, display the map scale.
 
