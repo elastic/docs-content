@@ -33,8 +33,8 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 |------|-----------------|--------------------|
 | [Discover](/explore-analyze/discover/use-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
-| [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
-| [{{alerting-v2-system-cap}}](/explore-analyze/alerting/esql/system-overview.md) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
+| [{{alerting-v2-system}}](/explore-analyze/alerting/esql/rules/create-esql-rule.md) | Create alerting rules based on {{esql}} queries | Rule form or YAML editor |
+| [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md) {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
 | [Maps](/explore-analyze/visualize/maps.md) {applies_to}`serverless: beta` {applies_to}`stack: beta` | Create map layers from {{esql}} queries | {{esql}} editor |
 | [Data Visualizer](/explore-analyze/machine-learning/machine-learning-in-kibana.md) | Explore field statistics from query results | {{esql}} editor |
 | [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) | Create custom tools that run parameterized queries | Task-specific editor |
@@ -146,7 +146,7 @@ To filter your data with KQL:
 1. If the search bar isn't visible, open it ({icon}`magnify` or {icon}`magnify_sparkles`).
 2. Set the data sources to search:
 
-   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Make sure the query in the editor names the data sources, for example `FROM logs-*`. If the query names none, submitting the search does nothing.
+   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Make sure the query in the editor names the data sources, for example `FROM logs-*`. Until the query names a data source, KQL search isn't available.
    - {applies_to}`stack: preview 9.3-9.5` Select the data sources to search. The list starts with the data sources named in the editor.
 
 3. Enter the text you want to search for as free text or using [KQL](elasticsearch://reference/query-languages/kql.md) syntax.
@@ -209,8 +209,6 @@ You can use this to:
 - Write a query from scratch when the editor is empty. For example, type `// Show the top 10 destinations by flight count` and press {kbd}`cmd+J` to generate a complete query.
 - Add a step to an existing query. Place the comment between pipes (for example `// filter for delayed flights`) and the AI agent generates a single pipe to append. If the AI agent determines that your comment describes a change to the next pipe rather than a new step, it modifies that pipe instead.
 
-As you write, the editor displays inline hints that remind you how to use the feature: on an empty line it suggests starting a `//` comment, and once you've written one it prompts you to press the shortcut. The placeholder in an empty editor conveys the same order: describe what you want in a `//` comment first, then press the shortcut to generate {{esql}} from it.
-
 While the AI agent is generating, a `Generating...` indicator appears next to your comment. Press the shortcut again to cancel the in-flight request and start a new one.
 
 When the generated code is ready, the editor highlights it and shows review actions:
@@ -249,7 +247,7 @@ The proposed fix appears directly below your query, with the original lines and 
 
 :::{tip}
 :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
-After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md).
 :::
 
 
@@ -623,7 +621,7 @@ For more details, refer to [Approximate `STATS` queries](elasticsearch://referen
 
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators.
 - [Get started with {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial for your first {{esql}} queries in Discover.
-- [Use Discover with {{esql}}](/explore-analyze/discover/use-esql.md): Discover tasks that are specific to {{esql}} mode.
+- [How to query in Discover's {{esql}} mode](/explore-analyze/discover/use-esql.md): Write and refine {{esql}} queries in Discover.
 - [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
 - [Add variable controls to dashboards](/explore-analyze/visualize/add-variable-controls.md): Add {{esql}}-powered variable controls to dashboards.

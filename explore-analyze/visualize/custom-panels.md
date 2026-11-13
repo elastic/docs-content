@@ -138,11 +138,13 @@ To reuse a template in another panel, select the {icon}`copy` **Copy template** 
 
 When a panel is attached to a conversation, the agent can change its template and query, and each answer keeps a version you can go back to. To attach a panel, select **Refine with chat** in the **Edit custom panel** flyout. On an empty panel, the button reads **Generate with chat**. A new conversation opens with the panel attached as **Custom panel**.
 
-1. Describe the panel or the change you want. The agent updates the template, the query, or both, and the panel on the dashboard updates when the answer completes.
-2. To go back to an earlier version, select **Preview** on the card of that answer. Each answer adds a card for its version, and the newest version is already applied to the panel. Keep the dashboard open while you do this.
+1. Describe the panel or the change you want. The agent updates the template, the query, or both, and the panel on the dashboard updates when the answer completes. The answer also includes a card that shows that version of the panel, so you can review the result without leaving the conversation.
+2. To go back to an earlier version, select **Preview** on the card of that answer. **Preview** applies that version to the panel on the dashboard. Each answer adds a card for its version, and the newest version is already applied to the panel. Keep the dashboard open while you do this.
 3. Save the dashboard to keep the result.
 
 The panel shows the version you applied last, and that version is what the dashboard saves.
+
+Each card shows its version of the panel using the dashboard's time range, query bar, filters, and {{esql}} variable controls from the moment you opened the conversation. The card doesn't follow later changes to the dashboard, so it can differ from the panel on the dashboard. It also caps the height of very tall panels. To see a version at full height and with the current dashboard settings, apply it to the panel on the dashboard with **Preview**.
 
 ## Write a template [custom-panels-write-a-template]
 
@@ -255,6 +257,8 @@ When a custom panel has a query, it responds to filters and options active on th
 - [Fast mode](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-fast-mode-toggle) for approximate `STATS` results. A {icon}`bolt` badge in the panel header shows when approximation was applied. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 
 A panel without a query renders the same content regardless of the dashboard state.
+
+To find out why a panel with a query shows unexpected values, open the panel menu and select **Inspect**. The **Inspector** shows the {{esql}} request with the dashboard's query bar, filters, time range, and variable controls applied, and the response that {{es}} returned. Refer to [View the panel data and requests](/explore-analyze/dashboards/using.md#download-csv).
 
 ### Connect the panel to the time filter [custom-panels-time-filter]
 

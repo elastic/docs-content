@@ -60,7 +60,7 @@ For other sources, and on self-managed deployments, use an integration that runs
 
 | Integration type | Who runs the collector | Data sources | To get started |
 |---|---|---|---|
-| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) | Elastic. You only provide credentials, such as an API key. | Cloud services, through an API | [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md). |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/reference/managed-integrations/index.md) | Elastic. You only provide credentials, such as an API key. | Cloud services, through an API | [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md). |
 | Integrations that use [{{agent}}](/reference/fleet/index.md) | You. You install, update, and scale {{agent}} with {{fleet}}. | The host where {{agent}} runs, or remote sources such as syslog, cloud storage, or an API | [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md). |
 
 ### Find and add an integration [security-ingest-add-integration]
@@ -75,13 +75,14 @@ After you decide which data you need and how to collect it, add the integration:
    To browse the full catalog, go to the **Integrations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Security** category.
    :::
 
-4. On the integration's page, select **Add** followed by the integration's name, such as **Add Okta**.
-5. Follow the prompts to configure the integration. If you're adding an {{managed-integration}}, also select it as the deployment mode:
+4. If the integration's **Overview** page opens, select **Add <integration>**.
+5. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+6. Follow the prompts to configure the integration. If you're adding an {{managed-integration}}, also select it as the deployment mode:
 
    - {applies_to}`{serverless: ga, stack: ga 9.5+}` In the **Deployment** section, select **Elastic Managed Integration**.
    - {applies_to}`{stack: preview 9.0-9.4}` In the **Deployment options** section, select **Agentless**.
 
-6. Select **Save and continue**.
+7. Select **Save and continue**.
 
 When you're done, [verify that your data reaches {{elastic-sec}}](#security-ingest-verify).
 
@@ -114,9 +115,9 @@ If your data goes to an index that doesn't match the default index patterns, suc
 
 Whichever method you use, confirm that your data reaches {{elastic-sec}}:
 
-- In [Discover](/solutions/security/investigate/discover-security.md), select or create a {{data-source}} that includes your index, then filter for documents from your source. For integration data, filter on the `data_stream.dataset` field, for example `data_stream.dataset : "okta.system"`. For data from other methods, filter on the index name, for example `_index : filebeat-*`.
+- In [Discover](/solutions/security/investigate/discover-security.md), filter for documents from your source. In {{esql}} mode, query your index, for example `FROM logs-* | WHERE data_stream.dataset == "okta.system"` for integration data, or `FROM filebeat-*` for data from other methods. In classic mode, select or create a {{data-source}} that includes your index, then filter on the `data_stream.dataset` field for integration data, for example `data_stream.dataset : "okta.system"`, or on the index name for data from other methods, for example `_index : filebeat-*`.
 
-  - If no documents appear, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md). For {{managed-integrations}}, refer to the [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-health).
+  - If no documents appear, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md). For {{managed-integrations}}, refer to the [{{managed-integrations}} FAQ](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-health).
   - If documents appear in Discover but not on {{elastic-sec}} pages, the {{data-source}} that {{elastic-sec}} uses doesn't include their index. To fix this, [add the index to that {{data-source}}](#security-ingest-other-methods).
 
 - If you used an integration, open a dashboard that it installed. To find one, go to **Dashboards** and search for the integration's name.

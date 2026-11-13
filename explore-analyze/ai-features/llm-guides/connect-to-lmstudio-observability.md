@@ -8,6 +8,9 @@ applies_to:
     observability: ga
 products:
   - id: observability
+sub:
+  model-provider: LM Studio
+  inference-service: OpenAI
 ---
 
 # Connect to a local LLM for {{observability}} using LM Studio
@@ -17,7 +20,7 @@ Elastic doesn’t support the setup and configuration of local LLMs. The example
 Before using a local LLM, evaluate its performance according to the [LLM performance matrix](/solutions/observability/ai/llm-performance-matrix.md#evaluate-your-own-model).
 :::
 
-This page provides instructions for setting up a connector to a large language model (LLM) of your choice using LM Studio. This allows you to use your chosen model within the {{obs-ai-assistant}}. You’ll first need to set up LM Studio, then download and deploy a model via LM studio and finally configure the connector in your Elastic deployment.
+This page provides instructions for connecting a large language model (LLM) of your choice to Elastic using LM Studio. This allows you to use your chosen model within the {{obs-ai-assistant}}. You’ll first need to set up LM Studio, then download and deploy a model via LM studio and finally connect your Elastic deployment to the model.
 
 ::::{note}
 If your Elastic deployment is not on the same network, you must configure an Nginx reverse proxy to authenticate with Elastic. Refer to [Configure your reverse proxy](https://www.elastic.co/docs/solutions/security/ai/connect-to-own-local-llm#_configure_your_reverse_proxy) for more detailed instructions.
@@ -33,11 +36,11 @@ This example uses a server hosted in GCP to configure LM Studio with the [Llama-
 
 ### Already running LM Studio? [skip-if-already-running]
 
-If you've already installed LM Studio, the server is running, and you have a model loaded (with a context window of at least 64K tokens), skip directly to [Configure the connector in your Elastic deployment](#configure-the-connector-in-your-elastic-deployment).
+If you've already installed LM Studio, the server is running, and you have a model loaded (with a context window of at least 64K tokens), skip directly to [Connect your Elastic deployment to LM Studio](#configure-the-connector-in-your-elastic-deployment).
 
 ## Configure LM Studio and download a model [configure-lm-studio-and-download-a-model]
 
-LM Studio supports the OpenAI SDK, which makes it compatible with Elastic’s OpenAI connector, allowing you to connect to any model available in the LM Studio marketplace.
+LM Studio supports the OpenAI SDK, which makes it compatible with Elastic’s OpenAI connector and OpenAI {{infer}} service, allowing you to connect to any model available in the LM Studio marketplace.
 
 To get started with LM Studio:
 
@@ -126,16 +129,26 @@ To enable other devices on the same network to access the server, go to **Settin
 :alt: Loading a model in LM studio developer tab
 :::
 
-## Configure the connector in your Elastic deployment [configure-the-connector-in-your-elastic-deployment]
+## Connect your Elastic deployment to LM Studio [configure-the-connector-in-your-elastic-deployment]
 
-::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-The OpenAI connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+::::::{applies-switch}
 
-For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
-::::
+:::::{applies-item} { stack: ga 9.5+, serverless: ga }
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-Finally, configure the connector:
+   LM Studio uses the OpenAI SDK, so the OpenAI service works for this use case.
+
+4. For **URL**, enter the host's IP address and port, followed by `/v1/chat/completions`. If you have a reverse proxy set up, enter the domain name specified in your Nginx configuration file followed by `/v1/chat/completions`.
+5. For **Model ID**, enter `llama-3.3-70b-instruct`.
+6. For **API Key**, fill in anything. If you have a reverse proxy set up, enter the secret token specified in your Nginx configuration file.
+7. Select the `chat_completion` task type, then select **Save**.
+
+Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features.
+:::::
+
+:::::{applies-item} stack: ga 9.0-9.4
+Create an OpenAI connector so that {{kib}} can use the model that you loaded in LM Studio.
 
 1. Log in to your Elastic deployment.
 2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **OpenAI**. The OpenAI connector works for this use case because LM Studio uses the OpenAI SDK.
@@ -151,6 +164,9 @@ Finally, configure the connector:
 :::
 
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features.
+:::::
+
+::::::
 
 ::::{note}
 While local (open-weight) LLMs offer greater privacy and control, they generally do not match the raw performance and advanced reasoning capabilities of proprietary models by LLM providers mentioned in [Set up the AI Assistant](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-set-up).

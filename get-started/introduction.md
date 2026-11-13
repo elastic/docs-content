@@ -43,9 +43,6 @@ If you're new to Elastic, you can find quickstarts and introductory steps for ea
 :::{include} _snippets/observability-overview.md
 :::
 
-## {{elastic-sec}}
-:::{include} _snippets/security-overview.md
-:::
 -->
 % TODO: cleanup these links, consolidate with Explore and analyze
 $$$what-is-kib$$$

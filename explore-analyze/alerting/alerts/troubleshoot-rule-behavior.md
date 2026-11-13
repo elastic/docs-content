@@ -8,7 +8,7 @@ description: Use the rule query inspector to view the Elasticsearch query a rule
 
 # Troubleshoot rule behavior with the rule query inspector [troubleshoot-rule-behavior]
 
-The rule query inspector gives you direct visibility into the {{es}} queries that your rules run. When a rule fires unexpectedly, stays silent, or runs slowly, use the inspector to see exactly what query ran and what data it returned.
+The rule query inspector is part of {{alerting-v1-system}}. It gives you direct visibility into the {{es}} queries that your rules run. When a rule fires unexpectedly, stays silent, or runs slowly, use the inspector to see exactly what query ran and what data it returned.
 
 The inspector is available from two places: the rule details page and the alert details page. From the rule details page, you can find out how the rule is configured _now_. From the alert details page, you can find out how the rule was configured _when a specific alert was generated_. If you've modified a rule, the two views may show different queries.
 

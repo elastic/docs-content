@@ -15,13 +15,17 @@
 
 /explore-analyze/                           @elastic/ski-docs
 /explore-analyze/ai-features/agent-builder/ @elastic/developer-docs
+/explore-analyze/ai-features/elastic-agent-builder.md @elastic/developer-docs
 /explore-analyze/ai-features/context-engine.md @elastic/developer-docs
 /explore-analyze/ai-features/context-engine/ @elastic/developer-docs
-/explore-analyze/elastic-inference/         @elastic/developer-docs @elastic/ski-docs
-/explore-analyze/machine-learning/          @elastic/developer-docs @elastic/ski-docs
-/explore-analyze/query-filter/              @elastic/developer-docs @elastic/ski-docs
+/explore-analyze/elastic-inference/         @elastic/developer-docs
+/explore-analyze/images/eis-*               @elastic/developer-docs
+/explore-analyze/images/kibana-inference-*  @elastic/developer-docs
+/explore-analyze/machine-learning/          @elastic/developer-docs
+/explore-analyze/machine-learning/anomaly-detection/ @elastic/ski-docs
 /explore-analyze/scripting/                 @elastic/admin-docs
 /explore-analyze/cross-cluster-search/      @elastic/developer-docs
+/explore-analyze/cross-project-search.md    @elastic/developer-docs
 /explore-analyze/cross-project-search/      @elastic/developer-docs
 /explore-analyze/transforms/                @elastic/developer-docs
 
@@ -30,21 +34,30 @@
 
 # Product hub pages. File rules replace the directory fallback (last match wins).
 /products/                                  @elastic/docs
-/products/elasticsearch.md                  @elastic/developer-docs @elastic/admin-docs
-/products/kibana.md                         @elastic/ski-docs @elastic/admin-docs
+/products/elasticsearch.md                  @elastic/core-docs
+/products/kibana.md                         @elastic/ski-docs
 /products/logstash.md                       @elastic/ski-docs
 /products/elastic-stack.md                  @elastic/core-docs @elastic/ski-docs
 /hub-whats-new.yml                          @elastic/developer-docs @elastic/ski-docs @elastic/core-docs
 
 /manage-data/                               @elastic/admin-docs
-/manage-data/data-store/                    @elastic/admin-docs @elastic/developer-docs
+/manage-data/data-store/                    @elastic/core-docs
+/manage-data/data-store/data-streams/       @elastic/developer-docs
+/manage-data/data-store/mapping/            @elastic/developer-docs
+/manage-data/data-store/text-analysis/      @elastic/developer-docs
+/manage-data/data-store/templates/          @elastic/developer-docs
+/manage-data/lifecycle/                     @elastic/developer-docs
+/manage-data/lifecycle/data-tiers/          @elastic/admin-docs
 /manage-data/ingest/                        @elastic/ski-docs
 
 /reference/                                 @elastic/docs
+/reference/apm/                             @elastic/ski-docs
 /reference/apm-agents/                      @elastic/ski-docs
 /reference/elasticsearch-clients/           @elastic/developer-docs
 /reference/fleet/                           @elastic/ski-docs
 /reference/ingestion-tools/                 @elastic/ski-docs
+/reference/managed-inputs/                  @elastic/ski-docs
+/reference/managed-integrations/            @elastic/ski-docs
 /reference/machine-learning/                @elastic/developer-docs
 /reference/observability/                   @elastic/ski-docs
 /reference/security/                        @elastic/ski-docs
@@ -55,20 +68,36 @@
 /release-notes/elastic-observability/       @elastic/ski-docs
 /release-notes/elastic-security/            @elastic/ski-docs
 
-/solutions/                                 @elastic/ski-docs @elastic/developer-docs
+/solutions/                                 @elastic/ski-docs
 /solutions/observability/                   @elastic/ski-docs
+/solutions/elasticsearch-solution-project.md @elastic/developer-docs
+/solutions/elasticsearch-solution-project/  @elastic/developer-docs
+/solutions/search.md                        @elastic/developer-docs
 /solutions/search/                          @elastic/developer-docs
+/solutions/vector-database.md               @elastic/developer-docs
+/solutions/vector-database/                 @elastic/developer-docs
 /solutions/security/                        @elastic/ski-docs
 
 /troubleshoot/                              @elastic/docs
 /troubleshoot/deployments/                  @elastic/admin-docs
+/troubleshoot/elasticsearch.md              @elastic/admin-docs
 /troubleshoot/elasticsearch/                @elastic/admin-docs
+/troubleshoot/ingest.md                     @elastic/ski-docs
 /troubleshoot/ingest/                       @elastic/ski-docs
-/troubleshoot/kibana/                       @elastic/admin-docs @elastic/ski-docs
-/troubleshoot/monitoring/                   @elastic/admin-docs @elastic/ski-docs
+/troubleshoot/kibana.md                     @elastic/ski-docs
+/troubleshoot/kibana/                       @elastic/ski-docs
+/troubleshoot/monitoring/                   @elastic/admin-docs
+/troubleshoot/observability.md              @elastic/ski-docs
 /troubleshoot/observability/                @elastic/ski-docs
+/troubleshoot/security.md                   @elastic/ski-docs
 /troubleshoot/security/                     @elastic/ski-docs
 
 # Legacy serverless docs
 /serverless/                                @elastic/admin-docs
 /serverless/index-serverless-changelog.asciidoc @elastic/docs
+
+# Navigation, redirects, and docset config have no owner. If a PR changes only these files,
+# .github/workflows/fallback-reviewer.yml requests the docs team as reviewer
+toc.yml
+/redirects.yml
+/docset.yml

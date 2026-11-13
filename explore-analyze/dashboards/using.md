@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Inspect and filter a dashboard [_use_and_filter_dashboards]
@@ -26,6 +27,7 @@ You can also inspect the data and requests behind a panel, and view a dashboard 
 * **Controls**, that dashboard creators can add to help viewers filter on specific values.
 * **Filter pills**, that you can add and combine by clicking on specific parts of the dashboard visualizations, or by defining conditions manually from the filter editor. The filter editor is a good alternative if you’re not comfortable with using KQL expressions in the main query bar.
 * View the data of a panel and the requests used to build it.
+* Open the data behind a panel in **Discover**.
 
 This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
@@ -49,7 +51,6 @@ You can use KQL to create complex queries that filter your dashboard data. For e
 :applies_to: {"stack": "preview 9.2", "serverless": "unavailable"}
 When working with large datasets, complex KQL queries might cause dashboards to load slowly. In versions 9.2 and later, you can [send long-running searches to the background](../discover/background-search.md) and continue working on other tasks while the data loads.
 :::
-
 
 ### Use filter pills [_use_filter_pills]
 
@@ -75,10 +76,12 @@ You can create filter pills by:
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those that the visualization's own query creates with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
 
 Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements) for an {{esql}} example.
 :::
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If a visualization reads from an [{{esql}} view](elasticsearch://reference/query-languages/esql/esql-views.md), you can filter on a column that the view returns. You can also open a drilldown from the values in that column. A column that the view itself computes, such as an aggregation, isn't a field in the underlying {{es}} index. Filtering on it works in the visualization that reads the view, but by default it leaves panels that query the index directly with no results. The computed-field limit still applies to columns that the visualization's own query creates on top of the view.
 
 
 #### Add pills using the filter editor [_add_pills_using_the_filter_editor]
@@ -233,6 +236,24 @@ When a custom time range is active for a single panel, it is indicated in the pa
 
 You can view it in more detail and edit it by clicking the filter.
 
+### Open the data behind a panel in Discover [explore-panel-data-in-discover]
+
+If a panel raises a question that the dashboard can't answer, you can open the data behind it in **Discover** and work with the individual documents. The option to use depends on the panel type. For all of them, you need at least **Read** access to the **Discover** feature.
+
+* **Lens visualizations**: Open the panel menu and select **Explore in Discover**. **Discover** opens with the panel's data, and with the dashboard's filters, query, and time range applied. On {{esql}} panels, {{kib}} turns the dashboard filters and query into a `WHERE` clause and drops filters that {{esql}} can't express.
+
+    The option doesn't appear when {{kib}} can't trace a chart back to one set of documents, for example when the chart has several data layers or a time shift. While you edit a visualization, you can also [explore its data in Discover](../visualize/lens.md#explore-lens-data-in-discover) from the editor toolbar.
+
+* **Discover sessions**: In view mode, open the panel menu and select **Open in Discover**. **Discover** opens the session on the tab that the panel displays. If the session exists only on the dashboard, **Discover** opens with the panel's query, filters, and columns instead.
+
+* {applies_to}`serverless: unavailable` **Other panels that use one data view**: In view mode, open the panel menu and select **Explore underlying data**. **Discover** opens with the filters, query, and time range of the dashboard and the panel.
+
+    If you don't see this option, it might not be turned on. By default, {{kib}} doesn't offer it. Administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInContextMenu.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-context) to `true` in the {{kib}} settings. Refer to [Stack settings](/deploy-manage/stack-settings.md).
+
+* {applies_to}`self: ga` **One value or time range in a chart**: Select a value in the chart, or drag across a time range, then select **Explore underlying data** in the menu that opens. **Discover** opens with the same filters, query, and time range as the panel, narrowed to the value or time range that you selected. The option isn't available on maps.
+
+    This option is separate from the **Explore underlying data** option in the panel menu, and each one has its own setting. If you don't see it, it might not be turned on. By default, {{kib}} doesn't offer it. On self-managed deployments, administrators can turn it on by setting [`xpack.discoverEnhanced.actions.exploreDataInChart.enabled`](kibana://reference/configuration-reference/general-settings.md#settings-explore-data-in-chart) to `true` in `kibana.yml`.
+
 ### View and edit the visualization configuration
 ```{applies_to}
 stack: ga 9.1
@@ -264,6 +285,15 @@ Sometimes, the scope behaves differently:
 * **The dashboard restores a saved scope on open.** Some dashboards are configured to [store a {{cps}} scope](/explore-analyze/dashboards/create-dashboard.md). When you open them, the {{cps-init}} scope selector is set to the stored scope. You can still change it during your session.
 * **A panel has a Custom CPS scope badge.** This means the panel uses [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to query a fixed set of projects. It is not affected when you change the dashboard's scope. Select the badge to view which projects the panel queries.
 * **Query bar and filter suggestions come from the origin project only.** As you type a query or filter value, the autocomplete suggests values from the origin project, regardless of the selected scope. Filtering itself still respects the scope, so a value that exists only in a linked project works when you enter it manually. For value suggestions across all projects in scope, use an **Options list** control instead.
+
+
+## Cancel a slow dashboard load [cancel-dashboard-load]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If a dashboard takes too long to load, you can stop it instead of waiting. While it loads, a **Cancel** button is available at the top of the dashboard. Select it to stop the queries that are still running. To load the dashboard again, select **Refresh**.
 
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]
