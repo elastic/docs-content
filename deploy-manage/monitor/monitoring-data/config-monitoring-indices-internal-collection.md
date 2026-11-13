@@ -3,17 +3,24 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/config-monitoring-indices-metricbeat-7-internal-collection.html
 applies_to:
   deployment:
-    self: all
+    self: deprecated 7.16, removed 10.0
 products:
   - id: elasticsearch
+navigation_title: Legacy collection indices
 ---
 
-# Configuring indices created by Metricbeat 7 or internal collection [config-monitoring-indices-metricbeat-7-internal-collection]
+# Configuring stack monitoring indices created by legacy collection
 
-When monitoring [using {{metricbeat}} 7](../stack-monitoring/collecting-monitoring-data-with-metricbeat.md) or [internal collection](beats://reference/filebeat/monitoring-internal-collection.md), data is stored in a set of indices called either:
+:::{include} ../stack-monitoring/_snippets/legacy-warning.md
+:::
 
-* `.monitoring-{{product}}-7-mb-{{date}}`, when using {{metricbeat}} 7.
-* `.monitoring-{{product}}-7-{{date}}`, when using internal collection.
+To configure the data streams created by {{agent}} or {{metricbeat}}, refer to [](configuring-data-streamsindices-for-monitoring.md).
+
+When monitoring using internal or legacy collection, data is stored in a set of indices called `.monitoring-{{product}}-7-{{date}}`. Internal collection is available for [{{es}}](../stack-monitoring/es-legacy-collection-methods.md), [{{kib}}](../stack-monitoring/kibana-monitoring-legacy.md), and [{{beats}}](beats://reference/filebeat/monitoring-internal-collection.md).
+
+The `7` in the index name is the monitoring template version.
+
+Indices created by {{metricbeat}} 7 are called `.monitoring-{{product}}-7-mb-{{date}}`. If you still have these indices from an earlier version, the same templates and steps apply to them.
 
 The settings and mappings for these indices are determined by [legacy index templates]({{es-apis}}operation/operation-indices-put-template) named `.monitoring-{{product}}`.
 

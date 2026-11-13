@@ -2,18 +2,15 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/config-monitoring-data-streams-metricbeat-8.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: ga
 products:
   - id: elasticsearch
+navigation_title: "{{metricbeat}} data streams"
 ---
 
-# Configuring data streams created by Metricbeat 8 [config-monitoring-data-streams-metricbeat-8]
+# Configuring stack monitoring data streams created by {{metricbeat}}
 
-When monitoring using {{metricbeat}}, data is stored in a set of data streams with the following pattern:
+When [monitoring using {{metricbeat}}](../stack-monitoring/collecting-monitoring-data-with-metricbeat.md), data is stored in a set of data streams with the following pattern:
 
 ```
 .monitoring-{{product}}-8-mb
@@ -23,6 +20,8 @@ For example:
 ```
 .monitoring-es-8-mb
 ```
+
+The `8` in the data stream name is the monitoring template version. It is not pinned to the {{stack}} major version.
 
 The settings and mappings for these data streams are determined by an index template with the following pattern:
 
@@ -61,7 +60,7 @@ You can also use the {{es}} API:
 * Store the updated index template under a different name, for example `custom_monitoring`, using the [create index template API]({{es-apis}}operation/operation-indices-put-index-template).
 
 ::::{note} 
-{{metricbeat}} 8 uses [composable templates](../../../manage-data/data-store/templates.md), rather than legacy templates.
+These data streams use [composable index templates](/manage-data/data-store/templates.md). Indices created by [internal collection](config-monitoring-indices-internal-collection.md) use legacy index templates instead.
 ::::
 
 After changing the index template, the updated settings are only applied to the data stream’s new backing indices. [Roll over the data stream](../../../manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the updated settings to the data stream’s write index.
