@@ -117,6 +117,8 @@ Open a conversation with any agent and ask it to create a skill. For example, "C
 
 Review the description, instructions, associated tools, and references, and ask the agent to edit anything that needs changing. When the draft is ready, select **Create skill**. The skill is not added to your library until you select **Create skill**.
 
+The following screenshot shows a skill draft in Agent Chat:
+
 :::{image} images/create-skill-from-chat.png
 :screenshot:
 :alt: Skill draft in Agent Chat showing its description, instructions preview, associated tool references, and a Create skill button
@@ -132,19 +134,26 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Ask an agent to view or edit a custom skill by name or ID. For example, "Add a rate-limiting section to the incident-triage skill." The agent loads the skill and shows it in the conversation.
+Ask an agent to view or edit a custom skill that is already in your library. The agent shows the skill as a card in the conversation, so you can review and save changes without leaving the chat.
 
-To view the saved skill, review the card. Select **Edit in Management** to open that skill in a new tab, on **Manage components** → **Skills**.
+To save changes, you need the **Create and edit skills** privilege in the current space. This is the same privilege required to update a skill from **Manage components** → **Skills**. Refer to [{{agent-builder}} privileges](permissions.md#kib-privileges).
 
-To edit the skill, describe the change in the conversation. The agent updates the card. The updated card shows a **Draft** badge, a **Latest** badge, and **Save changes**.
+To view or edit a custom skill:
 
-Turn on **Show diff** to compare the draft instructions with the saved instructions. **Show diff** appears when the instructions differ from the saved instructions and you have not saved the draft. The diff covers instructions. **Description** and **References** stay on the card. An edit that changes only the description, tools, or references still shows **Save changes**, and it does not show **Show diff**.
+1. In an Agent Chat conversation, ask the agent to view or edit the skill by name or ID. For example, "Add a rate-limiting section to the incident-triage skill."
+1. Review the skill card. To open the saved skill in a new tab, select **Edit in Management**. The skill opens on **Manage components** → **Skills**.
+1. To change the skill, describe the change in the conversation. The agent updates the card, which shows a **Draft** badge, a **Latest** badge, and **Save changes**.
+1. To compare the draft instructions with the saved instructions, turn on **Show diff**.
+1. When the draft is ready, select **Save changes**. Your library isn't updated until you do. After you save, the card shows a **Saved** badge and **Edit in Management**.
 
-When the draft is ready, select **Save changes**. The skill in your library is not updated until you select **Save changes**. After you save, the card shows a **Saved** badge and **Edit in Management**.
+Keep the following in mind:
 
-Built-in skills are read-only. The agent cannot open them in chat.
-
-Saving requires the **Create and edit skills** privilege in the current space, the same privilege required to update a skill from **Manage components** → **Skills**. Without it, **Save changes** is disabled. Refer to [{{agent-builder}} privileges](permissions.md#kib-privileges).
+- **Show diff** appears only when the draft instructions differ from the saved instructions and you haven't saved the draft. It compares instructions only. A change to only the description, tools, or references shows **Save changes** but no **Show diff**.
+- **Save changes** and **Edit in Management** appear only on the newest card for the skill. Older cards in the conversation don't show these buttons.
+- The **Latest** badge marks the newest draft in the conversation.
+- **Save changes** replaces the saved skill with the draft on the card, including any changes made elsewhere since the agent loaded the skill.
+- Without the privilege, **Save changes** is disabled.
+- Built-in skills are read-only and can't be edited from chat.
 
 ## Related pages
 
