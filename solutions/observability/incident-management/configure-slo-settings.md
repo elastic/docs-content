@@ -26,8 +26,8 @@ On the **SLOs Settings** page, you can configure the following controls:
 **Stale instances cleanup**
 :   Automatically cleanup stale SLO instances that have not been updated within the stale threshold.
 
-:::{image} /solutions/images/observability-slo-remote-clusters.png
-:alt: Select remote clusters to fetch SLOs
+:::{image} /solutions/images/observability-slo-settings.png
+:alt: The SLOs Settings page with the Stale SLOs threshold and the Stale instances cleanup toggle
 :screenshot:
 :::
 
