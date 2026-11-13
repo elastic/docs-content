@@ -141,6 +141,7 @@ toc:
     children:
       - file: package-signatures.md
       - file: add-integration-to-policy.md
+      - file: open-integration-details.md
       - file: view-integration-policies.md
       - file: edit-delete-integration-policy.md
       - file: install-uninstall-integration-assets.md

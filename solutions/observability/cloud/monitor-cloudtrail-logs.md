@@ -38,9 +38,8 @@ Make sure the deployment is on AWS, because the Amazon Data Firehose delivery st
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-cloudtrail-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Browse the catalog to find the Amazon Data Firehose integration.
-3. Navigate to the **Settings** tab and click **Install Amazon Data Firehose assets**.
+:::{include} _snippets/install-aws-integration-assets.md
+:::
 
 
 ## Step 2: Export Cloudtrail events to CloudWatch [firehose-cloudtrail-step-two]

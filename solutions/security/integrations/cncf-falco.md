@@ -22,10 +22,11 @@ First, you’ll need to configure {{elastic-sec}} to receive data from Falco, th
 
 In {{elastic-sec}}:
 
-1. Click **Add integrations**.
-2. Search the Integrations page for `Falco`, then select it.
-3. Go to the Falco integration’s **Settings** tab.
-4. Click **Install Falco**, then confirm by clicking **Install Falco** again. Installation should take less than a minute.
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Falco, then select **Falco** from the results.
+
+    If **Falco** doesn't appear in the results, go to `/app/integrations/detail/falco/overview` in {{kib}}.
+
+2. Select the **Settings** tab, then select **Install Falco**. In the confirmation dialog, select **Install Falco**.
 
 {{elastic-sec}} is now ready to receive data from Falco. The Falco integration page now has an **Assets** tab where you can inspect the newly installed assets that help to ingest Falco data.
 

@@ -170,13 +170,16 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
     :alt: The Integrations catalog showing a newly installed custom integration under its chosen category
     :::
 
-14. Select the integration. If the integration's **Overview** page opens, click **Add <integration>**. Configure the integration and assign it to an [agent policy](/reference/fleet/agent-policy.md) to start collecting data.
+14. Select the integration.
+15. If the integration's **Overview** page opens, select **Add <integration>**.
 
     :::{image} /solutions/images/security-auto-import-add-integration.png
     :alt: The integration details page with an Add button to deploy the integration to an agent policy
     :::
 
-15. (Optional) After you've added an integration, you can edit the ingest pipeline from the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+16. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+17. Configure the integration and assign it to an [agent policy](/reference/fleet/agent-policy.md) to start collecting data.
+18. (Optional) After you've added an integration, you can edit the ingest pipeline from the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::
 

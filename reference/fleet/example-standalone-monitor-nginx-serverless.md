@@ -119,28 +119,10 @@ Elastic integrations are a streamlined way to connect your data from popular ser
 
 2. The System integration (`system-1`) is included because you opted earlier to collect system logs and metrics.
 3. Click **Add integration**.
-4. On the Integrations page search for "nginx".
+4. In the **Add integration to policy** flyout, under **Select integration**, search for and select **Nginx**.
+5. Under **Configure integration**, you can select options such as the paths to where your nginx logs are stored, whether to collect metrics data, and various other settings.
 
-    :::{image} images/guide-integrations-page.png
-    :alt: Integrations page with nginx in the search bar
-    :::
-
-5. Select the **Nginx** card.
-6. Click **Add Nginx**.
-7. Click the link to **Add integration only (skip agent installation)**. You’ll install standalone {{agent}} in a later step.
-8. Here, you can select options such as the paths to where your nginx logs are stored, whether or not to collect metrics data, and various other settings.
-
-    For now, leave all of the default settings and click **Save and continue** to add the Nginx integration to your `nginx-policy` policy.
-
-    :::{image} images/guide-add-nginx-integration.png
-    :alt: Add Nginx Integration UI
-    :::
-
-9. In the confirmation dialog, select to **Add {{agent}} later**.
-
-    :::{image} images/guide-nginx-integration-added.png
-    :alt: Nginx Integration added confirmation UI with Add {{agent}} later selected.
-    :::
+    For now, leave the default settings and select **Add integration** to add the Nginx integration to your `nginx-policy` policy.
 
 
 
@@ -149,14 +131,14 @@ Elastic integrations are a streamlined way to connect your data from popular ser
 Rather than opt for {{fleet}} to centrally manage {{agent}}, you’ll configure an agent to run in standalone mode, so it will be managed by hand.
 
 1. Open the {{kib}} menu and go to **{{fleet}} → Agents** and click **Add agent**.
-2. For the **What type of host are you adding?** step, select `nginx-policy` from the drop-down menu if it’s not already selected.
+2. For the **What type of host do you want to monitor?** step, select `nginx-policy` from the menu if it’s not already selected.
 3. For the **Enroll in {{fleet}}?** step, select **Run standalone**.
 
     :::{image} images/guide-add-agent-standalone01.png
     :alt: Add agent UI with nginx-policy and Run-standalone selected.
     :::
 
-4. For the **Configure the agent** step, choose **Download Policy**. Save the `elastic-agent.yml` file to a directory on the host where you’ll install nginx for monitoring.
+4. For the **Configure the agent** step, select **Download policy**. Save the `elastic-agent.yml` file to a directory on the host where you’ll install nginx for monitoring.
 
     Have a look inside the policy file and notice that it contains all of the input, output, and other settings for the Nginx and System integrations. If you already have a standalone agent installed on a host with an existing {{agent}} policy, you can use the method described here to add a new integration. Add the settings from the **Configure the agent** step to your existing `elastic-agent.yml` file.
 

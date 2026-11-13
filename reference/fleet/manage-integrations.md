@@ -38,6 +38,7 @@ You can perform a variety of actions in the **Integrations** app in {{kib}}. Som
 | User action | Result |
 | --- | --- |
 | [Add an integration to an {{agent}} policy](/reference/fleet/add-integration-to-policy.md) | Configure an integration for a specific use case and add it to an {{agent}} policy. |
+| [Open an integration's details](/reference/fleet/open-integration-details.md) | Read the integration's documentation and reach its policies, assets, settings, and other tabs. |
 | [View integration policies](/reference/fleet/view-integration-policies.md) | View the integration policies created for a specific integration. |
 | [Edit or delete an integration policy](/reference/fleet/edit-delete-integration-policy.md) | Change settings or delete the integration policy. |
 | [Scale integration policies across many hosts](/reference/fleet/scale-integration-policies.md) | Use one integration policy for many hosts instead of creating a policy for each one. |
