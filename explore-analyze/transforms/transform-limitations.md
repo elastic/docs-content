@@ -65,7 +65,7 @@ You can view the deduced mappings by using the [preview transform API]({{es-apis
 
 If it’s required, you may define custom mappings prior to starting the transform by creating a custom destination index using the [create index API]({{es-apis}}operation/operation-indices-create). As deduced mappings cannot be overwritten by an index template, use the create index API to define custom mappings. The index templates only apply to fields derived from scripts that use dynamic mappings.
 
-### Batch transforms may not account for changed documents [transform-batch-limitations]
+### Batch transforms without point in time might not account for changed documents [transform-batch-limitations]
 
 A batch transform uses a [composite aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md) which allows efficient pagination through all buckets. By default, transforms page through the source with a [point in time]({{es-apis}}operation/operation-open-point-in-time), which gives the search a consistent view of the data. Point in time is not used when `use_point_in_time` is set to `false`, when the source includes remote clusters, or when {{cps}} is enabled. When point in time is turned off, if the source data is changed (deleted, updated, added) while the batch {{dataframe}} is in progress, then the results might not include these changes.
 

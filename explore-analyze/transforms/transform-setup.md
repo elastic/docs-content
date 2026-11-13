@@ -61,7 +61,8 @@ Within a {{kib}} space, for full access to transforms, you must meet all of the 
 
 Within a {{kib}} space, for read-only access to transforms, you must meet all of the following requirements:
 
-* Management features visible in the {{kib}} space, including {applies_to}`stack: ga` `Stack Monitoring`,
+* Management features visible in the {{kib}} space,
+* {applies_to}`stack: ga` `Stack Monitoring` visible in the {{kib}} space,
 * {applies_to}`stack: ga` `monitoring_user` built-in role,
 * `transform_user` built-in role or `monitor_transform` cluster privileges,
 * `kibana_admin` built-in role or a custom role with `read` {{kib}} privileges for at least one feature in the space,
@@ -74,4 +75,6 @@ For more information and {{kib}} security features, see [{{kib}} role management
 
 [Spaces](../../deploy-manage/manage-spaces.md) enable you to organize your source and destination indices and other saved objects in {{kib}} and to see only the objects that belong to your space. However, a transform is a long running task which is managed on cluster level and therefore not limited in scope to certain spaces. Space awareness can be implemented for a {{data-source}} under **Stack Management > Kibana** which allows privileges to the transform destination index.
 
-To successfully create transforms in {{kib}}, you must be logged into a space where the source indices are visible and the `Data View Management` and `Stack Monitoring` features are visible.
+To successfully create transforms in {{kib}}, you must be logged into a space where the source indices and the `Data View Management` feature are visible.
+
+{applies_to}`stack: ga` The `Stack Monitoring` feature must also be visible in the space.
