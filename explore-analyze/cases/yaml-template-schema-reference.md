@@ -49,7 +49,7 @@ These fields go at the top level of a template's YAML definition and pre-fill ma
 | `fields` | array | Array of field references, or inline field definitions | Optional. The custom fields the template pre-fills. Use `$ref` for reusable library fields. You can also define a field inline with the same keys as a library entry when it isn't shared. Field names must be unique within the template. See [Field definition keys](#case-templates-field-keys) and [Reference a field from the library](#case-templates-field-ref-schema). |
 
 :::{note}
-The template's own name, description, and tags (used in the **Templates** list), plus its default connector and case settings (**Sync alerts** and **Extract observables**), aren't part of the YAML. You set them on the **Configuration** tab. **Extract observables** is available in {{elastic-sec}} only.
+The template's own name, description, and tags (used in the **Templates** list), plus its default connector and case settings, aren't part of the YAML. You set them on the **Configuration** tab. The case settings are **Sync detections** or **Sync alerts** (depending on your {{stack}} version) and **Extract observables**. **Extract observables** is available in {{elastic-sec}} only.
 :::
 
 ## Field definition keys [case-templates-field-keys]
