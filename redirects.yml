@@ -7,6 +7,13 @@ redirects:
   'solutions/security/alertzero/requirements.md': 'solutions/security/alertzero/set-up-alertzero.md'
   # related to https://github.com/elastic/docs-content/pull/9304
   'solutions/security/alertzero/review-first-proposed-action.md': 'solutions/security/alertzero/work-in-alertzero.md'
+  # The Managed OTLP Endpoint routing section moved to the dedicated Data routing page.
+  'reference/managed-inputs/managed-otlp-endpoint.md':
+    to: 'reference/managed-inputs/managed-otlp-endpoint.md'
+    many:
+      - to: 'reference/managed-inputs/data-routing.md'
+        anchors:
+          'routing-telemetry-to-dedicated-datasets-or-namespace': 'routing-telemetry-to-dedicated-datasets-or-namespace'
   # related to https://github.com/elastic/docs-content/pull/4251
   'explore-analyze/visualize/supported-chart-types.md': 'explore-analyze/visualize/lens.md'
   # related to https://github.com/elastic/docs-content/issues/7502

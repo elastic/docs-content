@@ -56,41 +56,16 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <key>"
 ```
 
-### Routing telemetry to dedicated datasets or namespace
+## Data routing
 
-You can route signals to dedicated datasets by setting the `data_stream.dataset` attribute on the record. This attribute is used to route the signal to the corresponding dataset.
-
-For example, if you want to route the {{edot-cf}} logs to custom datasets, you can add the following attributes to the log records:
-
-```yaml
-processors:
-  transform:
-    log_statements:
-      - set(log.attributes["data_stream.dataset"], "aws.cloudtrail") where log.attributes["aws.cloudtrail.event_id"] != nil
-```
-
-You can also set the `OTEL_RESOURCE_ATTRIBUTES` environment variable to set the `data_stream.dataset` attribute for all logs. For example:
-
-```bash
-export OTEL_RESOURCE_ATTRIBUTES="data_stream.dataset=app.orders"
-```
-
-The  `data_stream.namespace` attributes is also honored for all signals: logs, metrics, and traces.
-
-:::{important}
-Any `data_stream.dataset` or `data_stream.namespace` resource attribute present in an OTLP payload overrides mOTLP's default routing for that signal. This applies whether the attribute is set intentionally or by a collector, SDK, or integration.
-
-If data is landing in an unexpected data stream, inspect a sample document from that data stream for the field `resource.attributes.data_stream.dataset`. If the field is present and matches the unexpected data stream name, the attribute was set in the payload, not by the pipeline.
-
-To restore default routing, remove the `data_stream.dataset` and `data_stream.namespace` resource attributes from your OTLP payload configuration. Once removed, mOTLP falls back to routing based on `service.name`.
-:::
+By default, the {{motlp}} routes each signal to a data stream based on its type and its `service.name` attribute. To route telemetry to dedicated datasets or namespaces, or to a specific index, refer to [Data routing with the Managed OTLP Endpoint](data-routing.md).
 
 ## Authentication
 
 Managed inputs use a shared authentication model. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required API key format and generation steps.
 
 :::{note}
-Index-level privilege scoping is not supported for managed inputs.
+Index-level privilege scoping is not supported for managed inputs. Through the {{motlp}}, the API key can write to any data stream with a `logs-`, `metrics-`, or `traces-` prefix, and any client that holds the key can route data to any of them using the [routing attributes](data-routing.md). Take this into consideration when you decide how to distribute the key.
 :::
 
 ## OTLP client configuration
