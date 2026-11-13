@@ -435,7 +435,7 @@ $$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-polic
     - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
 
 $$$agent-builder-endpoint-response-actions-skill$$$ `endpoint-response-actions` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-:   Looks up and acts on hosts that run [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md). Hosts enrolled in a third-party endpoint protection integration aren't included. The skill can:
+:   Looks up and runs [response actions](/solutions/security/endpoint-response-actions.md) on hosts enrolled in [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md). Hosts enrolled in third-party endpoint protection systems aren't included. The skill can:
 
     - List enrolled endpoints, check a host's status and whether it's isolated, and look up the status and output of a response action that was already sent.
     - After you confirm in the chat, isolate or release a host, request the list of processes running on a host, or scan a file or folder path for malware.
