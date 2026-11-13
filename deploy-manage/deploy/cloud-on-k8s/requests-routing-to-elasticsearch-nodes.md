@@ -12,6 +12,10 @@ products:
 
 The default Kubernetes service created by ECK, named `<cluster_name>-es-http`, is configured to include all the {{es}} nodes in that cluster. This configuration is good to get started and is adequate for most use cases. However, if you are operating an {{es}} cluster with [different node types](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) and want control over which nodes handle which types of traffic, you should create additional Kubernetes services yourself.
 
+::::{note}
+ECK also creates a headless service for each node set, named `<cluster_name>-es-<nodeSet_name>`. It is the governing service of the node set's StatefulSet and is internal to ECK. Don't use it as an endpoint for clients. To route traffic to specific node types, create services as described in this page.
+::::
+
 As an alternative, you can use features provided by third-party software such as service meshes and ingress controllers to achieve more advanced traffic management configurations. Check the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes) in the ECK source repository for a few examples.
 
 :::{admonition} Support scope for Ingress Controllers
@@ -139,5 +143,26 @@ spec:
   elasticsearchRef:
     name: "hulk"
     serviceName: "hulk-es-coordinating-nodes"
+```
+
+The HTTP certificate that ECK generates for {{es}} doesn't include the DNS name of your custom service. {{kib}} doesn't verify the host name, so the previous example works. Other applications, such as Beats, verify it and fail to connect with an error like the following:
+
+```text
+x509: certificate is valid for hulk-es-http.default.es.local, hulk-es-http, hulk-es-http.default.svc, ..., not hulk-es-coordinating-nodes.default.svc
+```
+
+To fix this, add the DNS name of your custom service to the subject alternative names (SANs) of the {{es}} HTTP certificate. Replace `default` with the namespace of your resources:
+
+```yaml
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: hulk
+spec:
+  http:
+    tls:
+      selfSignedCertificate:
+        subjectAltNames:
+        - dns: hulk-es-coordinating-nodes.default.svc
 ```
 
