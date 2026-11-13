@@ -44,8 +44,7 @@ For more detail on the options listed here, and to compare all deployment types 
 Once you have {{es}} running, try a quickstart tutorial:
 
 * [](/solutions/vector-database/vector-full-text-search.md): Connect a client and run full-text, semantic, and hybrid search. You can follow the examples in Python, TypeScript, PHP, Ruby, C#/.NET, Java, or Go.
-* [](/solutions/search/get-started/index-basics.md): Create an index, add documents, and run a search. This tutorial goes further into indices, including dynamic and explicit mappings.
-* [](/solutions/search/get-started/keyword-search-python.md): Build a keyword search query with Python.
+* [](/solutions/search/get-started/quickstarts.md): Index data, see how mappings work, and run hybrid search that combines keyword and semantic matching.
 
 ::::
 

@@ -133,17 +133,13 @@ links:
 :::{link-card}
 title: Search fundamentals
 links:
-  - label: Index and search basics
-    url: /solutions/search/get-started/index-basics.md
-  - label: Build your first query with Python
-    url: /solutions/search/get-started/keyword-search-python.md
+  - label: Hybrid search quickstart
+    url: /solutions/search/get-started/quickstarts.md
 :::
 
 :::{link-card}
-title: Semantic search and ES|QL
+title: ES|QL
 links:
-  - label: Get started with semantic search
-    url: /solutions/search/get-started/semantic-search.md
   - label: ES|QL tutorials
     url: elasticsearch://reference/query-languages/esql/esql-examples.md
 :::

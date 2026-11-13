@@ -171,7 +171,7 @@ Store facts, chat turns, or summaries so an assistant can load relevant past con
 
 Store a user or session ID, a timestamp, and optional expiry fields. Decide whether each stored item is a full message, a short fact, or a summary so search returns the right level of detail.
 
-- [Index basics](../get-started/index-basics.md)
+- [](/manage-data/data-store/index-basics.md)
 
 :::::
 

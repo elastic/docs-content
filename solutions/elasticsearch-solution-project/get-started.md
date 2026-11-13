@@ -15,7 +15,7 @@ description: To try out an Elasticsearch project or solution, pick your deployme
 
 # Get started with the {{es}} solution/project type
 
-This solution provides specialized UI tools, such as Agent Builder and the Query Rules UI, to help you build and test search experiences faster. These tools build on top of the core [search capabilities](/solutions/search.md) available across all deployment types. If you only need core search features without these additional tools, start with the [search use case](/solutions/search/get-started.md) instead.
+This solution provides specialized UI tools, such as Agent Builder and the Query Rules UI, to help you build and test search experiences faster. These tools build on top of the core [search capabilities](/solutions/search.md) available across all deployment types. If you only need core search features without these additional tools, start with the [search use case](/solutions/search.md) instead.
 
 :::{note}
 If you're looking for an introduction to the {{stack}} or the {{es}} product, go to [](/get-started/index.md) or [](/manage-data/data-store.md).
@@ -53,18 +53,14 @@ Check out the full list of [deployment types](/deploy-manage/deploy.md#choosing-
 
 :::::{step} (Optional) Try out a quickstart
 
-Get hands-on experience with {{es}} using guided tutorials that walk you through common search scenarios:
-
-- [**Index and search basics**](/solutions/search/get-started/index-basics.md): Learn how to create indices, add documents, and perform searches
-- [**Keyword search with Python**](/solutions/search/get-started/keyword-search-python.md): Build your first search query with Python
-- [**Semantic search**](/solutions/search/get-started/semantic-search.md): Implement semantic search with vector embeddings using the `semantic_text` workflow
+Get hands-on experience with {{es}} by following [](/solutions/search/get-started/quickstarts.md). It walks you through indexing data and running a hybrid search.
 :::::
 
 :::::{step} Identify your search goals
 Depending on your use case, you can choose multiple [search approaches](/solutions/search/search-approaches.md), for example full-text and semantic search.
 Each approach affects your options for storing and querying your data.
 
-If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/search/get-started/semantic-search.md).
+If you're unsure which approaches match your goals, you can try them out with sample data. For example, [](/solutions/search/get-started/quickstarts.md).
 
 If you prefer to ingest your data first and transform or reindex it as needed later, skip to the next step.
 :::::
@@ -77,7 +73,7 @@ This method is described in [](/solutions/search/semantic-search/semantic-search
 To learn about adding data for other search goals, go to [](/solutions/search/ingest-for-search.md).
 For a broader overview of ingestion options, go to [](/manage-data/ingest.md).
 
-If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstarts](/solutions/search/get-started/quickstarts.md).
+If you're not ready to add your own data, you can use [sample data](/manage-data/ingest/sample-data.md) or create small data sets when you follow the instructions in the [quickstart](/solutions/search/get-started/quickstarts.md).
 
 The {{es}} home page in the UI also provides workflow guides for creating indices and ready-to-use code examples for ingesting data by using REST APIs.
 :::::
