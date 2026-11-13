@@ -86,27 +86,48 @@ Including frozen tier data doesn't extend tool timeouts. Queries over large amou
 
 ### A2A streaming not supported
 
-The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+In 9.2 through 9.5, the [Agent-to-Agent (A2A) server](a2a-server.md) doesn't support the `message/stream` method. Use [`message/send`](a2a-server.md#send-messages) instead.
+
+Fixed on {{serverless-short}} and in 9.6 and later. Refer to [Stream responses](a2a-server.md#stream-responses).
 
 ### Human-in-the-loop prompts require an interactive conversation
 
-[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A sub-agent execution cannot collect a response to these prompts, whether the sub-agent runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A [subagent](agent-builder-agents.md#subagents) cannot collect a response to these prompts, whether it runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
 
-The sub-agent run itself does not fail. The tool call returns an error result and the sub-agent continues, so the sub-agent can report the declined action in its output.
+The subagent run itself does not fail. The tool call returns an error result and the subagent continues, so the subagent can report the declined action in its output.
 
-A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
+A2A executions behave differently: the action isn't declined. Instead, the conversation round stays in the `awaiting_prompt` state, but A2A clients can't respond to the prompt.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) follows the same rule in sub-agent runs and in [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent): it declines any {{es}} or {{kib}} API operation that requires [confirmation](chat.md#confirm-an-api-operation), unless the operation is approved in advance. You can approve operations in advance in these ways:
+:::::{applies-switch}
 
-* **For every run of an agent:** Add the operations to the agent's [auto-approved APIs](custom-agents.md#auto-approve-api-operations-optional). This approval is stored with the agent, so it applies to every run, including runs from workflows, and to the sub-agents the agent starts.
-* **For one workflow step:** List the operations under `approvals.auto_approved_apis` in the `ai.agent` step. This approval applies only to that step and to the sub-agents it starts, in addition to the agent's auto-approved APIs.
-* **For one sub-agent run:** Before starting a sub-agent, a parent agent can ask you to approve operations for it. The request can name individual operations, a group such as all `indices` operations, or every such operation on {{es}} or {{kib}}. The outcome depends on your response and any existing auto-approvals:
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
 
-  * If you approve, the sub-agent can call those operations without another prompt.
-  * If you deny, the sub-agent runs without access to them.
+What the client sees depends on the method:
+
+* [`message/send`](a2a-server.md#send-messages): Nothing in the response shows that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+* [`message/stream`](a2a-server.md#stream-responses): The stream ends with a status update in the `input-required` state that describes the prompt.
+
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
+
+A2A clients use [`message/send`](a2a-server.md#send-messages), and nothing in the response shows that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+
+:::
+
+:::::
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) follows the same rule in subagent runs and in [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent): it declines any {{es}} or {{kib}} API operation that requires [confirmation](chat.md#confirm-an-api-operation), unless the operation is approved in advance. You can approve operations in advance in these ways:
+
+* **For every run of an agent:** Add the operations to the agent's [auto-approved APIs](custom-agents.md#auto-approve-api-operations-optional). This approval is stored with the agent, so it applies to every run, including runs from workflows, and to the subagents the agent starts.
+* **For one workflow step:** List the operations under `approvals.auto_approved_apis` in the `ai.agent` step. This approval applies only to that step and to the subagents it starts, in addition to the agent's auto-approved APIs.
+* **For one subagent run:** Before starting a subagent, a parent agent can ask you to approve operations for it. The request can name individual operations, a group such as all `indices` operations, or every such operation on {{es}} or {{kib}}. The outcome depends on your response and any existing auto-approvals:
+
+  * If you approve, the subagent can call those operations without another prompt.
+  * If you deny, the subagent runs without access to them.
   * If all requested operations are already auto-approved, you aren't asked.
 
-  A sub-agent can also call any operation that the parent agent or the sub-agent itself auto-approves.
+  A subagent can also call any operation that the parent agent or the subagent itself auto-approves.
 
 This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
@@ -119,6 +140,8 @@ Ensure your cluster version supports the {{esql}} features you intend to use.
 For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
 ## Known issues
+
+The following known issues affect current versions of {{agent-builder}}. For fixes and known issues in a specific release, refer to the **Elastic Agent Builder** entries in the [{{kib}} release notes](kibana://release-notes/index.md) and [{{kib}} known issues](kibana://release-notes/known-issues.md).
 
 ### Troubleshoot incompatible LLMs
 

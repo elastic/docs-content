@@ -2,7 +2,8 @@
 navigation_title: About action policies
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Action policies decide whether and when an alert invokes a workflow. Eligibility, policy scope, and frequency gates control each dispatcher decision."

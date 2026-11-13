@@ -25,7 +25,10 @@ To create equivalent keys for {{serverless-full}} projects, refer to [](serverle
 
 To manage API keys in {{kib}}, go to the **API keys** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-![API Keys UI](/deploy-manage/images/kibana-api-keys.png "")
+:::{image} /deploy-manage/images/kibana-api-keys.png
+:alt: API Keys UI
+:screenshot:
+:::
 
 
 ## Security privileges [api-keys-security-privileges]
@@ -43,8 +46,8 @@ To manage roles, go to the **Roles** management page using the navigation menu o
 
 The following options are available to create an API key:
 
-* On {{ech}} and {{ece}} deployments, [use the simple API key creation menu](/deploy-manage/images/kibana-create-user-api-key.png).
-* On all deployment types, and for more complex key creation needs, [use the API key page](/deploy-manage/images/kibana-create-user-api-key.png).
+* On {{ech}} and {{ece}} deployments, [use the simple API key creation menu](#simple-api-key-creation).
+* On all deployment types, and for more complex key creation needs, [use the API key page](#advanced-api-key-creation).
 * Create an API key [using the {{es}} API]({{es-apis}}/operation/operation-security-create-api-key).
 
 ### Simple API key creation
@@ -75,8 +78,12 @@ Use the API key page to create a personal or cross-cluster API key with configur
       * For a user API key, you can opt to configure access to specific {{es}} APIs and resources by assigning the key with predefined roles or custom privileges. Refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and the [Create API key]({{es-apis}}operation/operation-security-create-api-key) API documentation to learn more.
       * For a cross-cluster API key, you can control the indices that other clusters have access to. Refer to [](/deploy-manage/remote-clusters.md) and the [Create cross-cluster API key]({{es-apis}}operation/operation-security-create-cross-cluster-api-key) API documentation to learn more.
   6. Add any additional metadata about the API as one or more key-value pairs. Refer to the [Create API key]({{es-apis}}operation/operation-security-create-api-key) API documentation for examples.
+  7. {applies_to}`stack: ga 9.6+` For a cross-cluster API key you can add an extra layer of security by turning on **Add strong identity verification** and entering a pattern that matches the Distinguished Name (DN) of the local cluster's signing certificate. Refer to [Strong identity verification](/deploy-manage/remote-clusters/security-models.md#remote-cluster-strong-verification) for the required cluster configuration.
    
-![Create API Key UI](/deploy-manage/images/kibana-create-user-api-key.png "")
+:::{image} /deploy-manage/images/kibana-create-user-api-key.png
+:alt: Create API Key UI
+:screenshot:
+:::
 
 ## Update an API key [update-api-key]
 
@@ -93,6 +100,7 @@ You can't update the name or the type of an API key.
 * For a cross-cluster API key, you can update:
   * The indices that other clusters have access to.
   * The metadata associated with the key.
+  * {applies_to}`stack: ga 9.6+` The certificate identity pattern for strong identity verification. You can add or edit the pattern, or remove it to clear the key's certificate identity restriction.
  
   Refer to the [Update cross-cluster API key]({{es-apis}}operation/operation-security-update-cross-cluster-api-key) API documentation to learn more.
 

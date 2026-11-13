@@ -2,7 +2,8 @@
 navigation_title: No-data handling
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to configure the no-data strategy for rules: hold the last known alert state, trigger recovery, or ignore an empty query result."
@@ -10,7 +11,7 @@ description: "How to configure the no-data strategy for rules: hold the last kno
 
 # No-data handling in {{alerting-v2-system}} [no-data-handling]
 
-No-data handling is an optional setting for {{alerting-v2-system}} rules that group matches into an alert. It controls what the rule does when it can't tell whether an alert has genuinely recovered or the data just stopped showing up. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting. In the rule form, the setting is **No data behavior**.
+No-data handling is an optional setting for {{alerting-v2-system-short}} rules that group matches into an alert. It controls what the rule does when it can't tell whether an alert has genuinely recovered or the data just stopped showing up. Setting this correctly prevents false recoveries and misleading `no_data` events when data sources stop reporting. In the rule form, the setting is **No data behavior**.
 
 In YAML, set no-data handling with the `no_data` object.
 

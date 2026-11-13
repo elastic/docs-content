@@ -24,7 +24,7 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
 
 1. Open the create form:
 
-   * In **Discover** or **Lens**, open the data view menu, then select **Create a {{data-source}}**.
+   * In **Discover** (in classic mode) or **Lens**, open the data view menu, then select **Create a {{data-source}}**.
    * Go to the **Data Views** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Create data view**.
 
    :::{image} /explore-analyze/images/kibana-discover-data-view.png

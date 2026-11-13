@@ -2,7 +2,8 @@
 navigation_title: How it works
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -11,7 +12,7 @@ description: A detailed walkthrough of how a rule's configuration determines whe
 
 # How {{alerting-v2-system}} works [how-it-works]
 
-Each time a {{alerting-v2-system}} rule runs, {{kib}} writes a [rule event](../rules/rule-event-field-reference.md) for each matching row. The rule's [mode](../rules/configure-rule-mode.md) determines what happens next. The events either belong to an [alert](../alerts.md) that can send notifications, or stay available for later analysis.
+Each time a {{alerting-v2-system-short}} rule runs, {{kib}} writes a [rule event](../rules/rule-event-field-reference.md) for each matching row. The rule's [mode](../rules/configure-rule-mode.md) determines what happens next. The events either belong to an [alert](../alerts.md) that can send notifications, or stay available for later analysis.
 
 ## Rule opens an alert [how-alert-mode-works]
 
@@ -45,7 +46,7 @@ After a few weeks, the accumulated events become useful in two ways. The team ca
 
 ## Related pages
 
-- [Set up {{alerting-v2-system}}](../setup.md): Check the requirements and turn on optional features.
+- [Set up {{alerting-v2-system-short}}](../setup.md): Check the requirements and turn on optional features.
 - [Create your first rule](create-your-first-rule.md): Load sample data, create a rule, and observe the alert lifecycle.
 - [Rules](../rules.md): What rules detect, how action policies invoke workflows, and how to select a creation path.
 - [Notifications and actions](../notifications-actions.md): Set up action policies that invoke workflows for the alerts they apply to.

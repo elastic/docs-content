@@ -80,6 +80,9 @@ kbn-action execute a692dc89-15b9-4a3c-9e47-9fb6872e49ce ‘{"params":{"subject":
 
 The result of this HTTP request (and printed to stdout by [kbn-action](https://github.com/pmuellr/kbn-action)) will be data returned by the action, along with error messages if errors were encountered.
 
+:::{include} /explore-analyze/alerting/alerts/_snippets/email-connector-test-message.md
+:::
+
 ## Look for error banners [alerting-error-banners]
 
 The **{{stack-manage-app}}** > **{{rules-ui}}** page contains an error banner that helps to identify the errors for the rules:

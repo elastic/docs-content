@@ -26,6 +26,8 @@ Also, to minimize disruption caused by Pod evictions due to resource contention,
 
 You can set compute resource constraints in the `podTemplate` of objects managed by the operator.
 
+Use the container names that ECK expects, otherwise your settings don't apply to the operator-managed container. Refer to [Container and init container names](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md#k8s-customize-pods-container-names).
+
 
 ### Set compute resources for {{es}} [k8s-compute-resources-elasticsearch]
 
@@ -86,15 +88,32 @@ spec:
 
 #### CPU resources [k8s-elasticsearch-cpu]
 
-The value set for CPU limits or requests directly impacts the {{es}} `node.processors` setting. By default {{es}} automatically detects the number of processors and sets the thread pool settings based on it. The following table gives the default value for `node.processors` given the CPU limits and requests set on the `elasticsearch` container:
+ECK does not set the {{es}} `node.processors` setting. {{es}} automatically detects the number of processors available to the JVM and sets the thread pool sizes based on it:
 
-|  | No CPU limit | With CPU limit |
-| --- | --- | --- |
-| No CPU request | `All the available cores on the K8S node` | `Value of the CPU limit` |
-| CPU request set to 1 | `All the available cores on the K8S node` | `Value of the CPU limit` |
-| Other CPU requests | `Value of the CPU request` | `Value of the CPU limit` |
+* With a CPU limit, {{es}} detects the CPU limit, rounded up.
+* Without a CPU limit, {{es}} detects all the available cores on the {{k8s}} node, whatever the CPU request is.
 
-You can also set your own value for `node.processors` in the {{es}} config.
+CPU requests do not affect the processors detected by {{es}}. If you set CPU requests without a CPU limit, {{es}} sizes its thread pools for all the cores of the {{k8s}} node, which can be much more than the CPU time the Pod is guaranteed. This can cause thread contention and higher latencies on nodes with many cores.
+
+To make {{es}} size its thread pools for the CPU resources you allocated, set `node.processors` explicitly in the {{es}} configuration of the node set, for example to the value of the CPU request:
+
+```yaml
+spec:
+  nodeSets:
+  - name: default
+    count: 1
+    config:
+      node.processors: 8
+    podTemplate:
+      spec:
+        containers:
+        - name: elasticsearch
+          resources:
+            requests:
+              cpu: 8
+```
+
+`node.processors` accepts fractional values, but it cannot exceed the number of processors that {{es}} detects. If you set a CPU limit, `node.processors` must not be higher than the limit rounded up, otherwise {{es}} fails to start.
 
 ::::{note}
 A [known Kubernetes issue](https://github.com/kubernetes/kubernetes/issues/51135) may lead to over-aggressive CPU limits throttling. If the host Linux Kernel does not include [this CFS quota fix](https://github.com/kubernetes/kubernetes/issues/67577), you may want to:

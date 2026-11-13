@@ -31,6 +31,7 @@ To get started, you need:
 * A local install of the [Helm](https://helm.sh/) {{k8s}} package manager.
 * An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) {{es}} cluster on version 8.18 or higher, with an [Integrations Server](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md#ec_integrations_server) component. An {{serverless-full}} project also meets this requirement.
 * An active {{k8s}} cluster.
+* {applies_to}`stack: ga 9.5.6+` For Red Hat OpenShift clusters, the permissions listed in [Install on OpenShift](#agent-fleet-managed-helm-install-openshift).
 
 ## Installation overview [overview]
 
@@ -63,13 +64,20 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
 
 ## Step 2: Create a {{fleet}} policy and install {{agent}} [agent-fleet-managed-helm-example-install-agent]
 
+### Create a policy and obtain enrollment details
+
 1. Open your {{ecloud}} deployment, and from the navigation menu select **Fleet**.
 2. From the **Agents** tab, select **Add agent**.
 3. In the **Add agent** UI, specify a policy name and select **Create policy**. Leave the **Collect system logs and metrics** option selected.
 4. Scroll down in the **Add agent** flyout to the **Install Elastic Agent on your host** section.
 5. Select the **Linux TAR** tab and copy the values for `url` and `enrollment-token`. You’ll use these when you run the `helm install` command.
 6. Open a terminal shell on your local system where the Helm tool is installed and you have access to the {{k8s}} cluster.
-7. Copy and prepare the command to install the chart:
+
+### Install on Kubernetes [agent-fleet-managed-helm-install-kubernetes]
+
+If you're installing on OpenShift, review the requirements in [Install on OpenShift](#agent-fleet-managed-helm-install-openshift) before you run the command.
+
+1. Copy and prepare the command to install the chart:
 
     ```sh
     helm install demo elastic/elastic-agent \
@@ -115,7 +123,7 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     * `--set kube-state-metrics.fullnameOverride=ksm`: If you want to deploy KSM with a different release name (it defaults to `kube-state-metrics`). This can be useful if you have already a default installation of KSM and you want a second one.
     ::::
 
-8. Run the command.
+2. Run the command.
 
     The command output should confirm that {{agent}} has been installed:
 
@@ -126,7 +134,29 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     ...
     ```
 
-9. Run the `kubectl get pods -n default` command to confirm that the {{agent}} Pods are running. You should see one {{agent}} Pod running on each Kubernetes node:
+### Install on OpenShift [agent-fleet-managed-helm-install-openshift]
+
+```{applies_to}
+stack: ga 9.5.6+
+```
+
+Starting with version 9.5.6, the {{agent}} Helm chart supports Red Hat OpenShift. On OpenShift, the chart configures the security context constraints (SCCs) that {{agent}} needs to run. The SCC depends on the `agent.unprivileged` setting:
+
+* By default (`agent.unprivileged=false`), {{agent}} runs as `root`, and the chart grants the agent service accounts the built-in `privileged` SCC.
+* With `agent.unprivileged=true`, {{agent}} runs as a non-root user, and the chart creates a custom SCC with the minimum permissions {{agent}} needs. This SCC doesn't allow privileged containers or access to the host PID and IPC namespaces. Use this option if your security policies don't allow the `privileged` SCC.
+
+To install {{agent}} on OpenShift:
+
+1. Make sure you have the `cluster-admin` role, or equivalent permissions. With the default settings, the chart creates role bindings to the `privileged` SCC in the release namespace, which requires permission to create role bindings and either `use` on that SCC or `bind` on the referenced cluster role. For an unprivileged installation, the chart also creates an SCC and a cluster role.
+2. Follow the [Kubernetes installation steps](#agent-fleet-managed-helm-install-kubernetes). Run `helm repo update` first to make sure you install version 9.5.6 or later of the chart. To run {{agent}} with the minimum permissions, add `--set agent.unprivileged=true` to the installation command.
+
+The chart detects OpenShift automatically by querying the cluster APIs. If you render the chart without access to the cluster, for example with `helm template` or a GitOps tool such as Argo CD, detection doesn't work and the chart doesn't create the OpenShift resources. In that case, add `--set agent.openshift.enabled=true` to the command.
+
+If your organization requires administrators to manage SCCs and role bindings separately, add `--set agent.openshift.securityContextConstraints.create=false` to the command. An administrator then needs to create the resources the chart would otherwise create before you install. To review these resources, render the chart with `helm template` and `--set agent.openshift.enabled=true`, or refer to the [OpenShift examples](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/kubernetes-openshift-unprivileged) in the {{agent}} repository.
+
+### Verify the installation and enrollment
+
+1. Run the `kubectl get pods -n default` command to confirm that the {{agent}} Pods are running. You should see one {{agent}} Pod running on each Kubernetes node:
 
     ```sh
     NAME                       READY   STATUS    RESTARTS      AGE
@@ -139,16 +169,16 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     You can do this by setting the `presets.perNode.tolerations[]` value, which accepts standard Kubernetes toleration definitions.
     ::::
 
-10. In the **Add agent** flyout, wait a minute or so for confirmation that {{agent}} has successfully enrolled with {{fleet}} and that data is flowing:
+2. In the **Add agent** flyout, wait a minute or so for confirmation that {{agent}} has successfully enrolled with {{fleet}} and that data is flowing:
 
     :::{image} images/helm-example-nodes-enrollment-confirmation.png
     :alt: Screen capture of Add Agent UI showing that the agent has enrolled in Fleet
     :screenshot:
     :::
 
-11. In {{fleet}}, open the **Agents** tab and see that an **Agent-pernode-demo-#** agent is running.
-12. Select the agent to view its details.
-13. On the **Agent details** tab, on the **Integrations** pane, expand `system-1` to confirm that logs and metrics are incoming. You can click either the `Logs` or `Metrics` link to view details.
+3. In {{fleet}}, open the **Agents** tab and see that an **Agent-pernode-demo-#** agent is running.
+4. Select the agent to view its details.
+5. On the **Agent details** tab, on the **Integrations** pane, expand `system-1` to confirm that logs and metrics are incoming. You can click either the `Logs` or `Metrics` link to view details.
 
     :::{image} images/helm-example-nodes-logs-and-metrics.png
     :alt: Screen capture of the Logs and Metrics view on the Integrations pane
@@ -159,9 +189,9 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
 
 Now that you’ve {{agent}} and data is flowing, you can set up the {{k8s}} integration.
 
-1. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
-2. Run a search for `Kubernetes` and then select the {{k8s}} integration card.
-3. On the {{k8s}} integration page, click **Add Kubernetes** to add the integration to your {{agent}} policy.
+1. In your {{ecloud}} deployment, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **Kubernetes**.
+3. If the integration's **Overview** page opens, click **Add Kubernetes**.
 4. Scroll to the bottom of **Add Kubernetes integration** page. Under **Where to add this integration?** select the **Existing hosts** tab. On the **Agent policies** menu, select the agent policy that you created previously in the [Install {{agent}}](#agent-fleet-managed-helm-example-install-agent) steps.
 
     You can leave all other integration settings at their default values. For details about the available inputs and data sets, refer to the [Kubernetes integration](integration-docs://reference/kubernetes/index.md) documentation.
