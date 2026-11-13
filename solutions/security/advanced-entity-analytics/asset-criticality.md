@@ -44,7 +44,7 @@ You can also update an entity's asset criticality conversationally with {{agent-
 :::
 
 ::::{note}
-If you assign asset criticality using the file import feature, risk scores are **not** immediately recalculated. However, you can trigger an immediate recalculation by clicking **Recalculate entity risk scores now**. Otherwise, the newly assigned or updated asset criticality levels will be factored in during the next hourly risk scoring calculation.
+If you assign asset criticality using the file import feature, risk scores are **not** immediately recalculated. The newly assigned or updated asset criticality levels are factored in during the next hourly risk scoring calculation.
 ::::
 
 
@@ -63,29 +63,7 @@ If you have enabled the [entity store](entity-store.md), you can also view asset
 
 You can bulk assign asset criticality to multiple entities by importing a CSV, TXT or TSV file from your asset management tools.
 
-The file must contain three columns, with each entity record listed on a separate row:
-
-1. The first column should indicate whether the entity is a `host`, `user`, or `service`.
-2. The second column should specify the entity’s `host.name`, `user.name`, or `service.name`.
-3. The third column should specify one of the following asset criticality levels:
-
-    * `extreme_impact`
-    * `high_impact`
-    * `medium_impact`
-    * `low_impact`
-    * {applies_to}`stack: ga 9.1` `unassigned`
-
-
-The maximum file size is 1 MB.
-
-File structure example:
-
-```txt
-user,user-001,low_impact
-user,user-002,medium_impact
-host,host-001,extreme_impact
-service,service-001,extreme_impact
-```
+The import UI shows the maximum file size, required file structure, and an example file.
 
 To import a file:
 
@@ -120,7 +98,12 @@ To import a file:
 
 This process overwrites any previously assigned asset criticality levels for the entities included in the imported file. The newly assigned or updated asset criticality levels are immediately visible within all asset criticality workflows.
 
-You can trigger an immediate recalculation of entity risk scores by clicking **Recalculate entity risk scores now**. Otherwise, the newly assigned or updated asset criticality levels will be factored in during the next hourly risk scoring calculation.
+The new asset criticality levels are factored into entity risk scores during the next hourly risk scoring calculation.
+
+:::{note}
+:applies_to: {stack: removed 9.6+, serverless: removed}
+To recalculate entity risk scores immediately after importing a file, click **Recalculate entity risk scores now**.
+:::
 
 
 ## Improve your security operations [_improve_your_security_operations]

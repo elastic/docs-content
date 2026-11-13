@@ -2,7 +2,8 @@
 navigation_title: Get started
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -11,6 +12,8 @@ description: "Learn what happens after a rule runs, look up key terms, and follo
 
 # Get started with {{alerting-v2-system}} [get-started]
 
+This section introduces {{alerting-v2-system-short}}. It explains what happens after a rule runs, defines key terms, and walks you through creating your first rule.
+
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
@@ -18,7 +21,7 @@ description: "Learn what happens after a rule runs, look up key terms, and follo
 - [Glossary](get-started/glossary.md): Look up key terms, such as alert, action policy, and rule event.
 - [Create your first rule](get-started/create-your-first-rule.md): Load sample data, create a rule, and watch an alert move from breach through automatic recovery.
 
-Before you start the tutorial, [set up {{alerting-v2-system}}](setup.md) and [configure access](manage/configure-access.md) for your role.
+Before you start the tutorial, [set up {{alerting-v2-system-short}}](setup.md) and [configure access](manage/configure-access.md) for your role.
 
 ## Explore the documentation [explore-documentation]
 

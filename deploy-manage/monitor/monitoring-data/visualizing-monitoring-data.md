@@ -27,10 +27,10 @@ Review the following topics to learn more about the metrics and visualizations a
 
 From the **Stack Monitoring** section, you can also configure [{{kib}} alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) for stack monitoring metrics.
 
-To investigate logs alongside the metrics shown in Stack Monitoring, open your shipped logs in [Discover](/explore-analyze/discover.md) and filter by log level and time range to identify failures or anomalies that correlate with the metrics. {{kib}} provides a [dedicated logs experience in Discover](/solutions/observability/logs/discover-logs.md) for data that matches `logs-*` indices. The data view you query depends on how you ship logs:
+To investigate logs alongside the metrics shown in Stack Monitoring, open your shipped logs in [Discover](/explore-analyze/discover.md) and filter by log level and time range to identify failures or anomalies that correlate with the metrics. {{kib}} provides a [dedicated logs experience in Discover](/solutions/observability/logs/discover-logs.md) for data that matches `logs-*` indices. The data you query depends on how you ship logs:
 
-* On {{ech}} and {{ece}}, use the `elastic-cloud-logs-*` data view, which is set up automatically when you [enable logging and monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
-* On {{eck}} and self-managed deployments, use the data view that matches your log shipping setup, such as the {{filebeat}} or {{agent}} output indices. For details, refer to [](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md) or [](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
+* On {{ech}} and {{ece}}, query `FROM elastic-cloud-logs-*` in {{esql}} mode, or use the `elastic-cloud-logs-*` data view in classic mode. {{kib}} sets up the data view automatically when you [enable logging and monitoring](/deploy-manage/monitor/stack-monitoring/ece-ech-stack-monitoring.md).
+* On {{eck}} and self-managed deployments, query the indices that match your log shipping setup in {{esql}} mode, or use the matching data view in classic mode. Examples are the {{filebeat}} or {{agent}} output indices. For details, refer to [](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md) or [](/deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
 
 If you're having trouble accessing your monitoring data within the **Stack Monitoring** section, then refer to [](/deploy-manage/monitor/monitoring-data/monitor-troubleshooting.md).
 

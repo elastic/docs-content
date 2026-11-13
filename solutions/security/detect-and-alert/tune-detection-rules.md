@@ -18,6 +18,11 @@ Tuning means modifying a rule's query, threshold, or schedule so it only matches
 
 If a rule is correctly written but fires on known-safe activity specific to your environment, use [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) instead. If you're unsure which approach fits your situation, refer to [Reduce noise and false positives](/solutions/security/detect-and-alert/reduce-noise-and-false-positives.md) to compare all available mechanisms.
 
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6"}
+If you use [{{alertzero}}](/solutions/security/alertzero/index.md), it can find your noisiest rules and [propose tuning changes](/solutions/security/alertzero/decide-detection-change.md) for them, so you don't have to find them yourself.
+:::
+
 This page covers tuning guidance for specific rule categories:
 
 * [Tune rules detecting authorized processes](#tune-authorized-processes)

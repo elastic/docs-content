@@ -18,8 +18,11 @@ helm repo add elastic https://helm.elastic.co
 helm repo update
 ```
 
-::::{note}
-The minimum supported version of Helm is {{eck_helm_minimum_version}}.
+::::{important}
+Before you install the {{stack}} Helm chart, make sure that:
+
+* Your Helm version is {{eck_helm_minimum_version}} or later.
+* The ECK operator and its CustomResourceDefinitions (CRDs) are installed in your cluster. If they aren't, the installation fails with errors such as `no matches for kind "Elasticsearch"`. Refer to [Install ECK using a Helm chart](/deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md) to install the operator first.
 ::::
 
 The {{stack}} (`eck-stack`) Helm chart is built on top of individual charts such as `eck-elasticsearch` and `eck-kibana`. For more details on its structure and dependencies, refer to the [chart repository](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-stack/).

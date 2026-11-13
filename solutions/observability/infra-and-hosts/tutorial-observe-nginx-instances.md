@@ -208,11 +208,10 @@ With Discover, you can quickly search and filter your log data, get information 
 
 Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-Filter your results to see logs from the nginx integration from the data selector:
+Filter your results to see logs from the nginx integration. Use the `nginx.error` dataset for error logs and the `nginx.access` dataset for access logs:
 
-1. From the **Data view** menu, select all logs.
-
-2. Filter the log results using the KQL search bar. Enter `data_stream.dataset : "nginx.error"` to show nginx error logs or `data_stream.dataset : "nginx.access"` to show nginx access logs.
+- In {{esql}} mode, enter `FROM logs-* | WHERE data_stream.dataset == "nginx.error"` or `FROM logs-* | WHERE data_stream.dataset == "nginx.access"`.
+- In classic mode, select all logs from the **Data view** menu. Then enter `data_stream.dataset : "nginx.error"` or `data_stream.dataset : "nginx.access"` in the KQL search bar.
 
 #### nginx logs dashboards [monitor-nginx-logs-dashboard]
 

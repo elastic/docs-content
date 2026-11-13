@@ -2,7 +2,8 @@
 navigation_title: Alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Alerts track a problem from first detection through recovery. Alerts belong to a series that groups recurrences of the same condition."
@@ -13,7 +14,7 @@ description: "Alerts track a problem from first detection through recovery. Aler
 :::{include} /explore-analyze/alerting/esql/_snippets/v2-system-note.md
 :::
 
-{{alerting-v2-system-cap}} tracks each problem as an **alert**: the grouping of [rule events](rules/rule-event-field-reference.md) that share `episode.id`, from first detection through recovery.
+{{alerting-v2-system}} tracks each problem as an **alert**: the grouping of [rule events](rules/rule-event-field-reference.md) that share `episode.id`, from first detection through recovery.
 
 ## Alert lifecycle states [alert-episode-lifecycle]
 

@@ -43,6 +43,8 @@ You can also use the toolbar buttons in the upper-right to customize the display
 If a rule generated unexpected alerts or failed to generate alerts when you expected it to, use the rule query inspector to examine the underlying {{es}} query and the data the rule evaluated. For more details, refer to [Troubleshoot rule behavior with the rule query inspector](/explore-analyze/alerting/alerts/troubleshoot-rule-behavior.md).
 ::::
 
+{applies_to}`observability: ga` If rules fail or time out, your project might be running out of search capacity. Refer to [Understand search capacity and alerting performance](/troubleshoot/observability/search-capacity.md).
+
 ## View alert details [observability-view-alerts-view-alert-details]
 
 There are a few ways to inspect the details for a specific alert.
