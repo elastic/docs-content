@@ -41,7 +41,7 @@ If you haven't saved a color mode preference, Kibana applies a default color mod
       :::
 
 4. Select **Save changes**.
-5. Refresh the page to apply the selected color mode.
+5. {applies_to}`stack: ga 9.0-9.6` Refresh the page to apply the selected color mode.
 
 ## Related pages
 
