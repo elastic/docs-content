@@ -22,7 +22,7 @@ After you authorize it, the host and any agent in it can find your projects, ans
 ## Use cases [use-cases]
 
 - **Start in the host you already use.** Use your existing IDE, CLI, or chat app to sign in to the service, then ask it to create a {{serverless-short}} project and work with the data you add to it.
-- **Use every project you can access from one connection.** Unlike the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md), which is a separate endpoint for each project, this service is one URL, `https://mcp.elastic.co`.
+- **Use every project you can access from one connection.** Unlike the [{{agent-builder}} MCP server](/explore-analyze/ai-features/agent-builder/mcp-server.md), which is a separate endpoint for each project, this service is one URL, {{mcp-service-url}}.
 - **Let an agent do the work as you.** After you authorize the connection, an agent in the host can take the same actions you can take in those projects.
 
 Choose a different option when:
@@ -33,7 +33,7 @@ Choose a different option when:
 
 ## How it works [how-it-works]
 
-You connect the MCP host to `https://mcp.elastic.co` and authorize it with OAuth 2.1. The service finds the {{serverless-short}} projects you can access and routes each call to the project. Your data stays in the project. The connection acts as you.
+You connect the MCP host to {{mcp-service-url}} and authorize it with OAuth 2.1. The service finds the {{serverless-short}} projects you can access and routes each call to the project. Your data stays in the project. The connection acts as you.
 
 The {{mcp-service}} maps {{es}}, {{kib}}, and Cloud control-plane REST APIs onto the [tools](#available-tools) below.
 One tool searches the API catalog so the host can find the operation it needs, read its schema, and run the call.
@@ -83,7 +83,7 @@ The agent uses them to find your projects, find the Elastic API that matches you
 
 ## Next steps [next-steps]
 
-- Connect a host at [`https://mcp.elastic.co`](https://mcp.elastic.co).
+- Connect a host at {{mcp-service-url}}.
 - If you don't have a project yet, [create an {{serverless-full}} project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md). You can also ask the connected host to create one.
 
 ## Related pages [related-pages]
