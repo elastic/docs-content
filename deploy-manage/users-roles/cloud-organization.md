@@ -24,6 +24,8 @@ You can perform the following tasks to control access to your Cloud organization
 
 You can also control programmatic access to {{ecloud}}, your deployments, and your projects using [API keys](/deploy-manage/api-keys.md).
 
+For workloads that run within {{kib}} applications in {{serverless-short}} projects, you can also use [user-managed service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md).
+
 :::{tip}
 If you're using {{ech}}, then you can also manage users and control access [at the deployment level](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 :::

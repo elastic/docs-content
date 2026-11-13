@@ -20,6 +20,8 @@ A trigger is an event or condition that initiates a workflow. Without a trigger,
 
 Triggers also provide initial context to the workflow. For example, a workflow triggered by an alert carries the alert's metadata, entities, and source events. This context shapes how the workflow executes.
 
+To understand whose privileges authorize a triggered run, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
+
 ## Trigger types
 
 The following types of triggers are available:
