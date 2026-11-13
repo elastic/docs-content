@@ -504,6 +504,6 @@ subs:
   tsds-cap: "Time series data stream"
   tsds-init: "TSDS"
   mcp-service: "Elastic Global MCP Service"
-  mcp-service-url:   "https://mcp.elastic.co/"
+  mcp-service-url:   "MCP_SERVICE_URL"
 release_notes:
   - product: cloud-serverless
