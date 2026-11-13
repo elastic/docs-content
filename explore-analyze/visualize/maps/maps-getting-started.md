@@ -153,7 +153,7 @@ You’ll create a layer for [aggregated data](../../query-filter/aggregations.md
 
 Now that your map is complete, save it and return to the dashboard.
 
-1. In the toolbar, click **Save and return**.
+1. Select **Save and return**.
 
 
 ## Step 5. Explore your data from the dashboard [maps-embedding]
