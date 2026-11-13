@@ -27,8 +27,7 @@ You can also access this rule from the **Data Set Quality** page:
 
 1. To open the **Data Set Quality** management page, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select a data set name from the data set table.
-1. Select **Actions** in the upper-right corner of the page.
-1. Select **Create rule**.
+1. In **Document trends**, select the {icon}`bell` **Create rule** icon.
 
 ## Requirements
 
