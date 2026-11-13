@@ -505,5 +505,6 @@ subs:
   tsds-init: "TSDS"
   mcp-service: "Elastic Global MCP Service"
   mcp-service-url:   "MCP_SERVICE_URL"
+  mcp-service-mcp-url: "MCP_SERVICE_MCP_URL"
 release_notes:
   - product: cloud-serverless

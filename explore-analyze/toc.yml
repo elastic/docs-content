@@ -294,6 +294,8 @@ toc:
       - file: ai-features/agent-skills.md
       - file: ai-features/claude-plugin.md
       - hidden: ai-features/elastic-mcp-service.md
+        children:
+          - hidden: ai-features/connect-elastic-mcp-service.md
       - file: ai-features/claude-connector.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:

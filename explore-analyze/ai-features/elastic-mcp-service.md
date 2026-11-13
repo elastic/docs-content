@@ -33,7 +33,7 @@ Choose a different option when:
 
 ## How it works [how-it-works]
 
-You connect the MCP host to {{mcp-service-url}} and authorize it with OAuth 2.1. The service finds the {{serverless-short}} projects you can access and routes each call to the project. Your data stays in the project. The connection acts as you.
+You connect the MCP host to {{mcp-service-mcp-url}} and authorize it with OAuth 2.1. The service finds the {{serverless-short}} projects you can access and routes each call to the project. Your data stays in the project. The connection acts as you.
 
 The {{mcp-service}} maps {{es}}, {{kib}}, and Cloud control-plane REST APIs onto the [tools](#available-tools) below.
 One tool searches the API catalog so the host can find the operation it needs, read its schema, and run the call.
@@ -83,7 +83,7 @@ The agent uses them to find your projects, find the Elastic API that matches you
 
 ## Next steps [next-steps]
 
-- Connect a host at {{mcp-service-url}}.
+- [Connect an MCP host to the {{mcp-service}}](/explore-analyze/ai-features/connect-elastic-mcp-service.md).
 - If you don't have a project yet, [create an {{serverless-full}} project](/deploy-manage/deploy/elastic-cloud/create-serverless-project.md). You can also ask the connected host to create one.
 
 ## Related pages [related-pages]
