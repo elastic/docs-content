@@ -53,13 +53,13 @@ To install the plugin from Cursor:
 2. Find the **Elastic** plugin and select it.
 3. Select **Add to Cursor**, then choose the project or user scope.
 
-You can also open the [Elastic plugin page in the Cursor Marketplace](https://cursor.com/marketplace/elastic) and select **Add to Cursor**.
-
-:::{image} ../images/cursor-marketplace-elastic-plugin.png
+:::{image} ../images/cursor-elastic-plugin.png
 :screenshot:
-:alt: The Elastic plugin page in the Cursor Marketplace, showing the plugin description, an Add to Cursor button, the elastic-docs MCP server, and the start of the plugin's skills list.
+:alt: The Elastic plugin details page in Cursor, showing the plugin description, an Add to Cursor button, the elastic-docs MCP server, and the start of the plugin's skills list.
 :width: 700px
 :::
+
+You can also open the [Elastic plugin page in the Cursor Marketplace](https://cursor.com/marketplace/elastic) and install it from there.
 
 After installation, the plugin's skills and the Elastic Docs MCP server appear in **Customize**, where you can manage them.
 For more about installing and managing plugins, including distributing plugins to a team, refer to the [Cursor plugins documentation](https://cursor.com/docs/plugins).
