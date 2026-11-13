@@ -1,6 +1,6 @@
 ---
 navigation_title: Filter approximate kNN results
-description: Filter approximate kNN search results and understand pre-filtering, post-filtering, and HNSW filtering performance in Elasticsearch.
+description: Filter approximate kNN search results and understand pre-filtering, post-filtering, automatic post-filtering, and HNSW filtering performance in Elasticsearch.
 applies_to:
   stack:
   serverless:
