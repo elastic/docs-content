@@ -16,7 +16,7 @@ description: Create and configure detection rules tailored to your environment a
 Create custom detection rules tailored to your environment and threat model. The pages in this section guide you through selecting a rule type, writing rule logic, and configuring settings.
 
 **[Choose the right rule type](/solutions/security/detect-and-alert/choose-the-right-rule-type.md)**
-:   Start here if you're not sure which rule type fits your use case. Compares all rule types side by side.
+:   Start here if you're not sure which rule type fits your use case. Compares all rule types side by side and explains when to make a rule a building block rule that feeds other rules.
 
 **[Rule types](/solutions/security/detect-and-alert/rule-types.md)**
 :   Detailed guidance for each rule type, including when to use it and field configuration specific to that type.

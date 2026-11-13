@@ -76,7 +76,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 :   The rule's authors.
 
 **Building block** (optional)
-:   Select to create a building-block rule. By default, alerts generated from a building-block rule are not displayed in the UI. See [About building block rules](/solutions/security/detect-and-alert/about-building-block-rules.md) for more information.
+:   Select to make this a building block rule. By default, its alerts don't appear on the **Alerts** page, so other rules can use them as evidence without adding to the alert queue. Refer to [Building block rules and detection chains](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#about-building-block-rules).
 
 **Custom highlighted fields** (optional)
 :   Specify highlighted fields for unique alert investigation flows. These fields help analysts quickly access key information when triaging alerts, without needing to search through all available fields. You can select any fields that are available in the indices you selected for the rule's data source.

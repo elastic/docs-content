@@ -1035,6 +1035,15 @@ redirects:
     anchors:
       '': 'alert-actions'
 
+  # Deleted. Building block rules content moved to Choose the right rule type.
+  'solutions/security/detect-and-alert/about-building-block-rules.md':
+    to: 'solutions/security/detect-and-alert/choose-the-right-rule-type.md'
+    anchors:
+      '': 'about-building-block-rules'
+      'security-building-block-rules': 'about-building-block-rules'
+      'security-building-block-rules-set-up-rules-that-run-on-alert-indices': 'set-up-detection-chain'
+      'security-building-block-rules-view-building-block-alerts-in-the-ui': 'view-building-block-alerts'
+
 # Related to renaming Alert data model to Rule event data model
   'explore-analyze/alerting/experimental-alerting-system/alerts/alert-data-model.md':
     to: 'explore-analyze/alerting/esql/alerts/rule-event-data-model.md'

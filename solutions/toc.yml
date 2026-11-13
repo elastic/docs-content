@@ -801,8 +801,6 @@ toc:
           - file: security/detect-and-alert/author-rules.md
             children:
               - file: security/detect-and-alert/choose-the-right-rule-type.md
-                children:
-                  - file: security/detect-and-alert/about-building-block-rules.md
               - file: security/detect-and-alert/rule-types.md
                 children:
                   - file: security/detect-and-alert/esql.md

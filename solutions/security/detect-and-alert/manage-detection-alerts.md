@@ -49,7 +49,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | KQL search | Enter queries like `kibana.alert.rule.name: "SSH from the Internet"`. Autocomplete is available for `.alerts-security.alerts-*` indices. |
 | Date/time picker | Set a specific time range (default: last 24 hours). |
 | Drop-down controls | Filter by status, severity, user, host, or [custom fields](#drop-down-filter-controls). |
-| Additional filters | Include [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) or show only indicator match rule alerts. |
+| Additional filters | Include [building block alerts](/solutions/security/detect-and-alert/choose-the-right-rule-type.md#about-building-block-rules) or show only indicator match rule alerts. |
 | Visualization section | Group and visualize alerts by field. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md). |
 
 ### Inline actions

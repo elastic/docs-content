@@ -2,6 +2,8 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/about-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-about-rules.html
+  - https://www.elastic.co/guide/en/security/current/building-block-rule.html
+  - https://www.elastic.co/guide/en/serverless/current/security-building-block-rules.html
 applies_to:
   stack: ga all
   serverless:
@@ -9,7 +11,7 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Compare detection rule types and select the best fit for your threat detection use case.
+description: Compare detection rule types, select the best fit for your threat detection use case, and decide when to make a rule a building block rule.
 ---
 
 # Choose the right rule type [security-about-rules]
@@ -30,49 +32,55 @@ Use the following table to select the right rule type. The rows are ordered as a
 | Do I need aggregation, transformation, or computed fields? | [{{esql}}](/solutions/security/detect-and-alert/esql.md) | Uses pipe-based {{esql}} queries to aggregate, transform, and filter data before alerting. Each result row becomes an alert. |
 | None of the above? | [Custom query](/solutions/security/detect-and-alert/custom-query.md) | Matches events using KQL or Lucene. The most flexible and widely used type for known field values, patterns, or boolean conditions. |
 
-<!-- BUILDING BLOCK SECTION - COMMENTED OUT FOR REVIEW
+Any of these rule types can also be a building block rule, whose alerts feed other rules instead of the alert queue. To decide whether to make a rule a building block rule, refer to [Building block rules and detection chains](#about-building-block-rules).
+
 ## Building block rules and detection chains [about-building-block-rules]
 
-Any rule type can be designated as a **building block** rule. Building block rules generate alerts that are hidden from the Alerts page by default. They serve as intermediate signals that feed into higher-level detection logic.
+Some activity is too common to investigate on its own, but it points to an attack when several pieces of it happen together. To detect that pattern without adding noise to the alert queue, make the rules that find each piece building block rules. Then create a correlation rule that searches their alerts and creates one alert when the pieces add up.
 
-### When to use building blocks
+Any rule type can be a building block rule. Its alerts go to the same alerts index as all other alerts, but the **Alerts** page and the Overview page don't show them by default.
 
-Building block rules are useful when:
+### When to make a rule a building block rule [when-to-use-building-block-rules]
 
-* An individual event is too low-risk to warrant analyst attention, but a combination of such events is significant.
-* You want to create a **detection chain**: a set of building block rules whose hidden alerts become the input for a downstream rule that produces a visible, high-confidence alert.
-* You need a persistent record of low-severity signals for threat hunting or retrospective analysis without cluttering the Alerts page.
+Make a rule a building block rule when its alerts are useful as evidence but don't need an analyst's attention on their own. Building block rules fit these cases.
 
-### How detection chains work
+* Each matching event is low risk, but several together are significant.
+* You want a record of low-severity activity for threat hunting or later investigation, without adding it to the Alerts table.
+* You want the activity to raise [entity risk scores](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md), which include building block alerts.
 
-A detection chain typically has two layers:
+Elastic prebuilt rules also include building block rules, tagged `Rule Type: BBR`. To decide when to turn them on, refer to [Choosing which rules to enable](/solutions/security/detect-and-alert/install-prebuilt-rules.md#choosing-rules-to-enable).
 
-1. **Building block rules** query source event indices and produce hidden alerts. These alerts are written to the `.alerts-security.alerts-<kibana space>` index.
-2. **A downstream rule** queries the alert index (`.alerts-security.alerts-*`) instead of source event indices. It correlates or aggregates the building block alerts and produces a visible alert when the combined pattern meets its criteria.
+### How a detection chain works [how-detection-chains-work]
 
-For example, you might create three building block rules:
+A detection chain has two layers. Building block rules search your source events and create hidden alerts. A correlation rule then searches those alerts instead of source events. When the building block alerts fit the pattern it looks for, such as several on the same host within a short time, the correlation rule creates an alert that analysts see.
 
-* One that detects a suspicious registry modification.
-* One that detects a new scheduled task creation.
-* One that detects an outbound connection to a rare domain.
+For example, an intrusion often leaves several traces that are common on their own, such as a change to a startup registry key, a new scheduled task, and an outbound connection to a rare domain. You can create a building block rule for each trace. An [EQL](/solutions/security/detect-and-alert/eql.md) sequence rule that searches the alerts can then detect all three on the same host within an hour and create one alert for an analyst to investigate.
 
-Each of these individually produces low-confidence alerts. A downstream EQL sequence rule can then query the alert index to detect all three occurring on the same host within a short time window, producing a single high-confidence alert for a likely intrusion chain.
+Elastic prebuilt rules use the same approach. To see working examples, filter the Rules table by the `Rule Type: Higher-Order Rule` tag, which Elastic adds to its prebuilt rules that search alerts.
 
-::::{tip}
-Add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) to building block rules if you want notifications when building block alerts are generated. The alerts remain hidden from the default Alerts view, but notifications are still sent.
-::::
+### Set up a detection chain [set-up-detection-chain]
 
-### Viewing building block alerts
+1. For each rule that detects one piece of the pattern, open the rule's [advanced settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) and select **Mark all generated alerts as "building block" alerts**. You can turn on this setting when you create or edit a rule of any type.
+2. Create the correlation rule. In the **Define rule** step, set **Source** to **Index Patterns**, then enter the alerts index pattern, `.alerts-security.alerts-*`.
 
-Building block alerts are excluded from the Overview and Alerts pages by default. To include them:
+    :::{image} /solutions/images/security-alert-indices-ui.png
+    :alt: The Source setting set to Index Patterns, with the alerts index pattern entered
+    :screenshot:
+    :::
 
-1. Navigate to the **Alerts** page.
-2. Select **Additional filters** then **Include building block alerts**.
+    To search the alerts from one {{kib}} space only, enter that space's alias instead, such as `.alerts-security.alerts-default`. Refer to [Query alert indices](/solutions/security/detect-and-alert/query-alert-indices.md#alert-index-aliases).
+3. Write the correlation rule's query so it matches only the alerts you want to correlate. For example, filter by `kibana.alert.rule.name`, or by a tag that you add to each building block rule. To match only building block alerts, filter on `kibana.alert.building_block_type`, which other alerts don't have.
 
-On a building block rule's details page, the rule's alerts are always displayed.
+    Without a filter like this, the correlation rule can also match its own alerts and those of other correlation rules. Elastic prebuilt correlation rules, for example, exclude alerts from rules tagged `Rule Type: Higher-Order Rule`.
 
-### Marking a rule as a building block
+To get notified when a building block rule creates alerts, add [rule actions](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) to it. The alerts stay hidden on the **Alerts** page, but the actions still run.
 
-Select the **Building block** option in the rule's [advanced settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) when creating or editing any rule type.
-END BUILDING BLOCK SECTION -->
+### View building block alerts [view-building-block-alerts]
+
+To check what your building block rules found, or to investigate the alerts behind a correlation rule's alert, include building block alerts in the Alerts table.
+
+1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. In the Alerts table toolbar, select **Additional filters** → **Include building block alerts**.
+
+A building block rule's details page already includes them, so you can find that rule's alerts there without changing the filter.
 
