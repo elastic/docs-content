@@ -19,7 +19,7 @@ Custom agents enable you to create specialized AI assistants tailored to your sp
 :::{note}
 Built-in agents are immutable and cannot be edited. To customize agent behavior, you need to create a custom agent by cloning an agent or creating a new one from scratch.
 
-{applies_to}`stack: ga 9.4+` The **Elastic AI Agent** is an exception: as the default agent for each space, it can be edited directly.
+{applies_to}`stack: ga 9.4+` The **Elastic AI Agent** is an exception: it's created automatically in each space and can be edited directly.
 :::
 
 Custom agents are space-aware: they are only available in the [{{kib}} space](/deploy-manage/manage-spaces.md) where they were created. In contrast, built-in agents are available across all spaces.
@@ -259,10 +259,13 @@ From the **Agents** page, you can perform various actions on custom agents:
 - **Edit**: Modify the agent's settings, instructions, tools, or appearance.
 - **Clone**: Create a copy of the agent as a starting point for a new agent.
 - **Delete**: Remove the agent from your workspace.
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Set as space default**: Make the agent the [space default agent](agent-builder-agents.md#space-default-agent). You need the **Create and edit agents** privilege. This action isn't available for hidden agents.
+
+The actions menu for a custom agent includes these options, plus **Manage access** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` for agents whose access you can change:
 
 :::{image} images/chat-edit-clone-delete.png
 :screenshot:
-:alt: Agent context menu showing Chat, Edit, Clone, and Delete options
+:alt: Actions menu for an agent showing Chat, Edit, Clone, Manage access, Set as space default, and Delete
 :width: 130px
 :::
 
@@ -297,6 +300,8 @@ Every agent has one of three access control levels:
 :   Only the owner or an administrator can view and edit.
 
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Users you grant access to can also view it, and edit it if you give them **Editor** or **Manager**.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` A **Private** agent can't be the [space default agent](agent-builder-agents.md#space-default-agent).
 
 :::{image} images/agent-access-control-levels.png
 :screenshot:

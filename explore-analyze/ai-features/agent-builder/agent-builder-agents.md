@@ -87,19 +87,91 @@ The **Agents** page provides a centralized view of all your agents. From this pa
 - Filter agents by labels using the **Labels** dropdown
 - Create new agents using the **New agent** button
 - Start chatting with an agent or perform other actions:
-    - **Built-in agents**: You can **chat** or **clone** built-in agents. They cannot be edited or deleted.
-      :::{image} images/chat-and-clone-buttons.png
-      :screenshot:
-      :alt: Chat with agent and clone agent buttons
-      :width: 120px
-      :::
+    - **Built-in agents**: You can **chat** or **clone** built-in agents. They cannot be edited or deleted. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If you have the privilege to create and edit agents, you can also set a built-in agent as the space default.
     - **Custom agents**: You can **chat**, **edit**, **clone**, or **delete** custom agents.
+
+      The actions menu for a custom agent also includes **Manage access** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` if you can change the agent's access. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` It also includes **Set as space default**.
+
+      The menu looks like this:
 
       :::{image} images/chat-edit-clone-delete.png
       :screenshot:
-      :alt: Agent context menu showing Chat, Edit, Clone, and Delete options
+      :alt: Actions menu for a custom agent showing Chat, Edit, Clone, Manage access, Set as space default, and Delete
       :width: 130px
       :::
+- {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Set an agent as the [space default agent](#space-default-agent)
+
+### Set a default agent for a space [space-default-agent]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+You can make one agent the default agent for a {{kib}} space. Users in that space who can't manage agents can then chat only with that agent in the {{agent-builder}} UI. For example, give a team one agent that's configured for their data and tasks.
+
+To set or remove the space default agent, you need the **Agent Builder > Management: Create and edit agents** privilege. **Agent Builder: All** also includes it. For details, refer to [](permissions.md#kib-privileges).
+
+#### Set or remove the space default agent
+
+To set the space default agent:
+
+1. Go to the **Agents** page.
+2. From the actions menu for the agent, select **Set as space default**.
+
+The agent shows a **Space default** badge. Each space has at most one space default agent, so setting a new one replaces the previous one.
+
+In the **Agents** list, the badge appears next to the name of the space default agent:
+
+:::{image} images/space-default-agent-badge.png
+:screenshot:
+:alt: Agents list with a Space default badge next to the Team Agent name
+:width: 500px
+:::
+
+To remove the space default agent:
+
+1. Go to the **Agents** page.
+2. From the actions menu for the space default agent, select **Remove as space default**.
+
+#### Which agents can be the space default
+
+These agents can be the space default:
+
+- **Public** and **Shared** custom agents.
+- Built-in agents, such as the Elastic AI Agent.
+
+% TODO: After #9180 (hidden agents) merges, add a note that hidden agents can't be the space default. The **Set as space default** action isn't available for them.
+
+A **Private** agent can't be the space default. If you try, {{kib}} shows an error. To use one, first change its [access control level](custom-agents.md#access-control-settings) to **Public** or **Shared**.
+
+#### What users see
+
+| Users | Experience |
+| --- | --- |
+| Without the privilege to create and edit agents | {{agent-builder}} opens with the space default agent selected. The agent selector lists only that agent, and links to other agents open the space default agent instead. In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode) {applies_to}`serverless: preview`, the chat also uses the space default agent. |
+| With the privilege to create and edit agents | They can still use all the agents they have access to. {{agent-builder}} opens on the agent they last used in that browser and space. If they haven't used an agent yet, or their last agent is no longer available, it opens on the space default agent. In sidebar mode, the chat opens on the Elastic AI Agent unless the page that opens it specifies another agent. |
+
+For users without the privilege, the agent selector lists only the space default agent, and **New agent** and **Manage agents** are disabled:
+
+:::{image} images/space-default-agent-selector.png
+:screenshot:
+:alt: Agent selector open for a user without the privilege, listing only Team Agent, with New agent and Manage agents disabled
+:width: 400px
+:::
+
+While the space default agent applies to them, users without the privilege can't open conversations with other agents in the {{agent-builder}} UI, including conversations that are shared with them. The conversations aren't deleted. They're available again when you remove the space default agent, or when it no longer applies to those users.
+
+#### Special cases
+
+Deleted or not visible
+:   If the space default agent is deleted or isn't visible to a user, that user isn't restricted to it. {{agent-builder}} opens on the agent they last used in that browser and space, or on the Elastic AI Agent.
+
+Changed to **Private**
+:   Changing the space default agent to **Private** doesn't remove the setting. Users who can still see the agent remain restricted to it, and everyone else falls back as described in the previous case. To stop restricting users, select **Remove as space default**.
+
+APIs
+:   The space default agent only affects the {{agent-builder}} UI. It doesn't restrict which agents users can call through the [{{agent-builder}} APIs](kibana-api.md). To control who can use an agent, use its [access control settings](custom-agents.md#access-control-settings).
 
 
 ## Elastic capabilities [elastic-capabilities]

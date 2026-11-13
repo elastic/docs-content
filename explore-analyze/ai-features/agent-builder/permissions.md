@@ -54,7 +54,7 @@ In the role management UI, {{kib}} displays human-readable privilege names. Role
 | --- | --- | --- |
 | **Agent Builder: Read** | `feature_agentBuilder.read` | Use agents, send chat messages, and view agents, tools, and conversations.<br>{applies_to}`stack: ga 9.4+` Also view skills.<br>On Serverless, also manage OAuth MCP clients for the [{{agent-builder}} MCP server](mcp-server.md). |
 | **Agent Builder: All** | `feature_agentBuilder.all` | Everything granted by **Read**, plus all {{agent-builder}} management privileges. |
-| **Agent Builder > Management: Create and edit agents** {applies_to}`stack: ga 9.4+` | `feature_agentBuilder.manage_agents` | Pair with **Read** to create, update, and delete custom agents without granting other management privileges. |
+| **Agent Builder > Management: Create and edit agents** {applies_to}`stack: ga 9.4+` | `feature_agentBuilder.manage_agents` | Pair with **Read** to create, update, and delete custom agents without granting other management privileges.<br>{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Also set or remove the [space default agent](agent-builder-agents.md#space-default-agent). |
 | **Agent Builder > Management: Create and edit custom tools** {applies_to}`stack: ga 9.4+` | `feature_agentBuilder.manage_tools` | Pair with **Read** to create, update, and delete custom tools without granting other management privileges. |
 | **Agent Builder > Management: Create and edit skills** {applies_to}`stack: ga 9.4+` | `feature_agentBuilder.manage_skills` | Pair with **Read** to create, update, and delete custom skills without granting other management privileges. |
 | **Actions and Connectors: Read** | `feature_actions.read` | Use agents that access {{kib}} connectors. |
@@ -98,6 +98,8 @@ Access is granted at the index level. Any user who can read these data streams c
 Conversations, custom agents, and custom tools are scoped to the current {{kib}} space. Built-in agents are available in all spaces.
 
 {applies_to}`stack: ga 9.4+` The default Elastic AI Agent is an exception: it is a persisted, space-aware agent that is automatically created in each space.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Each space can also have a [space default agent](agent-builder-agents.md#space-default-agent). In the {{agent-builder}} UI, users without the **Create and edit agents** privilege can only use that agent, as long as they can view it.
 
 In a role or API key descriptor, specify the space in the application privilege resource. For example, use `"resources": ["space:production"]` for the `production` space. Users and API keys cannot access resources in spaces outside their assigned resources.
 

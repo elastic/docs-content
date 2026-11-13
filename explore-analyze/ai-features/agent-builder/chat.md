@@ -79,6 +79,10 @@ stack: ga 9.3+
 
 Use the agent selector to switch agents, to navigate to the agent management section, or to create a new agent. An agent's behavior is defined by its custom instructions and available tools. Switch agents when you need different capabilities for your tasks.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If the space has a [space default agent](agent-builder-agents.md#space-default-agent) and you don't have the privilege to create and edit agents, the agent selector lists only that agent, as long as you can view it.
+
+The following image shows the agent selector:
+
 :::{image} images/agent-builder-agent-selector.png
 :screenshot:
 :alt: Agent selector dropdown showing available agents with options to create or manage agents
@@ -683,6 +687,8 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
 
     {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list also includes **Created by** and **Last updated by** columns. When available, each column displays the user's name and a relative time, such as **3 months ago**. Point to or focus on the relative time to view the exact date and time. If the user's full name is unavailable, their username appears instead. The default agent and other agents installed automatically by {{kib}} display **Elastic**. Read-only built-in agents display a dash in both columns because no creator or editor is recorded for them. If only one value is recorded, only the corresponding column displays a value.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [space default agent](agent-builder-agents.md#space-default-agent), if one is set, shows a **Space default** badge.
 
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.

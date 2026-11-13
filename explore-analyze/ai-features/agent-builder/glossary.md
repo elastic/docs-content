@@ -149,6 +149,8 @@ $$$default-agent$$$
 Default agent {applies_to}`stack: ga 9.4+`
 :   The Elastic AI Agent, which is automatically created in each {{kib}} space and acts as the starting agent for new conversations. See [](builtin-agents-reference.md#elastic-ai-agent).
 
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Not the same as the [](#space-default-agent).
+
 $$$default-model$$$
 Default model
 :   The LLM that {{agent-builder}} uses for any agent that doesn't explicitly select a different one. See [](models.md#change-the-default-model).
@@ -322,6 +324,10 @@ Solution view
 $$$space$$$
 Space
 :   A {{kib}} space. Custom agents and custom tools are _space-aware_: they exist only in the space where they were created. The Elastic AI Agent is also space-aware. See [](/deploy-manage/manage-spaces.md) and [](permissions.md#space-scope).
+
+$$$space-default-agent$$$
+Space default agent {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   The only agent that users without the privilege to create and edit agents can use in the {{agent-builder}} UI for a {{kib}} space. Users with the privilege set it. See [](agent-builder-agents.md#space-default-agent).
 
 $$$standalone-mode$$$
 Standalone mode
