@@ -76,10 +76,12 @@ You can create filter pills by:
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those that the visualization's own query creates with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
 
 Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements) for an {{esql}} example.
 :::
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If a visualization reads from an [{{esql}} view](elasticsearch://reference/query-languages/esql/esql-views.md), you can filter on a column that the view returns. You can also open a drilldown from the values in that column. A column that the view itself computes, such as an aggregation, isn't a field in the underlying {{es}} index. Filtering on it works in the visualization that reads the view, but by default it leaves panels that query the index directly with no results. The computed-field limit still applies to columns that the visualization's own query creates on top of the view.
 
 
 #### Add pills using the filter editor [_add_pills_using_the_filter_editor]
