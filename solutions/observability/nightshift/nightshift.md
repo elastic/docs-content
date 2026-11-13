@@ -2,59 +2,70 @@
 applies_to:
   serverless:
     observability: preview
-description: Elastic nightshift provides automated investigations and on-call assistance for Elastic Observability, triggered from your alerts and significant events.
+description: Learn what Elastic nightshift is, why you'd use it, how it works, and where to start.
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# Elastic nightshift AI SRE
+# {{nightshift}} [nightshift-overview]
 
-Elastic nightshift AI SRE is built into {{observability}} to find, investigate, and fix production problems alongside your team. It helps monitor your systems, lets you start investigations from your alerts and significant events to find likely causes, and helps remediate incidents.
+{{nightshift}} is an AI site reliability engineer (SRE) available in {{product.serverless-observability}}. When something goes wrong in production, it investigates for you by querying your logs, metrics, and traces, reading your code if you connect it, testing explanations, and providing a likely cause with evidence and proposed actions. You decide what happens next.
 
-Elastic nightshift is made up of the following engines, which work together to detect problems in your systems and investigate them:
+It learns your system as it works, and brings that knowledge to every investigation, chat, and detection. It can also watch your data for problems that none of your alerts catch.
 
-1. **Detection engine**: Learns your systems, then tells you when something worth knowing has happened. Elastic nightshift extracts [Knowledge Indicators](./significant-events/knowledge-indicators.md) from your data, such as which services are running, what infrastructure they use, and how they depend on each other. It generates detection rules from them and runs those rules continuously. When rule firings add up to something meaningful, it surfaces a [significant event](./significant-events/index.md) as an alert, so you can manage and route it like any other Elastic alert.
-2. **Investigation engine**: Works out what's behind an alert. You can start an [investigation](./investigations.md) from an alert, a significant event, or the home page. The investigation gathers evidence from your data and from what Elastic nightshift knows about your systems, determines the likely cause, and reports its findings with proposed actions.
-3. **Context engine**: The shared knowledge layer the other engines draw on. It stores what Elastic nightshift knows about your systems, including the Knowledge Indicators that detection produces, and makes that knowledge available when an investigation starts. Through [Context](./memory.md), you can review and correct that knowledge at any time, and add knowledge of your own for investigations to use.
+**If this is your first time**, [Get started](./get-started.md) takes you from enabling {{nightshift}} to your first investigation in a few steps.
 
-## Requirements [nightshift-requirements]
-
-:::{include} _snippets/requirements.md
+:::{image} ../../images/nightshift-home.png
+:alt: The Elastic nightshift home page, with investigations grouped by severity, including High investigations about inventory-api latency and Postgres lock timeouts
+:screenshot:
 :::
 
-## Elastic nightshift UI [nightshift-landing-page]
+## Why use {{nightshift}} [nightshift-overview-why]
 
-The home page is your central view of your investigations. It shows your [investigations](./investigations.md) grouped by severity, so you can see what's being investigated and what needs your attention.
+Knowledge of how your system fits together usually sits with a few engineers. A new SRE has the skills but not the knowledge, and AI models start with the same gap. {{nightshift}} builds that knowledge as it works, so it starts with the problem instead of learning your system.
 
-From the home page you can:
+{{nightshift}} does the first pass of an incident, so you start from a summary instead of a blank dashboard. Investigations use the data and alerts you already have — no detection to turn on, no re-instrumenting, no rewritten rules. Here are some common situations and how they play out with and without {{nightshift}}:
 
-- Select an investigation and view more details about its findings.
-- Select **Start investigation** to trigger a manual investigation.
-- Select **Show all events** to view significant events.
+| Situation | Without {{nightshift}} | With {{nightshift}} |
+| --- | --- | --- |
+| An alert fires | You piece together what changed from dashboards and traces. | An automation investigates it. You open the likely cause and evidence. |
+| Something is wrong, but no alert fired | Users or a teammate tell you. | Detections group unusual changes into a significant event. |
+| The cause is in the code | You search your repositories for the change. | {{nightshift}} reads the relevant code and pull requests in a temporary sandbox, without copying or indexing them. |
+| Your team works in Slack | You copy charts and links into the channel. | You mention `@Elastic`, and the results appear in the thread. |
+| A problem comes back | You have to find someone who remembers the previous solution. | {{nightshift}} starts with context from previous investigations. |
 
-### Look deeper into investigations [nightshift-investigation-flyout]
+## How it works [nightshift-overview-how]
 
-Select an investigation from the home page to view more information. A flyout opens showing the investigation's status, such as **Running** or **Completed**, its severity, and its findings: what happened, the impact, the conclusion, a hypothesis tree, and proposed actions.
+:::{image} ../../images/nightshift-how-it-works.svg
+:alt: How an investigation flows from a trigger, through detection and context, to the proposed actions you decide on.
+:::
 
-### Knowledge page [nightshift-knowledge-page]
+1. **An investigation starts.** The trigger can be a question, an `@Elastic` mention in Slack, selecting **Investigate** on an alert or significant event, or an automation.
+1. **{{nightshift}} investigates.** It queries your data, reads connected code, and tests hypotheses, ranked by confidence.
+1. **It uses and builds context.** It reads its Wiki and Memory first to get context, and saves what it learns.
+1. **It proposes actions.** It provides a likely cause, the evidence, proposed actions, and what it was unsure of.
+1. **You decide.** {{nightshift}} never changes your environment. You apply or decline each action. Administrators set run limits and can pause detection in [Settings and limits](./settings.md).
 
-To review, edit, and add to what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**. Refer to [Context](./memory.md).
+Conclusions can be wrong. Before you act, check the reasoning in the hypothesis tree. Refer to [How investigations work](./investigation/index.md#nightshift-investigations-accuracy).
 
-### Management page [nightshift-management-page]
+## What it costs [nightshift-overview-cost]
 
-Go to **Elastic nightshift** → **Management** to manage how Elastic nightshift runs. From the management page, you can manage Significant Events settings. Refer to the [operator guide](./significant-events/operator-guide.md).
+{{nightshift}} is billed by the model tokens it uses, and daily run limits keep spending predictable. Refer to [Cost and models](./cost-and-models.md).
+
+## Availability [nightshift-overview-availability]
+
+{{nightshift}} is available on {{obs-serverless}} projects on the Complete tier, in the default space only. Refer to [Known issues](./known-issues.md).
 
 ## Give feedback [nightshift-feedback]
 
-Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
+On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Feedback**.
 
-## Learn more [nightshift-landing-page-nav]
+## Learn more [nightshift-overview-start]
 
-- [Get started with Elastic nightshift](./get-started.md): Start an investigation and review the results
-- [Investigations](./investigations.md): Learn how Elastic nightshift investigates problems and how to read the results
-- [Context](./memory.md): Learn how Elastic nightshift stores and uses system knowledge to improve investigation quality over time
-- [Significant Events](./significant-events/index.md): Get an overview of how Elastic nightshift detects significant events in your data
-- [How Significant Events works](./significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
-- [Knowledge Indicators](./significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
-- [Operator guide](./significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
+- [Get started](./get-started.md): Set up {{nightshift}} and run your first investigation.
+- [What you can do with {{nightshift}}](./use-cases/index.md): Follow step-by-step guides for investigating problems, automating investigations, and detecting problems.
+- [How investigations work](./investigation/index.md): Read an investigation and check its reasoning.
+- [How context is built](./context/index.md): Review or correct what {{nightshift}} learned in the Wiki, Memory, and Knowledge Indicators.
+- [Cost and models](./cost-and-models.md): Find out what {{nightshift}} costs and how your data is used.
+- [Reference architecture](./reference-architecture.md): Check what works with your deployment, whether {{serverless-short}}, {{ech}}, or self-managed.

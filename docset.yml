@@ -441,6 +441,8 @@ subs:
   models-app: "Trained Models"
   agent-builder: "Elastic Agent Builder"
   context-engine: "Context Engine"
+  # Elastic nightshift. Lowercase "nightshift" is required. Use this substitution instead of typing the name.
+  nightshift: "Elastic nightshift"
   # AlertZero
   alertzero: "AlertZero"
   az-watch: "Watch"
