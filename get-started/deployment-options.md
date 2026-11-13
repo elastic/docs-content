@@ -10,7 +10,7 @@ applies_to:
   stack:
 ---
 
-# Deployment options
+# Elastic deployment options
 
 You can run Elastic on any infrastructure, so you can choose the model that best fits your operational needs.
 

@@ -1,7 +1,7 @@
-name: Release notes comments
+name: "Release notes: PR comments"
 on:
   workflow_run:
-    workflows: [Release notes]
+    workflows: ["Release notes: Check"]
     types: [completed]
 permissions: {}
 jobs:

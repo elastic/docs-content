@@ -1,4 +1,5 @@
 ---
+navigation_title: Mapping
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-mapper.html
@@ -9,7 +10,7 @@ products:
   - id: elasticsearch
 ---
 
-# Mapping
+# Mapping in {{es}}
 
 % What needs to be done: Refine
 

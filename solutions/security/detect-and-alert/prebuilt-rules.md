@@ -29,4 +29,4 @@ Elastic maintains a library of prebuilt detection rules mapped to the MITRE ATT&
 :   Install and update prebuilt rules in air-gapped environments without internet access.
 
 **[Customize prebuilt rules](/solutions/security/detect-and-alert/customize-prebuilt-rules.md)**
-:   Adapt prebuilt rules to your environment. Edit rules directly or revert to the original Elastic version (Enterprise on {{stack}} 9.1+, or Security Analytics Complete on {{serverless-short}}), duplicate and modify copies, add exceptions, or configure actions.
+:   Adapt prebuilt rules to your environment. Edit rules directly and revert them to the original Elastic version, duplicate and modify copies, add exceptions, or configure actions.

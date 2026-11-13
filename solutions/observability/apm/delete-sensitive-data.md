@@ -31,7 +31,7 @@ POST /logs-apm.error-default/_update_by_query
     "exists": {
       "field": "client.ip"
     }
-  }
+  },
   "script": {
     "source": "ctx._source.client.ip = params.redacted",
     "params": {

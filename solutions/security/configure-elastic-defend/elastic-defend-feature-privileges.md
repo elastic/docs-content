@@ -14,7 +14,7 @@ description: Lists Elastic Defend sub-feature privileges in Elastic Security and
 
 # {{elastic-defend}} sub-feature privileges
 
-Access to {{elastic-defend}} features is controlled by sub-feature privileges that sit under the [**Security** privilege](/solutions/security/get-started/security-kibana-privileges.md), and you grant each one separately. This lets you apply the principle of least privilege, giving a role access to the endpoint management pages and response actions it needs.
+Access to {{elastic-defend}} features is controlled by sub-feature privileges that sit under the [**Security** privilege](/solutions/security/manage/security-kibana-privileges.md), and you grant each one separately. This lets you apply the principle of least privilege, giving a role access to the endpoint management pages and response actions it needs.
 
 To grant these privileges, create or edit a role and add {{kib}} privileges to open the **Assign role to spaces** flyout. Expand the **Security** group of features, select **All** for the **Security** privilege, then turn on **Customize sub-feature privileges**. For instructions on creating and editing roles, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for {{stack}}, or to [Custom roles](/deploy-manage/users-roles/serverless-custom-roles.md) for {{serverless-short}}.
 

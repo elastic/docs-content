@@ -14,9 +14,9 @@ products:
   - id: elastic-stack
 ---
 
-# Getting started with {{kib}} alerting [alerting-getting-started]
+# Getting started with {{alerting-v1-system}} [alerting-getting-started]
 
-{{kib}} alerting is the built-in alerting system in {{kib}}. It enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](rule-types.md#stack-rules) for you to use.
+{{alerting-v1-system}} is the built-in alerting system in {{kib}}. It enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](detection-rules://index.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](rule-types.md#stack-rules) for you to use.
 
 :::{image} /explore-analyze/images/kibana-alerting-overview.png
 :alt: {{rules-ui}} UI
@@ -116,6 +116,10 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 4. If the third party integration has connection parameters or credentials, {{kib}} fetches these from the appropriate connector.
 
 ## Differences from {{watcher}} [alerting-concepts-differences]
+
+:::{note}
+Watcher is not available in {{serverless-full}}.
+:::
 
 [{{watcher}}](../watcher.md) and the {{kib}} {{alert-features}} are both used to detect conditions and can trigger actions in response, but they are completely independent alerting systems.
 

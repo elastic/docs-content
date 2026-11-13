@@ -1,4 +1,4 @@
-name: Docs style sweep
+name: "Sweep: Style"
 on:
   workflow_dispatch:
     inputs:

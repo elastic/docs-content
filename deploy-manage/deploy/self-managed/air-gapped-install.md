@@ -79,13 +79,15 @@ Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-conne
 
 ## {{package-registry}} [air-gapped-elastic-package-registry]
 
-Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](/reference/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
+Air-gapped install of the {{package-registry}} (EPR) is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Usage instructions, along with container image names and pull instructions are available on [Run {{agents}} in an air-gapped environment](/reference/fleet/air-gapped.md).
 
-If using {{eck}}, you can follow the instructions in [Deploy {{package-registry}} on {{eck}}](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
+{applies_to}`stack: ga 9.6+` If your environment requires FIPS 140-3 validated cryptography, use the [FIPS 140-3 images](/reference/fleet/air-gapped.md#air-gapped-diy-epr-fips) of the {{package-registry}}.
 
 ::::{note}
-Besides setting up the EPR service, you also need to [configure {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana) to use this service. If using TLS with the EPR service, it is also necessary to set up {{kib}} to trust the certificate presented by the EPR.
+After you set up the EPR, [connect {{kib}} to it](/reference/fleet/air-gapped.md#air-gapped-diy-epr-kibana). If the EPR uses a self-signed certificate or a custom CA, also [configure {{kib}} to trust that CA](/reference/fleet/air-gapped.md#_using_custom_ca_certificates).
 ::::
+
+For {{eck}}, follow the instructions in [](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
 
 ### Additional {{package-registry}} examples
 

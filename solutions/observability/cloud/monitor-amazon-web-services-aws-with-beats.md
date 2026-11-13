@@ -73,7 +73,7 @@ Replace `<sqs-arn>` with the ARN of the SQS queue, `<s3-bucket-arn>` with the AR
 ::::
 
 
-```console
+```json
 {
   "Version": "2012-10-17",
   "Id": "example-ID",

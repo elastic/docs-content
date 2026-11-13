@@ -10,7 +10,7 @@ products:
 navigation_title: Search use case
 ---
 
-# Search use case
+# Search with {{es}}
 
 This section documents core {{es}} search capabilities. These capabilities are available across all Elastic deployments, solutions, and project types.
 

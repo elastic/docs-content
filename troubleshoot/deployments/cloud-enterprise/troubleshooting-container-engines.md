@@ -11,12 +11,15 @@ products:
 
 # Troubleshoot container engines [ece-troubleshooting-containers]
 
-This article describes how to troubleshoot container engine services in Elastic Cloud Enterprise. We refer to [Docker](https://www.docker.com/) by default, as it’s the most common container engine, but these steps are also valid for [Podman](https://podman.io/). You can simply replace `docker` in the commands  with `podman` as needed.
+This article describes how to troubleshoot container engine services in {{ece}}. We refer to [Docker](https://www.docker.com/) by default, as it’s the most common container engine, but these steps are also valid for [Podman](https://podman.io/). You can simply replace `docker` in the commands  with `podman` as needed.
 
 ::::{important}
-Do not restart the Docker daemon unless directly prescribed by Elastic Support upon reviewing an [{{ece}} diagnostic](run-ece-diagnostics-tool.md), as historically Docker can leave residual orphan processes. We also advise against running any variation of Docker’s `prune` to avoid accidental data loss.
+Do not restart the Docker daemon unless directly prescribed by Elastic Support upon reviewing an [{{ece}} diagnostic](run-ece-diagnostics-tool.md), as historically Docker can leave residual orphan processes.
+
+While troubleshooting an {{ece}} host, do not run broad container engine cleanup commands such as the `system prune`, `container prune`, `network prune`, or `volume prune` subcommands. Container engines identify resources as unused based on their current references, but {{ece}} might still need them. These commands can delete stopped containers and related diagnostic information, images, networks, or volumes that contain persistent data.
 ::::
 
+Outside active troubleshooting, clean up resources only during controlled maintenance. Remove specific resources after you confirm that {{ece}} no longer needs them. For images, use the `image rm` subcommand for your container engine with a specific image ID or tag ([Docker](https://docs.docker.com/reference/cli/docker/image/rm/), [Podman](https://docs.podman.io/en/latest/markdown/podman-rmi.1.html)). Removing required images can prevent {{ece}} from creating or restarting instances, particularly in air-gapped environments.
 
 
 ## Use supported configuration [ece-troubleshooting-containers-supported]

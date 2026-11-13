@@ -40,7 +40,7 @@ Use the index picker when the automation should have access to all documents in 
 Add the source as follows:
 
 1. Open **Context**, then select the AI index.
-2. In **Sources**, select **Edit**.
+2. In **Sources**, select **Add sources**. If the AI index already has sources, select **Edit**.
 3. On the **Elasticsearch data** tab, start typing the name of an index, data stream, or alias.
 4. Select a result. The source appears under **Selected sources**.
 5. Add any other sources the automations need, then select **Save**.

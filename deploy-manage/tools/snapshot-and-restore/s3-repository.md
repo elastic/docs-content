@@ -1,4 +1,5 @@
 ---
+navigation_title: S3 repository
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# S3 repository [repository-s3]
+# S3 repository for {{es}} snapshots [repository-s3]
 
 You can use AWS S3 as a repository for [Snapshot/Restore](../snapshot-and-restore.md).
 
@@ -241,14 +242,23 @@ The `s3` repository type requires your storage API to be _fully_ compatible with
 
 Ensure that your storage supplier offers a full compatibility guarantee, and work with them to address any incompatibilities you encounter. Don't report {{es}} issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using a genuine AWS S3 repository.
 
-You can perform some basic checks of the suitability of your storage system using the [repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, a successful response from this API does not guarantee full compatibility. When upgrading, always verify that your storage passes repository analysis in the upgraded version before upgrading any production clusters.
+You can perform some basic checks of the suitability of your storage system using the [repository analysis API]({{es-apis}}operation/operation-snapshot-repository-analyze). If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible with AWS S3 and therefore unsuitable for use as a snapshot repository. However, a successful response from this API does not guarantee full compatibility.
 
-$$$using-minio-with-elasticsearch$$$
-::::{admonition} Using MinIO with {{es}}
-[MinIO](https://minio.io) is an example of a storage system that provides an S3-compatible API. The `s3` repository type allows {{es}} to work with MinIO-backed repositories as well as repositories stored on AWS S3. The {{es}} test suite includes some checks which aim to detect deviations in behavior between MinIO and AWS S3. Elastic will report directly to the MinIO project any deviations in behavior found by these checks. If you are running a version of MinIO whose behavior deviates from that of AWS S3 then you must upgrade your MinIO installation. If in doubt, please contact the MinIO support team for further information.
+### {{es}} upgrades with S3-compatible services
 
-The performance, reliability, and durability of a MinIO-backed repository depend on the properties of the underlying infrastructure and on the details of your MinIO configuration. You must design your storage infrastructure and configure MinIO in a way that ensures your MinIO-backed repository has performance, reliability, and durability characteristics which match AWS S3 in order for it to be fully S3-compatible. If you need assistance with your MinIO configuration, please contact the MinIO support team.
-::::
+Elastic strives to maintain stability across upgrades. If your storage is fully S3-compatible, upgrades will encounter no storage-related problems. However, if you use the `s3` repository type with a storage system which is not fully S3-compatible then you may find that the upgraded version exposes incompatibilities with Amazon S3 which the earlier version did not. Before every release {{es}} passes through some checks to detect unexpected changes in its interactions with the Amazon S3 API, but cannot foresee all possible incompatibilities in third-party storage products. Before upgrading your {{es}} clusters:
+
+* Contact your storage supplier and confirm that your specific configuration of storage, including its software or firmware version, is fully compatible with the current version of Amazon S3.
+
+* If your storage is known to be incompatible with features of Amazon S3 which were added very recently, consult the {{es}} release notes to determine whether those features will be needed after the upgrade. If they are, apply temporary configuration options to work around the incompatibilities as needed until your storage supplier provides fixes.
+
+* In all cases, verify that your storage passes [repository analysis]({{es-apis}}operation/operation-snapshot-repository-analyze) in a test cluster running the upgraded version before upgrading any production clusters.
+
+* Don't report {{es}} upgrade issues involving storage systems which claim to be S3-compatible unless you can demonstrate that the same issue exists when using Amazon S3.
+
+Amazon adds new features to the S3 API from time to time. {{es}} usually waits more than a year before it starts to use new API features, allowing third-party implementations ample time to catch up. In rare cases {{es}} adopts a new API feature sooner than a year after its release. This can even happen in a minor or patch release, particularly if the feature strengthens protections of the integrity of your snapshot data. In those cases, whenever possible, {{es}} has configuration options to temporarily reinstate the previous behavior. Use of these options can put the integrity of your snapshot data at risk. These options will not be supported beyond the end of the current major series. Use these options only if your storage is not fully compatible with Amazon S3 due to recent changes in the S3 API. Your supplier needs time to release a new fully-compatible version of their product. We therefore recommend you work with your supplier to address all incompatibilities as a matter of urgency. As soon as the incompatibility is fixed by your storage supplier, cease using the temporary configuration options in {{es}}.
+
+Amazon also releases new client SDK versions from time to time. {{es}} recognizes that client SDK upgrades can inadvertently change how it interacts with the S3 API, and performs such upgrades in a minor or patch release only when they are unavoidable. Usually this occurs when a security vulnerability is discovered in the version of the client SDK in use.
 
 ### Investigating incompatibilities
 
@@ -312,7 +322,7 @@ stack: ga 9.3
 
 From 9.3.0 onwards the linearizable register implementation for S3 repositories is based on [S3's conditional writes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html) using the `If-None-Match` and `If-Match` request headers.
 
-If your storage does not support conditional writes then it is not fully S3-compatible. In this case {{es}} can fall back to using the multipart upload APIs for its linearizable registers, as long as these APIs have strongly consistent semantics as described below. Future versions of {{es}} may remove this lenient behavior and require your storage to support conditional writes. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
+If your storage does not support conditional writes then it is not fully S3-compatible. In this case {{es}} can fall back to using the multipart upload APIs for its linearizable registers, as long as these APIs have strongly consistent semantics as described below. This lenient behavior will be removed in the next major release of {{es}}. Contact the supplier of your storage for further information about conditional writes and the strong consistency of your storage's multipart upload APIs.
 
 ### Multipart uploads
 

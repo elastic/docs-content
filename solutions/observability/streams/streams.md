@@ -137,4 +137,4 @@ For more information on Streams components, review the following links:
 - [**Schema**](./map-fields.md): Manage field mappings.
 - [**Data quality**](./manage-data-quality.md): Get information about failed and degraded documents in your stream.
 - [**Advanced**](./advanced.md): Review and manually modify underlying {{es}} components of your stream.
-- [**Knowledge Indicators**](./significant-events/knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.
+- [**Knowledge Indicators**](./knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.

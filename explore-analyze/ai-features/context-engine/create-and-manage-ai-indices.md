@@ -17,7 +17,7 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-An AI index groups the sources, automations, and Knowledge Indicators (KIs) that agents retrieve as context for a defined subject. Its name and description help agents decide when that context is relevant. Create and maintain AI indices interactively in {{kib}} or programmatically with the {{context-engine}} APIs. You can update or delete AI indices that you create. [Managed AI indices](concepts.md#managed-ai-indices) are read-only.
+An AI index groups the [sources](concepts.md#sources), [automations](concepts.md#automations-and-workflows), [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators), and [memories](concepts.md#memory) that agents retrieve as context for a defined subject. Its name and description help agents decide when that context is relevant. Create and maintain AI indices interactively in {{kib}} or programmatically with the {{context-engine}} APIs. You can update or delete AI indices that you create. [Managed AI indices](concepts.md#managed-ai-indices) are read-only.
 
 ## Before you begin
 
@@ -155,7 +155,7 @@ Delete an AI index as follows:
 
 If you preserve an associated resource, deleting the AI index does not delete that resource. Agents can no longer discover or retrieve from the deleted AI index through {{context-engine}}.
 
-You cannot edit or delete a managed AI index. Its owning Elastic integration controls its configuration and lifecycle.
+You cannot edit or delete a managed AI index. The Elastic feature that provides the AI index controls its configuration and lifecycle.
 
 ### Use the API [delete-ai-index-api]
 

@@ -26,7 +26,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Memory](#key-metrics-memory)
 * [Log](#key-metrics-log)
 * [Network](#key-metrics-network)
-* [Disk](#key-metrics-network)
+* [Disk](#observability-host-metrics-disk-metrics)
 * [Legacy](#legacy-metrics)
 
 ### OpenTelemetry Collector configuration [open-telemetry-collector-configuration]
@@ -35,13 +35,13 @@ By default, the {{product.edot-collector}} uses one of several predefined host m
 
 If you're using a different Collector distribution or the upstream Contrib Collector, refer to the [System OpenTelemetry Assets](integration-docs://reference/system_otel.md#collector-configuration) documentation.
 
-### Entity definition [monitor-rds-entity]
+### Entity definition [ecs-host-entity]
 ```{applies_to}
 stack: ga 9.3
 ```
 
-|  |  |
-| --- | --- |
+|  |  |  |
+| --- | --- | --- |
 | **Filter** | `event.module: 'system'` or `metricset.module: 'system'` | Used to filter relevant data. |
 | **Identifier** | `host.name` | Used to identify each entity. |
 | **Display value** | `host.name` | Used as a display friendly value. |
@@ -131,7 +131,7 @@ Refer to the following sections for host metrics and field calculation formulas 
 * [Memory](#otel-metrics-memory)
 * [Log](#otel-metrics-log)
 * [Network](#otel-metrics-network)
-* [Disk](#otel-metrics-network)
+* [Disk](#otel-metrics-disk)
 
 ### Entity definition [opentelemetry-host-entity]
 ```{applies_to}

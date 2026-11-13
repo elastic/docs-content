@@ -16,7 +16,7 @@ Elastic {{infer-cap}} Service (EIS) enables you to leverage AI-powered search as
 With EIS, you don't need to manage the infrastructure and resources required for {{ml}} {{infer}} by adding, configuring, and scaling {{ml}} nodes.
 Instead, you can use {{ml}} models for ingest, search, and chat independently of your {{es}} infrastructure.
 
-{applies_to}`stack: ga 9.3` You can use EIS with your [self-managed](/deploy-manage/deploy/self-managed.md) cluster through Cloud Connect. For details, refer to [EIS for self-managed clusters](connect-self-managed-cluster-to-eis.md).
+{applies_to}`stack: ga 9.3` You can use EIS with your [{{ece}}](/deploy-manage/deploy/cloud-enterprise.md), [{{eck}}](/deploy-manage/deploy/cloud-on-k8s.md), or [self-managed](/deploy-manage/deploy/self-managed.md) cluster through Cloud Connect. For details, refer to [](connect-self-managed-cluster-to-eis.md).
 
 ## AI features powered by EIS [ai-features-powered-by-eis]
 
@@ -62,6 +62,36 @@ Available actions include:
 - Copy the inference endpoint ID
 - Delete endpoints
 - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Region preferences](eis-region-and-hosting.md#inference-region-preferences) for where EIS processes {{infer}} requests
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Show or hide models](#eis-display-options) that are in preview, past end of life, or outside your region preferences
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Find models available in specific geographies or regions with the **Region** filter on the toolbar. The filter doesn't change where EIS processes {{infer}} requests, which [region preferences](eis-region-and-hosting.md#inference-region-preferences) control. Models that are [hidden by default](#eis-display-options) stay hidden unless you show them.
+
+:::{tip}
+:applies_to: { serverless: ga, stack: ga 9.6+ }
+To find a model faster, filter the list by region, sort the model cards by name or release date, or [show models that are hidden by default](#eis-display-options).
+:::
+
+### Show models that are hidden by default [eis-display-options]
+
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If a model you expect is missing from the list, it might be hidden. By default, {{kib}} leaves out three groups of models:
+
+- **Models outside your region preferences**: Models that you can't use until you update your [region preferences](eis-region-and-hosting.md#inference-region-preferences). If you can edit region preferences, open the model's details, expand the banner with **View details**, and select **Edit Region preferences**.
+- **End-of-life models**: Models that have already reached their end-of-life date, which you can't use. Models that are close to that date stay in the list.
+- **Preview models**: Models in preview, which aren't recommended for production use.
+
+To show or hide any of these groups:
+
+1. On the toolbar, select {icon}`controls` **Display options**.
+1. In **Model display options**, set each group to **Show** or **Hide**.
+1. Select **Apply**.
+
+The list now includes the groups you set to **Show**. In card view, {{kib}} shows how many models match, for example **Showing 12 of 20**. The second number also counts hidden models, so a lower first number doesn't always mean that your search or filters removed a model.
+
+{{kib}} doesn't save your selection. After you reload {{kib}}, all three groups are hidden again.
 
 ## Add endpoints [add-endpoint]
 
@@ -216,6 +246,10 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 ##### Get started with semantic search with ELSER on EIS
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
+
+:::{note}
+If you ran a kNN search and it failed or returned no results, [check whether your vectors are searchable and compatible with kNN search](/solutions/search/vector/knn/troubleshoot-knn-search.md).
+:::
 
 ## Pricing [pricing]
 

@@ -1,29 +1,34 @@
 ---
+navigation_title: View field statistics
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/show-field-statistics.html
 applies_to:
   stack: ga
   serverless: ga
+type: how-to
 products:
   - id: kibana
-description: Explore field statistics in Discover to view distributions, top values, and data quality metrics. Analyze numeric ranges, geographic coordinates, and field cardinality.
+description: View a summary of every field in Discover, including the most common values, numeric ranges, and the number of documents that contain each field.
 ---
 
-# View field statistics [show-field-statistics]
+# View field statistics in Discover [show-field-statistics]
 
-The **Field statistics** view in **Discover** provides statistical summaries and visualizations of your data fields. View distributions, top values, minimum and maximum ranges, and cardinality to quickly understand your data quality and patterns. Use field statistics to identify data issues, understand field characteristics, and discover insights before building visualizations.
+If you don't know yet what your data looks like, the **Field statistics** view in **Discover** shows each field's most common values, ranges, and how many documents contain it. That helps you spot data problems and decide what to chart before you build visualizations.
 
-:::{note}
-Field statistics are only available when **Discover** is in default mode, not in {{esql}} mode.
-:::
+## Before you begin
 
-This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
+- Make sure **Discover** is in classic mode. {{esql}} mode doesn't support this functionality. To switch, refer to [Switch to Discover's classic mode](switch-esql-mode.md#revert-to-classic-mode).
+- **Discover** must have a [data view](../find-and-organize/data-views.md) selected and a time range that contains data.
+- The **Field statistics** view is on by default. If it's missing from **Discover**, check whether the **Show field statistics** [advanced setting](kibana://reference/advanced-settings.md) is turned on.
+- This example uses the [web logs sample data](/manage-data/ingest/sample-data.md). To follow along, add it, or use your own data.
+
+## View the statistics of your fields
 
 1. Go to **Discover**.
-2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.
-3. If you don’t see any results, expand the time range, for example, to **Last 7 days**.
+2. Expand the data view menu, and select **Kibana Sample Data Logs**.
+3. If you don't see any results, expand the time range, for example, to **Last 7 days**.
 4. Select **Field statistics** (or **View as** → **Field statistics**, depending on your version).
-   The table summarizes how many documents in the sample contain each field for the selected time period the number of distinct values, and the distribution.
+   The table summarizes, for each field, how many documents in the sample contain it for the selected time period, the number of distinct values, and the distribution.
 
    :::{image} /explore-analyze/images/kibana-field-statistics-view.png
    :alt: Field statistics view in Discover with the View as menu open.
@@ -47,6 +52,17 @@ This example explores the fields in the [sample web logs data](../index.md#gs-ge
    :screenshot:
    :::
 
-7. Explore additional field types to see the statistics that **Discover** provides.
-8. To create a Lens visualization of the field data, click ![the magnifying glass icon to create a visualization of the data in Lens](/explore-analyze/images/kibana-visualization-icon.png "") or ![the Maps icon to explore the data in a map](/explore-analyze/images/kibana-map-icon.png "") in the **Actions** column.
+7. Optional: Expand fields of other types, such as keyword or date fields, to see the statistics that **Discover** provides for them.
+8. Optional: To explore the field data in Lens or Maps, select **Explore in Lens** ![the icon to create a visualization of the data in Lens](/explore-analyze/images/kibana-visualization-icon.png "") or **Explore in Maps** ![the Maps icon to explore the data in a map](/explore-analyze/images/kibana-map-icon.png "") in the **Actions** column. These actions appear only if your role gives you access to visualizations and to maps, and **Explore in Maps** is available for geo fields only.
+
+**Result:** **Discover** shows a row of statistics for each field in your data view, and you can expand a field to see its values in detail.
+
+## Next steps
+
+- To check a single field's top values from the fields list, refer to [Explore fields in Discover](explore-fields.md).
+- To chart a field, refer to [Visualize a field from Discover](visualize-field.md).
+
+## Related pages
+
+- [How to query in Discover's classic mode](use-classic-mode.md)
 

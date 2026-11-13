@@ -13,6 +13,8 @@ products:
 
 To help you understand costs and manage spending on {{ecloud}}, you can create budgets that track resource usage and send email notifications when month-to-date usage reaches specified thresholds. Budgets can be scoped to specific {{ecloud}} resources or to your entire organization.
 
+Budgets do not enforce a spending limit. When usage reaches or exceeds the budget, your deployments and projects continue to run and generate costs.
+
 Who can create, view, and manage a budget depends on its scope:
 
 * **Organization** budgets, which track your entire {{ecloud}} organization, can be created, viewed, and managed only by users with the **Organization owner** or **Billing admin** role.

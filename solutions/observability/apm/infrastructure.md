@@ -45,7 +45,9 @@ serverless: ga
 For services instrumented with OpenTelemetry, the tab exclusively shows OTel-observed infrastructure. Click-through destinations differ by resource type:
 
 * **Hosts**: Links to the [**Hosts**](/solutions/observability/infra-and-hosts/analyze-compare-hosts.md) UI, which supports OpenTelemetry and its semantic conventions.
-* **Containers** and **Pods**: Link to [**Metrics** in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md), as the Containers and Pods UIs do not yet support OTel semantic conventions.
+* **Containers** and **Pods**: Link to [**Metrics** in Discover](/solutions/observability/infra-and-hosts/discover-metrics.md).
+
+  {applies_to}`{stack: ga 9.6+, serverless: ga}` The Infrastructure Inventory does show {{k8s}} pods collected using OpenTelemetry, but this tab still links to **Metrics** in Discover for both containers and pods. Refer to [Select the data collection schema](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#pod-schema-selector) for how that view chooses which pods to show.
 
 ::::{important}
 The **Infrastructure** tab assumes you're observing the service and its underlying infrastructure (hosts, pods, containers) using the same schema. The schema is inferred from the {{apm-agent}} name:

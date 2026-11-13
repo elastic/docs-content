@@ -55,7 +55,7 @@ After removing an alias, your organization’s account will hold a claim on it f
 To use your new custom endpoint URL to access your Elastic products, note that each has its own alias to use in place of the default application UUID. For example, if you configured the custom endpoint alias for your deployment to be `test-alias`, the corresponding alias for the {{es}} cluster in that deployment is `test-alias.es`.
 
 ::::{note}
-You can get the application-specific custom endpoint alias by selecting **Copy endpoint** for that product. It should contain a subdomain for each application type, for example `es`, `kb`, `apm`, or `ent`.
+You can get the application-specific custom endpoint alias from the **Application endpoints, cluster and component IDs** flyout. Expand the product to see its endpoint, which contains a subdomain for each application type, for example `es`, `kb`, or `apm`.
 ::::
 
 
@@ -64,7 +64,7 @@ You can get the application-specific custom endpoint alias by selecting **Copy e
 
 * As part of the host name:
 
-    After configuring your custom endpoint alias, select **Copy endpoint** on the deployment overview page, which gives you the fully qualified custom endpoint URL for that product.
+    After configuring your custom endpoint alias, open the **Application endpoints, cluster and component IDs** flyout on the deployment overview page, expand the product, and copy the endpoint. This gives you the fully qualified custom endpoint URL for that product.
 
 * As an HTTP request header:
 
@@ -78,7 +78,7 @@ While the `TransportClient` is deprecated, your custom endpoint aliases still wo
 
 * As part of the host name:
 
-    Similar to HTTP, you can find the fully qualified host on the deployment overview page by selecting **Copy endpoint** next to {{es}}. Make sure to remove the unnecessary `https://` prefix as well as the trailing HTTP port.
+    Similar to HTTP, you can find the fully qualified host on the deployment overview page by opening the **Application endpoints, cluster and component IDs** flyout, expanding **{{es}}**, and copying the endpoint. Make sure to remove the unnecessary `https://` prefix as well as the trailing HTTP port.
 
 * As part of the **Settings**:
 
@@ -134,7 +134,7 @@ So what to do, instead?
 
 Here we’ll show you an example of proxying with NGINX, but this can be extrapolated to HAProxy or some other proxy server.
 
-You need to set `proxy_pass` and `proxy_set_header`, and include the `X-Found-Cluster` header with the cluster’s UUID. You can get the cluster ID by clicking the `Copy cluster ID` link on your deployment’s main page.
+You need to set `proxy_pass` and `proxy_set_header`, and include the `X-Found-Cluster` header with the cluster’s UUID. You can find the cluster ID in the **Application endpoints, cluster and component IDs** flyout on your deployment’s main page.
 
 ```
 server {
@@ -150,7 +150,7 @@ server {
 }
 ```
 
-This should work for all of your applications, not just {{es}}. To set it up for {{kib}}, for example, you can select `Copy cluster ID` next to {{kib}} on your deployment’s main page to get the correct UUID.
+This should work for all of your applications, not just {{es}}. To set it up for {{kib}}, for example, you can find the component ID for {{kib}} in the **Application endpoints, cluster and component IDs** flyout on your deployment’s main page.
 
 ::::{note}
 Doing this for {{kib}} won't work with Cloud SSO.

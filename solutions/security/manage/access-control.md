@@ -29,6 +29,7 @@ Keep these points in mind when you create roles:
 
 | Your goal | Start here |
 |---|---|
+| See every Security feature privilege and what it allows | [Security {{kib}} privileges](/solutions/security/manage/security-kibana-privileges.md) |
 | Give users access to endpoint management, response actions, and artifacts | [{{elastic-defend}} feature privileges](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) |
 | Give users access to detection rules, alerts, and exceptions | [Detections privileges](/solutions/security/detect-and-alert/detections-privileges.md) |
 | Give users access to Attack Discovery and its schedules | [Attack Discovery privileges](/solutions/security/ai/attack-discovery/grant-access.md) |

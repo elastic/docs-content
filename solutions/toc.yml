@@ -11,6 +11,11 @@ toc:
               - file: search/get-started/index-basics.md
               - file: search/get-started/keyword-search-python.md
               - file: search/get-started/semantic-search.md
+      - file: search/set-up.md
+        children:
+          - file: search/set-up/get-elasticsearch-running-for-search.md
+          - file: search/set-up/api-key-and-endpoints.md
+          - file: search/set-up/connect-with-an-sdk.md
       - file: search/ingest-for-search.md
         children:
           - file: search/search-pipelines.md
@@ -20,6 +25,7 @@ toc:
             children:
               - file: search/full-text/how-full-text-works.md
               - file: search/full-text/text-analysis-during-search.md
+              - file: search/full-text/intervals-query-tutorial.md
               - file: search/full-text/search-relevance.md
                 children:
                   - file: search/full-text/search-relevance/mixing-exact-search-with-stemming.md
@@ -53,6 +59,7 @@ toc:
                           - file: search/vector/knn/approximate-knn-query-examples.md
                           - file: search/vector/knn/optimize-performance-accuracy.md
                       - file: search/vector/knn/exact-knn.md
+                      - file: search/vector/knn/troubleshoot-knn-search.md
                   - file: search/vector/bring-own-vectors.md
                   - file: search/vector/vector-storage-for-semantic-search.md
                   - file: search/vector/gpu-vector-indexing.md
@@ -121,6 +128,7 @@ toc:
               - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/opentelemetry/start-with-otel.md
+          - file: observability/get-started/opentelemetry/switch-to-otel.md
           - file: observability/get-started/opentelemetry/quickstart/index.md
             children:
               - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
@@ -150,11 +158,15 @@ toc:
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md
                   - file: observability/get-started/opentelemetry/use-cases/kubernetes/customization.md
               - folder: observability/get-started/opentelemetry/use-cases/llms
+                file: index.md
+                children:
+                  - file: send-claude-platform-traces.md
               - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:
               - file: observability/get-started/other-tutorials/tutorial-monitor-java-application.md
           - file: observability/get-started/logs-essentials.md
+          - file: observability/get-started/observability-kibana-privileges.md
       - file: observability/applications/index.md
         children:
           - file: observability/apm/index.md
@@ -320,7 +332,7 @@ toc:
                       - file: observability/apm/elastic-apm-agent-configuration-api.md
                       - file: observability/apm/opentelemetry-intake-api.md
                       - file: observability/apm/jaeger-event-intake.md
-                  - file: observability/apm/managed-intake-service-event-api.md
+                  - file: observability/apm/managed-inputs-apm-intake-event-api.md
               - file: observability/apm/upgrade.md
                 children:
                   - file: observability/apm/apm-agent-compatibility.md
@@ -481,6 +493,17 @@ toc:
           - file: observability/logs/logs-index-template-reference.md
             children:
               - file: observability/logs/logs-index-template-defaults.md
+      - file: observability/metrics.md
+        children:
+          - file: observability/metrics/get-started.md
+          - file: observability/metrics/plan-your-setup.md
+          - file: observability/metrics/ingest.md
+          - file: observability/metrics/migrate.md
+            children:
+              - file: observability/metrics/migrate/prometheus.md
+              - file: observability/metrics/migrate/datadog.md
+          - file: observability/metrics/explore.md
+          - file: observability/metrics/manage-storage.md
       - file: observability/streams/streams.md
         children:
         - file: observability/streams/get-data-in.md
@@ -520,16 +543,16 @@ toc:
           - file: observability/streams/processors/uri-parts.md
           - file: observability/streams/processors/user-agent.md
           - file: observability/streams/processors/manual-pipeline-configuration.md
-        - hidden: observability/streams/significant-events/index.md
-          children:
-            - hidden: observability/streams/significant-events/how-it-works.md
-            - hidden: observability/streams/significant-events/operator-guide.md
-            - hidden: observability/streams/significant-events/knowledge-indicators.md
       - hidden: observability/nightshift/nightshift.md
         children:
           - hidden: observability/nightshift/get-started.md
           - hidden: observability/nightshift/investigations.md
           - hidden: observability/nightshift/memory.md
+          - hidden: observability/nightshift/significant-events/index.md
+            children:
+              - hidden: observability/nightshift/significant-events/how-it-works.md
+              - hidden: observability/nightshift/significant-events/operator-guide.md
+              - hidden: observability/nightshift/significant-events/knowledge-indicators.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -588,7 +611,6 @@ toc:
               - file: security/get-started/get-started-endpoint-security.md
               - file: security/get-started/get-started-cloud-security.md
           - file: security/get-started/elastic-security-requirements.md
-          - file: security/get-started/security-kibana-privileges.md
           - file: security/get-started/elastic-security-ui.md
           - file: security/security-serverless-feature-tiers.md
       - file: security/get-started/automatic-migration.md
@@ -619,6 +641,9 @@ toc:
               - file: security/cloud/cnvm-privilege-requirements.md
               - file: security/cloud/enable-cloud-security-features.md
           - file: security/cloud/d4c/get-started-with-d4c.md
+          - file: security/ai/set-up-ai-features.md
+            children:
+              - file: security/ai/large-language-model-performance-matrix.md
           - file: security/advanced-entity-analytics/entity-analytics-requirements.md
           - file: security/advanced-entity-analytics/machine-learning-job-rule-requirements.md
       - file: security/get-started/ingest-data-to-elastic-security.md
@@ -684,10 +709,11 @@ toc:
                     crosslink: docs-content://solutions/security/dashboards/kubernetes-dashboard.md
           - file: security/manage/access-control.md
             children:
+              - file: security/manage/security-kibana-privileges.md
               - file: security/configure-elastic-defend/elastic-defend-feature-privileges.md
               - file: security/detect-and-alert/detections-privileges.md
               - file: security/ai/attack-discovery/grant-access.md
-              - hidden: security/alertzero/alertzero-privileges.md
+              - file: security/alertzero/alertzero-privileges.md
           - file: security/manage/configure-workspace-settings.md
             children:
               - file: security/get-started/spaces-elastic-security.md
@@ -695,31 +721,29 @@ toc:
                   - file: security/get-started/spaces-defend-faq.md
               - file: security/get-started/data-views-elastic-security.md
               - file: security/get-started/create-runtime-fields-in-elastic-security.md
-      - hidden: security/alertzero/index.md
+      - file: security/alertzero/index.md
         children:
-          - hidden: security/alertzero/set-up-alertzero.md
+          - file: security/alertzero/watches-and-workers.md
             children:
-              - hidden: security/alertzero/requirements.md
-          - hidden: security/alertzero/review-first-proposed-action.md
-          - hidden: security/alertzero/use-alertzero.md
+              - file: security/alertzero/threat-reports.md
+          - file: security/alertzero/set-up-alertzero.md
+          - file: security/alertzero/work-in-alertzero.md
             children:
-              - hidden: security/alertzero/decide-proposed-action.md
-              - hidden: security/alertzero/decide-detection-change.md
-              - hidden: security/alertzero/respond-to-attack.md
-              - hidden: security/alertzero/escalate-investigation.md
-              - hidden: security/alertzero/track-escalations.md
-              - hidden: security/alertzero/act-on-hunt-finding.md
-              - hidden: security/alertzero/review-closed-proposed-actions.md
-          - hidden: security/alertzero/manage-alertzero.md
+              - file: security/alertzero/close-false-positive-alerts.md
+              - file: security/alertzero/respond-to-attack.md
+              - file: security/alertzero/act-on-hunt-finding.md
+              - file: security/alertzero/decide-detection-change.md
+              - file: security/alertzero/escalate-investigation.md
+                children:
+                  - file: security/alertzero/manage-escalations.md
+          - file: security/alertzero/manage-alertzero.md
             children:
-              - hidden: security/alertzero/configure-worker-settings.md
-              - hidden: security/alertzero/run-worker-on-demand.md
-              - hidden: security/alertzero/view-execution-history.md
-          - hidden: security/alertzero/watches-and-workers.md
-          - hidden: security/alertzero/glossary.md
+              - file: security/alertzero/configure-worker-settings.md
+              - file: security/alertzero/run-worker-on-demand.md
+              - file: security/alertzero/view-execution-history.md
+          - file: security/alertzero/glossary.md
       - file: security/ai.md
         children:
-          - file: security/ai/large-language-model-performance-matrix.md
           - file: security/ai/agent-builder/agent-builder.md
             children:
               - file: security/ai/agent-builder/skills-model.md
@@ -792,6 +816,7 @@ toc:
               - file: security/detect-and-alert/using-the-api.md
               - file: security/detect-and-alert/common-rule-settings.md
               - file: security/detect-and-alert/set-rule-data-sources.md
+              - file: security/detect-and-alert/plan-rule-performance.md
               - file: security/detect-and-alert/write-investigation-guides.md
               - file: security/detect-and-alert/validate-and-test-rules.md
           - file: security/detect-and-alert/advanced-data-source-configuration.md

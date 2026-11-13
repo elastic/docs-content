@@ -19,7 +19,7 @@ Elastic prebuilt rules are designed to detect common threats across your environ
 
 Each prebuilt rule includes several tags identifying the rule's purpose, detection method, associated resources, and other information to help categorize your rules. These tags are category-value pairs. For example, `OS: Windows` indicates rules designed for Windows endpoints. Use the **Tags** filter on the **{{siem-rules-ui}}** page to narrow the rule list to the rules that match your environment.
 
-Elastic adds tag categories and values over time. To get the latest ones, update your prebuilt rules on the **Rule Updates** tab. If you added your own tags to a prebuilt rule, which requires an Enterprise subscription or a Security Analytics Complete project, first check [Preserve customizations during updates](/solutions/security/detect-and-alert/update-prebuilt-rules.md#preserve-customizations). An update can replace them.
+Elastic adds tag categories and values over time. To get the latest ones, update your prebuilt rules on the **Rule Updates** tab. If you added your own tags to a prebuilt rule, first check [Preserve customizations during updates](/solutions/security/detect-and-alert/update-prebuilt-rules.md#preserve-customizations). An update can replace them.
 
 Categories include:
 

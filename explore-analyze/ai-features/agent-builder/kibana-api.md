@@ -52,9 +52,9 @@ Need an API key? Refer to [Create API keys for {{agent-builder}} APIs](api-keys.
 
 ### Working with spaces
 
-To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space_name>` before `/api/agent_builder` in your requests.
+To run APIs in non-default [spaces](/deploy-manage/manage-spaces.md), you must include the space identifier in the URL when making API calls with `curl` or other external tools. Insert `/s/<space-id>` before `/api/agent_builder` in your requests.
 
-For example, to list tools in a space named `my-space`:
+For example, to list tools in a space with the ID `my-space`:
 
 ```bash
 curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
@@ -63,7 +63,7 @@ curl -X GET "${KIBANA_URL}/s/my-space/api/agent_builder/tools" \
 
 The default space does not require the `/s/default` prefix.
 
-Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and does not require the `/s/<space_name>` prefix.
+Dev Tools [Console](/explore-analyze/query-filter/tools/console.md) automatically uses your current space context and doesn't require the `/s/<space-id>` prefix.
 
 ### Use APIs with data from multiple projects [agent-builder-api-cps]
 ```{applies_to}
@@ -71,7 +71,7 @@ stack: unavailable
 serverless: ga
 ```
 
-  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the default space.
+  When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), {{agent-builder}} APIs that search your data use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the default space.
 
 To override that default, include a `project_routing` expression in the body of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) or the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async). The [run a tool API]({{kib-apis}}operation/operation-post-agent-builder-tools-execute) uses the space default and does not accept this field. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md). For an example, refer to [Chat and conversations](#chat-and-conversations).
 
@@ -701,6 +701,8 @@ This example uses the [create an agent API]({{kib-apis}}operation/operation-post
 
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can't grant individual users access when you create an agent. On create, `access_control` accepts only `access_mode`, and including `entries` returns a validation error. To grant access, call `PUT /api/agent_builder/agents/{id}/access_control` after the agent exists.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To assign [connectors](connectors.md) to the agent, list their IDs in `configuration.connector_ids`. If you omit `connector_ids`, the agent can't run any connectors.
+
 ::::{tab-set}
 :group: api-examples
 
@@ -1026,6 +1028,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/agents/elastic-ai-agent/consumptio
 
 Use these APIs to send messages to agents and manage conversation history.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `input` parameter of the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) and the [send chat message (streaming) API]({{kib-apis}}operation/operation-post-agent-builder-converse-async) accepts up to 100,000 characters. A request with a longer `input` returns a `400` error.
+
 **Example:** Chat with an agent
 
 This example uses the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse).
@@ -1060,6 +1064,47 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 :::
 
 ::::
+
+**Example:** Chat as a service account $$$chat-as-a-service-account$$$ {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable`
+
+This example calls the [send chat message API]({{kib-apis}}operation/operation-post-agent-builder-converse) as a user-managed service account. The account needs the privileges described in [Service accounts](permissions.md#service-accounts).
+
+Send this request with `curl` or another HTTP client. Dev Tools Console runs as the signed-in user, not as the service account, so this example has no Console version.
+
+Before you send the request, set `SERVICE_ACCOUNT_TOKEN` to the account's service token. The request sends the token in a `Bearer` authorization header, which {{kib}} accepts by default. If you changed the accepted schemes, refer to [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#http-authentication).
+
+% After elastic/docs-content#8921 merges, replace the Bearer sentences with a link to authenticate-kibana-api-with-service-account.md.
+
+This example creates a public conversation. To create a private conversation that only the account can access, omit `access_control`.
+
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
+     -H "Authorization: Bearer ${SERVICE_ACCOUNT_TOKEN}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "input": "What is Elasticsearch?",
+       "agent_id": "elastic-ai-agent",
+       "access_control": { "access_mode": "public" }
+     }'
+```
+
+:::{include} _snippets/spaces-api-note.md
+:::
+
+The response's `author` object identifies the service account as the author of the message:
+
+```json
+{
+  "author": {
+    "id": "service_account:kibana/automation",
+    "type": "service_account",
+    "username": "kibana/automation"
+  }
+}
+```
+
+When you [get the conversation]({{kib-apis}}operation/operation-get-agent-builder-conversations-conversation-id), its `user` object, which identifies the owner, has the same values.
 
 **Example:** Chat with an agent and stream events
 
@@ -1143,7 +1188,7 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/converse" \
 
 **Example:** Scope a chat across projects {applies_to}`serverless: ga`
 
-By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-name>` use the {{cps-init}} scope from the default space. 
+By default, the [{{cps}}](/explore-analyze/cross-project-search.md) scope is the [default scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the request URL. Requests without `/s/<space-id>` use the {{cps-init}} scope from the default space.
 
 Include a `project_routing` expression in the body to override the space's {{cps-init}} scope. The `_alias:my_search_project` expression in this example searches only the project with that alias. For routing expression syntax, refer to [](/explore-analyze/cross-project-search/cross-project-search-project-routing.md).
 
@@ -1239,6 +1284,92 @@ The response includes the conversation's `access_control` and your `permissions`
 To share the conversation at creation time, include an `access_control` object with the same shape
 as the [update conversation access control](#update-conversation-access-control) example.
 
+**Example:** Add events to a conversation $$$add-conversation-events$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+
+This example uses the [add events to a conversation API]({{kib-apis}}operation/operation-post-agent-builder-conversations-conversation-id-add-events).
+
+Use this API to add information to a conversation without the agent responding. For example, an integration can post incident updates as they happen. The agent reads notes the next time it runs on the conversation, so a later request can ask it to summarize them.
+
+{{kib}} features can define their own event types, and each type defines the shape of its `data` payload. Some event types are only shown in the conversation and aren't sent to the agent. {{agent-builder}} provides the `text_note` event type, which takes a required `text` field (up to 1,000 characters) and an optional `title` field (up to 256 characters). Other fields in `data` are discarded. Notes appear in the conversation in Agent Chat.
+
+::::{tab-set}
+:group: api-examples
+
+:::{tab-item} Console
+:sync: console
+```console
+POST kbn://api/agent_builder/conversations/{conversation_id}/_add_events
+{
+  "events": [
+    {
+      "type": "text_note",
+      "data": {
+        "title": "Status update",
+        "text": "Checkout service latency is back to normal."
+      }
+    }
+  ]
+}
+```
+:::
+
+:::{tab-item} curl
+:sync: curl
+```bash
+curl -X POST "${KIBANA_URL}/api/agent_builder/conversations/{conversation_id}/_add_events" \
+     -H "Authorization: ApiKey ${API_KEY}" \
+     -H "kbn-xsrf: true" \
+     -H "Content-Type: application/json" \
+     -d '{
+       "events": [
+         {
+           "type": "text_note",
+           "data": {
+             "title": "Status update",
+             "text": "Checkout service latency is back to normal."
+           }
+         }
+       ]
+     }'
+```
+:::{include} _snippets/spaces-api-note.md
+:::
+:::
+
+::::
+
+The response returns each added event with the ID, author, and timestamp that {{kib}} assigned to it:
+
+```json
+{
+  "events": [
+    {
+      "type": "text_note",
+      "data": {
+        "title": "Status update",
+        "text": "Checkout service latency is back to normal."
+      },
+      "id": "cb684ca4-c5f6-4cd3-bbbc-7411ce893a5c",
+      "actor": {
+        "type": "user",
+        "id": "u_mGBROF_q5bmFCATbLXAcCwKa0k8JvONAwSruelyKA5E_0",
+        "username": "elastic"
+      },
+      "created_at": "2026-10-13T12:55:51.379Z"
+    }
+  ]
+}
+```
+
+Keep the following in mind:
+
+- If any event in the request is invalid, the whole request fails with a `400` error and no events are added.
+- Each request can add between 1 and 10 events.
+- Events are append-only. You can't update or remove an event after you add it.
+- You must own the conversation or be a member of it, or the conversation must be public. You must also be able to use the conversation's agent. Otherwise, the request returns a `404` error.
+
+To add events from a workflow, use the [`ai.conversation.add_event`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-event) step.
+
 **Example:** List conversations
 
 This example uses the [list conversations API]({{kib-apis}}operation/operation-get-agent-builder-conversations).
@@ -1328,6 +1459,8 @@ Each request replaces the entire access control. To stop sharing, send `private`
 
 The `id` of each entry is a {{kib}} user profile ID, not a username.
 
+{applies_to}`serverless: unavailable` To add a [service account](permissions.md#service-accounts) as a member, use `service_account:` followed by the account's principal as the `id`, such as `service_account:kibana/automation`. Keep `type` set to `user`.
+
 ::::{tab-set}
 :group: api-examples
 
@@ -1386,7 +1519,7 @@ Keep these constraints in mind:
 - Each user can appear only once. Repeated IDs are rejected.
 - `member` is the only supported role, and `user` is the only supported entry type.
 - An entry that names the owner is accepted but not stored.
-- Entry IDs are not validated. An ID that does not match a real user profile is stored and simply never grants access to anyone.
+- Entry IDs are not validated. An ID that does not match a real user profile is stored and simply never grants access to anyone. {applies_to}`serverless: unavailable` An ID that does not match a service account is also stored, and it grants access if a matching service account is created later.
 - If you do not own the conversation, the request fails with a `404` error rather than a permissions error.
 
 ### Get A2A agent card configuration
