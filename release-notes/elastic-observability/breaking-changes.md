@@ -24,9 +24,25 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
-## 9.0.1 [elastic-observability-9.0.1-breaking-changes]
+## 9.6.0 [elastic-observability-9.6.0-breaking-changes]
 
-There are no breaking changes in Elastic {{observability}} 9.0.1.
+::::{dropdown} Removes deprecated Significant Events public APIs
+**Details**<br> The deprecated, experimental Significant Events public APIs are removed:
+
+* `GET /api/streams/{name}/queries`
+* `PUT /api/streams/{name}/queries/{queryId}`
+* `DELETE /api/streams/{name}/queries/{queryId}`
+* `POST /api/streams/{name}/queries/_bulk`
+* `GET /api/streams/{name}/significant_events`
+
+The Workflows step that wrapped `GET /api/streams/{name}/significant_events` is also removed.
+
+For more information, check [#290828]({{kib-pull}}290828).
+
+**Impact**<br> Requests to the removed endpoints return a `404` error.
+
+**Action**<br> There is no public replacement. Remove calls to these endpoints, and remove `kibana.streams.getSignificantEvents`, from scripts, integrations, and workflows.
+::::
 
 ## 9.0.0 [elastic-observability-9.0.0-breaking-changes]
 
