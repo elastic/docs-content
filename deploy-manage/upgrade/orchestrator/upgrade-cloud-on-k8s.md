@@ -95,6 +95,27 @@ helm upgrade elastic-operator elastic/eck-operator -n elastic-system
 
 This will update the ECK installation to the latest binary and update the CRDs and other ECK resources in the cluster.
 
+If you installed ECK with Helm in [restricted mode](/deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md#k8s-install-helm-restricted), the CRDs and the operator are installed by different users. Upgrade them separately, and upgrade the CRDs first:
+
+1. A cluster administrator upgrades the CRDs:
+
+    ```shell
+    helm upgrade elastic-operator-crds elastic/eck-operator-crds
+    ```
+
+2. A user with full access to the managed namespaces upgrades the operator, using the same options as for the installation. The following example uses the options from the installation instructions:
+
+    ```shell
+    helm upgrade elastic-operator elastic/eck-operator -n elastic-system \
+      --set=installCRDs=false \
+      --set=managedNamespaces='{namespace-a, namespace-b}' \
+      --set=createClusterScopedResources=false \
+      --set=webhook.enabled=false \
+      --set=config.validateStorageClass=false
+    ```
+
+A new version of the operator can depend on resource types that older CRDs don't define. If you upgrade the operator first, it fails to start its controllers, logs `no matches for kind` errors, and restarts repeatedly until the CRDs are upgraded.
+
 
 ## Control rolling restarts during the upgrade [k8s-beta-to-ga-rolling-restart]
 
