@@ -102,23 +102,36 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 ### Attach images to a message
 
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
-Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram. Pasting is the only way to attach an image. Dragging a file onto the input and selecting one from a file picker aren't supported.
+Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram.
 
-To attach an image, copy it to your clipboard, then press {kbd}`ctrl|cmd+v` in the chat input. A chip with the file name appears in the message text, and a thumbnail appears above the input. To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`.
+To attach an image:
+
+1. Copy the image to your clipboard.
+2. In the chat input, press {kbd}`ctrl|cmd+v`. A chip with the file name appears in the message text, and a thumbnail appears above the message text when the upload finishes.
+3. Wait for all attached images to finish uploading, then submit the message. You can't submit it while an upload is in progress.
+
+The following example shows a pasted image attached to a message, ready to send:
 
 :::{image} images/agent-builder-image-attachment.png
-:alt: Chat input with an image thumbnail attached, a file chip in the message text, and the model selector below
+:alt: Chat input with an image thumbnail above the message text, followed by an image.png file chip, with the model selector and send button below
 :width: 650px
 :screenshot:
 :::
 
-You can attach up to 10 images to a single message. Each image must be a PNG or JPEG file no larger than 3.5 MB. You can't submit the message until all attached images finish uploading.
+To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`, or delete the image's chip from the message text.
 
 After you submit the message, the image appears in the conversation history, and the agent can refer to it in later messages in the same conversation.
+
+#### Requirements and limits
+
+- The selected [model](models.md) must support image input. {{agent-builder}} doesn't check this before sending. If the model doesn't support images, the request can fail with an error, or the agent can respond that it can't read the image.
+- You can attach up to 10 images to a single message.
+- Each image must be a PNG or JPEG file no larger than 3.5 MB.
+- Pasting is the only way to attach an image. You can't drag a file onto the input or select one from a file picker.
 
 ### Chat with data from multiple projects [agent-builder-cps-scope]
 ```{applies_to}
