@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Find a value in your results, read every field of a document in the document flyout, and check the request behind your results in Discover.
+description: Find a value in your results, see what a dash or (null) in a cell means, read every field of a document, and check the request behind your results in Discover.
 ---
 
 # Inspect documents and requests in Discover
