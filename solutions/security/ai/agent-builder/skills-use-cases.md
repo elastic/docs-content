@@ -217,21 +217,21 @@ serverless:
 
 Use this skill to list enrolled {{elastic-defend}} endpoints, check whether a host is isolated, and follow up on a [response action](/solutions/security/endpoint-response-actions.md) you already sent. After you confirm in the chat, the agent can isolate or release a host, request the processes running on a host, or scan a path for malware. Select **Deny** on the confirmation to cancel instead.
 
+Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the [response console](/solutions/security/endpoint-response-actions.md) instead.
+
+If the agent can't match your request to a single host that can receive response actions, or you lack the required privilege, license, or project feature tier, the confirmation says the action will be refused and nothing is sent, even if you confirm. If several endpoints share a hostname, ask again using the agent ID.
+
 To find out why a host is unhealthy or why an action failed, use [`automatic_troubleshooting`](#elastic-defend-troubleshooting).
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
 | Which endpoints are enrolled? | List enrolled {{elastic-defend}} hosts with their agent ID, status, isolation state, operating system, last seen time, and applied policy. |
-| Is `host-12` isolated? | Look up that host and report its status and isolation state. If more than one endpoint with that hostname isn't offline, inactive, or unenrolled, ask you for the agent ID. |
+| Is `host-12` isolated? | Look up that host and report its status and isolation state. If several endpoints share that hostname, the agent ignores any that are offline, inactive, or unenrolled. If more than one is left, it asks you for the endpoint's agent ID. |
 | Isolate `host-12` | Show a confirmation that names the host and its agent ID. The host is isolated only after you select **Isolate host**. |
 | Release `host-12` | Show a confirmation, then release the host after you select **Release host**. |
 | What processes are running on `host-12`? | Show a confirmation, then request the process list after you select **List processes**. |
 | Scan `/tmp` on `host-12` for malware | Show a confirmation that names the host and the path. The scan runs only after you select **Run scan**, and it uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) on the host's {{elastic-defend}} policy. |
 | What happened to action `<action-id>`? | Report that action's status and output. |
-
-:::{note}
-These commands stay in the [response console](/solutions/security/endpoint-response-actions.md): `execute`, `kill-process`, `suspend-process`, `get-file`, `upload`, `runscript`, `memory-dump`, and `cancel`.
-:::
 
 ## Attack Discovery generation [attack-discovery-generation]
 ```{applies_to}
