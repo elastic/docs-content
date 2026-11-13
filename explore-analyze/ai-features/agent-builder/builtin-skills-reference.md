@@ -294,20 +294,22 @@ serverless:
 ```
 
 $$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: ga 9.4+`
-:   Answers observability questions, lists and diagnoses observability alerts, and investigates service or infrastructure issues. Covers APM, logs, metrics, threshold, SLO burn rate, uptime and synthetics, and infrastructure alerts. Use when a user asks about alerts, service health, error rates, latency, failed transactions, topology, traces, log patterns, SLO breaches, or infrastructure issues.
+:   Answers observability questions, lists and diagnoses observability alerts, and investigates service or infrastructure issues. Covers APM, logs, metrics, threshold, SLO burn rate, uptime and synthetics, and infrastructure alerts. Use when a user asks about alerts, service health, error rates, latency, failed transactions, topology, traces, log patterns, SLO breaches, or infrastructure issues. Also use when a user wants to know why a service is broken, slow, or failing.
 
     :::{dropdown} Assigned tools
     All [Observability tools](tools/builtin-tools-reference.md#observability-tools).
 
     :::
 
-$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, failing, or slow, when an alert fires or an SLA is breached, when they need to understand what happened during an outage or performance regression, or when they need to trace a cascading failure across services.
+$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: removed 9.6+, preview 9.4-9.5` {applies_to}`serverless: removed`
+:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, failing, or slow, when an alert fires or an SLA is breached, when they need to understand what happened during an outage or performance regression, or when they need to trace a cascading failure across services. After this skill's removal, the [`observability.investigation`](#agent-builder-observability-investigation-skill) skill handles these questions.
 
     :::{dropdown} Assigned tools
     Observability log analysis tools, `platform.core.generate_esql`, `platform.core.execute_esql`, and significant events knowledge indicator search.
 
     :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
 
 $$$agent-builder-observability-service-map-skill$$$ `observability.service-map` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Shows a service map when a user asks to see or visualize a service map, service topology, or service dependencies in an APM or observability context. Use for questions about how services connect or their upstream and downstream dependencies.
