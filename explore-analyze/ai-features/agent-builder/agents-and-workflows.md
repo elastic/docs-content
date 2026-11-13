@@ -522,7 +522,9 @@ Use the generic `kibana.request` step to interact with {{agent-builder}} APIs pr
 3. Set the `path` to the specific [Agent Builder API endpoint]({{kib-apis}}group/endpoint-agent-builder).
 
 :::{dropdown} Example: List available agents
-This step retrieves a list of all agents currently available in Agent Builder.
+This step retrieves a list of the agents available in {{agent-builder}}.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list doesn't include [hidden agents](agent-builder-agents.md#hidden-agents). To include them, add `?include_hidden=true` to the `path`.
 
 ```yaml
 name: list_agents
