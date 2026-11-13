@@ -17,9 +17,9 @@ Daily limits control how many investigations {{nightshift}} starts each day, so 
 
 | Limit | Default | Applies to | Where to change it |
 | --- | --- | --- | --- |
-| Automatic investigations daily limit | 5 | All automations combined, deployment-wide | **Settings** > **Investigations** |
-| Manual investigations daily limit | 5 | Investigations that people start, deployment-wide | **Settings** > **Investigations** |
-| All investigations daily limit | 10 | Automatic and manual together, deployment-wide | **Settings** > **Investigations** |
+| Automatic investigations daily limit | 5 | All automations combined, deployment-wide | **Settings** → **Investigations** |
+| Manual investigations daily limit | 5 | Investigations that people start, deployment-wide | **Settings** → **Investigations** |
+| All investigations daily limit | 10 | Automatic and manual together, deployment-wide | **Settings** → **Investigations** |
 | Daily trigger limit | 20 when you create an automation, up to 50 | One automation | The automation's settings |
 | Investigation timeout | 60 minutes | Each investigation | Can't be changed |
 | Rounds at a time | 1 | Each investigation | Can't be changed |

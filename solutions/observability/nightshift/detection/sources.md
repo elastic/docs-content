@@ -59,7 +59,7 @@ For example:
 Each source is learned separately, and cost grows with the number of sources. Start with **All logs**. Add narrower sources when you want detection to focus on a part of your system.
 
 :::{note}
-Detection reads data from all projects linked through {{cps}}, whatever the project scope configured for this space.
+Detection reads data from all projects linked through {{cps}}, whatever project scope is configured for this space.
 :::
 
 ## Create a source [nightshift-detection-sources-create]
@@ -99,7 +99,7 @@ To work with a source:
 
 Runs that you start yourself don't count toward the daily run limits. If you delete your last source, detection stops and the **Detections** page shows only earlier results.
 
-To pause all detection instead of one source, go to **Settings** > **Detections** and select **Pause detection engine**. Refer to [Settings and limits](../settings.md).
+To pause all detection instead of one source, go to **Settings** → **Detections** and select **Pause detection engine**. Refer to [Settings and limits](../settings.md).
 
 ## Next steps [nightshift-detection-sources-next]
 

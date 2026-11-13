@@ -25,7 +25,7 @@ They sound alike but aren't the same thing.
 | --- | --- | --- |
 | Covers | One investigation | One alert, across many investigations |
 | Shows | The explanations that the investigation tested, with a confidence for each | The path of checks and decisions that worked before for this alert |
-| Where | In the investigation, under **View hypothesis tree** | **Knowledge** > **Decision Trees**, in developer mode |
+| Where | In the investigation, under **View hypothesis tree** | **Knowledge** → **Decision Trees**, in developer mode |
 
 To read a hypothesis tree, refer to [How investigations work](../investigation/index.md).
 

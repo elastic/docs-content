@@ -58,7 +58,7 @@ An event doesn't become inactive only because a rule goes quiet. It stays **Acti
 
 ## Act on an event [nightshift-detection-events-act]
 
-To find the likely cause, select **Investigate** in the event's row, or open the event and select **Actions** > **Run investigation**. These investigations count toward the **Manual investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md). When the investigation is done, the row shows **View investigation**. To learn how to read the result, refer to [How investigations work](../investigation/index.md).
+To find the likely cause, select **Investigate** in the event's row, or open the event and select **Actions** → **Run investigation**. These investigations count toward the **Manual investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md). When the investigation is done, the row shows **View investigation**. To learn how to read the result, refer to [How investigations work](../investigation/index.md).
 
 The **Actions** menu in the event's details also has:
 

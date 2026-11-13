@@ -11,7 +11,7 @@ products:
 
 # How {{nightshift}} builds context [nightshift-context]
 
-Each investigation starts from what {{nightshift}} has learned previously. While A model brings general troubleshooting skills, it doesn't have knowledge about your services, where their telemetry lives, or how previous issues were resolved. {{nightshift}} context fills that gap, so investigations spend their time on the problem instead trying to understand your system.
+Each investigation starts from what {{nightshift}} has learned previously. While a model brings general troubleshooting skills, it doesn't have knowledge about your services, where their telemetry lives, or how previous issues were resolved. {{nightshift}} context fills that gap, so investigations spend their time on the problem instead of trying to understand your system.
 
 This page explains where that knowledge comes from, and how to check and correct it.
 
@@ -26,7 +26,7 @@ Knowledge builds up in layers, from your raw telemetry to what {{nightshift}} le
 
 Knowledge reaches {{nightshift}} in the following ways:
 
-1. **From your data, ahead of time.** When detection is on, it reads the data in your sources and extracts Knowledge Indicators(KIs), which include facts about your services, dependencies, and technologies. Detection uses them to create rules and find significant events. Investigations don't read KIs directly, KIs reach them through significant events.
+1. **From your data, ahead of time.** When detection is on, it reads the data in your sources and extracts Knowledge Indicators (KIs), which include facts about your services, dependencies, and technologies. Detection uses them to create rules and find significant events. Investigations don't read KIs directly. KIs reach them through significant events.
 1. **From people.** Custom context and automation instructions tell {{nightshift}} information it can't learn from your data, such as team conventions, where to look first, and the location of your runbooks and code. Investigations then read those runbooks and code when they run.
 1. **From its own investigations.** After each investigation, {{nightshift}} saves what it learned. Durable facts about your services and integrations go to the Wiki. Lessons, such as which checks found the cause, go to Memory. For alerts it has investigated before, it keeps the troubleshooting path that worked as a decision tree, which you can view in developer mode.
 
@@ -78,7 +78,7 @@ Some things {{nightshift}} can't learn from your data: who owns a service, which
 
 | To give context to | Use | Where |
 | --- | --- | --- |
-| Every investigation and chat in the space | Custom context | **Settings** > **Investigations** |
+| Every investigation and chat in the space | Custom context | **Settings** → **Investigations** |
 | The investigations that one automation starts | Automation instructions | The automation's **Additional Instructions** or **Instructions** field |
 
 ### Add custom context [nightshift-context-custom]

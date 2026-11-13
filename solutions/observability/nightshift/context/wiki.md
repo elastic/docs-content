@@ -28,7 +28,7 @@ Each page covers a single topic, such as a service or an integration, and has a 
 
 | Type | What a page describes | Example |
 | --- | --- | --- |
-| **Services** | A service or database, what it depends on, and where its telemetry is An API service, the database it uses |
+| **Services** | A service or database, what it depends on, and where its telemetry lives | An API service, the database it uses |
 | **Integrations** | A data source or tool, and how to query it | Elasticsearch telemetry cluster (OTel data streams) |
 | **Alerts** | An alert, what it usually means, and what to check | |
 | **Runbooks** | Steps that resolved a problem before | |

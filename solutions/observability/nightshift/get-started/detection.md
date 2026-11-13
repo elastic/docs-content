@@ -23,7 +23,8 @@ Make sure you meet the following requirements:
 - **An admin to enable detection.** The predefined **Admin** role can do this. For other roles, refer to [Grant access to {{nightshift}}](privileges.md).
 - **Your project has recent logs.** Detection watches logs in this project or in projects linked by [{{cps}}](/deploy-manage/cross-project-search-config.md). For other deployment types, refer to [Reference architecture](../reference-architecture.md).
 
-## Choose your data and turn on detection
+## Choose your data and turn on detection [nightshift-get-started-detection-steps]
+
 :::::{stepper}
 
 ::::{step} Choose what detection watches

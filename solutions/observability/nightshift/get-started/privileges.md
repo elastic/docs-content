@@ -29,7 +29,7 @@ To give access based on the job a specific person does, build a [custom role](/d
 
 ### Review and decide on investigations [nightshift-privileges-analyst]
 
-The **Nightshift**: **Read** privilege is required for all {{nightshift}}. Add additional privileges to meet user needs.
+Everyone who uses {{nightshift}} needs the **Nightshift**: **Read** privilege. Add the others for the tasks each person does.
 
 | Privilege | Access |
 | --- | --- |
@@ -84,7 +84,7 @@ Each account has a predefined {{serverless-short}} role, `_nightshift_agent` or 
 
 Each automation's workflow runs as `nightshift_automations`, and starts its investigations through the space's workflow, which runs them as `nightshift_agent`.
 
-On **Settings** > **Investigations**, the **Service account** row shows whether the space is **Set up**.
+On **Settings** → **Investigations**, the **Service account** row shows whether the space is **Set up**.
 :::
 
 To stop {{nightshift}} from running, refer to [Stop or pause {{nightshift}}](../settings.md#nightshift-settings-stop).

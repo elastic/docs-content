@@ -75,7 +75,7 @@ In Tech Preview, detection learns from logs only; investigations query logs, met
 
 ### How do Knowledge Indicators become rules? [nightshift-faq-ki-rules]
 
-Match query KIs with a high severity become rules automatically. To turn another query KI into a rule, promote it from **Knowledge** > **Knowledge Indicators**. Refer to [Where rules come from](./detection/rules-and-signals.md#nightshift-detection-rules-origins).
+Match query KIs with a high severity become rules automatically. To turn another query KI into a rule, promote it from **Knowledge** → **Knowledge Indicators**. Refer to [Where rules come from](./detection/rules-and-signals.md#nightshift-detection-rules-origins).
 
 ### Why are there no significant events yet? [nightshift-faq-no-events]
 
@@ -87,7 +87,7 @@ How {{nightshift}} reaches your tools, and how you tell it about your environmen
 
 ### Why doesn't {{nightshift}} use my connector? [nightshift-faq-connector-unused]
 
-Investigations use only the connectors listed on **Settings** > **General**. Add connectors there with **Add connector**, which assigns them to {{nightshift}}. If the connector is listed, check that its URL uses port 443. Refer to [Connect your data and tools](./investigation/set-up.md#nightshift-set-up-prereqs).
+Investigations use only the connectors listed on **Settings** → **General**. Add connectors there with **Add connector**, which assigns them to {{nightshift}}. If the connector is listed, check that its URL uses port 443. Refer to [Connect your data and tools](./investigation/set-up.md#nightshift-set-up-prereqs).
 
 ### Can {{nightshift}} use tools other than Elastic and GitHub? [nightshift-faq-other-tools]
 

@@ -109,7 +109,7 @@ products:
 **Public Slack channels only**
 :   `@Elastic` works only in public channels. It doesn't work in private channels, direct messages, or Slack Connect channels, even though the authorization screen offers private-channel access. {{nightshift}} doesn't join channels on its own.
 
-    **Workaround:** Use a public channel, and connect it on **Settings** > **General**. Refer to [Connect your data and tools](./investigation/set-up.md#nightshift-set-up-slack).
+    **Workaround:** Use a public channel, and connect it on **Settings** → **General**. Refer to [Connect your data and tools](./investigation/set-up.md#nightshift-set-up-slack).
 
 **Slack is the only destination**
 :   An automation can post results only to a Slack channel, with **Post in Slack**. It can't send direct messages or email, or create tickets.
@@ -161,7 +161,7 @@ products:
 **Run history doesn't say which limit was reached**
 :   When a limit stops an automation's run, its **Run history** shows a reason such as "Deployment-wide investigation limit reached", but not which of the three investigation limits it was.
 
-    **Workaround:** On **Settings** > **Investigations**, compare each limit with the count of investigations that started today. Refer to [Run limits](./settings.md#nightshift-settings-run-limits).
+    **Workaround:** On **Settings** → **Investigations**, compare each limit with the count of investigations that started today. Refer to [Run limits](./settings.md#nightshift-settings-run-limits).
 
 **Follow-ups aren't limited**
 :   Follow-up questions on open investigations are never blocked by a limit, so they add cost even when a limit is reached.
@@ -169,7 +169,7 @@ products:
     **Workaround:** Close investigations when the problem is handled. Alerts never join a closed investigation.
 
 **The in-product cost estimate is approximate**
-:   The cost estimate is under **Advanced developer settings** on **Settings** > **Detections**, available only in developer mode. It leaves out some calls, and counts only calls made while token tracking is on.
+:   The cost estimate is under **Advanced developer settings** on **Settings** → **Detections**, available only in developer mode. It leaves out some calls, and counts only calls made while token tracking is on.
 
     **Workaround:** Use the {{ecloud}} billing page for exact numbers. Refer to [Monitor your cost](./cost-and-models.md#nightshift-cost-monitor).
 
