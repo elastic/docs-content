@@ -134,7 +134,7 @@ $$$faq-taxes$$$What taxes will be applied on my invoice?
 The following section applies to annual contracts that are billed on the prepaid consumption billing model.
 
 $$$faq-channels$$$What purchasing channels can be used for prepaid consumption credits?
-:   The prepaid consumption billing model is currently only available for Elastic Direct customers - customers who are purchasing directly from Elastic. This offering may expand to marketplace customers in the future.
+:   You can purchase prepaid consumption credits directly from Elastic or through a cloud marketplace. You can also purchase through a reseller on a marketplace. For more information, refer to [](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 $$$faq-migration$$$Can I migrate my monthly account to the prepaid consumption model?
 :   Yes, if you have a monthly {{ecloud}} account, you can [contact us](https://www.elastic.co/cloud/contact) to migrate to prepaid consumption.
