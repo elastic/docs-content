@@ -70,7 +70,7 @@ Without the `feature_agentBuilder.read` application privilege, you'll receive a 
 
 ## Step 2: Configure your MCP client
 
-Configure a client connection in MCP hosts such as Claude Desktop, Cursor, or VS Code by adding your {{kib}} URL and API key, typically in the following format:
+Configure a client connection in MCP hosts such as Claude Desktop, Cursor, or VS Code by adding your {{kib}} URL and API key to the client's configuration file. The following example is for reference only, and the exact format differs between MCP clients.
 
 ```json
 {
@@ -79,13 +79,12 @@ Configure a client connection in MCP hosts such as Claude Desktop, Cursor, or VS
       "command": "npx",
       "args": [
         "mcp-remote",
-        "${KIBANA_URL}/api/agent_builder/mcp",
+        "https://<your-kibana-url>/api/agent_builder/mcp",
         "--header",
         "Authorization:${AUTH_HEADER}"
       ],
       "env": {
-        "KIBANA_URL": "${KIBANA_URL}",
-        "AUTH_HEADER": "ApiKey ${API_KEY}" <1>
+        "AUTH_HEADER": "ApiKey <your-api-key>" <1>
       }
     }
   }
@@ -94,13 +93,10 @@ Configure a client connection in MCP hosts such as Claude Desktop, Cursor, or VS
 
 1. Refer to [](#api-key-application-privileges)
 
-:::{note}
-Set the following environment variables:
+The `mcp-remote` adapter replaces `${AUTH_HEADER}` with the value from `env`. Other clients might not expand `${VAR}` placeholders or inherit your shell variables, so use literal values unless your client's documentation says otherwise.
 
-```bash
-export KIBANA_URL="your-kibana-url"
-export API_KEY="your-api-key"
-```
+:::{note}
+Elastic doesn't provide support for third-party MCP clients. Refer to your client's documentation or contact the vendor for configuration help. Before you configure a client, test your {{kib}} URL and API key with [MCP Inspector](https://github.com/modelcontextprotocol/inspector) outside the client.
 :::
 
 ## Best practices
