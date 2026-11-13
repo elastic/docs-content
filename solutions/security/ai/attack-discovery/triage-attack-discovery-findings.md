@@ -297,7 +297,7 @@ For findings you've assessed as high confidence, create a case and attach the re
 ::::{tab-item} Attack Discovery UI
 :sync: attack-discovery-ui
 
-1. Click **Take action**, then select **Add to case** (**Add to new case** or **Add to existing case** in earlier versions).
+1. Select **Take action**, then select **Add to case** (or **Add to new case** and **Add to existing case**, depending on your {{stack}} version).
 2. Include the discovery's summary and associated alerts in the case description. The LLM-generated narrative provides valuable context for analysts who pick up the case.
 3. Set an appropriate severity on the case based on the finding's risk score and your confidence assessment.
 

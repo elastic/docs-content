@@ -27,7 +27,7 @@ Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}}
 * [Add threat intelligence indicators](#cases-indicators)
 * [Attach Timelines to preserve investigation context](#cases-timeline)
 * {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` [Attach entities under investigation](#cases-add-entities)
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Attach attacks from Attack Discovery](#cases-add-attacks)
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Attach attacks from Attack Discovery](#cases-add-attacks)
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
@@ -39,7 +39,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-If **Sync detections** is on (**Sync alerts** in earlier versions), closing the case opens the **Select detection close reason** popup (**Select alert close reason** in earlier versions), where you can choose how attached detection alerts are closed. You can close the attached alerts without a reason, or specify an alert closing reason. 
+If **Sync detections** or **Sync alerts** (depending on your {{stack}} version) is on, closing the case prompts you to select how to close its attached detection alerts. You can close them without a reason, or select a closing reason.
 
 The available options match the [closing reasons from the **Alerts** page](/solutions/security/detect-and-alert/manage-detection-alerts.md#closing-reasons), including any custom closing reasons defined in the `securitySolution:detectionsCloseReasons` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 
@@ -110,57 +110,22 @@ Attached entities appear in their own **Entities** section on the case's **Attac
 ## Add attacks [cases-add-attacks]
 
 ```{applies_to}
-stack: ga 9.6+
 serverless:
   security: ga
+stack: ga 9.6+
 ```
 
-Attach an attack to a case to keep the finding, its summary, and the alerts it correlates together. Your team sees why those alerts belong together without rebuilding the investigation. You can attach both scheduled and manually generated attacks.
+Attach an attack to a case so your team can review the finding and the alerts it correlates in one place.
 
-### Attach an attack [cases-attach-attack]
+To add attacks to a case:
 
-To attach attacks, you need the **Create comments & attachments** privilege for **Cases**, and access to the attack. Refer to [Control access to cases](/explore-analyze/cases/control-case-access.md#cases-sub-feature-privileges).
-
-1. Do one of the following.
-   * On the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** on the attack's row.
-   * In the attack details flyout, select **Take action**.
+1. On the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** on the attack's row. In the attack details flyout, select **Take action**.
 2. Select **Add to case**.
-3. Select an existing case, or select **Create case** to create a new case.
+3. Select an existing case, or create a new one.
 
-{{kib}} attaches the attack and its alerts in one step. The attack appears as a card in the case's **Activity** tab, and its alerts appear in the **Alerts** section of the **Attachments** tab. A case holds up to 1,000 alerts. If the attack's alerts exceed that limit, {{kib}} attaches as many as fit and shows a warning.
+{{kib}} attaches the attack and its alerts together. If **Sync detections** is on, attack statuses update when the case status changes.
 
-### Review attacks in a case [cases-review-attacks]
-
-The attack card in the **Activity** tab shows the attack's title, when it was detected, its alert count, its summary, and its **Details** and **Attack Chain**. The card keeps the attack as it was when you attached it, so it doesn't change when the attack changes. Select **Show attack details** to open the attack's flyout.
-
-To work with all of a case's attacks together, select the **Attachments** tab and expand **Attacks**. The table shows **Detected on**, **Title**, **Alerts**, and **Summary** by default. Use the table's column selector to add **Risk score**, **Status**, **Attached by**, and **Attached at**. {{kib}} remembers your column selection.
-
-For each attack, you can open the flyout or select **Investigate in Timeline**. Select **More attack actions** to change the attack's status, assign it, apply tags, run a workflow, or add it to another case. To act on several attacks, select their rows, then use the bulk actions menu.
-
-The table shows each attack's current state. If {{kib}} can't load an attack, for example because the attack no longer exists or you don't have access to it, the row shows the details captured when you attached it. **Remove from case** is the only action available for that row.
-
-### Remove an attack from a case [cases-remove-attack]
-
-When you remove an attack, you can also remove the alerts it added to the case. For the removal controls in every section of the **Attachments** tab, refer to [Remove attachments from a case](/explore-analyze/cases/attach-objects-to-cases.md#cases-remove-attachments).
-
-1. Open the case, select the **Attachments** tab, and expand **Attacks**.
-2. From **More attack actions**, select **Remove from case**. To remove several attacks, select their rows, then select **Remove from case** from the bulk actions menu.
-3. In the dialog, select **Remove attack and alerts** to remove the attack together with the alerts it added, or **Remove attack only** to keep the alerts.
-
-You can also remove an attack from the **Activity** tab. From the attack card's menu, select **Delete attachment**, then make the same choice.
-
-**Remove attack and alerts** removes only the alerts that the attack added. {{kib}} keeps an alert in any of the following situations.
-
-* You also attached the alert to the case yourself.
-* Another attack on the case still includes the alert.
-* The attack no longer includes the alert.
-* {{kib}} can't read an attack it needs to check, for example because the attack no longer exists.
-
-Removing an attack with the Cases API, an {{agent-builder}} agent, or a workflow also removes its alerts by default.
-
-### Sync attack status with case status [cases-attack-status-sync]
-
-When **Sync detections** is on, changing the case status also changes the status of its attached attacks, the same way it changes attached alerts. An open case sets attacks to **Open**, an in-progress case sets them to **Acknowledged**, and a closed case sets them to **Closed**. **Sync detections** is on by default for {{elastic-sec}} cases.
+When you [remove an attack](/explore-analyze/cases/attach-objects-to-cases.md#cases-remove-attachments), you can also remove its alerts. Alerts that you added separately stay on the case.
 
 ## Automate case workflows [cases-automate]
 

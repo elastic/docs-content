@@ -70,7 +70,7 @@ Use these options to continue an investigation:
 
 * Click an entity's name to open the entity details flyout and view more details that might be relevant to your investigation.
 * Hover over an entity's name to either add the entity to Timeline (![Add to timeline icon](/solutions/images/security-icon-add-to-timeline.png "title =20x20")) or copy its field name and value to the clipboard (![Copy to clipboard icon](/solutions/images/security-icon-copy.png "title =20x20")).
-* Click **Take action**, then select **Add to case** (**Add to new case** or **Add to existing case** in earlier versions) to add a discovery to a [case](/solutions/security/investigate/security-cases.md). This makes it easy to share the information with your team and other stakeholders.
+* Select **Take action**, then select **Add to case** (or **Add to new case** and **Add to existing case**, depending on your {{stack}} version) to share a discovery with your team in a [case](/solutions/security/investigate/security-cases.md).
 * Click **Investigate in timeline** to explore the discovery in [Timeline](/solutions/security/investigate/timeline.md).
 * Click **View in AI Assistant** or **Add to chat** to attach the discovery to a conversation. You can then ask follow-up questions about the discovery or associated alerts.
 * **Automate the triage end-to-end** with [Elastic Workflows](/explore-analyze/workflows.md). The [AI-driven alert triage workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/ai-driven-alert-triage.md) shows how to invoke an Agent Builder agent on each discovery, open a case populated with the analysis, isolate the affected host, and notify the SOC.

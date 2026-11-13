@@ -159,5 +159,5 @@ When you change an attack's status, assign or unassign it, or apply attack tags,
 | Assign or unassign | **Take actions** → **Assign attack** or **Unassign attack** | Users are not notified when assigned or unassigned. |
 | Apply attack tags | **Take actions** → **Apply attack tags** | Use tags to categorize attacks for filtering. |
 | Investigate in timeline | **Take actions** → **Investigate in timeline** | Includes all alerts originally correlated when the attack was created. It does not reflect your current page filters or time range. |
-| Add to case | **Take actions** → **Add to case** (**Add to new case** or **Add to existing case** in earlier versions) | Attaches the attack and its alerts to a [case](/solutions/security/investigate/security-cases.md#cases-add-attacks). |
+| Add to case | **Take actions** → **Add to case** (or **Add to new case** and **Add to existing case**, depending on your {{stack}} version) | Attaches the attack and its alerts to a [case](/solutions/security/investigate/security-cases.md#cases-add-attacks). |
 | View in AI Chat | **Take actions** → **View in AI Chat** | Continue investigating with an [AI agent](/explore-analyze/ai-features/ai-chat-experiences.md). Ask follow-up questions about the attack or its alerts. |
