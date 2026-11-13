@@ -146,9 +146,4 @@ The model assumes that whether a document matches the filter is unrelated to how
 
 #### Configure automatic post-filtering [knn-automatic-post-filtering-configure]
 
-```{applies_to}
-stack: ga 9.6
-serverless: ga
-```
-
 The [`index.dense_vector.post_filter_selectivity_threshold`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-dense-vector-post-filter-selectivity-threshold) index setting controls which filters are post-filtered. Lower values also post-filter more selective filters, and `1.0` turns automatic post-filtering off. The setting is dynamic, so you can change it on an open index with the [update index settings API]({{es-apis}}operation/operation-indices-put-settings), and new searches use the new value.
