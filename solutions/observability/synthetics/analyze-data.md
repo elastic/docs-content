@@ -325,9 +325,9 @@ serverless: ga
 
 Monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs can also appear in the Synthetics UI, as long as they write to `synthetics-*`. This includes monitors {{heartbeat}} creates through [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) as hosts and pods come and go. You can see their status in Synthetics, including when you move off the deprecated {{uptime-app}}. Synthetics builds each entry from check data alone. The entry carries a **Heartbeat** badge next to the monitor type and is read-only.
 
-To hide them, click {icon}`controls` **Display options** in the toolbar on the **Overview** tab and turn off **Show autodiscovered monitors**. Your browser remembers the setting for each {{kib}} space. Turning it off also removes these monitors from the status counts, because Synthetics stops collecting them rather than filtering them out of the page.
+To hide them, click {icon}`controls` **Display options** in the toolbar on the **Overview** tab and turn off **Show autodiscovered monitors**. Your browser remembers the setting for each {{kib}} space. Turning it off also removes these monitors from the status counts, not just from the page.
 
-Because these monitors have no saved object, the following actions are disabled:
+Because Synthetics doesn't manage these monitors, the following actions are disabled:
 
 - **Edit monitor**
 - **Clone monitor**
@@ -340,11 +340,11 @@ Because these monitors have no saved object, the following actions are disabled:
 **Go to monitor** remains available, and the monitor's own page opens as usual with a **Heartbeat monitor (read-only)** callout. To edit what one of these monitors checks, or to stop it from running, edit the {{heartbeat}} configuration or the {{agent}} policy that defines it.
 :::
 
-Synthetics reads check data from `synthetics-*` only, so where a monitor writes decides whether it appears:
+Monitors appear in Synthetics only if they write to `synthetics-*`:
 
-* **{{agent}} running the Synthetics integration**, including {{k8s}} and Docker autodiscovery, already writes to `synthetics-*`. These monitors appear with no extra configuration.
-* **Standalone {{heartbeat}} `browser` and `api` monitors**: {{heartbeat}} routes these monitors to `synthetics-*` automatically.
-* **Standalone {{heartbeat}} `http`, `tcp`, and `icmp` monitors** write to `heartbeat-*` by default and don't appear. To route one of them, add a `data_stream` block that sets `type`. The dataset defaults to the monitor type, so the following monitor writes to `synthetics-http-default`:
+* **{{agent}} running the Synthetics integration**, including {{k8s}} and Docker autodiscovery, writes to `synthetics-*`. These monitors appear with no extra configuration.
+* **Standalone {{heartbeat}} `browser` and `api` monitors** are routed to `synthetics-*` automatically. These monitors also appear with no extra configuration.
+* **Standalone {{heartbeat}} `http`, `tcp`, and `icmp` monitors** write to `heartbeat-*` by default and don't appear. To route one of them, add a `data_stream` block that sets `type` to the monitor's definition in your [{{heartbeat}} configuration](beats://reference/heartbeat/configuration-heartbeat-options.md). The dataset defaults to the monitor type, so the following monitor writes to `synthetics-http-default`:
 
     ```yaml
     heartbeat.monitors:
@@ -357,4 +357,4 @@ Synthetics reads check data from `synthetics-*` only, so where a monitor writes 
         type: synthetics
     ```
 
-Synthetics shows at most 1,000 autodiscovered monitors, which keeps a large pool of short-lived pod-level monitors from crowding out the monitors you defined yourself. Monitors over the limit are left out of both the monitor list and the status counts.
+Synthetics shows at most 1,000 autodiscovered monitors, which keeps a large pool of short-lived pod-level monitors from crowding out the monitors you defined yourself. Synthetics fills that limit in alphabetical order of monitor ID, so when you have more, the ones latest in the alphabet are left out of both the monitor list and the status counts.

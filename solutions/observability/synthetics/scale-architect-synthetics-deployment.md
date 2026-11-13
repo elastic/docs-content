@@ -54,9 +54,10 @@ You can, however, use [Dashboards](/explore-analyze/dashboards.md) or [Discover]
 
 The {{synthetics-app}} is designed for active synthetic checks against user-defined URLs and user journeys. It is not intended for infrastructure or {{k8s}} pod monitoring through autodiscovery.
 
-{applies_to}`stack: ga 9.0-9.5` The Synthetics UI only shows monitors that are explicitly created and managed through the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md).
+The Synthetics UI shows:
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The Synthetics UI also lists monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs, including autodiscovered ones, as read-only entries. You can view them alongside the monitors you defined yourself, but you still create and edit them in the {{heartbeat}} configuration or the {{agent}} policy. Refer to [Autodiscovered monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-autodiscovered-monitors) for what appears and what the app can do with it.
+* Monitors you create and manage in the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md).
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs, including autodiscovered ones, as read-only entries. You create and edit these in the {{heartbeat}} configuration or the {{agent}} policy. Refer to [Autodiscovered monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-autodiscovered-monitors) for what appears and what you can do with it.
 
 The Synthetics UI has no mechanism of its own for dynamic autodiscovery of infrastructure targets, and it is not designed to ingest or display the high volume of short-lived monitor results that infrastructure monitoring typically produces.
 
