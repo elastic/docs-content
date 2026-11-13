@@ -72,7 +72,9 @@ These privileges control specific Applications (APM) settings. Selecting **All**
 
 ## Synthetics and Uptime sub-feature privileges
 
-These privileges control specific Synthetics actions. Selecting **All** for **Synthetics and Uptime** (or **Synthetics** in {{serverless-short}}) includes **Enabled** and **Can manage**. **Can run tests manually** and **Can manage rules** appear cleared under **All**, but an **All** role can already do both, so select them only on a **Read** role. **Can read global parameter values** is always opt-in: grant it separately even when the feature privilege is **All**.
+These privileges control specific Synthetics actions. Selecting **All** for **Synthetics and Uptime** (or **Synthetics** in {{serverless-short}}) includes **Enabled** under **Elastic managed locations** and **Can manage** under **Private locations**. **Can run tests manually** and **Can manage rules** appear cleared under **All**, but an **All** role can already do both, so select them only on a **Read** role. **Can read global parameter values** is always opt-in: grant it separately even when the feature privilege is **All**.
+
+{applies_to}`stack: preview 9.6+` **All** also includes **Can manage** under **Secret provider connections**.
 
 :::{table}
 :widths: description
@@ -82,6 +84,7 @@ These privileges control specific Synthetics actions. Selecting **All** for **Sy
 | **Can run tests manually** {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Trigger a manual test run of an existing monitor without creating, editing, or deleting monitors. In {{stack}}, available starting with versions 9.4.8 and 9.5.5. To add this to a read-only role, refer to [the reader role](/solutions/observability/synthetics/reader-role.md#synthetics-read-sub-feature-privileges). |
 | **Enabled** | Under **Elastic managed locations**, create monitors that run from Elastic managed locations. There is an additional charge to use Elastic managed testing locations. Turning this off is how you [restrict a writer role from using managed locations](/solutions/observability/synthetics/writer-role.md#disable-managed-locations). |
 | **Can manage** | Under **Private locations**, add and delete private locations. Setting up a new private location also requires the {{fleet}} privileges listed in the [writer role](/solutions/observability/synthetics/writer-role.md#synthetics-role-write-private-locations). |
+| {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` **Can manage** | Under **Secret provider connections**, add, edit, test, and delete connections to external secret managers such as HashiCorp Vault. To learn how monitors use these connections, refer to [Reference secrets from HashiCorp Vault](/solutions/observability/synthetics/work-with-params-secrets.md#synthetics-secrets-vault). |
 | **Can read global parameter values** {applies_to}`stack: ga 9.1+` {applies_to}`serverless: ga` | View unredacted [global parameter](/solutions/observability/synthetics/work-with-params-secrets.md) values. |
 | **Can manage rules** {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | Create, update, delete, enable, disable, run, and backfill Synthetics and Uptime alert rules, including the default status and TLS rules, without granting permission to create or edit monitors. In {{stack}}, available starting with versions 9.4.8 and 9.5.5. To add this to a read-only role, refer to [the reader role](/solutions/observability/synthetics/reader-role.md#synthetics-read-sub-feature-privileges). |
 :::
