@@ -12,11 +12,19 @@ products:
 
 # Run Attack Discovery [run-attack-discovery]
 
-Pick the path that fits how you work, your version, and your deployment. Every option uses the same analysis steps. Every option also requires a [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+Attack Discovery uses a [large language model (LLM)](/explore-analyze/ai-features/llm-guides/llm-connectors.md) to find related alerts that might be part of the same attack. You can start a run on demand, set up a recurring schedule, add a run to a workflow, or ask {{agent-builder}} to run it in chat. Where you start a run depends on your subscription, version, and deployment:
 
-| When to use this | Available in | Go to |
-|---|---|---|
-| Select which alerts to analyze, then run Attack Discovery immediately or on a schedule. The **Attacks** view isn't available in [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects. | {applies_to}`serverless: ga` {applies_to}`stack: preview =9.4, ga 9.5+` | [Run from the Attacks view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md) |
-| Include Attack Discovery as one step in a larger workflow. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Run from a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) |
-| Ask {{agent-builder}} to investigate in chat. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Run from {{agent-builder}}](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md) |
-| Run Attack Discovery on demand or on a schedule from the standalone **Attack Discovery** page. In {{serverless-short}}, only EASE projects include this page. | {applies_to}`serverless: ga` {applies_to}`stack: deprecated =9.5, ga 9.0-9.4` | [Run from the Attack Discovery page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) |
+| When to use this | Run from | {{stack}} Enterprise | {{serverless-short}} Complete |
+|---|---|:---:|:---:|
+| Select which alerts to analyze, then run Attack Discovery immediately or on a schedule. | [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md) | ✓ (9.4+) | ✓ |
+| Include Attack Discovery as one step in a larger workflow. | [A workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) | ✓ (9.5+) | ✓ |
+| Ask {{agent-builder}} to investigate in chat. | [{{agent-builder}} chat](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md) | ✓ (9.5+) | ✓ |
+| Run Attack Discovery on demand or on a schedule. | [**Attack Discovery** page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) | ✓ (9.0–9.5 only) | — |
+
+:::{note}
+Attack Discovery isn't available with a {{stack}} Basic, Gold, or Platinum subscription, or in {{serverless-short}} Security Analytics Essentials projects.
+:::
+
+:::{dropdown} Run Attack Discovery in Elastic AI SOC Engine (EASE) projects
+[EASE](/solutions/security/ai/ease/ease-intro.md) projects don't have the **Attacks** view. In an EASE project, you can run Attack Discovery from the [**Attack Discovery** page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) and [a workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md).
+:::

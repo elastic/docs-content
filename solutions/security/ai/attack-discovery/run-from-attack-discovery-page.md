@@ -15,11 +15,7 @@ products:
 This page describes how to run Attack Discovery from the **Attack Discovery** page. You can configure which alerts get analyzed, start an on-demand run, and set up a recurring schedule so discoveries are generated automatically.
 
 :::{note}
-The **Attack Discovery** page isn't available in every version and deployment.
-
-- {applies_to}`serverless: ga` In {{sec-serverless}}, [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects use the **Attack Discovery** page in place of the **Attacks** view. Security Analytics Complete projects use the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
-- {applies_to}`stack: removed 9.6+` The page is no longer available. Use the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
-- {applies_to}`stack: deprecated =9.5` When you open the page, a notice points to the **Attacks** view. To keep using the **Attack Discovery** page, turn off **Enable alerts and attacks alignment** in [Advanced Settings](kibana://reference/advanced-settings.md#kibana-siem-settings). Turning off this setting also hides the **Attacks** view.
+To check whether you have this page or the **Attacks** view, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
 :::
 
 ## Set up Attack Discovery [set-up-attack-discovery]

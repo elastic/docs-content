@@ -15,11 +15,7 @@ products:
 From the **Attack Discovery** page, you can change the status of saved discoveries, share them, update several at once, and search them.
 
 :::{note}
-The **Attack Discovery** page isn't available in every version and deployment.
-
-- {applies_to}`serverless: ga` In {{sec-serverless}}, [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects use the **Attack Discovery** page in place of the **Attacks** view. Security Analytics Complete projects manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
-- {applies_to}`stack: removed 9.6+` The page is no longer available. Manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
-- {applies_to}`stack: deprecated =9.5` When you open the page, a notice points to the **Attacks** view. To keep using the **Attack Discovery** page, turn off **Enable alerts and attacks alignment**, as described in [](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md).
+To check whether you have this page or the **Attacks** view, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
 :::
 
 ## Check Attack Discovery run status [attack-discovery-page-generations]
