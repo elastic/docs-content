@@ -64,11 +64,7 @@ On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select
 ## Learn more [nightshift-overview-start]
 
 - [Get started](./get-started.md): Set up {{nightshift}} and run your first investigation.
-- [Investigate anything](./use-cases/investigate-anything.md): Ask about any problem, in your own words.
-- [Investigate in Slack](./use-cases/investigate-in-slack.md): Ask for help from a Slack channel.
-- [Investigate your alerts](./use-cases/investigate-alerts.md): Find out why an alert fired.
-- [Automatically investigate your alerts](./use-cases/auto-investigate-alerts.md): Set up an [automation](./investigation/automations.md) to investigate alerts before you look at them.
-- [Detect problems automatically](./use-cases/detect-problems.md): Find problems that none of your alerts catch with [detection](./detection/index.md), an optional add-on.
+- [What you can do with {{nightshift}}](./use-cases/index.md): Follow step-by-step guides for investigating problems, automating investigations, and detecting problems.
 - [How investigations work](./investigation/index.md): Read an investigation and check its reasoning.
 - [How context is built](./context/index.md): Review or correct what {{nightshift}} learned in the Wiki, Memory, and Knowledge Indicators.
 - [Cost and models](./cost-and-models.md): Find out what {{nightshift}} costs and how your data is used.
