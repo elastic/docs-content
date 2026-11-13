@@ -49,10 +49,18 @@ These deployments do not include a preconfigured model. To use {{agent-builder}}
 
 Use the model selector in the chat interface to switch between available models. The selector displays all configured models, including preconfigured models (on {{ech}} and {{serverless-full}}) and any custom {{infer}} endpoints or connectors you set up.
 
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The selector groups models as follows:
+
+- **Recommended**: the models {{agent-builder}} recommends by default. Refer to [Models recommended by default](#recommended-by-default).
+- **Other**: the other preconfigured models.
+- **Custom**: your own {{infer}} endpoints and connectors.
+
 To learn more, refer to [select a different model](/explore-analyze/ai-features/agent-builder/chat.md#select-a-different-model).
 
+The following screenshot shows the model selector in {{serverless-full}}. The recommended models depend on your version.
+
 :::{image} images/model-selector.png
-:alt: Model selector dropdown in the chat interface
+:alt: Model selector menu in the chat interface listing recommended models under Recommended and other models under Other, with a Manage button at the bottom
 :width: 550px
 :screenshot:
 :::
@@ -79,26 +87,33 @@ For an example request, refer to [Route a request to a specific model](kibana-ap
 
 ::::{applies-switch}
 
-:::{applies-item} { ess: ga 9.4+, serverless: ga }
+:::{applies-item} { ess: ga 9.5+, serverless: ga }
 To change which model is used by default:
 
-1. Search for **Model management / Feature settings** in the global search field.
-2. Select your preferred model from the **Default model** dropdown.
-3. Save your changes.
+1. Search for **Model Management / Feature Settings** in the global search field.
+2. From the **Global model** menu, select your preferred model.
+3. Select **Save settings**.
+:::
 
-The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
+:::{applies-item} { ess: ga =9.4 }
+To change which model is used by default:
 
+1. Search for **Model Management / Feature Settings** in the global search field.
+2. From the **Default model** menu, select your preferred model.
+3. Select **Save settings**.
 :::
 
 :::{applies-item} { ess: ga =9.3 }
 To change which model is used by default:
 
 1. Search for **GenAI Settings** in the global search field.
-2. Select your preferred connector from the **Default AI Connector** dropdown.
+2. From the **Default AI Connector** menu, select your preferred connector.
 3. Save your changes.
 :::
 
 ::::
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
 
 For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
@@ -115,7 +130,10 @@ This routing is automatic and cannot be turned off. You do not need to configure
 
 ### When the fast model is used
 
-{{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as {{esql}} query generation and conversation title generation.
+{{agent-builder}} uses the fast model for well-scoped tasks that do not need deep reasoning, such as:
+
+- {{esql}} query generation
+- Conversation title generation
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The fast model also selects the [skills](skills.md#how-skills-are-invoked) that are relevant to each message, but only when both of the following are true:
 
@@ -126,21 +144,75 @@ Otherwise, the agent receives its full list of skills.
 
 ### Fast model availability by deployment type
 
-On {{serverless-full}} projects and {{ech}} deployments, the fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup. Claude Haiku 4.5 is one example. The latency improvement is most noticeable on {{serverless-full}}.
+:::::{applies-switch}
 
-On {{ece}}, {{eck}}, and self-managed deployments, there is no preconfigured fast model unless you [connect to EIS through Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md). Without it, fast model routing falls back to your default model.
+:::{applies-item} { ess: ga, serverless: ga }
+The fast model is preconfigured through Elastic Managed LLMs on the [Elastic Inference Service (EIS)](/explore-analyze/elastic-inference/eis.md), with no setup. For the built-in order, refer to [Choose the fast model](#choose-the-fast-model).
+:::
 
-### Choose the fast model
+:::{applies-item} { ece: ga, eck: ga, self: ga }
+There is no preconfigured fast model. To get one, [connect to EIS through Cloud Connect](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md). Without that connection, fast model routing uses your default model, as described in [Fallback behavior](#fallback-behavior).
+:::
 
-{{agent-builder}} uses a recommended Elastic Managed LLM for fast routing. When more than one recommended fast model is available, such as Claude Haiku 4.5 and Google Gemini Flash, it uses the first one. To prefer a specific model, open the **Feature settings** page, go to the **Agent Builder** section, and order the models under **Fast models** so your preferred one is at the top. To find this page, refer to [Change the default model](#change-the-default-model).
+:::::
 
-In 9.5, only recommended Elastic Managed LLMs are used for fast routing. Assigning a custom or non-recommended model has no effect on the fast model.
+### Choose the fast model [choose-the-fast-model]
+
+{{agent-builder}} uses the first model in the fast list. The built-in order depends on your version:
+
+:::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5.0!-9.5.2! }
+1. Claude Haiku 4.5
+2. Gemini 3.0 Flash
+:::
+
+:::{applies-item} { stack: ga 9.5.3!-9.6 }
+1. Gemini 3.5 Flash-Lite
+2. Claude Haiku 4.5
+:::
+
+:::{applies-item} { stack: ga 9.7+, serverless: ga }
+1. Gemini 3.5 Flash-Lite
+2. Claude Haiku 4.5
+3. GPT-6 Luna
+:::
+
+:::::
+
+{applies_to}`stack: ga =9.6` EIS can replace the built-in lists for **Fast models** and **Main models** when it provides model capability and family metadata. Without that metadata, the built-in lists are used. While **Use recommended defaults** is on, **Fast models** shows the order in use.
+
+{applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` EIS doesn't change the built-in lists.
+
+The following screenshot shows the **Main models** and **Fast models** lists on 9.7 and {{serverless-full}}, with **Use recommended defaults** turned on for both.
 
 :::{image} images/agent-builder-fast-models-feature-settings.png
-:alt: Main models and Fast models cards in the Agent Builder section of the Feature settings page
+:alt: Main models and Fast models cards in the Agent Builder section of the Feature settings page, each with Use recommended defaults turned on and a list of assigned models
 :width: 600px
 :screenshot:
 :::
+
+#### Change the fast model list
+
+How you change the fast model list depends on your version:
+
+:::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+To prefer a specific model:
+
+1. Open **Feature Settings** and go to **Agent Builder**.
+2. Under **Fast models**, turn off **Use recommended defaults**.
+3. Confirm by selecting **Turn off recommended defaults**.
+4. Put the preferred model first.
+5. Select **Save settings**.
+:::
+
+:::{applies-item} { stack: ga =9.5 }
+The built-in order is used while **Use recommended defaults** is on for **Fast models**. If you turn off **Use recommended defaults**, change the **Fast models** list, and select **Save settings**, fast routing uses your default model.
+:::
+
+:::::
 
 ### Fallback behavior
 
@@ -190,9 +262,11 @@ Availability of connectors depends on your deployment and version:
 To use additional models that aren't preconfigured, create a connector for your model provider.
 
 1. Find connectors under **Alerts and Insights / Connectors** in the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Select **Create Connector** and select your model provider.
+2. Select **Create connector** and select your model provider.
 3. Configure the connector with your API credentials and preferred model.
 4. Expand **Additional settings** and select `chat_completion` as the task type.
+
+   The following screenshot shows the **Additional settings** section with `chat_completion` selected as the task type.
 
    :::{image} images/additional-settings-chat-completion-task-type.png
    :alt: Additional settings expanded showing chat_completion task type selected
@@ -244,22 +318,55 @@ The following models are known to work well with {{agent-builder}}. These catego
 
 | Category | Model examples | Use cases | Trade-offs |
 |---|---|---|---|
-| Extended reasoning | - Gemini 3.1 Pro <br>- Claude 4.6 Opus | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
-| Balanced performance | - GPT-5.2 <br>- Claude 4.6 Sonnet | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
-| High throughput | - Claude 4.5 Haiku <br>- Gemini 3.0 Flash | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
+| Extended reasoning | - Gemini 3.1 Pro <br>- Claude Opus 4.6 <br>- Claude Opus 5 <br>- Claude Opus 5.5 | Open-ended exploration, multi-step planning, complex analysis, and {{esql}}-heavy dashboard generation | Higher latency and cost. Best for latency-insensitive, batch, async, or dashboard workflows that need fewer corrections. |
+| Balanced performance | - GPT-5.2 <br>- Claude Sonnet 4.6 <br>- Claude Sonnet 5 <br>- Claude Sonnet 5.5 <br>- GPT-5.6 Sol <br>- GPT-6 Sol | General-purpose agents requiring reliable tool orchestration and data retrieval and synthesis | Moderate cost. Suitable for real-time and interactive use. For {{esql}}-heavy dashboard generation, use an extended reasoning model. |
+| High throughput | - Claude Haiku 4.5 <br>- Gemini 3.0 Flash <br>- Gemini 3.5 Flash-Lite <br>- GPT-6 Luna | Latency-sensitive pipelines and high-concurrency scenarios with well-scoped tasks | Lower reasoning depth. Ideal for high-volume workloads with well-defined tasks. |
 
 {applies_to}`stack: preview =9.2, ga =9.3` {applies_to}`serverless: unavailable` On Stack 9.2 and 9.3, tool calls with Gemini 3.x models are not supported on a Google Vertex AI endpoint added in [External {{infer}}](/explore-analyze/elastic-inference/external.md). To troubleshoot this error, refer to [](troubleshooting/gemini-3-vertex-tool-calls.md).
 
 :::{note}
-{{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model for low-effort tasks](#fast-model).
+{{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model routing](#fast-model).
 :::
 
+#### Models recommended by default [recommended-by-default]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+{{agent-builder}} recommends a set of main models by default. They appear in **Main models** on the **Feature settings** page and under **Recommended** in the model selector. This list can differ from the models in the [Recommended models](#recommended-models) table, which are known to work well but aren't all recommended by default.
+
+The default main models depend on your version:
+
+:::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.5.0!-9.5.2! }
+- Claude Sonnet 4.6
+- Claude Opus 4.6
+- GPT-5.2
+:::
+
+:::{applies-item} { stack: ga 9.5.3!-9.6 }
+- Claude Sonnet 5
+- Claude Opus 5
+- GPT-5.6 Sol
+:::
+
+:::{applies-item} { stack: ga 9.7+, serverless: ga }
+- Claude Opus 5.5
+- Claude Sonnet 5.5
+- GPT-6 Sol
+:::
+
+:::::
+
 :::{tip}
-For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude 4.6 Sonnet and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
+For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude Sonnet 4.6 and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
 :::
 
 :::{note}
-For [dashboards and visualizations](agent-builder-dashboards-and-visualizations.md), choose a higher-tier model when the workflow depends on complex {{esql}} generation. Current testing shows Claude 4.6 Opus generates more reliable dashboard {{esql}} than Claude 4.6 Sonnet.
+For [dashboards and visualizations](agent-builder-dashboards-and-visualizations.md), choose a higher-tier model when the workflow depends on complex {{esql}} generation. Current testing shows Claude Opus 4.6 generates more reliable dashboard {{esql}} than Claude Sonnet 4.6.
 :::
 
 ### Incompatible models

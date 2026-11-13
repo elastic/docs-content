@@ -93,8 +93,10 @@ stack: ga 9.3+
 
 Use the model selector to switch the underlying [model](models.md) the agent uses to generate responses. Switch models to prioritize faster responses, lower costs, or more complex reasoning, depending on your use case.
 
+The following screenshot shows the model selector in the chat interface.
+
 :::{image} images/model-selector.png
-:alt: Model selector dropdown showing available models
+:alt: Model selector dropdown showing recommended and other available models
 :width: 650px
 :screenshot:
 :::
