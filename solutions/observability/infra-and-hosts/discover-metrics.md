@@ -143,3 +143,13 @@ For each metric chart, you can perform the following actions:
 * **View details** ({icon}`eye`): Get additional information about the metric like metric type, dimensions, and ES|QL query.
 * **Copy to dashboard** ({icon}`app_dashboard`): Save the metric chart to an existing or new [dashboard](/explore-analyze/dashboards.md).
 * **Add to case** ({icon}`app_cases`): Add the metric chart to a [case](/solutions/observability/incident-management/observability-cases.md).
+
+## Save or share your metrics exploration [save-or-share-metrics-exploration]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+When you want to reopen a metrics exploration later or build on it, save it as a Discover session. Refer to [Save and manage Discover sessions](/explore-analyze/discover/save-open-search.md).
+
+To show a teammate the metrics view you're looking at, send a link that reopens that view. Refer to [Share a link to the current view](/explore-analyze/discover/copy-and-share-documents.md#share-your-findings).
