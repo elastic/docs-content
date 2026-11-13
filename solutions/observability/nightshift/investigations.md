@@ -2,72 +2,60 @@
 applies_to:
   serverless:
     observability: preview
-description: Investigations in Elastic nightshift analyze a problem in your systems, determine its likely cause, and report their findings with proposed actions.
+description: Learn how the Elastic nightshift Investigation engine works out what's behind an alert, what starts an investigation, how it runs, and what it produces.
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# Investigations [nightshift-investigations]
+# Investigation engine [nightshift-investigation-engine]
 
-An investigation is an automated analysis of an issue in your systems. When an investigation runs, Elastic nightshift AI SRE gathers evidence from your data and from what it already knows about your systems, then reports what happened, what likely caused it, and what to look at next.
+The Investigation engine works out what's behind an alert. An investigation is an automated analysis of an issue in your systems. When an investigation runs, Elastic nightshift AI SRE gathers evidence from your data and from what it already knows about your systems, then reports what happened, what likely caused it, and what to look at next.
 
-:::{note}
-Elastic nightshift is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
-:::
+## What starts an investigation [nightshift-investigation-engine-triggers]
 
-## What triggers an investigation [nightshift-investigations-triggers]
+An investigation can start in the following ways:
 
-Investigations start in the following ways:
+- **You describe a problem.** Start a manual investigation from the Elastic nightshift home page.
+- **An alert or alert episode.** Start an investigation from an alert, or from an alert episode from the [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md).
+- **A significant event.** Start an investigation from the details of a significant event that the [Detection engine](./core-components/detection-engine.md) surfaced.
+- **An automation.** An automation starts an investigation when an alert fires, on a schedule, or from a Slack message. Refer to [Automations](./core-components/automations.md).
 
-<!-- TODO for Mike B. (@mdbirnstiehl): Since investigations will also work with {{alerting-v2-system-short}} alerts for Nightshift's serverless release, the "From an alert" bullet below might need a small tweak. 
+If you start an investigation from an alert or significant event that's already part of an open investigation, Elastic nightshift adds to that investigation instead of opening a second one. Each new alert starts its own investigation, even when it comes from the same rule. A closed investigation is never continued.
 
-Potential revision:
-This works for alerts created by [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) or [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md).
--->
-- **From an alert**: Select **Investigate** on an alert, from the alert details or the alerts table, to start an ad hoc investigation into it. If the alert already has one, select **View investigation** to open it. This works only for alerts created by [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md), not for alerts created by [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md). After you trigger an investigation, you can also find and track it from the Elastic nightshift [home page](./nightshift.md).
-- **From a significant event**: Open a significant event's details and select **Run investigation** to start an investigation manually.
-- **From the home page**: Select **Start investigation** on the home page and enter a prompt to start a manual investigation.
+For the steps, refer to [Start an investigation](./investigate-and-respond.md#nightshift-investigations-start).
 
-## How investigations work [nightshift-investigations-how]
+## How investigations work [nightshift-investigation-engine-how]
 
-Each investigation runs as an agentic process in the background:
+Each investigation runs as an agentic process in the background, in a sandbox:
 
-- **Context first**: The investigation agent starts from what Elastic nightshift knows about your systems, such as the services involved, their dependencies, and any knowledge you've added. Refer to [Context](./memory.md) for more information on adding context about your systems and processes.
-- **Evidence gathering**: The agent runs targeted queries against your data to collect evidence about the problem and the services it affects.
+- **Context first**: The investigation agent starts from what Elastic nightshift knows about your systems, such as the services involved, their dependencies, and any context you've given it through automation instructions. Refer to [Context engine](./memory.md).
+- **Evidence gathering**: The agent runs targeted queries against your data to collect evidence about the problem and the services it affects. It reaches your data and tools through connectors. Refer to [Connectors and integrations](./core-components/connectors-and-integrations.md).
 - **Findings**: The agent synthesizes what it found into a conclusion about the likely root cause.
-- **Learning**: The agent saves what it learned about your systems as knowledge, so future investigations are more accurate and use fewer tokens. Refer to [Context](./memory.md).
+- **Learning**: The agent saves what it learned about your systems to the Wiki and Memory, so future investigations are more accurate and use fewer tokens. Refer to [Context engine](./memory.md).
 
-## Read investigation results [nightshift-investigations-output]
+## What an investigation produces [nightshift-investigation-engine-output]
 
-A completed investigation shows:
+A completed investigation shows what happened, what it affects, and the best-supported explanation for why it occurred. It includes a hypothesis tree that shows the hypotheses the investigation tested, and it ends with proposed actions that you can take to mitigate or fix the problem. Each investigation has a severity, which the home page uses to group investigations.
 
-- **What happened**: A short factual summary of the observed issue and what the investigation found.
-- **Impact**: What the issue affects, including a chart of the affected activity, so you can prioritize it and involve the right teams.
-- **Subject**: What was being investigated, for example, the alert or significant event that triggered it.
-- **Conclusion**: The best-supported explanation of why the issue occurred.
-- **View hypothesis tree**: A diagram of the hypotheses the investigation tested, each marked **Confirmed** or **Dismissed** with a confidence percentage and the evidence behind it, so you can validate its conclusions. Refer to [Check how Elastic nightshift reached its conclusion](./get-started.md#nightshift-get-started-reasoning).
-- **Proposed actions**: Recommended next steps, with the most direct fix tagged **Recommended**. Select an action to see why it's suggested and copy any commands it includes. After you apply an action, confirm it in the investigation. Refer to [Resolve a problem and confirm you did it](./get-started.md#nightshift-get-started-resolve).
+To read the results, refer to [Read the results](./investigate-and-respond.md#nightshift-investigations-results).
 
-Each investigation has a severity (critical, high, medium, or low), which is used to group investigations on the home page.
+## Proposed actions [nightshift-investigation-engine-proposed-actions]
 
-## Manage investigations [nightshift-investigations-lifecycle]
+A proposed action is a change that an investigation suggests to mitigate or fix a problem. Every investigation ends with proposed actions, each with a title and an explanation of why Elastic nightshift suggests it. A proposed action can be:
 
-Investigations are listed on the [home page](./nightshift.md), grouped by severity, with sections for in-progress and failed or canceled runs, so you can see what's running and find the investigations that matter to you. Each investigation shows its status, such as **Running** or **Completed**.
+- A command to run
+- A configuration change
+- A code fix
+- A rollback
+- A suggestion to gather more information
 
-## Add custom context [nightshift-investigations-custom-context]
+Elastic nightshift doesn't carry out proposed actions. You make the change in your environment, then confirm in the investigation that you did. If an action doesn't suit your system, you can decline it. In the hypothesis tree, each proposed action has a **High confidence**, **Medium confidence**, or **Low confidence** label.
 
-You can save short notes about your environment, such as team conventions, service ownership, and known quirks. Elastic nightshift applies them to every investigation and every chat with the agent. Select {icon}`boxes_vertical` → **Custom context** to add, edit, and delete context.
+To review an action, refer to [Review proposed actions](./investigate-and-respond.md#nightshift-investigations-actions).
 
-## Give feedback [nightshift-investigations-feedback]
+## Learn more [nightshift-investigation-engine-nav]
 
-Use the **Submit feedback** {icon}`comment` button at the top of the page to share your experience. Your feedback goes directly to the team.
-
-## Learn more [nightshift-investigations-nav]
-
-- [Get started with Elastic nightshift](./get-started.md): Start an investigation and review the results
-- [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
-- [Context](./memory.md): Learn how Elastic nightshift stores and uses system knowledge to improve investigation quality over time
-- [How Significant Events works](./significant-events/how-it-works.md): Pipeline internals for KI extraction, rule generation, detection, and discovery
-- [Knowledge Indicators](./significant-events/knowledge-indicators.md): Get an in-depth overview of how KIs work
-- [Operator guide](./significant-events/operator-guide.md): Learn more about system impact, cost drivers, and operational procedures
+- [Investigate and respond](./investigate-and-respond.md): Start an investigation and work with its results
+- [Context engine](./memory.md): Learn how Elastic nightshift stores and uses knowledge about your systems
+- [How Elastic nightshift works](./core-components/index.md#nightshift-how-it-works): See where the Investigation engine fits in

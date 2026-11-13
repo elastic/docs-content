@@ -2,175 +2,92 @@
 applies_to:
   serverless:
     observability: preview
-description: Start an investigation in Elastic nightshift, ask questions about it, check how it reached its conclusion, and confirm the fix you applied.
+description: Get started with Elastic nightshift. Check the requirements, enable it, add data, run your first investigation, and create your first automation.
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# Get started with Elastic nightshift
+# Get started with Elastic nightshift [nightshift-get-started]
 
-Use Elastic nightshift to investigate a problem, ask questions about what it found, check how it reached its conclusion, and resolve the problem. You can start from an alert, or describe the problem in your own words. This page suggests ways to try each of these, with the steps for each.
+To use Elastic nightshift in a space, enable it, connect the data and tools that investigations use, and run your first investigation. Elastic nightshift is off by default, so an admin needs to enable it.
 
-:::{note}
-Elastic nightshift is in private preview and isn't enabled by default. To request access, contact your Elastic account team.
-:::
+Check the requirements first, then follow the steps. They match the **Get started** checklist on the Elastic nightshift home page.
 
-## Before you begin [nightshift-get-started-prereqs]
+## Requirements [nightshift-get-started-requirements]
 
-:::{include} _snippets/requirements.md
-:::
+Make sure you meet the following requirements:
 
-## Investigate anything [nightshift-get-started-anything]
+- **An {{obs-serverless}} project on the Complete tier**: In Tech Preview, Elastic nightshift is available only on {{serverless-full}}. It isn't available on self-managed or {{ech}} deployments.
+- **Access to Elastic nightshift**: Your project must have Elastic nightshift [enabled](#nightshift-get-started-enable).
+- **Data to monitor**: Elastic nightshift works with the data you already have in your local project or in remote serverless projects connected through {{cps}}.
+- **A connector for your data**: Investigations query your data through a connector, so you add an External Elasticsearch connector when you set up. Refer to [Connect your data and tools](./get-started/connect-your-data-and-tools.md).
+- **The right privileges**: An administrator with the `manage_security` privilege and the **Manage engines** privilege must enable Elastic nightshift. Other access depends on user roles. Refer to [Grant access to Elastic nightshift](./get-started/privileges.md).
 
-If you’ve noticed an issue in your system that isn't covered by an alert, describe the problem in your own words. Elastic nightshift runs a structured investigation into whatever you describe.
+Elastic nightshift uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
 
-To start an investigation:
+## Set up Elastic nightshift [nightshift-get-started-steps]
 
-1. From the Elastic nightshift home page, select **Start investigation**.
-1. Enter or paste what you want to investigate in the text box. The more context you provide, the better.
-1. Select **Investigate**.
+:::::{stepper}
 
-The investigation appears on the home page, where you can open it to follow its progress and read the results.
+::::{step} Enable Elastic nightshift
+:anchor: nightshift-get-started-enable
 
-## Investigate an alert [nightshift-get-started-alert]
+An admin enables Elastic nightshift once for each space. You need a role with the `manage_security` cluster privilege and the **Manage engines** Elastic nightshift privilege. If you don't have these privileges, ask and admin to enable Elastic nightshift.
 
-If an alert needs a closer look, run an investigation into it to find out what happened and how to fix it. Start an investigation from either the [alerts table](#nightshift-get-started-alerts-table) or from an [alert notification](#nightshift-get-started-alert-details).
+1. Open the Elastic nightshift home page. If Elastic nightshift isn't enabled for the space yet, the page shows **One-time admin setup required for this space**.
+1. Select **Enable Elastic Nightshift**.
+::::
 
-<!-- TODO for Mike B. (@mdbirnstiehl): Since investigations will also work with {{alerting-v2-system-short}} alerts for Nightshift's serverless release, the following note might need a small tweak, or might not be needed anymore. 
+::::{step} Add data
+:anchor: nightshift-get-started-add-data
 
-Potential revision:
-You can investigate alerts created by [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) or [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md).
--->
+Investigations are only as good as the data Elastic nightshift has access to. To give Elastic nightshift access to more data:
 
-:::{note}
-Investigations from an alert work only with alerts created by [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md). They don't work with alerts from [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md).
-:::
+- **Connect your tools.** Add connectors so the investigation agent can query your data and read the code behind your systems. Tech Preview supports External Elasticsearch, GitHub, and Slack. Refer to [Connect your data and tools](./get-started/connect-your-data-and-tools.md).
+- **Optionally, choose the data that detection watches.** Refer to [Set up detection sources](./audit-and-manage-detections.md#nightshift-detections-sources).
+::::
 
-### From the Alerts table [nightshift-get-started-alerts-table]
+::::{step} Try your first investigation
+:anchor: nightshift-get-started-first-investigation
 
-To run an investigation from the **Alerts** table:
+Describe a problem and let Elastic nightshift look into it. Use a problem from your own systems, or a question such as "Why is checkout latency up?"
 
-1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Find the alert you want to investigate and open the {icon}`boxes_vertical` **More actions** menu, then select {icon}`inspect` **Investigate**.
-1. After the investigation starts, select **View investigation**.
+1. From the home page, select **Investigate**, describe the problem, and select **Investigate**. The investigation appears in the **In progress** section. Refer to [Start an investigation](./investigate-and-respond.md#nightshift-investigations-start).
+1. Select the investigation to open it, and read **What's happened**, **Impact**, and **Conclusion**. Refer to [Read investigation results](./investigate-and-respond.md#nightshift-investigations-results).
+1. In **Conclusion**, select **View hypothesis tree** to see how Elastic nightshift reached its conclusion. Each hypothesis is marked **Confirmed** or **Dismissed**, with a confidence percentage.
+1. In **Proposed actions**, select an action and read why it's suggested. If you make the change in your environment, select **Mark as applied**. Elastic nightshift doesn't make the change for you. Refer to [Review proposed actions](./investigate-and-respond.md#nightshift-investigations-actions).
+1. Select **Open chat** and ask a question, for example "How did you arrive at this conclusion?" The conversation opens in Agent Builder and continues the investigation. Refer to [Ask follow-up questions in chat](./investigate-and-respond.md#nightshift-investigations-chat).
+::::
 
-When the investigation finishes, it explains what happened and how to fix it.
+::::{step} Create your first automation
+:anchor: nightshift-get-started-first-automation
 
-### From an alert notification [nightshift-get-started-alert-details]
+An automation starts investigations for you when an alert fires or on a schedule, and can post the results to Slack. Refer to [Set up an automation](./set-up-an-automation.md).
+::::
 
-To run an investigation from an alert notification:
+:::::
 
-1. From an alert notification, open the **Alert details** page in {{kib}}.
-1. Open the {icon}`boxes_vertical` **Actions** menu, then select {icon}`inspect` **Investigate**.
-1. After the investigation starts, select **View investigation**.
+## What enabling Elastic nightshift sets up [nightshift-get-started-enable-sets-up]
 
-When the investigation finishes, it explains what happened and how to fix it.
+Elastic nightshift runs investigations as the `nightshift_agent` service account, not as the person who started them.
 
-## Ask questions about an investigation [nightshift-get-started-questions]
+A deployment has two Elastic nightshift service accounts:
 
-Chat with Elastic nightshift to ask questions about an investigation, or check something else for you.
+- `nightshift_agent` runs investigations, their sandbox tools, and the agent's hooks.
+- `nightshift_automations` runs automation workflows.
 
-1. Open the investigation.
-1. Select **Open chat**.
-1. Ask your question. For example, ask "How did you arrive at this conclusion?"
+Each account has a role that Elastic nightshift doesn't create or change, and the roles cover every space. Setting up a space grants the agent the privileges that it needs, installs the investigation agent in the space, and installs the workflows that run as these accounts. Which account acts in a space is decided by the workflows that are installed there.
 
-## Check how Elastic nightshift reached its conclusion [nightshift-get-started-reasoning]
+The agent performs investigations and actions on behalf of the users in the space. You can revoke the privileges at any time in **Settings**.
 
-To validate the reasoning behind a conclusion, review the hypotheses Elastic nightshift considered.
+Investigations use the connectors in the space and the credentials stored in those connectors. Refer to [Connect your data and tools](./get-started/connect-your-data-and-tools.md).
 
-1. Open the investigation.
-1. Select **View hypothesis tree**.
+## Next steps [nightshift-get-started-nav]
 
-The hypothesis tree is a diagram that reads from top to bottom and shows:
-
-- **Trigger**: What started the investigation, such as the alert.
-- **Hypotheses**: The number of hypotheses analyzed and how many were confirmed or dismissed, followed by a card for each hypothesis. Each card shows the hypothesis, whether it was **Confirmed** or **Dismissed**, its confidence percentage, and an excerpt of the evidence behind it.
-- **Conclusion**: The investigation's conclusion, connected to the hypothesis that was confirmed.
-- **Proposed actions**: The actions that follow from the conclusion, each with a confidence level.
-
-To read a hypothesis in full, select its card. A panel opens with the complete explanation and the supporting evidence, including charts of the data behind it.
-
-## Re-test or test a new hypothesis [nightshift-get-started-hypothesis]
-
-If you think Elastic nightshift didn't test a hypothesis correctly, for example because it didn't find the right data, or if it missed a hypothesis entirely, ask it to re-test that hypothesis or test a new one.
-
-1. Open the investigation.
-1. Select **Open chat**.
-1. Ask Elastic nightshift to test the hypothesis. For example, ask "Add and test a hypothesis that the checkout service failures were caused by a GCP outage."
-
-Elastic nightshift reinvestigates with the hypothesis and adds it to the hypothesis tree, marked **Confirmed** or **Dismissed** with a confidence percentage.
-
-## Resolve a problem and confirm you did it [nightshift-get-started-resolve]
-
-Elastic nightshift proposes actions you can take to mitigate or fix the problem.
-
-1. In the investigation, select a proposed action to view it.
-1. Review the proposed action, and make the changes if they make sense.
-1. Select **I applied** to confirm that you've applied the action.
-
-## Connect GitHub [nightshift-get-started-github]
-
-GitHub holds the source of truth for the code behind your systems, and often your runbooks, architecture diagrams, and Helm charts too. Connect GitHub to give Elastic nightshift more information to investigate problems with your systems.
-
-1. Find **Connectors** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Create a new connector and select **GitHub**.
-1. Enter your credentials. Use a fine-grained personal access token, which lets you limit access to specific repositories.
-
-## Manage what Elastic nightshift knows about your systems [nightshift-get-started-knowledge]
-
-Elastic nightshift learns about your systems every time it runs an investigation. Storing what it learns as knowledge makes future investigations more accurate and uses fewer tokens. You can view this knowledge, correct it, and add your own.
-
-From the Elastic nightshift home page, select {icon}`boxes_vertical` → **Knowledge**. The **Cortex** and **Memory** tabs contain what Elastic nightshift knows about your systems:
-
-- **Cortex**: Durable knowledge that the investigator reads before each run, organized into pages by type, such as services, runbooks, postmortems, and queries. Each page shows its type and whether it's established or tentative. You and Elastic nightshift can both create and update pages.
-- **Memory**: Lessons that the investigator saves after a run and recalls when it works on a similar problem, such as how a previous problem was resolved or which checks found its cause. Elastic nightshift creates memories, and you can only archive or delete them.
-
-### Edit, archive, or delete knowledge [nightshift-get-started-knowledge-edit]
-
-From the **Cortex** tab:
-
-- To edit a page yourself, open it and select **Edit**.
-
-  :::{warning}
-  When you manually edit or create a Cortex page, Elastic nightshift and the Elastic AI Agent can't change it, and it won't be updated with information from later investigations.
-  :::
-
-- To edit a page and let Elastic nightshift keep updating it, ask the Elastic AI Agent to make the change.
-- To stop Elastic nightshift from using a page, open it and select **Archive**. Archiving keeps the page, so you can restore it later.
-- To restore an archived page, filter the pages by **Archived**, open the page, select **Edit**, change **Status** to **Tentative** or **Established**, and select **Save**.
-
-From the **Memory** tab:
-
-- To stop Elastic nightshift from using a memory, open it and select **Archive**. Archiving keeps the memory, so you can select **Restore** to use it again.
-- To remove a memory permanently, select **Delete**.
-
-### Add knowledge [nightshift-get-started-knowledge-add]
-
-Add knowledge by creating a Cortex page.
-
-#### Ask the Elastic AI Agent to create a page
-
-To create a page that Elastic nightshift can update with information from investigations, ask the Elastic AI Agent to create it:
-
-1. Select **AI Agent**.
-1. Ask the agent to create entries about your systems. For example:
-   - Ask it to create a service entry for your service and tell it where to look in GitHub. [Connect GitHub](#nightshift-get-started-github) first.
-   - Tell it where to find your runbooks.
-   - Tell it anything you would want an on-call engineer to know.
-1. When the agent asks for permission to write to Cortex, select **Approve**.
-
-#### Create a page yourself
-
-Elastic nightshift uses a page you create exactly as you wrote it and it won't be updated by Elastic nightshift or the AI Agent at any point:
-
-1. From **Knowledge**, select the **Cortex** tab.
-1. Select **New page** {icon}`plus`.
-1. In the **New Cortex page** dialog, select a **Type**. Enter a **Slug**, using lowercase words separated by hyphens, such as `checkout-latency-p99`, and a **Title**.
-1. Select **Create**, then open the page and select **Edit** to add your content.
-
-## Next steps [nightshift-get-started-next]
-
-- [Elastic nightshift](./nightshift.md): Get an overview of Elastic nightshift and its requirements
-- [Investigations](./investigations.md): Learn how investigations work and how to read the results
-- [Context](./memory.md): Review and add what Elastic nightshift knows about your systems
+- [Connect your data and tools](./get-started/connect-your-data-and-tools.md): Add the connectors that investigations use, including Slack
+- [Set up detection sources](./audit-and-manage-detections.md#nightshift-detections-sources): Choose the data that detection watches
+- [Investigations](./investigations.md): Find what needs attention, start investigations from alerts, and act on the results
+- [Set up an automation](./set-up-an-automation.md): Run investigations when an alert fires or on a schedule
+- [Core components](./core-components/index.md): Learn how the engines, automations, proposed actions, and connectors work
+- [Manage Elastic nightshift](./manage/index.md): Configure settings, manage knowledge, and set run limits
