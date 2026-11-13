@@ -171,6 +171,16 @@ using var sdk = OpenTelemetrySdk.Create(builder => builder
    .WithElasticDefaults(options));
 ```
 
+## Zero-code instrumentation with the OpenTelemetry Operator [edot-net-opentelemetry-operator]
+
+The following problems affect .NET applications that you instrument on Kubernetes with the OpenTelemetry Operator. For the required configuration, refer to [Instrument .NET applications on Kubernetes](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/instrumenting-applications.md#dotnet-auto-instrumentation).
+
+### Telemetry arrives without EDOT .NET features [edot-net-operator-plugin-not-loaded]
+
+Telemetry from your application reaches Elastic, but the `telemetry.distro.name` resource attribute is `opentelemetry-dotnet-instrumentation` instead of `elastic`. EDOT .NET defaults and features, such as central configuration, don't apply.
+
+This happens when the operator loads the upstream OpenTelemetry .NET automatic instrumentation without the EDOT .NET plugin. To fix this, add `OTEL_DOTNET_AUTO_PLUGINS` with a value of `Elastic.OpenTelemetry.AutoInstrumentationPlugin, Elastic.OpenTelemetry.AutoInstrumentation` to the `dotnet` section of your `Instrumentation` object and restart your workloads. Then run `kubectl describe pod <POD_NAME>` and check that the variable is listed in the container environment.
+
 ## Known issues
 
 The following known issues affect EDOT .NET.
