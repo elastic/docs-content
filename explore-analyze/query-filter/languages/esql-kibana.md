@@ -178,7 +178,10 @@ Without an Enterprise license, the AI prompts and actions don't appear, and the 
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Natural language mode doesn't appear until you configure a model.
 - {applies_to}`stack: preview =9.5` Natural language mode appears, and selecting it shows a link to set up a connector.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The AI agent can also use [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md) as sources. It uses them when it writes a full query, in natural language mode or from a comment when the editor contains only comments, and when you use **Fix with AI**. It uses only the datasets that you have the `read_dataset_metadata`, `manage_dataset`, `manage`, or `all` index privilege on.
+The AI agent can also use these sources when it writes a full query in **Natural language** mode or from a comment in an editor that contains only comments, and when you use **Fix with AI**:
+
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md): The agent uses only the datasets that you have the `read_dataset_metadata`, `manage_dataset`, `manage`, or `all` index privilege on.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md): You can ask for a view by name and get a query that reads from it. The agent uses only the views that you have the `read_view_metadata`, `manage_view`, `manage`, or `all` index privilege on.
 
 #### Generate a full query from natural language [esql-kibana-quick-search-nl]
 
