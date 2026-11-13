@@ -11,20 +11,22 @@ products:
 
 # View the results [ml-ad-view-results]
 
-After the {{anomaly-job}} has processed some data, you can view the results in {{kib}}.
+After the {{anomaly-job}} has processed some data, you can [view the results in {{kib}}](#ml-ad-view-results-kibana) or [query them with {{esql}}](#ml-ad-view-results-esql).
 
 ::::{tip}
 Depending on the capacity of your machine, you might need to wait a few seconds for the {{ml}} analysis to generate initial results.
 ::::
 
-There are two tools for examining the results from {{anomaly-jobs}} in {{kib}}: the **Anomaly Explorer** and the **Single Metric Viewer**.
+## View results in {{kib}} [ml-ad-view-results-kibana]
+
+You can examine the results with the **Anomaly Explorer** and the **Single Metric Viewer**.
 
 ::::{tip}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
 Use the date picker to adjust the time range for your results. You can use the **Zoom in** and **Zoom out** buttons next to the date picker to quickly narrow or widen the time range.
 ::::
 
-## Bucket results [ml-ad-bucket-results]
+### Bucket results [ml-ad-bucket-results]
 
 When you view your {{ml}} results, each bucket has an anomaly score. This score is a statistically aggregated and normalized view of the combined anomalousness of all the record results in the bucket.
 
@@ -53,7 +55,7 @@ Bucket results provide the top level, overall view of the {{anomaly-job}} and ar
 ::::{include} _snippets/ml-ad-cps-results-links.md
 ::::
 
-## Influencer results [ml-ad-influencer-results]
+### Influencer results [ml-ad-influencer-results]
 
 The influencer results show which entities were anomalous and when. One influencer result is written per bucket for each influencer that affects the anomalousness of the bucket. The {{ml}} analytics determine the impact of an influencer by performing a series of experiments that remove all data points with a specific influencer value and check whether the bucket is still anomalous. That means that only influencers with statistically significant impact on the anomaly are reported in the results. For jobs with more than one detector, influencer scores provide a powerful view of the most anomalous entities.
 
@@ -71,3 +73,73 @@ You can also explore swim lanes that correspond to the values of an influencer. 
 ::::{tip}
 The anomaly scores that you see in each section of the **Anomaly Explorer** might differ slightly. This disparity occurs because for each {{anomaly-job}}, there are bucket results, influencer results, and record results. Anomaly scores are generated for each type of result. The anomaly timeline in {{kib}} uses the bucket-level anomaly scores. If you view swim lanes by influencer, it uses the influencer-level anomaly scores, as does the list of top influencers. The list of anomalies uses the record-level anomaly scores.
 ::::
+
+## View results with {{esql}} [ml-ad-view-results-esql]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+You can also query bucket, record, and influencer results with {{esql}}, using the `.ml-anomalies` [reserved view](elasticsearch://reference/query-languages/esql/esql-views.md#esql-views-reserved). You can run the query anywhere you use {{esql}}, such as [Discover](/explore-analyze/discover/use-esql.md), [{{dev-tools-app}}](/explore-analyze/query-filter/tools/console.md), or the [{{esql}} REST API](elasticsearch://reference/query-languages/esql/esql-rest.md). The following examples show how to query this view.
+
+Get the maximum record score for each 10-minute interval for one job. Replace `response_code_rates` with the ID of your job:
+
+```esql
+FROM .ml-anomalies
+| WHERE job_id == "response_code_rates"
+| WHERE is_interim == false
+| STATS max_score = MAX(score)
+    WHERE result_type == "record"
+    BY timestamp = BUCKET(timestamp, 600s)
+| WHERE max_score > 0
+| SORT max_score DESC NULLS LAST
+```
+
+Get the maximum record score, the top influencers, and the top records for each job and 10-minute interval:
+
+```esql
+FROM .ml-anomalies
+| WHERE is_interim == false
+| STATS max_score = MAX(score) WHERE result_type == "record",
+    influencers = TOP(score, 3, "DESC", JSON_STRING(
+      "score", score,
+      "field_name", influencer_field_name,
+      "field_value", influencer_field_value
+    )) WHERE result_type == "influencer" AND score >= 75,
+    records = TOP(score, 3, "DESC", JSON_STRING(
+      "score", score,
+      "function", function,
+      "over_field_name", over_field_name,
+      "over_field_value", over_field_value
+    )) WHERE result_type == "record" AND score >= 0
+    BY job_id, _index, timestamp = BUCKET(timestamp, 600s)
+| WHERE max_score > 0
+| SORT job_id, max_score DESC NULLS LAST
+| KEEP job_id, timestamp, max_score, influencers, records, _index
+| LIMIT 10
+```
+
+### Query remote clusters [ml-ad-view-results-esql-ccs]
+
+`FROM .ml-anomalies` isn't supported with {{ccs}}. As a workaround, create your own view from the reserved query, and replace the local index pattern with a remote one:
+
+1. Get the reserved view's query:
+
+   ```console
+   GET _query/view/.ml-anomalies
+   ```
+
+2. Create a view with that query. Replace `.ml-anomalies-*` with `*:.ml-anomalies-*`, and leave the rest of the query unchanged:
+
+   ```console
+   PUT _query/view/.ml-anomalies-ccs
+   {
+     "query": """
+         FROM *:.ml-anomalies-* METADATA _index
+         | WHERE ... <1>
+         """
+   }
+   ```
+   1. Copy the rest of the query from step 1. The `...` is a placeholder.
+
+You can then query the new view with `FROM .ml-anomalies-ccs`.
