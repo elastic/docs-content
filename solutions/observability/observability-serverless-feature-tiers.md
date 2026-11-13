@@ -35,6 +35,7 @@ The following table compares features available in Observability Complete and Ob
 | **[Rate and pattern analysis](/explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md)** | ✅ | ❌ |
 | **[Service level objectives (SLO)](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ❌ |
 | **[Infrastructure and hosts](/solutions/observability/infra-and-hosts.md)** | ✅ | ❌ |
+| **[Profiling](/solutions/observability/infra-and-hosts/universal-profiling.md)** {applies_to}`serverless: preview` | ✅ | ❌ |
 | **[APM](/solutions/observability/apm/index.md)** | ✅ | ❌ |
 | **[AI Assistant](/solutions/observability/ai/observability-ai-assistant.md)** including Elastic Managed LLMs | ✅ | ❌ |
 | **[Agent Builder](/solutions/observability/ai/agent-builder-observability.md)** | ✅ | ❌ |
