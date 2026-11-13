@@ -25,7 +25,7 @@ products:
 To create an SLO, find **SLOs** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md):
 
 * If you’re creating your first SLO, you’ll see an introductory page. Click the **Create SLO** button.
-* If you’ve created SLOs before, click the **Create new SLO** button in the upper-right corner of the page.
+* If you’ve created SLOs before, select **Create SLO**, then, from the menu, select **Create SLO**.
 
 From here, complete the following steps:
 

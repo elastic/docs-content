@@ -10,7 +10,7 @@ applies_to:
 
 # Configure SLOs settings[observability-configure-slo-settings]
 
-From your {{kib}} instance, navigate to the SLOs page and click **Settings** on the menu bar.
+From your {{kib}} instance, navigate to the SLOs page and select **Settings** in the application menu.
 
 On the **SLOs Settings** page, you can configure the following controls:
 
