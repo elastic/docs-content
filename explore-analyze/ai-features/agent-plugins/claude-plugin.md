@@ -24,22 +24,13 @@ You install the plugin in Claude, not in {{es}}, {{kib}}, or your {{serverless-s
 
 ### Work with {{es}} and {{kib}} from a Claude environment
 
-The plugin contains **Agent skills** — skill packages synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
-See [AI agent skills for Elastic](agent-skills.md) for the full list and how skills work.
+The plugin contains agent skills that are synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
+Refer to [AI agent skills for Elastic](../agent-skills.md) for how skills work and the areas they cover.
 
-Once installed, these skills give Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
+After you install the plugin, these skills give Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
 
-- Write and run ES|QL queries against a live cluster.
-- Build and manage {{kib}} dashboards, alerting rules, and workflows.
-- Onboard a service into {{observability}} using {{edot}}.
-- Triage {{elastic-sec}} alerts and manage cases.
-- Provision Elastic Cloud resources and manage user access.
-
-::::{note}
-The [elastic/agent-skills](https://github.com/elastic/agent-skills) repository is the authoritative source for Elastic agent skills.
-You can install skills directly from that repository into _any_ compatible AI coding agent, including Claude.
-The plugin provides a smoother in-app installation experience.
-::::
+:::{include} _snippets/plugin-skill-tasks.md
+:::
 
 ### Access Elastic documentation in conversations
 
@@ -48,14 +39,15 @@ Claude can look up configuration options, API references, and feature guides wit
 
 ::::{note}
 The Elastic Docs MCP server only gives Claude access to Elastic documentation, not to your data.
-To let Claude work with the data in an {{serverless-full}} project, also add the [Elastic Cloud Serverless connector for Claude](claude-connector.md).
+To let Claude work with your data, install and configure the [Elastic CLI](cli://index.md).
+For an {{serverless-full}} project, you can also add the [Elastic Cloud Serverless connector for Claude](../claude-connector.md).
 ::::
 
 ## Install the plugin
 
 In Claude on the web or in the desktop app, open **Settings** → **Plugins** → **Discover**, search for **Elastic**, and click **Add**.
 
-:::{image} images/claude-code-discover-elastic-plugin.png
+:::{image} ../images/claude-code-discover-elastic-plugin.png
 :screenshot:
 :alt: The Claude settings panel with Plugins selected in the sidebar, showing the Discover tab with a search for Elastic. The Elastic plugin appears as the top result with an Add button.
 :width: 700px
@@ -68,7 +60,8 @@ See the official [Claude documentation on synced plugins](https://code.claude.co
 
 ## Next steps
 
-- [AI agent skills for Elastic](agent-skills.md) — install individual skills without a plugin, or learn about the skills format.
-- [Elastic Cloud Serverless connector for Claude](claude-connector.md) — connect Claude to the data in your {{serverless-short}} project.
-- [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server) — connect other agents or tools to the same documentation server the plugin registers.
-- [elastic/claude-plugin on GitHub](https://github.com/elastic/claude-plugin) — source code, changelog, and contribution guide.
+- [AI agent skills for Elastic](../agent-skills.md): Install individual skills without a plugin, or learn about the skills format.
+- [Elastic CLI](cli://index.md): Install and configure the CLI that most skills use to work with your deployment or project.
+- [Elastic Cloud Serverless connector for Claude](../claude-connector.md): Connect Claude to the data in your {{serverless-short}} project.
+- [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server): Connect other agents or tools to the same documentation server the plugin registers.
+- [elastic/claude-plugin on GitHub](https://github.com/elastic/claude-plugin): Source code, changelog, and contribution guide.

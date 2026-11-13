@@ -170,7 +170,7 @@ Add the following to `.vscode/mcp.json` in your project:
 
 ### Elastic plugin for Cursor [cursor-plugin]
 
-The [Elastic plugin on the Cursor Marketplace](https://cursor.com/marketplace/elastic) bundles Elastic agent skills for Elasticsearch, Kibana, Observability, Security, and Cloud together with an `elastic-docs` MCP entry that points at the same server endpoint above. Installing the plugin is an alternative to manual Cursor configuration. The plugin source is available in the public [elastic/cursor-plugins](https://github.com/elastic/cursor-plugins) repository.
+The [Elastic plugin on the Cursor Marketplace](https://cursor.com/marketplace/elastic) bundles Elastic agent skills for Elasticsearch, Kibana, Observability, Security, and Cloud together with an `elastic-docs` MCP entry that points at the same server endpoint above. Installing the plugin is an alternative to manual Cursor configuration. The plugin source is available in the public [elastic/cursor-plugins](https://github.com/elastic/cursor-plugins) repository. For details, refer to [Elastic plugin for Cursor](/explore-analyze/ai-features/agent-plugins/cursor-plugin.md).
 
 ## Search and read the docs from the command line [elastic-cli]
 

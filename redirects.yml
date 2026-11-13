@@ -1,4 +1,6 @@
 redirects:
+  # related to https://github.com/elastic/docs-content/pull/9392
+  'explore-analyze/ai-features/claude-plugin.md': 'explore-analyze/ai-features/agent-plugins/claude-plugin.md'
   # related to https://github.com/elastic/docs-content/pull/9157
   'solutions/security/alertzero/review-closed-proposed-actions.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
   'solutions/security/alertzero/decide-proposed-action.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
