@@ -659,7 +659,11 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 :   Lists the [connectors](connectors.md) assigned to the current agent. Select a connector to open a detail panel that shows its sub-actions. To assign a connector, select **Add connector**. To view and manage the connectors library, select **Manage all connectors**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
 
 **Tools**
-:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
+:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To view and manage all tools, click **Manage all tools**.
+
+    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **Add tool** to import an existing tool from the tool library, or to create a tool and attach it to the agent. Refer to [Assign tools to agents](tools/custom-tools.md#assign-tools-to-agents) and [Create and attach a tool](tools/custom-tools.md#create-and-attach-a-tool).
+
+    {applies_to}`stack: ga =9.4` Click **Add tool** to assign tools from the tool library. Refer to [Assign tools to agents](tools/custom-tools.md#assign-tools-to-agents).
 
 The following image shows the **Customize** section of the left sidebar:
 
