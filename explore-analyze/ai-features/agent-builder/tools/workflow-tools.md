@@ -43,26 +43,28 @@ Follow these steps to configure a workflow tool:
 
    ::::{applies-item} { stack: ga =9.3 }
 
-    Go to **Agents > More > View all tools > New tool**.
+    Go to **Agents** → **More** → **View all tools** → **New tool**.
 
    ::::
    
    :::::
 
-  :::{image} ../images/create-new-tool-workflows.png
-  :screenshot:
-  :width: 900px
-  :alt: Screenshot of creating a new workflow tool.
-  :::
+   The following screenshot shows a new workflow tool with **Require user confirmation** set to **Always**:
+
+   :::{image} ../images/create-new-tool-workflows.png
+   :screenshot:
+   :width: 900px
+   :alt: Create new tool form with the Workflow type, the cancel-order workflow selected, and Require user confirmation set to Always
+   :::
 
 2. Select **Workflow** as the tool type.
-3. Select a workflow from the drop down list.
+3. Select a workflow from the dropdown list.
 4. Fill in the [configuration fields](#configuration).
 5. Click **Save**.
 
 ## Configuration
 
-The Workflow tools have the following configuration settings:
+Workflow tools have the following configuration settings:
 
   **Tool ID**
   :   A unique identifier for the tool.
@@ -77,17 +79,15 @@ The Workflow tools have the following configuration settings:
   **Inputs**
   :   The parameters required by the workflow. These are automatically detected from the `inputs` section of the selected workflow's YAML definition. The agent tries to extract values for these inputs from the user's chat message.
   
-  **Require user confirmation** (Optional) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
-  :   Controls whether the agent asks you to approve a tool call before it runs. Select **Never** to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. The default is **Never**.
-  :   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action, including retries after a failed call.
-  :   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
+  **Require user confirmation** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+  :   Controls whether the agent asks you to approve a call to this tool before it runs. Select **Never** (default) to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. For details, refer to [Require confirmation before a tool runs](custom-tools.md#require-confirmation-before-a-tool-runs).
 
   **Labels** (Optional)
   :   Tags used to organize and filter tools within the {{agent-builder}} UI.
 
 ## Call workflows from chat
 
-Once you've created a workflow tool, you must assign it to an agent to make it available in chat.
+After you create a workflow tool, you must assign it to an agent to make it available in chat.
 
 ### Assign tool to agent
 
@@ -107,7 +107,7 @@ To assign a tool to an agent:
 
 1. Navigate to **Agents**.
 2. Select your agent.
-3. Select **More > Edit Agent > Tools**.
+3. Select **More** → **Edit Agent** → **Tools**.
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
 
@@ -120,11 +120,11 @@ To assign a tool to an agent:
 To test your workflow tool, open the [Agent chat UI](../chat.md#agent-chat-gui) and ask a question that triggers the workflow.
 
 The agent:
-- extracts the necessary parameters from the conversation
-- runs the workflow
-- returns the workflow's final output to the chat
+- Extracts the necessary parameters from the conversation.
+- Runs the workflow.
+- Returns the workflow's final output to the chat.
 
-Review the [inline reasoning events](../chat.md#inspect-tool-calls-and-reasoning) to trace the execution steps and inspect the raw workflow output.
+Review the [inline reasoning events](../chat.md#inspect-tool-calls-and-reasoning) to trace the execution steps and inspect the raw workflow output. The following screenshot shows a workflow tool call in the reasoning events:
 
 :::{image} ../images/agent-builder-workflow-tool.png
 :screenshot:

@@ -485,23 +485,23 @@ At certain points an agent pauses and hands control back to you before it contin
 | Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
 | Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
 
-HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
+These prompts don't replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
-HITL prompts require an interactive conversation, so [subagents cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+These prompts require an interactive conversation, so [a subagent that another agent starts can't answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Confirm a change
 
 Some tools and skills pause for confirmation before they perform consequential actions. Elastic-built tools and skills decide for themselves when to ask.
 
-For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For custom tools, you decide when the agent asks by setting **Require user confirmation** to **Never**, **Once**, or **Always**: in the UI for workflow and MCP tools, or through the API for any custom tool type. For details, refer to [Require confirmation before a tool runs](tools/custom-tools.md#require-confirmation-before-a-tool-runs).
 
-What the prompt shows depends on the tool:
+The prompt you get depends on the tool:
 
-* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
-* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
+* **Change preview**: Some Elastic-built tools and skills show the proposed change before it takes effect. Review the preview, then confirm the action to proceed or deny it to cancel. The preview format and the button labels vary by tool or skill.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **API confirmation**: The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
+* **Generic prompt**: Other tools, including all custom tools, show a prompt that names the tool and asks whether to proceed. Click **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
-For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
+When an agent updates a workflow, it shows the proposed change as a diff and waits for your review before applying it, as in the following screenshot:
 
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
@@ -509,7 +509,7 @@ For example, when an agent updates a workflow, it shows the proposed change as a
 :width: 700px
 :::
 
-The Streams management skill also previews the proposed configuration when it creates a stream:
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The following screenshot shows the Streams management skill previewing the configuration of a new stream:
 
 :::{image} images/agent-builder-confirm-create-stream.png
 :screenshot:
@@ -517,7 +517,9 @@ The Streams management skill also previews the proposed configuration when it cr
 :width: 700px
 :::
 
-For irreversible actions, the prompt highlights the consequences before you proceed:
+For irreversible actions, the prompt highlights the consequences before you proceed.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The following screenshot shows the Streams management skill prompting you to delete a stream:
 
 :::{image} images/agent-builder-confirm-delete-stream.png
 :screenshot:
@@ -525,7 +527,7 @@ For irreversible actions, the prompt highlights the consequences before you proc
 :width: 700px
 :::
 
-Custom tools show the generic prompt instead. Here, a tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
+The following screenshot shows the generic prompt for a custom tool that cancels an order. The prompt names the tool, but not the order:
 
 :::{image} images/agent-builder-tool-confirmation-prompt.png
 :screenshot:
@@ -549,9 +551,9 @@ Whether you see a prompt depends on the operation, not on its HTTP method:
 
 The prompt shows the HTTP method, path, and whether the call goes to {{es}} or {{kib}}. It doesn't show the request body.
 
-Select **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
+Click **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
 
-A parent agent can also ask you to approve operations before starting a subagent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+An agent can also ask you to approve operations before it starts a subagent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Authorize a connector
 ```{applies_to}
@@ -559,9 +561,9 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When an agent uses a [connector](connectors.md) to reach an external service that requires authorization, the chat pauses so you can grant access. Select **Authorize** to complete the sign-in flow for the connector, or **Deny** to decline. After you authorize, the agent retries the tool call and continues.
+When an agent uses a [connector](connectors.md) to reach an external service that requires authorization, the chat pauses so you can grant access. Click **Authorize** to complete the sign-in flow for the connector, or **Deny** to decline. After you authorize, the agent retries the tool call and continues.
 
-For example, an agent that needs to read your Notion workspace pauses until you authorize the connector:
+For example, the following screenshot shows the prompt from an agent that needs to read your Notion workspace:
 
 :::{image} images/agent-builder-authorization-prompt.png
 :screenshot:
@@ -575,11 +577,11 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or choose the custom option and type your own answer. Some questions let you select more than one option. To move on without answering, select **Skip question**.
+When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or select the custom option and enter your own answer. Some questions let you select more than one option. To move on without answering, click **Skip question**.
 
-When there's more than one question, use **Back** and **Continue** to move between them, then select **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
+When there's more than one question, click **Back** and **Continue** to move between them, then click **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
 
-For example, before creating a dashboard the agent might ask which sample data set to use:
+For example, the following screenshot shows the agent asking which sample data set to use before it creates a dashboard:
 
 :::{image} images/agent-builder-clarifying-question.png
 :screenshot:

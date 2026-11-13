@@ -33,7 +33,7 @@ You can import MCP tools individually or in bulk.
 
 ### Add a single tool
 
-Once you've set up an MCP connector, click **+ New tool** on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) page and select the **MCP** tool type.
+After you set up an MCP connector, click **+ New tool** on the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) page and select the **MCP** tool type. The following screenshot shows an example configuration:
 
 :::{image} ../images/mcp-createnewtool-config-example.png
 :screenshot:
@@ -45,21 +45,19 @@ Once you've set up an MCP connector, click **+ New tool** on the [Tools](/explor
 
 Individual MCP tools have the following configuration settings:
 
-MCP Server
+**MCP Server**
 :   The MCP connector to interface with.
 
-Tool
+**Tool**
 :   The specific tool on MCP server to create an Agent Builder MCP tool for.
 :   After you select a tool, the **Tool ID** and **Description** fields automatically populate with the tool name and description provided by the MCP server.
 
-Require user confirmation (Optional) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
-:   Controls whether the agent asks you to approve a tool call before it runs. Select **Never** to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. The default is **Never**.
-:   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action, including retries after a failed call.
-:   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
+**Require user confirmation** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+:   Controls whether the agent asks you to approve a call to this tool before it runs. Select **Never** (default) to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. For details, refer to [Require confirmation before a tool runs](custom-tools.md#require-confirmation-before-a-tool-runs).
 
 ### Bulk import MCP tools
 
-To import multiple tools at once, go to the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) page and select **Bulk import MCP tools** from the **Manage MCP** dropdown.
+To import multiple tools at once, go to the [Tools](/explore-analyze/ai-features/agent-builder/tools.md) page and select **Bulk import MCP tools** from the **Manage MCP** dropdown. The following screenshot shows where to find this option:
 
 :::{image} ../images/mcp-bulkimport-location.png
 :screenshot:
@@ -69,14 +67,16 @@ To import multiple tools at once, go to the [Tools](/explore-analyze/ai-features
 
 Configure the following fields:
 
-MCP Server
+**MCP Server**
 :   The MCP connector to interface with.
 
-Tools to import
+**Tools to import**
 :   The specific tools from the MCP server to import.
 
-Namespace
+**Namespace**
 :   A string to prepend to the tool name to aid in searching and organization. A namespace must start with a letter and contain only lowercase letters, numbers, and hyphens.
+
+The following screenshot shows an example bulk import from the Context7 MCP server:
 
 :::{image} ../images/mcp-bulkimport-config-example.png
 :screenshot:
@@ -84,11 +84,11 @@ Namespace
 :width: 800px
 :::
 
-After clicking **Import tools**, Agent Builder creates an MCP tool for each selection.
+After you click **Import tools**, Agent Builder creates an MCP tool for each selection.
 
 Each tool's ID is generated as `namespace.tool-name` (for example, `context7.resolve-library-id`), and descriptions are populated automatically from the MCP server.
 
-Bulk import does not configure confirmation, so each imported tool starts with **Require user confirmation** set to **Never**. To require confirmation for an imported tool, edit it after import. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Bulk import doesn't configure confirmation, so each imported tool starts with **Require user confirmation** set to **Never**. To require confirmation for an imported tool, edit it after import.
 
 ## How MCP tool calls work
 
@@ -105,7 +105,7 @@ MCP tools have built-in health monitoring. Tools that are unhealthy display an i
 
 An MCP tool is marked "unhealthy" when:
 
-* The MCP tool's associated MCP connector is unavailable.
+* The MCP tool's associated MCP connector is unavailable. The tool shows this icon:
 
     :::{image} ../images/mcp-connector-unavailable.png
     :screenshot:
@@ -113,7 +113,7 @@ An MCP tool is marked "unhealthy" when:
     :width: 100px
     :::
 
-* The MCP tool's associated tool on the MCP server no longer exists.
+* The MCP tool's associated tool on the MCP server no longer exists. The tool shows this icon:
 
     :::{image} ../images/mcp-tool-not-found.png
     :screenshot:
@@ -121,7 +121,7 @@ An MCP tool is marked "unhealthy" when:
     :width: 100px
     :::
 
-* The MCP tool's execution failed.
+* The MCP tool's execution failed. The tool shows this icon:
 
     :::{image} ../images/mcp-tool-execution-failed.png
     :screenshot:
