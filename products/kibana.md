@@ -61,7 +61,7 @@ links:
     url: /explore-analyze/ai-features/elastic-agent-builder.md
   - label: Query rules
     url: /solutions/elasticsearch-solution-project/query-rules-ui.md
-  - label: Content connectors
+  - label: Content crawlers
     url: elasticsearch://reference/search-connectors/index.md
   - label: Index management
     url: /manage-data/data-store/perform-index-operations.md
