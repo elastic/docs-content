@@ -130,6 +130,7 @@ There are different distributions available:
 * production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
 * lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
 
+{applies_to}`stack: ga 9.6+` Each of these distributions is also available as a FIPS 140-3 compliant image with a `-fips` suffix. For details, refer to [FIPS 140-3 images](#air-gapped-diy-epr-fips).
 
 To update the distribution image, re-pull the image and then restart the docker container.
 
@@ -180,6 +181,24 @@ These steps use the standard Docker CLI, but you can create a Kubernetes manifes
     When either endpoint returns a `200` HTTP status code, the service is ready to handle requests.
 
 
+### FIPS 140-3 images [air-gapped-diy-epr-fips]
+```{applies_to}
+stack: ga 9.6+
+```
+
+If you need to host the {{package-registry}} in an environment that requires FIPS 140-3 validated cryptography, use the FIPS variant of the distribution image. Append `-fips` to any of the distribution tags, for example:
+
+* *docker.elastic.co/package-registry/distribution:{{version.stack}}-fips*
+* *docker.elastic.co/package-registry/distribution:lite-{{version.stack}}-fips*
+
+The FIPS images are available for `linux/amd64` and `linux/arm64`, like the regular images. They contain the same packages, and use the same port, environment variables, and configuration file. The {{package-registry}} binary is built with the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library. For the FIPS variants of {{agent}} and other ingest tools, refer to [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
+
+By default, the FIPS images use the validated module for all supported cryptographic operations, and algorithms that the module doesn't approve stay available as a fallback. To refuse non-approved algorithms instead, set `GODEBUG=fips140=only` when you run the container:
+
+```sh subs=true
+docker run -it -p 8080:8080 -e GODEBUG=fips140=only docker.elastic.co/package-registry/distribution:{{version.stack}}-fips
+```
+
 ### Connect {{kib}} to your hosted {{package-registry}} [air-gapped-diy-epr-kibana]
 
 Use the `xpack.fleet.registryUrl` property in the {{kib}} config to set the URL of your hosted package registry. For example:
@@ -206,6 +225,8 @@ docker run -it -p 443:443 \
 ```
 
 The {{package-registry}} supports TLS versions from 1.0 to 1.3. The minimum version accepted can be configured with `EPR_TLS_MIN_VERSION`, it defaults to 1.0. If you want to restrict the supported versions from 1.2 to 1.3, you can use `EPR_TLS_MIN_VERSION=1.2`.
+
+{applies_to}`stack: ga 9.6+` The [FIPS 140-3 images](#air-gapped-diy-epr-fips) require TLS 1.2 or later. If you set `EPR_TLS_MIN_VERSION` to `1.0` or `1.1`, the {{package-registry}} doesn't start.
 
 
 ### Using custom CA certificates [_using_custom_ca_certificates]

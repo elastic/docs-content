@@ -37,37 +37,28 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 
 ## Add the {{elastic-defend}} integration [add-security-integration]
 
-1. Find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-    :::{image} /solutions/images/security-endpoint-cloud-sec-integrations-page.png
-    :alt: Search result for "{{elastic-defend}}" on the Integrations page.
-    :screenshot:
-    :::
-
-2. Search for and select **{{elastic-defend}}**, then select **Add {{elastic-defend}}**. The integration configuration page appears.
-
-    ::::{note}
-    If this is the first integration you’ve installed and the **Ready to add your first integration?** page appears instead, select **Add integration only (skip agent installation)** to proceed. You can [install {{agent}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) after setting up the {{elastic-defend}} integration.
-    ::::
-
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. Search for and select **{{elastic-defend}}**.
+3. If the integration's **Overview** page opens, select **Add {{elastic-defend}}**.
+4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**. You can [install {{agent}}](#enroll-agent) after you set up the {{elastic-defend}} integration.
+5. On the integration configuration page, configure the {{elastic-defend}} integration with an **Integration name** and optional **Description**.
 
     :::{image} /solutions/images/security-endpoint-cloud-security-configuration.png
     :alt: Add {{elastic-defend}} integration page
     :screenshot:
     :::
 
-3. Configure the {{elastic-defend}} integration with an **Integration name** and optional **Description**.
-4. Select the type of environment you want to protect, either **Traditional Endpoints** or **Cloud Workloads**.
-5. Select a configuration preset. Each preset comes with different default settings for {{agent}} — you can further customize these later by [configuring the {{elastic-defend}} integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md).
+6. Select the type of environment you want to protect, either **Traditional Endpoints** or **Cloud Workloads**.
+7. Select a configuration preset. Each preset comes with different default settings for {{agent}} — you can further customize these later by [configuring the {{elastic-defend}} integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md).
 
     |     |     |
     | --- | --- |
     | **Traditional Endpoint presets** | All traditional endpoint presets *except **Data Collection** have these preventions enabled by default: malware, ransomware, memory threat, malicious behavior, and credential theft. Each preset collects the following events:<br><br>- **Data Collection:** All events; no preventions<br>- **Next-Generation Antivirus (NGAV):** Process events; all preventions<br>- **Essential EDR (Endpoint Detection & Response):** Process, Network, File events; all preventions<br>- **Complete EDR (Endpoint Detection & Response):** All events; all preventions<br> |
     | **Cloud Workloads presets** | Both cloud workload presets are intended for monitoring cloud-based Linux hosts. Therefore, [session data](/solutions/security/investigate/session-view.md) collection, which enriches process events, is enabled by default. They both have all preventions disabled by default, and collect process, network, and file events.<br><br>- **All events:** Includes data from automated sessions.<br>- **Interactive only:** Filters out data from non-interactive sessions by creating an [event filter](/solutions/security/manage-elastic-defend/event-filters.md).<br> |
 
-6. Enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
-7. When you’re ready, click **Save and continue**.
-8. To complete the integration, select **Add {{agent}} to your hosts** and continue to the next section to install the {{agent}} on your hosts.
+8. Enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can select the **Existing hosts** tab and choose an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
+9. When you’re ready, select **Save and continue**.
+10. To complete the integration, select **Add {{agent}} to your hosts** and continue to the next section to install the {{agent}} on your hosts.
 
 
 ## Configure and enroll the {{agent}} [enroll-security-agent]

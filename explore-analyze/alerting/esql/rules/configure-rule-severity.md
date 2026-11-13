@@ -2,7 +2,8 @@
 navigation_title: Severity
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Assign severity levels to alerts using a severity column in ES|QL query output."
@@ -10,7 +11,7 @@ description: "Assign severity levels to alerts using a severity column in ES|QL 
 
 # Severity in {{alerting-v2-system}} rules [rule-severity]
 
-Severity is an optional {{alerting-v2-system}} rule setting that assigns an urgency level to each alert, so you can triage and route alerts differently depending on how serious they are. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
+Severity is an optional {{alerting-v2-system-short}} rule setting that assigns an urgency level to each alert, so you can triage and route alerts differently depending on how serious they are. To set it, include a column named `severity` in your {{esql}} query output and add it to your `KEEP` list. The framework reads that column after each evaluation and maps it to one of five fixed levels.
 
 | Value | Description | Urgency |
 | --- | --- | --- |
@@ -87,7 +88,7 @@ Here's what the severity-specific steps do:
 
 - **`EVAL burn_rate`**: Computes the error rate as failures over total requests.
 - **`EVAL severity`**: Maps the burn rate to a severity level.
-- **`KEEP`**: Keeps `severity` in the output so {{alerting-v2-system}} reads and stores it.
+- **`KEEP`**: Keeps `severity` in the output so {{alerting-v2-system-short}} reads and stores it.
 
 ## Related pages
 
