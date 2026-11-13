@@ -6,7 +6,7 @@ applies_to:
     observability: ga
 products:
   - id: kibana
-description: "Create rules using the ES|QL editor, AI Agent, rule builder, or directly from a Discover session."
+description: "Create rules using the ES|QL editor, AI Agent, rule builder, a Discover query, or a template from the Rule library."
 ---
 
 # Create a rule in {{alerting-v2-system}} [create-a-rule]
@@ -19,3 +19,4 @@ description: "Create rules using the ES|QL editor, AI Agent, rule builder, or di
 | [Create using {{agent-builder}}](create-rules-action-policies-agent-builder.md) | When you know what you want to detect but aren't sure how to write the ES\|QL. |
 | [Use the rule builder](use-rule-builder.md) | Selecting a rule type (currently Threshold Alert) and configuring it through structured inputs, without writing {{esql}} by hand. |
 | [Create from Discover](create-rule-from-discover.md) | When you already have an ES\|QL query working in Discover and want to convert it into a rule. |
+| [Create from a template](create-rule-from-template.md) | When you want a ready-made starting point, such as a template that an integration provides, and only need to adjust its settings. |

@@ -506,6 +506,7 @@ toc:
                   - file: alerting/esql/rules/create-rules-action-policies-agent-builder.md
                   - file: alerting/esql/rules/use-rule-builder.md
                   - file: alerting/esql/rules/create-rule-from-discover.md
+                  - file: alerting/esql/rules/create-rule-from-template.md
               - file: alerting/esql/rules/configure-a-rule.md
                 children:
                   - file: alerting/esql/rules/configure-rule-mode.md
