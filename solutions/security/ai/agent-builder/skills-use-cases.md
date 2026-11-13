@@ -215,7 +215,7 @@ serverless:
 
 **Enable:** `endpoint-response-actions`
 
-Use this skill to list enrolled {{elastic-defend}} endpoints, check whether a host is isolated, and follow up on a response action you already sent. After you confirm in the chat, the agent can isolate or release a host, request the processes running on a host, or scan a path for malware. Select **Deny** on the confirmation to cancel instead.
+Use this skill to list enrolled {{elastic-defend}} endpoints, check whether a host is isolated, and follow up on a [response action](/solutions/security/endpoint-response-actions.md) you already sent. After you confirm in the chat, the agent can isolate or release a host, request the processes running on a host, or scan a path for malware. Select **Deny** on the confirmation to cancel instead.
 
 To find out why a host is unhealthy or why an action failed, use [`automatic_troubleshooting`](#elastic-defend-troubleshooting).
 
