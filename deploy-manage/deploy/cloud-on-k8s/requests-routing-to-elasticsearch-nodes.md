@@ -151,5 +151,20 @@ The HTTP certificate that ECK generates for {{es}} doesn't include the DNS name 
 x509: certificate is valid for hulk-es-http.default.es.local, hulk-es-http, hulk-es-http.default.svc, ..., not hulk-es-coordinating-nodes.default.svc
 ```
 
-To fix this, add the DNS name of your custom service, `hulk-es-coordinating-nodes.<namespace>.svc`, to the subject alternative names (SANs) of the {{es}} HTTP certificate. Refer to [Reserve static IP and custom domain](/deploy-manage/security/k8s-https-settings.md#k8s-static-ip-custom-domain).
+To fix this, add the DNS name of your custom service to the subject alternative names (SANs) of the {{es}} HTTP certificate, as shown in the following example. For additional guidance on configuring certificate SANs, refer to [Reserve static IP and custom domain](/deploy-manage/security/k8s-https-settings.md#k8s-static-ip-custom-domain).
+
+```yaml
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: hulk
+spec:
+  http:
+    tls:
+      selfSignedCertificate:
+        subjectAltNames:
+        - dns: hulk-es-coordinating-nodes.default.svc <1>
+```
+
+1. Replace `default` with the namespace of your resources.
 
