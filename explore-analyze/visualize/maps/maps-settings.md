@@ -10,7 +10,7 @@ products:
 
 # Configure map settings [maps-settings]
 
-Maps offers settings that let you configure how a map is displayed. To access these settings, click **Settings** in the application toolbar.
+Maps offers settings that let you configure how a map is displayed. To access these settings, select **Settings** in the application menu.
 
 
 ## Custom icons [maps-settings-custom-icons]
