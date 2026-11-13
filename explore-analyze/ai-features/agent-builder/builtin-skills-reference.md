@@ -28,7 +28,7 @@ Some skills are in technical preview or require an [advanced setting](kibana://r
 
 ## Platform skills
 
-Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, streams, significant events, and workflows.
+Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, anomaly detection, streams, significant events, and workflows.
 
 ### Core skills
 
@@ -176,6 +176,18 @@ $$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {app
     Saving an action policy requires the **Action Policies: All** privilege and, on {{stack}} deployments, an Enterprise license. The policy sends alerts to a workflow. The workflow steps use a configured connector. For all the privileges you need, refer to [Create rules and action policies with {{agent-builder}}](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-agent-builder-privileges).
 
     **Related skills:** [`rule-authoring`](#agent-builder-rule-authoring-skill) composes the rules whose alerts a policy matches.
+
+### Anomaly detection
+
+$$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6`
+:   Creates, investigates, and troubleshoots {{ml}} {{anomaly-jobs}} from within a conversation. Use it to set up jobs by describing your data and goal, find the cause of an anomaly across jobs, understand why a score is high or low, diagnose problems such as a stopped {{dfeed}} or a model memory limit, and add calendar events that suppress anomalies during planned events. For job creation, the skill explores your data, asks about your goal in everyday language, tests a setup on your historical data, and creates real-time jobs after you approve the results. For the full workflow, refer to [Create {{anomaly-jobs}} with AI in chat](/explore-analyze/machine-learning/anomaly-detection/ml-jobs-from-agent-builder.md).
+
+    :::{dropdown} Assigned tools
+    `ml.ad_get_job_info`, `ml.ad_create_job`, `ml.ad_manage_job_state`, `ml.ad_update_job_config`, `ml.query_anomalies`, `ml.create_ml_charts`, `platform.core.execute_esql`, `platform.dashboard.generate_dashboard`
+
+    :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear. You also need the privileges to read or manage {{anomaly-jobs}}, depending on the request. Refer to [Setting up machine learning](/explore-analyze/machine-learning/setting-up-machine-learning.md#setup-privileges).
 
 ### Streams and significant events
 
