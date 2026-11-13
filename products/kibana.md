@@ -1,7 +1,7 @@
 ---
 layout: hub
 navigation_title: Kibana
-description: Kibana documentation. Explore and visualize your data, build dashboards, set up alerts, automate tasks with AI, and use purpose-built solutions for Search, Observability, and Security.
+description: Use Kibana to explore and visualize your data, build dashboards, set up alerts, automate tasks with AI, and work with purpose-built solutions for Search, Observability, and Security.
 products:
   - id: kibana
 ---
@@ -369,6 +369,8 @@ links:
     url: /explore-analyze/alerting/esql/rules.md
   - label: Alerts
     url: /explore-analyze/alerting/esql/alerts.md
+  - label: Action policies
+    url: /explore-analyze/alerting/esql/action-policies/about-action-policies.md
 :::
 
 :::{link-card}
@@ -428,6 +430,8 @@ links:
     url: /explore-analyze/ai-features/agent-builder/models.md
   - label: MCP server
     url: /explore-analyze/ai-features/agent-builder/mcp-server.md
+  - label: MCP server API keys
+    url: /explore-analyze/ai-features/agent-builder/mcp-server-api-keys.md
 :::
 
 :::{link-card}

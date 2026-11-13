@@ -71,36 +71,38 @@ products:
         description: Add HTML panels to a dashboard with Liquid templates and ES|QL queries, or generate them in Agent Builder chat. Technical preview.
         link: /explore-analyze/visualize/custom-panels.md
         availability:
+          - '9.6'
           - Serverless
         tag: Dashboards
         featured: true
+      - title: Data views and Discover sessions APIs
+        description: Define data views and Discover sessions as JSON, so you can review them in Git and deploy them together with your dashboards as code. Generally available.
+        link: https://www.elastic.co/docs/api/doc/kibana/group/endpoint-discover-sessions
+        availability:
+          - '9.6'
+          - Serverless
+        tag: APIs
+      - title: Kibana Universal Alerting
+        description: Write ES|QL rules that track each match as an alert from detection through recovery, and route notifications with reusable action policies. Generally available.
+        link: /explore-analyze/alerting/esql/system-overview.md
+        availability:
+          - '9.6'
+          - Serverless
+        tag: Alerting
       - title: Share Agent Builder conversations
         description: Share a conversation with specific people or make it public, so others can read the full history and continue it. Generally available.
         link: /explore-analyze/ai-features/agent-builder/chat.md#share-a-conversation
         availability:
+          - '9.6'
           - Serverless
         tag: Agent Builder
-      - title: Dashboards and Visualizations APIs
-        description: Create, update, and manage dashboards and visualizations in code. Generally available.
-        link: /explore-analyze/dashboards/create-dashboards-programmatically.md
+      - title: Enhance dashboards using AI
+        description: Let an AI agent tidy the text, layout, and chart styling of a dashboard, then keep or discard the changes. Technical preview.
+        link: /explore-analyze/dashboards/enhance-dashboard-with-ai.md
         availability:
-          - '9.5'
+          - '9.6'
           - Serverless
         tag: Dashboards
-      - title: Dashboards in Agent Builder chat
-        description: Build dashboards from chat, create skills, and add dashboard controls without leaving the conversation. Generally available.
-        link: /explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md
-        availability:
-          - '9.5'
-          - Serverless
-        tag: Agent Builder
-      - title: Workflows version history
-        description: Every save records a version you can compare and restore. Generally available.
-        link: /explore-analyze/workflows/authoring-techniques/manage-workflows.md#workflows-version-history
-        availability:
-          - '9.5'
-          - Serverless
-        tag: Workflows
 
   logstash:
     title: What's new in Logstash
