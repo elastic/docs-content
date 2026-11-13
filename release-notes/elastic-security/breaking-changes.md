@@ -22,6 +22,44 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.6.0 [elastic-security-960-breaking-changes]
+
+::::{dropdown} Elastic Defend and endpoint management APIs enforce request limits
+Requests to the {{elastic-defend}} and endpoint management APIs now enforce maximum string lengths and array sizes:
+
+- **{{elastic-defend}} artifacts:** Blocklist, trusted device, and basic-mode trusted application entry values, including signer `subject_name` values, are limited to 4,096 characters. Trusted application advanced-mode entry `field` values and event filter entry `field` values are limited to 1,024 characters.
+- **Response actions APIs:** For all `POST /api/endpoint/action/*` requests, `comment` is limited to 30,000 characters, `endpoint_ids` to 250 items, and `alert_ids` and `case_ids` to 50 items each. Each ID in these arrays is limited to 256 characters. Command parameters are also limited, for example `parameters.command` for `execute` (8,192 characters), `parameters.path` for `scan` and `get_file` (4,096), inline `parameters.raw` for `run_script` (65,536), and `parameters.process_name` for `kill_process` (1,024). For `GET /api/endpoint/action`, `agentIds` is limited to 250 items, `userIds` and `withOutputs` to 50 items each, and `startDate` and `endDate` to 64 characters. Each `agentIds`, `userIds`, and `withOutputs` value is limited to 256 characters.
+- **Scripts library API:** `name` must be 1 to 256 characters. `description`, `instructions`, and `example` are limited to 10,000 characters, and `pathToExecutable` to 4,096 characters. For `PATCH` requests, `version` must be 1 to 256 characters.
+- **Endpoint metadata, policy response, and protection updates note APIs:** `kuery` is limited to 30,000 characters, and IDs such as `id`, `agentId`, and `package_policy_id` to 256 characters. The protection updates note `note` field is limited to 10,000 characters.
+- **Response actions in detection rules:** When you create, update, preview, or import a rule, Osquery `query` values and ECS mapping `value` entries are limited to 30,000 characters, and ECS mapping `field` values to 2,000 characters. The `pack_id` and `saved_query_id` values, and the query `id`, `version`, and `platform` values, are limited to 256 characters. For {{elastic-defend}} response actions, `comment` is limited to 30,000 characters, `scriptId` to 256 characters, and `scriptInput` to 8,192 characters.
+
+**Impact**<br> Requests that exceed these limits, or that send an empty `name` or `version` to the scripts library API, are rejected with a validation error. Creating, updating, previewing, or importing a detection rule with response action parameters that exceed these limits fails validation. After you upgrade, existing detection rules whose response action parameters exceed these limits fail when they run, even if you don't edit them.
+
+**Action**<br> Before you upgrade, make sure scripts, integrations, and rule import files that call these APIs keep values within these limits, and update existing detection rules whose response action parameters exceed them.
+
+For more information, check [#274803]({{kib-pull}}274803), [#274987]({{kib-pull}}274987), [#275710]({{kib-pull}}275710), [#275711]({{kib-pull}}275711), and [#275716]({{kib-pull}}275716).
+::::
+
+::::{dropdown} Workflows: Run workflow sends documents in one format from every entry point
+When you run a workflow from the alerts table, the row actions menu, or the alert details flyout, {{elastic-sec}} now sends document IDs, and {{kib}} fetches each document. Workflows receive every document with dotted field paths and array values, for example `'host.name': ['h1']`. Previously, **Run workflow** from the legacy alert details flyout sent the raw `_source`, with nested objects and single values, for example `host: { name: 'h1' }`. Runtime fields that are defined only on a {{data-source}} aren't included.
+
+**Impact**<br> Workflows that read fields in the nested `_source` format from the legacy alert details flyout can resolve those fields as `undefined`.
+
+**Action**<br> Update workflows that read document fields from the trigger event to use dotted field paths with array values, such as `event.documents[0]['host.name'][0]`.
+
+For more information, check [#292144]({{kib-pull}}292144).
+::::
+
+::::{dropdown} Cases: Legacy response action attachments use the `security.endpoint` format
+Case attachments of the legacy `actions` type are now returned as external reference attachments of type `security.endpoint`. This applies to existing and new attachments in Cases API responses, case user actions, and Cases workflow step outputs. Stored attachments aren't modified, and the `user` and `alert` attachment types are unchanged.
+
+**Impact**<br> Scripts, integrations, and workflows that read `actions` attachments from the Cases API or Cases workflow steps no longer receive the `actions` type.
+
+**Action**<br> Update code that parses `actions` attachments to read response action attachments as external reference attachments of type `security.endpoint`.
+
+For more information, check [#287729]({{kib-pull}}287729).
+::::
+
 ## 9.4.0 [elastic-security-940-breaking-changes]
 
 ::::{dropdown} Osquery: Scheduled query results no longer populate action_id
