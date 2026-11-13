@@ -40,7 +40,7 @@ Note the availability of data stream lifecycle to ensure that it's applicable fo
 
 In intervals configured by [`data_streams.lifecycle.poll_interval`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-poll-interval), {{es}} goes over each data stream and performs the following steps:
 
-1. Checks if the data stream has a data stream lifecycle configured, skipping any indices not part of a managed data stream. {applies_to}`stack: ga 9.6` {applies_to}`serverless: unavailable` A {{tsds}} without a lifecycle is managed by the [minimum data stream lifecycle](#minimum-data-stream-lifecycle), which runs only steps 2 and 3.
+1. Checks if the data stream has a data stream lifecycle configured, skipping any indices not part of a managed data stream. {applies_to}`stack: 9.6+` A {{tsds}} without a lifecycle is managed by the [minimum data stream lifecycle](#minimum-data-stream-lifecycle), which runs only steps 2 and 3.
 2. Rolls over the write index of the data stream, if it fulfills the conditions defined by [`cluster.lifecycle.default.rollover`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#cluster-lifecycle-default-rollover).
 3. After an index is not the write index anymore (that is, the data stream has been rolled over), automatically tail merges the index. Data stream lifecycle runs a merge operation that only targets the long tail of small segments instead of the whole shard. As the segments are organised into tiers of exponential sizes, merging the long tail of small segments is only a fraction of the cost of force merging to a single segment. The small segments would usually hold the most recent data so tail merging will focus the merging resources on the higher-value data that is most likely to keep being queried.
 4. If [downsampling]({{es-apis}}operation/operation-indices-put-data-lifecycle) is configured it will run all the configured downsampling rounds. {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` Data stream lifecycle limits concurrent downsampling per data stream using the [`data_streams.lifecycle.downsampling.max_indices_in_progress`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-downsampling-max-indices-in-progress) cluster setting (default `10`). For details, refer to [Downsample with a data stream lifecycle](/manage-data/data-store/data-streams/run-downsampling.md#downsample-with-a-data-stream-lifecycle).
@@ -89,7 +89,7 @@ The minimum lifecycle applies to a data stream when all the following are true:
 Adding a data stream lifecycle to the data stream replaces the minimum lifecycle with your configuration.
 
 ::::{important}
-Before 9.6, a {{tsds-init}} without a lifecycle or an {{ilm-init}} policy was never rolled over automatically. If an external process rolls over your {{tsds-init}}, you might now see additional backing indices. A {{tsds-init}} that has an {{ilm-init}} policy, `index.lifecycle.prefer_ilm` set to `false`, and no data stream lifecycle also moves from {{ilm-init}} to the minimum lifecycle. As a result, {{ilm-init}} phases such as delete or downsample stop running for it.
+Before {applies_to}`stack: 9.6`, a {{tsds-init}} without a lifecycle or an {{ilm-init}} policy was never rolled over automatically. If an external process rolls over your {{tsds-init}}, you might now see additional backing indices. A {{tsds-init}} that has an {{ilm-init}} policy, `index.lifecycle.prefer_ilm` set to `false`, and no data stream lifecycle also moves from {{ilm-init}} to the minimum lifecycle. As a result, {{ilm-init}} phases such as delete or downsample stop running for it.
 
 To restore the previous behavior, set `data_streams.lifecycle.minimum.enabled` to `false`. The setting is dynamic, so you don't need to restart {{es}}.
 
@@ -110,7 +110,7 @@ stack: ga 9.6
 serverless: unavailable
 ```
 
-From stack: ga 9.6, {{es}} migrates {{tsds}} that use the pre-installed `metrics` {{ilm-init}} policy from {{ilm-init}} to the minimum lifecycle. 
+{applies_to}`stack: 9.6` {{es}} migrates {{tsds}} that use the pre-installed `metrics` {{ilm-init}} policy from {{ilm-init}} to the minimum lifecycle. 
 
 #### How it works
 
@@ -120,7 +120,7 @@ For new backing indices of a {{tsds-init}} that uses the **pre-installed and unm
 
 The new default for [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) applies to a backing index only when all the following are true:
 
-* The index is created in stack: ga 9.6 or later. Existing backing indices stay under {{ilm-init}} until they are deleted or you change them manually.
+* The index is created in {applies_to}`stack: 9.6+`. Existing backing indices stay under {{ilm-init}} until they are deleted or you change them manually.
 * The data stream is a {{tsds-init}} that uses the `metrics` policy, and the policy is unmodified. Data streams that use a custom policy or a modified `metrics` policy remain unaffected.
 * No `index.lifecycle.prefer_ilm` value is set in the index template, the data stream settings, or the create index request. An explicit value always takes precedence.
 * The [`data_streams.lifecycle.prefer_by_default.metrics_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-prefer-by-default-metrics-enabled) cluster setting is `true`, which is the default.
