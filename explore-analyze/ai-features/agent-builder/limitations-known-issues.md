@@ -134,11 +134,11 @@ Error executing agent: No tool calls found in the response.
 
 To learn more, refer to [](models.md).
 
-### Claude 4.6 Sonnet may generate invalid ES|QL for dashboards
+### Claude Sonnet 4.6 may generate invalid ES|QL for dashboards
 
-Current testing shows that Claude 4.6 Sonnet may generate invalid {{esql}} for dashboard and visualization workflows, particularly with reserved keywords, dotted field names such as `system.load.1`, and incorrectly formatted aliases.
+Current testing shows that Claude Sonnet 4.6 may generate invalid {{esql}} for dashboard and visualization workflows, particularly with reserved keywords, dotted field names such as `system.load.1`, and incorrectly formatted aliases.
 
-**Workaround:** Use a higher-tier model, such as Claude 4.6 Opus, for {{esql}}-heavy dashboard generation. To learn more, refer to [Recommended models](models.md#recommended-models).
+**Workaround:** Use a higher-tier model, such as Claude Opus 4.6, for {{esql}}-heavy dashboard generation. To learn more, refer to [Recommended models](models.md#recommended-models).
 
 ### Context length exceeded error [conversation-length-exceeded]
 

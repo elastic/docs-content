@@ -148,8 +148,10 @@ Elastic's AI-powered features can use [EIS](/explore-analyze/elastic-inference/e
 
 To control the models used by each feature, go to **Feature Settings** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
+The following screenshot shows the **Feature Settings** page on 9.5 and later and in {{serverless-full}}.
+
 :::{image} /explore-analyze/images/feature-settings.png
-:alt: Feature Settings app
+:alt: Feature settings page showing the Use AI features toggle, the Global model dropdown, and the Feature specific models toggle
 :screenshot:
 :::
 
