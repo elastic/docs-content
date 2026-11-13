@@ -83,8 +83,8 @@ There are also options to sort and group the SLOs displayed in the overview:
 :::
 
 * **Sort by**: SLI value, SLO status, Error budget consumed, Error budget remaining, 5m burn rate, 1h burn rate, or 1d burn rate.
-* **Group by**: None, Tags, Status, SLI type, or SLO instance id.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` To collect all instances of an SLO in one group, group by **SLO definition id**.
+* **Group by**: None, Tags, Status, SLI type, or SLO instance ID.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` To collect all instances of an SLO in one group, group by **SLO definition ID**.
 * {applies_to}`serverless: unavailable` If the [SLOs settings](/solutions/observability/incident-management/configure-slo-settings.md) fetch SLOs from remote clusters, you can also group by **Remote cluster**.
 * Click icons to switch between a card view (![Card view icon](/solutions/images/serverless-apps.svg "")), list view (![List view icon](/solutions/images/serverless-list.svg "")), or compact view (![Compact view icon](/solutions/images/serverless-tableDensityCompact.svg "")).
 
