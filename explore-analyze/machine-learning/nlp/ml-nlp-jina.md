@@ -711,6 +711,19 @@ stack: ga 9.5+
 serverless: ga
 ```
 
+You can extract text from documents on EIS in two ways. Use `document_extraction` for whole PDFs, images, or web pages, or call `jina-ocr-v1` directly for single page images.
+
+##### Extract whole documents [jina-eis-document-extraction]
+
+```{applies_to}
+stack: preview 9.6
+serverless: preview
+```
+
+The `document_extraction` task type converts whole PDFs, images, or web pages into Markdown in one request. Refer to [](/explore-analyze/elastic-inference/eis.md#document-extraction-on-eis).
+
+##### OCR single page images with `jina-ocr-v1` [jina-eis-ocr-chat-completion]
+
 The following examples use the `chat_completion` task type. Create an {{infer}} endpoint and reference the `inference_id` in `chat_completion` {{infer}} requests:
 
 ```console

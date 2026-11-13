@@ -230,6 +230,194 @@ PUT _inference/text_embedding/eis-jina-embeddings-v3
 
 The created {{infer}} endpoint uses the model for {{infer}} operations on the Elastic {{infer-cap}} Service. You can reference the `inference_id` of the endpoint in index mappings for the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type, text_embedding {{infer}} tasks, or search queries.
 
+### Document extraction with Jina Reader on EIS [document-extraction-on-eis]
+
+```{applies_to}
+stack: preview 9.6
+serverless: preview
+```
+
+The `document_extraction` task type converts PDFs, images, and web pages into Markdown. On EIS, the `jina-reader` model runs document extraction with [Jina Reader](https://jina.ai/reader/). Use it to prepare documents for indexing and retrieval-augmented generation (RAG).
+
+Document extraction returns Markdown but doesn't index it. To make the extracted content searchable, index it yourself. Refer to [](#document-extraction-index).
+
+#### Extract content from documents [document-extraction-run]
+
+Use the preconfigured `.jina-reader` endpoint to extract content without creating an endpoint first. It handles every supported document type, so one endpoint covers PDFs, images, and web pages.
+
+Send one or more documents in the `input` array. Each item has a `content` object with the following fields:
+
+`type`
+:   The document type. Supported values are `pdf`, `image`, and `html`.
+
+`format`
+:   How you provide the document. Use `url` to pass a link that Jina Reader fetches, or `base64` to pass the document as a base64-encoded data URL. The `html` type supports `url` only. Defaults to `base64` for `pdf` and `image`, and `url` for `html`.
+
+`value`
+:   The URL or the base64-encoded data URL.
+
+The following example extracts a PDF from a URL:
+
+```console
+POST _inference/document_extraction/.jina-reader
+{
+  "input": [
+    {
+      "content": {
+        "type": "pdf", <1>
+        "format": "url", <2>
+        "value": "https://example.com/annual-report.pdf" <3>
+      }
+    }
+  ]
+}
+```
+
+1. The document type: `pdf`, `image`, or `html`.
+2. With `url`, Jina Reader downloads the document directly.
+3. The document's URL. Jina Reader must be able to reach it.
+
+The following example extracts a PDF from a base64-encoded data URL:
+
+```console
+POST _inference/document_extraction/.jina-reader
+{
+  "input": [
+    {
+      "content": {
+        "type": "pdf",
+        "format": "base64", <1>
+        "value": "data:application/pdf;base64,JVBERi0xLjQK..." <2>
+      }
+    }
+  ]
+}
+```
+
+1. With `base64`, you send the document in the request body. Use this for files that aren't available at a URL.
+2. A data URL: `data:`, the document's media type, `;base64,`, and then the base64-encoded file.
+
+The response contains one result for each document, in the same order as the `input` array:
+
+```console-result
+{
+  "document_extraction": [
+    {
+      "content": "# Annual Report 2025\n\nRevenue grew by 12% year over year...", <1>
+      "format": "markdown" <2>
+    }
+  ]
+}
+```
+
+1. The extracted content. Index this value to make the document searchable.
+2. The format of `content`. It's always `markdown`.
+
+A result can also include a `metadata` object. Its fields can change, so don't rely on them in your application.
+
+There's no limit on the number of documents in a request. The request size is limited by the [`http.max_content_length`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) setting, which defaults to 100 MB. Base64 encoding adds overhead, so the largest base64-encoded PDF you can send is about 75 MB.
+
+#### Default extraction behavior [document-extraction-defaults]
+
+Each document type uses a different extraction method by default:
+
+- PDFs: Converts the PDF's text layer to Markdown. Scanned PDFs have no text layer, so use OCR to extract their content. Refer to [](#document-extraction-parameters).
+- Images: Extracts text with optical character recognition (OCR).
+- Web pages: Converts the page content to Markdown.
+
+#### Change how documents are extracted [document-extraction-parameters]
+
+Use the `parameters` task setting to pass [Jina Reader options](https://r.jina.ai/docs) to Jina Reader. Options you set are combined with the defaults, and setting `preset` replaces the default extraction method. The `output_format` task setting supports `markdown` only.
+
+Use the `preset` option to choose how Jina Reader extracts content. For example:
+
+- `ocr`: Extracts text with the `jina-ocr-v1` OCR model. Use it for scanned PDFs.
+- `pdf+`: Reads the PDF's text layer, adds support for images in the PDF, and uses `jina-ocr-v1` for tables, formulas, and pages without text. Use it for PDFs with tables or formulas, or with a mix of text and scanned pages.
+
+OCR and layout presets extract pages 1 to 35 by default. A request extracts at most 35 pages, so use the `page` option to choose which pages to extract.
+
+The following example extracts the first three pages of a PDF with the `pdf+` preset:
+
+```console
+POST _inference/document_extraction/.jina-reader
+{
+  "input": [
+    {
+      "content": {
+        "type": "pdf",
+        "format": "url",
+        "value": "https://example.com/research-paper.pdf"
+      }
+    }
+  ],
+  "task_settings": {
+    "parameters": { <1>
+      "preset": "pdf+", <2>
+      "page": "1-3" <3>
+    }
+  }
+}
+```
+
+1. Jina Reader options for this request only. Each option here overrides the same option in the endpoint's `parameters`.
+2. Reads the PDF's text layer and uses OCR for tables, formulas, and pages without text.
+3. The pages to extract.
+
+#### Create a document extraction endpoint [document-extraction-create-endpoint]
+
+To apply the same `parameters` to every request, create your own {{infer}} endpoint and set them in `task_settings`:
+
+```console
+PUT _inference/document_extraction/my-jina-reader
+{
+  "service": "elastic", <1>
+  "service_settings": {
+    "model_id": "jina-reader" <2>
+  },
+  "task_settings": {
+    "parameters": {
+      "preset": "pdf+" <3>
+    }
+  }
+}
+```
+
+1. The `elastic` service runs the endpoint on EIS.
+2. The Jina Reader model.
+3. Every request to this endpoint uses the `pdf+` preset, unless the request sets its own `preset`.
+
+#### Index the extracted content [document-extraction-index]
+
+Your application sends each document to the extraction endpoint and then indexes the `content` value from the response. To search the content semantically, index it into a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field:
+
+1. Create an index with a `semantic_text` field for the extracted content:
+
+    ```console
+    PUT annual-reports
+    {
+      "mappings": {
+        "properties": {
+          "source_url": { "type": "keyword" }, <1>
+          "content": { "type": "semantic_text" } <2>
+        }
+      }
+    }
+    ```
+
+    1. The URL of the original document, so search results can link back to it.
+    2. Splits the content into chunks and generates embeddings for them when you index a document.
+
+2. Extract the content from the document, as shown in [](#document-extraction-run).
+3. Index the `content` value from the response:
+
+    ```console
+    POST annual-reports/_doc
+    {
+      "source_url": "https://example.com/annual-report.pdf",
+      "content": "# Annual Report 2025\n\nRevenue grew by 12% year over year..."
+    }
+    ```
+
 ### ELSER through Elastic {{infer-cap}} Service (ELSER on EIS) [elser-on-eis]
 
 ```{applies_to}
