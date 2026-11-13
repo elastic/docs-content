@@ -149,7 +149,8 @@ Attack group statistics in the Attacks table, such as the total alert count, con
 Access actions from the **Take actions** menu on an attack's row in the Attacks table.
 
 :::{note}
-When you change an attack's status, assign or unassign it, or apply attack tags, a modal lets you apply the action to the attack only, or to both the attack and its associated alerts.:::
+When you change an attack's status, assign or unassign it, or apply attack tags, a modal lets you apply the action to the attack only, or to both the attack and its associated alerts.
+:::
 
 | Action | How to do it | Notes |
 |--------|--------------|-------|

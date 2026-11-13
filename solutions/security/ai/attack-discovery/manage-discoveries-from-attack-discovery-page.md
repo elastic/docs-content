@@ -12,14 +12,14 @@ products:
 
 # Manage discoveries from the Attack Discovery page [manage-discoveries]
 
-This page describes how to change status, share, bulk-act on, and search saved discoveries directly from the **Attack Discovery** page.
+From the **Attack Discovery** page, you can change the status of saved discoveries, share them, update several at once, and search them.
 
 :::{note}
-This page isn't available in every version and deployment.
+The **Attack Discovery** page isn't available in every version and deployment.
 
-- {applies_to}`serverless: ga` In {{sec-serverless}}, [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects use this page in place of the **Attacks** view. Security Analytics Complete projects manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
+- {applies_to}`serverless: ga` In {{sec-serverless}}, [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects use the **Attack Discovery** page in place of the **Attacks** view. Security Analytics Complete projects manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
 - {applies_to}`stack: removed 9.6+` The page is no longer available. Manage discoveries from the [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md).
-- {applies_to}`stack: deprecated =9.5` When you open the page, a notice points to the **Attacks** view. To keep using this page, refer to [](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md).
+- {applies_to}`stack: deprecated =9.5` When you open the page, a notice points to the **Attacks** view. To keep using the **Attack Discovery** page, turn off **Enable alerts and attacks alignment**, as described in [](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md).
 :::
 
 ## Check Attack Discovery run status [attack-discovery-page-generations]

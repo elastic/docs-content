@@ -20,8 +20,8 @@ Each Attack Discovery finding groups related alerts into a single attack narrati
 
 Before you start, make sure you have the following:
 
-- Attack Discovery is configured with an LLM connector. See [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) if you need to set one up.
-- At least one finding has been generated, either manually or through a schedule. To start a run, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
+- Attack Discovery is configured with an LLM connector. If you need to set one up, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+- At least one finding exists, from either a manual or a scheduled run. To start a run, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
 - Your role has the [required privileges](/solutions/security/ai/attack-discovery/grant-access.md) to view and modify Attack Discovery alerts.
 
 :::{tip}
