@@ -11,7 +11,7 @@ products:
 
 # How detection learns your system [nightshift-detection-learning]
 
-Detection watches for problems in *your* system, not generic ones. To do that, {{nightshift}} first reads your logs and records what it finds: which services you run, what infrastructure they use, and what they depend on. You don't have to give it a service catalog, a schema, or any configuration.
+Detection watches for problems specific to *your* system, not generic problems. To do that, {{nightshift}} first reads your logs and records what it finds. It takes note of which services you run, what infrastructure they use, and what they depend on. You don't have to give it a service catalog, a schema, or any configuration.
 
 {{nightshift}} stores each finding as a Knowledge Indicator (KI). It uses KIs to write detection rules for your services, and discovery uses them to check signals.
 

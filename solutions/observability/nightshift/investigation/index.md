@@ -9,9 +9,9 @@ products:
   - id: cloud-serverless
 ---
 
-# How investigations work [nightshift-investigations]
+# Investigations [nightshift-investigations]
 
-An investigation takes a problem, such as a firing alert or a question in your own words, and returns the likely cause, the evidence, and actions you can take, usually within five minutes. It shows every explanation it tested, so you can check the reasoning. {{nightshift}} never changes your environment: you decide which actions to apply.
+An investigation takes a problem, such as a firing alert or a question in your own words, and returns the likely cause, the evidence, and actions you can take, usually within five minutes. It shows every explanation it tested, so you can check the reasoning. {{nightshift}} never changes your environment. You decide which actions to apply.
 
 An investigation follows the method of an experienced on-call engineer:
 

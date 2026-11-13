@@ -1,5 +1,5 @@
 ---
-navigation_title: How detection works
+navigation_title: Detection
 applies_to:
   serverless:
     observability: preview
@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# How detection works [nightshift-detection]
+# Detection [nightshift-detection]
 
 Detection finds problems that your alerts won't catch, and you don't need to create rules to find them. {{nightshift}} learns which services and dependencies your logs describe, generates its own rules, and watches for unusual changes. When related changes show up across several services, it groups them into a single significant event that shows which services and databases are affected, giving you one problem to look at instead of multiple small alerts.
 

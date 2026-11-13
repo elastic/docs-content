@@ -1,5 +1,5 @@
 ---
-navigation_title: How context is built
+navigation_title: Context
 applies_to:
   serverless:
     observability: preview
@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# How {{nightshift}} builds context [nightshift-context]
+# Context [nightshift-context]
 
 Each investigation starts from what {{nightshift}} has learned previously. While a model brings general troubleshooting skills, it doesn't have knowledge about your services, where their telemetry lives, or how previous issues were resolved. {{nightshift}} context fills that gap, so investigations spend their time on the problem instead of trying to understand your system.
 
