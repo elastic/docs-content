@@ -41,15 +41,10 @@ Chart
 :   Shows how the results spread over the time range, when your data has a time field. Some queries, such as ones that summarize your results, change what the chart shows.
 
 Results table
-:   Shows the results, one row for each document. In {{esql}} mode, a row is a result row, so a query that summarizes your data returns one row for each summary.
+:   Shows the results, one row for each document. In {{esql}} mode, a row is a result row, so a query that summarizes your data returns one row for each summary. If a cell shows a dash or `(null)`, the result has no value for that field. Refer to [What a dash or `(null)` in your results means](inspect-documents.md#missing-values-in-results).
 
 Document flyout
 :   When you need to focus on one result, select {icon}`maximize` **View details** on its row. A panel opens beside the table and shows the fields of that document. In {{esql}} mode, it shows the columns that your query returned. Refer to [Look inside a document](inspect-documents.md#look-inside-a-document).
-
-## What a dash or `(null)` in your results means [missing-values-in-results]
-
-:::{include} ../_snippets/missing-value-placeholders.md
-:::
 
 ## Query modes in Discover [query-modes]
 

@@ -29,6 +29,11 @@ To go to the next match, press **Enter**. To go to the previous match, press **S
 
 ![In-table search highlighting the matching values in the table and moving between the matches](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt30bf5f8b9a45ab74/67c234a787966d9fbc994ce0/in-table-search-demo.gif)
 
+## What a dash or `(null)` in your results means [missing-values-in-results]
+
+:::{include} ../_snippets/missing-value-placeholders.md
+:::
+
 ## Look inside a document [look-inside-a-document]
 
 $$$document-explorer-expand-documents$$$
