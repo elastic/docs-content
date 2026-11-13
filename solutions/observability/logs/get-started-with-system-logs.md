@@ -22,7 +22,7 @@ To follow the steps in this guide, you need an {{stack}} deployment that include
 
 * {{es}} for storing and searching data
 * {{kib}} for visualizing and managing data
-* Kibana user with `All` privileges on {{fleet}} and Integrations. Because many Integrations assets are shared across spaces, users need the Kibana privileges in all spaces.
+* Kibana user with `All` privileges on {{fleet}} and Integrations. For the minimum privileges and how they apply across spaces, refer to [](/reference/fleet/fleet-roles-privileges.md).
 
 To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 
@@ -83,7 +83,7 @@ Follow the in-product steps to auto-detect your logs and install and configure y
 After the agent is installed and successfully streaming log data, you can view the data in the UI:
 
 1. From the navigation menu, go to **Discover**.
-2. Select **All logs** from the **Data views** menu. The view shows all log datasets. Notice you can add fields, change the view, expand a document to see details, and perform other actions to explore your data.
+2. In {{esql}} mode, enter `FROM logs-*`. In classic mode, select **All logs** from the **Data views** menu. The view shows all log datasets. Notice you can add fields, change the view, expand a document to see details, and perform other actions to explore your data.
 
 :::::
 

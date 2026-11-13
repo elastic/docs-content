@@ -32,8 +32,10 @@ The following table lists common parameters that might be relevant for your use 
 
 For more information on all available parameters and their meaning, refer to:
 
-* The provided `values.yaml`, which includes the default settings for the {{edot}} installation.
-* The official OpenTelemetry `kube-stack` Helm chart [values file](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/values.yaml), with explanations of all parameters.
+* The provided `values.yaml` for your deployment type, which includes the default settings for the {{edot}} installation:
+  * {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` [Direct ingestion values file](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/values.yaml)
+  * {applies_to}`serverless: ga` {applies_to}`ech: ga` [Managed OTLP values file](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml)
+* The official OpenTelemetry `kube-stack` Helm chart [values file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-kube-stack/values.yaml), with explanations of all parameters.
 
 ## Cert-manager integrated installation
 
@@ -45,11 +47,13 @@ Integrating the operator with [cert-manager](https://cert-manager.io/) turns on 
 
 Follow any of the following options to install the `opentelemetry-kube-stack` Helm chart integrated with `cert-manager`.
 
-### Install using the CLI
+::::{tab-set}
+
+:::{tab-item} Install using the CLI
 
 Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command.
 
-For example:
+For example, for a self-managed deployment:
 
 ```bash subs=true
 helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
@@ -57,7 +61,10 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 --set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null
 ```
 
-### Install using values.yaml
+For any other deployment type, replace the `--values` URL with the values file that matches it. Refer to [Operator installation](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md#manual-deployment) for the correct URL.
+:::
+
+:::{tab-item} Install using values.yaml
 
 Keep an updated copy of the `values.yaml` file by following these steps:
 
@@ -87,3 +94,6 @@ Keep an updated copy of the `values.yaml` file by following these steps:
       helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
       --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version {{kube-stack-version}}
       ```
+:::
+
+::::

@@ -60,6 +60,8 @@ To use the UI to add a lightweight monitor:
 
     {applies_to}`stack: ga 9.1+` In **Advanced options**, select which [**{{kib}} spaces**](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
 
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` For an HTTP monitor, **Advanced options** → **Authentication** sets how the monitor signs in to the endpoint: **None**, **Basic**, **Kerberos**, or **NTLM**. A monitor can use one method at a time, and the fields change to match the one you select. For what each field holds and which locations support it, refer to the [HTTP options](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-http).
+
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
 
