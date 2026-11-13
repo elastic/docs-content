@@ -1,6 +1,7 @@
 ---
 navigation_title: SAML signing and encryption
 description: Configure Elasticsearch to sign outgoing SAML messages and decrypt incoming encrypted assertions, including certificate generation for PEM, PKCS#12, and JKS formats.
+type: how-to
 applies_to:
   stack: all
 products:
@@ -9,19 +10,13 @@ products:
 
 # Configure SAML signing and encryption [saml-enc-sign]
 
-This page is a detailed reference for SAML signing and encryption configuration. For the complete SAML SSO configuration, refer to [SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+This page describes how to configure SAML signing and encryption when your identity provider (IdP) or a local policy requires them. For the complete SAML SSO configuration, refer to [SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
-The {{stack}} supports generating signed SAML authentication and logout messages, verifying signed messages from the IdP, and processing encrypted content.
+Most IdPs don't expect authentication requests to be signed, but they often require signed logout requests. If your IdP requires signatures, the {{stack}} needs a signing key, and you need to give your IdP the corresponding signing certificate so that it can validate them. You can provide the certificate in the {{stack}} SAML metadata file, or enter it manually in the IdP administration interface.
 
-You can configure {{es}} for signing, encryption or both, using a single key or individual keys.
+The {{stack}} can generate signed SAML authentication and logout messages, verify signed messages from the IdP, and process encrypted content, although encryption certificates are rarely needed. You can configure {{es}} for signing, encryption, or both, using a single key or individual keys.
 
-The {{stack}} uses X.509 certificates with RSA private keys for SAML cryptography. These keys can be generated using any standard SSL tool, including the `elasticsearch-certutil` tool.
-
-Your IdP might require that the {{stack}} have a cryptographic key for signing SAML messages, and that you provide the corresponding signing certificate in your Service Provider configuration — either in the {{stack}} SAML metadata file, or manually in the IdP administration interface.
-
-While most IdPs do not expect authentication requests to be signed, signatures are often required for logout requests. Your IdP validates these signatures against the signing certificate that is configured for the {{stack}} Service Provider.
-
-Encryption certificates are rarely needed, but the {{stack}} supports them for cases where IdPs or local policies mandate their use.
+The {{stack}} uses X.509 certificates with RSA private keys for SAML cryptography. Generate these keys with any standard SSL tool, such as the `elasticsearch-certutil` tool.
 
 ## Generate certificates and keys [saml-sign-generate-certs]
 
