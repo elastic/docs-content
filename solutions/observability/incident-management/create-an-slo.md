@@ -285,7 +285,7 @@ For more information about configuring the rule, see [Create an SLO burn rate ru
 After you’ve created your SLO, you can monitor it from the *SLOs* page in Observability, but you can also add an *SLO Overview* panel to a custom dashboard. Read more about dashboards in [Dashboard and visualizations](/explore-analyze/dashboards.md).
 
 :::{image} /solutions/images/observability-slo-overview-embeddable-widget.png
-:alt: Using the Add panel button to add an SLO Overview widget to a dashboard
+:alt: The Add to dashboard flyout next to a dashboard in edit mode, with SLO Overview selected in the Observability group
 :screenshot:
 :::
 
