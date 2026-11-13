@@ -116,7 +116,7 @@ stack: ga 9.6
 serverless: ga
 ```
 
-Filtering during the search pays off when a filter removes most documents. When a filter keeps most documents, checking it during the search adds work without narrowing the search much. For these broad filters, {{es}} may choose to apply the filter after the vector search instead, and still return `k` matching results when enough matching documents exist. This applies to approximate kNN search on `dense_vector` fields, and you don't need to change your queries to benefit from it.
+Filtering during the search is worthwhile when a filter removes most documents. When a filter keeps most documents, checking it during the search adds work without narrowing the search much. For these broad filters, {{es}} might choose to apply the filter after the vector search instead, and still return `k` matching results when enough matching documents exist. This applies to approximate kNN search on `dense_vector` fields, and you don't need to change your queries to benefit from it.
 
 #### How it works [knn-automatic-post-filtering-how-it-works]
 
