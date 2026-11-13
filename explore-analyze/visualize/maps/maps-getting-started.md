@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-getting-started.html
-description: Build a map that compares web traffic by country, add layers that appear at different zoom levels, and filter it from a dashboard.
+description: Use Maps in Kibana to build a map of web traffic by country, with layers that change by zoom level, and filter it from a dashboard.
 type: tutorial
 applies_to:
   stack: ga
