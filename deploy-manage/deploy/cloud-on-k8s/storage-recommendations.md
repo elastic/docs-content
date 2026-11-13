@@ -66,3 +66,8 @@ In the PersistentVolume StorageClass, it is important to set [`volumeBindingMode
 The reclaim policy of a StorageClass specifies whether a PersistentVolume should be automatically deleted once its corresponding PersistentVolumeClaim is deleted. It can be set to `Delete` or `Retain`.
 
 ECK automatically deletes PersistentVolumeClaims when they are no longer needed, following a cluster downscale or deletion. However, ECK does not delete PersistentVolumes. The system cannot reuse a PersistentVolume with existing data from a different cluster. In this case {{es}} does not start, as it detects data that belongs to a different cluster. For this reason, it is recommended to use the `Delete` reclaim policy.
+
+
+### Volume ownership [k8s_volume_ownership]
+
+{{es}} must be able to write to the data volume. If the ownership of the volume prevents this, refer to [{{es}} data volume ownership](security-context.md#k8s-es-data-volume-ownership).
