@@ -72,6 +72,9 @@ To set up OpenTelemetry with Elastic, refer to these guides for each SDK:
 * [**Elastic Distribution of OpenTelemetry Python**](elastic-otel-python://reference/edot-python/index.md)
 * [**Elastic Distribution of OpenTelemetry PHP**](elastic-otel-php://reference/edot-php/index.md)
 * [**Elastic Distribution of OpenTelemetry Browser**](elastic-otel-rum-js://reference/edot-browser/index.md)
+* [**Elastic Distribution of OpenTelemetry Android**](apm-agent-android://reference/edot-android/index.md)
+* [**Elastic Distribution of OpenTelemetry iOS**](apm-agent-ios://reference/edot-ios/index.md)
+* [**Elastic Distribution of OpenTelemetry React Native**](elastic-otel-react-native://reference/edot-react-native/index.md)
 
 ::::{important}
 For a complete overview of OpenTelemetry and Elastic, explore [**{{edot}}**](opentelemetry://reference/index.md).
