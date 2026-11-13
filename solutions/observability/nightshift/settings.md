@@ -11,7 +11,7 @@ products:
 
 # {{nightshift}} settings and limits [nightshift-settings]
 
-On the **Settings** page, admins can controls what {{nightshift}} can reach and what it can run, including connectors and Slack channels, daily run limits, custom context, and detection.
+On the **Settings** page, admins can control what {{nightshift}} can reach and what it can run, including connectors and Slack channels, daily run limits, custom context, and detection.
 
 ## Before you begin [nightshift-settings-prereqs]
 
@@ -95,7 +95,7 @@ Pause detection while you change your sources, or to stop its cost.
 1. On the **Detections** tab, in **Detection engine activity**, select **Pause detection engine**.
 1. Confirm.
 
-Pausing stops Knowledge Indicator extraction, query alerting, rule creation, and significant event discovery in this space. It turns off the rules behind KI queries and cancels running detection workflows. Workflows that every space shares stay on, but their executions in this space are cancelled. Other spaces keep running, and no data is deleted.
+Pausing stops Knowledge Indicator extraction, query alerting, rule creation, and significant event discovery in this space. It turns off the rules behind KI queries and cancels running detection workflows. Workflows that every space shares stay on, but their executions in this space are canceled. Other spaces keep running, and no data is deleted.
 
 The **Detections** page now shows **Paused**. To start again, select **Resume detection engine**, which turns the stopped rules and workflows back on. Scheduled discovery and continuous KI onboarding turn back on only if they were on before the pause.
 

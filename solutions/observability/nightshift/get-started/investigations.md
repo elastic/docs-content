@@ -132,7 +132,7 @@ The automation now investigates each matching alert, within the daily limits. In
 
 After your first investigation, {{nightshift}} has started a picture of your system: which services you run, which databases they use, and where their telemetry lives. Later investigations start from there. To review this context, open the {icon}`boxes_vertical` menu on the home page and select **Knowledge**. Review the **Wiki** and **Memory** tabs to see what it's learned.
 
-If any of the Wikie or Memory articles are outdated, archive them so {{nightshift}} stops using them. Refer to [How {{nightshift}} builds context](../context/index.md).
+If any of the Wiki or Memory articles are outdated, archive them so {{nightshift}} stops using them. Refer to [How {{nightshift}} builds context](../context/index.md).
 
 ## What's next [nightshift-get-started-next]
 

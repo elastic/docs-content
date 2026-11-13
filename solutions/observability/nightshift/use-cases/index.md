@@ -24,7 +24,7 @@ Select a use case from the
 | Use case | Guide | Description|
 | --- | --- | --- |
 | Ask about a problem in your own words | [Investigate anything](./investigate-anything.md) | Investigate a problem you describe, such as "Why is checkout latency up?", and receive a likely cause, evidence, and proposed actions. |
-| Get help where your team already works | [Investigate in Slack](./investigate-in-slack.md) | Connect and start investigations from Slack. Mention `@Elastic` in a channel, and receive the results in the thread where you team can read them. |
+| Get help where your team already works | [Investigate in Slack](./investigate-in-slack.md) | Connect and start investigations from Slack. Mention `@Elastic` in a channel, and receive the results in the thread where your team can read them. |
 | Find out why an alert fired | [Investigate your alerts](./investigate-alerts.md) | Start an investigation from an alert, so {{nightshift}} has the service, the symptom, and the time window from the start. |
 | Have {{nightshift}} automatically investigate alerts | [Automatically investigate your alerts](./auto-investigate-alerts.md) | Set up an automation that investigates each matching alert or significant event and posts the findings to Slack, without anyone starting it. |
 | Investigate alerts from your other tools | [Investigate alerts from your other tools](./external-alerts.md) | Set up an automation that investigates alerts from another monitoring tool, an {{ech}} deployment, PagerDuty, or a script, when they arrive in Slack or by webhook. |
@@ -39,7 +39,7 @@ The following is a typical flow your team might follow:
 1. **Automatically investigate your alerts.** Create an automation that starts an investigation for each matching alert and posts the results in Slack.
 1. **Detect problems automatically.** Use detections to find problems that you don't have alerts for. Add its significant events to an automation, and {{nightshift}} investigates those too.
 
-Every investigation adds information about your system to the {{nightshift}} wiki and memory, so later investigations start with that context. Refer to [How {{nightshift}} builds context](../context/index.md).
+Every investigation adds information about your system to the {{nightshift}} Wiki and Memory, so later investigations start with that context. Refer to [How {{nightshift}} builds context](../context/index.md).
 
 ## Next steps [nightshift-use-cases-next]
 

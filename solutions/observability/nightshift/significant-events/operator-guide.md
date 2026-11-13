@@ -98,7 +98,7 @@ Turn off **Enable continuous KI onboarding**. Refer to [Continuous KI onboarding
 
 **Symptom**: Continuous extraction appears to be running continuously or processing sources more frequently than expected.
 
-**Action**: Check the **Continuous KI onboarding** setting. If enabled, check the number of sources eligible for extraction — more sources means more runs per cycle.
+**Action**: Check the **Continuous KI onboarding** setting. If enabled, check the number of sources eligible for extraction. More sources mean more runs per cycle.
 
 ### High LLM cost [sig-events-op-high-cost]
 

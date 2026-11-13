@@ -1,5 +1,5 @@
 ---
-navigation_title: How it works
+navigation_title: How Significant Events works
 description: Pipeline internals for engineers and adopters — KI extraction, rule generation, detection, discovery, storage model, and ES|QL traceability.
 applies_to:
   serverless:

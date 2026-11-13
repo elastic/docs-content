@@ -19,11 +19,6 @@ For the privileges to view events and start investigations, refer to [Grant acce
 
 On the {{nightshift}} home page, select **Detections**. The **Events** tab lists your significant events, the most recently updated first.
 
-:::{image} ../../../images/nightshift-detections.png
-:alt: The Events tab on the Detections page, listing significant events such as Postgres client connection loss and Inventory API PostgreSQL statement timeouts, each with its status, severity, and investigation state
-:screenshot:
-:::
-
 Each row shows the event's title and summary, when it was **Updated at** and **Created at**, its **Status**, its **Severity**, and its **Investigation** state: **Not started**, **In progress**, or **Completed**.
 
 To narrow the list:
@@ -32,14 +27,9 @@ To narrow the list:
 - Filter by **Severity**, **Status**, or **Investigation**.
 - In the **Entities** list on the left, select the services or databases that you care about. The number next to each one is its count of events.
 
-## Read an event [nightshift-detection-events-read]
+## Review an event [nightshift-detection-events-read]
 
 Select an event to open its details.
-
-:::{image} ../../../images/nightshift-significant-event-details.png
-:alt: The details of the significant event Postgres client connection loss and reset by peer, with Medium severity, Confidence 24%, and Active badges, the What happened? summary, and the Detections list. A signal's details are open on the left
-:screenshot:
-:::
 
 The header shows the title, when the event was raised, and three badges: severity, confidence, and status. The **Overview** tab has these sections:
 

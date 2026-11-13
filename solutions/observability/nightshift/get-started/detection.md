@@ -20,7 +20,7 @@ Detection is separate from [investigations](./investigations.md). You can use in
 Make sure you meet the following requirements:
 
 - **{{nightshift}} is enabled for the space.** If it isn't, start with [Set up investigations](./investigations.md#nightshift-get-started-enable).
-- **An admin to enable detection.** The predefined **Admin** role can do this. For other roles, refer to [Grant access to {{nightshift}}](./get-started/privileges.md).
+- **An admin to enable detection.** The predefined **Admin** role can do this. For other roles, refer to [Grant access to {{nightshift}}](privileges.md).
 - **Your project has recent logs.** Detection watches logs in this project or in projects linked by [{{cps}}](/deploy-manage/cross-project-search-config.md). For other deployment types, refer to [Reference architecture](../reference-architecture.md).
 
 ## Choose your data and turn on detection
@@ -31,6 +31,7 @@ Make sure you meet the following requirements:
 
 1. On the {{nightshift}} home page, select **Detections**. If you aren't seeing it, make sure you've completed the **Get started** checklist. If you see **Detection setup requires manage and configure access**, ask an admin to enable it.
 1. Under **Select data sources to analyze**, keep **All logs** (`FROM logs*`) selected. To watch only some of your data, select **Create new source**. Refer to [Choose what detection watches](../detection/sources.md).
+::::
 
 ::::{step} Enable detection
 :anchor: nightshift-get-started-detection-enable
@@ -38,6 +39,7 @@ Make sure you meet the following requirements:
 Select **Enable detection**.
 
 A badge by the **Detection engine** heading now shows **Monitoring**, with all counts at zero. Scheduled discovery is on by default, so there's nothing else to turn on.
+::::
 
 ::::{step} Let detection learn your system
 :anchor: nightshift-get-started-detection-learning
@@ -53,6 +55,7 @@ While you wait, the counts at the top of the **Detections** page go up as {{nigh
 Significant events appear on the **Events** tab only when something unusual happens, so a quiet system can stay at zero for a while.
 
 When an event appears, select it to read **What happened?** and the detections behind it. To find the likely cause, select **Investigate**. Refer to [Review significant events](../detection/significant-events.md).
+::::
 
 ::::{step} Investigate new events automatically (optional)
 :anchor: nightshift-get-started-detection-automate

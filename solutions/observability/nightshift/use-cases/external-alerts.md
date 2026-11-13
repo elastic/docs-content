@@ -57,7 +57,7 @@ Use the following table to determine when to use Slack or a webhook to investiga
 | **Where results are sent** | The thread of the alert message. | A connected Slack channel that you choose. |
 
 :::{tip}
-Starting from Slack requires the least set up and sends investigation results back to Slack where your team is already working.
+Starting from Slack requires the least setup and sends investigation results back to Slack where your team is already working.
 :::
 
 ## Investigate alerts that your tool posts in Slack [nightshift-uc-ext-slack]
@@ -169,7 +169,7 @@ An investigation started this way has only the alert to start from. For the Slac
 - **How names map to Elastic data**: which service names in the alert match which `service.name` values, indices, or data views, and which data is in a separate {{ech}} deployment.
 - **Where to look first**: runbooks, dashboards, and the GitHub repositories for the services.
 
-For the `Alertmanager` example scenario, you might add something like::
+For the `Alertmanager` example scenario, you might add something like:
 
 ```text
 Alerts come from Prometheus Alertmanager for the checkout Kubernetes cluster.

@@ -1,5 +1,5 @@
 ---
-navigation_title: Context
+navigation_title: How context is built
 applies_to:
   serverless:
     observability: preview
@@ -11,7 +11,7 @@ products:
 
 # How {{nightshift}} builds context [nightshift-context]
 
-Each investigation starts from what {{nightshift}} learned before, not from scratch. A model brings general troubleshooting skills, but nothing about your services, where their telemetry lives, or what helped last time. Context fills that gap, so investigations spend their time on the problem instead of on finding their way around.
+Each investigation starts from what {{nightshift}} has learned previously. While A model brings general troubleshooting skills, it doesn't have knowledge about your services, where their telemetry lives, or how previous issues were resolved. {{nightshift}} context fills that gap, so investigations spend their time on the problem instead trying to understand your system.
 
 This page explains where that knowledge comes from, and how to check and correct it.
 
@@ -20,15 +20,14 @@ This page explains where that knowledge comes from, and how to check and correct
 Knowledge builds up in layers, from your raw telemetry to what {{nightshift}} learned from its own work.
 
 :::{image} ../../../images/nightshift-context-layers.svg
-:alt: Four layers of context, from bottom to top: your telemetry, Knowledge Indicators, your knowledge, and learnings (Wiki and Memory). An investigation reads your telemetry, your knowledge, and the learnings, and writes what it learns back to the Wiki and Memory. Detection uses the Knowledge Indicators to raise significant events, which can start an investigation.
+:alt: Four layers of context, from bottom to top: your telemetry, Knowledge Indicators (KIs), your knowledge, and learnings (Wiki and Memory). An investigation reads your telemetry, your knowledge, and the learnings, and writes what it learns back to the Wiki and Memory. Detection uses the KIs to raise significant events, which can start an investigation.
 :width: 100%
 :::
 
+Knowledge reaches {{nightshift}} in the following ways:
 
-Knowledge reaches {{nightshift}} in three ways:
-
-1. **From your data, ahead of time.** When detection is on, it reads the data in your sources and extracts Knowledge Indicators: facts about your services, dependencies, and technologies. Detection uses them to create rules and find significant events. Investigations don't read KIs directly: KIs reach them through significant events.
-1. **From people.** Custom context and automation instructions tell {{nightshift}} what it can't learn from your data, such as team conventions, where to look first, and where your runbooks and code are. Investigations read those runbooks and code when they run.
+1. **From your data, ahead of time.** When detection is on, it reads the data in your sources and extracts Knowledge Indicators(KIs), which include facts about your services, dependencies, and technologies. Detection uses them to create rules and find significant events. Investigations don't read KIs directly, KIs reach them through significant events.
+1. **From people.** Custom context and automation instructions tell {{nightshift}} information it can't learn from your data, such as team conventions, where to look first, and the location of your runbooks and code. Investigations then read those runbooks and code when they run.
 1. **From its own investigations.** After each investigation, {{nightshift}} saves what it learned. Durable facts about your services and integrations go to the Wiki. Lessons, such as which checks found the cause, go to Memory. For alerts it has investigated before, it keeps the troubleshooting path that worked as a decision tree, which you can view in developer mode.
 
 Every investigation reads the Wiki, recalls the memories that match the problem, and follows your instructions. Then it saves what it learned, so the next investigation starts further ahead.

@@ -11,7 +11,7 @@ products:
 
 # Automatically investigate your alerts [nightshift-auto-investigate-alerts]
 
-{{nightshift}} can automatically investigate your alerts using automations. An automation starts a investigation when an alert matches the conditions you set up, and posts the findings in a Slack thread, giving the on-call engineer a head start on fixing the problem.
+{{nightshift}} can automatically investigate your alerts using automations. An automation starts an investigation when an alert matches the conditions you set up, and posts the findings in a Slack thread, giving the on-call engineer a head start on fixing the problem.
 
 ## Before you begin [nightshift-uc-auto-before]
 
@@ -37,7 +37,7 @@ The process looks something like this:
 
 ## Create the automation [nightshift-uc-auto-create]
 
-For this process to work, you need to first creating the automation that fires under this scenario:
+For this process to work, you need to first create the automation that fires under this scenario:
 
 1. On the {{nightshift}} home page, select **Automations** → **Create custom automation**.
 1. Enter a **Name**, for example `Investigate critical checkout alerts`. Optionally, add a **Description** and **Tags**.

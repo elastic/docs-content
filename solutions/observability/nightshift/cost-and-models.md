@@ -53,14 +53,14 @@ For the cost profile of each detection phase, refer to [Cost drivers](./signific
 
 ## Keep your cost under control [nightshift-cost-control]
 
-Start with the defaults, then use the controls in the table above: [Run limits](./settings.md#nightshift-settings-run-limits), [Detection run limits](./settings.md#nightshift-settings-detection-limits), [sources](./detection/sources.md), and [Continuous KI onboarding](./settings.md#nightshift-settings-ki-onboarding). Also:
+Start with the defaults, then use the controls in the previous table: [Run limits](./settings.md#nightshift-settings-run-limits), [Detection run limits](./settings.md#nightshift-settings-detection-limits), [sources](./detection/sources.md), and [Continuous KI onboarding](./settings.md#nightshift-settings-ki-onboarding). Also:
 
 - **Turn off a noisy automation**, or lower its **Daily trigger limit**. Refer to [Automations](./investigation/automations.md).
 - **Pause detection.** Stops all detection cost in the space until you resume it. Refer to [Pause or resume detection](./settings.md#nightshift-settings-pause).
 
 ## Monitor your cost [nightshift-cost-monitor]
 
-Your bill is the source of truth. To check your token use, go to [**Billing** > **Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} console and look for line items with the **Inference** billing dimension. Refer to [Monitor your token usage](/explore-analyze/elastic-inference/eis.md#monitor-your-token-usage).
+Your bill is the source of truth. To check your token use, go to [**Billing** → **Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} console and look for line items with the **Inference** billing dimension. Refer to [Monitor your token usage](/explore-analyze/elastic-inference/eis.md#monitor-your-token-usage).
 
 {{nightshift}} can also show an estimate of its own cost. To turn it on, you need permission to save Advanced Settings.
 
@@ -69,11 +69,6 @@ Your bill is the source of truth. To check your token use, go to [**Billing** > 
 1. Select the **Detections** tab, and scroll to **Advanced developer settings**.
 1. In **Approximate inference cost across all spaces**, turn on **Enable token tracking in this space**.
 1. Select **Save changes**.
-
-:::{image} ../../images/nightshift-settings-token-tracking.png
-:alt: The Advanced developer settings on the Detections tab. Enable token tracking in this space is on, and a table shows the estimated cost for Discovery, Investigation, and KI extraction, Today and This month, with a Refresh button
-:screenshot:
-:::
 
 The estimate shows the cost for **Today** and **This month**, split into **Discovery**, **Investigation**, and **KI extraction**. Select **Refresh** to update it. It counts only calls made while tracking is on, so right after you turn it on, it shows **No recorded calls**.
 
@@ -91,7 +86,7 @@ EIS routes each request to the nearest region where it runs. To keep requests in
 
 ## Your data and {{nightshift}} [nightshift-data]
 
-Here's what {{nightshift}} reads, what it sends to models, and what it keeps. For how Elastic handles data in its AI features, refer to the [data and AI FAQ](https://www.elastic.co/trust/faq#data-ai) in the Elastic Trust Center.
+This section explains what {{nightshift}} reads, what it sends to models, and what it keeps. For how Elastic handles data in its AI features, refer to the [data and AI FAQ](https://www.elastic.co/trust/faq#data-ai) in the Elastic Trust Center.
 
 **Where it runs**
 :   Your data stays in your {{obs-serverless}} project, except the excerpts that {{nightshift}} sends to models. Models run only through EIS: you can't bring your own model, and there's no air-gapped option.

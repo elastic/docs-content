@@ -1,5 +1,5 @@
 ---
-navigation_title: Decision trees
+navigation_title: Review decision trees
 applies_to:
   serverless:
     observability: preview
@@ -9,9 +9,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Decision trees [nightshift-decision-trees]
+# Review decision trees [nightshift-decision-trees]
 
-A decision tree is the troubleshooting path that {{nightshift}} keeps for an alert it has investigated: which evidence to gather first, which checks decide between explanations, and where each branch led. When the same alert fires again, the investigation can follow the tree.
+A decision tree is the troubleshooting path that {{nightshift}} keeps for an alert it has investigated. It tells you which evidence to gather first, which checks decide between explanations, and where each branch led. When the same alert fires again, the investigation can follow the tree.
 
 A tree can also steer an investigation down a path that doesn't fit this time. As with any investigation, check the hypothesis tree and the evidence before you act.
 

@@ -26,7 +26,7 @@ For an example of the KIs that one log line produces, refer to [From a log line 
 Learning, also called KI onboarding, has two steps for each source: it identifies feature KIs, and then generates query KIs from them. It runs:
 
 - **When you add a source.** Learning starts as soon as you create an enabled source.
-- **Again and again, in the background.** With continuous KI onboarding, {{nightshift}} learns each enabled source again at an interval, so its KIs follow your system as it changes. Continuous KI onboarding turns on when the space gets its first source.
+- **Continuously in the background.** With continuous KI onboarding, {{nightshift}} learns each enabled source again at an interval, so its KIs follow your system as it changes. Continuous KI onboarding turns on when the space gets its first source.
 - **When you ask.** Refer to [Manage sources](./sources.md#nightshift-detection-sources-manage).
 
 To change the interval or turn it off, refer to [Continuous KI onboarding](../settings.md#nightshift-settings-ki-onboarding). It's the largest driver of detection cost.
@@ -35,16 +35,15 @@ To change the interval or turn it off, refer to [Continuous KI onboarding](../se
 
 Right after you turn detection on, the **Detection engine** shows **Monitoring** and every count is zero. That's expected.
 
-:::{image} ../../../images/nightshift-detections-warming-up.png
-:alt: The Detections page right after detection is turned on. The Detection engine shows Monitoring and all counts, from knowledge indicators to significant events, are zero
-:screenshot:
-:::
-
 1. **First KIs and rules, within a few minutes.** {{nightshift}} samples your logs and extracts KIs, then writes rules from them. The **knowledge indicators**, **entities**, and **rules** counts go up.
 1. **First signals.** Rules need some history before a change can stand out. Expect 40 to 100 minutes after you turn detection on before the first signals appear.
 1. **First significant events.** These appear only when something actually changes in your system. On a healthy system, there can be none for a while.
 
-No events after a few hours? On a healthy system, that's normal. To rule out a problem, check that the **Detection engine** shows **Monitoring**, not **Paused**, that **Enable scheduled discovery** is still on in **Settings** > **Detections**, and that your sources show a green **Status** on the **Sources** page.
+You might not see any events on a healthy system even after a few hours. To rule out a problem, check that:
+
+- The **Detection engine** shows **Monitoring**, not **Paused**.
+- **Enable scheduled discovery** is still on in **Settings** → **Detections**.
+- Your sources show a green **Status** on the **Sources** page.
 
 ## Check what {{nightshift}} learned [nightshift-detection-learning-see]
 

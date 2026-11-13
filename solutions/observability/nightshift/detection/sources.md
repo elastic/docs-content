@@ -1,5 +1,5 @@
 ---
-navigation_title: Choose what detection watches
+navigation_title: Manage what detection monitors
 applies_to:
   serverless:
     observability: preview
@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Choose what detection watches [nightshift-detection-sources]
+# Manage what detection monitors [nightshift-detection-sources]
 
 Tell {{nightshift}} which logs to learn from and watch for problems. Start with all your logs in one step, or narrow detection down to the services you care about most.
 
@@ -25,11 +25,6 @@ Each set of data that detection watches is a *source*. You choose sources when y
 
 To turn on detection, follow [Set up detection](../get-started/detection.md). To watch only some of your logs from the start, [create a source](#nightshift-detection-sources-create) first, then select it when you enable detection. **All logs** watches all your logs with the query `FROM logs*`.
 
-:::{image} ../../../images/nightshift-detections-intro.png
-:alt: The Detections page before detection is on. It explains how detection works and lists the All logs source with the query FROM logs*, selected, next to the Enable detection button
-:screenshot:
-:::
-
 {{nightshift}} starts to learn from each source right away. Refer to [How long learning takes](./learning.md#nightshift-detection-learning-warmup).
 
 ## What a source is [nightshift-detection-sources-what]
@@ -40,9 +35,9 @@ A source is an {{esql}} query that selects rows of data, and nothing else. The q
 - Contain only `WHERE` commands after that. Commands that change the rows, such as `STATS`, `EVAL`, or `KEEP`, aren't allowed.
 - Target one kind of data. All indices in the query must be logs, all metrics, or all traces, which {{nightshift}} derives from the index names. For example, `FROM logs-*, my-app-*` is rejected because `my-app-*` isn't recognized as logs. A wildcard for everything, such as `*`, is also rejected.
 
-In Tech Preview, detection learns only from logs, so use logs sources.
+Detection currently learns only from logs, so use logs sources.
 
-Sources apply to detection only. Investigations don't need a source: they query all the logs, metrics, and traces that your connectors reach.
+Sources apply to detection only. Investigations don't need a source. They query all the logs, metrics, and traces that your connectors reach.
 
 For example:
 
@@ -68,6 +63,8 @@ Detection reads data from all projects linked through {{cps}}, whatever the proj
 :::
 
 ## Create a source [nightshift-detection-sources-create]
+
+To create a source from the **Detections** page:
 
 1. At the top of the **Detections** page, select **Sources**, then select **Create source**.
 1. Enter a **Title**. Optionally, add a **Description** and **Tags**.

@@ -1,5 +1,5 @@
 ---
-navigation_title: Rules and signals
+navigation_title: Review rules and signals
 applies_to:
   serverless:
     observability: preview
@@ -9,9 +9,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Rules and signals [nightshift-detection-rules-signals]
+# Review rules and signals [nightshift-detection-rules-signals]
 
-Rules and signals are the evidence behind every significant event. Check them to find out what detection watches in your logs, why it raised an event, and which rules only add noise.
+Rules and signals are the evidence behind every significant event. Review them to find out what detection watches in your logs, why it raised an event, and which rules only add noise.
 
 - A **rule** is an {{esql}} query that looks for one failure pattern, such as database lock timeouts. It runs on a schedule and counts the matching log lines.
 - A **signal** is a record that a rule's match count changed significantly, such as a sudden spike. Discovery reviews signals and groups the ones that point to the same problem into a significant event.
@@ -21,7 +21,7 @@ Rules and signals are the evidence behind every significant event. Check them to
 {{nightshift}} writes rules for you from the query KIs that it learns from your sources. Refer to [How detection learns your system](./learning.md).
 
 - **Generated automatically.** A query KI becomes a rule when it matches specific log lines and has a high severity score.
-- **Promoted by you.** Other query KIs stay on the **Knowledge Indicators** tab. To turn one into a rule, open **Knowledge** > **Knowledge Indicators**, select the KI, and select **Promote**. Promote also brings back a rule that you deleted. Refer to [Knowledge Indicators](../context/knowledge-indicators.md).
+- **Promoted by you.** Other query KIs stay on the **Knowledge Indicators** tab. To turn one into a rule, open **Knowledge** → **Knowledge Indicators**, select the KI, and select **Promote**. Promote also brings back a rule that you deleted. Refer to [Knowledge Indicators](../context/knowledge-indicators.md).
 
 Query KIs that compute statistics, such as an error count, can't become rules yet.
 
