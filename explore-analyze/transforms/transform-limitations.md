@@ -49,7 +49,9 @@ Transforms sort data by a user-defined time field, which is frequently accessed.
 
 ### {{ctransform-cap}} scheduling limitations [transform-scheduling-limitations]
 
-A {{ctransform}} periodically checks for changes to source data. The functionality of the scheduler is currently limited to a basic periodic timer which can be within the `frequency` range from 1s to 1h. The default is 1m. {applies_to}`serverless: ga` On {{serverless-short}}, a `frequency` lower than 5s is treated as 5s. This is designed to run little and often. When choosing a `frequency` for this timer consider your ingest rate along with the impact that the search/index operations has on other users in your cluster.
+A {{ctransform}} periodically checks for changes to source data. The functionality of the scheduler is currently limited to a basic periodic timer which can be within the `frequency` range from 1s to 1h. The default is 1m. This is designed to run little and often. When choosing a `frequency` for this timer consider your ingest rate along with the impact that the search/index operations has on other users in your cluster.
+
+{applies_to}`serverless: ga` On {{serverless-short}}, a `frequency` lower than 5s is treated as 5s.
 
 After a failure, the transform does not wait for the `frequency` interval before it retries. Instead, it retries with an exponential backoff that starts at 5 seconds and is capped at 1 hour.
 
@@ -95,7 +97,7 @@ The transform retrieves data in batches which means it calculates several bucket
 
 For each checkpoint, entities are identified that have changed since the last time the check was performed. This list of changed entities is supplied as a [terms query](elasticsearch://reference/query-languages/query-dsl/query-dsl-terms-query.md) to the transform composite aggregation, one page at a time. Then updates are applied to the destination index for each page of entities.
 
-The page `size` is defined by `max_page_search_size` which is also used to define the number of buckets returned by the composite aggregation search. The default value is 500 for `pivot` transforms and 5000 for `latest` transforms, the minimum is 10.
+The page `size` is defined by `max_page_search_size` which is also used to define the number of buckets returned by the composite aggregation search. The default value is 500 for `pivot` transforms and 5000 for `latest` transforms. The minimum is 10.
 
 The index setting [`index.max_terms_count`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-settings) defines the maximum number of terms that can be used in a terms query. The default value is 65536. If `max_page_search_size` exceeds `index.max_terms_count` the transform will fail.
 

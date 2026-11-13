@@ -39,7 +39,11 @@ In a {{ctransform}}, the `frequency` configuration option sets the interval betw
 
 ## 2. Increase the number of shards of the destination index (index) [increase-shards-dest-index]
 
-Depending on the size of the destination index, you might consider increasing its shard count. {applies_to}`stack: ga` Transforms use one shard by default when creating the destination index. To override the index settings, create the destination index before starting the transform. For more information about how the number of shards affects scalability and resilience, refer to [Run {{es}} in production](../../deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
+Depending on the size of the destination index, you might consider increasing its shard count.
+
+{applies_to}`stack: ga` Transforms use one shard by default when creating the destination index.
+
+To override the index settings, create the destination index before starting the transform. For more information about how the number of shards affects scalability and resilience, refer to [Run {{es}} in production](../../deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
 ::::{tip}
 Use the [Preview transform]({{es-apis}}operation/operation-transform-preview-transform) to check the settings that the transform would use to create the destination index. You can copy and adjust these in order to create the destination index prior to starting the transform.

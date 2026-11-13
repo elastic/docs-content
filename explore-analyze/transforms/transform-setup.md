@@ -49,7 +49,8 @@ For more information about {{es}} roles and privileges, refer to [Built-in roles
 
 Within a {{kib}} space, for full access to transforms, you must meet all of the following requirements:
 
-* Management features visible in the {{kib}} space, including `Data View Management` and {applies_to}`stack: ga` `Stack Monitoring`,
+* Management features visible in the {{kib}} space, including `Data View Management`,
+* {applies_to}`stack: ga` `Stack Monitoring` visible in the {{kib}} space,
 * {applies_to}`stack: ga` `monitoring_user` built-in role,
 * `transform_admin` built-in role or `manage_transform` cluster privileges,
 * `kibana_admin` built-in role or a custom role with `read` or `all` {{kib}} privileges for the `Data View Management` feature (dependent on whether data views already exist for your destination indices),

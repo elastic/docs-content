@@ -90,7 +90,9 @@ The default scope depends on how you create the transform:
 
 * **In {{kib}}**: Uses your space's default scope.
 * **With Clone**: Keeps the original transform's scope.
-* **Through the API**: Not space-aware. If the request is authenticated with an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md), the transform searches all linked projects unless you specify a `project_routing` expression. If the request is authenticated with an [{{es}} API key](/deploy-manage/api-keys/serverless-project-api-keys.md), which is scoped to a single project, the transform searches only the origin project.
+* **Through the API**: The scope doesn't depend on your {{kib}} space. Instead, it depends on the API key that authenticates the request:
+  * With an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md), the transform searches all linked projects unless you specify a `project_routing` expression.
+  * With an [{{es}} API key](/deploy-manage/api-keys/serverless-project-api-keys.md), which is scoped to a single project, the transform searches only the origin project.
 * **Before {{cps-init}} was available**: Searches only the origin project until you set `project_routing`.
 
 Changes to the space default scope do not affect existing transforms. Each transform keeps the `project_routing` that was set when it was created or last updated.

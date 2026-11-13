@@ -81,8 +81,9 @@ Failures in transforms tend to be related to searching or indexing. To increase 
 Checkpoint failures can be categorized as follows:
 
 * Temporary failures: The checkpoint is retried up to `num_failure_retries` times (default 10) with an exponential backoff, starting at 5 seconds and capped at 1 hour. Once the retries are exhausted, the transform fails and stops. For example, this situation might occur when there are shard failures and queries return only partial results. You can change the default for all transforms with the `xpack.transform.num_transform_failure_retries` cluster setting. A value of `-1` retries indefinitely.
+
+  {applies_to}`stack: ga 9.6+` Authentication and authorization errors are also treated as temporary failures and retried.
 * Irrecoverable failures: The transform immediately fails. For example, this situation occurs when the source index is not found, or when an aggregation is not valid for the field type.
-  {applies_to}`stack: ga 9.6+` Authentication and authorization errors are treated as temporary failures and retried.
 * Adjustment failures: The transform retries with adjusted settings. For example, if a parent circuit breaker memory errors occur during the composite aggregation, the transform receives partial results. The aggregated search is retried with a smaller number of buckets. This retry is performed at the interval defined in the `frequency` property for the transform. If the search is retried to the point where it reaches a minimal number of buckets, an irrecoverable failure occurs.
 
 A transform with the `unattended` setting enabled never enters a failed state. It retries all failures indefinitely.
