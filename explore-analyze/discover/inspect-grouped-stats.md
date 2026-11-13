@@ -65,6 +65,8 @@ FROM kibana_sample_data_logs
 To run a pattern analysis without writing a query, refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To check how common one message is without grouping your results, refer to [](esql-results.md#find-similar-values-esql).
+
 ## Add sparklines to patterns [esql-cascade-pattern-sparkline]
 ```{applies_to}
 serverless: preview

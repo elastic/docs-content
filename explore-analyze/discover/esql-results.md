@@ -48,6 +48,37 @@ The query is the only place where the filter lives, so the filter shows up in th
 :width: 70%
 :::
 
+## Find similar messages in the table [find-similar-values-esql]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If a text value in your results looks unusual, such as a log message, you can check how common it is without writing a `STATS` query that uses `CATEGORIZE`. **Discover** shows the pattern the value follows, which describes the structure that similar values share. It also shows the other documents that match the pattern and when they occurred. You can then keep those documents in your query or filter them out.
+
+The **Find similar values** button appears only for text fields, such as `message` or `error.message`, from a data source that has a time field. It also has these requirements:
+
+- {applies_to}`serverless: ga` Your project type must include pattern analysis. {{es}}, Observability, and Security projects include it, except Observability projects on the Logs Essentials tier.
+- {applies_to}`stack: ga 9.6+` You need a [Platinum or higher subscription](https://www.elastic.co/subscriptions) or an active trial.
+
+1. In {{esql}} mode, run a query that returns documents. For example, run `FROM kibana_sample_data_logs` and expand the time range if the table is empty.
+2. In the table, hover over a value in a text field column, such as `message`, and select **Find similar values**.
+3. In the flyout, read the pattern that the value follows, the number of documents that match it, and the chart that shows when they occurred. The table in the flyout lists the matching documents. The count and the table include at most 1,000 documents. The analysis uses your query and the time filter. It ignores commands that limit, reorder, or select rows and columns, such as `LIMIT`, `SORT`, and `KEEP`.
+
+   :::{image} /explore-analyze/images/kibana-discover-find-similar-values-esql.png
+   :alt: Similar values flyout in ES|QL mode, with the pattern of a message and the chart and table of matching documents
+   :screenshot:
+   :width: 70%
+   :::
+
+4. Optional: To keep working with these documents, select **Open documents in Discover** to see only the documents that match the pattern. To see everything else instead, select **Filter out documents in Discover**.
+
+**Result:** The flyout shows how common the value is and when it occurred. If you select one of the buttons in step 4, **Discover** opens a new tab, labeled **Pattern** followed by the field name, with your query plus a `WHERE` clause that keeps or excludes the matching documents. Your original tab stays as it was.
+
+In the **Summary** column, which shows each result's key-value pairs, **Find similar values** analyzes the message of the document. For example, it uses `message`, `error.message`, or `event.original`, depending on which of these fields the document has.
+
+In classic mode, refer to [](run-pattern-analysis-discover.md#find-similar-values-classic).
+
 ## Sort query results [_sorting]
 
 From the menu of a column, select a sort option. The labels depend on the column type: numeric columns offer **Sort Low-High** and **Sort High-Low**, text columns offer **Sort A-Z** and **Sort Z-A**, and date columns offer **Sort Old-New** and **Sort New-Old**. Discover reorders the rows already in the table. The query stays the same, and Discover doesn't run it again. The **Summary** column doesn't offer sorting.
