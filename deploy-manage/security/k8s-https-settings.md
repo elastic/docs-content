@@ -265,8 +265,9 @@ kubectl delete secret quickstart-es-http-certs-internal
 | `<name>-<type>-http-ca-internal` | ECK generates a new CA and issues a new HTTP certificate. It updates the CA in `<name>-<type>-http-certs-public` and in the secrets of the resources associated with an {{es}} cluster, for example `<kibana-name>-kb-es-ca`. Associated resources, such as {{kib}}, restart to use the new CA. |
 
 ::::{important}
-* Delete the `-internal` secrets. ECK recreates the `-http-certs-public` secret, and the CA copies in associated resources such as `<kibana-name>-kb-es-ca`, from the internal secrets, so deleting them doesn't change the certificate.
-* After you delete the CA secret, `ca.crt` contains only the new CA. Resources managed by ECK that reference the cluster, such as {{kib}}, Beats, or {{agent}}, receive the new CA automatically. Clients that ECK doesn't manage, for example your own applications, must be updated with the new CA from `<name>-<type>-http-certs-public` before they can connect again.
+To force regeneration, delete only the `-internal` secrets. ECK recreates the `-http-certs-public` secret, and the CA copies in associated resources, such as `<kibana-name>-kb-es-ca`, from the internal secrets, so deleting them doesn't change the certificate.
+
+After you delete the CA secret, `ca.crt` contains only the new CA. Resources managed by ECK that reference the cluster, such as {{kib}}, Beats, or {{agent}}, receive the new CA automatically. Clients that ECK doesn't manage, for example your own applications, must be updated with the new CA from `<name>-<type>-http-certs-public` before they can connect again.
 ::::
 
 ## Disable TLS [k8s-disable-tls]
