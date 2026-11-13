@@ -8,8 +8,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-ai-assistant.html
   - https://www.elastic.co/guide/en/serverless/current/ai-assistant-knowledge-base.html
 applies_to:
-  stack: ga
-  serverless: ga
+  stack: all
+  serverless: all
 products:
   - id: kibana
   - id: observability
@@ -18,6 +18,14 @@ products:
 ---
 
 # AI assistants in {{kib}}
+
+:::{warning}
+AI Assistant is deprecated:
+- {applies_to}`stack: ga 9.0-9.3, deprecated 9.4+` {applies_to}`serverless: deprecated` {{obs-ai-assistant}}
+- {applies_to}`stack: ga 9.0-9.5, deprecated 9.6+` {applies_to}`serverless: deprecated` AI Assistant for Security
+
+Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
+:::
 
 $$$token-limits$$$
 
@@ -33,14 +41,14 @@ $$$token-limits$$$
 
 AI Assistant requires specific privileges and a large language model (LLM) connector. The capabilities and ways to interact with AI Assistant can differ for each solution. To learn more about how it works in each solution, refer to:
 
-- [{{obs-ai-assistant}}](/solutions/observability/ai/observability-ai-assistant.md)
-- [AI Assistant for Security](/solutions/security/ai/ai-assistant.md)
+- {applies_to}`stack: ga 9.0-9.3, deprecated 9.4+` {applies_to}`serverless: deprecated` [{{obs-ai-assistant}}](/solutions/observability/ai/observability-ai-assistant.md)
+- {applies_to}`stack: ga 9.0-9.5, deprecated 9.6+` {applies_to}`serverless: deprecated` [AI Assistant for Security](/solutions/security/ai/ai-assistant.md)
 
 To learn more about configuring LLM connectors, refer to:
 
 - [Enable LLM access](/explore-analyze/ai-features/llm-guides/llm-connectors.md)
 
-If {{kib}} cannot reach Elastic's public artifact URL for product documentation (common in air-gapped deployments), mirror the knowledge base artifacts to infrastructure {{kib}} can access. Refer to [Host a knowledge base artifact repo for AI Assistant](ai-assistant-host-doc-artifacts.md) for the full procedure.
+If {{kib}} cannot reach Elastic's public artifact URL for product documentation (common in air-gapped deployments), mirror the knowledge base artifacts to infrastructure {{kib}} can access. Refer to [Host an artifact repo for Elastic product documentation](ai-assistant-host-doc-artifacts.md) for more information.
 
 ## Prompt best practices [rag-for-esql]
 Elastic AI Assistant allows you to take full advantage of the Elastic platform to improve your operations. It can help you write an ES|QL query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
