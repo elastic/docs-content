@@ -41,4 +41,5 @@ To read every field of a single result, refer to [Inspect documents and requests
 
 ## Related pages
 
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [Compare documents inside a group of `STATS` results](inspect-grouped-stats.md#compare-documents-in-group)
 - [Copy results and share links to documents](copy-and-share-documents.md)
