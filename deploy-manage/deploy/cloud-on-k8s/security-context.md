@@ -39,11 +39,11 @@ By default, ECK adds a Pod-level security context to {{es}} Pods. It sets `fsGro
 ECK doesn't add the default Pod security context in the following cases:
 
 * The `set-default-security-context` operator flag is `false`.
-* The flag is `auto-detect`, which is the default, and the operator detects that it runs on Red Hat OpenShift.
+* The flag is `auto-detect`, which is the default, and the operator detects that it runs on Red Hat OpenShift. OpenShift assigns `fsGroup` from the range allocated to the namespace. Don't set `fsGroup` yourself in this case, because OpenShift rejects other values unless the service account can use a security context constraint that allows any `fsGroup`.
 
 For more information about the flag, refer to [ECK configuration flags](cloud-on-k8s://reference/eck-configuration-flags.md).
 
-If ECK doesn't set the default security context and your storage doesn't set the ownership of the volume, {{es}} can fail to start with an error similar to `failed to obtain node locks ... maybe these locations are not writable`. The `elastic-internal-init-filesystem` init container doesn't fix this, because it runs as a non-root user by default and can't change the ownership of the data volume. In these cases, set `fsGroup: 1000` explicitly in the `podTemplate` of your node sets:
+If ECK doesn't set the default security context and neither your platform nor your storage sets the ownership of the volume, {{es}} can fail to start with an error similar to `failed to obtain node locks ... maybe these locations are not writable`. The `elastic-internal-init-filesystem` init container doesn't fix this, because it runs as a non-root user by default and can't change the ownership of the data volume. In these cases, set `fsGroup: 1000` explicitly in the `podTemplate` of your node sets:
 
 ```yaml
 spec:
@@ -55,10 +55,6 @@ spec:
         securityContext:
           fsGroup: 1000
 ```
-
-::::{note}
-This doesn't apply to Red Hat OpenShift. OpenShift assigns `fsGroup` from the range allocated to the namespace and rejects other values, unless the service account can use a security context constraint that allows any `fsGroup`.
-::::
 
 
 ## Running older versions of {{es}} as non-root [k8s_running_older_versions_of_elasticsearch_as_non_root]
