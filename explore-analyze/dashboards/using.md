@@ -223,6 +223,11 @@ This action is possible for all charts created using **Lens** or {{esql}}. It is
 
         When you download a visualization panel with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
 
+#### What a dash or `(null)` in panel data means [missing-values-in-panel-data]
+
+:::{include} ../_snippets/missing-value-placeholders.md
+:::
+
 #### View the requests that collect the data
 
 :::{include} ../_snippets/inspect-request.md

@@ -28,6 +28,8 @@ To analyze the rows of a session in a spreadsheet or another tool, export them a
 
 **Result:** {{kib}} queues a CSV report of the results of the current tab. To download the file when it's ready, refer to [Manually generate reports](../report-and-share.md#manually-generate-reports).
 
+If a cell in the CSV file shows a dash or stays empty, the result has no value for that field. Refer to [What a dash or `(null)` in your results means](inspect-documents.md#missing-values-in-results).
+
 ### Row and file size limits [export-csv-limits]
 
 Your CSV file might not contain every row of your results. The export stops at the first limit that it reaches, either a number of rows or a file size.

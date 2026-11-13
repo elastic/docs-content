@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Find a value in your results, read every field of a document in the document flyout, and check the request behind your results in Discover.
+description: Find a value in your results, read every field of a document, check the request behind your results, and see what a dash or (null) in a cell means in Discover.
 ---
 
 # Inspect documents and requests in Discover
@@ -79,6 +79,11 @@ To use them, open **Discover** in classic mode and run a search that returns res
 ## Inspect the request behind your results [inspect-discover-request]
 
 :::{include} ../_snippets/inspect-request.md
+:::
+
+## What a dash or `(null)` in your results means [missing-values-in-results]
+
+:::{include} ../_snippets/missing-value-placeholders.md
 :::
 
 ## Next steps

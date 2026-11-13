@@ -97,6 +97,8 @@ You can export the data displayed in a visualization on a dashboard as a CSV fil
 1. On the dashboard, open the panel menu of the visualization.
 2. Select **Download CSV**. The file downloads to your machine.
 
+To see how the CSV file shows a missing value, which depends on your version and on whether the panel is a table or a chart, refer to [What a dash or `(null)` in panel data means](using.md#missing-values-in-panel-data).
+
 ## Export JSON [export-dashboards]
 
 You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it.

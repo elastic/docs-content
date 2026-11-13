@@ -62,6 +62,8 @@ Using the dropdown indicating **Bar**, select **Table**.
 
 The table preview updates to show your metrics as columns. If you added row dimensions, each unique value creates a separate row. If you added a **Split metrics by** dimension, metrics are broken into multiple columns by category.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` A cell with no value shows a dash (`-`). Refer to [What a dash or `(null)` in panel data means](/explore-analyze/dashboards/using.md#missing-values-in-panel-data).
+
 See [](#settings) for all configuration options for your table.
 ::::
 
