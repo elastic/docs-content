@@ -476,6 +476,28 @@ $$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-polic
     - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) installed, with at least one integration policy in the current space.
     - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
 
+$$$agent-builder-endpoint-response-actions-skill$$$ `endpoint-response-actions` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Looks up and runs [response actions](/solutions/security/endpoint-response-actions.md) on hosts enrolled in [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md). Hosts enrolled in third-party endpoint protection systems aren't included. The skill can:
+
+    - List enrolled endpoints, check a host's status and whether it's isolated, and look up the status and output of a response action that was already sent.
+    - After you confirm in the chat, isolate or release a host, request the list of processes running on a host, or scan a file or folder path for malware.
+
+    Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the [response console](/solutions/security/endpoint-response-actions.md) instead.
+
+    For questions about why a host is unhealthy, offline, or missing, or why a response action failed, use the [`automatic_troubleshooting`](#agent-builder-automatic-troubleshooting-skill) skill.
+
+    :::{dropdown} Assigned tools
+    Internal tools to list endpoints, check host and response action status, isolate or release a host, list running processes, and scan a path.
+    :::
+
+    **Prerequisites:**
+
+    - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) deployed on the hosts you want to look up or act on.
+    - **Read** access to the **Security** privilege.
+    - The matching [{{elastic-defend}} sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) for each action, and **Read** access to **Response Actions History** to check an action's status and output.
+    - In {{serverless-short}}, a [project feature tier](/solutions/security/security-serverless-feature-tiers.md) that includes endpoint response actions.
+    - Hosts that run an {{elastic-defend}} version that supports the action. The skill doesn't check the version before it sends an action, so an action sent to an unsupported version can fail or expire.
+
 ### Automatic Migration skills [agent-builder-automatic-migration-skills]
 ```{applies_to}
 serverless:
