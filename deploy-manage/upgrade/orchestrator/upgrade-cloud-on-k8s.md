@@ -97,7 +97,7 @@ This will update the ECK installation to the latest binary and update the CRDs a
 
 If you installed ECK with Helm in [restricted mode](/deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md#k8s-install-helm-restricted), the CRDs and the operator are installed by different users. Upgrade them separately, and upgrade the CRDs first:
 
-1. A cluster administrator upgrades the CRDs:
+1. A Kubernetes cluster administrator upgrades the CRDs:
 
     ```shell
     helm upgrade elastic-operator-crds elastic/eck-operator-crds
