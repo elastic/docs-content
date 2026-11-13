@@ -11,9 +11,9 @@ products:
 
 # The home page [nightshift-homepage]
 
-The home page is your inbox for investigations. Every investigation lands here, whether you started it, a teammate asked in Slack, or an automation started it when an alert fired. {{nightshift}} sorts them by severity, so you can work from the most urgent problem down.
+The home page is your inbox for investigations. Every investigation lands here, whether you started it, a teammate asked in Slack, or an automation started when an alert fired. {{nightshift}} sorts investigations by severity, so you can work from the most urgent problem down to the lowest severity.
 
-To open it, select **Nightshift** in the navigation menu.
+Select **Nightshift** in the navigation menu to open the home page.
 
 :::{image} ../../images/nightshift-home.png
 :alt: The Elastic nightshift home page with tiles that count Critical, High, Medium, and Low investigations, and a list of investigations grouped under High
@@ -22,34 +22,29 @@ To open it, select **Nightshift** in the navigation menu.
 
 ## An inbox sorted by severity [nightshift-homepage-inbox]
 
-When an investigation finishes, {{nightshift}} rates how serious the problem is and files the investigation under **Critical**, **High**, **Medium**, or **Low**. Investigations that are still running wait in **In progress** at the top.
+When an investigation finishes, {{nightshift}} rates how serious the problem is and files the investigation under **Critical**, **High**, **Medium**, or **Low**. Investigations that are still running wait in **In progress**.
 
-- **The tiles** at the top count the investigations at each severity. Select a tile to jump to that group.
-- **Each card** is one investigation: what it's about, a one-line summary, the services it affects, and who's on it.
-- **Search** narrows the list, for example to one service.
+- **Tiles**: Tiles show the count of investigations at each severity level. Select a tile to jump to that group.
+- **Investigation cards**: Each card is one investigation.  The card includes a one-line summary, the services it affects, and who's assigned to it.
+- **Search**: Use the search to narrow the list of investigations, for example, to one service.
 
 Work through it like an inbox: open the most severe investigation, read what {{nightshift}} found, decide what to do, and then assign it or close it. If you disagree with a severity, change it in the investigation.
 
 ## Work with an investigation [nightshift-homepage-work]
 
-Select a card to open the investigation next to the list. There you can:
+Select an investigation card to open the investigation information. From here, you can:
 
 - Read what happened, the impact, the likely cause, and the proposed actions.
-- Assign teammates, and change the status or severity.
+- Assign teammates and change the status or severity.
 - Select **Open chat** to ask follow-up questions.
-
-:::{image} ../../images/nightshift-home-after-setup.png
-:alt: The home page with one investigation open next to the list, showing its status, severity, what happened, and an impact chart
-:screenshot:
-:::
 
 To read the results in detail and check the reasoning, refer to [How investigations work](./investigation/index.md).
 
-## Go to the rest of {{nightshift}} [nightshift-homepage-header]
+## Navigate through {{nightshift}} [nightshift-homepage-header]
 
-The header at the top of the home page takes you everywhere else:
+The home page header takes you everywhere else:
 
-| Select | To |
+| Action | Description |
 | --- | --- |
 | **Investigate** | Start an investigation by describing a problem. Refer to [Investigate anything](./use-cases/investigate-anything.md). |
 | **Automations** | Have investigations start by themselves. Refer to [Automations](./investigation/automations.md). |
@@ -57,7 +52,7 @@ The header at the top of the home page takes you everywhere else:
 | {icon}`boxes_vertical` → **Knowledge** | See what {{nightshift}} learned about your system. Refer to [How {{nightshift}} builds context](./context/index.md). |
 | {icon}`boxes_vertical` → **Settings** | Manage connectors, Slack, and limits. Refer to [Settings and limits](./settings.md). |
 
-Until {{nightshift}} is set up, the home page shows the **Get started** checklist instead. Refer to [Get started](./get-started.md).
+If {{nightshift}} isn't set up, the home page shows the **Get started** checklist. Refer to [Get started](./get-started.md).
 
 ## Next steps [nightshift-homepage-next]
 

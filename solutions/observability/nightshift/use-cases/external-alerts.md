@@ -11,13 +11,13 @@ products:
 
 # Investigate alerts from your other tools [nightshift-uc-external-alerts]
 
-Have alerts from your other tools investigated automatically, without recreating their rules in Elastic. When another monitoring tool, an {{ech}} deployment, PagerDuty, or a script raises an alert, an automation starts a {{nightshift}} investigation and posts the likely cause and proposed actions in Slack.
+{{nightshift}} can automatically investigate alerts from your other tools, without recreating their rules in Elastic. When another monitoring tool, an {{ech}} deployment, PagerDuty, or a script raises an alert, an automation starts a {{nightshift}} investigation and posts the likely cause and proposed actions in Slack.
 
 There are two routes. If the tool already posts its alerts to a Slack channel, an automation watches that channel and replies in the alert's thread. If it can send a webhook, a workflow turns each request into an alert in your project, and an automation investigates it.
 
 ```mermaid
 flowchart LR
-    T["Your other tool<br/>such as PagerDuty<br/>or a script"] --> S["Slack channel"]
+    T["An alert from another tool<br/>such as PagerDuty<br/>or a script"] --> S["Slack channel"]
     T --> W["Inbound webhook<br/>and workflow"]
     W --> X["Alert in your project<br/>from External sources"]
     S --> A["Automation<br/>New message in channel"]
@@ -27,27 +27,11 @@ flowchart LR
     I --> R["Results in Slack"]
 ```
 
-1. Your other tool raises an alert and sends it to Slack or to a webhook.
-1. **Slack route:** The tool's message arrives in a connected channel. An automation with the **New message in channel** trigger matches messages from that tool's app.
-1. **Webhook route:** The tool sends the alert to an inbound webhook URL. A workflow creates an alert in your project, and an automation with the **Alert triggered** trigger matches alerts from **External sources**.
+1. Your other tool raises an alert and sends it to Slack or to a webhook:
+    - **Slack**: The tool's message arrives in a connected channel. An automation with the **New message in channel** trigger matches messages from that tool's app.
+    - **Webhook**: The tool sends the alert to an inbound webhook URL. A workflow creates an alert in your project, and an automation with the **Alert triggered** trigger matches alerts from **External sources**.
 1. The automation checks its limits and starts an investigation.
 1. {{nightshift}} posts the results in Slack: in the thread of the alert message for the Slack route, or in the channel that you choose for the webhook route.
-
-## Example: Alertmanager alerts in Slack [nightshift-uc-ext-example]
-
-Your Kubernetes clusters run Prometheus, and Alertmanager posts firing alerts to `#checkout-alerts` as an app called `Alertmanager`. The logs and traces for `web` and `inventory-api` are in your Elastic project.
-
-At 02:10 UTC, Alertmanager posts `[FIRING:1] HighLatency inventory-api` to the channel. A minute later, {{nightshift}} replies in that message's thread to say that it's investigating. A few minutes later, it replies there again with the impact, the conclusion, and the hypotheses it tested.
-
-## Choose a route [nightshift-uc-ext-choose]
-
-| | Slack route | Webhook route |
-| --- | --- | --- |
-| **Use it when** | The tool already posts its alerts to a Slack channel. | The tool can send an HTTP request, but doesn't post to Slack. |
-| **Setup** | One automation. | An inbound webhook connector, a workflow, and an automation. |
-| **Where results go** | The thread of the alert message. | A connected Slack channel that you choose. |
-
-Start with the Slack route if you can. It needs the least setup, and the results land next to the alert, where your team already looks.
 
 ## Before you begin [nightshift-uc-ext-before]
 
@@ -56,20 +40,34 @@ Start with the Slack route if you can. It needs the least setup, and the results
 - {{nightshift}} can query the data behind the alerts. If the alerts come from an {{ech}} deployment or another cluster, add an External {{es}} connector for it. Refer to [Reference architecture](../reference-architecture.md#nightshift-reference-architecture-ech).
 - To post to Slack, an admin has connected the Slack workspace and the channel. Refer to [Slack](../investigation/set-up.md#nightshift-set-up-slack).
 
+## Example: Alertmanager alerts in Slack [nightshift-uc-ext-example]
+
+In this example scenario, assume your Kubernetes clusters run Prometheus, and Alertmanager posts firing alerts to `#checkout-alerts` as an app called `Alertmanager`. The logs and traces for `web` and `inventory-api` are in your Elastic project.
+
+At 02:10 UTC, Alertmanager posts `[FIRING:1] HighLatency inventory-api` to the channel. A minute later, {{nightshift}} replies in that message's thread to say that it's investigating. A few minutes later, it replies there again with the impact, the conclusion, and the hypotheses it tested.
+
+## Choose a route [nightshift-uc-ext-choose]
+
+Use the following table to determine when to use Slack or a webhook to investigate alerts from your other tools:
+
+| | Slack | Webhook |
+| --- | --- | --- |
+| **Use it when** | The tool already posts its alerts to a Slack channel. | The tool can send an HTTP request, but doesn't post to Slack. |
+| **Setup** | One automation. | An inbound webhook connector, a workflow, and an automation. |
+| **Where results are sent** | The thread of the alert message. | A connected Slack channel that you choose. |
+
+:::{tip}
+Starting from Slack requires the least set up and sends investigation results back to Slack where your team is already working.
+:::
+
 ## Investigate alerts that your tool posts in Slack [nightshift-uc-ext-slack]
 
-Use this route when the tool already posts its alerts to a Slack channel. In this example, the app is `Alertmanager` and the channel is `#checkout-alerts`.
+Follow these instructions to investigate alerts from your other tools in Slack. The following example uses `Alertmanager` and the Slack channel, `#checkout-alerts`.
 
 1. Find the app's exact name, app ID, or bot ID. In Slack, select the app's name on one of its alert messages to open its profile.
-1. On the {{nightshift}} home page, select **Automations**, then select **Create automation**.
+1. On the {{nightshift}} home page, select **Automations** → **Create custom automation**.
 1. Enter a **Name**, for example `Investigate Alertmanager alerts in #checkout-alerts`.
-1. Under **Trigger**, select **Add trigger**, then **New message in channel**.
-
-   :::{image} ../../../images/nightshift-automation-create-trigger.png
-   :alt: The Create automation flyout with the Add trigger menu open, where New message in channel is listed under Slack
-   :screenshot:
-   :::
-
+1. Under **Trigger**, select **Add trigger**. Under **Slack**, select **New message in channel**.
 1. In **Select channels**, select `#checkout-alerts`.
 1. Select **Any app**, and enter the app's exact name, app ID, or bot ID, for example `Alertmanager`. Messages from people and from other apps in the channel no longer start the automation.
 
@@ -99,7 +97,7 @@ The tool sends each alert to an **Inbound Webhook** connector in your {{nightshi
 
 ### Create the webhook and the workflow [nightshift-uc-ext-webhook-workflow]
 
-1. In **Stack Management** > **Connectors**, create an **Inbound Webhook** connector. Copy its ingest URL and token. The URL has the form `https://<your-kibana-url>/api/actions/events/.inboundWebhook/<connector-id>`.
+1. In **Stack Management** → **Connectors**, create an **Inbound Webhook** connector. Copy its ingest URL and token. The URL has the form `https://<your-kibana-url>/api/actions/events/.inboundWebhook/<connector-id>`.
 1. On the **Workflows** page, create a workflow that the connector triggers, with a **Create Alert** step. Map the fields from your tool's request into the alert. For example:
 
    ```yaml
@@ -148,10 +146,10 @@ For more about workflows, refer to [Workflows](/explore-analyze/workflows.md).
 
 ### Create the automation [nightshift-uc-ext-webhook-automation]
 
-1. On the {{nightshift}} home page, select **Automations**, then select **Create automation**.
+1. On the {{nightshift}} home page, select **Automations** → **Create custom automation**.
 1. Enter a **Name**, for example `Investigate monitoring bot alerts`.
-1. Under **Trigger**, select **Add trigger**, then **Alert triggered**.
-1. Select **any source**, select **Only these sources**, then select **External sources**.
+1. Under **Trigger**, select **Add trigger** → **Alert triggered**.
+1. Select **any source** → **Only these sources** → **External sources**.
 1. Leave **Any rule** as it is. Alerts from the webhook have no rule, so a rule or tag filter never matches them.
 1. Optionally, select **Any severity** to match only some severities, for example **Critical**.
 1. Set the **Daily trigger limit**, and describe the tool and its alerts in **Additional Instructions**. Refer to [Limits that apply](#nightshift-uc-ext-limits) and [Tell {{nightshift}} about your tool](#nightshift-uc-ext-instructions).
@@ -167,11 +165,11 @@ The automation appears on the **Automations** page with **Enabled** on. Send a t
 An investigation started this way has only the alert to start from. For the Slack route, it receives the message text, up to 4,000 characters. Use **Additional Instructions**, up to 5,000 characters, to connect the alert to your data in Elastic:
 
 - **What the tool is**: the tool's name, what it monitors, and how reliable its alerts are.
-- **How its alerts look**: where the alert name, the service, the severity, and the time are in the message or payload, and what the labels mean.
+- **What the alerts look like**: where the alert name, the service, the severity, and the time are in the message or payload, and what the labels mean.
 - **How names map to Elastic data**: which service names in the alert match which `service.name` values, indices, or data views, and which data is in a separate {{ech}} deployment.
 - **Where to look first**: runbooks, dashboards, and the GitHub repositories for the services.
 
-For the Alertmanager example:
+For the `Alertmanager` example scenario, you might add something like::
 
 ```text
 Alerts come from Prometheus Alertmanager for the checkout Kubernetes cluster.

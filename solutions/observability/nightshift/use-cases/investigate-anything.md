@@ -21,7 +21,7 @@ Describe a problem in your own words, and in a few minutes {{nightshift}} return
 
 ## Example: slow ticket lookups [nightshift-uc-anything-example]
 
-Customers say that loading their tickets takes ages. No alert has fired. You open {{nightshift}} and ask:
+In this example scenario, assume customers say that loading their tickets takes ages. No alert has fired. You open {{nightshift}} and ask:
 
 > "In the last 24 hours, why is GET /tickets on inventory-api slow? p95 looks like about 5 seconds."
 
@@ -43,7 +43,7 @@ The more specific your question, the faster {{nightshift}} finds the right data.
 | "Errors went up" | "What caused the error spike on the payment service last night around 02:00 UTC? We deployed version 2.4 at 01:45." |
 
 :::{tip}
-Give a time window when the problem already ended. Without one, {{nightshift}} looks at recent data, and it can report that the problem isn't happening anymore.
+Give a time window if the problem has already ended. Otherwise, {{nightshift}} looks at recent data, and it can report that the problem isn't happening anymore.
 :::
 
 ## Investigate a problem [nightshift-uc-anything-steps]
@@ -53,37 +53,29 @@ Give a time window when the problem already ended. Without one, {{nightshift}} l
 ::::{step} Start the investigation
 :anchor: nightshift-uc-anything-start
 
+To start an investigation from the home page:
+
 1. Select **Nightshift** in the navigation menu to open the home page.
 1. Select **Investigate**.
 1. Describe the problem, then select **Investigate**.
 
-:::{image} ../../../images/nightshift-home.png
-:alt: The Elastic nightshift home page with the Investigate button at the top right, above the severity tiles and the list of investigations
-:screenshot:
-:::
-
 A card appears in the **In progress** section of the home page, named after your question until {{nightshift}} gives it a title.
 
-No **Investigate** button? It appears after your first investigation. Until then, use the **Ask your own question** box in the **Get started** checklist. Refer to [Try your first investigation](../get-started/investigations.md#nightshift-get-started-first-investigation).
+The **Investigate** button appears after your first investigation. Until then, use the **Ask your own question** box in the **Get started** checklist. Refer to [Try your first investigation](../get-started/investigations.md#nightshift-get-started-first-investigation).
 ::::
 
 ::::{step} Wait for the results
 :anchor: nightshift-uc-anything-wait
 
-An investigation usually takes up to five minutes, and stops after 60 minutes at the latest. You don't have to keep the page open. Meanwhile, {{nightshift}} tests hypotheses against your logs, metrics, and traces, and your code if you [connected GitHub](../get-started/investigations.md#nightshift-get-started-other-sources).
+An investigation usually takes up to five minutes, and stops after 60 minutes. You don't have to keep the page open. Meanwhile, {{nightshift}} tests hypotheses against your logs, metrics, and traces, and your code if you [connected GitHub](../get-started/investigations.md#nightshift-get-started-other-sources).
 
-When it finishes, the card shows **Investigated** and moves to a severity section, such as **High** or **Medium**. {{nightshift}} rates the severity from what it found. If a person changes it, {{nightshift}} keeps that change unless later findings contradict it.
+When it finishes, the card shows **Investigated** and moves to a severity section. {{nightshift}} rates the severity from the investigation results. If a person changes it, {{nightshift}} keeps that change unless later findings contradict it.
 ::::
 
 ::::{step} Read the results
 :anchor: nightshift-uc-anything-results
 
-Select the card to read the results. Refer to [Read an investigation](../investigation/index.md#nightshift-read-investigation).
-
-:::{image} ../../../images/nightshift-investigation-results.png
-:alt: An investigation flyout for a question about slow GET /tickets calls on inventory-api. What's happened summarizes the problem, the trigger card shows the question, and Impact shows a chart of failed calls
-:screenshot:
-:::
+Select the investigation card to read the results. Refer to [Read an investigation](../investigation/index.md#nightshift-read-investigation).
 
 At the top, you can set the **Status**, change the **Severity**, and add **Assignees**. A conclusion is a well-tested hypothesis, not a certainty. Refer to [Check the evidence before you act](../investigation/index.md#nightshift-investigations-accuracy).
 ::::
@@ -106,11 +98,6 @@ Does the confirmed hypothesis match what you observed? Did {{nightshift}} dismis
 
 {{nightshift}} proposes actions, such as a command, a configuration change, a code fix, or a rollback. It never changes your environment.
 
-:::{image} ../../../images/nightshift-investigation-conclusion.png
-:alt: The Conclusion section explains that the tickets table has no index on order_id. Below it, three proposed actions each show Apply manually and Needs review
-:screenshot:
-:::
-
 If an action fits, make the change, then select **Mark as applied**. Otherwise, select **Decline**. Refer to [Decide on proposed actions](../investigation/index.md#nightshift-investigations-actions).
 ::::
 
@@ -120,10 +107,6 @@ If an action fits, make the change, then select **Mark as applied**. Otherwise, 
 
 Chat continues the investigation with everything it found so far. Select **Open chat** at the bottom of the flyout, or the chat icon on the investigation card. The chat opens in Agent Builder next to the investigation.
 
-:::{image} ../../../images/nightshift-investigation-chat.png
-:alt: The chat panel open next to an investigation. The agent's answer lists per-minute request and failure counts for GET /tickets, with an Ask anything box at the bottom
-:screenshot:
-:::
 For example, ask "How did you reach this conclusion?", or "Add and test a hypothesis that the slowdown started with the last deploy." For more prompts, refer to [Ask follow-up questions in chat](../investigation/index.md#nightshift-investigations-chat).
 
 ## What to check [nightshift-uc-anything-check]

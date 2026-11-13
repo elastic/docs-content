@@ -11,7 +11,7 @@ products:
 
 # Automations [nightshift-automations]
 
-An automation starts investigations for you, so the analysis is ready before anyone looks: when an alert or a significant event fires, when a message arrives in a Slack channel, or on a schedule. It can post the results to Slack.
+You can create an automation to start investigations on a schedule or when specific events occur, like an alert or a significant event fires or a message is sent to a Slack channel. {{nightshift}} can then send results to Slack.
 
 ```mermaid
 flowchart LR

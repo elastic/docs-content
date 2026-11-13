@@ -11,13 +11,13 @@ products:
 
 # Grant access to {{nightshift}} [nightshift-privileges]
 
-Give each person the {{nightshift}} access their work needs: viewing investigations, starting them, deciding on proposed actions, or setting up and managing {{nightshift}}. This page also explains the privileges that {{nightshift}} itself runs with, so you know what it can reach.
+Give each person the {{nightshift}} access their work needs: viewing investigations, starting investigations, deciding on proposed actions, or setting up and managing {{nightshift}}. This page also explains the privileges that {{nightshift}} itself runs with, so you know what it can access.
 
 ## Assign a predefined role [nightshift-privileges-predefined]
 
-The quickest way to give someone access is one of the [predefined roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) for {{serverless-short}} projects.
+Use [predefined roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) to give access for {{serverless-short}} projects.
 
-| Predefined role | What they can do in {{nightshift}} |
+| Predefined role | {{nightshift}} access |
 | --- | --- |
 | **Admin** | Enable {{nightshift}}, manage engines and settings, add connectors, and create and edit automations |
 | **Editor** | Start investigations, chat with {{nightshift}}, and mark proposed actions as applied or declined |
@@ -25,20 +25,20 @@ The quickest way to give someone access is one of the [predefined roles](/deploy
 
 ## Build a custom role [nightshift-privileges-custom]
 
-To give finer access, build a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md) from the privileges for each job the person does. The {{nightshift}} privileges are in the **Observability** group. For the other privileges in that group, refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md).
+To give access based on the job a specific person does, build a [custom role](/deploy-manage/users-roles/serverless-custom-roles.md). The {{nightshift}} privileges are in the **Observability** group. For the other privileges in that group, refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md).
 
-### Let people review and decide on investigations [nightshift-privileges-analyst]
+### Review and decide on investigations [nightshift-privileges-analyst]
 
-Everyone needs the privilege in the first row. Add the others for each task.
+The **Nightshift**: **Read** privilege is required for all {{nightshift}}. Add additional privileges to meet user needs.
 
-| To let someone | Add |
+| Privilege | Access |
 | --- | --- |
-| View the home page, investigations, and proposed actions | **Nightshift**: **Read** |
-| Start an investigation | **Nightshift**: **All**, **Agent Builder**: **All**, permission to run workflows, and read access to connectors |
-| Mark a proposed action as applied or declined | **Nightshift**: **All** |
-| Open an investigation in chat | Access to **Agent Builder** |
-| View the **Knowledge** page | **Nightshift**: **Read** |
-| Archive, restore, or delete entries on the **Knowledge** page | **Nightshift**: **All** |
+| **Nightshift**: **Read** | View the home page, investigations, and proposed actions |
+| **Nightshift**: **All**, **Agent Builder**: **All**, permission to run workflows, and read access to connectors | Start an investigation |
+| **Nightshift**: **All** | Mark a proposed action as applied or declined |
+| Access to **Agent Builder** | Open an investigation in chat |
+| **Nightshift**: **Read** | View the **Knowledge** page |
+| **Nightshift**: **All** | Archive, restore, or delete entries on the **Knowledge** page |
 
 **Read** and **All** cover every investigation and proposed action in the space, including ones that other solutions create.
 
@@ -46,14 +46,14 @@ Everyone needs the privilege in the first row. Add the others for each task.
 
 Add the privileges for each task the admin does.
 
-| To let someone | Add |
+| Privilege | Access |
 | --- | --- |
-| Enable {{nightshift}} for a space | **Nightshift**: **Manage engines**, and the `manage_security` cluster privilege |
-| Open **Settings**, pause or resume engines, and change limits | **Nightshift**: **All** and **Manage engines** |
-| Create, edit, turn on or off, or delete detection sources | **Nightshift**: **Manage engines** |
-| Connect a Slack workspace or channel | **Nightshift**: **All** and **Manage engines** |
-| Turn developer mode on or off | **Advanced Settings**: **All** |
-| Create, edit, turn on or off, or delete an automation | **Nightshift**: **All**, and the `manage_security` cluster privilege. {{nightshift}} must be enabled for the space. |
+| **Nightshift**: **Manage engines**, and the `manage_security` cluster privilege | Enable {{nightshift}} for a space |
+| **Nightshift**: **All** and **Manage engines** | Open **Settings**, pause or resume engines, and change limits |
+| **Nightshift**: **Manage engines** | Create, edit, turn on or off, or delete detection sources |
+| **Nightshift**: **All** and **Manage engines** | Connect a Slack workspace or channel |
+| **Advanced Settings**: **All** | Turn developer mode on or off |
+| **Nightshift**: **All**, and the `manage_security` cluster privilege. {{nightshift}} must be enabled for the space. | Create, edit, turn on or off, or delete an automation |
 
 - **Manage engines** isn't part of **All**. Add it explicitly.
 - Sources decide which data detection reads, and the significant events it finds are visible to everyone with {{nightshift}} access in the space. Give **Manage engines** only to people who should make that choice.
@@ -61,14 +61,14 @@ Add the privileges for each task the admin does.
 
 ## Privileges that {{nightshift}} runs with [nightshift-privileges-accounts]
 
-{{nightshift}} doesn't run investigations and automations as the person who started them. It runs them as two service accounts. This way, they keep working no matter who set them up, and they can reach the same data for everyone.
+{{nightshift}} runs investigations and automations as two service accounts. This way, they keep working no matter who set them up, and they can reach the same data for everyone.
 
 | Account | Runs | What it can do |
 | --- | --- | --- |
 | `nightshift_agent` | Investigations, their sandbox tools, and chats with the investigation agent, including `@Elastic` in Slack | Read and write the Wiki, Memory, and decision trees. Use {{nightshift}} and **Agent Builder**. Run the connectors in the space. |
 | `nightshift_automations` | Automation workflows | Read alerts and alerting rules. Start investigations. Use **Agent Builder**. Run the connectors in the space. |
 
-Investigations reach your data and code through the connectors in the space, with the credentials stored in each connector. That's why the access you give a connector matters: a read-only API key or a token for selected repositories limits what every investigation can read. Detection reads the data that your detection sources select.
+Investigations reach your data and code through the connectors in the space, with the credentials stored in each connector. The access you give a connector matters. A read-only API key or a token for selected repositories limits what every investigation can read. Detection reads the data that your detection sources select.
 
 This also means that anyone who can start an investigation, or mention `@Elastic` in a connected Slack channel, gets answers based on what these accounts and connectors can reach, not on their own privileges.
 

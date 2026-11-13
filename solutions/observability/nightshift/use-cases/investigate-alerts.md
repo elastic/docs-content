@@ -11,18 +11,20 @@ products:
 
 # Investigate your alerts [nightshift-investigate-alerts]
 
-When an alert fires, select **Investigate**, and {{nightshift}} finds out why. The alert already tells it the rule, the service, the threshold, and when the problem started, so you don't have to describe anything. You get the likely cause, the impact, and actions that you can take.
+{{nightshift}} can investigate when an alert fires and find out why it fired. The alert already tells it the rule, the service, the threshold, and when the problem started, so you don't have to add any information. You get the likely cause, the impact, and proposed actions.
 
 ## Before you begin [nightshift-uc-alerts-before]
 
-- An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable). Until then, alerts don't show the **Investigate** action.
+Make sure you meet the following requirements:
+
+- An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable). Until then, you won't see an **Investigate** action for alerts.
 - You have the privileges to start investigations. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-analyst).
 - The alert is in the same project as {{nightshift}}. It can come from the {{alerting-v1-system}} or the {{alerting-v2-system}}.
-- Each investigation that you start with **Investigate** counts toward the **Manual investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md).
+- Each investigation that you start counts toward the **Manual investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md).
 
 ## Example: a latency alert on inventory-api [nightshift-uc-alerts-example]
 
-At 11:05 UTC, an APM latency threshold rule fires: average latency of GET /tickets on `inventory-api` is above 1.5 seconds. You open the alert and select **Investigate**.
+In this example scenario, assume at 11:05 UTC, an APM latency threshold alert fires: average latency of GET /tickets on `inventory-api` is above 1.5 seconds. You open the alert and select **Investigate**.
 
 A few minutes later, {{nightshift}} reports that latency stayed above the threshold for about an hour, that ticket lookups often failed, and that a slow query on the `encore` database is the likely cause. It proposes that you inspect the query plan and add a missing index.
 
@@ -59,25 +61,20 @@ You can investigate one episode at a time.
 
 An alert investigation looks like any other investigation. In **What's happened**, the trigger card shows the alert. Select **View alert** to go back to it.
 
-:::{image} ../../../images/nightshift-investigation-chat-action.png
-:alt: An investigation of a latency threshold alert on inventory-api, with the alert as its trigger and a latency chart under Impact. In the chat next to it, a proposed action to inspect and fix a query plan shows Decline and Mark as applied
-:screenshot:
-:::
-
 Read the results, check the hypothesis tree, and act on the proposed actions the same way as for a question. Refer to [Read an investigation](../investigation/index.md#nightshift-read-investigation).
 
 ## When an alert already has an investigation [nightshift-uc-alerts-existing]
 
 {{nightshift}} doesn't open a second investigation for the same problem.
 
-| Situation | What happens |
+| Situation | Details |
 | --- | --- |
 | The alert already has an investigation | The action reads **View investigation**. Select it to open the investigation. |
-| You want fresh results, for example after you applied a fix | Select **Re-investigate**. On the alert details page, find it in the **Actions** menu. |
+| You want fresh results, for example, after applying a fix | Select **Re-investigate**. On the alert details page, find it in the **Actions** menu. |
 
 **Re-investigate** appears after someone has opened the earlier investigation.
 
-An alert or significant event that's already part of an open investigation joins it. A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. Refer to [One problem, one investigation](../investigation/index.md#nightshift-investigations-dedup).
+An alert or significant event that's already part of an open investigation joins the existing investigation. A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. Refer to [One problem, one investigation](../investigation/index.md#nightshift-investigations-dedup).
 
 ## What to check [nightshift-uc-alerts-check]
 

@@ -1,5 +1,5 @@
 ---
-navigation_title: Detect problems automatically
+navigation_title: Detect problems without alerts
 applies_to:
   serverless:
     observability: preview
@@ -9,20 +9,22 @@ products:
   - id: cloud-serverless
 ---
 
-# Detect problems automatically [nightshift-detect-problems]
+# Detect problems without alerts [nightshift-detect-problems]
 
-Find the problems that none of your alerts catch. {{nightshift}} learns how your system normally behaves from your logs, watches for unusual changes, and groups related changes into one significant event. You review one problem with its evidence, instead of a pile of small alerts, and start an investigation from it in one step.
+{{nightshift}} uses detections to find problems that you haven't created designated alerts for. {{nightshift}} learns how your system normally behaves from your logs, watches for unusual changes, and groups those changes into a [significant event](../significant-events/how-it-works.md). You can then review the evidence from one significant event instead of many small alerts. Then, you can start an investigation.
 
 ## Before you begin [nightshift-uc-detect-before]
 
+Make sure you meet the following requirements:
+
 - An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable).
 - You have the privileges to turn on detection, or an admin has turned it on. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
-- You have recent logs in your project. In Tech Preview, detection watches logs only, not metrics or traces.
+- You have recent logs in your project. Detection watches logs only, not metrics or traces.
 - Detection runs all the time and uses tokens. Refer to [Cost and models](../cost-and-models.md).
 
 ## Example: statement timeouts nobody alerted on [nightshift-uc-detect-example]
 
-Your alerts cover latency and error rates on `inventory-api`, but nothing watches the Postgres logs. One evening, Postgres starts to cancel `inventory-api` statements on the `encore` database because they hit the statement timeout. Users retry, so the error rate stays below your alert threshold.
+In this example scenario, assume your alerts cover latency and error rates on `inventory-api`, but nothing watches the Postgres logs. One evening, Postgres starts to cancel `inventory-api` statements on the `encore` database because they hit the statement timeout. Users retry, so the error rate stays below your alert threshold.
 
 Detection notices the timeout messages in the Postgres logs and raises a significant event: **Inventory API — PostgreSQL statement timeouts**, severity **High**, status **Active**. You open it, read what it found, and select **Investigate** to find out why.
 
@@ -45,11 +47,6 @@ If the **Detection engine** on the **Detections** page doesn't show **Monitoring
 
 On the {{nightshift}} home page, select **Detections**. The **Events** tab lists the significant events of the **Last 24 hours**.
 
-:::{image} ../../../images/nightshift-detections.png
-:alt: The Detections page. The Detection engine shows Monitoring with counts of knowledge indicators, entities, rules, signals, and significant events. The Events tab lists significant events with their status, severity, and investigation
-:screenshot:
-:::
-
 To filter events and read the statuses, refer to [Review significant events](../detection/significant-events.md).
 ::::
 
@@ -71,7 +68,7 @@ Select the event to read **What happened?** and the detections behind it. Treat 
 The event tells you *what* changed. An investigation finds out *why*.
 
 1. In the **Events** list, find an event whose **Investigation** column shows **Not started**.
-1. In the **Actions** column, select **Investigate**. Or, in the event's details, select **Actions** > **Run investigation**.
+1. In the **Actions** column, select **Investigate**. Or, in the event's details, select **Actions** → **Run investigation**.
 
 The investigation runs like any other, and counts toward the **Manual investigations daily limit**. Refer to [Read an investigation](../investigation/index.md#nightshift-read-investigation). When it's done, the **Investigation** column shows **Completed**. For the other actions on an event, refer to [Act on an event](../detection/significant-events.md#nightshift-detection-events-act).
 ::::
@@ -89,11 +86,11 @@ The investigation runs like any other, and counts toward the **Manual investigat
 
 These investigations count toward the **Automatic investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md).
 
-## What to check [nightshift-uc-detect-check]
+## Tips [nightshift-uc-detect-check]
 
 - **Give it time.** Detection starts with few rules, and some rules show zero matches at first. It improves as it learns more about your system.
 - **Mark noise inactive.** If an event isn't a problem, select **Mark inactive**, so your team doesn't look at it again.
-- **Check what it learned.** Detection is only as good as what {{nightshift}} learned about your system. Refer to [How detection learns your system](../detection/learning.md).
+- **Check what it learned.** Detection is only as good as what {{nightshift}} has learned about your system. Refer to [How detection learns your system](../detection/learning.md).
 - **Pause it if you need to.** An admin can pause detection in Settings. Refer to [Pause or resume detection](../settings.md#nightshift-settings-pause).
 
 ## Next steps [nightshift-uc-detect-next]

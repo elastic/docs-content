@@ -9,36 +9,31 @@ products:
   - id: cloud-serverless
 ---
 
-# Settings and limits [nightshift-settings]
+# {{nightshift}} settings and limits [nightshift-settings]
 
-On the **Settings** page, an admin controls what {{nightshift}} can reach and how much it runs: connectors and Slack channels, daily run limits, custom context, and detection.
+On the **Settings** page, admins can controls what {{nightshift}} can reach and what it can run, including connectors and Slack channels, daily run limits, custom context, and detection.
 
 ## Before you begin [nightshift-settings-prereqs]
 
-- You have the privileges to open **Settings**, and to turn developer mode on or off if you need it. Without them, **Settings** isn't in the menu. Refer to [Grant access](./get-started/privileges.md#nightshift-privileges-admin).
+Make sure you have the privileges to open {{nightshift}} **Settings**, and to turn developer mode on or off if you need it. Refer to [Grant access](./get-started/privileges.md#nightshift-privileges-admin).
 
 ## Open Settings [nightshift-settings-open]
 
 1. Select **Nightshift** in the navigation menu.
-1. On the home page, open the {icon}`boxes_vertical` menu and select **Settings**.
+1. On the home page, select {icon}`boxes_vertical` → **Settings**.
 
-From the **Detections** page, select **Settings** in the header to go straight to the **Detections** tab. The page has three tabs:
+The page has three tabs:
 
-| I want to… | Tab |
+| Setting tab| Description |
 | --- | --- |
-| Add or remove a connector, connect Slack, or turn on developer mode | [General](#nightshift-settings-general) |
-| Limit investigations, add custom context, or allow outbound hosts for the sandbox | [Investigations](#nightshift-settings-investigations) |
-| Pause detection, change its schedule, limit its runs, or change continuous KI onboarding | [Detections](#nightshift-settings-detections) |
-| Stop {{nightshift}} from running | [Stop or pause {{nightshift}}](#nightshift-settings-stop) |
+| [General](#nightshift-settings-general) | Add or remove a connector, connect Slack, or turn on developer mode |
+| [Investigations](#nightshift-settings-investigations) | Limit investigations, add custom context, or allow outbound hosts for the sandbox |
+| [Detections](#nightshift-settings-detections) | Pause detection, change its schedule, limit its runs, or change continuous KI onboarding. From the **Detections** page, select **Settings** in the header to go straight to the **Detections** tab. |
+| [Stop or pause {{nightshift}}](#nightshift-settings-stop) | Stop {{nightshift}} from running |
 
 When you change a run limit, a schedule setting, continuous KI onboarding, or token tracking, select **Save changes** in the bar at the bottom of the page. Other controls, such as **Save allowlist**, custom context, and **Pause detection engine**, save on their own.
 
 ## General [nightshift-settings-general]
-
-:::{image} ../../images/nightshift-settings-general.png
-:alt: The General tab of the Settings page, with the Connectors table, the Slack channels section, and the Nightshift developer mode switch
-:screenshot:
-:::
 
 **Connectors**
 :   The connectors that investigations use, such as **Local Elasticsearch**, External {{es}}, and GitHub. Select **Add connector**, or **Open in Stack Management** to manage all connectors in {{kib}}. Preconfigured connectors are read-only. Refer to [Connect your data and tools](./investigation/set-up.md).
@@ -59,20 +54,10 @@ Developer mode shows experimental and expert parts of {{nightshift}}. It's off b
 - Extra details, such as the service account's role and raw metadata on Knowledge Indicators.
 - A **Knowledge** section on the **General** tab, to purge what {{nightshift}} learned.
 
-:::{image} ../../images/nightshift-settings-general-developer-mode.png
-:alt: The General tab with developer mode on. The Knowledge section offers Purge knowledge learned after a point in time, with a Delete everything learned after date picker and the Preview impact and Purge knowledge buttons
-:screenshot:
-:::
-
 **Purge knowledge learned after a point in time**
 :   Use it after a suspected prompt injection, or when wrong knowledge got in. It permanently deletes the investigations, Memory, Wiki pages, and decision tree versions in this space that were written after the time you set in **Delete everything learned after**. Knowledge written before that time is kept. Select **Preview impact** to check what it deletes, then **Purge knowledge**. You can't undo this, and snapshots can still hold the deleted documents.
 
 ## Investigations [nightshift-settings-investigations]
-
-:::{image} ../../images/nightshift-settings-investigations.png
-:alt: The Investigations tab of the Settings page, with daily run limits of 5 automatic, 5 manual, and 10 total investigations, the service account status, Custom context, and the sandbox egress allowlist
-:screenshot:
-:::
 
 ### Run limits [nightshift-settings-run-limits]
 
@@ -102,11 +87,6 @@ Enter one hostname or rule per line in **Allowed hosts and rules**, up to 32 rul
 :::
 
 ## Detections [nightshift-settings-detections]
-
-:::{image} ../../images/nightshift-settings-detections.png
-:alt: The Detections tab of the Settings page, with the Pause detection engine button, the scheduled detection switch, daily run limits of 15 discovery runs and 3 Knowledge Indicator extractions, and continuous KI onboarding every 12 hours
-:screenshot:
-:::
 
 ### Pause or resume detection [nightshift-settings-pause]
 
@@ -178,7 +158,7 @@ The **Detections** page shows the state of the detection engine:
 
 ## Stop or pause {{nightshift}} [nightshift-settings-stop]
 
-In Tech Preview, you can't turn {{nightshift}} off or remove its setup. To stop it from running and from using tokens, do all three:
+You can't turn {{nightshift}} off or remove its setup. To stop it from running and from using tokens:
 
 1. **Pause detection.** On the **Detections** tab, select **Pause detection engine**. Refer to [Pause or resume detection](#nightshift-settings-pause).
 1. **Turn off automations.** Investigations have no pause. On the **Automations** page, turn off **Enabled** for each automation. Refer to [Automations](./investigation/automations.md#nightshift-automations-manage).

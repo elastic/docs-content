@@ -21,23 +21,18 @@ Ask {{nightshift}} for help without leaving Slack. Mention `@Elastic` in a threa
 
 ## Example: the on-call channel [nightshift-uc-slack-example]
 
-Your team's alerts go to `#ticketing-oncall`. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. A minute later, {{nightshift}} has started investigating, and a few minutes later it replies in the alert's thread with the impact, the conclusion, and the hypotheses it tested.
+In this example scenario, assume your team's alerts go to the `#ticketing-oncall` Slack channel. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. A minute later, {{nightshift}} has started investigating, and a few minutes later it replies in the alert's thread with the impact, the conclusion, and the hypotheses it tested.
 
-The on-call engineer reads the reply on their phone and asks in the thread: "@Elastic is ticket-issuer affected too?" {{nightshift}} continues the same investigation and answers in the thread.
+The on-call engineer reads the reply and asks in the thread: "@Elastic is ticket-issuer affected too?" {{nightshift}} continues the same investigation and answers in the thread.
 
 ## Connect a Slack channel [nightshift-uc-slack-connect]
 
 An admin connects the Slack workspace once, then each channel, on **Settings** > **General**. `@Elastic` answers only in connected channels. Refer to [Slack](../investigation/set-up.md#nightshift-set-up-slack).
 
-:::{image} ../../../images/nightshift-settings-general.png
-:alt: The General tab of the Settings page, with the Connectors table, the Slack channels section, and the developer mode switch
-:screenshot:
-:::
-
 ## Ask a question in a thread [nightshift-uc-slack-ask]
 
 1. In a connected channel, start a thread, or open the thread that you want to ask about.
-1. Mention `@Elastic` and ask your question. Be as specific as you would be on the home page: the service, the symptom, and the time window. For example: "@Elastic why did checkout errors spike between 14:00 and 14:20 UTC?"
+1. Mention `@Elastic` and ask your question. Be specific in your questions. Include the service, the symptom, and the time window. For example: "@Elastic why did checkout errors spike between 14:00 and 14:20 UTC?"
 
 {{nightshift}} starts an investigation, shows its progress in the thread, and replies there with the results. The investigation also appears on the {{nightshift}} home page, with its hypothesis tree and proposed actions.
 
@@ -54,11 +49,6 @@ When the automation runs, {{nightshift}} posts a message when the investigation 
 - **Hypotheses**: The explanations that {{nightshift}} tested, and which ones it confirmed or dismissed.
 
 If your alerts already arrive in Slack from another app, an automation can watch for those messages and reply in the alert's own thread instead.
-
-:::{image} ../../../images/nightshift-slack-thread.png
-:alt: A Slack thread under a critical alert message from an alerting app. @Elastic replies in the thread with Impact and Conclusion sections, followed by Hypotheses
-:screenshot:
-:::
 
 To ask about the results, reply in the thread. {{nightshift}} continues the same investigation with your reply and answers in the thread. For the full investigation, with the hypothesis tree and proposed actions, open it in {{kib}}.
 
@@ -82,9 +72,9 @@ For an investigation that started in Slack, ask follow-up questions in the threa
 
 To open {{nightshift}} in {{kib}}, select **Nightshift** in the navigation menu. Refer to [The home page](../homepage.md).
 
-## Tips [nightshift-uc-slack-tips]
-
-- **Use the channel where the alert lands.** Answers in the alert's thread keep the context in one place for the whole team.
+:::{tip}
+**Use the channel where the alert lands.** Answers in the alert's thread keep the context in one place for the whole team.
+:::
 
 ## Next steps [nightshift-uc-slack-next]
 

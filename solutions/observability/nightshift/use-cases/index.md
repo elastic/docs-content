@@ -11,24 +11,24 @@ products:
 
 # What you can do with {{nightshift}} [nightshift-use-cases]
 
-{{nightshift}} investigates problems in your system and reports the likely cause, the evidence, and actions you can take. You can ask it about a problem from the home, call it into a Slack thread, point it at an alert, have it investigate your alerts automatically, or let it find problems that no alert catches. Find your use case in the following table. The suggested page walks you
+{{nightshift}} investigates problems in your system and reports the likely cause, provides evidence, and proposes actions you can take. You can ask it about a problem from the home, call it into a Slack thread, point it at an alert, have it investigate your alerts automatically, or let it find problems that no alert catches. Find your use case in the following table. The suggested page walks you
 
 ## Before you begin
 
-If you haven't set up {{nightshift}}, follow the [Get started](../get-started.md) checklist first to enable {{nightshift}}, connect your data, and run your first investigation.
+If you haven't set up {{nightshift}}, follow the [Get started](../get-started.md) checklist to enable {{nightshift}}, connect your data, and run your first investigation.
 
 ## Select a use case [nightshift-use-cases-goals]
 
 Select a use case from the
 
-| Use case | Start here | What you get |
+| Use case | Guide | Description|
 | --- | --- | --- |
-| Ask about a problem in your own words | [Investigate anything](./investigate-anything.md) | An investigation of the problem you describe, such as "Why is checkout latency up?", with a likely cause, evidence, and proposed actions. |
-| Get help where your team already works | [Investigate in Slack](./investigate-in-slack.md) | An investigation that starts when you mention `@Elastic` in a channel, with the results in the thread for everyone to read. |
-| Find out why an alert fired | [Investigate your alerts](./investigate-alerts.md) | An investigation that starts from the alert, so it has the service, the symptom, and the time window from the start. |
-| Have {{nightshift}} automatically investigate alerts | [Automatically investigate your alerts](./auto-investigate-alerts.md) | An automation that investigates each matching alert or significant event and posts the findings to Slack, without anyone starting it. |
-| Investigate alerts from your other tools | [Investigate alerts from your other tools](./external-alerts.md) | An automation that investigates alerts from another monitoring tool, an {{ech}} deployment, PagerDuty, or a script, when they arrive in Slack or by webhook. |
-| Find problems that none of your alerts catch | [Detect problems automatically](./detect-problems.md) | Significant events are related unusual changes in your logs, grouped into one problem that you can review and investigate. |
+| Ask about a problem in your own words | [Investigate anything](./investigate-anything.md) | Investigate a problem you describe, such as "Why is checkout latency up?", and receive a likely cause, evidence, and proposed actions. |
+| Get help where your team already works | [Investigate in Slack](./investigate-in-slack.md) | Connect and start investigations from Slack. Mention `@Elastic` in a channel, and receive the results in the thread where you team can read them. |
+| Find out why an alert fired | [Investigate your alerts](./investigate-alerts.md) | Start an investigation from an alert, so {{nightshift}} has the service, the symptom, and the time window from the start. |
+| Have {{nightshift}} automatically investigate alerts | [Automatically investigate your alerts](./auto-investigate-alerts.md) | Set up an automation that investigates each matching alert or significant event and posts the findings to Slack, without anyone starting it. |
+| Investigate alerts from your other tools | [Investigate alerts from your other tools](./external-alerts.md) | Set up an automation that investigates alerts from another monitoring tool, an {{ech}} deployment, PagerDuty, or a script, when they arrive in Slack or by webhook. |
+| Find problems outside of your alerts | [Detect problems automatically](./detect-problems.md) | Use significant events to find unusual changes in your logs and group them into one problem that you can review and investigate. |
 
 ## How the use cases work together [nightshift-use-cases-map]
 

@@ -48,13 +48,13 @@ You manage connections on the **General** tab of the **Settings** page. On the {
 
 To add a connector, select **Add connector**. The flyout lists the connector types that investigations can use, with how many you have of each. Select **Create connector** next to a type. To manage connectors in the rest of {{kib}}, select **Open in Stack Management**. Refer to [Connectors](kibana://reference/connectors-kibana.md).
 
-## Local {{es}} [nightshift-set-up-local-es]
+## Set up a Local {{es}} connector [nightshift-set-up-local-es]
 
 When {{nightshift}} is enabled, it creates a **Local Elasticsearch** connector, type `.elasticsearch`, that investigations use to query the logs, metrics, and traces in this project. You don't need to set anything up. Don't delete it.
 
 Investigations also reach data in projects linked through [{{cps}}](/deploy-manage/cross-project-search-config.md).
 
-## External {{es}} [nightshift-set-up-external-es]
+## Set up an External {{es}} connector [nightshift-set-up-external-es]
 
 Add an External {{es}} connector when your data is in another cluster or project that [{{cps}}](/deploy-manage/cross-project-search-config.md) can't reach, for example a separate production deployment. For what works with each deployment type, refer to [Reference architecture](../reference-architecture.md).
 
@@ -92,7 +92,7 @@ For all connector settings, refer to [External {{es}} connector](kibana://refere
 :::
 
 
-## GitHub [nightshift-set-up-github]
+## Set up GitHub [nightshift-set-up-github]
 
 Connect GitHub so investigations can read the code, configuration, Helm charts, and runbooks behind your services, and check what changed recently. For example, an investigation into database lock timeouts can find the commit that changed the query.
 
@@ -115,7 +115,7 @@ For all connector settings, refer to [GitHub connector](kibana://reference/conne
 
 Add an HTTP connector to reach any other system with an HTTP API, for example a runbook service, your CI system, or a deploy log: on the **General** tab, select **Add connector**, then **HTTP**. Describe the API in custom context. Refer to [Connect any system with an HTTP API](./extend.md#nightshift-extend-http).
 
-## Slack [nightshift-set-up-slack]
+## Set up Slack [nightshift-set-up-slack]
 
 Connect Slack so your team can ask {{nightshift}} for help in a channel, and automations can post results there. An admin connects the workspace once, then each channel. In Tech Preview, `@Elastic` works in public channels only, even though the authorization screen also offers private channels.
 
