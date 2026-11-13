@@ -13,7 +13,7 @@ type: overview
 
 If you keep your {{kib}} content in version control or deploy it from a pipeline, you can create and manage Discover sessions from code instead of saving each one by hand in **Discover**. Three APIs work together to do that:
 
-| API | {{kib}} API docs | {{kib}} Serverless API docs | When to use it | What you get |
+| API | {{kib}} API docs | {{kib}} Serverless API docs | Use it for | Result |
 |---|---|---|---|---|
 | Discover sessions API | [Open]({{kib-apis}}group/endpoint-discover-sessions) | [Open]({{kib-serverless-apis}}group/endpoint-discover-sessions) | Keeping sessions in version control and deploying them from CI/CD | Saved Discover session |
 | Dashboards API | [Open](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) | [Open](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) | Showing a session on a dashboard that you also manage as code | Dashboard with a Discover session panel |
