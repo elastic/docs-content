@@ -48,7 +48,8 @@ Align a shipper's attribute names with OpenTelemetry semantic conventions:
 
 ## Related pages [streams-rename-fields-related]
 
-* [Process data](../process-data.md): Learn how pipelines run, what the locations mean, and how to add and manage processors.
+* [Process data](../process-data.md): Learn how pipelines run and how to add and manage processors.
+* [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Add fields](add-fields.md) and [Set](set.md): Write new fields or new values instead of renaming existing fields.
 * [Transform](transform.md): Move a field from one location to another, which Rename fields can't do.
 * [Filter](filter.md): Drop whole records instead of changing them.

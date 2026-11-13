@@ -51,7 +51,7 @@ The list in the **Processing** panel comes from the Streams backend, so it can c
 
 There are no parsing processors, such as Grok, Dissect, or JSON, and no enrichment processors, such as GeoIP. Refer to [Streams limitations](limitations.md#streams-limitations-processing).
 
-Every processor except Filter and Transform takes an optional **Condition**, an OTTL condition that must hold for the processor to act on a record. Without one, the processor acts on every record of the selected signals.
+Every processor except Filter and Transform takes an optional **Condition**, an OTTL condition that must hold for the processor to act on a record. Without one, the processor acts on every record of the selected signals. To learn what each **Location** means, how to refer to fields, and how to write conditions, refer to [Fields and conditions](fields-and-conditions.md).
 
 If the list is empty, or the panel says it can't edit the processing, refer to [Troubleshooting](troubleshooting.md#streams-troubleshoot-processor-list).
 
@@ -88,29 +88,10 @@ None of these changes run until you select **Save and apply**. Until then, new a
 
 If you close the panel with the {icon}`cross` icon or select outside it while you have unsaved changes, Streams asks whether to discard them. Select **Keep editing** to return to the panel, or **Discard changes** to drop them.
 
-## Fields, locations, and OTTL [streams-process-fields-ottl]
-
-Processors address fields in the OpenTelemetry data model, in which a record is a log, a span, or a metric data point, and sits inside an instrumentation scope, which sits inside a resource. A document from a Managed _bulk source is a record of its own kind, and its fields are the keys of the JSON you sent.
-
-When a processor asks where a field lives, you pick a **Location** and give the field's **Name** or **Path** within it. The default is **Body** in Add fields and **Record** in Rename fields and Set:
-
-| Location | What it is |
-| --- | --- |
-| **Body** | The log record body. For structured logs, a key inside it such as `message`. Logs only. |
-| **Document** | A field of a document from a Managed _bulk source, by its key, such as `order.status`. A dotted key is one key, not a path into nested objects. Offered when the pipeline carries documents. |
-| **Resource** | Resource-level fields shared by all records from the same source, such as `service.name` or `deployment.environment.name`. |
-| **Scope** | Instrumentation scope fields, such as the library name and version. |
-| **Attributes** | The current record's attributes, for example `http.request.method` on a log record or span. |
-| **Metadata** | Metadata that travels with a batch of data through the pipeline, for all signals. It isn't sent to the destination with each record. |
-| **Record** | The complete current record: a log record, span, or data point. Available in Set and Rename fields, where the path can reach fields such as a log's `severity_text`. |
-
-In the Set processor you can instead select **Use Context** next to **Location** and choose an explicit OTTL context, such as **Resource**, **Scope**, **Log**, **Span**, **Span event**, **Metric**, or **Data point**, or select **Leave unset** and write a full OTTL path, for example `log.severity_text` or `datapoint.attributes["host.name"]`. Locations are portable across signals, so prefer them unless you need something only a context exposes.
-
-Conditions and expressions are written in the [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md) (OTTL). A condition is a boolean expression over the record's fields, for example `severity_text == "DEBUG"` in the log context or `attributes["http.route"] == "/healthz"`. OTTL fields are free text, without autocompletion, so test each condition on a record whose outcome you know.
-
 ## Related pages [streams-process-related]
 
 * [Route data](route-data.md): Add a router to send records to different destinations by condition, or to copy them to more than one.
+* [Fields and conditions](fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Work with the Streams Map](streams-map.md): Learn how to read the Map, add nodes on connections, connect them, and save your changes.
 * [How Streams works](get-started/how-streams-work.md): Understand how sources, pipelines, routers, and destinations fit together.
 * [Streams limitations](limitations.md#streams-limitations-processing): Check what processing can't do yet before you plan a pipeline.

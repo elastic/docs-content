@@ -52,7 +52,7 @@ It's safer to describe the records to drop than the records to keep. These two c
 
 This is because a missing field evaluates to `nil` in OTTL, and `nil` is not equal to any value. If you do need a negative condition, rule out the missing case first, as in `attributes["level"] != nil and attributes["level"] != "info"`.
 
-For the functions you can use in a condition, such as `IsMatch` or `IsString`, refer to the [OTTL functions reference](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/ottlfuncs/README.md).
+For field paths, operators, and the OTTL functions you can use in a condition, refer to [Fields and conditions](../fields-and-conditions.md#streams-fields-conditions).
 
 ## Examples [streams-filter-examples]
 
@@ -85,7 +85,8 @@ Each line is one condition. Put them in the same block to drop a record that mat
 
 ## Related pages [streams-filter-related]
 
-* [Process data](../process-data.md): Learn how pipelines run, what the locations mean, and how to add and manage processors.
+* [Process data](../process-data.md): Learn how pipelines run and how to add and manage processors.
+* [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Route data](../route-data.md): Keep unwanted data by sending it to a cheaper destination instead of dropping it.
 * [Transform](transform.md): Remove or mask individual fields instead of dropping the whole record.
 * [Add fields](add-fields.md), [Rename fields](rename-fields.md), and [Set](set.md): Change the fields of a record instead of dropping it.

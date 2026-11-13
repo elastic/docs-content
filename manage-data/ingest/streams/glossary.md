@@ -28,13 +28,13 @@ These terms appear throughout the Streams documentation. For how they fit togeth
 :   An existing {{es}} data stream that you manage in Streams: processing that runs as an {{es}} ingest pipeline, retention, schema, and data quality. Classic streams work on data after it reaches {{es}}. To learn more, refer to [Streams](/solutions/observability/streams/streams.md).
 
 **Condition**
-:   A boolean expression in the OpenTelemetry Transformation Language (OTTL) that a routing rule or a processor evaluates against each record. To learn more, refer to [Route data](route-data.md) and [Process data](process-data.md).
+:   A boolean expression in the OpenTelemetry Transformation Language (OTTL) that a routing rule or a processor evaluates against each record. To learn more, refer to [Fields and conditions](fields-and-conditions.md#streams-fields-conditions).
 
 **Connection**
 :   A line between two nodes on the Streams Map, along which data flows. Hover over a connection to add processing or routing on it. To learn more, refer to [Work with the Streams Map](streams-map.md).
 
 **Context**
-:   In OTTL, the part of the data model that a condition or statement is written against, such as **Resource**, **Scope**, **Log**, or **Span**. The Filter and Transform processors ask for it per block. Other processors use locations instead, so you don't have to choose one. To learn more, refer to [Process data](process-data.md#streams-process-fields-ottl).
+:   In OTTL, the part of the data model that a condition or statement is written against, such as **Resource**, **Scope**, **Log**, or **Span**. The Filter and Transform processors ask for it per block. Other processors use locations instead, so you don't have to choose one. To learn more, refer to [Fields and conditions](fields-and-conditions.md#streams-fields-locations).
 
 **Copy rule**
 :   A routing rule that sends matching records to its destination and also lets them continue to the rules below it, so the same record can reach more than one destination. Selected with **Create a copy of the data** in the routing panel. To learn more, refer to [Route data](route-data.md).
@@ -46,7 +46,7 @@ These terms appear throughout the Streams documentation. For how they fit togeth
 :   An index mode of an {{es}} destination in which every record of a signal is written to one index that you name. The UI calls it **Fixed index per signal**. To learn more, refer to [Local Elasticsearch destination](destinations/elasticsearch.md).
 
 **Location**
-:   The part of a record that a processor reads or writes: **Body**, **Resource**, **Scope**, **Attributes**, **Metadata**, **Record**, or, for documents from a Managed _bulk source, **Document**. Locations mean the same thing for logs, metrics, and traces, so you don't have to pick an OTTL context. To learn more, refer to [Process data](process-data.md#streams-process-fields-ottl).
+:   The part of a record that a processor reads or writes: **Body**, **Resource**, **Scope**, **Attributes**, **Metadata**, **Record**, or, for documents from a Managed _bulk source, **Document**. Locations mean the same thing for logs, metrics, and traces, so you don't have to pick an OTTL context. To learn more, refer to [Fields and conditions](fields-and-conditions.md#streams-fields-locations).
 
 **Move rule**
 :   The default kind of routing rule. It sends matching records to its destination and takes them off the path, so no rule below it sees them. The first matching move rule wins. Selected with **Route data exclusively** in the routing panel. To learn more, refer to [Route data](route-data.md).

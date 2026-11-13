@@ -55,7 +55,8 @@ With an {{es}} destination in Auto index mode, the records then land in `logs-ch
 
 ## Related pages [streams-add-fields-related]
 
-* [Process data](../process-data.md): Learn how pipelines run, what the locations mean, and how to add and manage processors.
+* [Process data](../process-data.md): Learn how pipelines run and how to add and manage processors.
+* [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Set](set.md): Write to any field by its path, including fields of the record itself such as a log's severity.
 * [Rename fields](rename-fields.md): Change a field's name instead of adding a new field.
 * [Filter](filter.md): Drop whole records instead of changing them.

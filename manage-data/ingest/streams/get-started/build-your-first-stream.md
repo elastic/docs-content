@@ -198,7 +198,7 @@ A pipeline is a sequence of processors that runs on data before it reaches a des
 
 The pipeline node, marked with the {icon}`processor` processor icon, sits on the connection between the source and the destination. Its statistics stay empty until records pass through it. From now on, every log record that passes through it carries `attributes.environment: staging`. There's no way to test a processor against sample data first, so the next step checks the result on real data.
 
-For the processors available and how to write OTTL conditions, refer to [Process data](../process-data.md).
+For the processors available, refer to [Process data](../process-data.md). To learn how to refer to fields and write OTTL conditions, refer to [Fields and conditions](../fields-and-conditions.md).
 :::::
 
 :::::{step} Check that the processor ran

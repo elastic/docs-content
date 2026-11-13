@@ -40,7 +40,7 @@ To add a router, you need the **Admin** role.
 
    The **Add routing** panel opens with one rule, titled **Default**. It has no condition, keeps the connection's existing destination, and stays at the bottom of the list. Give it a condition if you don't want a catch-all rule.
 1. For each further rule you want, select **Add rule**. A **Creating route rule** form opens. Fill it in and select **Create** on the form:
-   * **Condition**: an OTTL boolean expression, such as `resource.attributes["env"] == "prod"` or `attributes["service.name"] != "checkout"`. Leave it empty to make a catch-all rule, shown as **No condition, matches all remaining data** on a move rule and **No condition, copies all data** on a copy rule. While no catch-all rule exists for a signal, the panel warns that some data will be dropped; the warning disappears as soon as you add one.
+   * **Condition**: an OTTL boolean expression, such as `resource.attributes["env"] == "prod"` or `attributes["service.name"] != "checkout"`. Leave it empty to make a catch-all rule, shown as **No condition, matches all remaining data** on a move rule and **No condition, copies all data** on a copy rule. While no catch-all rule exists for a signal, the panel warns that some data will be dropped; the warning disappears as soon as you add one. To learn how to refer to fields and write conditions, refer to [Fields and conditions](fields-and-conditions.md#streams-fields-conditions).
    * **Telemetry signals**: at least one of the signals the incoming data can send to this rule, from **Logs**, **Metrics**, **Traces**, **Docs**, and **Profiles**. **Docs** is the Documents signal from a Managed _bulk source. Only the signals that reach this connection are offered.
    * **What should the condition do with the data?**: **Route data exclusively** for a move rule, or **Create a copy of the data** for a copy rule.
 1. Drag rules by their handle to reorder them. Rules are titled by position, **Rule 1**, **Rule 2**, and so on, so a rule that moves up takes the title of the one it replaces. The router node on the Map labels the same rules by position too, but counting from zero, as `rule-0`, `rule-1`, and so on. A move rule with no condition is titled **Default** instead, has no drag handle, and stays below the rules with a condition. Delete a rule with its {icon}`trash` trash icon.
@@ -92,6 +92,7 @@ The panel shows no dropped-data warning for this router, because the copy rule h
 
 * [Work with the Streams Map](streams-map.md): Learn how to add nodes on connections, connect them, and save your changes.
 * [Process data before it reaches Elasticsearch](process-data.md): Change or drop records before or after a router.
+* [Fields and conditions](fields-and-conditions.md): Learn how to refer to fields in OTTL and write the conditions of routing rules.
 * [Destinations](destinations.md): Learn what each destination type accepts and what happens to data it can't store.
 * [Troubleshooting](troubleshooting.md#streams-troubleshoot-no-data): Find out what to check when data is accepted but never arrives.
 * [Streams limitations](limitations.md#streams-limitations-routing): Check what routing can't do yet.

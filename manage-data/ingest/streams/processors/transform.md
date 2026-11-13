@@ -81,6 +81,7 @@ Drop an attribute from spans of one service, with a block condition:
 
 ## Related pages [streams-transform-related]
 
-* [Process data](../process-data.md): Learn how pipelines run, what the locations mean, and how to add and manage processors.
+* [Process data](../process-data.md): Learn how pipelines run and how to add and manage processors.
+* [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Add fields](add-fields.md), [Rename fields](rename-fields.md), and [Set](set.md): Prefer these processors when a single add, rename, or assignment does the job.
 * [Filter](filter.md): Drop whole records instead of changing them.

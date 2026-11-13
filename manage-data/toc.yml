@@ -159,6 +159,7 @@ toc:
               - file: ingest/streams/processors/set.md
               - file: ingest/streams/processors/transform.md
           - file: ingest/streams/route-data.md
+          - file: ingest/streams/fields-and-conditions.md
           - file: ingest/streams/monitor-streams.md
           - file: ingest/streams/security.md
           - file: ingest/streams/troubleshooting.md

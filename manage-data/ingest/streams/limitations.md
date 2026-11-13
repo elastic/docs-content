@@ -71,7 +71,7 @@ These limitations affect what a pipeline can do to a record:
 
 * The processors are **Add fields**, **Filter**, **Rename fields**, **Set**, and **Transform**. The list in the **Processing** panel comes from the Streams backend, so it can change without a {{kib}} release.
 * There are no dedicated parsing processors, such as Grok, Dissect, JSON, key-value, CSV, or date parsing, and no enrichment processors, such as GeoIP or lookups. For parsing, write OTTL statements in a [Transform](processors/transform.md) processor, for example with `ParseJSON` or `ExtractPatterns`.
-* Processor conditions and Transform statements are written in OpenTelemetry Transformation Language (OTTL) in a free-text field, with no autocompletion. You need to know OTTL syntax and the OTLP data model to write them.
+* Processor conditions and Transform statements are written in OpenTelemetry Transformation Language (OTTL) in a free-text field, with no autocompletion. You need to know OTTL syntax and the OTLP data model to write them. Refer to [Fields and conditions](fields-and-conditions.md).
 * {{es}} ingest pipelines and integration pipelines can't run inside a Streams pipeline. They still run in {{es}} when the data is indexed, after Streams.
 
 For what the processors do, refer to [Process data](process-data.md).
