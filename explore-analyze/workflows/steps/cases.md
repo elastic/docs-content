@@ -64,6 +64,54 @@ Every `cases.*` step shares the same conventions, so once you learn one step the
     tags: ["triaged"]
 ```
 
+## Template and field library values [workflows-cases-field-values]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+To set the values of fields that come from a [case template](/explore-analyze/cases/manage-case-templates.md) or the [field library](/explore-analyze/cases/create-case-field-library.md), pass a map of each field's storage key to its value. These fields are also called extended fields. Each step takes the map in a different place:
+
+- [`cases.createCase`](#cases-createcase): Use the `extended_fields` parameter.
+- [`cases.updateCase`](#cases-updatecase) and [`cases.updateCases`](#cases-updatecases): Use `extended_fields` inside the `updates` object.
+- [`cases.setExtendedFields`](#cases-setextendedfields): Use the `fields` parameter.
+
+A field's *storage key* combines the `name` and `type` from its [definition](/explore-analyze/cases/yaml-template-schema-reference.md#case-templates-field-keys) as `<name>_as_<type>`. For example, a field with `name: priority` and `type: keyword` has the storage key `priority_as_keyword`.
+
+Before you create a case, use the [Get the fields applicable to a case]({{kib-apis}}operation/operation-getapplicablefieldsdefaultspace) API to list the storage keys you can set. For an existing case, use the [Get the fields applicable to an existing case]({{kib-apis}}operation/operation-getcaseapplicablefieldsdefaultspace) API. Legacy custom fields are now [global fields](/explore-analyze/cases/manage-case-templates.md#case-templates-field-library), so both APIs list their storage keys too.
+
+Every value is a string. In YAML, put quotes around numbers, `true`, `false`, and JSON arrays so they're read as strings. Format each value to match the field's type:
+
+| Field type | Value | Example |
+|---|---|---|
+| Text (`INPUT_TEXT`), Text area (`TEXTAREA`) | The text | `"Escalated by automation"` |
+| Number (`INPUT_NUMBER`) | The number | `"4287"` |
+| Dropdown (`SELECT_BASIC`), Radio buttons (`RADIO_GROUP`) | One of the field's options | `"high"` |
+| Checkboxes (`CHECKBOX_GROUP`) | A JSON array of the selected options | `'["phishing","malware"]'` |
+| User selection (`USER_PICKER`) | A JSON array of users, each with a `uid` and `name` | `'[{"uid":"u_123","name":"Jane Doe"}]'` |
+| Toggle (`TOGGLE`) | `"true"` or `"false"` | `"true"` |
+| Date/time picker (`DATE_PICKER`) | An ISO 8601 date and time | `"2026-10-30T14:00:00.000Z"` |
+
+Markdown (`MARKDOWN`) fields are display-only and don't take a value.
+
+```yaml
+- name: create_case
+  type: cases.createCase
+  with:
+    title: "Suspicious login activity"
+    description: "Created by the login monitoring workflow."
+    owner: "securitySolution"
+    extended_fields:
+      priority_as_keyword: "high"
+      ticket_number_as_integer: "4287"
+      attack_types_as_keyword: '["phishing","malware"]'
+```
+
+When you update a case, only the fields you pass change. Other fields keep their current values. To clear a field, pass an empty string (`""`). You can't clear a required field.
+
+If a storage key doesn't match a field on the case, or a value doesn't match the field's definition, the step fails.
+
 ## Step catalog [workflows-cases-catalog]
 
 The Cases steps group into seven operational categories. Jump to any step:
@@ -86,6 +134,7 @@ The Cases steps group into seven operational categories. Jump to any step:
 [`cases.setDescription`](#cases-setdescription) ·
 [`cases.setCategory`](#cases-setcategory) ·
 [`cases.setCustomField`](#cases-setcustomfield) ·
+[`cases.setExtendedFields`](#cases-setextendedfields) ·
 [`cases.closeCase`](#cases-closecase)
 
 **Attach content**
@@ -130,7 +179,9 @@ Create a case with a title, description, severity, tags, and optional assignees.
 | `tags` | `with` | `string[]` | No | Tags to apply to the case. |
 | `assignees` | `with` | array | No | Array of `{ uid }` objects. |
 | `category` | `with` | string | No | Case category. |
-| `customFields` | `with` | array | No | Custom field values. |
+| `customFields` {applies_to}`stack: deprecated 9.6+, ga 9.4-9.5` {applies_to}`serverless: deprecated` | `with` | array | No | Legacy custom field values. Use `extended_fields` instead. |
+| `extended_fields` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | Template and field library values, keyed by storage key. Refer to [Template and field library values](#workflows-cases-field-values). |
+| `template` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | `with` | object | No | Template to create the case from, as `{ id, version? }`. |
 | `settings` | `with` | object | No | Case settings, for example `syncAlerts`. |
 
 ```yaml
@@ -144,12 +195,15 @@ Create a case with a title, description, severity, tags, and optional assignees.
     owner: "securitySolution"
 ```
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To create the case from a [case template](/explore-analyze/cases/manage-case-templates.md), set `template.id` to the template's ID. To find the ID, use the [Get all case templates]({{kib-apis}}operation/operation-getcasetemplatesdefaultspace) API. If you don't set `template.version`, the step uses the latest version of the template. Template fields that you don't set in `extended_fields` get their default values. To also use the template's default title and description, use [`cases.createCaseFromTemplate`](#cases-createcasefromtemplate) instead.
+
 ### `cases.createCaseFromTemplate` [cases-createcasefromtemplate]
 
 Create a case from a configured case template. Useful when a team has pre-defined case shapes (default title, description, tags, severity) for common scenarios.
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
+| `owner` | `with` | string | Yes | Case owner: `securitySolution`, `observability`, or `cases`. The template must belong to this owner. |
 | `case_template_id` | `with` | string | Yes | ID of the template to apply. |
 | `overwrites` | `with` | object | No | Fields to override on the templated case, for example `title`, `tags`. |
 
@@ -157,6 +211,7 @@ Create a case from a configured case template. Useful when a team has pre-define
 - name: create_from_template
   type: cases.createCaseFromTemplate
   with:
+    owner: "securitySolution"
     case_template_id: "malware-triage-template"
     overwrites:
       title: "Malware: {{ event.alerts[0].host.name }}"
@@ -164,19 +219,18 @@ Create a case from a configured case template. Useful when a team has pre-define
 
 ### `cases.getCase` [cases-getcase]
 
-Retrieve a complete case object by ID. Optionally include comments and attachments in the response.
+Retrieve a complete case object by ID. To get the case's comments and other attachments, use [`cases.getAllAttachments`](#cases-getallattachments).
 
 | Parameter | Location | Type | Required | Description |
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
-| `include_comments` | `with` | boolean | Yes | Whether to include comments and attachments in the response. |
+| `include_comments` {applies_to}`stack: deprecated 9.5+, ga =9.4` {applies_to}`serverless: deprecated` | `with` | boolean | No | Whether to include comments and attachments in the response. Defaults to `false`. Use [`cases.getAllAttachments`](#cases-getallattachments) instead. |
 
 ```yaml
 - name: fetch_case
   type: cases.getCase
   with:
     case_id: "{{ inputs.case_id }}"
-    include_comments: true
 ```
 
 ### `cases.getCases` [cases-getcases]
@@ -284,7 +338,7 @@ Update one case's fields. Changes go inside a required `updates` object. An opti
 |---|---|---|---|---|
 | `case_id` | `with` | string | Yes | Case ID. |
 | `version` | `with` | string | No | Case version for optimistic concurrency. |
-| `updates` | `with` | object | Yes | Fields to update. At least one field required. Includes `title`, `description`, `status`, `severity`, `category`, `tags`, `assignees`, `settings`, and more. |
+| `updates` | `with` | object | Yes | Fields to update. At least one field required. Includes `title`, `description`, `status`, `severity`, `category`, `tags`, `assignees`, `settings`, and more.<br>{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To set template and field library values, include [`extended_fields`](#workflows-cases-field-values). |
 
 ```yaml
 - name: escalate
@@ -378,6 +432,13 @@ Set a case's category.
 
 ### `cases.setCustomField` [cases-setcustomfield]
 
+```{applies_to}
+stack: deprecated 9.6+, ga 9.4-9.5
+serverless: deprecated
+```
+
+Legacy custom fields are deprecated. In new workflows, use [`cases.setExtendedFields`](#cases-setextendedfields) and set each field by its [storage key](#workflows-cases-field-values). Workflows that already use this step keep working.
+
 Set a single custom-field value on a case. The `field_name` parameter is the system-set custom-field identifier (a UUID-style string), not the human-readable label you see in the UI.
 
 | Parameter | Location | Type | Required | Description |
@@ -395,6 +456,33 @@ Set a single custom-field value on a case. The `field_name` parameter is the sys
     case_id: "{{ steps.create_case.output.case.id }}"
     field_name: "4b8c9d2e-1a5f-4f7a-9c3b-2d6e8f1a3b5c"
     value: "soc-team"
+```
+
+### `cases.setExtendedFields` [cases-setextendedfields]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+Set or clear one or more template and field library values on an existing case. For the key and value formats and how to find a field's storage key, refer to [Template and field library values](#workflows-cases-field-values).
+
+| Parameter | Location | Type | Required | Description |
+|---|---|---|---|---|
+| `case_id` | `with` | string | Yes | Case ID. |
+| `fields` | `with` | object | Yes | Map of storage key to value. |
+| `version` | `with` | string | No | Case version for optimistic concurrency. |
+
+Output: `{ case: object }` (the updated case).
+
+```yaml
+- name: set_case_fields
+  type: cases.setExtendedFields
+  with:
+    case_id: "{{ steps.create_case.output.case.id }}"
+    fields:
+      priority_as_keyword: "high"
+      ticket_number_as_integer: "4287"
 ```
 
 ### `cases.closeCase` [cases-closecase]
