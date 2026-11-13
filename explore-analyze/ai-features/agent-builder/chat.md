@@ -410,6 +410,68 @@ For example, the following **Reasoning** panel shows a tool call with its **Insp
 
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
 
+### Rate a response [rate-a-response]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+After the agent finishes responding, you can rate the response with the **Good response** icon {icon}`thumbUp` or the **Bad response** icon {icon}`thumbDown`. The icons appear with the other response actions, such as **Copy response**.
+
+Only the conversation owner can view the icons, so they don't appear when you view a [shared or public conversation](#share-a-conversation) that you don't own. The icons also stay hidden when:
+
+- The agent is still responding.
+- The response has [stopped or failed](#stopped-and-failed-responses).
+- The conversation is read-only. Conversations created through the API as read-only show a **Read-Only** badge and have no chat input.
+
+To rate a response, select the **Good response** or **Bad response** icon. Your rating is saved right away and stays on the response when you reload the page. What happens next depends on the rating:
+
+- **Good response**: **Glad it helped!** and **Tell us more** replace the icons. To keep the rating without adding details, select the **Dismiss** icon {icon}`cross`.
+- **Bad response**: The **What went wrong?** dialog opens so you can add details.
+
+#### Add details to a rating
+
+To tell Elastic more about a rating:
+
+1. Open the feedback dialog. For a good rating, select **Tell us more** to open the **What worked well?** dialog. For a bad rating, the **What went wrong?** dialog is already open.
+2. Select the options that apply. You can select more than one.
+   - **What worked well?**: **Accurate**, **Useful**, and **Well explained**
+   - **What went wrong?**: **Inaccurate**, **Incomplete**, and **Didn't follow instructions**
+3. Optional: In the **Add comment** field, enter a comment of up to 500 characters.
+4. Select **Submit**. The response actions briefly show **Thank you for your feedback**.
+
+To keep the rating without adding details, select **Cancel** or close the dialog.
+
+For example, the following **What went wrong?** dialog has one option selected and a comment:
+
+:::{image} images/agent-builder-rate-response-dialog.png
+:screenshot:
+:alt: The What went wrong? dialog with the Incomplete option selected and a comment entered
+:width: 400px
+:::
+
+#### Change or remove a rating
+
+- To change a rating, select the other icon. If **Glad it helped!** is showing, select the **Dismiss** icon {icon}`cross` first to bring the icons back. Changing the rating also deletes any options and comment you submitted for the previous rating.
+- To remove a rating, select the highlighted icon again. Removing the rating also deletes any options and comment you submitted.
+
+#### Data shared with Elastic
+
+Both feedback dialogs show this notice: "Your comment and metadata will be shared with Elastic." When [telemetry](kibana://reference/configuration-reference/telemetry-settings.md) is turned on, Elastic receives the following each time you rate a response or submit details:
+
+- The rating, good or bad
+- The options you select
+- Your comment, when you add one
+- The conversation ID, the response ID, and the trace ID
+- The agent ID
+- The connector and the model
+- The input and output token counts
+- The number of model calls
+
+When you remove a rating, Elastic receives the same information without the rating, options, and comment.
+
+Elastic doesn't receive the text of your messages or of the agent's responses. In {{serverless-full}}, telemetry is always on. For details, refer to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
+
 ### Stopped and failed responses [stopped-and-failed-responses]
 ```{applies_to}
 stack: ga 9.6+
@@ -436,7 +498,7 @@ The end of the response shows why it ended:
 Stopped and failed responses:
 
 - Stay in the conversation when you reload the page or open another conversation.
-- Don't include the **Copy response** icon, the response metadata menu, or the [View Trace icon](#view-traces).
+- Don't include the **Copy response** icon, the response metadata menu, the [View Trace icon](#view-traces), or the [**Good response** and **Bad response** icons](#rate-a-response).
 - Can't be retried. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
 
 ### Call a specific API operation [call-a-specific-api-operation]
