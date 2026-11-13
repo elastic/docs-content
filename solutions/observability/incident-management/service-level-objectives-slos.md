@@ -47,6 +47,8 @@ From the SLO overview, you can see all of your SLOs and a quick summary of what�
 :screenshot:
 :::
 
+The **Overview** card at the top of the page counts your SLOs by status. Select a count to filter the list by that status. The **Burn rate** card shows active and recovered burn rate alerts from the last 24 hours, plus the number of burn rate rules.
+
 Select an SLO from the overview to see additional details including:
 
 * **Burn rate:** the percentage of bad events over different time periods (1h, 6h, 24h, 72h) and the risk of exhausting your error budget within those time periods.
@@ -80,8 +82,10 @@ There are also options to sort and group the SLOs displayed in the overview:
 :screenshot:
 :::
 
-* **Sort by**: SLI value, SLO status, Error budget consumed, or Error budget remaining.
-* **Group by**: None, Tags, Status, or SLI type.
+* **Sort by**: SLI value, SLO status, Error budget consumed, Error budget remaining, 5m burn rate, 1h burn rate, or 1d burn rate.
+* **Group by**: None, Tags, Status, SLI type, or SLO instance ID.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` To collect all instances of an SLO in one group, group by **SLO definition ID**.
+* {applies_to}`serverless: unavailable` If the [SLOs settings](/solutions/observability/incident-management/configure-slo-settings.md) fetch SLOs from remote clusters, you can also group by **Remote cluster**.
 * Click icons to switch between a card view (![Card view icon](/solutions/images/serverless-apps.svg "")), list view (![List view icon](/solutions/images/serverless-list.svg "")), or compact view (![Compact view icon](/solutions/images/serverless-tableDensityCompact.svg "")).
 
 
@@ -89,13 +93,15 @@ There are also options to sort and group the SLOs displayed in the overview:
 
 SLO data is also available as Dashboard *panels*. Panels allow you to curate custom {{data-sources}} and visualizations to bring clarity to your data.
 
-Available SLO panels include:
+You can add the following SLO panels from the **Observability** group when you add a panel to a dashboard:
 
-* **SLO Overview**: Visualize a selected SLO’s health, including name, current SLI value, target, and status.
+* **SLO Overview**: Visualize a selected SLO’s health, including name, current SLI value, target, and status. To summarize a set of SLOs instead, set **View type** to **Grouped SLOs**, then group them by status, tags, or SLI type.
+* **SLO Burn Rate**: Visualize how fast a selected SLO uses its error budget over a duration you choose, such as `1h` or `1d`.
+* **SLO Error Budget**: Visualize how much error budget a selected SLO has left and how it burns down over the SLO time window.
 * **SLO Alerts**: Visualize one or more SLO alerts, including status, rule name, duration, and reason. In addition, configure and update alerts, or create cases directly from the panel.
 
 :::{image} /solutions/images/serverless-slo-dashboard-panel.png
-:alt: Detailed view of an SLO dashboard panel
+:alt: A dashboard in edit mode with SLO Overview and SLO Error Budget burn down panels for two SLOs, one healthy and one violated
 :screenshot:
 :::
 

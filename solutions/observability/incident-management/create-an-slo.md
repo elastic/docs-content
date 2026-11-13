@@ -25,7 +25,7 @@ products:
 To create an SLO, find **SLOs** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md):
 
 * If you’re creating your first SLO, you’ll see an introductory page. Click the **Create SLO** button.
-* If you’ve created SLOs before, click the **Create new SLO** button in the upper-right corner of the page.
+* If you’ve created SLOs before, select **Create SLO**, then, from the menu, select **Create SLO**.
 
 From here, complete the following steps:
 
@@ -285,7 +285,7 @@ For more information about configuring the rule, see [Create an SLO burn rate ru
 After you’ve created your SLO, you can monitor it from the *SLOs* page in Observability, but you can also add an *SLO Overview* panel to a custom dashboard. Read more about dashboards in [Dashboard and visualizations](/explore-analyze/dashboards.md).
 
 :::{image} /solutions/images/observability-slo-overview-embeddable-widget.png
-:alt: Using the Add panel button to add an SLO Overview widget to a dashboard
+:alt: The Add to dashboard flyout next to a dashboard in edit mode, with SLO Overview selected in the Observability group
 :screenshot:
 :::
 
