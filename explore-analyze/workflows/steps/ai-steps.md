@@ -374,8 +374,8 @@ All parameters go in the `with` block and use `snake_case`.
 | `conversation_id` | `with` | string (UUID) | No | ID for the new conversation. Must be a UUID. Generated if omitted. The step fails if a conversation with this ID already exists. |
 | `title` | `with` | string | No | Conversation title, up to 500 characters. Defaults to `New conversation`. |
 | `access_control` | `with` | object | No | Who can access the conversation. Defaults to private. Takes `access_mode` (`private` or `public`) and optional `entries` (up to 100). Each entry adds a member and has the shape `{ type: user, id: <user profile UID>, role: member }`. Entries are allowed only for private conversations. The step fails if you set `access_mode: public` with any entries. Refer to [Conversation access control](/explore-analyze/ai-features/agent-builder/permissions.md#conversation-access-control). |
-| `template_id` | `with` | string | No | ID of a conversation template to apply. Templates are defined by {{kib}} features, and you can't create your own. The template sets default metadata for the conversation. The step fails if the template doesn't exist. |
-| `metadata` | `with` | object | No | Initial metadata values. Requires `template_id`, and each key must be defined by the template. Up to 100 keys. Each value can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each). |
+| `template_id` | `with` | string | No | ID of a built-in conversation template. Use `investigation` or `escalation`. The template sets default metadata and controls the [**Chat info** flyout](/explore-analyze/ai-features/agent-builder/chat.md#conversation-templates). The step fails if the template doesn't exist. For the keys you can set, refer to [Conversation template metadata](#conversation-template-metadata). |
+| `metadata` | `with` | object | No | Initial metadata values. Requires `template_id`, and each key must be defined by the template. Up to 100 keys. Key names can be up to 256 characters. Each value can be a string (up to 10,000 characters), a number, a boolean, or an array of up to 100 strings (up to 2,000 characters each). |
 
 **Output shape:**
 
@@ -394,6 +394,42 @@ If you set `agent_id`, set the same agent in `agent-id` on any [`ai.agent`](#ai-
   with:
     title: "Checkout incident"
 ```
+
+To create an investigation and set its severity and description:
+
+```yaml
+- name: create_investigation
+  type: ai.conversation.create
+  with:
+    title: "Checkout incident"
+    template_id: investigation
+    metadata:
+      severity: high
+      description: "Checkout error rate increased after the last deploy."
+```
+
+### Conversation template metadata [conversation-template-metadata]
+
+Each built-in template defines the metadata keys that a conversation accepts. The step fails if `metadata` includes a key that the template doesn't define. The agent can update these keys during later runs on the conversation. Other content in the **Chat info** flyout, such as impact and proposed actions, doesn't come from these keys.
+
+`investigation` and `escalation` share these keys:
+
+| Key | Description | Accepted values | Default |
+|---|---|---|---|
+| `status` | Whether the investigation or escalation is open or closed. Can't be empty. | `open` or `closed` | `open` |
+| `severity` | The severity level | `low`, `medium`, `high`, or `critical` | None |
+| `assignees` | The assigned users | List of user profile UIDs | None |
+| `verdict` | The outcome of the investigation or escalation | Text, up to 10,000 characters | None |
+| `summary` | The summary of the investigation or escalation so far | Text, up to 10,000 characters | None |
+| `description` | A one-line summary | Text, up to 10,000 characters | None |
+| `close_reason` | The reason for closing | `false_positive`, `benign`, `resolved`, `duplicate`, or `other` | None |
+
+Each template also accepts its own keys:
+
+- `investigation`: `workflow_execution_ids`, a list of workflow execution IDs for runs that have worked on the investigation.
+- `escalation`: `linked_investigations`, a list of conversation IDs of the investigations linked to the escalation.
+
+To update these keys from a workflow, use [`ai.conversation.metadata.patch`](#ai-conversation-metadata-patch).
 
 ## `ai.conversation.add_event` [ai-conversation-add-event]
 
