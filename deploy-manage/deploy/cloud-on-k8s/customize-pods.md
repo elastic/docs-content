@@ -103,11 +103,11 @@ spec:
 
 ## Container and init container names [k8s-customize-pods-container-names]
 
-To customize the containers that ECK creates, use the same container and init container names as the operator. ECK merges your settings with its defaults only for containers that have the expected name. If you use a different name for the main container, ECK still creates its own container with the default settings, and your container runs as an additional container in the Pod without the operator configuration. Settings such as resources and environment variables then don't apply to the main container.
+To customize the containers that ECK creates, use the same container and init container names as the operator. ECK merges your settings with its defaults only for containers that have the expected name. If you use a different name for the main container, ECK still creates its own container with the default settings, and your container runs as an additional container in the Pod without the operator configuration. As a result, settings such as resources and environment variables that you specify for your container don't apply to the main container.
 
 The following table lists the container names that ECK uses:
 
-| Resource | Container name | Init container names |
+| Resource | Main container name | Init container names |
 | --- | --- | --- |
 | {{es}} | `elasticsearch` | `elastic-internal-init-filesystem`, `elastic-internal-suspend`, and `elastic-internal-init-keystore` when you configure secure settings |
 | {{kib}} | `kibana` | `elastic-internal-init`, and `elastic-internal-init-keystore` when you configure secure settings |
