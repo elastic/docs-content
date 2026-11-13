@@ -51,7 +51,7 @@ Follow any of the following options to install the `opentelemetry-kube-stack` He
 
 :::{tab-item} Install using the CLI
 
-Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command. Replace the `--values` URL with the values file for your deployment type. Refer to [Operator installation](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md#manual-deployment) for the correct URL.
+Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command.
 
 For example, for a self-managed deployment:
 
@@ -60,6 +60,8 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 --values https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml --version {{kube-stack-version}} \
 --set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null
 ```
+
+For any other deployment type, replace the `--values` URL with the values file that matches it. Refer to [Operator installation](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/deployment.md#manual-deployment) for the correct URL.
 :::
 
 :::{tab-item} Install using values.yaml
