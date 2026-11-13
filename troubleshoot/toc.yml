@@ -53,6 +53,8 @@ toc:
               - file: elasticsearch/diagnosing-invalid-repositories.md
           - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
+        children:
+          - file: elasticsearch/troubleshooting-search-relevance.md
       - file: elasticsearch/data-lifecycle.md
         children:
           - file: elasticsearch/start-ilm.md
@@ -183,6 +185,7 @@ toc:
               - file: ingest/opentelemetry/edot-sdks/nodejs/index.md
               - file: ingest/opentelemetry/edot-sdks/php/index.md
               - file: ingest/opentelemetry/edot-sdks/python/index.md
+              - file: ingest/opentelemetry/edot-sdks/react-native/index.md
               - file: ingest/opentelemetry/edot-sdks/enable-debug-logging.md
               - file: ingest/opentelemetry/edot-sdks/missing-app-telemetry.md
               - file: ingest/opentelemetry/edot-sdks/proxy.md

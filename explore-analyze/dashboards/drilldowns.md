@@ -36,6 +36,8 @@ You can add three types of drilldown:
 
 A drilldown uses a value from a field in the data source. You cannot filter or open a drilldown from a value created at query time, because that value has no field in the index. This includes a Lens formula, an aggregation result, and an {{esql}} `EVAL` or `STATS` result.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If an {{esql}} visualization reads from an [{{esql}} view](elasticsearch://reference/query-languages/esql/esql-views.md), you can filter on a column that the view computes, or open a drilldown from its values. The limit applies only to values that the visualization's own query creates.
+
 ::::{dropdown} ES|QL example
 
 In the following query, `status` does not exist in the index. The query creates `status` from `response.keyword`. For that reason, you cannot filter or open a drilldown from `status` in the resulting visualization.
