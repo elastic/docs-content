@@ -28,7 +28,7 @@ In the {{kib}} Integrations UI, search for `otel` and install packs like **Syste
 Elastic adds new OpenTelemetry content packs regularly. If one you need is missing, [open an issue](https://github.com/elastic/integrations/issues).
 :::
 
-Elastic offers several [{{edot}}](opentelemetry://reference/index.md) distributions. Each is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [{{motlp}}](opentelemetry://reference/motlp.md), {{apm-server-or-mis}}, or directly to {{es}}. However, the destination you choose affects the format your data is stored in. For details, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
+Elastic offers several [{{edot}}](opentelemetry://reference/index.md) distributions. Each is a customized version of an OpenTelemetry language SDK and the OpenTelemetry Collector, ready to send data to the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md), {{apm-server-or-mis}}, or directly to {{es}}. However, the destination you choose affects the format your data is stored in. For details, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
 
 If you currently use classic Elastic {{product.apm}} agents or {{beats}} and want to move to OpenTelemetry, refer to [Switch to OpenTelemetry](/solutions/observability/get-started/opentelemetry/switch-to-otel.md).
 
@@ -53,7 +53,7 @@ There are several ways to send OpenTelemetry data to Elastic. The right choice d
 
 ### Send data directly
 
-* **{{motlp}}** ({{serverless-short}} and {{ech}}): Send OpenTelemetry data directly to the [{{motlp}}](opentelemetry://reference/motlp.md) without managing your own Collector. Data is stored in OTel-native format.
+* **{{motlp}}** ({{serverless-short}} and {{ech}}): Send OpenTelemetry data directly to the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) without managing your own Collector. Data is stored in OTel-native format.
 * **{{apm-server-or-mis}} OTLP intake** (legacy): Send OTLP data directly to {{apm-server-or-mis}} using its built-in OTLP endpoint. Data is translated to ECS format before storage. This path is not recommended for new users, and EDOT SDKs are not supported here. For details on the format difference, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
 
 ## Why use the Elastic Distributions of OpenTelemetry?
@@ -72,6 +72,9 @@ To set up OpenTelemetry with Elastic, refer to these guides for each SDK:
 * [**Elastic Distribution of OpenTelemetry Python**](elastic-otel-python://reference/edot-python/index.md)
 * [**Elastic Distribution of OpenTelemetry PHP**](elastic-otel-php://reference/edot-php/index.md)
 * [**Elastic Distribution of OpenTelemetry Browser**](elastic-otel-rum-js://reference/edot-browser/index.md)
+* [**Elastic Distribution of OpenTelemetry Android**](apm-agent-android://reference/edot-android/index.md)
+* [**Elastic Distribution of OpenTelemetry iOS**](apm-agent-ios://reference/edot-ios/index.md)
+* [**Elastic Distribution of OpenTelemetry React Native**](elastic-otel-react-native://reference/edot-react-native/index.md)
 
 ::::{important}
 For a complete overview of OpenTelemetry and Elastic, explore [**{{edot}}**](opentelemetry://reference/index.md).
@@ -81,7 +84,7 @@ For a complete overview of OpenTelemetry and Elastic, explore [**{{edot}}**](ope
 
 The {{stack}} natively supports the OpenTelemetry protocol (OTLP). This means trace data and metrics collected from your applications and infrastructure by an OpenTelemetry Collector or OpenTelemetry language SDK can be sent to Elastic.
 
-You can set up an OpenTelemetry Collector based on contrib OpenTelemetry, instrument your application with an OpenTelemetry language SDK that sends data to the Collector, and use the Collector to process and export the data to either the [Managed OTLP endpoint](opentelemetry://reference/motlp.md) or {{apm-server-or-mis}}.
+You can set up an OpenTelemetry Collector based on contrib OpenTelemetry, instrument your application with an OpenTelemetry language SDK that sends data to the Collector, and use the Collector to process and export the data to either the [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md) or {{apm-server-or-mis}}.
 
 This approach works well when you need to instrument a technology that Elastic doesn’t provide a solution for. For example, if you want to instrument C or C++ you can use the [OpenTelemetry C++ client](https://github.com/open-telemetry/opentelemetry-cpp). However, there are some limitations when using contrib OpenTelemetry collectors and language SDKs, including:
 

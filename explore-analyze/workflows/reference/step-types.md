@@ -20,7 +20,14 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | Step type | Category | What it does |
 |---|---|---|
 | [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) | AI | Invoke an {{agent-builder}} agent as a step. |
+| [`ai.attachment.add`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-add) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Add an attachment to an {{agent-builder}} conversation. |
+| [`ai.attachment.delete`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-delete) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Delete an attachment from an {{agent-builder}} conversation. |
+| [`ai.attachment.list`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-list) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | List the attachments in an {{agent-builder}} conversation. |
+| [`ai.attachment.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-read) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Read the content of an attachment in an {{agent-builder}} conversation. |
+| [`ai.attachment.update`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-update) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Update an attachment in an {{agent-builder}} conversation. |
 | [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify) | AI | Classify input into a fixed category set. |
+| [`ai.conversation.metadata.patch`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-patch) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Update the metadata of an {{agent-builder}} conversation. |
+| [`ai.conversation.metadata.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-read) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Read the metadata of an {{agent-builder}} conversation. |
 | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) | AI | Prompt a model, optionally with structured output. |
 | [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) | AI | Summarize content with an LLM. |
 | [`cases.addAlerts`](/explore-analyze/workflows/steps/cases.md#cases-addalerts) | Cases | Attach detection alerts to a case. |
@@ -108,12 +115,12 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 
 ## External connector steps [workflows-external-connectors]
 
-In addition to the steps listed previously, every configured {{kib}} connector exposes one or more `<connector>.<action>` step types. Common examples include:
+Every configured {{kib}} connector also exposes one or more step types. A connector with a single action uses its connector type as the step type, such as `slack` or `pagerduty`. A connector with several actions exposes one `<connector>.<action>` step type for each action, such as `jira.pushToService`. Common examples include:
 
-- `slack.postMessage` — Post a message to a Slack channel.
-- `jira.createIssue` — Create a Jira issue.
-- `pagerduty.triggerIncident` — Page an on-call rotation.
-- `virustotal.scanFileHash` — Scan a file hash.
+- `slack` posts a message to the Slack channel that the connector's webhook targets.
+- `jira.pushToService` creates or updates a Jira issue.
+- `pagerduty` sends a trigger, acknowledge, or resolve event to PagerDuty, for example to page an on-call rotation.
+- `virustotal.scanFileHash` scans a file hash.
 
 Because the available connector steps depend on which connectors your deployment has configured, they aren't enumerated here. Refer to the [{{kib}} connectors reference](kibana://reference/connectors-kibana.md) for the full catalog.
 

@@ -2,7 +2,8 @@
 navigation_title: Your first rule query
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Write your first ES|QL rule query. Covers the minimum query structure and how to adapt it to your data."
@@ -10,7 +11,7 @@ description: "Write your first ES|QL rule query. Covers the minimum query struct
 
 # Your first {{alerting-v2-system}} rule query [first-rule-query]
 
-If you're new to {{esql}} or to writing rules, start with the simplest query structure that a {{alerting-v2-system}} rule needs. You only need a basic familiarity with your data.
+If you're new to {{esql}} or to writing rules, start with the simplest query structure that a {{alerting-v2-system-short}} rule needs. You only need a basic familiarity with your data.
 
 ## The simplest rule query
 

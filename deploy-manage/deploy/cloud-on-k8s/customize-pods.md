@@ -101,6 +101,25 @@ spec:
 ```
 
 
+## Container and init container names [k8s-customize-pods-container-names]
+
+To customize the containers that ECK creates, use the same container and init container names as the operator. ECK merges your settings with its defaults only for containers that have the expected name. If you use a different name for the main container, ECK still creates its own container with the default settings, and your container runs as an additional container in the Pod without the operator configuration. As a result, settings such as resources and environment variables that you specify for your container don't apply to the main container.
+
+The following table lists the container names that ECK uses:
+
+| Resource | Main container name | Init container names |
+| --- | --- | --- |
+| {{es}} | `elasticsearch` | `elastic-internal-init-filesystem`, `elastic-internal-suspend`, and `elastic-internal-init-keystore` when you configure secure settings |
+| {{kib}} | `kibana` | `elastic-internal-init`, and `elastic-internal-init-keystore` when you configure secure settings |
+| APM Server | `apm-server` | `elastic-internal-init-keystore` when you configure secure settings |
+| Beats | The name of the Beat in lower case, for example `filebeat`, `metricbeat`, or `heartbeat` | `elastic-internal-init-keystore` when you configure secure settings |
+| {{agent}} and {{fleet}} Server | `agent` | None |
+| Logstash | `logstash` | `logstash-internal-init-config`, and `elastic-internal-init-keystore` when you configure secure settings |
+| Elastic Maps Server | `maps` | None |
+| Elastic Package Registry | `package-registry` | None |
+| AutoOps agent | `autoops-agent` | None |
+
+
 ## More examples [k8s_more_examples_2] 
 
 * [Init containers for plugin downloads](/deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md)

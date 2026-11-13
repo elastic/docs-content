@@ -34,7 +34,7 @@ Want to learn how to install {{agent}}? Continue reading this page.
 
 You will always need:
 
-* **A {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}.** Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
+* **A {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}.** For the minimum privileges and how they apply across spaces, refer to [](/reference/fleet/fleet-roles-privileges.md).
 * **[{{fleet-server}}](/reference/fleet/fleet-server.md) running in a location accessible to {{agent}}.** {{agent}} must have a direct network connection to {{fleet-server}} and {{es}}. If you’re using {{ecloud}}, {{fleet-server}} is already available as part of the {{integrations-server}}. For self-managed deployments, refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server-on-prem.md).
 * **Internet connection for {{kib}} to download integration packages from the {{package-registry}}.** Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 

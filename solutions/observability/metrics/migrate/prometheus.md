@@ -44,7 +44,7 @@ remote_write:
 
 Replace `<prometheus-endpoint>` with the value you copied and `<api_key>` with that API key.
 
-Managed inputs provide durable buffering, unified authentication, and back-pressure handling. URL-path routing to custom data streams isn't supported on this endpoint. Use label-based routing instead. For authentication, routing labels, and limitations, refer to [Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md).
+Managed inputs provide durable buffering, unified authentication, and back-pressure handling. URL-path routing to custom data streams isn't supported on this endpoint. Use label-based routing instead. For authentication, routing labels, and limitations, refer to [Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md).
 ::::
 
 ::::{applies-item} ech:
@@ -60,7 +60,7 @@ remote_write:
 
 Replace `<prometheus-endpoint>` with the value you copied and `<api_key>` with that API key.
 
-Managed inputs provide durable buffering, unified authentication, and back-pressure handling. URL-path routing to custom data streams isn't supported on this endpoint. Use label-based routing instead. For authentication, routing labels, and limitations, refer to [Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md).
+Managed inputs provide durable buffering, unified authentication, and back-pressure handling. URL-path routing to custom data streams isn't supported on this endpoint. Use label-based routing instead. For authentication, routing labels, and limitations, refer to [Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md).
 
 Use this endpoint rather than sending remote write traffic directly to {{es}}, which bypasses the buffering and back-pressure handling that managed inputs provide.
 ::::

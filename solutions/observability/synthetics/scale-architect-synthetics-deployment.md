@@ -50,16 +50,25 @@ Do not use {{ccs}} ({{ccs-init}}) or {{ccr}} ({{ccr-init}}) to federate Syntheti
 
 You can, however, use [Dashboards](/explore-analyze/dashboards.md) or [Discover](/explore-analyze/discover.md) with {{ccs-init}} to query `synthetics-*` indices directly.
 
-## Synthetics UI does not support autodiscovery for infrastructure or {{k8s}} monitoring [synthetics-no-autodiscovery-for-k8s-infra]
+## Synthetics UI does not manage autodiscovery for infrastructure or {{k8s}} monitoring [synthetics-no-autodiscovery-for-k8s-infra]
 
 The {{synthetics-app}} is designed for active synthetic checks against user-defined URLs and user journeys. It is not intended for infrastructure or {{k8s}} pod monitoring through autodiscovery.
 
-The Synthetics UI only shows monitors that are explicitly created and managed through the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md). It has no mechanism for dynamic autodiscovery of infrastructure targets, and it is not designed to ingest or display the high volume of short-lived monitor results that infrastructure monitoring typically produces.
+The Synthetics UI shows:
+
+* Monitors you create and manage in the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md).
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs, including autodiscovered ones, as read-only entries. You create and edit these in the {{heartbeat}} configuration or the {{agent}} policy. Refer to [Autodiscovered monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-autodiscovered-monitors) for what appears and what you can do with it.
+
+The Synthetics UI has no mechanism of its own for dynamic autodiscovery of infrastructure targets, and it is not designed to ingest or display the high volume of short-lived monitor results that infrastructure monitoring typically produces.
 
 For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
 
-* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
-* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The {{uptime-app}} is deprecated as of 8.15 and is not available in {{serverless-short}}.
+* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Autodiscovery results appear in:
+
+    * {applies_to}`serverless: unavailable` The [{{uptime-app}}](/solutions/observability/uptime/index.md).
+    * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The {{synthetics-app}}, as read-only entries, when the monitor writes to `synthetics-*`.
+
+* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The {{uptime-app}} is deprecated as of 8.15 and is not available in {{serverless-full}}.
 
 ## Scale {{private-location}}s [synthetics-scale-private-locations]
 

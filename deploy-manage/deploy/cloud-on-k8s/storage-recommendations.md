@@ -24,6 +24,10 @@ PersistentVolumes can be of two types: **Network-attached** or **Local**. ECK ha
 
 In both cases, the performance depends on the underlying hardware and implementation. In general, local SSDs give the best performance. The fastest network-attached volumes from major Cloud providers can also provide acceptable performance, depending on your {{es}} use cases. To better evaluate your performance requirements, you can [benchmark](https://github.com/elastic/rally) your storage options against the expected {{es}} usage.
 
+::::{warning}
+{{es}} requires storage that behaves no differently from local storage, including file locking. NFS configurations that don't provide file locking, such as NFS 3 or mounts that use the `nolock` option, don't meet this requirement. Network storage can also add latency that affects {{es}} performance, so benchmark with a realistic workload before you rely on it. Block storage or local disks are preferred. For more information, refer to the [{{es}} data path requirements](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#data-path).
+::::
+
 
 ## Local PersistentVolumes operations [k8s_local_persistentvolumes_operations]
 
@@ -62,3 +66,8 @@ In the PersistentVolume StorageClass, it is important to set [`volumeBindingMode
 The reclaim policy of a StorageClass specifies whether a PersistentVolume should be automatically deleted once its corresponding PersistentVolumeClaim is deleted. It can be set to `Delete` or `Retain`.
 
 ECK automatically deletes PersistentVolumeClaims when they are no longer needed, following a cluster downscale or deletion. However, ECK does not delete PersistentVolumes. The system cannot reuse a PersistentVolume with existing data from a different cluster. In this case {{es}} does not start, as it detects data that belongs to a different cluster. For this reason, it is recommended to use the `Delete` reclaim policy.
+
+
+### Volume ownership [k8s_volume_ownership]
+
+{{es}} must be able to write to the data volume. If the ownership of the volume prevents this, refer to [{{es}} data volume ownership](security-context.md#k8s-es-data-volume-ownership).

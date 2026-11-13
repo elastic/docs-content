@@ -9,11 +9,14 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: Google Vertex AI
+  inference-service: Google Vertex AI
 ---
 
 # Connect to Google Vertex
 
-This page provides step-by-step instructions for setting up a Google Vertex AI connector for the first time. This connector type enables you to leverage Vertex AI’s large language models (LLMs) within {{elastic-sec}}. You’ll first need to enable Vertex AI, then generate a key, and finally configure the connector in your {{elastic-sec}} project.
+This page provides step-by-step instructions for connecting {{elastic-sec}} to Vertex AI’s large language models (LLMs). You’ll first need to enable Vertex AI, then generate a key, and finally connect your {{elastic-sec}} project to Vertex AI.
 
 ::::{important}
 Before continuing, you should have an active project in one of Google Vertex AI’s [supported regions](https://cloud.google.com/vertex-ai/docs/general/locations#feature-availability).
@@ -64,16 +67,22 @@ The following video demonstrates these steps.
 
 
 
-## Configure the Google Gemini connector [_configure_the_google_gemini_connector]
+## Connect {{kib}} to Google Vertex AI [_configure_the_google_gemini_connector]
 
-::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-This connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+::::::{applies-switch}
 
-For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
-::::
+:::::{applies-item} { stack: ga 9.5+, serverless: ga }
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-Finally, configure the connector in your Elastic deployment:
+4. For **Model ID**, enter a Gemini model ID such as `gemini-1.5-flash`. [Learn more about the models](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models).
+5. For **GCP Region** and **GCP Project**, enter your region and project ID.
+6. For **Credentials JSON**, enter the key JSON that you generated.
+7. Select the `chat_completion` task type, then select **Save**.
+:::::
+
+:::::{applies-item} stack: ga 9.0-9.4
+Create a Google Gemini connector so that {{kib}} can use Gemini models on Vertex AI.
 
 1. Log in to your Elastic deployment.
 2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, select **Google Gemini**.
@@ -88,3 +97,6 @@ The following video demonstrates these steps.
 
 
 [![configure-gemini-connector-video](https://play.vidyard.com/8L2WPm2HKN1cH872Gs5uvL.jpg)](https://videos.elastic.co/watch/8L2WPm2HKN1cH872Gs5uvL?)
+:::::
+
+::::::

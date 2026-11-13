@@ -25,7 +25,7 @@ Example: Inference processing
 
 Introduction
 
-Explain what this feature or concept is and why it matters to users. Your introduction should:
+State the intent of the page. Explain what this feature or concept is and why it matters to users. Your introduction should:
 
 - Answer "What is it?" at a high level
 - Establish the scope — what this overview covers

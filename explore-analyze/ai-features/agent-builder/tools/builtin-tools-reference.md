@@ -68,6 +68,13 @@ $$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {ap
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also generate queries against [datasets](#agent-builder-builtin-tools-datasets).
 
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The tool can also generate queries with the [`PROMQL`](elasticsearch://reference/query-languages/esql/commands/promql.md) command, which runs Prometheus Query Language (PromQL) expressions on metrics in [time series data streams](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md). The tool uses `PROMQL` when you:
+
+    * Ask for PromQL or provide a PromQL expression.
+    * Ask it to convert a Prometheus query, dashboard, or alert.
+
+    Otherwise, it uses the [`TS`](elasticsearch://reference/query-languages/esql/commands/ts.md) source command.
+
 `platform.core.get_document_by_id` {applies_to}`stack: preview 9.2` {applies_to}`stack: ga 9.3+`
 :   Retrieves the full content of an {{es}} document based on its ID and index name.
 
@@ -115,6 +122,8 @@ $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentat
 :   Runs a single sub-action on a saved {{kib}} [connector](../connectors.md) (for example, sending an email or creating an issue), given a connector ID, sub-action name, and parameters. This lets an agent act on external systems without a dedicated [workflow tool](workflow-tools.md) for each connector.
 
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool only runs connectors [assigned to the agent](../connectors.md#assign-connectors-to-an-agent). Calls to other connectors fail with an error.
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool runs only sub-actions that the connector allows and that aren't marked **Workflow only**. Calls to any other sub-action fail with an error. Refer to [Limit a connector's actions](../connectors.md#limit-a-connectors-actions).
 
     **Prerequisites:** In 9.4 and 9.5, the `agentBuilder:experimentalFeatures` [advanced setting](../get-started.md#enable-experimental-features-optional) must be turned on. Starting in 9.6, and on {{serverless-short}}, the tool is available without it.
 
@@ -527,6 +536,61 @@ PCI compliance tools support PCI DSS v4.0.1 compliance assessments.
 `security.pci_field_mapper` {applies_to}`stack: preview 9.5`
 :   Inspects non-ECS index fields and suggests mappings to ECS fields for PCI queries. Use when scope discovery reports low ECS coverage.
 
+### Automatic Migration tools [agent-builder-automatic-migration-tools]
+```{applies_to}
+serverless:
+  security: preview
+stack: preview 9.6+
+```
+
+Automatic Migration tools work with [Automatic Migration](/solutions/security/get-started/automatic-migration.md) rule migrations in the current space. The [Automatic Migration skills](../builtin-skills-reference.md#agent-builder-automatic-migration-skills) use them.
+
+**Prerequisites:** An Enterprise license on {{stack}}, or a Security Complete subscription on {{serverless-short}}. You also need `All` privileges for the **Automatic Migration** feature and at least `Read` privileges for the **Rules and Exceptions** feature.
+
+#### Read-only tools
+
+These tools look up rule migrations, the rules in them, and the resources they're missing.
+
+`security.siem_migration.get_all_rule_migration_stats` {applies_to}`stack: preview 9.6+`
+:   Lists the rule migrations in the current space, newest first, with each migration's source platform, status, and how many of its rules are pending, in progress, completed, or failed.
+
+`security.siem_migration.get_rule_migration` {applies_to}`stack: preview 9.6+`
+:   Returns a rule migration's name, creation time, and details of its last run.
+
+`security.siem_migration.get_rule_migration_stats` {applies_to}`stack: preview 9.6+`
+:   Returns a rule migration's status, how many of its rules are pending, in progress, completed, or failed, and details of its last run, such as the AI connector it used and any error.
+
+`security.siem_migration.get_rule_migration_translation_stats` {applies_to}`stack: preview 9.6+`
+:   Returns how many of a rule migration's rules were fully translated, partially translated, not translated, or failed, and how many are ready to install.
+
+`security.siem_migration.get_migration_rules` {applies_to}`stack: preview 9.6+`
+:   Lists the rules in a migration with their translation result and status. Can narrow the list, for example to failed rules or rules missing an index pattern, and search translated rule titles.
+
+`security.siem_migration.get_missing_rule_migration_resources` {applies_to}`stack: preview 9.6+`
+:   Lists the resources a rule migration is still missing, such as macros, lookups, reference sets, or watchlists.
+
+#### Tools that make changes
+
+These tools start and stop rule migrations, fix and install translated rules, and rename or delete migrations. The agent asks you to confirm before it uses them. For starting and stopping a migration, it asks only the first time in a conversation.
+
+`security.siem_migration.start_rule_migration` {applies_to}`stack: preview 9.6+`
+:   Starts, resumes, or reprocesses a rule migration's translation run. Asks for confirmation the first time it runs in a conversation.
+
+`security.siem_migration.stop_rule_migration` {applies_to}`stack: preview 9.6+`
+:   Stops a running rule migration. Asks for confirmation the first time it runs in a conversation.
+
+`security.siem_migration.update_translated_rule` {applies_to}`stack: preview 9.6+`
+:   Changes a translated rule that isn't installed yet. Either matches the rule to a different Elastic prebuilt rule, or replaces its {{esql}} query and integrations after validating the query. Adds a comment to the rule that explains the change. Asks for confirmation every time it runs.
+
+`security.siem_migration.install_migration_rules` {applies_to}`stack: preview 9.6+`
+:   Installs translated rules from a rule migration, either all rules or the ones you select, and optionally enables them. Requires `All` privileges for the **Rules and Exceptions** feature. Asks for confirmation every time it runs.
+
+`security.siem_migration.update_rule_migration` {applies_to}`stack: preview 9.6+`
+:   Renames a rule migration. Asks for confirmation every time it runs.
+
+`security.siem_migration.delete_rule_migration` {applies_to}`stack: preview 9.6+`
+:   Permanently deletes a rule migration and its rules. This action can't be undone. Asks for confirmation every time it runs.
+
 ## HTTP API tools
 ```{applies_to}
 stack: ga 9.6+
@@ -552,7 +616,7 @@ API calls use the privileges of the current user or API key. {{kib}} API calls r
 
     Before each call to an operation that can change or delete existing data, `execute_api` requests confirmation unless the agent's **Auto-approved APIs** setting includes the operation. For prompt behavior and exceptions, refer to [Confirm an API operation](../chat.md#confirm-an-api-operation). To configure auto-approval, refer to [Auto-approve API operations](../custom-agents.md#auto-approve-api-operations-optional).
 
-    In runs where no one can respond to a prompt, such as workflow `ai.agent` steps and sub-agent runs, `execute_api` declines these operations unless they were approved in advance. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+    In runs where no one can respond to a prompt, such as workflow `ai.agent` steps and subagent runs, `execute_api` declines these operations unless they were approved in advance. For details, refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 `discover_apis` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
 :   Lists the supported API operations for {{es}} or {{kib}}, optionally filtered by a keyword that matches an operation's identifier, name, API group, or description, so the agent can find the identifier it needs.
@@ -581,7 +645,8 @@ Identifier formats depend on the service:
 Some [built-in skills](../builtin-skills-reference.md) include inline tools that are only available while that skill is active. Because they are scoped to a skill rather than assignable on their own, they are not listed among the namespaced tools in this reference. For example:
 
 - The [`dashboards`](../builtin-skills-reference.md#agent-builder-dashboards-skill) skill (`dashboard-management` in 9.4 and 9.5) includes an inline tool for generating and updating dashboards.
-- The `rule-management` skill includes the `platform.alerting.manage_rule` and `platform.alerting.manage_action_policy` tools for composing and modifying alerting rules and their action policies.
+- {applies_to}`stack: ga 9.6+` {applies_to}`observability: ga` The [`rule-authoring`](../builtin-skills-reference.md#agent-builder-rule-authoring-skill) skill includes the `platform.alerting.manage_rule` tool for composing and modifying {{alerting-v2-system}} rules.
+- {applies_to}`stack: ga 9.6+` {applies_to}`observability: ga` The [`action-policy-authoring`](../builtin-skills-reference.md#agent-builder-action-policy-authoring-skill) skill includes the `platform.alerting.manage_action_policy` tool for composing and modifying action policies.
 - The `alert-triage` skill includes the `security.alert-triage` tool for prioritizing the alert queue.
 
 :::{tip}

@@ -33,8 +33,8 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 |------|-----------------|--------------------|
 | [Discover](/explore-analyze/discover/use-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
-| [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
-| [{{alerting-v2-system-cap}}](/explore-analyze/alerting/esql/system-overview.md) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
+| [{{alerting-v2-system}}](/explore-analyze/alerting/esql/rules/create-esql-rule.md) | Create alerting rules based on {{esql}} queries | Rule form or YAML editor |
+| [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md) {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
 | [Maps](/explore-analyze/visualize/maps.md) {applies_to}`serverless: beta` {applies_to}`stack: beta` | Create map layers from {{esql}} queries | {{esql}} editor |
 | [Data Visualizer](/explore-analyze/machine-learning/machine-learning-in-kibana.md) | Explore field statistics from query results | {{esql}} editor |
 | [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) | Create custom tools that run parameterized queries | Task-specific editor |
@@ -146,7 +146,7 @@ To filter your data with KQL:
 1. If the search bar isn't visible, open it ({icon}`magnify` or {icon}`magnify_sparkles`).
 2. Set the data sources to search:
 
-   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Make sure the query in the editor names the data sources, for example `FROM logs-*`. If the query names none, submitting the search does nothing.
+   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Make sure the query in the editor names the data sources, for example `FROM logs-*`. Until the query names a data source, KQL search isn't available.
    - {applies_to}`stack: preview 9.3-9.5` Select the data sources to search. The list starts with the data sources named in the editor.
 
 3. Enter the text you want to search for as free text or using [KQL](elasticsearch://reference/query-languages/kql.md) syntax.
@@ -209,8 +209,6 @@ You can use this to:
 - Write a query from scratch when the editor is empty. For example, type `// Show the top 10 destinations by flight count` and press {kbd}`cmd+J` to generate a complete query.
 - Add a step to an existing query. Place the comment between pipes (for example `// filter for delayed flights`) and the AI agent generates a single pipe to append. If the AI agent determines that your comment describes a change to the next pipe rather than a new step, it modifies that pipe instead.
 
-As you write, the editor displays inline hints that remind you how to use the feature: on an empty line it suggests starting a `//` comment, and once you've written one it prompts you to press the shortcut. The placeholder in an empty editor conveys the same order: describe what you want in a `//` comment first, then press the shortcut to generate {{esql}} from it.
-
 While the AI agent is generating, a `Generating...` indicator appears next to your comment. Press the shortcut again to cancel the in-flight request and start a new one.
 
 When the generated code is ready, the editor highlights it and shows review actions:
@@ -249,7 +247,7 @@ The proposed fix appears directly below your query, with the original lines and 
 
 :::{tip}
 :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
-After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md).
 :::
 
 
@@ -527,7 +525,6 @@ stack: preview 9.4
 ```
 
 ::::{admonition} Requirements
-:applies_to: { ess:, ece:, eck:, self: }
 For {{ech}}, {{ece}}, and {{eck}} deployments or self-managed clusters, approximation requires an [Enterprise subscription](https://www.elastic.co/subscriptions).
 ::::
 
@@ -554,7 +551,7 @@ Fast mode is the {{kib}} UI control for {{esql}} approximation. Select the {icon
 Where it applies depends on the context:
 
 - In [**Discover**](/explore-analyze/discover/use-esql.md), in {{esql}} mode, the button is always available, but **Fast mode** applies only to queries that use exactly one `STATS` command.
-- In **Dashboards** or when previewing a dashboard created with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md), {icon}`bolt` **Fast mode** can return faster, estimated results for [{{esql}} visualizations](/explore-analyze/visualize/esorql.md) and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command. You can turn **Fast mode** on when the dashboard includes at least one {{esql}}-based panel.
+- In **Dashboards** or when previewing a dashboard created with [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/agent-builder-dashboards-and-visualizations.md), {icon}`bolt` **Fast mode** can return faster, estimated results for [{{esql}} visualizations](/explore-analyze/visualize/esorql.md), {{esql}}-based Discover sessions, [custom panels](/explore-analyze/visualize/custom-panels.md) that have an {{esql}} query, and {{esql}}-powered [Vega and Vega-Lite panels](/explore-analyze/visualize/custom-visualizations-with-vega.md#vega-esql-queries) that use one `STATS` command. You can turn **Fast mode** on when the dashboard includes at least one {{esql}}-based panel.
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Turning **Fast mode** on does not change a map with an {{esql}} layer. To approximate a `STATS` query on the map, use the [SET approximation directive](#esql-kibana-approximation) in the layer query. The option can still appear when that map is an {{esql}}-based panel on the dashboard.
 
 **Fast mode** is preserved when you:
@@ -563,6 +560,11 @@ Where it applies depends on the context:
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Save and reopen a Discover session. Refer to [Save a Discover session](/explore-analyze/discover/save-open-search.md#_save_a_discover_session).
 
 To override the toggle for a single query, use the [`SET approximation`](#esql-kibana-approximation) directive.
+
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6"}
+To tell whether approximation was applied, look for the {icon}`bolt` badge in Discover or in the panel header on a dashboard. Refer to [Interpret approximate results](#esql-kibana-approximation-columns).
+:::
 
 ### Use the `SET approximation` directive [esql-kibana-approximation]
 ```{applies_to}
@@ -605,6 +607,13 @@ An approximate query returns your usual `STATS` columns, plus two extra columns 
 
 {applies_to}`serverless: preview` {applies_to}`stack: preview 9.5+` In [**Discover**](/explore-analyze/discover/esql-results.md#esql-kibana-results-table), these appear as additional columns in the results table. 
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` A {icon}`bolt` badge shows when {{es}} applied approximation, so you can tell estimates from exact results. In Discover, the badge appears next to the chart actions and in the table toolbar. On a dashboard, it appears in the header of each panel that ran an approximate query. Hover over the badge to see why the results are approximate. If {{es}} still [returns exact results](#approximation-fast-mode), such as when the time range matches few documents, no badge appears.
+
+:::{image} /explore-analyze/images/kibana-esql-approximation-badge.png
+:alt: A dashboard panel with the bolt badge in its header and the tooltip that says the panel shows approximate results
+:screenshot:
+:::
+
 For more details, refer to [Approximate `STATS` queries](elasticsearch://reference/query-languages/esql/esql-query-approximation.md).
 
 
@@ -612,7 +621,7 @@ For more details, refer to [Approximate `STATS` queries](elasticsearch://referen
 
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators.
 - [Get started with {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial for your first {{esql}} queries in Discover.
-- [Use Discover with {{esql}}](/explore-analyze/discover/use-esql.md): Discover tasks that are specific to {{esql}} mode.
+- [How to query in Discover's {{esql}} mode](/explore-analyze/discover/use-esql.md): Write and refine {{esql}} queries in Discover.
 - [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
 - [Add variable controls to dashboards](/explore-analyze/visualize/add-variable-controls.md): Add {{esql}}-powered variable controls to dashboards.
