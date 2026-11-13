@@ -226,7 +226,7 @@ To find out why a host is unhealthy or why an action failed, use [`automatic_tro
 | Isolate `host-12` | Show a confirmation that names the host and its agent ID. The host is isolated only after you select **Isolate host**. |
 | Release `host-12` | Show a confirmation, then release the host after you select **Release host**. |
 | What processes are running on `host-12`? | Show a confirmation, then request the process list after you select **List processes**. |
-| Scan `/tmp` on `host-12` for malware | Show a confirmation that names the host and the path. The scan runs only after you select **Run scan**, and it uses the malware protection settings on the host's {{elastic-defend}} policy. |
+| Scan `/tmp` on `host-12` for malware | Show a confirmation that names the host and the path. The scan runs only after you select **Run scan**, and it uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) on the host's {{elastic-defend}} policy. |
 | What happened to action `<action-id>`? | Report that action's status and output. |
 
 :::{note}
