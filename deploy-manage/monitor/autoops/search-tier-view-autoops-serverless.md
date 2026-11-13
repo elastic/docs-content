@@ -27,7 +27,7 @@ Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
 * Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
 * Gain insights from **performance charts** depicting search rate and latency trends over time.
-* {applies_to}`elasticsearch:` Explore the **Search VCUs** chart to understand the trend of Search VCU usage over time. Use the **annotations** overlaying this chart to understand when the search power and boost window changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption). 
+* {applies_to}`elasticsearch:` Explore the **Search VCUs** chart to understand the trend of Search VCU usage over time. Use the **annotations** overlaying this chart to understand when the search power, boost window, and minimum search VCUs changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption).
 * {applies_to}`vectordb:` Explore the **Reserved search capacity** chart to see your project's search capacity over time. Use the **annotations** overlaying this chart to understand when **Search Power** changed during the selected time period, with exact timestamps. 
 * {applies_to}`vectordb:` View your project's **Uptime** for the selected time period and the current **Search Power** to track their effect on the search and infrastructure [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md). 
 
@@ -96,6 +96,8 @@ We plan to display long-running search queries in the **Search Tier** view so th
 
 ### Project settings
 Increasing the search power, boost window, or retention period in your project will cause upscaling, which consumes more search VCUs. Decreasing these settings will lead to lower consumption of VCUs.
+
+Setting a [minimum Search VCUs](/deploy-manage/deploy/elastic-cloud/project-settings.md#minimum-search-vcus) value works differently: it sets a floor under search VCU consumption rather than triggering upscaling. Search VCU consumption does not drop below this value, even when there is no search activity. Compare the **Search VCUs** chart against the **Minimum Search VCUs** line to see whether your project is running at the minimum or scaling above it. Search VCU usage appears on the chart with a delay of up to approximately one hour. If you have just set or changed the minimum, the chart might not yet show its effect, but the setting is still applied.
 
 :::{note}
 The search boost window and retention period settings are only applicable to time series data.

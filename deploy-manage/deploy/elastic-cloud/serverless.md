@@ -105,7 +105,7 @@ To send data to your project or query it from your own applications, point your 
 Review these pages to learn about the settings you can control and the tools you can use to manage projects at scale.
 
 * [](/deploy-manage/deploy/elastic-cloud/regions.md): Check which AWS, Azure, and GCP regions are currently available for serverless projects.
-* [](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure Search AI Lake settings, feature tiers, tags, and connection aliases. These settings are your main controls over data retention, query performance, and cost.
+* [](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings, feature tiers, tags, and connection aliases. These settings are your main controls over data retention, query performance, and cost.
 * [](/deploy-manage/deploy/elastic-cloud/manage-serverless-projects-using-api.md): Create and manage projects programmatically with the [{{serverless-full}} API]({{cloud-serverless-apis}}), for provisioning at scale or as part of your own automations. Calls are authenticated with an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md).
 * [](/deploy-manage/deploy/elastic-cloud/tools-apis.md): Find the APIs, clients, and tools available to your project, including the {{es}} and {{kib}} {{serverless-short}} APIs and Terraform provisioning.
 
