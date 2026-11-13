@@ -93,6 +93,27 @@ stack: ga 9.5+
 
 To run Attack Discovery from a workflow or from {{agent-builder}}, turn on the [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting. This setting also lets you configure alert retrieval, generation, and validation in the **Attacks** view. After you turn it on, users also need [Workflows privileges](/solutions/security/ai/attack-discovery/grant-access.md#attack-discovery-workflows-privileges).
 
+### Use the Attacks view or the Attack Discovery page [set-up-ai-attacks-view]
+
+```{applies_to}
+stack: preview =9.4, ga =9.5
+serverless: unavailable
+```
+
+The **Enable alerts and attacks alignment** [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) turns the **Attacks** view on or off. After you change it, reload {{kib}}.
+
+::::{applies-switch}
+
+:::{applies-item} stack: ga =9.5
+The setting is on by default, and the **Attack Discovery** page shows a notice that points to the **Attacks** view. To keep using the **Attack Discovery** page instead, turn the setting off.
+:::
+
+:::{applies-item} stack: preview =9.4
+The setting is off by default. To use the **Attacks** view, turn the setting on.
+:::
+
+::::
+
 ### Set up {{alertzero}} [set-up-ai-alertzero]
 
 ```{applies_to}

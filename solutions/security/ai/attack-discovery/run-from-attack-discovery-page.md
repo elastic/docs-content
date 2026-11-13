@@ -2,7 +2,7 @@
 navigation_title: Run from Attack Discovery page
 description: "Generate Attack Discovery findings manually on demand or automatically on a recurring schedule, directly from the Attack Discovery page."
 applies_to:
-  stack: ga
+  stack: removed 9.6+, deprecated =9.5, ga 9.0-9.4
   serverless:
     security: ga
 products:
@@ -15,8 +15,7 @@ products:
 This page describes how to run Attack Discovery from the **Attack Discovery** page. You can configure which alerts get analyzed, start an on-demand run, and set up a recurring schedule so discoveries are generated automatically.
 
 :::{note}
-:applies_to: {"stack": "ga 9.5+", "serverless": {"security": "ga"}}
-Configure and run Attack Discovery from the [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md).
+To check whether you have this page or the **Attacks** view, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
 :::
 
 ## Set up Attack Discovery [set-up-attack-discovery]
@@ -60,11 +59,11 @@ To get started:
 
 1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
 2. Do one of the following:
-   - {applies_to}`stack: ga 9.1+` Click the settings icon next to the **Run** button, then in the settings menu, select an existing connector from the dropdown menu, or add a new one.
+   - {applies_to}`serverless: ga` {applies_to}`stack: deprecated =9.5, ga 9.1-9.4` Select the settings icon next to **Run**. In the settings menu, select an existing connector from the dropdown menu or add a new one.
    - {applies_to}`stack: ga =9.0` Select an existing connector from the dropdown menu, or add a new one.
 
 3. Once you've selected a connector, do one of the following to start the analysis:
-   - {applies_to}`stack: ga 9.1+` Click **Save and run**.
+   - {applies_to}`serverless: ga` {applies_to}`stack: deprecated =9.5, ga 9.1-9.4` Select **Save and run**.
    - {applies_to}`stack: ga =9.0` Click **Generate**.
    
 It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected. Once the analysis is complete, any threats it identifies will appear as discoveries. Click each one's title to expand or collapse it. Click **Run** at any time to start the Attack Discovery process again with the selected alerts.
@@ -76,12 +75,12 @@ Attack Discovery uses the same data anonymization settings as [Elastic AI Assist
 ## Schedule runs [schedule-discoveries]
 
 ```{applies_to}
-stack: ga 9.1
+stack: removed 9.6+, deprecated =9.5, ga 9.1-9.4
 serverless: ga
 ```
 
 :::{note}
-{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` You can also [create and manage schedules from the Attacks page](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Schedules created on either page appear on both.
+{applies_to}`stack: preview =9.4` You can also [create and manage schedules from the **Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Schedules that you create in either place appear in both.
 :::
 
 You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.
@@ -113,7 +112,7 @@ Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({ico
 
 ::::
 
-::::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+::::{applies-item} { "serverless": "ga", "stack": "deprecated =9.5" }
 
 To create a new schedule:
 
