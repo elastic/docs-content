@@ -98,6 +98,8 @@ You can retrieve the last value in a similar way:
 
 ### Getting top hits by using stored scripts [top-hits-stored-scripts]
 
+This example uses a `scripted_metric` aggregation which is not supported on {{es}} Serverless.
+
 You can also use the power of [stored scripts]({{es-apis}}operation/operation-put-script) to get the latest value. Stored scripts are updatable, enable collaboration, and avoid duplication across queries.
 
 1. Create the stored scripts:
@@ -381,7 +383,6 @@ This example shows how to derive multiple features from a single transaction. Le
 ```js
 {
   "_index":"apache-sessions",
-  "_type":"_doc",
   "_id":"KvzSeGoB4bgw0KGbE3wP",
   "_score":1.0,
   "_source":{
@@ -492,10 +493,10 @@ POST _transform/_preview
 
 1. The data is grouped by `sessionid`.
 2. The aggregations counts the number of paths and enumerate the viewed pages during the session.
-3. The `init_script` creates an array type `doc` in the `state` object.
-4. The `map_script` defines a `span` array with a timestamp, a URL, and a referrer value which are based on the corresponding values of the document, then adds the value of the `span` array to the `doc` object.
+3. The `init_script` creates a list called `docs` in the `state` object.
+4. The `map_script` defines a `span` map with a timestamp, a URL, and a referrer value which are based on the corresponding values of the document, then adds the `span` map to the `state.docs` list.
 5. The `combine_script` returns `state.docs` from each shard.
-6. The `reduce_script` defines various objects like `min_time`, `max_time`, and `duration` based on the document fields, then declares a `ret` object, and copies the source document by using `new HashMap ()`. Next, the script defines `first_time`, `last_time`, `duration` and other fields inside the `ret` object based on the corresponding object defined earlier, finally returns `ret`.
+6. The `reduce_script` defines various objects like `min_time`, `max_time`, and `duration` based on the document fields, then declares an empty `ret` map by using `new HashMap()`. Next, the script defines `first_time`, `last_time`, `duration` and other fields inside the `ret` object based on the corresponding object defined earlier, finally returns `ret`.
 
 The API call results in a similar response:
 

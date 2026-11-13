@@ -30,7 +30,7 @@ products:
    :::
 
    ::::{tip}
-   On {{serverless-full}}, when your project has [linked projects](/explore-analyze/cross-project-search.md), use the **Project scope** control next to the data view picker to choose which linked projects the transform searches. Refer to [Cross-project search scope](transform-overview.md#transform-cps-scope).
+   On {{serverless-full}}, when your project has [linked projects](/explore-analyze/cross-project-search.md), use the **Project scope** control next to the data view picker to choose which linked projects the transform searches. Refer to [Source data from linked projects](transform-overview.md#transform-cps-scope).
    ::::
 
    Group the data by customer ID and add one or more aggregations to learn more about each customer’s orders. For example, let’s calculate the sum of products they purchased, the total price of their purchases, the maximum number of products that they purchased in a single order, and their total number of orders. We’ll accomplish this by using the [`sum` aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-sum-aggregation.md) on the `total_quantity` and `taxless_total_price` fields, the [`max` aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-max-aggregation.md) on the `total_quantity` field, and the [`cardinality` aggregation](elasticsearch://reference/aggregations/search-aggregations-metrics-cardinality-aggregation.md) on the `order_id` field:
@@ -253,6 +253,8 @@ products:
 
    ::::
 
+   {applies_to}`serverless: ga` On {{serverless-short}}, transforms do not set the number of shards or replicas of the destination index, so the preview does not include these settings.
+
    In some instances the deduced mappings might be incompatible with the actual data. For example, numeric overflows might occur or dynamically mapped fields might contain both numbers and strings. To avoid this problem, create your destination index before you start the transform. For more information, see the [create index API]({{es-apis}}operation/operation-indices-create).
 
    ::::{dropdown} API example
@@ -306,7 +308,7 @@ products:
    :::
 
    ::::{tip}
-   On {{serverless-full}}, when your project has [linked projects](/explore-analyze/cross-project-search.md), the **Project scope** column on this page shows which projects each transform searches. Refer to [Cross-project search scope](transform-overview.md#transform-cps-scope).
+   On {{serverless-full}}, when your project has [linked projects](/explore-analyze/cross-project-search.md), the **Project scope** column on this page shows which projects each transform searches. Refer to [Source data from linked projects](transform-overview.md#transform-cps-scope).
    ::::
 
    Alternatively, you can use the [start transforms]({{es-apis}}operation/operation-transform-start-transform), [stop transforms]({{es-apis}}operation/operation-transform-stop-transform) and [reset transforms]({{es-apis}}operation/operation-transform-reset-transform) APIs.

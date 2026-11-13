@@ -45,7 +45,7 @@ If the cluster experiences unsuitable performance degradation due to the transfo
 
 In most cases, it is strongly recommended to use the ingest timestamp of the source indices for syncing the transform. This is the most optimal way for transforms to be able to identify new changes. If your data source follows the [ECS standard](ecs://reference/index.md), you might already have an [`event.ingested`](ecs://reference/ecs-event.md#field-event-ingested) field. In this case, use `event.ingested` as the `sync`.`time`.`field` property of your transform.
 
-If you don't have a `event.ingested` field or it isn't populated, you can set it by using an ingest pipeline. Create an ingest pipeline either using the [ingest pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) (like the example below) or through {{kib}}'s **Ingest Pipelines** management page. Use a [`set` processor](elasticsearch://reference/enrich-processor/set-processor.md) to set the field and associate it with the value of the ingest timestamp.
+If you don't have a `event.ingested` field or it isn't populated, you can set it by using an ingest pipeline. Create an ingest pipeline either using the [ingest pipeline API]({{es-apis}}operation/operation-ingest-put-pipeline) (like the following example) or through {{kib}}'s **Ingest Pipelines** management page. Use a [`set` processor](elasticsearch://reference/ingest-processor/set-processor.md) to set the field and associate it with the value of the ingest timestamp.
 
 ```console
 PUT _ingest/pipeline/set_ingest_time
@@ -80,8 +80,12 @@ Failures in transforms tend to be related to searching or indexing. To increase 
 
 Checkpoint failures can be categorized as follows:
 
-* Temporary failures: The checkpoint is retried. If 10 consecutive failures occur, the transform has a failed status. For example, this situation might occur when there are shard failures and queries return only partial results.
-* Irrecoverable failures: The transform immediately fails. For example, this situation occurs when the source index is not found.
+* Temporary failures: The checkpoint is retried up to `num_failure_retries` times (default 10) with an exponential backoff, starting at 5 seconds and capped at 1 hour. Once the retries are exhausted, the transform fails and stops. For example, this situation might occur when there are shard failures and queries return only partial results. You can change the default for all transforms with the `xpack.transform.num_transform_failure_retries` cluster setting. A value of `-1` retries indefinitely.
+
+  {applies_to}`stack: ga 9.6+` Authentication and authorization errors are also treated as temporary failures and retried.
+* Irrecoverable failures: The transform immediately fails. For example, this situation occurs when the source index is not found, or when an aggregation is not valid for the field type.
 * Adjustment failures: The transform retries with adjusted settings. For example, if a parent circuit breaker memory errors occur during the composite aggregation, the transform receives partial results. The aggregated search is retried with a smaller number of buckets. This retry is performed at the interval defined in the `frequency` property for the transform. If the search is retried to the point where it reaches a minimal number of buckets, an irrecoverable failure occurs.
+
+A transform with the `unattended` setting enabled never enters a failed state. It retries all failures indefinitely.
 
 If the node running the transforms fails, the transform restarts from the most recent persisted cursor position. This recovery process might repeat some of the work the transform had already done, but it ensures data consistency.

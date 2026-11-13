@@ -20,7 +20,7 @@ You can choose either of the following methods to transform your data: [pivot](#
 
 ::::
 
-Transforms are persistent tasks; they are stored in cluster state which makes them resilient for node failures. Refer to [How checkpoints work](transform-checkpoints.md) and [Error handling](transform-checkpoints.md#ml-transform-checkpoint-errors) to learn more about the machinery behind transforms.
+Transforms are persistent tasks. They are stored in cluster state, which makes them resilient for node failures. Their configuration, state, and checkpoints are stored in internal {{es}} indices. Refer to [How checkpoints work](transform-checkpoints.md) and [Error handling](transform-checkpoints.md#ml-transform-checkpoint-errors) to learn more about the machinery behind transforms.
 
 ## Pivot transforms [pivot-transform-overview]
 
@@ -30,13 +30,13 @@ A lot of {{es}} indices are organized as a stream of events: each event is an in
 
 Transforms enable you to define a pivot, which is a set of features that transform the index into a different, more digestible format. Pivoting results in a summary of your data in a new index.
 
-To define a pivot, first you select one or more fields that you will use to group your data. You can select categorical fields (terms) and numerical fields for grouping. If you use numerical fields, the field values are bucketed using an interval that you specify.
+To define a pivot, first you select one or more fields that you will use to group your data. You can group by categorical fields (`terms`), by numerical fields (`histogram`), by date fields (`date_histogram`), and by geo-point fields (`geotile_grid`). If you use numerical or date fields, the field values are bucketed using an interval that you specify.
 
 The second step is deciding how you want to aggregate the grouped data. When using aggregations, you practically ask questions about the index. There are different types of aggregations, each with its own purpose and output. To learn more about the supported aggregations and group-by fields, see [Create transform]({{es-apis}}operation/operation-transform-put-transform).
 
 As an optional step, you can also add a query to further limit the scope of the aggregation.
 
-The transform performs a composite aggregation that paginates through all the data defined by the source index query. The output of the aggregation is stored in a *destination index*. Each time the transform queries the source index, it creates a *checkpoint*. You can decide whether you want the transform to run once or continuously. A *batch transform* is a single operation that has a single checkpoint. *{{ctransforms-cap}}* continually increment and process checkpoints as new source data is ingested.
+The transform performs a composite aggregation that paginates through all the data defined by the source index query. The output of the aggregation is stored in a *destination index*. Each time the transform processes the source data, it creates a *checkpoint*. A {{ctransform}} only creates a new checkpoint when it detects changes in the source data. You can decide whether you want the transform to run once or continuously. A *batch transform* is a single operation that has a single checkpoint. *{{ctransforms-cap}}* continually increment and process checkpoints as new source data is ingested.
 
 Imagine that you run a webshop that sells clothes. Every order creates a document that contains a unique order ID, the name and the category of the ordered product, its price, the ordered quantity, the exact date of the order, and some customer information (name, gender, location, and so on). Your data set contains all the transactions from last year.
 
@@ -90,7 +90,12 @@ The default scope depends on how you create the transform:
 
 * **In {{kib}}**: Uses your space's default scope.
 * **With Clone**: Keeps the original transform's scope.
-* **Through the API, or before {{cps-init}} was available**: Searches only the origin project until you set `project_routing`.
+* **Through the API**: The scope doesn't depend on your {{kib}} space. Instead, it depends on the API key that authenticates the request:
+  * With an [{{ecloud}} API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md), the transform searches all linked projects unless you specify a `project_routing` expression.
+  * With an [{{es}} API key](/deploy-manage/api-keys/serverless-project-api-keys.md), which is scoped to a single project, the transform searches only the origin project.
+* **Before {{cps-init}} was available**: Searches only the origin project until you set `project_routing`.
+
+Changes to the space default scope do not affect existing transforms. Each transform keeps the `project_routing` that was set when it was created or last updated.
 
 To change the scope later:
 * Edit the transform in {{kib}}.
@@ -101,7 +106,7 @@ To change the scope later:
 
 The **Transforms** management page shows each transform's scope in the **Project scope** column:
 
-* **This project**: Searches the origin project only, either because only the origin project is specified, or because no `project_routing` is specified.
+* **This project**: Searches the origin project only.
 * **All**: Searches every linked project.
 * A count such as **5/10**: Searches a custom subset of projects. This might or might not include the origin project.
 
