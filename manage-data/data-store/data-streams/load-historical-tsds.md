@@ -70,12 +70,16 @@ The response lists each backing index and the time range it accepts.
 You can't load data older than the eligible write window directly into a {{tsds-init}}.
 For example, if downsampling makes indices read-only after seven days, you can't backfill eighteen months of history into that same data stream.
 
-Instead, create a separate historical {{tsds-init}} without a lifecycle, load the data, then add a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) when the load is complete.
+Instead, create a separate unmanaged historical {{tsds-init}}, load the data, then enable a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) when the load is complete.
+
+:::{note}
+{applies_to}`stack: 9.6` A {{tsds-init}} that has no lifecycle configuration isn't unmanaged. The [minimum data stream lifecycle](/manage-data/lifecycle/data-stream.md#minimum-data-stream-lifecycle) rolls it over and tail merges it while you load data. To prevent this activity, explicitly disable the lifecycle in the index template, as shown in the following step.
+:::
 
 :::::{stepper}
 ::::{step} Create an index template for the historical data stream
 
-Use the same mappings as your live {{tsds-init}}, but don't include a lifecycle policy in the template.
+Use the same mappings as your live {{tsds-init}}, but don't include a lifecycle policy in the template. Instead, disable the data stream lifecycle with `"lifecycle": { "enabled": false }`. {applies_to}`stack: 9.6+` This prevents the minimum lifecycle from managing the stream while you load data.
 For example, use the [create index template]({{es-apis}}operation/operation-indices-put-index-template) API:
 
 ```console
@@ -84,6 +88,9 @@ PUT _index_template/metrics-historical
   "index_patterns": ["metrics-historical-*"],
   "data_stream": {},
   "template": {
+    "lifecycle": {
+      "enabled": false
+    },
     "settings": {
       "index.mode": "time_series"
     },
@@ -126,7 +133,7 @@ For an example of how to check disk space with the [cat allocation API]({{es-api
 
 ::::{step} Add data stream lifecycle
 
-When the load is complete, add a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) to the historical data stream.
+When the load is complete, enable a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) on the historical data stream. This replaces the disabled lifecycle from the template.
 For example, use the [update data stream lifecycles]({{es-apis}}operation/operation-indices-put-data-lifecycle) API:
 
 ```console
