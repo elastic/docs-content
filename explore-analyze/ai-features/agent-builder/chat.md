@@ -675,7 +675,7 @@ Creating a resource from chat is a [human-in-the-loop](#human-in-the-loop-prompt
 
 When you create a workflow, include details such as its trigger, inputs, data sources, conditions, and connectors. The agent asks for any missing information, generates and validates the workflow YAML, and shows the proposed changes for you to review. You can continue refining the draft in the conversation before you open the preview.
 
-For example, the following response includes the generated workflow definition and a summary of its trigger and steps. Select **Preview** to review and save the workflow:
+For example, the following screenshot shows a response that includes the generated workflow definition and a summary of its trigger and steps. Select **Preview** to review and save the workflow:
 
 :::{image} images/create-workflow-from-chat.png
 :screenshot:
@@ -683,7 +683,7 @@ For example, the following response includes the generated workflow definition a
 :width: 720px
 :::
 
-For example, the following preview shows a skill draft that you can review before selecting **Create skill**:
+For example, the following screenshot shows a skill draft that you can review before selecting **Create skill**:
 
 :::{image} images/create-skill-from-chat.png
 :screenshot:
@@ -691,9 +691,12 @@ For example, the following preview shows a skill draft that you can review befor
 :width: 750px
 :::
 
-You need the same privileges that are required to create the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can also ask the agent to view or edit a custom skill in your library, then review the changes and save them from the conversation. For the steps, refer to [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat).
+
+You need the same privileges that are required to create or update the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
 
 - [Create and manage custom skills](custom-skills.md#create-a-skill-from-chat)
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat)
 - [Create and manage workflows](/explore-analyze/workflows.md)
 
 ## Customize your agent [customize-your-agent]
