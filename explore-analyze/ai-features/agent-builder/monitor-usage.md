@@ -60,13 +60,35 @@ At the end of each round, the total token usage is displayed after the agent res
 :alt: Screenshot of the token usage display, showing input and output token counts
 :::
 
-To view the raw JSON response which includes detailed token information, click the **View JSON** button. This opens a modal with the complete, raw response data:
+:::::{applies-switch}
+
+::::{applies-item} stack: preview =9.4
+
+To view the raw JSON response, which includes detailed token information, click the **View JSON** button. This opens a flyout titled **Raw response** with the complete, raw response data:
 
 :::{image} images/token-usage-json-raw-response.png
 :screenshot:
 :width: 900px
-:alt: Screenshot of the JSON raw response modal
+:alt: Screenshot of the Raw response flyout
 :::
+
+::::
+
+::::{applies-item} { stack: ga 9.5+, serverless: ga }
+
+To view the raw JSON response, which includes detailed token information, open the response metadata menu and select **View response JSON**. A flyout titled **Raw response** opens with the complete response data.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The JSON includes `conversation_id`, `agent_id`, and an `execution` object. The following screenshot shows the top of the **Raw response** flyout:
+
+:::{image} images/token-usage-raw-response-9.6.png
+:screenshot:
+:width: 700px
+:alt: Raw response flyout showing conversation_id, agent_id, and execution fields
+:::
+
+::::
+
+:::::
 
 {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` These counts are specific to each {{agent-builder}} response. To monitor aggregate token usage across all AI features in {{kib}}, turn on token usage tracking and use the managed dashboard. Refer to [Track token usage across AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#track-token-usage-across-ai-features).
 
