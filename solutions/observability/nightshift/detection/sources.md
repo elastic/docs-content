@@ -17,13 +17,13 @@ Each set of data that detection watches is a *source*. You choose sources when y
 
 ## Before you begin [nightshift-detection-sources-before]
 
-- An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable).
-- You have the privileges to manage detection sources. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+- An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
+- You have the privileges to manage detection sources. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 - Your project has recent logs, or can reach them through {{cps}}.
 
 ## Turn on detection [nightshift-detection-sources-enable]
 
-To turn on detection, follow [Set up detection](../get-started/detection.md). To watch only some of your logs from the start, [create a source](#nightshift-detection-sources-create) first, then select it when you enable detection. **All logs** watches all your logs with the query `FROM logs*`.
+To turn on detection, follow the detection steps in [Get started](../get-started.md#nightshift-get-started-detection). To watch only some of your logs from the start, [create a source](#nightshift-detection-sources-create) first, then select it when you enable detection. **All logs** watches all your logs with the query `FROM logs*`.
 
 {{nightshift}} starts to learn from each source right away. Refer to [How long learning takes](./learning.md#nightshift-detection-learning-warmup).
 

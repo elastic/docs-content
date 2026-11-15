@@ -58,7 +58,7 @@ The **Knowledge** page shows everything that {{nightshift}} has learned.
 
 The page has a tab for each type of context: **Knowledge Indicators**, **Wiki**, and **Memory**. With [developer mode](../settings.md#nightshift-settings-developer-mode) on, it also has a **Decision Trees** tab.
 
-To view the Knowledge page, or to archive, restore, or delete entries, you need the privileges listed in [Grant access](../get-started/privileges.md#nightshift-privileges-analyst).
+To view the Knowledge page, or to archive, restore, or delete entries, you need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-analyst).
 
 ## Correct what {{nightshift}} learned [nightshift-context-correct]
 

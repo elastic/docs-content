@@ -13,7 +13,7 @@ products:
 
 A significant event is a problem that detection found in your logs: one event for related changes, with a summary of what happened and the signals behind it. Review the list to find what needs attention, check why each event was raised, and start an investigation to find the likely cause.
 
-For the privileges to view events and start investigations, refer to [Grant access](../get-started/privileges.md#nightshift-privileges-analyst).
+For the privileges to view events and start investigations, refer to [Grant access](../privileges.md#nightshift-privileges-analyst).
 
 ## Find an event [nightshift-detection-events-find]
 

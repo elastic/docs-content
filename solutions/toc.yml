@@ -546,10 +546,7 @@ toc:
       - file: observability/nightshift/nightshift.md
         children:
           - file: observability/nightshift/get-started.md
-            children:
-              - file: observability/nightshift/get-started/investigations.md
-              - file: observability/nightshift/get-started/detection.md
-              - file: observability/nightshift/get-started/privileges.md
+          - file: observability/nightshift/privileges.md
           - file: observability/nightshift/reference-architecture.md
           - file: observability/nightshift/use-cases/index.md
             children:
@@ -566,7 +563,6 @@ toc:
               - file: observability/nightshift/detection/learning.md
               - file: observability/nightshift/detection/rules-and-signals.md
               - file: observability/nightshift/detection/significant-events.md
-              - file: observability/nightshift/significant-events/how-it-works.md
               - file: observability/nightshift/significant-events/operator-guide.md
           - file: observability/nightshift/investigation/index.md
             children:
@@ -583,7 +579,6 @@ toc:
           - file: observability/nightshift/settings.md
           - file: observability/nightshift/cost-and-models.md
           - file: observability/nightshift/known-issues.md
-          - file: observability/nightshift/faq.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md

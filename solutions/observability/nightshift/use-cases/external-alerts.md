@@ -35,8 +35,8 @@ flowchart LR
 
 ## Before you begin [nightshift-uc-ext-before]
 
-- An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable).
-- You have the privileges to create automations. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+- An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
+- You have the privileges to create automations. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 - {{nightshift}} can query the data behind the alerts. If the alerts come from an {{ech}} deployment or another cluster, add an External {{es}} connector for it. Refer to [Reference architecture](../reference-architecture.md#nightshift-reference-architecture-ech).
 - To post to Slack, an admin has connected the Slack workspace and the channel. Refer to [Slack](../investigation/set-up.md#nightshift-set-up-slack).
 

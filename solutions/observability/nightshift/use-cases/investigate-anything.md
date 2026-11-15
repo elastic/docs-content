@@ -15,8 +15,8 @@ Describe a problem in your own words, and in a few minutes {{nightshift}} return
 
 ## Before you begin [nightshift-uc-anything-before]
 
-- An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable), and your data is connected. Refer to [Get started](../get-started.md).
-- You have the privileges to start investigations. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-analyst).
+- An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable), and your data is connected. Refer to [Get started](../get-started.md).
+- You have the privileges to start investigations. Refer to [Grant access](../privileges.md#nightshift-privileges-analyst).
 - Investigations count toward the daily limits. Refer to [Investigation limits](../investigation/limits.md).
 
 ## Example: slow ticket lookups [nightshift-uc-anything-example]
@@ -61,13 +61,13 @@ To start an investigation from the home page:
 
 A card appears in the **In progress** section of the home page, named after your question until {{nightshift}} gives it a title.
 
-The **Investigate** button appears after your first investigation. Until then, use the **Ask your own question** box in the **Get started** checklist. Refer to [Try your first investigation](../get-started/investigations.md#nightshift-get-started-first-investigation).
+The **Investigate** button appears after your first investigation. Until then, use the **Ask your own question** box in the **Get started** checklist. Refer to [Try your first investigation](../get-started.md#nightshift-get-started-first-investigation).
 ::::
 
 ::::{step} Wait for the results
 :anchor: nightshift-uc-anything-wait
 
-An investigation usually takes up to five minutes, and stops after 60 minutes. You don't have to keep the page open. Meanwhile, {{nightshift}} tests hypotheses against your logs, metrics, and traces, and your code if you [connected GitHub](../get-started/investigations.md#nightshift-get-started-other-sources).
+An investigation usually takes up to five minutes, and stops after 60 minutes. You don't have to keep the page open. Meanwhile, {{nightshift}} tests hypotheses against your logs, metrics, and traces, and your code if you [connected GitHub](../get-started.md#nightshift-get-started-other-sources).
 
 When it finishes, the card shows **Investigated** and moves to a severity section. {{nightshift}} rates the severity from the investigation results. If a person changes it, {{nightshift}} keeps that change unless later findings contradict it.
 ::::

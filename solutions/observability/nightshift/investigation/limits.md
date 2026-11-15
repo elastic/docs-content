@@ -54,7 +54,7 @@ The run limits apply to the whole deployment, across all spaces. Each one counts
 - **Manual investigations daily limit**: Investigations that people start: from the home page, with **Investigate** on an alert or a significant event, with a Slack mention, or with the API or the CLI. **Run** on an automation counts here too.
 - **All investigations daily limit**: Automatic and manual investigations together. It can be lower than the other two added up, so you can cap the total while letting either kind use most of it.
 
-To change the limits, you need the privileges listed in [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+To change the limits, you need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-admin).
 
 1. On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Settings**.
 1. Select the **Investigations** tab.

@@ -76,7 +76,7 @@ Is the tab empty? Detection hasn't learned anything yet. Select **Go to Sources*
 | Dependency | Which component calls which |
 | Schema | Log format conventions, such as {{product.ecs}}, OpenTelemetry, or a custom format |
 
-Each feature KI cites evidence from your logs and has a confidence score from 0 to 100. KIs that {{nightshift}} computed from statistics always have 100. For the fields of a KI, refer to [KI data model](../significant-events/how-it-works.md#sig-events-hiw-ki-types).
+Each feature KI cites evidence from your logs and has a confidence score from 0 to 100. KIs that {{nightshift}} computed from statistics always have 100.
 
 ### Query KIs [sig-events-ki-query]
 
@@ -111,11 +111,8 @@ KIs stay current without manual cleanup:
 
 Continuous KI onboarding learns each enabled source again every **Onboarding interval (hours)**, 12 by default. Refer to [When learning runs](../detection/learning.md#nightshift-detection-learning-when) and [Continuous KI onboarding](../settings.md#nightshift-settings-ki-onboarding).
 
-For how extraction samples your logs and schedules sources, refer to [How KI extraction works](../significant-events/how-it-works.md#sig-events-ki-extraction).
-
 ## Learn more [nightshift-ki-next]
 
 - [How detection learns your system](../detection/learning.md): Start and track KI extraction for your sources.
 - [Rules and signals](../detection/rules-and-signals.md): Review the rules that detection creates from query KIs.
 - [How {{nightshift}} builds context](./index.md): Compare KIs with the Wiki and Memory.
-- [How Significant Events works](../significant-events/how-it-works.md): Follow KIs through the full detection pipeline.

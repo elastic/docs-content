@@ -82,7 +82,7 @@ products:
 **GitHub OAuth doesn't work for investigations**
 :   Investigations run as a service account, which can't use the personal credentials that GitHub OAuth stores for each user.
 
-    **Workaround:** Connect GitHub with a fine-grained personal access token. Refer to [Get started](./get-started/investigations.md#nightshift-get-started-other-sources).
+    **Workaround:** Connect GitHub with a fine-grained personal access token. Refer to [Get started](./get-started.md#nightshift-get-started-other-sources).
 
 **Four connector types**
 :   Investigations can use Local and External {{es}}, GitHub, and HTTP connectors. Slack connects your team, not data.

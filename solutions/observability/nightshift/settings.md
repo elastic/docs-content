@@ -15,7 +15,7 @@ On the **Settings** page, admins can control what {{nightshift}} can reach and w
 
 ## Before you begin [nightshift-settings-prereqs]
 
-Make sure you have the privileges to open {{nightshift}} **Settings**, and to turn developer mode on or off if you need it. Refer to [Grant access](./get-started/privileges.md#nightshift-privileges-admin).
+Make sure you have the privileges to open {{nightshift}} **Settings**, and to turn developer mode on or off if you need it. Refer to [Grant access](./privileges.md#nightshift-privileges-admin).
 
 ## Open Settings [nightshift-settings-open]
 
@@ -65,7 +65,7 @@ The **Automatic** (5), **Manual** (5), and **All investigations** (10) daily lim
 
 ### Service account [nightshift-settings-service-account]
 
-Shows whether the service account that runs every investigation is **Set up** for the space. Refer to [Privileges that {{nightshift}} runs with](./get-started/privileges.md#nightshift-privileges-accounts).
+Shows whether the service account that runs every investigation is **Set up** for the space. Refer to [Privileges that {{nightshift}} runs with](./privileges.md#nightshift-privileges-accounts).
 
 ### Custom context [nightshift-settings-custom-context]
 
@@ -170,4 +170,4 @@ To start again, resume detection, turn your automations back on, and restore the
 
 - [Cost and models](./cost-and-models.md): Find out what {{nightshift}} costs, and which settings keep it predictable.
 - [Investigation limits](./investigation/limits.md): Learn what happens when a limit is reached.
-- [Grant access to {{nightshift}}](./get-started/privileges.md): Give admins the privileges to change these settings.
+- [Grant access to {{nightshift}}](./privileges.md): Give admins the privileges to change these settings.

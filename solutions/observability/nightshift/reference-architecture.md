@@ -65,7 +65,7 @@ Your data is in an [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md
 :::
 
 - **Detection**: Sources can't read data in an {{ech}} deployment.
-- **Investigation**: Add an External {{es}} connector that points to the deployment's {{es}} endpoint and uses a read-only API key. Refer to [Add data](./get-started/investigations.md#nightshift-get-started-add-data) for the API key request and where to find the endpoint.
+- **Investigation**: Add an External {{es}} connector that points to the deployment's {{es}} endpoint and uses a read-only API key. Refer to [Add data](./get-started.md#nightshift-get-started-add-data) for the API key request and where to find the endpoint.
 
 Automations start from alerts in the {{nightshift}} project. To investigate alerts that fire in the {{ech}} deployment automatically, send them to a Slack channel or to a webhook in the {{nightshift}} project. Refer to [Investigate alerts from your other tools](./use-cases/external-alerts.md).
 

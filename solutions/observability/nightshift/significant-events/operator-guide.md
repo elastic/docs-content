@@ -40,7 +40,7 @@ The following sections describe the query load, pipeline lag, and storage growth
 
 **Alerting rule query load**
 
-One {{alerting-v2-system-short}} rule runs for each promoted query KI, in [**Collect evidence** mode](/explore-analyze/alerting/esql/rules/configure-rule-mode.md). All of these rules run on the same [shared schedule](how-it-works.md#sig-events-hiw-execution), and each run records a match count in `.rule-events` for each time bucket. These matches don't open alerts or appear on the **Alerts** page. On each detection cycle, change point aggregation runs separately for each active rule, against that rule's per-time-bucket match counts. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
+One {{alerting-v2-system-short}} rule runs for each promoted query KI, in [**Collect evidence** mode](/explore-analyze/alerting/esql/rules/configure-rule-mode.md). All of these rules run on the same shared schedule, and each run records a match count in `.rule-events` for each time bucket. These matches don't open alerts or appear on the **Alerts** page. On each detection cycle, change point aggregation runs separately for each active rule, against that rule's per-time-bucket match counts. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
 
 **Pipeline lag**
 
@@ -68,7 +68,7 @@ Significant Events writes to the following data streams:
 
 The Discovery agent writes significant events as alert documents to `.rule-events`, the same index that holds rule execution results, so you can manage and route them like any other alert.
 
-The `.significant_events-detections` data stream uses a data stream lifecycle (DSL) with a default 90-day retention. You can override retention using the data stream lifecycle API. For the full index layout and traceability guidance, refer to [{{esql}} traceability](./how-it-works.md#sig-events-hiw-traceability).
+The `.significant_events-detections` data stream uses a data stream lifecycle (DSL) with a default 90-day retention. You can override retention using the data stream lifecycle API.
 
 ## Cost drivers [sig-events-op-costs]
 
@@ -119,5 +119,4 @@ Turn off **Enable continuous KI onboarding**. Refer to [Continuous KI onboarding
 
 - [How detection works](../detection/index.md): Get an overview of how detection works
 - [{{nightshift}}](../nightshift.md): Get an overview of {{nightshift}} and its requirements
-- [How Significant Events works](./how-it-works.md): Understand how Significant Events processes data, what runs where, and how to trace results across the system
 - [Knowledge Indicators](../context/knowledge-indicators.md): Get an in-depth overview of how KIs work

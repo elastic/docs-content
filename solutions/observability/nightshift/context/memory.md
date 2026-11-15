@@ -49,7 +49,7 @@ An archived memory shows why it was archived: **merged into another memory**, **
 
 ## Archive, restore, or delete a memory [nightshift-memory-archive]
 
-You can't edit memories. When a memory is wrong, archive it. You need the privileges listed in [Grant access](../get-started/privileges.md#nightshift-privileges-analyst).
+You can't edit memories. When a memory is wrong, archive it. You need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-analyst).
 
 1. On the **Memory** tab, select the memory.
 1. Select **Archive**.

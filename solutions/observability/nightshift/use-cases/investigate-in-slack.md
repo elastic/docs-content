@@ -15,7 +15,7 @@ Ask {{nightshift}} for help without leaving Slack. Mention `@Elastic` in a threa
 
 ## Before you begin [nightshift-uc-slack-before]
 
-- An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable).
+- An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
 - An admin has connected your Slack workspace and the channel that you want to use. Refer to [Connect a Slack channel](#nightshift-uc-slack-connect).
 - The channel is public. Private channels aren't supported in Tech Preview.
 

@@ -39,7 +39,7 @@ Custom context gives investigations the facts they can't find in your data, such
 
 ### Add custom context [nightshift-extend-custom-context-add]
 
-To add a snippet, you need the privileges to open **Settings**. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+To add a snippet, you need the privileges to open **Settings**. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 
 1. On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Settings**.
 1. Select the **Investigations** tab.
@@ -85,7 +85,7 @@ How an investigation uses an HTTP connector:
 
 ### Before you begin [nightshift-extend-http-prereqs]
 
-- You have the privileges to open **Settings**. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+- You have the privileges to open **Settings**. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 - The API uses HTTPS on port 443. In Tech Preview, requests to other ports fail with a `502` error.
 - You have credentials for the API that can only read.
 

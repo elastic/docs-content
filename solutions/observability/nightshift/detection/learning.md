@@ -56,4 +56,3 @@ You might not see any events on a healthy system even after a few hours. To rule
 
 - [Rules and signals](./rules-and-signals.md): Check which rules {{nightshift}} wrote from your KIs and what they found.
 - [Knowledge Indicators](../context/knowledge-indicators.md): Browse, correct, and promote KIs.
-- [How Significant Events works](../significant-events/how-it-works.md#sig-events-hiw-ki): Read how extraction samples your data, for operators.

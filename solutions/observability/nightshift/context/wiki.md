@@ -61,7 +61,7 @@ A statement in a chat alone doesn't confirm a page. The facts must come from wha
 
 ## Archive or restore a Wiki page [nightshift-wiki-archive]
 
-You can't edit Wiki pages. When a page is wrong or out of date, archive it. Archiving keeps the page, so you can restore it later. You need the privileges listed in [Grant access](../get-started/privileges.md#nightshift-privileges-analyst).
+You can't edit Wiki pages. When a page is wrong or out of date, archive it. Archiving keeps the page, so you can restore it later. You need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-analyst).
 
 1. On the **Wiki** tab, select the page.
 1. Select **Archive**, and confirm.

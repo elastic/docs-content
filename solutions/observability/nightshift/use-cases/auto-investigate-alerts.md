@@ -17,8 +17,8 @@ products:
 
 Make sure you meet the following requirements:
 
-- An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable).
-- You have the privileges to create automations. Without them, you can only view automations. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+- An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
+- You have the privileges to create automations. Without them, you can only view automations. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 - The alert rules that you want to investigate are in the same project as {{nightshift}}. For alerts from other tools, refer to [Investigate alerts from your other tools](./external-alerts.md).
 - An admin has connected the Slack channel you want to send investigation results to. Refer to [Set up Slack](../investigation/set-up.md#nightshift-set-up-slack).
 

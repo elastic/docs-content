@@ -36,8 +36,8 @@ Investigations reach your systems only through connectors, from a temporary sand
 
 ## Before you begin [nightshift-set-up-prereqs]
 
-- {{nightshift}} is [enabled](../get-started/investigations.md#nightshift-get-started-enable).
-- You have the privileges to open the **Settings** page. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+- {{nightshift}} is [enabled](../get-started.md#nightshift-get-started-enable).
+- You have the privileges to open the **Settings** page. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 
 You manage connections on the **General** tab of the **Settings** page. On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Settings**.
 
@@ -58,7 +58,7 @@ Investigations also reach data in projects linked through [{{cps}}](/deploy-mana
 
 Add an External {{es}} connector when your data is in another cluster or project that [{{cps}}](/deploy-manage/cross-project-search-config.md) can't reach, for example a separate production deployment. For what works with each deployment type, refer to [Reference architecture](../reference-architecture.md).
 
-For the steps, including the API key request, refer to [Add data](../get-started/investigations.md#nightshift-get-started-add-data). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **External Elasticsearch**. Keep these rules in mind:
+For the steps, including the API key request, refer to [Add data](../get-started.md#nightshift-get-started-add-data). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **External Elasticsearch**. Keep these rules in mind:
 
 - **Read-only API key.** Grant only read access, and change `names` in the API key request to match where your data lives.
 - **Port 443.** In Tech Preview, investigations can reach only port 443. If the endpoint ends with another port, such as `:9243`, remove it.
@@ -98,7 +98,7 @@ Connect GitHub so investigations can read the code, configuration, Helm charts, 
 
 {{nightshift}} doesn't copy, sync, or index your repositories. Refer to [Your code](../cost-and-models.md#nightshift-data).
 
-For the steps to create a fine-grained personal access token and connect it, refer to [Connect other sources](../get-started/investigations.md#nightshift-get-started-other-sources). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **GitHub**. Leave **Receive events** turned off: investigations don't need it.
+For the steps to create a fine-grained personal access token and connect it, refer to [Connect other sources](../get-started.md#nightshift-get-started-other-sources). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **GitHub**. Leave **Receive events** turned off: investigations don't need it.
 
 :::{image} ../../../images/nightshift-connector-github.png
 :alt: The GitHub connector flyout with the Inbound and Outbound authentication options, including Personal Access Token (PAT)

@@ -66,7 +66,7 @@ To keep a noisy rule from starting many investigations, set a daily limit. Refer
 ### How long it takes and who it runs as [nightshift-investigations-runtime]
 
 - **Time:** Usually up to five minutes, at most 60 minutes. Refer to [Timeout and concurrency](./limits.md#nightshift-limits-timeout).
-- **Identity:** Every investigation runs as the `nightshift_agent` service account, and reads what that account and your connectors can reach, which can be more or less than you can access. Refer to [Privileges that {{nightshift}} runs with](../get-started/privileges.md#nightshift-privileges-accounts).
+- **Identity:** Every investigation runs as the `nightshift_agent` service account, and reads what that account and your connectors can reach, which can be more or less than you can access. Refer to [Privileges that {{nightshift}} runs with](../privileges.md#nightshift-privileges-accounts).
 - **Cost:** Each investigation uses model tokens. Refer to [Cost and models](../cost-and-models.md).
 
 Its card on the home page shows **Investigating** while it runs and **Investigated** when the results are ready.
@@ -82,7 +82,7 @@ Investigations are written by a large language model, and the conclusion can be 
 - **Expect some variation.** Running the same investigation again can produce different hypotheses or a different conclusion.
 - **Check the time range.** Investigations favor recent data. For an older alert, an investigation can report that the problem isn't happening anymore. Confirm that it looked at the right time.
 
-If a conclusion is wrong, tell {{nightshift}} in chat, and decline the proposed actions that don't fit. For more questions about accuracy and control, refer to the [FAQ](../faq.md#nightshift-faq-control).
+If a conclusion is wrong, tell {{nightshift}} in chat, and decline the proposed actions that don't fit.
 :::
 
 ## Read an investigation [nightshift-read-investigation]
@@ -156,7 +156,7 @@ Each action shows one of these statuses:
 
 The section header counts the closed actions, for example **1 of 3 actions closed**.
 
-To mark actions as applied or declined, you need the privileges listed in [Grant access](../get-started/privileges.md#nightshift-privileges-analyst).
+To mark actions as applied or declined, you need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-analyst).
 
 ### Ask follow-up questions in chat [nightshift-investigations-chat]
 
@@ -180,7 +180,7 @@ When you add or challenge a hypothesis, {{nightshift}} tests it and updates the 
 :screenshot:
 :::
 
-Chat needs the privileges listed in [Grant access](../get-started/privileges.md#nightshift-privileges-analyst).
+Chat needs the privileges listed in [Grant access](../privileges.md#nightshift-privileges-analyst).
 
 ## Next steps [nightshift-investigations-next]
 

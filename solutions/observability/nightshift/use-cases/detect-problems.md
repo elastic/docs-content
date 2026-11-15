@@ -11,14 +11,14 @@ products:
 
 # Detect problems without alerts [nightshift-detect-problems]
 
-{{nightshift}} uses detections to find problems that you haven't created designated alerts for. {{nightshift}} learns how your system normally behaves from your logs, watches for unusual changes, and groups those changes into a [significant event](../significant-events/how-it-works.md). You can then review the evidence from one significant event instead of many small alerts. Then, you can start an investigation.
+{{nightshift}} uses detections to find problems that you haven't created designated alerts for. {{nightshift}} learns how your system normally behaves from your logs, watches for unusual changes, and groups those changes into a [significant event](../detection/significant-events.md). You can then review the evidence from one significant event instead of many small alerts. Then, you can start an investigation.
 
 ## Before you begin [nightshift-uc-detect-before]
 
 Make sure you meet the following requirements:
 
-- An admin has [enabled {{nightshift}}](../get-started/investigations.md#nightshift-get-started-enable).
-- You have the privileges to turn on detection, or an admin has turned it on. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+- An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
+- You have the privileges to turn on detection, or an admin has turned it on. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 - You have recent logs in your project. Detection watches logs only, not metrics or traces.
 - Detection runs all the time and uses tokens. Refer to [Cost and models](../cost-and-models.md).
 
@@ -39,7 +39,7 @@ Detection learns your system from your logs, writes its own rules, and groups un
 ::::{step} Turn on detection
 :anchor: nightshift-uc-detect-enable
 
-If the **Detection engine** on the **Detections** page doesn't show **Monitoring** yet, follow [Set up detection](../get-started/detection.md). The first KIs and rules appear within a few minutes, and the first signals 40 to 100 minutes later.
+If the **Detection engine** on the **Detections** page doesn't show **Monitoring** yet, follow the detection steps in [Get started](../get-started.md#nightshift-get-started-detection). The first KIs and rules appear within a few minutes, and the first signals 40 to 100 minutes later.
 ::::
 
 ::::{step} Review significant events

@@ -87,10 +87,10 @@ Each automation's workflow runs as `nightshift_automations`, and starts its inve
 On **Settings** → **Investigations**, the **Service account** row shows whether the space is **Set up**.
 :::
 
-To stop {{nightshift}} from running, refer to [Stop or pause {{nightshift}}](../settings.md#nightshift-settings-stop).
+To stop {{nightshift}} from running, refer to [Stop or pause {{nightshift}}](./settings.md#nightshift-settings-stop).
 
 ## Next steps [nightshift-privileges-next]
 
-- [Get started](./investigations.md): Enable {{nightshift}} and run your first investigation.
-- [Connect your data and tools](../investigation/set-up.md): Add connectors with the least access that investigations need.
-- [Cost and models](../cost-and-models.md#nightshift-data): Find out what {{nightshift}} sends to models and what it stores.
+- [Get started](./get-started.md): Enable {{nightshift}} and run your first investigation.
+- [Connect your data and tools](./investigation/set-up.md): Add connectors with the least access that investigations need.
+- [Cost and models](./cost-and-models.md#nightshift-data): Find out what {{nightshift}} sends to models and what it stores.

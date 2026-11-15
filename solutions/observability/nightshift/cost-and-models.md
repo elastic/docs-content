@@ -92,7 +92,7 @@ This section explains what {{nightshift}} reads, what it sends to models, and wh
 :   Your data stays in your {{obs-serverless}} project, except the excerpts that {{nightshift}} sends to models. Models run only through EIS: you can't bring your own model, and there's no air-gapped option.
 
 **What it reads**
-:   Investigations reach your data and code through the connectors in the space, with the credentials stored in each connector. Detection reads the data that your detection sources select. Refer to [Privileges that {{nightshift}} runs with](./get-started/privileges.md#nightshift-privileges-accounts).
+:   Investigations reach your data and code through the connectors in the space, with the credentials stored in each connector. Detection reads the data that your detection sources select. Refer to [Privileges that {{nightshift}} runs with](./privileges.md#nightshift-privileges-accounts).
 
 **What it sends to models**
 :   To investigate, {{nightshift}} sends your question or alert, the results of its queries, excerpts of logs, metrics, and traces, code it reads, and Slack messages in the thread to a model through EIS. Detection sends samples of the logs in your sources.

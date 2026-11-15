@@ -113,4 +113,3 @@ Use the **Change** filter to show only some kinds of change.
 
 - [Review significant events](./significant-events.md): Review the events that discovery raised from your signals.
 - [Knowledge Indicators](../context/knowledge-indicators.md): Promote query KIs to rules, or exclude wrong KIs.
-- [How Significant Events works](../significant-events/how-it-works.md): Read how rules run and how discovery works, for operators.

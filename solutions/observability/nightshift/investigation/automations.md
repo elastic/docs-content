@@ -28,8 +28,8 @@ flowchart LR
 
 ## Before you begin [nightshift-automations-prereqs]
 
-- {{nightshift}} is [enabled](../get-started/investigations.md#nightshift-get-started-enable).
-- You have the privileges to create and edit automations. Without them, the edit actions on the **Automations** page are turned off, with a message that explains why. Refer to [Grant access](../get-started/privileges.md#nightshift-privileges-admin).
+- {{nightshift}} is [enabled](../get-started.md#nightshift-get-started-enable).
+- You have the privileges to create and edit automations. Without them, the edit actions on the **Automations** page are turned off, with a message that explains why. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 - To post results to Slack, an admin has [connected the Slack channel](./set-up.md#nightshift-set-up-slack).
 
 To open the **Automations** page, select **Automations** on the {{nightshift}} home page.
@@ -201,7 +201,7 @@ Each automation runs on a [workflow](/explore-analyze/workflows.md) that {{night
 
 Change the automation, not its workflow. {{nightshift}} rewrites the workflow when you save the automation, and deletes it when you delete the automation.
 
-Automations run as a service account, so they keep working when the person who created them leaves. Refer to [Privileges that {{nightshift}} runs with](../get-started/privileges.md#nightshift-privileges-accounts).
+Automations run as a service account, so they keep working when the person who created them leaves. Refer to [Privileges that {{nightshift}} runs with](../privileges.md#nightshift-privileges-accounts).
 
 ## Next steps [nightshift-automations-next]
 
