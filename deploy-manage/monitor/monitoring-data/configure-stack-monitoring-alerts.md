@@ -3,17 +3,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cluster-health-notifications.html
   - https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html
 applies_to:
-  deployment:
-    ess: all
-    ece: all
-    eck: all
-    self: all
+  stack: ga
 products:
   - id: cloud-hosted
   - id: kibana
 ---
 
-# Stack monitoring alerts [kibana-alerts]
+# Stack monitoring alerts
 
 The {{stack}} {{monitor-features}} provide [Alerting rules](../../../explore-analyze/alerting/alerts.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
 
