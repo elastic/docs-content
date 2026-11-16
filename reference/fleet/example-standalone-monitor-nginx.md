@@ -251,7 +251,10 @@ Now that {{agent}} is running, it’s time to confirm that the agent data is flo
 1. Check that {{agent}} logs are flowing.
 
     1. Open the {{kib}} menu and go to **Analytics → Discover**.
-    2. In the KQL query bar, enter the query `agent.id : "{{agent-id}}"` where `{{agent-id}}` is the ID you retrieved from the `elastic-agent status --output yaml` command. For example: `agent.id : "4779b439-1130-4841-a878-e3d7d1a457d0"`.
+    2. Query for the logs of your agent, where `{{agent-id}}` is the ID you retrieved from the `elastic-agent status --output yaml` command. For example, `4779b439-1130-4841-a878-e3d7d1a457d0`:
+
+        - In {{esql}} mode, enter `FROM logs-* | WHERE agent.id == "{{agent-id}}"`.
+        - In classic mode, enter `agent.id : "{{agent-id}}"` in the KQL search bar.
 
         If {{agent}} has connected successfully with your {{ecloud}} deployment, the agent logs should be flowing into {{es}} and visible in {{kib}} Discover.
 

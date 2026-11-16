@@ -303,7 +303,16 @@ It takes a few minutes for {{agent}} to update its configuration and start colle
 
 ## Step 7: Visualize AWS metrics [aws-elastic-agent-visualize-metrics]
 
-Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}}. Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select the `metrics-*` data view, then filter on `data_stream.dataset: "aws.ec2_metrics"`:
+Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}}. Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To see the EC2 metrics:
+
+* In {{esql}} mode, enter:
+
+  ```esql
+  FROM metrics-*
+  | WHERE data_stream.dataset == "aws.ec2_metrics"
+  ```
+
+* In classic mode, select the `metrics-*` data view, then filter on `data_stream.dataset: "aws.ec2_metrics"`.
 
 :::{image} /solutions/images/observability-agent-tut-ec2-metrics-discover.png
 :alt: Screenshot of the Discover app showing EC2 metrics

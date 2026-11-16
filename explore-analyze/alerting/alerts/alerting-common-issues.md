@@ -9,9 +9,9 @@ products:
   - id: kibana
 ---
 
-# Common issues with {{kib}} alerting [alerting-common-issues]
+# Common issues with {{alerting-v1-system}} [alerting-common-issues]
 
-This page describes how to resolve common problems you might encounter with Alerting.
+This page describes how to resolve common problems you might encounter with {{alerting-v1-system}}.
 
 ## Rules with small check intervals run late [rules-small-check-interval-run-late]
 

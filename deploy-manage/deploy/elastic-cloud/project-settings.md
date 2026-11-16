@@ -78,7 +78,7 @@ The default value is **100**, which reserves enough capacity to keep the project
 
 :::::
 
-In {{obs-serverless}} and {{sec-serverless}} projects, search capacity is sized automatically based on the volume of search-ready data in your project. Search capacity does not scale automatically based on query load. If your workload requires additional search capacity, contact Elastic Support.
+In {{obs-serverless}} and {{sec-serverless}} projects, {{ecloud}} sizes search capacity automatically based on the volume of search-ready data in your project. Search capacity doesn't scale automatically based on query load. If your workload requires additional search capacity, contact Elastic Support. To learn what uses search capacity and how to reduce load, refer to [](/troubleshoot/observability/search-capacity.md) for {{obs-serverless}} projects and [](/solutions/security/detect-and-alert/plan-rule-performance.md) for {{sec-serverless}} projects.
 
 ### Search Boost Window [elasticsearch-search-boost-window]
 ```{applies_to}

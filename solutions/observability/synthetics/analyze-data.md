@@ -43,7 +43,7 @@ The screenshot shows {{stack}} 9.6.
 
 To get started with your analysis in the **Overview** tab, you can search for monitors or use the filter options including current status (up, down, or disabled), monitor type (for example, journey or HTTP), location, and more.
 
-Then click an individual monitor to see some details in a flyout. From there, you can click **Go to monitor** to go to an individual monitor’s page to see more details (as described below).
+Then click an individual monitor to see some details in a flyout. From there, click **Go to monitor** to open that monitor’s page.
 
 ### Monitors status and pings over time [synthetics-analyze-overview-activity]
 ```{applies_to}
@@ -63,10 +63,10 @@ To zoom in on part of the chart, drag to select a range. The rest of the page fo
 
 ## All monitor types [synthetics-analyze-individual-monitors]
 
-When you go to an individual monitor’s page, you’ll see much more detail about the monitor’s performance over time. The details vary by monitor type, but for every monitor at the top of the page you’ll see:
+When you open an individual monitor’s page, you see much more detail about the monitor’s performance over time. The details vary by monitor type, but for every monitor at the top of the page you see:
 
 * The monitor’s **name** with a down arrow icon that you can use to quickly move between monitors.
-* The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you’ll also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
+* The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
 * The latest **status** and when the monitor was **last run**.
 * The **![Beaker icon](/solutions/images/observability-beaker.svg "") Run test manually** button that allows you to run the test on demand before the next scheduled run.
 
@@ -105,14 +105,14 @@ The **Overview** tab has information about the monitor availability, duration, a
 
 The **History** tab has information on every time the monitor has run. It includes some high-level stats and a complete list of all test runs. Use the calendar icon (![Calendar icon](/solutions/images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
 
-For browser monitors, you can click on any run in the **Test runs** list to see the details for that run. Read more about what information is included the in [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run) section below.
+For browser monitors, you can click on any run in the **Test runs** list to see the details for that run. Read more about that information in [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
 
 :::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-history.png
 :alt: The History tab on the individual monitor page for all monitor types in the {{synthetics-app}}
 :screenshot:
 :::
 
-If the monitor is configured to [retest on failure](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor), you’ll see retests listed in the **Test runs** table. Runs that are retests include a rerun icon (![Refresh icon](/solutions/images/observability-refresh.svg "")) next to the result badge.
+If the monitor is configured to [retest on failure](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor), you see retests listed in the **Test runs** table. Runs that are retests include a rerun icon (![Refresh icon](/solutions/images/observability-refresh.svg "")) next to the result badge.
 
 :::{image} /solutions/images/observability-synthetics-retest.png
 :alt: A failed run and a retest in the table of test runs in the {{synthetics-app}}
@@ -121,11 +121,11 @@ If the monitor is configured to [retest on failure](/solutions/observability/syn
 
 ### Errors [synthetics-analyze-individual-monitors-errors]
 
-The **Errors** tab has information on failed runs. If the monitor is configured to [retest on failure](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor), failed runs will only result in an error if both the initial run and the rerun fail. This can reduce noise related to transient problems.
+The **Errors** tab has information on failed runs. If the monitor is configured to [retest on failure](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor), a failed run results in an error only if both the initial run and the rerun fail. This can reduce noise related to transient problems.
 
 The Errors tab includes a high-level overview of all alerts and a complete list of all failures. Use the calendar icon (![Calendar icon](/solutions/images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
 
-For browser monitors, you can click on any run in the **Error** list to open an **Error details** page that includes most of the same information that is included the in [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run) section below.
+For browser monitors, you can click on any run in the **Error** list to open an **Error details** page that includes most of the same information as [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
 
 :::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-errors.png
 :alt: The Errors tab on the individual monitor page for all monitor types in the {{synthetics-app}}
@@ -156,14 +156,14 @@ The journey page on the Overview tab includes:
 
 From here, you can either drill down into:
 
-* The latest run of the full journey by clicking **![Inspect icon](/solutions/images/observability-inspect.svg "") View test run** or a past run in the list of **Last 10 test runs**. This will take you to the view described below in [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
-* An individual step in this run by clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) next to one of the steps. This will take you to the view described below in [Details for one step](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step).
+* The latest run of the full journey by clicking **![Inspect icon](/solutions/images/observability-inspect.svg "") View test run** or a past run in the list of **Last 10 test runs**. This opens [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
+* An individual step in this run by clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) next to one of the steps. This opens [Details for one step](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step).
 
 ### Details for one run [synthetics-analyze-one-run]
 
 The page detailing one run for a journey includes more information on each step in the current run and opportunities to compare each step to the same step in previous runs.
 
-At the top of the page, see the *Code executed* and any *Console* output for each step. If the step failed, this will also include a *Stacktrace* tab that you can use to diagnose the cause of errors.
+At the top of the page, see the *Code executed* and any *Console* output for each step. If the step failed, this also includes a *Stacktrace* tab that you can use to diagnose the cause of errors.
 
 Navigate through each step using **![Previous icon](/solutions/images/observability-arrowLeft.svg "") Previous** and **Next ![Next icon](/solutions/images/observability-arrowRight.svg "")**.
 
@@ -172,21 +172,21 @@ Navigate through each step using **![Previous icon](/solutions/images/observabil
 :screenshot:
 :::
 
-Scroll down to dig into the steps in this journey run. Click the ![Arrow right icon](/solutions/images/observability-arrowRight.svg "") icon next to the step number to show details. The details include metrics for the step in the current run and the step in the last successful run. Read more about step-level metrics below in [Timing](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-timing) and [Metrics](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-metrics).
+Open the steps in this journey run. Click the ![Arrow right icon](/solutions/images/observability-arrowRight.svg "") icon next to the step number to show details. The details include metrics for the step in the current run and the step in the last successful run. Read more about step-level metrics in [Timing](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-timing) and [Metrics](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-metrics).
 
 This is particularly useful to compare the metrics for a failed step to the last time it completed successfully when trying to diagnose the reason it failed.
 
 ![Step list on a page detailing one run of a browser monitor in the Synthetics UI](/solutions/images/observability-synthetics-analyze-one-run-compare-steps.png "")
 
-Drill down to see even more details for an individual step by clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) next to one of the steps. This will take you to the view described below in [Details for one step](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step).
+Drill down to see even more details for an individual step by clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) next to one of the steps. This opens [Details for one step](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step).
 
 ### Details for one step [synthetics-analyze-one-step]
 
-After clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) you’ll see more detail for an individual step.
+After clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) you see more detail for an individual step.
 
 #### Screenshot [synthetics-analyze-one-step-screenshot]
 
-By default the synthetics library will capture a screenshot for each step regardless of whether the step completed or failed.
+By default the synthetics library captures a screenshot for each step regardless of whether the step completed or failed.
 
 ::::{note}
 Customize screenshot behavior for all monitors in the [configuration file](/solutions/observability/synthetics/configure-projects.md), for one monitor using [`monitor.use`](/solutions/observability/synthetics/configure-individual-browser-monitors.md), or for a run using the [CLI](/solutions/observability/synthetics/cli.md#elastic-synthetics-command).
@@ -223,7 +223,7 @@ This gives you an overview of how much time is spent (and how that time is spent
 
 #### Metrics [synthetics-analyze-one-step-metrics]
 
-The **Metrics** visualization gives you insight into the performance of the web page visited in the step and what a user would experience when going through the current step. Metrics include:
+The **Metrics** visualization gives you insight into the performance of the web page visited in the step and what a user experiences when going through the current step. Metrics include:
 
 * **First contentful paint (FCP)** focuses on the initial rendering and measures the time from when the page starts loading to when any part of the page’s content is displayed on the screen.
 * **Largest contentful paint (LCP)** measures loading performance. To provide a good user experience, LCP should occur within 2.5 seconds of when the page first starts loading.
@@ -247,7 +247,7 @@ Next to each metric, there’s an icon that indicates whether the value is highe
 
 The **Object weight** visualization shows the cumulative size of downloaded resources by type, and **Object count** shows the number of individual resources by type.
 
-This provides a different kind of analysis. For example, you might have a large number of JavaScript files, each of which will need a separate download, but they may be collectively small. This could help you identify an opportunity to improve efficiency by combining multiple files into one.
+This provides a different kind of analysis. For example, you might have many JavaScript files, each of which needs a separate download, but they can be collectively small. This could help you identify an opportunity to improve efficiency by combining multiple files into one.
 
 :::{image} /solutions/images/observability-synthetics-analyze-one-step-object.png
 :alt: Object visualization for one step in a browser monitor in the {{synthetics-app}}
@@ -258,7 +258,7 @@ This provides a different kind of analysis. For example, you might have a large 
 
 The **Network requests** visualization is a waterfall chart that shows every request the page made when a user executed it. Each line in the chart represents an HTTP network request and helps you quickly identify what resources are taking the longest to load and in what order they are loading.
 
-The colored bars within each line indicate the time spent per resource. Each color represents a different part of that resource’s loading process (as defined in the [Timing](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-timing) section above) and includes the time spent downloading content for specific Multipurpose Internet Mail Extensions (MIME) types: HTML, JS, CSS, Media, Font, XHR, and Other.
+The colored bars within each line indicate the time spent per resource. Each color represents a different part of that resource’s loading process (as defined in [Timing](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-timing)) and includes the time spent downloading content for specific Multipurpose Internet Mail Extensions (MIME) types: HTML, JS, CSS, Media, Font, XHR, and Other.
 
 Understanding each phase of a request can help you improve your site’s speed by reducing the time spent in each phase.
 
@@ -316,3 +316,45 @@ You can open a remote monitor's individual page the same way as a local monitor.
 :::{tip}
 **Refresh** remains available. If you have monitors from multiple remote clusters, the **Remote** badge shows which {{kib}} instance each monitor comes from. To edit, enable/disable, delete, or run a remote monitor, open the Synthetics UI on the {{kib}} instance where the monitor is defined.
 :::
+
+## Autodiscovered monitors [synthetics-analyze-autodiscovered-monitors]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs can also appear in the Synthetics UI, as long as they write to `synthetics-*`. This includes monitors {{heartbeat}} creates through [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) as hosts and pods come and go. You can see their status in Synthetics, including when you move off the deprecated {{uptime-app}}. Synthetics builds each entry from check data alone. The entry carries a **Heartbeat** badge next to the monitor type and is read-only.
+
+To hide them, click {icon}`controls` **Display options** in the toolbar on the **Overview** tab and turn off **Show autodiscovered monitors**. Your browser remembers the setting for each {{kib}} space. Turning it off also removes these monitors from the status counts, not just from the page.
+
+Because Synthetics doesn't manage these monitors, the following actions are disabled:
+
+- **Edit monitor**
+- **Clone monitor**
+- **Enable/Disable**
+- **Run test manually**
+- **Create SLO**, which tracks the monitor as a [service-level objective](/solutions/observability/incident-management/service-level-objectives-slos.md)
+- **Enable/Disable status alerts**
+
+:::{tip}
+**Go to monitor** remains available, and the monitor's own page opens as usual with a **Heartbeat monitor (read-only)** callout. To edit what one of these monitors checks, or to stop it from running, edit the {{heartbeat}} configuration or the {{agent}} policy that defines it.
+:::
+
+Monitors appear in Synthetics only if they write to `synthetics-*`:
+
+* **{{agent}} running the Synthetics integration**, including {{k8s}} and Docker autodiscovery, writes to `synthetics-*`. These monitors appear with no extra configuration.
+* **Standalone {{heartbeat}} `browser` and `api` monitors** are routed to `synthetics-*` automatically. These monitors also appear with no extra configuration.
+* **Standalone {{heartbeat}} `http`, `tcp`, and `icmp` monitors** write to `heartbeat-*` by default and don't appear. To route one of them, add a `data_stream` block that sets `type` to the monitor's definition in your [{{heartbeat}} configuration](beats://reference/heartbeat/configuration-heartbeat-options.md). The dataset defaults to the monitor type, so the following monitor writes to `synthetics-http-default`:
+
+    ```yaml
+    heartbeat.monitors:
+    - type: http
+      id: my-http-service
+      name: My HTTP Service
+      urls: "https://myhost:443"
+      schedule: '@every 1m'
+      data_stream:
+        type: synthetics
+    ```
+
+Synthetics shows at most 1,000 autodiscovered monitors, which keeps a large pool of short-lived pod-level monitors from crowding out the monitors you defined yourself. Synthetics fills that limit in alphabetical order of monitor ID, so when you have more, the ones latest in the alphabet are left out of both the monitor list and the status counts.

@@ -79,6 +79,8 @@ stack: ga 9.3+
 
 Use the agent selector to switch agents, to navigate to the agent management section, or to create a new agent. An agent's behavior is defined by its custom instructions and available tools. Switch agents when you need different capabilities for your tasks.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Hidden agents](agent-builder-agents.md#hidden-agents) aren't listed in the agent selector, even when you turn on **Show hidden agents** on the **Agents** page. If you start a chat with a hidden agent, for example from the **Agents** page, the selector still shows it as the current agent.
+
 :::{image} images/agent-builder-agent-selector.png
 :screenshot:
 :alt: Agent selector dropdown showing available agents with options to create or manage agents
@@ -372,6 +374,13 @@ For example, the following chat history panel shows one conversation in progress
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` There's no status for stopped or failed responses. If a response stops or fails in a conversation you aren't viewing, that conversation shows as **Unread**, like any other new activity. To see the stopped response or the error, open the conversation. For more information, refer to [Stopped and failed responses](#stopped-and-failed-responses).
 
+Opening a conversation marks it as read. To change the read status of a conversation:
+
+1. In the chat history panel, hover over the conversation and select the **Open conversation menu** icon {icon}`boxes_vertical`.
+2. Select **Mark as read** or **Mark as unread**. The menu shows **Mark as read** when the conversation is unread, and **Mark as unread** otherwise.
+
+If you mark the conversation you're viewing as unread, it switches back to read right away, or as soon as the agent finishes responding. To keep a conversation unread, open a different conversation first, then mark it as unread.
+
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
 #### Where the agent's progress appears
@@ -468,6 +477,68 @@ For example, the following **Reasoning** panel shows a tool call with its **Insp
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The JSON includes `conversation_id` and `agent_id`, and an `execution` object for that response.
 
+### Rate a response [rate-a-response]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+After the agent finishes responding, you can rate the response with the **Good response** icon {icon}`thumbUp` or the **Bad response** icon {icon}`thumbDown`. The icons appear with the other response actions, such as **Copy response**.
+
+Only the conversation owner can view the icons, so they don't appear when you view a [shared or public conversation](#share-a-conversation) that you don't own. The icons also stay hidden when:
+
+- The agent is still responding.
+- The response has [stopped or failed](#stopped-and-failed-responses).
+- The conversation is read-only. Conversations created through the API as read-only show a **Read-Only** badge and have no chat input.
+
+To rate a response, select the **Good response** or **Bad response** icon. Your rating is saved right away and stays on the response when you reload the page. What happens next depends on the rating:
+
+- **Good response**: **Glad it helped!** and **Tell us more** replace the icons. To keep the rating without adding details, select the **Dismiss** icon {icon}`cross`.
+- **Bad response**: The **What went wrong?** dialog opens so you can add details.
+
+#### Add details to a rating
+
+To tell Elastic more about a rating:
+
+1. Open the feedback dialog. For a good rating, select **Tell us more** to open the **What worked well?** dialog. For a bad rating, the **What went wrong?** dialog is already open.
+2. Select the options that apply. You can select more than one.
+   - **What worked well?**: **Accurate**, **Useful**, and **Well explained**
+   - **What went wrong?**: **Inaccurate**, **Incomplete**, and **Didn't follow instructions**
+3. Optional: In the **Add comment** field, enter a comment of up to 500 characters.
+4. Select **Submit**. The response actions briefly show **Thank you for your feedback**.
+
+To keep the rating without adding details, select **Cancel** or close the dialog.
+
+For example, the following **What went wrong?** dialog has one option selected and a comment:
+
+:::{image} images/agent-builder-rate-response-dialog.png
+:screenshot:
+:alt: The What went wrong? dialog with the Incomplete option selected and a comment entered
+:width: 400px
+:::
+
+#### Change or remove a rating
+
+- To change a rating, select the other icon. If **Glad it helped!** is showing, select the **Dismiss** icon {icon}`cross` first to bring the icons back. Changing the rating also deletes any options and comment you submitted for the previous rating.
+- To remove a rating, select the highlighted icon again. Removing the rating also deletes any options and comment you submitted.
+
+#### Data shared with Elastic
+
+Both feedback dialogs show this notice: "Your comment and metadata will be shared with Elastic." When [telemetry](kibana://reference/configuration-reference/telemetry-settings.md) is turned on, Elastic receives the following each time you rate a response or submit details:
+
+- The rating, good or bad
+- The options you select
+- Your comment, when you add one
+- The conversation ID, the response ID, and the trace ID
+- The agent ID
+- The connector and the model
+- The input and output token counts
+- The number of model calls
+
+When you remove a rating, Elastic receives the same information without the rating, options, and comment.
+
+Elastic doesn't receive the text of your messages or of the agent's responses. In {{serverless-full}}, telemetry is always on. For details, refer to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
+
 ### Stopped and failed responses [stopped-and-failed-responses]
 ```{applies_to}
 stack: ga 9.6+
@@ -494,7 +565,7 @@ The end of the response shows why it ended:
 Stopped and failed responses:
 
 - Stay in the conversation when you reload the page or open another conversation.
-- Don't include the **Copy response** icon, the response metadata menu, or the [View Trace icon](#view-traces).
+- Don't include the **Copy response** icon, the response metadata menu, the [View Trace icon](#view-traces), or the [**Good response** and **Bad response** icons](#rate-a-response).
 - Can't be retried. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
 
 ### Call a specific API operation [call-a-specific-api-operation]
@@ -766,10 +837,12 @@ The following image shows the **Customize** section of the left sidebar:
 stack: ga 9.4+
 ```
 
-The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of all agents, skills, plugins, connectors, and tools available across the deployment.
+The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of the agents, skills, plugins, connectors, and tools available across the deployment.
 
 **Agents**
-:   View all agents available in the current {{kib}} space. The list displays each agent's name and access control level (**Public**, **Shared**, or **Private**), a **Read-only** badge for built-in agents, and any labels. From this page, you can create new agents, edit existing ones, or start a chat.
+:   View the agents available in the current {{kib}} space. The list displays each agent's name and access control level (**Public**, **Shared**, or **Private**), a **Read-only** badge for built-in agents, and any labels. From this page, you can create new agents, edit existing ones, or start a chat.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list doesn't include [hidden agents](agent-builder-agents.md#hidden-agents) until you turn on **Show hidden agents**.
 
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
 

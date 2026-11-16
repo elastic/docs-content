@@ -538,7 +538,7 @@ For more on using the **Metrics Explorer** page, refer to [Explore infrastructur
 
 Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From the **Data view** menu, select `All logs`. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
+In {{esql}} mode, enter `FROM logs-*`. In classic mode, select `All logs` from the **Data view** menu. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
 
 * [Explore logs in Discover](../logs/discover-logs.md) for an overview of viewing your logs in Discover.
 * [Filter logs in Discover](../logs/filter-aggregate-logs.md#logs-filter-discover) for more on filtering logs in Discover.
