@@ -43,7 +43,7 @@ Set the endpoint and API key of your deployment or project as environment variab
 :sync: macos-linux
 
 ```bash
-export ES_URL="<YOUR_PROJECT_URL>" <1>
+export ES_URL="<YOUR_ELASTICSEARCH_URL>" <1>
 export ES_API_KEY="YOUR_API_KEY"
 ```
 
@@ -55,7 +55,7 @@ export ES_API_KEY="YOUR_API_KEY"
 :sync: windows-powershell
 
 ```powershell
-$Env:ES_URL = "<YOUR_PROJECT_URL>" <1>
+$Env:ES_URL = "<YOUR_ELASTICSEARCH_URL>" <1>
 $Env:ES_API_KEY = "YOUR_API_KEY"
 ```
 
@@ -118,7 +118,7 @@ For supported Ruby versions and other requirements, refer to the [Ruby client in
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```bash
@@ -228,7 +228,7 @@ es = Elasticsearch::Client.new(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -413,7 +413,7 @@ es.indices.create(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -716,7 +716,7 @@ es.bulk(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1058,7 +1058,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1301,7 +1301,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1600,7 +1600,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1903,7 +1903,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -2504,7 +2504,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 :::{dropdown} Complete runnable script

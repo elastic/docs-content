@@ -145,12 +145,14 @@ links:
 :::
 
 :::{link-card}
-title: Specialized quickstarts
+title: Specialized hands-on tutorials
 links:
   - label: Time series data stream basics
     url: /manage-data/data-store/data-streams/quickstart-tsds.md
-  - label: "Quickstart: Vector and full-text search"
-    url: /solutions/search/get-started/quickstarts.md
+  - label: Semantic search with semantic_text
+    url: /solutions/search/semantic-search/semantic-search-semantic-text.md
+  - label: "Tutorial: Build multimodal search"
+    url: /solutions/search/multimodal-search/multimodal-search-tutorial.md
 :::
 ::::
 
