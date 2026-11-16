@@ -86,7 +86,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 
     :::{dropdown} PDF
     * When a dashboard report includes a data table or Discover session, the PDF includes only the visible data.
-    * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * For dashboard PDFs, turn on **Print format** (or **Optimize for printing**, depending on your {{stack}} version) to get a printer-friendly report that uses multiple A4 portrait pages and shows at most two visualizations per page. Use it for reports that you want to print or share, and for dashboards that are too tall or too wide for a standard PDF. If a dashboard is more than 16000 pixels tall or 14400 pixels wide, {{kib}} fails the report and suggests print format in the error message. The option appears in the export flyout and, when you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation), in the schedule form.
     * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
     * Certain [limitations apply](#pdf-limitations).
     :::
