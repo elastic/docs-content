@@ -195,7 +195,7 @@ If you want to keep your older data as read-only:
 If you need to write directly to non-write backing indices of data streams in a {{ccr-init}}-replicated cluster pair:
 
 1. Before upgrading, remove the data stream and all follower indices from the {{ccr-init}} follower.
-2. Run the Upgrade Assistant and select the “Reindex” option.
+2. Run the Upgrade Assistant and select the reindex action for the data stream.
 3. Once the reindexing is complete and the leader cluster is upgraded, re-add the newly reindexed backing indexes as follower indices on the {{ccr-init}} follower.
 
 
