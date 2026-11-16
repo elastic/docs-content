@@ -130,7 +130,7 @@ curl \
 -XPOST \ <1>
 -u elastic \ <2>
 -H 'kbn-xsrf: true' \ <3>
-'http://0.0.0.0:5601/api/reporting/generate/csv?jobParams=...' <4>
+'http://0.0.0.0:5601/api/reporting/generate/csv_searchsource?jobParams=...' <4>
 ```
 
 1. The required `POST` method.
@@ -146,8 +146,8 @@ An example response for a successfully queued report:
   "path": "/api/reporting/jobs/download/jxzaofkc0ykpf4062305t068", <1>
   "job": {
     "id": "jxzaofkc0ykpf4062305t068",
-    "index": ".reporting-2018.11.11",
-    "jobtype": "csv",
+    "index": ".ds-.kibana-reporting-2025.11.11-000001",
+    "jobtype": "csv_searchsource",
     "created_by": "elastic",
     "payload": ..., <2>
     "timeout": 120000,
@@ -157,7 +157,7 @@ An example response for a successfully queued report:
 ```
 
 1. The relative path on the {{kib}} host for downloading the report.
-2. (Not included in the example) Internal representation of the reporting job, as found in the `.reporting-*` storage.
+2. (Not included in the example) Internal representation of the reporting job, as stored in the `.kibana-reporting` data stream.
 
 
 
@@ -171,7 +171,8 @@ The response payload of a request to generate a report includes the path to down
   {{kib}} sends a `200` response status for successfully queuing a Reporting job via the POST URL. This is true even if the job somehow fails later, since report generation happens asynchronously from queuing.
   ::::
 
-* **`400` (Bad Request)**: When sending requests to the POST URL, if you don’t use `POST` as the HTTP method, or if your request is missing the `kbn-xsrf` header, {{kib}} returns a `400` status response for the request.
+* **`400` (Bad Request)**: When sending requests to the POST URL, if your request is missing the `kbn-xsrf` header, {{kib}} returns a `400` status response.
+* **`405` (Method Not Allowed)**: If you send a `GET` request to the POST URL, {{kib}} returns a `405` status response. Use the `POST` method to queue a report.
 * **`503` (Service Unavailable)**: When using the `path` to request the download, you get a `503` status response if report generation hasn’t completed yet. The response will include a `Retry-After` header. You can set the script to wait the number of seconds in the `Retry-After` header, and then repeat if needed, until the report is complete.
 * **`500` (Internal Server Error)**: When using the `path` to request the download, you get a `500` status response if the report isn’t available due to an error when generating the report. More information is available on the **Reporting** page, under **Stack Management** → **Alerts and Insights**.
 
@@ -274,7 +275,9 @@ Save time by setting up a recurring task that automatically generates reports an
 
 6. Select **Schedule exports** to save the schedule. 
 
-A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, select the **Schedules** tab to view details for the newly-created schedule. 
+A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, select the **Schedules** tab to view details for the newly created schedule.
+
+Each time the schedule runs, the generated report appears on the **Exports** tab of the **Reporting** page, with **Scheduled** in the **Export type** column. From there, you can download the report, whether or not you chose to send it by email.
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
 
@@ -285,7 +288,7 @@ To manage a schedule, you can take the following actions from the **Schedules** 
 ::::{applies-switch}
 
 :::{applies-item} {serverless: ga, stack: ga 9.3+}
-- **Disable schedule**: Permanently turn off a schedule but keep a record of it on the **Reporting** page.
+- **Disable schedule**: Stop a schedule from generating future reports, but keep a record of it on the **Reporting** page.
 - **Enable schedule**: Restart a disabled schedule.
 - **Edit schedule config**: Modify an existing schedule.
 - **Delete schedule**: Permanently stop a schedule and remove its record from the **Reporting** page. You can't recover a deleted schedule.

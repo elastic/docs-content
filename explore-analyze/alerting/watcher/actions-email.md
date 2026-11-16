@@ -62,7 +62,7 @@ To configure attachments, specify a name for the attached file and the type of a
         },
         "dashboard.pdf" : {
           "reporting" : {
-            "url": "http://example.org:5601/api/reporting/generate/dashboard/Error-Monitoring"
+            "url": "http://example.org:5601/api/reporting/generate/printablePdfV2?jobParams=..."
           }
         },
         "data.yml" : {
