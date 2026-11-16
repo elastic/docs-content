@@ -52,7 +52,7 @@ To filter events and read the statuses, refer to [Review significant events](../
 ::::{step} Read an event
 :anchor: nightshift-uc-detect-read
 
-Select the event to read **What happened?** and the detections behind it. Treat a low confidence as a lead to check. Refer to [Read an event](../detection/significant-events.md#nightshift-detection-events-read).
+Select the event to read **What happened?** and the detections behind it. Treat a low confidence as a lead to check. Refer to [Review an event](../detection/significant-events.md#nightshift-detection-events-read).
 
 ::::
 
@@ -91,5 +91,5 @@ These investigations count toward the **Automatic investigations daily limit**. 
 
 - [How detection works](../detection/index.md): Learn how data becomes Knowledge Indicators, rules, signals, and significant events.
 - [Review significant events](../detection/significant-events.md): Learn every filter, status, and action on the **Events** tab.
-- [Choose what detection watches](../detection/sources.md): Add, edit, or pause sources.
+- [Manage what detection monitors](../detection/sources.md): Add, edit, or pause sources.
 - [Automatically investigate your alerts](./auto-investigate-alerts.md): Set up the automation that investigates significant events for you.

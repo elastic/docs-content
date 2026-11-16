@@ -80,7 +80,7 @@ Connect GitHub so investigations can read the code, configuration, Helm charts, 
 
 For the steps to create a fine-grained personal access token and connect it, refer to [Connect GitHub](../get-started.md#nightshift-get-started-other-sources). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **GitHub**. Leave **Receive events** turned off: investigations don't need it.
 
-To point investigations at the right repositories, name them in the instructions of an automation, or in custom context. For example, "The source for the checkout services is in `acme/checkout`." Refer to [Automations](./automations.md#nightshift-automations-instructions) and [Custom context](./extend.md#nightshift-extend-custom-context).
+To point investigations at the right repositories, name them in the instructions of an automation, or in custom context. For example, "The source for the checkout services is in `acme/checkout`." Refer to [Automation instructions](./automations.md#nightshift-automations-instructions) and [Custom context](./extend.md#nightshift-extend-custom-context).
 
 For all GitHub connector settings, refer to [GitHub connector](kibana://reference/connectors-kibana/github-action-type.md).
 

@@ -141,7 +141,7 @@ The automation now investigates each matching alert, within the daily limits. In
 Alerts catch the problems you think of in advance. Detection finds the problems that your alerts don't. {{nightshift}} learns how your system normally behaves, watches for unusual changes, and groups related changes into a significant event, so you review one problem instead of a pile of small alerts. Investigations work without it, so you can turn it on whenever you're ready.
 
 1. On the {{nightshift}} home page, select **Detections**. If you aren't seeing it, make sure you've completed the **Get started** checklist. If you see **Detection setup requires manage and configure access**, ask an admin to enable it.
-1. Under **Select data sources to analyze**, keep **All logs** (`FROM logs*`) selected. To watch only some of your data, select **Create new source**. Refer to [Choose what detection watches](./detection/sources.md).
+1. Under **Select data sources to analyze**, keep **All logs** (`FROM logs*`) selected. To watch only some of your data, select **Create new source**. Refer to [Manage what detection monitors](./detection/sources.md).
 1. Select **Enable detection**.
 
 A badge by the **Detection engine** heading now shows **Monitoring**, and there's nothing else to turn on. {{nightshift}} starts learning your system, and the first signals appear 40 to 100 minutes later. Significant events appear only when something unusual happens, so a quiet system can stay at zero for a while.

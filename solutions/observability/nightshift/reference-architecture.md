@@ -38,7 +38,7 @@ The simplest setup is having your logs, metrics, and traces in the same {{obs-se
 :width: 100%
 :::
 
-- **Detection**: Add a source such as **All logs** and select **Enable detection**. Refer to [Choose what detection watches](./detection/sources.md).
+- **Detection**: Add a source such as **All logs** and select **Enable detection**. Refer to [Manage what detection monitors](./detection/sources.md).
 - **Investigation**: When you enable {{nightshift}}, it creates a **Local Elasticsearch** connector for the project. You don't set up anything else.
 
 ## {{serverless-short}} with {{cps}}[nightshift-reference-architecture-cps]

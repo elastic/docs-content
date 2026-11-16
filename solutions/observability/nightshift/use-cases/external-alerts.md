@@ -177,7 +177,7 @@ inventory-api uses the Postgres database encore. Runbook:
 https://wiki.example.com/runbooks/checkout. Code: github.com/example/inventory-api.
 ```
 
-To give this context to every investigation, not only this automation's, add it as custom context in **Settings**. Refer to [Extend investigations](../investigation/extend.md#nightshift-extend-custom-context).
+To give this context to every investigation, not only this automation's, add it as custom context in **Settings**. Refer to [Custom context](../investigation/extend.md#nightshift-extend-custom-context).
 
 ## Limits that apply [nightshift-uc-ext-limits]
 

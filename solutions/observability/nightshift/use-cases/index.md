@@ -28,7 +28,7 @@ Each guide walks you through one scenario from start to finish.
 | Find out why an alert fired | [Investigate your alerts](./investigate-alerts.md) | Start an investigation from an alert, so {{nightshift}} has the service, the symptom, and the time window from the start. |
 | Have {{nightshift}} automatically investigate alerts | [Automatically investigate your alerts](./auto-investigate-alerts.md) | Set up an automation that investigates each matching alert or significant event and posts the findings to Slack, without anyone starting it. |
 | Investigate alerts from your other tools | [Investigate alerts from your other tools](./external-alerts.md) | Set up an automation that investigates alerts from another monitoring tool, an {{ech}} deployment, PagerDuty, or a script, when they arrive in Slack or by webhook. |
-| Find problems outside your alerts | [Detect problems automatically](./detect-problems.md) | Use significant events to find unusual changes in your logs and group them into one problem that you can review and investigate. |
+| Find problems outside your alerts | [Detect problems without alerts](./detect-problems.md) | Use significant events to find unusual changes in your logs and group them into one problem that you can review and investigate. |
 
 ## How the use cases work together [nightshift-use-cases-map]
 

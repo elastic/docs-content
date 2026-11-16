@@ -66,6 +66,6 @@ On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select
 - [Get started](./get-started.md): Set up {{nightshift}} and run your first investigation.
 - [What you can do with {{nightshift}}](./use-cases/index.md): Follow step-by-step guides for investigating problems, automating investigations, and detecting problems.
 - [How investigations work](./investigation/index.md): Read an investigation and check its reasoning.
-- [How context is built](./context/index.md): Review or correct what {{nightshift}} learned in the Wiki, Memory, and Knowledge Indicators.
+- [How {{nightshift}} builds context](./context/index.md): Review or correct what {{nightshift}} learned in the Wiki, Memory, and Knowledge Indicators.
 - [Cost and models](./cost-and-models.md): Find out what {{nightshift}} costs and how your data is used.
 - [Reference architecture](./reference-architecture.md): Check what works with your deployment, whether {{serverless-short}}, {{ech}}, or self-managed.

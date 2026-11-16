@@ -90,12 +90,12 @@ To start from a schedule or a Slack message instead, refer to [Triggers](../inve
 
 - **Start narrow.** Begin with a few rules that fire a few times a day and matter to someone. Widen it when the results are useful.
 - **Read the first results.** Check the hypothesis tree of the first investigations, and improve the instructions where {{nightshift}} looked in the wrong place.
-- **Expect one investigation per alert.** A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. Refer to [One problem, one investigation](../investigation/index.md#nightshift-investigations-dedup).
+- **Expect one investigation per alert.** A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. Refer to [Each problem has one investigation](../investigation/index.md#nightshift-investigations-dedup).
 - **Edit the automation, not its workflow.** Changes apply from the next trigger. Refer to [The workflow behind an automation](../investigation/automations.md#nightshift-automations-workflow).
 
 ## Next steps [nightshift-uc-auto-next]
 
 - [Investigate in Slack](./investigate-in-slack.md): Ask follow-up questions in the results thread.
-- [Detect problems automatically](./detect-problems.md): Find problems that no alert catches, and investigate them with an automation too.
+- [Detect problems without alerts](./detect-problems.md): Find problems that no alert catches, and investigate them with an automation too.
 - [Automations](../investigation/automations.md): Manage, clone, and delete automations, and read every setting.
 - [Investigation limits](../investigation/limits.md): Set the daily limits for your deployment.

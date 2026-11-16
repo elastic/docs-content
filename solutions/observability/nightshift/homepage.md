@@ -22,23 +22,23 @@ Select **Nightshift** in the navigation menu to open the home page.
 
 ## An inbox sorted by severity [nightshift-homepage-inbox]
 
-When an investigation finishes, {{nightshift}} rates how serious the problem is and files the investigation under **Critical**, **High**, **Medium**, or **Low**. Investigations that are still running wait in **In progress**.
+When an investigation finishes, {{nightshift}} ranks the problem based on severity: **Critical**, **High**, **Medium**, or **Low**. Investigations that are still running wait in **In progress**.
 
 - **Tiles**: Tiles show the count of investigations at each severity level. Select a tile to jump to that group.
 - **Investigation cards**: Each card is one investigation.  The card includes a one-line summary, the services it affects, and who's assigned to it.
 - **Search**: Use the search to narrow the list of investigations, for example, to one service.
 
-Work through it like an inbox: open the most severe investigation, read what {{nightshift}} found, decide what to do, and then assign it or close it. If you disagree with a severity, change it in the investigation.
+Work through it like an inbox, open the most severe investigation, read what {{nightshift}} found, decide what to do, and then assign it or close it.
 
 ## Work with an investigation [nightshift-homepage-work]
 
-Select an investigation card to open the investigation information. From here, you can:
+Select an investigation to open its information. From here, you can:
 
 - Read what happened, the impact, the likely cause, and the proposed actions.
 - Assign teammates and change the status or severity.
 - Select **Open chat** to ask follow-up questions.
 
-To read the results in detail and check the reasoning, refer to [How investigations work](./investigation/index.md).
+To read the results in detail and check the reasoning, refer to [Investigations](./investigation/index.md).
 
 ## Navigate through {{nightshift}} [nightshift-homepage-header]
 
@@ -56,4 +56,4 @@ If {{nightshift}} isn't set up, the home page shows the **Get started** checklis
 
 - [Investigate anything](./use-cases/investigate-anything.md): Start your first investigation from the home page
 - [Automatically investigate your alerts](./use-cases/auto-investigate-alerts.md): Fill your inbox without starting each investigation yourself
-- [How investigations work](./investigation/index.md): Read an investigation and check its reasoning
+- [Investigations](./investigation/index.md): Read an investigation and check its reasoning

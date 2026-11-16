@@ -66,7 +66,7 @@ By default, the trigger matches alerts from any rule. To narrow it:
 
 To investigate every significant event that detection raises, select **Only these sources** and **Significant events**.
 
-An alert or significant event that's already part of an open investigation joins it. A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. A rule that fires often can use up the daily limit. Match only the rules that you want investigated. Refer to [One problem, one investigation](./index.md#nightshift-investigations-dedup).
+An alert or significant event that's already part of an open investigation joins it. A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. A rule that fires often can use up the daily limit. Match only the rules that you want investigated. Refer to [Each problem has one investigation](./index.md#nightshift-investigations-dedup).
 
 **External sources** are alerts that don't come from an Elastic rule, for example alerts that another tool creates through a webhook. Refer to [Investigate alerts from your other tools](../use-cases/external-alerts.md).
 

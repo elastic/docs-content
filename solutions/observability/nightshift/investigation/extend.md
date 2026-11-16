@@ -153,5 +153,5 @@ Elastic plans to make running workflows from investigations more built in.
 
 - [Connect your data and tools](./set-up.md): Connect {{es}}, GitHub, and Slack.
 - [How {{nightshift}} builds context](../context/index.md): Learn what {{nightshift}} learns on its own, and how your context fits in.
-- [Automations](./automations.md#nightshift-automations-instructions): Give one automation its own instructions.
+- [Automation instructions](./automations.md#nightshift-automations-instructions): Give one automation its own instructions.
 - [Settings and limits](../settings.md): Allow more hosts for the sandbox, and set run limits.

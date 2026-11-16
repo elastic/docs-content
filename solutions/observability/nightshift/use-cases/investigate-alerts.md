@@ -71,7 +71,7 @@ Read the results, check the hypothesis tree, and act on the proposed actions the
 
 **Re-investigate** appears after someone has opened the earlier investigation.
 
-An alert or significant event that's already part of an open investigation joins the existing investigation. A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. Refer to [One problem, one investigation](../investigation/index.md#nightshift-investigations-dedup).
+An alert or significant event that's already part of an open investigation joins the existing investigation. A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. Refer to [Each problem has one investigation](../investigation/index.md#nightshift-investigations-dedup).
 
 ## What to check [nightshift-uc-alerts-check]
 

@@ -54,7 +54,7 @@ A significant event is an alert. You can route it to your team and act on it lik
 
 ## What detection does and doesn't do [nightshift-detection-scope]
 
-- **It starts only when you ask.** Detection doesn't run until someone with the [privileges to manage sources](../privileges.md#nightshift-privileges-admin) selects the data to watch. Refer to [Choose what detection watches](./sources.md).
+- **It starts only when you ask.** Detection doesn't run until someone with the [privileges to manage sources](../privileges.md#nightshift-privileges-admin) selects the data to watch. Refer to [Manage what detection monitors](./sources.md).
 - **It watches logs only.** Detection learns from and watches logs. Sources for metrics or traces aren't supported yet. Sources apply to detection only: investigations query your logs, metrics, and traces without one. Refer to [What a source is](./sources.md#nightshift-detection-sources-what).
 - **It watches data that this project can reach with {{esql}}.** That is your project and any project linked through {{cps}}. Detection doesn't use connectors, so the External {{es}} connector only helps investigations. For what works with each deployment type, refer to [Reference architecture](../reference-architecture.md).
 - **It needs time to learn.** Expect the first KIs and rules within a few minutes, the first signals 40 to 100 minutes after you turn it on, and significant events only when something actually changes. Refer to [How long learning takes](./learning.md#nightshift-detection-learning-warmup).
@@ -69,12 +69,12 @@ Detection uses model tokens to learn KIs and run discovery. Cost grows with the 
 
 To work with detection, start from what you want to do:
 
-- To turn on detection and choose the data it watches, refer to [Choose what detection watches](./sources.md).
+- To turn on detection and choose the data it watches, refer to [Manage what detection monitors](./sources.md).
 - To understand what {{nightshift}} learned about your system, refer to [How detection learns your system](./learning.md).
 - To check the rules behind an event, or remove a noisy rule, refer to [Rules and signals](./rules-and-signals.md).
 - To review significant events and investigate them, refer to [Review significant events](./significant-events.md).
 
 ## Learn more [nightshift-detection-learn-more]
 
-- [Detect problems automatically](../use-cases/detect-problems.md): Follow the end-to-end use case, from turning detection on to your first investigated event.
+- [Detect problems without alerts](../use-cases/detect-problems.md): Follow the end-to-end use case, from turning detection on to your first investigated event.
 - [Operator guide](../significant-events/operator-guide.md): Check system impact, cost drivers, and recovery procedures.

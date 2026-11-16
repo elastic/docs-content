@@ -46,7 +46,7 @@ You can start an investigation yourself, from the home page, an alert in {{alert
 
 Investigations that people start count toward the **Manual investigations daily limit**. Refer to [Investigation limits](./limits.md).
 
-### Each problem has one investigation [nightshift-investigations-dedup]
+### One investigation for each problem [nightshift-investigations-dedup]
 
 When an alert or significant event arrives, {{nightshift}} decides whether it joins an existing investigation or starts a new one. These rules keep related alerts from piling up as duplicates:
 

@@ -55,7 +55,7 @@ products:
 **Significant event severity can run high**
 :   Significant events can have a higher severity than the problem deserves.
 
-    **Workaround:** Check the event's confidence and signals before you act on its severity. Refer to [Review significant events](./detection/significant-events.md#nightshift-detection-events-severity).
+    **Workaround:** Check the event's confidence and signals before you act on its severity. Refer to [Severity and confidence](./detection/significant-events.md#nightshift-detection-events-severity).
 
 ## Investigations [nightshift-known-issues-investigations]
 
@@ -104,7 +104,7 @@ products:
 **No Microsoft Teams**
 :   {{nightshift}} works in Slack only. You can't ask it for help or post automation results in Microsoft Teams.
 
-    **Workaround:** Use {{nightshift}} in {{kib}}, or connect a Slack workspace. Refer to [Slack](./investigation/set-up.md#nightshift-set-up-slack).
+    **Workaround:** Use {{nightshift}} in {{kib}}, or connect a Slack workspace. Refer to [Set up Slack](./investigation/set-up.md#nightshift-set-up-slack).
 
 **Public Slack channels only**
 :   `@Elastic` works only in public channels. It doesn't work in private channels, direct messages, or Slack Connect channels, even though the authorization screen offers private-channel access. {{nightshift}} doesn't join channels on its own.
@@ -124,7 +124,7 @@ products:
 **Each new alert starts its own investigation**
 :   An alert or significant event that's already part of an open investigation joins it. A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. A flapping alert can use up your daily limit quickly.
 
-    **Workaround:** Set a **Daily trigger limit** on the automation. Refer to [One problem, one investigation](./investigation/index.md#nightshift-investigations-dedup) and [Daily trigger limit](./investigation/automations.md#nightshift-automations-daily-limit).
+    **Workaround:** Set a **Daily trigger limit** on the automation. Refer to [Each problem has one investigation](./investigation/index.md#nightshift-investigations-dedup) and [Daily trigger limit](./investigation/automations.md#nightshift-automations-daily-limit).
 
 **Schedules use presets**
 :   Scheduled automations run hourly, daily, or weekly. Custom cron schedules aren't supported.
