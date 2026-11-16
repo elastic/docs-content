@@ -54,6 +54,8 @@ If you want full control over the request body instead of using the `security.at
 
 The generate request requires `anonymizationFields`, which controls which alert fields are sent to the LLM. Retrieve them from the AI Assistant anonymization fields API in an earlier step, then pass them into the generation step:
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` These field-level settings are separate from the [**Anonymization** page for AI requests](/explore-analyze/ai-features/anonymize-ai-requests.md).
+
 ```yaml
 steps:
   - name: get_anonymization_fields

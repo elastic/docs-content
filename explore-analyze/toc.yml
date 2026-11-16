@@ -291,6 +291,7 @@ toc:
                     #   - file: ai-features/context-engine/send-claude-code-telemetry.md
           - hidden: ai-features/context-engine/context-engine-api.md
       - file: ai-features/manage-access-to-ai-assistant.md
+      - file: ai-features/anonymize-ai-requests.md
       - file: ai-features/agent-skills.md
       - file: ai-features/claude-plugin.md
       - file: ai-features/claude-connector.md
