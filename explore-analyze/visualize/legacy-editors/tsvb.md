@@ -156,6 +156,9 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 To save the panel to the **Visualize Library**:
 
 1. In the application menu, select **Save to library**.
+
+    :::{include} ../_snippets/save-to-library-more.md
+    :::
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
@@ -189,9 +192,9 @@ You can create dashboard drilldowns that include the specified time range for **
     For example `dashboards#/view/f193ca90-c9f4-11eb-b038-dd3270053a27`.
 
 6. Click **Save and return**.
-7. Select **Save as** in the application menu, then make sure **Store time with dashboard** is deselected.
+7. In the application menu, select **Save as**, then make sure **Store time with dashboard** is deselected.
 
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` **Save as** is in the menu next to **Save**.
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` **Save as** is in the menu that opens from the arrow next to **Save**.
 
 ::::
 

@@ -240,6 +240,9 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 To save the panel to the **Visualize Library**:
 
 1. In the [application menu](/explore-analyze/find-and-organize/kibana-interface.md#application-menu), select **Save to library**.
+
+    :::{include} ../_snippets/save-to-library-more.md
+    :::
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
@@ -363,6 +366,9 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 To save the panel to the **Visualize Library**:
 
 1. In the application menu, select **Save to library**.
+
+    :::{include} ../_snippets/save-to-library-more.md
+    :::
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
@@ -548,6 +554,9 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 To save the panel to the **Visualize Library**:
 
 1. In the application menu, select **Save to library**.
+
+    :::{include} ../_snippets/save-to-library-more.md
+    :::
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
