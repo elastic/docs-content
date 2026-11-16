@@ -199,33 +199,7 @@ Save time by setting up a recurring task that automatically generates reports an
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
    * **{{ech}} or {{serverless-short}} users**: You don't need to set up a default preconfigured email connector. {{kib}} provides a built-in preconfigured email connector that uses SMTP to send emails. To view it, go to the **Connectors** page and find the `Elastic-Cloud-SMTP` connector.
-   * **Self-managed users**: You must set up a default preconfigured email connector to send notifications outside of {{kib}}. To do this:
-
-     1. Open your `kibana.yml` file.
-     2. Add the `xpack.actions.preconfigured` {{kib}} setting. This setting specifies configuration details for the preconfigured connector that you're defining.
-     3. Under the `xpack.actions.preconfigured` setting, define the email connector. Define it in `kibana.yml`, because you can't create a preconfigured email connector from the {{kib}} UI. Refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) to learn about requirements for different email services and providers.
-     4. Add the `notifications.connectors.default.email` {{kib}} setting, and provide the name of your email connector. The `notifications.connectors.default.email` setting specifies the default email connector to use when sending notifications. This is especially useful if you have multiple email connectors and want to set a default one.
-
-     The following example shows a modified `kibana.yml` file with a preconfigured email connector that's set as the default connector for email notifications:
-
-     ```yaml
-     xpack.actions.preconfigured:
-       my-email:
-         name: preconfigured-email-connector-type
-         actionTypeId: .email
-         config:
-           service: other
-           from: sender@example.com
-           host: smtp.example.com
-           port: 8080
-           secure: false
-           hasAuth: true
-         secrets:
-           user: testuser
-           password: passwordkeystorevalue
-
-     notifications.connectors.default.email: my-email
-     ```
+   * **Self-managed users**: You must define a preconfigured email connector in `kibana.yml`, because you can't create one in the {{kib}} UI. Then set [`notifications.connectors.default.email`](kibana://reference/configuration-reference/general-settings.md#notifications-connectors-default-email) to the name of that connector. For the connector settings of your email service or provider, refer to [Email connectors](kibana://reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration).
 
 * (Optional) To control who can receive email notifications from {{kib}}, add the [`xpack.actions.email.domain_allowlist` setting](kibana://reference/configuration-reference/alerting-settings.md) to your `kibana.yml` file. To learn more about configuring this setting, refer to [Notifications domain allowlist](../alerting/alerts/notifications-domain-allowlist.md).
 
