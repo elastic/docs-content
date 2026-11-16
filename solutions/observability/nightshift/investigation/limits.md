@@ -62,11 +62,6 @@ To change the limits, you need the privileges listed in [Grant access](../privil
 1. Enter a value for each limit. Each field shows how many investigations started today.
 1. Select **Save changes**.
 
-:::{image} ../../../images/nightshift-settings-investigations.png
-:alt: The Investigations tab of the Settings page, with Enforce daily limits on, the Automatic, Manual, and All investigations daily limits set to 5, 5, and 10, and the time the current UTC day resets
-:screenshot:
-:::
-
 To remove a single limit, clear its field. It then shows **No limit**. To stop enforcing all three, turn off **Enforce daily limits**. Without limits, nothing caps how many investigations, and how many tokens, a noisy rule can use.
 
 For the other settings on this tab, refer to [Settings and limits](../settings.md).

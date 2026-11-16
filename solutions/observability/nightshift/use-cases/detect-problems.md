@@ -22,7 +22,7 @@ Make sure you meet the following requirements:
 - You have recent logs in your project. Detection watches logs only, not metrics or traces.
 - Detection runs all the time and uses tokens. Refer to [Cost and models](../cost-and-models.md).
 
-## Example: statement timeouts nobody alerted on [nightshift-uc-detect-example]
+## Example: Statement timeouts nobody alerted on [nightshift-uc-detect-example]
 
 In this example scenario, assume your alerts cover latency and error rates on `inventory-api`, but nothing watches the Postgres logs. One evening, Postgres starts to cancel `inventory-api` statements on the `encore` database because they hit the statement timeout. Users retry, so the error rate stays below your alert threshold.
 
@@ -54,11 +54,6 @@ To filter events and read the statuses, refer to [Review significant events](../
 :anchor: nightshift-uc-detect-read
 
 Select the event to read **What happened?** and the detections behind it. Treat a low confidence as a lead to check. Refer to [Read an event](../detection/significant-events.md#nightshift-detection-events-read).
-
-:::{image} ../../../images/nightshift-significant-event-details.png
-:alt: A significant event about Postgres client connection loss, with Medium severity, 24% confidence, and Active status. Next to it, one of its detections shows a trend chart and its ES|QL query
-:screenshot:
-:::
 
 ::::
 

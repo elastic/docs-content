@@ -15,12 +15,7 @@ Detection finds problems that your alerts won't catch, and you don't need to cre
 
 [Turn detection on](../get-started.md#nightshift-get-started-detection) once and choose the data that it watches. After that, it runs in the background.
 
-:::{image} ../../../images/nightshift-detections.png
-:alt: The Detections page. The Detection engine shows Monitoring with counts of knowledge indicators, entities, rules, signals, and significant events. The Entities list is on the left and significant events with their status and severity are on the right
-:screenshot:
-:::
-
-Open detection from the home page by selecting **Detections** or using the global search field instead. The **Signals** tab is only available in developer mode.
+Open detection from the home page by selecting **Detections** or using the global search field instead. The **Signals** tab on the **Detections** page is only available in developer mode.
 
 ## From your data to a significant event [nightshift-detection-flow]
 

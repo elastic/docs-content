@@ -19,7 +19,7 @@ Describe a problem in your own words, and in a few minutes {{nightshift}} return
 - You have the privileges to start investigations. Refer to [Grant access](../privileges.md#nightshift-privileges-analyst).
 - Investigations count toward the daily limits. Refer to [Investigation limits](../investigation/limits.md).
 
-## Example: slow ticket lookups [nightshift-uc-anything-example]
+## Example: Slow ticket lookups [nightshift-uc-anything-example]
 
 In this example scenario, assume customers say that loading their tickets takes ages. No alert has fired. You open {{nightshift}} and ask:
 
@@ -84,11 +84,6 @@ At the top, you can set the **Status**, change the **Severity**, and add **Assig
 :anchor: nightshift-uc-anything-hypotheses
 
 Select **View hypothesis tree** to check each hypothesis that {{nightshift}} tested. Refer to [Check the reasoning in the hypothesis tree](../investigation/index.md#nightshift-investigations-hypotheses).
-
-:::{image} ../../../images/nightshift-hypothesis-tree-detail.png
-:alt: The hypothesis tree with a confirmed hypothesis at 95% confidence selected. The detail panel shows what was tested, the result, and a chart of lock timeouts while a batch session held the lock
-:screenshot:
-:::
 
 Does the confirmed hypothesis match what you observed? Did {{nightshift}} dismiss something you still suspect? Challenge it in chat. Refer to [Ask follow-up questions](#nightshift-uc-anything-chat).
 ::::

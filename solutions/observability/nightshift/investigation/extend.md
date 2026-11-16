@@ -48,11 +48,6 @@ To add a snippet, you need the privileges to open **Settings**. Refer to [Grant 
 1. Enter your note.
 1. Select **Save**, then **Close**.
 
-:::{image} ../../../images/nightshift-settings-investigations.png
-:alt: The Investigations tab of the Settings page. The Custom context section with the Edit investigation context button is below the daily run limits and the service account status.
-:screenshot:
-:::
-
 The snippet now applies to the next investigation or chat that starts. To change or remove a snippet, open the flyout again and select **Edit snippet** or **Delete snippet**.
 
 You can add up to 200 snippets. Each snippet can have up to 32,768 characters, and all snippets together up to 262,144 characters. Empty snippets are removed when you save.

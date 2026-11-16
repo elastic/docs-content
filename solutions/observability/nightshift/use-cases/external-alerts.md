@@ -80,11 +80,6 @@ Follow these instructions to investigate alerts from your other tools in Slack. 
 
 The automation appears on the **Automations** page with **Enabled** on. When the app posts its next alert, {{nightshift}} replies in that message's thread.
 
-:::{image} ../../../images/nightshift-slack-thread.png
-:alt: A Slack thread under a critical alert message from an alerting app. @Elastic replies in the thread with Impact and Conclusion sections, followed by Hypotheses
-:screenshot:
-:::
-
 Only top-level messages start the automation. Thread replies don't, and neither do edits, so a tool that updates its original message when the alert resolves doesn't start a second investigation. A tool that posts a separate message when the alert resolves does, unless **Message contains…** filters it out.
 
 Anyone in the channel can ask follow-up questions in the thread. Refer to [Investigate in Slack](./investigate-in-slack.md).

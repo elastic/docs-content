@@ -24,7 +24,7 @@ Make sure you meet the following requirements:
 
 Before setting up automations, run some investigations to familiarize yourself with the process and the results. Refer to [Investigate your alerts](./investigate-alerts.md).
 
-## Example: critical checkout alerts [nightshift-uc-auto-example]
+## Example: Critical checkout alerts [nightshift-uc-auto-example]
 
 In this example scenario, assume your checkout alert rules have the tag `checkout`. You want every **Critical** alert from them investigated, with the findings posted to `#checkout-oncall`.
 

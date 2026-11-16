@@ -41,11 +41,6 @@ Investigations reach your systems only through connectors, from a temporary sand
 
 You manage connections on the **General** tab of the **Settings** page. On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Settings**.
 
-:::{image} ../../../images/nightshift-settings-general.png
-:alt: The General tab of the Settings page, with the Connectors table listing two Elasticsearch connectors, the Add connector button, the Slack channels section with Connect Slack, and the developer mode switch
-:screenshot:
-:::
-
 To add a connector, select **Add connector**. The flyout lists the connector types that investigations can use, with how many you have of each. Select **Create connector** next to a type. To manage connectors in the rest of {{kib}}, select **Open in Stack Management**. Refer to [Connectors](kibana://reference/connectors-kibana.md).
 
 ## Set up a Local {{es}} connector [nightshift-set-up-local-es]
@@ -64,11 +59,6 @@ For the steps, including the API key request, refer to [Add data](../get-started
 - **Port 443.** In Tech Preview, investigations can reach only port 443. If the endpoint ends with another port, such as `:9243`, remove it.
 - **A descriptive name.** Investigations pick a connector by its name, so say what the data is, for example `prod-logs`.
 - **Default actions.** Investigations use the connector's URL and API key, not its actions.
-
-:::{image} ../../../images/nightshift-connector-elasticsearch.png
-:alt: The External Elasticsearch connector flyout with the connector name and ID, the Elasticsearch URL, the API key, and the Actions table
-:screenshot:
-:::
 
 The connector now appears in the **Connectors** table. The next investigation can query it.
 
@@ -99,11 +89,6 @@ Connect GitHub so investigations can read the code, configuration, Helm charts, 
 {{nightshift}} doesn't copy, sync, or index your repositories. Refer to [Your code](../cost-and-models.md#nightshift-data).
 
 For the steps to create a fine-grained personal access token and connect it, refer to [Connect other sources](../get-started.md#nightshift-get-started-other-sources). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **GitHub**. Leave **Receive events** turned off: investigations don't need it.
-
-:::{image} ../../../images/nightshift-connector-github.png
-:alt: The GitHub connector flyout with the Inbound and Outbound authentication options, including Personal Access Token (PAT)
-:screenshot:
-:::
 
 Don't use **OAuth 2.0 Authorization Code**. It stores per-user credentials, which the {{nightshift}} service account can't use, so investigations can't read your private repositories.
 

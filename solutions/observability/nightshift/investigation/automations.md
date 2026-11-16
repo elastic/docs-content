@@ -52,11 +52,6 @@ For a guided example, refer to [Automatically investigate your alerts](../use-ca
 
 The trigger picker groups triggers under **Elastic**, **Slack**, and **Scheduled**.
 
-:::{image} ../../../images/nightshift-automation-create-trigger.png
-:alt: The Create automation flyout with the Add trigger menu open, offering Alert triggered under Elastic, New message in channel under Slack, and Every... under Scheduled
-:screenshot:
-:::
-
 | Trigger | Starts an investigation when | Options |
 | --- | --- | --- |
 | **Alert triggered** | An alert or a significant event in this project changes to **Active**. | Alert sources, severity, and rules. |
@@ -125,17 +120,7 @@ To give context to every investigation, not only this automation's, use custom c
 
 With a **Post in Slack** action, the automation posts a message to a connected channel when the investigation starts, and replies in that thread with the results. Refer to [Read investigation results in a thread](../use-cases/investigate-in-slack.md#nightshift-uc-slack-results).
 
-:::{image} ../../../images/nightshift-slack-thread.png
-:alt: A Slack thread under an alert message, where @Elastic replies with the investigation's Impact, Conclusion, and Hypotheses
-:screenshot:
-:::
-
 Your team can ask follow-up questions in that thread. **Post in Slack**, through `@Elastic`, is the only action.
-
-:::{image} ../../../images/nightshift-automation-create-actions.png
-:alt: The Create automation flyout with the Add action menu open, offering Post in Slack as the only action
-:screenshot:
-:::
 
 ## Daily trigger limit [nightshift-automations-daily-limit]
 
@@ -153,11 +138,6 @@ The deployment-wide limits on the **Settings** page apply too. Refer to [Investi
 ## Manage automations [nightshift-automations-manage]
 
 The **Automations** page lists the automations in the space. An icon next to each name shows its trigger.
-
-:::{image} ../../../images/nightshift-automations-list.png
-:alt: The Automations page with the Create automation button, the Status, Tag, Author, and Trigger filters, and a table of automations with their Successful, Failed, and Skipped runs, Today's usage against the limit, and an Enabled toggle
-:screenshot:
-:::
 
 | Column | What it shows |
 | --- | --- |
@@ -180,11 +160,6 @@ When automations reach a limit, a message at the top of the page says so. Select
 ## Check what an automation did [nightshift-automations-run-history]
 
 Select an automation's name to open its details.
-
-:::{image} ../../../images/nightshift-automation-details.png
-:alt: The details of a Slack-triggered automation, with the Enabled toggle, Today's usage of 1 out of 10, the Overview and Run history tabs, the trigger with a Daily trigger limit of 10 per day, the Additional Instructions, and the Post in Slack action
-:screenshot:
-:::
 
 - The **Overview** tab shows the description, trigger, daily trigger limit, instructions, and actions. To change the automation, select **Edit**. A change applies from the next trigger. The **Actions** menu has **Run**, **Clone**, and **Delete**.
 - The **Run history** tab shows a chart of the runs in the selected time range, with a count for each status: **Succeeded**, **Running**, **Failed**, and **Skipped**. Filter by status to narrow the list. Below the chart, runs are grouped by day.

@@ -19,7 +19,7 @@ Ask {{nightshift}} for help without leaving Slack. Mention `@Elastic` in a threa
 - An admin has connected your Slack workspace and the channel that you want to use. Refer to [Connect a Slack channel](#nightshift-uc-slack-connect).
 - The channel is public. Private channels aren't supported in Tech Preview.
 
-## Example: the on-call channel [nightshift-uc-slack-example]
+## Example: The on-call channel [nightshift-uc-slack-example]
 
 In this example scenario, assume your team's alerts go to the `#ticketing-oncall` Slack channel. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. A minute later, {{nightshift}} has started investigating, and a few minutes later it replies in the alert's thread with the impact, the conclusion, and the hypotheses it tested.
 

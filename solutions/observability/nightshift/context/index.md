@@ -51,11 +51,6 @@ The **Knowledge** page shows everything that {{nightshift}} has learned.
 1. Open {{nightshift}}: select **Nightshift** in the navigation menu.
 1. On the home page, open the {icon}`boxes_vertical` menu and select **Knowledge**.
 
-:::{image} ../../../images/nightshift-home-menu.png
-:alt: The Elastic nightshift home page with the more menu open, showing the Knowledge, Settings, and Feedback options
-:screenshot:
-:::
-
 The page has a tab for each type of context: **Knowledge Indicators**, **Wiki**, and **Memory**. With [developer mode](../settings.md#nightshift-settings-developer-mode) on, it also has a **Decision Trees** tab.
 
 To view the Knowledge page, or to archive, restore, or delete entries, you need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-analyst).

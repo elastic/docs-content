@@ -44,11 +44,6 @@ In Tech Preview, detection learns from logs only. Refer to [Known issues](../kno
 
 On the [**Knowledge** page](./index.md#nightshift-context-open), select the **Knowledge Indicators** tab.
 
-:::{image} ../../../images/nightshift-knowledge-indicators.png
-:alt: The Knowledge Indicators tab with filters for status, type, subtype, and source, and a table of KIs with their events, type, source, and durability
-:screenshot:
-:::
-
 The table lists each KI with the number of **Events** it matched, its **Type** (**Match query**, **Stats query**, or a feature type), its **Source**, and its **Durability** (**Durable** or **Expiring**). Filter by type, subtype, source, or status (**Active** or **Excluded**). Turn on **Show computed features** to include statistical KIs.
 
 Select a KI to read its description, confidence, evidence from your logs, and properties. Select **Open in Discover** to find the matching documents.

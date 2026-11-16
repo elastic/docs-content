@@ -44,11 +44,6 @@ Investigations use decision trees whether developer mode is on or off. Developer
 1. Open the {icon}`boxes_vertical` menu and select **Knowledge**.
 1. Select the **Decision Trees** tab.
 
-:::{image} ../../../images/nightshift-knowledge-decision-trees.png
-:alt: The Decision Trees tab in developer mode, with a list of trees for different alerts and one tree open in the Diagram view
-:screenshot:
-:::
-
 The **Overview** shows how many trees there are, how many are established, and how many versions they have. Select a tree to open it:
 
 - **Decision tree**: The tree as a **Diagram**, or as its **Source**. Node types are **Symptom**, **Evidence Gatherer**, **Decision**, and **End**.

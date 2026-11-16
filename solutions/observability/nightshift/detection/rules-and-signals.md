@@ -31,8 +31,6 @@ All rules run on a shared schedule, every few minutes. A rule match doesn't open
 
 To open the list, select the **Rules** tab on the **Detections** page.
 
-% SCREENSHOT: The Rules tab on the Detections page, with the Rule matches over time chart and the rules table, filtered to the inventory-api entity.
-
 The **Rule matches over time** chart shows how often your rules matched. The table lists every rule:
 
 | Column | What it shows |
@@ -71,12 +69,7 @@ A signal on its own doesn't need any action from you. Discovery reviews it toget
 
 Every significant event lists its signals in the **Detections** section of its details. Select one to open it next to the event.
 
-:::{image} ../../../images/nightshift-significant-event-details.png
-:alt: A signal's details next to the significant event it belongs to. The signal shows a Non-stationary change, a Refuted verdict, a summary, a trend chart with the change marked, and its ES|QL query with Open in Discover
-:screenshot:
-:::
-
-The signal shows:
+A signal shows:
 
 - Badges for the kind of change, such as **Non-stationary**, and for the verdict.
 - **Summary**: What discovery found when it checked the signal against your current data.

@@ -22,7 +22,7 @@ Make sure you meet the following requirements:
 - The alert is in the same project as {{nightshift}}. It can come from the {{alerting-v1-system}} or the {{alerting-v2-system}}.
 - Each investigation that you start counts toward the **Manual investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md).
 
-## Example: a latency alert on inventory-api [nightshift-uc-alerts-example]
+## Example: A latency alert on inventory-api [nightshift-uc-alerts-example]
 
 In this example scenario, assume at 11:05 UTC, an APM latency threshold alert fires: average latency of GET /tickets on `inventory-api` is above 1.5 seconds. You open the alert and select **Investigate**.
 

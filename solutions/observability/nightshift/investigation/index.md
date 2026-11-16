@@ -1,5 +1,5 @@
 ---
-navigation_title: How investigations work
+navigation_title: Investigations
 applies_to:
   serverless:
     observability: preview
@@ -104,11 +104,6 @@ Below the fields, read the investigation from top to bottom:
 - **Conclusion**: The most likely cause, the evidence for it, and what {{nightshift}} could not check. Select **View hypothesis tree** to check the reasoning.
 - **Proposed actions**: What you can do about it. Refer to [Decide on proposed actions](#nightshift-investigations-actions).
 
-:::{image} ../../../images/nightshift-investigation-results.png
-:alt: An investigation flyout for inventory-api slow GET /tickets, with the Status, Severity, and Assignees fields, the What's happened summary, the trigger card, and the Impact chart of failed calls
-:screenshot:
-:::
-
 While the investigation runs, the flyout shows **Investigating…**. Until the first round ends, the investigation is named after what triggered it, such as the alert's rule name, or **New investigation**.
 
 ### Check the reasoning in the hypothesis tree [nightshift-investigations-hypotheses]
@@ -124,11 +119,6 @@ The hypothesis tree shows every explanation that {{nightshift}} tested, from the
    - **Proposed action**: The actions that follow from the conclusion, each with **High confidence**, **Medium confidence**, or **Low confidence**.
 
 1. To read a hypothesis in full, select its card. The detail panel shows what was tested, the result, and the chart or query behind it.
-
-:::{image} ../../../images/nightshift-hypothesis-tree-detail.png
-:alt: The hypothesis tree with six hypotheses analyzed. The confirmed hypothesis, lock contention from a reconcile-batch database session at 95% confidence, is open in the detail panel with what was tested, the result, and a chart of inventory-api lock timeouts
-:screenshot:
-:::
 
 Use **Fit to view** to fit the whole tree on screen. Close the detail panel to go back to the tree.
 
@@ -174,11 +164,6 @@ Chat continues the investigation with its findings in context. Use it to underst
    | Check a fix | "I applied the fix at 15:10 UTC. Has latency returned to normal since then?" |
 
 When you add or challenge a hypothesis, {{nightshift}} tests it and updates the hypothesis tree. Proposed actions also appear in the chat, with **Decline** and **Mark as applied**.
-
-:::{image} ../../../images/nightshift-investigation-chat-action.png
-:alt: The chat next to an investigation flyout. A proposed action card, Inspect and fix the tickets-by-email query plan, shows Needs review with Decline and Mark as applied buttons
-:screenshot:
-:::
 
 Chat needs the privileges listed in [Grant access](../privileges.md#nightshift-privileges-analyst).
 
