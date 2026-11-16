@@ -66,7 +66,7 @@ Calculates the sum of one or more numbers or arrays. If you pass several argumen
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The sum of all numbers in `args` if `args` contains only numbers. Returns an array of sums of the elements at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
+**Returns**: `number` | `Array.<number>`. The sum of all numbers in `args` if `args` contains only numbers. Returns an array of sums of the elements at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -580,7 +580,7 @@ Finds the maximum value of one or more numbers or arrays of numbers. If you pass
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The maximum value of all numbers if `args` contains only numbers. Returns an array with the maximum values at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
+**Returns**: `number` | `Array.<number>`. The maximum value of all numbers if `args` contains only numbers. Returns an array with the maximum values at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -602,7 +602,7 @@ Finds the mean value of one or more numbers or arrays of numbers. If you pass se
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The mean value of all numbers if `args` contains only numbers. Returns an array with the mean values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
+**Returns**: `number` | `Array.<number>`. The mean value of all numbers if `args` contains only numbers. Returns an array with the mean values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -624,7 +624,7 @@ Finds the median value(s) of one or more numbers or arrays of numbers. If you pa
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The median value of all numbers if `args` contains only numbers. Returns an array with the median values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
+**Returns**: `number` | `Array.<number>`. The median value of all numbers if `args` contains only numbers. Returns an array with the median values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -647,7 +647,7 @@ Finds the minimum value of one or more numbers or arrays of numbers. If you pass
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The minimum value of all numbers if `args` contains only numbers. Returns an array with the minimum values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
+**Returns**: `number` | `Array.<number>`. The minimum value of all numbers if `args` contains only numbers. Returns an array with the minimum values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -695,7 +695,7 @@ Finds the mode value(s) of one or more numbers or arrays of numbers. If you pass
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `Array.<number>` | `Array.<Array.<number>>`. An array of mode value(s) of all numbers if `args` contains only numbers. Returns an array of arrays with mode value(s) of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
+**Returns**: `Array.<number>` | `Array.<Array.<number>>`. An array of mode value(s) of all numbers if `args` contains only numbers. Returns an array of arrays with mode value(s) of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -816,7 +816,7 @@ Finds the range of one or more numbers or arrays of numbers. If you pass several
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The range value of all numbers if `args` contains only numbers. Returns an array with the range values at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
+**Returns**: `number` | `Array.<number>`. The range value of all numbers if `args` contains only numbers. Returns an array with the range values at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
