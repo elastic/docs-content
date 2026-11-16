@@ -26,7 +26,7 @@ If you have created rules for specific {{anomaly-jobs}} and you want to monitor 
 
 If the conditions of a rule are met, an alert is created, and any associated actions (such as sending an email or Slack message) are triggered. For example, you can configure a rule that checks a job every 15 minutes for anomalies with a high score and sends a notification when one is found.
 
-In **{{stack-manage-app}} → {{rules-ui}}**, you can create both types of {{ml}} rules. In the **{{ml-app}}** app, you can create only {{anomaly-detect}} alert rules; create them from the {{anomaly-job}} wizard after you start the job or from the {{anomaly-job}} list.
+In **{{stack-manage-app}} → {{rules-ui}}**, you can create both types of {{ml}} rules. In the **{{ml-app}}** app, you can create only {{anomaly-detect}} alert rules. Create them from the {{anomaly-job}} wizard after you start the job or from the {{anomaly-job}} list.
 
 ## Prerequisites [prerequisites]
 
