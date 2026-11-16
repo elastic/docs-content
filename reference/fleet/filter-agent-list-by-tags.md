@@ -34,7 +34,7 @@ Want to add tags when enrolling from a host instead? See [Add tags during agent 
 To manage tags in {{fleet}}:
 
 1. On the **Agents** tab, select one or more agents.
-2. Click **Actions → Add / remove tags**.
+2. Click **Actions** → **Add / remove tags**.
 
     :::{image} images/add-remove-tags.png
     :alt: Screenshot of add / remove tags menu

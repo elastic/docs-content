@@ -35,7 +35,7 @@ To successfully roll back an integration, you must have access to all of its int
 
 ## Roll back an integration
 
-1. In {{kib}}, go to **Integrations** > **Installed integrations**.
+1. In {{kib}}, go to **Integrations** → **Installed integrations**.
 2. Select the integration you want to roll back, then open the integration's **Settings** tab.
 3. Click **Rollback <integration>**.
 
@@ -51,7 +51,7 @@ To successfully roll back an integration, you must have access to all of its int
 After the rollback of the integration is complete, the associated integration policies, their configurations and related assets are restored to the integration's previous version.
 
 ::::{tip}
-You can also roll back an integration from **Integrations** > **Installed integrations**:
+You can also roll back an integration from **Integrations** → **Installed integrations**:
 
 1. Click the actions button at the end of the integration's row.
 2. Select **Rollback integration**, then confirm the action.
