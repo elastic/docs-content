@@ -326,11 +326,13 @@ For ECK versions before 3.4.0, or for advanced use cases not covered by the `zon
 #### Exposing Kubernetes node topology labels in Pods [k8s-availability-zone-awareness-downward-api]
 
 :::{note}
-Starting with Kubernetes 1.35 and later, the `PodTopologyLabelsAdmission` feature is enabled by default. As a result, the labels `topology.kubernetes.io/region` and `topology.kubernetes.io/zone` from the node are automatically propagated as labels on Pods. This means that you can skip using the `eck.k8s.elastic.co/downward-node-labels` annotation and avoid making additional configuration changes to expose these topology labels in your Pods. In this situation, you can skip the first two steps described below. Additionally, in this scenario, node labels appear as Pod labels rather than annotations.
+ECK supports the `eck.k8s.elastic.co/downward-node-labels` annotation for {{es}} only. For {{kib}}, {{apm-server}}, {{ls}}, {{beats}}, and {{agent}}, use the Kubernetes-native `PodTopologyLabelsAdmission`.
+
+Starting with Kubernetes 1.35 and later, the `PodTopologyLabelsAdmission` feature is enabled by default. As a result, the labels `topology.kubernetes.io/region` and `topology.kubernetes.io/zone` from the node are automatically propagated as labels on Pods. This means that you can skip using the `eck.k8s.elastic.co/downward-node-labels` annotation and avoid making additional configuration changes to expose these topology labels in your Pods. In this situation, you can skip the first two steps in this section. Additionally, in this scenario, node labels appear as Pod labels rather than annotations.
 :::
 
 1. First, ensure that the operator’s flag `exposed-node-labels` contains the list of the Kubernetes node labels that should be exposed in the {{es}} Pods. If you are using the provided installation manifest, or the Helm chart, then this flag is already preset with two wildcard patterns for well-known node labels that describe Kubernetes cluster topology, like `topology.kubernetes.io/.*` and `failure-domain.beta.kubernetes.io/.*`.
-2. On the {{es}} resources set the `eck.k8s.elastic.co/downward-node-labels` annotations with the list of the Kubernetes node labels that should be copied as Pod annotations.
+2. On the {{es}} resources, set the `eck.k8s.elastic.co/downward-node-labels` annotations with the list of the Kubernetes node labels that should be copied as Pod annotations.
 3. Use the [Kubernetes downward API](https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/) in the `podTemplate` to make those annotations available as environment variables in {{es}} Pods.
 
 Refer to the next section or to the [{{es}} sample resource in the ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/samples/elasticsearch/elasticsearch.yaml) for a complete example.

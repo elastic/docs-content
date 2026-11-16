@@ -22,6 +22,7 @@ Specific prices can be found in the [Cloud Pricing Table](https://cloud.elastic.
 To learn about billing dimensions for specific offerings, refer to:
 
 * [](elasticsearch-billing-dimensions.md)
+* [](vector-database-billing-dimensions.md)
 * [](elastic-observability-billing-dimensions.md)
 * [](security-billing-dimensions.md)
 
@@ -40,9 +41,6 @@ If your subscription level is Standard, there is no separate charge for Support 
 
 
 ### {{cps-cap}} [general-serverless-billing-cps]
-```{applies_to}
-serverless: preview
-```
 
 [{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
 

@@ -1,7 +1,11 @@
 ---
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 navigation_title: "Querying"
 products:
   - id: elasticsearch

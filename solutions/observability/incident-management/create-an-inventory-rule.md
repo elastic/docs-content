@@ -26,11 +26,11 @@ Based on the resources listed on the **Infrastructure inventory** page within th
 Additionally, each rule can be defined using multiple conditions that combine metrics and thresholds to create precise notifications and reduce false positives.
 
 1. To access this page, go to **{{observability}}** → **Infrastructure**.
-2. On the **Infrastructure inventory** page or the **Metrics Explorer** page, click **Alerts and rules** → **Infrastructure**.
+2. On the **Infrastructure inventory** page or the **Metrics Explorer** page, click **Alerts** → **Infrastructure**.
 3. Select **Create inventory rule**.
 
 ::::{tip}
-When you select **Create inventory alert**, the parameters you configured on the **Infrastructure inventory** page will automatically populate the rule. You can use the Inventory first to view which nodes in your infrastructure you’d like to be notified about and then quickly create a rule in just a few clicks.
+When you select **Create inventory rule**, the parameters you configured on the **Infrastructure inventory** page will automatically populate the rule. You can use the Inventory first to view which nodes in your infrastructure you’d like to be notified about and then quickly create a rule in just a few clicks.
 
 ::::
 
@@ -52,16 +52,33 @@ This rule queries the index patterns defined by the `observability:logSources` s
 
 Conditions for each rule can be applied to specific metrics relating to the inventory type you select. You can choose the aggregation type, the metric, and by including a warning threshold value, you can be alerted on multiple threshold values based on severity scores. When creating the rule, you can still get notified if no data is returned for the specific metric or if the rule fails to query {{es}}.
 
-:::{note}
-:applies_to: {"stack": "ga 9.2", "serverless": "ga"}`
-Most inventory types respect the default data collection method (for example, [Elastic System Integration](integration-docs://reference/system/index.md)). For the `Hosts` inventory type, however, you can use the **Schema** dropdown menu to explicitly target host data collected using **OpenTelemetry** or the **Elastic System Integration**.
-:::
-
 In the following example, Kubernetes Pods is the selected inventory type. The conditions state that you will receive a critical alert for any pods within the `ingress-nginx` namespace with a memory usage of 95% or above and a warning alert if memory usage is 90% or above. The chart shows the results of applying the rule to the last 20 minutes of data. Note that the chart time range is 20 times the value of the look-back window specified in the `FOR THE LAST` field.
 
 :::{image} /solutions/images/serverless-inventory-alert.png
 :alt: Inventory rule
 :screenshot:
+:::
+
+### Data collection schema [inventory-conditions-schema]
+```{applies_to}
+stack: ga 9.2+
+serverless: ga
+```
+
+Most inventory types respect the default data collection method, for example the [Elastic System Integration](integration-docs://reference/system/index.md). For some inventory types, however, you can use the **Schema** dropdown menu to explicitly target data collected using **OpenTelemetry** or the **Elastic System Integration**.
+
+| Inventory type | **Schema** menu |
+| --- | --- |
+| **Hosts** | Available |
+| {applies_to}`stack: ga 9.6+` **{{k8s}} Pods** | Available |
+| **Docker Containers** | Not available |
+| **{{aws}}** | Not available |
+
+{applies_to}`stack: ga 9.6+` For the **{{k8s}} Pods** inventory type, the selected schema also determines the field the rule groups on: `k8s.pod.uid` for **OpenTelemetry**, or `kubernetes.pod.uid` for the **Elastic System Integration**.
+
+:::{note}
+:applies_to: {"stack": "ga 9.6+", "serverless": "ga"}
+If you saved a **{{k8s}} Pods** rule with the **OpenTelemetry** schema before 9.6, that rule was evaluated against {{k8s}} integration data despite the saved schema. From 9.6, it evaluates and groups on OpenTelemetry data instead. After you upgrade, check any such rules to confirm they still alert on the pods you expect.
 :::
 
 ### Supported data by inventory type

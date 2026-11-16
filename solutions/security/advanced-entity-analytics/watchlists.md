@@ -36,15 +36,15 @@ To learn how watchlist weighting fits into the overall risk score calculation, r
 To create a watchlist:
 
 1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
+    * **Security solution view**: Find **{{stack-manage-app}}** → **Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage** → **Entity Analytics** in the navigation menu.
 2. Go to the **Watchlists** tab.
 3. Click **Create watchlist**.
 4. Enter a name and, optionally, a description.
 5. Set a **Risk Score Weighting** using the slider.
 6. Under **Rule Based Data Sources**, define which entities belong to this watchlist:
    * **Entity Store**: Filter existing entities in the [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) using KQL syntax.
-   * **IndexPattern**: Select an index pattern, apply a KQL filter, and choose the field used to identify entities.
+   * **IndexPattern**: Select an index pattern, apply a KQL filter, and choose the field used to identify entities. The index pattern must include a mapped `@timestamp` field, otherwise no entities are synced from that source.
 7. Click **Save**.
 
 An entity can belong to more than one watchlist.

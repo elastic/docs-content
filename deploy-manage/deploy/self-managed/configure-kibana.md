@@ -33,6 +33,47 @@ Environment variables can be injected into configuration using `${MY_ENV_VAR}` s
 
 For a complete list of settings that you can apply to {{kib}}, refer to [{{kib}} configuration reference](kibana://reference/configuration-reference.md).
 
+## Reload configuration without restarting [reload-configuration]
+
+Most {{kib}} settings are read only at startup, so changing them requires a restart. However, you can update some settings without restarting {{kib}} by sending a `SIGHUP` signal to the running process. The settings described in this section support this type of reload on Unix-like systems. On Windows, you must restart {{kib}} to apply changes made in `kibana.yml`.
+
+:::{important}
+If {{kib}} cannot parse the updated `kibana.yml` or validate the settings being reloaded, it shuts down. Check your changes before sending `SIGHUP`.
+:::
+
+### Reload logging settings [reload-logging-settings]
+
+You can reload [{{kib}} logging settings](/deploy-manage/monitor/logging-configuration/kibana-logging.md) without restarting {{kib}}. This is useful when you need to temporarily increase logging verbosity while troubleshooting. You can change `logging.root.level`, configure a [dedicated logger](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md#dedicated-loggers), or increase verbosity for log records that match specific metadata. Reload the configuration and collect the detailed logs you need. When you finish, restore the original settings and reload the configuration.
+
+For all available logging settings, refer to the [{{kib}} logging configuration reference](kibana://reference/configuration-reference/logging-settings.md).
+
+To reload the logging configuration:
+
+1. Update the `logging` settings in `kibana.yml` to configure the log levels, output, or filtering you need.
+2. Send a `SIGHUP` signal to the running {{kib}} process to reload the configuration:
+
+    ```sh
+    kill -HUP <kibana_pid>
+    ```
+
+    On [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), signal the container instead:
+
+    ```sh
+    docker kill --signal=HUP <container_id>
+    ```
+
+    If you run {{kib}} with multiple worker processes, send the signal to each process.
+
+3. Confirm the reload in the {{kib}} logs. A successful reload produces a message similar to:
+
+    ```text
+    Reloaded Kibana configuration (reason: SIGHUP signal received).
+    ```
+
+4. Verify that the updated logging settings produce the expected output.
+
+5. If the logging changes are temporary, restore the original settings and send another `SIGHUP` signal to reload the configuration.
+
 ## Additional topics
 
 Refer to the following documentation to learn how to perform key configuration tasks for {{kib}}: 

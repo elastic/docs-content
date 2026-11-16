@@ -1,64 +1,95 @@
 ---
 navigation_title: "Time-bound indices"
+description: Time series data streams route each document by timestamp with time-bound backing indices. Dimension-based routing keeps documents that share dimensions on the same shard.
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 products:
   - id: elasticsearch
+type: overview
 ---
 
 # Time-bound indices and dimension-based routing [time-bound-indices]
 
-Unlike regular data streams that only write to the most recent backing index, time series data streams (TSDS) use time-bound backing indices that accept documents based on their timestamp values. This page provides details and best practices to help you work with time-bound indices.
+Unlike regular data streams that write only to the most recent backing index, {{tsdses}} ({{tsds-init}}) are backed by a set of time-bound indices, each covering a contiguous, non-overlapping time range.
+{{es}} enforces that the `@timestamp` for each ingested document falls within the time range of exactly one backing index.
 
-## How time-bound indices work
+## How time-bound indices work [tsds-accepted-time-range]
 
-Each TSDS backing index has a time range for accepted `@timestamp` values, defined by two settings: 
+Each {{tsds-init}} backing index has a range of `@timestamp` values that it accepts, which are tracked in index settings.
+When the {{tsds-init}} is created, the first backing index has the following range:
 
-- [`index.time_series.start_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-start-time): The earliest accepted timestamp (inclusive)
-- [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time): The latest accepted timestamp (exclusive)
+- Its earliest accepted timestamp (inclusive), which is set to `now` minus the [`index.look_back_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-look-back-time) and stored in [`index.time_series.start_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-start-time).
+- Its latest accepted timestamp (exclusive), which is set to `now` plus [`index.look_ahead_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-look-ahead-time) and stored in [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time).
 
-When you add a document to a TSDS, {{es}} adds the document to the appropriate backing index based on its `@timestamp` value. This means a TSDS can write to multiple backing indices simultaneously, not just the most recent one.
+Thereafter, {{es}} automatically configures the settings for backing indices as part of the index creation and [rollover](/manage-data/lifecycle/index-lifecycle-management/rollover.md) process.
+Each new backing index starts at the previous index's `end_time` and extends further ahead using `look_ahead_time`.
+
+When you add a document to the TSDS, {{es}} routes it to the appropriate backing index based on its `@timestamp` value.
+For example:
 
 :::{image} /manage-data/images/elasticsearch-reference-time-bound-indices.svg
-:alt: time bound indices
+:alt: Time bound indices
 :::
 
-If no backing index can accept a document's `@timestamp` value, {{es}} rejects the document.
+This means a TSDS can write to multiple backing indices simultaneously, not only the most recent one.
 
-{{es}} automatically configures `index.time_series.start_time` and `index.time_series.end_time` settings as part of the index creation and rollover process.
-
-### Accepted time range for adding data [tsds-accepted-time-range]
-
-A TSDS is designed to ingest current metrics data. When the TSDS is first created, the initial backing index has the following settings:
-
-- An `index.time_series.start_time` value set to `now - index.look_back_time`
-- An `index.time_series.end_time` value set to `now + index.look_ahead_time`
-
-Only data that falls within this range is indexed.
-
-To check the accepted time range for writing to a TSDS, use the [get data stream API]({{es-apis}}operation/operation-indices-get-data-stream):
+Late-arriving data can still be indexed into an older backing index, as long as that index exists, remains writable, and its accepted time range includes the timestamp.
+To inspect the accepted time ranges of TSDS backing indices, use the [get data stream API]({{es-apis}}operation/operation-indices-get-data-stream):
 
 ```console
 GET _data_stream/my-tsds
 ```
 
-::::{tip}
-Writes within the accepted time range might still be rejected. The following actions can affect the writable time range, either because they make a backing index read-only or remove it:
- - [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) 
- - [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) 
- - [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) 
- - [Read only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
- - [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) 
- - [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md), which might then revert the read-only status at the end of the action
- 
- {{ilm-cap}} will **not** proceed with executing these actions until [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
-::::
+By default, if no existing backing index can accept a document's `@timestamp`, {{es}} rejects the document.
+{{es}} does not create missing past backing indices unless you [turn on past index creation](#tsds-past-index-creation).
 
+## Past index creation [tsds-past-index-creation]
+```{applies_to}
+stack: ga 9.5+
+```
 
-### Dimension-based routing [dimension-based-routing]
+{{es}} can automatically create missing past backing indices for an existing {{tsds}} while indexing documents that fall within the eligible write window.
+To enable this, set the [`data_stream.past_tsdb_index_creation_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#time-series-data-stream) cluster setting to `true`.
 
-In addition to time-based routing, time series data streams use dimension-based routing to determine which shard to route data to. Documents with the same dimensions are routed to the same shards, using one of two strategies:
+The _eligible write window_ is the period of time that extends from the present back to whichever comes first:
+
+- the first lifecycle action that makes a backing index read-only (such as [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) or a {{search-snap}} transition), or
+- the data stream retention limit (configured in a [data stream lifecycle](/manage-data/lifecycle/data-stream.md), for example)
+
+Timestamps outside the eligible write window or in the future are still rejected.
+If a [failure store](/manage-data/data-store/data-streams/failure-store.md) is enabled, rejected timestamp failures can be redirected there.
+
+Each new past backing index covers a configurable time interval.
+Use the [`data_streams.past_tsdb_index_interval`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#time-series-data-stream) cluster setting to control the interval.
+When the gap between existing indices is up to 1.3 times the configured interval, {{es}} might create a single bridging index instead of many small indices.
+
+Past backing indices hold old data but are new indices.
+{{es}} sets [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-data-stream-lifecycle-origination-date) from `index.time_series.end_time` so that data stream lifecycle and [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md) treat the index age based on the data it contains, not when the index was created.
+
+For guidance on loading historical data, refer to [Load historical data into a TSDS](/manage-data/data-store/data-streams/load-historical-tsds.md).
+
+## {{ilm-cap}} implications
+
+Writes might be rejected even when a timestamp fits the accepted time range of a backing index.
+The following {{ilm}} [actions](elasticsearch://reference/elasticsearch/index-lifecycle-actions/index.md) can affect the writable time range, either because they make a backing index read-only or remove it:
+
+- [Delete](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-delete.md)
+- [Downsample](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md)
+- [Force merge](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md)
+- [Read only](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md)
+- [Searchable snapshot](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md)
+- [Shrink](elasticsearch://reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md), which might revert the read-only status at the end of the action
+
+{{ilm-cap}} doesn't run these actions until [`index.time_series.end_time`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-end-time) has passed.
+
+## Dimension-based routing [dimension-based-routing]
+
+In addition to time-based routing, {{tsdses}} use dimension-based routing to determine which shard to route data to. Documents with the same dimensions are routed to the same shards, using one of two strategies:
 
 **Index dimensions** {applies_to}`stack: ga 9.2` {applies_to}`serverless: all`
 :    Routing based on the internally managed `index.dimensions` setting.
@@ -81,5 +112,3 @@ or manually set the [`index.routing_path`](elasticsearch://reference/elasticsear
 Documents with the same dimension values are routed to the same shard, improving compression and query performance for time series data.
 
 The `index.routing_path` setting supports wildcards (for example, `dim.*`) and can dynamically match new fields.
-
-

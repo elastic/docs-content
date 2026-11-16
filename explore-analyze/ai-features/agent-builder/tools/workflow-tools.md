@@ -43,7 +43,7 @@ Follow these steps to configure a workflow tool:
 
    ::::{applies-item} { stack: ga =9.3 }
 
-    Go to **Agents > More > View all tools > New tool**.
+    Go to **Agents** → **More** → **View all tools** → **New tool**.
 
    ::::
    
@@ -75,8 +75,13 @@ The Workflow tools have the following configuration settings:
   :   The specific Elastic Workflow to execute. Selecting a workflow automatically pulls its definition into the tool configuration.
   
   **Inputs**
-  :   The parameters required by the workflow. These are automatically detected from the `inputs` section of the selected workflow's YAML definition. The agent will attempt to extract values for these inputs from the user's chat message.
+  :   The parameters required by the workflow. These are automatically detected from the `inputs` section of the selected workflow's YAML definition. The agent tries to extract values for these inputs from the user's chat message.
   
+  **Require user confirmation** (Optional) {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+  :   Controls whether the agent asks you to approve a tool call before it runs. Select **Never** to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. The default is **Never**.
+  :   With **Once**, your response applies to every later call to the tool in the same conversation, whether you confirmed or denied the action, including retries after a failed call.
+  :   Confirmation applies only when an agent calls the tool. Refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
+
   **Labels** (Optional)
   :   Tags used to organize and filter tools within the {{agent-builder}} UI.
 
@@ -102,7 +107,7 @@ To assign a tool to an agent:
 
 1. Navigate to **Agents**.
 2. Select your agent.
-3. Select **More > Edit Agent > Tools**.
+3. Select **More** → **Edit Agent** → **Tools**.
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
 

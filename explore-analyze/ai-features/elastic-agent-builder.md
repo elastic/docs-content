@@ -74,7 +74,7 @@ Tools are modular, reusable functions that agents use to search, retrieve, and m
 
 ## Model selection
 
-On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. You can also configure other model providers using connectors, including local LLMs deployed on your infrastructure.
+On {{ech}} and {{serverless-full}}, {{agent-builder}} comes with preconfigured models ready to use. You can also configure other model providers using {{infer}} endpoints, including local LLMs deployed on your infrastructure.
 
 For solution-specific ratings of models tested on {{elastic-sec}} AI chat and AI-powered features, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 
@@ -112,3 +112,6 @@ Understand current limitations and known issues with {{agent-builder}}.
 
 [**Learn more about limitations and known issues**](agent-builder/limitations-known-issues.md)
 
+## Release notes
+
+{{agent-builder}} release notes are part of the [{{kib}} release notes](kibana://release-notes/index.md). Look for the **Elastic Agent Builder** entries in each release.

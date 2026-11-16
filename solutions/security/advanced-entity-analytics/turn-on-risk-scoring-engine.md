@@ -33,8 +33,8 @@ The preview is limited to two risk scores per {{kib}} instance or serverless pro
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 To preview risky entities, go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-  * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-  * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
+  * **Security solution view**: Find **{{stack-manage-app}}** → **Entity Analytics** in the navigation menu.
+  * **Classic view**: Find **Manage** → **Entity Analytics** in the navigation menu.
 :::
 
 :::{applies-item} { stack: ga 9.0-9.3 }
@@ -61,13 +61,16 @@ To preview risky entities, find **Entity risk score** in the navigation menu or 
 Turning on risk scoring and entity store on deployments with less than 4 GB of memory is not recommended, as the cluster might become heavily loaded by the processes required to run Entity Analytics. For optimal performance, we recommend at least 8 GB of memory.
 :::
 
-In the default {{kib}} space, both risk scoring and entity store are enabled automatically.
+:::{note}
+:applies_to: stack: ga 9.4-9.5
+In {{stack}} 9.4.0–9.4.5 and 9.5.0–9.5.1, risk scoring and the entity store are enabled automatically in the default {{kib}} space. Starting in 9.4.6 and 9.5.2, you must enable them in every space, including the default space.
+:::
 
-For non-default spaces, if you're enabling risk scoring for the first time:
+If you're enabling risk scoring for the first time:
 
 1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
+    * **Security solution view**: Find **{{stack-manage-app}}** → **Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage** → **Entity Analytics** in the navigation menu.
 2. Turn the toggle on.
 
    :::{note}

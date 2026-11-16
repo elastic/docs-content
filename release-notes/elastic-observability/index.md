@@ -21,6 +21,51 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.6 [elastic-observability-9.5.6-release-notes]
+
+### Fixes [elastic-observability-9.5.6-fixes]
+* Fixes an issue in the metrics view in Discover where a dimension picked for breakdown could be silently dropped if the chart section reloaded or hit an error right after the selection was made [#296940]({{kib-pull}}296940).
+* Fixes the {{product.apm}} data check timing out on large deployments and incorrectly showing the onboarding screen as if no {{product.apm}} data exists [#296846]({{kib-pull}}296846).
+* Fixes the error count in the transaction sample header and transaction detail flyout so it matches the error badges in the waterfall when a trace contains both {{product.apm}} errors and OpenTelemetry exception logs [#296018]({{kib-pull}}296018).
+* Fixes **Run test** running on only the first private location when a Synthetics monitor with multiple private locations is in a non-default space [#295614]({{kib-pull}}295614).
+* Fixes the Synthetics private location clean up timing out on large private locations by bumping each affected agent policy once after all deletions [#295492]({{kib-pull}}295492).
+* Fixes {{product.apm}} trace waterfall auto-refresh disrupting an open span or transaction details flyout by pausing auto-refresh while a flyout is open [#295429]({{kib-pull}}295429).
+* Fixes the {{fleet}} **Edit in Synthetics** link opening a monitor in the current space instead of the space it belongs to, and prevents **Delete integration** from deleting the package policy of a monitor that still exists [#294888]({{kib-pull}}294888).
+* Fixes {{product.apm}} **Storage Explorer** returning a 500 error when a configured {{product.apm}} index doesn't exist [#293813]({{kib-pull}}293813).
+* Fixes the Synthetics diagnostics bundle by restricting agent policies in the current space, and requires the **Can manage private locations** privilege in addition to Synthetics write access to download it [#293783]({{kib-pull}}293783).
+
+## 9.5.5 [elastic-observability-9.5.5-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.5-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.5.5-fixes]
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
+* Fixes a race that creates the SLO summary temporary index with the wrong `service.name` mapping, causing new SLOs to be missing from filters [#286871]({{kib-pull}}286871).
+
+## 9.5.4 [elastic-observability-9.5.4-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.4-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.5.4-fixes]
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
+* Fixes Custom threshold and Metric threshold rules so grouped alerts stay active when **If there is no data** is set to **Do nothing** [#289623]({{kib-pull}}289623).
+
+## 9.5.3 [elastic-observability-9.5.3-release-notes]
+
+
+### Features and enhancements [elastic-observability-9.5.3-features-enhancements]
+* Adds a confirmation modal in Synthetics **Alerting defaults** settings when disabling an active default status or TLS rule. Custom synthetics rules are not affected [#287914]({{kib-pull}}287914).
+
+### Fixes [elastic-observability-9.5.3-fixes]
+* Fixes SLO dashboard embeddable panels (**SLO Overview**, **SLO Alerts**, **Error Budget**, and **Burn Rate**) not rendering when the `observability:enableInspectEsQueries` advanced setting is enabled or when {{kib}} runs in dev mode [#286626]({{kib-pull}}286626).
+* Fixes a 500 error when hovering over AWS RDS instances in the **Infrastructure Inventory** map tooltip, caused by unquoted ARN identifiers containing `:` characters being misinterpreted as KQL field-value separators [#288209]({{kib-pull}}288209).
+* Relabels the top-level **Alerting** privilege section in **Roles** to **Alerting V2** and marks each Alerting V2 sub-privilege as experimental [#288163]({{kib-pull}}288163).
+* Warns in Synthetics when a private location's {{agent}} version predates Maintenance Window support (8.19.x), so operators know monitors on that location will not honor active maintenance windows [#285327]({{kib-pull}}285327).
+* Fixes the Agent Builder research agent re-asking clarifying questions that the user had already answered earlier in the same session [#284800]({{kib-pull}}284800).
+* Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
+
 ## 9.5.2 [elastic-observability-9.5.2-release-notes]
 
 ### Fixes [elastic-observability-9.5.2-fixes]
@@ -162,9 +207,40 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Removes the `actionsAuthorization.execute` check from per-alert mute and unmute, fixing mute/unmute for users who have alert access but limited action execution permissions [#273392]({{kib-pull}}273392).
 * Fixes the Log threshold rule's alert details preview chart failing to render with a KQL syntax error when a criterion uses `matches phrase` or `does not match phrase` with values containing special characters such as `:` [#266783]({{kib-pull}}266783).
 * Fixes the active tab's query not running in the **Compose** Discover sandbox [#275853]({{kib-pull}}275853).
-* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes example log messages in the **Logs** → **Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
+
+## 9.4.9 [elastic-observability-9.4.9-release-notes]
+
+### Fixes [elastic-observability-9.4.9-fixes]
+* Fixes the {{product.apm}} environment filter and dropdown not recognizing OpenTelemetry data that uses `deployment.environment.name` [#297170]({{kib-pull}}297170).
+* Fixes the Synthetics private location clean up timing out on large private locations by bumping each affected agent policy once after all deletions [#295492]({{kib-pull}}295492).
+* Fixes {{product.apm}} trace waterfall auto-refresh disrupting an open span or transaction details flyout by pausing auto-refresh while a flyout is open [#295429]({{kib-pull}}295429).
+
+## 9.4.8 [elastic-observability-9.4.8-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.8-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.4.8-fixes]
+* Fixes the AI Assistant **Help me understand this alert** action hanging when alerts lack entity context by skipping unscoped log rate and log category analyses [#290244]({{kib-pull}}290244).
+
+## 9.4.7 [elastic-observability-9.4.7-release-notes]
+
+### Features and enhancements [elastic-observability-9.4.7-features-enhancements]
+* Adds a **Can run tests manually** sub-feature privilege to Synthetics, allowing read-only users to trigger on-demand tests for existing monitors without monitor write access [#282149]({{kib-pull}}282149).
+
+### Fixes [elastic-observability-9.4.7-fixes]
+* Fixes Custom threshold and Metric threshold rules so grouped alerts stay active when **If there is no data** is set to **Do nothing** [#289623]({{kib-pull}}289623).
+* Fixes a 500 error when hovering over AWS RDS instances in the **Infrastructure Inventory** map tooltip, caused by unquoted ARN identifiers containing `:` characters being misinterpreted as KQL field-value separators [#288209]({{kib-pull}}288209).
+* Fixes a race that creates the SLO summary temporary index with the wrong `service.name` mapping, causing new SLOs to be missing from filters [#286871]({{kib-pull}}286871).
+* Fixes Synthetics global parameters shared across all spaces being dropped from private location monitor configurations during all-spaces sync [#282575]({{kib-pull}}282575).
+
+## 9.4.6 [elastic-observability-9.4.6-release-notes]
+
+### Fixes [elastic-observability-9.4.6-fixes]
+* Fixes Custom Threshold rules using the rate aggregation to correctly fire when a monitored counter increases from `0` to any positive value [#283973]({{kib-pull}}283973).
 
 ## 9.4.5 [elastic-observability-9.4.5-release-notes]
 
@@ -201,7 +277,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.4.3-fixes]
 * Fixes the **SLOs** link in the {{product.apm}} SLO overview flyout to include all-environment SLOs [#273367]({{kib-pull}}273367).
-* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes example log messages in the **Logs** → **Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Fixes the AI Agent investigation skill to anchor time range queries to the alert start time when investigating an alert [#271983]({{kib-pull}}271983).
 * Fixes knowledge base recall in Observability AI Assistant when the selected connector is an inference endpoint [#271753]({{kib-pull}}271753).
 
@@ -445,7 +521,7 @@ There are no user-facing changes in {{observability}} for the 9.4.1 release.
 ## 9.3.6 [elastic-observability-9.3.6-release-notes]
 
 ### Fixes [elastic-observability-9.3.6-fixes]
-* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes example log messages in the **Logs** → **Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
 
 ## 9.3.5 [elastic-observability-9.3.5-release-notes]

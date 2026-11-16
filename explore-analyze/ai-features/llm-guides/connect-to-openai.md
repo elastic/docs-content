@@ -9,11 +9,14 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
+sub:
+  model-provider: OpenAI
+  inference-service: OpenAI
 ---
 
 # Connect to OpenAI
 
-This page provides step-by-step instructions for setting up an OpenAI connector for the first time. This connector type enables you to leverage OpenAI’s large language models (LLMs) within {{kib}}. You’ll first need to create an OpenAI API key, then configure the connector in {{kib}}.
+This page provides step-by-step instructions for connecting {{kib}} to OpenAI’s large language models (LLMs). You’ll first need to create an OpenAI API key, then connect {{kib}} to OpenAI.
 
 
 ## Configure OpenAI [_configure_openai]
@@ -43,16 +46,21 @@ The following video demonstrates these steps (click to watch).
 [![openai-apikey-video](https://play.vidyard.com/vbD7fGBGgyxK4TRbipeacL.jpg)](https://videos.elastic.co/watch/vbD7fGBGgyxK4TRbipeacL?)
 
 
-## Configure the OpenAI connector [_configure_the_openai_connector]
+## Connect {{kib}} to OpenAI [_configure_the_openai_connector]
 
-::::{important}
-:applies_to: {"stack": "deprecated 9.5", "serverless": "deprecated"}
-This connector is deprecated and is being progressively removed from the create connector UI. Existing connectors and their rule actions continue to work.
+::::::{applies-switch}
 
-For new AI integrations, use {{es}} {{infer}} endpoints. Migrate existing LLM connectors and related rule actions before the future removal.
-::::
+:::::{applies-item} { stack: ga 9.5+, serverless: ga }
+:::{include} _snippets/create-chat-completion-endpoint.md
+:::
 
-To integrate with {{kib}}:
+4. For **API Key**, paste the API key that you created.
+5. For **Model ID**, enter the name of the [model](https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4) you want to use. The **URL** field is optional.
+6. Select the `chat_completion` task type, then select **Save**.
+:::::
+
+:::::{applies-item} stack: ga 9.0-9.4
+Create an OpenAI connector so that {{kib}} can use OpenAI models.
 
 1. Log in to {{kib}}.
 2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **OpenAI**.
@@ -66,3 +74,6 @@ To integrate with {{kib}}:
 The following video demonstrates these steps (click to watch).
 
 [![openai-configure-connector-video](https://play.vidyard.com/BGaQ73KBJCzeqWoxXkQvy9.jpg)](https://videos.elastic.co/watch/BGaQ73KBJCzeqWoxXkQvy9?)
+:::::
+
+::::::

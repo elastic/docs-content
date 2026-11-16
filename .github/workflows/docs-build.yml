@@ -1,9 +1,10 @@
-name: docs-build
+name: "Preview: Build"
 on:
   pull_request:
     types: [opened, synchronize, reopened]
   push:
     branches: [main]
+  merge_group: ~
 permissions:
   contents: read
   pull-requests: read

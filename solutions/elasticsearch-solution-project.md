@@ -38,7 +38,7 @@ The {{es}} solution provides the following specialized UI tools and features to 
 
 ### Synonyms UI
 
-The [synonyms UI](/solutions/search/full-text/search-with-synonyms.md#method-1-kib-ui) enables managing synonym sets directly within {{kib}}. This makes it easier to improve search relevance without editing configuration files.
+The [synonyms UI](/solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-kibana) enables managing synonym sets directly within {{kib}}. This makes it easier to improve search relevance without editing configuration files.
 
 ### Query Rules UI
 

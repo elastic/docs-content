@@ -14,8 +14,9 @@ products:
 A data stream lifecycle ({{dlm-init}}) can automatically convert older backing indices to [{{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) on the [frozen tier](/manage-data/lifecycle/data-tiers.md).
 This frozen transition feature lets you retain data for long periods at low storage cost while keeping it searchable, without manual snapshot or mount operations.
 
-This page explains how frozen transitions work, what you need before they can run, and how to diagnose blocked conversions.
+This page explains how frozen transitions work and what you need before they can run.
 To configure `frozen_after` on a new or existing data stream, refer to [Next steps](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md#next-steps).
+If conversions are blocked, refer to [Backing indices are not moving to the frozen tier](/troubleshoot/elasticsearch/data-stream-frozen-transition.md).
 
 ## Requirements [dlm-frozen-transition-requirements]
 
@@ -59,28 +60,11 @@ If a conversion is interrupted, {{dlm-init}} might leave behind orphaned clone i
 
 ## Troubleshooting [dlm-frozen-transition-troubleshooting]
 
-### Symptoms [dlm-frozen-transition-symptoms]
-
-Conversion errors appear in the lifecycle explain output for individual backing indices.
-Use the [explain data lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle) to inspect status:
-
-```console
-GET .ds-my-stream-*/_lifecycle/explain
-```
-
-For transient failures, {{dlm-init}} records the error and retries the conversion on the next poll cycle. Each conversion step is idempotent, so retries resume from the point at which the error occurred.
-
-Conversions stop retrying when the explain output reports an unrecoverable error, such as a missing snapshot repository or a license compliance failure.
-
-### Resolution [dlm-frozen-transition-resolution]
-
-1. Run the explain API on the affected backing indices and note the reported error.
-2. If the error indicates a missing snapshot repository, re-register the default snapshot repository. Refer to [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md).
-3. If the error indicates a license compliance failure, renew the license. Refer to [{{es}} pricing and subscriptions]({{subscriptions}}).
+If backing indices older than `frozen_after` are not converting to frozen {{search-snaps}}, refer to [Backing indices are not moving to the frozen tier](/troubleshoot/elasticsearch/data-stream-frozen-transition.md).
 
 ## Next steps [next-steps]
 
-- New data streams: Include `frozen_after` in the index template lifecycle when you create a data stream. Refer to [Creating a data stream with a lifecycle](/manage-data/lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md).
+- New data streams: Include `frozen_after` in the index template lifecycle when you create a data stream. Refer to [Create a data stream with a lifecycle](/manage-data/lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md).
 - Existing data streams: Add or update `frozen_after` on an individual data stream using the lifecycle API. Refer to [Update the lifecycle of a data stream](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#configure-dlm-searchable-snapshots).
 
 ## Related pages [related-pages]
@@ -89,3 +73,4 @@ Conversions stop retrying when the explain output reports an unrecoverable error
 - [Data stream retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md)
 - [{{search-snaps-cap}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md)
 - [Data tiers](/manage-data/lifecycle/data-tiers.md)
+- [Backing indices are not moving to the frozen tier](/troubleshoot/elasticsearch/data-stream-frozen-transition.md)

@@ -11,17 +11,25 @@ navigation_title: Update strategy
 
 # Pod update strategy for Elastic Cloud on Kubernetes [k8s-update-strategy]
 
-You can use the `updateStrategy` specification to limit the number of simultaneous changes, like for example in the following cases:
+You can use the `updateStrategy` field in the `Elasticsearch` resource spec to control how many Pods the operator can take down or spin up at a time, for example in the following cases:
 
 * The operator takes a Pod down to restart a node and applies a new configuration value.
 * The operator must spin up Pods above what is currently in the specification to migrate to a new node set.
 
-```yaml
+```yaml subs=true
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: quickstart
 spec:
+  version: {{version.stack}}
   updateStrategy:
     changeBudget:
       maxSurge: 3
       maxUnavailable: 1
+  nodeSets:
+  - name: default
+    count: 3
 ```
 
 `maxSurge`: Refers to the number of extra Pods that can be temporarily scheduled exceeding the number of Pods defined in the specification. This setting is useful for controlling the resource usage of the Kubernetes cluster when nodeSet configuration changes and new Pods need to be spun up to replace existing Pods. `MaxSurge` restricts the number of extra pods that can be running at any given point in time. If you have a large {{es}} cluster or a Kubernetes cluster running near capacity, not setting `maxSurge` could cause the newly created pods to temporarily use up all available spare resource capacity in the Kubernetes cluster and starve other workloads running there.

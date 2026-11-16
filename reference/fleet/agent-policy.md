@@ -169,9 +169,9 @@ To update any secret values in an integration policy, refer to [Configure secret
 Policy definitions are stored in a plain-text YAML file that can be downloaded or copied to another policy:
 
 1. In {{fleet}}, click **Agent policies**. Click the name of the policy you want to copy or download.
-2. To copy a policy, click **Actions → Copy policy**. Name the new policy, and provide a description. The exact policy definition is copied to the new policy.
+2. To copy a policy, click **Actions** → **Copy policy**. Name the new policy, and provide a description. The exact policy definition is copied to the new policy.
 
-    Alternatively, view and download the policy definition by clicking **Actions → View policy**.
+    Alternatively, view and download the policy definition by clicking **Actions** → **View policy**.
 
 
 
@@ -295,6 +295,8 @@ If your [Elastic subscription level](https://www.elastic.co/subscriptions) suppo
 2. Click **Agent policies**. Click the name of the policy you want to change, then click **Settings**.
 3. Set **Output for integrations** and (optionally) **Output for agent monitoring** to use a different output, for example, {{ls}}. You might need to scroll down to see these options.
 
+    {applies_to}`serverless: ga` If an AWS PrivateLink connection is set up for your project, you can select **Private Elasticsearch Output** to send this policy's data over your private endpoint while other policies keep using the default. Refer to [AWS PrivateLink and {{fleet}}](/deploy-manage/security/private-connectivity-aws.md#aws-privatelink-and-fleet).
+
     Unable to select a different output? Confirm that your [Elastic subscription level](https://www.elastic.co/subscriptions) supports **per policy output assignment** in {{fleet}}.
 
     :::{image} images/agent-output-settings.png
@@ -325,7 +327,7 @@ Make sure that the {{agent}}s assigned to this policy all have connectivity to t
 
 When you create an integration policy you often need to provide sensitive information such as an API key or a password. To help ensure that data can’t be accessed inappropriately, any secret values used in an integration policy are stored separately from other policy details.
 
-As well, after you’ve saved a secret value in {{fleet}}, the value is hidden in both the {{fleet}} UI and in the agent policy definition. When you view the agent policy (**Actions → View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
+As well, after you’ve saved a secret value in {{fleet}}, the value is hidden in both the {{fleet}} UI and in the agent policy definition. When you view the agent policy (**Actions** → **View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
 
 ::::{warning}
 In order for sensitive values to be stored secretly in {{fleet}}, all configured {{fleet-server}}s must be on version 8.10.0 or higher.
@@ -462,6 +464,10 @@ A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If
 
 If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
 
+To stay within these limits, group agents by role rather than creating a policy for each host. Refer to [](/reference/fleet/scale-integration-policies.md).
+
 ## Scaling limitations of integration package policies [integration-policies-scale-limitations]
 
 A single {{agent}} policy supports a maximum of 10,000 integration package policies.
+
+If you're approaching this limit because you've created one integration policy per host, you can usually consolidate them into a single policy. Refer to [](/reference/fleet/scale-integration-policies.md).

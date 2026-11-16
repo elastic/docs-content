@@ -1,4 +1,5 @@
 ---
+description: Application performance monitoring (APM) with Elastic. Track response times, database queries, external calls, errors, and host and runtime metrics for your services.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm.html
@@ -27,3 +28,6 @@ Metrics are another vital source of information when debugging production system
 ## Give Elastic APM a try [give_elastic_apm_a_try]
 
 Want to quickly spin up an APM deployment? Refer to [Get started for APM](/solutions/observability/apm/get-started.md). We recommend using [{{edot}}](/solutions/observability/apm/opentelemetry/index.md) to collect application telemetry data. To host everything yourself instead, refer to [Set up APM Server](/solutions/observability/apm/apm-server/setup.md).
+
+:::{related-learning} apm-with-elastic
+:::

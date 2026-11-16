@@ -1,14 +1,15 @@
 ---
+description: Build time series visualizations with TSVB in Kibana, set up series and chart options, convert them to Lens, and add them to a dashboard.
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: kibana
-  - id: cloud-serverless
   - id: cloud-hosted
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+type: how-to
 ---
 
 # TSVB [tsvb-panel]
@@ -98,7 +99,7 @@ The configuration options differ for each **TSVB** visualization.
 
 ### Time Series [tsvb-time-series]
 
-By default, the y-axis displays the full range of data, including zero. To automatically scale the y-axis from the minimum to maximum values of the data, click **Data > Options > Fill**, then enter `0` in the **Fill** field. You can add annotations to the x-axis based on timestamped documents in a separate {{es}} index.
+By default, the y-axis displays the full range of data, including zero. To automatically scale the y-axis from the minimum to maximum values of the data, click **Data** → **Options** → **Fill**, then enter `0` in the **Fill** field. You can add annotations to the x-axis based on timestamped documents in a separate {{es}} index.
 
 
 ### All chart types except Time Series [all-chart-types-except-time-series]
@@ -134,6 +135,8 @@ You can open the following **TSVB** visualizations in **Lens**:
 * Table
 
 To get started, click **Edit visualization in Lens** in the toolbar.
+
+You can also convert a **TSVB** visualization that's already on a dashboard. In **Edit** mode, open the panel menu {icon}`boxes_vertical` and select **Convert to Lens**. The option appears only when {{kib}} can convert the visualization's configuration, and you need at least **Read** access to the **Visualize library** feature. **Lens** opens with the converted visualization. To replace the panel with it, select **Save and return**.
 
 For more information, check out [Create visualizations with Lens](../lens.md).
 
@@ -219,7 +222,7 @@ Technical note: TSVB uses [Handlebars](https://handlebarsjs.com/) to perform the
 It depends, but most often there are two causes:
 
 * For **Time series** visualizations with a derivative function, the time interval can be too small. Derivatives require sequential values.
-* For all other **TSVB** visualizations, the cause is probably the **Data timerange mode**, which is controlled by **Panel options > Data timerange mode > Entire time range**. By default, **TSVB** displays the last whole bucket. For example, if the time filter is set to **Last 24 hours**, and the current time is 9:41, **TSVB** displays only the last 10 minutes — from 9:30 to 9:40.
+* For all other **TSVB** visualizations, the cause is probably the **Data timerange mode**, which is controlled by **Panel options** → **Data timerange mode** → **Entire time range**. By default, **TSVB** displays the last whole bucket. For example, if the time filter is set to **Last 24 hours**, and the current time is 9:41, **TSVB** displays only the last 10 minutes — from 9:30 to 9:40.
 
 ::::
 

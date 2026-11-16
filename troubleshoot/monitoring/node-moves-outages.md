@@ -13,7 +13,7 @@ products:
 
 To ensure that your deployment nodes are located on healthy hosts, Elastic vacates nodes to perform essential system maintenance or to remove a host with hardware issues from service. These tasks cannot be skipped or delayed.
 
-You can subscribe to the [status page](https://status.elastic.co/) to be notified about planned maintenance or actions that have been taken to respond to incidents.
+You can subscribe to the [status page](https://status.elastic.co/) to be notified about planned maintenance or actions that have been taken to respond to incidents. If you are on a FedRAMP High deployment, subscribe to the [FedRAMP High status page](https://ela.st/fedramphighstatus) instead.
 
 If events on your deployment don’t correlate to any items listed on the status page, the events are due to minor essential maintenance performed on only a subset of {{ech}} deployments.
 
@@ -36,7 +36,7 @@ Potential causes of system maintenance include, but not limited to, situations l
 * A host where the Cloud Service Provider (CSP), like AWS, GCP, or Azure, has reported upcoming hardware deprecation or identified issues requiring remediation.
 * Abrupt host termination by the CSP due to underlying infrastructure problems.
 * Mandatory host operating system (OS) patching or upgrades for security or compliance reasons.
-* Other scheduled maintenance announced on the [Elastic status page](https://status.elastic.co/).
+* Other scheduled maintenance announced on the [Elastic status page](https://status.elastic.co/) (or the [FedRAMP High status page](https://ela.st/fedramphighstatus) for FedRAMP High deployments).
 
 ## Behavior difference [behavior-difference]
 

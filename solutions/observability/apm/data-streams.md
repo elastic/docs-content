@@ -11,6 +11,8 @@ navigation_title: Data streams
 
 # APM data streams [apm-data-streams]
 
+{{agent}} stores APM traces, metrics, and logs in {{es}} as data streams. Learn how APM data streams are named, which data streams APM creates, and how to customize their namespaces.
+
 ::::{note}
 {{agent}} uses data streams to store append-only time series data across multiple indices. Data streams are well-suited for logs, metrics, traces, and other continuously generated data, and offer a host of benefits over other indexing strategies:
 

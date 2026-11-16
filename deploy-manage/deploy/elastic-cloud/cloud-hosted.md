@@ -82,7 +82,7 @@ Refer to [](/deploy-manage/security.md) for more details.
 
 {{ech}} provides several ways to monitor your deployments, anticipate and prevent issues, or fix them when they occur. Check [](/deploy-manage/monitor.md) to get more details.
 
-:::{include} /deploy-manage/_snippets/autoops-callout-with-ech.md
+:::{include} /deploy-manage/_snippets/autoops-callout-monitoring.md
 :::
 
 ## More about {{ech}} [ec-about]

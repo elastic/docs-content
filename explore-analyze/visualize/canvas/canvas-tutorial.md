@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tutorial.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: kibana
 ---
@@ -26,7 +26,7 @@ To create a workpad of the eCommerce store data, add the data set, then create t
 
 To customize your workpad to look the way you want, add your own images.
 
-1. Click **Add element > Image > Image**.
+1. Click **Add element** → **Image** → **Image**.
 
     The default Elastic logo image appears on the page.
 
@@ -46,11 +46,11 @@ To customize your workpad to look the way you want, add your own images.
 
 Customize your data by connecting it to the Sample eCommerce orders data.
 
-1. Click **Add element > Chart > Metric**.
+1. Click **Add element** → **Chart** → **Metric**.
 
     By default, the element is connected to the demo data, which enables you to experiment with the element before you connect it to your own.
 
-2. To connect the element to your own data, make sure the element is selected, then click **Data > Demo data > Elasticsearch SQL**.
+2. To connect the element to your own data, make sure the element is selected, then click **Data** → **Demo data** → **Elasticsearch SQL**.
 
     1. To select the total price field and set it to the sum_total_price field, enter the following in the **Query** field:
 
@@ -88,8 +88,8 @@ Customize your data by connecting it to the Sample eCommerce orders data.
 
 To show what your data can do, add charts, graphs, progress monitors, and more to your workpad.
 
-1. Click **Add element > Chart > Area**.
-2. Make sure that the element is selected, then click **Data > Demo data > Elasticsearch SQL**.
+1. Click **Add element** → **Chart** → **Area**.
+2. Make sure that the element is selected, then click **Data** → **Demo data** → **Elasticsearch SQL**.
 
     1. To obtain the taxless total price by date, enter the following in the **Query** field:
 
@@ -116,7 +116,7 @@ To show what your data can do, add charts, graphs, progress monitors, and more t
 
 To focus your data on a specific time range, add the time filter.
 
-1. Click **Add element > Filter > Time filter**.
+1. Click **Add element** → **Filter** → **Time filter**.
 2. Click **Display**
 3. To use the date time field from the sample data, enter `order_date` in the **Column** field, then click **Set**.
 

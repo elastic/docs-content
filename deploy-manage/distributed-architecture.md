@@ -15,7 +15,7 @@ products:
 The topics in this section provides information about the architecture of {{es}} and how it stores and retrieves data:
 
 ::::{note}
-{{serverless-full}} scales with your workload and automates nodes, shards, and replicas for you. Some of the content in this section does not apply to you if you are using {{serverless-full}}. Instead, the information in this section will provide you information about how the platform works for you.
+{{serverless-full}} scales with your workload and automates nodes, shards, and replicas for you. Some of the content in this section, such as shard replication and allocation, does not apply to you if you are using {{serverless-full}}. To learn how {{serverless-short}} provides data durability and availability instead, refer to [](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md).
 ::::
 
 * [Cluster, nodes, and shards](distributed-architecture/clusters-nodes-shards.md): Learn about the basic building blocks of an {{es}} cluster, including nodes, shards, primaries, and replicas.

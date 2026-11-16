@@ -42,7 +42,7 @@ To pull data from the respective applicable locations, refer to:
 
     :::{note}
     :applies_to: { serverless: unavailable, stack: preview 9.1-9.4 }
-    To pull [{{managed-integration}}](/manage-data/ingest/managed-integrations/managed-integrations.md) diagnostics, you have to use the {{fleet}} UI. To display Managed integration resources in {{fleet}}, refer to [Show {{managed-integration}} resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting).
+    To pull [{{managed-integration}}](/reference/managed-integrations/index.md) diagnostics, you have to use the {{fleet}} UI. To display Managed integration resources in {{fleet}}, refer to [Show {{managed-integration}} resources](/reference/fleet/fleet-settings.md#show-agentless-resources-setting).
     :::
 
 You need to determine which diagnostic types are needed to investigate your specific issue. This table shows common troubleshooting situations and which diagnostics are commonly associated:
@@ -71,6 +71,11 @@ Some {{agent}} configuration issues only appear in the agent's start-up debug lo
 {{agent}} comes bundled with a [`diagnostics` command](/reference/fleet/agent-command-reference.md#elastic-agent-diagnostics-command) which generates a zip archive containing troubleshooting diagnostic information. This export is intended only for debugging purposes and its structure can change between releases.
 
 The {{fleet}} UI provides the ability to remotely generate and gather an {{agent}}'s diagnostics bundle if it is online in a [`Healthy` or `Unhealthy` status](/reference/fleet/monitor-elastic-agent.md#view-agent-status). For {{agent}}s in other statuses, you must use the CLI to grab their diagnostic.
+
+:::{note}
+:applies_to: stack: ga 9.5+
+When OTel-based {{es}} monitoring is active, the bundle also includes `elastic-agent-metrics.ndjson` (capped at 20 MB). This file contains raw collector metric snapshots useful for diagnosing OTel monitoring pipeline issues.
+:::
 
 :::{warning}
 Diagnostics and logs mainly emit product metadata and settings, but they might expose sensitive data which needs to be redacted before being shared outside of your organization. For more details, refer to [Sanitize](#agent-diagnostics-sanitize).

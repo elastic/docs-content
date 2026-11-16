@@ -22,7 +22,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
 | [Authentication](/deploy-manage/users-roles.md) | {{es}} realms | {{es}} realms, {{ecloud}} SSO | {{ecloud}} SSO only |
 | [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
-| [Audit logging](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) | Available | Available | No |
+| [Audit logging](/deploy-manage/monitor/activity-logging.md#audit-logging) | Available | Available | No |
 
 ## Infrastructure and cluster management
 
@@ -33,7 +33,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | [Autoscaling](/deploy-manage/autoscaling.md) | No |  Available | Available | Available | Automatic |
 | [Data tier](/manage-data/lifecycle/data-tiers.md) management | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Available | No data tiers |
 | [Snapshot management](/deploy-manage/tools/snapshot-and-restore.md) | Custom | Custom | Available | Available | Managed by Elastic |
-| [High availability and disaster recovery](/deploy-manage/production-guidance/availability-and-resilience.md) | Available | Available | Available | Available | Managed by Elastic |
+| [High availability and disaster recovery](/deploy-manage/production-guidance/availability-and-resilience.md) | Available | Available | Available | Available | Managed by Elastic. [Learn more](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md) |
 | [Shard management and replicas](/deploy-manage/distributed-architecture/clusters-nodes-shards.md) | Available | Available | Available | Available | Managed by Elastic |
 
 ## Monitoring
@@ -42,6 +42,12 @@ For more details about feature availability in {{serverless-short}}, refer to []
 |-------------------|-------------------------------|---------|----------------------|
 | [Deployment health monitoring](/deploy-manage/monitor.md) | AutoOps or monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
 | [Alerting](/explore-analyze/alerting.md) | Watcher or {{kib}} alerts | Watcher or {{kib}} alerts | Alerts ([why?](/explore-analyze/alerting.md#watcher)) |
+
+## Reporting
+
+| Feature/capability | Fully self-managed, ECE, ECK, ECH | {{serverless-short}} |
+|-------------------|-------------------------------|----------------------|
+| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for dashboards and for Discover sessions (preview).<br><br>PDF and PNG are not available. |
 
 ## Data lifecycle
 
@@ -57,7 +63,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | Custom plugins and bundles | Available | Available | No |
 | [Self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md) | Available | Limited | Limited |
 | [{{es}}-Hadoop integration](elasticsearch-hadoop://reference/index.md) | Available | Available | No |
-| [Cross cluster search (CCS)](/explore-analyze/cross-cluster-search.md) | Available | Available | Tech preview (as [cross-project search](/deploy-manage/cross-project-search-config.md)) |
+| Search across clusters or projects | [Cross-cluster search](/explore-analyze/cross-cluster-search.md) | [Cross-cluster search](/explore-analyze/cross-cluster-search.md) | [Cross-project search](/deploy-manage/cross-project-search-config.md) |
 | [Cross cluster replication](/deploy-manage/tools/cross-cluster-replication.md) | Available | Available | [Planned](https://www.elastic.co/cloud/serverless/roadmap) |
 
 ## Development and testing features

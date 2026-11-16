@@ -42,7 +42,7 @@ From the list view, you can:
 :screenshot:
 :::
 
-To create a pipeline, click **Create pipeline > New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
+To create a pipeline, click **Create pipeline** → **New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
 
 ::::{tip}
 The **New pipeline from CSV** option lets you use a CSV to create an ingest pipeline that maps custom data to the [Elastic Common Schema (ECS)](ecs://reference/index.md). Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other datasets. To get started, check [Map custom data to ECS](ecs://reference/ecs-converting.md).
@@ -298,7 +298,7 @@ $$$pipeline-custom-logs-index-template$$$
     }
     ```
 
-3. When adding or editing your **Custom logs** integration in {{fleet}}, click **Configure integration > Custom log file > Advanced options**.
+3. When adding or editing your **Custom logs** integration in {{fleet}}, click **Configure integration** → **Custom log file** → **Advanced options**.
 4. In **Dataset name**, specify your dataset’s name. {{fleet}} will add new data for the integration to the resulting `logs-<dataset-name>-default` data stream.
 
     For example, if your dataset’s name was `my_app`, {{fleet}} adds new data to the `logs-my_app-default` data stream.
@@ -330,7 +330,7 @@ $$$pipeline-custom-logs-configuration$$$
     }
     ```
 
-2. When adding or editing your **Custom logs** integration in {{fleet}}, click **Configure integration > Custom log file > Advanced options**.
+2. When adding or editing your **Custom logs** integration in {{fleet}}, click **Configure integration** → **Custom log file** → **Advanced options**.
 3. In **Dataset name**, specify your dataset’s name. {{fleet}} will add new data for the integration to the resulting `logs-<dataset-name>-default` data stream.
 
     For example, if your dataset’s name was `my_app`, {{fleet}} adds new data to the `logs-my_app-default` data stream.
@@ -1033,3 +1033,12 @@ Use the [node stats]({{es-apis}}operation/operation-nodes-stats) API to get glob
 ```console
 GET _nodes/stats/ingest?filter_path=nodes.*.ingest
 ```
+
+
+## Limitations [ingest-pipeline-limitations]
+
+Ingest pipelines operate on one document at a time, as the document is indexed. This model has a few consequences:
+
+* A pipeline can transform or drop a document, but it can't split one incoming document into multiple documents. The [`split` processor](elasticsearch://reference/enrich-processor/split-processor.md) splits a field value into an array within the same document. To index each element of an incoming event as its own document, refer to [Split an event into multiple documents](split-events-into-multiple-documents.md).
+* A pipeline can't read from or aggregate across other indexed documents. The exception is the [enrich processor](data-enrichment.md), which looks up data from an enrich index.
+* A pipeline runs only when a document is indexed, and doesn't change documents that are already indexed. To run a pipeline on existing documents, [reindex]({{es-apis}}operation/operation-reindex) them into a new index with the pipeline, or run an [update by query]({{es-apis}}operation/operation-update-by-query) with the pipeline.

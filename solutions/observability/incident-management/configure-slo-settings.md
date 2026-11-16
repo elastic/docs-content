@@ -10,14 +10,14 @@ applies_to:
 
 # Configure SLOs settings[observability-configure-slo-settings]
 
-From your {{kib}} instance, navigate to the SLOs page and click **Settings** on the menu bar.
+From your {{kib}} instance, navigate to the SLOs page and select **Settings** in the application menu.
 
 On the **SLOs Settings** page, you can configure the following controls:
 
-**Source settings**
+**Source settings** {applies_to}`serverless: unavailable`
 :   You can fetch SLOs from every connected remote cluster by enabling the option **Use all remote clusters**.
 
-**Remote clusters**
+**Remote clusters** {applies_to}`serverless: unavailable`
 :   To select the remote clusters from which you want to fetch SLOs, disable the option **Use all remote clusters** and open the **Select remote clusters** dropdown.
 
 **Stale SLOs threshold**
@@ -26,16 +26,20 @@ On the **SLOs Settings** page, you can configure the following controls:
 **Stale instances cleanup**
 :   Automatically cleanup stale SLO instances that have not been updated within the stale threshold.
 
-:::{image} /solutions/images/observability-slo-remote-clusters.png
-:alt: Select remote clusters to fetch SLOs
+:::{image} /solutions/images/observability-slo-settings.png
+:alt: The SLOs Settings page with the Stale SLOs threshold and the Stale instances cleanup toggle
 :screenshot:
 :::
 
 :::{note}
-The SLOs settings are specific to your {{kib}} [space](/deploy-manage/manage-spaces.md).
+* The **SLOs Settings** page is specific to your {{kib}} [space](/deploy-manage/manage-spaces.md). 
+* {applies_to}`serverless: ga` **Source settings**, **Remote clusters**, and federated views are not available on {{serverless-full}}. To monitor SLO breaches across {{es}} projects, create SLOs in this project and [scope them](/solutions/observability/incident-management/create-an-slo.md#slo-cps-scope) to linked projects.
 :::
 
-## Configure SLOs for federated views[observability-configure-slo-settings-federated-view] 
+## Configure SLOs for federated views [observability-configure-slo-settings-federated-view]
+```{applies_to}
+serverless: unavailable
+```
 
 Federated views allow you to view SLOs from remote {{es}} clusters alongside the local SLOs on the SLO listing page of your {{kib}} instance. This enables a centralized overview cluster where you can monitor SLOs across your entire fleet within the same {{kib}} space.
 
@@ -45,7 +49,7 @@ Before configuring SLOs, ensure that:
 - The remote clusters are running {{kib}} with the SLO feature enabled and have SLOs created.
 :::
 
-On the **SLOs Settings** page, you can perform operations on your remote clusters by clicking the three dots menu on the remote cluster:
+Remote SLOs appear on the [SLO overview](/solutions/observability/incident-management/service-level-objectives-slos.md#slo-in-elastic). Open the three dots menu on a remote SLO:
 
 **Details**
 :   Opens a new panel that displays details of the remote instance.
