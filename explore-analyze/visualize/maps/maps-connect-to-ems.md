@@ -516,6 +516,7 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
     Once {{hosted-ems}} is running, follow instructions from the webpage at `localhost:8080` to define a configuration file and optionally download a more detailed basemaps database.
 
+   % Candidate for removal: low value. Elastic Maps Server status page that shows version 8.16.0 and a license error, which is a failure state and an old version.
    :::{image} /explore-analyze/images/kibana-elastic-maps-server-instructions.png
    :alt: Set-up instructions
    :screenshot:

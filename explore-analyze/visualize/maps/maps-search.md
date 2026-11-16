@@ -37,7 +37,7 @@ Layers that request data from {{es}} are narrowed when you submit a search. Laye
 To prevent the global search from applying to a layer, configure the following:
 
 * In **Filtering**, clear the **Apply global search to layer data** checkbox to turn off global search for the layer source.
-* In **Term joins**, clear the **Apply global search to join** checkbox to turn off global search for the [term join](terms-join.md).
+* In **Joins**, clear the **Apply global search to join** checkbox to turn off global search for the [term join](terms-join.md).
 
 
 ## Narrow layers by global time [maps-narrow-layer-by-global-time]
@@ -53,7 +53,7 @@ Use the time slider to quickly select time slices within the global time range:
 To prevent the global time filter from applying to a layer, configure the following:
 
 * In **Filtering**, clear the **Apply global time to layer data** checkbox to turn off the global time for the layer source.
-* In **Term joins**, clear the **Apply global time to join** checkbox to turn off the global time for the [term join](terms-join.md).
+* In **Joins**, clear the **Apply global time to join** checkbox to turn off the global time for the [term join](terms-join.md).
 
 
 ## Refresh layer data [maps-refresh-layer]

@@ -66,11 +66,12 @@ The right source uses the Kibana sample data set "Sample web logs". In this data
 
 A [terms aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-terms-aggregation.md) groups the sample web log documents by **geo.src** and calculates metrics for each term.
 
-The METRICS configuration defines two metric aggregations:
+The join defines two metric aggregations in its **Configure join metrics** popover:
 
 * The count of all documents in the terms bucket.
 * The average of the field "bytes" for all documents in the terms bucket.
 
+% Candidate for removal: low value. Crop of the metrics popover whose two metrics the preceding bullets already list, and its header text is outdated.
 :::{image} /explore-analyze/images/kibana-terms_join_metric_config.png
 :alt: terms join metric config
 :screenshot:

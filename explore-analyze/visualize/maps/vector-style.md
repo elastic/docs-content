@@ -19,6 +19,7 @@ Use static styling to specify a constant value for a style property.
 
 This image shows an example of static styling using the [Kibana sample web logs](/explore-analyze/index.md) data set. The **kibana_sample_data_logs** layer uses static styling for all properties.
 
+% Candidate for removal: low value. Same sample logs map and flyout as the other style images with fixed values only, and the text already says every property is static.
 :::{image} /explore-analyze/images/kibana-vector_style_static.png
 :alt: vector style static
 :screenshot:

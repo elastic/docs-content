@@ -154,6 +154,7 @@ To visualize CSA regions by web log traffic, the web log traffic must contain a 
 
 Your web log data now contains `csa.GEOID` and `csa.NAME` fields from the matching **csa** region. Web log traffic not contained in a CSA region does not have values for `csa.GEOID` and `csa.NAME` fields.
 
+% Candidate for removal: low value. Classic Discover table from August 2022, and the step already lists the csa.GEOID and csa.NAME columns.
 :::{image} /explore-analyze/images/kibana-discover_enriched_web_log.png
 :alt: View of data in Discover
 :screenshot:
@@ -180,7 +181,7 @@ Now that our web traffic contains CSA region identifiers, you’ll visualize CSA
     2. Set **Join field** to **csa.GEOID.keyword**.
 
 7. Click **Add and continue**.
-8. Scroll to **Layer Style** and Set **Label** to **Fixed**.
+8. Scroll to **Layer style** and Set **Label** to **Fixed**.
 9. Click **Keep changes**.
 10. **Save** the map.
 
@@ -189,6 +190,7 @@ Now that our web traffic contains CSA region identifiers, you’ll visualize CSA
     3. Click **Save and add to library**.
 
 
+% Candidate for removal: low value. Second use of the same image as the page opener, and the final map repeats the first picture.
 :::{image} /explore-analyze/images/kibana-csa_regions_by_web_traffic.png
 :alt: Final map showing custom regions
 :screenshot:

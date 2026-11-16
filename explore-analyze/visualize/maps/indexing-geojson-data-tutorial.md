@@ -37,6 +37,7 @@ The data represents two real airports, two fictitious flight routes, and fictiti
 
    You’re adding flight paths to this area, and this sets up the map for a good view of the data.
 
+   % Candidate for removal: low value. Empty map with only a basemap framed on New England, and step 2 already says to zoom in on New England.
    :::{image} /explore-analyze/images/kibana-fu_gs_new_england_map.png
    :alt: fu gs new england map
    :screenshot:
@@ -86,7 +87,7 @@ Looking at the `Lightning detected` layer, it’s clear where lightning has stru
 
     The remaining default settings are good, but there are a couple of settings that you might want to change.
 
-5. Play around with the **Layer Style** → **Color range** setting.
+5. Play around with the **Layer style** → **Color range** setting.
 
     Again the default looks good, but feel free to choose a different color range.
 

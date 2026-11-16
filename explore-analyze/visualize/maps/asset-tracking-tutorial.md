@@ -470,6 +470,7 @@ POST kbn:/api/data_views/data_view
 
 {{kib}} shows the fields in your data view.
 
+% Candidate for removal: low value. Shows the pre-9.6 Data views page layout, and the step only needs to say that fields appear.
 :::{image} /explore-analyze/images/kibana-data_view.png
 :alt: data view
 :screenshot:
@@ -488,6 +489,7 @@ You might want to tweak this Data View to adjust the field names and number or d
 3. Open the [time filter](../../query-filter/filtering.md), and set the time range to the last 15 minutes.
 4. Expand a document and explore some of the fields that you will use later in this tutorial: `trimet.bearing`, `trimet.inCongestion`, `trimet.location`, and `trimet.vehicleID`.
 
+% Candidate for removal: low value. Generic Discover view of TriMet positions from December 2023, and the step already names the fields to look for.
 :::{image} /explore-analyze/images/kibana-discover.png
 :alt: discover
 :screenshot:
@@ -505,8 +507,8 @@ Create your map and set the theme for the default layer to dark mode.
 
 1. Go to **Maps**.
 2. Click **Create map**.
-3. In the **Layers** list, click **Road map**, and then click **Edit layer settings**.
-4. Open the **Tile service** dropdown, and select **Road map - dark**.
+3. In the **Layers** list, click **Basemap**, and then click **Edit layer settings**.
+4. Open the **Tile service** dropdown, and select **Dark**.
 5. Click **Keep changes**.
 
 
@@ -528,7 +530,7 @@ Add a layer to show the vehicle routes for the last 15 minutes.
     1. Set **Name** to **Tracks**.
     2. Set **Opacity** to 80%.
 
-7. Scroll to **Layer Style**, and set **Border color** to pink.
+7. Scroll to **Layer style**, and set **Border color** to pink.
 8. Click **Keep changes**.
 9. In the **Layers** list, click **Tracks**, and then click **Fit to data**.
 
@@ -555,7 +557,7 @@ Add a layer that uses attributes in the data to set the style and orientation of
 
 4. Click **Add and continue**.
 5. Change the name to **Latest positions**.
-6. Scroll to **Layer Style**.
+6. Scroll to **Layer style**.
 
     1. Set **Symbol type** to **icon**.
     2. Set **Icon** to **Arrow**.
@@ -607,7 +609,7 @@ Add a layer for construction zones, which you will draw on the map. The construc
 
 6. When you finish drawing the construction zones, click **Exit** under the layer name in the legend.
 7. In **Layer settings**, set **Name** to **Construction zones**.
-8. Scroll to **Layer Style**, and set **Fill color** to yellow.
+8. Scroll to **Layer style**, and set **Fill color** to yellow.
 9. Click **Keep changes**.
 10. **Save** the map.
 
@@ -620,6 +622,7 @@ The map now represents an operational view of live public transport traffic.  Yo
 
 Your map is now complete for now, congratulations!
 
+% Candidate for removal: low value. Second use of the same image as the page opener, and it adds nothing at the end of the step list.
 :::{image} /explore-analyze/images/kibana-construction_zones.png
 :alt: construction zones
 :screenshot:

@@ -12,6 +12,7 @@ products:
 
 Tile layers display image tiles served from a tile server.
 
+% Candidate for removal: low value. Plain basemap with one layer called Tile layer, so any map looks like this and the page only says tile layers show image tiles.
 :::{image} /explore-analyze/images/kibana-tile_layer.png
 :alt: tile layer
 :screenshot:

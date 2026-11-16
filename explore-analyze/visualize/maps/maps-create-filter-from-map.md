@@ -58,5 +58,5 @@ You can create spatial filters in two ways:
 
 ## Phrase filters [maps-phrase-filter]
 
-A phrase filter narrows search results to documents that contain the specified text. You can create a phrase filter by clicking the plus icon ![gs plus icon](/explore-analyze/images/kibana-gs_plus_icon.png "") in a [locked tooltip](vector-tooltip.md#maps-vector-tooltip-locking). If the map is a dashboard panel with drilldowns, you can apply a phrase filter to a drilldown by selecting the drilldown action.
+A phrase filter narrows search results to documents that contain the specified text. You can create a phrase filter by selecting the {icon}`filter` icon next to a property in a [locked tooltip](vector-tooltip.md#maps-vector-tooltip-locking). If the map is a dashboard panel with drilldowns, you can apply a phrase filter to a drilldown by selecting the drilldown action.
 
