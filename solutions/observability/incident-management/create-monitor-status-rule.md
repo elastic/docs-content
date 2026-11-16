@@ -3,6 +3,9 @@ navigation_title: Monitor Status
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-status-alert.html
   - https://www.elastic.co/guide/en/serverless/current/observability-monitor-status-alert.html
+applies_to:
+  stack: ga
+  serverless: ga
 products:
   - id: observability
   - id: cloud-serverless
@@ -149,10 +152,12 @@ Use the default notification message or customize it. You can add more context t
 The following variables are specific to this rule type. You can also specify [variables common to all rules](/explore-analyze/alerting/alerts/rule-action-variables.md).
 
 `context.checkedAt`
-:   The time of the check, preformatted using the Kibana `dateFormat` and `dateFormat:tz` settings. Do not pass it to `FormatDate`; use the `timestamp` variable instead.
+:   The time of the check, preformatted using the Kibana `dateFormat` and `dateFormat:tz` settings.
 
-`context.timestamp`
-:   The ISO 8601 time of the check included with this alert. Empty for a pending monitor with no ping. On recovery, this can be the previous alert time rather than the up check. Use `FormatDate` to render it in a timezone.
+    {applies_to}`stack: ga 9.5+` Don't pass this value to [`FormatDate`](/explore-analyze/alerting/alerts/rule-action-variables.md#_formatdate). Use `context.timestamp` instead.
+
+`context.timestamp` {applies_to}`stack: ga 9.5+`
+:   The ISO 8601 time of the check included with this alert. Empty for a pending monitor with no ping. On recovery, this can be the previous alert time rather than the up check. Use [`FormatDate`](/explore-analyze/alerting/alerts/rule-action-variables.md#_formatdate) to render it in a timezone.
 
 `context.hostName`
 :   Hostname of the location from which the check is performed.
