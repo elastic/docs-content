@@ -36,6 +36,7 @@ If you need specific alerting behavior, set up a different rule. To view all exi
 
 On the *Rules* page, you can manage the default synthetics rules including snoozing rules, disabling rules, deleting rules, and more.
 
+% Candidate for removal: low value. It shows the Observability Rules page, not Synthetics, with a title and controls that moved to an app header in 9.6, and the prose already lists snooze, disable and delete.
 :::{image} /solutions/images/observability-synthetics-settings-disable-default-rules.png
 :alt: Rules page with default Synthetics rules
 :screenshot:
@@ -100,6 +101,7 @@ Global parameters can be defined once and used across the configuration of light
 
 In the **Global parameters** tab, you can define variables and parameters. This is one of several methods you can use to define variables and parameters. To learn more about the other methods and which methods take precedence over others, see [Work with params and secrets](/solutions/observability/synthetics/work-with-params-secrets.md).
 
+% Candidate for removal: low value. The Settings title, tabs, description line and Create Parameter button moved to the app header, and the page has a second image of the same tab.
 :::{image} /solutions/images/observability-synthetics-settings-global-parameters.png
 :alt: Global parameters tab on the Synthetics Settings page in {{kib}}
 :screenshot:
@@ -129,6 +131,7 @@ In a serverless project, to create a Project API key you must be logged in as a 
 
 ::::
 
+% Candidate for removal: low value. A single-button page whose Settings title and tab row are stale chrome, and the surrounding steps already name every control.
 :::{image} /solutions/images/observability-synthetics-settings-api-keys.png
 :alt: Project API keys tab on the Synthetics Settings page in {{kib}}
 :screenshot:

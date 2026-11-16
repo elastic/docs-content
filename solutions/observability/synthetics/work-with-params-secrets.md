@@ -39,10 +39,11 @@ The values in the configuration file are read in the following order:
 
 From any page in the Synthetics UI:
 
-1. Go to **Settings**.
+1. Select {icon}`ellipsis` **More** → **Settings** in the application menu. In 9.5 and earlier, select **Settings** in the top bar.
 2. Go to the **Global parameters** tab.
 3. Define parameters.
 
+% Candidate for removal: low value. A second image of the Global parameters tab with the old title and tab row, and the prose gives the steps.
 :::{image} /solutions/images/observability-synthetics-params-secrets-kibana-define.png
 :alt: Global parameters tab on the Synthetics Settings page
 :screenshot:
@@ -137,6 +138,7 @@ journey("My Journey", ({ page, params }) => {
 
 To use a param in a lightweight monitor that is created in the Synthetics UI, wrap the name of the param in `${}` (for example, `${my_url}`).
 
+% Candidate for removal: low value. A crop of the type row and URL field that shows the old type names Multistep, Single Page and HTTP Ping, and the prose already gives the `${}` syntax.
 :::{image} /solutions/images/serverless-synthetics-params-secrets-kibana-use-lightweight.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
 :screenshot:
@@ -144,6 +146,7 @@ To use a param in a lightweight monitor that is created in the Synthetics UI, wr
 
 To use a param in a browser monitor that is created in the Synthetics UI, add `params.` before the name of the param (for example, `params.my_url`).
 
+% Candidate for removal: low value. A crop of the type row with Multistep selected and the old tile names, and the `params.` prefix is already in the prose.
 :::{image} /solutions/images/serverless-synthetics-params-secrets-kibana-use-browser.png
 :alt: Use a param in a lightweight monitor created in the Synthetics UI
 :screenshot:

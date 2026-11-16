@@ -38,7 +38,7 @@ Previously, the Synthetics UI couldn’t display data from remote clusters throu
 
 This view is read-only, meaning that the integration queries each remote cluster’s `synthetics-*` data indices at query time, but monitor definitions and settings stay as saved objects on the {{kib}} where they were created (saved objects aren’t shared across clusters). To create, edit, or delete those monitors, manage them directly in the Synthetics UI on the remote {{kib}}.
 
-To enable it, go to **{{synthetics-app}}** → **Settings** → **Remote clusters**. You can select which remote clusters to query and which {{kib}} spaces the settings apply to. Refer to [Remote clusters](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters) for details.
+To enable it, go to **{{synthetics-app}}** → **More** → **Settings** → **Remote clusters** (**{{synthetics-app}}** → **Settings** → **Remote clusters** in 9.5). You can select which remote clusters to query and which {{kib}} spaces the settings apply to. Refer to [Remote clusters](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters) for details.
 
 ## Do not use the Synthetics UI with {{ccs-init}}/{{ccr-init}} [synthetics-no-ccs-ccr]
 ```{applies_to}

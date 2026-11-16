@@ -67,7 +67,7 @@ Then, follow the prompts on screen to set up the correct default variables for y
 1. Generate an API key:
 
     1. Go to the **Synthetics** app in {{kib}}.
-    2. Click **Settings**.
+    2. Select {icon}`ellipsis` **More** → **Settings** in the application menu. In 9.5 and earlier, select **Settings** in the top bar.
     3. Switch to the **Project API Keys** tab.
     4. Click **Generate Project API key**.
 
@@ -76,6 +76,7 @@ Then, follow the prompts on screen to set up the correct default variables for y
 
         ::::
 
+        % Candidate for removal: low value. It is older than the Project API keys image on the Settings page, its title and tabs moved to the app header, and the steps around it already name each click.
         :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
         :alt: Project API Keys tab in Synthetics settings
         :screenshot:

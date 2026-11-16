@@ -68,21 +68,21 @@ When you open an individual monitor’s page, you see much more detail about the
 * The monitor’s **name** with a down arrow icon that you can use to quickly move between monitors.
 * The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
 * The latest **status** and when the monitor was **last run**.
-* The **![Beaker icon](/solutions/images/observability-beaker.svg "") Run test manually** button that allows you to run the test on demand before the next scheduled run.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` The **Actions** menu. Use **Run test manually** to run the test on demand before the next scheduled run, and **Edit monitor** to edit the monitor’s configuration.
+* {applies_to}`stack: ga 9.0-9.1` The **![Beaker icon](/solutions/images/observability-beaker.svg "") Run test manually** button that allows you to run the test on demand before the next scheduled run.
+* {applies_to}`stack: ga 9.0-9.1` The **![Pencil icon](/solutions/images/observability-pencil.svg "") Edit monitor** button that allows you to edit the monitor’s configuration.
 
-    ::::{note}
-    This is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
+::::{note}
+**Run test manually** is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
 
-    ::::
-
-* The **![Pencil icon](/solutions/images/observability-pencil.svg "") Edit monitor** button that allows you to edit the monitor’s configuration.
+::::
 
 :::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-header.png
 :alt: Header at the top of the individual monitor page for all monitor types in the {{synthetics-app}}
 :screenshot:
 :::
 
-Each individual monitor’s page has three tabs: Overview, History, and Errors.
+Each individual monitor’s page has four tabs: Overview, History, Errors, and Alerts.
 
 :::{note}
 :applies_to: {"stack": "ga 9.4+"}
@@ -114,6 +114,7 @@ For browser monitors, you can click on any run in the **Test runs** list to see 
 
 If the monitor is configured to [retest on failure](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor), you see retests listed in the **Test runs** table. Runs that are retests include a rerun icon (![Refresh icon](/solutions/images/observability-refresh.svg "")) next to the result badge.
 
+% Candidate for removal: low value. The table crop shows an Only show retests toggle that is absent from current Kibana source, and the prose already describes the retest icon.
 :::{image} /solutions/images/observability-synthetics-retest.png
 :alt: A failed run and a retest in the table of test runs in the {{synthetics-app}}
 :screenshot:
@@ -195,6 +196,7 @@ Customize screenshot behavior for all monitors in the [configuration file](/solu
 
 Screenshots can be particularly helpful to identify what went wrong when a step fails because of a change to the UI. You can compare the failed step to the last time the step successfully completed.
 
+% Candidate for removal: low value. A Screenshot card with a faint thumbnail and a blank lower half that adds nothing the surrounding text about comparing screenshots does not already say.
 :::{image} /solutions/images/observability-synthetics-analyze-one-step-screenshot.png
 :alt: Screenshot for one step in a browser monitor in the {{synthetics-app}}
 :screenshot:
@@ -302,7 +304,7 @@ stack: ga 9.5+
 serverless: unavailable
 ```
 
-When you configure {{ccs-init}} in [**{{synthetics-app}}** → **Settings** → **Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
+When you configure {{ccs-init}} in [**{{synthetics-app}}** → **More** → **Settings** → **Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters) (**{{synthetics-app}}** → **Settings** → **Remote clusters** in 9.5), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
 
 When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set. To group monitors by remote cluster, select **Group by** → **Remote cluster**.
 

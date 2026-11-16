@@ -66,7 +66,7 @@ Synthetics will be executing the test across all of those locations, automatical
 
 If there are any issues, you might want to turn on alerts:
 
-1. Select **Configure now** from the Alerts warning, or go to **Settings** and then **Alerting**. 
+1. Select **Configure now** from the Alerts warning, or select {icon}`ellipsis` **More** → **Settings** → **Alerting**. 
 2. Select the default connector, which is already prepopulated when you deploy Elastic. After you select your default connector you can add your default email address to receive the alerts.
 3. Go back to **Monitors**, select **Alerts and rules** then **Monitor status rule**. A dialog will appear where you can edit your alerts. You can also select alternate connector types, such as Slack, Microsoft Teams, and more. 
 
