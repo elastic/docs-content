@@ -39,16 +39,13 @@ For more detail on the options listed here, and to compare all deployment types 
 
 ::::
 
-::::{step} Try a quickstart
+::::{step} (Optional) Try a quickstart
 
-Once you have {{es}} running, try a quickstart tutorial:
-
-* [](/solutions/vector-database/vector-full-text-search.md): Connect a client and run full-text, semantic, and hybrid search. You can follow the examples in Python, TypeScript, PHP, Ruby, C# (.NET), Java, or Go.
-* [](/solutions/search/get-started/quickstarts.md): Index data, see how mappings work, and run hybrid search that combines keyword and semantic matching.
+Once you have {{es}} running, follow [](/solutions/search/get-started/quickstarts.md) to connect a client, index sample data, and run full-text, semantic, and hybrid searches. You can follow the examples in Python, TypeScript, PHP, Ruby, C# (.NET), Java, or Go.
 
 ::::
 
-::::{step} Next step
+::::{step} Connect to {{es}}
 
 After you have selected and started a deployment, get connected: find your endpoint and create an API key in [](/solutions/search/set-up/api-key-and-endpoints.md).
 

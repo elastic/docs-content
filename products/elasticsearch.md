@@ -138,8 +138,10 @@ links:
 :::
 
 :::{link-card}
-title: ES|QL
+title: Semantic search and ES|QL
 links:
+  - label: Semantic search with semantic_text
+    url: /solutions/search/semantic-search/semantic-search-semantic-text.md
   - label: ES|QL tutorials
     url: elasticsearch://reference/query-languages/esql/esql-examples.md
 :::
@@ -149,8 +151,6 @@ title: Specialized hands-on tutorials
 links:
   - label: Time series data stream basics
     url: /manage-data/data-store/data-streams/quickstart-tsds.md
-  - label: Semantic search with semantic_text
-    url: /solutions/search/semantic-search/semantic-search-semantic-text.md
   - label: "Tutorial: Build multimodal search"
     url: /solutions/search/multimodal-search/multimodal-search-tutorial.md
 :::
