@@ -286,7 +286,9 @@ From the **Schedules** tab on the **Reporting** page, you can manage a schedule 
 
 Scheduled reports are meant for analyzing data in external tools. They aren't intended for bulk export or for backing up {{es}} data. Keep the following limitations in mind:
 
-* {{kib}} doesn't email reports that are larger than 10 MB. The report is still generated, and you can download it from the **Exports** tab, where it shows the status **Done, warnings detected**. The email service that you use can have its own limits. For the built-in email service on {{ech}} and {{serverless-short}}, refer to [Email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
+* {{kib}} doesn't email reports that are larger than 10 MB, and the email service that you use can set a lower limit. The built-in email service on {{ech}} and {{serverless-short}} limits a message to 10 MB after Base64 encoding, which makes an attachment about one third larger. It can send reports of up to about 7 MB. For all limits, refer to [Email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
+
+  When {{kib}} can't send the email, the report is still generated. You can download it from the **Exports** tab, where it shows the status **Done, warnings detected**.
 * If you schedule too many reports at the same time, reports might be shared late or on an inconsistent schedule. Each {{kib}} instance runs one reporting task at a time.
 * If your cluster runs many tasks in general, reports might be delayed.
 * You can't schedule reports of Canvas workpads, because Canvas workpads are in maintenance mode.
