@@ -27,9 +27,9 @@ You can use the Explore {{data-source}} to filter your data and build multi-seri
 
 Hover over the chart to display crosshairs with specific metric data. To drill down into a specific time period, click and drag a selection then click **Apply changes**.
 
-To add visualizations to an existing case, click **Add to case** from the toolbar.
+To add visualizations to an existing case, select **Add to case** in the [application menu](../../explore-analyze/find-and-organize/kibana-interface.md#application-menu).
 
-To customize a visualization further, click **Open in Lens** from the toolbar to modify visualizations with the drag and drop editor. To learn more, see [Lens](../../explore-analyze/visualize/lens.md).
+To customize a visualization further, select **Open in Lens** in the application menu to modify visualizations with the drag and drop editor. To learn more, see [Lens](../../explore-analyze/visualize/lens.md).
 
 
 ## What report types are available? [report-types]

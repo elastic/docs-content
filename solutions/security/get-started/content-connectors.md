@@ -47,7 +47,10 @@ Self-managed connectors run on your own infrastructure, independent of where you
 To learn about setup for self-managed connectors, refer to [Self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md). To set up an Elastic managed connector:
 
 1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content connectors".
-1. Click **New Connector**.
+1. Select **New Connector**.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` A menu opens with **New Connector**, **New Elastic managed Connector**, and **New Self-managed Connector**. To follow these steps, select **New Connector**.
+
 1. Under **Connector**, select your desired data source.
 1. Under **Setup**, select your deployment method. 
 1. Under **Configure index & API key**, click **Generate configuration**. After a few seconds, this will create a new connector and a new index for its data, and display their names and IDs. You can click their names to view details about each. 
