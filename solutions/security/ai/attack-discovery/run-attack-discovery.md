@@ -16,10 +16,10 @@ Attack Discovery uses a [large language model (LLM)](/explore-analyze/ai-feature
 
 | When to use this | Run from | {{stack}} Enterprise | {{serverless-short}} Complete |
 |---|---|:---:|:---:|
-| Select which alerts to analyze, then run Attack Discovery immediately or on a schedule. | [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md) | ✓ (9.4+) | ✓ |
-| Include Attack Discovery as one step in a larger workflow. | [A workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) | ✓ (9.5+) | ✓ |
-| Ask {{agent-builder}} to investigate in chat. | [{{agent-builder}} chat](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md) | ✓ (9.5+) | ✓ |
-| Run Attack Discovery on demand or on a schedule. | [**Attack Discovery** page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) | ✓ (9.0–9.5 only) | — |
+| Select which alerts to analyze, then run Attack Discovery immediately or on a schedule. | [**Attacks** view](/solutions/security/ai/attack-discovery/run-from-attacks-page.md) | ✅ (9.4+) | ✅ |
+| Include Attack Discovery as one step in a larger workflow. | [A workflow](/solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md) | ✅ (9.5+) | ✅ |
+| Ask {{agent-builder}} to investigate in chat. | [{{agent-builder}} chat](/solutions/security/ai/attack-discovery/run-attack-discovery-from-agent-builder.md) | ✅ (9.5+) | ✅ |
+| Run Attack Discovery on demand or on a schedule. | [**Attack Discovery** page](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md) | ✅ (9.0–9.5 only) | ❌ |
 
 :::{note}
 Attack Discovery isn't available with a {{stack}} Basic, Gold, or Platinum subscription, or in {{serverless-short}} Security Analytics Essentials projects.

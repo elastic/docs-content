@@ -4,7 +4,7 @@ description: "Generate Attack Discovery findings manually on demand or automatic
 applies_to:
   stack: removed 9.6+, deprecated =9.5, ga 9.0-9.4
   serverless:
-    security: ga
+    security: removed
 products:
   - id: security
   - id: cloud-serverless
@@ -59,11 +59,11 @@ To get started:
 
 1. Click the **Attack Discovery** page from {{elastic-sec}}'s navigation menu.
 2. Do one of the following:
-   - {applies_to}`serverless: ga` {applies_to}`stack: deprecated =9.5, ga 9.1-9.4` Select the settings icon next to **Run**. In the settings menu, select an existing connector from the dropdown menu or add a new one.
+   - {applies_to}`serverless: removed` {applies_to}`stack: deprecated =9.5, ga 9.1-9.4` Select the settings icon next to **Run**. In the settings menu, select an existing connector from the dropdown menu or add a new one.
    - {applies_to}`stack: ga =9.0` Select an existing connector from the dropdown menu, or add a new one.
 
 3. Once you've selected a connector, do one of the following to start the analysis:
-   - {applies_to}`serverless: ga` {applies_to}`stack: deprecated =9.5, ga 9.1-9.4` Select **Save and run**.
+   - {applies_to}`serverless: removed` {applies_to}`stack: deprecated =9.5, ga 9.1-9.4` Select **Save and run**.
    - {applies_to}`stack: ga =9.0` Click **Generate**.
    
 It may take from a few seconds up to several minutes to generate discoveries, depending on the number of alerts and the model you selected. Once the analysis is complete, any threats it identifies will appear as discoveries. Click each one's title to expand or collapse it. Click **Run** at any time to start the Attack Discovery process again with the selected alerts.
@@ -76,7 +76,7 @@ Attack Discovery uses the same data anonymization settings as [Elastic AI Assist
 
 ```{applies_to}
 stack: removed 9.6+, deprecated =9.5, ga 9.1-9.4
-serverless: ga
+serverless: removed
 ```
 
 :::{note}
@@ -112,7 +112,7 @@ Scheduled discoveries are shown with a **Scheduled Attack discovery** icon ({ico
 
 ::::
 
-::::{applies-item} { "serverless": "ga", "stack": "deprecated =9.5" }
+::::{applies-item} { "serverless": "removed", "stack": "deprecated =9.5" }
 
 To create a new schedule:
 

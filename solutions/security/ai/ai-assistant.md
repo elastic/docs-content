@@ -412,7 +412,7 @@ This can help with:
 - **Policy**: Meet your organization's data handling requirements.
 
 ::::{note}
-:applies_to: {"serverless": {"security": "ga"}, "stack": "removed 9.6+, deprecated =9.5, ga 9.0-9.4"}
+:applies_to: {"serverless": {"security": "removed"}, "stack": "removed 9.6+, deprecated =9.5, ga 9.0-9.4"}
 You can access anonymization settings directly from the **Attack Discovery** page by selecting the settings (![Settings icon](/solutions/images/security-icon-settings.png "title =20x20")) button next to the model selection dropdown menu. In {{serverless-short}}, only [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects include the **Attack Discovery** page.
 ::::
 

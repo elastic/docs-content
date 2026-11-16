@@ -4,7 +4,7 @@ description: "Change the status of saved Attack Discovery findings, share them, 
 applies_to:
   stack: removed 9.6+, deprecated =9.5, ga 9.1-9.4
   serverless:
-    security: ga
+    security: removed
 products:
   - id: security
   - id: cloud-serverless

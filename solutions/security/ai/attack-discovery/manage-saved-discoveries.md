@@ -16,8 +16,8 @@ Attack Discovery saves findings automatically after each run. From there you can
 
 | When to use this | Manage from | {{stack}} Enterprise | {{serverless-short}} Complete |
 |---|---|:---:|:---:|
-| Triage attack findings together with their related alerts, including assign, tag, filter, and case actions. | [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) | ✓ (9.4+) | ✓ |
-| Update status, share findings, run bulk actions, and search discoveries. | [**Attack Discovery** page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) | ✓ (9.1–9.5 only) | — |
+| Triage attack findings together with their related alerts, including assign, tag, filter, and case actions. | [**Attacks** view](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md) | ✅ (9.4+) | ✅ |
+| Update status, share findings, run bulk actions, and search discoveries. | [**Attack Discovery** page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attack-discovery-page.md) | ✅ (9.1–9.5 only) | ❌ |
 
 :::{note}
 Attack Discovery isn't available with a {{stack}} Basic, Gold, or Platinum subscription, or in {{serverless-short}} Security Analytics Essentials projects.

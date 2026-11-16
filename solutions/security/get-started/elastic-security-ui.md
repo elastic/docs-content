@@ -188,7 +188,7 @@ Create and manage workflows that automate tasks such as incident response, case 
 ### Attack discovery
 
 ```yaml {applies_to}
-serverless: ga
+serverless: removed
 stack: removed 9.6+, deprecated =9.5, ga 9.0-9.4
 ```
 
