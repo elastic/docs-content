@@ -12,16 +12,16 @@ products:
 
 # Build a map to compare metrics by country or region [maps-getting-started]
 
-If you want to learn **Maps** by building something, this tutorial takes you from an empty map to a dashboard that shows web traffic by country and by location. Along the way, you see how layers stack, how a choropleth matches your data to country shapes, and how zoom levels decide which layer is visible.
+If you want to learn **Maps** by building something, this tutorial takes you from an empty map to a dashboard that shows web traffic by country and by location.
 
-By the end of this tutorial, you can:
+You’ll learn to:
 
 * Combine reference boundaries and {{es}} data in one map with multiple layers
 * Style features with colors, symbols, and labels that depend on data values
 * Embed a map in a dashboard
 * Filter the map and the other dashboard panels together
 
-When you finish, you have a map like this one:
+When you complete this tutorial, you’ll have a map like this one:
 
 :::{image} /explore-analyze/images/kibana-sample_data_web_logs.png
 :alt: A map of North America with shaded countries and circles that show the number of web requests per area. The Layers panel lists the Total Requests and Bytes, Actual Requests, and Total Requests by Destination layers, and the basemap.
@@ -40,7 +40,7 @@ You don’t need experience with **Maps**, but you should know how to open and e
 
 ## Step 1. Create a map on a dashboard [maps-create]
 
-You build the map on a dashboard, so you can return to the dashboard when you save the map. A map is a stack of layers. The **Basemap** layer draws the background, and every layer you add draws your data on top of it.
+You build the map on a dashboard. When you save the map, you return to that dashboard. A map is a stack of layers. The **Basemap** layer draws the background, and every layer you add draws your data on top of it.
 
 1. Open the **Dashboards** page and select **Create dashboard**.
 2. Set the time range to **Last 7 days**.
@@ -58,22 +58,22 @@ You build the map on a dashboard, so you can return to the dashboard when you sa
 
 ## Step 2. Shade countries by traffic with a choropleth layer [maps-add-choropleth-layer]
 
-A choropleth layer shades areas by a value. Here, a country gets a darker shade the more web log requests it receives. {{kib}} gets the country shapes from the Elastic Maps Service (EMS), then matches each shape to the web logs by country code. This match is called a join.
+A choropleth layer shades areas by a value. In this map, a country gets a darker shade the more web log requests it receives. {{kib}} gets the country shapes from the Elastic Maps Service (EMS), then matches each shape to the web logs by country code. This match is called a join.
 
 1. Select **Add layer**, then select **Choropleth**.
 
     The **Add layer** panel offers more layer types. This tutorial uses **Choropleth**, **Documents**, and **Clusters**. To learn about the others, refer to [Vector layer](vector-layer.md), [Heat map layer](heatmap-layer.md), and [Tile layer](tile-layer.md).
 
-2. Choose the country shapes. Keep **Boundaries source** set to **Administrative boundaries from the Elastic Maps Service**, then select **World Countries** in **EMS boundaries**.
+2. To draw the country shapes, keep **Boundaries source** set to **Administrative boundaries from the Elastic Maps Service**, then select **World Countries** in **EMS boundaries**.
 
     The **Join field** in this section is **ISO 3166-1 alpha-2 code**, the two-letter country code, such as `US`. Leave it as it is.
 
-3. Choose the data to count. In **Statistics source**, set:
+3. To count web logs per country, set these options in **Statistics source**:
 
     * **Data view** to **Kibana Sample Data Logs**
     * **Join field** to **geo.dest**
 
-    {{kib}} counts the web log documents for each value of `geo.dest`, the country code of the request’s destination. Each country gets the count for its own code.
+    {{kib}} counts the web log documents for each value of `geo.dest`, the country code of the request’s destination.
 
 4. Select **Add and continue**.
 
@@ -86,7 +86,7 @@ A choropleth layer shades areas by a value. Here, a country gets a darker shade 
 
     The name identifies the layer in the layer list, the legend, and tooltips. A lower opacity lets the basemap show through the shaded countries.
 
-6. Choose what the tooltip shows. When you select a country on the map, its tooltip lists the tooltip fields. **ISO 3166-1 alpha-2 code** is already there. To also show the country name:
+6. When you select a country on the map, its tooltip lists the tooltip fields. **ISO 3166-1 alpha-2 code** is already there. To also show the country name:
 
     1. Select {icon}`plus` **Add** to open the field list.
     2. Select **name**, then select **Add**.
@@ -95,9 +95,9 @@ A choropleth layer shades areas by a value. Here, a country gets a darker shade 
 
 7. In **Layer style**:
 
-    * Set **Fill color** to **As number**, then select the gray color ramp. The fill color depends on the request count, so with this ramp, countries with more requests are darker.
+    * Set **Fill color** to **As number**, then select the gray color ramp. With this ramp, countries with more requests get a darker shade.
     * Set **Border color** to white. White borders separate neighboring countries.
-    * Under **Label**, change **By value** to **Fixed**. By default, the layer labels each country with its request count. A fixed label with no text removes these labels, so the basemap’s country names stay readable.
+    * Under **Label**, change **By value** to **Fixed**. By default, the layer labels each country with its request count. A fixed label with no text removes these labels and leaves the basemap’s country names readable.
 
     To learn more about styling options, refer to [Vector style](vector-style.md).
 
@@ -114,7 +114,7 @@ A choropleth layer shades areas by a value. Here, a country gets a darker shade 
 
 ## Step 3. Add layers for the Elasticsearch data [maps-add-elasticsearch-layer]
 
-Drawing every web request at every zoom level would overwhelm the map. Instead, you add two layers for the {{es}} data. One shows individual requests when you zoom in. The other shows clusters of requests when you zoom out. Zoom levels run from 0, the whole world, to 24, individual streets.
+Two layers show the {{es}} data without overwhelming the map. One shows individual requests when you zoom in. The other shows clusters of requests when you zoom out. Zoom levels run from 0, the whole world, to 24, individual streets.
 
 
 ### Add a layer for individual documents [_add_a_layer_for_individual_documents]
@@ -133,7 +133,7 @@ This layer displays each web log document as a point. It’s visible only when y
     * **Visibility** to the range [9, 24]
     * **Opacity** to 100%
 
-    **Visibility** limits the layer to zoom levels 9 through 24. The points appear only when you zoom in close.
+    **Visibility** limits the layer to zoom levels 9 through 24.
 
 5. Add the tooltip fields to show when you select a point: **agent**, **bytes**, **clientip**, **host**, **machine.os**, **request**, **response**, and **timestamp**.
 6. In **Scaling**, select **Limit results to 10,000**.
@@ -196,8 +196,6 @@ A clusters layer groups nearby documents into grid cells and draws one circle fo
 
 ## Step 4. Save the map and return to the dashboard [maps-save]
 
-Now that your map is complete, save it and return to the dashboard.
-
 1. Select **Save and return**.
 
     The map editor closes, and the map appears as a panel on your dashboard.
@@ -205,7 +203,7 @@ Now that your map is complete, save it and return to the dashboard.
 
 ## Step 5. Explore your data from the dashboard [maps-embedding]
 
-Put the map next to charts of the same web logs, then filter them together. A filter you set in one panel applies to every panel on the dashboard, so you can look at the same slice of data from different angles.
+Put the map next to charts of the same web logs, then filter them together. Filters apply to every panel on a dashboard, so one filter shows the same slice of data in the map and in the charts.
 
 1. Open the list of panels that you can add from the library:
 
