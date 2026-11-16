@@ -135,15 +135,16 @@ A successfully queued report returns a response like this:
 
 ```js
 {
-  "path": "/api/reporting/jobs/download/jxzaofkc0ykpf4062305t068", <1>
+  "path": "/api/reporting/jobs/download/4c8a1f6e-7d3b-4a52-9e0c-1b2f3d4e5a6b", <1>
   "job": {
-    "id": "jxzaofkc0ykpf4062305t068",
+    "id": "4c8a1f6e-7d3b-4a52-9e0c-1b2f3d4e5a6b",
     "index": ".ds-.kibana-reporting-2025.11.11-000001",
     "jobtype": "csv_searchsource",
+    "created_at": "2025-11-11T10:15:00.000Z",
     "created_by": "elastic",
-    "payload": ..., <2>
-    "timeout": 120000,
-    "max_attempts": 3
+    "status": "pending",
+    "attempts": 0,
+    "payload": ... <2>
   }
 }
 ```
@@ -188,7 +189,7 @@ Save time by setting up a recurring task that automatically generates reports an
 * {applies_to}`serverless: unavailable` To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2 GB of RAM. There is no minimum requirement for CSV reports.
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
 * (Optional) To view and manage other users' reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. To learn how, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges), or to [{{kib}} privileges in project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) for {{serverless-short}}. If your role doesn't have the **Manage Scheduled Reports** feature privilege, you can only share reports with yourself.
-* {applies_to}`stack:` (Optional) The **Manage Scheduled Reports** feature must be enabled in the [**Feature visibility** settings](/deploy-manage/manage-spaces.md#spaces-managing) of the space.
+* {applies_to}`serverless: unavailable` (Optional) The **Manage Scheduled Reports** feature must be enabled in the [**Feature visibility** settings](/deploy-manage/manage-spaces.md#spaces-managing) of the space.
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
    * **{{ech}} or {{serverless-short}} users**: You don't need to set up a default preconfigured email connector. {{kib}} provides a built-in preconfigured email connector that uses SMTP to send emails. To view it, go to the **Connectors** page and find the `Elastic-Cloud-SMTP` connector.
@@ -254,7 +255,7 @@ A message confirms that the schedule is available on the **Reporting** page. Fro
 
 ### Download generated reports [download-scheduled-reports]
 
-Each time a schedule runs, the generated report appears on the **Exports** tab of the **Reporting** page, with **Scheduled** in the **Export type** column. From there, you can download the report, whether or not you chose to send it by email.
+Each time a schedule runs, the generated report appears on the **Exports** tab of the **Reporting** page, with **Scheduled** in the **Export type** column. From there, you can download the report, whether or not you chose to send it by email. Disabling or deleting a schedule doesn't remove the reports that it already generated.
 
 ### Manage schedules [manage-report-schedules]
 
@@ -279,7 +280,7 @@ From the **Schedules** tab on the **Reporting** page, you can manage a schedule 
 
 Scheduled reports are meant for analyzing data in external tools. They aren't intended for bulk export or for backing up {{es}} data. Keep the following limitations in mind:
 
-* Email attachments are limited to 10 MB. {{kib}} might fail to attach reports that are larger than this size.
+* {{kib}} doesn't email reports that are larger than 10 MB. The report is still generated, and you can download it from the **Exports** tab, where it shows the status **Done, warnings detected**. The email service that you use can have its own limits. For the built-in email service on {{ech}} and {{serverless-short}}, refer to [Email service limits](/deploy-manage/deploy/elastic-cloud/tools-apis.md#email-service-limits).
 * If you schedule too many reports at the same time, reports might be shared late or on an inconsistent schedule. Each {{kib}} instance runs one reporting task at a time.
 * If your cluster runs many tasks in general, reports might be delayed.
 * You can't schedule reports of Canvas workpads, because Canvas workpads are in maintenance mode.
