@@ -1,4 +1,5 @@
 ---
+description: Generate PDF, PNG, and CSV reports automatically, either on demand with a POST URL from a script or Watcher, or on a schedule in Kibana.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/automating-report-generation.html
 applies_to:
@@ -12,35 +13,44 @@ products:
 
 Generate PDF, PNG, and CSV reports automatically instead of exporting them by hand each time. Available methods and export formats vary by deployment type. Choose the approach that fits your workflow:
 
-* {applies_to}`serverless: unavailable` **[Trigger reports with a POST URL](#create-a-post-url)**: Trigger a report from a script or {{watcher}}.
+* {applies_to}`serverless: unavailable` **[Trigger reports with a POST URL](#trigger-reports-post-url)**: Generate a report on demand from a script or {{watcher}}.
 * **[Schedule and share reports](#schedule-report-generation)**: Set up a recurring schedule in {{kib}} that generates and emails reports at an interval you choose.
 
-:::{note}
-:applies_to: {stack: ga 9.1, serverless: unavailable}
-Report generation requests are authenticated by API keys instead of session cookies. There are several key differences between the authentication methods. API keys capture your role privileges, whereas session cookie are based on your user credentials. API keys are also longer-lived, compared to session cookies, which have a shorter lifespan.
-
-If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
-:::
-
-## Create a POST URL [create-a-post-url]
+## Trigger reports with a POST URL [trigger-reports-post-url]
 ```{applies_to}
 serverless: unavailable
 ```
 
-Create the POST URL that triggers a report to generate PDF and CSV reports.
+To generate a report on demand from outside {{kib}}, such as from a script or {{watcher}}, create a POST URL for the report and send a request to it. {{kib}} queues the report, and you download it when it's ready.
 
-### PDF and PNG reports [pdf-png-post-url]
+### Prerequisites [post-url-prerequisites]
+
+* Your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
+* To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
+
+:::{note}
+:applies_to: {stack: ga 9.1}
+Report generation requests are authenticated by API keys instead of session cookies. There are several key differences between the authentication methods. API keys capture your role privileges, whereas session cookies are based on your user credentials. API keys are also longer-lived, compared to session cookies, which have a shorter lifespan.
+
+If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
+:::
+
+### Create a POST URL [create-a-post-url]
+
+Each report type has its own steps for creating the POST URL: one for PDF and PNG reports, and one for CSV reports.
+
+#### PDF and PNG reports [pdf-png-post-url]
 
 To create the POST URL for PDF reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
 2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report. From the toolbar, do one of the following:
 
-    * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
-    * {applies_to}`stack: ga =9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF or PNG option, then click **Copy POST URL**.
-    * {applies_to}`stack: ga =9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
+    * {applies_to}`stack: ga 9.1+` Select the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
+    * {applies_to}`stack: ga =9.0` If you are using **Dashboard** or **Visualize Library**, select **Share** → **Export**, select the PDF or PNG option, then select **Copy POST URL**.
+    * {applies_to}`stack: ga =9.0` If you are using **Canvas**, select **Share** → **PDF Reports**, then select **Advanced options** → **Copy POST URL**.
 
-### CSV reports [csv-post-url]
+#### CSV reports [csv-post-url]
 
 To create the POST URL for CSV reports:
 
@@ -49,10 +59,7 @@ To create the POST URL for CSV reports:
 3. Open the CSV export, as described in [Export Discover session results as CSV](/explore-analyze/discover/export-discover-session.md#export-discover-session-csv). In the export flyout, copy the POST URL. In 9.0, select **Share** → **Export** → **Copy POST URL** instead.
 
 
-## Use Watcher [use-watcher]
-```{applies_to}
-serverless: unavailable
-```
+### Use Watcher [use-watcher]
 
 To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 
@@ -110,10 +117,7 @@ For more information about configuring watches, refer to [How Watcher works](../
 
 
 
-## Use a script [use-a-script]
-```{applies_to}
-serverless: unavailable
-```
+### Use a script [use-a-script]
 
 To automatically generate reports from a script, make a request to the `POST` URL. The request returns a JSON and contains a `path` property with a URL that you use to download the report. Use the `GET` method in the HTTP request to download the report.
 
@@ -155,28 +159,22 @@ An example response for a successfully queued report:
 
 
 
-## HTTP response codes [reporting-response-codes]
-```{applies_to}
-serverless: unavailable
-```
+### HTTP response codes [reporting-response-codes]
 
 The response payload of a request to generate a report includes the path to download a report. The API to download a report uses HTTP response codes to give feedback. In automation, this helps external systems track the various possible job states:
 
-* **`200` (OK)**: As expected, Kibana returns `200` status in the response for successful requests to queue or download reports.
+* **`200` (OK)**: As expected, {{kib}} returns `200` status in the response for successful requests to queue or download reports.
 
   ::::{note}
-  Kibana will send a `200` response status for successfully queuing a Reporting job via the POST URL. This is true even if the job somehow fails later, since report generation happens asynchronously from queuing.
+  {{kib}} sends a `200` response status for successfully queuing a Reporting job via the POST URL. This is true even if the job somehow fails later, since report generation happens asynchronously from queuing.
   ::::
 
-* **`400` (Bad Request)**: When sending requests to the POST URL, if you don’t use `POST` as the HTTP method, or if your request is missing the `kbn-xsrf` header, Kibana will return a code `400` status response for the request.
-* **`503` (Service Unavailable)**: When using the `path` to request the download, you will get a `503` status response if report generation hasn’t completed yet. The response will include a `Retry-After` header. You can set the script to wait the number of seconds in the `Retry-After` header, and then repeat if needed, until the report is complete.
-* **`500` (Internal Server Error)**: When using the `path` to request the download, you will get a `500` status response if the report isn’t available due to an error when generating the report. More information is available at **Management > Kibana > Reporting**.
+* **`400` (Bad Request)**: When sending requests to the POST URL, if you don’t use `POST` as the HTTP method, or if your request is missing the `kbn-xsrf` header, {{kib}} returns a `400` status response for the request.
+* **`503` (Service Unavailable)**: When using the `path` to request the download, you get a `503` status response if report generation hasn’t completed yet. The response will include a `Retry-After` header. You can set the script to wait the number of seconds in the `Retry-After` header, and then repeat if needed, until the report is complete.
+* **`500` (Internal Server Error)**: When using the `path` to request the download, you get a `500` status response if the report isn’t available due to an error when generating the report. More information is available on the **Reporting** page, under **Stack Management** → **Alerts and Insights**.
 
 
-## Deprecated report URLs [deprecated-report-urls]
-```{applies_to}
-serverless: unavailable
-```
+### Deprecated report URLs [deprecated-report-urls]
 
 If you experience issues with the deprecated report URLs after you upgrade {{kib}}, regenerate the POST URL for your reports.
 
@@ -208,7 +206,7 @@ Save time by setting up a recurring task that automatically generates reports an
 * {applies_to}`stack:` (Optional) The **Manage Scheduled Reports** feature must be enabled in the [**Feature visibility** settings](/deploy-manage/manage-spaces.md#spaces-managing) of the space.
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
-   * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. Kibana provides you with a built-in preconfigured email connector that uses the SMTP protocol to send emails. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
+   * **{{ech}} or {{serverless-short}} users**: You do not need to set up a default preconfigured email connector. {{kib}} provides you with a built-in preconfigured email connector that uses the SMTP protocol to send emails. To view it, go to the **Connectors** page and find the Elastic-Cloud-SMTP connector.
    * **Self-managed users**: You must set up a default preconfigured email connector to send notifications outside of {{kib}}. To do this:
      
      1. Open your `kibana.yml` file.
@@ -251,11 +249,11 @@ Save time by setting up a recurring task that automatically generates reports an
 3. Enter the requested details, and (optional) enable **Print format** to generate the report in a printer-friendly format.
 4. Set up a schedule for generating the report.
 
-    * **Date**: Choose when to start generating reports.
+    * **Date**: Select when to start generating reports.
     * **Timezone**: Specify a timezone for the schedule.
-    * **Repeat**: Choose how often you want to generate reports.  
+    * **Repeat**: Select how often to generate reports.  
 
-5. (Optional) To share generated reports outside of Kibana, enable **Send by email** and enter a list of email addresses. Recipients will receive emails with the generated reports attached and on the schedule that you specified.
+5. (Optional) To share generated reports outside of {{kib}}, enable **Send by email** and enter a list of email addresses. Recipients will receive emails with the generated reports attached and on the schedule that you specified.
 
    ::::{note} 
    If your role doesn't have the **Manage Scheduled Reports** feature privilege, you can only send reports to yourself. 
@@ -272,9 +270,9 @@ Save time by setting up a recurring task that automatically generates reports an
        In the subject and message, you can also use the [Mustache](https://mustache.github.io/mustache.5.html) template syntax (`{{variable name}}`) to dynamically pass values from data sources when the email is generated. Enhancing the values passed by Mustache variables is also supported. Refer to [](../../explore-analyze/alerting/alerts/rule-action-variables.md#enhance-mustache-variables) to learn more. 
        ::::
 
-6. Click **Schedule exports** to save the schedule. 
+6. Select **Schedule exports** to save the schedule. 
 
-A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, click on the **Schedules** tab to view details for the newly-created schedule. 
+A message appears, indicating that the schedule is available on the **Reporting** page. From the **Reporting** page, select the **Schedules** tab to view details for the newly-created schedule. 
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` From the **Schedules** tab, use the search bar to quickly find schedules.
 
