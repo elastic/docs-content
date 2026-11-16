@@ -11,11 +11,11 @@ products:
 
 # Detection [nightshift-detection]
 
-Detection finds problems that your alerts won't catch, and you don't need to create rules to find them. {{nightshift}} learns which services and dependencies your logs describe, generates its own rules, and watches for unusual changes. When related changes show up across several services, it groups them into a single significant event that shows which services and databases are affected, giving you one problem to look at instead of multiple small alerts.
+Detection finds problems that your alerts miss, and you don't need to create rules to find them. {{nightshift}} learns which services and dependencies your logs describe, generates its own rules, and watches for unusual changes. When related changes show up across several services, it groups them into a single significant event that shows which services and databases are affected, giving you one problem to look at instead of multiple small alerts.
 
 [Turn detection on](../get-started.md#nightshift-get-started-detection) once and choose the data that it watches. After that, it runs in the background.
 
-Open detection from the home page by selecting **Detections** or using the global search field instead. The **Signals** tab on the **Detections** page is only available in developer mode.
+Open detection from the home page by selecting **Detections** or using the global search field. The **Signals** tab on the **Detections** page is only available in developer mode.
 
 ## From your data to a significant event [nightshift-detection-flow]
 
@@ -52,7 +52,7 @@ For example, when a database starts to time out on locks, the rules for database
 
 A significant event is an alert. You can route it to your team and act on it like any other alert, and an automation can investigate it. Refer to [Route significant events and investigate them automatically](./significant-events.md#nightshift-detection-events-route).
 
-## What detection does and doesn't do [nightshift-detection-scope]
+## Limitations [nightshift-detection-scope]
 
 - **It starts only when you ask.** Detection doesn't run until someone with the [privileges to manage sources](../privileges.md#nightshift-privileges-admin) selects the data to watch. Refer to [Manage what detection monitors](./sources.md).
 - **It watches logs only.** Detection learns from and watches logs. Sources for metrics or traces aren't supported yet. Sources apply to detection only: investigations query your logs, metrics, and traces without one. Refer to [What a source is](./sources.md#nightshift-detection-sources-what).

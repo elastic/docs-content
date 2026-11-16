@@ -13,7 +13,7 @@ products:
 
 Tell {{nightshift}} which logs to learn from and watch for problems. Start with all your logs in one step, or narrow detection down to the services you care about most.
 
-Each set of data that detection watches is a *source*. You choose sources when you turn detection on, and you can add, change, pause, or remove them at any time.
+Each set of data that detection watches is a *source*. In Tech Preview, detection learns from and watches logs only, so a source can only select logs. Metrics and traces aren't supported yet. You choose sources when you turn detection on, and you can add, change, pause, or remove them at any time.
 
 ## Before you begin [nightshift-detection-sources-before]
 
@@ -33,9 +33,7 @@ A source is an {{esql}} query that selects rows of data, and nothing else. The q
 
 - Start with `FROM` or `TS`.
 - Contain only `WHERE` commands after that. Commands that change the rows, such as `STATS`, `EVAL`, or `KEEP`, aren't allowed.
-- Target one kind of data. All indices in the query must be logs, all metrics, or all traces, which {{nightshift}} derives from the index names. For example, `FROM logs-*, my-app-*` is rejected because `my-app-*` isn't recognized as logs. A wildcard for everything, such as `*`, is also rejected.
-
-Detection currently learns only from logs, so use logs sources.
+- Target logs. In Tech Preview, detection learns only from logs, so all indices in the query must be logs. {{nightshift}} derives the kind of data from the index names. For example, `FROM logs-*, my-app-*` is rejected because `my-app-*` isn't recognized as logs. A wildcard for everything, such as `*`, is also rejected.
 
 Sources apply to detection only. Investigations don't need a source. They query all the logs, metrics, and traces that your connectors reach.
 
@@ -78,8 +76,6 @@ The source appears in the list, and learning starts. On the **Detections** page 
 ## Manage sources [nightshift-detection-sources-manage]
 
 To open the list, select **Sources** at the top of the **Detections** page. Search by title, tag, or query.
-
-% SCREENSHOT: The Sources page with the All logs source and one custom source, showing the Enabled toggle, Events, KI Queries, KI Features, and Status columns, and the Generate and Find significant events buttons.
 
 The list has the following columns:
 

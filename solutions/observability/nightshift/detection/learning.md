@@ -50,8 +50,6 @@ You might not see any events on a healthy system even after a few hours. To rule
 - **On the Detections page.** The **Entities** list on the left shows the services, databases, storage, and other components that {{nightshift}} learned. Select one to filter the events and rules to it.
 - **On the Knowledge page.** The **Knowledge Indicators** tab lists every KI, and you can exclude a wrong one. Refer to [Review KIs](../context/knowledge-indicators.md#nightshift-ki-review).
 
-% SCREENSHOT: The Knowledge Indicators tab on the Knowledge page, with feature KIs for inventory-api and encore, their types, sources, and the Exclude action.
-
 ## Next steps [nightshift-detection-learning-next]
 
 - [Rules and signals](./rules-and-signals.md): Check which rules {{nightshift}} wrote from your KIs and what they found.

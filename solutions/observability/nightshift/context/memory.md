@@ -11,15 +11,15 @@ products:
 
 # Review and manage Memory [nightshift-memory]
 
-Memory holds what {{nightshift}} saved after past investigations, such as where the traces for a service are stored, or that a database problem affected only one service. When a later investigation looks similar, {{nightshift}} recalls the matching memories and starts from them.
+Memory stores the knowledge that {{nightshift}} saves after investigations, such as where the traces for a service are stored, or that a database problem affected a specific service. When a similar investigation happens, {{nightshift}} recalls the matching memories and starts from them.
 
-{{nightshift}} writes and maintains Memory itself. You can check each Memory and how useful it was, and archive the ones that are incorrect or outdated.
+{{nightshift}} writes and maintains Memory itself. You can check each memory and how useful it was, and archive the ones that are incorrect or outdated.
 
-To open memory, from the home page, select {icon}`boxes_vertical` → **Knowledge** → **Memory**.
+To open Memory, from the home page, select {icon}`boxes_vertical` → **Knowledge** → **Memory**.
 
-## Read the Memory tab [nightshift-memory-read]
+## How to read the Memory tab [nightshift-memory-read]
 
-As investigations run, Memory grows, and the numbers show which lessons hold up.
+The **Memory** tab lists the lessons that {{nightshift}} has saved, and shows how often each one has helped.
 
 - **Semantic Memory**: A map of the topics that your memories cover, such as a service name or `latency`. Tile size shows each topic's rank score, not a count of memories. Hover a tile to read its **Score** and how many memories it has. Select a tile to show only the memories about that topic, and **Clear all** to show all of them again.
 - **Most proven**: The memories that helped most often.

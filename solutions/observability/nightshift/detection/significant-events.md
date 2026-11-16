@@ -48,11 +48,11 @@ An event with low confidence can still be worth a look, but check its signals fi
 
 ### Status [nightshift-detection-events-status]
 
-| Status | What it means | What to do |
-| --- | --- | --- |
-| **Active** | A current failure is confirmed, or is plausible and not yet ruled out. | Review it and investigate. |
-| **Recovering** | Every rule behind the event looks healthy again. If any of them breaches again, the event returns to **Active**. | Keep an eye on it. No action is needed yet. |
-| **Inactive** | Every signal that confirmed the event was checked again and cleared, or someone marked the event inactive. | Nothing. Inactive events are resolved. |
+A significant event has one of the following statuses, which show whether the problem is current:
+
+- **Active**: A current failure is confirmed, or is plausible and not yet ruled out. Review it and investigate.
+- **Recovering**: Every rule behind the event looks healthy again. If any of them breaches again, the event returns to **Active**. No action is needed yet, but keep an eye on it.
+- **Inactive**: Every signal that confirmed the event was checked again and cleared, or someone marked the event inactive. The event is resolved, so no action is needed.
 
 An event doesn't become inactive only because a rule goes quiet. It stays **Active** or **Recovering** until its signals are checked again and cleared.
 
