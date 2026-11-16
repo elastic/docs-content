@@ -68,7 +68,7 @@ To create a multi-series visualization:
 
 4. Click **Select report metric** and select the options and filters you need. You will see a **Missing…** warning if required fields (highlighted with red underline) are incomplete.
 5. Click **Apply changes** to see the updated visualization, or repeat the **Add series** process to expand the visualization.
-6. To add the visualization to an existing case, click **Add to case** and select the correct case.
+6. To add the visualization to an existing case, select **Add to case** in the application menu, then select the correct case.
 
 
 ## Synthetic Monitoring [explore-data-synthetics]
