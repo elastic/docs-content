@@ -1,7 +1,8 @@
 ---
 navigation_title: Review rule change history
 applies_to:
-  serverless: ga
+  serverless:
+    observability: ga
   stack: ga 9.6+
 products:
   - id: kibana
@@ -10,7 +11,7 @@ description: "Find out who changed a rule and when, and compare any two versions
 
 # Review rule change history in {{alerting-v2-system}} [review-rule-change-history]
 
-A rule's change history shows who changed the rule, when, and exactly which settings changed. {{kib}} saves a new version of a rule each time someone creates, edits, enables, or disables it.
+Rule change history is part of {{alerting-v2-system-short}}. A rule's change history shows who changed the rule, when, and exactly which settings changed. {{kib}} saves a new version of a rule each time someone creates, edits, enables, or disables it.
 
 Use the change history to:
 

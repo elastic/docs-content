@@ -59,7 +59,7 @@ deployment:
   ech: ga
 ```
 
-In {{ech}} deployments, IP filters do not apply to [managed inputs](opentelemetry://reference/managed-inputs/index.md). In {{serverless-full}} projects, IP filters still apply to managed inputs.
+In {{ech}} deployments, IP filters do not apply to [managed inputs](/reference/managed-inputs/index.md). In {{serverless-full}} projects, IP filters still apply to managed inputs.
 
 ## Apply an IP filter to a deployment or project
 

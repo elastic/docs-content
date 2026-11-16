@@ -62,7 +62,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} ess:
@@ -80,7 +80,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} self:
@@ -134,6 +134,7 @@ Available EDOT SDKs (all GA unless noted):
 * [EDOT Android](apm-agent-android://reference/edot-android/index.md)
 * [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md)
 * {applies_to}`edot_browser: preview` [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md). For production real user monitoring, continue using the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
+* {applies_to}`edot_react_native: preview` [EDOT React Native](elastic-otel-react-native://reference/edot-react-native/index.md)
 
 For languages without an EDOT SDK (Go, C++, Ruby, and others), you can use the [contrib OpenTelemetry SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md). These work with Elastic over OTLP but receive community support only.
 
@@ -183,4 +184,4 @@ If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opente
 * [Limitations of {{edot}}](opentelemetry://reference/compatibility/limitations.md)
 * [{{edot}} vs upstream OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md)
 * [{{agent}} reference](elastic-agent://reference/edot-collector/index.md)
-* [Managed inputs](opentelemetry://reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints
+* [Managed inputs](/reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints

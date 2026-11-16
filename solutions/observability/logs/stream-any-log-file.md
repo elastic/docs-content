@@ -28,7 +28,7 @@ To follow the steps in this guide, you need an {{stack}} deployment that include
 
 * {{es}} for storing and searching data
 * {{kib}} for visualizing and managing data
-* Kibana user with `All` privileges on {{fleet}} and Integrations. Since many Integrations assets are shared across spaces, users need the Kibana privileges in all spaces.
+* A user with the `manage_own_api_key` cluster privilege, to create an API key for the agent. The user also needs the privileges the key grants: the `monitor` cluster privilege and the `auto_configure` and `create_doc` index privileges on `logs-*-*` and `metrics-*-*`. {{agent}} sends its own monitoring logs and metrics by default, so the key needs `metrics-*-*` even if you only collect logs. For details, refer to [Create API keys for standalone agents](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent).
 * Integrations Server (included by default in every {{ech}} deployment)
 
 To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).

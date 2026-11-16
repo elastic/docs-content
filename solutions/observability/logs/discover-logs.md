@@ -19,6 +19,8 @@ If you're just getting started with **Discover** and want to learn its main prin
 
 :::{note}
 For a contextual logs experience, set the **Solution view** for your space to **{{observability}}**. Refer to [Managing spaces](/deploy-manage/manage-spaces.md) for more information.
+
+{applies_to}`stack: ga 9.6+` In spaces that use the Classic solution view, you also get the logs experience for data from some integrations. Refer to [Use the logs experience in the Classic solution view](#logs-classic-solution-view).
 :::
 
 :::{image} ../../images/observability-log-explorer.png
@@ -35,11 +37,11 @@ Viewing data in Discover logs data views requires `read` privileges for **Discov
 
 The logs experience is available in:
 
-* **{{data-source-cap}} mode**: Select the `logs-*` or `All logs` {{data-source}} from the **Discover** main page. By default, **All logs** shows all of your logs according to the index patterns set in the **logs sources** advanced setting. You can navigate to the **Advanced settings** from the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* **Classic mode**: Make sure **Discover** is in [classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode), then select the `logs-*` or `All logs` {{data-source}} from the data view menu. By default, **All logs** shows the logs that match the index patterns in the **Log sources** advanced setting. To open **Advanced settings**, use the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     To focus on logs from a specific source, create a data view using the index patterns for that source. For more information, refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md).
 
-* **{{esql}} mode**: Switch to **{{esql}}** mode and use the `FROM` command to query your log data:
+* **{{esql}} mode**: Make sure **Discover** is in [{{esql}} mode](/explore-analyze/discover/switch-esql-mode.md#switch-discover-query-mode), then use the `FROM` command to query your log data:
 
     ```esql
     FROM logs-*-*,logs-*,filebeat-*
@@ -52,6 +54,28 @@ The logs experience is available in:
     ```
 
 Once you have the logs you want to focus on, you can drill down further. For more on filtering, refer to [Filter logs in Discover](/solutions/observability/logs/filter-aggregate-logs.md#logs-filter-discover).
+
+### Use the logs experience in the Classic solution view [logs-classic-solution-view]
+```{applies_to}
+stack: ga 9.6+
+```
+
+In a space that uses the Classic solution view, **Discover** switches to the logs experience only when your {{data-source}} or {{esql}} query targets data from one of these integrations:
+
+| Integration | Example index pattern |
+| --- | --- |
+| Apache error logs | `logs-apache.error-*` |
+| AWS S3 access logs | `logs-aws.s3access-*` |
+| Kubernetes container logs | `logs-kubernetes.container_logs-*` |
+| Nginx access logs | `logs-nginx.access-*` |
+| Nginx error logs | `logs-nginx.error-*` |
+| System logs | `logs-system.*` |
+
+In {{esql}} mode, the `FROM` command must name the integration, as in `FROM logs-nginx.access-*`.
+
+Other log data keeps the default experience, including the default document details. This includes `logs-*`, `filebeat-*`, Windows logs, and a {{data-source}} or query that mixes several integrations. To get the logs experience for any log data, use the {{observability}} solution view.
+
+The logs experience in the Classic solution view applies as long as the [**Contextual profiles in Classic navigation**](kibana://reference/advanced-settings.md#discover-enablesolutionprofilesinclassic) advanced setting is on, which it is by default.
 
 
 ## Review log data in the documents table [review-log-data-in-the-documents-table]

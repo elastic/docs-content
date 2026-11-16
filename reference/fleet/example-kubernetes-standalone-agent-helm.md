@@ -32,6 +32,7 @@ To get started, you need:
 * An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) {{es}} cluster on version 8.18 or higher. An {{serverless-full}} project also meets this requirement.
 * An [{{es}} API key](/reference/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent) with the privileges described in the referenced document.
 * An active {{k8s}} cluster.
+* {applies_to}`stack: ga 9.5.6+` For Red Hat OpenShift clusters, the permissions listed in [Install on OpenShift](#agent-standalone-helm-install-openshift).
 
 <!--
 % We will uncomment this as soon as we document other authentication options in the main page
@@ -75,10 +76,17 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
 
 ## Step 2: Install {{agent}}s [agent-standalone-helm-example-install]
 
+### Prepare the {{es}} connection
+
 1. Open your {{ecloud}} deployment, and from the navigation menu select **Manage this deployment**.
 2. In the **Applications** section, copy the {{es}} endpoint and make a note of the endpoint value.
 3. Open a terminal shell on your local system where the Helm tool is installed and you have access to the {{k8s}} cluster.
-4. Copy and prepare the command to install the chart:
+
+### Install on Kubernetes [agent-standalone-helm-install-kubernetes]
+
+If you're installing on OpenShift, review the requirements in [Install on OpenShift](#agent-standalone-helm-install-openshift) before you run the command.
+
+1. Copy and prepare the command to install the chart:
 
     ```sh
     helm install demo elastic/elastic-agent \
@@ -128,7 +136,7 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     * `--set kubernetes.state.agentAsSidecar.enabled=true`: Enables [KSM autosharding](https://github.com/kubernetes/kube-state-metrics?tab=readme-ov-file#automated-sharding) by deploying KSM as a `StatefulSet` with {{agents}} as sidecar containers. This setup is useful and recommended for large Kubernetes clusters to distribute the metric collection load. To scale KSM in this configuration, use the `kube-state-metrics.replicas` setting.
     ::::
 
-6. Run the command.
+2. Run the command.
 
     The command output should confirm that two {{agents}} have been installed (one `DaemonSet` and one `Deployment`), along with the {{k8s}} and system integrations, and that kube-state-metrics has also been deployed in the same namespace.
 
@@ -148,7 +156,29 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     ...
     ```
 
-7. Run the `kubectl get pods -n default` command to confirm that the {{agent}} pods are running:
+### Install on OpenShift [agent-standalone-helm-install-openshift]
+
+```{applies_to}
+stack: ga 9.5.6+
+```
+
+Starting with version 9.5.6, the {{agent}} Helm chart supports Red Hat OpenShift. On OpenShift, the chart configures the security context constraints (SCCs) that {{agent}} needs to run. The SCC depends on the `agent.unprivileged` setting:
+
+* By default (`agent.unprivileged=false`), {{agent}} runs as `root`, and the chart grants the agent service accounts the built-in `privileged` SCC.
+* With `agent.unprivileged=true`, {{agent}} runs as a non-root user, and the chart creates a custom SCC with the minimum permissions {{agent}} needs. This SCC doesn't allow privileged containers or access to the host PID and IPC namespaces. Use this option if your security policies don't allow the `privileged` SCC.
+
+To install {{agent}} on OpenShift:
+
+1. Make sure you have the `cluster-admin` role, or equivalent permissions. With the default settings, the chart creates role bindings to the `privileged` SCC in the release namespace, which requires permission to create role bindings and either `use` on that SCC or `bind` on the referenced cluster role. For an unprivileged installation, the chart also creates an SCC and a cluster role.
+2. Follow the [Kubernetes installation steps](#agent-standalone-helm-install-kubernetes). Run `helm repo update` first to make sure you install version 9.5.6 or later of the chart. To run {{agent}} with the minimum permissions, add `--set agent.unprivileged=true` to the installation command.
+
+The chart detects OpenShift automatically by querying the cluster APIs. If you render the chart without access to the cluster, for example with `helm template` or a GitOps tool such as Argo CD, detection doesn't work and the chart doesn't create the OpenShift resources. In that case, add `--set agent.openshift.enabled=true` to the command.
+
+If your organization requires administrators to manage SCCs and role bindings separately, add `--set agent.openshift.securityContextConstraints.create=false` to the command. An administrator then needs to create the resources the chart would otherwise create before you install. To review these resources, render the chart with `helm template` and `--set agent.openshift.enabled=true`, or refer to the [OpenShift examples](https://github.com/elastic/elastic-agent/tree/main/deploy/helm/elastic-agent/examples/kubernetes-openshift-unprivileged) in the {{agent}} repository.
+
+### Verify the installation and view your data
+
+1. Run the `kubectl get pods -n default` command to confirm that the {{agent}} pods are running:
 
     ```sh
     NAME                                      READY   STATUS    RESTARTS   AGE
@@ -159,10 +189,10 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     kube-state-metrics-6bc97757c4-x9rkg       1/1     Running   0          5m35s
     ```
 
-8. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
-9. Run a search for `Kubernetes` and then select the {{k8s}} integration card.
-10. On the {{k8s}} integration **Settings** page, select **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
-11. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
+2. In your {{ecloud}} deployment, from the {{kib}} menu open the **Integrations** page.
+3. Run a search for `Kubernetes` and then select the {{k8s}} integration card.
+4. On the {{k8s}} integration **Settings** page, select **Install Kubernetes**. This installs the dashboards, {{es}} indexes, and other assets used to monitor your {{k8s}} cluster.
+5. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Nodes** dashboard.
 
     On the dashboard, you can view the status of your {{k8s}} nodes, including metrics on memory, CPU, and filesystem usage, network throughput, and more.
 
@@ -171,13 +201,12 @@ This can be easily implemented with the Helm chart. For details, refer to the [K
     :screenshot:
     :::
 
-12. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashboard you can view the status of your {{k8s}} pods, including various metrics on memory, CPU, and network throughput.
+6. On the {{k8s}} integration page, open the **Assets** tab and select the **[Metrics Kubernetes] Pods** dashboard. As with the nodes dashboard, on this dashboard you can view the status of your {{k8s}} pods, including various metrics on memory, CPU, and network throughput.
 
     :::{image} images/helm-example-pods-metrics-dashboard.png
     :alt: Screen capture of the Metrics Kubernetes pods dashboard
     :screenshot:
     :::
-
 
 ## Update {{agent}} configuration [agent-standalone-helm-example-upgrade]
 

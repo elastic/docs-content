@@ -11,6 +11,10 @@ products:
 
 # Run Elastic Agent on Kubernetes managed by Fleet [running-on-kubernetes-managed-by-fleet]
 
+:::{note}
+Helm is the preferred method for installing {{agent}} on Kubernetes. Refer to [Install {{agent}} on Kubernetes using Helm](/reference/fleet/install-on-kubernetes-using-helm.md) for installation examples for standalone and {{fleet}}-managed agents.
+:::
+
 ## What you need [_what_you_need_2]
 
 * [kubectl installed](https://kubernetes.io/docs/tasks/tools/).
@@ -220,7 +224,10 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
     :screenshot:
     :::
 
-3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for them.
+3. To view data flowing in, go to **Analytics → Discover**. To check the Kubernetes metrics:
+
+   - In {{esql}} mode, enter `FROM metrics-kubernetes.*`. To include all metrics data, enter `FROM metrics-*` instead.
+   - In classic mode, select a data view that matches `metrics-kubernetes.*`, or `metrics-*` for all metrics data. If you can’t see one, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for it.
 4. To view predefined dashboards, either select **Analytics→Dashboard** or [install assets through an integration](/reference/fleet/view-integration-assets.md).
 
 

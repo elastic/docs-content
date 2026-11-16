@@ -23,7 +23,7 @@ Quick answers to the issues first-time workflow authors hit most often. Each sec
 
 **Symptom.** You've authored a workflow with `type: alert` and enabled it, but the workflow never runs when the expected alerts fire.
 
-**Cause.** Declaring the trigger is necessary but not sufficient. The workflow must also be attached to the alerting or detection rule's **Actions** with a **Run Workflow** action. Without the attachment, alerts fire from the rule but the workflow is never invoked.
+**Cause.** Declaring the trigger is necessary but not sufficient. The workflow must also be attached to the **Actions** of the rule, using a **Run Workflow** action. Without the attachment, alerts fire from the rule but the workflow is never invoked.
 
 **Resolution.** Open the rule, add a **Run Workflow** action, and select the workflow. Refer to [Alert triggers](/explore-analyze/workflows/triggers/alert-triggers.md) for the full setup sequence.
 
@@ -85,7 +85,7 @@ Refer to [`while`](/explore-analyze/workflows/steps/while.md).
 
 **Cause.** The `cases` block is an array of objects, not a map.
 
-**Resolution.** Structure `cases` as an array where each entry has `case:` and `steps:`:
+**Resolution.** Structure `cases` as an array where each entry has `match:` and `steps:`:
 
 ```yaml
 # Wrong
@@ -97,9 +97,9 @@ cases:
 
 # Right
 cases:
-  - case: foo
+  - match: foo
     steps: [ { ... } ]
-  - case: bar
+  - match: bar
     steps: [ { ... } ]
 ```
 

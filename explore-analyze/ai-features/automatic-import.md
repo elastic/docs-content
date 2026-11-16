@@ -93,7 +93,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 
 ::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
 
-1. In {{kib}}, open **Integrations**. You can use the main menu, the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or your solution's entry point (for example, **Add integrations** in {{elastic-sec}}, or **Add data** in {{observability}}).
+1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use your solution's entry point, such as **Add integrations** in {{elastic-sec}} or **Add data** in {{observability}}.
 2. Under **Can't find an integration?** click **Create integration**.
 
    :::{image} /solutions/images/security-auto-import-create-new-integration-button.png
@@ -170,7 +170,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
     :alt: The Integrations catalog showing a newly installed custom integration under its chosen category
     :::
 
-14. Click **Add** to start collecting data and assign the integration to an [agent policy](/reference/fleet/agent-policy.md).
+14. Select the integration. If the integration's **Overview** page opens, click **Add <integration>**. Configure the integration and assign it to an [agent policy](/reference/fleet/agent-policy.md) to start collecting data.
 
     :::{image} /solutions/images/security-auto-import-add-integration.png
     :alt: The integration details page with an Add button to deploy the integration to an agent policy
@@ -182,7 +182,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 
 ::::{applies-item} stack: ga 9.0-9.3
 
-1. In {{kib}}, open **Integrations**. You can use the main menu, the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or your solution's entry point (for example, **Add integrations** in {{elastic-sec}}, or **Add data** in {{observability}}).
+1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use your solution's entry point, such as **Add integrations** in {{elastic-sec}} or **Add data** in {{observability}}.
 2. Under **Can't find an integration?** click **Create new integration**.
 3. Click **Create integration**.
 4. Select an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).

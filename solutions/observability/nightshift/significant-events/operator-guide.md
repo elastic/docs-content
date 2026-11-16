@@ -24,11 +24,17 @@ Use this guide to understand how Significant Events affects your cluster and how
 
 The following table shows each pipeline component, where it runs, what triggers it, and what it reads and writes:
 
+<!-- TODO for Mike B. (@mdbirnstiehl): My very general understanding is that Significant Events runs these rules on {{alerting-v2-system-short}}, so the "Alerting rule execution" row in the following table might need a small tweak for Nightshift's serverless release. 
+
+Potential revision for the row:
+| Alerting rule execution | {{alerting-v2-system}} → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
+-->
+
 | Component | Uses | Trigger | Reads | Writes |
 |---|---|---|---|---|
 | KI feature identification | Task Manager + Workflow | On-demand / continuous extraction | Stream logs | `.significant_events-knowledge_indicators` |
 | KI query generation | Workflow | On-demand | Features + existing queries | Query KI assets |
-| Alerting rule execution | {{kib}} alerting → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
+| Alerting rule execution | {{alerting-v1-system}} → {{es}} | Per-rule schedule | Stream data using {{esql}} | `.rule-events` |
 | Detection Workflow | Workflows | Cron 10m | `.rule-events` | `.significant_events-detections` |
 | Discovery Workflow | Workflows + Agent Builder | Cron 10m | `.significant_events-detections` + KIs | `.significant_events-discoveries`, `.rule-events` |
 
@@ -37,6 +43,12 @@ The following table shows each pipeline component, where it runs, what triggers 
 The following sections describe the query load, pipeline lag, memory, and storage growth you can expect when running Significant Events. These are observable signals, not hard guarantees.
 
 **Alerting rule query load**
+
+<!-- TODO for Mike B. (@mdbirnstiehl): In case you haven't already updated this: I think the paragraph below might need a couple of tweaks. My general understanding is that Significant Events sets these rules to **Collect evidence** mode, so they record matches rather than create alerts. Also looks like all promoted rules share one schedule, instead of each running on its own. Feel free to ignore this if you've already covered it. 
+
+Potential revision:
+One {{alerting-v2-system-short}} rule runs for each promoted query KI, in [**Collect evidence** mode](/explore-analyze/alerting/esql/rules/configure-rule-mode.md). All of these rules run on the same [shared schedule](how-it-works.md#sig-events-hiw-execution), and each run records a match count in `.rule-events` for each time bucket. These matches don't open alerts or appear on the **Alerts** page. On each detection cycle, change point aggregation runs separately for each active rule, against that rule's per-time-bucket match counts. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
+-->
 
 One {{esql}} alerting rule runs for each promoted query KI. Each rule executes on its own schedule, creating an alert when its query matches. On each detection cycle, change point aggregation runs separately for each active rule, against that rule's per-time-bucket alert counts. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
 

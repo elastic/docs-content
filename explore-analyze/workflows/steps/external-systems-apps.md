@@ -24,7 +24,7 @@ External systems actions allow your workflows to communicate with third-party se
 
 Connector-based actions use {{kib}}'s centralized {{connectors-ui}} framework. Before using them, you must first [configure a connector](/deploy-manage/manage-connectors.md).
 
-The step `type` is a keyword for the service (for example, `slack` or `jira`). You must also provide a `connector-id` at the same level as `type`.
+The step `type` is the connector type, such as `slack`. For a connector with several actions, the type also names the action, such as `jira.pushToService`. You must also provide a `connector-id` at the same level as `type`.
 
 To view the available connectors, click **Actions menu** and select **External Systems & Apps**. 
 
@@ -50,18 +50,18 @@ steps:
 
 ### Example: Create a {{jira}} issue
 
-This example uses a {{jira}} connector named `"engineering-project"`.
+This example uses a {{jira}} connector named `"engineering-project"`. The connector's configuration sets the {{jira}} project, so the step doesn't specify one.
 
 ```yaml
 steps:
   - name: create_jira_ticket
-    type: jira
+    type: jira.pushToService
     connector-id: "engineering-project"
     with:
-      projectKey: "ENG"
-      issueType: "Task"
-      summary: "Automated Task: Review '{{ event.name }}'"
-      description: "Workflow '{{ workflow.name }}' requires manual review for a potential issue."
+      incident:
+        summary: "Automated Task: Review '{{ event.name }}'"
+        issueType: "10001" # Issue type ID. List the IDs with a jira.issueTypes step.
+        description: "Workflow '{{ workflow.name }}' requires manual review for a potential issue."
 ```
 
 ## HTTP actions

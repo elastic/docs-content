@@ -20,7 +20,7 @@ The steps to follow are:
 
 * copy the `session.id` from the relevant document.
 * Open the Discover page.
-* Select the appropriate data view (use `APM` to search all data streams)
+* If Discover opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then select the appropriate data view (use `APM` to search all data streams)
 * set filter to the copied `session.id`
 
 Here we can see the `session.id` guid in the metadata viewer in the error detail view:

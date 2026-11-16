@@ -11,7 +11,7 @@ products:
 
 # Elasticsearch query [rule-type-es-query]
 
-The {{es}} query rule type runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
+The {{es}} query rule type is part of {{alerting-v1-system}}. It runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
 
 In **{{rules-ui}}**, click **Create rule**. For help navigating to the Rules page, refer to [Create and manage alerting rules](create-manage-rules.md). Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
 
