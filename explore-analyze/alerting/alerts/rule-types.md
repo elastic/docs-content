@@ -50,6 +50,6 @@ serverless: beta
 Security rules are separate from {{alerting-v1-system-short}}. They detect suspicious source events with pre-built or custom rules and create alerts when a rule’s conditions are met. For more information, refer to [Security rules](detection-rules://index.md).
 
 ::::{note}
-Alerts associated with security rules are visible only in the {{security-app}}; they are not visible in **{{stack-manage-app}} → {{rules-ui}}**.
+Alerts associated with security rules are visible only in the {{security-app}}. They are not visible in **{{stack-manage-app}} → {{rules-ui}}**.
 
 ::::
