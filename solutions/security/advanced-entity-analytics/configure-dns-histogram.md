@@ -27,7 +27,7 @@ Add the `dns.question.name` field to the Events table to confirm that DNS data i
 
 Create an ingest pipeline that extracts registered domains (for example, `example.com`) from full DNS query names (for example, `www.example.com`).
 
-1. Go to the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Create pipeline → New pipeline**.
+1. Go to the **Ingest Pipelines** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Create pipeline** → **New pipeline**.
 2. On the **Create pipeline** page, set the pipeline name to `logs-endpoint.events.network@custom`.
 3. Click **Add a processor**. In the **Add processor** flyout, configure the following:
    1. From the **Processor** dropdown, select **Registered domain**.

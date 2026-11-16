@@ -22,7 +22,7 @@ The **Entity analytics** page provides a centralized workspace for investigating
 :::{admonition} Requirements
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 
-* To access this page, you need **Read** for the **Management → Saved Objects Management** feature.
+* To access this page, you need **Read** for the **Management** → **Saved Objects Management** feature.
 * You also need the `read` index privilege for these index patterns:
   * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `entities-latest-<space-id>`, `.entities.v2.latest.<space-id>-*`, and `risk-score.risk-score-<space-id>`
   * {applies_to}`stack: ga 9.4-9.5` `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>` 

@@ -119,7 +119,7 @@ For most use cases, the simplest option is to use AWS CloudFormation to automati
 3. Return to your {{kib}} tab. Click **Save and continue** at the bottom of the page.
 4. Review the information, then click **Launch CloudFormation**.
 5. A CloudFormation template appears in a new browser tab.
-6. For organization-level deployments only, you must enter the ID of the organizational units where you want to deploy into the CloudFormation template’s `OrganizationalUnitIds` field. You can find organizational unit IDs in the AWS console under **AWS Organizations → AWS Accounts** (under each organization’s name). You can also use this field to specify which accounts in your organization to monitor, and which to skip.
+6. For organization-level deployments only, you must enter the ID of the organizational units where you want to deploy into the CloudFormation template’s `OrganizationalUnitIds` field. You can find organizational unit IDs in the AWS console under **AWS Organizations** → **AWS Accounts** (under each organization’s name). You can also use this field to specify which accounts in your organization to monitor, and which to skip.
 7. (Optional) Switch to the AWS region where you want to deploy using the controls in the upper right corner.
 8. Tick the checkbox in **Capabilities** to authorize the creation of necessary resources.
 9. At the bottom of the template, select **Create stack**.

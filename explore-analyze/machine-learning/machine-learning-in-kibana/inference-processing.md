@@ -70,7 +70,7 @@ The `monitor_ml` [Elasticsearch cluster privilege](elasticsearch://reference/ela
 
 ### Add {{infer}} processors to your ML {{infer}} pipeline [ingest-pipeline-search-inference-add-inference-processors]
 
-To create the index-specific ML {{infer}} pipeline, go to **Search → Content → Indices → <your index> → Pipelines** in the Kibana UI.
+To create the index-specific ML {{infer}} pipeline, go to **Search** → **Content** → **Indices** → **<your index>** → **Pipelines** in the Kibana UI.
 
 If you only see the `search-default-ingestion` pipeline, you will need to click **Copy and customize** to create index-specific pipelines. This will create the `{{index_name}}@ml-inference` pipeline.
 

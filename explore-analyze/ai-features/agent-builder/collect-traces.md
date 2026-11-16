@@ -66,7 +66,7 @@ Trace collection is on by default. To manage it, go to **{{stack-manage-app}}** 
 The **Collect conversation traces** setting turns collection on and off. When it is on, {{agent-builder}} collects OpenTelemetry traces for agent conversations and ingests them into {{es}}. From the same section, you can install a prebuilt overview dashboard for the current {{kib}} space.
 
 :::{note}
-Any user with index access can read trace data. To restrict access, configure index-level privileges in **Stack Management → Roles**. For details, refer to [Grant access to trace data](#grant-access-to-trace-data).
+Any user with index access can read trace data. To restrict access, configure index-level privileges in **Stack Management** → **Roles**. For details, refer to [Grant access to trace data](#grant-access-to-trace-data).
 :::
 
 ### Trace privacy settings
@@ -130,7 +130,7 @@ Anyone who can read the trace data stream can read this content, so review [Gran
 
 Trace data is stored in the `traces-agent_builder.otel-*` data stream. To read it, a role needs `read` and `view_index_metadata` on that pattern.
 
-Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
+Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management** → **Roles**.
 
 {applies_to}`{stack: ga 9.6+, serverless: ga}` When **Include user data in traces** is on, traces identify who ran each conversation round. Anyone who can read the data stream can see which user ran which round, so review this section before you turn that setting on.
 

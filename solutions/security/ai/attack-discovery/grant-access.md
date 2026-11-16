@@ -69,9 +69,9 @@ When you turn on [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://re
 
 | Attack Discovery action | Workflows privilege needed |
 |---|---|
-| Monitor runs in **Generations** and open workflow execution details | `read` for **Analytics → Workflows** |
-| Generate discoveries (manual or scheduled) | `read` and `execute` for **Analytics → Workflows** |
-| Create, edit, or enable schedules | `read` and `execute` for **Analytics → Workflows**, plus [**Schedules** → **Allow changes**](/solutions/security/manage/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) |
+| Monitor runs in **Generations** and open workflow execution details | `read` for **Analytics** → **Workflows** |
+| Generate discoveries (manual or scheduled) | `read` and `execute` for **Analytics** → **Workflows** |
+| Create, edit, or enable schedules | `read` and `execute` for **Analytics** → **Workflows**, plus [**Schedules** → **Allow changes**](/solutions/security/manage/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) |
 | Deactivate or delete schedules | [**Schedules** → **Allow changes**](/solutions/security/manage/security-kibana-privileges.md#attack-discovery-sub-feature-privileges) only |
 
-Granting `All` for **Analytics → Workflows** includes `read` and `execute`. For finer-grained access, use Workflows [sub-feature privileges](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).
+Granting `All` for **Analytics** → **Workflows** includes `read` and `execute`. For finer-grained access, use Workflows [sub-feature privileges](/explore-analyze/workflows/get-started/setup.md#workflows-role-access).

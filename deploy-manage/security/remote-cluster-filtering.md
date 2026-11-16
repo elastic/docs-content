@@ -102,7 +102,7 @@ To create a remote cluster filter:
     You can provide one or both values. To add multiple rules to the filter, use the plus (`+`) button.
 
     ::::{tip}
-    You can find the ECE environment ID under **Platform → Trust Management → Trust parameters**, and the {{es}} cluster ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
+    You can find the ECE environment ID under **Platform** → **Trust Management** → **Trust parameters**, and the {{es}} cluster ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
     ::::
 
     ::::{note}

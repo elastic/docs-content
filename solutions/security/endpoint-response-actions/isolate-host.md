@@ -50,7 +50,7 @@ All actions executed on a host are tracked in the host’s response actions hist
     * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
-2. Click **Take action → Isolate host**.
+2. Click **Take action** → **Isolate host**.
 3. Enter a comment describing why you’re isolating the host (optional).
 4. Click **Confirm**.
 ::::
@@ -59,7 +59,7 @@ All actions executed on a host are tracked in the host’s response actions hist
 ::::{dropdown} Isolate a host from an endpoint
 1. Find **Endpoints** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then either:
 
-    * Select the appropriate endpoint in the **Endpoint** column, and click **Take action → Isolate host** in the endpoint details flyout.
+    * Select the appropriate endpoint in the **Endpoint** column, and click **Take action** → **Isolate host** in the endpoint details flyout.
     * Click the **Actions** menu (**…**) on the appropriate endpoint, then select **Isolate host**.
 
 2. Enter a comment describing why you’re isolating the host (optional).
@@ -121,7 +121,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
     * From the Alerts table or Timeline: Click **View details** (![View details icon](/solutions/images/security-view-details-icon.png "title =20x20")).
     * From a case with an attached alert: Click **Show alert details** (**>**).
 
-2. From the alert details flyout, click **Take action → Release host**.
+2. From the alert details flyout, click **Take action** → **Release host**.
 3. Enter a comment describing why you’re releasing the host (optional).
 4. Click **Confirm**.
 ::::
@@ -130,7 +130,7 @@ After the host is successfully isolated, an **Isolated** status is added to the 
 ::::{dropdown} Release a host from an endpoint
 1. Find **Endpoints** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then either:
 
-    * Select the appropriate endpoint in the **Endpoint** column, and click **Take action → Release host** in the endpoint details flyout.
+    * Select the appropriate endpoint in the **Endpoint** column, and click **Take action** → **Release host** in the endpoint details flyout.
     * Click the **Actions** menu (**…**) on the appropriate endpoint, then select **Release host**.
 
 2. Enter a comment describing why you’re releasing the host (optional).

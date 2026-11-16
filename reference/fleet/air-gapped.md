@@ -384,7 +384,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 2. Add the agent binary download location to {{fleet}} settings:
 
-    1. Open **{{fleet}} → Settings**.
+    1. Open **{{fleet}}** → **Settings**.
     2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more details, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agents}} to download binaries from this location, set it as the default.
 
         :::{note}
@@ -395,7 +395,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 3. If your artifact registry is not the default, edit your agent policies to override the default:
 
-    1. Go to **{{fleet}} → Agent policies** and click the policy name to edit it.
+    1. Go to **{{fleet}}** → **Agent policies** and click the policy name to edit it.
     2. Click **Settings**.
     3. Under **Agent Binary Download**, select your artifact registry.
 

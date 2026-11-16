@@ -83,10 +83,10 @@ To let users read alerts and perform per-alert actions such as [snooze](view-ale
 
 **{{kib}} privileges**
 
-* **Management → Stack Alerts**:
+* **Management** → **Stack Alerts**:
   * `All`: Read {{stack-manage-app}} alerts and perform per-alert actions across {{stack-manage-app}} rule types (for example, the {{es}} query, index threshold, geo-containment, transform health, {{ml}} anomaly detection, and custom threshold rule types).
   * `Read`: Read {{stack-manage-app}} alerts and their snooze state.
-* **Observability → Observability Alerts**:
+* **Observability** → **Observability Alerts**:
   * `All`: Read {{observability}} alerts and perform per-alert actions across {{observability}} rule types (for example, the APM, infrastructure, logs, SLO burn rate, Synthetics, and custom threshold rule types).
   * `Read`: Read {{observability}} alerts and their snooze state.
 
