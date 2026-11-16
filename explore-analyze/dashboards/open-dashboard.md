@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/open-the-dashboard.html
-description: Open and edit an existing Kibana dashboard to modify its panels, settings, and controls.
+description: Edit an existing Kibana dashboard to change its panels, settings, and controls, undo mistakes, and restore an earlier saved version.
 applies_to:
   stack: ga
   serverless: ga
@@ -67,5 +67,32 @@ When editing a dashboard, you can revert any changes you’ve made since the las
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To step back through your changes one at a time instead, refer to [Undo and redo dashboard changes](#undo-redo-dashboard).
 
 ::::{note}
-Once changes are saved, you can no longer revert them in one click, and instead have to edit the dashboard manually.
+Once changes are saved, you can no longer revert them in one click.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To go back to an earlier saved version instead, refer to [Restore an earlier version of a dashboard](#restore-dashboard-version).
 ::::
+
+## Restore an earlier version of a dashboard [restore-dashboard-version]
+```{applies_to}
+serverless: ga
+stack: ga 9.7+
+```
+
+If you save a change that you later regret, or you want to see how a dashboard used to look, you can browse its earlier versions, compare them, and bring one back. Each time you save a dashboard and its content changes, {{kib}} records a new version with a number (v1, v2, and so on), the name of the person who saved it, and the time. Saving without changing anything doesn't create a version, and saves from before version history was available aren't recorded. By default, versions are kept indefinitely.
+
+To restore an earlier version:
+
+1. In edit mode, select **History** in the application menu. **History** is disabled until you save the dashboard for the first time.
+2. In the **Version history** list, select a version to see the dashboard as it looked then. The preview isn't interactive. Your unsaved changes, if any, appear at the top of the list as **Unsaved changes**.
+3. Select **Restore**, or open the **Version actions** menu on the version and select **Restore this version**. The current version has no restore option.
+4. Confirm the restore. {{kib}} saves the restored version as a new version, which appears at the top of the list with a note such as **Restored from v3**. The earlier versions stay in the list, so restoring never rewinds the history.
+
+If you have unsaved changes when you restore, the restored version replaces them. To leave without restoring anything, select **Back to dashboard**.
+
+To check what changed before you restore, select the changes link on a version, such as **3 changes**, to compare it with the version before it. To compare it with a different version, open the **Version actions** menu on that other version and select **Compare to this version**. {{kib}} shows the differences as JSON. To switch between **Unified** and **Split** views, select **Settings** {icon}`controls` at the bottom of the comparison.
+
+For changes that you haven't saved yet, use [Undo and redo](#undo-redo-dashboard) or [Reset changes](#reset-the-dashboard) instead.
+
+:::{note}
+Deleting a dashboard doesn't delete its version history, but you can't open that history from the deleted dashboard. If you later create a dashboard with the same ID, for example through the [Dashboards API](create-dashboards-programmatically.md), its history continues from the earlier version numbers, and the deletion appears in the list as a version marked **Deleted**.
+:::
