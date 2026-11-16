@@ -29,7 +29,7 @@ products:
 
 For the best results, keep your data in {{serverless-short}}, either in the {{nightshift}} project or in projects linked to it. Then detection and investigation both work, and you don't manage any credentials.
 
-## {{serverless-short}}, single project [nightshift-reference-architecture-single]
+## A single {{serverless-short}} project [nightshift-reference-architecture-single]
 
 The simplest setup is having your logs, metrics, and traces in the same {{obs-serverless}} project as {{nightshift}}.
 
@@ -41,7 +41,7 @@ The simplest setup is having your logs, metrics, and traces in the same {{obs-se
 - **Detection**: Add a source such as **All logs** and select **Enable detection**. Refer to [Manage what detection monitors](./detection/sources.md).
 - **Investigation**: When you enable {{nightshift}}, it creates a **Local Elasticsearch** connector for the project. You don't set up anything else.
 
-## {{serverless-short}} with {{cps}}[nightshift-reference-architecture-cps]
+## Multiple {{serverless-short}} projects with {{cps}} [nightshift-reference-architecture-cps]
 
 Your data is spread across several Serverless projects, for example one project per team or per region, and the {{nightshift}} project is linked to them with [{{cps}}](/deploy-manage/cross-project-search-config.md).
 
@@ -55,7 +55,7 @@ Your data is spread across several Serverless projects, for example one project 
 
 This is the recommended setup when your data lives in more than one place. Link the projects once, and {{nightshift}} sees all of them.
 
-## {{ech}}[nightshift-reference-architecture-ech]
+## An {{ech}} deployment [nightshift-reference-architecture-ech]
 
 Your data is in an [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) deployment, and {{nightshift}} runs in a separate Serverless project.
 
@@ -69,7 +69,7 @@ Your data is in an [{{ech}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md
 
 Automations start from alerts in the {{nightshift}} project. To investigate alerts that fire in the {{ech}} deployment automatically, send them to a Slack channel or to a webhook in the {{nightshift}} project. Refer to [Investigate alerts from your other tools](./use-cases/external-alerts.md).
 
-## Self-managed cluster [nightshift-reference-architecture-self-managed]
+## A self-managed {{es}} cluster [nightshift-reference-architecture-self-managed]
 
 Your data is in an {{es}} cluster that you run yourself, on premises or in your own cloud account.
 
@@ -79,7 +79,7 @@ Your data is in an {{es}} cluster that you run yourself, on premises or in your 
 :::
 
 - **Detection**: Sources can't read data in a self-managed cluster.
-- **Investigation**: Possible, but only if {{nightshift}} can reach your cluster's {{es}} endpoint over the internet. An External {{es}} connector runs in Elastic Cloud, so it can't reach a cluster that is only on a private network. Mutual TLS (mTLS) and private connectivity, such as AWS PrivateLink, aren't supported.
+- **Investigation**: Only possible if {{nightshift}} can reach your cluster's {{es}} endpoint over the internet. An External {{es}} connector runs in Elastic Cloud, so it can't reach a cluster that is only on a private network. Mutual TLS (mTLS) and private connectivity, such as AWS PrivateLink, aren't supported.
 
 :::{warning}
 Exposing a cluster to the internet is a security decision for your team. If you do it, secure the endpoint before you connect it:

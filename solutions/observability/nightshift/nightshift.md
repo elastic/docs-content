@@ -14,7 +14,7 @@ products:
 
 It learns your system as it works, and brings that knowledge to every investigation, chat, and detection. It can also watch your data for problems that none of your alerts catch.
 
-**If this is your first time**, [Get started](./get-started.md) takes you from enabling {{nightshift}} to your first investigation in a few steps.
+**To set up {{nightshift}} for the first time**, follow the [Get started](./get-started.md) guide to go from enabling {{nightshift}} to your first investigation in a few steps.
 
 :::{image} ../../images/nightshift-home.png
 :alt: The Elastic nightshift home page, with investigations grouped by severity, including High investigations about inventory-api latency and Postgres lock timeouts
@@ -23,9 +23,9 @@ It learns your system as it works, and brings that knowledge to every investigat
 
 ## Why use {{nightshift}} [nightshift-overview-why]
 
-Knowledge of how your system fits together usually sits with a few engineers. A new SRE has the skills but not the knowledge, and AI models start with the same gap. {{nightshift}} builds that knowledge as it works, so it starts with the problem instead of learning your system.
+Knowledge of how your system fits together usually sits with a few engineers. A new SRE has the skills but not the knowledge, and AI models start with the same gap. {{nightshift}} builds and maintains knowledge as it works, so it starts with the problem instead of learning your system.
 
-{{nightshift}} does the first pass of an incident, so you start from a summary instead of a blank dashboard. Investigations use the data and alerts you already have — no detection to turn on, no re-instrumenting, no rewritten rules. Here are some common situations and how they play out with and without {{nightshift}}:
+{{nightshift}} does the first pass of an incident, so you start from a summary instead of a blank dashboard. Investigations use the data and alerts you already have. There's no detection to turn on, no re-instrumenting, and no rewritten rules. Here are some common situations and how they play out with and without {{nightshift}}:
 
 | Situation | Without {{nightshift}} | With {{nightshift}} |
 | --- | --- | --- |

@@ -24,22 +24,20 @@ The sidebar lists the pages, grouped by type. Use **Search pages** to find a pag
 - **Home** shows how many pages there are, how many are established, how often later investigations confirmed them, and when the Wiki last changed. It lists the **Most corroborated** and **Recently updated** pages.
 - **Activity** lists the changes that investigations made to the Wiki, most recent first.
 
-Each page covers a single topic, such as a service or an integration, and has a type.
+Each page covers a single topic, such as a service or an integration, and has one of the following types:
 
-| Type | What a page describes | Example |
-| --- | --- | --- |
-| **Services** | A service or database, what it depends on, and where its telemetry lives | An API service, the database it uses |
-| **Integrations** | A data source or tool, and how to query it | Elasticsearch telemetry cluster (OTel data streams) |
-| **Alerts** | An alert, what it usually means, and what to check | |
-| **Runbooks** | Steps that resolved a problem before | |
-| **Queries** | Queries that proved useful | |
-| **Dashboards** | Dashboards that show the right data | |
-| **Postmortems** | What happened in a past incident | |
-| **Topics**, **Glossary**, **Ontology** | Terms, naming conventions, and how your entities relate | |
+- **Services**: A service or database, what it depends on, and where its telemetry lives, such as an API service and the database it uses
+- **Integrations**: A data source or tool, and how to query it, such as an Elasticsearch telemetry cluster with OTel data streams
+- **Alerts**: An alert, what it usually means, and what to check
+- **Runbooks**: Steps that resolved a problem before
+- **Queries**: Queries that proved useful
+- **Dashboards**: Dashboards that show the right data
+- **Postmortems**: What happened in a past incident
+- **Topics**, **Glossary**, and **Ontology**: Terms, naming conventions, and how your entities relate
 
 Investigations also note on integration pages which queries or tools failed, and any workarounds. That way, the next investigation avoids the same dead end.
 
-## How pages become established [nightshift-wiki-status]
+## Wiki page lifecycle [nightshift-wiki-status]
 
 A page that {{nightshift}} writes after one investigation is **Tentative**. When a later investigation finds the same facts in your data, it corroborates the page, and the page becomes **Established**.
 
@@ -53,11 +51,11 @@ flowchart LR
 ```
 
 1. After an investigation, {{nightshift}} proposes pages or updates to existing ones. A page starts as **Tentative**.
-1. When a later investigation confirms the page, the page becomes **Established**. Its corroboration count goes up each time this happens.
-1. When you or {{nightshift}} archive a page, investigations stop loading it.
+1. When a later investigation confirms a page, the page becomes **Established**. Its corroboration count goes up each time this happens.
+1. When you or {{nightshift}} [archive](#nightshift-wiki-archive) a page, investigations stop loading it.
 1. When a later investigation confirms an archived page, or you restore it, the page comes back as **Tentative**, not **Established**.
 
-A statement in a chat alone doesn't confirm a page. The facts must come from what an investigation found in your data.
+A statement in a chat alone doesn't confirm a page. The facts must come from an investigation's findings.
 
 ## Archive or restore a Wiki page [nightshift-wiki-archive]
 

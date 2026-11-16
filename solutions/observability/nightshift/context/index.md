@@ -24,25 +24,19 @@ Knowledge builds up in layers, from your raw telemetry to what {{nightshift}} le
 :width: 100%
 :::
 
-Knowledge reaches {{nightshift}} in the following ways:
-
-1. **From your data, ahead of time.** When detection is on, it reads the data in your sources and extracts Knowledge Indicators (KIs), which include facts about your services, dependencies, and technologies. Detection uses them to create rules and find significant events. Investigations don't read KIs directly. KIs reach them through significant events.
-1. **From people.** Custom context and automation instructions tell {{nightshift}} information it can't learn from your data, such as team conventions, where to look first, and the location of your runbooks and code. Investigations then read those runbooks and code when they run.
-1. **From its own investigations.** After each investigation, {{nightshift}} saves what it learned. Durable facts about your services and integrations go to the Wiki. Lessons, such as which checks found the cause, go to Memory. For alerts it has investigated before, it keeps the troubleshooting path that worked as a decision tree, which you can view in developer mode.
-
-Every investigation reads the Wiki, recalls the memories that match the problem, and follows your instructions. Then it saves what it learned, so the next investigation starts further ahead.
+When detection is on, it extracts Knowledge Indicators (KIs) from your data ahead of time. You add what your data can't tell {{nightshift}}, such as team conventions and where your runbooks and code live. After each investigation, {{nightshift}} saves what it learned. Every investigation reads the Wiki, recalls the memories that match the problem, and follows your instructions, so the next investigation starts further ahead.
 
 For example, after its first investigation of a slow service, {{nightshift}} can save a memory about where that service's telemetry lives, and Wiki pages for the service and its database. The next investigation of that service reads them first and doesn't have to search for the right indices again.
 
 ## Compare the types of context [nightshift-context-compare]
 
-| | What it is | Who writes it | When it's used | Can you change it? |
-| --- | --- | --- | --- | --- |
-| [Knowledge Indicators](./knowledge-indicators.md) | Facts and queries that detection extracts from your data, such as services, dependencies, and known failure patterns | {{nightshift}}, from your detection sources | When detection creates rules and finds significant events | Exclude, restore, delete, or keep them from expiring |
-| [Wiki](./wiki.md) | Short pages about your services, integrations, runbooks, and queries | {{nightshift}}, after each investigation | Read at the start of every investigation | Archive or restore pages. You can't edit them. |
-| [Memory](./memory.md) | Lessons from past investigations | {{nightshift}}, after each investigation | Searched by meaning, and recalled when an investigation looks similar | Archive, restore, or delete memories. You can't edit them. |
-| [Custom context](#nightshift-context-custom) | Notes about your environment and conventions | You | Added to every investigation and chat in the space | Yes, add, edit, or delete notes |
-| [Decision trees](./decision-trees.md) | Troubleshooting paths for alerts that {{nightshift}} has investigated before | {{nightshift}}, after investigations | Followed when the same alert fires again | No. View them in developer mode. |
+| | What it is | Who writes it | When it's used |
+| --- | --- | --- | --- |
+| [Knowledge Indicators](./knowledge-indicators.md) | Facts and queries that detection extracts from your data, such as services, dependencies, and known failure patterns | {{nightshift}}, from your detection sources | When detection creates rules and finds significant events. Investigations get KIs only through significant events. |
+| [Wiki](./wiki.md) | Short pages about your services, integrations, runbooks, and queries | {{nightshift}}, after each investigation | Read at the start of every investigation |
+| [Memory](./memory.md) | Lessons from past investigations | {{nightshift}}, after each investigation | Searched by meaning, and recalled when an investigation looks similar |
+| [Custom context](#nightshift-context-custom) | Notes about your environment and conventions | You | Added to every investigation and chat in the space |
+| [Decision trees](./decision-trees.md) | Troubleshooting paths for alerts that {{nightshift}} has investigated before | {{nightshift}}, after investigations | Followed when the same alert fires again |
 
 ## Open the Knowledge page [nightshift-context-open]
 
@@ -62,6 +56,7 @@ To view the Knowledge page, or to archive, restore, or delete entries, you need 
 - To archive a Wiki page, refer to [Archive or restore a Wiki page](./wiki.md#nightshift-wiki-archive).
 - To archive or delete a memory, refer to [Archive, restore, or delete a memory](./memory.md#nightshift-memory-archive).
 - To stop detection from using a Knowledge Indicator, exclude it. Refer to [Knowledge Indicators](./knowledge-indicators.md#sig-events-ki-lifecycle).
+- You can't edit or archive decision trees. Refer to [Review decision trees](./decision-trees.md).
 
 Then tell {{nightshift}} what's right, with custom context or in your automation instructions.
 
@@ -78,15 +73,11 @@ Some things {{nightshift}} can't learn from your data: who owns a service, which
 
 ### Add custom context [nightshift-context-custom]
 
-Custom context is a set of short notes that {{nightshift}} adds to every investigation and chat in the space. In Tech Preview, you can't tell {{nightshift}} to remember something, or write to the Wiki or Memory directly. Custom context is the way to give it knowledge that every investigation uses.
-
-To add, edit, or remove snippets, and for more examples, including how to describe an API behind an HTTP connector, refer to [Add custom context](../investigation/extend.md#nightshift-extend-custom-context).
+In Tech Preview, you can't tell {{nightshift}} to remember something, or write to the Wiki or Memory directly. Custom context is the way to give it knowledge that every investigation uses. To add, edit, or remove snippets, and for more examples, including how to describe an API behind an HTTP connector, refer to [Add custom context](../investigation/extend.md#nightshift-extend-custom-context).
 
 ### Add context to an automation [nightshift-context-automation]
 
-Automation instructions apply only to the investigations that one automation starts, for example "For latency alerts, compare the p95 latency before and after the last deploy." Point them to where your knowledge lives, such as a runbook in a GitHub repository: the investigation reads it when it runs, and what it learns can end up in the Wiki and Memory.
-
-Refer to [Instructions](../investigation/automations.md#nightshift-automations-instructions).
+Instructions can say what to check, for example "For latency alerts, compare the p95 latency before and after the last deploy," or point to where your knowledge lives, such as a runbook in a GitHub repository. The investigation reads it when it runs, and what it learns can end up in the Wiki and Memory. Refer to [Automation Instructions](../investigation/automations.md#nightshift-automations-instructions).
 
 ## Learn more [nightshift-context-next]
 

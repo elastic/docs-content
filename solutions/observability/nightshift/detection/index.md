@@ -76,5 +76,5 @@ To work with detection, start from what you want to do:
 
 ## Learn more [nightshift-detection-learn-more]
 
-- [Detect problems without alerts](../use-cases/detect-problems.md): Follow the end-to-end use case, from turning detection on to your first investigated event.
+- [Detect problems your alerts miss](../use-cases/detect-problems.md): Follow the end-to-end use case, from turning detection on to your first investigated event.
 - [Operator guide](../significant-events/operator-guide.md): Check system impact, cost drivers, and recovery procedures.

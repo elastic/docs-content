@@ -23,31 +23,27 @@ Each investigation that you start counts toward the **Manual investigations dail
 
 ## Example: A latency alert on inventory-api [nightshift-uc-alerts-example]
 
-In this example scenario, assume at 11:05 UTC, an APM latency threshold alert fires: average latency of GET /tickets on `inventory-api` is above 1.5 seconds. You open the alert and select **Investigate**.
+At 11:05 UTC, an APM latency threshold alert fires: average latency of GET /tickets on `inventory-api` is above 1.5 seconds. You open the alert and select **Investigate**.
 
 A few minutes later, {{nightshift}} reports that latency stayed above the threshold for about an hour, that ticket lookups often failed, and that a slow query on the `encore` database is the likely cause. It proposes that you inspect the query plan and add a missing index.
 
-## Start an investigation from an alert [nightshift-uc-alerts-start]
+## Start an investigation from an {{alerting-v1-system-short}} alert [nightshift-uc-alerts-start]
 
-You can start from the alerts table or from the alert details page. Both start the same investigation.
+You can start an investigation from the {{alerting-v1-system-short}} alerts table or from the alert details page. Both start the same investigation.
 
 **From the alerts table:**
 
 1. Find **Alerts** in the navigation menu or with the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Find the alert, open its {icon}`boxes_vertical` **More actions** menu, and select **Investigate**.
 
-% SCREENSHOT: Observability Alerts table with the More actions menu of a Latency threshold alert on inventory-api open, showing the Investigate item.
-
 **From the alert details page:**
 
 1. Open the alert's details page, for example from the link in an alert notification.
 1. Select **Investigate** at the top of the page.
 
-% SCREENSHOT: Alert details page for the inventory-api Latency threshold alert, with the Investigate button highlighted in the page header.
-
 The button shows **Investigating…** while {{nightshift}} starts. Then an **Investigation started** message appears. Select **View investigation** to open it on the {{nightshift}} home page.
 
-## Start an investigation from an alert episode [nightshift-uc-alerts-episode]
+## Start an investigation from an {{alerting-v2-system-short}} alert episode [nightshift-uc-alerts-episode]
 
 Alert episodes come from the [{{alerting-v2-system-short}}](/explore-analyze/alerting/esql/system-overview.md).
 
@@ -67,17 +63,15 @@ Read the results, check the hypothesis tree, and act on the proposed actions the
 {{nightshift}} doesn't open a second investigation for the same problem.
 
 - If the alert already has an investigation, the action reads **View investigation**. Select it to open the investigation.
-- If you want fresh results, for example after applying a fix, select **Re-investigate**. On the alert details page, find it in the **Actions** menu.
-
-**Re-investigate** appears after someone has opened the earlier investigation.
+- If you want fresh results, for example after applying a fix, select **Re-investigate** onn the alert details page in the **Actions** menu.
 
 An alert or significant event that's already part of an open investigation joins the existing investigation. A new alert from the same rule starts its own investigation, and automations can't group repeat firings into one. Refer to [Each problem has one investigation](../investigation/index.md#nightshift-investigations-dedup).
 
 ## What to check [nightshift-uc-alerts-check]
 
-- **Check the time window.** The investigation starts from when the alert fired. If the problem started earlier, say so in chat: "The latency started climbing at 09:00 UTC, before the alert fired."
-- **Don't assume the alert is right.** {{nightshift}} can find that an alert fired on a short burst, or for a reason other than the one the rule name suggests. Read **Impact** before you escalate.
-- **Investigating the same rule often?** Let an automation do it. Refer to [Automatically investigate your alerts](./auto-investigate-alerts.md).
+- **Check the time window**: The investigation starts from when the alert fired. If the problem started earlier, say so in chat: "The latency started climbing at 09:00 UTC, before the alert fired."
+- **Don't assume the alert is right**: {{nightshift}} can find that an alert fired on a short burst, or for a reason other than the one the rule name suggests. Read **Impact** before you escalate.
+- **Investigating the same rule repeatedly**: If you're constantly investigating the same alert, let an automation do it. Refer to [Automatically investigate your alerts](./auto-investigate-alerts.md).
 
 ## Next steps [nightshift-uc-alerts-next]
 

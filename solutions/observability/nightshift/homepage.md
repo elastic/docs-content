@@ -22,9 +22,9 @@ Select **Nightshift** in the navigation menu to open the home page.
 
 ## An inbox sorted by severity [nightshift-homepage-inbox]
 
-When an investigation finishes, {{nightshift}} ranks the problem based on severity: **Critical**, **High**, **Medium**, or **Low**. Investigations that are still running wait in **In progress**.
+When an investigation finishes, {{nightshift}} ranks the problem based on severity: **Critical**, **High**, **Medium**, or **Low**. Investigations that are still running are shown under **In progress**.
 
-- **Tiles**: Tiles show the count of investigations at each severity level. Select a tile to jump to that group.
+- **Severity tiles**: Each tile shows the count of investigations at each severity level. Select a tile to jump to that severity group.
 - **Investigation cards**: Each card is one investigation.  The card includes a one-line summary, the services it affects, and who's assigned to it.
 - **Search**: Use the search to narrow the list of investigations, for example, to one service.
 

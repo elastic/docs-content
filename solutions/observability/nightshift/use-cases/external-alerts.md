@@ -42,7 +42,7 @@ flowchart LR
 
 ## Example: Alertmanager alerts in Slack [nightshift-uc-ext-example]
 
-In this example scenario, assume your Kubernetes clusters run Prometheus, and Alertmanager posts firing alerts to `#checkout-alerts` as an app called `Alertmanager`. The logs and traces for `web` and `inventory-api` are in your Elastic project.
+Your Kubernetes clusters run Prometheus, and Alertmanager posts firing alerts to `#checkout-alerts` as an app called `Alertmanager`. The logs and traces for `web` and `inventory-api` are in your Elastic project.
 
 At 02:10 UTC, Alertmanager posts `[FIRING:1] HighLatency inventory-api` to the channel. A minute later, {{nightshift}} replies in that message's thread to say that it's investigating. A few minutes later, it replies there again with the impact, the conclusion, and the hypotheses it tested.
 
@@ -57,7 +57,7 @@ Use the following table to determine when to use Slack or a webhook to investiga
 | **Where results are sent** | The thread of the alert message. | A connected Slack channel that you choose. |
 
 :::{tip}
-Starting from Slack requires the least setup and sends investigation results back to Slack where your team is already working.
+Slack requires less set up than a webhook and sends investigation results back to Slack where your team is already working.
 :::
 
 ## Investigate alerts that your tool posts in Slack [nightshift-uc-ext-slack]
@@ -70,9 +70,6 @@ Follow these instructions to investigate alerts from your other tools in Slack. 
 1. Under **Trigger**, select **Add trigger**. Under **Slack**, select **New message in channel**.
 1. In **Select channels**, select `#checkout-alerts`.
 1. Select **Any app**, and enter the app's exact name, app ID, or bot ID, for example `Alertmanager`. Messages from people and from other apps in the channel no longer start the automation.
-
-   % SCREENSHOT: Create automation flyout, New message in channel trigger with #checkout-alerts selected, Any app set to "Alertmanager", and Message contains… set to "FIRING".
-
 1. Optionally, select **Any message** and enter text in **Message contains…** to match only some messages, for example `FIRING`. The match is case-sensitive, and it includes text in the message's attachments and blocks.
 1. Set the **Daily trigger limit**, and describe the tool and its messages in **Additional Instructions**. Refer to [Limits that apply](#nightshift-uc-ext-limits) and [Tell {{nightshift}} about your tool](#nightshift-uc-ext-instructions).
 1. Check **Actions**. With a Slack trigger, the **Post in Slack** action is added for you and shows "Nightshift replies in the thread of the triggering message."
@@ -153,8 +150,6 @@ For more about workflows, refer to [Workflows](/explore-analyze/workflows.md).
 
 The automation appears on the **Automations** page with **Enabled** on. Send a test request, then check the automation's **Run history**. Refer to [Check what an automation did](../investigation/automations.md#nightshift-automations-run-history).
 
-% SCREENSHOT: Create automation flyout, Alert triggered trigger with the source picker open, Only these sources selected, and External sources checked.
-
 ## Tell {{nightshift}} about your tool [nightshift-uc-ext-instructions]
 
 An investigation started this way has only the alert to start from. For the Slack route, it receives the message text, up to 4,000 characters. Use **Additional Instructions**, up to 5,000 characters, to connect the alert to your data in Elastic:
@@ -179,11 +174,11 @@ https://wiki.example.com/runbooks/checkout. Code: github.com/example/inventory-a
 
 To give this context to every investigation, not only this automation's, add it as custom context in **Settings**. Refer to [Custom context](../investigation/extend.md#nightshift-extend-custom-context).
 
-## Limits that apply [nightshift-uc-ext-limits]
+## Investigation limits that apply [nightshift-uc-ext-limits]
 
 Both routes start automatic investigations, so the automation's **Daily trigger limit** and the deployment-wide limits apply. A noisy tool can use up the shared limit for every automation, so match only the alerts that you want investigated. Refer to [Investigation limits](../investigation/limits.md).
 
-## Tips [nightshift-uc-ext-tips]
+## Best practices [nightshift-uc-ext-tips]
 
 - **Start with one tool and one channel.** Check the first results, then improve the instructions where {{nightshift}} looked in the wrong place.
 - **Filter out resolved messages.** If the tool posts a separate message when an alert resolves, set **Message contains…** to text that only firing alerts have.

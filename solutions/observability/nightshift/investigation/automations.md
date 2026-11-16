@@ -116,7 +116,7 @@ To give context to every investigation, not only this automation's, use custom c
 
 ## Post results to Slack [nightshift-automations-actions]
 
-With a **Post in Slack** action, the automation posts a message to a connected channel when the investigation starts, and replies in that thread with the results. Refer to [Read investigation results in a thread](../use-cases/investigate-in-slack.md#nightshift-uc-slack-results).
+With a **Post in Slack** action, the automation posts a message to a connected channel when the investigation starts, and replies in that thread with the results. Refer to [Get automation results in a thread](../use-cases/investigate-in-slack.md#nightshift-uc-slack-results).
 
 Your team can ask follow-up questions in that thread. **Post in Slack**, through `@Elastic`, is the only action.
 

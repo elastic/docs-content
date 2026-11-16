@@ -22,20 +22,22 @@ Investigations count toward the daily limits. Refer to [Investigation limits](..
 
 ## Example: Slow ticket lookups [nightshift-uc-anything-example]
 
-In this example scenario, assume customers say that loading their tickets takes ages. No alert has fired. You open {{nightshift}} and ask:
+Customers report loading their tickets takes too long. No alert has fired. You open {{nightshift}} and ask:
 
 > "In the last 24 hours, why is GET /tickets on inventory-api slow? p95 looks like about 5 seconds."
 
 A few minutes later, {{nightshift}} reports that the `tickets` table in the `encore` database has no index on `order_id`, so every lookup reads most of the table. It shows the latency chart, the queries it ran, the explanations it ruled out, and proposes adding the index.
 
-## Write a good question [nightshift-uc-anything-question]
+## Write a good description [nightshift-uc-anything-description]
 
-The more specific your question, the faster {{nightshift}} finds the right data. Include:
+The more detailed your description, the faster {{nightshift}} finds the right data. Include:
 
 - **The service or component**: the name of the service, database, or frontend.
 - **The symptom**: slow, failing, timing out, an error message, a number that looks wrong.
-- **The time window**: "in the last hour", "since 14:00 UTC", "last night between 02:00 and 03:00 UTC".
+- **The time window**: "in the last hour", "since 14:00 UTC", "last night between 02:00 and 03:00 UTC."
 - **What you already know**: a recent deploy, a change you suspect, or what you've ruled out.
+
+The following table provides suggestions for adding detail to your descriptions:
 
 | Instead of | Ask |
 | --- | --- |
@@ -44,7 +46,7 @@ The more specific your question, the faster {{nightshift}} finds the right data.
 | "Errors went up" | "What caused the error spike on the payment service last night around 02:00 UTC? We deployed version 2.4 at 01:45." |
 
 :::{tip}
-Give a time window if the problem has already ended. Otherwise, {{nightshift}} looks at recent data, and it can report that the problem isn't happening anymore.
+Give a time window if the problem has already ended to prevent {{nightshift}} from looking at recent data and reporting that the problem isn't happening anymore.
 :::
 
 ## Investigate a problem [nightshift-uc-anything-steps]
@@ -58,7 +60,7 @@ To start an investigation from the home page:
 
 1. Select **Nightshift** in the navigation menu to open the home page.
 1. Select **Investigate**.
-1. Describe the problem, then select **Investigate**.
+1. Describe the problem, then select **Investigate**. Refer to [Write a good description](#nightshift-uc-anything-description).
 
 A card appears in the **In progress** section of the home page, named after your question until {{nightshift}} gives it a title.
 

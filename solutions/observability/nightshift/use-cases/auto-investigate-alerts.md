@@ -24,7 +24,7 @@ Before setting up automations, run some investigations to familiarize yourself w
 
 ## Example: Critical checkout alerts [nightshift-uc-auto-example]
 
-In this example scenario, assume your checkout alert rules have the tag `checkout`. You want every **Critical** alert from them investigated, with the findings posted to `#checkout-oncall`.
+Your checkout alert rules have the tag `checkout`. You want every **Critical** alert from them investigated, with the findings posted to `#checkout-oncall`.
 
 The process looks something like this:
 
@@ -80,13 +80,11 @@ A reconcile-batch job runs every hour on the hour and can hold row locks.
 
 On the **Automations** page, select the automation, then **Run history**. A skipped run shows why. Refer to [Check what an automation did](../investigation/automations.md#nightshift-automations-run-history).
 
-% SCREENSHOT: Automation details flyout, Run history tab, with the runs chart, the status filters, and a day with one succeeded run and one skipped run showing "Daily trigger limit of 20 reached".
-
 ## Other triggers [nightshift-uc-auto-variants]
 
 To start from a schedule or a Slack message instead, refer to [Triggers](../investigation/automations.md#nightshift-automations-triggers). For alerts that another tool posts in Slack, refer to [Investigate alerts from your other tools](./external-alerts.md).
 
-## Tips [nightshift-uc-auto-tips]
+## Best practices [nightshift-uc-auto-tips]
 
 - **Start narrow.** Begin with a few rules that fire a few times a day and matter to someone. Widen it when the results are useful.
 - **Read the first results.** Check the hypothesis tree of the first investigations, and improve the instructions where {{nightshift}} looked in the wrong place.
@@ -96,6 +94,6 @@ To start from a schedule or a Slack message instead, refer to [Triggers](../inve
 ## Next steps [nightshift-uc-auto-next]
 
 - [Investigate in Slack](./investigate-in-slack.md): Ask follow-up questions in the results thread.
-- [Detect problems without alerts](./detect-problems.md): Find problems that no alert catches, and investigate them with an automation too.
+- [Detect problems your alerts miss](./detect-problems.md): Find problems that no alert catches, and investigate them with an automation too.
 - [Automations](../investigation/automations.md): Manage, clone, and delete automations, and read every setting.
 - [Investigation limits](../investigation/limits.md): Set the daily limits for your deployment.

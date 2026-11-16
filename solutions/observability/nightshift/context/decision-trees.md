@@ -13,21 +13,9 @@ products:
 
 A decision tree is the troubleshooting path that {{nightshift}} keeps for an alert it has investigated. It tells you which evidence to gather first, which checks decide between explanations, and where each branch led. When the same alert fires again, the investigation can follow the tree.
 
-A tree can also steer an investigation down a path that doesn't fit this time. As with any investigation, check the hypothesis tree and the evidence before you act.
+A decision tree isn't the same as an investigation's hypothesis tree. The hypothesis tree shows what one investigation tested, and a decision tree keeps the path that worked across investigations of one alert. A tree can also steer an investigation down a path that doesn't fit this time, so check the hypothesis tree and the evidence before you act. Refer to [How investigations work](../investigation/index.md).
 
 Decision trees are experimental. You can view them only in developer mode, and they can change or go away in later releases.
-
-## Decision trees and the hypothesis tree [nightshift-decision-trees-vs-hypothesis]
-
-They sound alike but aren't the same thing.
-
-| | Hypothesis tree | Decision tree |
-| --- | --- | --- |
-| Covers | One investigation | One alert, across many investigations |
-| Shows | The explanations that the investigation tested, with a confidence for each | The path of checks and decisions that worked before for this alert |
-| Where | In the investigation, under **View hypothesis tree** | **Knowledge** → **Decision Trees**, in developer mode |
-
-To read a hypothesis tree, refer to [How investigations work](../investigation/index.md).
 
 ## How a tree grows [nightshift-decision-trees-grow]
 

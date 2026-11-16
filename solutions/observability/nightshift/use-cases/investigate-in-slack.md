@@ -21,7 +21,7 @@ Ask {{nightshift}} for help without leaving Slack. Mention `@Elastic` in a threa
 
 ## Example: The on-call channel [nightshift-uc-slack-example]
 
-In this example scenario, assume your team's alerts go to the `#ticketing-oncall` Slack channel. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. A minute later, {{nightshift}} has started investigating, and a few minutes later it replies in the alert's thread with the impact, the conclusion, and the hypotheses it tested.
+Your team's alerts go to the `#ticketing-oncall` Slack channel. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. A minute later, {{nightshift}} has started investigating, and a few minutes later it replies in the alert's thread with the impact, the conclusion, and the hypotheses it tested.
 
 The on-call engineer reads the reply and asks in the thread: "@Elastic is ticket-issuer affected too?" {{nightshift}} continues the same investigation and answers in the thread.
 
@@ -38,9 +38,9 @@ An admin connects the Slack workspace once, then each public channel, on **Setti
 
 A mention that starts an investigation counts toward the **Manual investigations daily limit**; replies in the same thread don't. Refer to [Investigation limits](../investigation/limits.md).
 
-## Read investigation results in a thread [nightshift-uc-slack-results]
+## Get automation results in a thread [nightshift-uc-slack-results]
 
-To get results in Slack without anyone asking, set up an automation with a **Post in Slack** action. Refer to [Automatically investigate your alerts](./auto-investigate-alerts.md).
+To get results in Slack automatically, set up an automation with a **Post in Slack** action. Refer to [Automatically investigate your alerts](./auto-investigate-alerts.md).
 
 When the automation runs, {{nightshift}} posts a message when the investigation starts. When the investigation finishes or fails, it replies in the same thread. The reply shows:
 
@@ -48,33 +48,11 @@ When the automation runs, {{nightshift}} posts a message when the investigation 
 - **Conclusion**: The most likely cause and the evidence for it.
 - **Hypotheses**: The explanations that {{nightshift}} tested, and which ones it confirmed or dismissed.
 
-If your alerts already arrive in Slack from another app, an automation can watch for those messages and reply in the alert's own thread instead.
+If your alerts already arrive in Slack from another app, an automation can watch for those messages and reply in the alert's thread instead.
 
-To ask about the results, reply in the thread. {{nightshift}} continues the same investigation with your reply and answers in the thread. For the full investigation, with the hypothesis tree and proposed actions, open it in {{kib}}.
+## What you can do in Slack versus {{kib}} [nightshift-uc-slack-compare]
 
-:::{note}
-Every human reply in a results thread continues the investigation, not only replies that mention `@Elastic`. This works only in threads that `@Elastic` posted. Results posted through a custom Slack connector can't be continued from Slack.
-:::
-
-## What you can do in Slack and in {{kib}} [nightshift-uc-slack-compare]
-
-Slack is for asking and reading. Managing an investigation happens in {{kib}}.
-
-| Task | Slack | {{kib}} |
-| --- | --- | --- |
-| Start an investigation and ask follow-up questions | Yes | Yes |
-| Read impact, conclusion, and hypotheses | Yes | Yes |
-| Explore the hypothesis tree and its charts | No | Yes |
-| Mark proposed actions as applied or declined | No | Yes |
-| Close, reopen, or assign an investigation | No | Yes |
-
-For an investigation that started in Slack, ask follow-up questions in the thread. Its chat in {{kib}} is read-only. Refer to [Known issues](../known-issues.md#nightshift-known-issues-slack).
-
-To open {{nightshift}} in {{kib}}, select **Nightshift** in the navigation menu. Refer to [The home page](../homepage.md).
-
-:::{tip}
-**Use the channel where the alert lands.** Answers in the alert's thread keep the context in one place for the whole team.
-:::
+Use Slack to start investigations, ask follow-up questions, and read the impact, conclusion, and hypotheses. To explore the hypothesis tree, mark proposed actions as applied or declined, or close, reopen, or assign an investigation, open it in {{kib}}. If an investigation started in Slack, ask follow-up questions in the thread, because its chat in {{kib}} is read-only. Refer to [Known issues](../known-issues.md#nightshift-known-issues-slack).
 
 ## Next steps [nightshift-uc-slack-next]
 

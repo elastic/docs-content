@@ -1,5 +1,5 @@
 ---
-navigation_title: Detect problems without alerts
+navigation_title: Detect problems your alerts miss
 applies_to:
   serverless:
     observability: preview
@@ -9,9 +9,9 @@ products:
   - id: cloud-serverless
 ---
 
-# Detect problems without alerts [nightshift-detect-problems]
+# Detect problems your alerts miss [nightshift-detect-problems]
 
-{{nightshift}} uses detections to find problems that you haven't created designated alerts for. {{nightshift}} learns how your system normally behaves from your logs, watches for unusual changes, and groups those changes into a [significant event](../detection/significant-events.md). You can then review the evidence from one significant event instead of many small alerts. Then, you can start an investigation.
+{{nightshift}} uses detection to find problems that you haven't created designated alerts for. {{nightshift}} learns how your system normally behaves from your logs, watches for unusual changes, and groups those changes into a [significant event](../detection/significant-events.md). You can then review the evidence from one significant event instead of many small alerts. Then, you can start an investigation.
 
 ## Before you begin [nightshift-uc-detect-before]
 
@@ -23,7 +23,7 @@ Detection runs all the time and uses tokens. Refer to [Cost and models](../cost-
 
 ## Example: Statement timeouts nobody alerted on [nightshift-uc-detect-example]
 
-In this example scenario, assume your alerts cover latency and error rates on `inventory-api`, but nothing watches the Postgres logs. One evening, Postgres starts to cancel `inventory-api` statements on the `encore` database because they reach the statement timeout. Users retry, so the error rate stays below your alert threshold.
+Your alerts cover latency and error rates on `inventory-api`, but nothing watches the Postgres logs. One evening, Postgres starts to cancel `inventory-api` statements on the `encore` database because they reach the statement timeout. Users retry, so the error rate stays below your alert threshold.
 
 Detection notices the timeout messages in the Postgres logs and raises a significant event: **Inventory API — PostgreSQL statement timeouts**, severity **High**, status **Active**. You open it, read what it found, and select **Investigate** to find out why.
 
@@ -71,7 +71,7 @@ The investigation runs like any other, and counts toward the **Manual investigat
 
 ## Investigate significant events automatically [nightshift-uc-detect-automate]
 
-{{nightshift}} doesn't investigate significant events on its own. To have them investigated when they're raised, create an automation:
+{{nightshift}} doesn't automatically investigate significant events. To have them investigated when they're raised, create an automation:
 
 1. Follow [Create the automation](./auto-investigate-alerts.md#nightshift-uc-auto-create).
 1. In the trigger, select **any source**, then **Only these sources** and **Significant events**.
@@ -80,7 +80,7 @@ The investigation runs like any other, and counts toward the **Manual investigat
 
 These investigations count toward the **Automatic investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md).
 
-## Tips [nightshift-uc-detect-check]
+## Best practices [nightshift-uc-detect-check]
 
 - **Give it time.** Detection starts with few rules, and some rules show zero matches at first. It improves as it learns more about your system.
 - **Mark noise inactive.** If an event isn't a problem, select **Mark inactive**, so your team doesn't look at it again.
