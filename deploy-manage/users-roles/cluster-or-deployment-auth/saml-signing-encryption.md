@@ -14,7 +14,9 @@ This page describes how to configure SAML signing and encryption when your ident
 
 Most IdPs don't expect authentication requests to be signed, but they often require signed logout requests. If your IdP requires signatures, the {{stack}} needs a signing key, and you need to give your IdP the corresponding signing certificate so that it can validate them. You can provide the certificate in the {{stack}} SAML metadata file, or enter it manually in the IdP administration interface.
 
-The {{stack}} can generate signed SAML authentication and logout messages, verify signed messages from the IdP, and process encrypted content, although encryption certificates are rarely needed. You can configure {{es}} for signing, encryption, or both, using a single key or individual keys.
+The {{stack}} can generate signed SAML authentication and logout messages and process encrypted content, although encryption certificates are rarely needed. You can configure {{es}} for signing, encryption, or both, using a single key or individual keys.
+
+Verifying signed messages from the IdP is part of the standard SAML authentication flow. {{es}} uses the IdP's signing certificates from the IdP metadata configured in the SAML realm for this verification, which doesn't require an {{es}} signing key.
 
 The {{stack}} uses X.509 certificates with RSA private keys for SAML cryptography. Generate these keys with any standard SSL tool, such as the `elasticsearch-certutil` tool.
 
