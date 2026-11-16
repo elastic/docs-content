@@ -26,11 +26,11 @@ For pricing information, refer to [pricing](https://www.elastic.co/pricing).
 
 ## Model selection and tested performance [model-selection-tested-performance]
 
-Elastic publishes tested model ratings and recommendations for chat and connector-based generative AI features including AI Assistant, {{agent-builder}}, and related workflows. Refer to:
+Elastic publishes tested model ratings and recommendations for chat and connector-based generative AI features including {{agent-builder}}, AI Assistant, and related workflows. Refer to:
 
+- [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models): models that work well with {{agent-builder}}.
 - [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md): tested model ratings for the {{observability}} AI Assistant.
 - [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md): tested model ratings for {{elastic-sec}} AI-powered features.
-- [Recommended models for {{agent-builder}}](/explore-analyze/ai-features/agent-builder/models.md#recommended-models): models that work well with {{agent-builder}}.
 
 Other AI capabilities on this page—such as {{infer-cap}}, NLP and embedding models, and search ranking—use different model types and evaluation criteria. Refer to each feature's documentation for model choice; Elastic doesn't publish consolidated LLM performance matrices for every platform feature.
 
@@ -89,7 +89,7 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### AI assistant for {{es}}
 
-[](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
+{applies_to}`stack: deprecated 9.4+` {applies_to}`serverless: deprecated` [](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps. Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
 
 ### Model Context Protocol (MCP) servers
 
@@ -118,9 +118,13 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 {{observability}}'s AI-powered features all require a [configured LLM](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any model that's configured in your environment. The model you select for one feature does not affect which model any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for the {{observability}} AI Assistant, refer to the [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md).
 
+### Agent Builder for {{observability}}
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [{{agent-builder}}](/solutions/observability/ai/agent-builder-observability.md) is the default AI chat experience in {{observability}}. It includes built-in agents and tools for observability tasks, and lets you create custom agents and tools.
+
 ### AI assistant for {{observability}}
 
-[](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
+{applies_to}`stack: deprecated 9.4+` {applies_to}`serverless: deprecated` [](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 ### Streams
 
@@ -139,9 +143,13 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 {{elastic-sec}}'s AI-powered features all require a [configured LLM](/explore-analyze/ai-features/llm-guides/llm-connectors.md). When you use one of these features, you can select any model that's configured in your environment. The model you select for one feature does not affect which model any other feature uses. For specific configuration instructions, refer to each feature's documentation. To find models that have been tested for {{elastic-sec}} use cases, refer to the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 
+### Agent Builder for {{elastic-sec}}
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the default AI chat experience in {{elastic-sec}}. It includes built-in agents and skills for tasks such as alert triage, investigation, and threat hunting, and lets you create custom agents and tools.
+
 ### AI Assistant for Security
 
-[Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps.
+{applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps. Use [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) instead.
 
 
 ### Attack Discovery
