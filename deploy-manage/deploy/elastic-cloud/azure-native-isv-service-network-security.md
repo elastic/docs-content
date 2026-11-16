@@ -36,7 +36,7 @@ Follow the steps to [create your private endpoint and DNS entries in Azure](/dep
 
 After you create the private endpoint and DNS records in Azure, you can create the private connection policy in the Azure portal.
 
-1. In the Azure portal, open your Elastic resource, then select **Elastic Cloud Resource Configuration** > **Traffic Filter**.
+1. In the Azure portal, open your Elastic resource, then select **Elastic Cloud Resource Configuration** → **Traffic Filter**.
 2. Select **Add**.
 3. Enter a filter name.
 4. Set **Filter Type** to **Private Link**.
@@ -54,7 +54,7 @@ The policy must be in the same region as the deployment. Policies from other reg
 
 Create and link an IP filter from the Azure portal to allowlist IPv4 addresses or CIDR blocks.
 
-1. In the Azure portal, open your Elastic resource, then select **Elastic Cloud Resource Configuration** > **Traffic Filter**.
+1. In the Azure portal, open your Elastic resource, then select **Elastic Cloud Resource Configuration** → **Traffic Filter**.
 2. Select **Add**.
 3. Enter a filter name.
 4. Set **Filter Type** to **IP filtering rule set**.
@@ -68,6 +68,6 @@ The policy must be in the same region as the deployment. Policies from other reg
 
 Remove a policy from this deployment, or delete it from your organization, in the Azure portal.
 
-1. In the Azure portal, open your Elastic resource, then select **Elastic Cloud Resource Configuration** > **Traffic Filter**.
+1. In the Azure portal, open your Elastic resource, then select **Elastic Cloud Resource Configuration** → **Traffic Filter**.
 2. To stop a policy from applying to this deployment, select it and choose **Unlink**. The policy remains available in your organization.
 3. To delete a policy, unlink it from all deployments first, then select **Delete**.

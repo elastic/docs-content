@@ -26,7 +26,7 @@ The default {{watcher}} based "cluster alerts" for {{stack-monitor-app}} have be
 
 When you open **{{stack-monitor-app}}** for the first time, you will be asked to allow {{kib}} to create the default set of rules. They are initially configured to detect and notify on various conditions across your monitored clusters. You can view notifications for **Cluster health**, **Resource utilization**, and **Errors and exceptions** for {{es}} in real time.
 
-If you denied creation of the default rules initially, or to recreate any deleted rules, then you can trigger {{kib}} to create the rules by going to **Alerts and rules** > **Create default rules**.
+If you denied creation of the default rules initially, or to recreate any deleted rules, then you can trigger {{kib}} to create the rules by going to **Alerts and rules** → **Create default rules**.
 
 To receive external notifications for these alerts, you need to set up a connector and attach it to one or more rules:
 

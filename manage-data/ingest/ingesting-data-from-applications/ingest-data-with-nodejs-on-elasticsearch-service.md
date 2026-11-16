@@ -90,7 +90,7 @@ The example here shows what the `config` package expects. You need to update `co
 }
 ```
 
-1. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+1. Find your Cloud ID by going to the {{kib}} main menu and selecting Management → Integrations, and then selecting View deployment details.
 
 
 

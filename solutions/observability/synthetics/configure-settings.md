@@ -148,7 +148,7 @@ In the **Remote clusters** tab, you can configure {{ccs}} ({{ccs-init}}) setting
 These settings are stored as a single shared configuration — one per deployment, not a separate copy per space. Use the **Spaces** field to control which {{kib}} spaces it applies to.
 
 ::::{note}
-To edit these settings, you must have the **All** privilege for the **Synthetics and Uptime** feature in **{{stack-manage-app}} → Roles → {{kib}} privileges → {{observability}}**. Users with only the **Read** privilege see the form as read-only. For details, refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md).
+To edit these settings, you must have the **All** privilege for the **Synthetics and Uptime** feature in **{{stack-manage-app}}** → **Roles** → **{{kib}} privileges** → **{{observability}}**. Users with only the **Read** privilege see the form as read-only. For details, refer to [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md).
 ::::
 
 ::::{admonition} View monitors from linked projects
@@ -163,7 +163,7 @@ Use the **Use all remote clusters** toggle or **Select remote clusters** combo b
 - Turn on **Use all remote clusters** to include monitor data from all configured remote clusters.
 - Turn off **Use all remote clusters** and use the **Select remote clusters** combo box to choose specific clusters. Each cluster is shown with a connected or disconnected status indicator.
 
-To configure remote clusters, go to **{{stack-manage-app}} → Remote Clusters**.
+To configure remote clusters, go to **{{stack-manage-app}}** → **Remote Clusters**.
 
 ### Spaces with access [synthetics-settings-remote-clusters-spaces]
 

@@ -167,7 +167,7 @@ Many {{es}} managed index templates include one or more `@custom` component temp
 
 For example, if you're ingesting OpenTelemetry (OTel) logs, any OTel log data streams and their backing indices are configured by the `logs-otel@template` managed index template. That index template automatically applies settings defined in the `logs@custom` and the `logs-otel@custom` template when they exist.
 
-Go to **Index Management > Index Templates** and select any managed index to view the `@custom` component templates associated with it. 
+Go to **Index Management** → **Index Templates** and select any managed index to view the `@custom` component templates associated with it. 
 
 :::{image} /manage-data/images/elasticsearch-reference-tutorial-custom-policies-otel-template.png
 :alt: A screenshot showing the logs@custom and logs-otel@custom component templates associated with the logs-otel@template index template.
