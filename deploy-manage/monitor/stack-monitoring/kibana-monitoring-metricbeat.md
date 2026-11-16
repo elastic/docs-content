@@ -18,6 +18,7 @@ You can use {{metricbeat}} to collect data about {{kib}} and ship it to the moni
 
 To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
+% Candidate for removal: low value. Low confidence. It restates the flow in the first sentence of the page and uses the same older Metricbeat icon. Used only on this page.
 :::{image} /deploy-manage/images/kibana-metricbeat.png
 :alt: Example monitoring architecture
 :width: 450px

@@ -20,6 +20,7 @@ You can use {{metricbeat}} to collect data about {{es}} and ship it to the monit
 Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent}}](collecting-monitoring-data-with-elastic-agent.md).
 :::
 
+% Candidate for removal: low value. Low confidence. It restates the flow in the first sentence of the page and uses an older Metricbeat icon than elasticsearch-reference-architecture.png. Used only on this page.
 :::{image} /deploy-manage/images/elasticsearch-reference-metricbeat.png
 :alt: Example monitoring architecture
 :width: 550px

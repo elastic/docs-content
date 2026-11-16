@@ -18,6 +18,7 @@ products:
 
 You can drill down into the status of your {{es}} cluster in {{kib}} by clicking the [Overview](#cluster-overview-page), [Nodes](#nodes-page), [Indices](#indices-overview-page) and [Logs](#logs-monitor-page) links on the **Stack Monitoring** page.
 
+% Candidate for removal: low value. It shows the same Elasticsearch panel as kibana-monitoring-dashboard.png, with 8.0.0 data and a license that expires in December 2022. Used only on this page.
 :::{image} /deploy-manage/images/kibana-monitoring-elasticsearch.png
 :alt: Monitoring clusters
 :screenshot:
