@@ -68,4 +68,4 @@ To run Osquery from an alert:
     Refer to [Examine Osquery results](/solutions/security/investigate/examine-osquery-results.md) for more information about query results.
     ::::
 
-6. Click **Save for later** to save the query for future use (optional).
+6. {applies_to}`stack: ga 9.0-9.3` Click **Save for later** to save the query for future use (optional).

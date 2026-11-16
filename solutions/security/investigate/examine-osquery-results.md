@@ -71,3 +71,8 @@ From the results table, you can:
 
 * View more information about the request, such as failures, by opening the **Status** tab.
 
+:::{note}
+:applies_to: {"serverless": "ga", "stack": "ga 9.7+"}
+From the application menu at the top of a single query's results page, you can export the results, add tags, add the results to a case, or open them in Discover or Lens.
+:::
+

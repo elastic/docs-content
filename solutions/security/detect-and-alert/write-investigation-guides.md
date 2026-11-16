@@ -222,6 +222,7 @@ You can embed Osquery buttons that let analysts run live queries against {{agent
         Overwriting the query's default timeout period allows you to support queries that take longer to run. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
         ::::
 
+        % Candidate for removal: low value. The open saved query list covers the footer buttons of the Add query dialog, and the title and the visible button label do not match the source.
         :::{image} /solutions/images/security-setup-osquery-investigation-guide.png
         :alt: Setting up an Osquery investigation guide query
         :screenshot:
@@ -244,7 +245,7 @@ You can embed Osquery buttons that let analysts run live queries against {{agent
     Refer to [Examine Osquery results](/solutions/security/investigate/examine-osquery-results.md) for more about query results.
     ::::
 
-4. (Optional) Click **Save for later** to save the query for future use.
+4. {applies_to}`stack: ga 9.0-9.3` (Optional) Click **Save for later** to save the query for future use.
 
     :::{image} /solutions/images/security-run-query-investigation-guide.png
     :alt: Results from running an Osquery query from an investigation guide

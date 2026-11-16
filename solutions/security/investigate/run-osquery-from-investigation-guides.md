@@ -47,6 +47,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 1. Go to the **{{siem-rules-ui}}** page. To access it, find **{{siem-rules-ui}}** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select a rule to open the its details, then click **Edit rule settings**.
 3. Select the **About** tab, then expand the rule’s advanced settings.
+    % Candidate for removal: low value. The image is a 58 by 60 pixel Osquery pinwheel used inline at 20 by 20, and write-investigation-guides.md already uses the {icon} directive for the same button.
 4. Scroll down to the Investigation guide section. In the toolbar, click the **Osquery** button (![Click the Osquery button](/solutions/images/security-osquery-button.png "title =20x20")).
 
     1. Add a descriptive label for the query, for example, `Search for executables`.
@@ -63,6 +64,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
         ::::
 
 
+        % Candidate for removal: low value. The open saved query list covers the footer buttons of the Add query dialog, and the alt text describes results instead of the dialog.
         :::{image} /solutions/images/security-setup-osquery-investigation-guide.png
         :alt: Shows results from running a query from an investigation guide
         :screenshot:
@@ -91,7 +93,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
     Refer to [Examine Osquery results](/solutions/security/investigate/examine-osquery-results.md) for more information about query results.
     ::::
 
-7. Click **Save for later** to save the query for future use (optional).
+7. {applies_to}`stack: ga 9.0-9.3` Click **Save for later** to save the query for future use (optional).
 
     :::{image} /solutions/images/security-run-query-investigation-guide.png
     :alt: Shows results from running a query from an investigation guide

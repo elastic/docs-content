@@ -343,6 +343,7 @@ Other options include:
 * Add, remove, reorder, and resize columns.
 * Sort field names in ascending or descending order.
 
+% Candidate for removal: low value. This file is identical to observability-osquery-overlay.png, so one page could point at one file.
 :::{image} /solutions/images/serverless-osquery-overlay.png
 :alt: Osquery
 :screenshot:

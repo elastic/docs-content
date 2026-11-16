@@ -66,6 +66,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
         ::::
 
 
+        % Candidate for removal: low value. The image shows the old New live query page with a misleading No agents available box, and the step text already names these fields.
         :::{image} /solutions/images/security-osquery-new-query.png
         :alt: Select saved query dropdown name showing query name and description
         :screenshot:
@@ -185,7 +186,7 @@ In the **Schedule** section of the pack, choose how the pack and its queries run
 
 3. Upload queries from a `.conf` query pack by dragging the pack to the drop zone under the query table. To explore the community packs that Osquery publishes, click **Example packs**.
 
-4. Click **Save pack**. The queries run when the policy receives the update.
+4. To save a new pack, select **Create pack** (**Save pack** in 9.5 and earlier). To save changes to an existing pack, select **Update pack**. The queries run when the policy receives the update.
 
 
 ### View status of scheduled packs [osquery-schedule-status]
@@ -257,6 +258,7 @@ To save a query:
 4. Click **Save** or **Update**.
 
 ::::{tip}
+:applies_to: {"serverless": "ga", "stack": "ga 9.4+"}
 After running a live query, you can also save it by clicking **Save query** from the query details page.
 ::::
 
