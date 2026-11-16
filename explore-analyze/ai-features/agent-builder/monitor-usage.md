@@ -68,6 +68,14 @@ To view timing and token usage for a response:
 
 2. To view the complete response data, click **View response JSON**. A flyout titled **Raw response** opens.
 
+    The JSON includes `conversation_id`, `agent_id`, and an `execution` object. The following screenshot shows the top of the **Raw response** flyout:
+
+    :::{image} images/token-usage-raw-response-9.6.png
+    :screenshot:
+    :width: 700px
+    :alt: Raw response flyout showing conversation_id, agent_id, and execution fields
+    :::
+
 The details can also show these counts, each included in the total it appears under:
 
 | Count | Appears under | When |
