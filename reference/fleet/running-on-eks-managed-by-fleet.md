@@ -89,7 +89,7 @@ When the Elastic Agent is Active, it appears in Fleet and its configuration is d
 
     ::::
 
-2. To check if your {{agent}} is enrolled in {{fleet}}, go to **Management → {{fleet}} → Agents**.
+2. To check if your {{agent}} is enrolled in {{fleet}}, go to **Management** → **{{fleet}}** → **Agents**.
 
 :::{image} images/elastic-agent-fleet.png
 :alt: {{agent}}s {{fleet}} page

@@ -49,7 +49,7 @@ Unless the remarks say otherwise, saved panels of the following types appear bot
 | [Maps](maps.md) |  |
 | [Links](link-panels.md) panels | You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
 | [Markdown](text-panels.md#markdown-library-reuse) panels {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, create the panel on a dashboard, then save it to the library. |
-| [Discover sessions](../discover/save-open-search.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, or create it on a dashboard and save it to the library. |
+| [Discover sessions](../discover/use-sessions-in-dashboards.md#add-discover-session-from-library) | Appear only when you add a panel from the library to a dashboard, not in the **Visualizations** tab. You can't create them directly from the library. Instead, save the session in **Discover**, or create it on a dashboard and save it to the library. |
 | Vega visualizations |  |
 | Legacy visualizations: [aggregation-based](legacy-editors/aggregation-based.md), [TSVB](legacy-editors/tsvb.md), and [Timelion](legacy-editors/timelion.md) {applies_to}`serverless: unavailable` |  |
 
@@ -140,5 +140,5 @@ The panel is now a dashboard panel. Edits you make from now on apply to this das
 
 - [Create a dashboard from the {{kib}} UI](../dashboards/create-dashboard.md)
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Save and reuse Markdown panels across dashboards](text-panels.md#markdown-library-reuse)
-- [Add a Discover session from the library](../discover/save-open-search.md#add-discover-session-from-library)
+- [Add a Discover session from the library](../discover/use-sessions-in-dashboards.md#add-discover-session-from-library)
 - [Add a links panel from the library](link-panels.md#add-links-panel-from-library)

@@ -30,7 +30,7 @@ You can associate each budget with specific [user roles](/deploy-manage/users-ro
 
 To create a budget:
 
-1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body) and go to **Billing** > **Budgets and notifications**.
+1. Log in to [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body) and go to **Billing** → **Budgets and notifications**.
 1. Select **Add budget**.
 1. In the **Scope** step, choose how the budget is applied:
     * **Organization**: Tracks usage for your entire {{ecloud}} organization, including resources you create later.

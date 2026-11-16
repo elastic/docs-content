@@ -42,7 +42,7 @@ Starting with existing data matters. An AI index does not ingest source data by 
 
 Turn on {{context-engine}} for the current Kibana space:
 
-1. In Kibana, open **Stack Management → Advanced Settings**.
+1. In Kibana, open **Stack Management** → **Advanced Settings**.
 2. Search for **{{context-engine}}**.
 3. Turn on **{{context-engine}}** (`contextEngine:enabled`).
 4. Open **Context** from the Kibana navigation.
@@ -122,7 +122,7 @@ Add the populated AI index to an Agent Builder agent:
 3. In **AI Indices**, add the AI index under **Additional indices**.
 4. Save the agent.
 
-The assignment makes the AI index and the dedicated {{context-engine}} retrieval tools available to the agent. Its name and description help the agent decide when to retrieve its KIs. For details about the tools, source-data access, and custom instructions, refer to [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
+The assignment makes the AI index available to the agent. {{agent-builder}} provides the retrieval tools and instructions automatically through a hidden skill. The AI index name and description help the agent decide when to retrieve its KIs. For details about retrieval, source-data access, and custom instructions, refer to [Use {{context-engine}} with {{agent-builder}}](use-context-engine-with-agent-builder.md).
 
 ## 7. Test how the agent uses the Knowledge Indicators
 

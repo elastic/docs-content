@@ -36,7 +36,7 @@ To create a custom tool in the UI:
 
    ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 
-    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize > Tools > Manage all tools**.
+    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize** → **Tools** → **Manage all tools**.
    ::::
 
    ::::{applies-item} { stack: ga =9.3 }
@@ -87,7 +87,7 @@ Set **Require user confirmation** in the UI for [workflow tools](workflow-tools.
 
 {{esql}} and index search tools accept `confirmation.askUser` through the API, and the agent applies it, but the setting does not appear when you open the tool in the UI. Use the API to check or change it for these tool types.
 
-Confirmation applies only when an agent calls the tool. Calling the tool directly through the Tools API skips it, and [sub-agent executions cannot answer confirmation prompts](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+Confirmation applies only when an agent calls the tool. Calling the tool directly through the Tools API skips it, and [subagents cannot answer confirmation prompts](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 ## Test your tools
 

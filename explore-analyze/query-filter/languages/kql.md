@@ -49,7 +49,7 @@ These examples show common patterns:
 ## Next steps [kql-next-steps]
 
 * [KQL syntax reference](elasticsearch://reference/query-languages/kql.md): Look up how to match values, ranges, and wildcards, negate or combine conditions, and query multiple or nested fields.
-* [Search and filter data in Discover](../../discover/discover-get-started.md#search-in-discover): Try KQL on your own data.
+* [Search and filter with KQL, Lucene, and filters in Discover](../../discover/search-and-filter-classic.md): Try KQL on your own data.
 * [Search and filter your dashboard data](../../dashboards/using.md#search-or-filter-your-data): Use the query bar to focus a dashboard.
 
 ## Related pages [kql-related-pages]

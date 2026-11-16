@@ -36,7 +36,7 @@ The JSON methods are recommended because they rely on the [Dashboards API](creat
 1. Go to **Dashboards**.
 2. From the application menu, select **Import dashboard**.
 3. In the **Import dashboard** flyout, select your file under **Select a JSON file**. {{kib}} checks the file right away.
-4. Review any messages in the flyout. If {{kib}} shows an error, select a different file. If it shows a warning, review it before you continue.
+4. Review any messages in the flyout. If {{kib}} shows an error, fix the file or select a different one. If it shows a warning, review it before you continue.
 5. Select **Import**.
 
 {{kib}} creates a new dashboard in the current space, closes the flyout, shows a confirmation message, and refreshes the list of dashboards so the new dashboard appears. It never updates an existing dashboard, so importing the same file again creates another dashboard.
@@ -47,7 +47,7 @@ The JSON methods are recommended because they rely on the [Dashboards API](creat
 |---|---|---|
 | The selected file is too large. The maximum size is 1 MB. | The file is larger than 1 MB. **Import** stays unavailable. | Select a smaller file. |
 | The selected file does not contain valid JSON. | The file isn't valid JSON. **Import** stays unavailable. | Select a different file. |
-| The file could not be imported. | {{kib}} can't validate the file, for example because it isn't a full dashboard definition. **Import** stays unavailable. | Select a different file. Make sure the file comes from [Export JSON](sharing.md#export-dashboard-json) or from the [Dashboards API](create-dashboards-programmatically.md). |
+| The file could not be imported. | {{kib}} can't validate the file, for example because it isn't a full dashboard definition. **Import** stays unavailable. | Select **Show details** to see why {{kib}} rejected the file, such as a missing `title` or a property it doesn't recognize. Then fix the file or select a different one. A valid file comes from [Export JSON](sharing.md#export-dashboard-json) or is the JSON you send to the [Dashboards API](create-dashboards-programmatically.md) to create a dashboard. If **Show details** doesn't appear, check the file and try again later. If the error persists, contact your administrator. |
 | Unsupported properties were removed. | The file includes panel types or properties that the [Dashboards API](create-dashboards-programmatically.md) doesn't support. {{kib}} leaves them out of the imported dashboard. **Import** stays available. | Select **Show details** to see what {{kib}} removed. |
 | Review import warnings. | The file references related items, such as data views, tags, or library visualizations. {{kib}} imports only the dashboard. This warning also lists any removed properties. **Import** stays available. | Select **Show details** to see each item's type and ID. Make sure these items exist in the space or cluster where you import. |
 
