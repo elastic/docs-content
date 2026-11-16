@@ -1,6 +1,6 @@
 ---
 navigation_title: Agent plugins
-description: "Official Elastic plugins bring Elastic agent skills, Elastic documentation access, and other Elastic extensions to AI agent ecosystems in a single install from each tool's plugin marketplace."
+description: "Official Elastic plugins bring agent skills, documentation access, and other Elastic extensions to AI agent ecosystems in a single install from each tool's plugin marketplace."
 type: overview
 applies_to:
   stack: ga
@@ -16,7 +16,7 @@ products:
 # Elastic plugins for AI agents [elastic-agent-plugins]
 
 Elastic publishes official, open-source plugins for AI agent tools.
-A plugin packages Elastic components, such as [Elastic agent skills](agent-skills.md) and a connection to the [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server), so you can add them to your agent in one step from the tool's own plugin marketplace.
+A plugin packages Elastic components, such as [agent skills](agent-skills.md) and a connection to the [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server), so you can add them to your agent in one step from the tool's own plugin marketplace.
 You install a plugin in the AI tool, not in {{es}}, {{kib}}, or your {{serverless-short}} project.
 
 ## Available plugins
@@ -44,7 +44,7 @@ To let the agent work with your data, install and configure the [Elastic CLI](cl
 
 ## Plugins compared to installing skills directly
 
-The [elastic/agent-skills](https://github.com/elastic/agent-skills) repository is the authoritative source for Elastic agent skills.
+The [elastic/agent-skills](https://github.com/elastic/agent-skills) repository is the authoritative source for agent skills.
 You can [install skills directly](agent-skills.md#installation) from that repository into any compatible AI agent, and choose which skills to install.
 
 Use a plugin when Elastic publishes one for your tool, as listed in [Available plugins](#available-plugins). A plugin installs Elastic skills, together with its other components, in one step from the tool's plugin marketplace.

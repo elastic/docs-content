@@ -15,7 +15,7 @@ products:
 
 # Elastic plugin for Claude [elastic-claude-plugin]
 
-The [Elastic plugin for Claude](https://github.com/elastic/claude-plugin) is an official, open-source [Claude plugin](https://docs.claude.com/en/docs/claude-code/plugins) that bundles Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit.
+The [Elastic plugin for Claude](https://github.com/elastic/claude-plugin) is an official, open-source [Claude plugin](https://docs.claude.com/en/docs/claude-code/plugins) that bundles agent skills and an Elastic Docs MCP server connection into a single installable unit.
 It gives Claude specialized knowledge of the {{stack}} so it can perform Elastic tasks more accurately and efficiently.
 The plugin is compatible with Claude Code and Cowork, and has been tested on the desktop and web apps.
 You install the plugin in Claude, not in {{es}}, {{kib}}, or your {{serverless-short}} project.

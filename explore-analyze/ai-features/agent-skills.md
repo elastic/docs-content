@@ -1,6 +1,6 @@
 ---
 navigation_title: AI agent skills
-description: Install and use official Elastic agent skills to help AI coding agents work with the Elastic stack more accurately and efficiently.
+description: Install and use official agent skills to help AI coding agents work with the Elastic stack more accurately and efficiently.
 applies_to:
   stack: ga
   serverless: ga

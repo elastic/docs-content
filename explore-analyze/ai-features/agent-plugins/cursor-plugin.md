@@ -1,6 +1,6 @@
 ---
 navigation_title: Elastic Cursor plugin
-description: "Install the official Elastic plugin for Cursor to give the Cursor agent Elastic agent skills and access to Elastic documentation through the Elastic Docs MCP server."
+description: "Install the official Elastic plugin for Cursor to give Cursor agent skills and access to documentation through the Elastic Docs MCP server."
 type: overview
 applies_to:
   stack: ga
@@ -15,9 +15,8 @@ products:
 
 # Elastic plugin for Cursor [elastic-cursor-plugin]
 
-The [Elastic plugin for Cursor](https://cursor.com/marketplace/elastic) is an official, open-source [Cursor plugin](https://cursor.com/docs/plugins) that bundles Elastic agent skills and an Elastic Docs MCP server connection into a single installable unit.
+The [Elastic plugin for Cursor](https://cursor.com/marketplace/elastic) is an official, open-source [Cursor plugin](https://cursor.com/docs/plugins) that bundles agent skills and an Elastic Docs MCP server connection into a single installable unit.
 It gives the Cursor agent specialized knowledge of the {{stack}} so it can perform Elastic tasks more accurately and efficiently.
-Its source is in the [elastic/cursor-plugins](https://github.com/elastic/cursor-plugins) repository.
 You install the plugin in Cursor, not in {{es}}, {{kib}}, or your {{serverless-short}} project.
 
 ## Use cases
@@ -25,6 +24,7 @@ You install the plugin in Cursor, not in {{es}}, {{kib}}, or your {{serverless-s
 ### Work with {{es}} and {{kib}} from Cursor
 
 The plugin contains agent skills that are synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
+When installed from the plugin, these skills will stay up-to-date, while they will remain pinned if installed directly from the `agent-skills` repository.
 Refer to [AI agent skills for Elastic](../agent-skills.md) for how skills work and the areas they cover.
 
 The Cursor agent decides when to use a skill based on your request.
