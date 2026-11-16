@@ -76,7 +76,7 @@ In this step, add the System integration to monitor host logs and metrics.
 8. In the dialog, select **Add {{agent}} to your hosts** to open the **Add agent** flyout.
 
     ::::{tip}
-    If you accidentally close the popup, go to **{{fleet}} > Agents**, then select **Add agent** to access the flyout.
+    If you accidentally close the popup, go to **{{fleet}} → Agents**, then select **Add agent** to access the flyout.
     ::::
 
 :::

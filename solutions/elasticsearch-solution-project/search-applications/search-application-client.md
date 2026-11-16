@@ -103,7 +103,7 @@ Use the following import statement:
 import SearchApplicationClient from '@elastic/search-application-client';
 ```
 
-Configure the client with your deployment details to start making search requests. You can generate an API key on the **Connect** page in the {{kib}} UI. Go to **Search > Search Applications >** <MY_SEARCH_APPLICATION> **> Connect**. You’ll find the following information prepopulated to initialize the client:
+Configure the client with your deployment details to start making search requests. You can generate an API key on the **Connect** page in the {{kib}} UI. Go to **Search → Search Applications >** <MY_SEARCH_APPLICATION> **> Connect**. You’ll find the following information prepopulated to initialize the client:
 
 ```js
 import Client from '@elastic/search-application-client'
@@ -137,7 +137,7 @@ Alternatively, if you’re using a CDN, you can import the client using the foll
 </script>
 ```
 
-Configure the client with your deployment details to start making search requests. You can generate an API key on the **Connect** page in the {{kib}} UI. Go to **Search > Search Applications >** <MY_SEARCH_APPLICATION> **> Connect**. You’ll find the following information prepopulated to initialize the client:
+Configure the client with your deployment details to start making search requests. You can generate an API key on the **Connect** page in the {{kib}} UI. Go to **Search → Search Applications >** <MY_SEARCH_APPLICATION> **> Connect**. You’ll find the following information prepopulated to initialize the client:
 
 ```html
 <script>

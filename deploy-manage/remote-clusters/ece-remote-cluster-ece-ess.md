@@ -63,7 +63,7 @@ If network security filters are applied to the remote cluster on {{ecloud}}, the
 
 A deployment can be configured to trust all or specific deployments from an organization in [{{ecloud}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md):
 
-1. From the **Security** menu, select **Remote Connections > Add trusted environment** and select **{{ecloud}} Organization**.
+1. From the **Security** menu, select **Remote Connections → Add trusted environment** and select **{{ecloud}} Organization**.
 2. Enter the organization ID (which can be found near the organization name).
 3. Upload the Certificate Authorities of the deployments you want to trust. These can be downloaded from the **Security** page of each deployment (not only the current CA, but also future certificates in case they are expiring soon since they are periodically rotated). Deployments from the same region are signed by the same CA, so you will only need to upload one for each region.
 4. Choose one of following options to configure the level of trust with the Organization:

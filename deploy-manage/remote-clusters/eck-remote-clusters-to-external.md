@@ -57,7 +57,7 @@ Depending on the type of certificate used by the ECE proxies or load-balancing l
 
 * If your ECE proxies use certificates signed by a private CA, retrieve the root CA from the [ECE Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md):
 
-  1. In the remote ECE environment, go to **Platform > Settings > TLS certificates**.
+  1. In the remote ECE environment, go to **Platform → Settings → TLS certificates**.
 
   2. Under **Proxy**, select **Show certificate chain**.
 

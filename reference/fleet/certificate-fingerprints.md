@@ -198,7 +198,7 @@ sudo ./elastic-agent install \
 
 ### Fleet UI configuration
 
-1. In {{kib}}, go to **{{fleet}} > Settings**.
+1. In {{kib}}, go to **{{fleet}} → Settings**.
 2. Under **Outputs**, edit your {{es}} output.
 3. In the **Elasticsearch CA trusted fingerprint** field, enter any CA certificate's fingerprint that's present in the certificate chain sent by {{es}}.
 

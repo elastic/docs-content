@@ -68,7 +68,7 @@ You can prevent {{fleet}} from downloading the PGP/GPG key from `server.pgp.upst
 
 To set a custom URL for {{fleet-server}} to access a PGP/GPG key and make it available to {{agents}}:
 
-1. In {{kib}}, go to **Management > {{fleet}} > Agent policies**.
+1. In {{kib}}, go to **Management → {{fleet}} → Agent policies**.
 2. Select a policy for the agents that you want to upgrade.
 3. On the policy page, in the **Actions** menu for the {{fleet-server}} integration, select **Edit integration**.
 4. In the {{fleet-server}} settings section expand **Change defaults** and **Advanced options**.

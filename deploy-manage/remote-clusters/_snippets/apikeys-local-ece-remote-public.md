@@ -12,7 +12,7 @@ This snippet is in use in the following locations:
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 3. From the navigation menu, select **Security**.
-4. Locate **Remote Connections > Trust management > Connections using API keys** and select **Add API key**.
+4. Locate **Remote Connections → Trust management → Connections using API keys** and select **Add API key**.
 
     1. Fill both fields.
 

@@ -33,7 +33,7 @@ Some rule types are subscription features, while others are free features. For a
 {{observability}} rules detect complex conditions in your observability data and create alerts when a rule’s conditions are met. For example, you can create a rule that detects when the value of a metric exceeds a specified threshold or when an anomaly occurs on a system or service you are monitoring. For more information, refer to [Alerting](../../../solutions/observability/incident-management/alerting.md).
 
 ::::{note}
-If you create a rule in the {{observability}} app, its alerts are not visible in **{{stack-manage-app}} > {{rules-ui}}**. They are visible only in the {{observability}} app.
+If you create a rule in the {{observability}} app, its alerts are not visible in **{{stack-manage-app}} → {{rules-ui}}**. They are visible only in the {{observability}} app.
 
 ::::
 
@@ -50,6 +50,6 @@ serverless: beta
 Security rules are separate from {{alerting-v1-system-short}}. They detect suspicious source events with pre-built or custom rules and create alerts when a rule’s conditions are met. For more information, refer to [Security rules](detection-rules://index.md).
 
 ::::{note}
-Alerts associated with security rules are visible only in the {{security-app}}; they are not visible in **{{stack-manage-app}} > {{rules-ui}}**.
+Alerts associated with security rules are visible only in the {{security-app}}; they are not visible in **{{stack-manage-app}} → {{rules-ui}}**.
 
 ::::

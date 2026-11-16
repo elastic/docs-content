@@ -26,7 +26,7 @@ If an automated {{slm-init}} policy execution is experiencing repeated failures,
 ::::::{tab-item} Using {{kib}}
 In {{kib}}, you can view all configured {{slm-init}} policies and review their status and execution history. If the UI does not provide sufficient details about the failure, use the Console to retrieve the [snapshot policy information]({{es-apis}}operation/operation-slm-get-lifecycle) with the {{es}} API.
 
-1. Go to **Snapshot and Restore > Policies** to see the list of configured policies. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to **Snapshot and Restore → Policies** to see the list of configured policies. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /troubleshoot/images/elasticsearch-reference-slm-policies.png
     :alt: {{kib}} Console
@@ -35,7 +35,7 @@ In {{kib}}, you can view all configured {{slm-init}} policies and review their s
 
 2. The policies table lists all configured policies. Click on any of the policies to review the details and execution history.
 
-3. To get more detailed information about the failure, open {{kib}} **Dev Tools > Console**. You can find the **Console** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+3. To get more detailed information about the failure, open {{kib}} **Dev Tools → Console**. You can find the **Console** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     Once the Console is open, execute the steps described in the **Using the {{es}} API** tab to retrieve the affected {{slm-init}} policy information.
 ::::::

@@ -31,7 +31,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
     :screenshot:
     :::
 
-2. Click **Create pipeline > New pipeline**.
+2. Click **Create pipeline → New pipeline**.
 3. Set **Name** to `my-pipeline` and optionally add a description for the pipeline.
 4. Add a [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) to parse the log message:
 

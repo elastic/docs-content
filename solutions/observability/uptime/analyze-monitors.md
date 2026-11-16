@@ -16,7 +16,7 @@ products:
 Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead of the {{uptime-app}}.
 ::::
 
-To access this page, go to **{{observability}} > Uptime > Monitors**. Click on a listed monitor to view more details and analyze further.
+To access this page, go to **{{observability}} → Uptime → Monitors**. Click on a listed monitor to view more details and analyze further.
 
 The monitor detail screen displays several panels of information.
 

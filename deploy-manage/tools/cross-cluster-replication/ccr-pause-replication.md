@@ -15,7 +15,7 @@ products:
 
 To pause and resume replication of the leader index, [access Cross-Cluster Replication](manage-cross-cluster-replication.md#ccr-access-ccr) and choose the **Follower indices** tab.
 
-Select the follower index you want to pause and choose **Manage > Pause Replication**. The follower index status changes to Paused.
+Select the follower index you want to pause and choose **Manage → Pause Replication**. The follower index status changes to Paused.
 
 To resume replication, select the follower index and choose **Resume replication**.
 

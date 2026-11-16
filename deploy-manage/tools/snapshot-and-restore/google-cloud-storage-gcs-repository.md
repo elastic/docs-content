@@ -33,7 +33,7 @@ You’ll need to have an existing Google Cloud account and have the appropriate 
 Add your Google Cloud Storage bucket as a repository to the platform:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. Go to **Platform > Repositories** and add the following snapshot repository configuration under the advanced mode:
+2. Go to **Platform → Repositories** and add the following snapshot repository configuration under the advanced mode:
 
     Repository GCS (check: [supported settings](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md#repository-gcs-repository))
 

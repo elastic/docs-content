@@ -84,7 +84,7 @@ docker run -it --rm --network host \
       --start
 ```
 
-This script should take roughly 2-3 minutes to run. Once your model has been successfully deployed to your Elastic deployment, navigate to Kibana’s **Trained Models** page to verify it is ready. You can find this page under **Machine Learning > Analytics** menu and then **Trained Models > Model Management**. If you do not see your model in the list, you may need to click **Synchronize your jobs and trained models**. Your model is now ready to be used.
+This script should take roughly 2-3 minutes to run. Once your model has been successfully deployed to your Elastic deployment, navigate to Kibana’s **Trained Models** page to verify it is ready. You can find this page under **Machine Learning → Analytics** menu and then **Trained Models → Model Management**. If you do not see your model in the list, you may need to click **Synchronize your jobs and trained models**. Your model is now ready to be used.
 
 ## Create an index and define an ML inference pipeline [nlp-example-create-index-and-define-ml-inference-pipeline]
 

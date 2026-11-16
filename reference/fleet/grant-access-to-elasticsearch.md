@@ -38,7 +38,7 @@ If you are using [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serve
 
 To create an API key for {{agent}}:
 
-1. In an {{ecloud}} or on premises environment, in {{kib}} navigate to **{{stack-manage-app}} > API keys** and click **Create API key**.
+1. In an {{ecloud}} or on premises environment, in {{kib}} navigate to **{{stack-manage-app}} → API keys** and click **Create API key**.
 
     In a {{serverless-short}} environment, in {{kib}} navigate to **Project settings** > **Management** > **API keys** and click **Create API key**.
 
@@ -108,7 +108,7 @@ Use [API keys](#create-api-key-standalone-agent) instead of username and passwor
 
 If you cannot use an API key, you can create a role with the required privileges, assign it to a user, and specify the user’s credentials in the `elastic-agent.yml` file.
 
-1. In {{kib}}, go to **{{stack-manage-app}} > Roles**.
+1. In {{kib}}, go to **{{stack-manage-app}} → Roles**.
 2. Click **Create role** and enter a name for the role.
 3. In **Cluster privileges**, enter `monitor`.
 4. In **Index privileges**, enter:

@@ -201,7 +201,7 @@ Monitors with `missing_agent_policy` or `missing_location` statuses are excluded
 
 To resolve failures that require manual intervention:
 
-- **`missing_agent_policy`**: Recreate the agent policy and re-enroll an {{agent}}, then update the affected private location under **Settings > {{private-location}}s** to reference the new agent policy.
+- **`missing_agent_policy`**: Recreate the agent policy and re-enroll an {{agent}}, then update the affected private location under **Settings → {{private-location}}s** to reference the new agent policy.
 - **`missing_location`**: [Re-create the private location](#synthetics-private-location-add) or edit the affected monitors to remove or replace the deleted location.
 
 ## Scale a {{private-location}} across multiple {{agents}} [synthetics-private-location-scalable]

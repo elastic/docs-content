@@ -92,7 +92,7 @@ Create a story about your data by adding elements to your workpad that include i
 Choose the type of element you want to use, then use the preconfigured demo data to familiarize yourself with the element. When you’re ready, connect the element to your own data. By default, most of the elements you create use the demo data until you change the data source. The demo data includes a small data set that you can use to experiment with your element.
 
 1. Click **Add element**, then select the element you want to use.
-2. To connect the element to your data, select **Data > Demo data**, then select one of the following data sources:
+2. To connect the element to your data, select **Data → Demo data**, then select one of the following data sources:
 
     * **{{es}} SQL** — Access your data in {{es}} using [SQL syntax](elasticsearch://reference/query-languages/sql/sql-spec.md).
     * **{{es}} documents** — Access your data in {{es}} without using aggregations. To use, select a {{data-source}} and fields. Use **{{es}} documents** when you have low-volume datasets, and you want to view raw documents or to plot exact, non-aggregated values on a chart.
@@ -102,11 +102,11 @@ Choose the type of element you want to use, then use the preconfigured demo data
 
 3. To save, use the following options:
 
-    * To save a single element, select the element, then click **Edit > Save as new element**.
-    * To save a group of elements, press and hold Shift, select the elements you want to save, then click **Edit > Save as new element**.
+    * To save a single element, select the element, then click **Edit → Save as new element**.
+    * To save a group of elements, press and hold Shift, select the elements you want to save, then click **Edit → Save as new element**.
 
 
-To access your saved elements, click **Add element > My elements**.
+To access your saved elements, click **Add element → My elements**.
 
 
 ### Add panels from the Visualize Library [add-kibana-visualizations]
@@ -127,7 +127,7 @@ Add a panel that you saved in **Visualize Library** to your workpad.
 
 To personalize your workpad, add your own logos and graphics.
 
-1. Click **Add element > Manage assets**.
+1. Click **Add element → Manage assets**.
 2. On the **Manage workpad assets** window, drag and drop your images.
 3. To add the image to the workpad, click **Create image element**.
 

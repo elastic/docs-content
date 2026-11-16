@@ -66,7 +66,7 @@ To configure strong identity verification together with API key authentication f
 
 A deployment can be configured to trust all or specific deployments in another {{ech}} [organization](../users-roles/cloud-organization.md). To add cross-organization trust:
 
-1. From the **Security** page, select **Remote Connections > Add trusted environment** and select **{{ecloud}}**. Then click **Next**.
+1. From the **Security** page, select **Remote Connections → Add trusted environment** and select **{{ecloud}}**. Then click **Next**.
 2. Select **Certificates** as authentication mechanism and click **Next**.
 3. Enter the ID of the deployment’s organization which you want to establish trust with. You can find that ID on the **Organization** page. It is usually made of 10 digits.
 4. Choose one of following options to configure the level of trust with the other organization:

@@ -45,7 +45,7 @@ For more information, check [{{ech}} default provider instance configurations](c
 
 ## Where to check vCPU credits status? [ec_where_to_check_vcpu_credits_status]
 
-You can check the **Monitoring > Performance > CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
+You can check the **Monitoring → Performance → CPU Credits** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and find the related metrics:
 
 :::{image} /deploy-manage/images/cloud-metrics-credits.png
 :alt: CPU usage versus CPU credits over time

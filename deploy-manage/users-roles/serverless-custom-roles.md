@@ -32,7 +32,7 @@ This topic explains how to create custom roles in {{serverless-full}}. You can a
 
 ## Manage custom roles
 
-You can manage custom roles from within your project, in **{{project-settings}} > {{manage-app}} > {{custom-roles-app}}**. To create a new custom role, click the **Create role** button. To clone, delete, or edit a role, open the actions menu `⋯`.
+You can manage custom roles from within your project, in **{{project-settings}} → {{manage-app}} → {{custom-roles-app}}**. To create a new custom role, click the **Create role** button. To clone, delete, or edit a role, open the actions menu `⋯`.
 
 ## {{es}} cluster privileges [custom-roles-es-cluster-privileges]
 

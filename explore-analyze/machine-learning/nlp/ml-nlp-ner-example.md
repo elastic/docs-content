@@ -47,9 +47,9 @@ docker run -it --rm docker.elastic.co/eland/eland \
 
 You need to provide an API key for authentication, and replace `<url>` with your {{es}} cluster URL.
 
-Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
+Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} → Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API]({{kib-apis}}group/endpoint-ml).
+Go to the **{{ml-app}} → Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API]({{kib-apis}}group/endpoint-ml).
 
 ## Test the NER model [ex-ner-test]
 
@@ -242,7 +242,7 @@ You can create a tag cloud to visualize your data processed by the {{infer}} pip
 
 In {{kib}}, open **Stack management** > **{{data-sources-cap}}** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md), and create a new {{data-source}} from the `les-miserables-infer` index pattern.
 
-Open **Dashboard** and create a new dashboard. Select the **Aggregation based-type > Tag cloud** visualization. Choose the new {{data-source}} as the source.
+Open **Dashboard** and create a new dashboard. Select the **Aggregation based-type → Tag cloud** visualization. Choose the new {{data-source}} as the source.
 
 Add a new bucket with a term aggregation, select the `tags.PER.keyword` field, and increase the size to 20.
 

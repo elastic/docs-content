@@ -78,8 +78,8 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 In order to configure remote clusters in other ECE environments, you first need to establish a bi-directional trust relationship between both ECE environment’s platform:
 
-1. Download the certificate and copy the environment ID from your first ECE environment under **Platform** > **Trust Management** > **Trust parameters**.
-2. Create a new trust relationship in the other ECE environment under **Platform** > **Trust Management** > **Trusted environments** using the certificate and environment ID from the previous step.
+1. Download the certificate and copy the environment ID from your first ECE environment under **Platform** → **Trust Management** → **Trust parameters**.
+2. Create a new trust relationship in the other ECE environment under **Platform** → **Trust Management** → **Trusted environments** using the certificate and environment ID from the previous step.
 3. Download the certificate and copy the environment ID from your second ECE environment and create a new trust relationship with those in the first ECE environment.
 
 Now, deployments in those environments will be able to configure trust with deployments in the other environment. Trust must always be bi-directional (local cluster must trust remote cluster and vice versa) and it can be configured in each deployment’s security settings.
@@ -88,7 +88,7 @@ Now, deployments in those environments will be able to configure trust with depl
 ### Configuring trust with clusters of an {{ece}} environment [ece-trust-ece]
 
 1. Access the **Security** page of the deployment you want to use for cross-cluster operations.
-2. Select **Remote Connections > Add trusted environment** and choose **{{ece}}**. Then click **Next**.
+2. Select **Remote Connections → Add trusted environment** and choose **{{ece}}**. Then click **Next**.
 3. Select **Certificates** as authentication mechanism and click **Next**.
 4. From the dropdown, select one of the environments configured in [Configuring platform level trust](#ece-trust-remote-environments).
 5. Choose one of following options to configure the level of trust with the ECE environment:

@@ -24,7 +24,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
 1. Install Docker Compose. Visit the [Docker Compose docs](https://docs.docker.com/compose/install/) to install Docker Compose for your environment.
 
-    If you’re using Docker Desktop, Docker Compose is installed automatically. Make sure to allocate at least 4GB of memory to Docker Desktop. You can adjust memory usage in Docker Desktop by going to **Settings > Resources**.
+    If you’re using Docker Desktop, Docker Compose is installed automatically. Make sure to allocate at least 4GB of memory to Docker Desktop. You can adjust memory usage in Docker Desktop by going to **Settings → Resources**.
 
     :::{note}
     This guide uses the legacy `docker-compose` command. If Docker Compose is installed as a Docker CLI plugin, replace `docker-compose` with `docker compose`.

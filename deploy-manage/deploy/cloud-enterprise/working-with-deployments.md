@@ -45,9 +45,9 @@ From the deployment main page, you can quickly access the following configuratio
 
 * [Upgrade your deployment](../../upgrade/deployment-or-cluster/upgrade-on-ece.md) if a newer {{stack}} version is available.
 
-* Select **{{es}} > snapshots** to associate a [snapshots repository](../../tools/snapshot-and-restore/cloud-enterprise.md#ece-manage-repositories-clusters) with the deployment.
+* Select **{{es}} → snapshots** to associate a [snapshots repository](../../tools/snapshot-and-restore/cloud-enterprise.md#ece-manage-repositories-clusters) with the deployment.
 
-* Select **Monitoring > Logs and metrics** to set up [Stack monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) for your deployment, forwarding its logs and metrics to a dedicated monitoring deployment.
+* Select **Monitoring → Logs and metrics** to set up [Stack monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) for your deployment, forwarding its logs and metrics to a dedicated monitoring deployment.
 
   ::::{note}
   In addition to the monitoring of clusters that is described here, don’t forget that {{ece}} also provides [monitoring information for your entire installation](../../../deploy-manage/monitor/orchestrators/ece-platform-monitoring.md).
@@ -55,7 +55,7 @@ From the deployment main page, you can quickly access the following configuratio
 
 ### Security and access control
 
-From the **Deployment > Security** view, you can manage security settings, authentication, and access controls. Refer to [Secure your clusters](../../../deploy-manage/users-roles/cluster-or-deployment-auth.md) for more details on security options for your deployments.
+From the **Deployment → Security** view, you can manage security settings, authentication, and access controls. Refer to [Secure your clusters](../../../deploy-manage/users-roles/cluster-or-deployment-auth.md) for more details on security options for your deployments.
 
 * [Set up IP filters](../../security/ip-filtering-ece.md) to restrict traffic to your deployment
 * Configure {{es}} keystore settings, also known as [secure settings](../../security/secure-settings.md)

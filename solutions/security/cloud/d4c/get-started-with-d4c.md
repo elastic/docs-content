@@ -59,7 +59,7 @@ To set up threat detection, install and enable Elastic's prebuilt rules that use
 2. Click the **Tags** filter next to the search bar, and search for the `Data Source: Elastic Defend for Containers` tag.
 3. Select all the displayed rules, then click **Install *x* selected rule(s)**.
 4. Return to the **{{siem-rules-ui}}** page. Click the **Tags** filter next to the search bar, and search for the `Data Source: Elastic Defend for Containers` tag.
-5. Select all the rules with the tag, and then click **Bulk actions > Enable**.
+5. Select all the rules with the tag, and then click **Bulk actions → Enable**.
 
 
 ## Get started with drift detection and prevention [d4c-get-started-drift]
@@ -74,9 +74,9 @@ The [default D4C policy](d4c-policies.md#d4c-default-policies) provides drift de
 To enable drift prevention, create a new policy:
 
 1. Find **Container Workload Security** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select your integration.
-2. Under **Selectors**, click **Add selector > File Selector**. By default, it selects the operations `createExecutable` and `modifyExecutable`.
+2. Under **Selectors**, click **Add selector → File Selector**. By default, it selects the operations `createExecutable` and `modifyExecutable`.
 3. Name the selector, for example: `blockDrift`.
-4. Scroll down to the **Responses** section and click **Add response > File Response**.
+4. Scroll down to the **Responses** section and click **Add response → File Response**.
 5. Under **Match selectors**, add the name of your new selector, for example: `blockDrift`.
 6. Select the **Alert** and **Block** actions.
 7. Click **Save integration**.

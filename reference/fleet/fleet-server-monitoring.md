@@ -31,7 +31,7 @@ To monitor {{fleet-server}}:
 
 5. To confirm your change, click **Save changes**.
 
-To see the metrics collected for the agent running {{fleet-server}}, go to **Analytics > Discover**.
+To see the metrics collected for the agent running {{fleet-server}}, go to **Analytics → Discover**.
 
 In the following example, `fleetserver` was configured as the namespace, and you can see the metrics collected:
 
@@ -40,7 +40,7 @@ In the following example, `fleetserver` was configured as the namespace, and you
 :screenshot:
 :::
 
-Go to **Analytics > Dashboard** and search for the predefined dashboard called **[Elastic Agent] Agent metrics**. Choose this dashboard, and run a query based on the `fleetserver` namespace.
+Go to **Analytics → Dashboard** and search for the predefined dashboard called **[Elastic Agent] Agent metrics**. Choose this dashboard, and run a query based on the `fleetserver` namespace.
 
 The following dashboard shows data for the query `data_stream.namespace: "fleetserver"`. In this example, you can observe CPU and memory usage as a metric and then resize the {{fleet-server}}, if necessary.
 

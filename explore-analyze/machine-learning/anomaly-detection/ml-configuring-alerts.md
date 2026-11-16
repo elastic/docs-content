@@ -26,7 +26,7 @@ If you have created rules for specific {{anomaly-jobs}} and you want to monitor 
 
 If the conditions of a rule are met, an alert is created, and any associated actions (such as sending an email or Slack message) are triggered. For example, you can configure a rule that checks a job every 15 minutes for anomalies with a high score and sends a notification when one is found.
 
-In **{{stack-manage-app}} > {{rules-ui}}**, you can create both types of {{ml}} rules. In the **{{ml-app}}** app, you can create only {{anomaly-detect}} alert rules; create them from the {{anomaly-job}} wizard after you start the job or from the {{anomaly-job}} list.
+In **{{stack-manage-app}} → {{rules-ui}}**, you can create both types of {{ml}} rules. In the **{{ml-app}}** app, you can create only {{anomaly-detect}} alert rules; create them from the {{anomaly-job}} wizard after you start the job or from the {{anomaly-job}} list.
 
 ## Prerequisites [prerequisites]
 
@@ -42,7 +42,7 @@ Before you begin, make sure that:
 
 To set up an {{anomaly-detect}} alert rule:
 
-1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open **{{rules-ui}}**: find **{{stack-manage-app}} → {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **{{anomaly-detect-cap}}** rule type.
 
 3. Select the [{{anomaly-job}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) that the rule applies to.
@@ -94,14 +94,14 @@ You can preview how the rule would perform on existing data:
 10. Specify the rule's scope, which determines the [{{kib}} feature privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule and its alerts. Depending on your role's access, you can select one of the following:
 
    - {applies_to}`stack: ga 9.3+` **All**: (Default) Roles must have the appropriate privileges for one of the following features:
-      - Infrastructure metrics (**Observability > Infrastructure**)
-      - Logs (**Observability > Logs**)
-      - APM (**Observability > APM and User Experience**)
-      - Synthetics (**Observability > Synthetics and Uptime**)
-      - Stack rules (**Management > {{stack-rules-feature}}**) 
-   - **Logs**: Roles must have the appropriate **Observability > Logs** feature privileges.
-   - **Metrics**: Roles must have the appropriate **Observability > Infrastructure** feature privileges.
-   - **Stack Management**: Roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
+      - Infrastructure metrics (**Observability → Infrastructure**)
+      - Logs (**Observability → Logs**)
+      - APM (**Observability → APM and User Experience**)
+      - Synthetics (**Observability → Synthetics and Uptime**)
+      - Stack rules (**Management → {{stack-rules-feature}}**) 
+   - **Logs**: Roles must have the appropriate **Observability → Logs** feature privileges.
+   - **Metrics**: Roles must have the appropriate **Observability → Infrastructure** feature privileges.
+   - **Stack Management**: Roles must have the appropriate **Management → {{stack-rules-feature}}** feature privileges.
 
    For example, if you select **All**, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} **Rules** page.
 
@@ -122,7 +122,7 @@ Next, define the [actions](#ml-configuring-alert-actions) that occur when the ru
 
 To set up an {{anomaly-jobs}} alert rule:
 
-1. Open **{{rules-ui}}**: find **{{stack-manage-app}} > {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open **{{rules-ui}}**: find **{{stack-manage-app}} → {{rules-ui}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **{{anomaly-jobs-cap}}** rule type.
 
 :::{image} /explore-analyze/images/ml-anomaly-create-anomaly-job-health.png

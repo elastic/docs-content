@@ -43,7 +43,7 @@ Follow these steps to configure a workflow tool:
 
    ::::{applies-item} { stack: ga =9.3 }
 
-    Go to **Agents > More > View all tools > New tool**.
+    Go to **Agents → More → View all tools → New tool**.
 
    ::::
    
@@ -107,7 +107,7 @@ To assign a tool to an agent:
 
 1. Navigate to **Agents**.
 2. Select your agent.
-3. Select **More > Edit Agent > Tools**.
+3. Select **More → Edit Agent → Tools**.
 4. Assign the workflow tool by selecting the checkbox.
 5. Click **Save**.
 

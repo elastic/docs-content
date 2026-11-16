@@ -50,7 +50,7 @@ Fixing the corrupted repository requires making changes in multiple clusters tha
 ::::::{tab-item} Using {{kib}}
 First, mark the repository as read-only on the secondary clusters:
 
-1. Go to **Snapshot and Restore > Repositories**. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to **Snapshot and Restore → Repositories**. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /troubleshoot/images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console
@@ -63,7 +63,7 @@ After you complete the previous steps, it’s only the primary (current) cluster
 
 On the primary (current) clusteer:
 
-1. Open the primary cluster's side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Snapshot and Restore > Repositories**. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Open the primary cluster's side navigation menu (placed under the Elastic logo in the upper left corner) and go to **Snapshot and Restore → Repositories**. You can find the **Snapshot and Restore** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} /troubleshoot/images/elasticsearch-reference-repositories.png
     :alt: {{kib}} Console

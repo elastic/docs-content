@@ -30,7 +30,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 1. Install Docker. Visit [Get Docker](https://docs.docker.com/get-docker/) to install Docker for your environment.
 
-    If using Docker Desktop, make sure to allocate at least 4GB of memory. You can adjust memory usage in Docker Desktop by going to **Settings > Resources**.
+    If using Docker Desktop, make sure to allocate at least 4GB of memory. You can adjust memory usage in Docker Desktop by going to **Settings → Resources**.
 
 2. Create a new docker network.
 

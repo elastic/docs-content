@@ -22,7 +22,7 @@ Each monitor location is modeled, and when a monitor runs for an unusual amount 
 
 Create a {{ml}} job to detect anomalous monitor duration rates automatically.
 
-1. To access this page, go to **Observability > Uptime > Monitors**, and then click a monitor to view its the details.
+1. To access this page, go to **Observability → Uptime → Monitors**, and then click a monitor to view its the details.
 2. In the **Monitor duration** panel, click **Enable anomaly detection**.
 
     ::::{note}

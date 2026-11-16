@@ -53,7 +53,7 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
 
 :::{include} _snippets/network-security-page.md
 :::
-3. Select **Create** > **Private connection**.
+3. Select **Create** → **Private connection**.
 4. Select the cloud provider and region for the remote cluster filter. 
     
     :::{note}

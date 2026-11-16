@@ -40,9 +40,9 @@ To use {{alert-features}} in a {{kib}} app, you must have the appropriate featur
 
 **{{kib}} privileges**
 
-* `All` for the **Management > {{stack-rules-feature}}** feature.
-* `All` for the **Management > Rules Settings** feature.
-* `All` for the **Management > {{connectors-feature}}** feature.
+* `All` for the **Management → {{stack-rules-feature}}** feature.
+* `All` for the **Management → Rules Settings** feature.
+* `All` for the **Management → {{connectors-feature}}** feature.
 
 ::::{note}
 The **{{connectors-feature}}** feature privilege is required to manage connectors. To add rule actions and test connectors, you require only `Read` privileges. By default, `All` privileges include authority to run {{endpoint-sec}} connectors (such as SentinelOne and CrowdStrike) unless you customize the sub-feature privileges.
@@ -52,7 +52,7 @@ Likewise, you can customize the **Rules Settings** sub-feature privileges relate
 To create a rule that uses the [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md), you must also have `All` privileges for the **Cases** feature.
 
 The rule type also affects the privileges that are required to create and edit rules. For example:
-* For {{ml}} rules, you must have `all` privileges for the **Analytics > {{ml-app}}** feature.
+* For {{ml}} rules, you must have `all` privileges for the **Analytics → {{ml-app}}** feature.
 * For {{stack-monitor-app}} rules, you must have the `monitoring_user` role.
 * For most {{observability}} rules, you must have `all` privileges for the appropriate {{observability}} features. However, for a custom threshold rule, you only need the `stack alerts` privilege.
 * For Security rules, refer to [](../../../solutions/security/detect-and-alert/turn-on-detections.md).
@@ -63,12 +63,12 @@ The rule type also affects the privileges that are required to create and edit r
 
 **{{kib}} privileges**
 
-* `Read` for the **Management > {{stack-rules-feature}}** feature.
-* `Read` for the **Management > Rules Settings** feature.
-* `Read` for the **Management > {{connectors-feature}}** feature.
+* `Read` for the **Management → {{stack-rules-feature}}** feature.
+* `Read` for the **Management → Rules Settings** feature.
+* `Read` for the **Management → {{connectors-feature}}** feature.
 
 ::::{note}
-The rule type also affects the privileges that are required. For example, to view {{ml}} rules, you must have `read` privileges for the **Analytics > {{ml-app}}** feature. For {{stack-monitor-app}} rules, you must have the `monitoring_user` role. For {{observability}} rules, you must have `read` privileges for the appropriate {{observability}} features. For Security rules, refer to [](../../../solutions/security/detect-and-alert/turn-on-detections.md).
+The rule type also affects the privileges that are required. For example, to view {{ml}} rules, you must have `read` privileges for the **Analytics → {{ml-app}}** feature. For {{stack-monitor-app}} rules, you must have the `monitoring_user` role. For {{observability}} rules, you must have `read` privileges for the appropriate {{observability}} features. For Security rules, refer to [](../../../solutions/security/detect-and-alert/turn-on-detections.md).
 
 ::::
 
@@ -106,9 +106,9 @@ These privileges don't grant permission to create, edit, enable, disable, or del
 
 **{{kib}} privileges**
 
-* `None` for the **Management > {{stack-rules-feature}}** feature.
-* `None` for the **Management > Rules Settings** feature.
-* `None` for the **Management > {{connectors-feature}}** feature.
+* `None` for the **Management → {{stack-rules-feature}}** feature.
+* `None` for the **Management → Rules Settings** feature.
+* `None` for the **Management → {{connectors-feature}}** feature.
 * No index privileges for the `.alerts-*` system indices.
 
 ### More details [_more_details]
@@ -125,7 +125,7 @@ On {{serverless-short}} projects, a key is also created automatically when you c
 
 When you disable a rule, it retains the associated API key which is reused when the rule is enabled. If the API key is missing when you enable the rule, a new key is generated that has your current security privileges. When you import a rule, you must enable it before you can use it and a new API key is generated at that time.
 
-You can generate a new API key at any time in **{{stack-manage-app}} > {{rules-ui}}** or in the rule details page by selecting **Update API key** in the actions menu.
+You can generate a new API key at any time in **{{stack-manage-app}} → {{rules-ui}}** or in the rule details page by selecting **Update API key** in the actions menu.
 
 If you manage your rules by using {{kib}} APIs, they support both key and token-based authentication as described in [Authentication]({{kib-apis}}authentication). To use key-based authentication, create {{es}} API keys and use them in the header of your API calls as described in [{{es}} API keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password. An API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
 

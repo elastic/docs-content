@@ -61,7 +61,7 @@ $$$adding_kibana_privileges$$$
 
 You can manage users and roles easily in {{kib}}.
 
-To manage roles, log in to {{kib}} and go to **Management > Security > Roles**.
+To manage roles, log in to {{kib}} and go to **Management → Security → Roles**.
 
 [Learn more about using the role management UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md).
 
