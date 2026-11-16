@@ -464,7 +464,7 @@ For example, the following **Reasoning** panel shows a tool call with its **Insp
 
 :::::
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details, or select **View response JSON**. **View response JSON** opens a flyout titled **Raw response**. For more information, refer to [Monitor token usage](monitor-usage.md).
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details, or select **View response JSON**, which opens a flyout titled **Raw response**. For more information, refer to [Monitor token usage](monitor-usage.md).
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The JSON includes `conversation_id` and `agent_id`, and an `execution` object for that response.
 
