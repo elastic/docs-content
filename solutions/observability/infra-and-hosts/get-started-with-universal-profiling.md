@@ -21,17 +21,8 @@ Universal Profiling is Elastic's original profiling agent and backend.
 :::{note}
 :applies_to: stack: preview 9.6+
 
-For a setup that needs no {{kib}} setup step and also works on {{obs-serverless}}, use OpenTelemetry profiling instead: refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md) for the host requirements and deployment steps.
+For new deployments or {{obs-serverless}}, use OpenTelemetry profiling instead. Refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md) for the host requirements and deployment steps.
 :::
-
-This page covers:
-
-* Prerequisites to setting up Universal Profiling on {{ecloud}}
-* Setting up Universal Profiling in your {{ecloud}} deployment
-* Installing the Universal Profiling Agent
-* Installing the Universal Profiling Agent integration
-
-We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
 
 
 ## Prerequisites [profiling-prereqs]
@@ -72,6 +63,21 @@ The following deployment configuration example was tested to support profiling d
 
 Even if you’re profiling a smaller fleet, we recommend configuring at least two zones for Elasticsearch and 4 GB of memory each for the Integrations Server and Kibana.
 
+## Resource use [profiling-resource-constraints]
+
+One of the key goals of Universal Profiling is to have net positive cost benefit for users: the cost of profiling and observing applications should not be higher than the savings produced by the optimizations.
+
+In this spirit, both the host-agent and storage are engineered to use as little resources as possible.
+
+### {{es}} storage [profiling-es-storage]
+
+The Universal Profiling storage budget is predictable on a per-profiled-core basis. The data we generate, at the fixed sampling frequency of 20 Hz, will be stored in {{es}} at the rate of approximately 40 MB per core per day.
+
+### Host-agent CPU and memory [profiling-host-agent-cpu-and-memory]
+
+Because Universal Profiling provides whole-system continuous profiling, the resource usage of host-agent is highly correlated with the number of processes running on the machine.
+
+We have recorded real-world, in-production host-agent deployments to be consuming between 0.5% and 1% of CPU time, with the process' memory being as low as 50 MB, and as high as 250 MB on busier hosts.
 
 ## Set up Universal Profiling on an {{ecloud}} deployment [profiling-set-up-on-cloud]
 
