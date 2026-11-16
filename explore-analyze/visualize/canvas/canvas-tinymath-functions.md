@@ -20,11 +20,11 @@ An expression can't contain an array directly. Arrays come from the data that th
 
 If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column.
 
-Any function can be wrapped by another function as long as the return type of the inner function matches the acceptable parameter type of the outer function.
+You can wrap any function in another function as long as the return type of the inner function matches the parameter type of the outer function.
 
 :::{note}
 :applies_to: {"serverless": "ga", "stack": "ga 9.4+"}
-A TinyMath expression can contain up to 20 levels of parenthesis nesting. The expression can be up to 8,192 characters, not counting quoted KQL or Lucene filters. Expressions that exceed these limits are rejected before they're parsed. Typical expressions stay well within these limits.
+A TinyMath expression can contain up to 20 levels of nested parentheses. The expression can be up to 8,192 characters, not counting quoted Kibana Query Language (KQL) or Lucene filters. TinyMath rejects expressions that exceed these limits before it parses them. Typical expressions stay well within these limits.
 :::
 
 ## Functions by task
@@ -54,7 +54,7 @@ Calculates the absolute value of a number. For arrays, the function applies to e
 ```js
 abs(-1) // returns 1
 abs(2) // returns 2
-abs([-1 , -2, 3, -4]) // returns [1, 2, 3, 4]
+abs([-1, -2, 3, -4]) // returns [1, 2, 3, 4]
 ```
 
 
@@ -125,8 +125,8 @@ Restricts a value to a given range. Returns `min` if the value is below it, `max
 | Param | Type | Description |
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers |
-| min | number &#124; Array.<number> | The minimum value this function returns. |
-| max | number &#124; Array.<number> | The maximum value this function returns. |
+| min | number &#124; Array.<number> | the minimum value this function returns |
+| max | number &#124; Array.<number> | the maximum value this function returns |
 
 **Returns**: `number` | `Array.<number>`. The closest value between `min` (inclusive) and `max` (inclusive). Returns an array with values greater than or equal to `min` and less than or equal to `max` at each index if `a`, `min`, or `max` is an array. If you leave out `min` or `max`, the result is `NaN`.
 
@@ -167,7 +167,7 @@ cos([0, 1.5707963267948966]) // returns [1, 6.123233995736766e-17]
 
 ## count( a ) [_count_a] 
 
-Returns the length of an array. Alias for size.
+Returns the length of an array. Alias for [`size`](#_size_a).
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -297,7 +297,7 @@ eq([1, 2], [1, 2]) // returns true
 
 ## exp( a ) [_exp_a] 
 
-Calculates *e^x* where *e* is Euler’s number. For arrays, the function applies to each element.
+Calculates *e^x* where *e* is Euler's number. For arrays, the function applies to each element.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -474,8 +474,8 @@ Calculates the logarithm of a number. For arrays, the function applies to each e
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | number &#124; Array.<number> | a number or an array of numbers, `a` can't be negative |
-| b | number | (optional) The base of the logarithm. If you don't provide a base, the function uses e and calculates the natural logarithm. |
+| a | number &#124; Array.<number> | a number or an array of numbers that can't be negative |
+| b | number | (optional) the base of the logarithm. If you don't provide a base, the function uses e and calculates the natural logarithm. |
 
 **Returns**: `number` | `Array.<number>`. The logarithm of `a`. Returns an array with the logarithms of each element if `a` is an array.
 
@@ -502,7 +502,7 @@ Expressions don't accept the name `log10`, because function names can't contain 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | number &#124; Array.<number> | a number or an array of numbers, `a` can't be negative |
+| a | number &#124; Array.<number> | a number or an array of numbers that can't be negative |
 
 **Returns**: `number` | `Array.<number>`. The base 10 logarithm of `a`. Returns an array with the base 10 logarithms of each element if `a` is an array.
 
@@ -737,7 +737,7 @@ multiply([1, 2, 3, 4], [2, 7, 5, 12]) // returns [2, 14, 15, 48]
 
 Returns the mathematical constant pi.
 
-**Returns**: `number`. The value of pi, approximately 3.141592653589793.
+**Returns**: `number`. The mathematical constant pi, `3.141592653589793`.
 
 **Example**
 
@@ -762,7 +762,7 @@ Raises a number to a given exponent. For arrays, the function applies to each el
 **Example**
 
 ```js
-pow(2,3) // returns 8
+pow(2, 3) // returns 8
 pow([1, 2, 3], 4) // returns [1, 16, 81]
 ```
 
@@ -804,7 +804,7 @@ Generates a random number within the given range where the lower bound is inclus
 ```js
 random() // returns a random number between 0 (inclusive) and 1 (exclusive)
 random(10) // returns a random number between 0 (inclusive) and 10 (exclusive)
-random(-10,10) // returns a random number between -10 (inclusive) and 10 (exclusive)
+random(-10, 10) // returns a random number between -10 (inclusive) and 10 (exclusive)
 ```
 
 
@@ -873,7 +873,7 @@ sin([0, 1.5707963267948966]) // returns [0, 1]
 
 ## size( a ) [_size_a] 
 
-Returns the length of an array. Alias for count.
+Returns the length of an array. Alias for [`count`](#_count_a).
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -907,7 +907,7 @@ Calculates the square root of a number. For arrays, the function applies to each
 
 ```js
 sqrt(9) // returns 3
-sqrt(30) //5.477225575051661
+sqrt(30) // returns 5.477225575051661
 sqrt([9, 16, 25]) // returns [3, 4, 5]
 ```
 
