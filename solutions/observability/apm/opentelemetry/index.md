@@ -54,7 +54,7 @@ There are several ways to send OpenTelemetry data to Elastic. The right choice d
 ### Send data directly
 
 * **{{motlp}}** ({{serverless-short}} and {{ech}}): Send OpenTelemetry data directly to the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) without managing your own Collector. Data is stored in OTel-native format.
-* **{{apm-server-or-mis}} OTLP intake** (legacy): Send OTLP data directly to {{apm-server-or-mis}} using its built-in OTLP endpoint. Data is translated to ECS format before storage. This path is not recommended for new users, and EDOT SDKs are not supported here. For details on the format difference, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
+* **{{apm-server}} OTLP intake** (legacy): Send OTLP data directly to {{apm-server}} using its built-in OTLP endpoint. Data is translated to ECS format before storage. This path is not recommended for new users, and EDOT SDKs are not supported here. For details on the format difference, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
 
 ## Why use the Elastic Distributions of OpenTelemetry?
 

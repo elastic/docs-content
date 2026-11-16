@@ -159,7 +159,7 @@ spec:
 
 By default, ECK-generated HTTP certificates include DNS names for the {{k8s}} services of the corresponding cluster as Subject Alternative Names (SANs), such as `<name>-es-http.<namespace>.svc`.
 
-If you need additional DNS names or IP addresses (for example, a custom domain or a static load balancer IP), add them through `selfSignedCertificate.subjectAltNames`:
+If you need additional DNS names or IP addresses (for example, a custom domain, a static load balancer IP, or the DNS name of a [custom service used in `elasticsearchRef.serviceName`](/deploy-manage/deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md#k8s-traffic-splitting-with-service-name)), add them through `selfSignedCertificate.subjectAltNames`:
 
 ```yaml
 spec:

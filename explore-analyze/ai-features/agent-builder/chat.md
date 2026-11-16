@@ -136,6 +136,7 @@ serverless: ga
 
 ```{applies_to}
 stack: ga 9.3+
+serverless: ga
 ```
 
 Click the three-dot menu icon in the top-right corner to access additional options.
@@ -148,12 +149,14 @@ Click the three-dot menu icon in the top-right corner to access additional optio
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+::::{applies-item} stack: ga 9.4-9.5
 
 The options menu provides access to:
 
 - **Agent details**: View information about the currently selected agent.
 - **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
+
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the menu also includes **Open in full screen**. The following image shows the options menu in standalone mode:
 
 :::{image} images/more-actions-menu-options-9.4.png
 :screenshot:
@@ -161,16 +164,63 @@ The options menu provides access to:
 :width: 250px
 :::
 
+::::
 
-:::{tip}
-To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
+::::{applies-item} stack: ga 9.6+
+
+The options menu provides access to:
+
+- **Agent details**: View information about the currently selected agent.
+- **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
+- **Download conversation**: Save the conversation as a JSON file.
+  - **File name**: {{kib}} lowercases the conversation title, replaces each run of characters other than letters and numbers with a single hyphen, removes leading and trailing hyphens, and adds `.json`. For example, `New conversation` becomes `new-conversation.json`.
+  - **Contents**: A `conversation` object with the conversation `id`, `agent_id`, title, rounds, and the rest of the saved conversation.
+  - **Availability**: Unavailable until the saved conversation has loaded. While the agent responds, the file contains the last saved conversation and can omit the round in progress.
+- **Load trace from file**: Open a saved trace in the [trace flyout](#view-traces). Refer to [Load a trace from a file](#load-a-trace-from-a-file).
+
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the menu also includes **Open in full screen**. The following image shows the sidebar mode menu:
+
+:::{image} images/more-actions-menu-options-9.6-sidebar.png
+:screenshot:
+:alt: Options menu in sidebar mode showing Agent details, Open in full screen, GenAI Settings, Download conversation, and Load trace from file
+:width: 250px
 :::
+
+In [standalone mode](standalone-and-flyout-modes.md#standalone-mode), the options menu in the conversation header includes only **Download conversation** and **Load trace from file**. Open agent details from **Overview** in the [**Customize**](#customize-your-agent) accordion. The following image shows the standalone mode menu:
+
+:::{image} images/more-actions-menu-options-9.6-standalone.png
+:screenshot:
+:alt: Options menu in standalone mode showing Download conversation and Load trace from file
+:width: 250px
+:::
+
+::::
+
+::::{applies-item} serverless: ga
+
+In [standalone mode](standalone-and-flyout-modes.md#standalone-mode), the options menu in the conversation header provides access to the following actions:
+
+- **Chat details**: View the conversation's title, author, creation and last edited times, visibility, members, and type.
+- **Activity log**: View a timeline of events, such as when the chat was created and when its title changed.
+- **Download chat**: Save the conversation as a JSON file named after the conversation title.
+- **Delete**: Permanently delete the conversation after you confirm. You can't undo this action.
+- **Feedback**: Open a form to send feedback about the chat.
+
+The following image shows the standalone mode menu:
+
+:::{image} images/more-actions-menu-options-serverless.png
+:screenshot:
+:alt: Options menu in standalone mode showing Chat details, Activity log, Download chat, Delete, and Feedback
+:width: 250px
+:::
+
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the options menu provides access to **Agent details**, **Open in full screen**, **GenAI Settings**, and **Download conversation**. {{serverless-short}} doesn't include **Load trace from file**.
 
 ::::
 
 ::::{applies-item} { stack: ga =9.3 }
 
-This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication.
+This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication. The following image shows the options menu:
 
 :::{image} images/more-actions-menu-options.png
 :screenshot:
@@ -181,6 +231,12 @@ This menu provides links to key actions and management pages, including agent ma
 ::::
 
 :::::
+
+:::{tip}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
+:::
 
 ### Find conversation history
 
@@ -318,6 +374,13 @@ For example, the following chat history panel shows one conversation in progress
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` There's no status for stopped or failed responses. If a response stops or fails in a conversation you aren't viewing, that conversation shows as **Unread**, like any other new activity. To see the stopped response or the error, open the conversation. For more information, refer to [Stopped and failed responses](#stopped-and-failed-responses).
 
+Opening a conversation marks it as read. To change the read status of a conversation:
+
+1. In the chat history panel, hover over the conversation and select the **Open conversation menu** icon {icon}`boxes_vertical`.
+2. Select **Mark as read** or **Mark as unread**. The menu shows **Mark as read** when the conversation is unread, and **Mark as unread** otherwise.
+
+If you mark the conversation you're viewing as unread, it switches back to read right away, or as soon as the agent finishes responding. To keep a conversation unread, open a different conversation first, then mark it as unread.
+
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
 #### Where the agent's progress appears
@@ -410,7 +473,9 @@ For example, the following **Reasoning** panel shows a tool call with its **Insp
 
 :::::
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details, or select **View response JSON**, which opens a flyout titled **Raw response**. For more information, refer to [Monitor token usage](monitor-usage.md).
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The JSON includes `conversation_id` and `agent_id`, and an `execution` object for that response.
 
 ### Rate a response [rate-a-response]
 ```{applies_to}
@@ -525,6 +590,11 @@ Each conversation round can record OpenTelemetry traces of how the agent ran. To
 
 The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The header includes the **Download trace** icon {icon}`download`. Select it to save the spans as a JSON file:
+
+- **File name**: `trace-` followed by the trace id in lowercase, plus `.json`. When the flyout has no trace id, the file is named `trace-trace.json`.
+- **Contents**: A `spans` array. When the flyout has a trace id, the file also includes `trace_id`.
+
 Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
 
 The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon doesn't appear.
@@ -532,6 +602,34 @@ The **View Trace** icon appears only when trace collection is enabled and the co
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The icon also doesn't appear on [stopped or failed responses](#stopped-and-failed-responses), even when the round has a trace.
 
 To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
+
+#### Load a trace from a file [load-a-trace-from-a-file]
+
+```{applies_to}
+stack: ga 9.6+
+```
+
+To load a trace from a file:
+
+1. Select **Load trace from file** in the [options menu](#access-key-actions).
+2. Select a JSON file.
+
+A valid file is either of the following:
+
+- A JSON array of spans.
+- An object with a `spans` array, and optionally a string `trace_id`. A file saved with **Download trace** uses this format.
+
+Each span must include `span_id`.
+
+The trace flyout opens and shows the callout "Viewing a trace loaded from a file." You can load a file when trace collection is off, or when the round has no **View Trace** icon. The following image shows the flyout:
+
+:::{image} images/trace-flyout-loaded-from-file.png
+:screenshot:
+:alt: Trace flyout with the callout "Viewing a trace loaded from a file." above the span list
+:width: 600px
+:::
+
+If the file is not valid JSON or is not a valid trace, an error toast titled **Could not load trace file** shows the error `The file does not contain a valid trace. Expected a JSON array of spans or an object with a "spans" array.`
 
 ### Human-in-the-loop prompts
 ```{applies_to}
