@@ -12,7 +12,7 @@ products:
 
 # TinyMath functions [canvas-tinymath-functions]
 
-Use TinyMath functions to do math in the [Canvas expression language](canvas-function-reference.md), from rounding and averages to trigonometry and comparisons.
+Use TinyMath functions to do math in the [Canvas expression language](canvas-function-reference.md), from rounding and averages to trigonometry and comparisons. The [`EvalMath` lambda](../../alerting/alerts/rule-action-variables.md#_evalmath) in alert action templates accepts the same functions.
 
 Most of the functions accept arrays and apply JavaScript Math methods to each element of that array. For the functions that accept multiple arrays as parameters, the function generally does the calculation index by index.
 
@@ -60,13 +60,13 @@ abs([-1 , -2, 3, -4]) // returns [1, 2, 3, 4]
 
 ## add( …args ) [_add_args] 
 
-Calculates the sum of one or more numbers or arrays. If at least one argument is an array, the function calculates the sum by index.
+Calculates the sum of one or more numbers or arrays. If you pass several arguments and at least one is an array, the function calculates the sum by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The sum of all numbers in `args` if `args` contains only numbers. Returns an array of sums of the elements at each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
+**Returns**: `number` | `Array.<number>`. The sum of all numbers in `args` if `args` contains only numbers. Returns an array of sums of the elements at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -574,13 +574,13 @@ lte(1, [1, 2]) // returns true
 
 ## max( …args ) [_max_args] 
 
-Finds the maximum value of one or more numbers or arrays of numbers. If at least one argument is an array, the function finds the maximum by index.
+Finds the maximum value of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the maximum by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The maximum value of all numbers if `args` contains only numbers. Returns an array with the maximum values at each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
+**Returns**: `number` | `Array.<number>`. The maximum value of all numbers if `args` contains only numbers. Returns an array with the maximum values at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -596,13 +596,13 @@ max([3, 1, 4]) // returns 4
 
 ## mean( …args ) [_mean_args] 
 
-Finds the mean value of one or more numbers or arrays of numbers. If at least one argument is an array, the function finds the mean by index.
+Finds the mean value of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the mean by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The mean value of all numbers if `args` contains only numbers. Returns an array with the mean values of each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
+**Returns**: `number` | `Array.<number>`. The mean value of all numbers if `args` contains only numbers. Returns an array with the mean values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -618,13 +618,13 @@ mean([1, 2, 6]) // returns 3
 
 ## median( …args ) [_median_args] 
 
-Finds the median value(s) of one or more numbers or arrays of numbers. If at least one argument is an array, the function finds the median by index.
+Finds the median value(s) of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the median by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The median value of all numbers if `args` contains only numbers. Returns an array with the median values of each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
+**Returns**: `number` | `Array.<number>`. The median value of all numbers if `args` contains only numbers. Returns an array with the median values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -641,13 +641,13 @@ median([3, 1, 4, 1, 5]) // returns 3
 
 ## min( …args ) [_min_args] 
 
-Finds the minimum value of one or more numbers or arrays of numbers. If at least one argument is an array, the function finds the minimum by index.
+Finds the minimum value of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the minimum by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The minimum value of all numbers if `args` contains only numbers. Returns an array with the minimum values of each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
+**Returns**: `number` | `Array.<number>`. The minimum value of all numbers if `args` contains only numbers. Returns an array with the minimum values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -689,13 +689,13 @@ mod([14, 42, 65, 108], [5, 4, 14, 2]) // returns [4, 2, 9, 0]
 
 ## mode( …args ) [_mode_args] 
 
-Finds the mode value(s) of one or more numbers or arrays of numbers. If at least one argument is an array, the function finds the mode by index.
+Finds the mode value(s) of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the mode by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `Array.<number>` | `Array.<Array.<number>>`. An array of mode value(s) of all numbers if `args` contains only numbers. Returns an array of arrays with mode value(s) of each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
+**Returns**: `Array.<number>` | `Array.<Array.<number>>`. An array of mode value(s) of all numbers if `args` contains only numbers. Returns an array of arrays with mode value(s) of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
@@ -810,13 +810,13 @@ random(-10,10) // returns a random number between -10 (inclusive) and 10 (exclus
 
 ## range( …args ) [_range_args] 
 
-Finds the range of one or more numbers or arrays of numbers. If at least one argument is an array, the function finds the range by index.
+Finds the range of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the range by index.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `number` | `Array.<number>`. The range value of all numbers if `args` contains only numbers. Returns an array with the range values at each index, including all scalar numbers in `args` in the calculation at each index if `args` contains at least one array.
+**Returns**: `number` | `Array.<number>`. The range value of all numbers if `args` contains only numbers. Returns an array with the range values at each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers all of its elements.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
