@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/open-the-dashboard.html
-description: Edit an existing Kibana dashboard to change its panels, settings, and controls, undo mistakes, and restore an earlier saved version.
+description: Change the panels, settings, and controls of an existing Kibana dashboard, then undo mistakes or restore an earlier saved version.
 applies_to:
   stack: ga
   serverless: ga
@@ -78,18 +78,18 @@ serverless: ga
 stack: ga 9.7+
 ```
 
-If you save a change that you later regret, or you want to see how a dashboard used to look, you can browse its earlier versions, compare them, and bring one back. Each time you save a dashboard and its content changes, {{kib}} records a new version with a number (v1, v2, and so on), the name of the person who saved it, and the time. Saving without changing anything doesn't create a version, and saves from before version history was available aren't recorded. By default, versions are kept indefinitely.
+If you save a change that you later regret, or you want to see how a dashboard used to look, you can browse its earlier versions, compare them, and bring one back. Each time you save a dashboard and its content changes, {{kib}} records a new version with a number (v1, v2, and so on), the name of the person who saved it, and the time. Saving without changing anything doesn't create a version, and changes saved before version history was available aren't recorded. By default, versions are kept indefinitely.
 
 To restore an earlier version:
 
-1. In edit mode, select **History** in the application menu. **History** is disabled until you save the dashboard for the first time.
+1. In edit mode, select **History** in the application menu. **History** is unavailable until you save the dashboard for the first time.
 2. In the **Version history** list, select a version to see the dashboard as it looked then. The preview isn't interactive. Your unsaved changes, if any, appear at the top of the list as **Unsaved changes**.
-3. Select **Restore**, or open the **Version actions** menu on the version and select **Restore this version**. The current version has no restore option.
-4. Confirm the restore. {{kib}} saves the restored version as a new version, which appears at the top of the list with a note such as **Restored from v3**. The earlier versions stay in the list, so restoring never rewinds the history.
+3. Select **Restore**, or open the **Version actions** menu {icon}`boxes_vertical` on the version and select **Restore this version**. The current version has no restore option. If you have unsaved changes, the restored version replaces them.
+4. Confirm the restore. {{kib}} saves the restored version as a new version, which appears at the top of the list with a note such as **Restored from v3**. Restoring never rewinds the history: the earlier versions stay in the list.
 
-If you have unsaved changes when you restore, the restored version replaces them. To leave without restoring anything, select **Back to dashboard**.
+To leave without restoring anything, select **Back to dashboard**.
 
-To check what changed before you restore, select the changes link on a version, such as **3 changes**, to compare it with the version before it. To compare it with a different version, open the **Version actions** menu on that other version and select **Compare to this version**. {{kib}} shows the differences as JSON. To switch between **Unified** and **Split** views, select **Settings** {icon}`controls` at the bottom of the comparison.
+To check what changed before you restore, select the changes link on a version, such as **3 changes**, to compare it with the version before it. To compare it with a different version, open the **Version actions** menu {icon}`boxes_vertical` on that other version and select **Compare to this version**. {{kib}} shows the differences as JSON. To switch between **Unified** and **Split** views, select **Settings** {icon}`controls` at the bottom of the comparison.
 
 For changes that you haven't saved yet, use [Undo and redo](#undo-redo-dashboard) or [Reset changes](#reset-the-dashboard) instead.
 
