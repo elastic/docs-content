@@ -16,10 +16,10 @@ If you want to learn **Maps** by building something, this tutorial takes you fro
 
 You’ll learn to:
 
-* Combine reference boundaries and {{es}} data in one map with multiple layers
-* Style features with colors, symbols, and labels that depend on data values
+* Create a map with multiple layers and data sources, such as reference boundaries and {{es}} data
+* Use symbols, colors, and labels to style data values, from choropleth shading to cluster sizes
 * Embed a map in a dashboard
-* Filter the map and the other dashboard panels together
+* Filter across panels in your dashboard, including from the map itself
 
 When you complete this tutorial, you’ll have a map like this one:
 
