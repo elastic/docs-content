@@ -185,9 +185,9 @@ When moving to a new major version of {{es}}, you must perform specific actions 
 If you want to keep your older data as read-only:
 
 1. Issue a rollover for all replicated data streams on the follower cluster to ensure the write index is compatible with the version you're upgrading to.
-2. Run the Upgrade Assistant on the {{ccr-init}} follower cluster and resolve any data stream deprecation notices, selecting the option to not reindex and allow the backing indices to become read-only after upgrading.
+2. Run the Upgrade Assistant on the {{ccr-init}} follower cluster and resolve any data stream deprecation notices by selecting the read-only action instead of reindexing. The backing indices become read-only.
 3. Upgrade the {{ccr-init}} follower cluster to the appropriate version. Ensure you take a snapshot before starting the upgrade.
-4. Run the Upgrade Assistant on the {{ccr-init}} leader cluster and repeat the same steps as the follower cluster, opting not to reindex.
+4. Run the Upgrade Assistant on the {{ccr-init}} leader cluster and repeat the same steps as the follower cluster, again selecting the read-only action.
 5. Upgrade the leader cluster and ensure {{ccr-init}} replication is healthy.
 
 ### Migrate read-write historical data
