@@ -87,6 +87,12 @@ $$$azure-integration-logs-not-ingested$$$
 $$$azure-integration-support$$$
 $$$ec-getting-support$$$
 
+## Unsubscription
+
+If your marketplace subscription gets suspended or terminated, you will receive a notification from Elastic, and a grace period to correct. From one of the Elastic Cloud resources in the Azure Portal, go to the "Connected Resources" blade and click "Resubscribe". 
+If you no longer have an Elastic Cloud resource in the Azure Portal, create a new temporary one with the same email address, which will trigger a resubscription.
+
+
 ## Get support [azure-integration-support]
 
 Support is provided by Elastic. To open a support case:
