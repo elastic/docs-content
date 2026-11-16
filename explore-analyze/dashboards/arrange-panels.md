@@ -22,6 +22,7 @@ This page covers:
 - [Moving and resizing panels](#resizing-containers)
 - [Customizing a panel's title, description, and border](#customize-panel-settings)
 - [Copying and duplicating panels](#duplicate-panels)
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` [Selecting several panels to copy or remove them](#select-several-panels)
 
 ## Requirements [arrange-panels-requirements]
 
@@ -218,6 +219,32 @@ Copy panels from one dashboard to another dashboard.
 2. On the **Copy to dashboard** window, select the dashboard, then click **Copy and go to dashboard**.
 
     ![Copy a panel to another dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt48304cb3cd1ee2e6/6753879eb7c4663812148d47/copy-to-dashboard-8.17.0.gif "")
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To copy several panels in one go, refer to [Select several panels to copy or remove them](#select-several-panels).
+
+## Select several panels to copy or remove them [select-several-panels]
+```{applies_to}
+serverless: ga
+stack: ga 9.7
+```
+
+If you want to copy a group of panels to another dashboard, or remove several panels from the one you're editing, you can select them together and act on them at once instead of repeating the panel menu steps for each panel.
+
+To start a selection, open the dashboard in **Edit** mode, hold {kbd}`cmd` (Mac) or {kbd}`ctrl` (Windows and Linux), and do one of the following:
+
+* Select any part of a panel to add it to the selection.
+* Drag across the dashboard to draw a rectangle that selects every panel it touches. The page scrolls automatically when you drag near its top or bottom edge.
+
+If you select a panel's title bar without the key held, a brief hint shows the gesture: **⌘ + Click to select panel** on Mac, or **Ctrl + Click to select panel** on Windows and Linux.
+
+After the first panel is selected, you no longer need to hold the key. A round checkbox replaces the hover actions on every panel, the resize handles disappear, and selecting any part of a panel adds it to the selection, or removes it if it's already selected, instead of interacting with its content. To change the selection, select a panel or its checkbox. To select every panel that isn't in a collapsed section, press {kbd}`ctrl|cmd+a`.
+
+To clear the selection, press {kbd}`esc`, select an empty area of the dashboard, or select the **Clear selection (Esc)** icon {icon}`cross` in the toolbar.
+
+While panels are selected, a toolbar at the bottom of the page shows how many you selected and offers two actions for the whole selection:
+
+* **Copy to dashboard**: Opens the same **Copy to dashboard** window as the panel menu. After you select a dashboard and then **Copy and go to dashboard**, that dashboard opens in edit mode with all the selected panels added to it. The originals stay on the dashboard you copied them from, and you save the other dashboard to keep the copies. If the selection includes a panel that can't be copied, the action is turned off and a tooltip says why. Remove that panel from the selection to copy the rest. The action doesn't appear if you can't create or edit dashboards.
+* **Remove**: Removes every selected panel at once, with the same results as removing one panel. A single [undo](open-dashboard.md#undo-redo-dashboard) brings all of them back, and the removal applies when you save the dashboard. To keep a copy of a panel first, refer to [Remove a panel from a dashboard](create-dashboard.md#remove-panel).
 
 
 
