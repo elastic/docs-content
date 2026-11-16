@@ -23,7 +23,7 @@ New to vector search? Start with [{{es}} vector and full-text search in 10 minut
 ## Get started with vector search [vector-search-get-started]
 
 - To select a {{serverless-short}} project type, [compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type).
-- If you're new to semantic search, start with the [hybrid search quickstart](/solutions/search/get-started/quickstarts.md), which uses the managed `semantic_text` workflow.
+- If you're new to semantic search, start with [](/solutions/search/get-started/quickstarts.md), which uses the managed `semantic_text` workflow.
 - To explore common applications and implementation approaches, refer to [Vector search use cases](vector/vector-search-use-cases.md).
 
 ## Core concepts [vectors-and-embeddings]
@@ -55,15 +55,15 @@ $$$sparse-vectors$$$ Sparse vectors
 
 ### {{es}} as a vector database [es-as-vector-database]
 
-{{es}} functions as a [vector database](#vector-database) by storing [vector embeddings](#vector-embedding) and retrieving the most similar results to a query vector. Vector embeddings are numerical representations of data, such as text, images, or audio, created by {{ml}} models. Because similar items are positioned closer together in vector space, {{es}} can use these embeddings to perform semantic similarity search and return results based on meaning rather than exact keyword matches.
+{{es}} stores [vector embeddings](#vector-embedding) alongside your other indexed data in vector field types such as [`dense_vector`](#dense-vectors) and [`sparse_vector`](#sparse-vectors). Embeddings are numerical representations of data, such as text, images, or audio, created by {{ml}} models. Because similar items are positioned closer together in vector space, {{es}} can use these embeddings to return results based on meaning rather than exact keyword matches.
 
-This capability is the foundation for vector search and related use cases in {{es}}. It enables you to work with semantic retrieval on the same data and infrastructure that you already use for full-text search, structured filters, and aggregations. {{es}} supports this by storing embeddings in vector field types such as [`dense_vector`](#dense-vectors) and [`sparse_vector`](#sparse-vectors), alongside your other indexed data.
+Because vectors and other fields share the same index, you can combine semantic retrieval with full-text search, structured filters, and aggregations on the same data and infrastructure.
 
 To use {{es}} as a vector database, you can use the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type. When you index content into a `semantic_text` field, {{es}} automatically generates vector embeddings using a configured {{ml}} model and stores them in the underlying vector field. These embeddings are indexed for efficient [k-nearest neighbor (kNN) search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md), enabling fast similarity-based retrieval at query time.
 
 For an overview of use cases and guidance on how to implement them, refer to [Vector search use cases](vector/vector-search-use-cases.md).
 
-On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+On {{serverless-full}}, we recommend using an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
 
 ### Semantic search and vector search [semantic-search-vs-vector-search]
 

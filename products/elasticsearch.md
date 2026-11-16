@@ -133,7 +133,7 @@ links:
 :::{link-card}
 title: Search fundamentals
 links:
-  - label: Hybrid search quickstart
+  - label: "Quickstart: Vector and full-text search"
     url: /solutions/search/get-started/quickstarts.md
 :::
 
@@ -149,7 +149,7 @@ title: Specialized quickstarts
 links:
   - label: Time series data stream basics
     url: /manage-data/data-store/data-streams/quickstart-tsds.md
-  - label: Browse all quickstarts
+  - label: "Quickstart: Vector and full-text search"
     url: /solutions/search/get-started/quickstarts.md
 :::
 ::::

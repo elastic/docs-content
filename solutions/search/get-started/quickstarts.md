@@ -1,5 +1,5 @@
 ---
-navigation_title: Quickstart - Vector and full-text search
+navigation_title: "Quickstart: Vector and full-text search"
 description: Step-by-step tutorial for connecting a client to Elasticsearch, indexing data, and running keyword, semantic, and hybrid search.
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/quickstart.html
@@ -10,12 +10,11 @@ products:
   - id: elasticsearch
 ---
 
-# Quickstart - Vector and full-text search in {{es}} [hybrid-search-quickstart]
+# Quickstart: Vector and full-text search [hybrid-search-quickstart]
 
 {{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. This guide uses official {{es}} clients as well as curl and Console examples to take you from an empty project to real search results in less than 10 minutes.
 
 Use it if you're new to search in {{es}} or want to compare keyword, semantic, and hybrid search.
-
 
 :::{tip}
 Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding).
@@ -31,11 +30,11 @@ Some features that search use cases rely on work differently on {{serverless-sho
 
 The project takes about a minute to start. The **Getting started** page then displays the **{{es}} endpoint** and a generated API key. Copy both values. If you need a new API key, refer to [Create an API key](/solutions/search/set-up/api-key-and-endpoints.md#get-your-api-key).
 
-You can follow the examples in Python, TypeScript, PHP, Ruby, C#/.NET, Java, or Go, with curl, or in the {{kib}} [**Dev Tools**](/explore-analyze/query-filter/tools/console.md) Console. If you use Console, you don't need to connect or install a client: after you set up {{es}}, start at [Create an index and add data](#vector-full-text-search-add-data).
+You can follow the examples in Python, TypeScript, PHP, Ruby, C# (.NET), Java, or Go, with curl, or in the {{kib}} [**Dev Tools**](/explore-analyze/query-filter/tools/console.md) Console. If you use Console, you don't need to connect or install a client: after you set up {{es}}, start at [Create an index and add data](#vector-full-text-search-add-data).
 
-## Connect to your project [vector-full-text-search-connect]
+## Connect to your deployment or project [vector-full-text-search-connect]
 
-Set the project endpoint and API key as environment variables:
+Set the endpoint and API key of your deployment or project as environment variables:
 
 :::::{tab-set}
 :group: operating-systems
@@ -315,7 +314,7 @@ func main() {
 
 ## Create an index and add data [vector-full-text-search-add-data]
 
-Create the `books` index and add the sample data. The sample data contains five books, each with a `title`, an `author`, a `release year`, and a `description`.
+Create the `books` index and add the sample data. The sample data contains five books, each with a `title`, an `author`, a `release_year`, and a `description`.
 
 ### Create an index
 
@@ -2042,7 +2041,7 @@ The output contains one row per decade:
 The examples above show each step on its own. This script runs them together: it creates an index, adds the sample books, runs a keyword search, a semantic search, and a hybrid search, and counts the books by decade. 
 
 1. [Set up {{es}}](#vector-full-text-search-create-project).
-2. [Connect to your project](#vector-full-text-search-connect).
+2. [Connect to your deployment or project](#vector-full-text-search-connect).
 3. [Set up a client](#vector-full-text-search-install-sdk) for your language. If you use Console or curl, skip this step.
 4. Select your language, expand the complete script, and run it.
 
