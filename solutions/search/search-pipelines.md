@@ -20,13 +20,14 @@ The **Pipelines** tab under **Connectors** lets you manage the ingest pipeline u
 To work with ingest pipelines using these UI tools, open the **Pipelines** tab.
 
 To find this tab in the Kibana UI:
-1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** from the results.
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** (**Content / Connectors** in 9.0) from the results. To see every way to open the connectors UI, refer to [Connectors UI](elasticsearch://reference/search-connectors/connectors-ui-in-kibana.md).
 2. Select the connector you want to work with. For example, `azure-blob-storage`.
 3. On the connector’s page, open the **Pipelines** tab.
 4. From here, you can follow the instructions to create custom pipelines, and set up ML inference pipelines.
 
 The tab is highlighted in the following screenshot:
 
+% Candidate for removal: low value. It is a whole-page capture of the Pipelines tab with an outdated layout and no highlight, and removing it needs a rewrite of the line that says the tab is highlighted.
 :::{image} /solutions/images/elasticsearch-reference-ingest-pipeline-ent-search-ui.png
 :alt: ingest pipeline ent search ui
 :screenshot:
@@ -68,13 +69,13 @@ Aside from the pipeline itself, you have a few configuration options which contr
 * **Run ML Inference** - Only available on index-specific pipelines. This controls whether or not the optional `<index-name>@ml-inference` pipeline will be run. Enabled by default.
 
 * For connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. You can change these settings there directly. Alternatively, you can:
-  1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** from the results.
+  1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** (**Content / Connectors** in 9.0) from the results.
   2. Choose your connector, then go to **Pipelines** → **Settings** to make changes.
 
 * You can also change the deployment-wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. You can change these settings there directly.
 Alternatively, you can:
-  1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** from the results.
-  2. Choose your connector, then go to **Configuration** to make changes.
+  1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** (**Content / Connectors** in 9.0) from the results.
+  2. On the list of connectors, select **Default settings** to open a flyout where you can change the settings.
 
 Changing the deployment-wide defaults will not impact any existing indices, but will only impact any newly created indices defaults. Those defaults will still be able to be overridden by the index-specific settings.
 

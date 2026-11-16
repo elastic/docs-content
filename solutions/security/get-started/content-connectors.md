@@ -50,7 +50,7 @@ To learn about setup for self-managed connectors, refer to [Self-managed connect
 1. Click **New Connector**.
 1. Under **Connector**, select your desired data source.
 1. Under **Setup**, select your deployment method. 
-1. Under **Configure index & API key**, click **Generate configuration**. After a few seconds, this will create a new connector and a new index for its data, and display their names and IDs. You can click their names to view details about each. 
+1. Under **Configure index and API key**, click **Generate configuration**. After a few seconds, this will create a new connector and a new index for its data, and display their names and IDs. You can click their names to view details about each. 
 1. Click **Next** to continue to the **Configuration** page. This is where you can select details related to your specific data source. For more information about configuring your selected data source, follow the link on the left to the **Connector reference**.
 1. When configuration is complete, click **Next**. The **Finish up** page appears. Here you can set up recurring connector syncs, run a manual sync, or use queries and dev tools to interact with your data. Each sync updates the data in the connector's {{es}} index. You can also manage the connector.
 
