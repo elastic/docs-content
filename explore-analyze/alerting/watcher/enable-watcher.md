@@ -126,6 +126,7 @@ PUT _watcher/watch/test-alarm
 
 **In Elasticsearch versions before 7.0:**, you are not required to use the Elasticsearch keystore. Instead, you can use the console Elasticsearch settings editor for your deployment.
 
+% Candidate for removal: low value. It shows an Elastic Cloud console from before 7.0 with Slack settings in 5.0 syntax, and it illustrates a versions-before-7.0 sentence that 9.x docs do not need.
 :::{image} /explore-analyze/images/cloud-user-settings.png
 :alt: Advanced Alerting configuration
 :::
