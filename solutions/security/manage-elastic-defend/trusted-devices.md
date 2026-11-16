@@ -26,7 +26,7 @@ By default, a trusted device is recognized globally across all hosts running {{e
 Add a trusted device to exempt it from device control:
 
 1. Depending on your version, do one of the following:
-   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Trusted devices** tab.
+   * {applies_to}`security: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Trusted devices** tab.
    * {applies_to}`stack: ga 9.2-9.3` Go to the **Trusted Devices** page using the navigation menu or the global search field.
 
 2. Click **+ Add trusted device**. The Add trusted device flyout opens.
@@ -57,7 +57,8 @@ The **Trusted devices** UI displays all the trusted devices that have been added
 
 ```{applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 ::::{admonition} Requirements

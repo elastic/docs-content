@@ -36,10 +36,10 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | Filter by time | Use the date/time picker (default: last 24 hours) |
 | Change alert status | Click the **More actions** icon {icon}`boxes_horizontal` → select status, or use bulk selection |
 | Add to case | Click the **More actions** icon {icon}`boxes_horizontal` → **Add to case** |
-| Add to chat {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Select alerts → **Selected *x* alerts** → **Add to chat**. Requires {{agent-builder}}. |
+| Add to chat {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | Select alerts → **Selected *x* alerts** → **Add to chat**. Requires {{agent-builder}}. |
 | Investigate in Timeline | Click **Investigate in timeline** icon {icon}`timeline` |
 | Add exception | Click the **More actions** icon {icon}`boxes_horizontal` → **Add exception** |
-| CSV export {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | In the toolbar, select the option to export to CSV. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
+| CSV export {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | In the toolbar, select the option to export to CSV. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 
 
 ## Filter alerts [detection-view-and-filter-alerts]
@@ -123,7 +123,7 @@ Group alerts by up to three fields, such as rule name, host, user, source IP, or
 | Sort fields | Sort by one or more columns |
 | Fields | Add or remove fields (including [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md)) |
 | Full screen | Expand table to full screen |
-| Export to CSV {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Export filtered alerts and visible columns to a CSV file. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
+| Export to CSV {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | Export filtered alerts and visible columns to a CSV file. Requires [reporting privileges](/deploy-manage/kibana-reporting-configuration.md#grant-user-access). |
 
 ### View modes
 
@@ -146,8 +146,8 @@ Access actions from the **More actions** (**…**) menu in the Alerts table, or 
 |--------|-------------|
 | [Change status](#detection-alert-status) | Mark as open, acknowledged, or closed |
 | [Add to case](/explore-analyze/cases/attach-objects-to-cases.md) | Attach alert to a new or existing case |
-| {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [Add to chat](#add-alerts-to-chat) | Send up to 100 selected alerts to {{agent-builder}} for triage |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Run a workflow from an alert](#run-workflow-from-alert) | Run an Elastic workflow for on-demand response or investigation |
+| {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` [Add to chat](#add-alerts-to-chat) | Send up to 100 selected alerts to {{agent-builder}} for triage |
+| {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` [Run a workflow from an alert](#run-workflow-from-alert) | Run an Elastic workflow for on-demand response or investigation |
 | [Add rule exception](#add-exception-from-alerts) | Prevent rule from generating similar alerts |
 | [Add {{elastic-endpoint}} exception](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) | Prevent {{elastic-endpoint}} alerts for specific conditions |
 | [Apply alert tags](#apply-alert-tags) | Categorize alerts for filtering |
@@ -185,7 +185,8 @@ Alert statuses track investigation progress:
 #### Closing reasons
 ```yaml {applies_to}
 stack: ga 9.2
-serverless: ga
+serverless:
+  security: ga
 ```
 
 When closing alerts, you can specify a reason:
@@ -206,12 +207,13 @@ You can add your own closing reason options by updating the [`securitySolution:a
 
 The closing reason is stored in `kibana.alert.workflow_reason` and can be used for filtering. Reopening an alert removes this field.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` You can also set an alert closing reason when you [close an {{elastic-sec}} case with sync enabled](/solutions/security/investigate/security-cases.md#cases-set-closing-reason).
+{applies_to}`stack: ga 9.4+` {applies_to}`security: ga` You can also set an alert closing reason when you [close an {{elastic-sec}} case with sync enabled](/solutions/security/investigate/security-cases.md#cases-set-closing-reason).
 
 ### Add alerts to chat [add-alerts-to-chat]
 ```yaml {applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Send selected alerts to an [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) conversation so the agent can help you triage them. The action appears when {{agent-builder}} is enabled and the Agent chat experience is selected.
@@ -228,7 +230,8 @@ Send selected alerts to an [{{agent-builder}}](/explore-analyze/ai-features/elas
 ### Run a workflow from an alert [run-workflow-from-alert]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 You can run an [Elastic workflow](/explore-analyze/workflows.md) directly from an alert to trigger an on-demand response or investigation. To use this feature, make sure you meet the [workflows prerequisites](/explore-analyze/workflows/get-started/build-your-first-workflow.md#workflows-prerequisites).
@@ -314,7 +317,8 @@ If the rule uses a Timeline template, dropzone query values are replaced with th
 
 ```{applies_to}
 stack: ga 9.4+, preview 9.1-9.3
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Manage the size of alert indices in your space by clearing out alerts that are older or infrequently accessed. You can do this by [running an alert cleanup task](../../../explore-analyze/alerting/alerts/view-alerts.md#clean-up-alerts), which deletes alerts according to the criteria that you define.

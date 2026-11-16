@@ -109,7 +109,7 @@ The About section has the following information:
     The event renderer only displays if an event renderer exists for the alert type. Fields are interactive; hover over them to access the available actions.
     ::::
 
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Threat mappings**: Shows the rule's MITRE ATT&CK® and MITRE ATLAS™ tactics and techniques, grouped by framework, when defined.
+* {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` **Threat mappings**: Shows the rule's MITRE ATT&CK® and MITRE ATLAS™ tactics and techniques, grouped by framework, when defined.
 * {applies_to}`stack: ga 9.0-9.5` {applies_to}`serverless: unavailable` **MITRE ATT&CK**: Shows the tactics and techniques mapped to the rule, when defined.
 * **Last alert status change**: Shows the last time the alert's status was changed, along with the user who changed it.
 
@@ -134,7 +134,7 @@ The Visualizations section (on the **Overview** tab) shows how the alert unfolde
 |---------|---------------|---------------|
 | Session view preview | Process activity during the Linux session | See commands executed before and after the alert. Click to open the **Session view** flyout for the full session history. |
 | Analyzer preview | Process tree (up to 3 ancestor and 3 descendant levels) | Trace how the process was spawned and what it launched. The {icon}`boxes_horizontal` icon indicates more levels exist. Click to open the **Analyzer** flyout. |
-| Graph preview {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` | A graph of the entities involved in the alert and their relationships | See which entities acted and which were targeted, and how they connect. Click to open the **Graph** flyout. |
+| Graph preview {applies_to}`stack: preview 9.4+` {applies_to}`security: preview` | A graph of the entities involved in the alert and their relationships | See which entities acted and which were targeted, and how they connect. Click to open the **Graph** flyout. |
 
 From the Analyzer or Session view flyout, select a related process or event to view its details. From the Graph flyout, use **Investigate in Timeline** to continue your investigation there.
 
@@ -154,7 +154,8 @@ By default, the process tree includes events stored in [cold and frozen tiers](/
 ### Graph [graph-view]
 ```yaml {applies_to}
 stack: preview 9.4+
-serverless: preview
+serverless:
+  security: preview
 ```
 
 ::::{admonition} Requirements
@@ -235,7 +236,7 @@ The overview displays counts for each correlation type. Click **Correlations** t
 | Cases related to the alert | This alert has been added to one or more cases. | Click a case name to see prior investigation work. Avoid duplicating effort if the alert is already being tracked. |
 | Alerts related by session ID | Other alerts occurred during the same Linux session. | Examine the session timeline to trace an attacker's actions from initial access through their objectives. Requires [Session View data](/solutions/security/investigate/session-view.md#enable-session-view) to be enabled. |
 | Alerts related by process ancestry | Alerts share a parent-child process relationship. | Trace execution chains to understand how a threat propagated. Click **Investigate in timeline** to visualize the process tree. |
-| Attacks related to this alert {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | This alert is linked to one or more [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) findings. | In the Correlations flyout, review the related attacks table (title, status, and alert count), then click the expand icon ({icon}`expand`) on a row to preview that attack's details. |
+| Attacks related to this alert {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`security: ga` | This alert is linked to one or more [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) findings. | In the Correlations flyout, review the related attacks table (title, status, and alert count), then click the expand icon ({icon}`expand`) on a row to preview that attack's details. |
 
 ::::{note}
 **Alerts related by process ancestry** requires a [Platinum or higher subscription](https://www.elastic.co/pricing) in {{stack}} or the appropriate [{{serverless-short}} project feature tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).

@@ -37,7 +37,7 @@ By default, a host isolation exception is recognized globally across all hosts r
 To add a host isolation exception:
 
 1. Depending on your version, do one of the following:
-   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Host isolation exceptions** tab.
+   * {applies_to}`security: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Host isolation exceptions** tab.
    * {applies_to}`stack: ga 9.0-9.3` Go to the **Host isolation exceptions** page using the navigation menu or the global search field.
 
 2. Click **Add Host isolation exception**.
@@ -79,7 +79,8 @@ The **Host isolation exceptions** UI displays all the host isolation exceptions 
 
 ```{applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 ::::{admonition} Requirements

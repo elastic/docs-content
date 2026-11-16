@@ -51,7 +51,7 @@ Results for each query in the pack appear in the **Results** tab. Click the expa
 From the results table, you can:
 
 
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **Export results** to download the results in CSV, NDJSON, or JSON format. For query pack results, use a query row's actions menu to export that query's results.
+* {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` Click **Export results** to download the results in CSV, NDJSON, or JSON format. For query pack results, use a query row's actions menu to export that query's results.
 * Click **Add to Case** to add the query results to a new or existing case. If you run a live query from an alert, the alert and query results are added to the case as comments.
 
     ::::{note}
@@ -61,7 +61,7 @@ From the results table, you can:
 
     ::::
 
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Add or remove tags to organize and label the queries for future use.
+* {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Add or remove tags to organize and label the queries for future use.
 * Click the **View Details** {icon}`expand` icon to examine the query ID and statement.
 * Click the **View in Discover** {icon}`product_discover` icon to explore the results in Discover.
 * Click the **View in Lens** {icon}`app_lens` icon to navigate to Lens, where you can use the drag-and-drop **Lens** editor to create visualizations.

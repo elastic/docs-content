@@ -29,10 +29,10 @@ Rather than triaging alerts one at a time, entity analytics continuously evaluat
 | Prioritize high-value assets | [](/solutions/security/advanced-entity-analytics/asset-criticality.md) |
 | Monitor risk scores for hosts, users, and services | [](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) → [](/solutions/security/advanced-entity-analytics/view-analyze-risk-score-data.md) |
 | Detect behavioral anomalies with machine learning | [](/solutions/security/advanced-entity-analytics/advanced-behavioral-detections.md) → [Anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
-| {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) |
-| {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` Investigate entity connections and relationships in a graph | [Visualizations](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
+| {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Manage watchlists and factor membership into risk scoring | [](/solutions/security/advanced-entity-analytics/watchlists.md) |
+| {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Link entity records representing the same real-world identity | [](/solutions/security/advanced-entity-analytics/entity-resolution.md) |
+| {applies_to}`stack: preview 9.4+` {applies_to}`security: preview` Hunt for threats using AI-generated leads | [](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) |
+| {applies_to}`stack: preview 9.4+` {applies_to}`security: preview` Investigate entity connections and relationships in a graph | [Visualizations](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) |
 | {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Monitor privileged user activity | [](/solutions/security/advanced-entity-analytics/privileged-user-monitoring.md) |
 
 ## How entity analytics works
@@ -44,7 +44,7 @@ Entity analytics operates continuously across several stages:
 3. **Detects anomalies:** Prebuilt {{ml}} jobs identify unusual patterns in user and host behavior that may indicate compromise or insider threats.
 4. **Enriches entities:** The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) reconciles data from ingested logs, identity providers, and risk scores into a unified view of each entity.
 
-    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The entity store resolves entities using shared identity matching across sources, so a single real-world entity observed across multiple identity providers appears as one deduplicated record.
+    {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` The entity store resolves entities using shared identity matching across sources, so a single real-world entity observed across multiple identity providers appears as one deduplicated record.
 
 ## Key capabilities
 
@@ -61,7 +61,8 @@ Use {{ml}} anomaly detection to identify suspicious behavior patterns — such a
 ### Watchlists
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Define custom groups of entities — such as executives or critical infrastructure hosts — and factor watchlist membership directly into entity risk scoring. A built-in **Privileged Users** watchlist automatically pulls in administrative users from [Active Directory](integration-docs://reference/entityanalytics_ad.md) and [Okta](integration-docs://reference/entityanalytics_okta.md)integrations.
@@ -69,7 +70,8 @@ Define custom groups of entities — such as executives or critical infrastructu
 ### Entity resolution
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Link multiple entity records that represent the same real-world identity into a resolution group. The primary entity aggregates risk scores from all linked records, giving you a consolidated view across identity providers such as Okta, Active Directory, and Entra ID.
@@ -77,7 +79,8 @@ Link multiple entity records that represent the same real-world identity into a 
 ### Graph visualization
 ```yaml {applies_to}
 stack: preview 9.4+
-serverless: preview
+serverless:
+  security: preview
 ```
 
 Investigate entity connections and relationships directly from the entity details flyout. The overview panel shows a graph preview of the entity's connections over the last 30 days, and the expanded panel provides a full interactive investigation experience. Graph visualization requires [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) to be enabled and populated in the active space.
@@ -96,5 +99,5 @@ Track the activity of users with elevated permissions, such as system administra
 - [Set up anomaly detection](/solutions/security/advanced-entity-analytics/anomaly-detection.md) to identify behavioral threats.
 - [Assign asset criticality](/solutions/security/advanced-entity-analytics/asset-criticality.md) to prioritize high-value entities.
 - Use the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) to review risk scores, surface anomalies, and prioritize investigations.
-- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Create watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) to factor entity group membership into risk scoring.
+- {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` [Create watchlists](/solutions/security/advanced-entity-analytics/watchlists.md) to factor entity group membership into risk scoring.
 - [Explore host, user, and network data](/solutions/security/advanced-entity-analytics/explore.md) across your environment.

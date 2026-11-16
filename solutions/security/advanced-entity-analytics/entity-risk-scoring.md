@@ -149,7 +149,7 @@ When an entity belongs to a [resolution group](/solutions/security/advanced-enti
 
 The risk score is updated every hour based on the configured date and time range, which defaults to 30 days. Each update generates a new score, calculated independently of any previous scores.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Because every calculation is retained, you can [investigate an entity's risk score over time](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) and inspect the risk inputs behind an earlier score.
+{applies_to}`stack: ga 9.5+` {applies_to}`security: ga` Because every calculation is retained, you can [investigate an entity's risk score over time](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) and inspect the risk inputs behind an earlier score.
 
 ### Residual risk score
 
@@ -158,7 +158,7 @@ In some cases, entities can retain a residual risk score:
 * If all alerts for an entity are closed
 * If all of the entity’s open alerts fall outside of the configured date and time range
 
-{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` By default, in these scenarios, entity risk scores are reset to zero if there are no new inputs. If, instead, you want entities to retain their last calculated risk score, select the **Retain last calculated risk scores** checkbox on the [Entity risk score page](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
+{applies_to}`stack: ga 9.2` {applies_to}`security: ga` By default, in these scenarios, entity risk scores are reset to zero if there are no new inputs. If, instead, you want entities to retain their last calculated risk score, select the **Retain last calculated risk scores** checkbox on the [Entity risk score page](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md#_turn_on_the_latest_risk_engine).
 
 :::{note}
 In versions 9.1 and earlier, residual risk scores are retained by default. This means that each entity keeps its last computed risk score until a new alert triggers a recalculation.

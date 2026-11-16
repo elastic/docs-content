@@ -24,20 +24,21 @@ The **Entity analytics** page provides a centralized workspace for investigating
 
 * To access this page, you need **Read** for the **Management** → **Saved Objects Management** feature.
 * You also need the `read` index privilege for these index patterns:
-  * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `entities-latest-<space-id>`, `.entities.v2.latest.<space-id>-*`, and `risk-score.risk-score-<space-id>`
+  * {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` `entities-latest-<space-id>`, `.entities.v2.latest.<space-id>-*`, and `risk-score.risk-score-<space-id>`
   * {applies_to}`stack: ga 9.4-9.5` `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>` 
-* {applies_to}`serverless: ga` If you're using a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md), make sure it grants `read` access to all the required index patterns.
-* {applies_to}`serverless: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
+* {applies_to}`security: ga` If you're using a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md), make sure it grants `read` access to all the required index patterns.
+* {applies_to}`security: removed` {applies_to}`stack: removed 9.3` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 :::
 
 To access the page:
-- {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Find **Entity analytics** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+- {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Find **Entity analytics** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 - {applies_to}`stack: ga 9.1-9.3` Find **Entity analytics** → **Overview** in the navigation menu. 
 
 ## Threat hunting leads [entity-threat-hunting-leads]
 ```yaml {applies_to}
 stack: preview 9.4+
-serverless: preview
+serverless:
+  security: preview
 ```
 
 :::{admonition} Requirements
@@ -67,7 +68,8 @@ Interact with this section in the following ways:
 ## Entity risk levels [entity-risk-levels]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 :::{admonition} Requirements
@@ -80,7 +82,8 @@ This panel shows the distribution of entity risk across your environment, groupe
 ## Recent anomalies [entity-recent-anomalies]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 :::{admonition} Requirements
@@ -146,7 +149,8 @@ Entity data from different sources appears in the **Entities** section based on 
 ## Entity KPIs (key performance indicators) [entity-kpis]
 ```yaml {applies_to}
 stack: removed 9.4+, ga 9.1-9.3
-serverless: removed
+serverless:
+  security: removed
 ```
 
 This section displays the total number of critical hosts, critical users, and anomalies. Select a link to jump to the **Hosts** page, **Users** page, or **Anomalies** table.
@@ -155,7 +159,8 @@ This section displays the total number of critical hosts, critical users, and an
 ## User Risk Scores [entity-user-risk-scores]
 ```yaml {applies_to}
 stack: removed 9.4+, ga 9.1-9.3
-serverless: removed
+serverless:
+  security: removed
 ```
 
 :::{admonition} Requirements
@@ -179,7 +184,8 @@ For more information about user risk scores, refer to [](/solutions/security/adv
 ## Host Risk Scores [entity-host-risk-scores]
 ```yaml {applies_to}
 stack: removed 9.4+, ga 9.1-9.3
-serverless: removed
+serverless:
+  security: removed
 ```
 
 :::{admonition} Requirements
@@ -203,7 +209,8 @@ For more information about host risk scores, refer to [](/solutions/security/adv
 ## Service Risk Scores [service-risk-scores]
 ```yaml {applies_to}
 stack: removed 9.4+, ga 9.1-9.3
-serverless: removed
+serverless:
+  security: removed
 ```
 
 :::{admonition} Requirements
@@ -226,7 +233,8 @@ For more information about service risk scores, refer to [](/solutions/security/
 ## Anomalies [entity-anomalies]
 ```yaml {applies_to}
 stack: removed 9.4+, ga 9.1-9.3
-serverless: removed
+serverless:
+  security: removed
 ```
 
 Anomaly detection jobs identify suspicious or irregular behavior patterns. The **Anomalies** table displays the total number of anomalies identified by these prebuilt {{ml}} jobs (named in the **Anomaly name** column).

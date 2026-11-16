@@ -36,7 +36,7 @@ To use Osquery, you must add the [Osquery manager integration](manage-integratio
 
 To use **Osquery Manager**, you must be assigned to a role with the following privileges:
 
-* {applies_to}`stack: removed 9.2` {applies_to}`serverless: removed` `Read` privileges for the `logs-osquery_manager.result*` index.
+* {applies_to}`stack: removed 9.2` {applies_to}`security: removed` `Read` privileges for the `logs-osquery_manager.result*` index.
 * {{kib}} privileges for **Osquery Manager**. The `All` privilege enables you to run, schedule, and save queries. `Read` enables you to view live and scheduled query results, but you cannot run live queries or edit.
 
 
@@ -46,7 +46,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 
 1. Go to **Osquery** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Depending on your version, do one of the following:
-    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Click **Run query**.
+    * {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Click **Run query**.
     * {applies_to}`stack: ga 9.0-9.3` In the **Live queries** tab, click **New live query**.
 
 3. Choose to run a single query or a query pack.
@@ -122,7 +122,7 @@ You can also create a custom pack with one or more queries. For example, when cr
 
 You can run packs as live queries or schedule packs to run for one or more agent policies. When scheduled, queries in the pack are run for all agents in those policies.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The schedule is set at the pack level and inherited by all queries in the pack. Individual queries can override the pack schedule.
+{applies_to}`stack: ga 9.5+` {applies_to}`security: ga` The schedule is set at the pack level and inherited by all queries in the pack. Individual queries can override the pack schedule.
 
 ### Create or edit a pack
 
@@ -150,7 +150,8 @@ You can run packs as live queries or schedule packs to run for one or more agent
 ### Set a pack schedule [osquery-set-pack-schedule]
 ```yaml {applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 In the **Schedule** section of the pack, choose how the pack and its queries run. The two schedule types are mutually exclusive: a pack and all of its queries share one schedule type.
@@ -219,7 +220,8 @@ To check scheduled pack executions, including their results and status, use the 
 ### Filter and duplicate packs
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 The **Packs** tab includes search and filter options to help you find specific packs.
 
@@ -231,7 +233,7 @@ To save a query:
 
 1. Depending on your version, do one of the following:
 
-    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Click **Create query** from the **Queries** tab. Once you save a query, you can only edit it from the **Queries** tab.
+    * {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Click **Create query** from the **Queries** tab. Once you save a query, you can only edit it from the **Queries** tab.
     * {applies_to}`stack: ga 9.0-9.3` Click **Add saved query** from the **Saved queries** tab. Once you save a query, you can only edit it from the **Saved queries** tab.
 
 2. Provide the following fields:
@@ -245,10 +247,10 @@ To save a query:
 
         * The frequency to run the query.
         
-            {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` This frequency applies when the query is added to a pack that uses an **Interval** schedule. If the pack uses a **Date & time** schedule, the query inherits the [pack schedule](#osquery-set-pack-schedule) instead.
+            {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` This frequency applies when the query is added to a pack that uses an **Interval** schedule. If the pack uses a **Date & time** schedule, the query inherits the [pack schedule](#osquery-set-pack-schedule) instead.
         * The minimum [version of Osquery](https://github.com/osquery/osquery/releases) required to run the query.
         * The operating system required to run the query. For information about supported platforms per table, refer to the [Osquery schema](https://osquery.io/schema).
-        * {applies_to}`stack: beta` {applies_to}`serverless: beta` The result type, which controls how scheduled pack results are logged. **Snapshot** (the default) logs a full point-in-time result set for each run. **Differential** logs only rows added or removed since the last run. **Differential (Ignore removals)** logs only added rows. For more information, refer to Osquery [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) and [differential logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
+        * {applies_to}`stack: beta` {applies_to}`security: beta` The result type, which controls how scheduled pack results are logged. **Snapshot** (the default) logs a full point-in-time result set for each run. **Differential** logs only rows added or removed since the last run. **Differential (Ignore removals)** logs only added rows. For more information, refer to Osquery [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) and [differential logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
 
 3. Click **Test configuration** to test the query and any mapped fields:
 
@@ -263,7 +265,8 @@ After running a live query, you can also save it by clicking **Save query** from
 ### Filter and duplicate saved queries
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 The **Queries** tab includes search and filter options to help you find specific queries.
 
@@ -293,7 +296,7 @@ Follow these steps to load and turn on new or updated prebuilt packs:
 2. For each pack that you want to activate and schedule:
 
     1. To ensure the pack runs continuously, turn on:
-        * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The **Enable** toggle
+        * {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` The **Enable** toggle
         * {applies_to}`stack: ga 9.0-9.3` The **Active** toggle
 
         ::::{note}
@@ -346,7 +349,8 @@ For information about the available prebuilt queries, refer to [Elastic queries 
 #### Copy prebuilt Elastic queries
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 To modify prebuilt queries, you must first make a copy of them. From the **Queries** tab, click the **Actions** menu next to the prebuilt query and select **Duplicate query**. You can also duplicate a query from its edit page. The duplicated query is fully editable.
@@ -359,7 +363,7 @@ When you save queries or add queries to a pack, you can optionally map Osquery r
 1. Edit saved queries or queries in a pack to map fields:
 
     * For saved queries:
-        * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Open the **Queries** tab, and then click the edit icon for the query that you want to map.
+        * {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Open the **Queries** tab, and then click the edit icon for the query that you want to map.
         * {applies_to}`stack: ga 9.0-9.3` Open the **Saved queries** tab, and then click the edit icon for the query that you want to map.
     * For packs: Open the **Packs** tab, edit a pack, and then click the edit icon for the query that you want to map.
 
@@ -419,7 +423,7 @@ Osquery responses include the following information:
 * Results include some ECS fields by default, such as `host.*` and `agent.*`, which provide information about the host that was queried.
 * For live queries, the `action_data.query` is the query that was sent.
 * For scheduled queries in a pack:
-    * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Use `schedule_id` (format: `pack_<pack-name>_<query-ID>`) to look up the query that was run. `action_id` is populated only for live queries. Scheduled responses also include `pack_id`, `response_id`, `schedule_execution_count`, and `planned_schedule_time` for correlation. This behavior requires the Osquery Manager integration v1.23.0 or later.
+    * {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Use `schedule_id` (format: `pack_<pack-name>_<query-ID>`) to look up the query that was run. `action_id` is populated only for live queries. Scheduled responses also include `pack_id`, `response_id`, `schedule_execution_count`, and `planned_schedule_time` for correlation. This behavior requires the Osquery Manager integration v1.23.0 or later.
     * {applies_to}`stack: ga 9.0-9.3` Use `action_id` (format: `pack_<pack-name>_<query-ID>`) to look up the query that was run.
 * By default, all query results are [snapshot logs](https://osquery.readthedocs.io/en/stable/deployment/logging/#snapshot-logs) that represent a point in time with a set of results, with no [differentials](https://osquery.readthedocs.io/en/stable/deployment/logging/#differential-logs).
 * Osquery data is stored in the `logs-osquery_manager.result-<namespace>` datastream, and the result row data is under the `osquery` property in the document.

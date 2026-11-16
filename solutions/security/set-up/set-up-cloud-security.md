@@ -21,7 +21,7 @@ Each feature answers a different question about your cloud environment:
 
 - **Cloud Security Posture Management (CSPM)**: Checks the services in your AWS, GCP, and Azure accounts, such as storage, compute, and identity and access management (IAM), against benchmarks from the Center for Internet Security (CIS).
 - **Kubernetes Security Posture Management (KSPM)**: Checks the components of your Kubernetes clusters against CIS benchmarks.
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1` **Cloud Asset Discovery**: Builds an inventory of the resources in your AWS, GCP, and Azure accounts.
+- {applies_to}`security: preview` {applies_to}`stack: preview 9.1` **Cloud Asset Discovery**: Builds an inventory of the resources in your AWS, GCP, and Azure accounts.
 - **Cloud Native Vulnerability Management (CNVM)**: Scans your AWS EC2 Linux workloads for known vulnerabilities.
 
 ## Where to start
@@ -31,7 +31,7 @@ Each feature answers a different question about your cloud environment:
 | Check your AWS, GCP, or Azure accounts for misconfigurations | [CSPM for AWS](/solutions/security/cloud/get-started-with-cspm-for-aws.md), [CSPM for GCP](/solutions/security/cloud/get-started-with-cspm-for-gcp.md), or [CSPM for Azure](/solutions/security/cloud/get-started-with-cspm-for-azure.md) |
 | Give users access to view or manage CSPM data | [CSPM privilege requirements](/solutions/security/cloud/cspm-privilege-requirements.md) |
 | Check your Kubernetes clusters for misconfigurations | [Get started with KSPM](/solutions/security/cloud/get-started-with-kspm.md) |
-| {applies_to}`serverless: preview` {applies_to}`stack: preview 9.1` List the resources in your cloud accounts | [Cloud Asset Discovery for AWS](/solutions/security/cloud/asset-disc-aws.md), [Cloud Asset Discovery for GCP](/solutions/security/cloud/asset-disc-gcp.md), or [Cloud Asset Discovery for Azure](/solutions/security/cloud/asset-disc-azure.md) |
+| {applies_to}`security: preview` {applies_to}`stack: preview 9.1` List the resources in your cloud accounts | [Cloud Asset Discovery for AWS](/solutions/security/cloud/asset-disc-aws.md), [Cloud Asset Discovery for GCP](/solutions/security/cloud/asset-disc-gcp.md), or [Cloud Asset Discovery for Azure](/solutions/security/cloud/asset-disc-azure.md) |
 | Scan your AWS EC2 Linux workloads for known vulnerabilities | [Get started with CNVM](/solutions/security/cloud/get-started-with-cnvm.md) → [CNVM privilege requirements](/solutions/security/cloud/cnvm-privilege-requirements.md) |
 | Turn on cloud security features in a {{serverless-short}} project | [Enable cloud security features in {{serverless-short}}](/solutions/security/cloud/enable-cloud-security-features.md) |
 

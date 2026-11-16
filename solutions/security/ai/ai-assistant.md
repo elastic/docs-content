@@ -17,7 +17,7 @@ navigation_title: AI Assistant for Security
 Elastic AI Assistant for Security helps you interact with your {{elastic-sec}} data and assists with tasks such as alert investigation, incident response, and query generation. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps.
 
 :::{important}
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Starting in 9.4, [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the default chat experience in {{elastic-sec}}. To continue using AI Assistant, switch chat experiences in **GenAI Settings**. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for the differences and switching steps.
+{applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Starting in 9.4, [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the default chat experience in {{elastic-sec}}. To continue using AI Assistant, switch chat experiences in **GenAI Settings**. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md) for the differences and switching steps.
 :::
 
 :::{image} /solutions/images/security-assistant-basic-view.png
@@ -32,7 +32,7 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 
 ::::{admonition} Requirements
 * {applies_to}`stack: ga` An [Enterprise subscription](https://www.elastic.co/pricing).
-* {applies_to}`serverless: ga` An {{sec-serverless}} project with the [EASE or Security Analytics Complete feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* {applies_to}`security: ga` An {{sec-serverless}} project with the [EASE or Security Analytics Complete feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * To use AI Assistant, the **Elastic AI Assistant: All** Security [privilege](/solutions/security/manage/security-kibana-privileges.md), the **Actions and Connectors: Read** management [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and the **Monitor** Elasticsearch [Cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster).
 * To set up AI Assistant, the **Actions and Connectors : All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 * An [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), which AI Assistant uses to generate responses.
@@ -43,7 +43,8 @@ The Elastic AI Assistant is designed to enhance your analysis with smart dialogu
 
 ```{applies_to}
 stack: ga 9.2
-serverless: ga
+serverless:
+  security: ga
 ```
 
 The [GenAI and Feature Settings](/explore-analyze/ai-features/manage-access-to-ai-assistant.md) pages allow you to:
@@ -139,7 +140,8 @@ AI Assistant can remember particular information you tell it to remember. For ex
 
 ```{applies_to}
 stack: ga 9.2
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Conversations that you start with AI Assistant are private by default and not visible to other members of your team. Sharing conversations can help you keep your teammates informed about your conversations with AI Assistant, making it easier to simultaneously collaborate with your teammates and AI Assistant. You have two ways to share conversations—either with selected members or more broadly to everyone with access to the space.
@@ -435,7 +437,7 @@ The **Knowledge base** tab of the **Security AI settings** page allows you to en
 Elastic AI Assistant allows you to take full advantage of the {{elastic-sec}} platform to improve your security operations. It can help you write an {{esql}} query for a particular use case, or answer general questions about how to use the platform. Its ability to assist you depends on the specificity and detail of your questions. The more context and detail you provide, the more tailored and useful its responses will be.
 
 :::{note}
-{applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` The agent has access to index names and field metadata from your cluster. This contextual information helps improve ES|QL generation, though it may slightly increase response times.
+{applies_to}`stack: ga 9.1` {applies_to}`security: ga` The agent has access to index names and field metadata from your cluster. This contextual information helps improve ES|QL generation, though it may slightly increase response times.
 :::
 
 To maximize its usefulness, consider using more detailed prompts or asking for additional information. For instance, after asking for an {{esql}} query example, you could ask a follow-up question like, “Could you give me some other examples?” You can also ask for clarification or further exposition, for example "Provide comments explaining the query you just gave."

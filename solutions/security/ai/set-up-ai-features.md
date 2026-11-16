@@ -30,7 +30,7 @@ For the privileges that each feature needs, refer to:
 - AI Assistant: [AI Assistant for Security requirements](/solutions/security/ai/ai-assistant.md)
 - Attack Discovery: [Attack Discovery privileges](/solutions/security/ai/attack-discovery/grant-access.md)
 - {{agent-builder}}: [Permissions and access control in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md)
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6` {{alertzero}}: [{{alertzero}} privileges](/solutions/security/alertzero/alertzero-privileges.md)
+- {applies_to}`security: preview` {applies_to}`stack: preview 9.6` {{alertzero}}: [{{alertzero}} privileges](/solutions/security/alertzero/alertzero-privileges.md)
 
 ## Optional setup [set-up-ai-optional]
 
@@ -39,7 +39,8 @@ AI features work with their default settings. Change them to control which model
 ### Manage available models and features [set-up-ai-access]
 
 ```{applies_to}
-serverless: ga
+serverless:
+  security: ga
 stack: ga 9.2+
 ```
 
@@ -48,7 +49,8 @@ To limit which connectors and models AI features can use, or to turn AI features
 #### Select models for {{alertzero}} [set-up-ai-alertzero-models]
 
 ```{applies_to}
-serverless: preview
+serverless:
+  security: preview
 stack: preview 9.6
 ```
 
@@ -57,7 +59,8 @@ stack: preview 9.6
 ### Switch chat experiences [set-up-ai-chat]
 
 ```{applies_to}
-serverless: ga
+serverless:
+  security: ga
 stack: preview =9.3, ga 9.4+
 ```
 
@@ -70,7 +73,8 @@ The following sections apply to specific features. Only use them if you plan to 
 ### Install documentation for {{agent-builder}} [set-up-ai-agent-builder-docs]
 
 ```{applies_to}
-serverless: ga
+serverless:
+  security: ga
 stack: preview =9.3, ga 9.4+
 ```
 
@@ -87,7 +91,8 @@ The Knowledge Base requires a {{ml}} node of at least 4 GB. If {{agent-builder}}
 ### Turn on Attack Discovery workflows [set-up-ai-advanced-settings]
 
 ```{applies_to}
-serverless: ga
+serverless:
+  security: ga
 stack: ga 9.5+
 ```
 
@@ -96,7 +101,8 @@ To run Attack Discovery from a workflow or from {{agent-builder}}, turn on the [
 ### Set up {{alertzero}} [set-up-ai-alertzero]
 
 ```{applies_to}
-serverless: preview
+serverless:
+  security: preview
 stack: preview 9.6
 ```
 
@@ -106,5 +112,5 @@ stack: preview 9.6
 
 Some features need a separate project or a local install:
 
-- {applies_to}`serverless: preview` To use [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md), create an EASE project, which is a separate {{sec-serverless}} project type.
+- {applies_to}`security: preview` To use [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md), create an EASE project, which is a separate {{sec-serverless}} project type.
 - To use the [Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md), install it on your own machine.

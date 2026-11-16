@@ -22,7 +22,7 @@ You can learn more about an entity (host, user, or service) from the entity deta
 * The **Users** and user details pages
 * The **Hosts** and host details pages
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can also use the entity details flyout to attach an entity to a [case](/solutions/security/investigate/security-cases.md). To do this, click **Take action** at the bottom of the flyout, then select **Add to new case** or **Add to existing case**.
+{applies_to}`stack: ga 9.5+` {applies_to}`security: ga` You can also use the entity details flyout to attach an entity to a [case](/solutions/security/investigate/security-cases.md). To do this, click **Take action** at the bottom of the flyout, then select **Add to new case** or **Add to existing case**.
 
 ## Entity details flyout
 
@@ -30,7 +30,7 @@ Refer to [Details flyouts](/solutions/security/get-started/elastic-security-ui.m
 
 The entity details flyout includes the following sections:
 
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Flyout header, which displays key entity information and allows you to assign asset criticality.
+* {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Flyout header, which displays key entity information and allows you to assign asset criticality.
 * [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
 * [Risk score](#risk-score), which displays entity risk data and inputs.
 * [Behavioral anomalies](#behavioral-anomalies), which shows {{ml}} anomalies detected for the entity, mapped to the MITRE ATT&CK framework.
@@ -44,7 +44,8 @@ The entity details flyout includes the following sections:
 ### Entity summary
 ```yaml {applies_to}
 stack: ga 9.3
-serverless: ga
+serverless:
+  security: ga
 ```
 
 ::::{note}
@@ -87,14 +88,15 @@ The risk score visualization shows the entity risk score and risk level. Hover o
 
 The risk score table shows the category, score, and number of risk inputs that determine the entity risk score. Hover over the table to display the **Inspect** button, which allows you to inspect the table's queries.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
+{applies_to}`stack: ga 9.4+` {applies_to}`security: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
 
 Open the section's child flyout to access additional details about the entity's risk inputs.
 
 #### Risk score history [risk-score-history]
 ```yaml {applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Risk scoring recalculates every hour, and every calculation is retained. The risk score history chart shows the entity's score over time so you can identify when its risk posture changed. Dashed reference lines mark the **Low**, **Moderate**, **High**, and **Critical** [risk levels](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated), which helps you spot when the entity crossed a threshold.
@@ -110,7 +112,7 @@ To return to the latest calculation, click **Back to latest** in the callout, or
 The **Contexts** table shows non-alert risk inputs and their contribution scores, including:
 
 * Asset criticality level
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Watchlist membership 
+* {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Watchlist membership 
 * {applies_to}`stack: removed 9.4+, ga =9.3, preview 9.1-9.2` Privileged user status
 
 #### Alerts [risk-alerts]
@@ -120,7 +122,8 @@ The **Alerts** table shows the top 10 alerts that contributed to the risk scorin
 ### Behavioral anomalies [behavioral-anomalies]
 ```yaml {applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 ::::{admonition} Requirements
@@ -148,7 +151,8 @@ From the **Row actions** menu {icon}`boxes_vertical` of the **Anomalies** table,
 ### Visualizations [visualizations]
 ```yaml {applies_to}
 stack: preview 9.4+
-serverless: preview
+serverless:
+  security: preview
 ```
 
 ::::{admonition} Requirements
@@ -166,7 +170,8 @@ The **Visualizations** section shows a collapsible graph preview centered on the
 ### Resolution [resolution]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open a child flyout that displays all entity records linked to this entity — including the primary entity and any aliases — with their entity name, ID, source, and risk score.
@@ -197,7 +202,8 @@ This section displays details such as the entity ID, when the entity was first a
 ### Asset Criticality
 ```yaml {applies_to}
 stack: removed 9.4+, ga 9.0-9.3
-serverless: removed
+serverless:
+  security: removed
 ```
 
 The **Asset Criticality** section displays the selected entity's [asset criticality level](/solutions/security/advanced-entity-analytics/asset-criticality.md). Asset criticality contributes to the overall [entity risk score](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md). The criticality level defines how impactful the entity is when calculating the risk score.

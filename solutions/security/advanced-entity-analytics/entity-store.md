@@ -29,9 +29,9 @@ The entity store allows you to query, reconcile, maintain, and persist entity me
 
 The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
+{applies_to}`stack: ga 9.4+` {applies_to}`security: ga` [Entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md) is built on top of the entity store. It links multiple entity records representing the same real-world identity into a resolution group, consolidating their risk scores into a single view.
 
-{applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview` [Entity relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md) sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [interactive graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations). Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
+{applies_to}`stack: preview 9.4+` {applies_to}`security: preview` [Entity relationships](/solutions/security/advanced-entity-analytics/entity-relationships.md) sourced from the entity store — such as access patterns, dependencies, and resolution links — are visible in the entity details flyout's [interactive graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations). Entities that appear in both the entity store and in raw events are rendered as a single deduplicated node in the graph.
 
 When the entity store is enabled, the following resources are created for the active space:
 
@@ -102,7 +102,7 @@ To enable the entity store:
 
 Once you enable the entity store, the **Entities** section appears on the following pages:
 
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md)
+* {applies_to}`stack: ga 9.1` {applies_to}`security: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md)
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 ## Clear entity store data [clear-entity-store]
@@ -173,7 +173,8 @@ Each engine reports one of the following statuses:
 ## Supported integrations [entity-store-integrations]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 The entity store creates user, host, and service entities from data in supported source indices (mainly the [Security default data view](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security)) when the incoming events include the ECS fields needed to identify those entities. Any integration that populates standard ECS identity fields — such as `host.*`, `user.*`, `service.*`, and related `event.*` fields — can contribute to entity creation, as long as the data contains enough information for the entity store to identify and build the entity.
@@ -199,7 +200,8 @@ Examples of supported integrations include:
 ## How entities are created [entity-store-creation-criteria]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 The entity store creates an entity only when an ingested document contains enough identity information to derive a stable Entity Unique Identifier (EUID). Because [risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md), [entity resolution](/solutions/security/advanced-entity-analytics/entity-resolution.md), and [watchlist](/solutions/security/advanced-entity-analytics/watchlists.md) matching apply only to entities that exist in the store, an alert can reference a user or host that does not receive any of this processing if the source document doesn't meet the creation criteria.
@@ -253,7 +255,8 @@ A service entity is created when a document contains `service.name`. The entity 
 ## Troubleshoot entity store performance [entity-store-troubleshoot]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 The entity store runs scheduled log extraction to keep entity data up to date.
@@ -301,7 +304,7 @@ Use `frequency` to control how often extraction runs.
 
 * Decrease frequency if extraction is healthy but too resource-intensive and {{es}} CPU utilization is too high. The minimum supported value is `30s`.
 * Default: `1m`. For the `service` entity type, the default differs depending on your version:
-  * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `service` entity type defaults to `10m`.
+  * {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` The `service` entity type defaults to `10m`.
   * {applies_to}`stack: ga 9.4-9.5` The `service` entity type defaults to `1m`.
 
 #### `maxLogsPerPage`

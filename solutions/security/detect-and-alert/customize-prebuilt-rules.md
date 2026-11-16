@@ -46,13 +46,14 @@ After saving changes to a prebuilt rule, modified fields are marked with the **M
 ### After you edit a prebuilt rule [considerations-for-editing-prebuilt-rules]
 
 * **Updates might cause conflicts**: When Elastic releases an update that changes the same fields you modified, you need to resolve the conflict. Refer to [Resolve update conflicts](/solutions/security/detect-and-alert/update-prebuilt-rules.md#resolve-reduce-rule-conflicts).
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` **Revert if needed**: You can restore the original Elastic version if it's still available in your system. Keep your prebuilt rules updated so the original version stays available. Refer to [Revert to Elastic version](#revert-prebuilt-rules).
+* {applies_to}`security: ga` {applies_to}`stack: ga 9.1+` **Revert if needed**: You can restore the original Elastic version if it's still available in your system. Keep your prebuilt rules updated so the original version stays available. Refer to [Revert to Elastic version](#revert-prebuilt-rules).
 * {applies_to}`stack: ga 9.5` **Track your changes**: You can view a chronological history of the changes you've made to an installed or modified prebuilt rule, and restore it to a previous revision if needed. Refer to [View rule changes history](/solutions/security/detect-and-alert/view-rule-changes-history.md).
 
 
 ## Revert to Elastic version [revert-prebuilt-rules]
 ```{applies_to}
-serverless: ga
+serverless:
+  security: ga
 stack: ga 9.1+
 ```
 
@@ -67,7 +68,7 @@ If you've edited a prebuilt rule, you can restore it to its original Elastic ver
 If you haven't updated the rule in a while, its original version might be unavailable for comparison. You can avoid this by regularly [updating prebuilt rules](/solutions/security/detect-and-alert/update-prebuilt-rules.md).
 ::::
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Reverting doesn't apply pending Elastic updates. To apply the latest update and discard your customizations at the same time, use [Update to Elastic version](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-to-elastic-version).
+{applies_to}`security: ga` {applies_to}`stack: ga 9.4+` Reverting doesn't apply pending Elastic updates. To apply the latest update and discard your customizations at the same time, use [Update to Elastic version](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-to-elastic-version).
 
 ## Duplicate and modify prebuilt rules [duplicate-prebuilt-rules]
 

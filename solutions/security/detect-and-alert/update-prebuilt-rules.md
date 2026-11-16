@@ -138,7 +138,8 @@ Use the search bar and **Tags** filter to find specific rules. For example, filt
 
 ### Update rules and discard your customizations [update-to-elastic-version]
 ```{applies_to}
-serverless: ga
+serverless:
+  security: ga
 stack: ga 9.4+
 ```
 
@@ -166,7 +167,7 @@ If you can't edit prebuilt rules directly, **Update all** and **Update *x* selec
 | Rule | **Update all** and **Update *x* selected rule(s)** |
 |---|---|
 | Customized | Skipped. Update each rule individually, or use [Update to Elastic version](#update-to-elastic-version). |
-| Not customized {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` | Included, but listed as auto-resolved conflicts. To update only these rules, filter by **Unmodified** first. In the **Conflicts found** dialog, select **Update rules**. On {{stack}} 9.4 and 9.5, bulk updates include these rules starting in 9.4.8 and 9.5.5. Earlier versions skip them. |
+| Not customized {applies_to}`security: ga` {applies_to}`stack: ga 9.4+` | Included, but listed as auto-resolved conflicts. To update only these rules, filter by **Unmodified** first. In the **Conflicts found** dialog, select **Update rules**. On {{stack}} 9.4 and 9.5, bulk updates include these rules starting in 9.4.8 and 9.5.5. Earlier versions skip them. |
 | Not customized {applies_to}`stack: ga 9.0-9.3` | Skipped. Update each rule individually. |
 
 

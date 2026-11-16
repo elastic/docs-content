@@ -22,7 +22,7 @@ Each protection covers a different part of your environment, so the features you
 
 - **{{elastic-defend}}**: Protects Windows, macOS, and Linux hosts, including Linux VMs in the cloud. It runs on {{agent}}, which you install on each host. It can detect or block malware, ransomware, and malicious behavior.
 - **Cloud security**: Checks your cloud accounts and Kubernetes clusters against security best practices, lists your cloud assets, and scans your AWS EC2 Linux workloads for known vulnerabilities.
-- {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` **Defend for Containers**: Detects, and can block, unexpected behavior inside running Kubernetes containers.
+- {applies_to}`security: beta` {applies_to}`stack: beta 9.3` **Defend for Containers**: Detects, and can block, unexpected behavior inside running Kubernetes containers.
 
 ## Where to start
 
@@ -30,7 +30,7 @@ Each protection covers a different part of your environment, so the features you
 |---|---|
 | Protect hosts from malware, ransomware, and malicious behavior | [Configure endpoint protection with {{elastic-defend}}](/solutions/security/configure-elastic-defend.md) |
 | Check your cloud accounts and Kubernetes clusters for misconfigurations and vulnerabilities | [Set up cloud security](/solutions/security/set-up/set-up-cloud-security.md) |
-| {applies_to}`serverless: beta` {applies_to}`stack: beta 9.3` Protect Kubernetes workloads at runtime | [Get started with Defend for Containers for Kubernetes](/solutions/security/cloud/d4c/get-started-with-d4c.md) |
+| {applies_to}`security: beta` {applies_to}`stack: beta 9.3` Protect Kubernetes workloads at runtime | [Get started with Defend for Containers for Kubernetes](/solutions/security/cloud/d4c/get-started-with-d4c.md) |
 | Connect AI features to an LLM and grant users access to them | [Set up AI features](/solutions/security/ai/set-up-ai-features.md) |
 | Check what you need for entity risk scoring, asset criticality, and the entity store | [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md) |
 | Check what you need to run {{ml}} jobs and rules | [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) |

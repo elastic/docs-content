@@ -31,7 +31,7 @@ By default, a blocklist entry is recognized globally across all hosts running {{
 To add a blocklist entry:
 
 1. Depending on your version, do one of the following:
-   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Blocklist** tab.
+   * {applies_to}`security: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Blocklist** tab.
    * {applies_to}`stack: ga 9.0-9.3` Go to the **Blocklist** page using the navigation menu or the global search field.
  
 2. Click **Add blocklist entry**. The **Add blocklist** flyout appears.
@@ -46,7 +46,7 @@ To add a blocklist entry:
     2. `Field`: Select a field to identify the application being blocked:
 
         * `Hash`: The MD5, SHA-1, or SHA-256 hash value of the application’s executable.
-        * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `File name`: The name of the application’s executable, without its directory path (for example, `setup.exe`).
+        * {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` `File name`: The name of the application’s executable, without its directory path (for example, `setup.exe`).
         * `Path`: The full file path of the application’s executable.
         * `Signature`: (Windows only) The name of the application’s digital signer.
 
@@ -58,7 +58,7 @@ To add a blocklist entry:
 
         * `is one of`: Matches any of the values you enter. This is the only operator available for `Hash` conditions.
         * `is`: Matches one exact value. Available for `Signature` conditions only.
-        * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `matches`: Matches one value that can include wildcards, such as `C:\Program Files\*\setup.exe`. This operator is available for `Path` and `File name` conditions only. Available wildcards are `?` (match one character) and `*` (match zero or more characters).
+        * {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` `matches`: Matches one value that can include wildcards, such as `C:\Program Files\*\setup.exe`. This operator is available for `Path` and `File name` conditions only. Available wildcards are `?` (match one character) and `*` (match zero or more characters).
 
             ::::{note}
             Blocklist entries don’t require escaping special characters. Enter paths and file names exactly as they appear on the host (for example, `C:\Windows\explorer.exe`).
@@ -110,7 +110,8 @@ The **Blocklist** UI displays all the blocklist entries that have been added to 
 
 ```{applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 ::::{admonition} Requirements

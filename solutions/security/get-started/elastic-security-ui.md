@@ -81,7 +81,8 @@ Inline actions include the following (some actions are unavailable in some conte
 
 ```yaml {applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Throughout the {{security-app}}, clicking an alert, event, attack, host, user, or other item opens its details in a flyout over the current page.
@@ -114,7 +115,7 @@ In these versions, some details flyouts are organized into a right panel, a left
 
 The {{security-app}} contains the following pages that enable analysts to view, analyze, and manage security data.
 
-{applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` You can reorder these items in the navigation menu, or hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
+{applies_to}`stack: ga 9.5` {applies_to}`security: ga` You can reorder these items in the navigation menu, or hide the ones you don't use. Refer to [Customize your navigation menu](/explore-analyze/find-and-organize/customize-navigation.md).
 
 ### Discover [security-ui-discover]
 
@@ -127,7 +128,7 @@ Expand this section to access the following dashboards, which provide interactiv
 
 - Overview
 - Detection & Response
-- {applies_to}`stack: beta 9.3+` {applies_to}`serverless: beta` Kubernetes
+- {applies_to}`stack: beta 9.3+` {applies_to}`security: beta` Kubernetes
 - Cloud Security Posture
 - Cloud Native Vulnerability Management
 - Entity Analytics
@@ -153,7 +154,8 @@ Expand this section to access the following pages:
 
 ```yaml {applies_to}
 stack: preview =9.4, ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Expand this section to access the following pages:
@@ -176,7 +178,8 @@ View and manage alerts to monitor activity within your network. Refer to [Detect
 ### Workflows
 ```yaml {applies_to}
 stack: preview 9.3+
-serverless: preview
+serverless:
+  security: preview
 ```
 
 :::{admonition} Requirements
@@ -216,7 +219,8 @@ Open and track security issues. Refer to [Cases](/solutions/security/investigate
 ### Entity analytics
 ```yaml {applies_to}
 stack: ga 9.1
-serverless: ga
+serverless:
+  security: ga
 ```
 
 :::{admonition} Requirements
@@ -285,7 +289,7 @@ Use the management or project settings pages to access and manage:
 - {applies_to}`serverless: unavailable` [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
 - [{{integrations}}](/reference/fleet/manage-integrations.md)
 - Indices, data streams, and rollups
-- {applies_to}`serverless: ga` [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project
+- {applies_to}`security: ga` [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project
 
 
 ## Accessibility features [timeline-accessibility-features]

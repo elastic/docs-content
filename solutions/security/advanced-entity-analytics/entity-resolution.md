@@ -37,7 +37,7 @@ Entity resolution runs an automated process that matches user entities across id
 
 Automated resolution matches user entities on the following identifiers:
 
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Email addresses and other identifiers, such as a Windows security identifier (SID) or a Microsoft Entra ID globally unique identifier (GUID), through the built-in rules in the following section.
+* {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` Email addresses and other identifiers, such as a Windows security identifier (SID) or a Microsoft Entra ID globally unique identifier (GUID), through the built-in rules in the following section.
 * {applies_to}`stack: ga =9.5` By default, email addresses only. You can also turn on matching on related users listed in identity provider records through the `related_user_alias_resolution` rule in the following section.
 * {applies_to}`stack: ga =9.4` Email addresses only.
 
@@ -48,7 +48,8 @@ Matching on email addresses might produce false-positive links when non-IDP enti
 ### Built-in automated resolution rules [entity-resolution-built-in-rules]
 ```{applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Automated resolution uses built-in rules. Each rule links user entities that share a particular identifier.
@@ -58,7 +59,7 @@ You can use the Entity Store API to [list the rules]({{kib-apis}}operation/opera
 If a rule links the wrong accounts, turn the rule off first, then unlink the wrong entities from the [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#resolution) or with the [unlink API]({{kib-apis}}operation/operation-post-security-entity-store-resolution-unlink). Turning a rule off only stops new links, so links it already created stay in place. If you unlink entities while the rule is still on, it can link them again when a new entity with the same identifier appears.
 
 
-`crowdstrike_sid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+`crowdstrike_sid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 :   **Default:** Off
 
     **What it links:** Existing [CrowdStrike](integration-docs://reference/crowdstrike.md) user entities in your entity store that share a SID (`user.id`) with an [Active Directory](integration-docs://reference/entityanalytics_ad.md) user.
@@ -74,7 +75,7 @@ If a rule links the wrong accounts, turn the rule off first, then unlink the wro
 
     How email addresses are matched differs depending on your version:
 
-    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Email addresses are compared case-insensitively. Users from the same identity provider that share an address are left unlinked.
+    {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` Email addresses are compared case-insensitively. Users from the same identity provider that share an address are left unlinked.
 
     {applies_to}`stack: ga =9.5` Email addresses must match exactly, including case, and users from the same identity provider that share an address are also linked.
 
@@ -82,7 +83,7 @@ If a rule links the wrong accounts, turn the rule off first, then unlink the wro
 
     **When to turn it off:** If shared mailboxes or role accounts produce false links.
 
-`entra_guid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+`entra_guid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 :   **Default:** On
 
     **What it links:** Microsoft Defender identities and Entra ID users that share a GUID (`user.id`).
@@ -100,7 +101,7 @@ If a rule links the wrong accounts, turn the rule off first, then unlink the wro
 
     **When to turn it on:** If the related users listed in your identity provider records should be linked.
 
-`upn_cross_field_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+`upn_cross_field_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 :   **Default:** Off
 
     **What it links:** [Microsoft 365](integration-docs://reference/o365.md) user entities and Entra ID users that share a user principal name. User principal names are compared case-insensitively.
@@ -109,7 +110,7 @@ If a rule links the wrong accounts, turn the rule off first, then unlink the wro
 
     **When to turn it on:** Microsoft 365 audit events don't create user entities, so in most environments this rule has nothing to link. Turn it on only if your entity store contains Microsoft 365 user entities.
 
-`windows_sid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+`windows_sid_bridge` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 :   **Default:** On
 
     **What it links:** User entities that share a Windows SID (`user.id`), including users seen on multiple hosts in Windows or CrowdStrike data. Windows domain accounts seen on several hosts are linked even before the Active Directory user is available. When that user arrives, the group is linked to it. Well-known SIDs, such as `LocalSystem`, are excluded.

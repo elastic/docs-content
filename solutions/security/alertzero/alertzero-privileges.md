@@ -24,7 +24,8 @@ To approve an action, a role also needs the [privileges to run that action](#ale
 
 ```{applies_to}
 stack: unavailable
-serverless: preview
+serverless:
+  security: preview
 ```
 
 In {{serverless-short}}, assign one of these [predefined roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table):

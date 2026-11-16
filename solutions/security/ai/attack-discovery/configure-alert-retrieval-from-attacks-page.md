@@ -16,9 +16,9 @@ You can configure which alerts Attack Discovery retrieves, and how discoveries a
 
 | Your setup | Available in | Go to |
 |---|---|---|
-| [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings) is turned on. Configure alert retrieval methods, generation, and validation for manual runs and schedules. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure alert retrieval, generation, and validation](#attacks-page-settings-flyout) |
-| Attack Discovery Workflows is turned off. Configure alerts for manual runs with the query bar, time filter, and alerts slider. | {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | [Configure alerts for manual runs with the query bar and alerts slider](#attacks-page-classic-settings) |
-| Attack Discovery Workflows is turned off, or not available in your version. Configure alerts for scheduled runs with the query bar, time filter, and alerts slider. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`serverless: ga` | [Configure alerts for scheduled runs with the query bar and alerts slider](#attacks-page-schedule-alert-selection) |
+| [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings) is turned on. Configure alert retrieval methods, generation, and validation for manual runs and schedules. | {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | [Configure alert retrieval, generation, and validation](#attacks-page-settings-flyout) |
+| Attack Discovery Workflows is turned off. Configure alerts for manual runs with the query bar, time filter, and alerts slider. | {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | [Configure alerts for manual runs with the query bar and alerts slider](#attacks-page-classic-settings) |
+| Attack Discovery Workflows is turned off, or not available in your version. Configure alerts for scheduled runs with the query bar, time filter, and alerts slider. | {applies_to}`stack: preview =9.4, ga 9.5+` {applies_to}`security: ga` | [Configure alerts for scheduled runs with the query bar and alerts slider](#attacks-page-schedule-alert-selection) |
 
 ## Configure alert retrieval, generation, and validation [attacks-page-settings-flyout]
 ```{applies_to}

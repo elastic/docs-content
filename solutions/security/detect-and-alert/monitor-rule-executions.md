@@ -20,7 +20,7 @@ Detection rules only protect your environment when they run reliably. This page 
 |-----------|-------------|
 | Check if a rule succeeded, failed, or has warnings | [Rule execution status](#rule-status) (Rules table) |
 | Get a summary of rule execution details and access individual rules | [Rule Monitoring tab](#rule-monitoring-tab) |
-| {applies_to}`{ "serverless": "ga", "stack": "ga 9.4+" }` See rule execution outcomes and gap duration | [Rule Monitoring Overview panel](/solutions/security/detect-and-alert/fill-rule-gaps.md#rule-monitoring-tab-gaps) (Rule Monitoring tab) |
+| {applies_to}`{ "serverless": { "security": "ga" }, "stack": "ga 9.4+" }` See rule execution outcomes and gap duration | [Rule Monitoring Overview panel](/solutions/security/detect-and-alert/fill-rule-gaps.md#rule-monitoring-tab-gaps) (Rule Monitoring tab) |
 | Review a specific rule's run history | [Execution results](#rule-execution-logs) (rule details page) |
 | {applies_to}`stack: ga 9.4+` Handle deprecated prebuilt rules | [Handle deprecated prebuilt rules](/solutions/security/detect-and-alert/manage-detection-rules.md#deprecated-prebuilt-rules) ({{siem-rules-ui}} page and rule details) |
 | Fill gaps from missed rule runs | [Fill rule execution gaps](/solutions/security/detect-and-alert/fill-rule-gaps.md) |
@@ -55,7 +55,8 @@ For detailed information on a rule, the alerts it generated, and associated erro
 
 ### Check rule health and gaps at a glance [rule-monitoring-overview]
 ```{applies_to}
-serverless: ga
+serverless:
+  security: ga
 stack: ga 9.4+
 ```
 

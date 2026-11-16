@@ -112,7 +112,8 @@ To import rules with actions, you need at least `Read` privileges. To overwrite 
 
 ```{applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Assigning `All` on `Rules` grants the full set of rule actions by default (create, edit, delete, enable, disable, and the rest). **Customize sub-feature privileges** lets you turn off [specific actions](/solutions/security/manage/security-kibana-privileges.md#rules-and-exceptions-sub-feature-privileges) for a role. For example, you can remove one capability for the role (such as enabling or disabling rules) while still granting the role access to other actions that `All` provides. 
@@ -211,7 +212,8 @@ To create the `.lists` and `.items` data streams in your space, visit the **{{si
 ## Predefined {{serverless-full}} roles [predefined-serverless-roles-detections]
 
 ```yaml {applies_to}
-serverless: ga
+serverless:
+  security: ga
 ```
 
 {{serverless-full}} includes predefined roles with detection privileges:

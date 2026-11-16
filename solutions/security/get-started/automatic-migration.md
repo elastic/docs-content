@@ -18,11 +18,11 @@ products:
 
 Move your detection rules and dashboards from Microsoft Sentinel, Splunk, or QRadar to {{elastic-sec}} without rebuilding them by hand. Automatic Migration translates them into {{elastic-sec}} rules and dashboards that you can review and edit. It supports the following asset types:
 
-* {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` Microsoft Sentinel rules
-* {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`serverless: ga` Splunk Classic dashboards (v1.1)
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Splunk Dashboard Studio dashboards
-* {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`serverless: ga` Splunk rules
-* {applies_to}`stack: ga 9.4+, preview 9.3` {applies_to}`serverless: ga` QRadar rules
+* {applies_to}`stack: preview 9.5+` {applies_to}`security: preview` Microsoft Sentinel rules
+* {applies_to}`stack: ga 9.4+, preview 9.2-9.3` {applies_to}`security: ga` Splunk Classic dashboards (v1.1)
+* {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Splunk Dashboard Studio dashboards
+* {applies_to}`stack: preview =9.0, ga 9.1+` {applies_to}`security: ga` Splunk rules
+* {applies_to}`stack: ga 9.4+, preview 9.3` {applies_to}`security: ga` QRadar rules
 
 The following table summarizes which assets Automatic Migration can and cannot translate:
 
@@ -53,7 +53,7 @@ You can ingest your data before migrating your assets, or migrate your assets fi
 * {{Stack}} users: {{ml}} must be enabled.
 * {{serverless-short}} users: a [Security Complete](/deploy-manage/deploy/elastic-cloud/project-settings.md) subscription.
 * {{ech}} users: {{ml}} must be enabled. We recommend a minimum size of 4GB of RAM per {{ml}} zone.
-* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To use [{{agent-builder}}](#siem-migration-agent-builder):
+* {applies_to}`security: preview` {applies_to}`stack: preview 9.6+` To use [{{agent-builder}}](#siem-migration-agent-builder):
 
   - At least `Read` [privileges](/explore-analyze/ai-features/agent-builder/permissions.md#kib-privileges) for **Agent Builder**.
   - {{agent-builder}} as the [chat experience](/solutions/security/ai/set-up-ai-features.md#set-up-ai-chat) in your space. Otherwise, **Add to chat** doesn't appear.
@@ -206,7 +206,7 @@ You cannot edit Elastic-authored rules using this interface, but after they are 
 
 Click a rule's name to open its details flyout to the **Translation** tab, which shows the source rule alongside the translated — or partially translated — Elastic version. You can update any part of the rule. When finished, click **Save**.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
+{applies_to}`security: preview` {applies_to}`stack: preview 9.6+` To have {{agent-builder}} propose and apply a fix for you, refer to [Fix translated rules in chat](#siem-migration-fix-rules-in-chat).
 
 ::::{image} /solutions/images/security-siem-migration-edit-rule.png
 :alt: The rule details flyout
@@ -235,7 +235,7 @@ This section describes the **Translated dashboards** page's interface and the da
 - {applies_to}`stack: preview =9.3`
 QRadar Building Block rules can appear in QRadar migrations. You can identify them by their `BB:` prefix. You should not enable these rules, because they will generate noisy alerts. If you do enable them, we recommend you delete them.
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+`
+- {applies_to}`security: ga` {applies_to}`stack: ga 9.4+`
 Building block rule logic is included automatically in translated rules. No action is required.
 
 :::::

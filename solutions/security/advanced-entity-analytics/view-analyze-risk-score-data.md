@@ -27,7 +27,7 @@ On the [Entity analytics page](/solutions/security/advanced-entity-analytics/mon
 If you have enabled the [entity store](entity-store.md), you'll also get access to the **Entities** section, where you can view all hosts, users, and services along with their risk and asset criticality data.
 
 Access this risk data from the following pages:
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) 
+* {applies_to}`stack: ga 9.1` {applies_to}`security: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) 
 * [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
 
 
@@ -174,7 +174,8 @@ In the entity details flyouts, you can access the risk score data in the [risk s
 ## Analyze entities over time [historical-entity-analysis]
 ```yaml {applies_to}
 stack: ga 9.2
-serverless: ga
+serverless:
+  security: ga
 ```
 
 The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md) allows you to analyze how entity attributes change over time, making it easier to investigate past activity, track trends, and identify unusual behavior or changes that may indicate risk. Use time-based queries in [Discover](/explore-analyze/discover.md) to answer questions such as:
@@ -185,7 +186,7 @@ The [entity store](/solutions/security/advanced-entity-analytics/entity-store.md
 
 By analyzing current and past entity data, you can understand how your environment and its entities evolve over time.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` To review an entity's scoring history without writing a query, use the [risk score history chart](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) in the entity details flyout.
+{applies_to}`stack: ga 9.5+` {applies_to}`security: ga` To review an entity's scoring history without writing a query, use the [risk score history chart](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) in the entity details flyout.
 
 ::::{note}
 If you enabled the entity store before upgrading to 9.2, you'll need to re-start it using the **On**/**Off** toggle to access the historical analysis feature.

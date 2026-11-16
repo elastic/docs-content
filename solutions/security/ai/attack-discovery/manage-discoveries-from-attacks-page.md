@@ -87,8 +87,8 @@ Use the controls at the top of the Attacks table to narrow results:
 | KQL search | Enter queries in the search bar. Autocomplete includes fields from both attacks and alerts. |
 | Date/time picker | Set a specific time range. |
 | Status filter | Filter by [status](#attacks-manage): **Open**, **Acknowledged**, or **Closed**. |
-| {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Type filter | Show **Scheduled** attacks, **Manually generated** attacks, or both. |
-| {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Connector filter | Filter attacks by the LLM connector that generated them. |
+| {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` Type filter | Show **Scheduled** attacks, **Manually generated** attacks, or both. |
+| {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` Connector filter | Filter attacks by the LLM connector that generated them. |
 | Assignees filter | Click **Filter by assignees** to show only attacks or alerts [assigned](#attacks-manage) to specific users. |
 | Sort | Use the **Sort by** menu to sort by **Most recent**, **Least recent**, **Most alerts**, or **Least alerts**. |
 

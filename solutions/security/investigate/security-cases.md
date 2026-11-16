@@ -21,12 +21,12 @@ Create cases to collect and share information about security incidents and inves
 
 Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}} lets you:
 
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [Set an alert closing reason when closing a case](#cases-set-closing-reason)
+* {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` [Set an alert closing reason when closing a case](#cases-set-closing-reason)
 * [View case metrics](#cases-view-metrics)
 * [Attach events from Timeline](#cases-add-events)
 * [Add threat intelligence indicators](#cases-indicators)
 * [Attach Timelines to preserve investigation context](#cases-timeline)
-* {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` [Attach entities under investigation](#cases-add-entities)
+* {applies_to}`stack: preview 9.5` {applies_to}`security: preview` [Attach entities under investigation](#cases-add-entities)
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
@@ -35,7 +35,8 @@ Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}}
 ## Set an alert closing reason when closing a case [cases-set-closing-reason]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 If **Sync alert status** is on, closing the case opens the **Select alert close reason** popup, where you can choose how attached detection alerts are closed. You can close the attached alerts without a reason, or specify an alert closing reason. 

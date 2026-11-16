@@ -42,7 +42,7 @@ Launch the response console from any of the following places in {{elastic-sec}}:
 * Endpoint details flyout → **Take action** → **Respond**
 * Alert details flyout → **Take action** → **Respond**
 * Host details page → **Respond**
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` Event details flyout → **Take action** → **Respond** 
+* {applies_to}`stack: ga 9.1` {applies_to}`security: ga` Event details flyout → **Take action** → **Respond** 
 
 To perform an action on the endpoint, enter a [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the input area at the bottom of the console, then press **Return**. Output from the action is displayed in the console.
 
@@ -69,12 +69,13 @@ The following response action commands are available in the response console.
 ### `cancel` [cancel]
 ```yaml {applies_to}
 stack: ga 9.2+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 ::::{note}
 This response action is supported for:
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
+* {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) and [Microsoft Defender for Endpoint](/solutions/security/endpoint-response-actions/third-party-response-actions.md#defender-response-actions) hosts.
 * {applies_to}`stack: ga 9.2-9.4` Microsoft Defender for Endpoint–enrolled hosts only.
  
 ::::
@@ -84,7 +85,8 @@ Cancel a pending or in-progress action on the host. This allows you to force-can
 #### {{elastic-defend}} 
 ```yaml {applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 For {{elastic-defend}}, you must include the following parameter to identify the action to cancel:
@@ -112,7 +114,8 @@ Example: `cancel --action="action-123-456-789" --force --comment="Force-cancelin
 #### Microsoft Defender for Endpoint
 ```yaml {applies_to}
 stack: ga 9.2+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 For Microsoft Defender for Endpoint, you must include the following parameter to identify the action to cancel:
@@ -215,14 +218,15 @@ Example: `kill-process --processName cat --comment "Terminate suspicious process
 ### `memory-dump` [memory-dump]
 ```yaml {applies_to}
 stack: ga 9.3+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Trigger a memory dump on a host. Use this action to capture volatile artifacts—such as in-memory malware, credentials, and injected payloads—for advanced forensic analysis.
 
 ::::{note}
 This response action is supported for:
-  - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Windows and Linux endpoints
+  - {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Windows and Linux endpoints
   - {applies_to}`stack: ga =9.3` Windows endpoints only
 ::::
 
@@ -239,7 +243,7 @@ Use one of the following parameters to specify the type of memory dump:
     * `--pid`: The process ID (PID) of the process to dump.
     * `--entityId`: The entity ID of the process to dump.
 
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` `--raw`: Generate a raw dump of the host's physical memory. No other arguments are required when using this parameter.
+* {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` `--raw`: Generate a raw dump of the host's physical memory. No other arguments are required when using this parameter.
   ::::{note}
   Raw memory dumps are only supported on Windows endpoints running {{agent}} 9.4.6 or later, except 9.5.0 and 9.5.1. The host must have free disk space of at least twice its physical RAM.
   ::::
@@ -304,7 +308,7 @@ For CrowdStrike, you must include one of the following parameters to identify th
 * `--Raw`: The full script content provided directly as a string.
 * `--CloudFile`: The name of the script stored in a cloud storage location.
 
-   {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` When using this parameter, select from a list of saved custom scripts.
+   {applies_to}`stack: ga 9.1` {applies_to}`security: ga` When using this parameter, select from a list of saved custom scripts.
 
 * `--HostPath`: The absolute or relative file path of the script located on the host machine.
 
@@ -328,7 +332,8 @@ Examples:
 #### {{elastic-defend}} [runscript-defend]
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 For {{elastic-defend}}, you must include the following parameter to identify the script you want to run:
@@ -349,7 +354,8 @@ Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.ba
 #### Microsoft Defender for Endpoint
 ```yaml {applies_to}
 stack: ga 9.1
-serverless: ga
+serverless:
+  security: ga
 ```
 
 For Microsoft Defender for Endpoint, you must include the following parameter to identify the script you want to run:
@@ -372,7 +378,8 @@ Example: `runscript --ScriptName="Script2.sh" --Args="-Verbose true"`
 #### SentinelOne
 ```yaml {applies_to}
 stack: ga 9.2
-serverless: ga
+serverless:
+  security: ga
 ```
 For SentinelOne, you must include the following parameter to identify the script you want to run:
 

@@ -87,7 +87,8 @@ System actions operate within {{kib}} to:
 
 ```{applies_to}
 stack: ga
-serverless: ga
+serverless:
+  security: ga
 ```
 
 {{kib}} uses an API key to authorize rule execution each time a rule runs. The key is used to:

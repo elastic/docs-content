@@ -48,10 +48,10 @@ On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect t
 | 4634 | An account was logged off. |
 | 4648 | A logon was attempted using explicit credentials. |
 | 4672 | Special privileges were assigned to a new logon. |
-| 4720 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | A user account was created. |
+| 4720 {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | A user account was created. |
 | 4800 | The workstation was locked. |
 | 4801 | The workstation was unlocked. |
-| 5382 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Vault credentials were read. |
+| 5382 {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | Vault credentials were read. |
 
 {{elastic-defend}} doesn't collect other user-related events, such as user account deletion or modification. To collect these events, use the [Custom Windows Event Logs](integration-docs://reference/winlog/index.md) integration.
 
@@ -66,7 +66,7 @@ On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect t
 
 | Windows event ID | Description |
 | --- | --- |
-| 4697 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | A service was installed in the system. |
+| 4697 {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | A service was installed in the system. |
 
 Service creation and modification can also be detected in registry activity, for which {{elastic-defend}} has internal rules such as [Registry or File Modification from Suspicious Memory](https://github.com/elastic/protections-artifacts/blob/6d54ae289b290b1d42a7717569483f6ce907200a/behavior/rules/persistence_registry_or_file_modification_from_suspicious_memory.toml).
 
@@ -83,8 +83,8 @@ On Windows, {{elastic-defend}} uses Event Tracing for Windows (ETW) to collect t
 
 | Windows event ID | Description |
 | --- | --- |
-| 4698 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | A scheduled task was created. |
-| 4702 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | A scheduled task was updated. |
+| 4698 {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | A scheduled task was created. |
+| 4702 {applies_to}`stack: ga 9.5+` {applies_to}`security: ga` | A scheduled task was updated. |
 
 For complete capture of all or specific Windows security events, consider the [Custom Windows Event Logs](integration-docs://reference/winlog/index.md) integration.
 
@@ -98,26 +98,26 @@ On Windows, {{elastic-defend}} monitors calls to sensitive Windows APIs that mal
 :::{dropdown} Monitored Windows APIs
 * `AmsiScanBuffer`
 * `connect`
-* `CreateProcessAsUserA` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `CreateProcessAsUserW` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+* `CreateProcessAsUserA` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
+* `CreateProcessAsUserW` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 * `DeviceIoControl`
 * `GetAsyncKeyState`
-* `ImpersonateLoggedOnUser` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `ImpersonateNamedPipeClient` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `INetFwRules::Add` {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga`
-* `InternetOpenUrl` {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga`
+* `ImpersonateLoggedOnUser` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
+* `ImpersonateNamedPipeClient` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
+* `INetFwRules::Add` {applies_to}`stack: ga 9.2+` {applies_to}`security: ga`
+* `InternetOpenUrl` {applies_to}`stack: ga 9.3+` {applies_to}`security: ga`
 * `IoCreateDevice`
 * `IWbemServices` methods (WMI operations)
 * `IWbemServices::PutInstance` for WMI permanent event subscription creation
-* `ldap_search` {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga`
+* `ldap_search` {applies_to}`stack: ga 9.2+` {applies_to}`security: ga`
 * `MapViewOfFile`
 * `MapViewOfFile2`
-* `NtCreateProcess` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `NtCreateProcessEx` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `NtCreateUserProcess` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `NtFsControlFile` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+* `NtCreateProcess` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
+* `NtCreateProcessEx` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
+* `NtCreateUserProcess` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
+* `NtFsControlFile` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 * `NtQueueApcThread`
-* `NtSetInformationThread` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+* `NtSetInformationThread` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 * `NtSuspendProcess`
 * `OpenProcess`
 * `OpenThread`
@@ -125,16 +125,16 @@ On Windows, {{elastic-defend}} monitors calls to sensitive Windows APIs that mal
 * `ReadProcessMemory`
 * `RegisterRawInputDevices`
 * `SetThreadContext`
-* `SetThreadToken` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+* `SetThreadToken` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 * `SetWindowsHookEx`
 * `SuspendThread`
-* `TpAllocWork` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
-* `TpCallbackStart` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+* `TpAllocWork` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
+* `TpCallbackStart` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga`
 * `VirtualAlloc`
 * `VirtualAllocEx`
 * `VirtualProtect`
 * `VirtualProtectEx`
-* `WinHttpOpenRequest` {applies_to}`stack: ga 9.3+` {applies_to}`serverless: ga`
+* `WinHttpOpenRequest` {applies_to}`stack: ga 9.3+` {applies_to}`security: ga`
 * `Wow64SetThreadContext`
 * `WriteProcessMemory`
 :::

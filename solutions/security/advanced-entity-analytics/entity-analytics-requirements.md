@@ -41,14 +41,15 @@ To install or run risk scoring, you need the following:
 | --- | --- | --- | --- |
 | Install risk scoring | `manage_index_templates`<br> `manage_transform`<br> `manage_ingest_pipelines` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 | Run risk scoring | `manage_transform` | N/A | **Read** for the **Security** feature |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Preview the risk score results | N/A | `Read` for `.alerts-security.alerts-*` | **Read** for the **Security** feature |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View alert risk contributions in entity details | N/A | N/A | **Read** for the **Security** → **Alerts** feature |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View the **Engine Status** tab | `manage_index_templates`<br>`manage_transform`<br>`manage_ingest_pipelines`<br>`manage_enrich` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
+| {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` Preview the risk score results | N/A | `Read` for `.alerts-security.alerts-*` | **Read** for the **Security** feature |
+| {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` View alert risk contributions in entity details | N/A | N/A | **Read** for the **Security** → **Alerts** feature |
+| {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` View the **Engine Status** tab | `manage_index_templates`<br>`manage_transform`<br>`manage_ingest_pipelines`<br>`manage_enrich` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 
 
 ### Predefined roles [ers_roles]
 ```yaml {applies_to}
-serverless: all
+serverless:
+  security: all
 ```
 
 | Action | Predefined role |
@@ -113,7 +114,8 @@ To use asset criticality, you need the following:
 
 ### Predefined roles [ac_roles]
 ```yaml {applies_to}
-serverless: all
+serverless:
+  security: all
 ```
 
 | Action | Predefined role |

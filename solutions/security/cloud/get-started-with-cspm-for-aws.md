@@ -47,7 +47,7 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 :::
 
 7. In **Deployment options**, select the deployment mode:
-    * {applies_to}`{serverless: ga, stack: ga 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`{serverless: { security: ga }, stack: ga 9.5+}` Select **Elastic Managed Integration**.
     * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to AWS. The following methods are available:
 

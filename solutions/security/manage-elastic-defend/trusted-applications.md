@@ -53,7 +53,7 @@ By default, a trusted application is recognized globally across all hosts runnin
 To add a trusted application:
 
 1. Depending on your version, do one of the following:
-   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Trusted applications** tab.
+   * {applies_to}`security: ga` {applies_to}`stack: ga 9.4+` Go to the **Artifacts** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Trusted applications** tab.
    * {applies_to}`stack: ga 9.0-9.3` Go to the **Trusted applications** page using the navigation menu or the global search field.
 
 2. Click **Add trusted application**.
@@ -108,7 +108,7 @@ To add a trusted application:
    Define more complex conditions, such as trusting specific file paths or remote IP addresses.
 
     1. `Select operating system`: Select the appropriate operating system from the drop-down.
-    2. {applies_to}`stack: ga 9.3+`{applies_to}`serverless: ga`(Optional) Turn on the **Process Descendants** toggle to make your exception apply to processes that are descendants of your new trusted application.
+    2. {applies_to}`stack: ga 9.3+`{applies_to}`security: ga`(Optional) Turn on the **Process Descendants** toggle to make your exception apply to processes that are descendants of your new trusted application.
     3. `Field`: Select a field to identify the trusted application.
     4. `Operator`: Select an operator to define the condition:
        * `is`
@@ -162,7 +162,8 @@ The **Trusted applications** UI displays all the trusted applications that have 
 
 ```{applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 ::::{admonition} Requirements

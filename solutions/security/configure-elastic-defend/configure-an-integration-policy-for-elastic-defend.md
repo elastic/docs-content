@@ -19,11 +19,11 @@ After the {{agent}} is installed with the {{elastic-defend}} integration, severa
 * Event collection
 * Antivirus settings
 * Trusted applications
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` Trusted devices
+* {applies_to}`security: ga` {applies_to}`stack: ga 9.2+` Trusted devices
 * Event filters
 * Host isolation exceptions
 * Blocked applications 
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` {{elastic-endpoint}} exceptions
+* {applies_to}`security: ga` {applies_to}`stack: ga 9.4+` {{elastic-endpoint}} exceptions
 
 You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then follow the steps for [adding the {{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md#add-security-integration).
 
@@ -74,11 +74,11 @@ To configure an integration policy:
 4. To review the endpoint policy artifacts assigned to this integration policy, click the following tabs:
 
     * [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md)
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` [Trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md)
+    * {applies_to}`security: ga` {applies_to}`stack: ga 9.2+` [Trusted devices](/solutions/security/manage-elastic-defend/trusted-devices.md)
     * [Event filters](/solutions/security/manage-elastic-defend/event-filters.md)
     * [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md)
     * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md) 
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` [Endpoint exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md)
+    * {applies_to}`security: ga` {applies_to}`stack: ga 9.4+` [Endpoint exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md)
  
    On these tabs, you can:
 
@@ -89,7 +89,7 @@ To configure an integration policy:
 
     ::::{note}
     You can’t create a new endpoint policy artifact while configuring an integration policy. To create a new artifact, go to: 
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+`  The **Artifacts** page, then select the tab for the artifact you want to create.
+    * {applies_to}`security: ga` {applies_to}`stack: ga 9.4+`  The **Artifacts** page, then select the tab for the artifact you want to create.
     * {applies_to}`stack: ga 9.0-9.3` The artifact's dedicated page (for example, to create a new trusted application, go to the **Trusted applications** page).
     ::::
 
@@ -236,18 +236,19 @@ This section helps you reduce vulnerabilities that attackers can target on Windo
 :class: note
 In {{serverless-short}}, attack surface reduction requires the Endpoint Protection Essentials [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Registry credential hardening also requires an Enterprise subscription in {{stack}}, or the Endpoint Protection Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+{applies_to}`stack: ga 9.6+` {applies_to}`security: ga` Registry credential hardening also requires an Enterprise subscription in {{stack}}, or the Endpoint Protection Complete [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 ::::
 
 **Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the Security Account Manager (`SAM`), `SECURITY`, and `SYSTEM` registry hives on Windows endpoints, a common credential dumping technique. [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
+{applies_to}`stack: ga 9.6+` {applies_to}`security: ga` **Registry credential hardening**: Blocks attempts to save the Security Account Manager (`SAM`), `SECURITY`, and `SYSTEM` registry hives on Windows endpoints, a common credential dumping technique. [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
 
 
 ## AI data collection [ai-data-collection]
 ```yaml {applies_to}
 stack: preview 9.6+
-serverless: preview
+serverless:
+  security: preview
 ```
 
 {{elastic-defend}} can identify AI tools running on your hosts and add that context to the events it collects from them, which improves visibility into AI activity on your hosts.
@@ -265,7 +266,8 @@ For AI event enrichment to take effect on a host, the host must be running {{ela
 
 ```yaml {applies_to}
 stack: ga 9.2
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Device control helps protect your Windows and Mac endpoints from data loss, malware, and unauthorized access by managing which devices can connect to your computers. Specifically, it restricts which external USB storage devices can connect to hosts that have {{elastic-defend}} installed. 
@@ -286,7 +288,8 @@ To collect device control data, {{elastic-defend}} must be updated to at least v
 ### Access levels for Windows devices
 ```yaml {applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Device control supports the following USB storage access levels:
@@ -315,7 +318,7 @@ In the **Settings** section, select which categories of events to collect on eac
 |---|---|---|---|
 | **API** | ✓ | — | — |
 | **DLL and Driver Load** | ✓ | — | — |
-| **DNS** | ✓ | ✓ | {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` ✓ |
+| **DNS** | ✓ | ✓ | {applies_to}`security: ga` {applies_to}`stack: ga 9.3+` ✓ |
 | **File** | ✓ | ✓ | ✓ |
 | **Network** | ✓ | ✓ | ✓ |
 | **Process** | ✓ | ✓ | ✓ |

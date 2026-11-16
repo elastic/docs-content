@@ -60,7 +60,7 @@ For other sources, and on self-managed deployments, use an integration that runs
 
 | Integration type | Who runs the collector | Data sources | To get started |
 |---|---|---|---|
-| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/reference/managed-integrations/index.md) | Elastic. You only provide credentials, such as an API key. | Cloud services, through an API | [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md). |
+| {applies_to}`security: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/reference/managed-integrations/index.md) | Elastic. You only provide credentials, such as an API key. | Cloud services, through an API | [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md). |
 | Integrations that use [{{agent}}](/reference/fleet/index.md) | You. You install, update, and scale {{agent}} with {{fleet}}. | The host where {{agent}} runs, or remote sources such as syslog, cloud storage, or an API | [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md). |
 
 ### Find and add an integration [security-ingest-add-integration]
@@ -79,7 +79,7 @@ After you decide which data you need and how to collect it, add the integration:
 5. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
 6. Follow the prompts to configure the integration. If you're adding an {{managed-integration}}, also select it as the deployment mode:
 
-   - {applies_to}`{serverless: ga, stack: ga 9.5+}` In the **Deployment** section, select **Elastic Managed Integration**.
+   - {applies_to}`{serverless: { security: ga }, stack: ga 9.5+}` In the **Deployment** section, select **Elastic Managed Integration**.
    - {applies_to}`{stack: preview 9.0-9.4}` In the **Deployment options** section, select **Agentless**.
 
 7. Select **Save and continue**.

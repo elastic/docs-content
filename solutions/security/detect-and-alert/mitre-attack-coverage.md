@@ -17,7 +17,7 @@ description: View which MITRE ATT&CK and MITRE ATLAS tactics and techniques your
 Use the **MITRE coverage** page to find gaps in your detection coverage and close them. The page shows how your installed detection rules, both Elastic prebuilt and custom, cover the adversary tactics and techniques of these frameworks:
 
 * [MITRE ATT&CK®](https://attack.mitre.org): Attacks on enterprise IT systems.
-* [MITRE ATLAS™](https://atlas.mitre.org): Attacks on AI and {{ml}} systems, such as prompt injection. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` 
+* [MITRE ATLAS™](https://atlas.mitre.org): Attacks on AI and {{ml}} systems, such as prompt injection. {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` 
 
 ## Open the MITRE coverage page [access-mitre-page]
 
@@ -46,13 +46,14 @@ Cells are darker when a technique has more rules matching the current filters, a
 ::::{note}
 The grid counts only installed rules that are mapped to the framework you're viewing. If a rule you expect is missing, check that it's installed and that its MITRE mappings are set in the rule's **Advanced settings**.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` If some rules use tactics or techniques that the supported MITRE version no longer includes, a callout about outdated mappings appears. Select **View rules** to find them, then [update their mappings](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+{applies_to}`stack: ga 9.5+` {applies_to}`security: ga` If some rules use tactics or techniques that the supported MITRE version no longer includes, a callout about outdated mappings appears. Select **View rules** to find them, then [update their mappings](/solutions/security/detect-and-alert/remap-mitre-attack.md).
 ::::
 
 ### View MITRE ATLAS coverage [view-mitre-atlas-coverage]
 ```{applies_to}
 stack: ga 9.6+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 To view the coverage grid for MITRE ATLAS [v2026.09](https://github.com/mitre-atlas/atlas-data/releases/tag/v2026.09), select the **MITRE ATLAS** tab. The grid works the same way as on the **MITRE ATT&CK** tab, with MITRE ATLAS tactics, such as AI Model Access, as columns. If a rule is mapped to both frameworks, it counts toward coverage on both tabs.

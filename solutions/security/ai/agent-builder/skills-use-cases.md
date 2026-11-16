@@ -43,11 +43,11 @@ Use this skill to find risky entities or profile specific hosts, users, services
 | Which users have the highest risk scores? | Return top N users sorted by normalized risk score, with risk level and asset criticality. |
 | Has `host-12`'s risk score changed significantly in the last 90 days? | Compare current and historical risk scores, flag changes greater than 20 points as significant, and summarize what drove the change. |
 | What are the riskiest hosts that are high-impact assets? | Filter for entities with criticality `high_impact` or `extreme_impact` and sort by risk score. |
-| Set `host-12`'s asset criticality to high impact {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`|  Update the entity's asset criticality and recalculate its risk score. |
-| Show the relationship graph for `host-12` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Render a preview of the entity's [relationship graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) in the chat, with a link to the full interactive graph. |
-| Chart `user-42`'s risk score over the last 30 days {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Render a [risk score history](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) chart and summarize the trend. |
-| When did `user-42` first access `host-12`? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Query the entity's [relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) history for when the relationship was first or last observed, or which hosts or users an entity related to over a time window. |
-| Who is on the Executives watchlist? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Look up the watchlist by name and list its members. |
+| Set `host-12`'s asset criticality to high impact {applies_to}`stack: ga 9.5+` {applies_to}`security: ga`|  Update the entity's asset criticality and recalculate its risk score. |
+| Show the relationship graph for `host-12` {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` | Render a preview of the entity's [relationship graph](/solutions/security/advanced-entity-analytics/view-entity-details.md#visualizations) in the chat, with a link to the full interactive graph. |
+| Chart `user-42`'s risk score over the last 30 days {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` | Render a [risk score history](/solutions/security/advanced-entity-analytics/view-entity-details.md#risk-score-history) chart and summarize the trend. |
+| When did `user-42` first access `host-12`? {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` | Query the entity's [relationship](/solutions/security/advanced-entity-analytics/entity-relationships.md) history for when the relationship was first or last observed, or which hosts or users an entity related to over a time window. |
+| Who is on the Executives watchlist? {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` | Look up the watchlist by name and list its members. |
 
 ![Entity Analytics skill in Agent Builder](/solutions/images/security-ab-skill-ea.png)
 
@@ -75,9 +75,9 @@ Use this skill to manage [entity watchlists](/solutions/security/advanced-entity
 | Add `user-42` and `user-99` to the Executives watchlist | Resolve the watchlist by name and add the entities. |
 | Remove `host-9` from the Critical Infrastructure watchlist | Remove the entity from the named watchlist. |
 | Delete the Contractors watchlist | Delete the named watchlist. |
-| Automatically add any host running Ubuntu to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Create or update the watchlist's rule-based data source. The confirmation includes a preview of the entities the query currently matches. |
-| What's keeping the Server Fleet watchlist in sync? {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | List every data source linked to the watchlist. |
-| Stop automatically adding Ubuntu hosts to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Remove the rule-based data source. Entities it added are removed on the next sync, and manually added entities aren't affected. |
+| Automatically add any host running Ubuntu to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` | Create or update the watchlist's rule-based data source. The confirmation includes a preview of the entities the query currently matches. |
+| What's keeping the Server Fleet watchlist in sync? {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` | List every data source linked to the watchlist. |
+| Stop automatically adding Ubuntu hosts to the Server Fleet watchlist {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` | Remove the rule-based data source. Entities it added are removed on the next sync, and manually added entities aren't affected. |
 
 :::{tip}
 The `manage-watchlists` skill only covers watchlist changes. To also profile entities or filter them by watchlist, combine it with [`entity-analytics`](#entity-risk-investigation).
@@ -87,7 +87,8 @@ The `manage-watchlists` skill only covers watchlist changes. To also profile ent
 
 ```{applies_to}
 stack: ga 9.6+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 **Enable:** `entity-resolution`
@@ -155,7 +156,7 @@ Use this skill to create or edit detection rules. The skill supports **{{esql}} 
 | Create an {{esql}} rule that detects PowerShell downloading from external URLs | Draft the rule with query, severity, risk score, and MITRE ATT&CK® mappings, then render it as an attachment. |
 | Raise the severity on this rule to critical and add the T1059 tag | Update the attached rule's `severity`, `risk_score`, and `tags` fields and re-render the attachment. |
 | Add the Execution tactic (TA0002) and technique T1059.001 to this rule | Append entries to the rule's `threat` array with correct tactic, technique, and subtechnique IDs. |
-| Map this rule to the MITRE ATLAS technique for LLM prompt injection {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Add a separate `threat` entry for MITRE ATLAS™ with the matching ATLAS tactic and technique IDs. |
+| Map this rule to the MITRE ATLAS technique for LLM prompt injection {applies_to}`stack: ga 9.6+` {applies_to}`security: ga` | Add a separate `threat` entry for MITRE ATLAS™ with the matching ATLAS tactic and technique IDs. |
 
 :::{tip}
 `detection-rule-edit` operates on a rule attachment. The skill activates when a rule attachment is present in the conversation. You can start a rule attachment from the rule creation form, the rule details page, or by asking the agent to "create a detection rule" directly in chat — the skill creates the attachment and renders an **Apply to creation** button so you can save the rule from the chat.
@@ -209,7 +210,8 @@ Before the agent applies a change, it shows a confirmation with each setting's c
 ## Attack Discovery generation [attack-discovery-generation]
 ```{applies_to}
 stack: ga 9.5+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 **Enable:** `attack-discovery-generator` (requires [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings))

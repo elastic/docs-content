@@ -110,7 +110,7 @@ Specific {{kib}} privileges for each artifact type—such as event filters or tr
 * Host isolation exceptions
 * Blocklist items
 * Event filters
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` {{elastic-endpoint}} exceptions (after opting in to per-policy assignment) 
+* {applies_to}`stack: ga 9.4+` {applies_to}`security: ga` {{elastic-endpoint}} exceptions (after opting in to per-policy assignment) 
 
 The **Global Artifact Management** privilege grants full control over artifacts in any space. This privilege by itself does not enable you to manage the different artifact types, but rather grants additional privileged actions to users who also have the **All** privilege for a given artifact type. This includes the ability to:
 
@@ -120,7 +120,7 @@ The **Global Artifact Management** privilege grants full control over artifacts 
 
 {applies_to}`stack: ga 9.0-9.3` Endpoint exceptions are global-only, so you need the **Global Artifact Management** privilege to create, edit, or delete them.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` After opting in to per-policy {{elastic-endpoint}} exception behavior, exceptions support per-policy assignment and are space-aware. You still need the **Global Artifact Management** privilege to create, edit, or delete global exceptions.
+{applies_to}`stack: ga 9.4+` {applies_to}`security: ga` After opting in to per-policy {{elastic-endpoint}} exception behavior, exceptions support per-policy assignment and are space-aware. You still need the **Global Artifact Management** privilege to create, edit, or delete global exceptions.
 
 
 **How do I change which space owns a per-policy artifact?**

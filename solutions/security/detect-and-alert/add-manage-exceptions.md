@@ -54,7 +54,8 @@ To use exceptions, your role must have the appropriate access. To learn how to a
 
 ```yaml {applies_to}
 stack: ga 
-serverless: ga
+serverless:
+  security: ga
 ```
 
 For required privileges to view and manage {{elastic-endpoint}} exceptions, refer to [](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md). 

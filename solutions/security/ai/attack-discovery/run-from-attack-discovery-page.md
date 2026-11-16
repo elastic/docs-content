@@ -77,11 +77,12 @@ Attack Discovery uses the same data anonymization settings as [Elastic AI Assist
 
 ```{applies_to}
 stack: ga 9.1
-serverless: ga
+serverless:
+  security: ga
 ```
 
 :::{note}
-{applies_to}`stack: preview 9.4` {applies_to}`serverless: preview` You can also [create and manage schedules from the Attacks page](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Schedules created on either page appear on both.
+{applies_to}`stack: preview 9.4` {applies_to}`security: preview` You can also [create and manage schedules from the Attacks page](/solutions/security/ai/attack-discovery/run-from-attacks-page.md). Schedules created on either page appear on both.
 :::
 
 You can define recurring schedules (for example, daily or weekly) to automatically generate attack discoveries without needing manual runs. For example, you can generate discoveries every 24 hours and send a Slack notification to your SecOps channel if discoveries are found. Notifications are sent using configured [connectors](/deploy-manage/manage-connectors.md), such as Slack or email, and you can customize the notification content to tailor alert context to your needs.

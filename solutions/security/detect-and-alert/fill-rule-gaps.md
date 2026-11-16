@@ -147,7 +147,7 @@ From the Rules table, fill gaps for multiple rules using the **Fill gaps** bulk 
 
     * Fill rules with unfilled or partially filled gaps: Select the appropriate rules or all rules on the page, then select **Bulk actions** > **Fill gaps**.
     * Only fill rules with unfilled gaps: Filter for rules with unfilled gaps:
-       - {applies_to}`stack: ga 9.3+` Use the **Gap fill status** filter in the Rules table to find rules with the `Unfilled` gap status{applies_to}`stack: ga 9.4+`{applies_to}`serverless: ga` (or `Error` if automatic gap fill has exhausted retries and you want to try manual fills), then select **Bulk actions** > **Fill gaps**.
+       - {applies_to}`stack: ga 9.3+` Use the **Gap fill status** filter in the Rules table to find rules with the `Unfilled` gap status{applies_to}`stack: ga 9.4+`{applies_to}`security: ga` (or `Error` if automatic gap fill has exhausted retries and you want to try manual fills), then select **Bulk actions** > **Fill gaps**.
        - {applies_to}`stack: ga 9.1-9.2` In the panel above the table, select the **Only rules with unfilled gaps** filter to show only rules with unfilled gaps (excludes rules with gaps currently being filled). Select the appropriate rules, then select **Bulk actions** > **Fill gaps**.
 
 3. Specify when to start and end the manual run that fills the gaps.
@@ -183,7 +183,8 @@ The **Auto gap fill status** field (in the panel above the Rules table) shows wh
 
 ```{applies_to}
 stack: ga 9.4+
-serverless: ga
+serverless:
+  security: ga
 ```
 
 Gap reasons are available only after you select **Include gaps created when a rule was disabled** in **Settings** (above the Rules table). With that option on, gaps can record *why* they occurred, and you can control how those reasons participate in gap monitoring and automatic gap filling.

@@ -21,7 +21,8 @@ products:
 ## Requirements
 
 ```{applies_to}
-serverless: preview
+serverless:
+  security: preview
 stack: preview 9.3
 ```
 
