@@ -27,7 +27,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the toolbar. In **Discover** 9.4 and later, and in {{serverless-short}}, **Export** is in the application menu instead.
+{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` at the top of the page. In **Discover** 9.4 and later, and in {{serverless-short}}, **Export** is in the application menu instead.
 
 ## Permissions
 
@@ -77,8 +77,8 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 1. Open the Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Select a file type for the report.
 
-    * {applies_to}`stack: ga 9.1+` From the toolbar, select the {icon}`download` **Export** icon, then select a file type.
-    * {applies_to}`stack: ga =9.0` From the toolbar, select **Share** → **Export** tab, then select a file type.
+    * {applies_to}`stack: ga 9.1+` At the top of the page, select the {icon}`download` **Export** icon, then select a file type.
+    * {applies_to}`stack: ga =9.0` At the top of the page, select **Share** → **Export** tab, then select a file type.
 
     In **Discover**, look for the CSV export action in the actions available in the application menu. Depending on your version, this action can be called **Export** → **CSV**, **Export tab results** → **CSV**, or **Export** → **Tab results as CSV**, and can be nested under {icon}`ellipsis` **More** or {icon}`share` **Share**.
 

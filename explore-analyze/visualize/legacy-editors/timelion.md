@@ -96,7 +96,11 @@ You can only add Timelion visualizations to a dashboard if they're already saved
 
 $$$timelion-tutorial-create-time-series-visualizations$$$
 
-1. Go to the **Visualize Library** and select **Create visualization**.
+1. Select **Create visualization**:
+
+    * {applies_to}`stack: ga 9.5+` On the **Dashboards** page, select the arrow next to **Create dashboard**, then select **Create visualization**.
+    * {applies_to}`stack: ga 9.0-9.4` [Open the Visualize library](../visualize-library.md#visualize-library-access), then select **Create visualization**.
+
 2. In the **Legacy** tab, select **Aggregation-based**, then **Timelion**.
 3. Make sure the [time filter](../../query-filter/filtering.md) is **Last 7 days**.
 
@@ -235,7 +239,7 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 
 To save the panel to the **Visualize Library**:
 
-1. Click **Save to library**.
+1. In the [application menu](/explore-analyze/find-and-organize/kibana-interface.md#application-menu), select **Save to library**.
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
@@ -358,7 +362,7 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 
 To save the panel to the **Visualize Library**:
 
-1. Click **Save to library**.
+1. In the application menu, select **Save to library**.
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
@@ -543,7 +547,7 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 
 To save the panel to the **Visualize Library**:
 
-1. Click **Save to library**.
+1. In the application menu, select **Save to library**.
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
