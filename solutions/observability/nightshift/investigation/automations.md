@@ -50,21 +50,19 @@ For a guided example, refer to [Automatically investigate your alerts](../use-ca
 
 ## Triggers [nightshift-automations-triggers]
 
-The trigger picker groups triggers under **Elastic**, **Slack**, and **Scheduled**.
+The trigger picker groups triggers under **Elastic**, **Slack**, and **Scheduled**. Each trigger starts an investigation at a different moment:
 
-| Trigger | Starts an investigation when | Options |
-| --- | --- | --- |
-| **Alert triggered** | An alert or a significant event in this project changes to **Active**. | Alert sources, severity, and rules. |
-| **New message in channel** | A message arrives in a connected Slack channel. | Channels, message text, sender, and app. |
-| **Every…** | A scheduled time arrives. | Hour, day, or week, a time, and a time zone. |
+- [**Alert triggered**](#nightshift-automations-trigger-alert): When an alert or a significant event in this project changes to **Active**.
+- [**New message in channel**](#nightshift-automations-trigger-slack): When a message arrives in a connected Slack channel.
+- [**Every…**](#nightshift-automations-trigger-schedule): At a scheduled time.
 
 ### Alert triggered [nightshift-automations-trigger-alert]
 
 By default, the trigger matches alerts from any rule. To narrow it:
 
-- **Sources:** Select **any source** to choose where alerts come from: **Classic**, **Universal rules**, **Significant events**, or **External sources**. Select **Only these sources** or **All except these**.
-- **Severity:** Select **Any severity** to match only some alert severities.
-- **Rules:** Select **Any rule** to search for rules or rule tags, and select the ones to match. A tag selects every rule with that tag, including rules that you add later.
+- **Sources**: Select **any source** to choose where alerts come from: **Classic**, **Universal rules**, **Significant events**, or **External sources**. Select **Only these sources** or **All except these**.
+- **Severity**: Select **Any severity** to match only some alert severities.
+- **Rules**: Select **Any rule** to search for rules or rule tags, and select the ones to match. A tag selects every rule with that tag, including rules that you add later.
 
 To investigate every significant event that detection raises, select **Only these sources** and **Significant events**.
 
@@ -137,15 +135,13 @@ The deployment-wide limits on the **Settings** page apply too. Refer to [Investi
 
 ## Manage automations [nightshift-automations-manage]
 
-The **Automations** page lists the automations in the space. An icon next to each name shows its trigger.
+The **Automations** page lists the automations in the space. An icon next to each name shows its trigger. The page has the following columns:
 
-| Column | What it shows |
-| --- | --- |
-| **Automations** | The name and the trigger. |
-| **Author** | Who created it. |
-| **Enabled** | Whether it's on. Use the toggle to turn it on or off. A turned-off automation starts nothing. |
-| **Today's usage** | The triggers used today, out of the daily trigger limit. |
-| **Successful**, **Failed**, **Skipped** | The runs in the selected time range. Select a count to open those runs. |
+- **Automations**: The name and the trigger.
+- **Author**: Who created it.
+- **Enabled**: Whether it's on. Use the toggle to turn it on or off. A turned-off automation starts nothing.
+- **Today's usage**: The triggers used today, out of the daily trigger limit.
+- **Successful**, **Failed**, and **Skipped**: The runs in the selected time range. Select a count to open those runs.
 
 To narrow the list, search by name, or filter by **Status**, **Tag**, **Author**, or **Trigger**. The time range defaults to **Last 48 hours**.
 
@@ -163,8 +159,6 @@ Select an automation's name to open its details.
 
 - The **Overview** tab shows the description, trigger, daily trigger limit, instructions, and actions. To change the automation, select **Edit**. A change applies from the next trigger. The **Actions** menu has **Run**, **Clone**, and **Delete**.
 - The **Run history** tab shows a chart of the runs in the selected time range, with a count for each status: **Succeeded**, **Running**, **Failed**, and **Skipped**. Filter by status to narrow the list. Below the chart, runs are grouped by day.
-
-% SCREENSHOT: The Run history tab of an automation with a mix of Succeeded and Skipped runs, one skipped run showing "Daily trigger limit of 20 reached".
 
 Select a run to open its details. For a run that started an investigation, select **Open investigation**. Runs started with **Run** show **Manual** and the name of the person who started them.
 

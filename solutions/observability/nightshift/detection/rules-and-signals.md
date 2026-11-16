@@ -31,15 +31,13 @@ All rules run on a shared schedule, every few minutes. A rule match doesn't open
 
 To open the list, select the **Rules** tab on the **Detections** page.
 
-The **Rule matches over time** chart shows how often your rules matched. The table lists every rule:
+The **Rule matches over time** chart shows how often your rules matched. The table lists every rule, with the following columns:
 
-| Column | What it shows |
-| --- | --- |
-| **Title** | The name of the rule. |
-| **Impact** | How serious a match of this rule is, such as **Critical**. |
-| **Last activity** | The latest interval in which the rule matched. |
-| **Status** | Whether the rule runs, such as **Active**. |
-| **Matches** | How many log lines the rule matched in the selected time range. |
+- **Title**: The name of the rule.
+- **Impact**: How serious a match of this rule is, such as **Critical**.
+- **Last activity**: The latest interval in which the rule matched.
+- **Status**: Whether the rule runs, such as **Active**.
+- **Matches**: How many log lines the rule matched in the selected time range.
 
 To find a rule, search by name, select entities in the **Entities** list, or change the time range. The default is **Last 24 hours**.
 
@@ -54,14 +52,12 @@ Delete a rule when it matches all the time without a real problem behind it. Its
 
 Detection compares each rule's match counts over time. When the pattern changes significantly, it records a signal with the kind of change:
 
-| Change | What it means |
-| --- | --- |
-| **Spike** | The count jumps up for a short time. |
-| **Dip** | The count drops for a short time. |
-| **Step change** | The count moves to another level and stays there. |
-| **Trend change** | The count starts to rise or fall in a different direction. |
-| **Distribution change** | The overall shape of the counts changes. |
-| **Non-stationary** | The counts no longer follow a stable pattern. |
+- **Spike**: The count jumps up for a short time.
+- **Dip**: The count drops for a short time.
+- **Step change**: The count moves to another level and stays there.
+- **Trend change**: The count starts to rise or fall in a different direction.
+- **Distribution change**: The overall shape of the counts changes.
+- **Non-stationary**: The counts no longer follow a stable pattern.
 
 A signal on its own doesn't need any action from you. Discovery reviews it together with related signals and tests whether they point to a real problem.
 
@@ -80,13 +76,11 @@ To ask questions about the signal, select **Open in chat**.
 
 The verdict tells you how discovery judged the signal:
 
-| Verdict | Meaning |
-| --- | --- |
-| **Confirmed** | Discovery found data that shows the failure. |
-| **Refuted** | Discovery checked and found the system healthy for this rule. |
-| **Inconclusive** | The check couldn't establish either way, for example because the query returned nothing or failed. |
-| **Off topic** | The check found something that isn't related to the rule. |
-| **Not checked** | No query was available to check the signal. |
+- **Confirmed**: Discovery found data that shows the failure.
+- **Refuted**: Discovery checked and found the system healthy for this rule.
+- **Inconclusive**: The check couldn't establish either way, for example because the query returned nothing or failed.
+- **Off topic**: The check found something that isn't related to the rule.
+- **Not checked**: No query was available to check the signal.
 
 An event can include refuted signals. Read them together with the event's confidence before you act.
 

@@ -69,7 +69,7 @@ Choose the {{es}} data that investigations query.
 
    Copy the `encoded` value from the response.
 
-1. Find the cluster's {{es}} endpoint. In the [{{ecloud}} console](https://cloud.elastic.co/), open the project or deployment and copy its {{es}} endpoint (the `direct_endpoint`). Use the endpoint on port 443, without a port such as `:9243`.
+1. Find the cluster's {{es}} endpoint. In the [{{ecloud}} console](https://cloud.elastic.co/), open the project or deployment and copy its {{es}} endpoint (the `direct_endpoint`). Use the endpoint on port 443. Remove any other port.
 1. From {{nightshift}}, on the **External Elasticsearch** card, select **Connect** → **Create connector**.
 1. Enter a **Connector name** and a **Connector ID**, for example `prod-logs`.
 1. In **Elasticsearch URL**, add the endpoint.
@@ -83,7 +83,7 @@ No data yet? Select **Add data** on the **Add data in 10+ other ways** card to s
 :::
 ::::
 
-::::{step} Connect other sources (optional)
+::::{step} Connect GitHub (optional)
 :anchor: nightshift-get-started-other-sources
 
 Your telemetry shows *what* is wrong, but your code often shows *why*. Connect GitHub so investigations can read the code, configuration, Helm charts, and runbooks behind your services, and check recent changes.

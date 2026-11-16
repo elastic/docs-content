@@ -44,13 +44,11 @@ To read the results in detail and check the reasoning, refer to [How investigati
 
 The home page header takes you everywhere else:
 
-| Action | Description |
-| --- | --- |
-| **Investigate** | Start an investigation by describing a problem. Refer to [Investigate anything](./use-cases/investigate-anything.md). |
-| **Automations** | Have investigations start by themselves. Refer to [Automations](./investigation/automations.md). |
-| **Detections** | Review the problems that detection found. Refer to [How detection works](./detection/index.md). |
-| {icon}`boxes_vertical` → **Knowledge** | See what {{nightshift}} learned about your system. Refer to [How {{nightshift}} builds context](./context/index.md). |
-| {icon}`boxes_vertical` → **Settings** | Manage connectors, Slack, and limits. Refer to [Settings and limits](./settings.md). |
+- **Investigate**: Start an investigation by describing a problem. Refer to [Investigate anything](./use-cases/investigate-anything.md).
+- **Automations**: Have investigations start by themselves. Refer to [Automations](./investigation/automations.md).
+- **Detections**: Review the problems that detection found. Refer to [How detection works](./detection/index.md).
+- {icon}`boxes_vertical` → **Knowledge**: See what {{nightshift}} learned about your system. Refer to [How {{nightshift}} builds context](./context/index.md).
+- {icon}`boxes_vertical` → **Settings**: Manage connectors, Slack, and limits. Refer to [Settings and limits](./settings.md).
 
 If {{nightshift}} isn't set up, the home page shows the **Get started** checklist. Refer to [Get started](./get-started.md).
 

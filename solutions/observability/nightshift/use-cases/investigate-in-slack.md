@@ -27,7 +27,7 @@ The on-call engineer reads the reply and asks in the thread: "@Elastic is ticket
 
 ## Connect a Slack channel [nightshift-uc-slack-connect]
 
-An admin connects the Slack workspace once, then each channel, on **Settings** → **General**. `@Elastic` answers only in connected channels. Refer to [Slack](../investigation/set-up.md#nightshift-set-up-slack).
+An admin connects the Slack workspace once, then each public channel, on **Settings** → **General**. `@Elastic` answers only in connected channels. For the steps, refer to [Set up Slack](../investigation/set-up.md#nightshift-set-up-slack).
 
 ## Ask a question in a thread [nightshift-uc-slack-ask]
 

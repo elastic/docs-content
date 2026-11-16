@@ -67,12 +67,12 @@ Detection uses model tokens to learn KIs and run discovery. Cost grows with the 
 
 ## Work with detection [nightshift-detection-tasks]
 
-| I want to… | Go to |
-| --- | --- |
-| Turn on detection and choose the data it watches | [Choose what detection watches](./sources.md) |
-| Understand what {{nightshift}} learned about my system | [How detection learns your system](./learning.md) |
-| Check the rules behind an event, or remove a noisy rule | [Rules and signals](./rules-and-signals.md) |
-| Review significant events and investigate them | [Review significant events](./significant-events.md) |
+To work with detection, start from what you want to do:
+
+- To turn on detection and choose the data it watches, refer to [Choose what detection watches](./sources.md).
+- To understand what {{nightshift}} learned about your system, refer to [How detection learns your system](./learning.md).
+- To check the rules behind an event, or remove a noisy rule, refer to [Rules and signals](./rules-and-signals.md).
+- To review significant events and investigate them, refer to [Review significant events](./significant-events.md).
 
 ## Learn more [nightshift-detection-learn-more]
 

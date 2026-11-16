@@ -15,6 +15,8 @@ Daily limits control how many investigations {{nightshift}} starts each day, so 
 
 ## Limits at a glance [nightshift-limits-overview]
 
+The following table lists each limit, its default, what it applies to, and where to change it:
+
 | Limit | Default | Applies to | Where to change it |
 | --- | --- | --- | --- |
 | Automatic investigations daily limit | 5 | All automations combined, deployment-wide | **Settings** → **Investigations** |
@@ -76,12 +78,10 @@ Investigations of that kind don't start until the limit resets at midnight UTC. 
 
 How you find out depends on where the start came from:
 
-| Start | How you find out |
-| --- | --- |
-| An automation | The run appears as **Skipped** in the automation's **Run history**, with the reason. The **Automations** page shows a message at the top, with **Open settings**. |
-| An automation with a Slack trigger | Also, {{nightshift}} replies in the Slack thread that triggered it, with the limit and a link to the settings. It replies once per channel each UTC day. |
-| A person, in {{kib}} | The start is refused, with a message that names the limit that was reached. **Run** on an automation is turned off, and its tooltip names the limit. |
-| A Slack mention | The mention is refused. {{nightshift}} replies that the daily limit for manual investigations is reached, and that an admin can raise it in the {{nightshift}} settings. |
+- **An automation**: The run appears as **Skipped** in the automation's **Run history**, with the reason. The **Automations** page shows a message at the top, with **Open settings**.
+- **An automation with a Slack trigger**: Also, {{nightshift}} replies in the Slack thread that triggered it, with the limit and a link to the settings. It replies once per channel each UTC day.
+- **A person, in {{kib}}**: The start is refused, with a message that names the limit that was reached. **Run** on an automation is turned off, and its tooltip names the limit.
+- **A Slack mention**: The mention is refused. {{nightshift}} replies that the daily limit for manual investigations is reached, and that an admin can raise it in the {{nightshift}} settings.
 
 Alert-triggered and scheduled automations post nothing to Slack when they're skipped. Check their run history.
 

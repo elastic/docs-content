@@ -81,13 +81,13 @@ To open the list, select **Sources** at the top of the **Detections** page. Sear
 
 % SCREENSHOT: The Sources page with the All logs source and one custom source, showing the Enabled toggle, Events, KI Queries, KI Features, and Status columns, and the Generate and Find significant events buttons.
 
-| Column | What it shows |
-| --- | --- |
-| **Title**, **Query** | The name of the source and its {{esql}} query. |
-| **Enabled** | Whether detection learns from and watches this source. |
-| **Events** | How many results the source's rules produced in the last 24 hours. |
-| **KI Queries**, **KI Features** | How many query KIs and feature KIs {{nightshift}} extracted from the source. Refer to [How detection learns your system](./learning.md). |
-| **Status** | A green check if the source works. A red X if {{nightshift}} hit an error. Hover over the X to read the error. |
+The list has the following columns:
+
+- **Title**, **Query**: The name of the source and its {{esql}} query.
+- **Enabled**: Whether detection learns from and watches this source.
+- **Events**: How many results the source's rules produced in the last 24 hours.
+- **KI Queries**, **KI Features**: How many query KIs and feature KIs {{nightshift}} extracted from the source. Refer to [How detection learns your system](./learning.md).
+- **Status**: A green check if the source works. A red X if {{nightshift}} hit an error. Hover over the X to read the error.
 
 To work with a source:
 

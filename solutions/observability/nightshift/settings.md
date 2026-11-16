@@ -22,14 +22,14 @@ Make sure you have the privileges to open {{nightshift}} **Settings**, and to tu
 1. Select **Nightshift** in the navigation menu.
 1. On the home page, select {icon}`boxes_vertical` → **Settings**.
 
-The page has three tabs:
+The page has the following options:
 
-| Setting tab| Description |
-| --- | --- |
-| [General](#nightshift-settings-general) | Add or remove a connector, connect Slack, or turn on developer mode |
-| [Investigations](#nightshift-settings-investigations) | Limit investigations, add custom context, or allow outbound hosts for the sandbox |
-| [Detections](#nightshift-settings-detections) | Pause detection, change its schedule, limit its runs, or change continuous KI onboarding. From the **Detections** page, select **Settings** in the header to go straight to the **Detections** tab. |
-| [Stop or pause {{nightshift}}](#nightshift-settings-stop) | Stop {{nightshift}} from running |
+- [General](#nightshift-settings-general): Add or remove a connector, connect Slack, or turn on developer mode
+- [Investigations](#nightshift-settings-investigations): Limit investigations, add custom context, or allow outbound hosts for the sandbox
+- [Detections](#nightshift-settings-detections): Pause detection, change its schedule, limit its runs, or change continuous KI onboarding
+- [Stop or pause {{nightshift}}](#nightshift-settings-stop): Stop {{nightshift}} from running
+
+From the **Detections** page, select **Settings** in the header to go straight to the **Detections** tab.
 
 When you change a run limit, a schedule setting, continuous KI onboarding, or token tracking, select **Save changes** in the bar at the bottom of the page. Other controls, such as **Save allowlist**, custom context, and **Pause detection engine**, save on their own.
 
@@ -150,11 +150,9 @@ With developer mode on, the **Detections** tab has an **Advanced developer setti
 
 The **Detections** page shows the state of the detection engine:
 
-| State | Means |
-| --- | --- |
-| **Monitoring** | Detection runs normally. |
-| **Paused** | An admin paused detection. Nothing runs on a schedule, and your data and results are kept. |
-| **Unknown** | {{nightshift}} couldn't read the engine's state. Refresh the page. |
+- **Monitoring**: Detection runs normally.
+- **Paused**: An admin paused detection. Nothing runs on a schedule, and your data and results are kept.
+- **Unknown**: {{nightshift}} couldn't read the engine's state. Refresh the page.
 
 ## Stop or pause {{nightshift}} [nightshift-settings-stop]
 

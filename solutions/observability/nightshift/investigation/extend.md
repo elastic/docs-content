@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Extend investigations: custom context, connectors, tools, and workflows [nightshift-extend]
+# Extend {{nightshift}} investigations using custom context, connectors, tools, and workflows [nightshift-extend]
 
 Investigations work better when {{nightshift}} has notes about your environment and can reach the systems that your team uses. Tell it where your data and runbooks are, connect the APIs it can't reach yet, and run your own workflows from chat.
 
@@ -26,12 +26,12 @@ flowchart LR
     W --> P["Approval step"]
 ```
 
-| Extension | What it gives investigations | Section |
-| --- | --- | --- |
-| Custom context | Notes about your environment and conventions, added to every investigation and chat. | [Custom context](#nightshift-extend-custom-context) |
-| HTTP connector | Access to any system with an HTTP API, from the investigation sandbox. Custom context describes the API. | [Connect any system with an HTTP API](#nightshift-extend-http) |
-| {{agent-builder}} tools | Custom tools that fetch more context. Advanced. | [Custom tools (advanced)](#nightshift-extend-tools) |
-| Workflows | Actions that you build, with approval steps, run when you ask in chat. | [Run workflows from chat](#nightshift-extend-workflows) |
+You can extend investigations in the following ways:
+
+- [**Custom context**](#nightshift-extend-custom-context): Notes about your environment and conventions, added to every investigation and chat.
+- [**HTTP connector**](#nightshift-extend-http): Access to any system with an HTTP API, from the investigation sandbox. Custom context describes the API.
+- [**{{agent-builder}} tools**](#nightshift-extend-tools): Custom tools that fetch more context. Advanced.
+- [**Workflows**](#nightshift-extend-workflows): Actions that you build, with approval steps, run when you ask in chat.
 
 ## Custom context [nightshift-extend-custom-context]
 
@@ -56,13 +56,13 @@ You can add up to 200 snippets. Each snippet can have up to 32,768 characters, a
 
 Write short, specific notes that are true for every investigation. Put one topic in each snippet, so you can update it on its own.
 
-| Snippet type | Example |
-| --- | --- |
-| Where your data lives | "Logs for the checkout services are in `logs-checkout-*`. Production metrics are on the remote cluster `prod-eu`. Query them as `prod-eu:metrics-*`." |
-| Service ownership | "The payments team owns the checkout services. The data platform team owns their Postgres databases." |
-| Runbooks and code | "Runbooks are in the GitHub repository `acme/runbooks`, one file for each service in `services/`. The source for the checkout services is in `acme/checkout`." |
-| Conventions | "While debugging alerts, always rule out a release or config regression first." |
-| How to use an HTTP connector | "Use the `runbooks-api` connector to find the runbook for a service." Describe the API in full. Refer to [Describe the API in custom context](#nightshift-extend-http-context). |
+The following examples show common snippet types:
+
+- **Where your data lives**: "Logs for the checkout services are in `logs-checkout-*`. Production metrics are on the remote cluster `prod-eu`. Query them as `prod-eu:metrics-*`."
+- **Service ownership**: "The payments team owns the checkout services. The data platform team owns their Postgres databases."
+- **Runbooks and code**: "Runbooks are in the GitHub repository `acme/runbooks`, one file for each service in `services/`. The source for the checkout services is in `acme/checkout`."
+- **Conventions**: "While debugging alerts, always rule out a release or config regression first."
+- **How to use an HTTP connector**: "Use the `runbooks-api` connector to find the runbook for a service." Describe the API in full. Refer to [Describe the API in custom context](#nightshift-extend-http-context).
 
 Don't put secrets, such as API keys or passwords, in custom context. Use a connector for credentials.
 
@@ -133,7 +133,7 @@ Runbooks API: use the HTTP connector `runbooks-api` to find the runbook for a se
   for that service. Say which runbook you used in your findings.
 ```
 
-## Custom tools (advanced) [nightshift-extend-tools]
+## Custom tools [nightshift-extend-tools]
 
 You can build custom tools in {{agent-builder}} that fetch context, such as an {{esql}} query, an index search, or an MCP tool. Refer to [Tools in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools.md) and [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
 
@@ -143,7 +143,7 @@ Investigations run as the **Nightshift Investigator** agent in {{agent-builder}}
 
 ## Run workflows from chat [nightshift-extend-workflows]
 
-In an investigation's chat, you can ask {{nightshift}} to run a workflow that you built, by name. For example: "Run the `restart-service` workflow" or "Run the `open-incident-ticket` workflow for this investigation". Refer to [Workflows](/explore-analyze/workflows.md).
+In an investigation's chat, you can ask {{nightshift}} to run a workflow that you built, by name. For example: "Run the `restart-service` workflow" or "Run the `open-incident-ticket` workflow for this investigation." Refer to [Workflows](/explore-analyze/workflows.md).
 
 {{nightshift}} itself never changes your environment. A workflow that you ask it to run does what you built it to do, with the connectors and permissions that it has. To keep a person in control, add an approval step before any step that changes something. The workflow then waits until someone approves or rejects it. Refer to [Human-in-the-loop workflows](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
 

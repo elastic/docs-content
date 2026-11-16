@@ -9,32 +9,23 @@ products:
   - id: cloud-serverless
 ---
 
-# Connect your data and tools [nightshift-set-up]
+# Connect data and tools to your {{nightshift}} investigations [nightshift-set-up]
 
 An investigation can only test what it can reach. Connect the telemetry, code, configuration, and runbooks that your team uses during an incident, and investigations can check them too. Setting up for the first time? Start with [Get started](../get-started.md).
 
-## What each connection gives investigations [nightshift-set-up-overview]
+Investigations can use the following connections:
 
-| Connection | What investigations get | Do you need it? |
-| --- | --- | --- |
-| [Local {{es}}](#nightshift-set-up-local-es) | Logs, metrics, and traces in this project. | Created for you when {{nightshift}} is enabled. |
-| [External {{es}}](#nightshift-set-up-external-es) | Data in another cluster or project. | Only when your data is outside this project and [{{cps}}](/deploy-manage/cross-project-search-config.md) can't reach it. |
-| [GitHub](#nightshift-set-up-github) | Code, configuration, Helm charts, runbooks, and recent commits, pull requests, and issues. | Recommended. Your telemetry shows *what* is wrong. Your code often shows *why*. |
-| [HTTP](#nightshift-set-up-http) | Any API that returns data, such as a runbook service, build status, or deploy history. | Optional. Use it for any other tool. |
-| [Slack](#nightshift-set-up-slack) | A place to ask {{nightshift}} for help and to post investigation results. | Optional. Needed to post automation results to a channel. |
+- [Local {{es}}](#nightshift-set-up-local-es): Logs, metrics, and traces in your {{nightshift}} project, created when {{nightshift}} is enabled.
+- [External {{es}}](#nightshift-set-up-external-es): Data in another cluster or project that [{{cps}}](/deploy-manage/cross-project-search-config.md) can't reach.
+- [GitHub](#nightshift-set-up-github): Code, configuration, runbooks, and recent commits, pull requests, and issues. Connecting gives more information on *why* something broke.
+- [HTTP](#nightshift-set-up-http): Data from any other API, such as a runbook service or deploy history. Optional.
+- [Slack](#nightshift-set-up-slack): A place to ask for help and to post results. Optional, but required to post automation results to a channel.
 
-In Tech Preview, investigations use these connector types. To reach any other tool, use an HTTP connector. Refer to [Extend investigations](./extend.md).
-
-## How investigations use connections [nightshift-set-up-how]
-
-Investigations reach your systems only through connectors, from a temporary sandbox.
-
-- **Each investigation gets its own sandbox**, which is discarded when the investigation ends.
-- **Connectors hold shared credentials.** A connector uses one set of credentials for every investigation, whoever started it.
-- **Access is as read-only as your credentials.** Give every connector, HTTP included, credentials that can only read, such as a read-only {{es}} API key and GitHub token. A connector with write access lets investigations write too.
-- **The sandbox can reach only known hosts.** Your connectors' hosts are allowed automatically. To allow others, refer to [Sandbox egress allowlist](#nightshift-set-up-egress).
+To reach any other tool, use an HTTP connector. Refer to [Extend investigations](./extend.md).
 
 ## Before you begin [nightshift-set-up-prereqs]
+
+Make sure you meet the following requirements:
 
 - {{nightshift}} is [enabled](../get-started.md#nightshift-get-started-enable).
 - You have the privileges to open the **Settings** page. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
@@ -42,6 +33,16 @@ Investigations reach your systems only through connectors, from a temporary sand
 You manage connections on the **General** tab of the **Settings** page. On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Settings**.
 
 To add a connector, select **Add connector**. The flyout lists the connector types that investigations can use, with how many you have of each. Select **Create connector** next to a type. To manage connectors in the rest of {{kib}}, select **Open in Stack Management**. Refer to [Connectors](kibana://reference/connectors-kibana.md).
+
+
+## How investigations use connections [nightshift-set-up-how]
+
+Investigations reach your systems through connectors, from a temporary sandbox.
+
+- **Each investigation gets its own sandbox**: which is discarded when the investigation ends.
+- **Connectors hold shared credentials**: A connector uses one set of credentials for every investigation, from whoever started it.
+- **Access is as read-only as your credentials**: Give every connector, HTTP included, credentials that can only read, such as a read-only {{es}} API key and GitHub token. A connector with write access lets investigations write too.
+- **The sandbox can reach only known hosts**: Your connectors' hosts are allowed automatically. To allow others, refer to [Sandbox egress allowlist](#nightshift-set-up-egress).
 
 ## Set up a Local {{es}} connector [nightshift-set-up-local-es]
 
@@ -53,26 +54,17 @@ Investigations also reach data in projects linked through [{{cps}}](/deploy-mana
 
 Add an External {{es}} connector when your data is in another cluster or project that [{{cps}}](/deploy-manage/cross-project-search-config.md) can't reach, for example a separate production deployment. For what works with each deployment type, refer to [Reference architecture](../reference-architecture.md).
 
-For the steps, including the API key request, refer to [Add data](../get-started.md#nightshift-get-started-add-data). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **External Elasticsearch**. Keep these rules in mind:
-
-- **Read-only API key.** Grant only read access, and change `names` in the API key request to match where your data lives.
-- **Port 443.** In Tech Preview, investigations can reach only port 443. If the endpoint ends with another port, such as `:9243`, remove it.
-- **A descriptive name.** Investigations pick a connector by its name, so say what the data is, for example `prod-logs`.
-- **Default actions.** Investigations use the connector's URL and API key, not its actions.
-
-The connector now appears in the **Connectors** table. The next investigation can query it.
+For the steps, including the API key request, refer to [Add data](../get-started.md#nightshift-get-started-add-data). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **External Elasticsearch**.
 
 :::{dropdown} Authentication and connector actions
-The connector has six read-only actions, which other {{kib}} features can use. Investigations don't use them:
+The connector setup includes six read-only actions, which other {{kib}} features can use. Investigations don't use them:
 
-| Action | What it does |
-| --- | --- |
-| `esql` | Runs an {{esql}} query. |
-| `search` | Runs a search request. |
-| `listIndices` | Lists the indices. |
-| `getMapping` | Reads the mapping of an index. |
-| `getClusterInfo` | Reads basic information about the cluster. |
-| `request` | Sends a `GET` request to any {{es}} REST API endpoint. |
+- `esql`: Runs an {{esql}} query.
+- `search`: Runs a search request.
+- `listIndices`: Lists the indices.
+- `getMapping`: Reads the mapping of an index.
+- `getClusterInfo`: Reads basic information about the cluster.
+- `request`: Sends a `GET` request to any {{es}} REST API endpoint.
 
 **API key format.** Paste the `encoded` value as it is. You don't need to add the `ApiKey` prefix: {{kib}} adds it when it's missing. If you already added it, that works too.
 
@@ -88,13 +80,11 @@ Connect GitHub so investigations can read the code, configuration, Helm charts, 
 
 {{nightshift}} doesn't copy, sync, or index your repositories. Refer to [Your code](../cost-and-models.md#nightshift-data).
 
-For the steps to create a fine-grained personal access token and connect it, refer to [Connect other sources](../get-started.md#nightshift-get-started-other-sources). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **GitHub**. Leave **Receive events** turned off: investigations don't need it.
+For the steps to create a fine-grained personal access token and connect it, refer to [Connect GitHub](../get-started.md#nightshift-get-started-other-sources). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **GitHub**. Leave **Receive events** turned off: investigations don't need it.
 
-Don't use **OAuth 2.0 Authorization Code**. It stores per-user credentials, which the {{nightshift}} service account can't use, so investigations can't read your private repositories.
+To point investigations at the right repositories, name them in the instructions of an automation, or in custom context. For example, "The source for the checkout services is in `acme/checkout`." Refer to [Automations](./automations.md#nightshift-automations-instructions) and [Custom context](./extend.md#nightshift-extend-custom-context).
 
-To point investigations at the right repositories, name them in the instructions of an automation, or in custom context. For example: "The source for the checkout services is in `acme/checkout`." Refer to [Automations](./automations.md#nightshift-automations-instructions) and [Custom context](./extend.md#nightshift-extend-custom-context).
-
-For all connector settings, refer to [GitHub connector](kibana://reference/connectors-kibana/github-action-type.md).
+For all GitHub connector settings, refer to [GitHub connector](kibana://reference/connectors-kibana/github-action-type.md).
 
 ## HTTP [nightshift-set-up-http]
 

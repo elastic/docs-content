@@ -557,6 +557,12 @@ toc:
               - file: observability/nightshift/use-cases/external-alerts.md
               - file: observability/nightshift/use-cases/detect-problems.md
           - file: observability/nightshift/homepage.md
+          - file: observability/nightshift/investigation/index.md
+            children:
+              - file: observability/nightshift/investigation/set-up.md
+              - file: observability/nightshift/investigation/extend.md
+              - file: observability/nightshift/investigation/automations.md
+              - file: observability/nightshift/investigation/limits.md
           - file: observability/nightshift/detection/index.md
             children:
               - file: observability/nightshift/detection/sources.md
@@ -564,12 +570,6 @@ toc:
               - file: observability/nightshift/detection/rules-and-signals.md
               - file: observability/nightshift/detection/significant-events.md
               - file: observability/nightshift/significant-events/operator-guide.md
-          - file: observability/nightshift/investigation/index.md
-            children:
-              - file: observability/nightshift/investigation/set-up.md
-              - file: observability/nightshift/investigation/extend.md
-              - file: observability/nightshift/investigation/automations.md
-              - file: observability/nightshift/investigation/limits.md
           - file: observability/nightshift/context/index.md
             children:
               - file: observability/nightshift/context/wiki.md

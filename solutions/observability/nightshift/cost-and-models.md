@@ -27,11 +27,9 @@ Workflow executions that {{nightshift}} runs aren't billed separately. You pay o
 
 These figures come from Elastic's testing. Your cost depends on your data and how you use {{nightshift}}.
 
-| Activity | Typical cost |
-| --- | --- |
-| One investigation | About $1.50 |
-| Detection | A few dollars per day |
-| A follow-up question in chat | Usually a few cents, depending on the model you pick in chat |
+- **One investigation**: About $1.50
+- **Detection**: A few dollars per day
+- **A follow-up question in chat**: Usually a few cents, depending on the model you pick in chat
 
 For example, with the default run limits, at most 10 investigations start each day. At the typical cost, that's about $15 per day for investigations, plus detection.
 
@@ -80,7 +78,7 @@ Elastic picks the models that {{nightshift}} uses, and runs them through EIS. Yo
 
 The model picker in the Agent Builder chat applies only to your follow-up questions in that chat. It doesn't change investigations.
 
-Elastic plans to offer on-premises deployment options for {{nightshift}} in 2027, which may include a choice of model. This is a plan, not a commitment, and it can change.
+Elastic plans to offer on-premises deployment options for {{nightshift}} in 2027, which might include a choice of model. This is a plan, not a commitment, and it can change.
 
 EIS routes each request to the nearest region where it runs. To keep requests in certain regions, refer to [Region and hosting](/explore-analyze/elastic-inference/eis-region-and-hosting.md).
 

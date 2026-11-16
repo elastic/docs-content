@@ -67,10 +67,8 @@ Read the results, check the hypothesis tree, and act on the proposed actions the
 
 {{nightshift}} doesn't open a second investigation for the same problem.
 
-| Situation | Details |
-| --- | --- |
-| The alert already has an investigation | The action reads **View investigation**. Select it to open the investigation. |
-| You want fresh results, for example, after applying a fix | Select **Re-investigate**. On the alert details page, find it in the **Actions** menu. |
+- If the alert already has an investigation, the action reads **View investigation**. Select it to open the investigation.
+- If you want fresh results, for example after applying a fix, select **Re-investigate**. On the alert details page, find it in the **Actions** menu.
 
 **Re-investigate** appears after someone has opened the earlier investigation.
 

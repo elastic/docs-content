@@ -63,13 +63,13 @@ Is the tab empty? Detection hasn't learned anything yet. Select **Go to Sources*
 
 ### Feature KIs [sig-events-ki-feature]
 
-| Type | What it captures |
-| --- | --- |
-| Entity | Services, applications, and jobs |
-| Infrastructure | Where things run, such as {{k8s}}, a cloud provider, or an operating system |
-| Technology | Languages, frameworks, libraries, and databases |
-| Dependency | Which component calls which |
-| Schema | Log format conventions, such as {{product.ecs}}, OpenTelemetry, or a custom format |
+Feature KIs have the following types:
+
+- **Entity**: Services, applications, and jobs
+- **Infrastructure**: Where things run, such as {{k8s}}, a cloud provider, or an operating system
+- **Technology**: Languages, frameworks, libraries, and databases
+- **Dependency**: Which component calls which
+- **Schema**: Log format conventions, such as {{product.ecs}}, OpenTelemetry, or a custom format
 
 Each feature KI cites evidence from your logs and has a confidence score from 0 to 100. KIs that {{nightshift}} computed from statistics always have 100.
 
