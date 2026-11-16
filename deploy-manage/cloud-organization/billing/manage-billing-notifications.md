@@ -2,14 +2,14 @@
 navigation_title: Manage budgets and notifications
 applies_to:
   deployment:
-    ess: ga
+    ech: ga
   serverless: ga
 products:
   - id: cloud-hosted
   - id: cloud-serverless
 ---
 
-# Manage budgets and notifications [billing-notifications]
+# Manage {{ecloud}} budgets and notifications [billing-notifications]
 
 To help you understand costs and manage spending on {{ecloud}}, you can create budgets that track resource usage and send email notifications when usage within the budget's time range reaches specified thresholds. The budget time range and reset schedule can be configured to match your financial planning cycle. Budgets can be scoped to specific {{ecloud}} resources or to your entire organization.
 
