@@ -204,7 +204,7 @@ You can customize the service settings before installation using environment var
 ::::{tab-set}
 :::{tab-item} Environment variables (pre-install)
 
-The {{es}} service can be configured before installation by setting the following environment variables, either using the [set command](https://technet.microsoft.com/en-us/library/cc754250(v=ws.10).aspx) from the command line or through **System Properties → Environment Variables**.
+The {{es}} service can be configured before installation by setting the following environment variables, either using the [set command](https://technet.microsoft.com/en-us/library/cc754250(v=ws.10).aspx) from the command line or through **System Properties** → **Environment Variables**.
 
 | Environment variable | Description |
 | --- | --- |

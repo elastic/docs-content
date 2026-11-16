@@ -70,7 +70,7 @@ The **Collect conversation traces** setting turns collection on and off. When it
 For how this setting is scoped to {{kib}} spaces and when a change takes effect, refer to [Trace setting scope and timing](#trace-setting-scope-and-timing).
 
 :::{note}
-Any user with index access can read trace data. To restrict access, configure index-level privileges in **Stack Management → Roles**. For details, refer to [Grant access to trace data](#grant-access-to-trace-data).
+Any user with index access can read trace data. To restrict access, configure index-level privileges in **Stack Management** → **Roles**. For details, refer to [Grant access to trace data](#grant-access-to-trace-data).
 :::
 
 ### Trace privacy settings
@@ -147,7 +147,7 @@ If you upgrade from 9.5.4 or earlier to 9.5.5 or later, including 9.6, spaces ot
 
 Trace data is stored in the `traces-agent_builder.otel-*` data stream. To read it, a role needs `read` and `view_index_metadata` on that pattern.
 
-Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management → Roles**.
+Access is granted at the index level. Any user who can read these data streams can read all collected traces, so trace access is not scoped per user. To control who can read traces, configure index privileges through roles in **Stack Management** → **Roles**.
 
 {applies_to}`{stack: ga 9.6+, serverless: ga}` When **Include user data in traces** is on, traces identify who ran each conversation round. Anyone who can read the data stream can see which user ran which round, so review this section before you turn that setting on.
 

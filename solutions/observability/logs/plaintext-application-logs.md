@@ -104,7 +104,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.svg "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.svg ""))** → **Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```console
@@ -304,7 +304,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). On the **Installed integrations** tab, select **Custom Logs**, then open the **Integration policies** tab.
 2. Select the integration policy you created in the previous section.
-3. Click **Change defaults → Advanced options**.
+3. Click **Change defaults** → **Advanced options**.
 4. Under **Ingest pipelines**, click **Add custom pipeline**.
 5. Create an ingest pipeline with a [dissect processor](elasticsearch://reference/enrich-processor/dissect-processor.md) to extract structured fields from your log messages.
 

@@ -26,7 +26,7 @@ APM data collection will be interrupted while the migration is in progress. The 
 
 With a Superuser account, complete these steps:
 
-1. In the main menu, go to **Applications -> Service Inventory** or find `Service Inventory` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and then select **Settings → Schema**.
+1. In the main menu, go to **Applications -> Service Inventory** or find `Service Inventory` using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and then select **Settings** → **Schema**.
 
     :::{image} /solutions/images/observability-schema-agent.png
     :alt: switch to {{agent}}
@@ -44,7 +44,7 @@ With a Superuser account, complete these steps:
 
 You can now update settings that were removed during the upgrade. See [Configure APM Server](/solutions/observability/apm/apm-server/configure.md) for a reference of all available settings.
 
-In {{kib}}, navigate to **Management** > **Fleet**. Select the **Elastic Cloud Agent Policy**. Next to the **Elastic APM** integration, select **Actions** > **Edit integration**.
+In {{kib}}, navigate to **Management** → **Fleet**. Select the **Elastic Cloud Agent Policy**. Next to the **Elastic APM** integration, select **Actions** → **Edit integration**.
 
 ## Scale APM and {{fleet}} [apm-integration-upgrade-ess-4]
 

@@ -69,7 +69,7 @@ Aside from the pipeline itself, you have a few configuration options which contr
 
 * For connectors, you can opt in or out per index. These settings are stored in Elasticsearch in the `.elastic-connectors` index, in the document that corresponds to the specific index. You can change these settings there directly. Alternatively, you can:
   1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find Connectors, then select **Build / Connectors** from the results.
-  2. Choose your connector, then go to **Pipelines > Settings** to make changes.
+  2. Choose your connector, then go to **Pipelines** → **Settings** to make changes.
 
 * You can also change the deployment-wide defaults. These settings are stored in the Elasticsearch mapping for `.elastic-connectors` in the `_meta` section. You can change these settings there directly.
 Alternatively, you can:
