@@ -114,7 +114,7 @@ After deploying an {{agent}} to a host, view details about the agent and inspect
     :screenshot:
     :::
 
-4. Go to **Analytics → Discover** and examine the data streams. Documents indexed by {{agent}} match these patterns:
+4. Go to **Analytics** → **Discover** and examine the data streams. Documents indexed by {{agent}} match these patterns:
 
     * `logs-*`
     * `metrics-*`
@@ -167,7 +167,7 @@ For example, if the agent policy you created earlier includes the System integra
     Integration policy names must be globally unique across all agent policies.
     ::::
 
-3. Go back to **{{fleet}} → Agents** and verify that the agent status is still healthy. Click the host name to drill down into the agent details. From there, you can see the agent policy and integration policies that are applied.
+3. Go back to **{{fleet}}** → **Agents** and verify that the agent status is still healthy. Click the host name to drill down into the agent details. From there, you can see the agent policy and integration policies that are applied.
 
     If the agent status is not Healthy, click **Logs** to view the agent log and troubleshoot the problem.
 
@@ -305,7 +305,7 @@ serverless: unavailable
 
 {{ilm-cap}} ({{ilm}}) policies in {{es}} enable you to manage indices according to your performance, resiliency, and retention requirements. To learn more about {{ilm}}, refer to the [{{ilm}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 
-{{ilm}} is configured by default in {{beats}} (version 7.0 and later) and in {{agent}} (all versions). To view the index lifecycle policies defined in {{es}}, go to **Management → Index Lifecycle Policies**.
+{{ilm}} is configured by default in {{beats}} (version 7.0 and later) and in {{agent}} (all versions). To view the index lifecycle policies defined in {{es}}, go to **Management** → **Index Lifecycle Policies**.
 
 :::{image} images/migration-index-lifecycle-policies.png
 :alt: Screen showing how to add a processor to an integration policy

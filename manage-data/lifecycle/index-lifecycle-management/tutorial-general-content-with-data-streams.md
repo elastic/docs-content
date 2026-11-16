@@ -42,7 +42,7 @@ You can create an ingest pipeline that uses the [`set` enrich processor](elastic
 To add an ingest pipeline in {{kib}}:
 
 1. Go to the **Ingest Pipelines** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Select **Create pipeline → New pipeline**.
+1. Select **Create pipeline** → **New pipeline**.
 
 Configure the pipeline with a name, description, and a **Set** processor that adds the `@timestamp` field with a value of `{{_ingest.timestamp}}`.
 

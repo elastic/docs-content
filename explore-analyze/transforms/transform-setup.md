@@ -68,6 +68,6 @@ For more information and {{kib}} security features, see [{{kib}} role management
 
 ## {{kib}} spaces [transform-kib-spaces]
 
-[Spaces](../../deploy-manage/manage-spaces.md) enable you to organize your source and destination indices and other saved objects in {{kib}} and to see only the objects that belong to your space. However, a transform is a long running task which is managed on cluster level and therefore not limited in scope to certain spaces. Space awareness can be implemented for a {{data-source}} under **Stack Management → Kibana** which allows privileges to the transform destination index.
+[Spaces](../../deploy-manage/manage-spaces.md) enable you to organize your source and destination indices and other saved objects in {{kib}} and to see only the objects that belong to your space. However, a transform is a long running task which is managed on cluster level and therefore not limited in scope to certain spaces. Space awareness can be implemented for a {{data-source}} under **Stack Management** → **Kibana** which allows privileges to the transform destination index.
 
 To successfully create transforms in {{kib}}, you must be logged into a space where the source indices are visible and the `Data View Management` and `Stack Monitoring` features are visible.

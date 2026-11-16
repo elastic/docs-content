@@ -267,7 +267,7 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
 2. Attach your new IAM role to an EC2 instance:
 
     1. In AWS, select an EC2 instance.
-    2. Select **Actions → Security → Modify IAM role**.
+    2. Select **Actions** → **Security** → **Modify IAM role**.
     3. On the **Modify IAM role** page, search for and select your new IAM role.
     4. Click **Update IAM role**.
     5. Return to {{kib}} and [finish manual setup](/solutions/security/cloud/asset-disc-aws.md#cad-aws-finish-manual).

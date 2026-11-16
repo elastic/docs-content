@@ -68,7 +68,7 @@ You can create build, and manage your search applications directly in the {{kib}
 
 To create a new search application in {{kib}}:
 
-1. Go to **Search → Search Applications**.
+1. Go to **Search** → **Search Applications**.
 2. Select **Create**.
 3. Select the {{es}} indices you want to use for your search application.
 4. Name your search application.
@@ -76,7 +76,7 @@ To create a new search application in {{kib}}:
 
 Your search application should now be available in the list.
 
-Once created, you can explore the documents in your search application under **Search → Search Applications >** *your-search-application* > **Docs Explorer**. From there, you can expand a matching {{es}} document to see its full contents.
+Once created, you can explore the documents in your search application under **Search** → **Search Applications >** *your-search-application* > **Docs Explorer**. From there, you can expand a matching {{es}} document to see its full contents.
 
 
 ### Option 2: Get started with the API [search-application-overview-get-started-api] 

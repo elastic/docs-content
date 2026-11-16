@@ -22,8 +22,8 @@ products:
 
 There are two ways to create API keys in {{kib}}:
 
-* **{{stack-manage-app}} → API keys → Create API key**: Creates general-purpose API keys for {{es}} operations. For more information, refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
-* **Applications → Settings → Agent keys → Create {{apm-agent}} key** (the method described on this page): Creates API keys specifically for ingesting {{product.apm}} data. All [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md) should use this method.
+* **{{stack-manage-app}}** → **API keys** → **Create API key**: Creates general-purpose API keys for {{es}} operations. For more information, refer to [{{es}} API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
+* **Applications** → **Settings** → **Agent keys** → **Create {{apm-agent}} key** (the method described on this page): Creates API keys specifically for ingesting {{product.apm}} data. All [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md) should use this method.
 
 ## Create an {{apm-agent}} key
 

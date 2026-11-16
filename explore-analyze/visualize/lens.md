@@ -361,7 +361,7 @@ For example, to track the number of bytes in the 75th percentile, add a shaded *
 :screenshot:
 :::
 
-From your visualization, click **Add layer → Reference lines**. Click the vertical axis value, and specify the reference line you want to use by choosing one fhe following placement methods:
+From your visualization, click **Add layer** → **Reference lines**. Click the vertical axis value, and specify the reference line you want to use by choosing one fhe following placement methods:
 
 **Static**
 :   To add a static reference line.
@@ -463,7 +463,7 @@ For answers to common **Lens** questions, review the following.
 To normalize the interval:
 
 1. In the layer pane, click a field.
-2. Click **Add advanced options → Normalize by unit**.
+2. Click **Add advanced options** → **Normalize by unit**.
 3. From the **Normalize by unit** dropdown, select an option, then click **Close**.
 
 To create a custom interval:

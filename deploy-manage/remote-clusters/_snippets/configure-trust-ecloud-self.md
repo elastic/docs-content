@@ -1,6 +1,6 @@
 A deployment can be configured to trust all or specific deployments in any environment:
 
-1. From the **Security** page, select **Remote Connections → Add trusted environment** and choose **Self-managed**. Then click **Next**.
+1. From the **Security** page, select **Remote Connections** → **Add trusted environment** and choose **Self-managed**. Then click **Next**.
 
 2. Select **Certificates** as authentication mechanism and click **Next**.
 

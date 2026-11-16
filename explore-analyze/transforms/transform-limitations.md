@@ -176,7 +176,7 @@ To fix this issue permanently, upgrade to the following versions or later: 8.18.
 
 ### Transforms are visible in all {{kib}} spaces [transform-space-limitations]
 
-[Spaces](../../deploy-manage/manage-spaces.md) enable you to organize your source and destination indices and other saved objects in {{kib}} and to see only the objects that belong to your space. However, a transform is a long running task which is managed on cluster level and therefore not limited in scope to certain spaces. Space awareness can be implemented for a {{data-source}} under **Stack Management → Kibana** which allows privileges to the transform destination index.
+[Spaces](../../deploy-manage/manage-spaces.md) enable you to organize your source and destination indices and other saved objects in {{kib}} and to see only the objects that belong to your space. However, a transform is a long running task which is managed on cluster level and therefore not limited in scope to certain spaces. Space awareness can be implemented for a {{data-source}} under **Stack Management** → **Kibana** which allows privileges to the transform destination index.
 
 ### Up to 1,000 transforms are listed in {{kib}} [transform-kibana-limitations]
 

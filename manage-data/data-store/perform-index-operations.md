@@ -28,10 +28,10 @@ The following [security privileges](elasticsearch://reference/elasticsearch/secu
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index's data.
 * The `manage_index_templates` cluster privilege to manage index templates.
 
-{applies_to}`stack: ga` To add these privileges, go to **{{stack-manage-app}} → Security → Roles** or use the [Create or update roles]({{es-apis}}operation/operation-security-put-role) API.
+{applies_to}`stack: ga` To add these privileges, go to **{{stack-manage-app}}** → **Security** → **Roles** or use the [Create or update roles]({{es-apis}}operation/operation-security-put-role) API.
 
 
-{applies_to}`serverless: ga` In {{serverless-full}}, permissions are managed through project custom roles instead of **{{stack-manage-app}} → Security → Roles**. To grant access to **{{index-manage-app}}**, configure the required {{es}} and {{kib}} privileges in a custom role. For step-by-step guidance, refer to [{{serverless-short}} project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
+{applies_to}`serverless: ga` In {{serverless-full}}, permissions are managed through project custom roles instead of **{{stack-manage-app}}** → **Security** → **Roles**. To grant access to **{{index-manage-app}}**, configure the required {{es}} and {{kib}} privileges in a custom role. For step-by-step guidance, refer to [{{serverless-short}} project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md).
 
 
 ## Navigate the Index Management page

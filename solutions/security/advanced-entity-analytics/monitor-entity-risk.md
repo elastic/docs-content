@@ -46,7 +46,7 @@ serverless: preview
   * **View leads**: `read` for `.entity_analytics.entity-leads*`
   * **Generate leads**:
     * `read`, `create_index`, and `write` for `.entity_analytics.entity-leads*`
-    * **Read** for the **Management → Actions and Connectors** feature
+    * **Read** for the **Management** → **Actions and Connectors** feature
 :::
 
 AI-generated leads appear at the top of the page, giving threat hunters a curated starting point for their investigations. Leads are refreshed every 24 hours and are derived from observations about entities in the entity store, including:

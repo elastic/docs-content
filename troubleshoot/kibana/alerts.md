@@ -216,4 +216,4 @@ The following limitations and known problems apply to the {{version.stack}} rele
 
 ### Alert visibility [_alert_visibility]
 
-If you create a rule in the {{observability}} or {{security-app}}, its alerts are not visible in **{{stack-manage-app}} → {{rules-ui}}**. You can view them only in the {{kib}} app where you created the rule. If you use the create rule API, the visibility of the alerts is related to the `consumer` property.
+If you create a rule in the {{observability}} or {{security-app}}, its alerts are not visible in **{{stack-manage-app}}** → **{{rules-ui}}**. You can view them only in the {{kib}} app where you created the rule. If you use the create rule API, the visibility of the alerts is related to the `consumer` property.

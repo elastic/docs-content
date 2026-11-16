@@ -23,9 +23,9 @@ Your role needs these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or
 | Available in | Privileges |
 |---|---|
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` | `All` for **Attack discovery**, and at least `Read` for **Rules and Exceptions** and **Alerts** |
-| {applies_to}`stack: ga =9.3` | `All` for **Security → Attack discovery**, and at least `Read` for **Security → Rules, Alerts, and Exceptions** |
-| {applies_to}`stack: ga 9.1-9.2` | `All` for **Security → Attack discovery**, and at least `Read` for **Security** |
-| {applies_to}`stack: ga =9.0` | `All` for **Security → Attack discovery** |
+| {applies_to}`stack: ga =9.3` | `All` for **Security** → **Attack discovery**, and at least `Read` for **Security** → **Rules, Alerts, and Exceptions** |
+| {applies_to}`stack: ga 9.1-9.2` | `All` for **Security** → **Attack discovery**, and at least `Read` for **Security** |
+| {applies_to}`stack: ga =9.0` | `All` for **Security** → **Attack discovery** |
 
 For details on Attack discovery sub-feature privileges, refer to [Attack discovery sub-feature privileges](/solutions/security/manage/security-kibana-privileges.md#attack-discovery-sub-feature-privileges).
 
@@ -65,7 +65,7 @@ serverless:
   security: ga
 ```
 
-When you turn on [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings), your role also needs **Analytics → Workflows** privileges. {{serverless-short}} roles include that access by default. On self-managed and {{ech}} deployments, add it to custom roles.
+When you turn on [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings), your role also needs **Analytics** → **Workflows** privileges. {{serverless-short}} roles include that access by default. On self-managed and {{ech}} deployments, add it to custom roles.
 
 | Attack Discovery action | Workflows privilege needed |
 |---|---|

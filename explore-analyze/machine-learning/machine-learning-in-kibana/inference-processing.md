@@ -61,7 +61,7 @@ The diagram below shows how documents are processed during ingestion.
 
 This feature is intended to make it easier to use your ML trained models. First, you need to figure out which model works best for your data. Make sure to use a [compatible third party NLP model](../nlp/ml-nlp-model-ref.md). Since these are publicly available, it is not possible to fine-tune models before [deploying them](../nlp/ml-nlp-deploy-models.md).
 
-Trained models must be available in the current [Kibana Space](../../../deploy-manage/manage-spaces.md) and running in order to use them. By default, models should be available in all Kibana Spaces that have the **Analytics** → **Machine Learning** feature enabled. To manage your trained models, use the Kibana UI and navigate to **Stack Management → Machine Learning → Trained Models**. Spaces can be controlled in the **spaces** column. To stop or start a model, go to the **Machine Learning** tab in the **Analytics** menu of Kibana and click **Trained Models** in the **Model Management** section.
+Trained models must be available in the current [Kibana Space](../../../deploy-manage/manage-spaces.md) and running in order to use them. By default, models should be available in all Kibana Spaces that have the **Analytics** → **Machine Learning** feature enabled. To manage your trained models, use the Kibana UI and navigate to **Stack Management** → **Machine Learning** → **Trained Models**. Spaces can be controlled in the **spaces** column. To stop or start a model, go to the **Machine Learning** tab in the **Analytics** menu of Kibana and click **Trained Models** in the **Model Management** section.
 
 ::::{note}
 The `monitor_ml` [Elasticsearch cluster privilege](elasticsearch://reference/elasticsearch/security-privileges.md) is required to manage ML models and ML {{infer}} pipelines which use those models.
@@ -114,7 +114,7 @@ You can verify the expected structure of the {{infer}} output before indexing an
 
 To ensure the ML {{infer}} pipeline will be run when ingesting documents, you must make sure the documents you are ingesting have a field named `_run_ml_inference` that is set to `true` and you must set the pipeline to `{{index_name}}`. For connector and crawler indices, this will happen automatically if you’ve configured the settings appropriately for the pipeline name `{{index_name}}`. To manage these settings:
 
-1. Go to **Search → Content → Indices → <your index> → Pipelines**.
+1. Go to **Search** → **Content** → **Indices** → **<your index>** → **Pipelines**.
 2. Click on the **Settings** link in the **Ingest Pipelines** card for the `{{index_name}}` pipeline.
 3. Ensure **ML {{infer}} pipelines** is selected. If it is not, select it and save the changes.
 

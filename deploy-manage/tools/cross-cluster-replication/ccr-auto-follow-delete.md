@@ -15,7 +15,7 @@ products:
 
 To delete an auto-follow pattern collection, [access {{kib}}](manage-auto-follow-patterns.md#ccr-access-ccr-auto-follow), select the auto-follow pattern, and pause replication.
 
-When the pattern status changes to Paused, choose **Manage pattern → Delete pattern**.
+When the pattern status changes to Paused, choose **Manage pattern** → **Delete pattern**.
 
 Use the [delete auto-follow pattern API]({{es-apis}}operation/operation-ccr-delete-auto-follow-pattern) to delete a configured auto-follow pattern collection.
 

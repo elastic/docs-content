@@ -23,7 +23,7 @@ To access the dashboard:
 :::
 
 ::::{admonition} Requirements
-To access this dashboard and its data, you must have at least `Read` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for both the **Analytics → Dashboard** and **Security → Security** {{kib}} features.
+To access this dashboard and its data, you must have at least `Read` [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for both the **Analytics** → **Dashboard** and **Security** → **Security** {{kib}} features.
 ::::
 
 ## Visualization data and types 

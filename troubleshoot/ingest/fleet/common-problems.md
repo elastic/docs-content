@@ -1037,7 +1037,7 @@ In {{ecloud}}, after [upgrading](/reference/fleet/upgrade-integration.md) {{flee
 
 2. Force unenroll the agent stuck in `Updating`:
 
-    1. To find agent’s ID, go to **{{fleet}} → Agents** and click the agent to see its details. Copy the Agent ID.
+    1. To find agent’s ID, go to **{{fleet}}** → **Agents** and click the agent to see its details. Copy the Agent ID.
     2. In a terminal window, run:
 
         ```shell

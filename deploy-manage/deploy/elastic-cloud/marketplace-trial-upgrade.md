@@ -89,4 +89,4 @@ After your trial is upgraded:
 
 - All existing deployments and projects in the upgraded organization are preserved.
 - Billing starts through the marketplace immediately. There is no additional trial period.
-- To monitor your usage and costs, go to **Billing → Usage** in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+- To monitor your usage and costs, go to **Billing** → **Usage** in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).

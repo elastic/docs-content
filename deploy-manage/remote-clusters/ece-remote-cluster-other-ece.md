@@ -88,7 +88,7 @@ Now, deployments in those environments will be able to configure trust with depl
 ### Configuring trust with clusters of an {{ece}} environment [ece-trust-ece]
 
 1. Access the **Security** page of the deployment you want to use for cross-cluster operations.
-2. Select **Remote Connections → Add trusted environment** and choose **{{ece}}**. Then click **Next**.
+2. Select **Remote Connections** → **Add trusted environment** and choose **{{ece}}**. Then click **Next**.
 3. Select **Certificates** as authentication mechanism and click **Next**.
 4. From the dropdown, select one of the environments configured in [Configuring platform level trust](#ece-trust-remote-environments).
 5. Choose one of following options to configure the level of trust with the ECE environment:

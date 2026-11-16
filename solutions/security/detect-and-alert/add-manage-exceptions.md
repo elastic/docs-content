@@ -71,7 +71,7 @@ You can add exceptions from several places in the UI:
     :::
 
 * **Alerts table**: Find **Alerts** in the navigation menu, go to the alert, click the **More Actions** menu {icon}`boxes_horizontal`, and select **Add rule exception**.
-* **Alert details flyout**: Click **View details** on an alert, then click **Take action → Add rule exception**.
+* **Alert details flyout**: Click **View details** on an alert, then click **Take action** → **Add rule exception**.
 * **Shared Exception Lists page**: Find **Shared exception lists** in the navigation menu, click **Create shared exception list** → **Create exception item**.
 
 ### Configure exception conditions

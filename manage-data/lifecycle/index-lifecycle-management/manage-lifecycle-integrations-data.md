@@ -40,7 +40,7 @@ To find the data stream associated with a visualization in a {{kib}}:
 ::::{dropdown} Find the data streams for an integration
 To find the data streams associated with an installed integration:
 
-1. In {{kib}} go to **Management → Integrations → Installed integrations** and select any integration.
+1. In {{kib}} go to **Management** → **Integrations** → **Installed integrations** and select any integration.
 
 1. Open the **Assets** tab and expand the **Index templates** list.
 

@@ -54,7 +54,7 @@ Aggregation-based visualizations include the following limitations:
 
 Choose the type of visualization you want to create, then use the editor to configure the options.
 
-1. On the dashboard, click **All types → Aggregation based**.
+1. On the dashboard, click **All types** → **Aggregation based**.
 
     1. Select the visualization type you want to create.
     2. Select the data source you want to visualize.
@@ -97,7 +97,7 @@ Add the sample web logs data that you’ll use to create the bar chart, then cre
 
 Open the **Aggregation based** editor and change the time range.
 
-1. On the dashboard, click **All types → Aggregation based**, select **Vertical bar**, then select **Kibana Sample Data Logs**.
+1. On the dashboard, click **All types** → **Aggregation based**, select **Vertical bar**, then select **Kibana Sample Data Logs**.
 2. Make sure the [time filter](../../query-filter/filtering.md) is **Last 7 days**.
 
 

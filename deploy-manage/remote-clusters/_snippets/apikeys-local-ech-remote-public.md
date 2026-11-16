@@ -12,7 +12,7 @@ This snippet is in use in the following locations:
 
     On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 3. From the navigation menu, select **Access and Security** → **Security**.
-4. Locate **Remote Connections → Trust management → Connections using API keys** and select **Add API key**.
+4. Locate **Remote Connections** → **Trust management** → **Connections using API keys** and select **Add API key**.
 
     1. Fill both fields.
 

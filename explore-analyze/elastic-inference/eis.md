@@ -272,7 +272,7 @@ For example, the sentence `It was the best of times, it was the worst of times.`
 
 To track your token consumption:
 
-1. Navigate to [**Billing → Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
+1. Navigate to [**Billing** → **Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
 
 ## Service status [eis-service-status]

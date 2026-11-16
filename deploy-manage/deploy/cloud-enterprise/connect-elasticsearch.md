@@ -24,7 +24,7 @@ To successfully connect to a deployment, you need both the connection details an
 To connect to your {{es}} cluster, copy the **{{es}} endpoint** from the deployment page in the [Cloud UI](./log-into-cloud-ui.md).
 
 ::::{important}
-Application endpoints in ECE are generated based on the domain name configured in **Platform → Settings**. To learn how to modify these endpoints, refer to [Change endpoint URLs](./change-endpoint-urls.md).
+Application endpoints in ECE are generated based on the domain name configured in **Platform** → **Settings**. To learn how to modify these endpoints, refer to [Change endpoint URLs](./change-endpoint-urls.md).
 ::::
 
 Once you have the endpoint, use it in your client application. To test connectivity, you can:

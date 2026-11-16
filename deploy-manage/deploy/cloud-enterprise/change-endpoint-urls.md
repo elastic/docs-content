@@ -10,7 +10,7 @@ products:
 
 # Change endpoint URLs [ece-administering-endpoints]
 
-{{es}} and {{kib}} endpoint URLs are constructed using the `CLUSTER_ID` of the component ({{es}} or {{kib}}), and the domain name (`CNAME`) configured in the **Deployment Endpoints** section of the **Platform → Settings** UI.
+{{es}} and {{kib}} endpoint URLs are constructed using the `CLUSTER_ID` of the component ({{es}} or {{kib}}), and the domain name (`CNAME`) configured in the **Deployment Endpoints** section of the **Platform** → **Settings** UI.
 
 By default, the deployments `CNAME` is set to `LOCAL_HOST_IP.ip.es.io`, where `LOCAL_HOST_IP` is the IP address of the first installed ECE host. This results in the following default endpoint URLs:
 

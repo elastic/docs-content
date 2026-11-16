@@ -73,7 +73,7 @@ After creating a shared exception list, associate it with the rules that should 
 4. Click **Save**.
 5. (Optional) To verify the association:
 
-    1. Open a rule's details page (**Rules → {{siem-rules-ui}} → Rule name**).
+    1. Open a rule's details page (**Rules** → **{{siem-rules-ui}}** → **Rule name**).
     2. Scroll down and select the **Rule exceptions** tab.
     3. Navigate to the exception items from the shared list. Click the **Affects shared list** link to view the associated shared exception lists.
 

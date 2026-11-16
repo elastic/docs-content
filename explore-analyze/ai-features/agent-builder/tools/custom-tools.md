@@ -36,7 +36,7 @@ To create a custom tool in the UI:
 
    ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 
-    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize → Tools → Manage all tools**.
+    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize** → **Tools** → **Manage all tools**.
    ::::
 
    ::::{applies-item} { stack: ga =9.3 }

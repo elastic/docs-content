@@ -104,7 +104,7 @@ To configure trust in the ECH deployment:
 
 2. Update the trust settings for the {{ech}} deployment:
 
-    1. From the **Security** menu, select **Remote Connections → Add trusted environment**, choose **Self-managed**, and click **Next**.
+    1. From the **Security** menu, select **Remote Connections** → **Add trusted environment**, choose **Self-managed**, and click **Next**.
 
     2. Select **Certificates** as the authentication mechanism and click **Next**.
 

@@ -23,7 +23,7 @@ The [{{k8s}} Provider](/reference/fleet/kubernetes-provider.md) offers the `add_
 
 For {{agent}} versions >[8.10.4], the default configuration for metadata enrichment is `add_resource_metadata.deployment=false` and `add_resource_metadata.cronjob=false`. This means that pods that are created from replicasets that belong to specific deployments would not be enriched with `kubernetes.deployment.name`. Additionally, pods that are created from jobs that belong to specific cronjobs, would not be enriched with `kubernetes.cronjob.name`.
 
-**Kubernetes Integration Policy → Collect Kubernetes metrics from Kube-state-metrics → Kubernetes Pod Metrics**
+**Kubernetes Integration Policy** → **Collect Kubernetes metrics from Kube-state-metrics** → **Kubernetes Pod Metrics**
 
 :::{image} images/add_resource_metadata.png
 :alt: Configure add_resource_metadata
@@ -40,7 +40,7 @@ Enabling deployment and cronjob metadata enrichment leads to an increase of Elas
 
 As an alternative to keeping the feature enabled and using more memory resources for {{agent}}, users can make use of ingest pipelines to add the missing fields of `kubernetes.deployment.name` and `kubernetes.cronjob.name`.
 
-Navigate to `state_pod` data stream under: **Kubernetes Integration Policy → Collect Kubernetes metrics from Kube-state-metrics → Kubernetes Pod Metrics**.
+Navigate to `state_pod` data stream under: **Kubernetes Integration Policy** → **Collect Kubernetes metrics from Kube-state-metrics** → **Kubernetes Pod Metrics**.
 
 Create the following custom ingest pipeline with two processors:
 

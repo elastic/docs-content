@@ -133,7 +133,7 @@ serverless: unavailable
 
 To access these settings:
 
-1. In **Kibana**, go to **Management → {{fleet}} → Settings**.
+1. In **Kibana**, go to **Management** → **{{fleet}}** → **Settings**.
 2. Under **Fleet Server hosts**, select **Add host** or edit an existing host.
 3. Expand the **SSL options** or **Authentication** section.
 
@@ -153,7 +153,7 @@ The following table shows the available UI fields and their CLI equivalents:
 
 To access these settings:
 
-1. In **Kibana**, go to **Management → {{fleet}} → Settings**.
+1. In **Kibana**, go to **Management** → **{{fleet}}** → **Settings**.
 2. Under **Outputs**, select **Add output** or edit an existing output.
 3. Expand the **SSL options** or **Authentication** section.
 

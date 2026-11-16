@@ -67,7 +67,7 @@ The first layer you’ll add is a choropleth layer to shade world countries by w
 
 7. In **Layer style**:
 
-    * Set **Fill color → As number** to the grey color ramp.
+    * Set **Fill color** → **As number** to the grey color ramp.
     * Set **Border color** to white.
     * Under **Label**, change **By value** to **Fixed**.
 
