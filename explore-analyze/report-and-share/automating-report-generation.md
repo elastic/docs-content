@@ -25,11 +25,13 @@ To generate a report on demand from outside {{kib}}, such as from a script or {{
 
 ### Prerequisites [post-url-prerequisites]
 
-* Your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
-* To generate PDF and PNG reports, your {{kib}} instance needs a minimum of 2GB of RAM. There is no minimum requirement for CSV reports.
+To trigger reports with a POST URL, you need the following:
+
+* A role with [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
+* For PDF and PNG reports, a {{kib}} instance with a minimum of 2GB of RAM. CSV reports have no minimum requirement.
 
 :::{note}
-:applies_to: {stack: ga 9.1}
+:applies_to: {stack: ga 9.1+}
 Report generation requests are authenticated by API keys instead of session cookies. There are several key differences between the authentication methods. API keys capture your role privileges, whereas session cookies are based on your user credentials. API keys are also longer-lived, compared to session cookies, which have a shorter lifespan.
 
 If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
@@ -37,11 +39,11 @@ If you have a cross-cluster search environment and want to generate reports from
 
 ### Create a POST URL [create-a-post-url]
 
-Each report type has its own steps for creating the POST URL: one for PDF and PNG reports, and one for CSV reports.
+Create the POST URL from the dashboard, visualization, workpad, or Discover session that you want to generate reports for. The steps depend on the report type.
 
 #### PDF and PNG reports [pdf-png-post-url]
 
-To create the POST URL for PDF reports:
+To create the POST URL for PDF and PNG reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
 2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report. From the toolbar, do one of the following:
