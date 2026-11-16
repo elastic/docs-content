@@ -142,9 +142,15 @@ A successfully queued report returns a response like this:
     "jobtype": "csv_searchsource",
     "created_at": "2025-11-11T10:15:00.000Z",
     "created_by": "elastic",
+    "meta": {
+      "objectType": "search"
+    },
     "status": "pending",
     "attempts": 0,
-    "payload": ... <2>
+    "migration_version": "7.14.0",
+    "space_id": "default",
+    "payload": ..., <2>
+    "output": {}
   }
 }
 ```
