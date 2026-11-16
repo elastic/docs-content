@@ -42,7 +42,7 @@ Your responsibilities when running {{es}} in production depend on the [deploymen
 
 * **{{eck}}**: ECK gives you powerful orchestration capabilities for running {{es}} on Kubernetes. It simplifies lifecycle management, component configuration, upgrades, and supports [autoscaling](../autoscaling.md). However, you're still responsible for the Kubernetes environment and managing the {{es}} deployments themselves. That includes infrastructure sizing, sharding strategies, performance monitoring, and availability planning. Think of ECK as similar to a self-managed environment, but with orchestration and automation benefits.
 
-* **{{serverless-full}}**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload. Project performance and data retention are controlled through the [Search AI Lake settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
+* **{{serverless-full}}**: You don’t need to worry about nodes, shards, or replicas. These resources are 100% automated on the serverless platform, which is designed to scale with your workload. Project performance and data retention are controlled through  [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings).
 
 ::::{note}
 To understand what Elastic manages and what you're responsible for in {{ech}} and {{serverless-short}}, refer to [{{ecloud}} responsibilities](https://www.elastic.co/cloud/shared-responsibility). It outlines the security, availability, and operational responsibilities between Elastic and you.
