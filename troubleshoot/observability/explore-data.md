@@ -75,6 +75,7 @@ To create a multi-series visualization:
 
 Based on the Uptime data you are sending to your deployment, you can create various visualizations relating to monitor durations, pings over time, or any of the [available data types](#data-types).
 
+% Candidate for removal: low value. The chart-only capture dates from Feb 2022 and sits under the old title strip, and the table that follows already describes Monitor duration and Pings histogram.
 :::{image} /troubleshoot/images/observability-exploratory-view-uptime.png
 :alt: Explore data for Uptime
 :screenshot:
