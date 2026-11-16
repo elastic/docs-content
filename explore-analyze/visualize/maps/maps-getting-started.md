@@ -114,7 +114,7 @@ A choropleth layer shades areas by a value. In this map, a country gets a darker
 
 ## Step 3. Add layers for the Elasticsearch data [maps-add-elasticsearch-layer]
 
-Two layers show the {{es}} data without overwhelming the map. One shows individual requests when you zoom in. The other shows clusters of requests when you zoom out. Zoom levels run from 0, the whole world, to 24, individual streets.
+On a map of the whole world, a point for every web request would be unreadable. Zoomed in on a street, a cluster would hide the individual requests. To handle both, you’ll add two layers and set the zoom levels where each one is visible: one for individual requests, and one for clusters of requests. Zoom levels run from 0, the whole world, to 24, individual streets.
 
 
 ### Add a layer for individual documents [_add_a_layer_for_individual_documents]
