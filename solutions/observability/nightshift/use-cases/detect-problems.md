@@ -15,16 +15,15 @@ products:
 
 ## Before you begin [nightshift-uc-detect-before]
 
-Make sure you meet the following requirements:
-
 - An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
 - You have the privileges to turn on detection, or an admin has turned it on. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 - You have recent logs in your project. Detection watches logs only, not metrics or traces.
-- Detection runs all the time and uses tokens. Refer to [Cost and models](../cost-and-models.md).
+
+Detection runs all the time and uses tokens. Refer to [Cost and models](../cost-and-models.md).
 
 ## Example: Statement timeouts nobody alerted on [nightshift-uc-detect-example]
 
-In this example scenario, assume your alerts cover latency and error rates on `inventory-api`, but nothing watches the Postgres logs. One evening, Postgres starts to cancel `inventory-api` statements on the `encore` database because they hit the statement timeout. Users retry, so the error rate stays below your alert threshold.
+In this example scenario, assume your alerts cover latency and error rates on `inventory-api`, but nothing watches the Postgres logs. One evening, Postgres starts to cancel `inventory-api` statements on the `encore` database because they reach the statement timeout. Users retry, so the error rate stays below your alert threshold.
 
 Detection notices the timeout messages in the Postgres logs and raises a significant event: **Inventory API — PostgreSQL statement timeouts**, severity **High**, status **Active**. You open it, read what it found, and select **Investigate** to find out why.
 

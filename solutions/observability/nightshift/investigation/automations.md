@@ -28,7 +28,7 @@ flowchart LR
 
 ## Before you begin [nightshift-automations-prereqs]
 
-- {{nightshift}} is [enabled](../get-started.md#nightshift-get-started-enable).
+- An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
 - You have the privileges to create and edit automations. Without them, the edit actions on the **Automations** page are turned off, with a message that explains why. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 - To post results to Slack, an admin has [connected the Slack channel](./set-up.md#nightshift-set-up-slack).
 

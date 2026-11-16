@@ -17,8 +17,6 @@ After setting up your investigations, optionally set up detection to find issues
 
 ## Before you begin [nightshift-get-started-requirements]
 
-Make sure you meet the following requirements:
-
 - **An {{obs-serverless}} project on the Complete tier.** In Tech Preview, {{nightshift}} runs only in the default space. To check what works with your deployment, refer to [Reference architecture](./reference-architecture.md).
 - **Data to work with.** Logs, metrics, or traces in your project, or in another cluster that you can reach with an API key.
 - **An admin to enable {{nightshift}} and detection.** The predefined **Admin** role can do this. For other roles, refer to [Grant access to {{nightshift}}](./privileges.md).

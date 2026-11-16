@@ -17,7 +17,8 @@ Describe a problem in your own words, and in a few minutes {{nightshift}} return
 
 - An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable), and your data is connected. Refer to [Get started](../get-started.md).
 - You have the privileges to start investigations. Refer to [Grant access](../privileges.md#nightshift-privileges-analyst).
-- Investigations count toward the daily limits. Refer to [Investigation limits](../investigation/limits.md).
+
+Investigations count toward the daily limits. Refer to [Investigation limits](../investigation/limits.md).
 
 ## Example: Slow ticket lookups [nightshift-uc-anything-example]
 

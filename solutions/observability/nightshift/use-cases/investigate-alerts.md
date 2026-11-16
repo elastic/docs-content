@@ -15,12 +15,11 @@ products:
 
 ## Before you begin [nightshift-uc-alerts-before]
 
-Make sure you meet the following requirements:
-
 - An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable). Until then, you won't see an **Investigate** action for alerts.
 - You have the privileges to start investigations. Refer to [Grant access](../privileges.md#nightshift-privileges-analyst).
 - The alert is in the same project as {{nightshift}}. It can come from the {{alerting-v1-system}} or the {{alerting-v2-system}}.
-- Each investigation that you start counts toward the **Manual investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md).
+
+Each investigation that you start counts toward the **Manual investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md).
 
 ## Example: A latency alert on inventory-api [nightshift-uc-alerts-example]
 

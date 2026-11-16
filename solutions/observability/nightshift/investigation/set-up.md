@@ -25,9 +25,7 @@ To reach any other tool, use an HTTP connector. Refer to [Extend investigations]
 
 ## Before you begin [nightshift-set-up-prereqs]
 
-Make sure you meet the following requirements:
-
-- {{nightshift}} is [enabled](../get-started.md#nightshift-get-started-enable).
+- An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
 - You have the privileges to open the **Settings** page. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
 
 You manage connections on the **General** tab of the **Settings** page. On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Settings**.
