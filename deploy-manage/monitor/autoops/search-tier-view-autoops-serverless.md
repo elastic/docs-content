@@ -99,6 +99,11 @@ Increasing the search power, boost window, or retention period in your project w
 
 Setting a [minimum Search VCUs](/deploy-manage/deploy/elastic-cloud/project-settings.md#minimum-search-vcus) value works differently: it sets a floor under search VCU consumption rather than triggering upscaling. Search VCU consumption does not drop below this value, even when there is no search activity. Compare the **Search VCUs** chart against the **Minimum Search VCUs** line to see whether your project is running at the minimum or scaling above it. Search VCU usage appears on the chart with a delay of up to approximately one hour. If you have just set or changed the minimum, the chart might not yet show its effect, but the setting is still applied.
 
+:::{image} /deploy-manage/images/search-tier-search-vcus-minimum.png
+:screenshot:
+:alt: Screenshot of the Search VCUs chart showing Search VCU usage as a solid line and the Minimum Search VCUs setting as a dashed line
+:::
+
 :::{note}
 The search boost window and retention period settings are only applicable to time series data.
 :::
