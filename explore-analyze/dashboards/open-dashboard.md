@@ -85,7 +85,7 @@ To restore an earlier version:
 1. In edit mode, select **History** in the application menu. **History** is unavailable until you save the dashboard for the first time.
 2. In the **Version history** list, select a version to see the dashboard as it looked then. The preview isn't interactive. Your unsaved changes, if any, appear at the top of the list as **Unsaved changes**.
 3. Select **Restore**, or open the **Version actions** menu {icon}`boxes_vertical` on the version and select **Restore this version**. The current version has no restore option. If you have unsaved changes, the restored version replaces them.
-4. Confirm the restore. {{kib}} saves the restored version as a new version, which appears at the top of the list with a note such as **Restored from v3**. Restoring never rewinds the history: the earlier versions stay in the list.
+4. Confirm the restore. {{kib}} saves the restored version as a new version, which appears at the top of the list with a note such as **Restored from v3**. Restoring never rewinds the history. The earlier versions stay in the list.
 
 To leave without restoring anything, select **Back to dashboard**.
 
