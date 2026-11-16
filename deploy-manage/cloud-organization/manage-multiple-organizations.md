@@ -44,7 +44,7 @@ Each organization is a completely independent entity, and is not affiliated with
 To create a new organization:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the top navigation menu, click on the user menu and select **Profile**.
+2. Open the user menu in the header and select **Profile**.
 3. Click the **My organizations** tab.
 4. From the **Organizations** page, click {icon}`plus_in_circle` **Create organization**.
 5. Enter an optional name for your organization, and then click **Create organization**.
@@ -52,7 +52,7 @@ To create a new organization:
 After you create the organization, you can switch to it by clicking the organization name in the **Organizations** list.
 
 :::{tip}
-You can also create a new organization by clicking on your current organization name and selecting {icon}`plus_in_circle`  **Create**.
+You can also create a new organization from the organization selector. In the header, select your current organization's name, then select {icon}`plus_in_circle` **Create**.
 :::
 
 :::{include} _snippets/view-orgs.md

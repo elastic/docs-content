@@ -5,7 +5,7 @@ You can view the organizations you have access to from the **Overview** page.
 To view the organizations:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the top navigation menu, click on the user menu and select **Profile**.
+2. Open the user menu in the header and select **Profile**.
 3. Click the **My organizations** tab.
 
 The organizations you have access to appear in the **My organizations** list. In the list, you can view the organization's name, its status, your [roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) in the organization, and when you were added to the organization.
@@ -17,5 +17,5 @@ Role information is refreshed only when you log in to the organization, and migh
 :::
 
 :::{tip}
-You can also access your organizations list by clicking the **My organizations** button on the **Organization** page.
+You can also access your organizations list by clicking the **My organizations** button on the **Organization** page, or by selecting your current organization's name in the header and then selecting **Manage organizations**.
 :::

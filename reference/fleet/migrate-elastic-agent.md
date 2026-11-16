@@ -38,11 +38,11 @@ Refer to the full [Snapshot and restore](/deploy-manage/tools/snapshot-and-resto
 
 You can create a new cluster based on the snapshot taken in the previous step, and then migrate your {{agent}}s and {{fleet}} to the new cluster. For best results, it’s recommended that the new target cluster be at the same version as the cluster that the agents are migrating from.
 
-1. Open the {{ecloud}} console and select **Create deployment**.
+1. Open the {{ecloud}} console and select **Create hosted deployment**.
 2. Select **Restore snapshot data**.
 3. In the **Restore from** field, select your source deployment.
 4. Choose your deployment settings, and, optimally, choose the same {{stack}} version as the source cluster.
-5. Click **Create deployment**.
+5. Click **Create hosted deployment**.
 
     :::{image} images/migrate-agent-new-deployment.png
     :alt: Create a deployment page

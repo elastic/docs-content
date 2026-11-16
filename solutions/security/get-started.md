@@ -25,7 +25,7 @@ $$$create-sec-serverless-project$$$
 There are two options to create serverless projects:
 - If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration). For more information about {{ecloud}} trials, check out [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 - If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and do the following: 
-  1. Select **Create project** from the **Serverless projects** panel.
+  1. Select **Create serverless project** from the **Serverless projects** panel.
   2. Select **Next** from the **Security** panel.
   3. Name your project and select your feature tier. For more information about tiers, refer to [pricing](https://www.elastic.co/pricing/serverless-security).
   4. Select a cloud provider and region.

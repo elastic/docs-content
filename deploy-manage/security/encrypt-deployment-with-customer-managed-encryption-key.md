@@ -245,10 +245,10 @@ You can encrypt a deployment with your customer-managed key when you [create a n
 
     * from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-        * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+        * Select **Create hosted deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
         * In the **Settings**, set the **Cloud provider** to **Amazon Web Services** and select a region.
         * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**. An additional field appears to let you specify the ARN of the AWS KMS key or key alias you will use to encrypt your new deployment.
-        * Configure the rest of your deployment to your convenience, and select **Create deployment**.
+        * Configure the rest of your deployment to your convenience, and select **Create hosted deployment**.
 
     * using the API:
 
@@ -292,7 +292,7 @@ To create a new deployment with a customer-managed key in Azure, you need to per
 
 1. In {{ecloud}}, retrieve the Azure application ID:
 
-    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create hosted deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Azure** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Copy the **Azure application ID**.
@@ -320,11 +320,11 @@ After you have created the service principal and granted it the necessary permis
 
 * Using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create hosted deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Azure** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Enter the Azure key identifier for the RSA key that you created.
-    * Configure the rest of your deployment according to your requirements, and then select **Create deployment**.
+    * Configure the rest of your deployment according to your requirements, and then select **Create hosted deployment**.
 
 * Using the API:
 
@@ -371,7 +371,7 @@ The deployment is now created and encrypted using the specified key. Future snap
 
 1. In {{ecloud}}, retrieve the email addresses for the service principals that will be used by Elastic:
 
-    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create hosted deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Google Cloud** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Note the **Elastic service account** and **Google Cloud Platform storage service agent** email addresses.
@@ -411,11 +411,11 @@ After you have granted the Elastic principals the necessary roles, you can finis
 
 * Using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
-    * Select **Create deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
+    * Select **Create hosted deployment** from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) home page.
     * In the **Settings**, set the **Cloud provider** to **Google Cloud** and select a region.
     * Expand the **Advanced settings** and turn on **Use a customer-managed encryption key**.
     * Enter the resource ID for the key that you created.
-    * Configure the rest of your deployment according to your requirements, and then select **Create deployment**.
+    * Configure the rest of your deployment according to your requirements, and then select **Create hosted deployment**.
 
 * Using the API:
 
