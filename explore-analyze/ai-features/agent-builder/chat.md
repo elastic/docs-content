@@ -174,7 +174,7 @@ The options menu provides access to:
   - **File name**: {{kib}} lowercases the conversation title, replaces each run of characters other than letters and numbers with a single hyphen, removes leading and trailing hyphens, and adds `.json`. For example, `New conversation` becomes `new-conversation.json`.
   - **Contents**: A `conversation` object with the conversation `id`, `agent_id`, title, rounds, and the rest of the saved conversation.
   - **Availability**: Unavailable until the saved conversation has loaded. While the agent responds, the file contains the last saved conversation and can omit the round in progress.
-- **Load trace from file**: Open a saved trace in the [Trace flyout](#view-traces). Refer to [Load a trace from a file](#load-a-trace-from-a-file).
+- **Load trace from file**: Open a saved trace in the [trace flyout](#view-traces). Refer to [Load a trace from a file](#load-a-trace-from-a-file).
 
 In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the menu also includes **Open in full screen**. The following image shows the sidebar mode menu:
 
@@ -550,7 +550,7 @@ A valid file is either of the following:
 
 Each span must include `span_id`.
 
-The Trace flyout opens and shows the callout "Viewing a trace loaded from a file." You can load a file when trace collection is off, or when the round has no **View Trace** icon. The following image shows the flyout:
+The trace flyout opens and shows the callout "Viewing a trace loaded from a file." You can load a file when trace collection is off, or when the round has no **View Trace** icon. The following image shows the flyout:
 
 :::{image} images/trace-flyout-loaded-from-file.png
 :screenshot:
