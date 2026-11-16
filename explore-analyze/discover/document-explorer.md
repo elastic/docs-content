@@ -61,6 +61,7 @@ To put the most important fields first and give each one the width it needs:
 
 * To move a single column, drag its header and drop it to the position you want. You can also open the column's contextual options, and select **Move left** or **Move right**.
 * To move multiple columns, select **Columns**. In the pop-up, drag the column names to their new order.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To set the column order from the fields list in the sidebar, drag a field in the **Selected fields** group to its new position. To use the keyboard instead, press {kbd}`tab` until you focus the field you want to move in the **Selected fields** group, then press {kbd}`space` or {kbd}`enter` to pick it up. Press {kbd}`up` or {kbd}`down` to move it, then press {kbd}`space` or {kbd}`enter` to drop it or {kbd}`esc` to cancel. Reordering isn't available while you search the list by field name or filter it by field type.
 * To resize a column, drag the right edge of the column header until the column is the width that you want.
 
 **Result:** The table shows the columns in the new order and width.
