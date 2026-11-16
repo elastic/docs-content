@@ -11,7 +11,7 @@ products:
 
 # Manage budgets and notifications [billing-notifications]
 
-To help you understand costs and manage spending on {{ecloud}}, you can create budgets that track resource usage and send email notifications when month-to-date usage reaches specified thresholds. Budgets can be scoped to specific {{ecloud}} resources or to your entire organization.
+To help you understand costs and manage spending on {{ecloud}}, you can create budgets that track resource usage and send email notifications when usage within the budget's time range reaches specified thresholds. The budget time range and reset schedule can be configured to match your financial planning cycle. Budgets can be scoped to specific {{ecloud}} resources or to your entire organization.
 
 Budgets do not enforce a spending limit. When usage reaches or exceeds the budget, your deployments and projects continue to run and generate costs.
 
@@ -37,7 +37,11 @@ To create a budget:
     * **Cloud resource**: Tracks usage only for the selected resources, such as {{ech}} deployments, {{serverless-short}} projects, or connected clusters. In the selector, resources are grouped by type (for example, **Cloud Hosted**, **{{serverless-short}}**, and **Cloud Connect**), and you can select more than one.
 1. In the **Configuration** step, specify your budget details:
     1. Give your budget a **Name**.
-    1. Review the **Time range**: budgets are always **Monthly**, and usage resets on the first day of each calendar month.
+    1. Select a **Time range**: **Daily**, **Weekly**, **Monthly**, **Quarterly**, or **Yearly**. 
+    
+       For every range except **Daily**, you also choose when the period resets, such as the day of the week, the day of the month, the months of a quarterly cycle, or the month and day of the year. 
+       
+       Usage counted toward the budget resets at 00:00 UTC on the specified reset date.
     1. Enter a **Target amount (ECU)** in [Elastic Consumption Units](/deploy-manage/cloud-organization/billing/ecu.md). A cost trend chart shown next to the form summarizes historical usage for your chosen scope over the **last six months** so you can compare it to your target.
 1. In the **Alerts** step, configure when and who to notify:
 
