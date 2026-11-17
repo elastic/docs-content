@@ -51,7 +51,7 @@ api:
   cloud-monitoring:
     - spec: autoops.yaml
       product: ess
-      repository: elasitc/autoops-services
+      repository: elastic/autoops-services
   logstash:
     - spec: logstash.yaml
       product: logstash
