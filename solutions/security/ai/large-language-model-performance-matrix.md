@@ -48,6 +48,7 @@ Models from third-party LLM providers.
 
 :::{table}
 :matrix:
+:filterable:
 
 | **Model** | Agent Builder: Alert Analysis | Agent Builder: Entity Analytics | Agent Builder: Threat Hunting | Agent Builder: Detection Rules | Agent Builder: Workflow Authoring | Agent Builder: Triggering Workflows | Agent Builder: Multi-Step Executions | **Overall Agent Builder Score** | **Attack Discovery** | **Automatic Migration** | **Overall Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -102,6 +103,7 @@ _Last measured in November 2026._
 
 :::{table}
 :matrix:
+:filterable:
 
 | **Model** | Agent Builder: Alert Analysis | Agent Builder: Entity Analytics | Agent Builder: Threat Hunting | Agent Builder: Detection Rules | Agent Builder: Workflow Authoring | Agent Builder: Triggering Workflows | Agent Builder: Multi-Step Executions | **Overall Agent Builder Score** | **Attack Discovery** | **Automatic Migration** | **Overall Score** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
