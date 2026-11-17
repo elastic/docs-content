@@ -2,27 +2,24 @@ const MENU_START = '<!-- docs-ai-menu:start -->';
 const MENU_END = '<!-- docs-ai-menu:end -->';
 
 const WORKFLOW_CONFIG = {
-  triage: {
-    label: 'Triage ([`docs-triage`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-issue-triage.md)).',
-    marker: '<!-- docs-ai-menu:triage -->',
-  },
   issueScope: {
     label: 'Scope the docs work ([`docs-scope`](https://github.com/elastic/docs-actions/blob/main/.github/workflows/gh-aw-issue-scope.md)).',
     marker: '<!-- docs-ai-menu:issue-scope -->',
   },
 };
 
-const WORKFLOW_ORDER = ['triage', 'issueScope'];
+const WORKFLOW_ORDER = ['issueScope'];
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function getLinePattern(key) {
-  const { label, marker } = WORKFLOW_CONFIG[key];
+  const { marker } = WORKFLOW_CONFIG[key];
 
+  // Match on the marker and ignore the label text, so menus posted before a label rename still parse.
   return new RegExp(
-    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: (Status: .*?))? ${escapeRegExp(marker)}$`,
+    `^- \\[([ x])\\] .*?(?: (Status: .*?))? ${escapeRegExp(marker)}$`,
     'm'
   );
 }

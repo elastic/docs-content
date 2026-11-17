@@ -381,5 +381,7 @@ After you finish the configuration steps, reboot the host and confirm that the D
 
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Docker daemon configuration](https://docs.docker.com/engine/daemon/) in the Docker documentation.
 
-1. Repeat these steps on other hosts that you want to use with {{ece}} or follow the steps in the next section to start installing {{ece}}.
+## Next steps
+
+Repeat these host preparation steps for every Ubuntu host that you want to use with {{ece}}. After preparing and verifying all hosts, continue to [Installation procedures](install-ece-procedures.md) to install {{ece}}.
 

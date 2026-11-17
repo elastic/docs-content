@@ -8,19 +8,11 @@ spec:
   - name: masters
     count: 3
     config:
-      # On Elasticsearch versions before 7.9.0, replace the node.roles configuration with the following:
-      # node.master: true
       node.roles: ["master"]
       xpack.ml.enabled: true
   - name: data
     count: 10
     config:
-      # On Elasticsearch versions before 7.9.0, replace the node.roles configuration with the following:
-      # node.master: false
-      # node.data: true
-      # node.ingest: true
-      # node.ml: true
-      # node.transform: true
       node.roles: ["data", "ingest", "ml", "transform"]
 ```
 

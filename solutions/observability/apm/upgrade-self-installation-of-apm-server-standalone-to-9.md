@@ -38,7 +38,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 3. **Review your configuration file**
 
-    Some settings have been removed or changed. You may need to update your `apm-server.yml` configuration file prior to starting the APM Server. Refer to [Installation layout](/solutions/observability/apm/apm-server/installation-layout.md) for help in locating this file, and [Configure APM Server](/solutions/observability/apm/apm-server/configure.md) for a list of all available configuration options.
+    Some settings have been removed or changed. You might need to update your `apm-server.yml` configuration file before starting the APM Server. Refer to [Installation layout](/solutions/observability/apm/apm-server/installation-layout.md) for help in locating this file, and [Configure APM Server](/solutions/observability/apm/apm-server/configure.md) for a list of all available configuration options.
 
 4. **Start the APM Server**
 

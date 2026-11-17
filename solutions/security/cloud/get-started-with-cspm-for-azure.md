@@ -31,17 +31,17 @@ This page explains how to get started monitoring the security posture of your cl
 
 You can set up CSPM for Azure by enrolling an Azure organization (management group) containing multiple subscriptions, or by enrolling a single subscription. Either way, first add the CSPM integration, then enable cloud account access. 
 
-The following deployment technologies are available: agentless and agent-based. 
+The following deployment options are available: {{managed-integration}} and agent-based. 
 
-* [Agentless deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
+* The [{{managed-integration}} deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agentless) allows you to collect cloud posture data without having to manage the infrastructure that collects it.
+* The [Agent-based deployment](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-agent-based) requires you to deploy and manage an agent in the cloud account you want to monitor.
 
 
-## Agentless deployment [cspm-azure-agentless]
+## {{managed-integration}} deployment [cspm-azure-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+2. Search for `CSPM`, then select **Cloud Security Posture Management (CSPM)**.
+3. If the integration's **Overview** page opens, select **Add Cloud Security Posture Management (CSPM)**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
 5. Give your integration a name and description that match the purpose or team of the Azure subscription/organization you want to monitor, for example, `dev-azure-account`.
 6. (Optional) Expand the **Advanced options** menu and add a `Namespace` to the integration's data stream.
@@ -49,11 +49,38 @@ The following deployment technologies are available: agentless and agent-based.
 :::{include} _snippets/cspm-namespace.md
 :::
 
-7. For **Deployment options**, select **Agentless**.
+7. In **Deployment options**, select the deployment mode:
+    * {applies_to}`{serverless: ga, stack: ga 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to Azure. The following methods are available:
     
-    * Option 1: [Cloud connector](/manage-data/ingest/managed-integrations/cloud-connector-deployment.md) (recommended). {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`  
-      Under **New connection**, enter a **Cloud Connector Name**, then expand the **Steps to create Managed User Identity in Azure** section. Complete the instructions to generate a `Client ID`, `Tenant ID`, and `Cloud Connector ID`, then enter them in {{kib}}.
+    * Option 1 (recommended): [Federated Identity](/reference/managed-integrations/federated-identity.md), also called a cloud connector in earlier versions:
+
+      ::::{applies-switch}
+
+      :::{applies-item} { "serverless": "preview", "stack": "preview 9.4+" }
+      1. In the **Preferred method** dropdown, select **Federated Identity**.
+      2. To reuse an existing identity, select the **Existing Identity** tab, then select the identity's name.
+
+         To create a new identity:
+
+         1. On the **New Identity** tab, enter a **Federated Identity Name**.
+         2. Expand the **Steps to create Managed User Identity in Azure** section and complete the instructions.
+         3. Enter the resulting `Tenant ID` and `Client ID` in the respective fields in {{kib}}, and enter the `Elastic Cloud Connector ID` output in the **Federated Identity ID** field.
+      :::
+
+      :::{applies-item} { "stack": "preview 9.2-9.3" }
+      1. In the **Preferred method** dropdown, select **Cloud Connectors**.
+      2. To reuse an existing cloud connector, select the **Existing Connection** tab, then select the cloud connector's name.
+
+         To create a new cloud connector:
+
+         1. On the **New Connection** tab, enter a **Cloud Connector Name**.
+         2. Expand the **Steps to create Managed User Identity in Azure** section and complete the instructions to generate a `Client ID`, a `Tenant ID`, and a `Cloud Connector ID`.
+         3. Enter the values in the respective fields in {{kib}}.
+      :::
+
+      ::::
     
     * Option 2: Azure Client ID with Client Secret. Provide a **Client ID**, **Tenant ID**, and **Client Secret**. To learn how to generate them, refer to [Service principal with client secret](/solutions/security/cloud/get-started-with-cspm-for-azure.md#cspm-azure-client-secret).
 
@@ -66,8 +93,8 @@ The following deployment technologies are available: agentless and agent-based.
 ### Add your CSPM integration [cspm-add-and-name-integration-azure]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+2. Search for `CSPM`, then select **Cloud Security Posture Management (CSPM)**.
+3. If the integration's **Overview** page opens, select **Add Cloud Security Posture Management (CSPM)**.
 4. In **Configure integration**, select **Azure**, then select either **Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.
 5. Give your integration a name that matches the purpose or team of the Azure resources you want to monitor, for example, `azure-CSPM-dev-1`.
 6. (Optional) under **Advanced options**, you can add a `Namespace` to the integration's data stream.

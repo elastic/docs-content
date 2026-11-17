@@ -87,7 +87,7 @@ The `state.yml` file (located under `data/elastic-agent-*`) contains the entire,
 
 If {{agent}} is set up and running, but you don’t see data in {{kib}}:
 
-1. Go to **Management > {{dev-tools-app}}** in {{kib}}, and in the Console, search your index for data. For example:
+1. Go to **Management** → **{{dev-tools-app}}** in {{kib}}, and in the Console, search your index for data. For example:
 
     ```console
     GET metrics-*/_search

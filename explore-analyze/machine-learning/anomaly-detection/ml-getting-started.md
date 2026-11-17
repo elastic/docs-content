@@ -82,7 +82,7 @@ The results on this page might be different than the actual values you get when 
 
 The {{kib}} sample data sets include some pre-configured {{anomaly-jobs}} for you to play with. You can use either of the following methods to add the jobs:
 
-* After you load the [sample web logs data set](../../index.md#gs-get-data-into-kibana), click **View data** > **ML jobs**.
+* After you load the [sample web logs data set](../../index.md#gs-get-data-into-kibana), click **View data** → **ML jobs**.
 * In the Machine Learning app, when you select the `kibana_sample_data_logs` {{data-sources}} in the **Data Visualizer** or the **Anomaly Detection** job wizards, it recommends that you create a job using its known configuration. Select the **Kibana sample data web logs** configuration.
 * Accept the default values and click **Create Jobs**.
 
@@ -99,7 +99,7 @@ For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [
 
 ::::
 
-If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Stack Management** > **Anomaly Detection Jobs** page, which you can access from the navigation menu or using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). Alternatively, you can see the configuration files in [GitHub](https://github.com/elastic/kibana/tree/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
+If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Stack Management** → **Anomaly Detection Jobs** page, which you can access from the navigation menu or using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). Alternatively, you can see the configuration files in [GitHub](https://github.com/elastic/kibana/tree/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
 
 * `low_request_rate` uses the `low_count` function to find unusually low request rates
 * `response_code_rates` uses the `count` function and partitions the analysis by `response.keyword` values to find unusual event rates by HTTP response code
@@ -164,6 +164,9 @@ For each anomaly, you can see key details such as the time, the actual and expec
 :::
 
 In the **Actions** column, there are additional options, such as **Raw data** which generates a query for the relevant documents in **Discover**. You can optionally add more links in the actions menu with [custom URLs](ml-configuring-url.md).
+
+::::{include} _snippets/ml-ad-cps-results-links.md
+::::
 
 By default, the table contains all anomalies that have a severity of "warning" or higher in the selected section of the timeline. If you are only interested in critical anomalies, for example, you can change the severity threshold for this table.
 

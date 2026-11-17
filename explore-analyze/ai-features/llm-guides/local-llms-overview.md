@@ -9,7 +9,7 @@ products:
 
 # Self-managed custom LLMs
 
-You can set up connectors for self-managed LLMs to maintain more control of your data, operate in an air-gapped environment, or use specific open-source models of your choosing.
+You can connect self-managed LLMs to maintain more control of your data, operate in an air-gapped environment, or use specific open-source models of your choosing.
 
 For model performance on {{elastic-sec}} and {{observability}} AI tasks, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md) and the [LLM performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md).
 

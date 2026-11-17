@@ -31,6 +31,8 @@ Skills can be invoked in three ways:
 **Automatic discovery (default)**
 :   The agent receives a list of available skills with their names and descriptions. Based on the user's natural language input, it automatically selects and invokes the most relevant skill. No special syntax is needed.
 
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` When the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) is turned on and a [fast model](models.md#fast-model) that's different from the conversation's model is available, the agent doesn't receive the full list. Instead, for each new message, the fast model reviews the message and recent conversation and passes the agent up to five relevant skills, or none if no skill clearly applies. If the agent has three or fewer skills, it receives all of them. At any point in the conversation, the agent can also search the skills available to it for one that fits a specific task.
+
 **Slash commands**
 :   Users can explicitly invoke a skill by typing `/` followed by the skill name and a prompt. This is useful when you know exactly which skill you need.
 
@@ -59,7 +61,7 @@ For the complete list, refer to [Built-in skills reference](builtin-skills-refer
 
 ## Custom skills
 
-You can extend the built-in catalog with your own custom skills. Custom skills are saved to your skill library, which you can manage from **Manage components > Skills**. Creating a skill adds it to the library, but it is not available to any agent until you add it from **Customize > Skills** on that agent. This separation means you can maintain a shared library of skills and choose which ones each agent has access to.
+You can extend the built-in catalog with your own custom skills. Custom skills are saved to your skill library, which you can manage from **Manage components** → **Skills**. Creating a skill adds it to the library, but it is not available to any agent until you add it from **Customize** → **Skills** on that agent. This separation means you can maintain a shared library of skills and choose which ones each agent has access to.
 
 To learn how to create and manage custom skills, refer to [Custom skills](custom-skills.md).
 

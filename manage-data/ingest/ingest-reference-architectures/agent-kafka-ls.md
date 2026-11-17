@@ -18,7 +18,7 @@ products:
 Ingest model
 :   Control path: {{agent}} to {{fleet}} to {{es}}<br> Data path: {{agent}} to {{ls}} to Kafka to {{ls}} to {{es}}: Kafka as middleware message queue.
 
-    {{ls}} reads data from Kafka and routes it to {{es}} clusters (and/or other destinations)
+    {{ls}} reads data from Kafka and routes it to {{es}} clusters, other destinations, or both
 
 
 Use when

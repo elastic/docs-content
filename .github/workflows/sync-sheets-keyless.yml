@@ -1,4 +1,4 @@
-name: Sync Google Sheets to CSV
+name: "Scheduled: Sync Google Sheets"
 
 on:
   # Scheduled trigger - daily at 2 AM UTC

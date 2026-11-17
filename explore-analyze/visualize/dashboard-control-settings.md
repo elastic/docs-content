@@ -15,7 +15,7 @@ This page describes the settings you can configure for dashboard controls. The s
 
 ## Options list and range slider settings [options-list-range-slider-settings]
 
-Options lists and range sliders share most settings. A few are specific to one type: **Selections**, **Searching**, and **Ignore timeout for results** apply only to options lists, and **Step size** applies only to range sliders.
+Options lists and range sliders share most settings. A few are specific to one type: **Selections**, **Searching**, and **Always load all results** (or **Ignore timeout for results** depending on your {{stack}} version) apply only to options lists, and **Step size** applies only to range sliders.
 
 ### Control settings [data-control-settings]
 
@@ -43,7 +43,10 @@ Set these in the control's editor: when you add the control, or later by hoverin
 
     {applies_to}`stack: ga 9.0-9.3` In these versions, this is set once for the whole dashboard in the same control settings dialog, applying to all controls.
 
-**Ignore timeout for results**
+**Always load all results** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+`
+:   Options list only. By default, a large data set can return a partial list, and the control shows **Some values might be missing**. Turn this option on to load the full list. The list takes longer to load.
+
+**Ignore timeout for results** {applies_to}`stack: ga 9.0-9.5`
 :   Options list only. Wait to display results until the list is complete. Useful for large data sets, but the results might take longer to populate.
 
 ### Display settings [data-display-settings]

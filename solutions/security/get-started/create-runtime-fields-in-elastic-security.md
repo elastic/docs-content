@@ -43,7 +43,7 @@ To create a runtime field:
 
 3. Enter a **Name** for the new field.
 4. Select a **Type** for the field’s data type.
-5. Turn on the **Set value** toggle and enter a [Painless script](../../../explore-analyze/scripting/modules-scripting-painless.md) to define the field’s value. The script must match the selected **Type**. For more on adding fields and Painless scripting examples, refer to [Explore your data with runtime fields](../../../explore-analyze/find-and-organize/data-views.md#runtime-fields).
+5. Turn on the **Set value** toggle and enter a [Painless script](../../../explore-analyze/scripting/modules-scripting-painless.md) to define the field’s value. The script must match the selected **Type**. For more on adding fields and Painless scripting examples, refer to [Explore your data with runtime fields](../../../explore-analyze/find-and-organize/data-views/runtime-fields.md).
 6. Use the **Preview** to help you build the script so it returns the expected field value.
 7. Configure other field settings as needed.
 

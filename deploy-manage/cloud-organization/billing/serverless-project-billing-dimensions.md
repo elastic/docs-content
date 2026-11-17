@@ -41,9 +41,6 @@ If your subscription level is Standard, there is no separate charge for Support 
 
 
 ### {{cps-cap}} [general-serverless-billing-cps]
-```{applies_to}
-serverless: preview
-```
 
 [{{cps-cap}}](/deploy-manage/cross-project-search-config.md) enables you to search across multiple {{serverless-short}} projects from a single origin project.
 

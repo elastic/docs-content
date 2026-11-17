@@ -77,9 +77,11 @@ Once setup is complete, you can access the Stack Monitoring UI inside {{kib}}, w
 ### Investigations and root cause analysis
 
 #### AutoOps [ao-investigations]
-The AutoOps agent captures a pre-defined set of {{es}} metrics, but doesn’t fetch any logs. AutoOps then performs multi-metrics analysis and correlations to identify issues and potential root causes. When issues are detected, AutoOps raises [events](/deploy-manage/monitor/autoops/ec-autoops-events.md) and [notifies](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md) you accordingly. When the issue is resolved, AutoOps automatically closes the event.
+The AutoOps agent captures a pre-defined set of {{es}} metrics, but doesn’t fetch any logs. AutoOps then performs multi-metrics analysis and correlations to identify issues and potential root causes. When issues are detected, AutoOps raises insights in the form of [events](/deploy-manage/monitor/autoops/ec-autoops-events.md) and [notifies](/deploy-manage/monitor/autoops/ec-autoops-notifications-settings.md) you accordingly. When the issue is resolved, AutoOps automatically closes the event.
 
-For each raised event, AutoOps provides insights into the affected resources (cluster, node, index, shard, etc.), background information on the detected problem, and step-by-step guides to help you diagnose and remediate the identified issues. Most detection rules can be [customized](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) by adjusting thresholds, durations, index patterns, data tiers, and more.
+For each raised event, AutoOps provides details about the affected resources (cluster, node, index, shard, etc.), background information on the detected problem, and step-by-step guides to help you diagnose and remediate the identified issues. Most detection rules can be [customized](/deploy-manage/monitor/autoops/ec-autoops-event-settings.md) by adjusting thresholds, durations, index patterns, data tiers, and more.
+
+For a full list of what AutoOps can detect and help you resolve, refer to [AutoOps insights](autoops-insights://elasticsearch/index.md).
 
 #### Stack Monitoring [sm-investigations]
 The Stack Monitoring UI displays the [metrics](/deploy-manage/monitor/monitoring-data/elasticsearch-metrics.md) of your monitored {{stack}} components over time. Logs can be viewed, searched, and filtered in Discover. You can enable a pre-defined set of alerts that are triggered when specific thresholds are crossed. You can also configure your own [alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) on any collected metrics or log messages. However, Stack Monitoring does not offer any further investigation, correlations, or root cause analyses.

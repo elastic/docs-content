@@ -63,6 +63,8 @@ Once created, you can’t update or change an enrich policy. See [Update an enri
 
 Once the enrich policy is created, you need to execute it using the [execute enrich policy API]({{es-apis}}operation/operation-enrich-execute-policy) or [Index Management in {{kib}}](/manage-data/data-store/perform-index-operations.md#manage-indices) to create an [enrich index](data-enrichment.md#enrich-index).
 
+By default, the execute enrich policy API waits until the enrich index is ready before it responds. If you set `wait_for_completion=false`, the API returns a task ID immediately and builds the enrich index in the background. Wait for that task to finish, for example by checking it with the [task management API]({{es-apis}}group/endpoint-tasks), before you use the policy in an enrich processor or {{esql}} query.
+
 :::{image} /manage-data/images/elasticsearch-reference-enrich-policy-index.svg
 :alt: enrich policy index
 :::
