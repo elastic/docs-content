@@ -326,7 +326,6 @@ In standalone mode, select **Chat info** in the header of a templated conversati
 
 What you can change in **Chat info** depends on your privileges. For investigations and escalations in {{alertzero}}, refer to [](/solutions/security/alertzero/escalate-investigation.md) and [](/solutions/security/alertzero/alertzero-privileges.md).
 
-To create a templated conversation from a workflow, use [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create). For the metadata keys each template accepts, refer to [Conversation template metadata](/explore-analyze/workflows/steps/ai-steps.md#conversation-template-metadata). To read or update the metadata from a workflow, use [`ai.conversation.metadata.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-read) and [`ai.conversation.metadata.patch`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-patch). To start a workflow when the metadata changes, use the [`ai.conversation.metadataUpdated` trigger](/explore-analyze/workflows/triggers/event-driven-triggers.md#ai-conversation-metadata-updated-trigger).
 
 ### Inspect tool calls and reasoning
 
