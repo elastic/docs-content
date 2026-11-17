@@ -49,7 +49,7 @@ api:
       product: cloud-serverless
       repository: elastic/serverless-api-specification
   cloud-monitoring:
-    - spec: autoops-api-public.yaml
+    - spec: autoops.yaml
       product: ess
       repository: elasitc/autoops-services
   logstash:
