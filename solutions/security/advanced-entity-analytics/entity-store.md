@@ -85,10 +85,7 @@ To enable the entity store:
 
 ::::
 
-Once you enable the entity store, the **Entities** section appears on the following pages:
-
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md)
-* [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
+Once you enable the entity store, entity data appears in the entity table on the [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) page.
 
 ## Clear entity store data [clear-entity-store]
 
