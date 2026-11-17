@@ -21,7 +21,7 @@ products:
     **Workaround:** Investigations can query those clusters through an External {{es}} connector; detection can't. Refer to [Reference architecture](./reference-architecture.md).
 
 **Default space only**
-:   {{nightshift}} works only in the default space. In any other space, it shows **Nightshift only works in the default space for now**, with a button to open the default space.
+:   {{nightshift}} works only in the default space. In any other space, it shows **nightshift only works in the default space for now**, with a button to open the default space.
 
     **Workaround:** Use {{nightshift}} in the default space. Its investigations can still query data that the connectors reach.
 

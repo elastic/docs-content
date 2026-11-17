@@ -29,7 +29,7 @@ You don't need an LLM connector. {{nightshift}} uses the [Elastic {{infer-cap}} 
 ::::{step} Enable {{nightshift}}
 :anchor: nightshift-get-started-enable
 
-Open the {{nightshift}} home page by selecting **Nightshift** in the navigation menu, or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From here, an admin needs to select **Enable {{nightshift}}**.  If you don't see **Enable {{nightshift}}**, ask an admin to do this step.
+Open the {{nightshift}} home page by selecting **nightshift** in the navigation menu, or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From here, an admin needs to select **Enable {{nightshift}}**.  If you don't see **Enable {{nightshift}}**, ask an admin to do this step.
 
 {{nightshift}} runs every investigation as a service account. Refer to [Privileges that {{nightshift}} runs with](./privileges.md#nightshift-privileges-accounts).
 

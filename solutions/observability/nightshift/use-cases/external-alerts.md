@@ -72,7 +72,7 @@ Follow these instructions to investigate alerts from your other tools in Slack. 
 1. Select **Any app**, and enter the app's exact name, app ID, or bot ID, for example `Alertmanager`. Messages from people and from other apps in the channel no longer start the automation.
 1. Optionally, select **Any message** and enter text in **Message contains…** to match only some messages, for example `FIRING`. The match is case-sensitive, and it includes text in the message's attachments and blocks.
 1. Set the **Daily trigger limit**, and describe the tool and its messages in **Additional Instructions**. Refer to [Limits that apply](#nightshift-uc-ext-limits) and [Tell {{nightshift}} about your tool](#nightshift-uc-ext-instructions).
-1. Check **Actions**. With a Slack trigger, the **Post in Slack** action is added for you and shows "Nightshift replies in the thread of the triggering message."
+1. Check **Actions**. With a Slack trigger, the **Post in Slack** action is added for you and shows "{{nightshift}} replies in the thread of the triggering message."
 1. Select **Save and enable**.
 
 The automation appears on the **Automations** page with **Enabled** on. When the app posts its next alert, {{nightshift}} replies in that message's thread.

@@ -19,7 +19,7 @@ Make sure you have the privileges to open {{nightshift}} **Settings**, and to tu
 
 ## Open Settings [nightshift-settings-open]
 
-1. Select **Nightshift** in the navigation menu.
+1. Select **nightshift** in the navigation menu.
 1. On the home page, select {icon}`boxes_vertical` → **Settings**.
 
 The page has the following options:
@@ -41,7 +41,7 @@ When you change a run limit, a schedule setting, continuous KI onboarding, or to
 **Slack channels**
 :   Select **Connect Slack** to connect the `@Elastic` Slack app to your workspace, then connect the channels where people can ask `@Elastic` for help and where automations post results. Refer to [Set up Slack](./investigation/set-up.md#nightshift-set-up-slack).
 
-**Nightshift developer mode**
+**nightshift developer mode**
 :   Shows extra tabs, details, and settings for expert users. Refer to [Developer mode](#nightshift-settings-developer-mode).
 
 ### Developer mode [nightshift-settings-developer-mode]

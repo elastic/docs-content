@@ -13,7 +13,7 @@ products:
 
 The home page is your inbox for investigations. Every investigation lands here, whether you started it, a teammate asked in Slack, or an automation started when an alert fired. {{nightshift}} sorts investigations by severity, so you can work from the most urgent problem down to the lowest severity.
 
-Select **Nightshift** in the navigation menu to open the home page.
+Select **nightshift** in the navigation menu to open the home page.
 
 :::{image} ../../images/nightshift-home.png
 :alt: The Elastic nightshift home page with tiles that count Critical, High, Medium, and Low investigations, and a list of investigations grouped under High

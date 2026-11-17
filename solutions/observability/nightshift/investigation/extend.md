@@ -138,7 +138,7 @@ Runbooks API: use the HTTP connector `runbooks-api` to find the runbook for a se
 You can build custom tools in {{agent-builder}} that fetch context, such as an {{esql}} query, an index search, or an MCP tool. Refer to [Tools in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools.md) and [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
 
 :::{warning}
-Investigations run as the **Nightshift Investigator** agent in {{agent-builder}}. You can add tools and skills to it, but this isn't tested or supported in Tech Preview. Use it at your own risk, and check your investigations after you change the agent. To edit an agent, refer to [Create and manage custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md).
+Investigations run as the **nightshift Investigator** agent in {{agent-builder}}. You can add tools and skills to it, but this isn't tested or supported in Tech Preview. Use it at your own risk, and check your investigations after you change the agent. To edit an agent, refer to [Create and manage custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md).
 :::
 
 ## Run workflows from chat [nightshift-extend-workflows]

@@ -42,7 +42,7 @@ For example, after its first investigation of a slow service, {{nightshift}} can
 
 The **Knowledge** page shows everything that {{nightshift}} has learned.
 
-1. Open {{nightshift}}: select **Nightshift** in the navigation menu.
+1. Open {{nightshift}}: select **nightshift** in the navigation menu.
 1. On the home page, open the {icon}`boxes_vertical` menu and select **Knowledge**.
 
 The page has a tab for each type of context: **Knowledge Indicators**, **Wiki**, and **Memory**. With [developer mode](../settings.md#nightshift-settings-developer-mode) on, it also has a **Decision Trees** tab.

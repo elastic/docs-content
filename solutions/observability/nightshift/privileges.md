@@ -29,16 +29,16 @@ To give access based on the job a specific person does, build a [custom role](/d
 
 ### Review and decide on investigations [nightshift-privileges-analyst]
 
-Everyone who uses {{nightshift}} needs the **Nightshift**: **Read** privilege. Add the others for the tasks each person does.
+Everyone who uses {{nightshift}} needs the **nightshift**: **Read** privilege. Add the others for the tasks each person does.
 
 | Privilege | Access |
 | --- | --- |
-| **Nightshift**: **Read** | View the home page, investigations, and proposed actions |
-| **Nightshift**: **All**, **Agent Builder**: **All**, permission to run workflows, and read access to connectors | Start an investigation |
-| **Nightshift**: **All** | Mark a proposed action as applied or declined |
+| **nightshift**: **Read** | View the home page, investigations, and proposed actions |
+| **nightshift**: **All**, **Agent Builder**: **All**, permission to run workflows, and read access to connectors | Start an investigation |
+| **nightshift**: **All** | Mark a proposed action as applied or declined |
 | Access to **Agent Builder** | Open an investigation in chat |
-| **Nightshift**: **Read** | View the **Knowledge** page |
-| **Nightshift**: **All** | Archive, restore, or delete entries on the **Knowledge** page |
+| **nightshift**: **Read** | View the **Knowledge** page |
+| **nightshift**: **All** | Archive, restore, or delete entries on the **Knowledge** page |
 
 **Read** and **All** cover every investigation and proposed action in the space, including ones that other solutions create.
 
@@ -48,14 +48,14 @@ Add the privileges for each task the admin does.
 
 | Privilege | Access |
 | --- | --- |
-| **Nightshift**: **Manage engines**, and the `manage_security` cluster privilege | Enable {{nightshift}} for a space |
-| **Nightshift**: **All** and **Manage engines** | Open **Settings**, pause or resume engines, and change limits |
-| **Nightshift**: **Manage engines** | Create, edit, turn on or off, or delete detection sources |
-| **Nightshift**: **All** and **Manage engines** | Connect a Slack workspace or channel |
+| **nightshift**: **Manage engines**, and the `manage_security` cluster privilege | Enable {{nightshift}} for a space |
+| **nightshift**: **All** and **Manage engines** | Open **Settings**, pause or resume engines, and change limits |
+| **nightshift**: **Manage engines** | Create, edit, turn on or off, or delete detection sources |
+| **nightshift**: **All** and **Manage engines** | Connect a Slack workspace or channel |
 | **Advanced Settings**: **All** | Turn developer mode on or off |
-| **Nightshift**: **All**, and the `manage_security` cluster privilege. {{nightshift}} must be enabled for the space. | Create, edit, turn on or off, or delete an automation |
+| **nightshift**: **All**, and the `manage_security` cluster privilege. {{nightshift}} must be enabled for the space. | Create, edit, turn on or off, or delete an automation |
 
-- **Manage engines** isn't part of **All**. Add it explicitly.
+- **Manage engines** isn't part of **All**. Under **nightshift**, turn on **Customize sub-feature privileges** and select **Manage engines**.
 - Sources decide which data detection reads, and the significant events it finds are visible to everyone with {{nightshift}} access in the space. Give **Manage engines** only to people who should make that choice.
 - `manage_security` lets its holder manage users and roles for the whole project. Don't grant it only for {{nightshift}}. Instead, have an admin who already has it enable {{nightshift}} and manage automations.
 

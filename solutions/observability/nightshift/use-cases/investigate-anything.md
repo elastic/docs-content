@@ -58,7 +58,7 @@ Give a time window if the problem has already ended to prevent {{nightshift}} fr
 
 To start an investigation from the home page:
 
-1. Select **Nightshift** in the navigation menu to open the home page.
+1. Select **nightshift** in the navigation menu to open the home page.
 1. Select **Investigate**.
 1. Describe the problem, then select **Investigate**. Refer to [Write a good description](#nightshift-uc-anything-description).
 
