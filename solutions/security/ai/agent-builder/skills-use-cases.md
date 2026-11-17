@@ -218,7 +218,7 @@ serverless:
 
 Use this skill to list enrolled {{elastic-defend}} endpoints, check whether a host is isolated, and follow up on a [response action](/solutions/security/endpoint-response-actions.md) you already sent. After you confirm in the chat, the agent can isolate or release a host, request the processes running on a host, or scan a path for malware. Select **Deny** on the confirmation to cancel instead.
 
-Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the [response console](/solutions/security/endpoint-response-actions.md) instead.
+Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the response console instead.
 
 If the agent can't match your request to a single host that can receive response actions, or you lack the required privilege, license, or project feature tier, the confirmation says the action will be refused and nothing is sent, even if you confirm. If several endpoints share a hostname, ask again using the agent ID.
 
