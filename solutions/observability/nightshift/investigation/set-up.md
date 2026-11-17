@@ -97,12 +97,12 @@ Connect Slack so your team can ask {{nightshift}} for help in a channel, and aut
 
    The authorization applies to the whole Slack workspace, including every Elastic deployment that's connected to it.
 1. In Slack, invite `@Elastic` to each channel that you want to use, for example with `/invite @Elastic`.
-1. Copy the channel's link or ID. In Slack, open the channel details to find both. `@Elastic` can also post the channel ID when you invite it.
-1. Back in **Slack channels**, under **Connected channels**, paste the channel ID or link into **Slack channel ID or link**, and select **Connect channel**.
+1. Back in **Slack channels**, select **Connect channels**.
+1. In **Connect a channel**, select the channel from the **Channel** list, then select **Connect**. If the channel isn't listed, enter its channel ID or a link copied from Slack.
 
-The channel appears under **Connected channels** with the **Connected** status. `@Elastic` answers only in connected channels.
+The channel appears in the **Channels** table with its name and ID. `@Elastic` answers only in connected channels.
 
-To stop `@Elastic` from answering in a channel, select **Disconnect** next to it. The bot can stay in the channel until you remove it in Slack, and reply that the channel isn't connected when someone mentions it. To remove the whole workspace, select **Disconnect workspace**.
+To stop `@Elastic` from answering in a channel, select **Disconnect channel** next to it. The bot stays in the channel until someone removes it in Slack, and replies that the channel isn't connected when someone mentions it. To remove the whole workspace, open the workspace's actions menu and select **Disconnect workspace**.
 
 A mention of `@Elastic` in a connected channel starts an investigation, which counts toward the **Manual investigations daily limit**. For what your team can do in Slack, refer to [Investigate in Slack](../use-cases/investigate-in-slack.md).
 
