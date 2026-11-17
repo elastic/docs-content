@@ -564,10 +564,10 @@ components:
             type: string
           externalDocs:
             description: The list of rule IDs.
-            url: https://ela.st/autoops-insights.json
+            url: https://ela.st/autoops-insights
           description: |
             The IDs of the rules whose insights to return. Values are matched case-insensitively.
-            The list of rule IDs is available at https://ela.st/autoops-insights.json.
+            The list of rule IDs is available at https://ela.st/autoops-insights.
             An unknown rule ID is rejected with a `400` error.
             Which rules can raise insights depends on the resource type in the URL.
           example:
@@ -595,13 +595,13 @@ components:
             type: string
           externalDocs:
             description: The list of tags.
-            url: https://ela.st/autoops-insights.json
+            url: https://ela.st/autoops-insights
           description: |
             The tags to match. A tag matches the whole value of a tag of the insight,
             case-insensitively. The available insight tags depend on the rule and on the
             resource type in the URL, and they are namespaced, for example
             `domain:performance` or `scope:node`. The list of tags is available at
-            https://ela.st/autoops-insights.json.
+            https://ela.st/autoops-insights.
           example:
             - domain:performance
             - scope:node
@@ -697,11 +697,11 @@ components:
             type: string
           externalDocs:
             description: The list of tags.
-            url: https://ela.st/autoops-insights.json
+            url: https://ela.st/autoops-insights
           description: |
             The tags of the insight, for example `domain:performance` or `scope:node`.
             Tag values keep the casing in which they are defined. The list of tags is
-            available at https://ela.st/autoops-insights.json.
+            available at https://ela.st/autoops-insights.
         organization:
           $ref: '#/components/schemas/InsightOrganization'
         service:
@@ -858,11 +858,11 @@ components:
           type: string
           externalDocs:
             description: The list of rule IDs.
-            url: https://ela.st/autoops-insights.json
+            url: https://ela.st/autoops-insights
           description: |
             The ID of the rule that raised the insight, in lowercase. Use it in the `rules` field
             of a search request. The list of rule IDs is available at
-            https://ela.st/autoops-insights.json.
+            https://ela.st/autoops-insights.
           example: high_cpu_utilization
         name:
           type: string
