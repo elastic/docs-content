@@ -72,7 +72,7 @@ Use the `elastic-agent-9.5.6-linux-arm64.tar.gz` package instead if your host is
 - An OTLP receiver, so your application's {{edot}} SDK can send it traces, metrics, and logs over gRPC (port `4317`) or HTTP (port `4318`).
 - A host metrics receiver (CPU, memory, disk, filesystem, network).
 - A log file receiver reading `/var/log/*.log`.
-- Exporters that forward all of it to the {{motlp}}.
+- Exporters that forward everything to the {{motlp}}.
 
 Copy it and fill in your endpoint and API key:
 
@@ -108,7 +108,7 @@ sudo ./otelcol --config otel.yml
 
 ## Step 2: Instrument and run the Java application [_step_2_instrument_and_run_the_application]
 
-The {{edot}} Java SDK auto-instruments your application: there's no code to change, just a JVM flag.
+The {{edot}} Java SDK auto-instruments your application: there's no code to change, only a JVM flag.
 
 1. Build the sample application:
 
@@ -202,7 +202,7 @@ To see why they're failing, correlate with logs. Find **Discover** in the naviga
 :screenshot:
 :::
 
-The `ERROR` log lines, `Pricing service lookup failed for item [mug]: service not enabled`, point to the cause: the application's pricing lookup is disabled.
+The `ERROR` log lines, `Pricing service lookup failed for item [mug]: service not enabled`, point to the cause: the application's pricing lookup is turned off.
 
 **Fix it.** On the host running the application, stop it (`Ctrl+C`) and restart it with the lookup enabled:
 
