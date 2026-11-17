@@ -220,7 +220,7 @@ Use this skill to list enrolled {{elastic-defend}} endpoints, check whether a ho
 
 Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the response console instead.
 
-If the agent can't match your request to a single host that can receive response actions, or you lack the required privilege, license, or project feature tier, the confirmation says the action will be refused and nothing is sent, even if you confirm. If several endpoints share a hostname, ask again using the agent ID.
+If the agent can't match your request to a single host that can receive response actions, or you lack the required privilege, license, or project feature tier, the action is refused and nothing is sent, even if you confirm. If several endpoints share a hostname, ask again using the endpoint's agent ID.
 
 To find out why a host is unhealthy or why an action failed, use [`automatic_troubleshooting`](#elastic-defend-troubleshooting).
 
