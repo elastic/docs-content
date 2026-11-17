@@ -18,7 +18,7 @@ Use [Synthetic monitoring](/solutions/observability/synthetics/index.md) instead
 
 The **Monitors** page provides you with a high-level view of all the services you are monitoring to help you quickly diagnose outages and other connectivity issues within your network.
 
-To access this page, go to **{{observability}} > Uptime > Monitors**.
+To access this page, go to **{{observability}}** → **Uptime** → **Monitors**.
 
 ::::{important}
 Each endpoint, URL, and service represents a *monitor*.

@@ -187,7 +187,7 @@ The service's **Metrics** tab shows callouts when it detects an instrumentation 
 
 ::::{step} Check signal ingestion
 
-1. In {{kib}}, go to **{{product.observability}} → Applications → Service inventory** (or use the global search to find **Service inventory**) and confirm your service appears.
+1. In {{kib}}, go to **{{product.observability}}** → **Applications** → **Service inventory** (or use the global search to find **Service inventory**) and confirm your service appears.
 2. Open the service and verify that traces, metrics, and logs are present in each tab.
 3. Check the service's **Metrics** tab for runtime metrics. Metric names have changed. For example, for Java, `jvm.memory.heap.used` is now `jvm.memory.used` with a `jvm.memory.type = heap` attribute filter.
 

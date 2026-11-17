@@ -25,10 +25,10 @@ To run Attack Discovery from a workflow, you need:
 * The [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting turned on.
 * A [configured LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md), unless your subscription or project already includes an Elastic Managed LLM.
 * A role with the [index privileges](/solutions/security/ai/attack-discovery/grant-access.md#ad-index-privileges) required to generate and read discoveries, and these [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md#adding_kibana_privileges) at minimum:
-  * **Security → Attack discovery**: `All`
-  * **Security → Rules and Exceptions**: `Read`
-  * **Security → Alerts**: `Read`
-  * **Analytics → Workflows**: `All`
+  * **Security** → **Attack discovery**: `All`
+  * **Security** → **Rules and Exceptions**: `Read`
+  * **Security** → **Alerts**: `Read`
+  * **Analytics** → **Workflows**: `All`
 
 ## Configure the Attack Discovery step [run-ad-workflow-configure-step]
 
