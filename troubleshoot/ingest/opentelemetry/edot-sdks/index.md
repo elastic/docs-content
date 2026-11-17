@@ -31,6 +31,8 @@ Find solutions to common issues with EDOT SDKs for various programming languages
 
 * [Python SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/python/index.md): Troubleshoot issues using EDOT Python agent.
 
+* [React Native SDK](/troubleshoot/ingest/opentelemetry/edot-sdks/react-native/index.md): Troubleshoot common problems affecting the {{product.edot-react-native}} SDK.
+
 ## Shared troubleshooting topics
 
 These guides apply to all EDOT SDKs:
@@ -47,7 +49,7 @@ These guides apply to all EDOT SDKs:
 
 ## Supported architectures
 
-EDOT SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
+EDOT SDKs are tested and supported only with [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](/reference/managed-inputs/managed-otlp-endpoint.md). Using EDOT SDKs directly with {{apm-server}}'s OTel intake is not supported.
 
 ## See also
 

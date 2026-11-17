@@ -20,7 +20,7 @@ Duplicating a data view creates an editable copy. Use a copy when you want to tr
 
 ## Duplicate a data view [duplicate-data-view-steps]
 
-1. Open **Discover** or **Lens**.
+1. Open **Discover** in classic mode, or open **Lens**.
 
    :::{note}
    Duplication isn't available from the **Data Views** management page.

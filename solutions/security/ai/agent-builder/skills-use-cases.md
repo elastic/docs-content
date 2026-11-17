@@ -148,13 +148,14 @@ Use this skill to investigate anomalies surfaced by Security {{ml-app}} jobs: at
 
 **Enable:** `detection-rule-edit`
 
-Use this skill to create or edit detection rules. The skill supports **{{esql}} rules only**. It drafts rules from natural language and edits fields such as severity, tags, MITRE ATT&CK mappings, schedule, and query. The agent describes its proposed changes and applies them to a rule attachment in the conversation. You then click **Apply to creation** or **Update rule** in the chat to apply the change to the rule creation or edit form.
+Use this skill to create or edit detection rules. The skill supports **{{esql}} rules only**. It drafts rules from natural language and edits fields such as severity, tags, MITRE mappings, schedule, and query. The agent describes its proposed changes and applies them to a rule attachment in the conversation. You then click **Apply to creation** or **Update rule** in the chat to apply the change to the rule creation or edit form.
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
-| Create an {{esql}} rule that detects PowerShell downloading from external URLs | Draft the rule with query, severity, risk score, and MITRE ATT&CK mappings, then render it as an attachment. |
+| Create an {{esql}} rule that detects PowerShell downloading from external URLs | Draft the rule with query, severity, risk score, and MITRE ATT&CK® mappings, then render it as an attachment. |
 | Raise the severity on this rule to critical and add the T1059 tag | Update the attached rule's `severity`, `risk_score`, and `tags` fields and re-render the attachment. |
 | Add the Execution tactic (TA0002) and technique T1059.001 to this rule | Append entries to the rule's `threat` array with correct tactic, technique, and subtechnique IDs. |
+| Map this rule to the MITRE ATLAS technique for LLM prompt injection {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | Add a separate `threat` entry for MITRE ATLAS™ with the matching ATLAS tactic and technique IDs. |
 
 :::{tip}
 `detection-rule-edit` operates on a rule attachment. The skill activates when a rule attachment is present in the conversation. You can start a rule attachment from the rule creation form, the rule details page, or by asking the agent to "create a detection rule" directly in chat — the skill creates the attachment and renders an **Apply to creation** button so you can save the rule from the chat.
@@ -227,6 +228,27 @@ Those skills diagnose or refine configuration. They do not replace `attack-disco
 | Investigate lateral movement involving `host-12` over the last 24 hours. | Gather related alerts and entity context, run Attack Discovery, and return a narrative report with supporting evidence. |
 | What's the status of Attack Discovery run `<execution-id>`? | Report progress for that run without starting a new one. |
 | The skill proposed a detection rule for a gap. Create it. | Create the proposed rule only after you explicitly approve it in the chat. |
+
+## Automatic rule migration [automatic-migration]
+
+```{applies_to}
+serverless:
+  security: preview
+stack: preview 9.6+
+```
+
+**Enable:** The [`automatic-migration-rules-*` skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-automatic-migration-skills)
+
+Use these skills to track and run your [Automatic Migration](/solutions/security/get-started/automatic-migration.md) rule migrations from chat, and to fix translated rules before you install them. To start from the rules you want to fix, refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| How are my rule migrations doing? | List each rule migration with its source platform, status, and progress. |
+| What resources is my migration missing? | List the missing resources, such as macros and lookups, grouped by type. |
+| Reprocess the failed rules in my migration | Check for missing resources, reuse the AI connector and settings from the last run, and start reprocessing after you confirm. |
+| Which rules in my migration are missing an index pattern? | List the rules that aren't installed yet and are missing an index pattern, then fix the one you pick. |
+| Install the translated rules from my migration | Report how many rules are ready to install, ask whether to enable them, and install them after you confirm. |
+| Delete my rule migration | If the migration is running, offer to stop it, then wait for you to ask again. Otherwise, warn that deletion can't be undone, and delete it after you confirm. |
 
 ## Combining skills across use cases [combining-skills-across-workflows]
 
