@@ -8,7 +8,7 @@ To add an IP filter:
 
 :::{include} /deploy-manage/security/_snippets/network-security-page.md
 :::
-3. Select **Create policy** > **IP filter**.
+3. Select **Create policy** → **IP filter**.
 4. Select the resource type that the IP filter will be applied to: either hosted deployments or serverless projects.
 5. Select the cloud provider and region for the IP filter.
 6. Add a meaningful name and description for the IP filter.

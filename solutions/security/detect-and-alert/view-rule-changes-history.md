@@ -19,7 +19,7 @@ This page explains how to open a rule's changes history, review its version hist
 
 1. Find **{{siem-rules-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the rule's name to open its details page.
-3. Select **All actions** > **History**.
+3. Select **All actions** → **History**.
 
 The changes history page opens in a split-panel layout, with the **Version history** panel on the right and a diff view on the left.
 

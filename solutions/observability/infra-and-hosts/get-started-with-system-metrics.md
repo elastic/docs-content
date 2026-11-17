@@ -28,7 +28,7 @@ To follow the steps in this guide, you need an {{stack}} deployment that include
 
 * {{es}} for storing and searching data
 * {{kib}} for visualizing and managing data
-* Kibana user with `All` privileges on {{fleet}} and Integrations. Because many Integrations assets are shared across spaces, users need the Kibana privileges in all spaces.
+* Kibana user with `All` privileges on {{fleet}} and Integrations. For the minimum privileges and how they apply across spaces, refer to [](/reference/fleet/fleet-roles-privileges.md).
 * Integrations Server (included by default in every {{ech}} deployment)
 
 To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
@@ -76,7 +76,7 @@ In this step, add the System integration to monitor host logs and metrics.
 8. In the dialog, select **Add {{agent}} to your hosts** to open the **Add agent** flyout.
 
     ::::{tip}
-    If you accidentally close the popup, go to **{{fleet}} > Agents**, then select **Add agent** to access the flyout.
+    If you accidentally close the popup, go to **{{fleet}}** → **Agents**, then select **Add agent** to access the flyout.
     ::::
 
 :::

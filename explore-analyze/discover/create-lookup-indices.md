@@ -11,22 +11,24 @@ description: Create and edit lookup indices from the ES|QL editor in Discover. A
 
 # Create lookup indices from Discover queries
 
-In **Discover**, [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) commands include interactive options that let you create or edit lookup indices directly from the editor. You can enter rows, upload a CSV file, and join the new index in the same query.
+If you want to enrich your query results with extra data, such as a team name for each host, you can create a small lookup index and join it to your query without leaving **Discover**. A lookup index is an {{es}} index that a [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/esql-lookup-join.md) command matches against your results. You can fill it by hand or from a CSV file.
 
-This page describes the {{kib}} editor. You can also create and manage indices with the create index API for [{{stack}}]({{es-apis}}operation/operation-indices-create) and for [{{serverless-full}}]({{es-serverless-apis}}operation/operation-indices-create).
+To create a lookup index outside **Discover**, use the create index API for [{{stack}}]({{es-apis}}operation/operation-indices-create) or [{{serverless-full}}]({{es-serverless-apis}}operation/operation-indices-create). Set the `index.mode` index setting to `lookup`, because `LOOKUP JOIN` requires it.
 
 ## Before you begin
 
-- To create lookup indices, you need the [`create_index`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege on the corresponding pattern.
+- To create lookup indices, you need the [`create_index`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege on the corresponding pattern. To add data to the new index, you also need the `write` privilege.
 - To edit lookup indices, you need the [`write`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
-- To view lookup indices in read-only mode, you need the [`view_index_metadata`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
-- You need an {{esql}} query in **Discover**. If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
+- To view lookup indices in read-only mode, you need the [`read`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) {{es}} privilege.
+- To reset the configuration of a lookup index, you need the `delete_index` and `create_index` {{es}} privileges.
+- Make sure **Discover** is in {{esql}} mode. Classic mode doesn't support this functionality. To switch, refer to [Switch to Discover's {{esql}} mode](switch-esql-mode.md#switch-discover-query-mode).
+- If you're new to {{esql}} in Discover, start with [Get started with {{esql}} in Discover](try-esql.md).
 
 ## Create and edit lookup indices from queries [discover-esql-lookup-join]
 
 ### Create a lookup index from the editor [create-lookup-esql]
 
-You can create a lookup index directly from the {{esql}} editor. To populate this index, you can enter data manually or upload a CSV file up to 500 MB.
+You can create a lookup index directly from the {{esql}} editor and fill it by hand or from a CSV file.
 
 1. In your {{esql}} query, add a `LOOKUP JOIN` command. For example:
 
@@ -39,37 +41,35 @@ You can create a lookup index directly from the {{esql}} editor. To populate thi
 
 2. Select the **Create lookup index** suggestion from the autocomplete menu.
 
-3. Enter a name for the lookup index. The name must follow these rules:
-   - The name must not contain spaces or any of the following characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, and `#`.
-   - The name must not start with `-`, `_`, `+`, or `.`.
-   - The name must be lowercase.
+3. Enter a name for the lookup index. Use a lowercase name with no spaces and none of these characters: `\`, `/`, `*`, `?`, `<`, `>`, `|`, `:`, `#`. The name can't start with `-`, `_`, `+`, or `.`, and it can't match an existing index.
 
-4. Provide data for the lookup index. You can either:
-   - **Upload a CSV file up to 500 MB**. When you upload a file, you can preview its data, inspect its contents, and review any detected issues before importing it. Refer to [](#esql-lookup-index-from-file) for more details.
+4. Provide data for the lookup index in one of these ways, or combine them:
+   - **Upload a CSV file**. The default size limit is 500 MB, or 100 MB in 9.2 and 9.3. On {{stack}}, the [`fileUpload:maxFileSize`](kibana://reference/advanced-settings.md#kibana-general-settings) advanced setting changes the limit. When you upload a file, you can preview its data, inspect its contents, and review any detected issues before importing it. Refer to [](#esql-lookup-index-from-file) for more details.
    - **Add data manually**. You can add fields and populate data directly. When you add a field:
-     - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` Set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). The type list offers only some {{es}} data types. If a type isn't in the list, the editor doesn't support it. For example, you can't select `object`, `nested`, `alias`, or `scaled_float`.
+     - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` Set its name and [data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md). You can't change the data type after you save the lookup index. The type list offers only some {{es}} data types. If a type isn't in the list, the editor doesn't support it. For example, you can't select `object`, `nested`, `alias`, or `scaled_float`.
      - {applies_to}`stack: preview =9.2` Set its name. {{es}} sets the data type from the values you enter.
-   - **Combine both methods**. You can upload a file after adding data manually, and edit or expand the data imported from a file.
 
-5. Check your index and its data. You can explore your index using the search field, or open it in a new Discover session by selecting **Open in Discover**. If you open it in Discover, a new browser tab opens with a prefilled {{esql}} query on the index.
+   You can upload a file after adding data manually, and edit or expand the data imported from a file.
+
+5. Check your index and its data. The search field and **Open in Discover** become available after you save the index for the first time, so save it first if you want to use them. The search field filters the rows of the index. **Open in Discover** opens the index with a prefilled {{esql}} query. From 9.3, it opens in a new Discover tab, after the editor closes and asks you about any unsaved changes. In 9.2, it opens in a new browser tab.
 
    :::{tip}
    :applies_to: { serverless: preview, stack: preview 9.5+ }
    The search field supports free text and [Kibana Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) syntax, with autocomplete for field names and values. Newly added columns appear as autocomplete suggestions only after you save the index, and the search doesn't match unsaved values.
    :::
 
-6. **Save** any unsaved changes, then **Close** the index editor to return to your query.
+6. Select **Save** (or **Save and close**) for any unsaved changes. The editor creates the index the first time you save. Then select **Close** to return to your query.
 
-Your new index is automatically added to your query. You can then specify the field to join using `ON <field_to_join>`.
+**Result:** The editor adds the new index to your query. To finish the join, name the field to match with `ON <field_to_join>`.
 
 ### Load data into a lookup index from a CSV file [esql-lookup-index-from-file]
 
-When you are editing a lookup index from the {{esql}} editor, you can add data to it by uploading CSV files up to 500 MB.
+When you are editing a lookup index from the {{esql}} editor, you can add data to it by uploading CSV files. The default size limit is 500 MB, or 100 MB in 9.2 and 9.3. Refer to [](#create-lookup-esql) for how to change it.
 
 :::::{applies-switch}
 
 ::::{applies-item} { serverless: preview, stack: preview 9.3+ }
-1. Drag the files you want to upload from your computer. You can add several files at a time and can repeat the operation multiple times.
+1. Drag the files you want to upload from your computer, or select the **uploading** link in the empty index prompt to browse for them. You can add several files at a time and can repeat the operation multiple times.
 
    :::{note}
    If your index has unsaved changes, a message tells you that you lose these changes. To keep these changes, cancel the upload and save your index, then start a new upload.
@@ -114,7 +114,7 @@ To view or edit an index:
 
 1. In the {{esql}} query, hover over the lookup index name.
 
-2. Select the **Edit lookup index** or **View lookup index** option. A flyout showing the index opens.
+2. Select the **Edit lookup index** or **View lookup index** option. The editor offers **Edit lookup index** if you have the `write` privilege, and **View lookup index** if you only have the `read` privilege. A flyout showing the index opens.
 
 3. Depending on your permissions and needs, explore or edit the index. When editing the index, you have the same options described in [](#create-lookup-esql).
 
@@ -126,7 +126,7 @@ To view or edit an index:
 
 ### Reset the lookup index configuration [reset-the-lookup-index-configuration]
 
-At any time, you can delete all the index data and fields.
+At any time, you can delete all the index data and fields. A reset deletes the index and creates it again as an empty lookup index, so it needs the `delete_index` and `create_index` privileges.
 
 :::::{applies-switch}
 
@@ -135,7 +135,7 @@ At any time, you can delete all the index data and fields.
 
 2. Select **Delete selected** from the contextual menu.
 
-3. Once all entries are deleted, a **Reset index** button appears. Select it to remove all fields configured in the index.
+3. After you delete all entries, a **Reset index** button appears if you have the privileges for a reset. Select it, then confirm, to remove all fields configured in the index.
 
 The lookup index is fully reset and saved automatically.
 ::::
@@ -155,6 +155,6 @@ Row display limit
 
 ## Related pages
 
-- [Use Discover with {{esql}}](use-esql.md)
+- [How to query in Discover's {{esql}} mode](use-esql.md)
 - [Join data from multiple indices with LOOKUP JOIN](elasticsearch://reference/query-languages/esql/esql-lookup-join.md)
 - [](../query-filter/languages/esql-kibana.md)

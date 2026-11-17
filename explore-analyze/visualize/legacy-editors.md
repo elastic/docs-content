@@ -17,7 +17,7 @@ Legacy editors are still available but have been replaced by better alternatives
 ::::{applies-switch}
 
 :::{applies-item} { stack: ga 9.4+ }
-To create a legacy visualization, navigate to the **Dashboards** page, go to **Visualizations** > **Create visualization** > **Legacy**, then select **TSVB** or **Aggregation-based**. Consider using [Lens](../visualize.md) instead if you have never used these panel types.
+To create a legacy visualization, navigate to the **Dashboards** page, go to **Visualizations** → **Create visualization** → **Legacy**, then select **TSVB** or **Aggregation-based**. Consider using [Lens](../visualize.md) instead if you have never used these panel types.
 
 :::
 
