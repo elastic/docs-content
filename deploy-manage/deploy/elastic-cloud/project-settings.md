@@ -98,8 +98,6 @@ If you set a high **Minimum Search VCUs** value, consider also increasing [Searc
 
 This setting is available for {{es-serverless}} projects only.
 
-<!-- PM question: How should we best phrase the guidance above about increasing Search Power when Minimum Search VCUs is set high? Do we want to say more than one sentence about why a higher Search Power helps (for example, more replicas and more pre-warming at higher values), or keep it high level? Also, should we contrast and compare this setting with equivalent or alternative features in other project types (for example, Search Power in Vector database projects, or how search capacity is sized in Observability and Security projects) so users can see how the options differ? -->
-
 Refer to [{{es-serverless}} billing dimensions](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md) for information on how this setting affects your bill.
 
 ### Search Boost Window [elasticsearch-search-boost-window]
