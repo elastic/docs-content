@@ -24,12 +24,12 @@ The **Entity analytics** page provides a centralized workspace for investigating
 
 :::{admonition} Requirements
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
-
-* {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` To access this page, you need the following privileges:
-  * `read` for `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>`
-  * **Read** for the **Management → Saved Objects Management** feature
+* To access this page, you need **Read** for the **Management** → **Saved Objects Management** feature.
+* You also need the `read` index privilege for these index patterns:
+  * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `entities-latest-<space-id>`, `.entities.v2.latest.<space-id>-*`, and `risk-score.risk-score-<space-id>`
+  * {applies_to}`stack: ga 9.4-9.5` `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>` 
 * {applies_to}`serverless: ga` If you're using a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md), make sure it grants `read` access to all the required index patterns.
-* {applies_to}`stack: removed 9.3, ga 9.1-9.2` {applies_to}`serverless: removed` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
+* {applies_to}`stack: removed 9.3+, ga 9.1-9.2` {applies_to}`serverless: removed` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 :::
 
 The way you access this page and the elements it contains differ based on your version. Select your version to see the details:
@@ -134,7 +134,7 @@ $$$entity-threat-hunting-leads$$$
   * **View leads**: `read` for `.entity_analytics.entity-leads*`
   * **Generate leads**:
     * `read`, `create_index`, and `write` for `.entity_analytics.entity-leads*`
-    * **Read** for the **Management > Actions and Connectors** feature
+    * **Read** for the **Management** → **Actions and Connectors** feature
 :::
 
 AI-generated leads appear at the top of the page, giving threat hunters a curated starting point for their investigations. Leads are refreshed every 24 hours and are derived from observations about entities in the entity store, including:

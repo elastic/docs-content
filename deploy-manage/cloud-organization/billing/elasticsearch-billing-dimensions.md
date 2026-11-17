@@ -47,6 +47,8 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 * **Search:** The VCUs used to return search results with the latency and queries per second (QPS) you require. Search VCUs are calculated as a factor of the compute resources needed to run search queries, search throughput, and latency. Search VCUs are not charged per search request. Instead, they are a factor of the compute resources that scale up and down based on amount of searchable data, search load (QPS), and performance (latency and availability).
 
   Unlike ingest, Search VCU billing does not scale to zero during idle periods. A baseline of search capacity is always provisioned so your data remains instantly queryable, and you are billed a reduced rate for this baseline when no search activity is occurring. The baseline is determined primarily by your Search Power setting and your [search-ready](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#elasticsearch-manage-project-search-ai-lake-settings) dataset size.
+
+  If you set [Minimum Search VCUs](/deploy-manage/deploy/elastic-cloud/project-settings.md#minimum-search-vcus), the Search tier does not scale below that number of VCUs. Search VCUs provisioned through this setting are priced at the same per-VCU rate as any other Search VCU consumption.
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities. ML VCUs are a factor of the models deployed and number of ML operations such as inference for search and ingest. ML VCUs are typically consumed for generating embeddings during ingestion and during semantic search or reranking.
 * **Tokens:** [The Elastic Inference Service](https://www.elastic.co/docs/explore-analyze/elastic-inference/eis) is charged based on tokens used with machine learning models. For embeddings and rerankers, usage is billed per million input tokens sent to the models. For LLMs, this is either per 1 million input or per 1 million output tokens. Elastic Managed LLMs can power AI Search features such as Agent Builder and AI Assistant for Search, as well as features in the Security and Observability products, and are enabled by default.
 
@@ -67,6 +69,15 @@ For detailed {{es-serverless}} project rates, refer to the [{{es-serverless}} pr
 ### Search Power setting [elasticsearch-billing-search-power-setting]
 
 [Search Power](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-power-settings) controls the speed of searches against your data and the size of the baseline resources kept provisioned for your project. With Search Power, you can improve search performance by adding more resources for querying or you can reduce provisioned resources to cut costs.
+
+### Minimum Search VCUs setting [elasticsearch-billing-minimum-search-vcus-setting]
+
+[Minimum Search VCUs](/deploy-manage/deploy/elastic-cloud/project-settings.md#minimum-search-vcus) lets you pre-scale the Search tier to a baseline level of capacity ahead of anticipated traffic. When you configure this setting, you are billed for at least that number of Search VCUs at all times, including when search load is low or the project is idle. Autoscaling can still provision Search VCUs above the minimum when your Search Power setting, searchable data, or search load require it, and you are also billed for those additional VCUs for as long as they remain provisioned. All Search VCUs are billed at the same per-VCU rate.
+
+After it's been configured, the minimum remains in effect, and continues to be billed, until you lower or disable it in your project settings or through the API. Lowering the minimum might not reduce your Search VCUs immediately, because capacity stays provisioned for as long as search load requires it.
+
+To avoid paying for capacity you don't need, set the minimum no higher than your workload requires, and lower or disable it when you no longer need it.
+
 
 ### Search-ready dataset size [elasticsearch-billing-search-ready-dataset-size]
 

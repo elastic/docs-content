@@ -145,7 +145,7 @@ docker run \
 ```
 
 1. Set to 1 to enroll the {{agent}} into {{fleet-server}}.
-2. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management → {{fleet}} → Fleet Settings**, and copy the {{fleet-server}} host URL.
+2. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management** → **{{fleet}}** → **Fleet Settings**, and copy the {{fleet-server}} host URL.
 3. The token to use for enrollment. Close the flyout panel and select **Enrollment tokens**. Find the Agent policy you want to enroll {{agent}} into, and display and copy the secret token. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/fleet/create-policy-no-ui.md).
 4. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run synthetic browser monitors. Synthetic browser monitors cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/synthetics/get-started.md) for more information.
 Refer to [Environment variables](/reference/fleet/agent-environment-variables.md) for all available options.
@@ -231,7 +231,7 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
     :screenshot:
     :::
 
-3. To view data flowing in, go to **Analytics → Discover**. To check the Kubernetes metrics:
+3. To view data flowing in, go to **Analytics** → **Discover**. To check the Kubernetes metrics:
 
    - In {{esql}} mode, enter `FROM metrics-kubernetes.*`. To include all metrics data, enter `FROM metrics-*` instead.
    - In classic mode, select a data view that matches `metrics-kubernetes.*`, or `metrics-*` for all metrics data. If you can’t see one, [create a {{data-source}}](/explore-analyze/find-and-organize/data-views/create-data-view.md) for it.

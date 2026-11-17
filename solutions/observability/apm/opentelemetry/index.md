@@ -54,7 +54,7 @@ There are several ways to send OpenTelemetry data to Elastic. The right choice d
 ### Send data directly
 
 * **{{motlp}}** ({{serverless-short}} and {{ech}}): Send OpenTelemetry data directly to the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) without managing your own Collector. Data is stored in OTel-native format.
-* **{{apm-server-or-mis}} OTLP intake** (legacy): Send OTLP data directly to {{apm-server-or-mis}} using its built-in OTLP endpoint. Data is translated to ECS format before storage. This path is not recommended for new users, and EDOT SDKs are not supported here. For details on the format difference, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
+* **{{apm-server}} OTLP intake** (legacy): Send OTLP data directly to {{apm-server}} using its built-in OTLP endpoint. Data is translated to ECS format before storage. This path is not recommended for new users, and EDOT SDKs are not supported here. For details on the format difference, refer to [How your ingest path determines the data format](opentelemetry://reference/compatibility/data-streams.md#ingest-path-data-format).
 
 ## Why use the Elastic Distributions of OpenTelemetry?
 
@@ -72,6 +72,9 @@ To set up OpenTelemetry with Elastic, refer to these guides for each SDK:
 * [**Elastic Distribution of OpenTelemetry Python**](elastic-otel-python://reference/edot-python/index.md)
 * [**Elastic Distribution of OpenTelemetry PHP**](elastic-otel-php://reference/edot-php/index.md)
 * [**Elastic Distribution of OpenTelemetry Browser**](elastic-otel-rum-js://reference/edot-browser/index.md)
+* [**Elastic Distribution of OpenTelemetry Android**](apm-agent-android://reference/edot-android/index.md)
+* [**Elastic Distribution of OpenTelemetry iOS**](apm-agent-ios://reference/edot-ios/index.md)
+* [**Elastic Distribution of OpenTelemetry React Native**](elastic-otel-react-native://reference/edot-react-native/index.md)
 
 ::::{important}
 For a complete overview of OpenTelemetry and Elastic, explore [**{{edot}}**](opentelemetry://reference/index.md).
