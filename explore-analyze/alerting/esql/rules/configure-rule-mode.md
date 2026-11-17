@@ -2,7 +2,8 @@
 navigation_title: Rule mode
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How rule mode determines whether Kibana opens an alert or keeps matching rows available for later analysis, and when to use each."
@@ -10,7 +11,7 @@ description: "How rule mode determines whether Kibana opens an alert or keeps ma
 
 # Rule mode in {{alerting-v2-system}} [rule-mode]
 
-Rule mode decides what happens when a {{alerting-v2-system}} rule finds a match. The match can raise an alert that your team triages and gets notified about, or it can become a record that you query later.
+Rule mode decides what happens when a {{alerting-v2-system-short}} rule finds a match. The match can raise an alert that your team triages and gets notified about, or it can become a record that you query later.
 
 ## What each rule mode does [rule-mode-options]
 

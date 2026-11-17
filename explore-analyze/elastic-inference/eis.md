@@ -63,6 +63,12 @@ Available actions include:
 - Delete endpoints
 - {applies_to}`stack: ga 9.5` {applies_to}`serverless: ga` [Region preferences](eis-region-and-hosting.md#inference-region-preferences) for where EIS processes {{infer}} requests
 - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Show or hide models](#eis-display-options) that are in preview, past end of life, or outside your region preferences
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Find models available in specific geographies or regions with the **Region** filter on the toolbar. The filter doesn't change where EIS processes {{infer}} requests, which [region preferences](eis-region-and-hosting.md#inference-region-preferences) control. Models that are [hidden by default](#eis-display-options) stay hidden unless you show them.
+
+:::{tip}
+:applies_to: { serverless: ga, stack: ga 9.6+ }
+To find a model faster, filter the list by region, sort the model cards by name or release date, or [show models that are hidden by default](#eis-display-options).
+:::
 
 ### Show models that are hidden by default [eis-display-options]
 
@@ -83,7 +89,7 @@ To show or hide any of these groups:
 1. In **Model display options**, set each group to **Show** or **Hide**.
 1. Select **Apply**.
 
-The list now includes the groups you set to **Show**.
+The list now includes the groups you set to **Show**. In card view, {{kib}} shows how many models match, for example **Showing 12 of 20**. The second number also counts hidden models, so a lower first number doesn't always mean that your search or filters removed a model.
 
 {{kib}} doesn't save your selection. After you reload {{kib}}, all three groups are hidden again.
 
@@ -241,6 +247,10 @@ You can now use `semantic_text` with the new ELSER endpoint on EIS. To learn how
 
 [Semantic Search with `semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) has a detailed tutorial on using the `semantic_text` field and using the ELSER endpoint on EIS instead of the default endpoint. This is a great way to get started and try the new endpoint.
 
+:::{note}
+If you ran a kNN search and it failed or returned no results, [check whether your vectors are searchable and compatible with kNN search](/solutions/search/vector/knn/troubleshoot-knn-search.md).
+:::
+
 ## Pricing [pricing]
 
 All models on EIS incur a charge per million tokens. Certain LLM providers charge different prices depending on the prompt size. The pricing details are available on our [Pricing page](https://cloud.elastic.co/cloud-pricing-table?productType=serverless).
@@ -262,7 +272,7 @@ For example, the sentence `It was the best of times, it was the worst of times.`
 
 To track your token consumption:
 
-1. Navigate to [**Billing > Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
+1. Navigate to [**Billing** → **Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} Console.
 2. Look for line items where the **Billing dimension** is set to "Inference".
 
 ## Service status [eis-service-status]

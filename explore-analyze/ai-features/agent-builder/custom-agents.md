@@ -141,6 +141,18 @@ For what each level means, refer to [Access control settings](#access-control-se
 
 :::::
 
+:::::{step} Configure subagents (optional)
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+In the **Subagents** section of the **Settings** tab, select **Enable subagents** to let the agent delegate tasks to other agents. **This agent (self-fork)** is then selected under **Delegable subagents**, so the agent can delegate to a copy of itself. In the same list, select any other agents it can delegate to.
+
+For more information, refer to [Subagents](agent-builder-agents.md#subagents).
+
+:::::
+
 :::::{step} Auto-approve API operations (optional)
 ```{applies_to}
 stack: ga 9.6+
@@ -159,7 +171,7 @@ For each service, you can select:
 
 Some {{es}} operations, such as `bulk` and `delete_by_query`, don't belong to a group. To approve them, select them individually or select `*`.
 
-The approval applies to every run of the agent and to the sub-agents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
+The approval applies to every run of the agent and to the subagents it starts, including runs where no one can respond to a prompt, such as [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent). Approve only the operations the agent needs: a group such as `indices.*` includes deleting indices.
 
 Only the owner, a user with **Manager** access, or an administrator can change the auto-approved APIs. For the **Elastic AI Agent**, only an administrator can change them.
 
@@ -172,6 +184,8 @@ To change the auto-approved APIs of an existing agent, you can also select **Edi
 Switch to the **Tools** tab to assign [tools](tools.md) to your agent.
 
 Select the combination of built-in and custom tools available to the agent, based on your use case.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can only assign existing tools on this tab. To create a tool for this agent, save the agent first, then follow [Create and attach a tool](tools/custom-tools.md#create-and-attach-a-tool).
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` You don't need to assign the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools). Every agent has them automatically.
 
@@ -230,7 +244,7 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-New agents start with no connectors. To let your agent reach external systems, assign connectors after you save the agent: select the agent, then in the sidebar under **Customize**, select **Connectors**, then select **Add connector**.
+New agents start with no connectors. To let your agent reach external systems, assign connectors after you save the agent: select the agent, select **Customize** → **Connectors** in the left sidebar, and then select **Add connector**.
 
 If you left **Enable Elastic capabilities** off, also assign the built-in `connector-discovery` skill on the agent's **Skills** page. Without it, the agent can't find its connectors.
 

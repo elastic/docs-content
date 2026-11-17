@@ -49,7 +49,7 @@ Create an entry for the GCS client in the {{es}} keystore:
 
 ## Create the repository [ec-create-gcs-repository]
 
-1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
+1. Open {{kib}} and go to **Management** → **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.
 3. Provide a name for your repository and select type **Google Cloud Storage**.
 4. Provide the following settings:
