@@ -26,8 +26,8 @@ sub:
 
 [{{obs-serverless}}](/solutions/observability.md) projects provide you with all the capabilities of Elastic Observability to monitor critical applications. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption-based. {{obs-serverless}} projects are available in the following tiers of carefully selected features to enable common observability operations:
 
-* **Observability Logs Essentials**: Includes everything you need to store and analyze logs at scale.
-* **Observability Complete**: Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.
+* **Observability Logs Essentials** — Includes everything you need to store and analyze logs at scale.
+* **Observability Complete** — Adds full-stack observability capabilities to monitor cloud-native and hybrid environments.
 
 Your bill is made up of [project charges](#observability-billing-project-charges), [organization charges](#observability-billing-organization-charges), and [add-ons](#observability-billing-add-ons).
 
