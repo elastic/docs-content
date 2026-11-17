@@ -389,6 +389,22 @@ The agent's progress appears only in the chat where you sent the message or answ
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent also keeps working without showing progress if you go to another app from standalone mode. After the agent finishes, its steps and response appear the next time you interact with the conversation, for example, when you reopen the sidebar, come back from another app, or select another conversation and return. In a [shared or public conversation](#share-a-conversation), the conversation also updates automatically a few seconds after the agent finishes, in any browser tab.
 
+### Conversation templates [conversation-templates]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+A conversation can be created from a built-in template. A template defines the structured metadata that the conversation stores, such as its status, severity, and assignees. The conversation shows the template name next to its title. You can’t create or edit templates, or switch a conversation to a different template.
+
+You don’t usually create these conversations yourself. Features such as [{{alertzero}}](/solutions/security/alertzero/index.md) create them and use the template to keep track of their work. Workflows can also create them.
+
+In standalone mode, select **Chat info** in the header of a templated conversation to open a flyout with the details that the template defines, such as the summary and proposed actions. **Chat info** doesn't appear in [sidebar mode](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode). To copy a link that opens the conversation with **Chat info** open, select the **Copy link** icon {icon}`link`.
+
+What you can change in **Chat info** depends on your privileges. For details, refer to the documentation for the feature that created the conversation. To create templated conversations, or to read and update their metadata from a workflow, refer to [Conversation metadata steps](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-steps).
+
+
 ### Inspect tool calls and reasoning
 
 ::::{note}
