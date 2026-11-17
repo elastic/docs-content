@@ -165,7 +165,7 @@ If the change was unintentional (for example a project was unlinked in {{ecloud}
 If detection quality degrades and anomalies are not meaningful, revert to the model snapshot {{es}} retained before the scope change, or to an earlier snapshot:
 
 1. Close the {{anomaly-job}}.
-2. In {{kib}}, open **Machine Learning → Anomaly Detection → your job → Model snapshots**, select a snapshot from before the scope change (or the automatic rollback snapshot), and revert.
+2. In {{kib}}, open **Machine Learning** → **Anomaly Detection** → **your job** → **Model snapshots**, select a snapshot from before the scope change (or the automatic rollback snapshot), and revert.
 3. Confirm `project_routing` on the {{dfeed}} matches your intended scope with `GET _ml/datafeeds/{datafeed_id}`.
 4. Start the {{dfeed}}.
 

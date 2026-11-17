@@ -2,16 +2,17 @@
 navigation_title: Glossary
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
 description: Definitions of key terms used throughout the documentation, such as alert, action policy, and rule event.
 ---
 
-# {{alerting-v2-system-cap}} glossary [glossary]
+# {{alerting-v2-system}} glossary [glossary]
 
-These terms appear throughout the {{alerting-v2-system}} documentation.
+These terms appear throughout the {{alerting-v2-system-short}} documentation.
 
 **Action policy**
 :   A configuration that controls which alerts invoke a workflow and how often. A single action policy can apply to alerts from one rule, several rules, or every rule in the space. To learn more, refer to [Notifications and actions](../notifications-actions.md).

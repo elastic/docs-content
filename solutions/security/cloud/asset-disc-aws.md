@@ -38,8 +38,8 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 ## {{managed-integration}} deployment [cad-aws-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for and select `Cloud asset discovery`.
-3. Click **Add Cloud Asset Discovery**.
+2. Search for and select **Cloud Asset Discovery**.
+3. If the integration's **Overview** page opens, select **Add Cloud Asset Discovery**.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
 6. In **Deployment options**, select the deployment mode:
@@ -99,8 +99,8 @@ Two deployment options are available: {{managed-integration}} and agent-based.
 ### Add the Cloud Asset Discovery integration [cad-aws-add-and-name-integration]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for and select `Cloud asset discovery`.
-3. Click **Add Cloud Asset Discovery**.
+2. Search for and select **Cloud Asset Discovery**.
+3. If the integration's **Overview** page opens, select **Add Cloud Asset Discovery**.
 4. Select **AWS**, then either **AWS Organization** to onboard multiple accounts, or **Single Account** to onboard an individual account.
 5. Give your integration a name that matches the purpose or team of the AWS account/organization you want to monitor, for example, `dev-aws-account`.
 
@@ -119,7 +119,7 @@ For most use cases, the simplest option is to use AWS CloudFormation to automati
 3. Return to your {{kib}} tab. Click **Save and continue** at the bottom of the page.
 4. Review the information, then click **Launch CloudFormation**.
 5. A CloudFormation template appears in a new browser tab.
-6. For organization-level deployments only, you must enter the ID of the organizational units where you want to deploy into the CloudFormation template’s `OrganizationalUnitIds` field. You can find organizational unit IDs in the AWS console under **AWS Organizations → AWS Accounts** (under each organization’s name). You can also use this field to specify which accounts in your organization to monitor, and which to skip.
+6. For organization-level deployments only, you must enter the ID of the organizational units where you want to deploy into the CloudFormation template’s `OrganizationalUnitIds` field. You can find organizational unit IDs in the AWS console under **AWS Organizations** → **AWS Accounts** (under each organization’s name). You can also use this field to specify which accounts in your organization to monitor, and which to skip.
 7. (Optional) Switch to the AWS region where you want to deploy using the controls in the upper right corner.
 8. Tick the checkbox in **Capabilities** to authorize the creation of necessary resources.
 9. At the bottom of the template, select **Create stack**.
@@ -267,7 +267,7 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
 2. Attach your new IAM role to an EC2 instance:
 
     1. In AWS, select an EC2 instance.
-    2. Select **Actions > Security > Modify IAM role**.
+    2. Select **Actions** → **Security** → **Modify IAM role**.
     3. On the **Modify IAM role** page, search for and select your new IAM role.
     4. Click **Update IAM role**.
     5. Return to {{kib}} and [finish manual setup](/solutions/security/cloud/asset-disc-aws.md#cad-aws-finish-manual).

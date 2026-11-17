@@ -162,7 +162,7 @@ To install the Universal Profiling Agent using the {{agent}} and the Universal P
 
 2. Click `Manage Universal Profiling Agent in Fleet` to complete the integration.
 3. On the Integrations page, click **Add Universal Profiling Agent**.
-4. In **Universal Profiling Agent → Settings**, add the information you copied from the **Add profiling data** page:
+4. In **Universal Profiling Agent** → **Settings**, add the information you copied from the **Add profiling data** page:
 
     1. Add the Universal Profiling collector URL to the **Universal Profiling collector endpoint** field.
     2. Add the secret token to the **Authorization** field.

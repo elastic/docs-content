@@ -164,7 +164,7 @@ You can install {{agent}} on any host that can access the AWS account and forwar
 1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout.
 
     ::::{tip}
-    If you accidentally closed the popup, go to **{{fleet}} → Agents**, then click **Add agent** to access the installation instructions.
+    If you accidentally closed the popup, go to **{{fleet}}** → **Agents**, then click **Add agent** to access the installation instructions.
     ::::
 
 
