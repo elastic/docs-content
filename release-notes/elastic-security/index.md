@@ -31,8 +31,6 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Features and enhancements [elastic-security-9.5.7-features-enhancements]
 
-* Adds a `--force` option to the {{elastic-defend}} `get-file` response action on Windows. The option is also available through the `parameters.force` field of the get file API [#303948]({{kib-pull}}303948).
-% The Kibana change (#303948) is in 9.5.7 BC1, but the endpoint-dev change that adds the `get_file_force` capability (endpoint-dev#23067) is still open. Should this entry be in the 9.5.7 release notes?
 * Adds the `POST /api/entity_analytics/watchlists/{watchlist_id}/entity_source/{id}/_update_api_key` API, which replaces the API key that syncs a watchlist's index entity source with a key granted from the calling user [#303648]({{kib-pull}}303648).
 * Adds the `POST /api/security/entity_store/update_api_key` API, which replaces the API key that the entity store tasks run with by a key granted from the calling user [#303566]({{kib-pull}}303566).
 * Reduces {{elastic-defend}} CPU usage on Windows during video calls.
