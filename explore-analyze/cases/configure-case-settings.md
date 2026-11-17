@@ -120,22 +120,23 @@ To create a template:
 ::::
 
 ## Set the default for extracting observables [cases-extract-observables-default]
-
 ```{applies_to}
 serverless:
   security: ga
 stack: ga 9.6+
 ```
 
-To choose whether new cases extract observables from their attached alerts and events, turn the **Extract observables** setting on or off. This setting is available only for {{elastic-sec}} cases and requires the appropriate subscription. It is on by default, and changing it affects only the cases you create afterward.
+The **Extract observables** setting is available only for {{elastic-sec}} cases and requires the appropriate {{stack}} subscription or {{serverless-short}} project feature tier.
 
-The default applies to every way you can create a case.
+To set whether new cases in the space extract observables from their attached alerts and events, turn **Extract observables** on or off. It's on by default, and changing it affects only the cases you create afterward.
 
-* In the case form, the **Extract observables** toggle starts with the default.
-* In the Cases API and in workflow steps that create cases, a case follows the default when the request doesn't set `extractObservables`.
-* In the Cases action of a detection rule, a case follows the default unless the rule sets [**Auto-extract observables**](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration).
+The default applies however you create a case.
 
-A case template can set its own value, and you can change the value for an individual case on its **Observables** tab. For the order in which these settings apply, refer to [Auto-extract observables](/explore-analyze/cases/attach-objects-to-cases.md#cases-auto-extract-observables).
+* In the case form, the **Extract observables** toggle is set to the default when you open the form.
+* In the Cases API and in [workflow steps that create cases](/explore-analyze/workflows/steps/cases.md), a case follows the default when the request doesn't set `extractObservables`.
+* In the Cases action of a detection rule, a case follows the default unless the rule sets the [Auto-extract observables option](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration).
+
+A case template can set its own value, and you can change the value for an individual case on its **Observables** tab. To find out which value a case uses when more than one is set, refer to [Which extraction setting applies](/explore-analyze/cases/attach-objects-to-cases.md#cases-extract-observables-precedence).
 
 ## Add observable types [cases-observable-types]
 
