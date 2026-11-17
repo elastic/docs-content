@@ -47,8 +47,11 @@ Most {{ecloud}} and {{ech}} features are also available in FedRAMP authorized Cl
 | [Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md) | Yes | No | No |
 | [{{managed-integrations}}](/reference/managed-integrations/index.md) | Yes | {applies_to}`stack: ga 9.6+` Yes, with [limitations](#ec-fedramp-managed-integrations) | No |
 | [Custom bundles and plugins](/deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
+| [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md), [{{agent-builder}} for {{elastic-sec}}](/solutions/security/ai/agent-builder/agent-builder.md) | Yes | TBD | TBD |
 | [Elastic AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
 | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) | Yes | Yes | TBD |
+| [{{alertzero}}](/solutions/security/alertzero/index.md) {applies_to}`stack: preview 9.6` | Yes | TBD | TBD |
+| [Automatic Migration](/solutions/security/get-started/automatic-migration.md) | Yes | TBD | TBD |
 | [Universal profiling](/solutions/observability/infra-and-hosts/universal-profiling.md) | Yes | No | No |
 | [Multiple organization membership](/deploy-manage/cloud-organization/manage-multiple-organizations.md) | Yes | Yes | Yes, with [limitations](#ec-fedramp-multi-org) |
 | [{{ecloud}} audit trail](/deploy-manage/monitor/cloud-audit-trail.md) | No | Yes | No |
