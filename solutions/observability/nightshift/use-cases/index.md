@@ -1,5 +1,5 @@
 ---
-navigation_title: What you can do
+navigation_title: Use cases
 applies_to:
   serverless:
     observability: preview
@@ -9,7 +9,7 @@ products:
   - id: cloud-serverless
 ---
 
-# What you can do with {{nightshift}} [nightshift-use-cases]
+# {{nightshift}} use cases [nightshift-use-cases]
 
 {{nightshift}} investigates problems in your system and reports the likely cause, provides evidence, and proposes actions you can take. You can ask it about a problem from the home page, call it into a Slack thread, point it at an alert, have it investigate your alerts automatically, or let it find problems that no alert catches. Find your use case in the following list.
 

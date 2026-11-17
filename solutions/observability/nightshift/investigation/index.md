@@ -42,7 +42,7 @@ Afterwards, {{nightshift}} saves what it learned to the Wiki and Memory. Refer t
 
 ## Where investigations start [nightshift-investigations-start]
 
-You can start an investigation from the home page, an alert in {{alerting-v1-system-short}}, an alert episode in {{alerting-v2-system-short}}, a significant event, or a Slack thread. You can also have an automation start one when an alert or significant event fires, a message arrives in Slack, or on a schedule. For step-by-step guides to each, refer to [What you can do with {{nightshift}}](../use-cases/index.md).
+You can start an investigation from the home page, an alert in {{alerting-v1-system-short}}, an alert episode in {{alerting-v2-system-short}}, a significant event, or a Slack thread. You can also have an automation start one when an alert or significant event fires, a message arrives in Slack, or on a schedule. For step-by-step guides to each, refer to [{{nightshift}} use cases](../use-cases/index.md).
 
 Investigations that people start count toward the **Manual investigations daily limit**. Refer to [Investigation limits](./limits.md).
 
