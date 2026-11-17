@@ -81,7 +81,7 @@ In the connector flyout, set the connector ID, base URL, authentication, and any
 
 ![Configure an HTTP connector with authentication and encrypted headers](/explore-analyze/images/workflows-http-connector-flyout.png "")
 
-You can also create an HTTP connector from **Stack Management → Connectors** by selecting the **HTTP** connector type.
+You can also create an HTTP connector from **Stack Management** → **Connectors** by selecting the **HTTP** connector type.
 
 ![Select the HTTP connector type from Stack Management](/explore-analyze/images/workflows-http-connector-stack-management.png "")
 

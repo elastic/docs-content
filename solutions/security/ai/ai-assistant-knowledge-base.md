@@ -109,7 +109,7 @@ When you enable Knowledge Base, it comes pre-populated with articles from [Elast
 Add a markdown document to Knowledge Base when you want AI Assistant to remember a specific piece of information. 
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
-2. Click **New → Document** and give it a name.
+2. Click **New** → **Document** and give it a name.
 3. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
 4. Write the knowledge AI Assistant should remember in the **Markdown text** field.
 5. In the **Markdown text** field, enter the information you want AI Assistant to remember.
@@ -152,7 +152,7 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 ::::
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
-2. Click **New → Index**.
+2. Click **New** → **Index**.
 3. Name the knowledge source.
 4. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
 5. Under **Index**, enter the name of the index you want to use as a knowledge source.

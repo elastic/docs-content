@@ -80,9 +80,9 @@ To learn how to create and manage custom agents, refer to [Custom agents](custom
 
 ## Managing agents in the UI
 
-The **Agents** page provides a centralized view of all your agents. From this page you can:
+The **Agents** page provides a centralized view of your agents. From this page you can:
 
-- View all your agents with their names and labels
+- View your agents with their names and labels
 - Search for specific agents using the search bar
 - Filter agents by labels using the **Labels** dropdown
 - Create new agents using the **New agent** button
@@ -101,6 +101,16 @@ The **Agents** page provides a centralized view of all your agents. From this pa
       :width: 130px
       :::
 
+### Hidden agents [hidden-agents]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+{{kib}} hides some agents that solution features install automatically. The Elastic AI Agent isn't hidden, and you can't hide agents you create.
+
+Hidden agents aren't listed in the [agent selector](chat.md#select-a-different-agent). By default, they also don't appear in the list on the **Agents** page. To include them in that list, turn on **Show hidden agents**.
 
 ## Elastic capabilities [elastic-capabilities]
 

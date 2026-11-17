@@ -182,6 +182,8 @@ serverless: ga
 
 Drilldowns are compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](../dashboards/drilldowns.md#drilldowns-requirements).
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the visualization reads from an [{{esql}} view](elasticsearch://reference/query-languages/esql/esql-views.md), you can also open a drilldown from a column that the view computes.
+
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}
 stack: ga 9.5
