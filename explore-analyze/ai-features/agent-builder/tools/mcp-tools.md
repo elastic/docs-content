@@ -52,7 +52,7 @@ Individual MCP tools have the following configuration settings:
 :   The specific tool on MCP server to create an Agent Builder MCP tool for.
 :   After you select a tool, the **Tool ID** and **Description** fields automatically populate with the tool name and description provided by the MCP server.
 
-**Require user confirmation** {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
+**Require user confirmation** {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview`
 :   Controls whether the agent asks you to approve a call to this tool before it runs. Select **Never** (default) to run without a prompt, **Once** to prompt the first time the agent calls the tool in a conversation, or **Always** to prompt on every call. For details, refer to [Require confirmation before a tool runs](custom-tools.md#require-confirmation-before-a-tool-runs).
 
 ### Bulk import MCP tools
@@ -88,7 +88,7 @@ After you click **Import tools**, Agent Builder creates an MCP tool for each sel
 
 Each tool's ID is generated as `namespace.tool-name` (for example, `context7.resolve-library-id`), and descriptions are populated automatically from the MCP server.
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Bulk import doesn't configure confirmation, so each imported tool starts with **Require user confirmation** set to **Never**. To require confirmation for an imported tool, edit it after import.
+{applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` Bulk import doesn't configure confirmation, so each imported tool starts with **Require user confirmation** set to **Never**. To require confirmation for an imported tool, edit it after import.
 
 ## How MCP tool calls work
 

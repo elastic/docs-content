@@ -2,8 +2,8 @@
 navigation_title: "Workflow tools"
 description: "Create custom tools that allow agents to trigger Elastic Workflows directly from a chat conversation to perform deterministic tasks."
 applies_to:
-  stack: preview 9.3+
-  serverless: preview
+  stack: preview 9.3, ga 9.4+
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
