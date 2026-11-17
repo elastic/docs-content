@@ -482,7 +482,7 @@ $$$agent-builder-endpoint-response-actions-skill$$$ `endpoint-response-actions` 
     - List enrolled endpoints, check a host's status and whether it's isolated, and look up the status and output of a response action that was already sent.
     - After you confirm in the chat, isolate or release a host, request the list of processes running on a host, or scan a file or folder path for malware.
 
-    Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the [response console](/solutions/security/endpoint-response-actions.md) instead.
+    Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the response console instead.
 
     For questions about why a host is unhealthy, offline, or missing, or why a response action failed, use the [`automatic_troubleshooting`](#agent-builder-automatic-troubleshooting-skill) skill.
 
