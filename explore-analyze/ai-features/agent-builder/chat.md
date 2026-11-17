@@ -324,7 +324,7 @@ You don’t usually create these conversations yourself. Features such as {{aler
 
 In standalone mode, select **Chat info** in the header of a templated conversation to open a flyout with the details that the template defines, such as the summary and proposed actions. **Chat info** doesn't appear in [sidebar mode](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode). To copy a link that opens the conversation with **Chat info** open, select the **Copy link** icon {icon}`link`.
 
-What you can change in **Chat info** depends on your privileges. For investigations and escalations in {{alertzero}}, refer to [](/solutions/security/alertzero/escalate-investigation.md) and [](/solutions/security/alertzero/alertzero-privileges.md).
+What you can change in **Chat info** depends on your privileges. For details, refer to the documentation for the feature that created the conversation. To create templated conversations, or to read and update their metadata from a workflow, refer to [Conversation metadata steps](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-steps).
 
 
 ### Inspect tool calls and reasoning
