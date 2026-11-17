@@ -28,15 +28,6 @@ Each guide walks you through a scenario from start to finish.
 - [Investigate alerts from your other tools](./external-alerts.md): Set up an automation that investigates alerts from an external monitoring tool, an {{ech}} deployment, PagerDuty, or a script, when they arrive in Slack or by webhook.
 - [Detect problems your alerts miss](./detect-problems.md): Use detection and significant events to find unusual changes in your logs and group them into one problem that you can review and investigate.
 
-## Suggested order [nightshift-use-cases-map]
-
-If you're new to {{nightshift}}, try the guides in this order:
-
-1. [Investigate anything](./investigate-anything.md): Describe a problem on the {{nightshift}} home page, read the result, and check the reasoning to learn how investigations work.
-1. [Investigate in Slack](./investigate-in-slack.md) or [Investigate your alerts](./investigate-alerts.md): Start an investigation from where you already work, like a Slack thread or an alert.
-1. [Automatically investigate your alerts](./auto-investigate-alerts.md) or [Investigate alerts from your other tools](./external-alerts.md): Create an automation that starts an investigation for each matching alert and posts the results in Slack.
-1. [Detect problems your alerts miss](./detect-problems.md): Use detection to find problems that you don't have alerts for. Add their significant events to an automation, and {{nightshift}} investigates those too.
-
 ## Next steps [nightshift-use-cases-next]
 
 - [The home page](../homepage.md): Get an overview of where your investigations are listed.

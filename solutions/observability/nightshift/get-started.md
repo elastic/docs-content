@@ -166,4 +166,3 @@ Review the following next steps:
 - [What you can do with {{nightshift}}](./use-cases/index.md): Follow step-by-step guides for investigating problems, automating investigations, and detecting problems.
 - [How detection works](./detection/index.md): Learn how sources, Knowledge Indicators, rules, and signals fit together.
 - [Settings and limits](./settings.md): Pause detection and set its daily limits.
-- [What you can do with {{nightshift}}](./use-cases/index.md): Compare every use case.

@@ -37,7 +37,7 @@ The process looks something like this:
 
 For this process to work, you need to first create the automation that fires under this scenario:
 
-1. On the {{nightshift}} home page, select **Automations** → **Create custom automation**.
+1. On the {{nightshift}} home page, select **Automations** → **Create automation**.
 1. Enter a **Name**, for example `Investigate critical checkout alerts`. Optionally, add a **Description** and **Tags**.
 1. Under **Trigger**, select **Add trigger** → **Alert triggered**. The trigger reads as a sentence: **When an alert** from **Any rule** from **any source** changes to **Active** with severity **Any severity**.
 1. Select **Any rule**, select one of the following:

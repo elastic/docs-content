@@ -65,7 +65,7 @@ Slack requires less set up than a webhook and sends investigation results back t
 Follow these instructions to investigate alerts from your other tools in Slack. The following example uses `Alertmanager` and the Slack channel, `#checkout-alerts`.
 
 1. Find the app's exact name, app ID, or bot ID. In Slack, select the app's name on one of its alert messages to open its profile.
-1. On the {{nightshift}} home page, select **Automations** → **Create custom automation**.
+1. On the {{nightshift}} home page, select **Automations** → **Create automation**.
 1. Enter a **Name**, for example `Investigate Alertmanager alerts in #checkout-alerts`.
 1. Under **Trigger**, select **Add trigger**. Under **Slack**, select **New message in channel**.
 1. In **Select channels**, select `#checkout-alerts`.
@@ -138,7 +138,7 @@ For more about workflows, refer to [Workflows](/explore-analyze/workflows.md).
 
 ### Create the automation [nightshift-uc-ext-webhook-automation]
 
-1. On the {{nightshift}} home page, select **Automations** → **Create custom automation**.
+1. On the {{nightshift}} home page, select **Automations** → **Create automation**.
 1. Enter a **Name**, for example `Investigate monitoring bot alerts`.
 1. Under **Trigger**, select **Add trigger** → **Alert triggered**.
 1. Select **any source** → **Only these sources** → **External sources**.
