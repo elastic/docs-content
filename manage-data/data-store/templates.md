@@ -56,7 +56,7 @@ If you use {{es}} {{security-features}}, the following [security privileges](ela
 
 * The `manage_index_templates` cluster privilege to manage index templates.
 
-To add these privileges, go to **{{stack-manage-app}} > Security > Roles** or use the [Create or update roles]({{es-apis}}operation/operation-security-put-role) API.
+To add these privileges, go to **{{stack-manage-app}}** → **Security** → **Roles** or use the [Create or update roles]({{es-apis}}operation/operation-security-put-role) API.
 :::
 
 To create an index template, complete the following steps:

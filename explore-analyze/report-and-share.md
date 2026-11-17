@@ -106,7 +106,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
     * {applies_to}`serverless: unavailable` Trigger reports from [{{watcher}}](report-and-share/automating-report-generation.md#use-watcher).
     ::::
 
-Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management > Alerts and Insights > Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
+Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management** → **Alerts and Insights** → **Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
 
 ::::{note}
 In self-managed installations and {{ech}} deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
@@ -198,7 +198,7 @@ Create and securely share static **Canvas** workpads on a website. To customize 
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.
-3. Click **Share > Share on a website**.
+3. Click **Share** → **Share on a website**.
 4. To customize the workpad behavior to autoplay the pages or hide the toolbar, use the inline parameters.
 
    To make sure that your data remains secure, the data in the JSON file is not connected to {{kib}}. **Canvas** does not display elements that manipulate the data on the workpad.
@@ -221,6 +221,6 @@ Display your dashboards on an internal company website or personal web page with
 For information about granting access to embedded dashboards, refer to [Authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
 
 1. Open the dashboard you want to share.
-2. Click **Share > Embed code**.
+2. Click **Share** → **Embed code**.
 3. Specify which parts of the dashboard you want to include: Top menu, query, time filter, and filter bar.
 4. Click **Copy embed code**.

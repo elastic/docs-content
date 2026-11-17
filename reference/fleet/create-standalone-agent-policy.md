@@ -14,7 +14,7 @@ products:
 To get started quickly, use {{kib}} to add integrations to an agent policy, then download the policy to use as a starting point for your standalone {{agent}} policy. This approach saves time, is less error prone, and populates the policy with a lot of details that are tedious to add manually. Also, adding integrations in {{kib}} loads required assets, such as index templates, and ingest pipelines, before you start your {{agent}}s.
 
 ::::{tip}
-If you’re a {{fleet}} user and already have an agent policy you want to use in standalone mode, go to **{{fleet}} → Agents** and select **Add agent**. Follow the steps under **Run standalone** to download the policy file.
+If you’re a {{fleet}} user and already have an agent policy you want to use in standalone mode, go to **{{fleet}}** → **Agents** and select **Add agent**. Follow the steps under **Run standalone** to download the policy file.
 ::::
 
 

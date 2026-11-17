@@ -157,9 +157,9 @@ To update any secret values in an integration policy, refer to [Configure secret
 Policy definitions are stored in a plain-text YAML file that can be downloaded or copied to another policy:
 
 1. In {{fleet}}, click **Agent policies**. Click the name of the policy you want to copy or download.
-2. To copy a policy, click **Actions → Copy policy**. Name the new policy, and provide a description. The exact policy definition is copied to the new policy.
+2. To copy a policy, click **Actions** → **Copy policy**. Name the new policy, and provide a description. The exact policy definition is copied to the new policy.
 
-    Alternatively, view and download the policy definition by clicking **Actions → View policy**.
+    Alternatively, view and download the policy definition by clicking **Actions** → **View policy**.
 
 
 
@@ -315,7 +315,7 @@ Make sure that the {{agent}}s assigned to this policy all have connectivity to t
 
 When you create an integration policy you often need to provide sensitive information such as an API key or a password. To help ensure that data can’t be accessed inappropriately, any secret values used in an integration policy are stored separately from other policy details.
 
-As well, after you’ve saved a secret value in {{fleet}}, the value is hidden in both the {{fleet}} UI and in the agent policy definition. When you view the agent policy (**Actions → View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
+As well, after you’ve saved a secret value in {{fleet}}, the value is hidden in both the {{fleet}} UI and in the agent policy definition. When you view the agent policy (**Actions** → **View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
 
 ::::{warning}
 In order for sensitive values to be stored secretly in {{fleet}}, all configured {{fleet-server}}s must be on version 8.10.0 or higher.

@@ -142,7 +142,7 @@ The `service token` required by the {{fleet-server}} is different from the `enro
 
 ::::
 
-1. In {{kib}}, open **{{fleet}} → Settings** and ensure the **Elasticsearch output** that will be used by the {{fleet-server}} policy is correctly configured, paying special attention that:
+1. In {{kib}}, open **{{fleet}}** → **Settings** and ensure the **Elasticsearch output** that will be used by the {{fleet-server}} policy is correctly configured, paying special attention that:
 
     * The **hosts** field includes a valid URL that will be reachable by the {{fleet-server}} Pod(s).
     * If your {{es}} cluster uses certificates signed by private or intermediate CAs not publicly trusted, you have added the trust information in the **Elasticsearch CA trusted fingerprint** field or in the **advanced configuration** section through the `ssl.certificate_authorities` setting. For an example, refer to [Secure Connections](/reference/fleet/secure-connections.md#_encrypt_traffic_between_agents_fleet_server_and_es) documentation.
@@ -154,7 +154,7 @@ The `service token` required by the {{fleet-server}} is different from the `enro
 
         ::::
 
-2. Go to **{{fleet}} → Agent Policies** and select **Create agent policy** to create a policy for the {{fleet-server}}:
+2. Go to **{{fleet}}** → **Agent Policies** and select **Create agent policy** to create a policy for the {{fleet-server}}:
 
     * Set a **name** for the policy, for example `Fleet Server Policy Kubernetes`.
     * Do **not** select the option **Collect system logs and metrics**. This option adds the System integration to the {{agent}} policy. Because {{fleet-server}} will run as a Kubernetes Pod without any visibility to the Kubernetes node, there won’t be a system to monitor.
@@ -187,7 +187,7 @@ The `service token` required by the {{fleet-server}} is different from the `enro
         * In the provided example we use `https://fleet-svc.<namespace>` as the URL, which corresponds to the Kubernetes service DNS resolution.
 
     * Select **generate service token** to create a token for the {{fleet-server}}.
-    * From **Install {{fleet-server}} to a centralized host → Linux**, take note of the values of the following settings that will be needed for the {{fleet-server}} installation:
+    * From **Install {{fleet-server}} to a centralized host** → **Linux**, take note of the values of the following settings that will be needed for the {{fleet-server}} installation:
 
         * Service token(specified by `--fleet-server-service-token` parameter).
         * {{fleet}} policy ID (specified by `--fleet-server-policy` parameter).
@@ -482,7 +482,7 @@ Adapt and change the suggested manifests and deployment strategy to your needs, 
 
     ::::
 
-5. Check the {{fleet-server}} Pod logs for errors and confirm in {{kib}} that the {{fleet-server}} agent appears as `Connected` and `Healthy` in **{{kib}} → {{fleet}}**.
+5. Check the {{fleet-server}} Pod logs for errors and confirm in {{kib}} that the {{fleet-server}} agent appears as `Connected` and `Healthy` in **{{kib}}** → **{{fleet}}**.
 
     ```shell
     kubectl logs fleet-server-69499449c7-blwjg
@@ -504,7 +504,7 @@ This may include the creation of a Kubernetes `service`, an `ingress` resource, 
 
 Considerations when exposing {{fleet-server}}:
 
-* If your environment requires the {{fleet-server}} to be reachable through multiple hostnames or URLs, you can create multiple **{{fleet-server}} Hosts** in **{{fleet}} → Settings**, and create different policies for different groups of agents.
+* If your environment requires the {{fleet-server}} to be reachable through multiple hostnames or URLs, you can create multiple **{{fleet-server}} Hosts** in **{{fleet}}** → **Settings**, and create different policies for different groups of agents.
 * Remember that in **Production** mode, the **hostnames** used to access the {{fleet-server}} must be part of the {{fleet-server}} certificate as `x.509 Subject Alternative Names`.
 * **Align always the service listening port to the URL**. If you configure the service to listen in port 8220 use a URL like `https://service-name:8220`, and if it listens in `443` use a URL like `https://service-name`.
 
@@ -523,7 +523,7 @@ Below is an end to end example of how to expose the server to external and inter
 
     That command creates a service named `fleet-svc-lb`, listening on port `443` and forwarding the traffic to the `fleet-server` deployment’s Pods on port `8220`. The listening `--port` (and the consequent URL) of the service can be customized, but the `--target-port` must remain on the default port (`8220`), because it’s the port used by the {{fleet-server}} application.
 
-2. Add `https://fleet-server.example.com` and `https://fleet-svc-lb.elastic` as a new **{{fleet-server}} Hosts** in **{{fleet}} → Settings**. Align the port of the URLs if you configured something different from `443` in the Load Balancer.
+2. Add `https://fleet-server.example.com` and `https://fleet-svc-lb.elastic` as a new **{{fleet-server}} Hosts** in **{{fleet}}** → **Settings**. Align the port of the URLs if you configured something different from `443` in the Load Balancer.
 3. Create a {{fleet}} policy for external clients using the `https://fleet-server.example.com` {{fleet-server}} URL.
 4. Create a {{fleet}} policy for internal clients using the `https://fleet-svc-lb.elastic` {{fleet-server}} URL.
 5. You are ready now to enroll external and internal agents to the relevant policies. Refer to [Next steps](#add-fleet-server-kubernetes-next) for more details.

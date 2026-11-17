@@ -71,7 +71,7 @@ curl --request POST \
 ::::{admonition}
 To save time, you can use {{kib}} to generate the API request, then run it from the Dev Tools console.
 
-1. Go to **{{fleet}} → Agent policies**.
+1. Go to **{{fleet}}** → **Agent policies**.
 2. Click **Create agent policy** and give the policy a name.
 3. Click **Preview API request**.
 4. Click **Open in Console** and run the request.

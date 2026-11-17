@@ -21,7 +21,7 @@ This article describes how to recover a broken Zookeeper leader or follower with
 
 ## When to recover [ece-troubleshooting-zookeeper-quorum-check] 
 
-When an ECE director host’s Zookeeper status cannot be determined healthy using the [Verify Zookeeper sync status](verify-zookeeper-sync-status.md) command or from **{{ece}}** > **Platform** > **Settings**, then you might need to recover Zookeeper.
+When an ECE director host’s Zookeeper status cannot be determined healthy using the [Verify Zookeeper sync status](verify-zookeeper-sync-status.md) command or from **{{ece}}** → **Platform** → **Settings**, then you might need to recover Zookeeper.
 
 This situation might surface when recovering the {{ece}} director host from a full disk issue.
 
