@@ -172,7 +172,7 @@ To control the models used by each feature, go to **Feature Settings** in the ma
 The following screenshot shows the **Feature Settings** page on 9.5 and later and in {{serverless-full}}.
 
 :::{image} /explore-analyze/images/feature-settings.png
-:alt: Feature settings page showing the Use AI features toggle, the Global model dropdown, and the Feature specific models toggle
+:alt: Feature settings page showing the Use AI features toggle, the Global model menu, and the Feature specific models toggle
 :screenshot:
 :::
 

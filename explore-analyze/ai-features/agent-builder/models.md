@@ -77,7 +77,7 @@ When you call an agent through the [Converse API](kibana-api.md#chat-and-convers
 * `inference_id`: the ID of an [{{infer}} endpoint](#add-an-inference-endpoint). Use this parameter for new integrations.
 * `connector_id`: the ID of a [connector](#configure-a-connector). Generative AI connectors are deprecated.
 
-Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the request uses the default model for {{agent-builder}}, as set on the **Feature settings** page.
+Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the request uses the default model for {{agent-builder}}, as set on the **Feature Settings** page.
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` You can also pass `reasoning_level` to set how much reasoning the model does for that request. It accepts the same values as the [`reasoning-level` workflow step field](/explore-analyze/workflows/steps/ai-steps.md#ai-reasoning-level).
 
@@ -113,7 +113,7 @@ To change which model is used by default:
 
 ::::
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The **Feature settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` The **Feature Settings** page also provides per-feature model configuration, allowing you to assign specific models to individual AI capabilities across your deployment. This enables more granular control over model selection.
 
 For more information about these settings, refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
@@ -335,7 +335,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-{{agent-builder}} recommends a set of main models by default. They appear in **Main models** on the **Feature settings** page and under **Recommended** in the model selector. This list can differ from the models in the [Recommended models](#recommended-models) table, which are known to work well but aren't all recommended by default.
+{{agent-builder}} recommends a set of main models by default. They appear in **Main models** on the **Feature Settings** page and under **Recommended** in the model selector. This list can differ from the models in the [Recommended models](#recommended-models) table, which are known to work well but aren't all recommended by default.
 
 The default main models depend on your version:
 
