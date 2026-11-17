@@ -104,7 +104,7 @@ The channel appears in the **Channels** table with its name and ID. `@Elastic` a
 
 To stop `@Elastic` from answering in a channel, select **Disconnect channel** next to it. The bot stays in the channel until someone removes it in Slack, and replies that the channel isn't connected when someone mentions it. To remove the whole workspace, open the workspace's actions menu and select **Disconnect workspace**.
 
-A mention of `@Elastic` in a connected channel starts an investigation, which counts toward the **Manual investigations daily limit**. For what your team can do in Slack, refer to [Investigate in Slack](../use-cases/investigate-in-slack.md).
+A mention of `@Elastic` in a connected channel starts an investigation, which counts toward the **Manual investigations daily limit**. For what your team can do in Slack, refer to [Investigate in Slack](../use-cases/investigate-in-slack.md). For the Slack permissions that the app requests, how it behaves in channels, and what Slack data Elastic stores, refer to [Elastic app for Slack](../slack-app.md).
 
 ## Sandbox egress allowlist [nightshift-set-up-egress]
 
