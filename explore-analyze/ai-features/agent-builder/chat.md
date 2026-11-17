@@ -320,7 +320,7 @@ serverless: preview
 
 A conversation can be created from a built-in template. A template defines the structured metadata that the conversation stores, such as its status, severity, and assignees. The conversation shows the template name next to its title. You can’t create or edit templates, or switch a conversation to a different template.
 
-You don’t usually create these conversations yourself. Features such as {{alertzero}} and Elastic nightshift create them and use the template to keep track of their work. For details, refer to [{{alertzero}}](/solutions/security/alertzero/index.md) and [Elastic nightshift](/solutions/observability/nightshift/investigations.md).
+You don’t usually create these conversations yourself. Features such as [{{alertzero}}](/solutions/security/alertzero/index.md) create them and use the template to keep track of their work. Workflows can also create them.
 
 In standalone mode, select **Chat info** in the header of a templated conversation to open a flyout with the details that the template defines, such as the summary and proposed actions. **Chat info** doesn't appear in [sidebar mode](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode). To copy a link that opens the conversation with **Chat info** open, select the **Copy link** icon {icon}`link`.
 
