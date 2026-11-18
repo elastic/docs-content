@@ -25,7 +25,7 @@ It learns your system as it works, and brings that knowledge to every investigat
 
 Knowledge of how your system fits together usually sits with a few engineers. A new SRE has the skills but not the knowledge, and AI models start with the same gap. {{nightshift}} builds and maintains knowledge as it works, so it starts with the problem instead of learning your system.
 
-{{nightshift}} does the first pass of an incident, so you start from a summary instead of a blank dashboard. Investigations use the data and alerts you already have. There's no detection to turn on, no re-instrumenting, and no rewritten rules. Here are some common situations and how they play out with and without {{nightshift}}:
+{{nightshift}} does the first pass of an incident, so you start from a summary instead of a blank dashboard. Investigations use the data and alerts you already have, with no re-instrumenting and no rewritten rules. Detection starts once {{nightshift}} is on and a source is configured, so it can also find problems that none of your alerts catch. Here are some common situations and how they play out with and without {{nightshift}}:
 
 | Situation | Without {{nightshift}} | With {{nightshift}} |
 | --- | --- | --- |

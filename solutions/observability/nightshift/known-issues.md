@@ -43,7 +43,7 @@ products:
     **Workaround:** Investigations can still query metrics and traces through your connectors.
 
 **Detection needs time to warm up**
-:   After you turn on detection, the first Knowledge Indicators and rules appear within a few minutes. Expect the first signals 40 to 100 minutes after you turn it on. Early on, it can have few rules, or rules with no matches.
+:   After you turn on detection, the first Knowledge Indicators and rules appear within a few minutes. Expect the first signals 40 to 100 minutes after you turn it on, while the rules warm up. After that, detecting a new problem takes about 10 minutes. Early on, it can have few rules, or rules with no matches.
 
     **Workaround:** Wait, and check progress on the **Detections** page. Refer to [How long learning takes](./detection/learning.md#nightshift-detection-learning-warmup).
 

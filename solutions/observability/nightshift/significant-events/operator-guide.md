@@ -44,7 +44,7 @@ One {{alerting-v2-system-short}} rule runs for each promoted query KI, in [**Col
 
 **Pipeline lag**
 
-The following table provides illustrative estimates of how long each phase takes from trigger to output, based on workflow schedules, after rules exist:
+The following table provides illustrative estimates of how long each phase takes from trigger to output, based on workflow schedules. They apply after the rules have warmed up, which takes 40 to 100 minutes after you turn detection on:
 
 | Phase | Typical lag |
 |---|---|

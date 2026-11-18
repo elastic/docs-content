@@ -49,6 +49,7 @@ When you change a run limit, a schedule setting, continuous KI onboarding, or to
 Developer mode shows experimental and expert parts of {{nightshift}}. It's off by default and applies to everyone in the space. To turn it on, on the **General** tab, turn on **Enable nightshift developer mode**. It adds:
 
 - The **Signals** tab on the **Detections** page. Refer to [Rules and signals](./detection/rules-and-signals.md).
+- The **Topology** tab on the **Detections** page. Refer to [Explore the topology](./detection/learning.md#nightshift-detection-learning-topology).
 - The **Decision Trees** tab on the **Knowledge** page. Refer to [Decision trees](./context/decision-trees.md).
 - **Advanced developer settings** on the **Detections** tab, including the cost estimate. Refer to [Advanced developer settings](#nightshift-settings-advanced-dev).
 - Extra details, such as the service account's role and raw metadata on Knowledge Indicators.

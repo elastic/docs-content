@@ -38,13 +38,13 @@ Detection learns your system from your logs, writes its own rules, and groups un
 ::::{step} Turn on detection
 :anchor: nightshift-uc-detect-enable
 
-If the **Detection engine** on the **Detections** page doesn't show **Monitoring** yet, follow the detection steps in [Get started](../get-started.md#nightshift-get-started-detection). The first KIs and rules appear within a few minutes, and the first signals 40 to 100 minutes later.
+If the **Detection engine** on the **Detections** page doesn't show **Monitoring** yet, follow the detection steps in [Get started](../get-started.md#nightshift-get-started-detection). The first KIs and rules appear within a few minutes, and the first signals 40 to 100 minutes later while the rules warm up. After that, a new problem takes about 10 minutes to detect.
 ::::
 
 ::::{step} Review significant events
 :anchor: nightshift-uc-detect-review
 
-On the {{nightshift}} home page, select **Detections**. The **Events** tab lists the significant events of the **Last 24 hours**.
+On the {{nightshift}} home page, select **Detections**. The **Events** tab lists the active and recovering significant events of the **Last 24 hours**. Inactive events are filtered out by default.
 
 To filter events and read the statuses, refer to [Review significant events](../detection/significant-events.md).
 ::::
@@ -83,7 +83,7 @@ These investigations count toward the **Automatic investigations daily limit**. 
 ## Best practices [nightshift-uc-detect-check]
 
 - **Give it time.** Detection starts with few rules, and some rules show zero matches at first. It improves as it learns more about your system.
-- **Mark noise inactive.** If an event isn't a problem, select **Mark inactive**, so your team doesn't look at it again.
+- **Mark noise inactive.** If an event isn't a problem, select **Mark inactive**, so your team doesn't look at it again. Inactive events are filtered out of the default list, and you can still inspect them with the **Status** filter.
 - **Check what it learned.** Detection is only as good as what {{nightshift}} has learned about your system. Refer to [How detection learns your system](../detection/learning.md).
 - **Pause it if you need to.** An admin can pause detection in Settings. Refer to [Pause or resume detection](../settings.md#nightshift-settings-pause).
 

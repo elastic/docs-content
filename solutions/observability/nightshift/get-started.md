@@ -144,7 +144,7 @@ Alerts catch the problems you think of in advance. Detection finds the problems 
 1. Under **Select data sources to analyze**, keep **All logs** (`FROM logs*`) selected. To watch only some of your data, select **Create new source**. Refer to [Manage what detection monitors](./detection/sources.md).
 1. Select **Enable detection**.
 
-A badge by the **Detection engine** heading now shows **Monitoring**, and there's nothing else to turn on. {{nightshift}} starts learning your system, and the first signals appear 40 to 100 minutes later. Significant events appear only when something unusual happens, so a quiet system can stay at zero for a while.
+A badge by the **Detection engine** heading now shows **Monitoring**, and there's nothing else to turn on. {{nightshift}} starts learning your system, and the first signals appear 40 to 100 minutes later, while the rules warm up. After that, a new problem takes about 10 minutes to detect. Significant events appear only when something unusual happens, so a quiet system can stay at zero for a while.
 
 To follow what {{nightshift}} learns, refer to [How detection learns your system](./detection/learning.md). To review and investigate events, refer to [Review significant events](./detection/significant-events.md). To investigate each new event automatically, refer to [Automatically investigate your alerts](./use-cases/auto-investigate-alerts.md).
 ::::
