@@ -41,7 +41,7 @@ Context works the other way: because investigations start from what {{nightshift
 
 | Activity | When it runs | How to limit it |
 | --- | --- | --- |
-| Investigations that you start | When you select **Investigate** on the home page, an alert, or a significant event, or mention `@Elastic` in Slack | **Manual investigations daily limit** |
+| Investigations that you start | When you select **Investigate** on the home page, an alert, or a significant event. Each `@Elastic` mention that opens a new conversation in Slack also counts, even though it doesn't start an investigation. | **Manual investigations daily limit** |
 | Investigations that automations start | When an automation's trigger fires | **Automatic investigations daily limit**, and each automation's **Daily trigger limit** |
 | Follow-up questions | When you ask in chat or in the Slack thread | Not limited |
 | Knowledge Indicator extraction | When you add a source, generate KIs, or continuous KI onboarding runs | **Knowledge indicators extraction daily limit**, fewer sources, longer onboarding interval |

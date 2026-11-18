@@ -53,7 +53,7 @@ flowchart LR
 The run limits apply to the whole deployment, across all spaces. Each one counts a different kind of start:
 
 - **Automatic investigations daily limit**: Investigations that automations start, all automations combined.
-- **Manual investigations daily limit**: Investigations that people start: from the home page, with **Investigate** on an alert or a significant event, with a Slack mention, or with the API or the CLI. **Run** on an automation counts here too.
+- **Manual investigations daily limit**: Investigations that people start: from the home page, with **Investigate** on an alert or a significant event, or with the API or the CLI. **Run** on an automation counts here too, and so does each `@Elastic` mention that opens a new conversation in Slack, even though it doesn't start an investigation.
 - **All investigations daily limit**: Automatic and manual investigations together. It can be lower than the other two added up, so you can cap the total while letting either kind use most of it.
 
 To change the limits, you need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-admin).

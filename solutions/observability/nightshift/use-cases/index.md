@@ -22,7 +22,7 @@ If you haven't set up {{nightshift}}, follow the [Get started](../get-started.md
 Each guide walks you through a scenario from start to finish.
 
 - [Investigate anything](./investigate-anything.md): Investigate a problem you describe, such as "Why is checkout latency up?", and receive a likely cause, evidence, and proposed actions.
-- [Investigate in Slack](./investigate-in-slack.md): Connect and start investigations from Slack. Mention `@Elastic` in a channel, and receive the results in the thread where your team can read them.
+- [Investigate in Slack](./investigate-in-slack.md): Ask {{nightshift}} questions from Slack. Mention `@Elastic` in a channel to get an answer in the thread, and follow up on investigations that automations post there.
 - [Investigate your alerts](./investigate-alerts.md): Start an investigation from an alert, so {{nightshift}} has the service, the symptom, and the time window from the start.
 - [Automatically investigate your alerts](./auto-investigate-alerts.md): Set up an automation that investigates each matching alert or significant event and posts the findings to Slack, without anyone starting it.
 - [Investigate alerts from your other tools](./external-alerts.md): Set up an automation that investigates alerts from an external monitoring tool, an {{ech}} deployment, PagerDuty, or a script, when they arrive in Slack or by webhook.
