@@ -292,7 +292,10 @@ toc:
           - hidden: ai-features/context-engine/context-engine-api.md
       - file: ai-features/manage-access-to-ai-assistant.md
       - file: ai-features/agent-skills.md
-      - file: ai-features/claude-plugin.md
+      - file: ai-features/agent-plugins.md
+        children:
+          - file: ai-features/agent-plugins/claude-plugin.md
+          - file: ai-features/agent-plugins/cursor-plugin.md
       - file: ai-features/claude-connector.md
       - file: ai-features/llm-guides/llm-connectors.md
         children:
