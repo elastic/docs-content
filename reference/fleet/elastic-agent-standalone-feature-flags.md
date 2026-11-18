@@ -13,9 +13,9 @@ products:
 # Configure feature flags for standalone {{agent}}s [elastic-agent-standalone-feature-flags]
 
 
-The `agent.features` section of the `elastic-agent.yml` file contains settings that change the default behavior of {{agent}}. Most of these settings are turned off by default. These may include experimental features, changes to behaviors within {{agent}} or its components, or settings that could cause a breaking change. For example, a setting that changes information included in events might be inconsistent with the naming pattern expected in your configured {{agent}} output.
+The `agent.features` section of the `elastic-agent.yml` file contains settings that change the default behavior of {{agent}}. These settings might include experimental features, changes to behaviors within {{agent}} or its components, or settings that could cause a breaking change. For example, a setting that changes information included in events might be inconsistent with the naming pattern expected in your configured {{agent}} output.
 
-To turn on a setting, set its `enabled` flag to `true`:
+Most of these settings are turned off by default. To change a setting, set its `enabled` flag. For example, to turn on a setting that's off by default, set `enabled` to `true`:
 
 ```yaml
 agent.features:
