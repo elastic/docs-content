@@ -504,7 +504,7 @@ serverless:
 
 - **Identify:** List the source rules with the [get rules API]({{kib-apis}}operation/operation-get-alerting-rules-find), `GET /api/alerting/rules/_find`. Retrieve all pages, select the rules that the destination supports, and record their connectors and other dependencies.
 - **Migrate:** Follow [rule export and import](/solutions/observability/incident-management/create-manage-rules.md#observability-create-manage-rules-import-and-export-rules), using `POST /api/saved_objects/_export` and `POST /api/saved_objects/_import`. Include related objects (`includeReferencesDeep: true` with the API) so that the export contains referenced connectors and other dependencies. Connector secrets are not included. If you migrated a connector earlier, retain the existing destination connector when resolving the import conflict instead of overwriting it.
-- **Verify:** Check the imported rules' data sources, queries, connectors, permissions, and feature dependencies. Test their actions, then enable the rules when the destination is ready to run them.
+- **Verify:** Check the imported rules' data sources, queries, connectors, permissions, and feature dependencies. For rules that use {{ml}}, prepare the referenced [anomaly detection jobs](#migrate-to-serverless-anomaly-jobs). Test their actions, then enable the rules when the destination is ready to run them.
 
 #### Security detection rules [migrate-to-serverless-security-rules]
 ```{applies_to}
@@ -515,7 +515,7 @@ serverless:
 [Security detection rules](/solutions/security/detect-and-alert/detection-rule-concepts.md) have dedicated export and import workflows and APIs. These workflows cover rule definitions and related resources such as actions, connectors, and exception lists. Do not migrate detection rules with the generic saved object APIs.
 
 - **Identify:** List the source rules with the [find detection rules API]({{kib-apis}}operation/operation-findrules), `GET /api/detection_engine/rules/_find`. Inventory custom rules and prebuilt rules with source-specific state or configuration, such as enabled state, actions, exceptions, or direct edits. Do not select every installed prebuilt rule by default. Record the selected rules' `rule_id` values and dependencies. Also inventory value lists used by rule exceptions, Endpoint exceptions required by your policies, and referenced {{data-sources}}.
-- **Prepare:** [Install the required Elastic prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) in the destination. Compare their source and destination versions and resolve version differences before importing source configuration.
+- **Prepare:** [Install the required Elastic prebuilt rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) in the destination. Compare their source and destination versions and resolve version differences before importing source configuration. For rules that use {{ml}}, also prepare the referenced [anomaly detection jobs](#migrate-to-serverless-anomaly-jobs) before enabling the rules.
 - **Migrate:** Migrate the selected rules and the resources they require:
 
     - **Rules, actions, connectors, and exception lists:** Export and import the rules with the [detection rule workflow](/solutions/security/detect-and-alert/manage-detection-rules.md#import-export-rules-ui), or `POST /api/detection_engine/rules/_export` and `POST /api/detection_engine/rules/_import`. For prebuilt rules installed in the destination, use `overwrite=true` to apply source configuration to the matching `rule_id`. If you migrated connectors earlier, keep `overwrite_action_connectors=false`. Restore connector secrets after import.
@@ -563,15 +563,6 @@ Workflows are available across {{serverless-short}} project types with the appro
 
 ::::
 
-::::{step} Recreate project access
-:anchor: migrate-to-serverless-access
-
-Use the role definitions, assignments, authentication providers, and application access requirements recorded in your inventory.
-- **Migration approach:** Recreate the required access with [project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md), adapting privileges to the destination. Manage users and assignments through the [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization/user-roles.md), and create destination credentials for applications.
-- **Compatibility:** Deployment-local users and authentication realms do not transfer to a {{serverless-short}} project. If you use SAML, evaluate [organization-level SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md). Review project privileges separately from organization access.
-
-::::
-
 ::::{step} Migrate {{fleet}} outputs and policies
 :anchor: migrate-to-serverless-fleet
 
@@ -594,11 +585,37 @@ Outputs, proxies, and Fleet Server hosts are shared across the deployment or pro
 ::::{step} Prepare AI and {{ml}} resources
 :anchor: migrate-to-serverless-inference
 
-[Trained models](/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models.md) run inside your project. [Inference endpoints](/explore-analyze/elastic-inference.md) provide named access to models hosted in the project, Elastic Inference Service (EIS), or external providers.
+Prepare the {{ml}} jobs and datafeeds, trained models, and {{infer}} endpoints your solution uses. Include resources configured directly in **Machine Learning** and those created from {{observability}} or {{elastic-sec}} features.
 
-For {{observability}} and {{elastic-sec}} projects, also review your [feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-features-add-ons). For example, the Inference Endpoints UI is unavailable in Observability Logs Essentials.
+Of the resources covered here, {{es}} {{vectordb}} projects support only [{{infer}} endpoints](#migrate-to-serverless-inference-endpoints), backed by Elastic Inference Service (EIS) or external providers.
 
-% TODO: Develop the procedures for ML anomaly detection jobs and other machine learning resources as their procedures are verified.
+In {{observability}} projects, {{ml}} jobs require [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md). In {{elastic-sec}} projects, they require [Security Analytics Essentials or Complete](/solutions/security/security-serverless-feature-tiers.md). The {{infer}} management UI is unavailable in Observability Logs Essentials.
+
+#### Anomaly detection jobs and datafeeds [migrate-to-serverless-anomaly-jobs]
+```{applies_to}
+serverless:
+  vectordb: unavailable
+```
+
+[Anomaly detection jobs](/explore-analyze/machine-learning/anomaly-detection.md) learn patterns in time series data and identify unusual behavior. Their datafeeds define which data they analyze. Jobs can be custom or supplied by a solution or integration.
+
+- **Identify:** View source jobs and {{dfeeds}} on **Anomaly Detection Jobs** in {{kib}}, or use the [get anomaly detection jobs API]({{es-apis}}operation/operation-ml-get-jobs) and [get {{dfeeds}} API]({{es-apis}}operation/operation-ml-get-datafeeds). Record job IDs, source indices, and space assignments.
+- **Prepare:** Recreate required filter lists before importing jobs. Missing referenced filter lists cause the import to fail.
+- **Migrate:** Recreate unchanged prebuilt jobs from the corresponding [Security](/solutions/security/detect-and-alert/machine-learning.md#ml-job-settings-interface) or [Observability](/solutions/observability/logs/inspect-log-anomalies.md) feature. For custom or modified jobs, follow [Export and import anomaly detection jobs](/explore-analyze/machine-learning/setting-up-machine-learning.md#move-anomaly-detection-jobs). Adapt {{dfeed}} indices and restore calendars and space assignments. Preserve job IDs referenced by rules, or update those references.
+- **Verify:** Run jobs and {{dfeeds}} over the intended historical interval and confirm that they process destination data and produce results. Job exports contain configuration only, so imported jobs must rebuild their learned models from that data.
+
+#### Data frame analytics jobs [migrate-to-serverless-analytics-jobs]
+```{applies_to}
+serverless:
+  vectordb: unavailable
+```
+
+[Data frame analytics jobs](/explore-analyze/machine-learning/data-frame-analytics.md) perform outlier detection, regression, or classification and write the analysis results to a destination index. Regression and classification also produce trained models.
+
+- **Identify:** View source jobs on **Data Frame Analytics Jobs** in {{kib}}, or use the [get data frame analytics jobs API]({{es-apis}}operation/operation-ml-get-data-frame-analytics). Record source indices, destination indices, and any trained models used by your solution.
+- **Prepare:** Transfer the required source data before importing the jobs.
+- **Migrate:** Follow [Export and import data frame analytics jobs](/explore-analyze/machine-learning/setting-up-machine-learning.md#move-dataframe-analytics-jobs), adapting source and destination index references. To retain an existing trained model, transfer it separately as described in [Trained models](#migrate-to-serverless-trained-models).
+- **Verify:** Run the required analyses against destination data and check the output indices and results.
 
 #### Trained models hosted in the project [migrate-to-serverless-trained-models]
 ```{applies_to}
@@ -606,27 +623,36 @@ serverless:
   vectordb: unavailable
 ```
 
-{{es}} {{vectordb}} projects do not support [models hosted on ML nodes](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-vector-database). Use an {{es}} project if you need to host those models, or use an inference endpoint backed by EIS or an external provider.
+[Trained models](/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models.md) perform {{infer}} inside your project for tasks such as classification, regression, and text embedding generation. They include models produced by data frame analytics jobs and pretrained NLP models used by ingest pipelines and applications.
 
-- **Identify:** Retrieve source models with [the get trained models API]({{es-apis}}operation/operation-ml-get-trained-models), `GET /_ml/trained_models`. Record the model IDs, deployment IDs, and aliases referenced by your solution.
+- **Identify:** View source models on **{{models-app}}** in {{kib}}, or use the [get trained models API]({{es-apis}}operation/operation-ml-get-trained-models). Record model IDs, deployment IDs, and aliases referenced by your solution.
 - **Migrate:** Use the procedure for the model type:
 
     - For built-in models, [install the corresponding model](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) in the destination.
     - For custom data frame analytics models, follow [Exporting and importing models](/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models.md#export-import).
-    - For custom NLP models, [import the model and vocabulary using Eland](/explore-analyze/machine-learning/nlp/ml-nlp-import-model.md), then [start its deployment](/explore-analyze/machine-learning/nlp/ml-nlp-deploy-model.md).
+    - For custom NLP models, [import the model and vocabulary using {{product.eland}}](/explore-analyze/machine-learning/nlp/ml-nlp-import-model.md), then [start its deployment](/explore-analyze/machine-learning/nlp/ml-nlp-deploy-model.md).
 
     Preserve referenced IDs and recreate aliases, or update the resources that use them. Serverless model deployments always use [adaptive allocations](/deploy-manage/autoscaling/trained-model-autoscaling.md).
 
-- **Verify:** [Test inference](/explore-analyze/machine-learning/nlp/ml-nlp-test-inference.md) with the same sample inputs in the source and destination and compare the results. Use the IDs or aliases your pipelines and applications reference.
+- **Verify:** [Test {{infer}}](/explore-analyze/machine-learning/nlp/ml-nlp-test-inference.md) with the same sample inputs in the source and destination and compare the results. Use the IDs or aliases your pipelines and applications reference.
 
-#### Inference endpoints [migrate-to-serverless-inference-endpoints]
+#### {{infer-cap}} endpoints [migrate-to-serverless-inference-endpoints]
 
-Inference endpoints are available across the four project types. In {{vectordb}} projects, use EIS or external providers instead of models hosted on ML nodes.
+[{{infer-cap}} endpoints](/explore-analyze/elastic-inference.md) provide named access to models hosted in the project, EIS, or external providers.
 
-- **Identify:** Retrieve source endpoints with [the get inference endpoint API]({{es-apis}}operation/operation-inference-get), `GET /_inference`. Record each endpoint's `inference_id`, `task_type`, `service`, and settings.
-- **Prepare:** Obtain the provider credentials needed to recreate external endpoints. The GET response does not include stored secrets. For endpoints that use models hosted in the project, prepare those models as described in [Trained models](#migrate-to-serverless-trained-models).
-- **Migrate:** Recreate custom endpoints with [the create inference endpoint API]({{es-serverless-apis}}operation/operation-inference-put), `PUT /_inference/{task_type}/{inference_id}`, using the same service, model, and settings, and supplying any required credentials. Preserve `inference_id` or update its references. For default endpoints, use the destination's equivalent when its model and configuration meet your requirements.
-- **Verify:** Send sample inputs using the [inference API]({{es-serverless-apis}}group/endpoint-inference) for the endpoint's task type. Check the results before testing dependent pipelines, mappings, or applications.
+- **Identify:** View source endpoints on **Elastic Inference** or **External Inference** in {{kib}} (**Inference endpoints** in earlier versions), or use the [get {{infer}} endpoint API]({{es-apis}}operation/operation-inference-get). Record each endpoint's `inference_id`, `task_type`, `service`, and settings.
+- **Prepare:** Obtain provider credentials for external endpoints. The get endpoint API does not return stored secrets.
+- **Migrate:** Recreate custom endpoints with the [create {{infer}} endpoint API]({{es-serverless-apis}}operation/operation-inference-put), using the same service, model, and settings. Preserve `inference_id` or update its references. For default endpoints, use the destination's equivalent when its model and configuration meet your requirements.
+- **Verify:** Send representative inputs using the [{{infer}} API]({{es-serverless-apis}}group/endpoint-inference) and confirm that each endpoint produces the expected results.
+
+::::
+
+::::{step} Recreate project access
+:anchor: migrate-to-serverless-access
+
+Use the role definitions, assignments, authentication providers, and application access requirements recorded in your inventory.
+- **Migration approach:** Recreate the required access with [project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md), adapting privileges to the destination. Manage users and assignments through the [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization/user-roles.md), and create destination credentials for applications.
+- **Compatibility:** Deployment-local users and authentication realms do not transfer to a {{serverless-short}} project. If you use SAML, evaluate [organization-level SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md). Review project privileges separately from organization access.
 
 ::::
 
