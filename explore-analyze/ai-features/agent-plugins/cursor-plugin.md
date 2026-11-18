@@ -11,6 +11,9 @@ products:
   - id: observability
   - id: security
   - id: cloud-serverless
+sub:
+  plugin-host: "Cursor"
+  skill-command-example: "/elasticsearch-esql"
 ---
 
 # Elastic plugin for Cursor [elastic-cursor-plugin]
@@ -23,27 +26,13 @@ You install the plugin in Cursor, not in {{es}}, {{kib}}, or your {{serverless-s
 
 ### Work with {{es}} and {{kib}} from Cursor
 
-The plugin contains agent skills that are synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
-When installed from the plugin, these skills will stay up-to-date, while they will remain pinned if installed directly from the `agent-skills` repository.
-Refer to [AI agent skills for Elastic](../agent-skills.md) for how skills work and the areas they cover.
-
-The Cursor agent decides when to use a skill based on your request.
-You can also run a skill directly by typing `/` followed by the skill name in the chat, for example `/elasticsearch-esql`.
-
-After you install the plugin, these skills give the Cursor agent the procedural knowledge to perform common Elastic tasks without leaving your editor:
-
-:::{include} _snippets/plugin-skill-tasks.md
+:::{include} _snippets/plugin-skills-use-case.md
 :::
 
 ### Access Elastic documentation in Cursor
 
-The plugin registers the [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server), which lets the Cursor agent search and retrieve Elastic documentation as part of any conversation.
-The agent can look up configuration options, API references, and feature guides without leaving the editor.
-
-::::{note}
-The Elastic Docs MCP server only gives the Cursor agent access to Elastic documentation, not to your data.
-To let the agent work with your data, install and configure the [Elastic CLI](cli://index.md).
-::::
+:::{include} _snippets/plugin-docs-mcp-use-case.md
+:::
 
 ## Install the plugin
 

@@ -11,6 +11,9 @@ products:
   - id: observability
   - id: security
   - id: cloud-serverless
+sub:
+  plugin-host: "Claude"
+  skill-command-example: "/elastic:elasticsearch-esql"
 ---
 
 # Elastic plugin for Claude [elastic-claude-plugin]
@@ -24,24 +27,15 @@ You install the plugin in Claude, not in {{es}}, {{kib}}, or your {{serverless-s
 
 ### Work with {{es}} and {{kib}} from a Claude environment
 
-The plugin contains agent skills that are synced from the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository.
-Refer to [AI agent skills for Elastic](../agent-skills.md) for how skills work and the areas they cover.
-
-After you install the plugin, these skills give Claude the procedural knowledge to perform common Elastic tasks without leaving your editor or terminal:
-
-:::{include} _snippets/plugin-skill-tasks.md
+:::{include} _snippets/plugin-skills-use-case.md
 :::
 
 ### Access Elastic documentation in conversations
 
-The plugin registers the [Elastic Docs MCP server](/get-started/machine-readable-docs.md#docs-mcp-server), which lets Claude search and retrieve Elastic documentation as part of any conversation.
-Claude can look up configuration options, API references, and feature guides without leaving the chat session.
+:::{include} _snippets/plugin-docs-mcp-use-case.md
+:::
 
-::::{note}
-The Elastic Docs MCP server only gives Claude access to Elastic documentation, not to your data.
-To let Claude work with your data, install and configure the [Elastic CLI](cli://index.md).
-For an {{serverless-full}} project, you can also add the [Elastic Cloud Serverless connector for Claude](../claude-connector.md).
-::::
+For an {{serverless-full}} project, you can also connect Claude to your data with the [Elastic Cloud Serverless connector for Claude](../claude-connector.md).
 
 ## Install the plugin
 
