@@ -12,9 +12,9 @@ products:
 
 # Quickstart: Vector and full-text search [hybrid-search-quickstart]
 
-{{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. This guide uses official {{es}} clients as well as curl and Console examples to take you from an empty project to real search results in less than 10 minutes.
+{{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. In this quickstart, you index five books, compare these search approaches, and use {{esql}} to count the books by publication decade.
 
-Use it if you're new to search in {{es}} or want to compare keyword, semantic, and hybrid search.
+It is designed for anyone new to search in {{es}} and takes less than 10 minutes after deployment setup.
 
 :::{tip}
 Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding).
@@ -24,50 +24,21 @@ Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/el
 
 You can use this quickstart with any type of deployment, although for most search use cases we recommend creating a free [{{es}} {{vectordb}} project](https://cloud.elastic.co/serverless-registration?onboarding_token=vector).
 
-:::{note}
-Some features that search use cases rely on work differently on {{serverless-short}} than on {{ech}}. For example, {{serverless-short}} uses data stream lifecycle instead of {{ilm-init}}. To check the features you depend on, refer to [Compare {{ech}} and {{serverless-short}}](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#indexing-search-and-analysis).
-:::
-
 The project takes about a minute to start. The **Getting started** page then displays the **{{es}} endpoint** and a generated API key. Copy both values. If you need a new API key, refer to [Create an API key](/solutions/search/set-up/api-key-and-endpoints.md#get-your-api-key).
 
-You can follow the examples in Python, TypeScript, PHP, Ruby, C# (.NET), Java, or Go, with curl, or in the {{kib}} [**Dev Tools**](/explore-analyze/query-filter/tools/console.md) Console. If you use Console, you don't need to connect or install a client: after you set up {{es}}, start at [Create an index and add data](#vector-full-text-search-add-data).
+:::{important}
+If you use an existing deployment, ensure that it has an inference endpoint available for the `semantic_text` field. The [default inference endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) depends on your deployment type and version.
 
-## Connect to your deployment or project [vector-full-text-search-connect]
+The example output in this quickstart assumes the `.jina-embeddings-v5-text-small` inference endpoint, which is the default for `semantic_text` on {{ech}} and {{serverless-short}}. If your deployment uses a different endpoint, such as ELSER, your scores and the order of the results might differ.
+:::
 
-Set the endpoint and API key of your deployment or project as environment variables:
+## Choose how to run the examples [vector-full-text-search-install-sdk]
 
-:::::{tab-set}
-:group: operating-systems
+Use an {{es}} client, curl, or {{kib}} Console to run the examples.
 
-::::{tab-item} macOS and Linux
-:sync: macos-linux
-
-```bash
-export ES_URL="<YOUR_ELASTICSEARCH_URL>" <1>
-export ES_API_KEY="YOUR_API_KEY"
-```
-
-1. For example, `https://my-project.es.us-east-1.aws.elastic.cloud:443`.
-
-::::
-
-::::{tab-item} Windows PowerShell
-:sync: windows-powershell
-
-```powershell
-$Env:ES_URL = "<YOUR_ELASTICSEARCH_URL>" <1>
-$Env:ES_API_KEY = "YOUR_API_KEY"
-```
-
-1. For example, `https://my-project.es.us-east-1.aws.elastic.cloud:443`.
-
-::::
-
-:::::
-
-## Set up a client [vector-full-text-search-install-sdk]
-
-Install the client for your language:
+- **Console:** No client installation or connection configuration is needed. Continue to [Create an index and add data](#vector-full-text-search-add-data).
+- **curl:** [Set the environment variables](#vector-full-text-search-connect), then continue to [Create an index and add data](#vector-full-text-search-add-data).
+- **Language client:** Install and initialize the client for your language, [set the environment variables](#vector-full-text-search-connect), then continue to [Create an index and add data](#vector-full-text-search-add-data).
 
 :::::{tab-set}
 :group: languages
@@ -76,6 +47,8 @@ Install the client for your language:
 :sync: python
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install elasticsearch
 ```
 
@@ -88,7 +61,7 @@ For supported Python versions and other requirements, refer to the [Python clien
 
 ```bash
 npm install @elastic/elasticsearch
-npm install --save-dev typescript tsx
+npm install --save-dev typescript tsx @types/node
 npm pkg set type=module
 ```
 
@@ -111,6 +84,7 @@ For supported PHP versions and other requirements, refer to the [PHP client docu
 :sync: ruby
 
 ```bash
+bundle init
 bundle add elasticsearch
 ```
 
@@ -122,6 +96,7 @@ For supported Ruby versions and other requirements, refer to the [Ruby client in
 :sync: csharp
 
 ```bash
+dotnet new console
 dotnet add package Elastic.Clients.Elasticsearch
 ```
 
@@ -132,15 +107,18 @@ For supported .NET versions and other requirements, refer to the [.NET client do
 ::::{tab-item} Java
 :sync: java
 
-Add the client dependency and the runnable example's main class to the generated `build.gradle` file:
+Create a Gradle project:
+
+```bash
+gradle init --type java-application --dsl groovy --test-framework junit-jupiter \
+  --package quickstart --project-name quickstart --use-defaults
+```
+
+The generated `app/build.gradle` already sets `mainClass` to `quickstart.App`. In its `dependencies` block, add the client dependency:
 
 ```groovy
 dependencies {
     implementation "co.elastic.clients:elasticsearch-java:VERSION"
-}
-
-application {
-    mainClass = "quickstart.App"
 }
 ```
 
@@ -152,6 +130,7 @@ Replace `VERSION` with the version from the [latest Java client release](https:/
 :sync: go
 
 ```bash
+go mod init quickstart
 go get github.com/elastic/go-elasticsearch/v9
 ```
 
@@ -264,6 +243,7 @@ import java.io.StringReader;
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.Refresh;
 import co.elastic.clients.elasticsearch.core.BulkRequest;
+import co.elastic.clients.elasticsearch.core.BulkResponse;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.elasticsearch.esql.EsqlFormat;
@@ -274,13 +254,17 @@ public class App {
         String serverUrl = System.getenv("ES_URL");
         String apiKey = System.getenv("ES_API_KEY");
 
-        ElasticsearchClient es = ElasticsearchClient.of(b -> b
+        try (ElasticsearchClient es = ElasticsearchClient.of(b -> b
             .host(serverUrl)
             .apiKey(apiKey)
-        );
+        )) {
+            // Add the code from the following steps here.
+        }
     }
 }
 ```
+
+The `try` block closes the client when the program ends. Without it, the {{es}} client keeps the program running after `main` returns. Add the example code from the following steps inside the `try` block.
 
 ::::
 
@@ -312,13 +296,50 @@ func main() {
 
 :::::
 
+## Connect to your deployment or project [vector-full-text-search-connect]
+
+Set the endpoint and API key of your deployment or project as environment variables:
+
+:::::{tab-set}
+:group: operating-systems
+
+::::{tab-item} macOS and Linux
+:sync: macos-linux
+
+```bash
+export ES_URL="<YOUR_ELASTICSEARCH_URL>" <1>
+export ES_API_KEY="YOUR_API_KEY"
+```
+
+1. For example, `https://my-project.es.us-east-1.aws.elastic.cloud:443`.
+
+::::
+
+::::{tab-item} Windows PowerShell
+:sync: windows-powershell
+
+```powershell
+$Env:ES_URL = "<YOUR_ELASTICSEARCH_URL>" <1>
+$Env:ES_API_KEY = "YOUR_API_KEY"
+```
+
+1. For example, `https://my-project.es.us-east-1.aws.elastic.cloud:443`.
+
+::::
+
+:::::
+
 ## Create an index and add data [vector-full-text-search-add-data]
 
 Create the `books` index and add the sample data. The sample data contains five books, each with a `title`, an `author`, a `release_year`, and a `description`.
 
+:::{note}
+The following examples show one step at a time rather than a complete program. Language-client examples use the Elasticsearch client that you initialized earlier and leave out setup code such as imports and class definitions. In C#, place `record` declarations at the end of `Program.cs`, after all statements. To run the entire quickstart, use the [complete script](#vector-full-text-search-complete-script).
+:::
+
 ### Create an index
 
-You define only the `description` field as `semantic_text`. {{es}} automatically chooses a data type for each of the other fields:
+You define the `description` field as `semantic_text` and add a `text` subfield, `description.text`, so that you can also run full-text queries on the same description. {{es}} automatically chooses a data type for each of the other fields:
 
 :::::{tab-set}
 :group: languages
@@ -333,13 +354,14 @@ es.indices.create(
         "properties": { <1>
             "description": {
                 "type": "semantic_text", <2>
+                "fields": {"text": {"type": "text"}},
             }
         }
     },
 )
 ```
 
-1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. 
+1. With [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically chooses a data type for every new field based on its value. This happens whenever a field first appears, even if it is in a later document. In this quickstart, you only define `description` yourself. Setting it to `semantic_text` tells {{es}} to prepare the text for meaning-based search. To learn more, refer to [](/manage-data/data-store/mapping.md).
 2. You define `description` as a [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field. When you index this field, {{es}} sends the text to an {{infer}} endpoint. There, an embedding model converts it into an [embedding](/solutions/search/vector.md#vector-embedding), a numerical representation of its meaning. {{es}} uses these embeddings to find text with similar meaning. This example uses a [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints), but you can [configure another endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#configure-inference-endpoints) to use a custom model.
 
 
@@ -356,6 +378,7 @@ await es.indices.create({
     properties: { <1>
       description: {
         type: "semantic_text", <2>
+        fields: { text: { type: "text" } },
       },
     },
   },
@@ -378,6 +401,7 @@ $es->indices()->create([
             "properties" => [ <1>
                 "description" => [
                     "type" => "semantic_text", <2>
+                    "fields" => ["text" => ["type" => "text"]],
                 ],
             ],
         ],
@@ -400,7 +424,8 @@ es.indices.create(
     mappings: {
       properties: { <1>
         description: {
-          type: "semantic_text" <2>
+          type: "semantic_text", <2>
+          fields: { text: { type: "text" } }
         }
       }
     }
@@ -420,7 +445,9 @@ es.indices.create(
 await es.Indices.CreateAsync<Book>("books", c => c
     .Mappings(m => m
         .Properties(p => p <1>
-            .SemanticText(b => b.Description) <2>
+            .SemanticText(b => b.Description, st => st <2>
+                .Fields(f => f.Text("text"))
+            )
         )
     )
 );
@@ -442,7 +469,8 @@ es.indices().create(c -> c
           "mappings": {
             "properties": { <1>
               "description": {
-                "type": "semantic_text" <2>
+                "type": "semantic_text", <2>
+                "fields": {"text": {"type": "text"}}
               }
             }
           }
@@ -466,7 +494,8 @@ createResponse, err := es.Indices.Create(
 	  "mappings": {
 	    "properties": { <1>
 	      "description": {
-	        "type": "semantic_text" <2>
+	        "type": "semantic_text", <2>
+	        "fields": {"text": {"type": "text"}}
 	      }
 	    }
 	  }
@@ -495,7 +524,8 @@ PUT books
   "mappings": {
     "properties": { <1>
       "description": {
-        "type": "semantic_text" <2>
+        "type": "semantic_text", <2>
+        "fields": {"text": {"type": "text"}}
       }
     }
   }
@@ -518,7 +548,8 @@ curl -X PUT "$ES_URL/books" \
     "mappings": {
       "properties": { <1>
         "description": {
-          "type": "semantic_text" <2>
+          "type": "semantic_text", <2>
+          "fields": {"text": {"type": "text"}}
         }
       }
     }
@@ -556,8 +587,23 @@ books = [
      "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."},
 ]
 
-helpers.bulk(es, ({"_index": "books", "_source": b} for b in books), refresh="wait_for")
+success_count, errors = helpers.bulk(
+    es,
+    ({"_index": "books", "_source": b} for b in books),
+    refresh="wait_for",
+    raise_on_error=False,
+)
 ```
+
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Check the bulk result before continuing:
+
+```python
+if errors:
+    raise RuntimeError(f"{len(errors)} book(s) failed to index")
+print(f"Indexed {success_count} books")
+```
+:::
 
 ::::
 
@@ -598,7 +644,7 @@ const books = [
   },
 ];
 
-await es.bulk({
+const bulkResponse = await es.bulk({
   refresh: "wait_for",
   operations: books.flatMap((book) => [
     { index: { _index: "books" } },
@@ -606,6 +652,17 @@ await es.bulk({
   ]),
 });
 ```
+
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Check the bulk result before continuing:
+
+```typescript
+if (bulkResponse.errors) {
+  throw new Error("One or more books failed to index");
+}
+console.log(`Indexed ${bulkResponse.items.length} books`);
+```
+:::
 
 ::::
 
@@ -656,11 +713,22 @@ foreach ($books as $book) {
     $operations[] = $book;
 }
 
-$es->bulk([
+$bulkResponse = $es->bulk([
     "refresh" => "wait_for",
     "body" => $operations,
 ]);
 ```
+
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Check the bulk result before continuing:
+
+```php
+if ($bulkResponse["errors"]) {
+    throw new RuntimeException("One or more books failed to index");
+}
+echo "Indexed " . count($bulkResponse["items"]) . " books\n";
+```
+:::
 
 ::::
 
@@ -708,11 +776,20 @@ operations = books.flat_map do |book|
   ]
 end
 
-es.bulk(
+bulk_response = es.bulk(
   body: operations,
   refresh: "wait_for"
 )
 ```
+
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Check the bulk result before continuing:
+
+```ruby
+raise "One or more books failed to index" if bulk_response["errors"]
+puts "Indexed #{bulk_response['items'].length} books"
+```
+:::
 
 ::::
 
@@ -763,7 +840,7 @@ foreach (var book in books)
     });
 }
 
-await es.BulkAsync(new BulkRequest
+var bulkResponse = await es.BulkAsync(new BulkRequest
 {
     Refresh = Refresh.WaitFor,
     Operations = operations
@@ -776,6 +853,18 @@ public record Book(
     string Description
 );
 ```
+
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Add this code after the `BulkAsync` call and before the `Book` record declaration:
+
+```csharp
+if (!bulkResponse.IsValidResponse || bulkResponse.Errors)
+{
+    throw new Exception("One or more books failed to index");
+}
+Console.WriteLine($"Indexed {bulkResponse.Items.Count} books");
+```
+:::
 
 ::::
 
@@ -835,8 +924,19 @@ for (Book book : books) {
     );
 }
 
-es.bulk(bulk.build());
+BulkResponse bulkResponse = es.bulk(bulk.build());
 ```
+
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Check the bulk result before continuing:
+
+```java
+if (bulkResponse.errors()) {
+    throw new RuntimeException("One or more books failed to index");
+}
+System.out.println("Indexed " + bulkResponse.items().size() + " books");
+```
+:::
 
 ::::
 
@@ -914,6 +1014,18 @@ if err := indexer.Close(ctx); err != nil {
 }
 ```
 
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Check the bulk result before continuing:
+
+```go
+stats := indexer.Stats()
+if stats.NumFailed > 0 {
+	panic("One or more books failed to index")
+}
+fmt.Printf("Indexed %d books\n", stats.NumIndexed)
+```
+:::
+
 ::::
 
 ::::{tab-item} Console
@@ -932,6 +1044,16 @@ POST books/_bulk?refresh=wait_for
 { "index": {} }
 { "title": "Dune", "author": "Frank Herbert", "release_year": 1965, "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." }
 ```
+
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Confirm that the response contains `"errors": false`, then run:
+
+```console
+GET books/_count
+```
+
+The response should contain `"count": 5`.
+:::
 
 ::::
 
@@ -956,13 +1078,28 @@ curl -X POST "$ES_URL/books/_bulk?refresh=wait_for" \
 EOF
 ```
 
+:::{dropdown} Check that all books were indexed
+A bulk request can return a successful HTTP response even when an individual operation fails. Confirm that the response contains `"errors": false`, then run:
+
+```bash
+curl -X GET "$ES_URL/books/_count" \
+  -H "Authorization: ApiKey $ES_API_KEY"
+```
+
+The response should contain `"count": 5`.
+:::
+
 ::::
 
 :::::
 
-## Run search [vector-full-text-search-search]
+## Run searches [vector-full-text-search-search]
 
-In this section, you run three searches on the same books dataset. [Full-text search](/solutions/search/full-text.md) matches exact words in the query, [semantic search](/solutions/search/vector.md#semantic-search-vs-vector-search) matches meaning rather than exact terms, and [hybrid search](/solutions/search/hybrid-search.md) combines both approaches.
+In this section, you run three searches on the same books dataset. [Full-text search](/solutions/search/full-text.md) matches [analyzed query terms](/manage-data/data-store/text-analysis.md), [semantic search](/solutions/search/vector.md#semantic-search-vs-vector-search) finds text with related meaning, and [hybrid search](/solutions/search/hybrid-search.md) combines both approaches.
+
+:::{note}
+The example outputs show rounded scores. Your exact scores might be different, especially for full-text and hybrid search, because relevance scores depend on how {{es}} stores your documents. With the Jina endpoint assumed in this quickstart, the order of the results should stay the same.
+:::
 
 ### Full-text search [vector-full-text-search-keyword]
 
@@ -1197,7 +1334,7 @@ curl -X GET "$ES_URL/books/_search" \
 The first result is:
 
 ```text
-SCORE The Name of the Wind
+0.29 The Name of the Wind
 ```
 
 **The Name of the Wind** ranks first because the title contains the word "wind".
@@ -1444,7 +1581,7 @@ curl -X GET "$ES_URL/books/_search" \
 The first result is:
 
 ```text
-SCORE Project Hail Mary
+0.78 Project Hail Mary
 ```
 
 **Project Hail Mary** ranks first because its description includes "A lone astronaut," which is semantically similar to "surviving alone in space" even though the wording differs.
@@ -1452,7 +1589,7 @@ SCORE Project Hail Mary
 
 ### Hybrid search [vector-full-text-search-hybrid]
 
-Hybrid search combines semantic search with full-text search. This example matches the word `wind` in `title` and the meaning of `young magician coming of age` in `description`:
+Hybrid search combines semantic search with full-text search. This example searches for `friendship` in two ways. A full-text `match` query on `description.text` finds the exact word, and a `semantic` query on `description` finds text with a similar meaning:
 
 :::::{tab-set}
 :group: languages
@@ -1468,13 +1605,13 @@ resp = es.search(
             "should": [
                 {
                     "match": { <1>
-                        "title": "wind"
+                        "description.text": "friendship"
                     }
                 },
                 {
                     "semantic": { <2>
                         "field": "description",
-                        "query": "young magician coming of age",
+                        "query": "friendship",
                     }
                 },
             ]
@@ -1486,8 +1623,8 @@ for hit in resp["hits"]["hits"]:
     print(hit["_score"], hit["_source"]["title"])
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
@@ -1495,6 +1632,10 @@ for hit in resp["hits"]["hits"]:
 :sync: typescript
 
 ```typescript
+interface Book {
+  title: string;
+}
+
 const resp = await es.search<Book>({
   index: "books",
   query: {
@@ -1502,13 +1643,13 @@ const resp = await es.search<Book>({
       should: [
         {
           match: { <1>
-            title: "wind",
+            "description.text": "friendship",
           },
         },
         {
           semantic: { <2>
             field: "description",
-            query: "young magician coming of age",
+            query: "friendship",
           },
         },
       ],
@@ -1521,8 +1662,8 @@ for (const hit of resp.hits.hits) {
 }
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
@@ -1538,13 +1679,13 @@ $response = $es->search([
                 "should" => [
                     [
                         "match" => [ <1>
-                            "title" => "wind",
+                            "description.text" => "friendship",
                         ],
                     ],
                     [
                         "semantic" => [ <2>
                             "field" => "description",
-                            "query" => "young magician coming of age",
+                            "query" => "friendship",
                         ],
                     ],
                 ],
@@ -1558,8 +1699,8 @@ foreach ($response["hits"]["hits"] as $hit) {
 }
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
@@ -1575,13 +1716,13 @@ response = es.search(
         should: [
           {
             match: { <1>
-              title: "wind"
+              "description.text": "friendship"
             }
           },
           {
             semantic: { <2>
               field: "description",
-              query: "young magician coming of age"
+              query: "friendship"
             }
           }
         ]
@@ -1595,8 +1736,8 @@ response["hits"]["hits"].each do |hit|
 end
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
@@ -1611,13 +1752,13 @@ var response = await es.SearchAsync<SearchBook>(s => s
             .Should(
                 should => should
                     .Match(match => match <1>
-                        .Field(book => book.Title)
-                        .Query("wind")
+                        .Field("description.text")
+                        .Query("friendship")
                     ),
                 should => should
                     .Semantic(semantic => semantic <2>
                         .Field("description")
-                        .Query("young magician coming of age")
+                        .Query("friendship")
                     )
             )
         )
@@ -1628,10 +1769,14 @@ foreach (var hit in response.Hits)
 {
     Console.WriteLine($"{hit.Score} {hit.Source?.Title}");
 }
+
+public record SearchBook(
+    [property: JsonPropertyName("title")] string Title
+);
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
@@ -1646,13 +1791,13 @@ String query = """
           "should": [
             {
               "match": { <1>
-                "title": "wind"
+                "description.text": "friendship"
               }
             },
             {
               "semantic": { <2>
                 "field": "description",
-                "query": "young magician coming of age"
+                "query": "friendship"
               }
             }
           ]
@@ -1672,8 +1817,8 @@ for (Hit<Book> hit : response.hits().hits()) {
 }
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
@@ -1687,13 +1832,13 @@ query := strings.NewReader(`{
 	      "should": [
 	        {
 	          "match": { <1>
-	            "title": "wind"
+	            "description.text": "friendship"
 	          }
 	        },
 	        {
 	          "semantic": { <2>
 	            "field": "description",
-	            "query": "young magician coming of age"
+	            "query": "friendship"
 	          }
 	        }
 	      ]
@@ -1733,8 +1878,8 @@ for _, hit := range response.Hits.Hits {
 }
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
@@ -1749,13 +1894,13 @@ GET books/_search
       "should": [
         {
           "match": { <1>
-            "title": "wind"
+            "description.text": "friendship"
           }
         },
         {
           "semantic": { <2>
             "field": "description",
-            "query": "young magician coming of age"
+            "query": "friendship"
           }
         }
       ]
@@ -1764,8 +1909,8 @@ GET books/_search
 }
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
@@ -1782,13 +1927,13 @@ curl -X GET "$ES_URL/books/_search" \
         "should": [
           {
             "match": { <1>
-              "title": "wind"
+              "description.text": "friendship"
             }
           },
           {
             "semantic": { <2>
               "field": "description",
-              "query": "young magician coming of age"
+              "query": "friendship"
             }
           }
         ]
@@ -1797,21 +1942,27 @@ curl -X GET "$ES_URL/books/_search" \
   }'
 ```
 
-1. The `match` clause performs full-text search on `title` and scores how well the analyzed text matches `wind`.
-2. The `semantic` clause searches `description` by meaning and contributes its semantic similarity score.
+1. The `match` clause performs full-text search on the `description.text` subfield and scores how well the analyzed text matches `friendship`.
+2. The `semantic` clause searches `description` by meaning, so it can also match books that never use the word `friendship`.
 
 ::::
 
 :::::
 
 :::{dropdown} Example output
-The first result is:
+The first two results are:
 
 ```text
-SCORE The Name of the Wind
+0.91 The Left Hand of Darkness
+0.67 Klara and the Sun
 ```
 
-**The Name of the Wind** ranks first because its description of a gifted young magician's rise from orphan to legend is semantically similar to `young magician coming of age`.
+They match the query for different reasons:
+
+- **The Left Hand of Darkness** matches both clauses. Its description contains the word "friendship", and its meaning is also similar to the query.
+- **Klara and the Sun** matches only the semantic clause. Its description doesn't contain "friendship", but "an artificial friend" is close in meaning. Semantic search alone ranks it first.
+
+The exact word match moves **The Left Hand of Darkness** to the top. Hybrid search ranks it above the book that is closest in meaning, so you get both kinds of relevance in one ranking. In this small dataset, the semantic clause already returns all five books, so the full-text clause doesn't add results. It changes their order.
 :::
 
 ## Summarize the data with {{esql}} [vector-full-text-search-esql]
@@ -2036,20 +2187,39 @@ The output contains one row per decade:
 ```
 :::
 
+You can also use {{esql}} inference capabilities to build search workflows:
+
+- {applies_to}`stack: ga 9.4+, preview =9.3` [`TEXT_EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/text_embedding.md) generates embeddings from text. For example, turn a reader's description of their ideal book into a query vector for similarity search.
+- {applies_to}`stack: preview 9.5+` [`EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/embedding.md) generates embeddings from multimodal input. For example, use an image as the starting point for a search.
+- {applies_to}`stack: ga 9.3+, preview 9.1-9.2` [`COMPLETION`](elasticsearch://reference/query-languages/esql/commands/completion.md) sends prompts to an LLM. For example, summarize retrieved books or explain why they match a reader's interests.
+- {applies_to}`stack: ga 9.4+, preview 9.2-9.3` [`RERANK`](elasticsearch://reference/query-languages/esql/commands/rerank.md) re-scores search results with an inference model. For example, reorder books to better match a detailed reading request.
+
+To explore these and other capabilities, refer to [{{esql}} for search](/solutions/search/esql-for-search.md).
+
 ## Run the steps in one script [vector-full-text-search-complete-script]
 
-The examples above show each step on its own. This script runs them together: it creates an index, adds the sample books, runs a keyword search, a semantic search, and a hybrid search, and counts the books by decade. 
+The examples above show each step on its own. This script runs them together: it creates an index, adds the sample books, runs a keyword search, a semantic search, and a hybrid search, and counts the books by decade.
 
 1. [Set up {{es}}](#vector-full-text-search-create-project).
-2. [Connect to your deployment or project](#vector-full-text-search-connect).
-3. [Set up a client](#vector-full-text-search-install-sdk) for your language. If you use Console or curl, skip this step.
-4. Select your language, expand the complete script, and run it.
+2. [Choose how to run the examples](#vector-full-text-search-install-sdk). If you use a language client, install and initialize it.
+3. [Connect to your deployment or project](#vector-full-text-search-connect). If you use Console, skip this step.
+4. Select the corresponding tab and expand the complete script. For a language client, save and run it using the file name and command shown.
+
+:::{tip}
+To rerun the examples, use a new index name consistently throughout the requests. The step-by-step examples use `books`, while the complete scripts use `books-complete`.
+:::
 
 :::::{tab-set}
 :group: languages
 
 ::::{tab-item} Python
 :sync: python
+
+Save the script as `quickstart.py` in the project directory, then run it from the activated virtual environment:
+
+```bash
+python3 quickstart.py
+```
 
 :::{dropdown} Complete runnable script
 
@@ -2062,7 +2232,7 @@ es = Elasticsearch(os.environ["ES_URL"], api_key=os.environ["ES_API_KEY"])
 # Declare the semantically searchable field. Other fields are inferred on ingest.
 es.indices.create(
     index="books-complete",
-    mappings={"properties": {"description": {"type": "semantic_text"}}},
+    mappings={"properties": {"description": {"type": "semantic_text", "fields": {"text": {"type": "text"}}}}},
 )
 
 # Index the sample data.
@@ -2078,7 +2248,14 @@ books = [
     {"title": "Dune", "author": "Frank Herbert", "release_year": 1965,
      "description": "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."},
 ]
-helpers.bulk(es, ({"_index": "books-complete", "_source": b} for b in books), refresh="wait_for")
+success_count, errors = helpers.bulk(
+    es,
+    ({"_index": "books-complete", "_source": b} for b in books),
+    refresh="wait_for",
+    raise_on_error=False,
+)
+if errors:
+    raise RuntimeError(f"{len(errors)} book(s) failed to index")
 
 # Keyword search.
 resp = es.search(
@@ -2102,8 +2279,8 @@ for hit in resp["hits"]["hits"]:
 resp = es.search(
     index="books-complete",
     query={"bool": {"should": [
-        {"match": {"title": "wind"}},
-        {"semantic": {"field": "description", "query": "young magician coming of age"}},
+        {"match": {"description.text": "friendship"}},
+        {"semantic": {"field": "description", "query": "friendship"}},
     ]}},
 )
 print("\n=== Hybrid search results ===")
@@ -2131,6 +2308,12 @@ for row in resp["values"]:
 ::::{tab-item} TypeScript
 :sync: typescript
 
+Save the script as `quickstart.ts` in the project directory, then run it:
+
+```bash
+npx tsx quickstart.ts
+```
+
 :::{dropdown} Complete runnable script
 
 ```typescript
@@ -2148,7 +2331,7 @@ const es = new Client({
 // Declare the semantically searchable field. Other fields are inferred on ingest.
 await es.indices.create({
   index: "books-complete",
-  mappings: { properties: { description: { type: "semantic_text" } } },
+  mappings: { properties: { description: { type: "semantic_text", fields: { text: { type: "text" } } } } },
 });
 
 // Index the sample data.
@@ -2164,11 +2347,14 @@ const books = [
   { title: "Dune", author: "Frank Herbert", release_year: 1965,
     description: "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power." },
 ];
-await es.helpers.bulk({
+const bulkResult = await es.helpers.bulk({
   datasource: books,
   onDocument: () => ({ index: { _index: "books-complete" } }),
   refreshOnCompletion: true,
 });
+if (bulkResult.failed > 0) {
+  throw new Error(`${bulkResult.failed} book(s) failed to index`);
+}
 
 // Keyword search.
 let resp = await es.search<Book>({
@@ -2194,8 +2380,8 @@ for (const hit of resp.hits.hits) {
 resp = await es.search<Book>({
   index: "books-complete",
   query: { bool: { should: [
-    { match: { title: "wind" } },
-    { semantic: { field: "description", query: "young magician coming of age" } },
+    { match: { "description.text": "friendship" } },
+    { semantic: { field: "description", query: "friendship" } },
   ] } },
 });
 console.log("\n=== Hybrid search results ===");
@@ -2220,6 +2406,12 @@ console.log("\n=== Books by decade ===", agg.values);
 ::::{tab-item} PHP
 :sync: php
 
+Save the script as `quickstart.php` in the directory that contains `vendor/`, then run it:
+
+```bash
+php quickstart.php
+```
+
 :::{dropdown} Complete runnable script
 
 ```php
@@ -2241,6 +2433,7 @@ $es->indices()->create([
             "properties" => [
                 "description" => [
                     "type" => "semantic_text",
+                    "fields" => ["text" => ["type" => "text"]],
                 ],
             ],
         ],
@@ -2286,10 +2479,13 @@ foreach ($books as $book) {
     $operations[] = $book;
 }
 
-$es->bulk([
+$bulkResponse = $es->bulk([
     "refresh" => "wait_for",
     "body" => $operations,
 ]);
+if ($bulkResponse["errors"]) {
+    throw new RuntimeException("One or more books failed to index");
+}
 
 $response = $es->search([
     "index" => "books-complete",
@@ -2328,10 +2524,10 @@ $response = $es->search([
         "query" => [
             "bool" => [
                 "should" => [
-                    ["match" => ["title" => "wind"]],
+                    ["match" => ["description.text" => "friendship"]],
                     ["semantic" => [
                         "field" => "description",
-                        "query" => "young magician coming of age",
+                        "query" => "friendship",
                     ]],
                 ],
             ],
@@ -2366,6 +2562,12 @@ foreach ($response["values"] as [$decade, $count]) {
 ::::{tab-item} Ruby
 :sync: ruby
 
+Save the script as `quickstart.rb` in the directory that contains the `Gemfile`, then run it:
+
+```bash
+bundle exec ruby quickstart.rb
+```
+
 :::{dropdown} Complete runnable script
 
 ```ruby
@@ -2382,7 +2584,8 @@ es.indices.create(
     mappings: {
       properties: {
         description: {
-          type: "semantic_text"
+          type: "semantic_text",
+          fields: { text: { type: "text" } }
         }
       }
     }
@@ -2428,7 +2631,8 @@ operations = books.flat_map do |book|
     book
   ]
 end
-es.bulk(body: operations, refresh: "wait_for")
+bulk_response = es.bulk(body: operations, refresh: "wait_for")
+raise "One or more books failed to index" if bulk_response["errors"]
 
 response = es.search(
   index: "books-complete",
@@ -2467,11 +2671,11 @@ response = es.search(
     query: {
       bool: {
         should: [
-          { match: { title: "wind" } },
+          { match: { "description.text": "friendship" } },
           {
             semantic: {
               field: "description",
-              query: "young magician coming of age"
+              query: "friendship"
             }
           }
         ]
@@ -2507,6 +2711,12 @@ end
 ::::{tab-item} C# (.NET)
 :sync: csharp
 
+Replace the contents of the generated `Program.cs` with the script, then run it:
+
+```bash
+dotnet run
+```
+
 :::{dropdown} Complete runnable script
 
 ```csharp
@@ -2529,7 +2739,9 @@ var es = new ElasticsearchClient(settings);
 await es.Indices.CreateAsync<Book>("books-complete", c => c
     .Mappings(m => m
         .Properties(p => p
-            .SemanticText(b => b.Description)
+            .SemanticText(b => b.Description, st => st
+                .Fields(f => f.Text("text"))
+            )
         )
     )
 );
@@ -2576,11 +2788,15 @@ foreach (var book in books)
         Index = "books-complete"
     });
 }
-await es.BulkAsync(new BulkRequest
+var bulkResponse = await es.BulkAsync(new BulkRequest
 {
     Refresh = Refresh.WaitFor,
     Operations = operations
 });
+if (!bulkResponse.IsValidResponse || bulkResponse.Errors)
+{
+    throw new Exception("One or more books failed to index");
+}
 
 var response = await es.SearchAsync<Book>(s => s
     .Indices("books-complete")
@@ -2619,13 +2835,13 @@ response = await es.SearchAsync<Book>(s => s
             .Should(
                 should => should
                     .Match(match => match
-                        .Field(book => book.Title)
-                        .Query("wind")
+                        .Field("description.text")
+                        .Query("friendship")
                     ),
                 should => should
                     .Semantic(semantic => semantic
                         .Field("description")
-                        .Query("young magician coming of age")
+                        .Query("friendship")
                     )
             )
         )
@@ -2668,6 +2884,12 @@ public record Book(
 ::::{tab-item} Java
 :sync: java
 
+When you [set up the Java client](#vector-full-text-search-install-sdk), the `gradle init` command created a sample application and a test for it. Replace `app/src/main/java/quickstart/App.java` with this script, and delete `app/src/test/java/quickstart/AppTest.java` because it only tests the original sample application. Then run the script from the project root:
+
+```bash
+gradle run
+```
+
 :::{dropdown} Complete runnable script
 
 ```java
@@ -2681,6 +2903,7 @@ import java.util.List;
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.Refresh;
 import co.elastic.clients.elasticsearch.core.BulkRequest;
+import co.elastic.clients.elasticsearch.core.BulkResponse;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.elasticsearch.esql.EsqlFormat;
@@ -2695,162 +2918,164 @@ public class App {
     ) {}
 
     public static void main(String[] args) throws Exception {
-        ElasticsearchClient es = ElasticsearchClient.of(b -> b
+        try (ElasticsearchClient es = ElasticsearchClient.of(b -> b
             .host(System.getenv("ES_URL"))
             .apiKey(System.getenv("ES_API_KEY"))
-        );
-
-        es.indices().create(c -> c
-            .index("books-complete")
-            .withJson(new StringReader("""
-                {
-                  "mappings": {
-                    "properties": {
-                      "description": {
-                        "type": "semantic_text"
+        )) {
+            es.indices().create(c -> c
+                .index("books-complete")
+                .withJson(new StringReader("""
+                    {
+                      "mappings": {
+                        "properties": {
+                          "description": {
+                            "type": "semantic_text",
+                            "fields": {"text": {"type": "text"}}
+                          }
+                        }
                       }
+                    }
+                    """))
+            );
+
+            List<Book> books = List.of(
+                new Book(
+                    "The Left Hand of Darkness",
+                    "Ursula K. Le Guin",
+                    1969,
+                    "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap."
+                ),
+                new Book(
+                    "Project Hail Mary",
+                    "Andy Weir",
+                    2021,
+                    "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth."
+                ),
+                new Book(
+                    "The Name of the Wind",
+                    "Patrick Rothfuss",
+                    2007,
+                    "A gifted young musician and magician tells the story of his rise from orphan to legend."
+                ),
+                new Book(
+                    "Klara and the Sun",
+                    "Kazuo Ishiguro",
+                    2021,
+                    "An artificial friend watches human love and loneliness while hoping a child will pick her."
+                ),
+                new Book(
+                    "Dune",
+                    "Frank Herbert",
+                    1965,
+                    "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."
+                )
+            );
+
+            BulkRequest.Builder bulk = new BulkRequest.Builder()
+                .refresh(Refresh.WaitFor);
+            for (Book book : books) {
+                bulk.operations(op -> op
+                    .index(idx -> idx
+                        .index("books-complete")
+                        .document(book)
+                    )
+                );
+            }
+            BulkResponse bulkResponse = es.bulk(bulk.build());
+            if (bulkResponse.errors()) {
+                throw new RuntimeException("One or more books failed to index");
+            }
+
+            String keywordQuery = """
+                {
+                  "query": {
+                    "match": {
+                      "title": "wind"
                     }
                   }
                 }
-                """))
-        );
-
-        List<Book> books = List.of(
-            new Book(
-                "The Left Hand of Darkness",
-                "Ursula K. Le Guin",
-                1969,
-                "An envoy visits an icy planet whose people have no fixed gender, feeling out politics and friendship across a deep cultural gap."
-            ),
-            new Book(
-                "Project Hail Mary",
-                "Andy Weir",
-                2021,
-                "A lone astronaut wakes with amnesia on a spaceship and has to stop a disaster that threatens all life on Earth."
-            ),
-            new Book(
-                "The Name of the Wind",
-                "Patrick Rothfuss",
-                2007,
-                "A gifted young musician and magician tells the story of his rise from orphan to legend."
-            ),
-            new Book(
-                "Klara and the Sun",
-                "Kazuo Ishiguro",
-                2021,
-                "An artificial friend watches human love and loneliness while hoping a child will pick her."
-            ),
-            new Book(
-                "Dune",
-                "Frank Herbert",
-                1965,
-                "On a desert planet prized for a rare spice, a young heir is pulled into a war over ecology, religion, and power."
-            )
-        );
-
-        BulkRequest.Builder bulk = new BulkRequest.Builder()
-            .refresh(Refresh.WaitFor);
-        for (Book book : books) {
-            bulk.operations(op -> op
-                .index(idx -> idx
+                """;
+            SearchResponse<Book> response = es.search(s -> s
                     .index("books-complete")
-                    .document(book)
-                )
+                    .withJson(new StringReader(keywordQuery)),
+                Book.class
             );
-        }
-        es.bulk(bulk.build());
-
-        String keywordQuery = """
-            {
-              "query": {
-                "match": {
-                  "title": "wind"
-                }
-              }
+            System.out.println("=== Keyword search results ===");
+            for (Hit<Book> hit : response.hits().hits()) {
+                System.out.println("  " + hit.score() + " " + hit.source().title());
             }
-            """;
-        SearchResponse<Book> response = es.search(s -> s
-                .index("books-complete")
-                .withJson(new StringReader(keywordQuery)),
-            Book.class
-        );
-        System.out.println("=== Keyword search results ===");
-        for (Hit<Book> hit : response.hits().hits()) {
-            System.out.println("  " + hit.score() + " " + hit.source().title());
-        }
 
-        String semanticQuery = """
-            {
-              "query": {
-                "semantic": {
-                  "field": "description",
-                  "query": "surviving alone in space"
-                }
-              }
-            }
-            """;
-        response = es.search(s -> s
-                .index("books-complete")
-                .withJson(new StringReader(semanticQuery)),
-            Book.class
-        );
-        System.out.println("=== Semantic search results ===");
-        for (Hit<Book> hit : response.hits().hits()) {
-            System.out.println("  " + hit.score() + " " + hit.source().title());
-        }
-
-        String hybridQuery = """
-            {
-              "query": {
-                "bool": {
-                  "should": [
-                    {
-                      "match": {
-                        "title": "wind"
-                      }
-                    },
-                    {
-                      "semantic": {
-                        "field": "description",
-                        "query": "young magician coming of age"
-                      }
+            String semanticQuery = """
+                {
+                  "query": {
+                    "semantic": {
+                      "field": "description",
+                      "query": "surviving alone in space"
                     }
-                  ]
+                  }
                 }
-              }
+                """;
+            response = es.search(s -> s
+                    .index("books-complete")
+                    .withJson(new StringReader(semanticQuery)),
+                Book.class
+            );
+            System.out.println("=== Semantic search results ===");
+            for (Hit<Book> hit : response.hits().hits()) {
+                System.out.println("  " + hit.score() + " " + hit.source().title());
             }
-            """;
-        response = es.search(s -> s
-                .index("books-complete")
-                .withJson(new StringReader(hybridQuery)),
-            Book.class
-        );
-        System.out.println("\n=== Hybrid search results ===");
-        for (Hit<Book> hit : response.hits().hits()) {
-            System.out.println("  " + hit.score() + " " + hit.source().title());
-        }
 
-        String esql = """
-            FROM "books-complete"
-            | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
-            | KEEP decade, books
-            | SORT decade ASC
-            """;
-        BinaryResponse aggregation = es.esql().query(q -> q
-            .query(esql)
-            .format(EsqlFormat.Csv)
-        );
-        System.out.println("\n=== Books by decade ===");
-        try (BufferedReader reader = new BufferedReader(
-            new InputStreamReader(aggregation.content())
-        )) {
-            reader.lines().skip(1).forEach(line -> {
-                String[] values = line.split(",", -1);
-                System.out.println("  " + values[0] + "s: " + values[1]);
-            });
-        }
+            String hybridQuery = """
+                {
+                  "query": {
+                    "bool": {
+                      "should": [
+                        {
+                          "match": {
+                            "description.text": "friendship"
+                          }
+                        },
+                        {
+                          "semantic": {
+                            "field": "description",
+                            "query": "friendship"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+                """;
+            response = es.search(s -> s
+                    .index("books-complete")
+                    .withJson(new StringReader(hybridQuery)),
+                Book.class
+            );
+            System.out.println("\n=== Hybrid search results ===");
+            for (Hit<Book> hit : response.hits().hits()) {
+                System.out.println("  " + hit.score() + " " + hit.source().title());
+            }
 
-        es.close();
+            String esql = """
+                FROM "books-complete"
+                | STATS books = COUNT(*) BY decade = release_year - (release_year % 10)
+                | KEEP decade, books
+                | SORT decade ASC
+                """;
+            BinaryResponse aggregation = es.esql().query(q -> q
+                .query(esql)
+                .format(EsqlFormat.Csv)
+            );
+            System.out.println("\n=== Books by decade ===");
+            try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(aggregation.content())
+            )) {
+                reader.lines().skip(1).forEach(line -> {
+                    String[] values = line.split(",", -1);
+                    System.out.println("  " + values[0] + "s: " + values[1]);
+                });
+            }
+        }
     }
 }
 ```
@@ -2861,6 +3086,12 @@ public class App {
 
 ::::{tab-item} Go
 :sync: go
+
+Save the script as `main.go` in the module directory, then run it:
+
+```bash
+go run .
+```
 
 :::{dropdown} Complete runnable script
 
@@ -2933,7 +3164,8 @@ func main() {
 	  "mappings": {
 	    "properties": {
 	      "description": {
-	        "type": "semantic_text"
+	        "type": "semantic_text",
+	        "fields": {"text": {"type": "text"}}
 	      }
 	    }
 	  }
@@ -3001,6 +3233,9 @@ func main() {
 	if err := indexer.Close(context.Background()); err != nil {
 		log.Fatal(err)
 	}
+	if indexer.Stats().NumFailed > 0 {
+		log.Fatalf("%d book(s) failed to index", indexer.Stats().NumFailed)
+	}
 
 	fmt.Println("=== Keyword search results ===")
 	printSearch(es, `{
@@ -3028,13 +3263,13 @@ func main() {
 	      "should": [
 	        {
 	          "match": {
-	            "title": "wind"
+	            "description.text": "friendship"
 	          }
 	        },
 	        {
 	          "semantic": {
 	            "field": "description",
-	            "query": "young magician coming of age"
+	            "query": "friendship"
 	          }
 	        }
 	      ]
@@ -3086,7 +3321,8 @@ PUT books-complete
   "mappings": {
     "properties": {
       "description": {
-        "type": "semantic_text"
+        "type": "semantic_text",
+        "fields": {"text": {"type": "text"}}
       }
     }
   }
@@ -3130,13 +3366,13 @@ GET books-complete/_search
       "should": [
         {
           "match": {
-            "title": "wind"
+            "description.text": "friendship"
           }
         },
         {
           "semantic": {
             "field": "description",
-            "query": "young magician coming of age"
+            "query": "friendship"
           }
         }
       ]
@@ -3172,7 +3408,8 @@ curl -X PUT "$ES_URL/books-complete" \
     "mappings": {
       "properties": {
         "description": {
-          "type": "semantic_text"
+          "type": "semantic_text",
+          "fields": {"text": {"type": "text"}}
         }
       }
     }
@@ -3226,13 +3463,13 @@ curl -X GET "$ES_URL/books-complete/_search" \
         "should": [
           {
             "match": {
-              "title": "wind"
+              "description.text": "friendship"
             }
           },
           {
             "semantic": {
               "field": "description",
-              "query": "young magician coming of age"
+              "query": "friendship"
             }
           }
         ]
