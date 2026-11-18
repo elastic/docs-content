@@ -1,5 +1,5 @@
 ---
-description: Learn how to monitor a Java application with Elastic Observability using the {{edot}} Java SDK and {{agent}} in OTel mode, sending traces, metrics, and logs to the {{motlp}}.
+description: Learn how to monitor a Java application with Elastic Observability using the Elastic Distribution of OpenTelemetry Java SDK and Elastic Agent configured as an OpenTelemetry Collector, sending traces, metrics, and logs to Elastic.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/monitor-java-app.html
 applies_to:
