@@ -57,7 +57,7 @@ Depending on the type of certificate used by the ECE proxies or load-balancing l
 
 * If your ECE proxies use certificates signed by a private CA, retrieve the root CA from the [ECE Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md):
 
-  1. In the remote ECE environment, go to **Platform > Settings > TLS certificates**.
+  1. In the remote ECE environment, go to **Platform** → **Settings** → **TLS certificates**.
 
   2. Under **Proxy**, select **Show certificate chain**.
 
@@ -154,7 +154,7 @@ If the remote cluster is part of an {{ech}} deployment, follow the **The CA is p
     Update the {{es}} manifest to:
 
     * Load the API key from the previously created secret using [`secureSettings`](/deploy-manage/security/k8s-secure-settings.md)
-    * Mount the CA certificate from the previously created ConfigMap [as a custom file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret) in the {{es}} Pods
+    * Mount the CA certificate from the previously created ConfigMap [as a custom file](/deploy-manage/plugins-and-custom-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret) in the {{es}} Pods
     * Enable and configure the remote cluster SSL client in the `config` section of each `nodeSet`
 
     ```yaml subs=true

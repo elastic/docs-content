@@ -136,7 +136,7 @@ output.elasticsearch:
   api_key: "id:api_key"
 ```
 
-1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.svg "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
+1. Set the `hosts` to your deployment’s {{es}} endpoint. Copy the {{es}} endpoint from **Help menu (![help icon](/solutions/images/observability-help-icon.svg ""))** → **Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
 2. From **Developer tools**, run the following command to create an API key that grants `manage` permissions for the `cluster` and the `filebeat-*` indices using:
 
     ```console
@@ -307,7 +307,7 @@ To add the custom logs integration to your project:
         service.environment: your_service_environment <6>
     ```
 
-    1. Values from the decoded JSON object overwrite the fields that {{agent}} normally adds (type, source, offset, etc.) in case of conflicts.
+    1. Values from the decoded JSON object overwrite the fields that {{agent}} normally adds (such as type, source, and offset) in case of conflicts.
     2. {{agent}} adds an "error.message" and "error.type: json" key in case of JSON unmarshalling errors.
     3. {{agent}} will recursively de-dot keys in the decoded JSON, and expand them into a hierarchical object structure.
     4. By default, the decoded JSON is placed under a "json" key in the output document. When set to `true`, the keys are copied top level in the output document.

@@ -6,7 +6,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-automatic-import.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    observability: ga
+    security: ga
 products:
   - id: kibana
   - id: cloud-serverless
@@ -77,7 +79,7 @@ Automatic Import sends the first 100 samples to the LLM.
 
 ## Recommended models [automatic-import-recommended-models]
 
-You can use Automatic Import with any LLM. Model performance varies. Model performance for Automatic Import is similar to model performance for Attack Discovery: models that perform well for Attack Discovery perform well for Automatic Import. Refer to the [large language model performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md). For {{observability}} workloads, refer to the [LLM performance matrix for {{observability}}](/solutions/observability/ai/llm-performance-matrix.md).
+You can use Automatic Import with any LLM. Model performance varies. Model performance for Automatic Import is similar to model performance for Attack Discovery: models that perform well for Attack Discovery perform well for Automatic Import. Refer to the [large language model performance matrix for {{elastic-sec}}](/solutions/security/ai/large-language-model-performance-matrix.md). For {{observability}} AI asistant tasks, refer to the [LLM performance matrix for the {{observability}} AI Assistant](/solutions/observability/ai/llm-performance-matrix.md).
 
 ::::{important}
 Using Automatic Import allows users to create new third-party data integrations through the use of third-party generative AI models (“GAI models”). Any third-party GAI models that you choose to use are owned and operated by their respective providers. Elastic does not own or control these third-party GAI models, nor does it influence their design, training, or data-handling practices. Using third-party GAI models with Elastic solutions, and using your data with third-party GAI models is at your discretion. Elastic bears no responsibility or liability for the content, operation, or use of these third-party GAI models, nor for any potential loss or damage arising from their use. Users are advised to exercise caution when using GAI models with personal, sensitive, or confidential information, as data submitted can be used to train the models or for other purposes. Elastic recommends familiarizing yourself with the development practices and terms of use of any third-party GAI models before use. You are responsible for ensuring that your use of Automatic Import complies with the terms and conditions of any third-party platform you connect with.
@@ -93,7 +95,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 
 ::::{applies-item} { "stack": "ga 9.4+", "serverless": "ga" }
 
-1. In {{kib}}, open **Integrations**. You can use the main menu, the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or your solution's entry point (for example, **Add integrations** in {{elastic-sec}}, or **Add data** in {{observability}}).
+1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use your solution's entry point, such as **Add integrations** in {{elastic-sec}} or **Add data** in {{observability}}.
 2. Under **Can't find an integration?** click **Create integration**.
 
    :::{image} /solutions/images/security-auto-import-create-new-integration-button.png
@@ -170,7 +172,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
     :alt: The Integrations catalog showing a newly installed custom integration under its chosen category
     :::
 
-14. Click **Add** to start collecting data and assign the integration to an [agent policy](/reference/fleet/agent-policy.md).
+14. Select the integration. If the integration's **Overview** page opens, click **Add <integration>**. Configure the integration and assign it to an [agent policy](/reference/fleet/agent-policy.md) to start collecting data.
 
     :::{image} /solutions/images/security-auto-import-add-integration.png
     :alt: The integration details page with an Add button to deploy the integration to an agent policy
@@ -182,7 +184,7 @@ The integration creation flow changed in {{stack}} 9.4 to support multiple data 
 
 ::::{applies-item} stack: ga 9.0-9.3
 
-1. In {{kib}}, open **Integrations**. You can use the main menu, the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or your solution's entry point (for example, **Add integrations** in {{elastic-sec}}, or **Add data** in {{observability}}).
+1. In {{kib}}, find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also use your solution's entry point, such as **Add integrations** in {{elastic-sec}} or **Add data** in {{observability}}.
 2. Under **Can't find an integration?** click **Create new integration**.
 3. Click **Create integration**.
 4. Select an [LLM connector](/explore-analyze/ai-features/llm-guides/llm-connectors.md).

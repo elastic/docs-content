@@ -60,7 +60,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
         In this example, all the {{agents}} in a policy that uses this {{fleet-server}} will now connect to the {{fleet-server}} through the proxy server defined in `Proxy-A`.
 
     ::::{warning}
-    Any invalid changes to the {{fleet-server}} definition that may cause connectivity issues between the {{agents}} and the {{fleet-server}} will cause them to disconnect. The only remedy would be to re-install the affected agents. This is because the connectivity to the {{fleet-server}} ensures policy updates reach the agents. If a policy with an invalid host address reaches the agent it will no longer be able to connect and therefore won’t receive any other updates from the {{fleet-server}} (including the corrected setting). In this regard, adding a proxy server that is not reachable by the agents will break connectivity to the {{fleet-server}}.
+    Any invalid changes to the {{fleet-server}} definition that might cause connectivity issues between the {{agents}} and the {{fleet-server}} will cause them to disconnect. The only remedy would be to re-install the affected agents. This is because the connectivity to the {{fleet-server}} ensures policy updates reach the agents. If a policy with an invalid host address reaches the agent it will no longer be able to connect and therefore won’t receive any other updates from the {{fleet-server}} (including the corrected setting). In this regard, adding a proxy server that is not reachable by the agents will break connectivity to the {{fleet-server}}.
     ::::
 
 3. **Attach the proxy to the output**
@@ -93,7 +93,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
         :alt: Screen capture of the Edit agent binary source UI in Fleet
         :::
 
-        In this example, all of the {{agents}} enrolled in a policy that is configured to download from the chosen agent download source will now download from that agent download source through the proxy server defined in `Proxy-A`.
+        In this example, all {{agents}} enrolled in a policy that is configured to download from the chosen agent download source will now download from that agent download source through the proxy server defined in `Proxy-A`.
 
 
     ::::{warning}
@@ -109,7 +109,7 @@ These steps describe how to set up {{fleet}} components to use a proxy.
 
 6. **Enroll the {{agents}}**
 
-    Now that {{fleet}} is configured, all policy downloads will update the agent with the latest configured proxies. When the agent is first installed it needs to communicate with {{fleet}} (through {{fleet-server}}) in order to download its first policy configuration.
+    Now that {{fleet}} is configured, all policy downloads will update the agent with the latest configured proxies. When the agent is first installed it needs to communicate with {{fleet}} (through {{fleet-server}}) to download its first policy configuration.
 
 
 ### Set the proxy for retrieving agent policies from {{fleet}} [cli-proxy-settings]

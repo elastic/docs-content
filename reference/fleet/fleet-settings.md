@@ -198,7 +198,7 @@ serverless: unavailable
 stack: preview 9.1-9.4
 ```
 
-If you have [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) deployed, you can enable the **Show agentless resources** option to display the Managed integration collectors and the Managed integration policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
+If you have [{{managed-integrations}}](/reference/managed-integrations/index.md) deployed, you can enable the **Show agentless resources** option to display the Managed integration collectors and the Managed integration policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
 
 To display {{managed-integration}} resources in the agent and agent policy lists:
 

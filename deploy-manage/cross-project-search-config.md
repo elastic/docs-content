@@ -105,6 +105,10 @@ After reviewing the architecture patterns, you can configure {{cps-init}} scope 
 
 Make sure to also review the [search performance impacts](#cps-search-performance), [feature impacts](#cps-feature-impacts), and [limitations](#cps-limitations) of {{cps-init}}.
 
+## Network security [cps-network-security]
+
+All {{cps}} traffic between projects is encrypted using TLS. Traffic between projects may be routed over the public internet.
+
 ## Billing [cps-billing]
 
 ::::{include} /deploy-manage/_snippets/cps-billing.md

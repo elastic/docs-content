@@ -41,9 +41,30 @@ Managed dashboards created by integrations can't be edited directly, but you can
 
 6. **Save** the dashboard.
 
+## Undo and redo dashboard changes [undo-redo-dashboard]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If you move a panel or change a setting by mistake while you edit a dashboard, you can step back through your changes one at a time, and step forward again if you change your mind. Changes that you don't undo stay in place.
+
+To go back one change, click **Undo** {icon}`undo` in the application menu, or press {kbd}`cmd+z` (Mac) / {kbd}`ctrl+z` (Windows and Linux). To bring back a change that you undid, click **Redo** {icon}`redo`, or press {kbd}`cmd+y` (Mac) / {kbd}`ctrl+y` (Windows and Linux).
+
+Undo and redo behave as follows:
+
+* The history covers your current editing session. It keeps about the 100 most recent changes, and it clears when you leave the dashboard.
+* If you undo a change and then make a new one, you can no longer redo the changes that you undid.
+* **Undo** and **Redo** are unavailable while the dashboard loads data or while a panel editor is open.
+* The keyboard shortcuts don't work while the cursor is in an input field.
+
+To discard all unsaved changes at once, use [Reset changes](#reset-the-dashboard) instead.
+
 ## Reset dashboard changes [reset-the-dashboard]
 
 When editing a dashboard, you can revert any changes you’ve made since the last save using the **Reset**/**Reset changes** button.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To step back through your changes one at a time instead, refer to [Undo and redo dashboard changes](#undo-redo-dashboard).
 
 ::::{note}
 Once changes are saved, you can no longer revert them in one click, and instead have to edit the dashboard manually.

@@ -1,7 +1,8 @@
 ---
 applies_to:
   stack: all
-  serverless: all
+  serverless:
+    security: all
 products:
   - id: security
 ---

@@ -73,7 +73,7 @@ Replace `<sqs-arn>` with the ARN of the SQS queue, `<s3-bucket-arn>` with the AR
 ::::
 
 
-```console
+```json
 {
   "Version": "2012-10-17",
   "Id": "example-ID",
@@ -200,7 +200,7 @@ If script execution is disabled on your system, you need to set the execution po
 ./filebeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>
 ```
 
-1. Substitute your {{es}} endpoint and an API key in this command. To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+1. Substitute your {{es}} endpoint and an API key in this command. To find both values, refer to [](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md).
 :::
 
 ::::
@@ -392,7 +392,7 @@ Now, let’s configure the `s3access` fileset. The goal here is to be able to mo
 
 Create a new S3 bucket and SQS queue. Ensure that the event notifications on the new bucket are enabled, and that it’s sending notifications to the new queue.
 
-Now go back to the first bucket, and go to **Properties** > **Server access logging**. Specify that you want to ship the access logs to the bucket you most recently created.
+Now go back to the first bucket, and go to **Properties** → **Server access logging**. Specify that you want to ship the access logs to the bucket you most recently created.
 
 :::{image} /solutions/images/observability-Server-Access-Logging.png
 :alt: Enabling Server Access Logging
@@ -540,7 +540,7 @@ If script execution is disabled on your system, you need to set the execution po
 ./metricbeat setup -e -E 'output.elasticsearch.hosts=["https://hostname:port"]' -E 'output.elasticsearch.api_key=YOUR_API_KEY' <1>
 ```
 
-1. Substitute your {{es}} endpoint and an API key in this command. To find your endpoint URL, select **Manage** next to your project, then find the {{es}} endpoint under **Application endpoints, cluster and component IDs**. Alternatively, open your project, select the help icon, then select **Connection details**.
+1. Substitute your {{es}} endpoint and an API key in this command. To find both values, refer to [](/deploy-manage/deploy/elastic-cloud/find-connection-details-serverless.md).
 :::
 
 ::::

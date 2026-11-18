@@ -34,7 +34,7 @@ Want to learn how to install {{agent}}? Continue reading this page.
 
 You will always need:
 
-* **A {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}.** Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
+* **A {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}.** For the minimum privileges and how they apply across spaces, refer to [](/reference/fleet/fleet-roles-privileges.md).
 * **[{{fleet-server}}](/reference/fleet/fleet-server.md) running in a location accessible to {{agent}}.** {{agent}} must have a direct network connection to {{fleet-server}} and {{es}}. If you’re using {{ecloud}}, {{fleet-server}} is already available as part of the {{integrations-server}}. For self-managed deployments, refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server-on-prem.md).
 * **Internet connection for {{kib}} to download integration packages from the {{package-registry}}.** Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 
@@ -56,8 +56,9 @@ You can install only a single {{agent}} per host.
 
 To install an {{agent}} and enroll it in {{fleet}}:
 
-1. In {{fleet}}, open the **Agents** tab and click **Add agent**.
-2. In the **Add agent** flyout, select an existing agent policy or create a new one. If you create a new policy, {{fleet}} generates a new [{{fleet}} enrollment token](/reference/fleet/fleet-enrollment-tokens.md).
+1. Find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Agents** tab.
+2. Click **Add** → **Agent**.
+3. In the **Add agent** flyout, select an existing agent policy or create a new one. If you create a new policy, {{fleet}} generates a new [{{fleet}} enrollment token](/reference/fleet/fleet-enrollment-tokens.md).
 
     ::::{note}
     For on-premises deployments, you can dedicate a policy to all the agents in the network boundary and configure that policy to include a specific {{fleet-server}} (or a cluster of {{fleet-server}}s).
@@ -66,17 +67,17 @@ To install an {{agent}} and enroll it in {{fleet}}:
 
     ::::
 
-3. Make sure **Enroll in Fleet** is selected.
-4. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step. The commands shown are for AMD platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
+    :::{image} images/kibana-agent-flyout.png
+    :alt: Add agent flyout showing agent policy selection and enrollment steps
+    :screenshot:
+    :::
+
+4. Make sure **Enroll in Fleet** is selected.
+5. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step. The commands shown are for AMD platforms, but ARM packages are also available. Refer to the {{agent}} [downloads page](https://www.elastic.co/downloads/elastic-agent) for the full list of available packages.
 
     1. If you are enrolling the agent in a {{fleet-server}} that uses your organization’s certificate you *must* add the `--certificate-authorities` option to the command provided in the in-product instructions. If you do not include the certificate, you will see the following error: "x509: certificate signed by unknown authority".
 
     2. Beginning with version 9.0, {{agent}} packages are available in multiple flavors. The default, "basic" flavor contains the components required for most use data collection use cases. A "servers" flavor is also available with additional components. You can adjust the `elastic-agent install` command as required to choose a different flavor. Refer to [{{agent}} installation flavors](./install-elastic-agents.md#elastic-agent-installation-flavors) for details.
-
-        :::{image} images/kibana-agent-flyout.png
-        :alt: Add agent flyout in {{kib}}
-        :screenshot:
-        :::
 
 After about a minute, the agent will enroll in {{fleet}}, download the configuration specified in the agent policy, and start collecting data.
 

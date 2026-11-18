@@ -12,7 +12,7 @@ navigation_title: Azure
 # Repository isolation on Azure [ec-snapshot-repository-azure-migration]
 
 ::::{note}
-This configuration is automatic for all newly created deployments, but may have to be triggered manually on any existing Azure deployments you have. If a deployment can be moved to a dedicated repository, a notification will show up in the deployments menu under **Elasticsearch** > **Snapshots**.
+This configuration is automatic for all newly created deployments, but may have to be triggered manually on any existing Azure deployments you have. If a deployment can be moved to a dedicated repository, a notification will show up in the deployments menu under **Elasticsearch** → **Snapshots**.
 ::::
 
 
@@ -34,7 +34,7 @@ The snapshots are still available and can be restored just like snapshots in `fo
 
 If you no longer need the old snapshots, you can remove the repository. By doing this, you also prevent accessing snapshots of other deployments from this deployment:
 
-1. From your deployment menu, go to **Elasticsearch** > **Snapshots**.
+1. From your deployment menu, go to **Elasticsearch** → **Snapshots**.
 2. On the **Snapshots** page, **Snapshot repositories of other deployments** shows the old repository.
 3. With **Remove Access**, the snapshot repository will be removed.
 

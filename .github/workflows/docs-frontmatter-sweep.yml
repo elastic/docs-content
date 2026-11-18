@@ -1,4 +1,4 @@
-name: Docs frontmatter sweep
+name: "Sweep: Frontmatter"
 on:
   workflow_dispatch:
     inputs:

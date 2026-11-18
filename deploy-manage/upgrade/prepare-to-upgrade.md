@@ -9,7 +9,7 @@ products:
   - id: cloud-kubernetes
   - id: elasticsearch
 ---
-# Prepare to upgrade
+# Prepare to upgrade {{es}}
 
 This document describes the preparation steps for upgrading {{es}}, which vary depending on the type of upgrade. These steps follow the [upgrade planning](./plan-upgrade.md) phase, and should be completed before proceeding to [upgrade your deployment or cluster](./deployment-or-cluster.md).
 
@@ -41,7 +41,7 @@ Refer to [Archived settings](/deploy-manage/upgrade/deployment-or-cluster/archiv
 ::::
 
 ::::{step} Verify plugin compatibility
-If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to.
+If you use [{{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), ensure each plugin is compatible with the {{es}} version you're upgrading to. How you install and update plugins and custom configuration files depends on your deployment type, as described in [](/deploy-manage/plugins-and-custom-configuration-files.md).
 ::::
 
 ::::{step} Create a snapshot for backup
@@ -714,7 +714,7 @@ POST _transform/my-transform/_update
 
     ```json
     {
-      "my-destination-index":: {
+      "my-destination-index": {
         "settings": {
           "index": {
             "number_of_replicas": "1",

@@ -31,15 +31,21 @@ The MCP server is available at the following endpoint:
 {KIBANA_URL}/api/agent_builder/mcp
 ```
 
-When using a custom {{kib}} Space, include the space name in the endpoint path:
+If you use a custom {{kib}} space, include the space ID in the endpoint path:
 
 ```
-{KIBANA_URL}/s/{SPACE_NAME}/api/agent_builder/mcp
+{KIBANA_URL}/s/{SPACE_ID}/api/agent_builder/mcp
 ```
+
+{applies_to}`serverless: ga` If you authenticate with [OAuth](/deploy-manage/app-connections/oauth-clients.md), don't build this URL yourself. Use the **MCP server URL** shown in your OAuth client's details. The client works only with that URL, not with the endpoint of any other space.
 
 :::{tip}
-You can copy your MCP server URL directly in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
+You can copy the MCP server URL for the current space in the Tools GUI. Refer to [MCP server access in the Tools GUI](tools.md#mcp-server-access).
 :::
+
+{applies_to}`stack: preview =9.2.0` **Copy MCP Server URL** on the Tools page doesn't include the space ID. Refer to the [known issue](limitations-known-issues.md#mcp-server-url-copy-button-omits-space-name).
+
+{applies_to}`serverless: ga` For setup instructions for specific MCP hosts, including prebuilt Elastic connectors in their directories, refer to [](/deploy-manage/app-connections/connect-mcp-host.md).
 
 ## Authentication and configuration [mcp-server-authentication]
 
@@ -60,7 +66,11 @@ The following table compares the two paths.
 | Identity | The key's snapshotted permissions | The consenting user; permissions are the user's live permissions in the project |
 | Credential lifetime | Long-lived until the key expires or is revoked | Short-lived tokens, refreshed automatically unless revoked. Require a new connection if unused for 30+ days. |
 | Setup | Generate a key and add it to the host configuration | Register an MCP client, then consent in the browser |
-| {{agent-builder}} tools through MCP | Full tool catalog, including [Elastic Workflows](/explore-analyze/workflows.md) | Full tool catalog, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
+| {{agent-builder}} tools through MCP | Built-in and custom tools, including [Elastic Workflows](/explore-analyze/workflows.md) | Built-in and custom tools, limited by the [authorizing user's](/deploy-manage/app-connections/connect-mcp-host.md#authorize-connection) permissions |
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Some built-in tools aren't available through the MCP server, mostly because they return results that only {{agent-builder}} chat can use, such as `platform.core.create_visualization` and most [cases tools](tools/builtin-tools-reference.md#cases-tools). The [built-in tools reference](tools/builtin-tools-reference.md) notes which of the documented tools aren't available.
+
+In 9.2 to 9.5, the MCP server doesn't exclude any built-in tools.
 
 ## Use tools with data from multiple projects [agent-builder-mcp-cps]
 ```{applies_to}
@@ -68,7 +78,7 @@ stack: unavailable
 serverless: ga
 ```
 
-When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), tool calls use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the MCP URL. Requests without `/s/<space-name>` use the default space.
+When you have projects [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}}](/explore-analyze/cross-project-search.md), tool calls use the [default {{cps}} scope](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope) for the space in the MCP URL. Requests without `/s/<space-id>` use the default space.
 
 ## Related pages
 

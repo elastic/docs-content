@@ -62,6 +62,10 @@ After [remote clusters are connected](/deploy-manage/remote-clusters.md), you ca
 :::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-role-management.md
 :::
 
+:::{warning}
+The following examples include the `monitor` cluster privilege on the local cluster to support [asynchronous searches](/solutions/search/async-search-api.md). This privilege is required when checking the status of an asynchronous {{ccs}}, but it also grants access to other monitoring operations on the local cluster. {{kib}} applications such as **Dashboards** and **Discover** use asynchronous search internally, so include `monitor` to ensure that {{ccs}} works reliably in {{kib}}. If a role is used only for direct [synchronous requests](/solutions/search/the-search-api.md) to the `_search` API, you can omit `monitor`.
+:::
+
 ### API key authentication [configure-privileges-for-ccs-api-key]
 
 :::{include} /deploy-manage/remote-clusters/_snippets/configure-privileges-api-key-authorization.md
@@ -69,11 +73,38 @@ After [remote clusters are connected](/deploy-manage/remote-clusters.md), you ca
 
 To grant a user {{ccs}} access, create a role on the local cluster, assign it the required privileges for the remote cluster alias and target indices, then assign that role to the user.
 
+For the target indices, grant the `read` remote index privilege. To use {{ccs}} in {{kib}}, also grant the `view_index_metadata` remote index privilege and the `monitor` local cluster privilege because some {{kib}} features rely on asynchronous search.
+
 Assuming the remote cluster is connected under the name of `my_remote_cluster`, the following request creates a `remote-search` role on the local cluster that allows searching the remote `target-index` index:
 
+:::::{applies-switch}
+::::{applies-item} stack: ga 9.4+
 ```console
 POST /_security/role/remote-search
 {
+  "cluster": [ "monitor" ], <1>
+  "remote_indices": [
+    {
+      "clusters": [ "my_remote_cluster" ],
+      "names": [
+        "target-index"
+      ],
+      "privileges": [
+        "read",
+        "view_index_metadata"
+      ]
+    }
+  ]
+}
+```
+
+1. If the role is used only for synchronous search requests, omit the `monitor` cluster privilege.
+::::
+::::{applies-item} stack: ga 9.0-9.3
+```console
+POST /_security/role/remote-search
+{
+  "cluster": [ "monitor" ], <1>
   "remote_indices": [
     {
       "clusters": [ "my_remote_cluster" ],
@@ -89,6 +120,10 @@ POST /_security/role/remote-search
   ]
 }
 ```
+
+1. If the role is used only for synchronous search requests, omit the `monitor` cluster privilege.
+::::
+:::::
 
 After creating the `remote-search` role, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
 
@@ -117,7 +152,7 @@ stack: deprecated 9.0
 Certificate based authentication is deprecated. Configure [API key authentication](/deploy-manage/remote-clusters/remote-clusters-api-key.md) instead or follow a guide on how to [migrate remote clusters from certificate to API key authentication](/deploy-manage/remote-clusters/remote-clusters-migrate.md).
 :::
 
-After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create matching user roles on both the local and remote clusters and assign the necessary privileges. With TLS-based authentication, the local user's role names are forwarded to the remote cluster, which authorizes the request by evaluating roles with the same names defined locally.
+After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), create matching user roles on both the local and remote clusters and assign the necessary privileges. With TLS-based authentication, the local user's role names are forwarded to the remote cluster. The remote cluster authorizes access to its indices by evaluating its own role definitions with matching names.
 
 :::{important}
 You must use the same role names on both the local and remote clusters. For example, the following configuration uses the `remote-search` role name on both clusters. However, you can specify different role definitions on each cluster.
@@ -125,14 +160,36 @@ You must use the same role names on both the local and remote clusters. For exam
 
 #### Remote cluster [configure-privileges-for-ccs-cert-remote]
 
-On the remote cluster, the {{ccs}} role requires the `read` and `read_cross_cluster` [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the target indices.
+On the remote cluster, the {{ccs}} role requires the following [index privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) for the target indices:
+
+* `read`
+* {applies_to}`stack: ga 9.0-9.3` `read_cross_cluster`
 
 :::{note}
 If requests are issued [on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md), then the authenticating user must have the [`run_as` privilege](elasticsearch://reference/elasticsearch/security-privileges.md#_run_as_privilege) on the remote cluster.
 :::
 
-The following request creates a `remote-search` role on the remote cluster:
+The following requests create a `remote-search` role on the remote cluster:
 
+:::::{applies-switch}
+::::{applies-item} stack: ga 9.4+
+```console
+POST /_security/role/remote-search
+{
+  "indices": [
+    {
+      "names": [
+        "target-indices"
+      ],
+      "privileges": [
+        "read"
+      ]
+    }
+  ]
+}
+```
+::::
+::::{applies-item} stack: ga 9.0-9.3
 ```console
 POST /_security/role/remote-search
 {
@@ -149,17 +206,23 @@ POST /_security/role/remote-search
   ]
 }
 ```
+::::
+:::::
 
 #### Local cluster [configure-privileges-for-ccs-cert-local]
 
-On the local cluster, which is the cluster used to initiate cross cluster search, assign users the `remote-search` role. If users only need remote access, you can leave the local role empty. If they also need to query local indices or use {{kib}}, grant the required local privileges in the same role or assign the user additional roles.
+On the local cluster, which is the cluster used to initiate cross cluster search, assign users the `remote-search` role. The remote cluster grants access to its indices, so the local role doesn't need index privileges if users only need remote access. To support asynchronous searches, grant the local `monitor` cluster privilege. If users also need to query local indices or use other {{kib}} features, grant the required local privileges in the same role or assign the user additional roles.
 
-The following request creates a `remote-search` role on the local cluster with no privileges:
+The following request creates a `remote-search` role on the local cluster with the `monitor` privilege and no local index privileges:
 
 ```console
 POST /_security/role/remote-search
-{}
+{
+  "cluster": [ "monitor" ] <1>
+}
 ```
+
+1. If the role is used only for synchronous search requests and users don't need local index privileges, leave the local role empty.
 
 After creating the `remote-search` role on each cluster, use the [create or update users]({{es-apis}}operation/operation-security-put-user) API to create a user on the local cluster and assign the `remote-search` role. For example, the following request assigns the `remote-search` role to a user named `cross-search-user`:
 
