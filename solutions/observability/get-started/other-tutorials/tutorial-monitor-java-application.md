@@ -14,7 +14,7 @@ products:
 
 # Tutorial: Monitor a Java application [monitor-java-app]
 
-In this tutorial, you monitor a small Java application end-to-end with Elastic {{observability}}. You instrument it with the {{edot}} Java SDK, collect its traces, metrics, and logs through {{agent}} running in OTel mode, and use {{kib}} to find and fix a real problem in the running application.
+In this tutorial, you monitor a small Java application end-to-end with Elastic {{observability}}. You instrument it with the {{edot}} Java SDK, collect its traces, metrics, and logs with {{agent}} configured as an OpenTelemetry (OTel) Collector, and use {{kib}} to find and fix a real problem in the running application.
 
 It assumes basic familiarity with:
 
