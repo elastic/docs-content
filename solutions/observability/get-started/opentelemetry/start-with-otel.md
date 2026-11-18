@@ -172,6 +172,7 @@ If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opente
 
 ## Next steps [start-with-otel-next-steps]
 
+* Walk through [Tutorial: Monitor a Java application](/solutions/observability/get-started/other-tutorials/tutorial-monitor-java-application.md) to instrument a Java application, send its traces, metrics, and logs to Elastic, and find and fix a real problem using the data.
 * Explore [OpenTelemetry use cases](/solutions/observability/get-started/opentelemetry/use-cases/index.md) for Kubernetes and LLM observability.
 * Learn about [{{edot}} compared to the upstream OpenTelemetry distributions](opentelemetry://reference/compatibility/edot-vs-upstream.md).
 * Review the [{{edot}} feature compatibility matrix](opentelemetry://reference/compatibility/features.md).
