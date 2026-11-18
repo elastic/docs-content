@@ -22,7 +22,7 @@ Slack delivers all of an app's events to a single URL, so Elastic hosts a servic
 ```mermaid
 flowchart LR
     S["Your Slack workspace<br/>@Elastic"] <--> R["Slack relay<br/>hosted by Elastic"]
-    R <--> P["Your Serverless project<br/>Nightshift and Agent Builder"]
+    R <--> P["Your Serverless project<br/>Elastic nightshift and Agent Builder"]
     P --> M["Models through EIS"]
 ```
 
@@ -44,7 +44,9 @@ flowchart LR
 
 As a result, everyone in a connected channel can read what {{nightshift}} can read, including guests and people who were added to the channel later. Connect only the channels whose members should see that data. If only certain people should see some data, put that data in a separate project with its own {{nightshift}} setup.
 
-When an admin connects Slack, {{kib}} creates a service account for the Slack connection, named `nightshift-relay-agent-builder-<ID>`. The relay uses it only to pass each mention to the {{nightshift}} agent, which then runs as the `nightshift_agent` account, so the Slack connection doesn't change what an answer can read. The relay is the only service that can use the account, and for each answer it exchanges the account ID for a token that expires after a few minutes, so no long-lived key is stored. When you disconnect the workspace, {{kib}} deletes the account.
+When an admin connects Slack, {{kib}} creates a service account for the Slack connection, named `nightshift-relay-agent-builder-<ID>`. The relay uses the account only to pass each mention to the {{nightshift}} agent. The agent runs as the `nightshift_agent` account, so the Slack connection doesn't change what an answer can read. 
+
+Only the relay can use the account. For each answer, it exchanges the account ID for a token that expires after a few minutes, so no long-lived key is stored. When you disconnect the workspace, {{kib}} deletes the account.
 
 The Slack connection account is also capped by the privileges that the connecting admin had when they connected Slack. If that admin couldn't chat with the {{nightshift}} agent in **Agent Builder**, mentions in Slack are refused and `@Elastic` replies with an error instead of an answer. To fix it, have an admin with **Agent Builder**: **All** disconnect the workspace and connect it again.
 
@@ -70,7 +72,7 @@ A mention that opens a new conversation counts toward the **Manual investigation
 
 Private channel access is optional. The person who connects Slack, or the Slack admin who approves the app, can allow or decline it. This choice applies to the whole Slack workspace and every Elastic project connected to it. `@Elastic` still sees only the private channels that someone invites it to.
 
-If you connected Slack without private channel access and want to turn it on, disconnect the workspace in {{kib}}, connect it again, and allow private channel access. Then connect your channels again. To connect a private channel, invite `@Elastic` to it in Slack, then enter its channel ID or link in **Connect a channel**. Private channels aren't listed in the channel picker.
+If you connected Slack without private channel access and want to turn it on, disconnect the workspace in {{kib}}, connect it again, and allow private channel access. Then connect your channels again. To connect a private channel, invite `@Elastic` to it in Slack, then enter its channel ID or link in **Connect a channel**. Private channels aren't listed in the **Channel** list.
 
 To turn private channel access off, remove the app from the workspace in Slack, then reinstall it and decline private channel access. Slack doesn't remove permissions from an existing installation.
 
@@ -102,7 +104,7 @@ The app also subscribes to these Slack events: `app_mention`, `message.channels`
 :   New messages, so that automations with the **New message in channel** trigger can match them, for example alerts that another app posts. An automation that matches a message receives its text, up to 4,000 characters. Replies in an investigation's thread are added to that investigation, even without a mention. Refer to [Discuss an investigation in its thread](./use-cases/investigate-in-slack.md#nightshift-uc-slack-discuss).
 
 **During an investigation**
-:   An investigation can read recent messages in a connected public channel that `@Elastic` is a member of. By default it reads the last two hours, up to a maximum of seven days. It can't read private channels, shared channels, direct messages, or channels that aren't connected to the project.
+:   An investigation can read recent messages in a connected public channel that `@Elastic` is a member of. By default it reads the last two hours, up to seven days. It can't read private channels, shared channels, direct messages, or channels that aren't connected to the project.
 
 **People's names**
 :   The display names of the people in the thread, so that answers and the investigation record show who said what. Names are held in memory for up to six hours and aren't written to disk.
@@ -128,10 +130,10 @@ For how Elastic processes personal data, including the Data Processing Addendum 
 ## Disconnect or remove the app [nightshift-slack-app-disconnect]
 
 **Disconnect a channel**
-:   On the {{nightshift}} **Settings** page, select **Disconnect** next to the channel. `@Elastic` stops answering there and replies that the channel isn't connected. It stays in the channel until you remove it in Slack. Automations that post to the channel stop posting.
+:   On the {{nightshift}} **Settings** page, select **Disconnect channel** next to the channel. `@Elastic` stops answering there and replies that the channel isn't connected. It stays in the channel until you remove it in Slack. Automations that post to the channel stop posting.
 
 **Disconnect the workspace**
-:   Select **Disconnect workspace**. This disconnects every channel for this project. Other Elastic projects connected to the same workspace aren't affected. When the last project disconnects, the relay revokes the bot token and deletes the installation.
+:   On the {{nightshift}} **Settings** page from the **Slack channels** section, open the {icon}boxes_vertical menu and select **Disconnect workspace**. This disconnects every channel for this project. Other Elastic projects connected to the same workspace aren't affected. When the last project disconnects, the relay revokes the bot token and deletes the installation.
 
 **Remove the app from Slack**
 :   When a Slack admin removes the app from the workspace, the relay deletes the installation and every channel connection for every project connected to the workspace.

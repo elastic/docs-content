@@ -17,11 +17,11 @@ Ask {{nightshift}} for help without leaving Slack. Mention `@Elastic` in a threa
 
 - An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
 - An admin has connected your Slack workspace and the channel that you want to use. Refer to [Connect a Slack channel](#nightshift-uc-slack-connect).
-- For automations, the channel is public. In a private channel, you can mention `@Elastic` and get answers, but messages there can't start automations. Private channels also need private channel access. Refer to [Private channels](../slack-app.md#nightshift-slack-app-private).
+- For automations, the channel must be public. In a private channel, you can mention `@Elastic` and get answers, but messages there can't start automations. Private channels also need private channel access. Refer to [Private channels](../slack-app.md#nightshift-slack-app-private).
 
 ## Example: The on-call channel [nightshift-uc-slack-example]
 
-Your team's alerts go to the `#ticketing-oncall` Slack channel, where an automation with the **New message in channel** trigger watches for messages from your alerting app. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. Because the alert matches the automation's trigger, {{nightshift}} starts investigating a minute later, and a few minutes after that it replies in the alert's thread with the impact, the conclusion, and the hypotheses it tested. To set up an automation like this one, refer to [Investigate alerts from your other tools](./external-alerts.md#nightshift-uc-ext-slack).
+Your team's alerts go to the `#ticketing-oncall` Slack channel, where an automation with the **New message in channel** trigger watches for messages from your alerting app. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. Because the alert matches the automation's trigger, {{nightshift}} starts investigating a minute later. A few minutes after that it replies in the alert's thread with the impact, the conclusion, and the hypotheses it tested. To set up an automation, refer to [Investigate alerts from your other tools](./external-alerts.md#nightshift-uc-ext-slack).
 
 The on-call engineer reads the reply and asks in the thread: "@Elastic is ticket-issuer affected too?" {{nightshift}} continues the same investigation and answers in the thread.
 
