@@ -1,0 +1,144 @@
+<!-- Editable SVG: update labels, grouping, and geometry directly. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 900 718" role="img" aria-labelledby="title desc">
+<title id="title">Assets migration and recreation</title>
+<desc id="desc">Resources to prepare in the destination, grouped by color: integration packages and Fleet; data structures and processing, including scripts, synonyms, templates, lifecycle, pipelines, enrich, transforms, models, and inference; Kibana spaces, saved objects, connectors, rules, maintenance windows, reporting, and workflows; Observability and Security configuration; roles and authentication; and data transfer, agent enrollment, and client connections. Each resource uses its own migration methods and prerequisites.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L8 5L1 9" fill="none" stroke="#7B8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<style>
+text {font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#243247;}
+.title {font-size:24px;font-weight:700;}
+.label {font-size:17px;font-weight:600;text-anchor:middle;}
+.legend {font-size:17px;}
+.caption {font-size:17px;fill:#526278;}
+.structures {fill:#EAF3FF;stroke:#2471BD;}
+.fleet {fill:#F2EBFF;stroke:#8055B8;}
+.kibana {fill:#E5F6F2;stroke:#16816D;}
+.solution {fill:#FFF3DF;stroke:#AD6B10;}
+.access {fill:#FCEBF3;stroke:#AC4A79;}
+.data {fill:#F1F5F9;stroke:#748297;}
+.box {stroke-width:1.3;}
+.arrow {fill:none;stroke:#7B8798;stroke-width:1.3;marker-end:url(#arrow);}
+</style>
+<text class="title" x="16" y="29">Assets migration and recreation</text>
+<rect class="box structures" x="16" y="49" width="14" height="14" rx="3"/>
+<text class="legend" x="38" y="62">Data structures and processing</text>
+<rect class="box fleet" x="316" y="49" width="14" height="14" rx="3"/>
+<text class="legend" x="338" y="62">Integrations and Fleet</text>
+<rect class="box kibana" x="616" y="49" width="14" height="14" rx="3"/>
+<text class="legend" x="638" y="62">Kibana</text>
+<rect class="box solution" x="16" y="79" width="14" height="14" rx="3"/>
+<text class="legend" x="38" y="92">Observability / Security</text>
+<rect class="box access" x="316" y="79" width="14" height="14" rx="3"/>
+<text class="legend" x="338" y="92">Access</text>
+<rect class="box data" x="616" y="79" width="14" height="14" rx="3"/>
+<text class="legend" x="638" y="92">Data and connections</text>
+<rect class="box fleet" x="16" y="120" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="150">Integration packages</text>
+<path class="arrow" d="M221 144H233"/>
+<rect class="box structures" x="238" y="120" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="150">Stored scripts</text>
+<path class="arrow" d="M443 144H455"/>
+<rect class="box structures" x="460" y="120" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="150">Synonym sets</text>
+<path class="arrow" d="M665 144H677"/>
+<rect class="box structures" x="682" y="120" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="150">Enrich reference data</text>
+<rect class="box structures" x="16" y="184" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="214">Enrich policies</text>
+<path class="arrow" d="M221 208H233"/>
+<rect class="box structures" x="238" y="184" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="214">Pipelines using enrich</text>
+<path class="arrow" d="M443 208H455"/>
+<rect class="box structures" x="460" y="184" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="214">Ingest pipelines</text>
+<path class="arrow" d="M665 208H677"/>
+<rect class="box structures" x="682" y="184" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="214">Component templates</text>
+<rect class="box structures" x="16" y="248" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="278">Index templates</text>
+<path class="arrow" d="M221 272H233"/>
+<rect class="box structures" x="238" y="248" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="268">Legacy template</text>
+<text class="label" x="339" y="288">conversion</text>
+<path class="arrow" d="M443 272H455"/>
+<rect class="box structures" x="460" y="248" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="268">Lifecycle adaptation</text>
+<text class="label" x="561" y="288">ILM to DSL</text>
+<path class="arrow" d="M665 272H677"/>
+<rect class="box structures" x="682" y="248" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="278">Transforms</text>
+<rect class="box structures" x="16" y="312" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="332">ML anomaly detection</text>
+<text class="label" x="117" y="352">jobs</text>
+<path class="arrow" d="M221 336H233"/>
+<rect class="box structures" x="238" y="312" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="342">Trained models</text>
+<path class="arrow" d="M443 336H455"/>
+<rect class="box structures" x="460" y="312" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="342">Inference endpoints</text>
+<path class="arrow" d="M665 336H677"/>
+<rect class="box kibana" x="682" y="312" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="342">Spaces</text>
+<rect class="box kibana" x="16" y="376" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="406">Saved objects</text>
+<path class="arrow" d="M221 400H233"/>
+<rect class="box kibana" x="238" y="376" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="406">Connectors</text>
+<path class="arrow" d="M443 400H455"/>
+<rect class="box kibana" x="460" y="376" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="396">Alert rules /</text>
+<text class="label" x="561" y="416">Watcher replacement</text>
+<path class="arrow" d="M665 400H677"/>
+<rect class="box solution" x="682" y="376" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="396">Detection rules</text>
+<text class="label" x="783" y="416">and lists</text>
+<rect class="box solution" x="16" y="440" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="470">SLOs</text>
+<path class="arrow" d="M221 464H233"/>
+<rect class="box solution" x="238" y="440" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="470">Cases</text>
+<path class="arrow" d="M443 464H455"/>
+<rect class="box solution" x="460" y="440" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="470">Timelines and templates</text>
+<path class="arrow" d="M665 464H677"/>
+<rect class="box kibana" x="682" y="440" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="470">Maintenance windows</text>
+<rect class="box solution" x="16" y="504" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="524">Synthetics monitors</text>
+<text class="label" x="117" y="544">and Private Locations</text>
+<path class="arrow" d="M221 528H233"/>
+<rect class="box kibana" x="238" y="504" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="534">Reporting schedules</text>
+<path class="arrow" d="M443 528H455"/>
+<rect class="box kibana" x="460" y="504" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="534">Workflows</text>
+<path class="arrow" d="M665 528H677"/>
+<rect class="box solution" x="682" y="504" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="534">Streams configuration</text>
+<rect class="box solution" x="16" y="568" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="588">Endpoint policies</text>
+<text class="label" x="117" y="608">and artifacts</text>
+<path class="arrow" d="M221 592H233"/>
+<rect class="box solution" x="238" y="568" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="588">Attack Discovery</text>
+<text class="label" x="339" y="608">configuration</text>
+<path class="arrow" d="M443 592H455"/>
+<rect class="box access" x="460" y="568" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="598">Custom roles</text>
+<path class="arrow" d="M665 592H677"/>
+<rect class="box access" x="682" y="568" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="598">Authentication and SSO</text>
+<rect class="box fleet" x="16" y="632" width="202" height="48" rx="8"/>
+<text class="label" x="117" y="662">Agent policies</text>
+<path class="arrow" d="M221 656H233"/>
+<rect class="box fleet" x="238" y="632" width="202" height="48" rx="8"/>
+<text class="label" x="339" y="662">Integration policies</text>
+<path class="arrow" d="M443 656H455"/>
+<rect class="box data" x="460" y="632" width="202" height="48" rx="8"/>
+<text class="label" x="561" y="652">Transfer data: indices,</text>
+<text class="label" x="561" y="672">data streams, aliases</text>
+<path class="arrow" d="M665 656H677"/>
+<rect class="box data" x="682" y="632" width="202" height="48" rx="8"/>
+<text class="label" x="783" y="652">Agent enrollment</text>
+<text class="label" x="783" y="672">and client connections</text>
+<text class="caption" x="16" y="710">Apply the migration methods and prerequisites documented for each resource.</text>
+</svg>
