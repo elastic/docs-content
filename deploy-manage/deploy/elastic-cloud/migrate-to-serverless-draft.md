@@ -283,44 +283,169 @@ serverless: unavailable
 ::::{step} Transfer historical data to the destination
 :anchor: migrate-to-serverless-data
 
-Migrating the data is one of the most important stages of the migration journey.
+During preparation, transfer and verify data that no longer changes. You can retain these verified copies when completing the migration, reducing the amount of data to transfer during the final migration window. Leave data that is still changing for that window, unless you have designed and tested an [incremental transfer procedure](#migrate-to-serverless-incremental).
 
-For each index or data stream you need to transfer, prepare its destination, transfer the documents, and verify the result. You can do this before or after preparing {{kib}} content or {{fleet}}, once the configuration needed to receive the data is ready. Transfer [enrich reference data](#migrate-to-serverless-enrich) when preparing enrich.
+You can start with a subset to validate the process. If you copy data that continues to change, treat that copy as provisional. Before switching to production, replace it with a complete copy taken after source modifications stop, or reconcile all subsequent changes.
 
-#### Select indices to transfer
+#### Select the data to transfer
 
-We recommend to start transferring some historical data in order to validate the destination environment.
+Identify complete indices that no longer receive new documents, updates, or deletes. For data streams, start with historical backing indices that meet this condition, leaving the current write index for the final window. A backing index is not necessarily immutable after rollover: updates, deletes, and retention can still change its contents.
 
-This is easy for data streams if you send all backend indices except the active one.
-
-Depending on the nature of the indices to migrate, there are multiple choices, such as:
-
-* For non-time series indices that might 
-* For time-series indices or data stream start with migrating the historical data 
-
-Refer to [alternative migration approaches](#migrate-to-serverless-alternatives) for more details.
-
-#### Prepare destination indices, data streams, and aliases
-
-Create compatible destination indices or data streams using the mappings, templates, and lifecycle configuration [prepared for your solution](#migrate-to-serverless-set-up). Document transfer does not recreate this configuration. Review any existing destination resources before using them.
-
-Recreate [aliases](/manage-data/data-store/aliases.md) after the indices or data streams they reference exist. Check index patterns and write targets against the names your applications use.
-
-#### Transfer documents [migrate-to-serverless-transfer-documents]
-
-Reingest from the original source, use [reindex from remote](/manage-data/migrate/migrate-data-using-reindex-api.md) for supported sources, or transfer documents with [{{ls}}](/manage-data/migrate/migrate-with-logstash.md). Check the [supported source and destination combinations](/manage-data/migrate.md#data-migration-guides-serverless). User-managed snapshot and restore is unavailable in {{serverless-short}}.
+Record the source indices selected for transfer, their destination names, and which copies you have verified. Use this record to identify the data still pending during the [final transfer](#migrate-to-serverless-final-transfer). If no data is stable, use preparation to test the procedure and perform the definitive copy during the final window.
 
 :::{important}
-Do not transfer system indices as user data.
+Do not transfer system indices as user data. The backing indices of your application's data streams are part of its user data, even though their names start with `.ds-`. Identify them through the data stream definition rather than selecting all hidden indices.
 :::
 
-When copying documents that have already been processed, check request-selected pipelines and the destination's default and final pipelines to avoid applying transformations twice. A request's `pipeline=_none` does not bypass an `index.final_pipeline`. Refer to [ingest pipeline settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline).
+#### Select a transfer method [migrate-to-serverless-transfer-documents]
 
-% a possible approach if non-idempotent pipelines make unexpected changes to the data would be to transfer all historical data before migrating the data structures and processing configuration.
+- **{{ech}} to {{serverless-short}}:** Use [reindex from remote](/manage-data/migrate/migrate-data-using-reindex-api.md) when the destination can reach the source. {{es}} transfers the documents directly between the environments, without an intermediate {{ls}} instance.
+- **Other sources or transfer requirements:** Use [{{ls}}](/manage-data/migrate/migrate-with-logstash.md), running it on a host that can reach both environments.
 
-#### Verify the transferred data
+Check the [supported source and destination combinations](/manage-data/migrate.md#data-migration-guides-serverless) and the selected method's authentication requirements. You can also reingest data from its original source. User-managed snapshot and restore is unavailable in {{serverless-short}}.
 
-Review transfer failures and compare the destination with the source data selected for transfer. Check document counts, representative documents, field mappings, and query results. Confirm that aliases resolve to the intended resources and that applications can query the transferred data through the expected names.
+If historical documents have already passed through source ingest pipelines, avoid processing them again during transfer. Check request-selected pipelines and the destination's default and final pipelines. A request's `pipeline=_none` bypasses the default pipeline but does not bypass an `index.final_pipeline`. Refer to [ingest pipeline settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline).
+
+#### Migrate regular indices [migrate-to-serverless-regular-indices]
+
+For each source index:
+
+1. Retrieve its definition with [the get index API]({{es-apis}}operation/operation-indices-get), `GET /<source-index>`.
+2. [Create the destination index]({{es-serverless-apis}}operation/operation-indices-create) with the source mappings and compatible settings. Omit generated metadata such as the index UUID and creation date, and remove settings managed by {{serverless-short}}, such as shard and replica counts. Replace [{{ilm-init}} configuration](#migrate-to-serverless-lifecycle) where needed. Check the effective destination templates before creating the index.
+3. Transfer the documents using the selected method, with this source index and its prepared destination as explicit targets. Preserve document IDs when configuring {{ls}}, as shown in the [example](#migrate-to-serverless-logstash-example).
+4. [Verify the copy](#migrate-to-serverless-verify-data), then recreate the [aliases](/manage-data/data-store/aliases.md) your applications use. Check alias filters, routing, and write targets against the destination names.
+
+#### Migrate data streams [migrate-to-serverless-data-streams]
+
+We recommend transferring each source backing index to a separate destination index, verifying the copy, and then adding it to the destination data stream. This keeps a one-to-one correspondence that helps you track and verify transfers across migration phases. Performing these operations manually requires more work, but you can automate the procedure using the APIs and transfer tools.
+
+1. **Identify the source backing indices.** Retrieve the data stream definition in the source:
+
+    ```console
+    GET /_data_stream/logs-myapp-default
+    ```
+
+    The `indices` array lists the backing indices, with the current write index last. Select the stable indices to transfer now and record the write index as pending.
+
+2. **Prepare the destination data stream and copy indices.** Use the destination's integration package or custom [data stream template](#migrate-to-serverless-templates) to create the stream if it does not exist:
+
+    ```console
+    PUT /_data_stream/logs-myapp-default
+    ```
+
+    This creates a write index for future ingestion. For each selected source backing index, create a separate, standalone destination index with the source mappings and compatible settings, as for [regular indices](#migrate-to-serverless-regular-indices). Use a distinct name, such as `migration-logs-myapp-default-000042`, and record its source counterpart. Select names that do not match a data stream template.
+
+    Omit the internal `_data_stream_timestamp` mapping when creating standalone copies. Association with the destination stream configures it. Keep ingest pipelines off these copy indices so that historical documents are not processed again. Review destination retention separately: document transfer does not preserve source lifecycle state or index age.
+
+3. **Transfer and verify each copy.** Read one source backing index and write to its corresponding standalone destination index. Complete the transfer and verify the result before adding that index to the stream.
+
+    The following examples show both transfer methods, and they use standard destination indices for historical copies. [Time-series data streams (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) have additional index-mode and timestamp-range requirements and are not covered by these examples.
+
+    :::{dropdown} Example: Transfer one backing index with reindex from remote
+
+    After preparing `migration-logs-myapp-default-000042`, run this request in the destination project. Replace the source endpoint, API key, and backing index name with your values:
+
+    ```console
+    POST /_reindex
+    {
+      "source": {
+        "remote": {
+          "host": "https://source.example.com:443",
+          "api_key": "<SOURCE_ENCODED_API_KEY>"
+        },
+        "index": ".ds-logs-myapp-default-2026.10.01-000042"
+      },
+      "dest": {
+        "index": "migration-logs-myapp-default-000042",
+        "pipeline": "_none"
+      }
+    }
+    ```
+
+    Reindex preserves document IDs unless you change them through a script or processing. Check the response for failures and verify the copy before adding the destination index to the stream. For the next backing index, change both the source and destination index names.
+
+    :::
+
+    :::{dropdown} Example: Transfer one backing index with Logstash
+    :name: migrate-to-serverless-logstash-example
+
+    This example reads a single backing index and writes to its prepared standalone counterpart. It assumes log documents with an ISO 8601 `@timestamp` and no source `@version` field. The filter removes the `@version` field that {{ls}} adds. For other document structures, review the input plugin's [reserved-field handling](logstash-docs-md://lsr/plugins-inputs-elasticsearch.md#plugins-inputs-elasticsearch-failure-handling) and compare the resulting documents with the source.
+
+    Save the configuration as `migration.conf`. Replace the endpoints and set `SOURCE_API_KEY` and `DESTINATION_API_KEY` using the {{ls}} `id:api_key` format described in [Migrate data with {{ls}}](/manage-data/migrate/migrate-with-logstash.md).
+
+    ```ruby
+    input {
+      elasticsearch {
+        hosts => ["https://source.example.com:443"]
+        api_key => "${SOURCE_API_KEY}"
+        index => ".ds-logs-myapp-default-2026.10.01-000042"
+        query => '{"query":{"match_all":{}}}'
+        ecs_compatibility => "disabled"
+        docinfo => true
+        docinfo_fields => ["_id"]
+        docinfo_target => "[@metadata][migration]"
+      }
+    }
+    filter {
+      mutate {
+        remove_field => ["@version"]
+      }
+    }
+    output {
+      elasticsearch {
+        hosts => ["https://destination.example.com:443"]
+        api_key => "${DESTINATION_API_KEY}"
+        index => "migration-logs-myapp-default-000042"
+        document_id => "%{[@metadata][migration][_id]}"
+        action => "index"
+        data_stream => false
+        manage_template => false
+        ilm_enabled => false
+        pipeline => "_none"
+      }
+    }
+    ```
+
+    Run the transfer:
+
+    ```bash
+    bin/logstash -f migration.conf
+    ```
+
+    The input's `docinfo` settings retrieve the source ID, and the output's `document_id` preserves it. `data_stream => false` sends documents to the named standalone index instead of using automatic data stream routing. For the next backing index, change both `index` values, retaining a separate destination for each source index.
+
+    Inspect {{ls}} errors and verify the copied data before adding the index to the stream. A successful process exit alone does not confirm that every document was indexed. This configuration is a finite copy, not an incremental synchronization service.
+
+    :::
+
+
+4. **Add the verified indices to the destination data stream.** In the destination, use [the update data streams API]({{es-serverless-apis}}operation/operation-indices-modify-data-stream):
+
+    ```console
+    POST /_data_stream/_modify
+    {
+      "actions": [
+        {
+          "add_backing_index": {
+            "data_stream": "logs-myapp-default",
+            "index": "migration-logs-myapp-default-000042"
+          }
+        }
+      ]
+    }
+    ```
+
+    This is an expert-level API. Add only indices prepared and verified for this stream. Retrieve the destination stream definition to confirm membership, then query the stream by its name to check that the historical data is available. Recreate any [data stream aliases](/manage-data/data-store/aliases.md) after their target streams exist.
+
+Repeat the procedure for the remaining backing indices during the final window. Keep the destination's write index for new ingestion. Do not replace it with the source's last write index.
+
+Alternatively, you can reindex the entire source data stream directly into the destination data stream in one operation, using `dest.op_type: "create"`. The destination manages its own rollovers, and source backing-index boundaries are not preserved. IDs reused across source backing indices can conflict in the destination. This requires fewer manual operations, but repeated transfers need [additional handling](#migrate-to-serverless-incremental) to avoid missing changes or creating duplicates.
+
+#### Verify and record the transfer [migrate-to-serverless-verify-data]
+
+Review transfer failures and rejected documents. After refreshing the destination indices, compare document counts for each selected source index and its destination copy, using `GET /<index>/_count`. Compare representative documents by ID, field mappings, and query results. Matching counts alone do not establish that the contents match.
+
+Confirm that copied backing indices belong to the intended data stream and that queries through stream names and aliases return the expected data. Record verified source-to-destination pairs and any pending data or errors. Reuse these copies during the final transfer only if the source data has remained unchanged.
 
 ::::
 
@@ -372,10 +497,7 @@ Use [{{kib}} saved object export and import](/explore-analyze/find-and-organize/
 #### {{observability}} rules [migrate-to-serverless-observability-rules]
 ```{applies_to}
 serverless:
-  elasticsearch: unavailable
   observability: ga
-  security: unavailable
-  vectordb: unavailable
 ```
 
 [{{observability}} rules](/solutions/observability/incident-management/alerting.md) use the same saved object export and import mechanism and APIs as dashboards. Exported rules are inactive, and their execution history and operational state are not included.
@@ -387,10 +509,7 @@ serverless:
 #### Security detection rules [migrate-to-serverless-security-rules]
 ```{applies_to}
 serverless:
-  elasticsearch: unavailable
-  observability: unavailable
   security: ga
-  vectordb: unavailable
 ```
 
 [Security detection rules](/solutions/security/detect-and-alert/detection-rule-concepts.md) have dedicated export and import workflows and APIs. These workflows cover rule definitions and related resources such as actions, connectors, and exception lists. Do not migrate detection rules with the generic saved object APIs.
@@ -411,7 +530,6 @@ serverless:
 serverless:
   observability: ga
   security: ga
-  elasticsearch: unavailable
 ```
 
 Cases are available in {{observability}} and {{elastic-sec}} projects. Migrate them in their original space and solution context.
@@ -425,7 +543,6 @@ Cases are available in {{observability}} and {{elastic-sec}} projects. Migrate t
 serverless:
   observability: ga
   security: ga
-  elasticsearch: unavailable
 ```
 
 Maintenance windows are available in {{observability}} and {{elastic-sec}} projects. They are not included in saved object export and import.
@@ -486,9 +603,6 @@ For {{observability}} and {{elastic-sec}} projects, also review your [feature ti
 #### Trained models hosted in the project [migrate-to-serverless-trained-models]
 ```{applies_to}
 serverless:
-  elasticsearch: ga
-  observability: ga
-  security: ga
   vectordb: unavailable
 ```
 
@@ -506,13 +620,6 @@ serverless:
 - **Verify:** [Test inference](/explore-analyze/machine-learning/nlp/ml-nlp-test-inference.md) with the same sample inputs in the source and destination and compare the results. Use the IDs or aliases your pipelines and applications reference.
 
 #### Inference endpoints [migrate-to-serverless-inference-endpoints]
-```{applies_to}
-serverless:
-  elasticsearch: ga
-  observability: ga
-  security: ga
-  vectordb: ga
-```
 
 Inference endpoints are available across the four project types. In {{vectordb}} projects, use EIS or external providers instead of models hosted on ML nodes.
 
@@ -526,11 +633,16 @@ Inference endpoints are available across the four project types. In {{vectordb}}
 ::::{step} Verify the solution with test clients
 :anchor: migrate-to-serverless-test
 
-Check that data can be indexed and queried, processing produces the expected results, and required dashboards and feature workflows work. Use test clients to verify application behavior and permissions before changing production connections.
+The checks for each asset confirm that individual resources are ready. Use test clients to verify that they work together as a solution before changing production connections. Apply the following checklist to the features you use, using representative data from the copies already transferred and from test ingestion:
 
-Test [ingest pipelines](#migrate-to-serverless-pipelines) with [the simulate pipeline API]({{es-serverless-apis}}operation/operation-ingest-simulate), `POST /_ingest/pipeline/{id}/_simulate`, providing sample input documents in `docs`. Use documents as they arrive before pipeline processing. Run the same inputs in the source and destination, then compare transformed fields and failure handling. Add `?verbose=true` to inspect each processor's output. For `@custom` extensions, also test through the integration pipeline that calls them.
+- [ ] **Client connections and permissions:** Test at least one instance of each client type used in the source. Run a test application for each client library you use, enroll a test {{agent}} in a destination policy, and test your Beats and Logstash configurations where applicable. Confirm that each client connects, authenticates, and performs its required operations with the intended permissions.
+- [ ] **Indexing and processing:** Send representative documents and confirm that they reach the intended indices or data streams with the expected fields and values. Include examples that exercise enrich, inference, and failure handling where applicable. To investigate pipeline processing, use [the simulate pipeline API]({{es-serverless-apis}}operation/operation-ingest-simulate) with documents as they arrive before processing. Test `@custom` extensions through the integration pipeline that calls them.
+- [ ] **Application queries:** Run the searches, filters, and aggregations your applications use. Compare source and destination results for the same transferred dataset and time range, accounting for any intentional changes.
+- [ ] **Kibana experience:** Open the dashboards and views your users rely on in each required space. Check that they show the expected data and that filters, links, and navigation work with the migrated resources.
+- [ ] **Solution features:** Run controlled tests of the rules, workflows, machine learning jobs, and inference features you use. Confirm the expected results and use test destinations for notifications or other external actions.
+- [ ] **Performance testing (optional):** If performance is critical to your migration decision, consider additional load testing based on your workload requirements and available testing resources.
 
-% TODO: Add a short set of concrete checks. Expand performance coverage only where it affects migration decisions.
+Record the results, unresolved issues, and any scenarios you have not tested. Use this record to [decide how to proceed](#migrate-to-serverless-reuse).
 
 ::::
 
@@ -541,7 +653,7 @@ Use the test results to decide your next action:
 
 - **Continue preparing:** If the solution needs changes, return to the relevant preparation steps and repeat the affected tests.
 - **Recreate the project:** If you want to start from a clean destination, [create a new project](#migrate-to-serverless-create) using the setup you tested, repeat preparation, and verify it again.
-- **Keep the tested project:** If you intend to use it for production, identify test data to remove and any configuration to update.
+- **Keep the tested project:** If you intend to use it for production, identify test data and provisional copies to remove, verified historical copies to retain, and any configuration to update.
 
 Once the destination is validated and you have identified the data and configuration still to transfer, continue to [Complete the migration and switch to production](#migrate-to-serverless-production).
 
@@ -562,7 +674,11 @@ This procedure pauses source writes and configuration changes during the final t
 
 Schedule the migration window. Identify the data and configuration still to transfer, including changes made in the source since preparation, and prepare the client connection changes.
 
-Transfer any remaining data or assets that can be copied while the source is active. If they can still change, account for those changes in the final transfer rather than treating the initial copy as synchronized.
+Transfer and verify any remaining stable historical data while the source is active, following [Transfer historical data to the destination](#migrate-to-serverless-data). Keep the record of completed copies up to date. Identify provisional copies of changing data that need replacement during the final window.
+
+:::{tip}
+Consider [manually rolling over](/manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream) high-volume data streams in the source to include their former write indices in the historical transfer. This can reduce the data left to copy during the final pause. For [TSDS](/manage-data/data-store/data-streams/time-bound-tsds.md), wait until incoming data with current timestamps starts reaching the new backing index before copying the previous one. Rollover alone does not make those indices immutable.
+:::
 
 Define the validation criteria and rollback procedure before starting the transition. Include when to return to the source and how to handle any data written to the destination before returning.
 
@@ -571,14 +687,22 @@ Define the validation criteria and rollback procedure before starting the transi
 ::::{step} Pause source writes and configuration changes
 :anchor: migrate-to-serverless-offline
 
-Pause ingestion and other processes that create, update, or delete source data. Pause edits to the configuration being transferred. Keep the source available for the reads needed by the final transfer.
+Pause ingestion and other processes that create, update, or delete source data, including automated retention that could remove data selected for transfer. Pause edits to the configuration being transferred. Keep the source available for the reads needed by the final transfer.
+
+If you cannot pause writes while keeping the source available for reads, consider [switching ingestion before completing the historical transfer](#migrate-to-serverless-switch-before-history).
 
 ::::
 
 ::::{step} Complete the final transfer
 :anchor: migrate-to-serverless-final-transfer
 
-Transfer the remaining data and apply pending configuration changes using the methods tested during preparation. Check transfer failures and verify the resulting data and configuration before switching production connections.
+Use the methods tested during preparation to finish the transfer:
+
+1. Refresh the source inventory and compare it with your record of verified copies. Include new indices, backing indices created by rollovers since preparation, and each data stream's last write index.
+2. Transfer the remaining indices and backing indices. Retain verified copies whose source data has remained unchanged. Replace provisional copies of changing data with complete copies from the paused source, unless you have tested a procedure to reconcile subsequent changes. For data streams, verify the new copies and add them to the destination stream as [described during preparation](#migrate-to-serverless-data-streams).
+3. Apply pending configuration changes and [verify the complete transferred dataset](#migrate-to-serverless-verify-data) before switching production connections.
+
+If a provisional copy is already attached to a destination data stream, remove it from that stream with `remove_backing_index` before adding its verified replacement. Do not retain both copies. Refer to [the update data streams API]({{es-serverless-apis}}operation/operation-indices-modify-data-stream).
 
 ::::
 
@@ -613,25 +737,43 @@ Monitor production behavior and keep the source available for the agreed rollbac
 
 ## Appendix: Alternative migration approaches [migrate-to-serverless-alternatives]
 
-If pausing writes for the remaining transfer and validation is unsuitable, evaluate an approach that fits your application's consistency and availability requirements. Each approach requires a design for handling changes and failures in your environment.
+The appropriate migration approach depends on your workload and what interruption, data loss, duplicates, or temporary gaps your application can tolerate. Some logging workloads can accept a brief interruption or incomplete historical data while copying continues. Transactional applications might require coordinated changes to ingestion and application behavior to preserve consistency.
 
-### Initial copy with incremental synchronization [migrate-to-serverless-incremental]
+The following alternatives describe approaches to consider, rather than complete synchronization procedures. Design and test your chosen approach against your requirements before switching production traffic.
 
-Copy historical data while the source remains active, then transfer subsequent changes before switching production traffic.
+### Reduce the final transfer with incremental synchronization [migrate-to-serverless-incremental]
 
-% TODO: Briefly state the need to capture relevant creates, updates, and deletes. Do not imply document-copy tools provide change data capture.
+- **Approach:** Copy data, including historical and active indices, while the source remains active, then apply subsequent changes incrementally. The main procedure instead leaves changing data for a complete copy during the final pause.
+- **When to consider it:** You need a shorter final transfer window and can design and operate a synchronization process that reliably captures the required changes without overloading either environment with reads or writes.
+- **Plan for:** You must design and test the incremental process for your workload, including how it identifies new documents, reconciles updates and deletes, handles retries, and controls read and write load. Repeating a document copy does not automatically synchronize the environments. Plan a final pause to apply and verify the remaining changes unless your design also handles writes during the switch.
+
+:::{dropdown} Transfer mechanisms and limitations
+
+- **Adding missing documents:** For a fixed destination index, preserving `_id` and using `create` allows only absent IDs to be added. With reindex, use `dest.op_type: "create"` and `conflicts: "proceed"`. With {{ls}}, retrieve the source ID with `docinfo`, set the output's `document_id`, and set its `action` to `create`. Existing IDs produce conflicts. The selected source documents are still read and sent, so a final full scan can still take substantial time.
+- **Updates and deletes:** `create` does not update existing documents. Reindex's default `index` operation can overwrite documents with matching IDs in a regular destination index, but it does not remove documents deleted from the source. Rebuild the destination copy or use a separate procedure that captures and applies all relevant changes.
+- **Data streams:** In a conventional data stream, the same ID can exist in different backing indices. Repeating a transfer through the stream name after rollover can therefore create duplicates. For repeated copies, keep a fixed source-to-destination index correspondence and finish the copy before association: direct `create` operations against an attached backing index are rejected. [TSDS](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md) use generated IDs and timestamp-based routing and require separate handling.
+
+Refer to [the reindex API]({{es-apis}}operation/operation-reindex) and the [{{ls}} input's field tracking options](/manage-data/migrate/migrate-with-logstash.md#field-tracking) for available mechanisms. If selecting changes by a timestamp, use a field that reliably captures arrivals or modifications. Event time alone can miss late-arriving documents. Test retries, updates, and deletes relevant to your workload before relying on an incremental procedure for the final transfer.
+
+:::
+
+### Switch ingestion before completing the historical transfer [migrate-to-serverless-switch-before-history]
+
+- **Approach:** Redirect clients to the destination, then finish copying the source data. If stopping writes requires stopping the source cluster, redirect clients before bringing it back online for migration reads. Keep the source data stable during the transfer.
+- **When to consider it:** The destination can receive new data while historical data is still incomplete, and your workload can tolerate the interruption needed to redirect clients.
+- **Plan for:** Whether clients buffer and retry data during the interruption, or whether you accept some data loss or duplicates. Reconcile mutable indices so that older source documents do not overwrite newer destination changes. Define how applications behave until the historical transfer is complete.
 
 ### Parallel ingestion [migrate-to-serverless-parallel]
 
-Send new data to both environments while preparing the destination and transferring any required historical data.
-
-% TODO: Briefly identify consistency and failure-handling responsibilities. Avoid prescribing a general dual-write implementation.
+- **Approach:** Send new data to both environments while preparing the destination and transferring any required historical data.
+- **When to consider it:** Your ingestion tools or applications can deliver to both environments, and you want to validate live ingestion before switching production reads.
+- **Plan for:** Delivery failures, retries, duplicates, and the boundary between historical copies and new data. Decide how to handle writes that succeed in only one environment, and how to replicate updates or deletes if required. Application changes might be necessary.
 
 ### Phased migration [migrate-to-serverless-phased]
 
-Move separate workloads or applications in stages when their data and dependencies allow them to operate independently.
-
-% TODO: Clarify that moving traffic in stages does not itself synchronize data between environments.
+- **Approach:** Move separate workloads or applications in stages, validating each before continuing.
+- **When to consider it:** Workloads can operate independently, so you can migrate them without switching the whole solution at once.
+- **Plan for:** Shared data, queries, and dependencies that span migrated and unmigrated workloads. Decide which environment receives each workload's writes and how clients access its data. Moving clients in stages does not itself synchronize the environments.
 
 ## Appendix: {{serverless-short}} index settings and mappings
 
