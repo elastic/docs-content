@@ -14,7 +14,7 @@ Moving to {{serverless-full}} involves creating a project and adapting your exis
 
 Start with understanding your existing solution. The features you use, the way data is ingested, and the applications connected to {{es}} determine what can move directly and what needs to change. Distinguish the assets supplied by Elastic from the configuration and customizations that make them part of your solution.
 
-This guide helps you assess that work, create the destination, prepare and test your solution, and plan the production transition.
+This guide helps you assess that work, create the destination, prepare and test your solution, and complete the move to production.
 
 % Working outline for local comparison. Develop and verify each section before publication.
 % Keep the existing guide intact. Remove the temporary TOC entry before including changes in the PR.
@@ -22,10 +22,10 @@ This guide helps you assess that work, create the destination, prepare and test 
 
 ## Migration overview [migrate-to-serverless-order]
 
-Assess your existing solution, create the destination project, prepare and test your solution, and then plan the production transition. The preparation section explains how to migrate or recreate each type of asset.
+Assess your existing solution, create the destination project, and prepare and test your solution. Repeat preparation as needed, then complete the migration and switch to production. The preparation section explains how to migrate or recreate each type of asset.
 
 :::{image} /deploy-manage/images/serverless-migration-proposed-order.svg
-:alt: Assess the solution, create the destination, recreate assets, transfer data, test reads and indexing, and keep or recreate the tested project before the production transition. Repeat preparation and tests as needed.
+:alt: Assess the solution and create the destination project. Prepare assets, transfer data, test reads and indexing, and evaluate the destination. Return to preparation to refine or recreate the project, or continue to complete the migration and switch to production.
 :::
 
 ## Assess your existing solution [migrate-to-serverless-assess]
@@ -84,7 +84,10 @@ Test the migrated configuration and data with representative read and indexing w
 % Diagram scope includes planned entries whose supported procedures still need to be developed from the research notes.
 % Use entry labels only when they provide concrete actions. Omit Prepare when no additional preparation is needed.
 
-### Install integration packages [migrate-to-serverless-integrations]
+:::::{stepper}
+
+::::{step} Install integration packages
+:anchor: migrate-to-serverless-integrations
 
 [Integration packages](/reference/fleet/install-uninstall-integration-assets.md) supply {{es}} and {{kib}} assets, such as templates, ingest pipelines, and dashboards. Install the required packages in the destination instead of copying their managed assets from the source.
 
@@ -93,7 +96,7 @@ Test the migrated configuration and data with representative read and indexing w
 - **Migrate:** Follow [Install integration assets](/reference/fleet/install-uninstall-integration-assets.md#install-integration-assets) in the destination {{kib}}, or use the [package installation API]({{kib-serverless-apis}}operation/operation-post-fleet-epm-packages-pkgname-pkgversion), `POST /api/fleet/epm/packages/{pkgName}/{pkgVersion}`. API requests go to the {{kib}} endpoint. Install packages separately from configuring agent policies.
 - **Verify:** Confirm that each selected package and version is installed successfully and inspect its supplied assets. Check that dashboards and other {{kib}} assets are available in the [required space](/deploy-manage/manage-spaces-fleet.md#spaces-manage-assets).
 
-Package installation does not recreate your agent policies, integration policies, settings, or secrets, or move your agents. Prepare those when you [configure {{fleet}} and application connections](#migrate-to-serverless-fleet).
+Package installation does not recreate your agent policies, integration policies, settings, or secrets, or move your agents. Recreate the configuration when you [migrate {{fleet}} outputs and policies](#migrate-to-serverless-fleet). Move production agents during the [production transition](#migrate-to-serverless-production).
 
 :::{note}
 The Fleet Server integration package (`fleet_server`) is preinstalled in {{es}}, {{observability}}, and {{elastic-sec}} projects and does not need to be migrated.
@@ -101,7 +104,10 @@ The Fleet Server integration package (`fleet_server`) is preinstalled in {{es}},
 Install only the integrations you still need. For example, omit the {{es}} or {{kib}} monitoring integrations if their only purpose was to monitor the source deployment and you plan to retire it.
 :::
 
-### Prepare data structures and processing [migrate-to-serverless-set-up]
+::::
+
+::::{step} Prepare data structures and processing
+:anchor: migrate-to-serverless-set-up
 
 Recreate the {{es}} configuration your solution uses to structure, process, and search data, including index templates, ingest pipelines, stored scripts, synonym sets, and enrich policies.
 
@@ -272,9 +278,12 @@ serverless: unavailable
 
 {{serverless-short}} does not expose data tiers. Elastic fully manages sharding and the underlying storage infrastructure, so you do not need to reproduce {{ilm}} actions such as shrink, force merge, or tier migration. Use data stream lifecycle to configure retention and, when needed, downsampling.
 
-### Transfer data to the destination [migrate-to-serverless-data]
+::::
 
-Migrating the data is one of the most important stages of the migration This section shows you 
+::::{step} Transfer historical data to the destination
+:anchor: migrate-to-serverless-data
+
+Migrating the data is one of the most important stages of the migration journey.
 
 For each index or data stream you need to transfer, prepare its destination, transfer the documents, and verify the result. You can do this before or after preparing {{kib}} content or {{fleet}}, once the configuration needed to receive the data is ready. Transfer [enrich reference data](#migrate-to-serverless-enrich) when preparing enrich.
 
@@ -289,7 +298,7 @@ Depending on the nature of the indices to migrate, there are multiple choices, s
 * For non-time series indices that might 
 * For time-series indices or data stream start with migrating the historical data 
 
-Refer to [migration and cutover strategies](#strategies) for more details.
+Refer to [alternative migration approaches](#migrate-to-serverless-alternatives) for more details.
 
 #### Prepare destination indices, data streams, and aliases
 
@@ -313,7 +322,10 @@ When copying documents that have already been processed, check request-selected 
 
 Review transfer failures and compare the destination with the source data selected for transfer. Check document counts, representative documents, field mappings, and query results. Confirm that aliases resolve to the intended resources and that applications can query the transferred data through the expected names.
 
-### Migrate content and configuration in {{kib}} [migrate-to-serverless-kibana]
+::::
+
+::::{step} Migrate content and configuration in {{kib}}
+:anchor: migrate-to-serverless-kibana
 
 Use this section to migrate or recreate user-managed content and configuration in {{kib}}, including spaces, dashboards and visualizations, and resources specific to {{observability}} and {{elastic-sec}}. For each resource, use its supported mechanism: saved object export and import, a dedicated workflow or public API, or manual recreation.
 
@@ -432,21 +444,38 @@ Workflows are available across {{serverless-short}} project types with the appro
 
 % TODO: Develop SLOs, Timelines, Synthetics, Reporting schedules, Streams, Endpoint artifacts, Attack Discovery, and other feature-specific configuration from the research notes without implying saved object coverage.
 
-### Recreate project access [migrate-to-serverless-access]
+::::
+
+::::{step} Recreate project access
+:anchor: migrate-to-serverless-access
 
 Use the role definitions, assignments, authentication providers, and application access requirements recorded in your inventory.
 - **Migration approach:** Recreate the required access with [project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md), adapting privileges to the destination. Manage users and assignments through the [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization/user-roles.md), and create destination credentials for applications.
 - **Compatibility:** Deployment-local users and authentication realms do not transfer to a {{serverless-short}} project. If you use SAML, evaluate [organization-level SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md). Review project privileges separately from organization access.
 
-### Prepare {{fleet}} and application connections [migrate-to-serverless-fleet]
+::::
 
-For solutions that use {{fleet}}, prepare the destination agent policies, integration policies, and secrets for the [packages installed earlier](#migrate-to-serverless-integrations). Recreate the integration settings needed to collect data. Review the [{{fleet}} and {{agent}} restrictions for {{serverless-short}}](/reference/fleet/fleet-agent-serverless-restrictions.md).
+::::{step} Migrate {{fleet}} outputs and policies
+:anchor: migrate-to-serverless-fleet
 
-Prepare test configurations for applications, agents, and other ingestion tools using destination endpoints and credentials. Verify them against the destination before updating production connections.
+[Agent policies](/reference/fleet/agent-policy.md) configure groups of {{agent}}s. Their [integration policies](/reference/fleet/add-integration-to-policy.md) define what each integration collects, and [outputs](/reference/fleet/fleet-settings.md#output-settings) determine where agents send data. Recreate the user-managed configuration for the [packages installed earlier](#migrate-to-serverless-integrations).
 
-% TODO: Develop the verified policy-transfer and agent-migration methods. The general Fleet migration guide's snapshot-based target preparation does not apply to Serverless.
+Outputs, proxies, and Fleet Server hosts are shared across the deployment or project. With [space-aware {{fleet}}](/deploy-manage/manage-spaces-fleet.md), agent and integration policies are associated with spaces and can be shared across them. Older source deployments might still use the global policy model.
 
-### Prepare AI and {{ml}} resources [migrate-to-serverless-inference]
+- **Identify:** In the source {{fleet}}, review the outputs, agent policies, and integration policies your solution uses. You can also retrieve them with `GET /api/fleet/outputs`, `GET /api/fleet/agent_policies`, and `GET /api/fleet/package_policies`. Send API requests to the {{kib}} endpoint. For space-aware policies, use the corresponding space and record their space assignments, counting shared policies once. Retrieve all pages of policy results. Record the associations between policies, package versions, enabled inputs and streams, and output assignments for both collected data and agent monitoring. Distinguish explicit output assignments from inherited defaults.
+- **Prepare:** Decide which outputs should send data to the new project and which external destinations you still need. Review the [{{fleet}} and {{agent}} restrictions for {{serverless-short}}](/reference/fleet/fleet-agent-serverless-restrictions.md). Obtain the credentials, certificates, and secret values needed to recreate outputs and integration settings. Source secret references are not transferable. Prepare any required [proxies](/reference/fleet/fleet-agent-proxy-support.md) before creating outputs that reference them. Compare source integration settings with the package versions installed in the destination, and adapt the configuration where those versions differ. Use the project's provided Fleet Server hosts instead of copying the source hosts.
+- **Migrate:** Recreate the resources in this order, using the creation APIs linked below or the corresponding {{fleet}} configuration pages. For API requests, build the documented creation payloads rather than submitting complete GET responses. Let the destination generate resource IDs and record the correspondence with source IDs.
+
+    1. **Prepare destination outputs.** Use the project's provided output for data that should go to the new project. Recreate required custom outputs from **Fleet** → **Settings**, or with the [create output API]({{kib-serverless-apis}}operation/operation-post-fleet-outputs), `POST /api/fleet/outputs`. Restore their connection settings and secrets, and replace proxy references with destination IDs. New outputs of type `elasticsearch` must use the project's default {{es}} URL. For external destinations, use a supported type such as [Logstash](/reference/fleet/ls-output-settings.md), [Kafka](/reference/fleet/kafka-output-settings.md), or [Remote Elasticsearch](/reference/fleet/remote-elasticsearch-output.md), following its configuration requirements and restrictions. Configure the default outputs for data and agent monitoring according to your solution.
+    2. **Recreate agent policies.** [Create each policy](/reference/fleet/agent-policy.md#create-a-policy) in its intended destination space, or use the [create agent policy API]({{kib-serverless-apis}}operation/operation-post-fleet-agent-policies), `POST /api/fleet/agent_policies?sys_monitoring=false`. The query parameter avoids adding a System integration automatically. [Assign shared policies to the required spaces](/deploy-manage/manage-spaces-fleet.md#spaces-manage-policies) instead of creating a copy per space. Reproduce the required policy settings and replace explicit `data_output_id` and `monitoring_output_id` references with destination output IDs. Keep inherited assignments unset so they use the destination defaults.
+    3. **Recreate integration policies.** [Add each integration to its agent policies](/reference/fleet/add-integration-to-policy.md), or use the [create package policy API]({{kib-serverless-apis}}operation/operation-post-fleet-package-policies), `POST /api/fleet/package_policies`. Use the destination package version and agent policy IDs in `policy_ids`. Restore the integration settings, secret values, and enabled or disabled state of inputs and streams. Replace any explicit `output_id` with the corresponding destination ID. If a policy is shared, recreate it once and associate it with the required destination agent policies.
+
+- **Verify:** Read back the destination resources and compare their settings, package versions, policy associations, space assignments, and enabled inputs and streams. Check the outputs for both collected data and agent monitoring. For collected data, an [integration-level output takes precedence](/reference/fleet/integration-level-outputs.md#_order_of_precedence) over the agent policy output, followed by the global default. Verify actual collection and delivery with [test clients](#migrate-to-serverless-test) before moving production agents.
+
+::::
+
+::::{step} Prepare AI and {{ml}} resources
+:anchor: migrate-to-serverless-inference
 
 [Trained models](/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models.md) run inside your project. [Inference endpoints](/explore-analyze/elastic-inference.md) provide named access to models hosted in the project, Elastic Inference Service (EIS), or external providers.
 
@@ -492,7 +521,10 @@ Inference endpoints are available across the four project types. In {{vectordb}}
 - **Migrate:** Recreate custom endpoints with [the create inference endpoint API]({{es-serverless-apis}}operation/operation-inference-put), `PUT /_inference/{task_type}/{inference_id}`, using the same service, model, and settings, and supplying any required credentials. Preserve `inference_id` or update its references. For default endpoints, use the destination's equivalent when its model and configuration meet your requirements.
 - **Verify:** Send sample inputs using the [inference API]({{es-serverless-apis}}group/endpoint-inference) for the endpoint's task type. Check the results before testing dependent pipelines, mappings, or applications.
 
-### Verify the solution with test clients [migrate-to-serverless-test]
+::::
+
+::::{step} Verify the solution with test clients
+:anchor: migrate-to-serverless-test
 
 Check that data can be indexed and queried, processing produces the expected results, and required dashboards and feature workflows work. Use test clients to verify application behavior and permissions before changing production connections.
 
@@ -500,39 +532,84 @@ Test [ingest pipelines](#migrate-to-serverless-pipelines) with [the simulate pip
 
 % TODO: Add a short set of concrete checks. Expand performance coverage only where it affects migration decisions.
 
-### Decide whether to keep or recreate the project [migrate-to-serverless-reuse]
+::::
 
-You can keep the prepared project for production or recreate it using the setup you tested. If you keep it, identify test data to remove and configuration to update. If you recreate it, repeat the required checks against the final destination.
+::::{step} Evaluate the destination and decide how to proceed
+:anchor: migrate-to-serverless-reuse
 
-Record changes made in the source since preparation so you can apply them during the production transition.
+Use the test results to decide your next action:
 
-### Migrate real production clients
+- **Continue preparing:** If the solution needs changes, return to the relevant preparation steps and repeat the affected tests.
+- **Recreate the project:** If you want to start from a clean destination, [create a new project](#migrate-to-serverless-create) using the setup you tested, repeat preparation, and verify it again.
+- **Keep the tested project:** If you intend to use it for production, identify test data to remove and any configuration to update.
 
-(Link to migrate elastic agent doc).
+Once the destination is validated and you have identified the data and configuration still to transfer, continue to [Complete the migration and switch to production](#migrate-to-serverless-production).
 
-## Plan and complete the production transition [migrate-to-serverless-production]
+::::
 
-After validating the destination, define the remaining transfer, application changes, and checks needed to move production traffic.
+:::::
 
-### Plan the cutover and rollback [migrate-to-serverless-cutover-plan]
+## Complete the migration and switch to production [migrate-to-serverless-production]
 
-Identify the data and configuration still to transfer, the processes to pause, and the connections to update. Define when to return to the source if the transition fails and how to handle any data written to the destination before returning.
+Follow this procedure after validating the destination. It coordinates the remaining transfer and the switch of production clients using the asset-specific methods you tested during preparation.
 
-The procedure in the next section pauses writes during the remaining transfer and validation. If that interruption is unsuitable, evaluate the [alternative migration approaches](#migrate-to-serverless-alternatives).
+This procedure pauses source writes and configuration changes during the final transfer. If that interruption is unsuitable, evaluate the [alternative migration approaches](#migrate-to-serverless-alternatives).
 
-### Migrate with writes paused [migrate-to-serverless-offline]
+:::::{stepper}
 
-1. Pause ingestion and other processes that create, update, or delete source data. Pause edits to configuration being transferred. Keep the source available for reads needed by the transfer.
-2. Complete the remaining data transfer and apply final configuration changes using the methods tested during preparation.
-3. Verify the transferred data and required workflows in the destination.
-4. Update production applications and ingestion to use the destination endpoints and credentials, then resume activity.
-5. Confirm that production reads and writes use the intended destination and that the required workflows pass validation.
+::::{step} Prepare the production transition
+:anchor: migrate-to-serverless-cutover-plan
 
-% TODO: Keep this procedure at the coordination level; refer to asset-specific procedures for transfer details.
+Schedule the migration window. Identify the data and configuration still to transfer, including changes made in the source since preparation, and prepare the client connection changes.
 
-### Observe the destination and retire the source [migrate-to-serverless-close]
+Transfer any remaining data or assets that can be copied while the source is active. If they can still change, account for those changes in the final transfer rather than treating the initial copy as synchronized.
+
+Define the validation criteria and rollback procedure before starting the transition. Include when to return to the source and how to handle any data written to the destination before returning.
+
+::::
+
+::::{step} Pause source writes and configuration changes
+:anchor: migrate-to-serverless-offline
+
+Pause ingestion and other processes that create, update, or delete source data. Pause edits to the configuration being transferred. Keep the source available for the reads needed by the final transfer.
+
+::::
+
+::::{step} Complete the final transfer
+:anchor: migrate-to-serverless-final-transfer
+
+Transfer the remaining data and apply pending configuration changes using the methods tested during preparation. Check transfer failures and verify the resulting data and configuration before switching production connections.
+
+::::
+
+::::{step} Switch production clients and ingestion
+:anchor: migrate-to-serverless-production-clients
+
+Update applications and ingestion tools to use the destination endpoints and credentials. For {{fleet}}-managed {{agent}}s, follow the [agent migration instructions](/reference/fleet/migrate-elastic-agent.md#migrate-elastic-agent-migrated-agents) using the destination policies and enrollment settings prepared earlier.
+
+Resume production activity against the destination.
+
+::::
+
+::::{step} Validate production
+:anchor: migrate-to-serverless-production-validation
+
+Confirm that production reads and writes use the destination and that the required application, ingestion, and solution workflows meet the validation criteria.
+
+If the criteria are not met and the transition cannot continue, follow the rollback procedure you prepared before the switch.
+
+::::
+
+::::{step} Monitor the destination and retire the source
+:anchor: migrate-to-serverless-close
 
 Monitor production behavior and keep the source available for the agreed rollback period. Retire it after that period and any requirements to retain source data or state have been met.
+
+::::
+
+:::::
+
+% TODO: Keep this procedure at the coordination level; refer to asset-specific procedures for transfer details.
 
 ## Appendix: Alternative migration approaches [migrate-to-serverless-alternatives]
 
