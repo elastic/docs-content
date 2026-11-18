@@ -225,7 +225,7 @@ Put the map next to charts of the same web logs, then filter them together. Filt
 
        The tooltip has one page for each feature under your pointer. If it shows more than one page, use the arrows or the layer list to open the **Total Requests by Destination** page.
 
-    2. To keep only the requests whose destination is the United States, select the {icon}`filter` **Filter on property** button in the row for **ISO 3166-1 alpha-2 code**.
+    2. To keep only the requests whose destination is the United States, select {icon}`filter` **Filter on property** in the row for **ISO 3166-1 alpha-2 code**.
 
        {{kib}} adds the filter `geo.dest: US`, because `geo.dest` is the field you joined in step 2.
 
