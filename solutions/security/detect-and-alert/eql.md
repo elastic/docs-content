@@ -172,3 +172,31 @@ The following settings appear in the **Define rule** section when creating an EQ
 
 **Suppress alerts by** (optional)
 :   Reduce repeated or duplicate alerts by grouping them on one or more fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
+
+## Alerts created by sequence queries [eql-sequence-alerts]
+
+A single-event EQL query creates one alert for each matching event, like other rule types. A sequence query creates two kinds of alert each time the sequence matches:
+
+* **One building block alert for each matched event.** It contains the fields of that event. Steps that detect missing events (`!`) don't create a building block alert, because there is no event to copy.
+* **One shell alert for the sequence as a whole.** This is the alert you see in the Alerts table. From the matched events, it keeps only the fields that have the same value in all of them, so fields that differ between the events are absent.
+
+Building block alerts are hidden by default. To display them, select **Additional filters** → **Include building block alerts** in the Alerts table. For details, refer to [View building block alerts in the UI](/solutions/security/detect-and-alert/about-building-block-rules.md#security-building-block-rules-view-building-block-alerts-in-the-ui).
+
+To find the alerts that belong to one sequence match, use the following fields:
+
+| Field | Building block alert | Shell alert |
+|---|---|---|
+| `kibana.alert.group.id` | Same value as the shell alert | Same value as its building block alerts |
+| `kibana.alert.group.index` | Position of the matched event in the sequence, starting from `0` | Not set |
+| `kibana.alert.building_block_type` | `default` | Not set |
+
+### Time fields on sequence alerts [eql-sequence-alerts-time]
+
+The shell alert is created from the building block alerts, not from the source events. This affects `kibana.alert.original_time`:
+
+| Field | Building block alert | Shell alert |
+|---|---|---|
+| `@timestamp` | When the alert was created | When the alert was created |
+| `kibana.alert.original_time` | The `@timestamp` of the matched source event, which is when the event occurred | The `@timestamp` of the first building block alert, which is when that alert was created |
+
+To find out when the events in a sequence occurred, check `kibana.alert.original_time` on the building block alerts.

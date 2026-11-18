@@ -44,3 +44,5 @@ By default, building block alerts are excluded from the Overview and Alerts page
 ::::{note}
 On a building block rule details page, the rule’s alerts are displayed (by default, **Include building block alerts** is selected).
 ::::
+
+EQL rules with a sequence query also create building block alerts, even when the rule isn't a building block rule. For details, refer to [Alerts created by sequence queries](/solutions/security/detect-and-alert/eql.md#eql-sequence-alerts).
