@@ -16,13 +16,15 @@ Start with understanding your existing solution. The features you use, the way d
 
 This guide helps you assess that work, create the destination, prepare and test your solution, and complete the move to production.
 
-% Working outline for local comparison. Develop and verify each section before publication.
-% Keep the existing guide intact. Remove the temporary TOC entry before including changes in the PR.
-% Reassess the content type after the inventory and migration methods are developed.
-
 ## Migration overview [migrate-to-serverless-order]
 
-Assess your existing solution, create the destination project, and prepare and test your solution. Repeat preparation as needed, then complete the migration and switch to production. The preparation section explains how to migrate or recreate each type of asset.
+The migration process has three phases:
+
+- **Assess the source and design the destination:** Inventory the data, configuration, integrations, clients, and dependencies your solution relies on. Select a compatible project type and feature tier, check feature compatibility, and identify the adaptations and migration work required.
+- **Prepare and rehearse:** Create the destination and migrate or recreate its assets in dependency order. Transfer and verify stable historical data, rehearse the remaining transfer procedures, and test the complete solution with representative clients. Repeat preparation or recreate the destination until it is ready for production.
+- **Complete the production transition:** Plan the migration window and rollback procedure, pause source changes, complete the remaining transfer, switch production clients and ingestion, validate production, and monitor the destination before retiring the source.
+
+The following diagram summarizes these phases and shows the preparation loop you can repeat before moving to production.
 
 :::{image} /deploy-manage/images/serverless-migration-proposed-order.svg
 :alt: Assess the solution and create the destination project. Prepare assets, transfer data, test reads and indexing, and evaluate the destination. Return to preparation to refine or recreate the project, or continue to complete the migration and switch to production.
@@ -304,11 +306,17 @@ Do not transfer system indices as user data. The backing indices of your applica
 
 Check the [supported source and destination combinations](/manage-data/migrate.md#data-migration-guides-serverless) and the selected method's authentication requirements. You can also reingest data from its original source. User-managed snapshot and restore is unavailable in {{serverless-short}}.
 
-If historical documents have already passed through source ingest pipelines, avoid processing them again during transfer. Check request-selected pipelines and the destination's default and final pipelines. A request's `pipeline=_none` bypasses the default pipeline but does not bypass an `index.final_pipeline`. Refer to [ingest pipeline settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline).
+#### Transfer considerations [migrate-to-serverless-transfer-considerations]
+
+Apply these considerations when preparing the destination indices and copying documents, for both regular indices and data streams:
+
+- **Vector embeddings:** If your indices or data streams use embeddings for semantic search, retain compatible vector mappings and include the stored vectors in the source reads. Follow the [dense vector retrieval guidance](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#accessing-dense-vector-fields-in-search-responses) or the [`semantic_text` embedding reuse procedure](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-search-retrieval.md#reindex-while-preserving-embeddings), which requires the same `inference_id`. If you need to regenerate embeddings, [prepare the destination endpoint](#migrate-to-serverless-inference-endpoints) and index the input text through [`semantic_text`](/solutions/search/semantic-search/semantic-search-semantic-text.md) or an [{{infer}} pipeline](/solutions/search/semantic-search/semantic-search-inference.md).
+- **Ingest pipelines:** Avoid applying the same transformations twice to documents already processed in the source. Check request-selected pipelines and the destination's default and final pipelines. `pipeline=_none` bypasses the default pipeline but not an `index.final_pipeline`. Refer to [ingest pipeline settings](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline).
+- **Transfer load and rejected requests:** Monitor source ingestion and query latency. Reduce copy concurrency or rate if production workloads are affected or the destination repeatedly returns `429`. Use [reindex throttling](elasticsearch://reference/elasticsearch/rest-apis/reindex-indices.md#docs-reindex-throttle) or adjust [{{ls}} input batch sizes and parallel reads](/manage-data/migrate/migrate-with-logstash.md#additional-config). Inspect rejection responses and retry behavior, and record any documents that fail to transfer.
 
 #### Migrate regular indices [migrate-to-serverless-regular-indices]
 
-For each source index:
+For each source index, apply the [transfer considerations](#migrate-to-serverless-transfer-considerations) as you complete these steps:
 
 1. Retrieve its definition with [the get index API]({{es-apis}}operation/operation-indices-get), `GET /<source-index>`.
 2. [Create the destination index]({{es-serverless-apis}}operation/operation-indices-create) with the source mappings and compatible settings. Omit generated metadata such as the index UUID and creation date, and remove settings managed by {{serverless-short}}, such as shard and replica counts. Replace [{{ilm-init}} configuration](#migrate-to-serverless-lifecycle) where needed. Check the effective destination templates before creating the index.
@@ -318,6 +326,8 @@ For each source index:
 #### Migrate data streams [migrate-to-serverless-data-streams]
 
 We recommend transferring each source backing index to a separate destination index, verifying the copy, and then adding it to the destination data stream. This keeps a one-to-one correspondence that helps you track and verify transfers across migration phases. Performing these operations manually requires more work, but you can automate the procedure using the APIs and transfer tools.
+
+Apply the [transfer considerations](#migrate-to-serverless-transfer-considerations) to each backing index copy.
 
 1. **Identify the source backing indices.** Retrieve the data stream definition in the source:
 
@@ -335,7 +345,7 @@ We recommend transferring each source backing index to a separate destination in
 
     This creates a write index for future ingestion. For each selected source backing index, create a separate, standalone destination index with the source mappings and compatible settings, as for [regular indices](#migrate-to-serverless-regular-indices). Use a distinct name, such as `migration-logs-myapp-default-000042`, and record its source counterpart. Select names that do not match a data stream template.
 
-    Omit the internal `_data_stream_timestamp` mapping when creating standalone copies. Association with the destination stream configures it. Keep ingest pipelines off these copy indices so that historical documents are not processed again. Review destination retention separately: document transfer does not preserve source lifecycle state or index age.
+    Omit the internal `_data_stream_timestamp` mapping when creating standalone copies. Association with the destination stream configures it. Review destination retention separately: document transfer does not preserve source lifecycle state or index age.
 
 3. **Transfer and verify each copy.** Read one source backing index and write to its corresponding standalone destination index. Complete the transfer and verify the result before adding that index to the stream.
 
@@ -640,6 +650,8 @@ serverless:
 
 [{{infer-cap}} endpoints](/explore-analyze/elastic-inference.md) provide named access to models hosted in the project, EIS, or external providers.
 
+For embedding generation during migration, review the [data transfer considerations](#migrate-to-serverless-transfer-considerations).
+
 - **Identify:** View source endpoints on **Elastic Inference** or **External Inference** in {{kib}} (**Inference endpoints** in earlier versions), or use the [get {{infer}} endpoint API]({{es-apis}}operation/operation-inference-get). Record each endpoint's `inference_id`, `task_type`, `service`, and settings.
 - **Prepare:** Obtain provider credentials for external endpoints. The get endpoint API does not return stored secrets.
 - **Migrate:** Recreate custom endpoints with the [create {{infer}} endpoint API]({{es-serverless-apis}}operation/operation-inference-put), using the same service, model, and settings. Preserve `inference_id` or update its references. For default endpoints, use the destination's equivalent when its model and configuration meet your requirements.
@@ -661,12 +673,13 @@ Use the role definitions, assignments, authentication providers, and application
 
 The checks for each asset confirm that individual resources are ready. Use test clients to verify that they work together as a solution before changing production connections. Apply the following checklist to the features you use, using representative data from the copies already transferred and from test ingestion:
 
-- [ ] **Client connections and permissions:** Test at least one instance of each client type used in the source. Run a test application for each client library you use, enroll a test {{agent}} in a destination policy, and test your Beats and Logstash configurations where applicable. Confirm that each client connects, authenticates, and performs its required operations with the intended permissions.
+- [ ] **Client connections and permissions:** Test at least one instance of each client type used in the source. Run a test application for each client library you use, enroll a test {{agent}} in a destination policy, and test your Beats and Logstash configurations where applicable. Confirm that each client connects, authenticates, and performs its required operations with the intended permissions. Check that transient `429` responses trigger retries with exponential backoff and that persistent failures are reported.
+- [ ] **Serverless client compatibility:** Remove custom `routing` parameters from requests and replace any application behavior that depends on them. If browser applications send requests directly to {{es}}, route them through a backend service because CORS is unavailable. Refer to [Serverless architectural differences](differences-from-other-elasticsearch-offerings.md#architectural-differences).
 - [ ] **Indexing and processing:** Send representative documents and confirm that they reach the intended indices or data streams with the expected fields and values. Include examples that exercise enrich, inference, and failure handling where applicable. To investigate pipeline processing, use [the simulate pipeline API]({{es-serverless-apis}}operation/operation-ingest-simulate) with documents as they arrive before processing. Test `@custom` extensions through the integration pipeline that calls them.
 - [ ] **Application queries:** Run the searches, filters, and aggregations your applications use. Compare source and destination results for the same transferred dataset and time range, accounting for any intentional changes.
 - [ ] **Kibana experience:** Open the dashboards and views your users rely on in each required space. Check that they show the expected data and that filters, links, and navigation work with the migrated resources.
 - [ ] **Solution features:** Run controlled tests of the rules, workflows, machine learning jobs, and inference features you use. Confirm the expected results and use test destinations for notifications or other external actions.
-- [ ] **Performance testing (optional):** If performance is critical to your migration decision, consider additional load testing based on your workload requirements and available testing resources.
+- [ ] **Performance testing (optional):** If performance is critical to your migration decision, consider additional load testing based on your requirements and testing resources. Include queries over recent and historical data. For {{es}} projects, test with the intended [Search Power and Search Boost Window settings](project-settings.md#elasticsearch-manage-project-search-ai-lake-settings), which affect search resources and the volume of data kept search-ready.
 
 Record the results, unresolved issues, and any scenarios you have not tested. Use this record to [decide how to proceed](#migrate-to-serverless-reuse).
 
@@ -753,7 +766,9 @@ If the criteria are not met and the transition cannot continue, follow the rollb
 ::::{step} Monitor the destination and retire the source
 :anchor: migrate-to-serverless-close
 
-Monitor production behavior and keep the source available for the agreed rollback period. Retire it after that period and any requirements to retain source data or state have been met.
+After the bulk transfer ends, check application errors, ingestion rates, query latency, and resource consumption under normal production activity. Repeat the performance checks relevant to your requirements once the workload stabilizes: migration traffic does not represent the project's ongoing workload or cost. Use [AutoOps for Serverless](/deploy-manage/monitor/autoops/autoops-for-serverless.md), where available, to review performance and usage alongside the project's [billing dimensions](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md).
+
+Keep the source available for the agreed rollback period. Retire it after that period and any requirements to retain source data or state have been met.
 
 ::::
 
