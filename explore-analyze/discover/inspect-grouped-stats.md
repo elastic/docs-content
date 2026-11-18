@@ -100,6 +100,16 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 
 If the grouping field isn't filterable, **Filter in** and **Filter out** are unavailable.
 
+## Compare documents in a group [compare-documents-in-group]
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
+
+If two documents in a group look almost the same, you can compare their field values side by side to see what differs, without leaving the grouped results. To do so, expand the group and select the checkboxes of two or more documents. Then open the **Selected** menu in the group's table toolbar and select **Compare selected**. The comparison replaces the group's table. To bring the table back with your selection intact, select **Exit comparison mode**.
+
+For the comparison settings and how **Discover** highlights differences, refer to [Compare documents in Discover](compare-documents.md).
+
 ## Opt out of grouped results [opt-out-of-the-grouped-layout]
 
 If you prefer the flat results table, you can switch grouped results off. When grouped results are active, Discover replaces the regular results table toolbar with a **Group by** button that carries a {icon}`flask` badge and shows the number of active groupings. Discover preselects the grouping field from your `STATS BY` clause. To go back to the flat results table and the regular toolbar, open the **Group by** menu and select **none**. The **Group by** button stays in the toolbar of the flat table. To bring the grouping back, open the menu again and select the grouping field.

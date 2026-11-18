@@ -124,7 +124,7 @@ When your deployment receives excessive traffic or lacks sufficient resources, A
 
 AutoOps is accessible from the {{ecloud}} console. From your deployment, select **AutoOps** in the navigation menu to view cluster status, active events, and resource metrics.
 
-To check node-level metrics like CPU, memory, and write queue, go to **AutoOps Monitoring → Nodes**.
+To check node-level metrics like CPU, memory, and write queue, go to **AutoOps Monitoring** → **Nodes**.
 
 :::{note}
 AutoOps availability depends on your cloud provider and region. Refer to [AutoOps regions](/deploy-manage/monitor/autoops.md#regions-where-autoops-is-available) for details.
