@@ -204,7 +204,7 @@ To see why they're failing, correlate with logs. Find **Discover** in the naviga
 
 The `ERROR` log lines, `Pricing service lookup failed for item [mug]: service not enabled`, point to the cause: the application's pricing lookup is turned off.
 
-**Fix it.** On the host running the application, stop it (`Ctrl+C`) and restart it with the lookup enabled:
+To fix it, stop the application on its host (press Ctrl+C) and restart it with the pricing lookup turned on:
 
 ```bash
 OTEL_SERVICE_NAME=java-monitor-demo \
