@@ -338,6 +338,7 @@ toc:
           - file: discover/work-with-tabs.md
           - file: discover/save-open-search.md
           - file: discover/export-discover-session.md
+          - file: discover/manage-sessions-programmatically.md
           - file: discover/use-sessions-in-dashboards.md
           - file: discover/copy-and-share-documents.md
           - file: discover/background-search.md
