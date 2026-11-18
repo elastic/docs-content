@@ -29,14 +29,14 @@ Alerts continue to be generated, however notifications are suppressed as follows
 
 To use maintenance windows, you must have the appropriate [subscription](https://www.elastic.co/subscriptions) and {{kib}} feature privileges.
 
-* To have full access to maintenance windows, you must have `All` privileges for the **Management > Maintenance Windows** feature.
-* To have view-only access to maintenance windows, you must have `Read` privileges for the **Management > Maintenance Windows** feature.
+* To have full access to maintenance windows, you must have `All` privileges for the **Management** → **Maintenance Windows** feature.
+* To have view-only access to maintenance windows, you must have `Read` privileges for the **Management** → **Maintenance Windows** feature.
 
 For more details, refer to [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ## Create and manage maintenance windows [manage-maintenance-windows]
 
-In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-settings}} > {{manage-app}} > {{maint-windows-app}}** in Serverless, you can create, edit, cancel, and archive maintenance windows. 
+In **Management** → **{{stack-manage-app}}** → **Maintenance Windows** or **{{project-settings}}** → **{{manage-app}}** → **{{maint-windows-app}}** in Serverless, you can create, edit, cancel, and archive maintenance windows. 
 
 {applies_to}`stack: ga 9.1` In {{stack}} 9.1.0 and later, you can also delete maintenance windows that are running, canceled, or archived. Be aware that you can't recover maintenance windows once you delete them.
 

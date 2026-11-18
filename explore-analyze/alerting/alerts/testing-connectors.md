@@ -10,7 +10,7 @@ products:
 
 # Test connectors [testing-connectors]
 
-In **{{stack-manage-app}} > {{connectors-ui}}**, you can test a newly created connector by navigating to the Test tab of Connector Edit flyout or by clicking "Save & test" button on Create flyout:
+In **{{stack-manage-app}}** → **{{connectors-ui}}**, you can test a newly created connector by navigating to the Test tab of Connector Edit flyout or by clicking "Save & test" button on Create flyout:
 
 :::{image} /explore-analyze/images/kibana-connector-save-and-test.png
 :alt: Rule management page with the errors banner

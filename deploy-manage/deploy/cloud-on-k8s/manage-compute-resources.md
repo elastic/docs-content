@@ -26,6 +26,8 @@ Also, to minimize disruption caused by Pod evictions due to resource contention,
 
 You can set compute resource constraints in the `podTemplate` of objects managed by the operator.
 
+Use the container names that ECK expects, otherwise your settings don't apply to the operator-managed container. Refer to [Container and init container names](/deploy-manage/deploy/cloud-on-k8s/customize-pods.md#k8s-customize-pods-container-names).
+
 
 ### Set compute resources for {{es}} [k8s-compute-resources-elasticsearch]
 
