@@ -68,7 +68,7 @@ Create and download PDF, PNG, or CSV reports of Discover sessions, dashboards, v
 * **Download as JSON** {applies_to}`serverless: unavailable` — Generate and download JSON files of **Canvas** workpads.
 * **Export JSON**
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, preview 9.4-9.5` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
-    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/export-discover-session.md#export-discover-session-json).
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/export-discover-session.md#export-discover-session-json).
 
 :::{tip}
 Several applications let you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation).
@@ -86,7 +86,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 
     :::{dropdown} PDF
     * When a dashboard report includes a data table or Discover session, the PDF includes only the visible data.
-    * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * For dashboard PDFs, turn on **Print format** (or **Optimize for printing**, depending on your {{stack}} version) to get a printer-friendly report that uses multiple A4 portrait pages and shows at most two visualizations per page. Use it for reports that you want to print or share, and for dashboards that are too tall or too wide for a standard PDF. If a dashboard is more than 16000 pixels tall or 14400 pixels wide, {{kib}} fails the report and suggests print format in the error message. The option appears in the export flyout and, when you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation), in the schedule form.
     * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
     * Certain [limitations apply](#pdf-limitations).
     :::

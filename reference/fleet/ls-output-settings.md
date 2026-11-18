@@ -93,6 +93,10 @@ output {
 
     Increasing the compression level reduces network usage but increases CPU usage.
 
+`default_processors` {applies_to}`stack: ga 9.6+`
+:   :::{include} /reference/fleet/_snippets/output-default-processors-setting.md
+    :::
+
 `escape_html` $$$output-logstash-fleet-settings-escape_html-setting$$$
 :   (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.
 

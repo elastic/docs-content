@@ -15,6 +15,8 @@ products:
 
 ::::{tip}
 Inputs that collect logs and metrics use this processor by default, so you do not need to configure it explicitly.
+
+{applies_to}`stack: ga 9.6+` To turn it off, refer to [Turn off this processor](#add_host_metadata-processor-turn-off).
 ::::
 
 
@@ -100,3 +102,13 @@ If `host.*` fields already exist in the event, they are overwritten by default u
 | `geo.region_iso_code` | No |  | ISO region code. |
 | `replace_fields` | No | `true` | Whether to replace existing host fields in the event. If `true` (default), the processor always runs and overwrites any existing `host.*` fields with metadata from `add_host_metadata`. If `false`, the processor only adds metadata when no `host.*` fields exist in the event or when only `host.name` is present. If other host fields exist, the processor is skipped entirely. |
 
+## Turn off this processor [add_host_metadata-processor-turn-off]
+
+```{applies_to}
+stack: ga 9.6+
+```
+
+Depending on the input, {{agent}} uses this processor by default. To turn it off, set `add_host_metadata` to `false`:
+
+:::{include} /reference/fleet/_snippets/turn-off-default-processor.md
+:::
