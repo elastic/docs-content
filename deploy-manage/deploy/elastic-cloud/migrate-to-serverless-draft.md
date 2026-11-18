@@ -14,13 +14,20 @@ Moving to {{serverless-full}} involves creating a project and adapting your exis
 
 Start with understanding your existing solution. The features you use, the way data is ingested, and the applications connected to {{es}} determine what can move directly and what needs to change. Distinguish the assets supplied by Elastic from the configuration and customizations that make them part of your solution.
 
-This guide helps you assess that work, create the destination, prepare and test your solution, and complete the move to production.
+This guide covers the full migration process, from assessing the source and preparing and testing the destination to completing the production transition.
+
+## Before you begin [migrate-to-serverless-before-you-begin]
+
+Before starting the migration, make sure that you have:
+
+- **Source access:** Use credentials that can inventory and export every resource in the source environment. A practical broad custom role grants the `all` cluster privilege, `read` and `view_index_metadata` on `*`, and the {{kib}} `all` base privilege for all spaces. You can use the `superuser` role instead, but it is not required. If you use a narrower custom role, confirm that it supports every inventory and export operation in this guide.
+- **Destination access:** Make sure that you can create {{serverless-short}} projects in the {{ecloud}} organization. The [predefined **Admin** role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or an equivalent role is required. If the destination project already exists, you need the **Admin** role scoped to that project with **Cloud Console, {{es}}, and {{kib}}** access.
 
 ## Migration overview [migrate-to-serverless-order]
 
-The migration process has three phases:
+This guide proposes a three-phase migration process:
 
-- **Assess the source and design the destination:** Inventory the data, configuration, integrations, clients, and dependencies your solution relies on. Select a compatible project type and feature tier, check feature compatibility, and identify the adaptations and migration work required.
+- **Assess the source and select a project type:** Inventory the data, configuration, integrations, clients, and dependencies your solution relies on. Select a compatible project type and feature tier, check feature compatibility, and identify the adaptations and migration work required.
 - **Prepare and rehearse:** Create the destination and migrate or recreate its assets in dependency order. Transfer and verify stable historical data, rehearse the remaining transfer procedures, and test the complete solution with representative clients. Repeat preparation or recreate the destination until it is ready for production.
 - **Complete the production transition:** Plan the migration window and rollback procedure, pause source changes, complete the remaining transfer, switch production clients and ingestion, validate production, and monitor the destination before retiring the source.
 
@@ -34,48 +41,94 @@ The following diagram summarizes these phases and shows the preparation loop you
 
 Understand what your solution needs and how you can reproduce it in {{serverless-short}} before preparing the destination.
 
-### Identify your use cases and destination [migrate-to-serverless-use-cases]
+### Identify your use cases and candidate project type [migrate-to-serverless-use-cases]
 
-Identify whether your deployment supports search applications, {{observability}}, {{elastic-sec}}, or several use cases. Use the [project type comparison](serverless.md#get-started) to identify the destination project to evaluate.
+Start with how users and applications rely on the source deployment and the workflows the migration must preserve. Identify whether its workloads provide general search and analytics, vector search or AI retrieval, {{observability}}, {{elastic-sec}}, or a combination. Use the [project type comparison](serverless.md#get-started) to identify the candidate project type for each workload.
 
-% TODO: Reuse concise use-case examples from the existing guide where they help identify assets or select a destination.
+Classify each workload by its primary purpose, not by an individual feature or asset type. Embeddings, {{ml}}, {{fleet}}, {{agent}}, integrations, and alerting can support several use cases and do not determine the destination on their own.
 
 ### Inventory your assets [migrate-to-serverless-inventory]
 
-Build an inventory of what your solution uses and what you need to preserve in the destination. Include the applications and external systems connected to your deployment, as well as the resources stored in {{es}} and {{kib}}. Work with the people who configure and use each part of the solution.
+Build an inventory of the data, configuration, applications, and external dependencies you need to preserve in the destination. Use the following checklist as a reference, add any custom assets specific to your solution, and validate the inventory with the people who configure and use each part. The asset-specific procedures in [Prepare and test the destination](#migrate-to-serverless-prepare) explain the migration methods, dependencies, required adaptations, and creation prerequisites for these resources.
 
-Cover the following areas:
+Focus the inventory and transfer work on your own resources and customizations. Assets managed by Elastic normally do not need to be copied manually: the destination components or integrations create the resources they provide when configured. If you modified a managed resource directly, capture those changes separately and review how to apply them through supported customization mechanisms.
 
-- **User data:** Indices, data streams, and the data they contain.
-- **Data structures and processing:** Templates, mappings, aliases, ingest pipelines, and lifecycle configuration.
-- **{{kib}} content and feature configuration:** Dashboards, visualizations, rules, integrations, agent policies, and other functionality you use.
-- **Access and connections:** Users, roles, credentials, applications, collectors, and external integrations.
+:::{dropdown} Asset inventory checklist
+Review each category that applies to your solution. Items marked {icon}`warning` **Significant adaptation** commonly require redesign or additional work beyond a direct copy or export and import.
 
-Focus the transfer work on your own resources and customizations. Assets managed by Elastic normally do not need to be copied manually: the destination components or integrations create the resources they provide when configured. Record which component supplies each managed asset so you can set it up in the destination. If you modified a managed resource directly, capture those changes separately and review how to apply them through supported customization mechanisms.
-
-Use this inventory when you [prepare and test the destination](#migrate-to-serverless-prepare). That section explains the methods, APIs, Serverless adaptations, and creation prerequisites for each type of asset.
+- **Access, credentials, and network dependencies**
+    - [ ] Organization assignments, deployment-local users, roles, role mappings, authentication realms, and SSO configuration — {icon}`warning` **Significant adaptation**
+    - [ ] API keys, service credentials, certificates, and secrets used by applications and integrations — {icon}`warning` **Significant adaptation**
+    - [ ] Network policies, private connectivity, proxies, allowlists, and required network paths — {icon}`warning` **Significant adaptation**
+- **Integration packages and {{fleet}}**
+    - [ ] Installed integration packages and versions
+    - [ ] Customizations to integration-managed templates, pipelines, dashboards, and other packaged assets — {icon}`warning` **Significant adaptation**
+    - [ ] {{fleet}} outputs, proxies, default output assignments, and external destinations
+    - [ ] Agent policies, integration policies, enabled inputs and streams, output assignments, and space assignments — {icon}`warning` **Significant adaptation**
+    - [ ] Enrolled {{agent}}s and their production migration path — {icon}`warning` **Significant adaptation**
+- **Data, structures, and processing**
+    - [ ] Regular indices, mappings, compatible settings, aliases, documents, and update or delete patterns
+    - [ ] Data streams, backing indices, current write indices, retention, and lifecycle configuration — {icon}`warning` **Significant adaptation**
+    - [ ] Stored vectors and `semantic_text` data, including dimensions, similarity settings, and referenced inference endpoint IDs
+    - [ ] Stored scripts and stored search templates
+    - [ ] Synonym sets and analyzer references, including file-based or index-time synonyms — {icon}`warning` **Significant adaptation**
+    - [ ] Enrich policies and their reference indices or data streams
+    - [ ] Custom ingest pipelines, `@custom` extensions, stored scripts, enrich policies, and inference endpoints they reference
+    - [ ] Custom component templates and integration `@custom` component templates
+    - [ ] Composable index templates, index patterns, priorities, component order, aliases, and data stream configuration
+    - [ ] Legacy index templates that still supply required configuration — {icon}`warning` **Significant adaptation**
+    - [ ] {{ilm}} policies, data tiers, retention requirements, downsampling, and lifecycle actions — {icon}`warning` **Significant adaptation**
+    - [ ] Transforms and other custom processing resources
+- **{{kib}} spaces, content, and automation**
+    - [ ] Spaces, space IDs, settings, and access requirements
+    - [ ] Dashboards, Lens and other visualizations, maps, Discover sessions, {{data-sources}}, saved queries, tags, and annotation groups
+    - [ ] User-managed connectors, connector IDs, secrets, and authorization
+    - [ ] {{observability}} rules, actions, connectors, and referenced {{ml}} jobs
+    - [ ] Security detection rules, actions, connectors, exception lists, value lists, Endpoint exceptions, and referenced {{data-sources}}
+    - [ ] Cases, comments, connectors, configuration, custom fields, templates, attachments, alerts, and Timelines
+    - [ ] {{maint-windows-cap}}, schedules, recurrence, filters, and rule scope
+    - [ ] User-managed workflows, triggers, schedules, connectors, referenced resources, and workflow dependencies
+    - [ ] SLOs, Synthetics monitors, reporting schedules, Streams, Attack Discovery configuration, endpoint artifacts, and other solution-specific resources
+- **AI and {{ml}}**
+    - [ ] {{anomaly-jobs-cap}}, {{dfeeds}}, filter lists, calendars, source indices, and space assignments — {icon}`warning` **Significant adaptation**
+    - [ ] {{dfanalytics-cap}} jobs, source and destination indices, analysis results, and generated models
+    - [ ] Built-in and custom trained models, vocabularies, deployments, model IDs, deployment IDs, and aliases — {icon}`warning` **Significant adaptation**
+    - [ ] {{infer}} endpoints, endpoint IDs, task types, services, models, settings, and provider credentials
+- **Applications, ingestion, and external dependencies**
+    - [ ] Applications, search interfaces, client libraries, SDKs, APIs, representative queries, and expected permissions
+    - [ ] Every process that creates, updates, or deletes source data or configuration
+    - [ ] {{beats}}, {{ls}}, OpenTelemetry, {{product.apm}}, standalone {{agent}}s, and other ingestion endpoints and credentials
+    - [ ] Content connectors, crawlers, source systems, synchronization schedules, extraction logic, and external integrations
+    - [ ] Browser clients that connect directly to {{es}}, custom routing, unsupported APIs or settings, and retry behavior — {icon}`warning` **Significant adaptation**
+    - [ ] Typical and peak ingest and search rates, index operations, representative queries, and acceptance criteria
+- **Migration and operational state**
+    - [ ] Stable historical data that can be transferred during preparation
+    - [ ] Changing data and configuration that must wait for the final migration window
+    - [ ] Alerts, investigation content, execution history, learned model state, and other operational state that users need
+    - [ ] Asset owners, compliance and retention requirements, acceptable downtime, data loss tolerance, and rollback requirements
+:::
 
 ### Check compatibility [migrate-to-serverless-compatibility]
 
 Use [Compare {{ech}} and {{serverless-short}}](differences-from-other-elasticsearch-offerings.md) to check whether your required features and capabilities are available in the destination project. Identify dependencies that need an alternative and any blockers to the migration. The [destination preparation guidance](#migrate-to-serverless-set-up) explains how to adapt individual resources.
 
+:::{note}
+Some source deployments combine use cases that a single destination project cannot support. In that case, evaluate separate destination projects and decide which workloads and assets to migrate to each one. Apply the rest of this guide separately to each destination project.
+:::
+
 ## Create the destination project [migrate-to-serverless-create]
 
-Use the [project type comparison](serverless.md#get-started) to select the project type that matches your solution: {{es}}, Elasticsearch Vector Database, {{observability}}, or {{elastic-sec}}.
+Confirm the project type selected during assessment. For {{observability}} and {{elastic-sec}} projects, confirm that the selected [{{observability}} feature tier](/solutions/observability/observability-serverless-feature-tiers.md) or [Security feature tier](/solutions/security/security-serverless-feature-tiers.md) supports all capabilities identified during assessment.
 
-% TODO: Review and refine the Security feature-tier guidance in this section.
-
-If your solution uses detection rules, select a {{elastic-sec}} project with the Security Analytics Essentials or Complete feature tier. Elastic AI SOC Engine (EASE) does not support detection rules. Review the [Security feature tiers](/solutions/security/security-serverless-feature-tiers.md#sec-subscription-features) and [prebuilt rule customization support](/solutions/security/detect-and-alert/customize-prebuilt-rules.md#customize-subscription-capabilities) to confirm that the selected tier supports the customizations you need to retain.
-
-[Create the destination project](create-serverless-project.md) and [find its connection details](find-connection-details-serverless.md). Configure the [network access](/deploy-manage/security/network-security.md) and credentials needed by your migration tools and test clients. Check access to both {{es}} and {{kib}} from the environments where those tools run.
-
-If your source deployment combines use cases that cannot be supported in a single project, evaluate separate destination projects for those workloads.
+1. [Create the destination project](create-serverless-project.md), then [find its connection details](find-connection-details-serverless.md), including the {{es}} and {{kib}} endpoints.
+2. If you attach a [network security policy](/deploy-manage/security/network-security.md) to the destination, allow access from the environment where you run the migration. {{serverless-short}} projects accept public traffic by default, but after you attach a policy, traffic that does not match it is denied.
+3. Create a temporary [{{serverless-short}} project API key](/deploy-manage/api-keys/serverless-project-api-keys.md) while signed in with the **Admin** role. Do not restrict its security privileges, so that it can access all {{es}} and {{kib}} resources required by the migration procedures in this guide. Store it securely and revoke it when the migration is complete.
 
 ## Prepare and test the destination [migrate-to-serverless-prepare]
 
 Use your inventory to migrate or recreate the assets your solution needs in the destination project. The following sections describe the methods, APIs, and tools for each resource type, including compatibility considerations and changes needed to adapt your configuration or data to {{serverless-short}}.
 
-The suggested sequence helps you avoid resource creation errors caused by missing dependencies. You can follow a different sequence, provided you satisfy the creation prerequisites identified for each resource.
+The suggested sequence helps you avoid resource creation errors caused by missing dependencies. You can follow a different sequence, provided you satisfy the creation prerequisites for each resource.
 
 Test the migrated configuration and data with representative read and indexing workflows to confirm that the solution works before changing production connections.
 
