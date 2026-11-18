@@ -84,7 +84,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
     After you create the rule, you can find all custom highlighted fields in the About section of the rule details page. If the rule has alerts, you can find custom highlighted fields in the [Highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) section of the alert details flyout.
 
 **Elastic endpoint exceptions** (optional)
-:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) to this rule.
+:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) to this rule.
 
     This setting is available on deployments where {{elastic-endpoint}} exceptions are evaluated by detection rules. It's not available on deployments that use [per-policy {{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md#endpoint-exceptions-opt-in).
 
@@ -110,8 +110,8 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
 ::::
 
-**MITRE ATT&CK threats** (optional)
-:   Add relevant [MITRE ATT&CK](https://attack.mitre.org/) tactics, techniques, and subtechniques.
+**MITRE ATT&CK® threats** (optional) {applies_to}`stack: ga 9.0-9.5` {applies_to}`serverless: unavailable`
+:   Add relevant [MITRE ATT&CK®](https://attack.mitre.org/) tactics, techniques, and sub-techniques.
 
     ::::{note}
     The tactic and technique options here only include the MITRE ATT&CK version currently supported by {{elastic-sec}}. If you're upgrading and existing mappings are affected by a MITRE ATT&CK version change, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
@@ -140,6 +140,14 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 **Setup guide** (optional)
 :   Instructions on rule prerequisites such as required integrations, configuration steps, and anything else needed for the rule to work correctly.
 
+**Threat mappings** (optional) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Map the rule to the tactics, techniques, and sub-techniques it detects. Mappings determine where the rule appears on the [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) page. You can use one or both frameworks:
+
+    * [MITRE ATT&CK®](https://attack.mitre.org/): Attacks on enterprise IT systems.
+    * [MITRE ATLAS™](https://atlas.mitre.org/): Attacks on AI and machine learning systems, such as prompt injection. To add it, select **Add framework** → **MITRE ATLAS**.
+
+    The options include only the framework versions that {{elastic-sec}} supports. If an upgrade affects existing mappings, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+
 **Timestamp override** (optional)
 :   Select a source event timestamp field. When selected, the rule's query uses the selected field, instead of the default `@timestamp` field, to search for alerts. This can help reduce missing alerts due to network or server outages. Specifically, if your ingest pipeline adds a timestamp when events are sent to {{es}}, this can prevent missing alerts from ingestion delays.
 
@@ -164,6 +172,8 @@ It is recommended to set the `Additional look-back time` to at least 1 minute. T
 
 {{elastic-sec}} prevents duplication. Any duplicate alerts that are discovered during the `Additional look-back time` are *not* created.
 ::::
+
+{applies_to}`security: ga` Rules that run often or look back over long time ranges add search load. To set schedules that keep rules running on time, refer to [](/solutions/security/detect-and-alert/plan-rule-performance.md).
 
 ## Rule actions [rule-notifications]
 

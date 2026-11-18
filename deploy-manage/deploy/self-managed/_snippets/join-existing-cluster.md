@@ -30,7 +30,7 @@ If you can't access the first node, then modify your network configuration befor
    The `elasticsearch-reconfigure-node` tool has updated several settings. For example:
 
    * The `transport.host: 0.0.0.0` setting is already uncommented.
-   * The `discovery_seed.hosts` setting has the IP address and port of the other {{es}} nodes added the cluster so far. As you add each new {{es}} node to the cluster, the `discovery_seed.hosts` setting will contain an array of the IP addresses and port numbers to connect to each {{es}} node that was previously added to the cluster.
+   * The `discovery.seed_hosts` setting has the IP address and port of the other {{es}} nodes added to the cluster so far. As you add each new {{es}} node to the cluster, the `discovery.seed_hosts` setting contains an array of the IP addresses and port numbers to connect to each {{es}} node that was previously added to the cluster.
 
 5. In the configuration file, uncomment the line `#cluster.name: my-application` and set it to match the name you specified for the first {{es}} node:
    

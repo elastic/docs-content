@@ -19,7 +19,7 @@ Use the information in this section to troubleshoot common problems and find ans
 
 **Symptoms:**
 
-The following error appears in a banner at the top of the screen in {{kib}} on the **Stack Monitoring > Clusters** page: `You can't view the "<my_cluster>" cluster because the license information is invalid.`
+The following error appears in a banner at the top of the screen in {{kib}} on the **Stack Monitoring** → **Clusters** page: `You can't view the "<my_cluster>" cluster because the license information is invalid.`
 
 **Resolution:**
 

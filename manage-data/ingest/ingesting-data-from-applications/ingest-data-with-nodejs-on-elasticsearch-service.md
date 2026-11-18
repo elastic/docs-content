@@ -90,7 +90,7 @@ The example here shows what the `config` package expects. You need to update `co
 }
 ```
 
-1. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+1. Find your Cloud ID by going to the {{kib}} main menu and selecting Management → Integrations, and then selecting View deployment details.
 
 
 
@@ -295,7 +295,7 @@ const client = new Client({
 })
 ```
 
-Check [Create API key API]({{es-apis}}operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/security/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
+Check [Create API key API]({{es-apis}}operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](elasticsearch://reference/elasticsearch/security-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
 
 
 ### Best practices [ec_best_practices]

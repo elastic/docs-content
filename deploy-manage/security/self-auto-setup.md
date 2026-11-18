@@ -34,6 +34,9 @@ To learn how to start {{es}} and {{kib}} with security enabled, follow one of ou
 :::{include} /deploy-manage/deploy/self-managed/_snippets/security-files.md
 :::
 
+Cluster state encryption password {applies_to}`stack: ga 9.5+`
+:   Automatic security setup generates a node-specific password to protect the cluster state encryption key on disk. It stores the password as `cluster.state.encryption.password.autoconfigured` in the {{es}} keystore and sets `cluster.state.encryption.active_password_id` to `autoconfigured`. To learn more, refer to [Cluster state encryption](elasticsearch://reference/elasticsearch/cluster-state-encryption-key.md).
+
 ## Cases when security auto configuration is skipped [stack-skip-auto-configuration]
 
 When you start {{es}} for the first time, the node startup process tries to automatically configure security for you. The process runs some checks to determine:

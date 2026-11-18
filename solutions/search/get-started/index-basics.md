@@ -1,4 +1,5 @@
 ---
+navigation_title: Index and search basics
 applies_to:
   stack:
   serverless:
@@ -9,7 +10,7 @@ products:
   - id: cloud-enterprise
   - id: cloud-kubernetes
 ---
-# Index and search basics
+# Quickstart: Indexing and search in {{es}}
 
 This quickstart provides a hands-on introduction to the fundamental concepts of {{es}}: [indices, documents, and field type mappings](../../../manage-data/data-store/index-basics.md). You'll learn how to create an index, add documents, work with dynamic and explicit mappings, and perform your first basic searches.
 

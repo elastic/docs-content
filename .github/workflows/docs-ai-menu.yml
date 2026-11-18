@@ -1,4 +1,4 @@
-name: Docs AI menu
+name: "Issues: AI actions menu"
 
 on:
   issues:
@@ -144,6 +144,7 @@ jobs:
       issues: write
       pull-requests: write
       copilot-requests: write
+      id-token: write
     uses: elastic/docs-actions/.github/workflows/gh-aw-issue-scope.lock.yml@v1
     secrets: inherit
 

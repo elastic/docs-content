@@ -24,6 +24,8 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
+In Discover, a CSV report also stops at a row limit, and the file is truncated at a size limit. To find both limits for your deployment and how they work in each query mode, refer to [Export Discover session results as CSV](../discover/export-discover-session.md#export-discover-session-csv).
+
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
 For more information on using Elasticsearch APIs directly, see [Scroll API]({{es-apis}}operation/operation-scroll), [Point in time API]({{es-apis}}operation/operation-open-point-in-time), [ES|QL](elasticsearch://reference/query-languages/esql/esql-rest.md) or [SQL](elasticsearch://reference/query-languages/sql/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](/reference/elasticsearch-clients/index.md).
@@ -73,9 +75,9 @@ Such changes aren’t guaranteed to solve the issue, but give the functionality 
 
 ## Inspecting the query used for CSV export [reporting-troubleshooting-inspect-query-used-for-export]
 
-The listing of reports in **Stack Management > Reporting** allows you to inspect the query used for CSV export. It can be helpful to see the raw responses from Elasticsearch, or determine if there are performance improvements to be gained by changing the way you query the data.
+The listing of reports in **Stack Management** → **Reporting** allows you to inspect the query used for CSV export. It can be helpful to see the raw responses from Elasticsearch, or determine if there are performance improvements to be gained by changing the way you query the data.
 
-1. Go to **Stack Management > Reporting** and click the info icon next to a report.
+1. Go to **Stack Management** → **Reporting**. From the actions menu for a report, select **View report info**.
 2. In the footer of the report flyout, click **Actions**.
 3. Click **Inspect query in Console** in the **Actions** menu.
 4. This will open the **Console** application, pre-filled with the queries used to generate the CSV export.

@@ -44,7 +44,7 @@ You can use EIS to enable features such as:
 
 For a full list of EIS-powered features, refer to [AI features powered by EIS](/explore-analyze/elastic-inference/eis.md#ai-features-powered-by-eis).
 
-EIS can be connected to clusters on {{es}} version 9.3 and later.
+You can connect EIS to {{ece}}, {{eck}}, and self-managed clusters on {{es}} 9.3 and later.
 
 Learn how to set up and use [](/explore-analyze/elastic-inference/connect-self-managed-cluster-to-eis.md).
 

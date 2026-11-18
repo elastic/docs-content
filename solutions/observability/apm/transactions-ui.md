@@ -93,6 +93,21 @@ Selecting a transaction group will bring you to the **transaction** details. Thi
 :screenshot:
 :::
 
+### Service map [transaction-details-service-map]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+The **Service map** panel shows the service’s upstream and downstream connections. Click **Explore in Service map** to open the full map with the service selected. The link preserves the time range, environment, and KQL query, and adds filters for the transaction name and type.
+
+For licensing requirements and map controls, refer to [](/solutions/observability/apm/service-map.md).
+
+:::{image} /solutions/images/observability-transaction-details-contextual-map.jpg
+:alt: Service map panel beside the failed transaction rate chart in transaction details
+:screenshot:
+:::
+
 ### Latency distribution [transaction-duration-distribution]
 
 The latency distribution shows a plot of all transaction durations for the given time period. The following screenshot shows a typical distribution and indicates most of our requests were served quickly — awesome! The requests on the right are taking longer than average; we probably need to focus on them.
@@ -145,6 +160,12 @@ All of this data is stored in documents in {{es}}. Depending on your version, cl
 ::::
 
 {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **View full trace** to open a flyout showing the complete trace timeline (all spans and transactions from the same distributed trace) without leaving the {{product.apm}} UI.
+
+:::{tip}
+:applies_to: { stack: ga 9.6+, serverless: ga }
+
+You can also open transaction details and the full trace from a service flyout in **Discover** or the **Service map**. Follow the [investigation flyout workflow](/solutions/observability/apm/discover-traces.md#investigate-with-flyouts) to inspect individual spans or errors.
+:::
 
 **Trace sample logs**
 

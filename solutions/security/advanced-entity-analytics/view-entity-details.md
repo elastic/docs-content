@@ -173,6 +173,14 @@ The **Resolution** section shows whether the entity belongs to a [resolution gro
 
 To add an entity to the group, search by entity name or ID in the **Add entities to resolution group** table and click the add icon {icon}`plus_in_circle` next to the entity you want to link. To remove an entity from the group, click **X** {icon}`cross` in the **Actions** column of the **Resolution group** table. Entities must be removed individually.
 
+When you add an entity and neither the entity you're viewing, nor the one you're adding is in a resolution group yet, you need to select which one becomes the primary entity. The primary entity can't be removed from its group.
+
+::::{note}
+You can't add an entity that already belongs to another resolution group. Unlink it from that group first.
+::::
+
+After you link or unlink an entity, the group's risk score is recalculated at the next hourly run.
+
 ### Insights
 
 The **Insights** section displays [Vulnerabilities Findings](/solutions/security/cloud/findings-page-3.md) for the host or [Misconfiguration Findings](/solutions/security/cloud/findings-page.md) for the user. Click **Vulnerabilities** or **Misconfigurations** to view this data in a child flyout.

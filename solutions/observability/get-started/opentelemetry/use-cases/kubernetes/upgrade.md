@@ -19,7 +19,12 @@ products:
 Before upgrading or updating the release configuration, refer to the [compatibility matrix](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/prerequisites-compatibility.md#compatibility-matrix) for a list of supported versions and [customizing configuration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md) for a list of supported configurable parameters.
 :::
 
-To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and using the correct `values.yaml` for your environment. For example:
+To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and the values file that matches your deployment. Use the same values file you used during installation:
+
+- {applies_to}`serverless: ga` {applies_to}`ech: ga` `deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml`
+- {applies_to}`self: ga` {applies_to}`ece: ga` {applies_to}`eck: ga` `deploy/helm/edot-collector/kube-stack/values.yaml`
+
+For example, for a self-managed deployment:
 
 ```bash subs=true
 helm repo update open-telemetry # update information of available charts locally
@@ -30,4 +35,6 @@ helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack 
 --version {{kube-stack-version}}
 ```
 
-If [cert-manager integration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) is disabled, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
+{applies_to}`edot_collector: ga 9.5.5+` For OpenShift deployments, include the version-matched OpenShift values file after the base values file in every upgrade command.
+
+If [cert-manager integration](/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) is turned off, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.

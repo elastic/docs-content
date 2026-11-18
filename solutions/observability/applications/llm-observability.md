@@ -29,15 +29,15 @@ Elastic’s end-to-end LLM observability is delivered through the following meth
 
 Elastic's LLM integrations now support the most widely adopted models, including Anthropic, OpenAI, and a diverse range of models hosted on Amazon Bedrock and Google Vertex AI. Depending on the LLM provider you choose, the following table shows which type of data, logs or metrics, you can collect.
 
-| **LLM or agentic AI platform**  | **Metrics** | **Logs** | 
+| **LLM or agentic AI platform**  | **Metrics** | **Logs** |
 |--------|------------|------------|
-| [Amazon Bedrock](integration-docs://reference/aws_bedrock.md)| ✅ | ✅ |  
-| [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |  
+| [Amazon Bedrock](integration-docs://reference/aws_bedrock.md)| ✅ | ✅ |
+| [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |
 | Anthropic ([Metrics](integration-docs://reference/anthropic_metrics.md) / [Logs](integration-docs://reference/anthropic.md)) | ✅ | ✅ |
-| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ | 
-| [Azure OpenAI](integration-docs://reference/azure_openai.md)| ✅ | ✅ | 
-| [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ | 
-| [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 | 
+| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ |
+| [Azure OpenAI](integration-docs://reference/azure_openai.md)| ✅ | ✅ |
+| [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ |
+| [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 |
 
 
 ## LLM and agentic AI application observability with APM (distributed tracing)
@@ -51,6 +51,8 @@ You can instrument the application with one of the following {{edot}} SDKs:
 - [Java](https://github.com/elastic/elastic-otel-java)
 
 {{edot}} includes many types of LLM instrumentation. This [table](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md#supported-technologies) lists the supported technologies.
+
+For Claude, the Claude Platform can export traces of Messages API requests and Claude Managed Agents sessions directly to Elastic without changing your code or running an OpenTelemetry Collector. Refer to [Send Claude Platform traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-claude-platform-traces.md) for more information.
 
 ### Getting started
 

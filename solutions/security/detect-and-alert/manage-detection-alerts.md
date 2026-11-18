@@ -1,4 +1,5 @@
 ---
+navigation_title: Triage detection alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alerts-ui-manage.html
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-manage.html
@@ -235,7 +236,7 @@ You can run an [Elastic workflow](/explore-analyze/workflows.md) directly from a
 To run a workflow on an individual alert, do one of the following:
 
 * In the Alerts table, click **More actions** ({icon}`boxes_vertical`) in an alert's row, then click **Run workflow**. Use the search bar to select a workflow, then click **Run workflow**.
-* In an alert's details flyout, click **Take action → Run workflow**. Use the search bar to select a workflow, then click **Run workflow**.
+* In an alert's details flyout, click **Take action** → **Run workflow**. Use the search bar to select a workflow, then click **Run workflow**.
 
 ::::{note}
 You can select only enabled workflows.

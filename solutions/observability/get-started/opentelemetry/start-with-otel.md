@@ -18,6 +18,8 @@ products:
 
 This guide helps you choose the right setup for your environment so you can start sending metrics, logs, and traces to Elastic using {{edot}}. {{edot}} is Elastic's fully supported, pre-configured distribution of the upstream OpenTelemetry tools, optimized for Elastic ingest and analysis.
 
+If you already use classic Elastic {{product.apm}} agents, {{beats}}, or {{agent}} and want to move to OpenTelemetry, refer to [Switch to OpenTelemetry](switch-to-otel.md) instead.
+
 ## Before you begin [start-with-otel-prereqs]
 
 EDOT SDKs and {{agent}} in OTel mode require {{stack}} 8.16 or later for basic compatibility. For a supported configuration, use:
@@ -60,7 +62,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} ess:
@@ -78,7 +80,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} self:
@@ -132,6 +134,7 @@ Available EDOT SDKs (all GA unless noted):
 * [EDOT Android](apm-agent-android://reference/edot-android/index.md)
 * [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md)
 * {applies_to}`edot_browser: preview` [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md). For production real user monitoring, continue using the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
+* {applies_to}`edot_react_native: preview` [EDOT React Native](elastic-otel-react-native://reference/edot-react-native/index.md)
 
 For languages without an EDOT SDK (Go, C++, Ruby, and others), you can use the [contrib OpenTelemetry SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md). These work with Elastic over OTLP but receive community support only.
 
@@ -161,8 +164,8 @@ Refer to [Limitations of {{edot}}](opentelemetry://reference/compatibility/limit
 
 After completing your quickstart, confirm that data is flowing:
 
-1. Open {{kib}} and go to **{{product.observability}} → Applications → Service inventory** (or use the global search to find **Service inventory**) to confirm your application traces appear.
-2. Go to **{{product.observability}} → Infrastructure** (or search for **Infrastructure**) to confirm host and container metrics are visible.
+1. Open {{kib}} and go to **{{product.observability}}** → **Applications** → **Service inventory** (or use the global search to find **Service inventory**) to confirm your application traces appear.
+2. Go to **{{product.observability}}** → **Infrastructure** (or search for **Infrastructure**) to confirm host and container metrics are visible.
 3. Go to **Discover** and filter by your service name to confirm log data is flowing.
 
 If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md).
@@ -181,4 +184,4 @@ If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opente
 * [Limitations of {{edot}}](opentelemetry://reference/compatibility/limitations.md)
 * [{{edot}} vs upstream OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md)
 * [{{agent}} reference](elastic-agent://reference/edot-collector/index.md)
-* [Managed inputs](opentelemetry://reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints
+* [Managed inputs](/reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints

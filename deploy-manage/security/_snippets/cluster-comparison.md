@@ -25,8 +25,8 @@ Select your deployment type below to see what's available and how implementation
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Fully managed | Automatically encrypted by Elastic |
 | **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
-| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) |
-| | {{ecloud}} audit trail | Configurable ({{fedramp-mod}} only)| [](/deploy-manage/monitor/log-delivery/cloud-audit-trail.md) |
+| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/monitor/stack-audit-logging.md) |
+| | {{ecloud}} audit trail | Configurable ({{fedramp-mod}} only)| [](/deploy-manage/monitor/cloud-audit-trail.md) |
 
 :::
 
@@ -63,7 +63,7 @@ Select your deployment type below to see what's available and how implementation
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
 | **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
-| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) |
+| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/monitor/stack-audit-logging.md) |
 | | {{ecloud}} audit trail | N/A |  |
 
 :::
@@ -82,7 +82,7 @@ Select your deployment type below to see what's available and how implementation
 | | Secure settings | Configurable | [Configure secure settings](/deploy-manage/security/k8s-secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
 | **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
-| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) |
+| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/monitor/stack-audit-logging.md) |
 | | {{ecloud}} audit trail | N/A |  |
 
 :::
@@ -102,7 +102,7 @@ Select your deployment type below to see what's available and how implementation
 | | Keystore security | Configurable | [Configure secure settings](/deploy-manage/security/secure-settings.md) |
 | | Saved object encryption | Configurable | [Enable encryption for saved objects](/deploy-manage/security/secure-saved-objects.md) |
 | **User session** | {{kib}} sessions | Configurable | [Customize session parameters](/deploy-manage/security/kibana-session-management.md) |
-| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/security/logging-configuration/security-event-audit-logging.md) |
+| **Auditing** | {{es}} and {{kib}} audit logs | Configurable | [](/deploy-manage/monitor/stack-audit-logging.md) |
 | | {{ecloud}} audit trail | N/A |  |
 
 :::

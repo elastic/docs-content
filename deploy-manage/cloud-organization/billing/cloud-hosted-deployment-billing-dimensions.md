@@ -66,7 +66,11 @@ Data inter-node charges are currently waived for Azure deployments.
 
 Data transfer out of deployments and between nodes of the cluster is hard to control, as it is a function of the use case employed for the cluster and cannot always be tuned. Use cases such as batch queries executed at a frequent interval may be revisited to help lower transfer costs, if applicable. Watcher email alerts also count towards data transfer out of the deployment, so you may want to reduce their frequency and size.
 
-The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster.  The only way to prevent shard movement is by having a single node in a single availability zone. This solution is only possible for clusters up to 64GB RAM and is not recommended as it creates a risk of data loss. [Oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Note that creating snapshots generates inter-node data transfer. The *storage* cost of snapshots is detailed later in this document.
+The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster. [Oversharding](/deploy-manage/production-guidance/optimize-performance/size-shards.md) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Note that creating snapshots generates inter-node data transfer. The *storage* cost of snapshots is detailed later in this document.
+
+:::{note}
+Using a single {{es}} node can lower inter-node data transfer, but that deployment is not highly available, and you risk losing data. For production, use at least two availability zones. Review [Plan for production](/deploy-manage/deploy/elastic-cloud/elastic-cloud-hosted-planning.md#ec-ha) for more guidance.
+:::
 
 The exact root cause of unusual data transfer is not always something we can identify as it can have many causes, some of which are out of our control and not associated with Cloud configuration changes.  It may help to [enable monitoring](../../monitor/stack-monitoring/ece-ech-stack-monitoring.md) and examine index and shard activity on your cluster.
 

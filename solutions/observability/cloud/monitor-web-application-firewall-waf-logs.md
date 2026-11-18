@@ -65,7 +65,7 @@ For advanced use cases, source records can be transformed by invoking a custom L
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
-        3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        3. Under **Application endpoints, cluster and component IDs**, select **Elasticsearch** and copy the **Direct endpoint** value from the flyout.
 
     * **To create the API key**:
 

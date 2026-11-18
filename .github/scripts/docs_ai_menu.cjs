@@ -15,10 +15,11 @@ function escapeRegExp(value) {
 }
 
 function getLinePattern(key) {
-  const { label, marker } = WORKFLOW_CONFIG[key];
+  const { marker } = WORKFLOW_CONFIG[key];
 
+  // Match on the marker and ignore the label text, so menus posted before a label rename still parse.
   return new RegExp(
-    `^- \\[([ x])\\] ${escapeRegExp(label)}(?: (Status: .*?))? ${escapeRegExp(marker)}$`,
+    `^- \\[([ x])\\] .*?(?: (Status: .*?))? ${escapeRegExp(marker)}$`,
     'm'
   );
 }

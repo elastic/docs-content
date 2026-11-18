@@ -25,6 +25,9 @@ A: {{serverless-full}} is available in select AWS, GCP, and Azure regions, with 
 **Q: How can I move data to or from {{serverless-short}} projects?**  
 A: Follow [Migrate to {{serverless-full}}](migrate-to-serverless.md) for the complete journey, including compatibility, planning, data and configuration transfer, application updates, validation, monitoring, and cost considerations. To compare only the available data transfer methods, refer to [Migrate your {{es}} data](/manage-data/migrate.md#data-migration-guides-serverless).
 
+**Q: How does {{serverless-full}} handle availability and data durability?**  
+A: {{serverless-short}} manages resilience automatically. Indexed data is written to cloud-provider object storage rather than stored as local replicas on cluster nodes, and {{serverless-short}} manages the placement of nodes into availability zones within each region. For details, refer to [](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md).
+
 **Q: Can I request backups or restores for my serverless projects?**  
 A: On-demand project backups and user-initiated restores are currently unavailable. Elastic manages backups and business continuity for {{serverless-short}} projects. In case of data loss or corruption, request an emergency restore by [contacting Support](/troubleshoot/index.md#contact-us). User-initiated data recovery is anticipated in a future release. You can follow its progress by referring to the [public roadmap](https://github.com/elastic/roadmap/issues/228).
 

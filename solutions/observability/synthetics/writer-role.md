@@ -13,7 +13,7 @@ products:
 To minimize the privileges required by the writer role, use the [setup role](/solutions/observability/synthetics/setup-role.md) to enable Monitor Management. This section assumes another user has already enabled Monitor Management.
 ::::
 
-For users who need to create, modify, and delete monitors, provide write access. Two types of write access are outlined below:
+For users who need to create, modify, and delete monitors, provide write access. You can grant two types of write access:
 
 * **General write access**: For most users, you can use [General write access](#synthetics-write-privileges-general), which grants write access to all {{kib}} apps and requires little configuration.
 * **Limited write access**: If you want to limit write access to the {{synthetics-app}} only, you can use [Limited write access](#synthetics-write-privileges-limited), which requires additional configuration.
@@ -40,13 +40,13 @@ Create a **writer role**, called something like `synthetics_writer`:
 
 If you want to limit write access to the {{synthetics-app}} only, do *not* use the `editor` [built-in role](elasticsearch://reference/elasticsearch/roles.md#built-in-roles-editor).
 
-Instead to you can create a writer role, called something like `synthetics_writer_limited`, and start by granting the following privileges:
+Instead, you can create a writer role, called something like `synthetics_writer_limited`, and start by granting the following privileges:
 
 | Type | Privilege | Purpose |
 | --- | --- | --- |
 | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `synthetics-*`: `read` | Read-only access to synthetics indices. |
 | [Index](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) | `.alerts-observability.uptime.alerts-*`: `read` | Read-only access to synthetics alert indices. |
-| [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) | `Synthetics and Uptime`: `All` | Access to the {{synthetics-app}} in {{kib}}. |
+| [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md) | `Synthetics and Uptime`: `All` | Access to the {{synthetics-app}} in {{kib}}. |
 
 Additional privileges will depend on the factors below.
 
@@ -54,9 +54,9 @@ Additional privileges will depend on the factors below.
 
 To restrict users assigned this role from using monitors hosted on Elastic’s global managed infrastructure:
 
-1. Expand `Synthetics and Uptime` in the list of [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges.
-2. Toggle *Customize sub-feature privileges*.
-3. Uncheck *Elastic managed locations enabled*.
+1. Expand `Synthetics and Uptime` in the list of [Observability {{kib}} privileges](/solutions/observability/get-started/observability-kibana-privileges.md#synthetics-and-uptime-sub-feature-privileges).
+2. Toggle **Customize sub-feature privileges**.
+3. Under **Elastic managed locations**, turn off **Enabled**.
 
 ### If using Private Locations [synthetics-role-write-private-locations]
 
