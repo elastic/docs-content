@@ -190,7 +190,7 @@ Anyone who can edit monitors or global parameters in the space can reference any
     | --- | --- |
     | **Name** | The name you reference the connection by, such as `prod`. You can't change it after you save the connection. |
     | **Vault address** | The address of your Vault server, such as `https://vault.example.com:8200`. It must use `https`, unless the host is a loopback address such as `localhost` or `127.0.0.1`. It can't include credentials, a query string, or a fragment, and it can't be a link-local address such as `169.254.169.254`. If `xpack.synthetics.secretConnections.allowedHosts` limits which hosts {{kib}} can contact, the host must be on that list. |
-    | **Auth method** | Can be a **Token**, or an AppRole with a **Role ID** and **Secret ID**. |
+    | **Auth method** | Can be a **Token**, or an **AppRole** with a **Role ID** and **Secret ID**. |
     | **KV v2 mount** | Optional. It's the KV v2 secrets engine mount that holds the secrets this connection reads. Defaults to `secret`. |
     | **Allowed monitor hosts** | Decides which monitor targets might receive secrets from this connection. Leave it empty to allow any host. |
     | **Skip TLS verification (dev only)** | Turns off certificate validation. Use it only against a development Vault server. |
@@ -201,7 +201,7 @@ Test connection runs from {{kib}}. A monitor looks secrets up from the {{private
 
 To change a connection later, click **Edit**. You can edit a connection even if params and monitors are already using it. You can also enter a new credential to rotate it.
 
-You can leave the secret field blank to keep the stored credential unless you:
+Leave **Token** or **Secret ID** blank to keep the stored credential unless you:
 
 * Change **Vault address**, **Auth method**, or **Skip TLS verification (dev only)**.
 * Add hosts to an existing **Allowed monitor hosts** list or remove the restriction.
@@ -252,7 +252,15 @@ Set these in `kibana.yml`:
 :   Turns Vault connections and secret references on or off. Defaults to `true`. When it's `false`, the **HashiCorp Vault connections** panel is hidden and a monitor that contains a reference is rejected when you save it.
 
 `xpack.synthetics.secretConnections.allowedHosts`
-:   The Vault host names {{kib}} can contact when you save or test a connection. Defaults to `['*']`, which allows any host. Host names must match exactly, and the only wildcard supported is the literal `*`. A connection whose host isn't on the list can't be saved or tested, and monitors that reference a connection saved before the list was tightened fail until its host is added again. Accepts up to 1000 entries.
+:   The Vault host names {{kib}} can contact when you save or test a connection. Defaults to `['*']`, which allows any host. Enter bare host names or IP addresses, without a scheme or port. Matching ignores case and the port in the Vault address. The whole host name has to match, so `example.com` doesn't cover `vault.example.com`, and the only wildcard is the literal `*`. A connection whose host isn't on the list can't be saved or tested. {{kib}} also stops delivering a connection saved before the list was tightened, so saving a monitor that references it is rejected until you add its host again. Accepts up to 1000 entries.
+
+    For example, to allow two Vault servers:
+
+    ```yaml
+    xpack.synthetics.secretConnections.allowedHosts:
+      - vault.example.com
+      - 10.0.0.5
+    ```
 
 #### Known limitations [synthetics-secrets-vault-limitations]
 
