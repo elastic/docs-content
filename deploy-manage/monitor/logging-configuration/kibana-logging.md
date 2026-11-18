@@ -55,23 +55,23 @@ On [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), l
 ::::::
 
 ::::::{tab-item} Debian (APT) and RPM
-For [Debian](/deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md) and [RPM](/deploy-manage/deploy/self-managed/install-kibana-with-rpm.md) installations, {{kb}} writes logs to `/var/log/kibana`.
+For [Debian](/deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md) and [RPM](/deploy-manage/deploy/self-managed/install-kibana-with-rpm.md) installations, {{kib}} writes logs to `/var/log/kibana`.
 ::::::
 
 ::::::{tab-item} macOS and Linux
-For [macOS and Linux `.tar.gz`](/deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md) installations, {{kb}} writes logs to `$KIBANA_HOME/logs`.
+For [macOS and Linux `.tar.gz`](/deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md) installations, {{kib}} writes logs to `$KIBANA_HOME/logs`.
 
 Files in `$KIBANA_HOME` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).
 ::::::
 
 ::::::{tab-item} Windows .zip
-For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-kibana-with-zip-on-windows.md) installations, {{kb}} writes logs to `%KIBANA_HOME%\logs`.
+For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-kibana-on-windows.md) installations, {{kib}} writes logs to `%KIBANA_HOME%\logs`.
 
 Files in `%KIBANA_HOME%` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).
 ::::::
 
 :::::::
 
-If you run {{kib}} from the command line, {{kb}} prints logs to the standard output (`stdout`).
+If you run {{kib}} from the command line, {{kib}} prints logs to the standard output (`stdout`).
 
 You can also consume logs using [stack monitoring](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-self-managed.md).
