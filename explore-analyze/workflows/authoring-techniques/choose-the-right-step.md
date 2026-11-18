@@ -59,7 +59,7 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 
 | Intent | Step |
 |---|---|
-| There's a dedicated {{kib}} connector (Slack, Jira, PagerDuty, and so on) | The connector's named step, for example [`slack.postMessage`](/explore-analyze/workflows/steps/external-systems-apps.md). |
+| There's a dedicated {{kib}} connector (Slack, Jira, PagerDuty, and so on) | The connector's named step, for example [`slack`](/explore-analyze/workflows/steps/external-systems-apps.md). |
 | No dedicated connector, credentials matter | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md) with a configured HTTP connector for secrets storage. |
 | No dedicated connector, quick one-off | [`http`](/explore-analyze/workflows/steps/external-systems-apps.md) without a `connector-id`. |
 
@@ -107,6 +107,24 @@ The `kibana.*` case steps (`kibana.createCase`, `kibana.getCase`, `kibana.update
 | Classify into a fixed category set | [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify) |
 | Summarize content | [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) |
 | Invoke an {{agent-builder}} agent | [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) |
+
+### Work with {{agent-builder}} conversations [workflows-choose-conversations]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+| Intent | Step |
+|---|---|
+| Start a conversation without sending a message {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` | [`ai.conversation.create`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-create) |
+| Add a note or a user message without an agent response | [`ai.conversation.add_event`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-event), [`ai.conversation.add_user_message`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-user-message) |
+| Give the agent extra context, such as a runbook or a dashboard | [`ai.attachment.add`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-add) |
+| Revise context you already added | [`ai.attachment.update`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-update) |
+| Remove context you added | [`ai.attachment.delete`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-delete) |
+| Check what's attached, or read an attachment's content | [`ai.attachment.list`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-list), [`ai.attachment.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-read) |
+| Branch on a conversation's status or another metadata field | [`ai.conversation.metadata.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-read) |
+| Record an outcome on the conversation, such as closing an investigation | [`ai.conversation.metadata.patch`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-patch) |
 
 ### Call another workflow [workflows-choose-composition]
 

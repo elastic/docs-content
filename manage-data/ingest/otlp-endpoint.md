@@ -18,7 +18,7 @@ The endpoint does not run the [`elasticapm` processor](elastic-agent://reference
 
 The intended client for this endpoint is a gateway Collector, not an application. How you send OpenTelemetry data to {{es}} depends on your deployment type:
 
-* On {{ech}} and {{serverless-full}}, use the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) rather than `/_otlp`. The {{motlp}} is a separate ingestion host, and it enriches traces and produces aggregated {{product.apm}} metrics.
+* On {{ech}} and {{serverless-full}}, use the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) rather than `/_otlp`. The {{motlp}} is a separate ingestion host, and it enriches traces and produces aggregated {{product.apm}} metrics.
 * On self-managed, {{ece}}, and {{eck}} deployments, send application data to an [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode). The gateway runs the `elasticapm` processor and connector, then writes the enriched result to {{es}}, either to `/_otlp` or through the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md).
 
 The {{es}} OTLP/HTTP endpoint exposes three signal-specific paths:
@@ -41,7 +41,7 @@ For most users, one of the following higher-level ingestion paths is recommended
 
 | Deployment | Recommended ingestion path |
 | --- | --- |
-| {{ech}} and {{serverless-short}} | [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) |
+| {{ech}} and {{serverless-short}} | [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) |
 | {{ece}}, {{eck}}, and self-managed | [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode), which runs the `elasticapm` processor and connector before writing to {{es}} |
 
 Use {{motlp}} if it's available in your deployment, even when an application can target the {{es}} OTLP endpoint directly.
@@ -79,7 +79,7 @@ Compared to the [bulk API]({{es-apis}}operation/operation-bulk), ingesting throu
 
 Authenticate to the {{es}} OTLP endpoint with an API key.
 
-On {{ech}} and {{serverless-short}}, send OTLP data to the {{motlp}} instead of to `/_otlp`, and authenticate with an API key as described in [{{motlp}} authentication](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md#authentication).
+On {{ech}} and {{serverless-short}}, send OTLP data to the {{motlp}} instead of to `/_otlp`, and authenticate with an API key as described in [{{motlp}} authentication](/reference/managed-inputs/managed-otlp-endpoint.md#authentication).
 
 On self-managed, {{ece}}, and {{eck}} deployments, refer to the API key documentation for your deployment type for instructions on how to create one:
 
@@ -301,7 +301,7 @@ If you don't need exemplars, or want to avoid the additional storage, turn it of
 
 * **Trace enrichment and {{product.apm}} metrics:** The endpoint does not run the `elasticapm` processor or connector.
   Traces are stored as received, no aggregated {{product.apm}} metrics are produced, and the {{product.apm}} views that depend on them, such as the service inventory and service map, stay empty.
-  For the full {{product.apm}} experience, send traces to the [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) or through an [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
+  For the full {{product.apm}} experience, send traces to the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) or through an [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
 * **Delivery guarantees:** {{es}} can only acknowledge an OTLP request as a whole, not on a per-record basis.
   If part of a request fails, the client retries the entire batch, which can produce duplicate logs or trace spans.
   Metrics are not affected because metric points written to time series data streams are [deduplicated based on their dimensions and timestamp](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension).
