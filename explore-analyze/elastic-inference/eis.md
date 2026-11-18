@@ -328,7 +328,7 @@ Use the `preset` option to choose how Jina Reader extracts content. For example:
 - `ocr`: Extracts text with the `jina-ocr-v1` OCR model. Use it for scanned PDFs.
 - `pdf+`: Reads the PDF's text layer, adds support for images in the PDF, and uses `jina-ocr-v1` for tables, formulas, and pages without text. Use it for PDFs with tables or formulas, or with a mix of text and scanned pages.
 
-OCR and layout presets extract pages 1 to 35 by default. A request extracts at most 35 pages, so use the `page` option to choose which pages to extract.
+OCR and layout presets extract pages 1 to 35 by default. To extract other pages, set the `page` option, such as `36-70`. A `page` range can include at most 35 pages. A wider range returns an error.
 
 The following example extracts the first three pages of a PDF with the `pdf+` preset:
 
