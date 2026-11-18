@@ -24,7 +24,7 @@ You’ll learn to:
 When you complete this tutorial, you’ll have a map like this one:
 
 :::{image} /explore-analyze/images/kibana-sample_data_web_logs.png
-:alt: A map of North America with shaded countries and circles that show the number of web requests per area. The Layers panel lists the Total Requests and Bytes, Actual Requests, and Total Requests by Destination layers, and the basemap.
+:alt: A map of North America with countries shaded by web traffic and circles that show the number of web requests per area. The Layers panel lists three data layers and the basemap.
 :screenshot:
 :::
 
