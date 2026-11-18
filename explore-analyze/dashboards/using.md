@@ -52,7 +52,6 @@ You can use KQL to create complex queries that filter your dashboard data. For e
 When working with large datasets, complex KQL queries might cause dashboards to load slowly. In versions 9.2 and later, you can [send long-running searches to the background](../discover/background-search.md) and continue working on other tasks while the data loads.
 :::
 
-
 ### Use filter pills [_use_filter_pills]
 
 Use filter pills to focus in on the specific data you want.
@@ -77,10 +76,12 @@ You can create filter pills by:
 
 :::{note}
 :applies_to: {"stack": "ga 9.4", "serverless": "ga"}
-{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those created with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
+{{esql}}-based visualizations and Discover sessions imported to a dashboard also support interactive filtering. This works for fields that exist in the underlying {{es}} indices. Computed fields, such as those that the visualization's own query creates with {{esql}} commands like `EVAL` or `STATS`, Lens formulas, or aggregation results, do not support filtering or drilldown actions, because there is no matching field in the underlying index to filter on. When you click a value that comes from a computed field, the filter and drilldown options are not available.
 
 Refer to [Values that cannot open a drilldown](drilldowns.md#drilldowns-requirements) for an {{esql}} example.
 :::
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If a visualization reads from an [{{esql}} view](elasticsearch://reference/query-languages/esql/esql-views.md), you can filter on a column that the view returns. You can also open a drilldown from the values in that column. A column that the view itself computes, such as an aggregation, isn't a field in the underlying {{es}} index. Filtering on it works in the visualization that reads the view, but by default it leaves panels that query the index directly with no results. The computed-field limit still applies to columns that the visualization's own query creates on top of the view.
 
 
 #### Add pills using the filter editor [_add_pills_using_the_filter_editor]
@@ -284,6 +285,15 @@ Sometimes, the scope behaves differently:
 * **The dashboard restores a saved scope on open.** Some dashboards are configured to [store a {{cps}} scope](/explore-analyze/dashboards/create-dashboard.md). When you open them, the {{cps-init}} scope selector is set to the stored scope. You can still change it during your session.
 * **A panel has a Custom CPS scope badge.** This means the panel uses [project routing](/explore-analyze/cross-project-search/cross-project-search-project-routing.md) to query a fixed set of projects. It is not affected when you change the dashboard's scope. Select the badge to view which projects the panel queries.
 * **Query bar and filter suggestions come from the origin project only.** As you type a query or filter value, the autocomplete suggests values from the origin project, regardless of the selected scope. Filtering itself still respects the scope, so a value that exists only in a linked project works when you enter it manually. For value suggestions across all projects in scope, use an **Options list** control instead.
+
+
+## Cancel a slow dashboard load [cancel-dashboard-load]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+If a dashboard takes too long to load, you can stop it instead of waiting. While it loads, a **Cancel** button is available at the top of the dashboard. Select it to stop the queries that are still running. To load the dashboard again, select **Refresh**.
 
 
 ## Full screen mode and maximized panel views [_full_screen_mode_and_maximized_panel_views]

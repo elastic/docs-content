@@ -45,14 +45,13 @@ Constants declared at the top of the workflow. Evaluated once at workflow load. 
 ```yaml
 consts:
   threshold: 70
-  slack_channel: "#soc-oncall"
 
 steps:
   - name: notify
-    type: slack.postMessage
+    type: slack
+    connector-id: "soc-oncall-slack"
     with:
-      channel: "{{ consts.slack_channel }}"
-      text: "Threshold {{ consts.threshold }} exceeded."
+      message: "Threshold {{ consts.threshold }} exceeded."
 ```
 
 ### `steps.<name>.output` [workflows-ctx-step-output]
@@ -125,10 +124,18 @@ Metadata about the current workflow execution.
 | `execution.startedAt` | ISO timestamp of start. |
 | `execution.isTestRun` | `true` if run from the editor's **Test** button. |
 | `execution.executedBy` | UID of the user or system that invoked the workflow. |
-| `execution.triggeredBy` | Which trigger initiated this execution (`manual`, `scheduled`, `alert`, `workflows.failed`). |
+| `execution.triggeredBy` | Which trigger initiated this execution, such as `manual` or `scheduled`. For more values, refer to [the list after this table](#workflows-ctx-execution-triggeredby). |
 | `execution.url` | Deep link to the execution view in {{kib}}. |
 | `execution.compositionDepth` | 0 for a top-level invocation. Increments by 1 for each [`workflow.execute`](/explore-analyze/workflows/steps/composition.md#workflow-execute) level. |
 | `execution.parentWorkflowId` | ID of the parent workflow, if this is a composed child execution. |
+
+$$$workflows-ctx-execution-triggeredby$$$
+`execution.triggeredBy` values include:
+
+* `manual`, `scheduled`, and `alert`.
+* The trigger ID for runs started by an event trigger, such as `workflows.failed`.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` `workflow-step` when a parent workflow starts the run with a [`workflow.execute` or `workflow.executeAsync`](/explore-analyze/workflows/steps/composition.md) step.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` `agent-builder-hook` when {{agent-builder}} starts the workflow as a [pre-execution](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#pre-execution-workflows) or [post-execution](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md#post-execution-workflows) workflow.
 
 For how each trigger type determines `execution.executedBy`, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 
@@ -247,10 +254,10 @@ Base URL of the {{kib}} instance. Useful for building deep links in notification
 
 ```yaml
 - name: notify
-  type: slack.postMessage
+  type: slack
+  connector-id: "soc-slack"
   with:
-    channel: "#soc"
-    text: |
+    message: |
       Case created: <{{ kibanaUrl }}/app/security/cases/{{ steps.create_case.output.case.id }}|Open in {{kib}}>
 ```
 

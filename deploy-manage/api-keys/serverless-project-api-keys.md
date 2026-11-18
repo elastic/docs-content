@@ -39,7 +39,7 @@ The following options are available to create an API key:
 
 You can create a basic personal API key from anywhere in {{kib}}:
 
-  1. From the **Help menu** {icon}`question`, select **Connection details → API key**.
+  1. From the **Help menu** {icon}`question`, select **Connection details** → **API key**.
   2. Give the key a name.
   3. Select **Create API key**.
 

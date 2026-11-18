@@ -66,7 +66,7 @@ Assign the memory-enabled AI index to a custom agent:
 4. In **AI Indices**, select the memory-enabled AI index under **Additional indices**.
 5. Save the agent, then start a new conversation with it.
 
-With {{context-engine}} enabled, {{agent-builder}} automatically includes the `ki-retrieval` skill for chat agents. When the agent loads the skill, it receives the following retrieval tools:
+With {{context-engine}} enabled and at least one AI index assigned, {{agent-builder}} automatically makes the hidden `ki-retrieval` skill available to the agent, regardless of its type. When the agent loads the skill, it receives the following retrieval tools:
 
 - `platform.context_engine.list_ai_indices`
 - `platform.context_engine.describe_ai_index`
