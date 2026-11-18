@@ -54,9 +54,15 @@ A significant event has one of the following statuses, which show whether the pr
 
 - **Active**: A current failure is confirmed, or is plausible and not yet ruled out. Review it and investigate.
 - **Recovering**: Every rule behind the event looks healthy again. If any of them breaches again, the event returns to **Active**. No action is needed yet, but keep an eye on it.
-- **Inactive**: Every signal that confirmed the event was checked again and cleared, or someone marked the event inactive. The event is resolved, so no action is needed.
+- **Inactive**: The event is closed, so no action is needed.
 
-An event doesn't become inactive only because a rule goes quiet. It stays **Active** or **Recovering** until its signals are checked again and cleared.
+Detection doesn't close an event on its own. An event becomes **Inactive** only when one of the following happens:
+
+- Someone marks it inactive.
+- It stays **Recovering** for 48 hours with no new evidence.
+- All the rules behind it are deleted.
+
+The daily stale event cleanup closes the last two cases. Refer to [Advanced developer settings](../settings.md#nightshift-settings-advanced-dev).
 
 The **Events** tab hides inactive events by default. To inspect one, select **Inactive** in the **Status** filter. Refer to [Find an event](#nightshift-detection-events-find).
 

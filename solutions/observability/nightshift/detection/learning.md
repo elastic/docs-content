@@ -36,8 +36,8 @@ To change the interval or turn it off, refer to [Continuous KI onboarding](../se
 Right after you turn detection on, the **Detection engine** shows **Monitoring** and every count is zero. That's expected.
 
 1. **First KIs and rules, within a few minutes.** {{nightshift}} samples your logs and extracts KIs, then writes rules from them. The **knowledge indicators**, **entities**, and **rules** counts go up.
-1. **Rule warm-up, then the first signals.** Rules need some history before a change can stand out. Expect 40 to 100 minutes after you turn detection on before the first signals appear.
-1. **First significant events.** Once the rules have warmed up, detection runs every 10 minutes by default, so a new problem is detected in about 10 minutes. Discovery then reviews it in its next run, also every 10 minutes by default, and raises the significant event in that run. Events appear only when something actually changes in your system. On a healthy system, there can be none for a while.
+1. **Rule warm-up, then the first signals.** Rules need some history before a change can stand out. Rules for critical problems need about 40 minutes of data. All other rules need about 2 hours. Detection also checks the rules in turn, which can add up to 30 minutes. Expect the first signals 40 minutes to about 2.5 hours after you turn detection on.
+1. **First significant events.** Once the rules have warmed up, detection runs every 10 minutes by default and checks about a third of the rules in each run, so a new problem is detected in about 10 to 30 minutes. Discovery then reviews it in its next run, also every 10 minutes by default, and raises the significant event in that run. Events appear only when something actually changes in your system. On a healthy system, there can be none for a while.
 
 You might not see any events on a healthy system even after a few hours. To rule out a problem, check that:
 

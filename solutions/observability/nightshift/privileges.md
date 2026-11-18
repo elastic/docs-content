@@ -48,9 +48,11 @@ Add the privileges for each task the admin does.
 
 | Privilege | Access |
 | --- | --- |
-| **nightshift**: **Manage engines**, and the `manage_security` cluster privilege | Enable {{nightshift}} for a space |
-| **nightshift**: **All** and **Manage engines** | Open **Settings**, pause or resume engines, and change limits |
-| **nightshift**: **Manage engines** | Create, edit, turn on or off, or delete detection sources |
+| **nightshift**: **All** and **Manage engines**, and the `manage_security` cluster privilege | Enable {{nightshift}} for a space |
+| **nightshift**: **All** and **Manage engines** | Open **Settings**, and pause or resume engines |
+| **nightshift**: **All** and **Manage engines** in all spaces | Change daily limits |
+| **nightshift**: **All** and **Manage engines**, and **Advanced Settings**: **All** | Change the settings on the **Detections** tab |
+| **nightshift**: **All** and **Manage engines** | Create, edit, turn on or off, or delete detection sources |
 | **nightshift**: **All** and **Manage engines** | Connect a Slack workspace or channel |
 | **Advanced Settings**: **All** | Turn developer mode on or off |
 | **nightshift**: **All**, and the `manage_security` cluster privilege. {{nightshift}} must be enabled for the space. | Create, edit, turn on or off, or delete an automation |

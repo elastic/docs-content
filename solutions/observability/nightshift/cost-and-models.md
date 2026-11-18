@@ -60,7 +60,7 @@ Start with the defaults, then use the controls in the previous table: [Run limit
 
 Your bill is the source of truth. To check your token use, go to [**Billing** → **Usage**](https://cloud.elastic.co/billing/usage) in the {{ecloud}} console and look for line items with the **Inference** billing dimension. Refer to [Monitor your token usage](/explore-analyze/elastic-inference/eis.md#monitor-your-token-usage).
 
-{{nightshift}} can also show an estimate of its own cost. To turn it on, you need permission to save Advanced Settings.
+{{nightshift}} can also show an estimate of its own cost. To turn it on, you need the privileges to open **Settings** and permission to save Advanced Settings. Refer to [Grant access](./privileges.md#nightshift-privileges-admin).
 
 1. On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Settings**.
 1. On the **General** tab, turn on **Enable nightshift developer mode**. Refer to [Developer mode](./settings.md#nightshift-settings-developer-mode).
@@ -117,4 +117,4 @@ This section explains what {{nightshift}} reads, what it sends to models, and wh
 
 - [Settings and limits](./settings.md): Change the limits that keep your cost predictable.
 - [Investigation limits](./investigation/limits.md): Find out what happens when a limit is reached.
-- [Known issues](./known-issues.md): Check the Tech Preview limits on cost controls.
+- [Limitations](./known-issues.md): Check the Tech Preview limits on cost controls.

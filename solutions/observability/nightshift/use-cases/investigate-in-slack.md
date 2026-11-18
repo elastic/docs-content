@@ -52,7 +52,7 @@ If your alerts already arrive in Slack from another app, an automation can watch
 
 ## What you can do in Slack versus {{kib}} [nightshift-uc-slack-compare]
 
-Use Slack to start investigations, ask follow-up questions, and read the impact, conclusion, and hypotheses. To explore the hypothesis tree, mark proposed actions as applied or declined, or close, reopen, or assign an investigation, open it in {{kib}}. If an investigation started in Slack, ask follow-up questions in the thread, because its chat in {{kib}} is read-only. Refer to [Known issues](../known-issues.md#nightshift-known-issues-slack).
+Use Slack to start investigations, ask follow-up questions, and read the impact, conclusion, and hypotheses. To explore the hypothesis tree, mark proposed actions as applied or declined, or close, reopen, or assign an investigation, open it in {{kib}}. If an investigation started in Slack, ask follow-up questions in the thread, because its chat in {{kib}} is read-only. Refer to [Limitations](../known-issues.md#nightshift-known-issues-slack).
 
 ## Next steps [nightshift-uc-slack-next]
 
