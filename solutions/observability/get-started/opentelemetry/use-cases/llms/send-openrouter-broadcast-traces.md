@@ -16,24 +16,19 @@ products:
 
 [OpenRouter](https://openrouter.ai) is a gateway that routes LLM requests across many model providers. OpenRouter [Broadcast](https://openrouter.ai/docs/guides/features/broadcast) can send OpenTelemetry traces of every chat completion straight to Elastic. After an account admin adds Elastic as a destination in the OpenRouter console, one trace per request starts arriving in your Elastic project. You don't need to change your code or run an OpenTelemetry Collector.
 
-Each Broadcast trace contains two spans:
-
-* **`LLM Generation`**: The parent span, with the model, provider, and usage attributes for the request.
-* **`provider attempt N: <Provider>`**: A child span for the attempt against the upstream provider, with its own latency and response id.
-
-The spans follow the OpenTelemetry GenAI semantic conventions and are stored in Elastic in OTLP format.
+Each Broadcast trace covers one chat completion request, with the LLM generation and each provider attempt as spans. The spans follow the OpenTelemetry GenAI semantic conventions and are stored in Elastic in OTLP format.
 
 ::::{note}
-Broadcast sends **traces only**. For usage, cost and performance metrics by model and API key, install the companion OpenRouter integration from Fleet. The two sources are complementary and can be used together.
+Broadcast sends **traces only**. For usage, cost and performance metrics by model and API key, install the companion OpenRouter integration. The two sources are complementary and can be used together.
 ::::
 
 ## Before you begin
 
 Make sure you have the following:
 
-* An **admin** role on the OpenRouter account whose API keys you want to broadcast. If someone else administers the account, give them the endpoint and API key from the next item.
 * An {{obs-serverless}} project or an {{ech}} deployment. On {{ech}}, the {{motlp}} requires version 9.0 or later. The {{motlp}} isn't available for self-managed, {{ece}}, or {{eck}} deployments.
 * Your {{motlp}} endpoint and an API key with the `event:write` privilege for the `apm` application. To get both, follow the **Find your endpoint** and **Create an API key** steps in [Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md#send-data-to-elastic).
+* An **admin** role on the OpenRouter account whose API keys you want to broadcast. If someone else administers the account, give them the endpoint and API key from above.
 
 ## Add Elastic as a Broadcast destination
 
