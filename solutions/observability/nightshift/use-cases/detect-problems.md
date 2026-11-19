@@ -17,7 +17,7 @@ products:
 
 - An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
 - You have the privileges to turn on detection, or an admin has turned it on. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
-- You have recent logs in your project. Detection watches logs only, not metrics or traces.
+- You have recent logs in your project. Detection is optimized for logs.
 
 Detection runs all the time and uses tokens. Refer to [Cost and models](../cost-and-models.md).
 
@@ -38,7 +38,7 @@ Detection learns your system from your logs, writes its own rules, and groups un
 ::::{step} Turn on detection
 :anchor: nightshift-uc-detect-enable
 
-If the **Detection engine** on the **Detections** page doesn't show **Monitoring** yet, follow the detection steps in [Get started](../get-started.md#nightshift-get-started-detection). The first KIs and rules appear within a few minutes, and the first signals 40 to 100 minutes later while the rules warm up. After that, a new problem takes about 10 minutes to detect.
+If the **Detection engine** on the **Detections** page doesn't show **Monitoring** yet, follow the detection steps in [Get started](../get-started.md#nightshift-get-started-detection). The first KIs and rules appear within a few minutes, and the first signals 40 minutes to about 2.5 hours later while the rules warm up. After that, a new problem takes about 10 to 30 minutes to detect.
 ::::
 
 ::::{step} Review significant events

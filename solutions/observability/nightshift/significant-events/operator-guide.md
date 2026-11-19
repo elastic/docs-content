@@ -40,15 +40,15 @@ The following sections describe the query load, pipeline lag, and storage growth
 
 **Alerting rule query load**
 
-One {{alerting-v2-system-short}} rule runs for each promoted query KI, in [**Collect evidence** mode](/explore-analyze/alerting/esql/rules/configure-rule-mode.md). All of these rules run on the same shared schedule, and each run records a match count in `.rule-events` for each time bucket. These matches don't open alerts or appear on the **Alerts** page. On each detection cycle, change point aggregation runs separately for each active rule, against that rule's per-time-bucket match counts. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
+One {{alerting-v2-system-short}} rule runs for each promoted query KI, in [**Collect evidence** mode](/explore-analyze/alerting/esql/rules/configure-rule-mode.md). All of these rules run on the same shared schedule, and each run records a match count in `.rule-events` for each time bucket. These matches don't open alerts or appear on the **Alerts** page. Change point aggregation runs separately for each rule, against that rule's per-time-bucket match counts. Each detection cycle checks about a third of the active rules in turn, so each rule is checked about every 30 minutes. Document volume in `.rule-events` grows with the number of promoted rules and how often they execute.
 
 **Pipeline lag**
 
-The following table provides illustrative estimates of how long each phase takes from trigger to output, based on workflow schedules. They apply after the rules have warmed up, which takes 40 to 100 minutes after you turn detection on:
+The following table provides illustrative estimates of how long each phase takes from trigger to output, based on workflow schedules. They apply after the rules have warmed up, which takes 40 minutes to about 2.5 hours after you turn detection on:
 
 | Phase | Typical lag |
 |---|---|
-| First detection | ~10 min |
+| First detection | Up to ~30 min |
 | Discovery | ~10 min after detection |
 | Significant event raised | Same run as discovery |
 | Stale re-review | Up to ~10 min |
@@ -113,7 +113,7 @@ Turn off **Enable continuous KI onboarding**. Refer to [Continuous KI onboarding
 
 **Symptom**: A significant event remains open after the underlying condition appears to have resolved.
 
-**Action**: This is expected. Refer to [Status](../detection/significant-events.md#nightshift-detection-events-status).
+**Action**: This is expected. Detection doesn't close events on its own. A **Recovering** event closes after 48 hours with no new evidence. To close an event now, mark it inactive. Refer to [Status](../detection/significant-events.md#nightshift-detection-events-status).
 
 ## Learn more [sig-events-operator-learn-more]
 

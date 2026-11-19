@@ -117,6 +117,8 @@ Each action shows one of these statuses:
 
 To mark actions as applied or declined, you need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-analyst).
 
+To let {{nightshift}} run a fix for you, such as a workflow that restarts a service, refer to [Remediate with workflows](./extend.md#nightshift-extend-remediate).
+
 ### Ask follow-up questions in chat [nightshift-investigations-chat]
 
 Chat continues the investigation with its findings in context. Use it to understand a result, add a hypothesis, or check a fix. Select **Open chat** to ask follow-up questions. You can also select the chat icon on the investigation's card on the home page. The chat opens in Agent Builder, next to the investigation.

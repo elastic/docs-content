@@ -63,8 +63,6 @@ To start an investigation from the home page:
 1. Describe the problem, then select **Investigate**. Refer to [Write a good description](#nightshift-uc-anything-description).
 
 A card appears in the **In progress** section of the home page, named after your question until {{nightshift}} gives it a title.
-
-The **Investigate** button appears after your first investigation. Until then, use the **Ask your own question** box in the **Get started** checklist. Refer to [Try your first investigation](../get-started.md#nightshift-get-started-first-investigation).
 ::::
 
 ::::{step} Wait for the results
@@ -94,7 +92,7 @@ Does the confirmed hypothesis match what you observed? Did {{nightshift}} dismis
 ::::{step} Act on the proposed actions
 :anchor: nightshift-uc-anything-actions
 
-{{nightshift}} proposes actions, such as a command, a configuration change, a code fix, or a rollback. It never changes your environment.
+{{nightshift}} proposes actions, such as a command, a configuration change, a code fix, or a rollback. It doesn't change your environment unless you let it run your workflows. Refer to [Remediate with workflows](../investigation/extend.md#nightshift-extend-remediate).
 
 If an action fits, make the change, then select **Mark as applied**. Otherwise, select **Decline**. Refer to [Decide on proposed actions](../investigation/index.md#nightshift-investigations-actions).
 ::::

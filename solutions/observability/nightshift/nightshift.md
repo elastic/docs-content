@@ -37,7 +37,7 @@ Knowledge of how your system fits together usually sits with a few engineers. A 
 
 ## How it works [nightshift-overview-how]
 
-:::{image} ../../images/nightshift-how-it-works.svg
+:::{image} ../../images/nightshift-how-it-works.png
 :alt: How an investigation flows from a trigger, through detection and context, to the proposed actions you decide on.
 :::
 
@@ -45,7 +45,7 @@ Knowledge of how your system fits together usually sits with a few engineers. A 
 1. **{{nightshift}} investigates.** It queries your data, reads connected code, and tests hypotheses, ranked by confidence.
 1. **It uses and builds context.** It reads its Wiki and Memory first to get context, and saves what it learns.
 1. **It proposes actions.** It provides a likely cause, the evidence, proposed actions, and what it was unsure of.
-1. **You decide.** {{nightshift}} never changes your environment. You apply or decline each action. Administrators set run limits and can pause detection in [Settings and limits](./settings.md).
+1. **You decide.** {{nightshift}} doesn't change your environment unless you let it run your workflows. Refer to [Remediate with workflows](./investigation/extend.md#nightshift-extend-remediate). You apply or decline each action. Administrators set run limits and can pause detection in [Settings and limits](./settings.md).
 
 Conclusions can be wrong. Before you act, check the reasoning in the hypothesis tree. Refer to [How investigations work](./investigation/index.md#nightshift-investigations-accuracy).
 
@@ -55,7 +55,7 @@ Conclusions can be wrong. Before you act, check the reasoning in the hypothesis 
 
 ## Availability [nightshift-overview-availability]
 
-{{nightshift}} is available on {{obs-serverless}} projects on the Complete tier, in the default space only. Refer to [Known issues](./known-issues.md).
+{{nightshift}} is available on {{obs-serverless}} projects on the Complete tier, in the default space only. Refer to [Limitations](./known-issues.md).
 
 ## Give feedback [nightshift-feedback]
 
