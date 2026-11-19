@@ -72,9 +72,8 @@ You can create an API key using the [Create API key]({{cloud-apis}}/operation/op
 curl -XPOST \
 -H 'Content-Type: application/json' \
 -H "Authorization: ApiKey $EC_API_KEY" \
-"https://api.elastic-cloud.com/api/v1/users/auth/keys
-
-{
+"https://api.elastic-cloud.com/api/v1/users/auth/keys" \
+-d '{
   "description": "api-created-key",
   "expiration": "90d",
   "role_assignments": {
@@ -94,7 +93,7 @@ curl -XPOST \
       ]
     }
   }
-}
+}'
 ```
 
 1. Roles granted for [project-level access](#project-access) through the {{es}} and {{kib}} APIs.
