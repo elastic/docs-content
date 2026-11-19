@@ -246,7 +246,7 @@ A monitor that the restriction excludes reports down, and the secret isn't sent.
 
 #### Configure {{kib}} settings [synthetics-secrets-vault-settings]
 
-Set these in `kibana.yml`:
+Set these in `kibana.yml`. On {{ech}}, set them in the {{kib}} user settings instead. To learn how, refer to [Edit {{stack}} settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
 
 `xpack.synthetics.secretConnections.enabled`
 :   Turns Vault connections and secret references on or off. Defaults to `true`. When it's `false`, the **HashiCorp Vault connections** panel is hidden and a monitor that contains a reference is rejected when you save it.
