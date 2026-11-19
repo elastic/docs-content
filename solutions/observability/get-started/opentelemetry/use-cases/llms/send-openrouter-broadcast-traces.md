@@ -18,10 +18,6 @@ products:
 
 Each request produces a parent span for the LLM generation plus one child span per upstream provider attempt. The spans follow the OpenTelemetry GenAI semantic conventions and are stored in Elastic in OTLP format.
 
-::::{note}
-Broadcast sends **traces only**. For usage, cost and performance metrics by model and API key, install the companion OpenRouter integration. The two sources are complementary and can be used together.
-::::
-
 ## Before you begin
 
 Make sure you have the following:
