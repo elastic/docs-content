@@ -18,7 +18,7 @@ This guide covers the full migration process, from assessing the source and prep
 
 Before starting the migration, make sure that you have:
 
-- **Source access:** Use credentials that can inventory and export every resource in the source environment. A practical broad custom role grants the `all` cluster privilege, `read` and `view_index_metadata` on `*`, and the {{kib}} `all` base privilege for all spaces. You can use the `superuser` role instead, but it is not required. If you use a narrower custom role, confirm that it supports every inventory and export operation in this guide.
+- **Source access:** Use credentials with the {{es}} and {{kib}} privileges needed to read the source data and retrieve the resource configuration required for the migration. A practical broad custom role grants the `all` cluster privilege, `read` and `view_index_metadata` on `*`, and the {{kib}} `all` base privilege for all spaces. You can use the `superuser` role instead, but it is not required. If you use a narrower custom role, confirm that it supports every inventory and export operation in this guide.
 - **Destination access:** Make sure that you can create {{serverless-short}} projects in the {{ecloud}} organization. The [predefined **Admin** role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-table) or an equivalent role is required. If the destination project already exists, you need the **Admin** role scoped to that project with **Cloud Console, {{es}}, and {{kib}}** access.
 
 ## Migration overview [migrate-to-serverless-order]
@@ -51,7 +51,7 @@ Identify the data, configuration, integrations, applications, and external depen
 
 Focus on user-created resources and customizations, including direct changes to Elastic-managed assets. You generally do not need to inventory or transfer individual managed, system, or internal assets. The destination integrations and components recreate the resources they provide. Record the integrations and versions you use, and check each feature's migration guidance for exceptions.
 
-The following checklist provides a broad reference to the asset types involved in a migration. Mark the items your solution uses and add any resources specific to your environment. [Prepare and test the destination](#migrate-to-serverless-prepare) describes the migration procedures, with links from the corresponding checklist entries. The labels indicate whether you can transfer an asset directly, need to adapt it, or must replace it because it is unavailable in {{serverless-short}}.
+The following checklist provides a broad reference to the asset types involved in a migration. Mark the items your solution uses and add any resources specific to your environment. The migration procedures and considerations for each asset type are described later in [Prepare and test the destination](#migrate-to-serverless-prepare). The labels indicate whether you can transfer an asset directly, need to adapt it, or must replace it because it is unavailable in {{serverless-short}}.
 
 % TODO: Add migration procedures and local links for transforms, Watcher, SLOs, Synthetics monitors, reporting schedules, Streams, Attack Discovery, Endpoint artifacts, and network configuration. Keep these entries unlinked until their procedures are documented.
 
@@ -163,7 +163,7 @@ The suggested sequence helps you avoid resource creation errors caused by missin
 Test the migrated configuration and data with representative read and indexing workflows to confirm that the solution works before changing production connections.
 
 :::{image} /deploy-manage/images/serverless-migration-assets.svg
-:alt: Assets to migrate or recreate, grouped by color: integration packages and Fleet, data structures and processing, Kibana content and automation, Observability and Security configuration, access, data, and connections.
+:alt: Prepare integration packages, data structures, historical data, Kibana and solution resources, Fleet, AI and machine learning, and access. Test and validate the destination. Refine or recreate the project and repeat preparation, or continue to complete the migration and switch to production.
 :::
 
 % Diagram scope includes planned entries whose supported procedures still need to be developed from the research notes.
