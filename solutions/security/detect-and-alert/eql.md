@@ -56,7 +56,7 @@ sequence by process.entity_id
 | First `[ ]` bracket | Matches the process-start event for `msxsl.exe`. |
 | Second `[ ]` bracket | Matches an outbound network connection from the same `msxsl.exe` process. |
 
-The rule generates a single alert when the full sequence is detected.
+When the rule detects the full sequence, it creates a sequence alert and a building block alert for each event in the sequence. For details, refer to [Interpret EQL sequence alerts](/solutions/security/detect-and-alert/interpret-eql-sequence-alerts.md).
 
 ### Single-event queries
 
@@ -124,6 +124,8 @@ This rule detects when `msxsl.exe` starts and then makes an outbound network con
 | `query` | `sequence by process.entity_id [process where ...] [network where ...]` | A two-step sequence. The `by process.entity_id` clause ensures both events came from the same process instance. The first bracket matches a process-start event for `msxsl.exe`, and the second matches an outbound network connection from that same process. |
 | `index` | `["winlogbeat-*", "logs-endpoint.events.*"]` | Covers {{winlogbeat}} and {{elastic-defend}} indices. Both must contain process and network events for the sequence to match. |
 
+When this sequence matches, the rule creates a sequence alert and a building block alert for each of the two events. To learn what each alert tells you and how to find when each event happened, refer to [Interpret EQL sequence alerts](/solutions/security/detect-and-alert/interpret-eql-sequence-alerts.md).
+
 ### Single-event query with EQL settings [eql-example-single]
 
 This rule detects `certutil.exe` being used to download files and demonstrates the EQL-specific settings fields.
@@ -172,31 +174,3 @@ The following settings appear in the **Define rule** section when creating an EQ
 
 **Suppress alerts by** (optional)
 :   Reduce repeated or duplicate alerts by grouping them on one or more fields. For details, refer to [Alert suppression](/solutions/security/detect-and-alert/alert-suppression.md).
-
-## Alerts created by sequence queries [eql-sequence-alerts]
-
-A single-event EQL query creates one alert for each matching event, like other rule types. A sequence query creates two kinds of alert each time the sequence matches:
-
-* **One building block alert for each matched event.** It contains the fields of that event. Steps that detect missing events (`!`) don't create a building block alert, because there is no event to copy.
-* **One shell alert for the sequence as a whole.** This is the alert you see in the Alerts table. From the matched events, it keeps only the fields that have the same value in all of them, so fields that differ between the events are absent.
-
-Building block alerts are hidden by default. To display them, select **Additional filters** → **Include building block alerts** in the Alerts table. For details, refer to [View building block alerts in the UI](/solutions/security/detect-and-alert/about-building-block-rules.md#security-building-block-rules-view-building-block-alerts-in-the-ui).
-
-To find the alerts that belong to one sequence match, use the following fields:
-
-| Field | Building block alert | Shell alert |
-|---|---|---|
-| `kibana.alert.group.id` | Same value as the shell alert | Same value as its building block alerts |
-| `kibana.alert.group.index` | Position of the matched event in the sequence, starting from `0` | Not set |
-| `kibana.alert.building_block_type` | `default` | Not set |
-
-### Time fields on sequence alerts [eql-sequence-alerts-time]
-
-The shell alert is created from the building block alerts, not from the source events. This affects `kibana.alert.original_time`:
-
-| Field | Building block alert | Shell alert |
-|---|---|---|
-| `@timestamp` | When the alert was created | When the alert was created |
-| `kibana.alert.original_time` | The `@timestamp` of the matched source event, which is when the event occurred | The `@timestamp` of the first building block alert, which is when that alert was created |
-
-To find out when the events in a sequence occurred, check `kibana.alert.original_time` on the building block alerts.

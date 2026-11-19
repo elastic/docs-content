@@ -80,6 +80,19 @@ host.name: "web-server-01" AND kibana.alert.status: "active"
 - `host.name`: The hostname from the original event
 - `kibana.alert.status`: System status (`active` means the alert condition is ongoing)
 
+### Find the alerts for an EQL sequence (KQL) [find-eql-sequence-alerts]
+
+Returns an EQL sequence alert and its building block alerts, which hold the details of each event in the sequence. Use this to see what happened at each step and when. On the Alerts page, [include building block alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#include-building-block-alerts) to see the results.
+
+```text
+kibana.alert.group.id: "<group-id>"
+```
+
+- `kibana.alert.group.id`: The ID that a sequence alert and its building block alerts share
+- `kibana.alert.original_time`: On each building block alert, when its event happened
+
+To learn what each of these alerts tells you, refer to [Interpret EQL sequence alerts](/solutions/security/detect-and-alert/interpret-eql-sequence-alerts.md).
+
 ### Correlate alerts in a threshold rule
 
 Detects hosts triggering multiple alerts within a time window—useful for identifying systems under active attack.

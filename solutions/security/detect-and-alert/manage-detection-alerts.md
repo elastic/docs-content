@@ -49,7 +49,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | KQL search | Enter queries like `kibana.alert.rule.name: "SSH from the Internet"`. Autocomplete is available for `.alerts-security.alerts-*` indices. |
 | Date/time picker | Set a specific time range (default: last 24 hours). |
 | Drop-down controls | Filter by status, severity, user, host, or [custom fields](#drop-down-filter-controls). |
-| Additional filters | Include [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) or show only indicator match rule alerts. |
+| Additional filters | Include [building block alerts](#include-building-block-alerts) or show only indicator match rule alerts. |
 | Visualization section | Group and visualize alerts by field. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md). |
 
 ### Inline actions
@@ -71,7 +71,29 @@ Hover over any value in the Alerts table to see inline actions. Click the expand
 
 ### View rule-specific alerts
 
-Go to **Rules** → **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
+Go to **Rules** → **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions. For a [building block rule](/solutions/security/detect-and-alert/about-building-block-rules.md), the page includes its building block alerts by default.
+
+### Include building block alerts [include-building-block-alerts]
+
+To show building block alerts in the Alerts table, select **Additional filters** → **Include building block alerts**. The table hides them by default. [Building block rules](/solutions/security/detect-and-alert/about-building-block-rules.md) create them for low-risk activity, and [EQL sequence rules](/solutions/security/detect-and-alert/interpret-eql-sequence-alerts.md) create them to hold the details of each event in a sequence.
+
+Including building block alerts helps when the visible alerts don't give you enough context, for example:
+
+* A host or user has a high [entity risk score](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) but no visible alerts. Building block alerts count toward risk scores.
+* An alert comes from a rule that searches the alerts index, and you want to review the low-risk activity that led to it.
+* You're investigating a host or user and want to check for low-risk activity on it.
+* You need the details of each event in an EQL sequence. Refer to [View the events in an EQL sequence](#eql-sequence-events).
+
+### View the events in an EQL sequence [eql-sequence-events]
+
+To see what happened at each step of an EQL sequence, and when each step happened, review the building block alerts for its sequence alert. The [sequence alert](/solutions/security/detect-and-alert/interpret-eql-sequence-alerts.md) shows only the values that all the events share.
+
+| Method | How to do it |
+|--------|--------------|
+| Timeline | Select {icon}`timeline` **Investigate in timeline** for the sequence alert. Timeline shows the sequence alert and its building block alerts. If the rule uses a Timeline template, Timeline uses the template's query instead. |
+| Alerts table | Select **Additional filters** → **Include building block alerts**, then filter by the sequence alert's group ID, for example `kibana.alert.group.id: "<group-id>"`. |
+
+On each building block alert, `kibana.alert.original_time` shows when its event happened, and `kibana.alert.group.index` shows the event's position in the sequence, starting from `0`.
 
 
 ## Edit drop-down filter controls [drop-down-filter-controls]

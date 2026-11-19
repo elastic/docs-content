@@ -14,35 +14,21 @@ description: Create rules that generate hidden alerts used as building blocks fo
 
 # About building block rules [security-building-block-rules]
 
-Create building block rules when you do not want to see their generated alerts in the UI. This is useful when you want:
+A building block rule creates alerts that the Alerts table hides by default. Use building block rules for activity that isn't worth triaging on its own but matters in combination with other activity. For example, you can create several building block rules that each detect one low-risk behavior, and then create a rule that alerts when several of those behaviors happen on the same host.
 
-* A record of low-risk alerts without producing noise in the Alerts table.
-* Rules that execute on the alert indices (`.alerts-security.alerts-<kibana space>`). You can then use building block rules to create hidden alerts that act as a basis for an *ordinary* rule to generate visible alerts.
+Rule actions still run for building block rules, so you can get [notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) when they create alerts.
 
-::::{tip}
-Add [rule notifications](/solutions/security/detect-and-alert/common-rule-settings.md#rule-notifications) to building block rules to notify you when building block alerts are generated. 
-::::
+## Create a building block rule [security-building-block-rules-create]
 
+When you create or edit a rule of any type, open **Advanced settings** in the **About rule** step, and then select **Mark all generated alerts as "building block" alerts**.
 
-## Set up rules that run on alert indices [security-building-block-rules-set-up-rules-that-run-on-alert-indices]
+## Use building block alerts in another rule [security-building-block-rules-set-up-rules-that-run-on-alert-indices]
 
-To create a rule that searches alert indices, select **Index Patterns** as the rule’s **Source** and enter the index pattern for alert indices (`.alerts-security.alerts-*`):
+To detect a combination of building block alerts, create a rule that searches the alerts index instead of your event indices. Select **Index Patterns** as the rule's **Source**, and enter the index pattern for alert indices (`.alerts-security.alerts-*`):
 
 :::{image} /solutions/images/security-alert-indices-ui.png
-:alt: alert indices ui
+:alt: Rule Source setting with Index Patterns selected and the .alerts-security.alerts-* index pattern entered
 :screenshot:
 :::
 
-
-## View building block alerts in the UI [security-building-block-rules-view-building-block-alerts-in-the-ui]
-
-By default, building block alerts are excluded from the Overview and Alerts pages. You can choose to include building block alerts on the Alerts page, which expands the number of alerts.
-
-1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. In the Alerts table, select **Additional filters** → **Include building block alerts**, located on the far-right.
-
-::::{note}
-On a building block rule details page, the rule’s alerts are displayed (by default, **Include building block alerts** is selected).
-::::
-
-EQL rules with a sequence query also create building block alerts, even when the rule isn't a building block rule. For details, refer to [Alerts created by sequence queries](/solutions/security/detect-and-alert/eql.md#eql-sequence-alerts).
+In the rule's query, match the building block alerts you want to combine, for example by their `kibana.alert.rule.name` value. For more ways to query alerts, refer to [Query alert indices](/solutions/security/detect-and-alert/query-alert-indices.md).
