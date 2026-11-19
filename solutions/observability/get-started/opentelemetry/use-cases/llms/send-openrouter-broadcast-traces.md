@@ -24,7 +24,7 @@ Each Broadcast trace contains two spans:
 The spans follow the OpenTelemetry GenAI semantic conventions and are stored in Elastic in OTLP format.
 
 ::::{note}
-Broadcast sends **traces only**. For usage, cost and performance metrics by model and API key, install the companion [OpenRouter integration](integration-docs://reference/openrouter.md). The two sources are complementary and can be used together.
+Broadcast sends **traces only**. For usage, cost and performance metrics by model and API key, install the companion OpenRouter integration from Fleet. The two sources are complementary and can be used together.
 ::::
 
 ## Before you begin
