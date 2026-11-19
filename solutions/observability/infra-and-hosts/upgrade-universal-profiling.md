@@ -42,7 +42,7 @@ To perform a stack upgrade in {{ecloud}}:
 2. Click the **Manage deployment** icon next to your deployment to open the deployment settings.
 3. Find **Deployment version** on the right side of the page.
 4. Click **Upgrade**, and choose the desired version.
-5. Verify the upgrade was successful under **Your deployment → Activity** in the navigation menu.
+5. Verify the upgrade was successful under **Your deployment** → **Activity** in the navigation menu.
 
 
 ### Stop profiling data ingestion [profiling-stop-ingestion]

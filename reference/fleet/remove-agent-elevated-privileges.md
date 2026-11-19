@@ -36,7 +36,7 @@ To remove elevated privileges from one or more {{agents}} using the {{fleet}} UI
 
 2. Select one or more agents for which you want to remove the elevated privileges.
 
-3. Select **Actions** > **Security and removal** > **Remove root access for N agents** where N is the number of agents you've selected. A flyout opens.
+3. Select **Actions** → **Security and removal** → **Remove root access for N agents** where N is the number of agents you've selected. A flyout opens.
 
 4. Review the information in the flyout:
 
@@ -65,7 +65,7 @@ You can also initiate the privilege removal for a single agent from either of th
 - The action menu at the end of the agent's row on the **Agents** tab
 - The **Actions** menu on the agent's **Agent details** page
 
-From either location, select **Security and removal** > **Remove root privilege**, then review the information in the flyout and confirm to remove privileges.
+From either location, select **Security and removal** → **Remove root privilege**, then review the information in the flyout and confirm to remove privileges.
 :::
 
 ## What happens when you remove elevated privileges [remove-elevated-privileges-behavior]

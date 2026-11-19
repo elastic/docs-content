@@ -10,7 +10,7 @@ products:
 
 # Notifications domain allowlist [organizations-notifications-domain-allowlist]
 
-The notifications domain allowlist restricts the possible recipients for alert emails. {{es}} Watcher and {{kib}} alerting actions send emails only if the recipient domains are included in this allowlist.
+The notifications domain allowlist restricts the possible recipients for alert emails. {{es}} Watcher, {{alerting-v1-system}}, and {{alerting-v2-system}} send emails only if the recipient domains are included in this allowlist.
 
 ::::{note}
 The recipients are only restricted if one or more domains are configured. If there are no domains configured, notifications can be sent to any recipient domain (No restrictions apply).

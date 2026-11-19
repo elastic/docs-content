@@ -12,7 +12,7 @@ It requires remote_type substitution to be defined
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 3. From the navigation menu, select **Security**.
-4. Select **Remote Connections > Add trusted environment** and choose **{{remote_type}}**. Then click **Next**.
+4. Select **Remote Connections** → **Add trusted environment** and choose **{{remote_type}}**. Then click **Next**.
 5. Select **API keys** as authentication mechanism and click **Next**.
 6. When asked whether the Certificate Authority (CA) of the remote environment’s proxy or load-balancing infrastructure is public, select **No, it is private**.
 7. Add the API key:

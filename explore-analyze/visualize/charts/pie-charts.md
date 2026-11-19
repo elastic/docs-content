@@ -615,7 +615,10 @@ Configure elements of your pie chart's legend:
 :   Choose whether to truncate long legend labels, and set a limit for how many lines to display.
 
 **Width**
-:   Set the width of the legend.
+:   Control the width of the legend panel. Select **Auto**, **Small**, **Medium**, **Large**, or **Extra large**. **Auto** sizes the legend to fit its labels, and the other options set a fixed width. The default and available options depend on your environment:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Auto** is the default.
+    - {applies_to}`stack: ga 9.0-9.5` **Medium** is the default. **Auto** is available in the interface only for charts whose width is already set to **Auto**, for example charts created with the API, or charts created before 8.3 that had no width set.
 
 ## Pie chart examples
 

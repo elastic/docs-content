@@ -46,7 +46,7 @@ You can safely run the diagnostic on a production cluster.
 
 The Support Diagnostic tool is included as a sub-library in some Elastic deployments:
 
-* {{ece}}: Located under **{{ece}}** > **Deployment** > **Operations** > **Prepare Bundle** > **{{es}}**.
+* {{ece}}: Located under **{{ece}}** → **Deployment** → **Operations** → **Prepare Bundle** → **{{es}}**.
 * {{eck}}: Run as [`eck-diagnostics`](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md).
 
 You can also directly download the `diagnostics-X.X.X-dist.zip` file for the latest Support Diagnostic release from [the `support-diagnostic` repo](https://github.com/elastic/support-diagnostics/releases/latest).

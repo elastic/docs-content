@@ -20,6 +20,7 @@ This page covers several common MCP hosts:
 * claude.ai
 * ChatGPT
 * Cursor
+* Amazon Bedrock AgentCore Gateway
 
 
 Other OAuth 2.1 hosts follow the same general pattern, so consult your host's documentation for the specific configuration format.
@@ -98,7 +99,7 @@ The Claude desktop app supports OAuth natively, so no additional adapter is requ
 To configure the Claude desktop app:
 
 1. Start the Claude desktop app and log in.
-2. Open **Settings → Connectors → Add → Add custom connector**.
+2. Open **Settings** → **Connectors** → **Add** → **Add custom connector**.
 3. Enter a name, the URL, and Client ID.
 
 
@@ -121,7 +122,7 @@ The Claude desktop app supports local MCP servers, and can use the [mcp-remote](
 
 To configure the Claude desktop app:
 
-1. In the Claude desktop app, open **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` in your text editor.
+1. In the Claude desktop app, open **Settings** → **Developer** → **Edit Config**. This opens `claude_desktop_config.json` in your text editor.
 2. Add your MCP client to the `mcpServers` object:
 
    ```json
@@ -169,7 +170,7 @@ Instead of adding a custom connector, you can add the [Elastic Cloud Serverless 
 To connect from claude.ai:
 
 1. Log in to claude.ai.
-2. Click your account menu, and then go to **Settings → Connectors → Add → Add custom connector**.
+2. Click your account menu, and then go to **Settings** → **Connectors** → **Add** → **Add custom connector**.
 3. Enter a name, the URL, and Client ID. Confidential clients also require a Client Secret.
 4. Click **Add**.
 5. Click **Connect**
@@ -189,8 +190,8 @@ ChatGPT assigns a unique callback URL to each app. You won't know this URL until
 
 To connect from ChatGPT:
 
-1. Go to **Settings → Security and login** and enable **Developer mode**.
-2. Go to **Settings → Plugins**, then click the plus button to create a new plugin.
+1. Go to **Settings** → **Security and login** and enable **Developer mode**.
+2. Go to **Settings** → **Plugins**, then click the plus button to create a new plugin.
 3. Enter a name and the MCP server URL, and select **OAuth** as the authentication type.
 4. Under **Registration method**, select **User-Defined OAuth Client**.
 5. Copy the **Callback URL** that ChatGPT displays. This URL is unique to the app and looks like `https://chatgpt.com/connector/oauth/{callback_id}`. Open your [OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) in a separate tab and add this URL as a **Remote** redirect URI.
@@ -223,13 +224,34 @@ To connect from Cursor:
 
    Replace `{MCP_SERVER_URL}`, `{CLIENT_ID}`, and `{CLIENT_SECRET}` with the values for your OAuth client. For public clients, omit the `CLIENT_SECRET` field.
 
-3. Open **Cursor Settings → Tools & MCP**. The server appears with a **Connect** button.
+3. Open **Cursor Settings** → **Tools & MCP**. The server appears with a **Connect** button.
 4. Click **Connect** to start the OAuth flow.
 
 When Cursor starts the OAuth flow, it redirects to one of two callback URLs depending on the surface:
 
 - **Cursor desktop**: `http://localhost:8787/callback`. The authorization server accepts any localhost port, and `/callback` is one of the default redirect URIs populated in the [OAuth client registration form](/deploy-manage/app-connections/create-oauth-client.md#create-the-client), so it should be included in your client's redirect URIs unless you explicitly removed it.
 - **Cursor web and Cursor Agents**: `https://www.cursor.com/agents/mcp/oauth/callback`. If you get an authorization error, check that your [OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) includes this as a Remote redirect URI.
+:::::
+
+:::::{dropdown} Amazon Bedrock AgentCore Gateway
+:name: connect-agentcore-gateway
+
+AgentCore Gateway connects to {{agent-builder}} through an outbound OAuth client in AgentCore Identity.
+
+Before you start, make sure you have:
+
+- An {{agent-builder}} OAuth client [with a client secret](/deploy-manage/app-connections/create-oauth-client.md#optional-generate-a-client-secret).
+- [An outbound OAuth client](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/identity-add-oauth-client-custom.html) in AgentCore Identity that uses the client ID and client secret of your {{agent-builder}} OAuth client.
+
+To connect from AgentCore Gateway:
+
+1. In AgentCore Identity, open your outbound OAuth client and copy its **Callback URL**. It looks like `https://bedrock-agentcore.{region}.amazonaws.com/identities/oauth2/callback/{id}`.
+2. [Edit your {{agent-builder}} OAuth client](/deploy-manage/app-connections/create-oauth-client.md#edit-oauth-client) and add the callback URL as a **Remote** redirect URI.
+3. In your gateway, add an MCP server target and set its endpoint to your MCP server URL. For a passthrough target, remove the `/mcp` suffix from the URL, because AgentCore appends it to each request.
+4. For the target's outbound authentication, select your outbound OAuth client, select **Authorization code grant (3LO)** as the grant type, and add the `all` scope.
+5. In the **Return URL** field, enter the `https://` endpoint of the application that completes authorization for your users. Browsers block the redirect to `http://` return URLs.
+
+After a user authorizes, AgentCore redirects them to your return URL with a session ID. Your application must call the AgentCore `CompleteResourceTokenAuth` API with that session ID to finish authorization. For details, refer to [Authentication with an authorization code grant when invoking a gateway](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway-using-auth-ex-3lo.html).
 :::::
 
 :::::{dropdown} Other
@@ -314,6 +336,10 @@ Connections expire after 30 days without use. Complete the authorization flow ag
 **The authorization flow fails after you wait on the authorization page.**
 
 The MCP host's local callback server times out if the **Connect and authorize** page is left open too long before you click **Authorize**. Start the flow again and click **Authorize** promptly without leaving the page open.
+
+**Amazon Bedrock AgentCore Gateway calls fail with an authorization error after you revoke a connection.**
+
+AgentCore keeps using the revoked access token until it expires, which takes up to one hour. After that, AgentCore prompts the user to authorize again.
 
 **You need to start fresh with a new connection.**
 

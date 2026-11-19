@@ -11,7 +11,7 @@ products:
 
 # Elasticsearch query [rule-type-es-query]
 
-The {{es}} query rule type runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
+The {{es}} query rule type is part of {{alerting-v1-system}}. It runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
 
 In **{{rules-ui}}**, click **Create rule**. For help navigating to the Rules page, refer to [Create and manage alerting rules](create-manage-rules.md). Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
 
@@ -87,14 +87,14 @@ When you create an {{es}} query rule, your choice of query type affects the info
 8. Specify the rule's scope, which determines the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule and its alerts. Depending on your role's access, you can select one of the following:
 
    - {applies_to}`stack: ga 9.3+` **All**: (Default) Roles must have the appropriate privileges for one of the following features:
-      - Infrastructure metrics (**Observability > Infrastructure**)
-      - Logs (**Observability > Logs**)
-      - APM (**Observability > APM and User Experience**)
-      - Synthetics (**Observability > Synthetics and Uptime**)
-      - Stack rules (**Management > {{stack-rules-feature}}**) 
-   - **Logs**: Roles must have the appropriate **Observability > Logs** feature privileges.
-   - **Metrics**: Roles must have the appropriate **Observability > Infrastructure** feature privileges.
-   - **Stack Management**: Roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
+      - Infrastructure metrics (**Observability** → **Infrastructure**)
+      - Logs (**Observability** → **Logs**)
+      - APM (**Observability** → **APM and User Experience**)
+      - Synthetics (**Observability** → **Synthetics and Uptime**)
+      - Stack rules (**Management** → **{{stack-rules-feature}}**) 
+   - **Logs**: Roles must have the appropriate **Observability** → **Logs** feature privileges.
+   - **Metrics**: Roles must have the appropriate **Observability** → **Infrastructure** feature privileges.
+   - **Stack Management**: Roles must have the appropriate **Management** → **{{stack-rules-feature}}** feature privileges.
 
    For example, if you select **All**, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} page.
 
