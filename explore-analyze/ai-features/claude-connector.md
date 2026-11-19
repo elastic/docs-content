@@ -34,7 +34,7 @@ The exact set depends on your project type and on any custom tools you've create
 
 ## How Claude connector and plugin work together
 
-The connector and the [Elastic plugin for Claude](claude-plugin.md) complement each other:
+The connector and the [Elastic plugin for Claude](agent-plugins/claude-plugin.md) complement each other:
 
 - The **connector** gives Claude access to your data in one {{serverless-short}} project.
 - The **plugin** gives Claude knowledge about Elastic, through agent skills and the Elastic Docs MCP server.
@@ -161,4 +161,4 @@ To learn more, refer to [Add a connector that isn't in the directory](https://cl
 - [](/deploy-manage/app-connections/oauth-clients.md)
 - [](/deploy-manage/app-connections/create-oauth-client.md)
 - [](/deploy-manage/app-connections/connect-mcp-host.md)
-- [](claude-plugin.md)
+- [](agent-plugins/claude-plugin.md)

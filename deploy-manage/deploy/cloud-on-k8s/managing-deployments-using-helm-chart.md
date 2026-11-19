@@ -29,9 +29,12 @@ helm repo add elastic https://helm.elastic.co
 helm repo update
 ```
 
-:::{note}
-The minimum supported version of Helm for this method is {{eck_helm_minimum_version}}.
-:::
+::::{important}
+Before you install the {{stack}} Helm chart, make sure that:
+
+* Your Helm version is {{eck_helm_minimum_version}} or later.
+* The ECK operator and its CustomResourceDefinitions (CRDs) are installed in your cluster. If they aren't, the installation fails with errors such as `no matches for kind "Elasticsearch"`. Refer to [Install ECK using a Helm chart](/deploy-manage/deploy/cloud-on-k8s/install-using-helm-chart.md) to install the operator first.
+::::
 
 ::::
 
@@ -45,12 +48,6 @@ The chart is available as an Open Container Initiative (OCI) artifact in the {{c
 To use this type of artifact, you do not add a Helm repository. Instead, refer to each chart with an `oci://` URL, as the examples on this page show.
 
 You must specify the chart version with the `--version` option.
-
-:::{note}
-The minimum supported version of Helm for this method is {{eck_helm_oci_minimum_version}}.
-:::
-
-::::
 
 ::::::
 

@@ -22,11 +22,7 @@ Note the following restrictions when installing {{agent}} on your system:
 {{agent}} requires a writable file system to operate. It needs to write configuration files, logs, and other runtime data during installation and normal operation. If you're running {{agent}} in a containerized environment with a read-only root file system, you must provide a writable location for the agent to use. For more information, refer to [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md).
 ::::
 
-::::{admonition} New FIPS compatible install packages
-:applies_to: stack: preview 9.1
-
-FIPS compatible binaries for {{agent}}, {{fleet}}, and other ingest tools are available for download. Look for the `Linux 64-bit (FIPS)` or `Linux aarch64 (FIPS)` platform option on the product [download page](https://www.elastic.co/downloads). Get more details about FIPS compatibility for {{agent}}, {{fleet}} and other ingest tools in [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
-::::
+{applies_to}`stack: preview 9.1-9.2, ga 9.3+` For FIPS compatible {{agent}} binaries, look for the platform options marked FIPS on the [{{agent}} download page](https://www.elastic.co/downloads/elastic-agent). To check which operating systems and FIPS standards are supported, refer to [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
 
 You have a few options for installing and managing an {{agent}}:
 
@@ -51,6 +47,8 @@ You have a few options for installing and managing an {{agent}}:
     Refer to:
 
     * [Run {{agent}} in a container](/reference/fleet/elastic-agent-container.md)
+    * [Run {{agent}} on Kubernetes using Helm ({{fleet}}-managed and standalone)](/reference/fleet/install-on-kubernetes-using-helm.md)
+    * [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md)
     * [Run {{agent}} on Kubernetes managed by {{fleet}}](/reference/fleet/running-on-kubernetes-managed-by-fleet.md)
 
         * [Advanced {{agent}} configuration managed by {{fleet}}](/reference/fleet/advanced-kubernetes-managed-by-fleet.md)
@@ -59,7 +57,6 @@ You have a few options for installing and managing an {{agent}}:
         * [Run {{agent}} on Amazon EKS managed by {{fleet}}](/reference/fleet/running-on-eks-managed-by-fleet.md)
         * [Run {{agent}} on Azure AKS managed by {{fleet}}](/reference/fleet/running-on-aks-managed-by-fleet.md)
 
-    * [Run {{agent}} Standalone on Kubernetes](/reference/fleet/running-on-kubernetes-standalone.md)
     * [Scaling {{agent}} on {{k8s}}](/reference/fleet/scaling-on-kubernetes.md)
     * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 

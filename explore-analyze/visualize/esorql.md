@@ -33,7 +33,7 @@ If your visualization's query uses exactly one `STATS` command, dashboard users 
 
 In Discover, an [ES|QL query](../query-filter/languages/esql-kibana.md) shows a visualization when the query transforms the results, for example, with `STATS` or `KEEP`, or when the results have a time field. The time field is `@timestamp`, or the field that the query compares with the `?_tstart` and `?_tend` parameters. The query determines the visualization type, such as a histogram or a bar chart. To change the visualization type and display options, select {icon}`pencil` **Edit visualization**.
 
-To add the visualization to an existing or a new dashboard, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
+To add the visualization to an existing or a new dashboard, select {icon}`add_to_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 
 ## Create from dashboard [_create_from_dashboard]
 
@@ -181,6 +181,8 @@ serverless: ga
 - {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
 Drilldowns are compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](../dashboards/drilldowns.md#drilldowns-requirements).
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the visualization reads from an [{{esql}} view](elasticsearch://reference/query-languages/esql/esql-views.md), you can also open a drilldown from a column that the view computes.
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}

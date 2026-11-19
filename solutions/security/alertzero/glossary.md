@@ -26,7 +26,7 @@ An [{{az-autonomy}}](#alertzero-glossary-autonomy) level at which a {{az-worker}
 
 ### Attack Discovery [alertzero-glossary-attack-discovery]
 
-An {{elastic-sec}} feature that uses large language models (LLMs) to group related alerts into attack narratives. In {{alertzero}}, {{az-attack-discovery}} is also the name of a [{{az-worker}}](#alertzero-glossary-worker) in the [{{az-triage-watch}}](#alertzero-glossary-triage-watch). It runs on a schedule, opens an [{{az-investigation}}](#alertzero-glossary-investigation) for each candidate attack, and proposes handing attacks it confirms, or can't rule out, to the [{{az-forensics-watch}}](#alertzero-glossary-forensics-watch). Refer to [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) and [](watches-and-workers.md#alertzero-triage-watch).
+An {{elastic-sec}} feature that uses large language models (LLMs) to group related alerts into attack narratives. In {{alertzero}}, {{az-attack-discovery}} is also the name of a [{{az-worker}}](#alertzero-glossary-worker) in the [{{az-triage-watch}}](#alertzero-glossary-triage-watch). It runs on a schedule, opens an [{{az-investigation}}](#alertzero-glossary-investigation) for each potential attack, and proposes handing attacks it confirms, or can't rule out, to the [{{az-forensics-watch}}](#alertzero-glossary-forensics-watch). Refer to [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) and [](watches-and-workers.md#alertzero-triage-watch).
 
 ### {{az-autonomy-cap}} [alertzero-glossary-autonomy]
 
@@ -44,7 +44,7 @@ An optional model setting in **Feature Settings** for cyber-specific models. A m
 
 ### {{az-detection-watch}} [alertzero-glossary-detection-watch]
 
-The [{{az-watch}}](#alertzero-glossary-watch) that handles detection engineering, improving your detection rules at the source instead of handling the alerts they produce one by one. Its {{az-rule-tuning}} {{az-worker}} diagnoses noisy or under-covering rules and proposes tuning changes. Its {{az-rule-coverage}} {{az-worker}} assesses detection gaps that the {{az-hunt-watch}} finds and proposes new or existing rules to close them. Refer to [](watches-and-workers.md#alertzero-detection-watch).
+The [{{az-watch}}](#alertzero-glossary-watch) that handles detection engineering, improving your detection rules at the source instead of handling the alerts they produce one by one. Its {{az-rule-tuning}} {{az-worker}} finds noisy rules and proposes tuning changes tested against past data. Its {{az-rule-coverage}} {{az-worker}} reviews the detection gaps that the {{az-hunt-watch}} finds and proposes new or existing rules to close them. Refer to [](watches-and-workers.md#alertzero-detection-watch).
 
 ## E-F [alertzero-glossary-e-f]
 
@@ -54,7 +54,7 @@ A model setting in **Feature Settings** for {{alertzero}} calls that need quick,
 
 ### {{az-escalation-cap}} [alertzero-glossary-escalation]
 
-A coordinated response that you create from an [{{az-investigation}}](#alertzero-glossary-investigation) to work on it with other people, privately if needed. An {{az-escalation}} can link related {{az-investigations}}, and it has an owner, assignees, and a visibility of **Public** or **Private**. Closing an {{az-escalation}} also closes its linked {{az-investigations}}. Refer to [](escalate-investigation.md) and [](track-escalations.md).
+A coordinated response that you create from an [{{az-investigation}}](#alertzero-glossary-investigation) to work on it with other people, privately if needed. An {{az-escalation}} can link related {{az-investigations}}, and it has an owner, assignees, and a visibility of **Public** or **Private**. Closing an {{az-escalation}} also closes its linked {{az-investigations}}. Refer to [](escalate-investigation.md) and [](manage-escalations.md).
 
 ### {{az-forensics-watch}} [alertzero-glossary-forensics-watch]
 
@@ -68,15 +68,15 @@ A model setting in **Feature Settings** for complex, single-pass {{alertzero}} w
 
 ### {{az-hunt-finding-cap}} [alertzero-glossary-hunt-finding]
 
-A result from the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch): activity in your environment that matches a [{{az-threat-report}}](#alertzero-glossary-threat-report). Each {{az-hunt-finding}} opens an [{{az-investigation}}](#alertzero-glossary-investigation) and shows its supporting evidence, such as matching events, indicators, and techniques. In an {{az-investigation}}, a {{az-hunt-finding}} appears as a **Significant Security Event**. Refer to [](act-on-hunt-finding.md).
+A result from the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch): activity in your environment that matches a [{{az-threat-report}}](#alertzero-glossary-threat-report). Each {{az-hunt-finding}} appears in the [{{az-investigation}}](#alertzero-glossary-investigation) for its {{az-threat-report}} and shows its supporting evidence, such as matching events, indicators, and techniques. In an {{az-investigation}}, a {{az-hunt-finding}} appears as a **Significant Security Event**. Refer to [](act-on-hunt-finding.md).
 
 ### {{az-hunt-watch}} [alertzero-glossary-hunt-watch]
 
-The [{{az-watch}}](#alertzero-glossary-watch) that proactively hunts your environment for threats, without waiting for an alert. Its {{az-continuous-threat-hunt}} {{az-worker}} searches your data for activity that matches {{az-threat-reports}} and for detection coverage gaps. This {{az-worker}} runs on a fixed schedule and always uses [{{az-manual}}](#alertzero-glossary-manual) {{az-autonomy}}. Refer to [](watches-and-workers.md#alertzero-hunt-watch).
+The [{{az-watch}}](#alertzero-glossary-watch) that proactively hunts your environment for threats, without waiting for an alert. Its {{az-continuous-threat-hunt}} {{az-worker}} searches your data for activity that matches {{az-threat-reports}} and records the detection gaps that it finds. This {{az-worker}} runs on a fixed schedule and always uses [{{az-manual}}](#alertzero-glossary-manual) {{az-autonomy}}. Refer to [](watches-and-workers.md#alertzero-hunt-watch).
 
 ### {{az-investigation-cap}} [alertzero-glossary-investigation]
 
-A record of an {{alertzero}} {{az-worker}}'s inquiry into a potential threat, such as a candidate attack or a [{{az-hunt-finding}}](#alertzero-glossary-hunt-finding). An {{az-investigation}} collects the {{az-worker}}'s evidence, its conclusion, and any [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). You can assign an {{az-investigation}}, close it, or [escalate](#alertzero-glossary-escalation) it. Refer to [](escalate-investigation.md).
+A record of an {{alertzero}} {{az-worker}}'s inquiry into a potential threat, such as an attack or a [{{az-hunt-finding}}](#alertzero-glossary-hunt-finding). An {{az-investigation}} collects the {{az-worker}}'s evidence, its conclusion, and any [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). You can assign an {{az-investigation}}, close it, or [escalate](#alertzero-glossary-escalation) it. Refer to [](escalate-investigation.md).
 
 ## M-P [alertzero-glossary-m-p]
 
@@ -86,7 +86,7 @@ The default [{{az-autonomy}}](#alertzero-glossary-autonomy) level. At this level
 
 ### {{az-proposed-action-cap}} [alertzero-glossary-proposed-action]
 
-A recommendation from a {{az-worker}} that waits for your decision, such as closing false-positive alerts, isolating a host, or changing a detection rule. You review the details, then approve or decline it. Depending on the {{az-worker}}'s [{{az-autonomy}}](#alertzero-glossary-autonomy) level, some {{az-proposed-actions}} run without waiting for you. Statuses include **Needs review**, **Applying**, **Applied**, **Declined**, **Failed**, and **Expired**. Refer to [](decide-proposed-action.md).
+A recommendation from a {{az-worker}} that waits for your decision, such as closing false-positive alerts, isolating a host, or changing a detection rule. You review the details, then approve or decline it. Depending on the {{az-worker}}'s [{{az-autonomy}}](#alertzero-glossary-autonomy) level, some {{az-proposed-actions}} run without waiting for you. Statuses include **Needs review**, **Applying**, **Applied**, **Declined**, **Failed**, and **Expired**. Refer to [](work-in-alertzero.md).
 
 ## R-S [alertzero-glossary-r-s]
 
@@ -98,15 +98,15 @@ The highest [{{az-autonomy}}](#alertzero-glossary-autonomy) level. At this level
 
 ### {{az-threat-intel-supply-cap}} [alertzero-glossary-threat-intel-supply]
 
-The set of workflows that feed threat intelligence to the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch). **Ingest** collects threat feeds, **Enrich** builds out {{az-threat-reports}}, and **Attribute alerts to reports** connects alerts to those reports. {{alertzero}} turns them on when you turn on the {{az-continuous-threat-hunt}} {{az-worker}}, and off again when you turn it off. Ingest and Enrich are shared across all spaces. Refer to [](configure-worker-settings.md).
+The set of workflows that feed threat intelligence to the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch). **Ingest threat feeds** collects threat feeds, **Enrich threat report** builds out {{az-threat-reports}}, and **Attribute alerts to reports** connects alerts to those reports. {{alertzero}} turns them on when you turn on the {{az-continuous-threat-hunt}} {{az-worker}}. All spaces share **Ingest threat feeds** and **Enrich threat report**, so {{alertzero}} turns them off only when {{az-continuous-threat-hunt}} is off in every space. Refer to [](threat-reports.md).
 
 ### {{az-threat-report-cap}} [alertzero-glossary-threat-report]
 
-A report of threat activity, built from ingested threat intelligence, that the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch) searches your data for. A [{{az-hunt-finding}}](#alertzero-glossary-hunt-finding) links back to its source report.
+A report of threat activity, built from ingested threat intelligence, that the [{{az-hunt-watch}}](#alertzero-glossary-hunt-watch) searches your data for. A [{{az-hunt-finding}}](#alertzero-glossary-hunt-finding) links back to its source report. Refer to [](threat-reports.md).
 
 ### {{az-triage-watch}} [alertzero-glossary-triage-watch]
 
-The [{{az-watch}}](#alertzero-glossary-watch) that works as your first line of defense, reviewing incoming alerts and routing the ones that still need a person. Its {{az-alert-triage}} {{az-worker}} classifies alerts as true or false positives, then proposes closing the false positives. Its {{az-attack-discovery}} {{az-worker}} finds candidate attacks and opens an {{az-investigation}} for each. Refer to [](watches-and-workers.md#alertzero-triage-watch).
+The [{{az-watch}}](#alertzero-glossary-watch) that works as your first line of defense by reviewing incoming alerts. Its {{az-alert-triage}} {{az-worker}} classifies alerts as true or false positives, then proposes closing the false positives. Its {{az-attack-discovery}} {{az-worker}} groups related alerts into potential attacks and opens an {{az-investigation}} for each. Refer to [](watches-and-workers.md#alertzero-triage-watch).
 
 ### {{az-watch}} [alertzero-glossary-watch]
 
@@ -114,11 +114,11 @@ A named group of [{{az-workers}}](#alertzero-glossary-worker) with one area of e
 
 ### {{az-worker}} [alertzero-glossary-worker]
 
-An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-watch). A {{az-worker}} runs in the background, either on a schedule or in response to events such as new alerts. It analyzes your data and brings you [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). Each {{az-worker}} has its own settings, including whether it's turned on, its trigger, and its [{{az-autonomy}}](#alertzero-glossary-autonomy) level. Refer to [](watches-and-workers.md) and [](configure-worker-settings.md).
+An AI-powered unit of work that belongs to a [{{az-watch}}](#alertzero-glossary-watch). A {{az-worker}} runs in the background, either on a schedule or in response to events such as new alerts. It analyzes your data and brings you [{{az-proposed-actions}}](#alertzero-glossary-proposed-action). Each {{az-worker}} has its own settings, including whether it's turned on, its schedule, and its [{{az-autonomy}}](#alertzero-glossary-autonomy) level. Refer to [](watches-and-workers.md) and [](configure-worker-settings.md).
 
-## Related [alertzero-glossary-related]
+## Next steps [alertzero-glossary-next-steps]
 
-- [](index.md): What {{alertzero}} is and how its parts fit together.
-- [](watches-and-workers.md): Reference for every {{az-watch}} and {{az-worker}}.
-- [](use-alertzero.md): Read the {{alertzero}} home page and decide on {{az-proposed-actions}}.
-- [](manage-alertzero.md): What you can and can't configure in {{alertzero}}.
+- [Learn what {{alertzero}} is and how its parts fit together](index.md).
+- [Look up what each {{az-watch}} and {{az-worker}} does](watches-and-workers.md).
+- [Find the work that {{az-workers}} bring you](work-in-alertzero.md) and decide what happens next.
+- [Find out what you can and can't configure in {{alertzero}}](manage-alertzero.md).
