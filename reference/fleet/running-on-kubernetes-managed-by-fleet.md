@@ -124,7 +124,7 @@ To specify different destination/credentials, change the following parameters in
   value: "" <6>
 ```
 
-1. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management → {{fleet}} → Fleet Settings**, and copy the {{fleet-server}} host URL.
+1. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management** → **{{fleet}}** → **Fleet Settings**, and copy the {{fleet-server}} host URL.
 2. The token to use for enrollment. Close the flyout panel and select **Enrollment tokens**. Find the Agent policy you created before to enroll {{agent}} into, and display and copy the secret token.
 3. The policy ID for {{fleet-server}} to use on itself.
 4. The {{kib}} host.
@@ -224,7 +224,7 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
     :screenshot:
     :::
 
-3. To view data flowing in, go to **Analytics → Discover**. To check the Kubernetes metrics:
+3. To view data flowing in, go to **Analytics** → **Discover**. To check the Kubernetes metrics:
 
    - In {{esql}} mode, enter `FROM metrics-kubernetes.*`. To include all metrics data, enter `FROM metrics-*` instead.
    - In classic mode, select a data view that matches `metrics-kubernetes.*`, or `metrics-*` for all metrics data. If you can’t see one, [create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for it.

@@ -350,7 +350,7 @@ Application Load Balancers require an ACM certificate and subnets in at least tw
 
 ALBs require subnets in at least two availability zones. If you only have one subnet, create a second:
 
-1. Go to **VPC → Subnets → Create subnet**
+1. Go to **VPC** → **Subnets** → **Create subnet**
 2. Configure the following settings:
    - **VPC**: Select your VPC
    - **Subnet name**: for example, `ece-subnet-2`
@@ -358,13 +358,13 @@ ALBs require subnets in at least two availability zones. If you only have one su
    - **IPv4 CIDR**: An unused range (for example, `10.0.32.0/24`)
 3. Click **Create subnet**
 4. Add IPv6 to the new subnet:
-   - Select the new subnet → **Actions → Edit IPv6 CIDRs**
+   - Select the new subnet → **Actions** → **Edit IPv6 CIDRs**
    - Click **Add IPv6 CIDR**
    - Choose the **VPC CIDR block**
    - Edit the **Subnet CIDR block**. The console pre-fills an IPv6 CIDR, for example `2a05:d018:xxx:xx00::/64`. Replace the suffix with one that is not already in use, for example `20`
 5. Associate the new subnet with your route table:
-   - Go to **VPC → Route Tables** → select your route table
-   - **Subnet associations → Edit** → Add the new subnet
+   - Go to **VPC** → **Route Tables** → select your route table
+   - **Subnet associations** → **Edit** → Add the new subnet
    - Ensure the route table has routes for `0.0.0.0/0` and `::/0` to the internet gateway
 
 ### Create the ECE coordinators target group

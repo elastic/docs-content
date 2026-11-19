@@ -1,6 +1,7 @@
 ---
 applies_to:
-  serverless: ga
+  serverless:
+    security: ga
   stack: unavailable
 products:
   - id: security

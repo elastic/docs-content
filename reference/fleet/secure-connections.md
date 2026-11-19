@@ -115,7 +115,7 @@ For the steps in this section, imagine you have the following files:
 To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
 
 1. Configure {{fleet}} settings. These settings are applied to all {{fleet}}-managed {{agent}}s.
-2. In {{kib}}, open the main menu, then select **Management > {{fleet}} > Settings**.
+2. In {{kib}}, open the main menu, then select **Management** → **{{fleet}}** → **Settings**.
 
     1. Under **{{fleet-server}} hosts**, specify the URLs {{agent}}s will use to connect to {{fleet-server}}. For example, [https://192.0.2.1:8220](https://192.0.2.1:8220), where 192.0.2.1 is the host IP where you will install {{fleet-server}}.
 
@@ -296,7 +296,7 @@ You can configure SSL/TLS settings for {{fleet-server}} hosts directly in the {{
 
 To access these settings:
 
-1. In **Kibana**, go to **Management > {{fleet}} > Settings**.
+1. In **Kibana**, go to **Management** → **{{fleet}}** → **Settings**.
 2. Under **{{fleet-server}} hosts**, select **Add host** or edit an existing host.
 3. Expand the **SSL options** section.
 

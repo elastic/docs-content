@@ -42,7 +42,7 @@ To install or run risk scoring, you need the following:
 | Install risk scoring | `manage_index_templates`<br> `manage_transform`<br> `manage_ingest_pipelines` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 | Run risk scoring | `manage_transform` | N/A | **Read** for the **Security** feature |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Preview the risk score results | N/A | `Read` for `.alerts-security.alerts-*` | **Read** for the **Security** feature |
-| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View alert risk contributions in entity details | N/A | N/A | **Read** for the **Security > Alerts** feature |
+| {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View alert risk contributions in entity details | N/A | N/A | **Read** for the **Security** → **Alerts** feature |
 | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` View the **Engine Status** tab | `manage_index_templates`<br>`manage_transform`<br>`manage_ingest_pipelines`<br>`manage_enrich` | `All` for `risk-score.risk-score-*` | **Read** for the **Security** feature |
 
 
@@ -85,7 +85,15 @@ To use asset criticality, you need the following:
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+| Action | Index privilege |
+| --- | --- |
+| View asset criticality | `read` for `entities-latest-<space-id>` and `.entities.v2.latest.<space-id>-*` |
+| View, assign, unassign, or change asset criticality | `read` and `write` for `entities-latest-<space-id>` and `read`, `write`, and `view_index_metadata` for `.entities.v2.latest.<space-id>-*` |
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
 
 | Action | Index privilege |
 | --- | --- |
@@ -125,7 +133,29 @@ To turn on the entity store, you need the following:
 
 ::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.4+, serverless: ga }
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+#### Cluster
+
+- `manage_index_templates`
+- `manage_ingest_pipelines`
+
+#### Index
+
+- `read` and `manage` for `risk-score.risk-score-*`
+- `read`, `write`, and `manage` for `entities-latest-*`, `.entities.v2.latest.*`, `.entities.v2.updates.*`, and `.entities.v2.metadata.*`
+- `read` and `view_index_metadata` for all {{elastic-sec}} indices
+
+#### {{kib}}
+
+**All** for the **Security** and **Saved Objects Management** features
+
+:::{important}
+The entity store's background tasks run with the privileges of the user who turned on the entity store, as they were at that time. If you change that user's role later, a user with the updated role must stop and restart the entity store so the tasks pick up the updated privileges.
+:::
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
 
 #### Cluster
 

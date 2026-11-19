@@ -2,7 +2,8 @@
 navigation_title: Route by severity
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to route alerts to different workflows based on severity level."
@@ -10,7 +11,7 @@ description: "How to route alerts to different workflows based on severity level
 
 # Route alerts by severity in {{alerting-v2-system}} [route-by-severity]
 
-To send critical and non-critical alerts to different workflows in {{alerting-v2-system}}, scope one action policy per severity.
+To send critical and non-critical alerts to different workflows in {{alerting-v2-system-short}}, scope one action policy per severity.
 
 For example, you might page an on-call team for critical alerts while sending lower-severity alerts to a Slack channel for async review.
 

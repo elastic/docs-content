@@ -202,7 +202,7 @@ When {{anomaly-detect}} is enabled, node borders are color-coded based on the ma
 | Score range | Severity | Node color |
 | --- | --- | --- |
 | No score | No anomaly data available | Gray |
-| 0–3 | Low | White |
+| 0–3 | Low | Pale blue |
 | 3–25 | Warning | Blue |
 | 25–50 | Minor | Yellow |
 | 50–75 | Major | Orange |
