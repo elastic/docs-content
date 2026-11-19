@@ -15,7 +15,7 @@ EmbEddings from bidirEctional Encoder rEpresentations - or E5 -  is a {{nlp}} mo
 
 [Semantic search](../../../solutions/search/semantic-search.md) provides you search results based on contextual meaning and user intent, rather than exact keyword matches.
 
-E5 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** > **Trained Models** page shows you which version of E5 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use E5 is through the [{{infer}} API]({{es-apis}}operation/operation-inference-put-elasticsearch) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
+E5 has two versions: one cross-platform version which runs on any hardware and one version which is optimized for Intel® silicon. The **Model Management** → **Trained Models** page shows you which version of E5 is recommended to deploy based on your cluster’s hardware. However, the recommended way to use E5 is through the [{{infer}} API]({{es-apis}}operation/operation-inference-put-elasticsearch) as a service which makes it easier to download and deploy the model and you don’t need to select from different versions.
 
 Refer to the model cards of the [multilingual-e5-small](https://huggingface.co/elastic/multilingual-e5-small) and the [multilingual-e5-small-optimized](https://huggingface.co/elastic/multilingual-e5-small-optimized) models on HuggingFace for further information including licensing.
 
@@ -52,7 +52,7 @@ After you created the E5 {{infer}} endpoint, it’s ready to be used for semanti
 
 ### Alternative methods to download and deploy E5 [alternative-download-deploy-e5]
 
-You can also download and deploy the E5 model from the **Trained models** page, from **Search** > **Indices**, or by using the trained models API in Dev Console.
+You can also download and deploy the E5 model from the **Trained models** page, from **Search** → **Indices**, or by using the trained models API in Dev Console.
 
 ::::{note}
 For most cases, the preferred version is the **Intel and Linux optimized** model, it is recommended to download and deploy that version.
@@ -90,7 +90,7 @@ For most cases, the preferred version is the **Intel and Linux optimized** model
 
 Alternatively, you can download and deploy the E5 model to an {{infer}} pipeline using the search indices UI.
 
-1. In {{kib}}, navigate to **Search** > **Indices**.
+1. In {{kib}}, navigate to **Search** → **Indices**.
 2. Select the index from the list that has an {{infer}} pipeline in which you want to use E5.
 3. Navigate to the **Pipelines** tab.
 4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button in the **Improve your results with E5** section to begin downloading the E5 model. This may take a few minutes depending on your network.

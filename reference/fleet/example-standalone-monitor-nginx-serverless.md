@@ -78,7 +78,7 @@ Now that your web server is running, let’s get set up to monitor it in {{eclou
 
 ## Step 3: Create an {{es}} API key [nginx-guide-create-api-key-serverless]
 
-1. When your {{serverless-short}} project is ready, open the {{kib}} menu and go to **Project settings** → **Management → API keys**.
+1. When your {{serverless-short}} project is ready, open the {{kib}} menu and go to **Project settings** → **Management** → **API keys**.
 2. Select **Create API key**.
 3. Give the key a name, for example `nginx example API key`.
 4. Leave the other default options and select **Create API key**.
@@ -90,7 +90,7 @@ Now that your web server is running, let’s get set up to monitor it in {{eclou
 
 {{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and more. A single agent makes it easy and fast to deploy monitoring across your infrastructure. Each agent has a single policy (a collection of input settings) that you can update to add integrations for new data sources, security protections, and more.
 
-1. Open the {{kib}} menu and go to **Project settings** → **{{fleet}} → Agent policies**.
+1. Open the {{kib}} menu and go to **Project settings** → **{{fleet}}** → **Agent policies**.
 
     :::{image} images/guide-agent-policies.png
     :alt: Agent policies tab in Fleet
@@ -111,7 +111,7 @@ Now that your web server is running, let’s get set up to monitor it in {{eclou
 
 Elastic integrations are a streamlined way to connect your data from popular services and platforms to the {{stack}}, including nginx.
 
-1. From the **{{fleet}} → Agent policies** tab, click the link for your new `nginx-policy`.
+1. From the **{{fleet}}** → **Agent policies** tab, click the link for your new `nginx-policy`.
 
     :::{image} images/guide-nginx-policy.png
     :alt: The nginx-policy UI with integrations tab selected
@@ -148,7 +148,7 @@ Elastic integrations are a streamlined way to connect your data from popular ser
 
 Rather than opt for {{fleet}} to centrally manage {{agent}}, you’ll configure an agent to run in standalone mode, so it will be managed by hand.
 
-1. Open the {{kib}} menu and go to **{{fleet}} → Agents** and click **Add agent**.
+1. Open the {{kib}} menu and go to **{{fleet}}** → **Agents** and click **Add agent**.
 2. For the **What type of host are you adding?** step, select `nginx-policy` from the drop-down menu if it’s not already selected.
 3. For the **Enroll in {{fleet}}?** step, select **Run standalone**.
 
@@ -250,7 +250,7 @@ Now that {{agent}} is running, it’s time to confirm that the agent data is flo
 
 1. Check that {{agent}} logs are flowing.
 
-    1. Open the {{kib}} menu and go to **Observability → Discover**.
+    1. Open the {{kib}} menu and go to **Observability** → **Discover**.
     2. Query for the logs of your agent, where `{{agent-id}}` is the ID you retrieved from the `elastic-agent status --output yaml` command. For example, `4779b439-1130-4841-a878-e3d7d1a457d0`:
 
         - In {{esql}} mode, enter `FROM logs-* | WHERE agent.id == "{{agent-id}}"`.
@@ -264,7 +264,7 @@ Now that {{agent}} is running, it’s time to confirm that the agent data is flo
 
 2. Check that {{agent}} metrics are flowing.
 
-    1. Open the {{kib}} menu and go to **Observability → Dashboards**.
+    1. Open the {{kib}} menu and go to **Observability** → **Dashboards**.
     2. In the search field, search for `Elastic Agent` and select `[Elastic Agent] Agent metrics` in the results.
 
         like the agent logs, the agent metrics should be flowing into {{es}} and visible in {{kib}} Dashboard. You can view metrics on CPU usage, memory usage, open handles, events rate, and more.
@@ -281,14 +281,14 @@ In the step to [create an {{agent}} policy](#nginx-guide-create-policy-serverles
 
 1. View your system logs.
 
-    1. Open the {{kib}} menu and go to **Project settings → Integrations → Installed integrations**.
+    1. Open the {{kib}} menu and go to **Project settings** → **Integrations** → **Installed integrations**.
     2. Select the **System** card and open the **Assets** tab. This is a quick way to access all of the dashboards, saved searches, and visualizations that come with each integration.
     3. Select `[Logs System] Syslog dashboard`.
     4. Open the time filter and select **Today**. The {{kib}} Dashboard shows visualizations of Syslog events, hostnames and processes, and more.
 
 2. View your system metrics.
 
-    1. Return to **Project settings → Integrations → Installed integrations**.
+    1. Return to **Project settings** → **Integrations** → **Installed integrations**.
     2. Select the **System** card and open the **Assets** tab.
     3. This time, select `[Metrics System] Host overview`.
     4. Open the time filter and select **Today**. The {{kib}} Dashboard shows visualizations of host metrics including CPU usage, memory usage, running processes, and others.
@@ -303,7 +303,7 @@ In the step to [create an {{agent}} policy](#nginx-guide-create-policy-serverles
 
 Now let’s view your nginx logging data.
 
-1. Open the {{kib}} menu and go to **Project settings → Integrations → Installed integrations**.
+1. Open the {{kib}} menu and go to **Project settings** → **Integrations** → **Installed integrations**.
 2. Select the **Nginx** card and open the **Assets** tab.
 3. Select `[Logs Nginx] Overview`. The {{kib}} Dashboard opens with geographical log details, response codes and errors over time, top pages, and more.
 4. Refresh your nginx web page several times to update the logging data. You can also try accessing the nginx page from different web browsers. After a minute or so, the `Browsers breakdown` visualization shows the respective volume of requests from the different browser types.
