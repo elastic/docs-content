@@ -83,7 +83,7 @@ To group multi-turn traffic without instrumenting the app, pass `session_id` (or
 
 ## Example: token usage by model
 
-In {{kib}} **Discover**, run this {{esql}} query to sum input and output tokens by model:
+In {{kib}} **Discover**, run this {{esql}} query to sum input and output tokens by model. The `name == "LLM Generation"` filter restricts the query to the parent request spans, so child `provider attempt` spans aren't counted twice:
 
 ```esql
 FROM traces-*
