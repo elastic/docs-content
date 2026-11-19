@@ -42,7 +42,7 @@ Full step-by-step setup is in OpenRouter's own guide: [Broadcast — Elastic](ht
 :::::{stepper}
 
 ::::{step} Open the Observability settings
-In the OpenRouter console, open **Settings > Observability**. Select **Add destination** and choose **Elastic Observability**.
+In the OpenRouter console, open **Settings → Observability**. Select **Add destination** and choose **Elastic Observability**.
 ::::
 
 ::::{step} Enter your Elastic endpoint and API key
