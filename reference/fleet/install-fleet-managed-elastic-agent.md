@@ -1,4 +1,5 @@
 ---
+description: Install Elastic Agent on a host and enroll it in Fleet for central management. Check the prerequisites, then add the agent from the Agents tab and run the install command.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html
 applies_to:

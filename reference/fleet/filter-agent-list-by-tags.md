@@ -1,5 +1,6 @@
 ---
 navigation_title: Add and manage agent tags
+description: Add Elastic Agent tags in Fleet or during enrollment, rename or delete them in Fleet, and use them to filter the Fleet Agents list.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/filter-agent-list-by-tags.html
 applies_to:

@@ -1,4 +1,5 @@
 ---
+description: Manage Fleet-managed Elastic Agents from the Agents tab in Fleet. Unenroll, upgrade, migrate, restart, monitor, tag, and export agents, and check their health status.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/manage-agents.html
 applies_to:

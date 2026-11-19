@@ -1,5 +1,6 @@
 ---
 navigation_title: Policies
+description: Create and manage Elastic Agent policies with Fleet. Add integrations, apply policies to agents, and configure outputs, monitoring, upgrades, logging, and other agent settings.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-policy.html
 applies_to:

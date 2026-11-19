@@ -1,5 +1,6 @@
 ---
 navigation_title: Feature flags
+description: Turn feature flags on or off in elastic-agent.yml to change how a standalone Elastic Agent behaves, such as FQDN reporting, config encryption, default processors, and agent tags.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/elastic-agent-standalone-feature-flags.html
 applies_to:
