@@ -2,7 +2,8 @@
 navigation_title: Triage alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Take triage actions on alerts. Acknowledge, snooze, resolve, reopen, tag, and assign alerts individually or in bulk."
@@ -10,7 +11,7 @@ description: "Take triage actions on alerts. Acknowledge, snooze, resolve, reope
 
 # Triage alerts in {{alerting-v2-system}} [triage-alert-episodes]
 
-Use the **Alerts** page in {{alerting-v2-system}} to triage alerts individually or in bulk. You can mark alerts as seen, silence their notifications, close or reopen them, and tag or assign them. To open the page, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Use the **Alerts** page in {{alerting-v2-system-short}} to triage alerts individually or in bulk. You can mark alerts as seen, silence their notifications, close or reopen them, and tag or assign them. To open the page, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 For deeper investigation of a specific alert, refer to [Investigate alerts](investigate-alert-episodes.md).
 
@@ -32,7 +33,7 @@ Temporarily silence notifications for an alert's series, without disabling the r
 | Snooze | Silences notifications for the alert's series for a set duration, for example during a scheduled maintenance window. The rule continues to evaluate and the alert remains visible. | Series |
 | Unsnooze | Ends the active snooze and restores notifications immediately. Clears the snooze for all alerts sharing the same `group_hash`, not only the one you acted on. | Series |
 
-Snooze is one of several silencing mechanisms in {{alerting-v2-system}}, each with a different scope. For the full comparison, refer to [Reduce notification noise](../action-policies/reduce-notification-noise.md).
+Snooze is one of several silencing mechanisms in {{alerting-v2-system-short}}, each with a different scope. For the full comparison, refer to [Reduce notification noise](../action-policies/reduce-notification-noise.md).
 
 ## Close and reopen alerts [close-and-reopen-episodes]
 
@@ -66,23 +67,38 @@ Go to Discover to check whether the data behind an alert shows a genuine problem
 |---|---|---|
 | Open in Discover | Opens the rule's base {{esql}} query scoped to the time window around when the alert opened. | Alert |
 
+## Triage a flapping alert [triage-flapping]
+
+Base your response to a flapping alert on the data behind it, not on its status. A flapping alert keeps changing between `active` and `recovering`, so its status can't tell you whether the problem is ongoing or fixed. To recognize a flapping alert, refer to [Spot a flapping alert](investigate-alert-episodes.md#flapping).
+
+The following steps are for alerts from {{alerting-v2-system-short}} rules. On alerts from {{alerting-v1-system-short}} rules, acknowledging an alert doesn't stop its notifications. For other differences, refer to [How actions affect alerts from {{alerting-v1-system-short}}](#classic-triage-action-results).
+
+To triage a flapping alert:
+
+1. [Acknowledge the alert](#track-review-status) to stop its notifications while you investigate, because flapping doesn't stop or delay them. The acknowledgment stays in place each time the alert returns to `active`, because it's still the same alert.
+2. Check the data behind the alert. If the alert has a [trend chart](investigate-alert-episodes.md#assess-metric-behavior), use it to compare the metric to the rule's threshold. To see the [values that the rule's query most recently returned](investigate-alert-episodes.md#inspect-data), open the alert's **Data container** tab. To see the source documents, select **Open in Discover**.
+3. Respond based on what the data shows:
+
+   - If the data shows a real problem each time the alert returns to `active`, the problem is recurring. For example, a metric clearly crosses the rule's threshold each time. Treat the alert like any other active alert, and investigate the cause. When the alert's status changes to `recovering`, don't resolve the alert until the data confirms the fix.
+   - If the data shows normal activity when the alert is `active`, the rule is too sensitive. For example, a metric hovers around the rule's threshold instead of clearly crossing it. Leave the alert acknowledged instead of resolving it. If you resolve it, a new alert starts the next time the rule's condition matches, and action policies might send notifications for it. To stop the rule's alerts from flapping, update the rule's condition, or add a [custom recovery condition](../rules/configure-rule-recovery.md#recovery-strategy-when-to-use) to the rule. If you can't edit the rule, ask someone who can.
+
 ## Triage alerts from {{alerting-v1-system}} [triage-classic-alerts]
 
 To act on alerts with **Classic** in the **Source** column, your role needs [privileges in both alerting systems](../manage/configure-access.md#alerting-classic-alert-privileges).
 
-### How actions affect alerts from {{alerting-v1-system}} [classic-triage-action-results]
+### How actions affect alerts from {{alerting-v1-system-short}} [classic-triage-action-results]
 
-You can't unresolve or assign {{alerting-v1-system}} alerts, or open them in Discover. The other actions use the matching {{alerting-v1-system}} feature, so some results differ from the same action on a {{alerting-v2-system}} alert:
+You can't unresolve or assign {{alerting-v1-system-short}} alerts, or open them in Discover. The other actions use the matching {{alerting-v1-system-short}} feature, so some results differ from the same action on a {{alerting-v2-system-short}} alert:
 
-| Action | What happens to a {{alerting-v1-system}} alert |
+| Action | What happens to a {{alerting-v1-system-short}} alert |
 |---|---|
-| Acknowledge, Unacknowledge | Adds or removes the [acknowledged](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) marker. Unlike a {{alerting-v2-system}} alert, the alert keeps sending notifications. |
-| Snooze, Unsnooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) or unsnoozes this alert only. Other alerts from the same rule keep sending notifications. A snooze lasts until the time you set. If you select **Indefinitely**, the snooze lasts until you unsnooze the alert. For **Condition based** snooze, use the {{alerting-v1-system}} alerts pages. |
+| Acknowledge, Unacknowledge | Adds or removes the [acknowledged](/explore-analyze/alerting/alerts/view-alerts.md#acknowledge-alerts) marker. Unlike a {{alerting-v2-system-short}} alert, the alert keeps sending notifications. |
+| Snooze, Unsnooze | [Snoozes](/explore-analyze/alerting/alerts/view-alerts.md#snooze-alerts) or unsnoozes this alert only. Other alerts from the same rule keep sending notifications. A snooze lasts until the time you set. If you select **Indefinitely**, the snooze lasts until you unsnooze the alert. For **Condition based** snooze, use the {{alerting-v1-system-short}} alerts pages. |
 | Resolve | Marks the alert as [untracked](/explore-analyze/alerting/alerts/view-alerts.md#alert-status). Its status changes to **Inactive**, its notifications stop, and its status no longer updates. You can't undo this. |
 | Edit alert tags | Adds or removes tags on the alert. |
 
-### Add alerts from {{alerting-v1-system}} to a case [classic-alerts-to-cases]
+### Add alerts from {{alerting-v1-system-short}} to a case [classic-alerts-to-cases]
 
-To add a {{alerting-v1-system}} alert from an Observability rule to a case, turn on the [**Classic Alerting: Show Classic Alerts table**](../setup.md#alerting-setup-v1-alerts-page) advanced setting in the space, then add the alert from the **Alerts (Classic)** page.
+To add a {{alerting-v1-system-short}} alert from an Observability rule to a case, turn on the [**Classic Alerting: Show Classic Alerts table**](../setup.md#alerting-setup-v1-alerts-page) advanced setting in the space, then add the alert from the **Alerts (Classic)** page.
 
-{applies_to}`serverless: ga` You can't add {{alerting-v1-system}} alerts to cases from the **Alerts** page.
+{applies_to}`observability: ga` You can't add {{alerting-v1-system-short}} alerts to cases from the **Alerts** page.
