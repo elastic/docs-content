@@ -334,7 +334,7 @@ $Env:ES_API_KEY = "YOUR_API_KEY"
 Create the `books` index and add the sample data. The sample data contains five books, each with a `title`, an `author`, a `release_year`, and a `description`.
 
 :::{note}
-The following examples show one step at a time rather than a complete program. Language-client examples use the Elasticsearch client that you initialized earlier and leave out setup code such as imports and class definitions. In C#, place `record` declarations at the end of `Program.cs`, after all statements. To run the entire quickstart, use the [complete script](#vector-full-text-search-complete-script).
+The following examples show one step at a time rather than a complete program. Language-client examples use the Elasticsearch client that you initialized earlier and leave out setup code such as imports and class definitions. To run the entire quickstart, use the [complete script](#vector-full-text-search-complete-script).
 :::
 
 ### Create an index
@@ -795,6 +795,8 @@ puts "Indexed #{bulk_response['items'].length} books"
 
 ::::{tab-item} C# (.NET)
 :sync: csharp
+
+In `Program.cs`, keep all `record` declarations at the end of the file, after all other code.
 
 ```csharp
 var books = new[]
@@ -2190,7 +2192,7 @@ The output contains one row per decade:
 You can also use {{esql}} inference capabilities to build search workflows:
 
 - {applies_to}`stack: ga 9.4+, preview =9.3` [`TEXT_EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/text_embedding.md) generates embeddings from text. For example, turn a reader's description of their ideal book into a query vector for similarity search.
-- {applies_to}`stack: preview 9.5+` [`EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/embedding.md) generates embeddings from multimodal input. For example, use an image as the starting point for a search.
+- {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` [`EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/embedding.md) generates embeddings from multimodal input. For example, use an image as the starting point for a search.
 - {applies_to}`stack: ga 9.3+, preview 9.1-9.2` [`COMPLETION`](elasticsearch://reference/query-languages/esql/commands/completion.md) sends prompts to an LLM. For example, summarize retrieved books or explain why they match a reader's interests.
 - {applies_to}`stack: ga 9.4+, preview 9.2-9.3` [`RERANK`](elasticsearch://reference/query-languages/esql/commands/rerank.md) re-scores search results with an inference model. For example, reorder books to better match a detailed reading request.
 
