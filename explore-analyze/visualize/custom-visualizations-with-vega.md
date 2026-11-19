@@ -357,12 +357,6 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 1. Click **Inspect**, then select **Vega Debug** from the **View** dropdown.
 2. From the dropdown, select **data_0**.
 
-   % Candidate for removal: low value. The screenshot repeats the null and undefined columns that kibana-vega_lite_tutorial_6.png already shows, with 15 identical Men's Clothing rows.
-   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_7.png
-   :alt: Table showing data_0 with multiple pages of results
-   :screenshot:
-   :::
-
     Vega-Lite displays **undefined** values because there are duplicate names.
 
 3. To resolve the duplicate names, add the `transform` and `encoding` blocks, then click **Update**:
@@ -481,12 +475,6 @@ Add a `selection` block inside `mark: point`:
 ```
 
 Move your cursor around the stacked area chart. The points are able to indicate the nearest point.
-
-% Candidate for removal: low value. The screenshot is a small crop of one hover tooltip with no chart, axes or spec in view, and the sentence before it already tells the reader to hover over the chart.
-:::{image} /explore-analyze/images/kibana-vega_lite_tutorial_2.png
-:alt: Vega-Lite tutorial selection enabled
-:screenshot:
-:::
 
 The selection is controlled by a signal. To view the signal, select **Inspect** in the application menu.
 
@@ -1644,12 +1632,6 @@ Use the contextual **Inspect** tool to gain insights into different elements.
 
 **Vega** uses the [{{es}} search API]({{es-apis}}operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
 
-% Candidate for removal: low value. The screenshot shows the generic Inspector Statistics tab for an unrelated 2020 sample panel with figures the page never explains, and the text already describes the View dropdown it shows.
-:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
-:alt: vega tutorial inspect requests
-:screenshot:
-:::
-
 
 ### Vega with a Map [vega-with-a-map]
 ```{applies_to}
@@ -1748,12 +1730,6 @@ To debug more complex specs, copy the Vega spec from the **Spec** tab and use th
 #### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
 
 Because of the dynamic nature of the data in {{es}}, it is hard to help you with **Vega** specs unless you can share a dataset. To do this, click **Inspect**, select the **Vega debug** view, then select **Spec**.
-
-% Candidate for removal: low value. The screenshot shows the Vega debug Spec tab for an unrelated sample spec, and the text already gives the path (Inspect, Vega debug, Spec), so only the Copy to clipboard button is extra.
-:::{image} /explore-analyze/images/kibana-vega_tutorial_getting_help.png
-:alt: vega tutorial getting help
-:screenshot:
-:::
 
 To copy the response, click **Copy to clipboard**. Paste the copied data to [gist.github.com](https://gist.github.com/), possibly with a .json extension. Use the [raw] button, and share that when asking for help.
 

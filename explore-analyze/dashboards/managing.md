@@ -52,11 +52,6 @@ Similarly, managed dashboards created by integrations are identified as created 
 The creator information is only available for dashboards created on or after version 8.14. For dashboards from previous versions, the creator is empty.
 ::::
 
-% Candidate for removal: low value. The screenshot shows real staff names and email addresses and an old page title with no app header, and the prose already says you can filter the list by creator.
-:::{image} /explore-analyze/images/kibana-dashboard-filter-by-creator.png
-:alt: Option to filter the list of dashboards by creator
-:::
-
 **Sort by name or last update date**
 
 By default, your most recently viewed dashboards are displayed first. You can instead sort the dashboard list based on their name or their last update date.
@@ -78,15 +73,9 @@ To browse your saved visualizations and annotation groups, open the [Visualize l
 
 You can mark any dashboards as favorite, using the ✩ **star icon** from the **Dashboards** page or from the dashboard itself.
 
-To list only the dashboards you marked as favorite:
-
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` Select **Starred** in the dashboard list.
-- {applies_to}`stack: ga 9.0-9.2` Select the **Starred** tab.
+To list only the dashboards you marked as favorite, select **Starred**.
 
 The list of starred dashboards is personal. Dashboards marked as favorite by other users only appear for those users.
-
-% Candidate for removal: low value. The screenshot shows the All and Starred tab strip and the pre-9.6 top bar, but the strip has been gone since 9.3, so the image misleads.
-![List of starred dashboards](/explore-analyze/images/kibana-dashboard-starred-list.png "")
 
 
 ## View dashboard usage [_view_dashboard_usage]
