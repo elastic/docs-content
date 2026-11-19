@@ -27,7 +27,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the application menu. In **Canvas**, **Share** is in the workpad toolbar instead.
+{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the application menu. In **Canvas**, you use the **Share** menu in the workpad toolbar instead.
 
 ## Permissions
 
@@ -79,6 +79,8 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 
     * {applies_to}`stack: ga 9.1+` In the application menu, select {icon}`download` **Export**, then select a file type.
     * {applies_to}`stack: ga =9.0` In the application menu, select **Share** → **Export** tab, then select a file type.
+
+    In **Canvas**, select **Share** in the workpad toolbar, then **PDF reports** or **Download as JSON**.
 
     In **Discover**, look for the CSV export action in the actions available in the application menu. Depending on your version, this action can be called **Export** → **CSV**, **Export tab results** → **CSV**, or **Export** → **Tab results as CSV**, and can be nested under {icon}`ellipsis` **More** or {icon}`share` **Share**.
 
@@ -167,7 +169,7 @@ Create and share JSON files for workpads.
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.
-3. From the toolbar, click {icon}`download` **Export**, then select **JSON**.
+3. In the workpad toolbar, select **Share**, then **Download as JSON**.
 
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]
