@@ -74,25 +74,6 @@ Traces land as OTLP spans under `service.name: openrouter` in the Applications s
 * **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall plus the **GenAI** tab, which renders the full conversation and request metadata (model, tokens, cost, finish reason).
 * **Applications → Traces**: The list of root transactions.
 
-## Group multi-turn conversations
-
-By default each chat completion produces its own trace. To view a multi-turn conversation as a single waterfall, open a span in your own application code and pass its trace context to OpenRouter in the request body. OpenRouter nests its spans under yours, and the two services connect in the Service map:
-
-```json
-"trace": {
-  "trace_id":       "<32-hex trace id>",
-  "parent_span_id": "<16-hex span id>"
-}
-```
-
-::::{caution}
-OpenRouter's public Broadcast documentation doesn't yet describe the `trace` field. Update this section with a link to their documentation once it's available.
-::::
-
-::::{tip}
-To group multi-turn traffic without instrumenting the app, pass `session_id` (or the `x-session-id` header) on each request. Turns stay as separate traces but filter together in Discover.
-::::
-
 ## Example: token usage by model
 
 In {{kib}} **Discover**, run this {{esql}} query to sum input and output tokens by model. The `name == "LLM Generation"` filter restricts the query to the parent request spans, so child `provider attempt` spans aren't counted twice:
