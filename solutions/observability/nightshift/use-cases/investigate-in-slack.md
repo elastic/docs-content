@@ -52,7 +52,9 @@ If your alerts already arrive in Slack from another app, an automation can watch
 
 ## Discuss an investigation in its thread [nightshift-uc-slack-discuss]
 
-You don't need to mention `@Elastic` for {{nightshift}} to use what your team says in an investigation's thread. When someone replies there without a mention, {{nightshift}} adds the reply to the investigation as context and runs the investigation again in the same conversation, one reply at a time. It doesn't answer the reply, but when the run finishes, it updates the investigation's status message in the thread with any new findings. To ask a question and get an answer, mention `@Elastic`.
+You don't need to mention `@Elastic` for {{nightshift}} to use what your team says in an investigation's thread. When someone replies there without a mention, {{nightshift}} adds the reply to the investigation as context and runs the investigation again in the same conversation. Every reply from a person starts a run, even one that adds nothing new, such as "thanks". Runs queue one at a time. {{nightshift}} doesn't answer the reply, but when the run finishes, it updates the investigation's status message in the thread with any new findings. To ask a question and get an answer, mention `@Elastic`.
+
+These runs don't count toward the daily limits, but each one uses model tokens. Refer to [Investigation limits](../investigation/limits.md).
 
 This works in public channels only, because messages in private channels never reach your project unless they mention `@Elastic`. In {{kib}}, each reply appears in the investigation's chat, with its Slack author named in the message text.
 

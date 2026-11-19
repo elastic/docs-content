@@ -120,6 +120,7 @@ The app also subscribes to these Slack events: `app_mention`, `message.channels`
 | The Slack relay, in transit | Slack events that are waiting to be delivered to your project, encrypted. | Deleted when your project accepts the event. |
 | The Slack relay, per answer | IDs and state for an answer in progress, such as which message to update. No message content. | Up to one hour. |
 | Your project | Conversations, investigations, and the Slack messages that they include, with the names of the people who wrote them. | Until you delete them. Refer to [Deleting data](./cost-and-models.md#nightshift-data). |
+| Your project, the `.workflows-events` data stream | Every message in a connected public channel, with its text, including messages that no automation matches. {{nightshift}} itself doesn't keep them. Workflows logs them as trigger events. | No retention period is set on the data stream. |
 | Models through EIS | The Slack messages in a thread are sent to the model along with the rest of the investigation. | Refer to [What it sends to models](./cost-and-models.md#nightshift-data). |
 | Slack | The messages that `@Elastic` posts. | Your Slack workspace's retention settings. |
 

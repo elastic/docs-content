@@ -61,12 +61,13 @@ Add the privileges for each task the admin does.
 
 ## Privileges that {{nightshift}} runs with [nightshift-privileges-accounts]
 
-{{nightshift}} runs investigations and automations as two service accounts. This way, they keep working no matter who set them up, and they can reach the same data for everyone.
+{{nightshift}} runs investigations and automations as two service accounts. Connecting Slack adds a third, for the Slack connection. This way, they keep working no matter who set them up, and they can reach the same data for everyone.
 
 | Account | Runs | What it can do |
 | --- | --- | --- |
 | `nightshift_agent` | Investigations, their sandbox tools, and chats with the investigation agent, including `@Elastic` in Slack | Read and write the Wiki, Memory, and decision trees. Use {{nightshift}} and **Agent Builder**. Run the connectors in the space. |
 | `nightshift_automations` | Automation workflows | Read alerts and alerting rules. Start investigations. Use **Agent Builder**. Run the connectors in the space. |
+| `nightshift-relay-agent-builder-<ID>` | Nothing on its own. The Slack relay uses it to pass each `@Elastic` mention to the investigation agent, which then runs as `nightshift_agent`. {{kib}} creates it when an admin connects Slack and deletes it when the workspace is disconnected. | Call the investigation agent. Its privileges are capped by those of the admin who connected Slack. Refer to [Elastic app for Slack](./slack-app.md#nightshift-slack-app-identity). |
 
 Investigations reach your data and code through the connectors in the space, with the credentials stored in each connector. The access you give a connector matters. A read-only API key or a token for selected repositories limits what every investigation can read. Detection reads the data that your detection sources select.
 
