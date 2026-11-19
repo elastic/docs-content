@@ -85,7 +85,7 @@ Refer to [`while`](/explore-analyze/workflows/steps/while.md).
 
 **Cause.** The `cases` block is an array of objects, not a map.
 
-**Resolution.** Structure `cases` as an array where each entry has `case:` and `steps:`:
+**Resolution.** Structure `cases` as an array where each entry has `match:` and `steps:`:
 
 ```yaml
 # Wrong
@@ -97,9 +97,9 @@ cases:
 
 # Right
 cases:
-  - case: foo
+  - match: foo
     steps: [ { ... } ]
-  - case: bar
+  - match: bar
     steps: [ { ... } ]
 ```
 
@@ -396,7 +396,7 @@ settings:
 
 **Cause.** Your user role is missing one of the Workflows feature privileges.
 
-**Resolution.** Ensure your role has at least `All` on the **Analytics → Workflows** feature. For finer-grained access, use the sub-feature privileges: `create`, `read`, `update`, `delete`, `execute`, `readExecution`, and `cancelExecution`. Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
+**Resolution.** Ensure your role has at least `All` on the **Analytics** → **Workflows** feature. For finer-grained access, use the sub-feature privileges: `create`, `read`, `update`, `delete`, `execute`, `readExecution`, and `cancelExecution`. Refer to [Setup](/explore-analyze/workflows/get-started/setup.md).
 
 ### Workflows isn't visible in {{kib}} [workflows-ts-ui-missing]
 

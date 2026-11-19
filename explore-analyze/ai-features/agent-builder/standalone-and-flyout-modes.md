@@ -55,7 +55,7 @@ Access Agent Builder by selecting **Agents** in the main navigation.
 
 ```{applies_to}
 stack: preview =9.3, ga 9.4+
-serverless: preview
+serverless: ga
 ```
 
 Once you [switch from AI Assistant to Agent Builder](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences), you can access the sidebar in two ways:

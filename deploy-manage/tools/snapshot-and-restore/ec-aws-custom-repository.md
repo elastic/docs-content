@@ -71,7 +71,7 @@ You can use the {{es}} keystore to store the credentials to access your AWS acco
 
 ## Create the repository [ec-create-aws-repository]
 
-1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
+1. Open {{kib}} and go to **Management** → **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.
 3. Provide a name for your repository and select type **AWS S3**.
 4. Provide the following settings:

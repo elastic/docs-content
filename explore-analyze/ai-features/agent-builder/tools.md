@@ -60,7 +60,7 @@ You can view, organize, and manage tools from the **Tools** page in {{kib}} or p
 
    ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 
-    Access the Tools page from **Manage components** at the bottom of the left sidebar, or from **Customize > Tools > Manage all tools** on an agent's page.
+    Access the Tools page from **Manage components** at the bottom of the left sidebar, or from **Customize** → **Tools** → **Manage all tools** on an agent's page.
    ::::
 
    ::::{applies-item} { stack: ga =9.3 }

@@ -28,7 +28,7 @@ Ready to dive in? Jump straight to the [examples](#custom-links-examples).
 
 Each custom link consists of a label, URL, and optional filter. The easiest way to create a custom link is from within the actions dropdown in the transaction detail page. This method will automatically apply filters, scoping the link to that specific service, environment, transaction type, and transaction name.
 
-Alternatively, you can create a custom link in the Applications UI by navigating to **Settings** > **Customize UI**, and selecting **Create custom link**.
+Alternatively, you can create a custom link in the Applications UI by navigating to **Settings** → **Customize UI**, and selecting **Create custom link**.
 
 ### Label [custom-links-label]
 
