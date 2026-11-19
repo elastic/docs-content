@@ -79,7 +79,7 @@ Instead, create a separate unmanaged historical {{tsds-init}}, load the data, th
 :::::{stepper}
 ::::{step} Create an index template for the historical data stream
 
-Use the same mappings as your live {{tsds-init}}, but don't include a lifecycle policy in the template. Instead, disable the data stream lifecycle with `"lifecycle": { "enabled": false }`. {applies_to}`stack: 9.6+` This prevents the minimum lifecycle from managing the stream while you load data.
+Use the same mappings as your live {{tsds-init}}, but don't include a lifecycle policy in the template. Instead, disable the data stream lifecycle with `"lifecycle": { "enabled": false }`. {applies_to}`stack: 9.6 ga` This prevents the minimum lifecycle from managing the stream while you load data.
 For example, use the [create index template]({{es-apis}}operation/operation-indices-put-index-template) API:
 
 ```console
