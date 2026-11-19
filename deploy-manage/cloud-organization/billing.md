@@ -54,8 +54,8 @@ To update your billing details, use the instructions for your subscription chann
 
 * If you pay by credit card, [update your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md) in the **Billing** section of the {{ecloud}} Console.
 * If you subscribe through a marketplace, refer to the instructions for your marketplace:
-  * [Google Cloud Platform Marketplace](/deploy-manage/deploy/elastic-cloud/google-cloud-platform-marketplace.md#ec-billing-gcp-account-change)
-  * [AWS Marketplace](/deploy-manage/deploy/elastic-cloud/aws-marketplace.md#ec-billing-aws-account-change)
+  * [Change the Billing Account used on Google Cloud Marketplace](/deploy-manage/deploy/elastic-cloud/google-cloud-platform-marketplace.md#ec-billing-gcp-account-change)
+  * [Change the AWS Account used on AWS Marketplace](/deploy-manage/deploy/elastic-cloud/aws-marketplace.md#ec-billing-aws-account-change)
 
 For any other questions that you have about billing, refer to our [billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq.md).
 
