@@ -1,5 +1,5 @@
 ---
-navigation_title: Send OTLP data to Elastic Cloud
+navigation_title: "Quickstart: Send OTLP data to Elastic Cloud"
 description: Configure the Managed OTLP Endpoint to send logs, metrics, and traces from any OTLP-compatible collector or SDK to Elastic Serverless or Elastic Cloud Hosted.
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/collect-data-with-native-otlp.html
@@ -13,7 +13,7 @@ products:
   - id: observability
 ---
 
-# Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
+# Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted
 
 Use this guide if you have an existing OTLP-compatible collector or SDK and want to send data directly to Elastic using the {{motlp}} — without switching to {{edot}}.
 
@@ -47,7 +47,7 @@ Follow these steps to send data to Elastic using the {{motlp}}.
 4. Copy the **Direct endpoint** value from the flyout.
 
 :::{tip}
-Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key for authentication with the {{motlp}}. Copy the authentication headers value from the same screen to skip the next step.
+Alternatively, from within your project, go to **Add data** and select **OpenTelemetry** under **Applications**. In **Configure the OpenTelemetry SDK**, copy the `OTEL_EXPORTER_OTLP_ENDPOINT` value. The same step shows an `OTEL_EXPORTER_OTLP_HEADERS` value in the form `Authorization=ApiKey <key>`, which contains a pre-configured API key for the {{motlp}}. Copy the `<key>` part to skip the next step.
 :::
 ::::
 

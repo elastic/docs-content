@@ -142,8 +142,6 @@ In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global 
 1. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
 2. Search for **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)**, open the integration, and select **Install Docker OpenTelemetry Assets**.
 
-If an integration doesn't appear in the search results, turn on **Display beta integrations**.
-
 ::::
 
 

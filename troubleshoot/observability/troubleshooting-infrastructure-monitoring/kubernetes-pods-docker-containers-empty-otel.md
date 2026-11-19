@@ -87,8 +87,8 @@ Use one of these methods:
 
 ::::{step} Access the dashboards
 1. In {{kib}}, go to **Dashboards**.
-2. In the search bar, type `OTEL`.
-3. Select the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard to view your cluster's performance.
+2. In the search bar, type `Kubernetes OTel`.
+3. Select the **[Kubernetes OTel] Overview** dashboard to view your cluster's performance.
 ::::
 
 :::::

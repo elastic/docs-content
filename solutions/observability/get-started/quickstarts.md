@@ -11,12 +11,9 @@ products:
 
 # Elastic {{observability}} quickstarts
 
-Our quickstarts reduce your time-to-value by offering a fast path to ingest and visualize your Observability data. Each quickstart provides:
+Quickstarts are the fastest way to get data into {{product.observability}} and see it in {{kib}}. Each one follows a single, opinionated path with sensible defaults, so you need minimal configuration to go from an empty deployment to populated dashboards.
 
-* A highly opinionated, fast path to data ingestion
-* Sensible configuration defaults with minimal configuration required
-* Auto-detection of logs and metrics for monitoring hosts
-* Quick access to related dashboards and visualizations
+If you're starting fresh, use the recommended {{edot}} quickstarts. Use one of the other quickstarts when you have a specific source or tool in mind, such as {{agent}} integrations, synthetic monitors, or AWS Firehose.
 
 ## Recommended: {{edot}} quickstarts [_otel-quickstarts]
 
@@ -24,18 +21,23 @@ For new setups, collect logs, metrics, and traces with {{edot}}. There's a guide
 
 * [**{{edot}} quickstarts**](/solutions/observability/get-started/opentelemetry/quickstart/index.md): select your deployment model and environment, then follow that guide.
 * [**Start using OpenTelemetry with Elastic**](/solutions/observability/get-started/opentelemetry/start-with-otel.md): if you're not sure which ingestion path suits your deployment, decide here first.
+* [**Quickstart: Monitor your application performance**](/solutions/observability/get-started/quickstart-monitor-your-application-performance.md): instrument your application with the {{edot}} SDKs and explore its traces, metrics, and logs.
+* [**Quickstart: Ingest custom metrics with {{edot}}**](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md): send application metrics you define yourself, in any environment.
+
+## {{agent}} quickstarts [_elastic-agent-quickstarts]
+
+These quickstarts install {{agent}} with its integrations. Data is formatted in the {{product.ecs}} rather than OpenTelemetry semantic conventions.
+
+* [**Quickstart: Monitor hosts with {{agent}}**](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md): runs a script that scans your host, detects its logs and metrics, and installs {{agent}} to collect them.
+* [**Quickstart: Monitor your {{k8s}} cluster with {{agent}}**](/solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md): installs {{agent}} with a single command to collect cluster logs and metrics.
 
 ## Other quickstarts [_other-quickstarts]
 
-These quickstarts cover additional ingest paths and use cases:
+These quickstarts cover other sources and tools:
 
-* [**Quickstart: Monitor your application performance**](/solutions/observability/get-started/quickstart-monitor-your-application-performance.md)
-* [**Ingest custom metrics with {{edot}}**](/solutions/observability/get-started/opentelemetry/custom-metrics-quickstart.md) — for application metrics you define yourself, in any environment.
-* [**Quickstart: Monitor hosts with {{agent}}**](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) — use this if you already run {{agent}} and want metrics formatted in the {{product.ecs}} rather than OpenTelemetry semantic conventions.
-* [**Quickstart: Monitor your {{k8s}} cluster with {{agent}}**](/solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md) — the {{agent}}-based alternative to the OpenTelemetry {{k8s}} quickstart.
-* [**Quickstart: Create a Synthetic monitor**](/solutions/observability/get-started/quickstart-create-synthetic-monitor.md)
-* [**Send OTLP data to Elastic Cloud**](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) — use this if you already run an OTLP-compatible collector or SDK and want to send data straight to the {{motlp}}.
-* [**Quickstart: Collect data from AWS Firehose**](/solutions/observability/get-started/quickstart-collect-data-with-aws-firehose.md)
+* [**Quickstart: Create a Synthetic monitor**](/solutions/observability/get-started/quickstart-create-synthetic-monitor.md): test and monitor your applications by simulating user journeys.
+* [**Quickstart: Send OTLP data to Elastic Cloud**](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md): send data from an OTLP-compatible collector or SDK you already run straight to the {{motlp}}.
+* [**Quickstart: Collect data from AWS Firehose**](/solutions/observability/get-started/quickstart-collect-data-with-aws-firehose.md): stream logs and metrics from AWS services to Elastic.
 
 ## Get started with other features [_get_started_with_other_features]
 

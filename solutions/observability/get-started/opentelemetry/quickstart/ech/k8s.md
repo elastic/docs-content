@@ -123,8 +123,6 @@ In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global 
 1. Search for **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)**, open the integration, and select **Install Kubernetes OpenTelemetry Assets**.
 2. Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
 
-If an integration doesn't appear in the search results, turn on **Display beta integrations**.
-
 ::::
 
 ::::{step} Explore your data

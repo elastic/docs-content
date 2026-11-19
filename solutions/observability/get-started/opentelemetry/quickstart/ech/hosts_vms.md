@@ -145,8 +145,6 @@ Enable central configuration to configure your EDOT SDKs from within {{product.k
 
 In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)**, open the integration, and select **Install System OpenTelemetry Assets**.
 
-If the integration doesn't appear in the search results, turn on **Display beta integrations**.
-
 :::::
 
 :::::{step} Explore your data
