@@ -28,7 +28,7 @@ Make sure you have the following:
 
 ## Add Elastic as a Broadcast destination
 
-Full step-by-step setup is in OpenRouter's own guide: [Broadcast — Elastic](https://openrouter.ai/docs/guides/features/broadcast/elastic). At a high level:
+Full step-by-step setup is in OpenRouter's own guide: [Broadcast — Elastic](https://openrouter.ai/docs/guides/features/broadcast/elastic). The three steps:
 
 :::::{stepper}
 
@@ -67,7 +67,7 @@ The destination's delivery status in the OpenRouter console shows a healthy indi
 
 Traces land as OTLP spans under `service.name: openrouter`. Each span carries the request metadata (model, provider, tokens, cost, finish reason, response id) and the full conversation. You can reach them from:
 
-* **Discover**: Filter on `service.name: openrouter` or query with ES|QL, then expand a row.
+* **Discover**: Query with {{esql}}, then expand a row.
 * **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall; pick a transaction to view its details.
 * **Applications → Traces**: The list of root transactions.
 
