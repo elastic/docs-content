@@ -25,7 +25,14 @@ Example: Run Elasticsearch in Docker
 
 Introduction
 
-A brief summary of what the guide accomplishes and what the user will achieve -->
+State the intent of the page: a brief summary of what the guide accomplishes and what the user will achieve. Your introduction should:
+
+- Say what task the guide helps the user complete
+- Describe the outcome the user can expect
+- Include a benefit statement: what's in it for the user, and why they would want to do this task
+- Help readers quickly determine if they're in the right place
+
+-->
 
 ## Before you begin
 <!--

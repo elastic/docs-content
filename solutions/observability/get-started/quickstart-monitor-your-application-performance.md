@@ -80,7 +80,7 @@ If your application runs on {{k8s}}, the OpenTelemetry operator automatically in
    - [Node.js](elastic-otel-node://reference/edot-node/setup/index.md)
    - [PHP](elastic-otel-php://reference/edot-php/setup/index.md)
    - [Python](elastic-otel-python://reference/edot-python/setup/index.md)
-4. Configure your EDOT SDK to send data to the [Managed OTLP endpoint](opentelemetry://reference/motlp.md). The **OpenTelemetry** tab provides the required configuration values.
+4. Configure your EDOT SDK to send data to the [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md). The **OpenTelemetry** tab provides the required configuration values.
 
 5. (Optional) Activate Central Configuration to configure your EDOT SDKs from within {{product.kibana}}. Refer to [EDOT SDKs Central Configuration](opentelemetry://reference/central-configuration.md).
 

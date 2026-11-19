@@ -60,7 +60,7 @@ If network security filters are applied to the remote cluster, the remote cluste
 ::::::{tab-item} TLS certificate (deprecated)
 ### Default trust with other clusters in the same ECE environment [ece_default_trust_with_other_clusters_in_the_same_ece_environment]
 
-By default, any deployment that you or your users create trusts all other deployments in the same {{ece}} environment. You can change this behavior in the Cloud UI under **Platform** > **Trust Management**, so that when a new deployment is created it does not automatically trust any other deployment. You can choose one of the following options:
+By default, any deployment that you or your users create trusts all other deployments in the same {{ece}} environment. You can change this behavior in the Cloud UI under **Platform** → **Trust Management**, so that when a new deployment is created it does not automatically trust any other deployment. You can choose one of the following options:
 
 * Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ece-remote-cluster-same-ece.md#ece_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * Trust no deployment - New deployments won’t trust any other deployment when they are created. You can instead configure trust individually for each of them in their security settings, as described in the next section.

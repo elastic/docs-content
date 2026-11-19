@@ -26,7 +26,7 @@ Plugins are installable packages that bundle agent capabilities such as skills, 
 
 To install a plugin:
 
-1. In the left sidebar, select **Manage components** > **Plugins**.
+1. In the left sidebar, select **Manage components** → **Plugins**.
 2. Select **Install plugin**, then choose an install method:
     - **Install from URL**: Provide the URL of a plugin package hosted remotely.
     - **Upload ZIP**: Upload a plugin packaged as a `.zip` file from your local machine.

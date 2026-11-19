@@ -1,6 +1,6 @@
 ---
 navigation_title: Serverless audit trail
-description: Configure and explore audit trail log delivery for Elastic Cloud Serverless, including ignore filters, destinations, data streams, and investigation recipes.
+description: Set up audit logging for Elastic Cloud Serverless with audit trail log delivery, including ignore filters, destinations, data streams, and investigation recipes.
 applies_to:
   serverless: ga
 products:
@@ -9,7 +9,7 @@ products:
 
 # Serverless audit trail
 
-Audit trail is the first log type available for [log delivery](/deploy-manage/monitor/log-delivery.md) in {{serverless-full}}. Enabling it delivers audit logs to your selected destination project so you can track and investigate activity in the source project.
+In {{serverless-full}}, enable audit logging using the audit trail. This is the first log type available for [{{serverless-short}} log delivery](/deploy-manage/monitor/log-delivery.md), and enabling it delivers audit logs to your selected destination project so you can track and investigate activity in the source project.
 
 ## What's included
 

@@ -26,14 +26,15 @@ Examples:
 
 <!-- REQUIRED
 
-Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
+State the intent of the page. Explain what the tutorial teaches, who it's for, and what users will be able to do by the end. Include:
 
 - A brief description of what this tutorial teaches
 - The intended audience and their expected skill level
+- A benefit statement: what's in it for the user, and why they would want to complete this tutorial
 - Learning objectives as a bulleted list
 -->
 
-Learn how to [brief description of the main task]. It assumes you have basic knowledge of:
+Learn how to [brief description of the main task] so that [benefit to the user]. It assumes you have basic knowledge of:
 
 - [Prerequisite concept 1]
 - [Prerequisite concept 2]
