@@ -9,7 +9,7 @@
 * `deployment`: Applies to some deployment type(s).
   * `ece`: Applies to [Elastic Cloud Enterprise](https://www.elastic.co/docs/deploy-manage/deploy/cloud-enterprise) deployments.
   * `eck`: Applies to [Elastic Cloud on Kubernetes](https://www.elastic.co/docs/deploy-manage/deploy/cloud-on-k8s) deployments.
-  * `self`: Applies to [self-managed](https://www.elastic.co/docs/deploy-manage/deploy/self-managed) deployments.
+  * `self`: Applies to [self-managed](https://www.elastic.co/docs/deploy-manage/deploy/self-managed) deployments managed directly, without ECE or ECK orchestration. To include ECE or ECK deployments, specify their keys separately.
   * `ech`: Applies to [Elastic Cloud Hosted](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/cloud-hosted) deployments.
 * `product`: Applies to a specific product that uses a unique versioning scheme (for example, not `stack`, `ece`, `eck`).
   * `apm_agent_dotnet`: Applies to the [Elastic APM .NET agent](https://www.elastic.co/docs/reference/apm/agents/dotnet).

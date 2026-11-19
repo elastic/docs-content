@@ -19,7 +19,7 @@ The supported deployment types differ by where the {{stack}} runs and how much o
 
 | Deployment type | Where and how to deploy |
 |---|---|
-| Self-managed | On your own premises, hardware, VMs, or cloud VMs with no orchestration |
+| Self-managed | On physical hardware, VMs, or containers that you manage, on premises or in a public cloud, without ECE or ECK orchestration |
 | {{ech}} (ECH) | On {{ecloud}} (SaaS, platform handled by Elastic) |
 | {{ece}} (ECE) | Self-managed orchestrator similar to ECH, but owned by you |
 | {{eck}} (ECK) | On {{k8s}} |
@@ -27,12 +27,32 @@ The supported deployment types differ by where the {{stack}} runs and how much o
 
 For a user-facing overview, refer to [](/get-started/deployment-options.md). For the full user-facing deployment documentation, refer to [](/deploy-manage/index.md).
 
+### Self-managed platforms and deployment types [self-managed-platforms-and-deployment-types]
+
+The term *self-managed* describes responsibility at two levels:
+
+- **Platform**: You operate ECE or ECK, which orchestrates your {{stack}} deployments. These are self-managed platforms.
+- **Deployment or cluster**: You install and manage the {{stack}} directly, without ECE or ECK orchestration. This is the **Self-managed** deployment type.
+
+An ECE or ECK platform is self-managed, but its deployments belong to the ECE or ECK deployment type. For example, if you operate ECE, you manage the platform while ECE orchestrates your {{es}} clusters.
+
+You can use *self-managed environments* as an umbrella term for directly managed clusters, ECE, and ECK. Define the group when you introduce it. Use individual deployment types when instructions or applicability differ within the group.
+
+The distinction depends on whether ECE or ECK manages the deployment. Scripts and automation that you create don't change its deployment type. The infrastructure location doesn't determine the type either: a self-managed cluster can run on physical hardware, VMs, or containers, on premises or in a public cloud.
+
+When you assign `applies_to` tags:
+
+- Use `deployment.self` for a directly managed cluster, including one with your own installation or upgrade automation.
+- Use `deployment.ece` or `deployment.eck` for deployments managed by those platforms, even when you operate the platform yourself.
+- If content applies to directly managed clusters, ECE, and ECK, list all three deployment keys. The `self` key doesn't include the other two.
+- If content applies consistently across the versioned stack, including ECH, use `stack` as described in [Dimension usage tips](/contribute-docs/how-to/cumulative-docs/guidelines.md#dimension-usage-tips).
+
 ### Deployments in detail
 
 Review the following sections to learn the basics of each deployment type, and what's distinctive about it.
 
 :::{dropdown} Self-managed
-Users own the platform and the {{stack}}, with no orchestration or automation. Installation, configuration, and upgrades are all manual. In this context, the term "cluster" is used more often than "deployment", even though components other than {{es}} are not part of a cluster directly.
+You install, configure, and upgrade the {{stack}} directly, without ECE or ECK orchestration. You can perform these tasks manually or use your own automation. In this context, the term "cluster" is used more often than "deployment", even though components other than {{es}} are not part of a cluster directly.
 :::
 
 :::{dropdown} {{ech}} (ECH)
@@ -71,9 +91,6 @@ Compared to ECH orchestration:
 {{serverless-short}} is hosted on {{ecloud}}, which is a common platform that it shares with ECH and certain services offered through [Cloud Connect](/deploy-manage/cloud-connect.md). This means that some configurations can be managed centrally, and then shared across ECH deployments and {{serverless-short}} projects. Common areas include, but are not limited to, user management, network security, and billing.
 :::
 
-:::{include} /contribute-docs/_snippets/self-managed-naming.md
-:::
-
 ## Deployments and the stack
 
 The {{stack}} has two flavors:
@@ -89,7 +106,7 @@ Highly orchestrated deployments of the versioned stack, such as ECH and ECE, and
 
 | Deployment type | Stack components available | Stack flavor |
 |---|---|---|
-| Self-managed | All components (manual install) | Versioned stack |
+| Self-managed | All components (direct installation, with or without your own automation) | Versioned stack |
 | ECH | {{es}}, {{kib}}, {{integrations-server}} ({{fleet-server}} + {{apm-server}}), agentless integrations | Versioned stack |
 | ECE | {{es}}, {{kib}}, {{integrations-server}} ({{fleet-server}} + {{apm-server}}), agentless integrations | Versioned stack |
 | ECK | All components | Versioned stack |
