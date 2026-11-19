@@ -15,6 +15,8 @@ You can add tags to {{agent}} during or after enrollment, then use the tags to f
 
 Tags are useful for capturing information that is specific to the installation environment, such machine type, location, operating system, environment, and so on. Tags can be any arbitrary information that will help you filter and perform operations on {{agent}}s with the same attributes.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` You can also add the tags to the data that {{agent}}s collect, so you can filter it by tag in Discover, dashboards, alerting rules, and detection rules. Refer to [Include agent tags in events](/reference/fleet/agent-policy.md#agent-policy-include-agent-tags).
+
 To filter the Agents list by tag, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**. Click **Tags**, then select the tags to filter on. The tags are also available in the KQL field for autocompletion.
 
 :::{image} images/agent-tags.png

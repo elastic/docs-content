@@ -57,6 +57,7 @@ Hosted policies display a lock icon in the {{fleet}} UI, and actions are restric
 | [Copy a policy](#copy-policy) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Edit or delete a policy](#policy-main-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add custom fields](#add-custom-fields) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Include agent tags in events](#agent-policy-include-agent-tags) {applies_to}`stack: ga 9.6+` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure agent monitoring](#change-policy-enable-agent-monitoring) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure an automatic {{agent}} upgrade](#agent-policy-automatic-agent-upgrade) {applies_to}`stack: ga 9.1.0` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Change the output of a policy](#change-policy-output) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
@@ -219,6 +220,47 @@ Adding custom fields is not supported for a small set of inputs:
 * `pf-elastic-collector`, `pf-elastic-symbolizer`, and `pf-host-agent`
 * `endpoint` inputs. Instead, use the advanced settings (`*.advanced.document_enrichment.fields`) of the {{elastic-defend}} Integration.
 * `elastic_agent` inputs
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To add a value that differs from one agent to another in the same policy, use [agent tags](#agent-policy-include-agent-tags) instead.
+
+
+## Include agent tags in events [agent-policy-include-agent-tags]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Use this setting to add the [tags](/reference/fleet/filter-agent-list-by-tags.md) of each {{agent}} to the data it collects. You can then filter and group the data by agent tag in Discover, dashboards, alerting rules, and detection rules. Unlike [custom fields](#add-custom-fields), which add the same values for every agent in a policy, tags can differ from one agent to another.
+
+This setting is off by default. It takes effect only for {{agents}} on version 9.6 or later that connect to {{fleet-server}} 9.6 or later. On {{serverless-short}}, Elastic manages {{fleet-server}} for you, so only the {{agent}} version matters.
+
+To include agent tags in events:
+
+1. In {{fleet}}, select **Agent policies**, then select the name of the policy you want to edit.
+2. Select the **Settings** tab and scroll to **Advanced settings**.
+3. For the **Include agent tags in events** setting, select **Enable**.
+4. Select **Save changes**.
+
+{{agent}} adds its tags to the `tags` field of each event, after any tags that the integration sets. For example, if an agent has the tags `production` and `eu-west`, and an integration adds the tag `forwarded`, the events from that integration contain:
+
+```json
+"tags": ["forwarded", "production", "eu-west"]
+```
+
+When you [add or remove tags](/reference/fleet/filter-agent-list-by-tags.md#add-tags-in-fleet) for an agent, you don't need to update the agent policy. The agent gets the new tags the next time it checks in with {{fleet}}. Events collected before the change keep their previous tags.
+
+Agent tags are added to data from most integrations, including when they run in the [OTel runtime](/reference/fleet/elastic-agent-as-otel-collector.md). They aren't added to data from the following integrations:
+
+* {{elastic-defend}}
+* Elastic APM
+* Synthetics monitors
+* Universal Profiling
+* [OpenTelemetry input packages](/reference/fleet/otel-integrations.md)
+
+To find data by agent tag, query the `tags` field. For example, the [KQL](/explore-analyze/query-filter/languages/kql.md) query `tags : "production"` matches events from agents tagged `production`. You can use this query in [Discover](/explore-analyze/discover.md), [dashboards](/explore-analyze/dashboards.md), [alerting rules](/explore-analyze/alerting.md), and [{{elastic-sec}} detection rules](/solutions/security/detect-and-alert.md).
+
+To include agent tags in events for standalone {{agents}}, refer to [Configure feature flags for standalone {{agent}}s](/reference/fleet/elastic-agent-standalone-feature-flags.md#elastic-agent-standalone-feature-flag-settings).
 
 
 ## Configure agent monitoring [change-policy-enable-agent-monitoring]

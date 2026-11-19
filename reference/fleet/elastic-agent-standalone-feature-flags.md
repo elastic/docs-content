@@ -28,8 +28,8 @@ agent.features:
 
 You can specify the following settings in the `agent.features` section of the `elastic-agent.yml` file.
 
-Fully qualified domain name (FQDN)
-:   When enabled, information provided about the current host through the [host.name](/reference/fleet/host-provider.md) key, in events produced by {{agent}}, is in FQDN format (`somehost.example.com` rather than `somehost`). This helps you to distinguish between hosts on different domains that have similar names. With `fqdn` enabled, the fully qualified hostname allows each host to be more easily identified when viewed in {{kib}}.
+`fqdn`
+:   Reports the current host name in fully qualified domain name (FQDN) format. When enabled, the [host.name](/reference/fleet/host-provider.md) key in events produced by {{agent}} contains `somehost.example.com` rather than `somehost`. This helps you to distinguish between hosts on different domains that have similar names. With `fqdn` enabled, the fully qualified hostname allows each host to be more easily identified when viewed in {{kib}}.
 
     ::::{note}
     FQDN reporting is not currently supported in APM.
@@ -50,8 +50,8 @@ Fully qualified domain name (FQDN)
         enabled: true
     ```
 
-Encrypted config {applies_to}`stack: ga 9.4+`
-:   When enabled, {{agent}} encrypts the contents of `elastic-agent.yml` and stores them in `fleet.enc`. It then replaces the contents of `elastic-agent.yml` with only the `encrypted_config` setting, to show that {{agent}} uses the encrypted configuration.
+`encrypted_config` {applies_to}`stack: ga 9.4+`
+:   Encrypts the configuration of a standalone {{agent}}. When enabled, {{agent}} encrypts the contents of `elastic-agent.yml` and stores them in `fleet.enc`. It then replaces the contents of `elastic-agent.yml` with only the `encrypted_config` setting, to show that {{agent}} uses the encrypted configuration.
 
     ::::{note}
     {{fleet}}-managed {{agents}} ignore this flag as they always encrypt storage.
@@ -71,8 +71,8 @@ Encrypted config {applies_to}`stack: ga 9.4+`
     If you turn off encryption, delete the `fleet.enc` file manually.
     ::::
 
-Default processors {applies_to}`stack: ga 9.4+`
-:   Depending on the input, {{agent}} uses the [`add_host_metadata`](/reference/fleet/add_host_metadata-processor.md), [`add_cloud_metadata`](/reference/fleet/add-cloud-metadata-processor.md), [`add_docker_metadata`](/reference/fleet/add_docker_metadata-processor.md), and [`add_kubernetes_metadata`](/reference/fleet/add_kubernetes_metadata-processor.md) default processors to add host, cloud, Docker, and {{k8s}} metadata to the events it collects. You can turn off these processors when you don't need the metadata they add, for example to reduce the size of your events. Turning them off removes the fields they add, so check that the dashboards, alerts, and other features you use don't rely on those fields.
+`default_processors` {applies_to}`stack: ga 9.4+`
+:   Controls the default processors that {{agent}} uses to add metadata to the events it collects. Depending on the input, these are the [`add_host_metadata`](/reference/fleet/add_host_metadata-processor.md), [`add_cloud_metadata`](/reference/fleet/add-cloud-metadata-processor.md), [`add_docker_metadata`](/reference/fleet/add_docker_metadata-processor.md), and [`add_kubernetes_metadata`](/reference/fleet/add_kubernetes_metadata-processor.md) processors. You can turn off these processors when you don't need the metadata they add, for example to reduce the size of your events. Turning them off removes the fields they add, so check that the dashboards, alerts, and other features you use don't rely on those fields.
 
     Depending on your version, the default processor settings apply to the following:
 
@@ -90,7 +90,29 @@ Default processors {applies_to}`stack: ga 9.4+`
 
     {applies_to}`stack: ga 9.6+` You can also [turn off individual processors for all outputs](#elastic-agent-standalone-feature-flag-default-processors), or [turn off processors only for the data sent to a specific output](/reference/fleet/elastic-agent-output-configuration.md#elastic-agent-output-default-processors).
 
-### Turn off individual default processors [elastic-agent-standalone-feature-flag-default-processors]
+`include_tags_in_events` {applies_to}`stack: ga 9.6+`
+:   Adds the {{agent}} tags that you list in the `agent.tags` setting of `elastic-agent.yml` to the `tags` field of each event, after any tags that the input sets. You can then filter and group the data by agent tag in Discover, dashboards, alerting rules, and detection rules, for example with the KQL query `tags : "production"`.
+
+    To include agent tags in events, set `enabled: true` for the `include_tags_in_events` setting, and list the tags in `agent.tags`:
+
+    ```yaml
+    agent.features:
+      include_tags_in_events:
+        enabled: true
+    agent.tags: [production, eu-west]
+    ```
+
+    When you change `agent.tags`, {{agent}} applies the new tags when it reloads its configuration.
+
+    Agent tags are added to data from most inputs, including when they run in the [OTel runtime](/reference/fleet/elastic-agent-as-otel-collector.md). They aren't added to data from the following:
+
+    * {{elastic-defend}}
+    * Elastic APM
+    * Synthetics monitors
+    * Universal Profiling
+    * OTel Collector components that you configure directly in `elastic-agent.yml`
+
+## Turn off individual default processors [elastic-agent-standalone-feature-flag-default-processors]
 
 ```{applies_to}
 stack: ga 9.6+
