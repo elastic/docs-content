@@ -128,7 +128,7 @@ After you submit the message, the image appears in the conversation history, and
 
 #### Requirements and limits
 
-- The selected [model](models.md) must support image input. {{agent-builder}} doesn't check this before sending. If the model doesn't support images, the request can fail with an error, or the agent can respond that it can't read the image.
+- The selected [model](models.md) must support image input. {{agent-builder}} doesn't check this before sending. If the model doesn't support images, the agent might fail partway through its response, or ignore the image without saying so.
 - You can attach up to 10 images to a single message.
 - Each image must be a PNG or JPEG file no larger than 3.5 MB.
 - Pasting is the only way to attach an image. You can't drag a file onto the input or select one from a file picker.
