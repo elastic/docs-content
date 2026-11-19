@@ -16,7 +16,7 @@ The placeholder matches the visualization that shows the value:
 - **Tables**, such as the results table in **Discover** and table panels on a dashboard: A dash (`-`). Hover over the dash to see `(null)`.
 - **Charts**, for a missing category such as an axis label, a legend entry, or a slice: The label `(null)`.
 
-The same placeholder carries over to the data in the Inspector and to formatted CSV files, including the files from the **Download CSV** action in a panel menu. Tables that you build with the point-and-click editor or an {{esql}} query keep the dash. Charts and other visualizations use `(null)`.
+The same placeholder carries over to the data in [the Inspector](/explore-analyze/dashboards/using.md#view-and-download-the-data-in-visualizations) and to formatted CSV files, including the files from the **Download CSV** action in a panel menu. Tables that you build with the point-and-click editor or an {{esql}} query keep the dash. Charts and other visualizations use `(null)`.
 
 **Raw CSV** files are unformatted on purpose, so a missing value is an empty cell. CSV reports from **Discover** write a dash (`-`) in classic mode and an empty cell in {{esql}} mode.
 
@@ -24,7 +24,7 @@ The same placeholder carries over to the data in the Inspector and to formatted 
 
 :::{applies-item} stack: ga 9.2-9.5
 
-Tables, charts, the Inspector, and formatted CSV files show the label `(null)`.
+Tables, charts, [the Inspector](/explore-analyze/dashboards/using.md#view-and-download-the-data-in-visualizations), and formatted CSV files show the label `(null)`.
 
 **Raw CSV** files write an empty cell. CSV reports from **Discover** write a dash (`-`) in classic mode and an empty cell in {{esql}} mode.
 
@@ -32,7 +32,7 @@ Tables, charts, the Inspector, and formatted CSV files show the label `(null)`.
 
 :::{applies-item} stack: ga 9.0-9.1
 
-Tables, the Inspector, and formatted CSV files show a dash (`-`). Charts show a dash in bar, line, area, heat map, and tag cloud charts, and the label `(empty)` in pie, donut, treemap, mosaic, and waffle charts.
+Tables, [the Inspector](/explore-analyze/dashboards/using.md#view-and-download-the-data-in-visualizations), and formatted CSV files show a dash (`-`). Charts show a dash in bar, line, area, heat map, and tag cloud charts, and the label `(empty)` in pie, donut, treemap, mosaic, and waffle charts.
 
 **Raw CSV** files write an empty cell. CSV reports from **Discover** write a dash (`-`) in classic mode and an empty cell in {{esql}} mode.
 

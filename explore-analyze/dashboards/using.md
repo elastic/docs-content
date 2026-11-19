@@ -221,7 +221,7 @@ This action is possible for all charts created using **Lens** or {{esql}}. It is
 1. If you'd like to download the data, select **Download CSV**, then select the format type from the dropdown:
 
     * **Formatted CSV**: Contains human-readable dates and numbers.
-    * **Raw CSV**: Formatted for computer use.
+    * **Raw CSV**: Contains the data as provided, for example, dates as timestamps.
 
         When you download a visualization panel with multiple layers, each layer produces a CSV file, and the file names contain the visualization and layer {{data-source}} names.
 
