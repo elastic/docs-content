@@ -376,7 +376,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds a manual input dialog for workflow runs that require input, showing event and manual inputs in separate tabs [#271586]({{kib-pull}}271586).
 * Fixes a layout issue in the translated rule flyout where editing the {{esql}} translation could shrink the original rule definition column [#276459]({{kib-pull}}276459).
 * Fixes an issue where the Automatic Migration integrations index could bind to a non-ELSER inference endpoint, causing translated rules to show no recommended integrations [#275766]({{kib-pull}}275766).
-* Fixes a sticky redirect where users routed to Automatic Migration during onboarding could no longer open **Launchpad → Get started** afterward [#273753]({{kib-pull}}273753).
+* Fixes a sticky redirect where users routed to Automatic Migration during onboarding could no longer open **Launchpad** → **Get started** afterward [#273753]({{kib-pull}}273753).
 * Fixes an issue where migrated Splunk dashboard panels failed to render in Lens with a "wrong data type" error because column types were incorrectly inferred as `unknown` [#270563]({{kib-pull}}270563).
 * Fixes an issue where uploading a migration file containing invalid rules or dashboards could leave behind an orphaned migration record [#266359]({{kib-pull}}266359).
 * Fixes migrated Splunk dashboards showing blank visualizations on initial load by removing hardcoded time fields and {{data-source}} titles from migration templates [#264102]({{kib-pull}}264102).
@@ -694,7 +694,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Excludes QRadar building-block rules from Automatic Migration eligibility and improves the XML upload UX [#250558]({{kib-pull}}250558).
 * Updates the `fast-xml-parser` package dependency to version 5.3.4 [#251644]({{kib-pull}}251644).
 * Changes the default chat experience in {{elastic-sec}} and Elastic {{observability}} contexts to AI Agent. A one-time announcement explains the change and allows you to return to the classic AI Assistant from **GenAI Settings**. The dismissal state is remembered per space [#260570]({{kib-pull}}260570).
-* Adds an anonymization profiles UI under **{{stack-manage-app}} → GenAI Settings → Anonymization**, with support for field rules, regex rules, and Named Entity Recognition (NER) rules, backed by the anonymization platform service foundation [#256246]({{kib-pull}}256246), [#252616]({{kib-pull}}252616).
+* Adds an anonymization profiles UI under **{{stack-manage-app}}** → **GenAI Settings** → **Anonymization**, with support for field rules, regex rules, and Named Entity Recognition (NER) rules, backed by the anonymization platform service foundation [#256246]({{kib-pull}}256246), [#252616]({{kib-pull}}252616).
 * Adds an **Add to chat** button on the rule details, rule editing, and alert flyout rule preview pages, allowing you to attach any detection rule to AI Agent for exploration and analysis [#253043]({{kib-pull}}253043).
 * Adds an option to provide a closing reason when closing a case, which is synced to the associated alerts when the alert-sync toggle is enabled [#254603]({{kib-pull}}254603).
 * Adds a **Status** column and disables the **Select** button for closed cases in the **Add to existing case** modal, preventing you from adding alerts to a closed case [#260990]({{kib-pull}}260990).

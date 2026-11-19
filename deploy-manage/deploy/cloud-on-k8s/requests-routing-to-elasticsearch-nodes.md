@@ -12,6 +12,10 @@ products:
 
 The default Kubernetes service created by ECK, named `<cluster_name>-es-http`, is configured to include all the {{es}} nodes in that cluster. This configuration is good to get started and is adequate for most use cases. However, if you are operating an {{es}} cluster with [different node types](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) and want control over which nodes handle which types of traffic, you should create additional Kubernetes services yourself.
 
+::::{important}
+Don’t use the headless services created by ECK as endpoints for clients. ECK creates a headless service for each node set, named `<cluster_name>-es-<nodeSet_name>`, which serves as the governing service for the node set's StatefulSet and is intended for internal use only.
+::::
+
 As an alternative, you can use features provided by third-party software such as service meshes and ingress controllers to achieve more advanced traffic management configurations. Check the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/{{version.eck | M.M}}/config/recipes) in the ECK source repository for a few examples.
 
 :::{admonition} Support scope for Ingress Controllers
@@ -126,7 +130,7 @@ spec:
 
 ## Specify a custom service in elasticsearchRef [k8s-traffic-splitting-with-service-name]
 
-You can then use your custom service in the `elasticsearchRef` element when specifying connections between {{es}} and other stack applications. This is an example on how to target only coordinating node from {{kib}}:
+You can then use your custom service in the `elasticsearchRef` element when specifying connections between {{es}} and other stack applications. This is an example of how to target only the coordinating nodes from {{kib}}:
 
 ```yaml subs=true
 apiVersion: kibana.k8s.elastic.co/v1
@@ -140,4 +144,27 @@ spec:
     name: "hulk"
     serviceName: "hulk-es-coordinating-nodes"
 ```
+
+The HTTP certificate that ECK generates for {{es}} doesn't include the DNS name of your custom service. {{kib}} doesn't verify the host name, so the previous example works. Other applications, such as Beats, verify it and fail to connect with an error like the following:
+
+```text
+x509: certificate is valid for hulk-es-http.default.es.local, hulk-es-http, hulk-es-http.default.svc, ..., not hulk-es-coordinating-nodes.default.svc
+```
+
+To fix this, add the DNS name of your custom service to the subject alternative names (SANs) of the {{es}} HTTP certificate, as shown in the following example. For additional guidance on configuring certificate SANs, refer to [Reserve static IP and custom domain](/deploy-manage/security/k8s-https-settings.md#k8s-static-ip-custom-domain).
+
+```yaml
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: hulk
+spec:
+  http:
+    tls:
+      selfSignedCertificate:
+        subjectAltNames:
+        - dns: hulk-es-coordinating-nodes.default.svc <1>
+```
+
+1. Replace `default` with the namespace of your resources.
 

@@ -80,7 +80,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 A deployment can be configured to trust all or specific deployments in a remote ECE environment:
 
 1. Access the **Security** page of the deployment you want to use for cross-cluster operations.
-2. Select **Remote Connections > Add trusted environment** and choose **{{ece}}**. Then click **Next**.
+2. Select **Remote Connections** → **Add trusted environment** and choose **{{ece}}**. Then click **Next**.
 3. Select **Certificates** as authentication mechanism and click **Next**.
 4. Enter the environment ID of the ECE environment. You can find it under Platform > Trust Management in your ECE administration UI.
 5. Upload the Certificate Authority of the ECE environment. You can download it from Platform > Trust Management in your ECE administration UI.
