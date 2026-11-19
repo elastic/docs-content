@@ -12,7 +12,7 @@ products:
   - id: cloud-hosted
 ---
 
-# Send OpenRouter Broadcast traces to Elastic
+# Send OpenRouter traces to Elastic
 
 [OpenRouter](https://openrouter.ai) is a gateway that routes LLM requests across many model providers. OpenRouter [Broadcast](https://openrouter.ai/docs/guides/features/broadcast) can send OpenTelemetry traces of every chat completion straight to Elastic. After an account admin adds Elastic as a destination in the OpenRouter console, one trace per request starts arriving in your Elastic project. You don't need to change your code or run an OpenTelemetry Collector.
 
@@ -56,26 +56,38 @@ OpenRouter's Broadcast has a **Privacy Mode** that strips prompt and completion 
 
 ## Check that traces arrive
 
-1. Send a chat completion request through OpenRouter using an API key that the destination covers.
-2. In the OpenRouter console, at **Settings → Observability**, check that the destination's delivery status is healthy. This can take about a minute.
-3. In {{kib}}, find the spans. All Broadcast spans have `service.name` set to `openrouter`. For example, in **Discover**, run the following {{esql}} query:
+To verify Elastic is receiving spans without sending a real chat completion, use OpenRouter's **Test Connection** button at **Settings → Observability → your Elastic destination**. It fires a synthetic `Test Generation` span.
 
-    ```esql
-    FROM traces-*
-    | WHERE service.name == "openrouter"
-    ```
+In {{kib}} **Discover**, run this {{esql}} query to find the test span (and any real Broadcast span) by `service.name`:
+
+```esql
+FROM traces-*
+| WHERE service.name == "openrouter"
+```
+
+The destination's delivery status in the OpenRouter console shows a healthy indicator once spans are being accepted. This can take about a minute after setup.
 
 ## Where the traces appear in Elastic
 
 Traces land as OTLP spans under `service.name: openrouter` in the Applications section. You can view them in:
 
-* **Discover**: Filter on `service.name: openrouter` against the `traces-generic.otel-*` data view. All attributes are available, including model, provider, tokens, finish reason, and response id.
 * **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall plus the **GenAI** tab, which renders the full conversation and request metadata (model, tokens, cost, finish reason).
 * **Applications → Traces**: The list of root transactions.
 
 ## Group multi-turn conversations
 
-By default each chat completion produces its own trace. To view a multi-turn conversation as a single waterfall, open a span in your own application code and pass its trace context to OpenRouter in the request body. OpenRouter nests its spans under yours, and the two services connect in the Service map. Refer to [OpenRouter's Broadcast documentation](https://openrouter.ai/docs/guides/features/broadcast) for the trace context fields.
+By default each chat completion produces its own trace. To view a multi-turn conversation as a single waterfall, open a span in your own application code and pass its trace context to OpenRouter in the request body. OpenRouter nests its spans under yours, and the two services connect in the Service map:
+
+```json
+"trace": {
+  "trace_id":       "<32-hex trace id>",
+  "parent_span_id": "<16-hex span id>"
+}
+```
+
+::::{caution}
+OpenRouter's public Broadcast documentation doesn't yet describe the `trace` field. Update this section with a link to their documentation once it's available.
+::::
 
 ::::{tip}
 To group multi-turn traffic without instrumenting the app, pass `session_id` (or the `x-session-id` header) on each request. Turns stay as separate traces but filter together in Discover.
