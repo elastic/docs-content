@@ -124,7 +124,7 @@ The following example shows a pasted image attached to a message, ready to send:
 
 To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`, or delete the image's chip from the message text.
 
-After you submit the message, the image appears in the conversation history, and the agent can refer to it in later messages in the same conversation.
+After you submit the message, the image appears in the conversation history. In later messages, the agent can look at the image again if it needs to.
 
 #### Requirements and limits
 
