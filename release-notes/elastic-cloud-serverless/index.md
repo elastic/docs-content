@@ -2092,7 +2092,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 ### Features and enhancements [serverless-changelog-10132025-features-enhancements]
 
 * Adds a new `MIGRATE` action type for migrating agents to a different cluster [#237342]({{kib-pull}}237342).
-* Adds a **Show agentless resources** toggle on the Fleet > Settings page for debugging and diagnostics [#237528]({{kib-pull}}237528)
+* Adds a **Show agentless resources** toggle on the Fleet → Settings page for debugging and diagnostics [#237528]({{kib-pull}}237528)
 * Allows you to carry over the controls when navigating to a dashboard, preserving the histogram [#237070]({{kib-pull}}237070)
 * Enables the risk score reset feature [#237829]({{kib-pull}}237829)
 * Uses {{esql}} for calculating risk scores [#237871]({{kib-pull}}237871)
@@ -3019,7 +3019,7 @@ space-efficient alternative to the grid layout, also making this layout the defa
 * Updates placeholder text and validation message for **Related integrations** in {{sec-serverless}}  [#225775]({{kib-pull}}225775)
 * Resets to the default value when the `lookbackInterval` field is empty in Machine Learning [#225249]({{kib-pull}}225249)
 * Fixes the handling of time range in embedded anomaly swim lane in Machine Learning [#225803]({{kib-pull}}225803)
-* Adds discernible text to the refresh button on the **Streams** > **Processing** page [#225816]({{kib-pull}}225816)
+* Adds discernible text to the refresh button on the **Streams** → **Processing** page [#225816]({{kib-pull}}225816)
 * Fixes handling of context limit errors in Playground when using Elastic Managed LLMs [#225360]({{kib-pull}}225360)
 * Adds check for `isIndexed` in text fields when generating field exists queries to avoid `IllegalStateException` when field is stored but not indexed or with `doc_values` [#130531](https://github.com/elastic/elasticsearch/pull/130531)
 * Forces `niofs` for `fdt tmp` file read access when flushing stored fields [#130308](https://github.com/elastic/elasticsearch/pull/130308)

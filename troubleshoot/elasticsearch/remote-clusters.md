@@ -15,6 +15,12 @@ products:
 
 You may encounter several issues when setting up a remote cluster for {{ccr}} or {{ccs}}.
 
+## Prerequisites [remote-clusters-troubleshooting-prerequisites]
+
+Before you troubleshoot connectivity or configuration, make sure that the user running the search request is authorized to search the remote cluster for [CCS](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs) or [CCR](/deploy-manage/tools/cross-cluster-replication/_configure_privileges_for_cross_cluster_replication_2.md). A successful connection, as [reported by the remote cluster info API](#remote-clusters-troubleshooting-check-connection), only shows that the clusters can communicate. It doesn't imply that the user has the required privileges to search or synchronize the remote indices.
+
+Missing privileges can sometimes produce errors that don't mention permissions. For example, an EQL query can fail with `the EQL query failed to run successfully due to unavailable shards` when the user isn't authorized to search the remote indices. If you see an error like this, check the shard failure `reason` in the response, and refer to [API key or local user has insufficient privileges](#remote-clusters-troubleshooting-insufficient-privileges).
+
 ## General troubleshooting [remote-clusters-troubleshooting-general]
 
 ### Checking whether a remote cluster has connected successfully [remote-clusters-troubleshooting-check-connection]

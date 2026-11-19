@@ -65,6 +65,8 @@ FROM kibana_sample_data_logs
 To run a pattern analysis without writing a query, refer to [](/explore-analyze/discover/run-pattern-analysis-discover.md).
 ::::
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To check how common one message is without grouping your results, refer to [](esql-results.md#find-similar-values-esql).
+
 ## Add sparklines to patterns [esql-cascade-pattern-sparkline]
 ```{applies_to}
 serverless: preview
@@ -99,6 +101,16 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 - **Open in new tab**: Open the documents in this group in a new Discover tab, with a query scoped to that group.
 
 If the grouping field isn't filterable, **Filter in** and **Filter out** are unavailable.
+
+## Compare documents in a group [compare-documents-in-group]
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
+
+If two documents in a group look almost the same, you can compare their field values side by side to see what differs, without leaving the grouped results. To do so, expand the group and select the checkboxes of two or more documents. Then open the **Selected** menu in the group's table toolbar and select **Compare selected**. The comparison replaces the group's table. To bring the table back with your selection intact, select **Exit comparison mode**.
+
+For the comparison settings and how **Discover** highlights differences, refer to [Compare documents in Discover](compare-documents.md).
 
 ## Opt out of grouped results [opt-out-of-the-grouped-layout]
 
