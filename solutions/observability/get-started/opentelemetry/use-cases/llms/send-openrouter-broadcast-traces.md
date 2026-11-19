@@ -80,3 +80,22 @@ By default each chat completion produces its own trace. To view a multi-turn con
 ::::{tip}
 To group multi-turn traffic without instrumenting the app, pass `session_id` (or the `x-session-id` header) on each request. Turns stay as separate traces but filter together in Discover.
 ::::
+
+## Example: token usage by model
+
+In {{kib}} **Discover**, run this {{esql}} query to sum input and output tokens by model:
+
+```esql
+FROM traces-*
+| WHERE service.name == "openrouter" AND name == "LLM Generation"
+| STATS
+    input_tokens = SUM(attributes.gen_ai.usage.input_tokens),
+    output_tokens = SUM(attributes.gen_ai.usage.output_tokens)
+  BY attributes.gen_ai.request.model
+```
+
+## Related pages
+
+* [OpenRouter Broadcast documentation](https://openrouter.ai/docs/guides/features/broadcast) (OpenRouter documentation)
+* [{{motlp}} reference](/reference/managed-inputs/managed-otlp-endpoint.md)
+* [LLM and agentic AI observability](/solutions/observability/applications/llm-observability.md)
