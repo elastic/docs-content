@@ -52,7 +52,7 @@ To confirm:
 
 1. Open {{kib}} for your deployment.
 2. In the top right, select **Add data**.
-3. Select **Application** > **OpenTelemetry**.
+3. Select **Application** → **OpenTelemetry**.
 4. In the **APM Agents** panel, locate **OpenTelemetry**.
 5. Ensure the `endpoint` in your Collector configuration matches exactly.
 
