@@ -84,7 +84,7 @@ After about a minute, the agent will enroll in {{fleet}}, download the configura
 **Notes:**
 
 * If you encounter an "x509: certificate signed by unknown authority" error, you might be trying to enroll in a {{fleet-server}} that uses self-signed certs. To fix this problem in a non-production environment, pass the `--insecure` flag. For more information, refer to the [troubleshooting guide](/troubleshoot/ingest/fleet/common-problems.md#agent-enrollment-certs).
-* Optionally, you can use the `--tag` flag to specify a comma-separated list of tags to apply to the enrolled {{agent}}. For more information, refer to [Filter list of Agents by tags](/reference/fleet/filter-agent-list-by-tags.md).
+* Optionally, you can use the `--tag` flag to specify a comma-separated list of tags to apply to the enrolled {{agent}}. For more information, refer to [](/reference/fleet/filter-agent-list-by-tags.md#add-tags-at-enrollment).
 * Refer to [Installation layout](/reference/fleet/installation-layout.md) for the location of installed {{agent}} files.
 * Because {{agent}} is installed as an auto-starting service, it will restart automatically if the system is rebooted.
 
