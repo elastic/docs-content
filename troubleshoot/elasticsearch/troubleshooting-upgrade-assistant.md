@@ -27,7 +27,7 @@ The Upgrade Assistant performs these migrations on your behalf, using your accou
 * **Migrate system indices**: If the error `System indices migration failed` appears after you click **Migrate indices**, then click **View migration details** to show the output of the {{es}} [get feature migration information API]({{es-apis}}operation/operation-migration-get-feature-upgrade-status) for errors.
 * **Review deprecated settings and resolve issues** for {{es}}: If the error `Old index with a compatibility version` appears, resolve it by reindexing the index or setting it to read-only:
 
-  * {applies_to}`stack: ga 9.1+` In the **Actions** column, select the icon for the action you want. Hover over an icon to see what it does.
+  * {applies_to}`stack: ga 9.1+` In the **Actions** column, select the icon for the action you want.
   * {applies_to}`stack: ga =9.0` In the **Resolution** column, select **Reindex**.
 
   If you choose reindexing, any issues that occur appear under a **Reindexing error** banner.

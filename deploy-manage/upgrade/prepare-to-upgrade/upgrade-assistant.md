@@ -15,11 +15,7 @@ products:
 
 The Upgrade Assistant helps you [prepare to upgrade](/deploy-manage/upgrade/prepare-to-upgrade.md) to the next major version of the {{stack}}. 
 
-To access the assistant, go to the **Upgrade Assistant** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-{applies_to}`self: ga 9.1+` To make the Upgrade Assistant appear in the navigation menu and the global search field, set `xpack.upgrade_assistant.ui.enabled` to `true` in `kibana.yml`, then restart {{kib}}. The app is off by default. For the full list of settings, refer to the [{{kib}} general settings](kibana://reference/configuration-reference/general-settings.md).
-
-On {{ech}} deployments running 9.1 or later, the app is also off by default, and the {{kib}} user settings don't allow you to turn it on.
+The Upgrade Assistant isn't available on every deployment type and version. If it's [available for yours](#availability), go to the **Upgrade Assistant** management page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{note}
 The Upgrade Assistant relies only on local {{es}} and {{kib}} APIs to detect deprecations and prepare your cluster for upgrade. It doesn't depend on any external service, so you can use it in air-gapped environments without internet access. For details on the APIs it uses, refer to [Deprecations](#_deprecations).
@@ -36,6 +32,18 @@ The assistant identifies deprecated settings in your configuration, and if any o
 If there are issues with your data or configuration, the Upgrade Assistant provides next steps or more details. Refer to [](/troubleshoot/elasticsearch/troubleshooting-upgrade-assistant.md).
 :::
 
+## Availability [availability]
+
+Whether you can use the Upgrade Assistant depends on your deployment type and {{stack}} version:
+
+| Deployment | 9.0 | 9.1 and later |
+|---|---|---|
+| Self-managed | Available | Available, but off by default |
+| {{ech}} | Available | Not available |
+| {{serverless-short}} | Not available | Not available |
+
+{applies_to}`self: ga 9.1+` To use the app on a self-managed deployment, set `xpack.upgrade_assistant.ui.enabled` to `true` in `kibana.yml`, then restart {{kib}}. The app then appears in the navigation menu and in the global search field. For the full list of settings, refer to the [{{kib}} general settings](kibana://reference/configuration-reference/general-settings.md).
+
 ## Required permissions [_required_permissions_11] 
 
 To access the Upgrade Assistant, you need the `manage` cluster privilege. 
@@ -48,10 +56,6 @@ You may also need additional privileges to perform specific actions.
 ## Feature set [_feature_set] 
 
 Some features of the Upgrade Assistant are only needed when upgrading to a new major version.
-
-{applies_to}`stack: ga 9.1+` These features are on by default. They cover {{ml}} snapshots, system index migration, reindexing as a corrective action, and data stream migration.
-
-{applies_to}`stack: ga =9.0` These features are off by default.
 
 ## Deprecations [_deprecations] 
 
