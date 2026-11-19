@@ -47,23 +47,23 @@ Classify each workload by its primary purpose, not by an individual feature or a
 
 ### Inventory your assets [migrate-to-serverless-inventory]
 
-Build an inventory of the data, configuration, applications, and external dependencies you need to preserve. Review the categories that apply to your solution and validate the inventory with the people who configure and use each part. The linked procedures in [Prepare and test the destination](#migrate-to-serverless-prepare) explain how to migrate each resource.
+Identify the data, configuration, integrations, applications, and external dependencies your solution uses. Review the inventory with the people who configure and use each part of the solution.
 
-Focus your inventory on user-created resources and customizations, including any changes made directly to Elastic-managed assets. You generally do not need to inventory or transfer individual managed, system, or internal assets. The destination integrations and components recreate the resources they provide. Record the integrations and versions your solution uses, and follow the feature-specific guidance below for any exceptions.
+Focus on user-created resources and customizations, including direct changes to Elastic-managed assets. You generally do not need to inventory or transfer individual managed, system, or internal assets. The destination integrations and components recreate the resources they provide. Record the integrations and versions you use, and check each feature's migration guidance for exceptions.
 
-The labels describe the type of migration work, not the level of difficulty or what a specific migration tool can automate:
+The following checklist provides a broad reference to the asset types involved in a migration. Mark the items your solution uses and add any resources specific to your environment. [Prepare and test the destination](#migrate-to-serverless-prepare) describes the migration procedures, with links from the corresponding checklist entries. The labels indicate whether you can transfer an asset directly, need to adapt it, or must replace it because it is unavailable in {{serverless-short}}.
 
-- ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer:** Preserve data or compatible definitions through supported transfer, export and import, or API procedures.
-- ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Adapt or complete:** Change incompatible configuration or supply secrets and other required values that do not transfer.
-- ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace or redesign:** The source resource or capability is unavailable. Use an alternative or change the solution design.
-
-A transfer can include recreating resources through APIs or the UI. The combined ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") label identifies resources with transferable content and parts that can need adaptation. Confirm availability for your destination project type and feature tier. Resources without a label require feature-specific assessment.
+% TODO: Add migration procedures and local links for transforms, Watcher, SLOs, Synthetics monitors, reporting schedules, Streams, Attack Discovery, Endpoint artifacts, and network configuration. Keep these entries unlinked until their procedures are documented.
 
 :::{dropdown} Data
-- [ ] [Regular indices](#migrate-to-serverless-regular-indices), including mappings, settings, and update or delete patterns — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer documents and adapt settings or lifecycle configuration where needed**
+- [ ] [Regular indices](#migrate-to-serverless-regular-indices), including mappings and settings — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer documents and adapt settings or lifecycle configuration where needed**
 - [ ] [Data streams and backing indices](#migrate-to-serverless-data-streams), including the current write index — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer documents and adapt settings or lifecycle configuration where needed**
-- [ ] [Index and data stream aliases](/manage-data/data-store/aliases.md), including filters and write targets — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Index and data stream aliases](#migrate-to-serverless-data), including filters and write targets — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
 - [ ] [Stored vectors and `semantic_text` data](#migrate-to-serverless-transfer-considerations) — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Preserve embeddings and adapt mappings or inference references where needed**
+- [ ] **Write patterns:** Identify indices and data streams that only append documents and those that also update or delete existing documents. Record which applications or jobs perform these operations and how frequently.
+- [ ] **Stable historical data:** Identify indices and backing indices that no longer receive new documents, updates, or deletes and can be copied without reconciling later changes.
+
+Use these patterns to plan your [data transfer](#migrate-to-serverless-data): determine what you can copy during preparation and what needs a final copy after source changes stop, or a tested incremental synchronization procedure.
 :::
 
 :::{dropdown} Data structures and processing
@@ -76,7 +76,7 @@ A transfer can include recreating resources through APIs or the UI. The combined
 - [ ] [Composable index templates](#migrate-to-serverless-templates), including patterns, priorities, component order, and data stream configuration — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer compatible definitions, remove unsupported settings, and adapt lifecycle configuration**
 - [ ] [Legacy index templates](#migrate-to-serverless-legacy-templates) still in use — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with composable templates**
 - [ ] [{{ilm-cap}} policies, data tiers, and lifecycle actions](#migrate-to-serverless-lifecycle) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with data stream lifecycle or another retention design**
-- [ ] [Transforms](/explore-analyze/transforms.md) and other custom processing resources
+- [ ] Transforms and other custom processing resources
 :::
 
 :::{dropdown} Kibana objects and solution configuration
@@ -92,13 +92,13 @@ A transfer can include recreating resources through APIs or the UI. The combined
 - [ ] [Cases](#migrate-to-serverless-cases), including comments, configuration, attachments, related alerts, and Timelines — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer supported content and recreate omitted configuration**
 - [ ] [Maintenance windows](#migrate-to-serverless-maintenance-windows), including schedules, recurrence, filters, and rule scope — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer schedules and filters, adapting removed rule-category restrictions where used**
 - [ ] [User-managed workflows](#migrate-to-serverless-workflows), including triggers, schedules, connectors, and dependencies — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
-- [ ] [Watcher watches](/explore-analyze/alerting/watcher.md) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with {{kib}} alerting rules**
-- [ ] [SLOs](/solutions/observability/incident-management/service-level-objectives-slos.md)
-- [ ] [Synthetics monitors](/solutions/observability/synthetics/index.md)
-- [ ] [Reporting schedules](/explore-analyze/report-and-share.md)
-- [ ] [Streams](/solutions/observability/streams/streams.md)
-- [ ] [Attack Discovery configuration](/solutions/security/ai/attack-discovery/run-attack-discovery.md)
-- [ ] [Endpoint artifacts](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md)
+- [ ] Watcher watches — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with {{kib}} alerting rules**
+- [ ] SLOs
+- [ ] Synthetics monitors
+- [ ] Reporting schedules
+- [ ] Streams
+- [ ] Attack Discovery configuration
+- [ ] Endpoint artifacts
 :::
 
 :::{dropdown} Security and access
@@ -107,7 +107,7 @@ A transfer can include recreating resources through APIs or the UI. The combined
 - [ ] [Deployment-local users](#migrate-to-serverless-access) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with organization users**
 - [ ] [Authentication realms and role mappings](#migrate-to-serverless-access) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with organization-level authentication**
 - [ ] [API keys, service credentials, certificates, and secrets](#migrate-to-serverless-access) — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Create destination credentials**
-- [ ] [Network policies, private connectivity, proxies, and allowlists](/deploy-manage/security/network-security.md) — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Recreate for the destination**
+- [ ] Network policies, private connectivity, proxies, and allowlists — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Recreate for the destination**
 - [ ] [Remote cluster connections and cross-cluster searches](#migrate-to-serverless-remote-clusters) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with CPS only between compatible Serverless projects in the same organization**
 - [ ] [Cross-cluster replication](#migrate-to-serverless-remote-clusters) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Redesign replication-dependent workflows. CPS does not replicate data**
 :::
@@ -135,7 +135,7 @@ Also record the information shared across these categories:
 
 - Connected applications, client libraries, and ingestion tools, including Beats, Logstash, OpenTelemetry, APM, standalone agents, content connectors, and crawlers. Identify where their endpoints and credentials are configured.
 - Every process that creates, updates, or deletes source data or configuration. Include external integrations, scheduled jobs, and administrative scripts.
-- Stable historical data, changing data and configuration, and operational state you need to retain, such as alerts, investigation content, execution history, and learned model state.
+- Operational state you need to retain, such as alerts, investigation content, execution history, and learned model state.
 - Asset owners, representative queries, typical and peak ingestion and search rates, and acceptance criteria. Record compliance, retention, interruption, data loss, and rollback requirements.
 
 ### Check compatibility [migrate-to-serverless-compatibility]
@@ -368,13 +368,11 @@ serverless: unavailable
 ::::{step} Transfer historical data to the destination
 :anchor: migrate-to-serverless-data
 
-During preparation, transfer and verify data that no longer changes. You can retain these verified copies when completing the migration, reducing the amount of data to transfer during the final migration window. Leave data that is still changing for that window, unless you have designed and tested an [incremental transfer procedure](#migrate-to-serverless-incremental).
-
-You can start with a subset to validate the process. If you copy data that continues to change, treat that copy as provisional. Before switching to production, replace it with a complete copy taken after source modifications stop, or reconcile all subsequent changes.
+Transfer data to validate the destination and rehearse the copy procedure. You can start with a subset and retain verified copies of stable data for production. Treat copies of changing data as provisional: replace them with a complete copy after source changes stop, or reconcile subsequent changes through a tested [incremental transfer procedure](#migrate-to-serverless-incremental).
 
 #### Select the data to transfer
 
-Identify complete indices that no longer receive new documents, updates, or deletes. For data streams, start with historical backing indices that meet this condition, leaving the current write index for the final window. A backing index is not necessarily immutable after rollover: updates, deletes, and retention can still change its contents.
+Use your [inventory of write patterns and stable data](#migrate-to-serverless-inventory) to select complete indices or historical backing indices to copy now. Leave the current write index for the final window. Confirm that the selected data remains stable: rollover alone does not prevent later updates, deletes, or retention from changing a backing index's contents.
 
 Record the source indices selected for transfer, their destination names, and which copies you have verified. Use this record to identify the data still pending during the [final transfer](#migrate-to-serverless-final-transfer). If no data is stable, use preparation to test the procedure and perform the definitive copy during the final window.
 
@@ -555,7 +553,7 @@ Unless stated otherwise, API requests in this section use the {{kib}} endpoint. 
 
 [{{kib}} spaces](/deploy-manage/manage-spaces.md) organize saved objects and access into separate environments. Saved object export and import operates within a space and does not create the destination space. Prepare the required destination spaces before migrating their content.
 
-- **Identify:** List the source spaces with [the get spaces API]({{kib-apis}}operation/operation-get-spaces-space), `GET /api/spaces/space`. Select the spaces your solution needs and record their IDs, names, descriptions, and access requirements.
+- **Identify:** Retrieve the source space definitions with [the get spaces API]({{kib-apis}}operation/operation-get-spaces-space), `GET /api/spaces/space`.
 - **Migrate:** Recreate each required space in the destination from the **Spaces** management page or with [the create space API]({{kib-serverless-apis}}operation/operation-post-spaces-space). The default destination space already exists. Preserve each source space ID when practical because you cannot change it after creating the space.
 - **Verify:** Confirm that each destination space has the intended ID and settings. Use that ID in the space-specific requests in the following procedures, and recreate its access when you [prepare project access](#migrate-to-serverless-access).
 
@@ -627,7 +625,7 @@ serverless:
 
 Cases are available in {{observability}} and {{elastic-sec}} projects. Migrate them in their original space and solution context.
 
-- **Identify:** Select the user-managed cases that you need to retain, and record their attached files, alerts, Timelines, connectors, and Cases configuration.
+- **Identify:** Review the selected cases and their attachments. Identify any files, alerts, or Timelines that you need to retain separately from the case export.
 - **Migrate:** [Export and import cases](/explore-analyze/cases/manage-cases.md#export-import-cases) with saved objects, including related objects. The export includes connectors, user actions, text comments, and supported saved object attachments. It does not include connector secrets, attached files, alerts, or Timelines. If you migrated a connector earlier, retain the existing destination connector when resolving the import conflict instead of overwriting it. Recreate Cases configuration, such as the default connector, custom fields, and templates, separately in the destination.
 - **Verify:** Open the imported cases and check their comments, attachments, saved object references, and connectors. Re-authenticate imported connectors when prompted.
 
@@ -640,7 +638,7 @@ serverless:
 
 Maintenance windows are available in {{observability}} and {{elastic-sec}} projects. They are not included in saved object export and import.
 
-- **Identify:** List the source maintenance windows with the [find maintenance windows API]({{kib-apis}}operation/operation-get-maintenance-window-find), `GET /api/maintenance_window/_find`, and review their schedules, recurrence, filters, and rule scope.
+- **Identify:** Retrieve the source definitions with the [find maintenance windows API]({{kib-apis}}operation/operation-get-maintenance-window-find), `GET /api/maintenance_window/_find`.
 - **Migrate:** Recreate each required window from the **Maintenance Windows** page or with the [create maintenance window API]({{kib-serverless-apis}}operation/operation-post-maintenance-window), `POST /api/maintenance_window`.
 - **Verify:** Confirm that each window has the intended status, schedule, recurrence, filters, and effect on rules in the destination.
 
@@ -648,7 +646,7 @@ Maintenance windows are available in {{observability}} and {{elastic-sec}} proje
 
 Workflows are available across {{serverless-short}} project types with the appropriate feature tier. Migrate user-managed workflows, not managed workflows supplied by Elastic features.
 
-- **Identify:** Inventory the user-managed workflows and record their connectors, referenced resources, triggers, schedules, and dependencies on other workflows.
+- **Identify:** Review the selected workflow definitions for references to connectors, other workflows, and source-specific endpoints or resource IDs. Identify which references need to change for the destination.
 - **Migrate:** Use the [export workflows API]({{kib-apis}}operation/operation-post-workflows-export), `POST /api/workflows/export`, and the destination [bulk create workflows API]({{kib-serverless-apis}}operation/operation-post-workflows), `POST /api/workflows`. Map the exported `entries` to the `workflows` creation payload. The export response is not itself a create request. You can also recreate individual YAML definitions from the **Workflows** page.
 - **Verify:** Before enabling the migrated workflows, verify their dependencies, permissions, credentials, triggers, schedules, and external effects. Run controlled tests in the destination. Execution history is not migrated.
 
@@ -692,7 +690,7 @@ serverless:
 
 [Anomaly detection jobs](/explore-analyze/machine-learning/anomaly-detection.md) learn patterns in time series data and identify unusual behavior. Their datafeeds define which data they analyze. Jobs can be custom or supplied by a solution or integration.
 
-- **Identify:** View source jobs and {{dfeeds}} on **Anomaly Detection Jobs** in {{kib}}, or use the [get anomaly detection jobs API]({{es-apis}}operation/operation-ml-get-jobs) and [get {{dfeeds}} API]({{es-apis}}operation/operation-ml-get-datafeeds). Record job IDs, source indices, and space assignments.
+- **Identify:** View source jobs and {{dfeeds}} on **Anomaly Detection Jobs** in {{kib}}, or use the [get anomaly detection jobs API]({{es-apis}}operation/operation-ml-get-jobs) and [get {{dfeeds}} API]({{es-apis}}operation/operation-ml-get-datafeeds).
 - **Prepare:** Recreate required filter lists before importing jobs. Missing referenced filter lists cause the import to fail.
 - **Migrate:** Recreate unchanged prebuilt jobs from the corresponding [Security](/solutions/security/detect-and-alert/machine-learning.md#ml-job-settings-interface) or [Observability](/solutions/observability/logs/inspect-log-anomalies.md) feature. For custom or modified jobs, follow [Export and import anomaly detection jobs](/explore-analyze/machine-learning/setting-up-machine-learning.md#move-anomaly-detection-jobs). Adapt {{dfeed}} indices and restore calendars and space assignments. Preserve job IDs referenced by rules, or update those references.
 - **Verify:** Run jobs and {{dfeeds}} over the intended historical interval and confirm that they process destination data and produce results. Job exports contain configuration only, so imported jobs must rebuild their learned models from that data.
@@ -705,7 +703,7 @@ serverless:
 
 [Data frame analytics jobs](/explore-analyze/machine-learning/data-frame-analytics.md) perform outlier detection, regression, or classification and write the analysis results to a destination index. Regression and classification also produce trained models.
 
-- **Identify:** View source jobs on **Data Frame Analytics Jobs** in {{kib}}, or use the [get data frame analytics jobs API]({{es-apis}}operation/operation-ml-get-data-frame-analytics). Record source indices, destination indices, and any trained models used by your solution.
+- **Identify:** View source jobs on **Data Frame Analytics Jobs** in {{kib}}, or use the [get data frame analytics jobs API]({{es-apis}}operation/operation-ml-get-data-frame-analytics).
 - **Prepare:** Transfer the required source data before importing the jobs.
 - **Migrate:** Follow [Export and import data frame analytics jobs](/explore-analyze/machine-learning/setting-up-machine-learning.md#move-dataframe-analytics-jobs), adapting source and destination index references. To retain an existing trained model, transfer it separately as described in [Trained models](#migrate-to-serverless-trained-models).
 - **Verify:** Run the required analyses against destination data and check the output indices and results.
@@ -718,7 +716,7 @@ serverless:
 
 [Trained models](/explore-analyze/machine-learning/data-frame-analytics/ml-trained-models.md) perform {{infer}} inside your project for tasks such as classification, regression, and text embedding generation. They include models produced by data frame analytics jobs and pretrained NLP models used by ingest pipelines and applications.
 
-- **Identify:** View source models on **{{models-app}}** in {{kib}}, or use the [get trained models API]({{es-apis}}operation/operation-ml-get-trained-models). Record model IDs, deployment IDs, and aliases referenced by your solution.
+- **Identify:** View source models on **{{models-app}}** in {{kib}}, or use the [get trained models API]({{es-apis}}operation/operation-ml-get-trained-models).
 - **Migrate:** Use the procedure for the model type:
 
     - For built-in models, [install the corresponding model](/explore-analyze/machine-learning/nlp/ml-nlp-built-in-models.md) in the destination.
@@ -735,7 +733,7 @@ serverless:
 
 For embedding generation during migration, review the [data transfer considerations](#migrate-to-serverless-transfer-considerations).
 
-- **Identify:** View source endpoints on **Elastic Inference** or **External Inference** in {{kib}} (**Inference endpoints** in earlier versions), or use the [get {{infer}} endpoint API]({{es-apis}}operation/operation-inference-get). Record each endpoint's `inference_id`, `task_type`, `service`, and settings.
+- **Identify:** View source endpoints on **Elastic Inference** or **External Inference** in {{kib}} (**Inference endpoints** in earlier versions), or use the [get {{infer}} endpoint API]({{es-apis}}operation/operation-inference-get).
 - **Prepare:** Obtain provider credentials for external endpoints. The get endpoint API does not return stored secrets.
 - **Migrate:** Recreate custom endpoints with the [create {{infer}} endpoint API]({{es-serverless-apis}}operation/operation-inference-put), using the same service, model, and settings. Preserve `inference_id` or update its references. For default endpoints, use the destination's equivalent when its model and configuration meet your requirements.
 - **Verify:** Send representative inputs using the [{{infer}} API]({{es-serverless-apis}}group/endpoint-inference) and confirm that each endpoint produces the expected results.
