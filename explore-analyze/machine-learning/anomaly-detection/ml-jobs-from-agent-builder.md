@@ -47,10 +47,10 @@ Because the agent uses a large language model, its questions and the setup it pr
 
 5. Tell the agent whether the results look right.
 
-   * **If they do**, the agent creates a second set of jobs with the same configuration that runs on incoming data from now on. These jobs get new IDs, such as the original ID plus `-realtime`, so they don't replace the historical ones. The agent then offers to delete the historical jobs, which it does only after you confirm, and to create an alerting rule.
+   * **If they do**, the agent creates a second set of jobs with the same configuration that runs on incoming data from now on. These jobs get new IDs, such as the original ID plus `-realtime`, so they don't replace the historical ones. The agent then offers to delete the historical jobs, which it does only after you confirm, and to [create an alerting rule](#alerting-rules).
    * **If they don't**, tell the agent what looked wrong, such as too many false alerts, the wrong entities, missing events, or the wrong time scale. The agent adjusts the setup and runs it again.
 
-To check the outcome, open the **Anomaly Detection Jobs** page. It lists the new real-time jobs, open with their {{dfeeds}} started, and the historical jobs until you delete them. The model keeps learning what's normal for your data, so the results improve over the following weeks.
+To check the outcome, open the **Anomaly Detection Jobs** page. It lists the new real-time jobs, open with their {{dfeeds}} started, and the historical jobs until you delete them. The model keeps learning what's normal for your data, and the results improve over time.
 
 ## Temporary jobs and cleanup
 
@@ -60,7 +60,7 @@ When you approve the results, the agent names every historical job it wants to d
 
 ## Alerting rules
 
-If you ask for alerting, the agent creates a [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) rule and lets you pick one of two rule types:
+If you accept the agent's offer to set up alerting, it creates a [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) rule and lets you pick one of two rule types:
 
 * **{{anomaly-detect-cap}}**: Notifies you when a job's results match the conditions you define. The agent proposes a default severity threshold of 75 and asks whether you want to change it.
 * **{{anomaly-detect-cap}} jobs health**: Notifies you when a job has an operational problem, such as a stopped {{dfeed}} or a memory limit error.

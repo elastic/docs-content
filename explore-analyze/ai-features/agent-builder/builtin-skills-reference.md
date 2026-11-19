@@ -186,10 +186,15 @@ $$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {app
 ### Anomaly detection
 
 $$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6`
-:   Creates, manages, investigates, and troubleshoots {{ml}} {{anomaly-jobs}} from within a conversation. Use it to set up jobs by describing your data and goal, find the cause of an anomaly across jobs, understand why a score is high or low, diagnose problems such as a stopped {{dfeed}} or a model memory limit, start or stop jobs and {{dfeeds}}, update job settings such as the query delay, and add calendar events that suppress anomalies during planned events. For job creation, the skill explores your data, asks about your goal in everyday language, tests a setup on your historical data, and creates real-time jobs after you approve the results. For the full workflow, refer to [Create {{anomaly-jobs}} with AI in chat](/explore-analyze/machine-learning/anomaly-detection/ml-jobs-from-agent-builder.md).
+:   Use this skill to work with {{ml}} {{anomaly-jobs}} from within a conversation:
+
+    * **Create:** Set up jobs by describing your data and goal. The skill explores your data, asks about your goal in everyday language, tests a setup on your historical data, and creates real-time jobs after you approve the results. For the full workflow, refer to [Create {{anomaly-jobs}} with AI in chat](/explore-analyze/machine-learning/anomaly-detection/ml-jobs-from-agent-builder.md).
+    * **Manage:** Start or stop jobs and {{dfeeds}}, update job settings such as the query delay, and add calendar events that suppress anomalies during planned events.
+    * **Investigate:** Find the cause of an anomaly across jobs, and understand why a score is high or low.
+    * **Troubleshoot:** Diagnose problems such as a stopped {{dfeed}} or a model memory limit.
 
     :::{dropdown} Assigned tools
-    `ml.ad_get_job_info`, `ml.ad_create_job`, `ml.ad_manage_job_state`, `ml.ad_update_job_config`, `ml.query_anomalies`, `ml.create_ml_charts`, `platform.core.execute_esql`, `platform.dashboard.generate_dashboard`
+    `platform.core.execute_esql`, `platform.dashboard.generate_dashboard`, plus internal tools to read job details and anomaly results, create and validate jobs and {{dfeeds}}, open, close, start, and stop jobs, change job settings and calendar events, and show anomaly charts in the conversation.
 
     :::
 
