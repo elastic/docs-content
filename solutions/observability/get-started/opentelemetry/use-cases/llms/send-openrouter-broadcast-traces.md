@@ -70,10 +70,8 @@ OpenRouter's Broadcast has a **Privacy Mode** that strips prompt and completion 
 Traces land as OTLP spans under `service.name: openrouter` in the Applications section. You can view them in:
 
 * **Discover**: Filter on `service.name: openrouter` against the `traces-generic.otel-*` data view. All attributes are available, including model, provider, tokens, finish reason, and response id.
-* **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall plus the **GenAI** tab, which renders the full conversation (system, user, assistant with any Reasoning tokens) alongside Operation, Request model, Response model, Provider, Input/Output/Cache tokens, Response ID, and Finish reasons.
+* **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall plus the **GenAI** tab, which renders the full conversation and request metadata (model, tokens, cost, finish reason).
 * **Applications → Traces**: The list of root transactions.
-
-Each request produces two spans: a parent **`LLM Generation`** span and a child **`provider attempt N: <Provider>`** span.
 
 ## Group multi-turn conversations
 
