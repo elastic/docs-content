@@ -146,7 +146,7 @@ To visualize CSA regions by web log traffic, the web log traffic must contain a 
     ```
 
 7. Go to **Discover**.
-8. Set the data view to **Kibana Sample Data Logs**.
+8. In {{esql}} mode, enter `FROM kibana_sample_data_logs`. In classic mode, set the data view to **Kibana Sample Data Logs**.
 9. Open the [time filter](../../query-filter/filtering.md), and set the time range to the last 30 days.
 10. Scan through the list of **Available fields** until you find the `csa.GEOID` field. You can also search for the field by name.
 11. Click ![Add icon](/explore-analyze/images/kibana-add-icon.png "") to toggle the field into the document table.

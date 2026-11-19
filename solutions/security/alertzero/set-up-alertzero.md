@@ -33,21 +33,16 @@ Check what each {{az-worker}} you plan to run needs:
 
 | {{az-worker}} | Analyzes | Requirements |
 | --- | --- | --- |
-| [{{az-alert-triage}}](watches-and-workers.md#alertzero-triage-watch) | Detection alerts waiting for triage | [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) turned on |
-| [{{az-attack-discovery}}](watches-and-workers.md#alertzero-triage-watch) | Detection alerts | **Attack Discovery Workflows** [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) turned on, and [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) to hand off attacks |
-| [{{az-continuous-threat-hunt}}](watches-and-workers.md#alertzero-hunt-watch) | Events in the default [{{elastic-sec}} indices](kibana://reference/advanced-settings.md#kibana-siem-settings), such as `logs-*` | {{context-engine}}, outbound HTTPS access to the [threat feeds](watches-and-workers.md#alertzero-hunt-watch), [models](#alertzero-choose-models) in the default space, and a [default embedding endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) |
-| [{{az-rule-tuning}}](watches-and-workers.md#alertzero-detection-watch) | Alerts marked as false positives | None |
-| [{{az-rule-coverage}}](watches-and-workers.md#alertzero-detection-watch) | Detection gaps from {{az-continuous-threat-hunt}} | {{az-continuous-threat-hunt}} and {{context-engine}} |
-| [{{az-endpoint-analysis}}](watches-and-workers.md#alertzero-forensics-watch) | Attacks handed off by {{az-attack-discovery}} | {{az-attack-discovery}}, {{elastic-defend}}, and {{context-engine}} |
-
-% For docs writers: After elastic/docs-content#9144 merges, link each Worker to its own anchor in watches-and-workers.md: alertzero-alert-triage, alertzero-attack-discovery, alertzero-continuous-threat-hunt, alertzero-rule-tuning, alertzero-rule-coverage, and alertzero-endpoint-analysis. In the Continuous Threat Hunt row, keep Context Engine, and replace the threat feeds, models, and embedding endpoint requirements with a link to threat-reports.md#alertzero-threat-reports-requirements, which owns those details.
+| [{{az-alert-triage}}](watches-and-workers.md#alertzero-alert-triage) | Detection alerts waiting for triage | [Alert analysis workflow](/explore-analyze/workflows/use-cases/security/automate-security-operations/alert-analysis-workflow.md) turned on |
+| [{{az-attack-discovery}}](watches-and-workers.md#alertzero-attack-discovery) | Detection alerts | **Attack Discovery Workflows** [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings) turned on, and [{{context-engine}}](/explore-analyze/ai-features/context-engine.md) to hand off attacks |
+| [{{az-continuous-threat-hunt}}](watches-and-workers.md#alertzero-continuous-threat-hunt) | Events in the default [{{elastic-sec}} indices](kibana://reference/advanced-settings.md#kibana-siem-settings), such as `logs-*` | {{context-engine}}, and [what {{alertzero}} needs to build {{az-threat-reports}}](threat-reports.md#alertzero-threat-reports-requirements) |
+| [{{az-rule-tuning}}](watches-and-workers.md#alertzero-rule-tuning) | Alerts marked as false positives | None |
+| [{{az-rule-coverage}}](watches-and-workers.md#alertzero-rule-coverage) | Detection gaps from {{az-continuous-threat-hunt}} | {{az-continuous-threat-hunt}} and {{context-engine}} |
+| [{{az-endpoint-analysis}}](watches-and-workers.md#alertzero-endpoint-analysis) | Attacks handed off by {{az-attack-discovery}} | {{az-attack-discovery}}, {{elastic-defend}}, and {{context-engine}} |
 
 ## Turn on {{alertzero}} for a space [alertzero-turn-on]
 
-In the space where you want {{alertzero}}, open **Advanced Settings**, turn on the **{{alertzero}}** setting (`securitySolution:enableAlertZero`), save your changes, and reload {{kib}}. {{alertzero}} then appears in the {{elastic-sec}} navigation menu.
-
-% For docs writers: After elastic/kibana#302289 adds this setting to the advanced settings reference, uncomment the following sentence.
-% For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
+In the space where you want {{alertzero}}, open **Advanced Settings**, turn on the **{{alertzero}}** setting (`securitySolution:enableAlertZero`), save your changes, and reload {{kib}}. {{alertzero}} then appears in the {{elastic-sec}} navigation menu. For the setting's details, refer to the [advanced settings reference](kibana://reference/advanced-settings.md#securitysolution-enablealertzero).
 
 ## Select models for the {{az-workers}} [alertzero-choose-models]
 
@@ -83,9 +78,7 @@ Open **{{alertzero}}** in the navigation menu to start onboarding. Every {{az-wo
 
 When you finish onboarding, the {{az-workers}} start their first run right away, and {{alertzero}} opens the **{{az-proposed-actions-cap}}** page. When a {{az-worker}} needs your decision, its {{az-proposed-action}} appears there.
 
-To change which {{az-workers}} run after setup, or the default {{az-worker}} settings, refer to [](configure-worker-settings.md).
-
-% For docs writers: After elastic/docs-content#9144 merges, link configure-worker-settings.md#configure-worker-settings-enabled.
+To change which {{az-workers}} run after setup, refer to [Turn a {{az-worker}} on or off](configure-worker-settings.md#configure-worker-settings-enabled). To change the default {{az-worker}} settings, refer to [](configure-worker-settings.md).
 
 ## Next steps [alertzero-set-up-next]
 

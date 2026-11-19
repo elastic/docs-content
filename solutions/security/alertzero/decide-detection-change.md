@@ -22,9 +22,7 @@ These are the default schedules and thresholds:
 - **{{az-rule-tuning}} {{az-worker}}:** Runs every 2 hours. It picks a rule when, over the last 7 days, at least 10 of the rule's alerts that it hasn't reviewed yet are false positives, and at least half of the rule's alerts are false positives.
 - **{{az-rule-coverage}} {{az-worker}}:** Runs every hour, and reviews up to 5 detection gaps from the last 14 days in each run.
 
-To change these defaults, refer to [](configure-worker-settings.md). For more about what each {{az-worker}} checks, refer to [](watches-and-workers.md#alertzero-detection-watch).
-
-% For docs writers: After elastic/docs-content#9144 merges, point the link to configure-worker-settings.md at configure-worker-settings.md#configure-worker-settings-detection-watch.
+To change these defaults, refer to [{{az-detection-watch}} settings](configure-worker-settings.md#configure-worker-settings-detection-watch). For more about what each {{az-worker}} checks, refer to [](watches-and-workers.md#alertzero-detection-watch).
 
 With **{{az-manual}}** {{az-autonomy}} (the default), each {{az-worker}} asks before it starts work on a change:
 
