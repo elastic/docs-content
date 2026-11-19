@@ -36,7 +36,7 @@ The profiler runs on each host you want to profile. Every host must meet these r
 * Linux with an x86_64 or ARM64 CPU. The profiler doesn't run on other operating systems or CPU architectures.
 * Linux kernel 5.10 or later with eBPF support.
 * Access to the host's `tracefs` or `debugfs` filesystem. On Linux, `tracefs` is mounted at `/sys/kernel/tracing`. If the profiler runs in a container, mount that host directory read-only at `/sys/kernel/tracing` in the container. Running the container as privileged doesn't expose the directory.
-* Root privileges or the `CAP_SYS_ADMIN` capability for the profiler process. If you use {{agent}}, run it as root rather than in [unprivileged mode](/reference/fleet/elastic-agent-unprivileged.md).
+* Root privileges or the `CAP_SYS_ADMIN` capability for the profiler process. {{agent}} in [unprivileged mode](/reference/fleet/elastic-agent-unprivileged.md) is not supported: run it as root.
 * {{agent}} 9.4 or later if you deploy the profiler with {{fleet}}.
 
 The profiler captures native code, such as C, C++, Go, and Rust, as well as applications written in these runtimes:
