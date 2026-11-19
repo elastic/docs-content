@@ -48,6 +48,7 @@ The chart is available as an Open Container Initiative (OCI) artifact in the {{c
 To use this type of artifact, you do not add a Helm repository. Instead, refer to each chart with an `oci://` URL, as the examples on this page show.
 
 You must specify the chart version with the `--version` option.
+::::
 
 ::::::
 
