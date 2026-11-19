@@ -41,7 +41,7 @@ Whether you can use the Upgrade Assistant depends on your deployment type and {{
 | Self-managed, {{ece}}, and {{eck}} | Available | Available, but off by default |
 | {{ech}} | Available | Not available |
 
-{applies_to}`stack: ga 9.1+` To use the app on self-managed, {{ece}}, and {{eck}} deployments, set `xpack.upgrade_assistant.ui.enabled` to `true` in your {{kib}} configuration. On a self-managed deployment, edit `kibana.yml` and restart {{kib}}. The app then appears in the navigation menu and in the global search field. For the full list of settings, refer to the [{{kib}} general settings](kibana://reference/configuration-reference/general-settings.md).
+{applies_to}`stack: ga 9.1+` To use the app on self-managed, {{ece}}, and {{eck}} deployments, set `xpack.upgrade_assistant.ui.enabled` to `true` in your `kibana.yml` configuration, and restart {{kib}}. The app then appears in the navigation menu and in the global search field. For the full list of settings, refer to the [{{kib}} general settings](kibana://reference/configuration-reference/general-settings.md).
 
 ## Required permissions [_required_permissions_11] 
 
