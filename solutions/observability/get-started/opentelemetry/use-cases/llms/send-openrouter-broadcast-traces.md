@@ -14,7 +14,7 @@ products:
 
 # Send OpenRouter Broadcast traces to Elastic
 
-[OpenRouter](https://openrouter.ai) is a gateway that routes LLM requests across many model providers. OpenRouter Broadcast can send OpenTelemetry traces of every chat completion straight to Elastic. After an account admin adds Elastic as a destination in the OpenRouter console, one trace per request starts arriving in your Elastic project. You don't need to change your code or run an OpenTelemetry Collector.
+[OpenRouter](https://openrouter.ai) is a gateway that routes LLM requests across many model providers. OpenRouter [Broadcast](https://openrouter.ai/docs/guides/features/broadcast) can send OpenTelemetry traces of every chat completion straight to Elastic. After an account admin adds Elastic as a destination in the OpenRouter console, one trace per request starts arriving in your Elastic project. You don't need to change your code or run an OpenTelemetry Collector.
 
 Each Broadcast trace contains two spans:
 
