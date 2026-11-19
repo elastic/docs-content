@@ -22,7 +22,7 @@ The **{{infer-cap}} Regions** column shows the regions where {{infer}} requests 
 
 For region availability and request routing, refer to [Region and hosting](eis-region-and-hosting.md). For rate limits, refer to [Rate limits](eis-rate-limits.md).
 
-### LLM chat models
+### Generative models
 
 :::{csv-include} chat-models.csv
 :caption: Scroll horizontally to view more information.

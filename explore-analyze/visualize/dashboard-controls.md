@@ -65,7 +65,10 @@ Different control types target different panels:
 
 * **Options list** and **Range slider** controls filter the panels that use the control's [data view](../find-and-organize/data-views.md) field. Panels built on data that doesn't include that field aren't affected.
 * A **Time slider** narrows the dashboard's [global time range](../query-filter/filtering.md), so it affects only the panels that use time-based data.
-* **Variable controls** affect only the {{esql}} visualizations whose query references the control's variable. They don't filter other panels.
+* **Variable controls** affect only the visualizations whose query references the control's variable. They don't filter other panels. Variable controls work with:
+
+  * [{{esql}} visualizations](esorql.md)
+  * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6` [Vega visualizations](custom-visualizations-with-vega.md#vega-esql-variable-controls)
 
   :::{tip}
   :applies_to: {"stack": "preview 9.5", "serverless": "preview"}

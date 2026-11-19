@@ -18,7 +18,7 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
 
 * Add your own [load balancer](./ece-load-balancers.md). Load balancers are user supplied and we do not currently provide configuration steps for you.
 
-* [Add more capacity](/deploy-manage/maintenance/ece/scale-out-installation.md) to your ECE installation, [resize your deployment](./resize-deployment.md), [upgrade to a newer {{es}} version](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md), and [add some plugins](./add-plugins.md).
+* [Add more capacity](/deploy-manage/maintenance/ece/scale-out-installation.md) to your ECE installation, [resize your deployment](./resize-deployment.md), [upgrade to a newer {{es}} version](/deploy-manage/upgrade/deployment-or-cluster/upgrade-on-ece.md), and [add some plugins](/deploy-manage/plugins-and-custom-configuration-files/cloud-enterprise/add-plugins-provided-with-ece.md).
 
 * [Configure ECE system deployments](./system-deployments-configuration.md) to ensure a highly available and resilient setup.
 
@@ -32,7 +32,7 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
   If you intend to use [custom endpoint aliases](./enable-custom-endpoint-aliases.md) functionality, ensure you add the necessary Subject Alternative Name (SAN) entries to the proxy certificate.
   ::::
 
-* Optionally, if you want the deployment endpoint links and Single-sign on to work with your domain name, configure it as the **deployment domain name** in the **Platform** > **Settings** section of the [Cloud UI](./log-into-cloud-ui.md). The domain name is used to generate the endpoint URLs and must align with your proxy certificate and DNS record.
+* Optionally, if you want the deployment endpoint links and Single-sign on to work with your domain name, configure it as the **deployment domain name** in the **Platform** → **Settings** section of the [Cloud UI](./log-into-cloud-ui.md). The domain name is used to generate the endpoint URLs and must align with your proxy certificate and DNS record.
 
   ::::{tip}
   For example, if your proxy certificate is signed for `*.elastic-cloud-enterprise.example.com` and you have a wildcard DNS register pointing `*.elastic-cloud-enterprise.example.com` to your load balancer, you should configure `elastic-cloud-enterprise.example.com` as the **deployment domain name** in Platform → Settings. Refer to [](./change-endpoint-urls.md) for more details.

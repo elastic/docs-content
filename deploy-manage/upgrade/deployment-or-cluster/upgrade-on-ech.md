@@ -72,15 +72,6 @@ To upgrade a deployment:
 Snapshots
 :   To keep your data safe during the upgrade process, a snapshot is taken automatically before any changes are made to your cluster. After a major version upgrade is complete and a snapshot of the upgraded cluster is available, all snapshots taken with the previous major version of {{es}} are stored in the snapshot repository.
 
-
-Security realm settings
-:   During the upgrade process, you are prompted to update the security realm settings if your user settings include a `xpack.security.authc.realms` value.
-
-    If the security realms are configured in `user_settings`, you’ll be prompted to modify the settings:
-
-    1. On the **Update security realm settings** window, edit the settings.
-    2. Click **Update settings**. If the security realm settings are located in `user_settings_override`, contact support to help you upgrade.
-
 ## Archived settings [archived-settings]
 
 :::{include} _snippets/archived-settings-post.md

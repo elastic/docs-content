@@ -24,7 +24,7 @@ To successfully connect to a deployment, you need both the connection details an
 To connect to your {{es}} cluster, copy the **{{es}} endpoint** from the deployment page in the [Cloud UI](./log-into-cloud-ui.md).
 
 ::::{important}
-Application endpoints in ECE are generated based on the domain name configured in **Platform > Settings**. To learn how to modify these endpoints, refer to [Change endpoint URLs](./change-endpoint-urls.md).
+Application endpoints in ECE are generated based on the domain name configured in **Platform** → **Settings**. To learn how to modify these endpoints, refer to [Change endpoint URLs](./change-endpoint-urls.md).
 ::::
 
 Once you have the endpoint, use it in your client application. To test connectivity, you can:
@@ -88,7 +88,7 @@ To use the Cloud ID, you need:
     * A user ID and password that has permission to send data to your {{es}} cluster.
 
 ::::{important}
-        In our examples, we use the `elastic` superuser that every {{es}} cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](beats://reference/metricbeat/feature-roles.md) documentation.
+        In our examples, we use the `elastic` superuser that every {{es}} cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](beats://reference/metricbeat/feature-roles.md) documentation.
 ::::
 
 ### Example: Configure Beats with your Cloud ID [ece-cloud-id-beats]

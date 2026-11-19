@@ -1,5 +1,6 @@
 ---
 navigation_title: Visualizations (ES|QL query)
+description: Create Lens visualizations with an ES|QL query from Discover or a dashboard, then customize the chart, filters, and time series.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/esql-visualizations.html
 applies_to:
@@ -24,13 +25,15 @@ You can add {{esql}} visualizations to a dashboard directly from queries in Disc
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 If your visualization's query uses exactly one `STATS` command, dashboard users can turn on {icon}`bolt` **Fast mode** to get faster, estimated results for it. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` A {icon}`bolt` badge in the panel header shows when approximation was applied. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 :::
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
-In Discover, [typing ES|QL queries](../query-filter/languages/esql-kibana.md) automatically shows a visualization. The visualization type depends on the content of the query: histogram, bar charts, etc. You can manually make changes to that visualization and edit its type and display options using the pencil button ![pencil button](/explore-analyze/images/kibana-esql-icon-edit-visualization.svg "").
+In Discover, an [ES|QL query](../query-filter/languages/esql-kibana.md) shows a visualization when the query transforms the results, for example, with `STATS` or `KEEP`, or when the results have a time field. The time field is `@timestamp`, or the field that the query compares with the `?_tstart` and `?_tend` parameters. The query determines the visualization type, such as a histogram or a bar chart. To change the visualization type and display options, select {icon}`pencil` **Edit visualization**.
 
-You can then **Save** and add it to an existing or a new dashboard using the save button of the visualization ![save button](/explore-analyze/images/kibana-esql-icon-save-visualization.svg "").
+To add the visualization to an existing or a new dashboard, select {icon}`add_to_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 
 ## Create from dashboard [_create_from_dashboard]
 
@@ -43,7 +46,7 @@ You can then **Save** and add it to an existing or a new dashboard using the sav
    If you haven't created a [data view](/explore-analyze/find-and-organize/data-views.md) and you don't have a dashboard yet, the **Dashboards** page offers you the possibility to **Try ES|QL** right away. By selecting this option, a dashboard is created with an ES|QL visualization that you can interact with and configure using ES|QL.
    ::::
 
-2. Select **Visualization (query)** or **ES|QL** under **Visualizations**, depending on your {{kib}} version.
+2. Select **Create visualization (query)** (**Visualization (query)** or **ES|QL** under **Visualizations** in earlier versions).
 
    An ES|QL editor appears and lets you configure your query and its associated visualization. The **Suggestions** panel can help you find alternative ways to configure the visualization.
 
@@ -115,7 +118,7 @@ The chart configuration resets or follows automatic suggestions when:
 
 ### Query data from multiple projects [esql-viz-cps]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
@@ -160,19 +163,26 @@ The chart preview shows how the request count changes over time.
 
 For more query patterns and chart settings, refer to [Build a line chart with an {{esql}} query](charts/line-charts.md#build-a-line-chart-with-esql) and [Build an area chart with an {{esql}} query](charts/area-charts.md#build-an-area-chart-with-esql).
 
+## Compare current versus previous period with time shift [esql-viz-time-shift]
+
+:::{include} _snippets/esql-time-shift.md
+:::
+
 ## Add drilldowns to an {{esql}} visualization [esql-viz-drilldowns]
 ```{applies_to}
 stack: ga 9.4
 serverless: ga
 ```
 
-{{esql}} visualizations support the following [drilldown types](../dashboards/drilldowns.md):
+{{esql}} visualizations support the following [drilldown types](../dashboards/drilldowns.md#drilldown-types):
 
-- **Dashboard** drilldowns: open another dashboard from a data point.
-- **URL** drilldowns: open an external URL from a data point.
-- {applies_to}`stack: ga 9.5` {applies_to}`serverless:` **Discover** drilldowns: open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
+- [Dashboard](../dashboards/create-dashboard-drilldown.md) drilldowns: Open another dashboard from a data point.
+- [URL](../dashboards/create-url-drilldown.md) drilldowns: Open an external URL from a data point.
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
-Drilldowns can only be triggered from values backed by a field that exists in the underlying index. Values produced by {{esql}} commands like `EVAL` or `STATS` are not backed by an index field, so the drilldown option is not available when you click on those columns or series. For more information, refer to [Add pills by interacting with visualizations](../dashboards/using.md#_add_pills_by_interacting_with_visualizations).
+Drilldowns are compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](../dashboards/drilldowns.md#drilldowns-requirements).
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the visualization reads from an [{{esql}} view](elasticsearch://reference/query-languages/esql/esql-views.md), you can also open a drilldown from a column that the view computes.
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}

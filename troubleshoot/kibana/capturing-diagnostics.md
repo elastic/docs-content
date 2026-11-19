@@ -36,7 +36,7 @@ See this [this video](https://www.youtube.com/watch?v=t0J32qBKlIU) for a walkthr
 
 The Support Diagnostic tool is included out-of-the-box as a sub-library in:
 
-* {{ece}} - Find the tool under **{{ece}}** > **Deployment** > **Operations** > **Prepare Bundle** > **{{kib}}**.
+* {{ece}} - Find the tool under **{{ece}}** → **Deployment** → **Operations** → **Prepare Bundle** → **{{kib}}**.
 * {{eck}} - Run the tool with [`eck-diagnostics`](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md).
 
 You can also get the latest version of the tool by downloading the `diagnostics-X.X.X-dist.zip` file from [the `support-diagnostic` repo](https://github.com/elastic/support-diagnostics/releases/latest).
@@ -79,7 +79,7 @@ To run a {{kib}} diagnostic:
 
     ::::{tip}
 
-    You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
+    You can run the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
     * `kibana-local` (default, recommended): Polls the [{{kib}} API]({{kib-apis}}), gathers operating system info, and captures cluster and garbage collection (GC) logs.
     * `kibana-remote`: Establishes an SSH session to the applicable target server to pull the same information as `kibana-local`.

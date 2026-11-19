@@ -19,7 +19,7 @@ You’ll learn to:
 * Use {{agent}} to ingest the [TriMet REST API](https://developer.trimet.org/ws_docs/) into {{es}}.
 * Create a map with layers that visualize asset tracks and last-known locations.
 * Use symbols and colors to style data values and show which direction an asset is heading.
-* Set up tracking containment alerts to monitor moving vehicles.
+* Set up tracking containment alerts in {{alerting-v1-system}} to monitor moving vehicles.
 * Display those alerts on a map.
 
 When you complete this tutorial, you’ll have a map that looks like this:
@@ -476,7 +476,7 @@ POST kbn:/api/data_views/data_view
 :::
 
 ::::{tip}
-You may want to tweak this Data View to adjust the field names and number or date formatting to your personal preferences. These settings are honored by the Maps application in the tooltips and other UI elements. Check [Format data fields](../../find-and-organize/data-views.md#managing-fields) for more details.
+You might want to tweak this Data View to adjust the field names and number or date formatting to your personal preferences. These settings are honored by the Maps application in the tooltips and other UI elements. Check [Format data fields](../../find-and-organize/data-views/field-formatters.md) for more details.
 ::::
 
 

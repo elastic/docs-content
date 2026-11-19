@@ -75,7 +75,7 @@ documents_processed / search_time_in_ms * 1000
 ## Source data from linked projects [transform-cps-scope]
 ```{applies_to}
 stack: unavailable
-serverless: preview
+serverless: ga
 ```
 
 On {{serverless-full}}, a transform can read source data from projects that are linked to yours through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md).

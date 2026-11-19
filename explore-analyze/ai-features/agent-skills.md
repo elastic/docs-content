@@ -1,6 +1,6 @@
 ---
 navigation_title: AI agent skills
-description: Install and use official Elastic agent skills to help AI coding agents work with the Elastic stack more accurately and efficiently.
+description: Install and use official agent skills to help AI coding agents work with the Elastic stack more accurately and efficiently.
 applies_to:
   stack: ga
   serverless: ga
@@ -36,6 +36,18 @@ Skills in the [elastic/agent-skills](https://github.com/elastic/agent-skills) re
 
 You can install Elastic skills using the `skills` CLI with `npx`, or by cloning the [elastic/agent-skills](https://github.com/elastic/agent-skills) repository and running the bundled installer script. The `npx` method requires `Node.js` with `npx` available in your environment.
 
+::::{note}
+Some AI tools have an official Elastic plugin, which installs Elastic skills for you. Use the method recommended for your tool:
+
+| AI tool | Recommended installation |
+| --- | --- |
+| Claude | [Elastic plugin for Claude](agent-plugins/claude-plugin.md) |
+| Cursor | [Elastic plugin for Cursor](agent-plugins/cursor-plugin.md) |
+| Other agents | The `skills` CLI or a local clone, as described in this section |
+
+For more about the plugins, refer to [Elastic plugins for AI agents](agent-plugins.md).
+::::
+
 ### npx (recommended)
 
 The fastest way to install skills is with the `skills` CLI. Run the following command to launch an interactive prompt where you can select skills and target agents:
@@ -59,7 +71,7 @@ npx skills add elastic/agent-skills@elasticsearch-esql
 Install to specific agents:
 
 ```bash
-npx skills add elastic/agent-skills -a cursor -a claude-code
+npx skills add elastic/agent-skills -a cursor -a codex
 ```
 
 List available skills without installing:

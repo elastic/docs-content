@@ -59,7 +59,7 @@ deployment:
   ech: ga
 ```
 
-In {{ech}} deployments, IP filters do not apply to the [managed OTLP endpoint](opentelemetry://reference/motlp.md). They still apply to this endpoint in {{serverless-full}} projects.
+In {{ech}} deployments, IP filters do not apply to [managed inputs](/reference/managed-inputs/index.md). In {{serverless-full}} projects, IP filters still apply to managed inputs.
 
 ## Apply an IP filter to a deployment or project
 
@@ -73,12 +73,12 @@ To create an IP filter:
 
 :::{include} _snippets/network-security-page.md
 ::: 
-3. Select **Create policy** > **IP filter**.
+3. Select **Create policy** → **IP filter**.
 4. Select the resource type that the IP filter will be applied to: either hosted deployments or serverless projects.
 5. Select the cloud provider and region for the IP filter. 
 6. Add a meaningful name and description for the IP filter.
 7. Under **Access control**, select whether the IP filter should be applied to ingress or egress traffic. Currently, only ingress traffic filters are supported.
-8. Add one or more allowed sources using IPv4, or a range of addresses with CIDR.
+8. Add one or more allowed sources using IPv4, or a range of addresses with CIDR. For each source, select **Add description** to add an optional description that helps you identify the source later.
 9.  Optional: Under **Apply to resources**, associate the new filter with one or more deployments or projects. After you associate the  IP filter with a deployment or project, it starts filtering traffic.
 10.  To automatically attach this IP filter to new deployments or projects, select **Apply to future resources by default**.
 11.  Click **Create**.
@@ -101,15 +101,15 @@ You can apply multiple policies to a single deployment or project. For {{ech}} d
 
     On the **Serverless projects** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 3. From the navigation menu, select **Network security**.
-4. Select **Apply policies** > **IP filter**.
+4. Select **Apply policies** → **IP filter**.
 6. Choose the IP filter you want to apply and select **Apply**.
 :::
 :::{applies-item} ess:
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. From the navigation menu, select **Access and Security** > **Security**.
-3. Under **Network security**, select **Apply policies** > **IP filter**.
+2. From the navigation menu, select **Access and Security** → **Security**.
+3. Under **Network security**, select **Apply policies** → **IP filter**.
 4. Choose the IP filter you want to apply and select **Apply**.
 :::
 ::::
@@ -143,7 +143,7 @@ If you want to a specific IP filter from a deployment or project, or delete the 
 1. Find your deployment on the home page or on the **Hosted deployments** page, then select **Manage** to access its settings menus.
 
     On the **Hosted deployments** page you can narrow down your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-2. From the navigation menu, select **Access and Security** > **Security**.
+2. From the navigation menu, select **Access and Security** → **Security**.
 3. Under **Network security**, find the IP filter that you want to disconnect. 
 4. Under **Actions**, click the **Delete** icon.
 :::

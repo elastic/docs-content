@@ -97,7 +97,7 @@ To set up this integration, you need to perform configurations in VictorOps/Splu
 2. Copy the REST Endpoint URL.
 3. Replace `$routing_key` at the end of the URL with your routing key (for example `elastic`).
 4. Store the modified URL securely. You will need it when configuring the connector in AutoOps.
-5. Configure routing keys under **Settings** > **Keys** so notifications reach the right team.
+5. Configure routing keys under **Settings** → **Keys** so notifications reach the right team.
 
 **AutoOps configuration**
 
@@ -116,7 +116,7 @@ To set up this integration, you need to perform configurations in Opsgenie and A
 **Opsgenie configuration**
 
 1. Open the main page of your Opsgenie account and click the **Teams** tab. Make sure a team is defined.
-2. Go to **Settings** > **Integrations**.
+2. Go to **Settings** → **Integrations**.
 3. Click **Add Integration**. In the **Integration List**, search for **API**.
 4. Complete the fields and save your changes.
 5. Copy the API key and store it securely. You will need it when configuring the connector in AutoOps.

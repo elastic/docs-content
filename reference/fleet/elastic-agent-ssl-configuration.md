@@ -120,7 +120,7 @@ $$$client-ssl-options$$$
     Specify a path, or embed a certificate directly in the `YAML` configuration:
 
     ```yaml
-    ssl.certificate: &#124;
+    ssl.certificate: |
         -----BEGIN CERTIFICATE-----
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
@@ -139,7 +139,7 @@ $$$client-ssl-options$$$
 
     ```yaml
     ssl.certificate_authorities:
-      - &#124;
+      - |
         -----BEGIN CERTIFICATE-----
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
@@ -175,7 +175,7 @@ $$$client-ssl-options$$$
     Specify a path, or embed the private key directly in the `YAML` configuration:
 
     ```yaml
-    ssl.key: &#124;
+    ssl.key: |
         -----BEGIN PRIVATE KEY-----
         KEY CONTENT APPEARS HERE
         -----END PRIVATE KEY-----
@@ -234,7 +234,7 @@ The following server configuration options also apply to the {{fleet-server}} HT
     Specify a path, or embed a certificate directly in the `YAML` configuration:
 
     ```yaml
-    ssl.certificate: &#124;
+    ssl.certificate: |
         -----BEGIN CERTIFICATE-----
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
@@ -253,7 +253,7 @@ The following server configuration options also apply to the {{fleet-server}} HT
 
     ```yaml
     ssl.certificate_authorities:
-      - &#124;
+      - |
         -----BEGIN CERTIFICATE-----
         CERTIFICATE CONTENT APPEARS HERE
         -----END CERTIFICATE-----
@@ -303,7 +303,7 @@ The following server configuration options also apply to the {{fleet-server}} HT
     Specify a path, or embed the private key directly in the `YAML` configuration:
 
     ```yaml
-    ssl.key: &#124;
+    ssl.key: |
         -----BEGIN PRIVATE KEY-----
         KEY CONTENT APPEARS HERE
         -----END PRIVATE KEY-----

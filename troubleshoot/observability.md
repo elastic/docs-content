@@ -15,6 +15,10 @@ products:
 Learn how to troubleshoot common issues on your own or ask for help.
 
 
+## Common issues [troubleshooting-common-issues]
+
+* {applies_to}`observability: ga` [Understand search capacity and alerting performance](observability/search-capacity.md): Learn what uses search capacity in your project and how to keep your alerts and dashboards responsive.
+
 ## Tools [troubleshooting-tools] 
 
 Use the following tools in {{kib}} to troubleshoot issues across {{observability}} apps:

@@ -16,8 +16,9 @@ For ECE ({{ece}}), ECK ({{eck}}), and self-managed {{es}} clusters, AutoOps can 
 
 Cloud Connect enables users of ECE, ECK, and self-managed clusters to use {{ecloud}} services. This means you can take advantage of the simplified cluster monitoring, real-time issue detection, and performance recommendations of AutoOps without having to run and manage the underlying infrastructure.
 
-:::{include} ../_snippets/cc-autoops-all-licenses.md
-:::
+::::{note}
+Cloud Connect is not available in [FedRAMP authorized Cloud offerings](/deploy-manage/deploy/elastic-cloud/fedramp.md).
+::::
 
 ## How your cluster connects to AutoOps
 
@@ -36,6 +37,9 @@ To connect your ECE, ECK, or self-managed cluster to AutoOps, you have to use yo
 For instructions on how to get started with AutoOps for your cluster, refer to [](/deploy-manage/monitor/autoops/cc-connect-self-managed-to-autoops.md).
 
 After this setup is complete, you can start using AutoOps to monitor your cluster. Learn more about what you can do with AutoOps in [views](/deploy-manage/monitor/autoops/views.md) and [events](/deploy-manage/monitor/autoops/ec-autoops-events.md). 
+
+:::{include} ../_snippets/cc-autoops-all-licenses.md
+:::
 
 ## Section overview
 

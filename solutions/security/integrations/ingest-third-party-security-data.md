@@ -1,4 +1,5 @@
 ---
+navigation_title: Integrations that power Findings and Alerts
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ingest-third-party-cloud-security-data.html
   - https://www.elastic.co/guide/en/serverless/current/ingest-third-party-cloud-security-data.html
@@ -36,7 +37,7 @@ Ingest alerts from the following integrations:
 You can ingest third-party data into {{elastic-sec}} to review and investigate it alongside data collected by {{elastic-sec}}'s native integrations. Once ingested, security posture and vulnerability data appears on the [**Findings**](/solutions/security/cloud/findings-page.md) page and in the [entity details](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout) and [alert details](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section) flyouts.
 
 ::::{note}
-Data from third-party integrations does not appear on the [CNVM dashboard](/solutions/security/cloud/cnvm-dashboard.md) or the [Cloud Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md).
+Data from third-party integrations does not appear on the [CNVM dashboard](/solutions/security/dashboards/cloud-native-vulnerability-management-dashboard.md) or the [Cloud Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md).
 ::::
 
 Data from the following integrations can feed into your {{elastic-sec}} workflows:

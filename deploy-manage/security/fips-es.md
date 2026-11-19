@@ -83,7 +83,12 @@ To configure {{es}}'s security manager configure the JVM property `java.security
 
 ### {{es}} Keystore [keystore-fips-password]
 
-FIPS (as specified in NIST Special Publication 800-132) dictates that encryption keys should at least have an effective strength of 112 bits. As such, the {{es}} keystore that stores the node's [secure settings](/deploy-manage/security/secure-settings.md) needs to be password protected with a password that satisfies this requirement. This means that the password needs to be 14 bytes long which is equivalent to a 14 character ASCII encoded password, or a 7 character UTF-8 encoded password. You can use the [elasticsearch-keystore passwd](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) subcommand to change or set the password of an existing keystore. Note that when the keystore is password-protected, you must supply the password each time {{es}} starts.
+The password requirement for the {{es}} keystore that stores the node's [secure settings](/deploy-manage/security/secure-settings.md) depends on your version:
+
+* {applies_to}`stack: ga 9.7+` FIPS mode doesn't require a keystore password. A keystore without a password, such as the one {{es}} creates on first start, works in a FIPS-configured JVM. However, a keystore without a password is only obfuscated: only a password protects its contents at rest. If your environment requires secure settings to be protected at rest, set a password.
+* {applies_to}`stack: ga 9.0-9.6` The keystore must be password protected. {{es}} can't start in a FIPS-configured JVM with a keystore that has no password.
+
+FIPS (as specified in NIST Special Publication 800-132) dictates that encryption keys should at least have an effective strength of 112 bits. As such, a keystore password must satisfy this requirement. This means that the password needs to be 14 bytes long which is equivalent to a 14 character ASCII encoded password, or a 7 character UTF-8 encoded password. You can use the [elasticsearch-keystore passwd](elasticsearch://reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) subcommand to change or set the password of an existing keystore. Note that when the keystore is password-protected, you must supply the password each time {{es}} starts.
 
 
 ### TLS [fips-tls]
@@ -183,7 +188,9 @@ Some encryption algorithms might no longer be available by default in updated FI
 
 If you plan to upgrade your existing cluster to a version that can be run in a FIPS-configured JVM, we recommend to first perform a rolling upgrade to the new version in your existing JVM and perform all necessary configuration changes in preparation for running in FIPS mode. You can then perform a rolling restart of the nodes, starting each node in a FIPS-configured JVM. During the restart, {{es}}:
 
-* Upgrades [secure settings](/deploy-manage/security/secure-settings.md) to the latest, compliant format. A FIPS-configured JVM cannot load previous format versions. If your keystore is not password-protected, you must manually set a password. Refer to [{{es}} Keystore](#keystore-fips-password).
+* Upgrades [secure settings](/deploy-manage/security/secure-settings.md) to the latest, compliant format.
+  * {applies_to}`stack: ga 9.7+` A FIPS-configured JVM can load an existing keystore that isn't password protected, so you don't need to set a password before the restart. If your environment requires secure settings to be protected at rest, set a password anyway. Refer to [{{es}} Keystore](#keystore-fips-password).
+  * {applies_to}`stack: ga 9.0-9.6` A FIPS-configured JVM cannot load previous format versions. If your keystore is not password-protected, you must manually set a password. Refer to [{{es}} Keystore](#keystore-fips-password).
 * Upgrades self-generated trial licenses to the latest FIPS compliant format.
 
 If your [subscription](https://www.elastic.co/subscriptions) already supports FIPS mode, you can elect to perform a rolling upgrade while at the same time running each upgraded node in a FIPS-configured JVM. In this case, you would also need to manually regenerate your `elasticsearch.keystore` and migrate all secure settings to it, along with the necessary configuration changes outlined below, before starting each node.

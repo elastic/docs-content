@@ -77,11 +77,11 @@ To add a trusted application:
         * `Signature`: (Windows and macOS only) The name of the application’s digital signer.
 
             ::::{tip}
-            To find the signer’s name for an application, go to **Discover** and query the process name of the application’s executable (for example, `process.name : "mctray.exe"` for a McAfee security binary). Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
+            To find the signer’s name for an application, go to **Discover** and query the process name of the application’s executable. For example, for a McAfee security binary, enter `FROM logs-endpoint.events.* | WHERE process.name == "mctray.exe"` in {{esql}} mode, or `process.name : "mctray.exe"` in classic mode. Then, search the results for the `process.code_signature.subject_name` field, which contains the signer’s name (for example, `McAfee, Inc.`).
             ::::
 
             ::::{note}
-            If you use only a hash to identify a trusted application, the entry may stop working when the application is updated, since updates often change the hash. For a more reliable match, combine `Path` and `Signature` conditions instead.
+            If you use only a hash to identify a trusted application, the entry might stop working when the application is updated, since updates often change the hash. For a more reliable match, combine `Path` and `Signature` conditions instead.
             ::::
 
     3. `Operator`: Select an operator to define the condition:

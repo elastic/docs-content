@@ -1,4 +1,6 @@
 ---
+navigation_title: LLM performance matrix
+description: Compare large language model performance across Elastic Observability AI Assistant use cases. Reference internal test ratings for alerts, APM, ES|QL generation, and knowledge retrieval.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/observability-llm-performance-matrix.html
 applies_to:
@@ -8,7 +10,7 @@ products:
   - id: observability
 ---
 
-# Large language model performance matrix for {{observability}} [llm-performance-matrix]
+# LLM performance matrix for the {{observability}} AI Assistant [llm-performance-matrix]
 
 This page summarizes internal test results comparing large language models (LLMs) across {{observability}} [AI chat](/explore-analyze/ai-features/ai-chat-experiences.md) use cases. These ratings only apply if you're using [AI Assistant](/solutions/observability/ai/observability-ai-assistant.md). For Agent Builder, refer to [recommended models](/explore-analyze/ai-features/agent-builder/models.md#recommended-models).
 

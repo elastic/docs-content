@@ -2,7 +2,11 @@
 navigation_title: "Metric temporality"
 applies_to:
   stack: ga 9.5
-  serverless: ga
+  serverless:
+    elasticsearch: ga
+    observability: ga
+    security: ga
+    vectordb: unavailable
 description: Learn how cumulative and delta metric temporality work in Elasticsearch time series data streams, and how to configure it for queries and downsampling.
 products:
   - id: elasticsearch
@@ -50,7 +54,7 @@ This is the default temporality for [`histogram`](time-series-data-stream-tsds.m
 
 ## Configure temporality [configure-temporality]
 
-If you use the [HTTP OTLP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md), [managed OTLP intake](opentelemetry://reference/motlp.md), or [Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md), you don't have to configure anything.
+If you use the [HTTP OTLP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md), [managed OTLP intake](/reference/managed-inputs/managed-otlp-endpoint.md), or [Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md), you don't have to configure anything.
 Both OTLP intakes come with a dimension called `temporality` preconfigured in the mappings and preserve the temporality of ingested metrics from the OTLP [temporality metadata](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality).
 Prometheus remote write V1 only supports counters and classic Prometheus histograms (represented as counters), which are always cumulative. As this matches the default temporality for counters, the {{es}} remote write endpoint does not set up a temporality field.
 

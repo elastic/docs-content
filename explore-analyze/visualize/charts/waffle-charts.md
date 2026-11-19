@@ -28,7 +28,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens waffle charts showing response status breakdown and OS distribution](/explore-analyze/images/waffle-chart-example.png)
 
-## Build a waffle chart with the point-and-click editor [build-a-waffle-chart]
+## Create a waffle chart [create-a-waffle-chart]
+
+### Create a waffle chart with the point-and-click editor [build-a-waffle-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -36,6 +38,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a waffle chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -66,7 +69,7 @@ The chart preview updates to show a grid of colored squares. Each color represen
 
 ::::::
 
-## Build a waffle chart with an {{esql}} query [build-a-waffle-chart-with-esql]
+### Create a waffle chart with an {{esql}} query [build-a-waffle-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -301,7 +304,10 @@ Waffle charts do not have configurable style settings. The chart automatically d
     - **Hide**: Never show the legend.
 
 **Width**
-:   Control the width of the legend panel: **Small**, **Medium** (default), **Large**, or **Extra large**.
+:   Control the width of the legend panel. Select **Auto**, **Small**, **Medium**, **Large**, or **Extra large**. **Auto** sizes the legend to fit its labels, and the other options set a fixed width. The default and available options depend on your environment:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Auto** is the default.
+    - {applies_to}`stack: ga 9.0-9.5` **Medium** is the default. **Auto** is available in the interface only for charts whose width is already set to **Auto**, for example charts created with the API, or charts created before 8.3 that had no width set.
 
 **Show value**
 :   Toggle whether to display the numeric value alongside each legend entry. This is enabled by default.

@@ -93,7 +93,7 @@ $$$monitor-type$$$
 
     * `http`: Connects via HTTP and optionally verifies that the host returns the expected response.
     * `icmp`: Uses an ICMP (v4 and v6) Echo Request to ping the configured hosts. Requires special permissions or root access.
-    * `tcp`: Connects via TCP and optionally verifies the endpoint by sending and/or receiving a custom payload.
+    * `tcp`: Connects via TCP and optionally verifies the endpoint by sending a custom payload, receiving one, or both.
 
 $$$monitor-id$$$
 
@@ -445,7 +445,7 @@ $$$monitor-http-max_redirects$$$
 
     By default, Synthetics will not follow redirects, but will report the status of the redirect. If set to a number greater than `0`, Synthetics will follow that number of redirects.
 
-    When this option is set to a value greater than `0`, the `monitor.ip` field will no longer be reported, as multiple DNS requests across multiple IPs may return multiple IPs. Fine-grained network timing data will also not be recorded, as with redirects that data will span multiple requests. Specifically the fields `http.rtt.content.us`, `http.rtt.response_header.us`, `http.rtt.total.us`, `http.rtt.validate.us`, `http.rtt.write_request.us` and `dns.rtt.us` will be omitted.
+    When this option is set to a value greater than `0`, the `monitor.ip` field will no longer be reported, as multiple DNS requests across multiple IPs might return multiple IPs. Fine-grained network timing data will also not be recorded, as with redirects that data will span multiple requests. Specifically the fields `http.rtt.content.us`, `http.rtt.response_header.us`, `http.rtt.total.us`, `http.rtt.validate.us`, `http.rtt.write_request.us` and `dns.rtt.us` will be omitted.
 
     **Default**: `0`
 
@@ -480,6 +480,129 @@ $$$monitor-http-password$$$
 :   Type: [string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
     The password for authenticating with the server. This setting is optional.
+
+$$$monitor-http-kerberos$$$
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **`kerberos`**
+:   Type: object
+
+    Authenticate with an endpoint protected by Kerberos, such as an intranet site behind Microsoft Active Directory. The monitor negotiates the ticket using SPNEGO (Simple and Protected GSSAPI Negotiation Mechanism).
+
+    A monitor can use one authentication method at a time. Don't combine `kerberos` with `ntlm`, or with the top-level `username` and `password` options.
+
+    In the Synthetics UI, the same settings are under **Advanced options** → **Authentication** once you set **Authentication method** to **Kerberos**.
+
+    **`enabled`** ([boolean](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
+    :   Set to `true` to authenticate with Kerberos.
+
+        **Default**: `false`
+
+    **`auth_type`** (`"password"` | `"keytab"`)
+    :   Whether the monitor presents a password or a keytab file. **Kerberos authentication type** in the UI.
+
+        **Default**: `password`
+
+    **`username`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Required**. The Kerberos principal. Both authentication types need it.
+
+    **`password`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Required** when `auth_type` is `password`. The principal's password.
+
+    **`keytab`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Required** when `auth_type` is `keytab`. Path to the keytab file on the {{agent}} host. **Keytab file path** in the UI.
+
+    **`config_path`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   Path to the `krb5.conf` file on the {{agent}} host, for example `/etc/krb5.conf`. Kerberos needs exactly one of `config_path` and `krb5_conf`. **Configuration file path** in the UI.
+
+    **`krb5_conf`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   The contents of a `krb5.conf` file, for hosts that don't have one on disk. Kerberos needs exactly one of `config_path` and `krb5_conf`. **Inline krb5.conf** in the UI.
+
+    **`realm`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Required**. The Kerberos realm, for example `CORP.LOCAL`.
+
+    **`service_name`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Optional**. The service principal name (SPN) to request a ticket for. If you leave it empty, the monitor requests `HTTP/<host>`, taking the host from the monitor URL.
+
+    **`enable_krb5_fast`** ([boolean](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
+    :   Set to `true` to use Kerberos Flexible Authentication Secure Tunneling (FAST). FAST conflicts with some Active Directory configurations, so leave it off unless your realm requires it. **Enable Kerberos FAST** in the UI.
+
+        **Default**: `false`
+
+    ::::{note}
+    Kerberos is only supported on a [{{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), not on Elastic managed locations. `keytab` and `config_path` name files on the {{agent}} host.
+    
+    Kerberos needs version 1.12.0 or later of the Synthetics integration. Upgrade the package in {{fleet}} before you save the monitor. Saving against an older package fails.
+    
+    An {{agent}} built in FIPS mode has no Kerberos support at all, so a monitor that uses it fails on a {{private-location}} running a FIPS build.
+    ::::
+
+    **Example**:
+
+    ```yaml
+    - type: http
+      id: intranet-kerberos
+      name: Intranet (Kerberos)
+      urls: "https://intranet.corp.local"
+      schedule: '@every 5m'
+      private_locations: ["Private Location 1"]
+      kerberos:
+        enabled: true
+        auth_type: password
+        realm: CORP.LOCAL
+        username: svc_synthetics
+        password: "${kerberos_password}"
+        config_path: /etc/krb5.conf
+    ```
+
+$$$monitor-http-ntlm$$$
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **`ntlm`**
+:   Type: object
+
+    Authenticate with an endpoint that uses NT LAN Manager (NTLM), most often a Windows-integrated service.
+
+    A monitor can use one authentication method at a time. Don't combine `ntlm` with `kerberos`, or with the top-level `username` and `password` options.
+
+    In the Synthetics UI, the same settings are under **Advanced options** → **Authentication** once you set **Authentication method** to **NTLM**.
+
+    **`enabled`** ([boolean](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-bool))
+    :   Set to `true` to authenticate with NTLM.
+
+        **Default**: `false`
+
+    **`username`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Required**. The username to authenticate with.
+
+    **`password`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Required**. The password to authenticate with.
+
+    **`domain`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Optional**. The Windows domain to authenticate against. You can omit it if `username` already includes the domain, as in `DOMAIN\user` or `user@domain`.
+
+    **`workstation`** ([string](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-data-string))
+    :   **Optional**. The client name to send in the NTLM negotiate message.
+
+    ::::{note}
+    NTLM is only supported on a {{private-location}}, not on Elastic managed locations. Like Kerberos, it needs version 1.12.0 or later of the Synthetics integration. Upgrade the package in {{fleet}} before you save the monitor.
+    
+    An {{agent}} built in FIPS mode rejects NTLM, which relies on MD4 and RC4, so a monitor that uses it fails on a {{private-location}} running a FIPS build.
+    ::::
+
+    **Example**:
+
+    ```yaml
+    - type: http
+      id: intranet-ntlm
+      name: Intranet (NTLM)
+      urls: "https://intranet.corp.local"
+      schedule: '@every 5m'
+      private_locations: ["Private Location 1"]
+      ntlm:
+        enabled: true
+        username: svc_synthetics
+        password: "${ntlm_password}"
+        domain: CORP
+    ```
 
 $$$monitor-http-ssl$$$
 

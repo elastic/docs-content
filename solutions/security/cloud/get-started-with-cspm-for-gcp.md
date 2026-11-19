@@ -30,17 +30,17 @@ This page explains how to get started monitoring the security posture of your GC
 
 You can set up CSPM for GCP either by enrolling a single project, or by enrolling an organization containing multiple projects. Either way, you need to first add the CSPM integration, then enable cloud access. 
 
-Two deployment technologies are available: agentless and agent-based. 
+Two deployment options are available: {{managed-integration}} and agent-based. 
 
-* [Agentless deployment](#cspm-gcp-agentless) allows you to collect cloud posture data without having to manage the deployment of an agent in your cloud. 
-* [Agent-based deployment](#cspm-gcp-agent-based) requires you to deploy and manage an agent in the cloud project or projects you want to monitor.
+* The [{{managed-integration}} deployment](#cspm-gcp-agentless) allows you to collect cloud posture data without having to manage the infrastructure that collects it.
+* The [Agent-based deployment](#cspm-gcp-agent-based) requires you to deploy and manage an agent in the cloud project or projects you want to monitor.
 
 
-## Agentless deployment [cspm-gcp-agentless]
+## {{managed-integration}} deployment [cspm-gcp-agentless]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+2. Search for `CSPM`, then select **Cloud Security Posture Management (CSPM)**.
+3. If the integration's **Overview** page opens, select **Add Cloud Security Posture Management (CSPM)**.
 4. Under **Configure integration**, select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual project.
 5. Give your integration a name and description that match the purpose or team of the GCP subscription/organization you want to monitor, for example, `dev-gcp-project`.
 6. (Optional) Expand **Advanced options** and add a `Namespace` to the integration's data stream.
@@ -48,7 +48,9 @@ Two deployment technologies are available: agentless and agent-based.
 :::{include} _snippets/cspm-namespace.md
 :::
 
-7. For **Deployment options**, select **Agentless**.
+7. In **Deployment options**, select the deployment mode:
+    * {applies_to}`{serverless: ga, stack: ga 9.5+}` Select **Elastic Managed Integration**.
+    * {applies_to}`stack: preview 9.0-9.4` Select **Agentless**.
 8. Next, you’ll need to authenticate to GCP. Expand the **Steps to Generate GCP Account Credentials** section, then follow the instructions that appear to automatically create the necessary credentials using Google Cloud Shell.
 9. Once you’ve provided the necessary credentials, click **Save and continue** to finish deployment. Your data should start to appear within a few minutes.
 
@@ -58,8 +60,8 @@ Two deployment technologies are available: agentless and agent-based.
 ### Add your CSPM integration [cspm-add-and-name-integration-gcp]
 
 1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Search for `CSPM`, then click on the result.
-3. Click **Add Cloud Security Posture Management (CSPM)**.
+2. Search for `CSPM`, then select **Cloud Security Posture Management (CSPM)**.
+3. If the integration's **Overview** page opens, select **Add Cloud Security Posture Management (CSPM)**.
 4. For **Configure integration**, select **GCP**, then either **GCP Organization** to onboard your whole organization, or **Single Project** to onboard an individual project.
 5. Give your integration a name and description that match the purpose or team of the GCP project you want to monitor, for example, `dev-gcp-project`.
 6. (Optional) Expand the **Advanced options** menu and add a `Namespace` to the integration's data stream.

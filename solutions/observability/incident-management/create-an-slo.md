@@ -25,7 +25,7 @@ products:
 To create an SLO, find **SLOs** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md):
 
 * If you’re creating your first SLO, you’ll see an introductory page. Click the **Create SLO** button.
-* If you’ve created SLOs before, click the **Create new SLO** button in the upper-right corner of the page.
+* If you’ve created SLOs before, select **Create SLO**, then, from the menu, select **Create SLO**.
 
 From here, complete the following steps:
 
@@ -34,7 +34,7 @@ From here, complete the following steps:
 3. [Describe your SLO](/solutions/observability/incident-management/create-an-slo.md#slo-describe).
 
 :::{agent-skill}
-:url: https://github.com/elastic/agent-skills/tree/main/skills/observability/manage-slos
+:url: https://github.com/elastic/agent-skills@observability-service-reliability
 :::
 
 ::::{note}
@@ -44,22 +44,25 @@ From here, complete the following steps:
 
 ## Define your SLI [define-sli]
 
+From the **Choose the SLI type** dropdown, select the type of SLI to use.
+
+{applies_to}`serverless: ga` When your project has [linked projects](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), you can also set the [**Project scope**](#slo-cps-scope) to choose which of them the SLO monitors.
+
 The type of SLI to use depends on the location of your data:
 
-* [Custom KQL](/solutions/observability/incident-management/create-an-slo.md#custom-kql): Create an SLI based on raw logs coming from your services.
+* [Custom Query](/solutions/observability/incident-management/create-an-slo.md#custom-kql): Create an SLI based on raw logs coming from your services.
 * [Timeslice metric](/solutions/observability/incident-management/create-an-slo.md#timeslice-metric): Create an SLI based on a custom equation that uses multiple aggregations.
 * [Custom metric](/solutions/observability/incident-management/create-an-slo.md#custom-metric): Create an SLI to define custom equations from metric fields in your indices.
 * [Histogram metric](/solutions/observability/incident-management/create-an-slo.md#histogram-metric): Create an SLI based on histogram metrics.
 * [APM latency and APM availability](/solutions/observability/incident-management/create-an-slo.md#apm-latency-and-availability): Create an SLI based on services using application performance monitoring (APM).
 
-
-### Custom KQL [custom-kql]
+### Custom Query [custom-kql]
 
 Create an indicator based on any of your {{es}} indices or data views. You define two queries: one that yields the good events from your index, and one that yields the total events from your index.
 
-**Example:** You can define a custom KQL indicator based on the `service-logs` index with the **good query** defined as `nested.field.response.latency <= 100 and nested.field.env : “production”` and the **total query** defined as `nested.field.env : “production”`.
+**Example:** You can define a Custom Query indicator based on the `service-logs` index with the **good query** defined as `nested.field.response.latency <= 100 and nested.field.env : “production”` and the **total query** defined as `nested.field.env : “production”`.
 
-When defining a custom KQL SLI, set the following fields:
+When defining a Custom Query SLI, set the following fields:
 
 * **Index:** The data view or index pattern you want to base the SLI on. For example, `service-logs`.
 * **Timestamp field:** The timestamp field used by the index.
@@ -219,6 +222,17 @@ Synthetics availability SLIs are automatically grouped by monitor and location.
 
 ::::
 
+### Project scope [slo-cps-scope]
+```{applies_to}
+stack: unavailable
+serverless: ga
+```
+
+On {{serverless-full}}, an SLO can monitor source data from projects that are [linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md) through [{{cps}} ({{cps-init}})](/explore-analyze/cross-project-search.md). The SLO does not use the header {{cps-init}} scope selector.
+
+Use the **Project scope** control to choose which linked projects the SLO monitors. This control opens the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) for the SLO.
+
+The control appears when at least one project is linked. You can select **This project**, **All projects**, or a subset. New SLOs default to **This project**. That scope is stored on the SLO and applies every time the SLO's transform runs.
 
 
 ## Set your objectives [set-slo]
@@ -271,7 +285,7 @@ For more information about configuring the rule, see [Create an SLO burn rate ru
 After you’ve created your SLO, you can monitor it from the *SLOs* page in Observability, but you can also add an *SLO Overview* panel to a custom dashboard. Read more about dashboards in [Dashboard and visualizations](/explore-analyze/dashboards.md).
 
 :::{image} /solutions/images/observability-slo-overview-embeddable-widget.png
-:alt: Using the Add panel button to add an SLO Overview widget to a dashboard
+:alt: The Add to dashboard flyout next to a dashboard in edit mode, with SLO Overview selected in the Observability group
 :screenshot:
 :::
 

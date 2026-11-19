@@ -32,7 +32,7 @@ Create a custom threshold rule to trigger an alert when an {{obs-serverless}} da
 
 Specify the following settings to define the data the rule applies to:
 
-* **Select a data view:** Click the data view field to search for and select a data view that points to the indices or data streams that you’re creating a rule for. You can also create a *new* data view by clicking **Create a data view**. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views.md) for more on creating data views.
+* **Select a data view:** Click the data view field to search for and select a data view that points to the indices or data streams that you’re creating a rule for. You can also create a *new* data view by clicking **Create a data view**. Refer to [Create a data view](/explore-analyze/find-and-organize/data-views/create-data-view.md) for more on creating data views.
 * **Define query filter (optional):** Use a query filter to narrow down the data that the rule applies to. For example, set a query filter to a specific host name using the query filter `host.name:host-1` to only apply the rule to that host.
 
 
@@ -193,14 +193,14 @@ If a host (for example, `host-1`) is decommissioned, you probably no longer want
 Specify the rule's scope, which determines the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that a role must have to access the rule and its alerts. Depending on your role's access, you can select one of the following:
 
 - {applies_to}`stack: ga 9.3+` **All**: (Default) Roles must have the appropriate privileges for one of the following features:
-   - Infrastructure metrics (**Observability > Infrastructure**)
-   - Logs (**Observability > Logs**)
-   - APM (**Observability > APM and User Experience**)
-   - Synthetics (**Observability > Synthetics and Uptime**)
-   - Stack rules (**Management > {{stack-rules-feature}}**) 
-- **Logs**: When selected, roles must have the appropriate **Observability > Logs** feature privileges.
-- **Metrics**: Roles must have the appropriate **Observability > Infrastructure** feature privileges.
-- **Stack Management**: Roles must have the appropriate **Management > {{stack-rules-feature}}** feature privileges.
+   - Infrastructure metrics (**Observability** → **Infrastructure**)
+   - Logs (**Observability** → **Logs**)
+   - APM (**Observability** → **APM and User Experience**)
+   - Synthetics (**Observability** → **Synthetics and Uptime**)
+   - Stack rules (**Management** → **{{stack-rules-feature}}**) 
+- **Logs**: When selected, roles must have the appropriate **Observability** → **Logs** feature privileges.
+- **Metrics**: Roles must have the appropriate **Observability** → **Infrastructure** feature privileges.
+- **Stack Management**: Roles must have the appropriate **Management** → **{{stack-rules-feature}}** feature privileges.
 
 For example, if you select **All**, a role with feature access to logs can view or edit the rule and its alerts from the Observability or the {{stack-rules-feature}} **Rules** page.
 

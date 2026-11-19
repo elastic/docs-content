@@ -146,7 +146,7 @@ Expand this section to access the following pages:
 
 * [Shared Exception Lists](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
 
-* [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
+* [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md): Review your coverage of MITRE tactics and techniques, based on installed rules.
 
 
 ### Detections [_detections]
@@ -272,16 +272,6 @@ Manage {{ml}} jobs and settings. Refer to [{{ml-cap}} docs](/explore-analyze/mac
 ### Get started [_get_started]
 
 Quickly add security integrations that can ingest data and monitor your hosts.
-
-### SIEM Readiness [security-ui-siem-readiness]
-
-```yaml {applies_to}
-stack: beta 9.4
-serverless:
-  security: beta
-```
-
-Assess your security data posture across four dimensions: coverage, quality, continuity, and retention. Take guided actions to close gaps. Refer to [SIEM Readiness](/solutions/security/get-started/siem-readiness.md) for more information.
 
 ### Developer tools [security-ui-dev-tools]
 

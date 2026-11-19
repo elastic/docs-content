@@ -9,7 +9,7 @@ applies_to:
 products:
   - id: observability
   - id: cloud-serverless
-description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including cross-project and cross-cluster search support, tagging strategies, and custom dashboards.
+description: Advanced guidance for scaling and designing Elastic Synthetics deployments, including private locations, cross-project and cross-cluster search, tagging, and custom dashboards.
 ---
 
 # Scale and architect a Synthetics deployment [synthetics-scale-and-architect]
@@ -18,7 +18,7 @@ Use these advanced considerations when you use the {{synthetics-app}} for large 
 
 ## View monitor data from linked projects [synthetics-cps-settings]
 ```{applies_to}
-serverless: preview
+serverless: ga
 stack: unavailable
 ```
 
@@ -38,7 +38,7 @@ Previously, the Synthetics UI couldn’t display data from remote clusters throu
 
 This view is read-only, meaning that the integration queries each remote cluster’s `synthetics-*` data indices at query time, but monitor definitions and settings stay as saved objects on the {{kib}} where they were created (saved objects aren’t shared across clusters). To create, edit, or delete those monitors, manage them directly in the Synthetics UI on the remote {{kib}}.
 
-To enable it, go to **{{synthetics-app}} → Settings → Remote clusters**. You can select which remote clusters to query and which {{kib}} spaces the settings apply to. Refer to [Remote clusters](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters) for details.
+To enable it, go to **{{synthetics-app}}** → **Settings** → **Remote clusters**. You can select which remote clusters to query and which {{kib}} spaces the settings apply to. Refer to [Remote clusters](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters) for details.
 
 ## Do not use the Synthetics UI with {{ccs-init}}/{{ccr-init}} [synthetics-no-ccs-ccr]
 ```{applies_to}
@@ -50,16 +50,33 @@ Do not use {{ccs}} ({{ccs-init}}) or {{ccr}} ({{ccr-init}}) to federate Syntheti
 
 You can, however, use [Dashboards](/explore-analyze/dashboards.md) or [Discover](/explore-analyze/discover.md) with {{ccs-init}} to query `synthetics-*` indices directly.
 
-## Synthetics UI does not support autodiscovery for infrastructure or {{k8s}} monitoring [synthetics-no-autodiscovery-for-k8s-infra]
+## Synthetics UI does not manage autodiscovery for infrastructure or {{k8s}} monitoring [synthetics-no-autodiscovery-for-k8s-infra]
 
 The {{synthetics-app}} is designed for active synthetic checks against user-defined URLs and user journeys. It is not intended for infrastructure or {{k8s}} pod monitoring through autodiscovery.
 
-The Synthetics UI only shows monitors that are explicitly created and managed through the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md). It has no mechanism for dynamic autodiscovery of infrastructure targets, and it is not designed to ingest or display the high volume of short-lived monitor results that infrastructure monitoring typically produces.
+The Synthetics UI shows:
+
+* Monitors you create and manage in the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md).
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Monitors that [{{heartbeat}}](beats://reference/heartbeat/index.md) or {{agent}} runs, including autodiscovered ones, as read-only entries. You create and edit these in the {{heartbeat}} configuration or the {{agent}} policy. Refer to [Autodiscovered monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-autodiscovered-monitors) for what appears and what you can do with it.
+
+The Synthetics UI has no mechanism of its own for dynamic autodiscovery of infrastructure targets, and it is not designed to ingest or display the high volume of short-lived monitor results that infrastructure monitoring typically produces.
 
 For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
 
-* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
-* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The {{uptime-app}} is deprecated as of 8.15 and is not available in {{serverless-short}}.
+* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Autodiscovery results appear in:
+
+    * {applies_to}`serverless: unavailable` The [{{uptime-app}}](/solutions/observability/uptime/index.md).
+    * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The {{synthetics-app}}, as read-only entries, when the monitor writes to `synthetics-*`.
+
+* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The {{uptime-app}} is deprecated as of 8.15 and is not available in {{serverless-full}}.
+
+## Scale {{private-location}}s [synthetics-scale-private-locations]
+
+When a {{private-location}} can't keep up with its monitors, you can:
+
+* **Add resources to the agent**: Raise the concurrency limits of the {{agent}} and allocate more CPU and RAM to it. Refer to [Scaling {{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scaling).
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Add agents to the location**: Use a scalable {{private-location}} to spread its monitors across several {{agents}} that share one agent policy. Scalable locations also move monitors to healthy agents when an agent fails. Refer to [Scale a {{private-location}} across multiple {{agents}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-scalable).
+* **Split the location**: Create more {{private-location}}s, each with its own agent policy, and move some of the monitors to them. Splitting is the recommended approach when a location reaches the limits described in [Known limitations on vertical scaling](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#known-limitations-on-vertical-scaling), such as the number of monitors a single location supports.
 
 ## Manage large numbers of Synthetic monitors with tags [synthetics-tagging]
 

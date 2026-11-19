@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens heat map chart representing temperatures in various cities](/explore-analyze/images/heat-map-chart-example.png)
 
-## Build a heat map chart with the point-and-click editor [build-a-heat-map-chart]
+## Create a heat map chart [create-a-heat-map-chart]
+
+### Create a heat map chart with the point-and-click editor [build-a-heat-map-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a heat map chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -64,7 +67,7 @@ The chart preview updates to show a grid of colored cells. Cell colors represent
 
 ::::::
 
-## Build a heat map chart with an {{esql}} query [build-a-heat-map-chart-with-esql]
+### Create a heat map chart with an {{esql}} query [build-a-heat-map-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -378,7 +381,10 @@ When creating or editing a visualization, you can customize several appearance o
     - **Hide**: Do not display the legend.
 
 **Width**
-:   Control the width of the legend panel. Options include **Small**, **Medium**, **Large**, and **Extra large**.
+:   Control the width of the legend panel. Select **Auto**, **Small**, **Medium**, **Large**, or **Extra large**. **Auto** sizes the legend to fit its labels, and the other options set a fixed width. The default and available options depend on your environment:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Auto** is the default.
+    - {applies_to}`stack: ga 9.0-9.5` **Medium** is the default. **Auto** is available in the interface only for charts whose width is already set to **Auto**, for example charts created with the API, or charts created before 8.3 that had no width set.
 
 **Label truncation**
 :   Toggle whether to truncate long legend labels. When enabled, set the **Line limit** to control the maximum number of lines for each label (defaults to 1).

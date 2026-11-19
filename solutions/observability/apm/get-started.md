@@ -1,5 +1,6 @@
 ---
 navigation_title: Get started with traces and APM
+description: Get started with Elastic APM by sending application traces with EDOT SDKs or Elastic APM agents, then explore service performance data in Kibana.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-getting-started-apm-server.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
@@ -13,7 +14,7 @@ products:
   - id: cloud-serverless
 ---
 
-# Get started with traces and APM [apm-getting-started-apm-server]
+# Get started with Elastic APM [apm-getting-started-apm-server]
 
 Elastic APM receives performance data from your APM agents or [{{edot}} SDKs](opentelemetry://reference/edot-sdks/index.md), validates and processes it, and then transforms the data into {{es}} documents.
 

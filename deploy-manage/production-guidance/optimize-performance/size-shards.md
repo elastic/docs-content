@@ -1,4 +1,5 @@
 ---
+navigation_title: Size your shards
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html
 applies_to:
@@ -11,7 +12,7 @@ products:
   - id: elasticsearch
 ---
 
-# Size your shards
+# Size your {{es}} shards
 
 A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, refer to [nodes and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
 
@@ -340,7 +341,7 @@ POST _reindex
 Here’s how to resolve common shard-related errors.
 
 
-### this action would add [x] total shards, but this cluster currently has [y]/[z] maximum shards open; [troubleshooting-max-shards-open]
+### this action would add [x] shards, but this cluster currently has [y]/[z] maximum normal shards open; [troubleshooting-max-shards-open]
 
 The [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
 

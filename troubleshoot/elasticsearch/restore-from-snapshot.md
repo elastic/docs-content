@@ -188,7 +188,7 @@ To restore the indices and data streams with missing data, run the following ste
 7. Finally we can verify that the indices health is now `green` via the [cat indices API]({{es-apis}}operation/operation-cat-indices).
 
     ```console
-    GET _cat/indices?v&index=.ds-my-data-stream-2022.06.17-000001,kibana_sample_data_flightsh=index,status,health
+    GET _cat/indices?v&index=.ds-my-data-stream-2022.06.17-000001,kibana_sample_data_flights&h=index,status,health
     ```
 
     The response will look like this:

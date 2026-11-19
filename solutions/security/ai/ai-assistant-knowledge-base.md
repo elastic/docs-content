@@ -32,7 +32,7 @@ We strongly recommend you [enable autoscaling](/deploy-manage/autoscaling.md#clu
 
 ## Role-based access control (RBAC) for Knowledge Base [knowledge-base-rbac]
 
-The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant and access its settings. It has two sub-privileges, `Field Selection and Anonymization`, which allows you to customize which alert fields are sent to AI Assistant and Attack Discovery, and `Knowledge Base`, which allows you to edit and create new Knowledge Base entries.
+The `Elastic AI Assistant: All` role privilege allows you to use AI Assistant and access its settings. To grant its sub-feature privileges individually, turn on **Customize sub-feature privileges**. For the full list, refer to [Elastic AI Assistant sub-feature privileges](/solutions/security/manage/security-kibana-privileges.md#elastic-ai-assistant-sub-feature-privileges).
 
 :::{image} /solutions/images/security-knowledge-base-rbac.png
 :alt: Knowledge base's RBAC settings
@@ -109,7 +109,7 @@ When you enable Knowledge Base, it comes pre-populated with articles from [Elast
 Add a markdown document to Knowledge Base when you want AI Assistant to remember a specific piece of information. 
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
-2. Click **New → Document** and give it a name.
+2. Click **New** → **Document** and give it a name.
 3. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
 4. Write the knowledge AI Assistant should remember in the **Markdown text** field.
 5. In the **Markdown text** field, enter the information you want AI Assistant to remember.
@@ -152,7 +152,7 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 ::::
 
 1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
-2. Click **New → Index**.
+2. Click **New** → **Index**.
 3. Name the knowledge source.
 4. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
 5. Under **Index**, enter the name of the index you want to use as a knowledge source.
