@@ -1,6 +1,6 @@
 ---
 navigation_title: OpenRouter Broadcast
-description: Send OpenTelemetry traces from OpenRouter Broadcast — one trace per chat completion request — to Elastic Observability through the Elastic Cloud Managed OTLP Endpoint.
+description: Send OpenTelemetry traces from OpenRouter Broadcast, one trace per chat completion request, to Elastic Observability through the Elastic Cloud Managed OTLP Endpoint.
 applies_to:
   serverless:
     observability: ga
@@ -18,8 +18,8 @@ products:
 
 Each Broadcast trace contains two spans:
 
-* An **`LLM Generation`** parent span with the model, provider and usage attributes of the request.
-* A child **`provider attempt N: <Provider>`** span for the attempt against the upstream provider, with the attempt's own latency and response id.
+* **`LLM Generation`**: The parent span, with the model, provider, and usage attributes for the request.
+* **`provider attempt N: <Provider>`**: A child span for the attempt against the upstream provider, with its own latency and response id.
 
 The spans follow the OpenTelemetry GenAI semantic conventions and are stored in Elastic in OTLP format.
 
@@ -63,9 +63,9 @@ OpenRouter's Broadcast has a **Privacy Mode** that strips prompt and completion 
 
 Traces land as OTLP spans under `service.name: openrouter` in the Applications section. You can view them in:
 
-* **Discover** — filter on `service.name: openrouter` against the `traces-generic.otel-*` data view. All attributes (model, provider, tokens, finish reason, response id) are available.
-* **Applications → Service inventory → `openrouter` → Transactions** — opens the request waterfall plus the **GenAI** tab, which renders the full conversation (system, user, assistant with any Reasoning tokens) alongside Operation, Request model, Response model, Provider, Input/Output/Cache tokens, Response ID and Finish reasons.
-* **Applications → Traces** — the list of root transactions.
+* **Discover**: Filter on `service.name: openrouter` against the `traces-generic.otel-*` data view. All attributes are available, including model, provider, tokens, finish reason, and response id.
+* **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall plus the **GenAI** tab, which renders the full conversation (system, user, assistant with any Reasoning tokens) alongside Operation, Request model, Response model, Provider, Input/Output/Cache tokens, Response ID, and Finish reasons.
+* **Applications → Traces**: The list of root transactions.
 
 Each request produces two spans: a parent **`LLM Generation`** span and a child **`provider attempt N: <Provider>`** span.
 
@@ -84,7 +84,7 @@ with tracer.start_as_current_span("chat_turn") as turn:
     }
 ```
 
-In Kibana you get one waterfall for the whole conversation: your application at the root, `LLM Generation` under each turn, `provider attempt` under each generation — two services in the same trace, connected in the Service map.
+In Kibana you get one waterfall for the whole conversation: your application at the root, `LLM Generation` under each turn, and `provider attempt` under each generation. The two services appear in the same trace and connect in the Service map.
 
 ::::{tip}
 To group multi-turn traffic without instrumenting the app, pass `session_id` (or the `x-session-id` header) on each request. Turns stay as separate traces but filter together in Discover.
@@ -93,4 +93,4 @@ To group multi-turn traffic without instrumenting the app, pass `session_id` (or
 ## Known limits
 
 * **Prompt lengths in ES|QL.** Long prompts can return `null` in ES|QL because of the `ignore_above: 1024` mapping on the `gen_ai.prompt` field. The full value is in the span `_source`.
-* **Cost.** Paid requests populate three OTel standard fields on the `LLM Generation` span: `gen_ai.usage.input_cost`, `gen_ai.usage.output_cost`, and `gen_ai.usage.total_cost` (all in USD). OpenRouter also writes richer vendor fields under `span.metadata.openrouter_cost_allocation.*` and `trace.metadata.openrouter_cost_allocation.*`, including `cost_status` (expect `unreconciled` on newly-received spans; it settles after billing) and `is_byok`. Free models don't emit cost fields.
+* **Cost.** Paid requests populate three OTel standard fields on the `LLM Generation` span: `gen_ai.usage.input_cost`, `gen_ai.usage.output_cost`, and `gen_ai.usage.total_cost`, all in USD. OpenRouter also writes richer vendor fields under `span.metadata.openrouter_cost_allocation.*` and `trace.metadata.openrouter_cost_allocation.*`, including `cost_status` and `is_byok`. New spans arrive with `cost_status: unreconciled`; the value settles once billing is finalized. Free models don't emit cost fields.
