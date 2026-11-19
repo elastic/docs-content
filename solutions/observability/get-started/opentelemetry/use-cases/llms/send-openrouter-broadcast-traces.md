@@ -16,12 +16,7 @@ products:
 
 [OpenRouter](https://openrouter.ai) is a gateway that routes LLM requests across many model providers. OpenRouter [Broadcast](https://openrouter.ai/docs/guides/features/broadcast) can send OpenTelemetry traces of every chat completion straight to Elastic. After an account admin adds Elastic as a destination in the OpenRouter console, one trace per request starts arriving in your Elastic project. You don't need to change your code or run an OpenTelemetry Collector.
 
-Each Broadcast trace contains two spans:
-
-* **`LLM Generation`**: The parent span, with the model, provider, and usage attributes for the request.
-* **`provider attempt N: <Provider>`**: A child span for the attempt against the upstream provider, with its own latency and response id.
-
-The spans follow the OpenTelemetry GenAI semantic conventions and are stored in Elastic in OTLP format.
+Each request produces a parent span for the LLM generation plus one child span per upstream provider attempt. The spans follow the OpenTelemetry GenAI semantic conventions and are stored in Elastic in OTLP format.
 
 ::::{note}
 Broadcast sends **traces only**. For usage, cost and performance metrics by model and API key, install the companion OpenRouter integration. The two sources are complementary and can be used together.
@@ -59,6 +54,17 @@ Select **Test Connection** and confirm the synthetic `Test Generation` span land
 OpenRouter's Broadcast has a **Privacy Mode** that strips prompt and completion content from the trace, keeping only metadata (model, tokens, latency, response id). Enable it from the same destination if you don't want message content to leave OpenRouter.
 ::::
 
+## Check that traces arrive
+
+1. Send a chat completion request through OpenRouter using an API key that the destination covers.
+2. In the OpenRouter console, at **Settings → Observability**, check that the destination's delivery status is healthy. This can take about a minute.
+3. In {{kib}}, find the spans. All Broadcast spans have `service.name` set to `openrouter`. For example, in **Discover**, run the following {{esql}} query:
+
+    ```esql
+    FROM traces-*
+    | WHERE service.name == "openrouter"
+    ```
+
 ## Where the traces appear in Elastic
 
 Traces land as OTLP spans under `service.name: openrouter` in the Applications section. You can view them in:
@@ -71,26 +77,8 @@ Each request produces two spans: a parent **`LLM Generation`** span and a child 
 
 ## Group multi-turn conversations
 
-By default each chat completion produces its own trace. To view a multi-turn conversation as a single waterfall, open a span in your own application code and pass the OTel context to OpenRouter in the request body. OpenRouter then nests its spans inside yours:
-
-```python
-with tracer.start_as_current_span("chat_turn") as turn:
-    turn.set_attribute("peer.service", "openrouter")
-    turn.set_attribute("gen_ai.system", "openrouter")
-    ctx = turn.get_span_context()
-    body["trace"] = {
-        "trace_id":       f"{ctx.trace_id:032x}",
-        "parent_span_id": f"{ctx.span_id:016x}",
-    }
-```
-
-In Kibana you get one waterfall for the whole conversation: your application at the root, `LLM Generation` under each turn, and `provider attempt` under each generation. The two services appear in the same trace and connect in the Service map.
+By default each chat completion produces its own trace. To view a multi-turn conversation as a single waterfall, open a span in your own application code and pass its trace context to OpenRouter in the request body. OpenRouter nests its spans under yours, and the two services connect in the Service map. Refer to [OpenRouter's Broadcast documentation](https://openrouter.ai/docs/guides/features/broadcast) for the trace context fields.
 
 ::::{tip}
 To group multi-turn traffic without instrumenting the app, pass `session_id` (or the `x-session-id` header) on each request. Turns stay as separate traces but filter together in Discover.
 ::::
-
-## Known limits
-
-* **Prompt lengths in ES|QL.** Long prompts can return `null` in ES|QL because of the `ignore_above: 1024` mapping on the `gen_ai.prompt` field. The full value is in the span `_source`.
-* **Cost.** Paid requests populate three OTel standard fields on the `LLM Generation` span: `gen_ai.usage.input_cost`, `gen_ai.usage.output_cost`, and `gen_ai.usage.total_cost`, all in USD. OpenRouter also writes richer vendor fields under `span.metadata.openrouter_cost_allocation.*` and `trace.metadata.openrouter_cost_allocation.*`, including `cost_status` and `is_byok`. New spans arrive with `cost_status: unreconciled`; the value settles once billing is finalized. Free models don't emit cost fields.
