@@ -52,7 +52,7 @@ OpenRouter's Broadcast has a **Privacy Mode** that strips prompt and completion 
 
 ## Check that traces arrive
 
-To verify Elastic is receiving spans without sending a real chat completion, use OpenRouter's **Test Connection** button at **Settings → Observability → your Elastic destination**. It fires a synthetic `Test Generation` span.
+To verify Elastic is receiving spans without sending a real chat completion, use OpenRouter's **Test Connection** button at **Settings → Observability → your Elastic destination**. It fires a synthetic `Test Generation` span with a fixed 1.5-second duration — that's how you tell the test apart from real chat requests.
 
 In {{kib}} **Discover**, run this {{esql}} query to find the test span (and any real Broadcast span) by `service.name`:
 
@@ -65,8 +65,9 @@ The destination's delivery status in the OpenRouter console shows a healthy indi
 
 ## Where the traces appear in Elastic
 
-Traces land as OTLP spans under `service.name: openrouter` in the Applications section. You can view them in:
+Traces land as OTLP spans under `service.name: openrouter`. You can view them in:
 
+* **Discover**: Filter on `service.name: openrouter` to see every span with all of its attributes (model, provider, tokens, finish reason, response id).
 * **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall plus the **GenAI** tab, which renders the full conversation and request metadata (model, tokens, cost, finish reason).
 * **Applications → Traces**: The list of root transactions.
 
