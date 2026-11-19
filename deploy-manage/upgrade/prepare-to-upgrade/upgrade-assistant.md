@@ -19,6 +19,8 @@ To access the assistant, go to the **Upgrade Assistant** management page in the 
 
 {applies_to}`self: ga 9.1+` To make the Upgrade Assistant appear in the navigation menu and the global search field, set `xpack.upgrade_assistant.ui.enabled` to `true` in `kibana.yml`, then restart {{kib}}. The app is off by default. For the full list of settings, refer to the [{{kib}} general settings](kibana://reference/configuration-reference/general-settings.md).
 
+On {{ech}} deployments running 9.1 or later, the app is also off by default, and the {{kib}} user settings don't allow you to turn it on.
+
 ::::{note}
 The Upgrade Assistant relies only on local {{es}} and {{kib}} APIs to detect deprecations and prepare your cluster for upgrade. It doesn't depend on any external service, so you can use it in air-gapped environments without internet access. For details on the APIs it uses, refer to [Deprecations](#_deprecations).
 ::::
