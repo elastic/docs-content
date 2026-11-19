@@ -20,7 +20,7 @@ The detection engine also surfaces alerts from [{{elastic-defend}}'s endpoint pr
 
 :::{note}
 :applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
-[{{alerting-v2-system-cap}}](/explore-analyze/alerting/esql/system-overview.md) is a separate alerting system that isn't tied to any specific solution. Its rules aren't the same as {{elastic-sec}} [{{esql}} rules](/solutions/security/detect-and-alert/esql.md). For threat detection, use {{elastic-sec}} detection rules. They include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that {{alerting-v2-system}} doesn't provide.
+[{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md) is a separate alerting system that isn't tied to any specific solution. Its rules aren't the same as {{elastic-sec}} [{{esql}} rules](/solutions/security/detect-and-alert/esql.md). For threat detection, use {{elastic-sec}} detection rules. They include security-specific capabilities such as [exceptions](/solutions/security/detect-and-alert/rule-exceptions.md) and [alert suppression](/solutions/security/detect-and-alert/alert-suppression.md) that {{alerting-v2-system-short}} doesn't provide.
 :::
 
 ## Where to start

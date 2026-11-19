@@ -120,6 +120,7 @@ To start a new session from an existing one, save a copy under a new title. The 
 
 - [Use Discover sessions in dashboards](use-sessions-in-dashboards.md): Add the session, its chart, or its table to a dashboard.
 - [Export results and sessions from Discover](export-discover-session.md): Take the results or the session definition elsewhere.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Discover sessions API reference]({{kib-apis}}group/endpoint-discover-sessions): Create, update, and deploy sessions from code.
 
 ## Related pages [save-open-search-related]
 

@@ -14,7 +14,7 @@ products:
 
 For example, in **Discover**, you can create and download comma-separated values (CSV) reports for Discover sessions.
 
-To view and manage reports, go to **Management** > **Reporting**.
+To view and manage reports, go to **Management** → **Reporting**.
 
 :::{image} /explore-analyze/images/serverless-reports-management.png
 :alt: {{reports-app}}

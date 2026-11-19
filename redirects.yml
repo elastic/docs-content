@@ -1,4 +1,6 @@
 redirects:
+  # related to https://github.com/elastic/docs-content/pull/9392
+  'explore-analyze/ai-features/claude-plugin.md': 'explore-analyze/ai-features/agent-plugins/claude-plugin.md'
   # related to https://github.com/elastic/docs-content/pull/9157
   'solutions/security/alertzero/review-closed-proposed-actions.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
   'solutions/security/alertzero/decide-proposed-action.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
@@ -1833,5 +1835,10 @@ redirects:
   'reference/autoops-insights/vector_memory_pressure.md': 'autoops-insights://elasticsearch/vector_memory_pressure.md'
   'reference/autoops-insights/version_is_outdated.md': 'autoops-insights://elasticsearch/version_is_outdated.md'
   'reference/autoops-insights/write_queue_size.md': 'autoops-insights://elasticsearch/write_queue_size.md'
+  
+  # related to https://github.com/elastic/docs-content/issues/1461
+  'deploy-manage/monitor/monitoring-data/config-monitoring-data-streams-metricbeat-8.md': 'deploy-manage/monitor/monitoring-data/config-monitoring-data-streams-metricbeat.md'
+  'deploy-manage/monitor/monitoring-data/config-monitoring-indices-metricbeat-7-internal-collection.md': 'deploy-manage/monitor/monitoring-data/config-monitoring-indices-internal-collection.md'
+  
   # related to https://github.com/elastic/docs-content-internal/issues/1919
   'solutions/security/alertzero/track-escalations.md': 'solutions/security/alertzero/manage-escalations.md'

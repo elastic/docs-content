@@ -52,18 +52,21 @@ Expand a section below for your endpoint security system:
 
 2. **Install the CrowdStrike integration and {{agent}}.** Elastic’s [CrowdStrike integration](https://docs.elastic.co/en/integrations/crowdstrike) collects and ingests logs into {{elastic-sec}}.
 
-    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **CrowdStrike**, then select **Add CrowdStrike**.
-    2. Configure the integration with an **Integration name** and optional **Description**.
-    3. Select **Collect CrowdStrike logs via API**, and enter the required **Settings**:
+    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    2. Search for and select **CrowdStrike**.
+    3. If the integration's **Overview** page opens, select **Add CrowdStrike**.
+    4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+    5. Configure the integration with an **Integration name** and optional **Description**.
+    6. Select **Collect CrowdStrike logs via API**, and enter the required **Settings**:
 
         * **Client ID**: Client ID for the API client used to read CrowdStrike data.
         * **Client Secret**: Client secret allowing you access to CrowdStrike.
         * **URL**: The base URL of the CrowdStrike API.
 
-    4. Select the **Falcon Alerts** and **Hosts** sub-options under **Collect CrowdStrike logs via API**.
-    5. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
-    6. Click **Save and continue**.
-    7. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge collecting data from CrowdStrike and sending it back to {{elastic-sec}}.
+    7. Select the **Falcon Alerts** and **Hosts** sub-options under **Collect CrowdStrike logs via API**.
+    8. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
+    9. Click **Save and continue**.
+    10. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge collecting data from CrowdStrike and sending it back to {{elastic-sec}}.
 
 3. **Create a CrowdStrike connector.** Elastic’s [CrowdStrike connector](kibana://reference/connectors-kibana/crowdstrike-action-type.md) enables {{elastic-sec}} to perform actions on CrowdStrike-enrolled hosts.
 
@@ -114,12 +117,15 @@ Expand a section below for your endpoint security system:
     ::::
 
 
-    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **Microsoft Defender for Endpoint**, then select **Add Microsoft Defender for Endpoint**.
-    2. Enter an **Integration name**. Entering a **Description** is optional.
-    3. Ensure that **Microsoft Defender for Endpoint logs** is selected, and enter the required values for **Client ID**, **Client Secret**, and **Tenant ID**.
-    4. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
-    5. Click **Save and continue**.
-    6. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge, collecting data from Microsoft Defender for Endpoint and sending it back to {{elastic-sec}}.
+    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    2. Search for and select **Microsoft Defender for Endpoint**.
+    3. If the integration's **Overview** page opens, select **Add Microsoft Defender for Endpoint**.
+    4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+    5. Enter an **Integration name**. Entering a **Description** is optional.
+    6. Ensure that **Microsoft Defender for Endpoint logs** is selected, and enter the required values for **Client ID**, **Client Secret**, and **Tenant ID**.
+    7. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
+    8. Click **Save and continue**.
+    9. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge, collecting data from Microsoft Defender for Endpoint and sending it back to {{elastic-sec}}.
 
 3. **Create a Microsoft Defender for Endpoint connector.** Elastic’s Microsoft Defender for Endpoint connector enables {{elastic-sec}} to perform actions on Microsoft Defender–enrolled hosts.
 
@@ -166,16 +172,19 @@ Expand a section below for your endpoint security system:
 
 2. **Install the SentinelOne integration and {{agent}}.** Elastic’s [SentinelOne integration](https://docs.elastic.co/en/integrations/sentinel_one) collects and ingests logs into {{elastic-sec}}.
 
-    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **SentinelOne**, then select **Add SentinelOne**.
-    2. Configure the integration with an **Integration name** and optional **Description**.
-    3. Ensure that **Collect SentinelOne logs via API** is selected, and enter the required **Settings**:
+    1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    2. Search for and select **SentinelOne**.
+    3. If the integration's **Overview** page opens, select **Add SentinelOne**.
+    4. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+    5. Configure the integration with an **Integration name** and optional **Description**.
+    6. Ensure that **Collect SentinelOne logs via API** is selected, and enter the required **Settings**:
 
         * **URL**: The SentinelOne console URL.
         * **API Token**: The SentinelOne API access token you generated previously, with permission to read SentinelOne data.
 
-    4. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
-    5. Click **Save and continue**.
-    6. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge collecting data from SentinelOne and sending it to {{elastic-sec}}.
+    7. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/fleet/agent-policy.md).
+    8. Click **Save and continue**.
+    9. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge collecting data from SentinelOne and sending it to {{elastic-sec}}.
 
 3. **Create a SentinelOne connector.** Elastic’s [SentinelOne connector](kibana://reference/connectors-kibana/sentinelone-action-type.md) enables {{elastic-sec}} to perform actions on SentinelOne-enrolled hosts.
 
