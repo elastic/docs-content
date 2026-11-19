@@ -57,9 +57,9 @@ Hosted policies display a lock icon in the {{fleet}} UI, and actions are restric
 | [Copy a policy](#copy-policy) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Edit or delete a policy](#policy-main-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add custom fields](#add-custom-fields) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
-| [Include agent tags in events](#agent-policy-include-agent-tags) {applies_to}`stack: ga 9.6+` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Include agent tags in events](#agent-policy-include-agent-tags) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure agent monitoring](#change-policy-enable-agent-monitoring) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
-| [Configure an automatic {{agent}} upgrade](#agent-policy-automatic-agent-upgrade) {applies_to}`stack: ga 9.1.0` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Configure an automatic {{agent}} upgrade](#agent-policy-automatic-agent-upgrade) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Change the output of a policy](#change-policy-output) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add a {{fleet-server}} to a policy](#add-fleet-server-to-policy) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure secret values in a policy](#agent-policy-secret-values) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
@@ -319,7 +319,8 @@ This setting configures retries for the file upload client handling diagnostics 
 ## Configure an automatic {{agent}} upgrade [#agent-policy-automatic-agent-upgrade]
 
 ```{applies_to}
-stack: ga 9.1.0
+stack: ga 9.1+
+serverless: ga
 ```
 
 For a high-scale deployment of {{fleet}}, you can configure an automatic, gradual rollout of a new minor or patch version to a percentage of the {{agents}} in your policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](/reference/fleet/upgrade-elastic-agent.md#auto-upgrade-agents).
