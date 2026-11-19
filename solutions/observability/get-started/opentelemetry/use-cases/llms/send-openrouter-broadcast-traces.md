@@ -18,6 +18,10 @@ products:
 
 Each request produces a parent span for the LLM generation plus one child span per upstream provider attempt. The spans follow the OpenTelemetry GenAI semantic conventions and are stored in Elastic in OTLP format.
 
+::::{note}
+OpenRouter sends **traces only** through this path. For usage, cost and performance metrics by model and API key, install the companion OpenRouter integration. The two sources are complementary and can be used together.
+::::
+
 ## Before you begin
 
 Make sure you have the following:
@@ -52,7 +56,7 @@ OpenRouter's Broadcast has a **Privacy Mode** that strips prompt and completion 
 
 ## Check that traces arrive
 
-To verify Elastic is receiving spans without sending a real chat completion, use OpenRouter's **Test Connection** button at **Settings → Observability → your Elastic destination**. It fires a synthetic `Test Generation` span with a fixed 1.5-second duration — that's how you tell the test apart from real chat requests.
+To verify Elastic is receiving spans without sending a real chat completion, use OpenRouter's **Test Connection** button at **Settings → Observability → your Elastic destination**. It fires a synthetic `Test Generation` span.
 
 In {{kib}} **Discover**, run this {{esql}} query to find the test span (and any real Broadcast span) by `service.name`:
 
@@ -65,10 +69,10 @@ The destination's delivery status in the OpenRouter console shows a healthy indi
 
 ## Where the traces appear in Elastic
 
-Traces land as OTLP spans under `service.name: openrouter`. You can view them in:
+Traces land as OTLP spans under `service.name: openrouter`. Each span carries the request metadata (model, provider, tokens, cost, finish reason, response id) and the full conversation. You can reach them from:
 
-* **Discover**: Filter on `service.name: openrouter` to see every span with all of its attributes (model, provider, tokens, finish reason, response id).
-* **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall plus the **GenAI** tab, which renders the full conversation and request metadata (model, tokens, cost, finish reason).
+* **Discover**: Filter on `service.name: openrouter` or query with ES|QL, then expand a row.
+* **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall; pick a transaction to view its details.
 * **Applications → Traces**: The list of root transactions.
 
 ## Example: token usage by model
