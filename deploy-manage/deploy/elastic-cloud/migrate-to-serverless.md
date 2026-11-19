@@ -12,8 +12,6 @@ type: how-to
 
 Moving to {{serverless-full}} involves creating a project and adapting your existing solution to it. You can transfer supported user data and export some configuration, while other components require manual setup or redesign. The work involved depends on the features and integrations your solution uses.
 
-Start with understanding your existing solution. The features you use, the way data is ingested, and the applications connected to {{es}} determine what can move directly and what needs to change. Distinguish the assets supplied by Elastic from the configuration and customizations that make them part of your solution.
-
 This guide covers the full migration process, from assessing the source and preparing and testing the destination to completing the production transition.
 
 ## Before you begin [migrate-to-serverless-before-you-begin]
@@ -49,68 +47,100 @@ Classify each workload by its primary purpose, not by an individual feature or a
 
 ### Inventory your assets [migrate-to-serverless-inventory]
 
-Build an inventory of the data, configuration, applications, and external dependencies you need to preserve in the destination. Use the following checklist as a reference, add any custom assets specific to your solution, and validate the inventory with the people who configure and use each part. The asset-specific procedures in [Prepare and test the destination](#migrate-to-serverless-prepare) explain the migration methods, dependencies, required adaptations, and creation prerequisites for these resources.
+Build an inventory of the data, configuration, applications, and external dependencies you need to preserve. Review the categories that apply to your solution and validate the inventory with the people who configure and use each part. The linked procedures in [Prepare and test the destination](#migrate-to-serverless-prepare) explain how to migrate each resource.
 
-Focus the inventory and transfer work on your own resources and customizations. Assets managed by Elastic normally do not need to be copied manually: the destination components or integrations create the resources they provide when configured. If you modified a managed resource directly, capture those changes separately and review how to apply them through supported customization mechanisms.
+Focus your inventory on user-created resources and customizations, including any changes made directly to Elastic-managed assets. You generally do not need to inventory or transfer individual managed, system, or internal assets. The destination integrations and components recreate the resources they provide. Record the integrations and versions your solution uses, and follow the feature-specific guidance below for any exceptions.
 
-:::{dropdown} Asset inventory checklist
-Review each category that applies to your solution. Items marked {icon}`warning` **Significant adaptation** commonly require redesign or additional work beyond a direct copy or export and import.
+The labels describe the type of migration work, not the level of difficulty or what a specific migration tool can automate:
 
-- **Access, credentials, and network dependencies**
-    - [ ] Organization assignments, deployment-local users, roles, role mappings, authentication realms, and SSO configuration — {icon}`warning` **Significant adaptation**
-    - [ ] API keys, service credentials, certificates, and secrets used by applications and integrations — {icon}`warning` **Significant adaptation**
-    - [ ] Network policies, private connectivity, proxies, allowlists, and required network paths — {icon}`warning` **Significant adaptation**
-- **Integration packages and {{fleet}}**
-    - [ ] Installed integration packages and versions
-    - [ ] Customizations to integration-managed templates, pipelines, dashboards, and other packaged assets — {icon}`warning` **Significant adaptation**
-    - [ ] {{fleet}} outputs, proxies, default output assignments, and external destinations
-    - [ ] Agent policies, integration policies, enabled inputs and streams, output assignments, and space assignments — {icon}`warning` **Significant adaptation**
-    - [ ] Enrolled {{agent}}s and their production migration path — {icon}`warning` **Significant adaptation**
-- **Data, structures, and processing**
-    - [ ] Regular indices, mappings, compatible settings, aliases, and update or delete patterns
-    - [ ] Data streams, backing indices, current write indices, retention, and lifecycle configuration — {icon}`warning` **Significant adaptation**
-    - [ ] Stored vectors and `semantic_text` data, including dimensions, similarity settings, and referenced inference endpoint IDs
-    - [ ] Stored scripts and stored search templates
-    - [ ] Synonym sets and analyzer references, including file-based or index-time synonyms — {icon}`warning` **Significant adaptation**
-    - [ ] Enrich policies and their reference indices or data streams
-    - [ ] Custom ingest pipelines, `@custom` extensions, stored scripts, enrich policies, and inference endpoints they reference
-    - [ ] Custom component templates and integration `@custom` component templates
-    - [ ] Composable index templates, index patterns, priorities, component order, aliases, and data stream configuration
-    - [ ] Legacy index templates that still supply required configuration — {icon}`warning` **Significant adaptation**
-    - [ ] {{ilm}} policies, data tiers, retention requirements, downsampling, and lifecycle actions — {icon}`warning` **Significant adaptation**
-    - [ ] Transforms and other custom processing resources
-- **{{kib}} spaces, content, and automation**
-    - [ ] Spaces, space IDs, settings, and access requirements
-    - [ ] Dashboards, Lens and other visualizations, maps, Discover sessions, {{data-sources}}, saved queries, tags, and annotation groups
-    - [ ] User-managed connectors, connector IDs, secrets, and authorization
-    - [ ] {{observability}} rules, actions, connectors, and referenced {{ml}} jobs
-    - [ ] Security detection rules, actions, connectors, exception lists, value lists, Endpoint exceptions, and referenced {{data-sources}}
-    - [ ] Cases, comments, connectors, configuration, custom fields, templates, attachments, alerts, and Timelines
-    - [ ] {{maint-windows-cap}}, schedules, recurrence, filters, and rule scope
-    - [ ] User-managed workflows, triggers, schedules, connectors, referenced resources, and workflow dependencies
-    - [ ] SLOs, Synthetics monitors, reporting schedules, Streams, Attack Discovery configuration, endpoint artifacts, and other solution-specific resources
-- **AI and {{ml}}**
-    - [ ] {{anomaly-jobs-cap}}, {{dfeeds}}, filter lists, calendars, source indices, and space assignments — {icon}`warning` **Significant adaptation**
-    - [ ] {{dfanalytics-cap}} jobs, source and destination indices, analysis results, and generated models
-    - [ ] Built-in and custom trained models, vocabularies, deployments, model IDs, deployment IDs, and aliases — {icon}`warning` **Significant adaptation**
-    - [ ] {{infer}} endpoints, endpoint IDs, task types, services, models, settings, and provider credentials
-- **Applications, ingestion, and external dependencies**
-    - [ ] Applications, search interfaces, client libraries, SDKs, APIs, representative queries, and expected permissions
-    - [ ] Every process that creates, updates, or deletes source data or configuration
-    - [ ] {{beats}}, {{ls}}, OpenTelemetry, {{product.apm}}, standalone {{agent}}s, and other ingestion endpoints and credentials
-    - [ ] Content connectors, crawlers, source systems, synchronization schedules, extraction logic, and external integrations
-    - [ ] Browser clients that connect directly to {{es}}, custom routing, unsupported APIs or settings, and retry behavior — {icon}`warning` **Significant adaptation**
-    - [ ] Typical and peak ingest and search rates, index operations, representative queries, and acceptance criteria
-- **Migration and operational state**
-    - [ ] Stable historical data that can be transferred during preparation
-    - [ ] Changing data and configuration that must wait for the final migration window
-    - [ ] Alerts, investigation content, execution history, learned model state, and other operational state that users need
-    - [ ] Asset owners, compliance and retention requirements, acceptable downtime, data loss tolerance, and rollback requirements
+- ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer:** Preserve data or compatible definitions through supported transfer, export and import, or API procedures.
+- ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Adapt or complete:** Change incompatible configuration or supply secrets and other required values that do not transfer.
+- ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace or redesign:** The source resource or capability is unavailable. Use an alternative or change the solution design.
+
+A transfer can include recreating resources through APIs or the UI. The combined ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") label identifies resources with transferable content and parts that can need adaptation. Confirm availability for your destination project type and feature tier. Resources without a label require feature-specific assessment.
+
+:::{dropdown} Data
+- [ ] [Regular indices](#migrate-to-serverless-regular-indices), including mappings, settings, and update or delete patterns — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer documents and adapt settings or lifecycle configuration where needed**
+- [ ] [Data streams and backing indices](#migrate-to-serverless-data-streams), including the current write index — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer documents and adapt settings or lifecycle configuration where needed**
+- [ ] [Index and data stream aliases](/manage-data/data-store/aliases.md), including filters and write targets — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Stored vectors and `semantic_text` data](#migrate-to-serverless-transfer-considerations) — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Preserve embeddings and adapt mappings or inference references where needed**
 :::
+
+:::{dropdown} Data structures and processing
+- [ ] [Stored scripts and search templates](#migrate-to-serverless-scripts) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [API-managed synonym sets](#migrate-to-serverless-synonyms) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [File-based or index-time synonyms](#migrate-to-serverless-synonyms) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with API-managed search-time synonym sets or redesign the analyzers**
+- [ ] [Enrich policies and reference data](#migrate-to-serverless-enrich) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Custom ingest pipelines and `@custom` extensions](#migrate-to-serverless-pipelines), including referenced scripts, enrich policies, and inference endpoints — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Custom component templates](#migrate-to-serverless-component-templates), including integration `@custom` components — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer compatible definitions, remove unsupported settings, and adapt lifecycle references**
+- [ ] [Composable index templates](#migrate-to-serverless-templates), including patterns, priorities, component order, and data stream configuration — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer compatible definitions, remove unsupported settings, and adapt lifecycle configuration**
+- [ ] [Legacy index templates](#migrate-to-serverless-legacy-templates) still in use — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with composable templates**
+- [ ] [{{ilm-cap}} policies, data tiers, and lifecycle actions](#migrate-to-serverless-lifecycle) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with data stream lifecycle or another retention design**
+- [ ] [Transforms](/explore-analyze/transforms.md) and other custom processing resources
+:::
+
+:::{dropdown} Kibana objects and solution configuration
+- [ ] [Spaces](#migrate-to-serverless-spaces), including IDs, settings, and access requirements — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer compatible settings and recreate access**
+- [ ] [Dashboards, visualizations, and maps](#migrate-to-serverless-saved-objects) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Discover sessions, data views, saved queries, tags, and annotation groups](#migrate-to-serverless-saved-objects) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Connectors](#migrate-to-serverless-connectors), including IDs, secrets, and authorization — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer definitions and restore secrets or authorization**
+- [ ] [Observability rules](#migrate-to-serverless-observability-rules), including actions and referenced {{ml}} jobs — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Security detection rules](#migrate-to-serverless-security-rules), including actions and referenced data views and {{ml}} jobs — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Rule exception lists](#migrate-to-serverless-security-rules) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Value lists](#migrate-to-serverless-security-rules) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer separately from detection rules**
+- [ ] [Endpoint exceptions](#migrate-to-serverless-security-rules) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer separately from detection rules**
+- [ ] [Cases](#migrate-to-serverless-cases), including comments, configuration, attachments, related alerts, and Timelines — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer supported content and recreate omitted configuration**
+- [ ] [Maintenance windows](#migrate-to-serverless-maintenance-windows), including schedules, recurrence, filters, and rule scope — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer schedules and filters, adapting removed rule-category restrictions where used**
+- [ ] [User-managed workflows](#migrate-to-serverless-workflows), including triggers, schedules, connectors, and dependencies — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Watcher watches](/explore-analyze/alerting/watcher.md) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with {{kib}} alerting rules**
+- [ ] [SLOs](/solutions/observability/incident-management/service-level-objectives-slos.md)
+- [ ] [Synthetics monitors](/solutions/observability/synthetics/index.md)
+- [ ] [Reporting schedules](/explore-analyze/report-and-share.md)
+- [ ] [Streams](/solutions/observability/streams/streams.md)
+- [ ] [Attack Discovery configuration](/solutions/security/ai/attack-discovery/run-attack-discovery.md)
+- [ ] [Endpoint artifacts](/solutions/security/manage-elastic-defend/optimize-elastic-defend.md)
+:::
+
+:::{dropdown} Security and access
+- [ ] [Cloud organization users and project assignments](#migrate-to-serverless-access) — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Recreate project assignments**
+- [ ] [Custom roles](#migrate-to-serverless-access) and their assignments — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Adapt privileges and recreate assignments**
+- [ ] [Deployment-local users](#migrate-to-serverless-access) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with organization users**
+- [ ] [Authentication realms and role mappings](#migrate-to-serverless-access) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with organization-level authentication**
+- [ ] [API keys, service credentials, certificates, and secrets](#migrate-to-serverless-access) — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Create destination credentials**
+- [ ] [Network policies, private connectivity, proxies, and allowlists](/deploy-manage/security/network-security.md) — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Recreate for the destination**
+- [ ] [Remote cluster connections and cross-cluster searches](#migrate-to-serverless-remote-clusters) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Replace with CPS only between compatible Serverless projects in the same organization**
+- [ ] [Cross-cluster replication](#migrate-to-serverless-remote-clusters) — ![Replace or redesign](/deploy-manage/images/serverless-migration-replace.svg "=12x12") **Redesign replication-dependent workflows. CPS does not replicate data**
+:::
+
+:::{dropdown} Fleet and integrations
+- [ ] [Integration packages and versions](#migrate-to-serverless-integrations) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Install required packages**
+- [ ] Direct modifications to managed integration assets — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Reapply through supported customization mechanisms**
+- [ ] [{{fleet}} outputs and proxies](#migrate-to-serverless-fleet), including defaults and external destinations — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Adapt destination URLs and restore credentials**
+- [ ] [Agent policies](#migrate-to-serverless-fleet), including settings and space assignments — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer compatible settings and update output and space references**
+- [ ] [Integration policies](#migrate-to-serverless-fleet), including enabled inputs, streams, and output assignments — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer input settings, adapt package or output references, and restore secrets**
+- [ ] [Enrolled {{agent}}s](#migrate-to-serverless-production-clients) — ![Adapt or complete](/deploy-manage/images/serverless-migration-adapt.svg "=12x12") **Migrate or re-enroll agents during the production transition**
+:::
+
+:::{dropdown} AI and machine learning
+- [ ] [Anomaly detection jobs and datafeeds](#migrate-to-serverless-anomaly-jobs), including source indices and space assignments — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer configuration and rebuild learned model state**
+- [ ] [{{ml-cap}} filter lists and calendars](#migrate-to-serverless-anomaly-jobs), including scheduled events and job associations — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Data frame analytics jobs](#migrate-to-serverless-analytics-jobs), including source indices, output indices, and generated models — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer configuration**
+- [ ] [Data frame analytics trained models](#migrate-to-serverless-trained-models), including model IDs and aliases — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Transfer**
+- [ ] [Built-in NLP models](#migrate-to-serverless-trained-models) — ![Transfer](/deploy-manage/images/serverless-migration-transfer.svg "=12x12") **Install the corresponding models**
+- [ ] [Custom NLP models](#migrate-to-serverless-trained-models), including vocabularies, model IDs, and deployment IDs — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Import models and vocabularies, adapting deployment configuration where needed**
+- [ ] [Inference endpoints](#migrate-to-serverless-inference-endpoints), including services, settings, model references, and provider credentials — ![Transfer with adaptations](/deploy-manage/images/serverless-migration-mixed.svg "=12x12") **Transfer configuration and restore provider credentials where needed**
+:::
+
+Also record the information shared across these categories:
+
+- Connected applications, client libraries, and ingestion tools, including Beats, Logstash, OpenTelemetry, APM, standalone agents, content connectors, and crawlers. Identify where their endpoints and credentials are configured.
+- Every process that creates, updates, or deletes source data or configuration. Include external integrations, scheduled jobs, and administrative scripts.
+- Stable historical data, changing data and configuration, and operational state you need to retain, such as alerts, investigation content, execution history, and learned model state.
+- Asset owners, representative queries, typical and peak ingestion and search rates, and acceptance criteria. Record compliance, retention, interruption, data loss, and rollback requirements.
 
 ### Check compatibility [migrate-to-serverless-compatibility]
 
-Use [Compare {{ech}} and {{serverless-short}}](differences-from-other-elasticsearch-offerings.md) to check whether your required features and capabilities are available in the destination project. Identify dependencies that need an alternative and any blockers to the migration. The [destination preparation guidance](#migrate-to-serverless-set-up) explains how to adapt individual resources.
+Use [Compare {{ech}} and {{serverless-short}}](differences-from-other-elasticsearch-offerings.md) to check whether your required features and capabilities are available in the destination project. Identify dependencies that need an alternative and any blockers to the migration. The [destination preparation guidance](#migrate-to-serverless-prepare) explains how to adapt individual resources.
 
 :::{note}
 Some source deployments combine use cases that a single destination project cannot support. In that case, evaluate separate destination projects and decide which workloads and assets to migrate to each one. Apply the rest of this guide separately to each destination project.
@@ -718,6 +748,21 @@ For embedding generation during migration, review the [data transfer considerati
 Use the role definitions, assignments, authentication providers, and application access requirements recorded in your inventory.
 - **Migration approach:** Recreate the required access with [project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md), adapting privileges to the destination. Manage users and assignments through the [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization/user-roles.md), and create destination credentials for applications.
 - **Compatibility:** Deployment-local users and authentication realms do not transfer to a {{serverless-short}} project. If you use SAML, evaluate [organization-level SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md). Review project privileges separately from organization access.
+
+::::
+
+::::{step} Replace remote cluster connections
+:anchor: migrate-to-serverless-remote-clusters
+
+Remote cluster connections for cross-cluster search (CCS) and cross-cluster replication (CCR) are unavailable in {{serverless-short}}. For searches across projects, evaluate [cross-project search (CPS)](/deploy-manage/cross-project-search-config.md). CPS connects compatible {{serverless-short}} projects within the same {{ecloud}} organization. It cannot connect to {{ech}}, {{ece}}, {{eck}}, or self-managed clusters.
+
+- **Identify:** Review the source connections on **Remote Clusters** in {{kib}}, or use the [remote cluster info API]({{es-apis}}operation/operation-cluster-remote-info). Record which connections your solution uses for search or replication, including cluster aliases and the queries, dashboards, and rules that reference them.
+- **Migrate:** Replace the source behavior according to its purpose:
+
+    - **Search:** Follow [Configure cross-project search](/deploy-manage/cross-project-search-config.md) to configure access, set the intended search scope, and link compatible projects. Adapt cluster prefixes in queries and data views to destination project aliases using [Compare CPS and CCS](/explore-analyze/cross-project-search/cps-compared-to-ccs.md). By default, searches include the origin project and all linked projects, unlike CCS, which searches only the local cluster unless you specify remote targets.
+    - **Replication:** [CCR](/deploy-manage/tools/cross-cluster-replication.md) has no direct equivalent in {{serverless-short}}. CPS does not replicate data. Redesign any workflows that depend on replication before completing the migration.
+
+- **Verify:** Run representative searches with the intended users and application credentials. Confirm that queries, dashboards, and rules return data from the expected projects and respect access permissions and search scope. Test any replacement for replication-dependent workflows separately.
 
 ::::
 
