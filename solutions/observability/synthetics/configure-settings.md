@@ -111,6 +111,8 @@ In a serverless project, to create a Project API key you must be logged in as a 
 
 ::::
 
+The tab also has these controls for the key you generate:
+
 - The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
 - The **Spaces** menu allows you to select the space where your API keys are available.
 
