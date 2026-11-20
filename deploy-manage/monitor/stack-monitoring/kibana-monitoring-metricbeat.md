@@ -18,6 +18,11 @@ You can use {{metricbeat}} to collect data about {{kib}} and ship it to the moni
 
 To learn about monitoring in general, refer to [](/deploy-manage/monitor/stack-monitoring.md).
 
+:::{image} /deploy-manage/images/kibana-metricbeat.png
+:alt: Example monitoring architecture
+:width: 450px
+:::
+
 
 1. Disable the default collection of {{kib}} monitoring metrics.
 

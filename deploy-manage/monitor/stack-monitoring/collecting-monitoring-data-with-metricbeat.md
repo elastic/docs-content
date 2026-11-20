@@ -20,6 +20,11 @@ You can use {{metricbeat}} to collect data about {{es}} and ship it to the monit
 Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent}}](collecting-monitoring-data-with-elastic-agent.md).
 :::
 
+:::{image} /deploy-manage/images/elasticsearch-reference-metricbeat.png
+:alt: Example monitoring architecture
+:width: 550px
+:::
+
 1. [Install {{metricbeat}}](beats://reference/metricbeat/metricbeat-installation-configuration.md). 
    
    Ideally, install a single {{metricbeat}} instance configured with `scope: cluster` and configure `hosts` to point to an endpoint, such as a load-balancing proxy, which directs requests to the master-ineligible nodes in the cluster. 
