@@ -21,6 +21,21 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.7 [elastic-observability-9.5.7-release-notes]
+
+### Features and enhancements [elastic-observability-9.5.7-features-enhancements]
+* Shows the Synthetics **Can run tests manually** and **Can manage rules** sub-feature privileges as included when Synthetics is set to **All** in the role editor [#302481]({{kib-pull}}302481).
+
+### Fixes [elastic-observability-9.5.7-fixes]
+* Fixes the Infrastructure **Inventory** page resetting the selected date to the current time when opened from a link or bookmark with a specific date, so the selected date and its hosts stay in view [#304536]({{kib-pull}}304536).
+* Fixes the {{product.apm}} service **Metrics** tab intermittently showing "Runtime metrics are not available for this Agent / SDK type" instead of the service's runtime dashboards by resolving the telemetry SDK fields across the selected time range [#303994]({{kib-pull}}303994).
+* Fixes grouped metric threshold and custom threshold rules not alerting when a group stops reporting data if the rule's check interval is much longer than its time window [#303559]({{kib-pull}}303559).
+* Fixes {{product.apm}} links to Discover failing with a fatal error when the KQL filter contains double quotes, backslashes, escaped spaces, or wildcards by escaping the filter as an {{esql}} string literal [#302893]({{kib-pull}}302893).
+* Fixes `FormatDate` returning shifted times for Synthetics monitor status rule alerts on non-UTC Kibana servers by adding `context.timestamp`, the time of the last check as an ISO 8601 string [#302776]({{kib-pull}}302776).
+* Fixes {{product.apm}} trace and dependency requests failing with a 500 error when a trace error or dependency span document is missing a required field [#302557]({{kib-pull}}302557), [#302541]({{kib-pull}}302541).
+* Fixes manual Synthetics test runs on Elastic managed locations being allowed through the API without the **Elastic managed locations** sub-feature privilege by enforcing the privilege on the server [#302483]({{kib-pull}}302483).
+* Fixes the {{product.apm}} environment filter and dropdown not recognizing OpenTelemetry data that uses `deployment.environment.name` [#297170]({{kib-pull}}297170).
+
 ## 9.5.6 [elastic-observability-9.5.6-release-notes]
 
 ### Fixes [elastic-observability-9.5.6-fixes]
