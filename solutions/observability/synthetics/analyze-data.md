@@ -68,7 +68,9 @@ When you open an individual monitor’s page, you see much more detail about the
 * The monitor’s **name** with a down arrow icon that you can use to quickly move between monitors.
 * The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
 * The latest **status** and when the monitor was **last run**.
-* The **Run test manually** and **Edit monitor** actions. **Run test manually** runs the test on demand before the next scheduled run, and **Edit monitor** lets you edit the monitor’s configuration. Both are in the **Actions** menu. In 9.1 and earlier, they are separate buttons at the top of the page.
+* The **Run test manually** and **Edit monitor** actions. **Run test manually** runs the test on demand before the next scheduled run, and **Edit monitor** lets you edit the monitor’s configuration. Where they appear depends on your version:
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` In the **Actions** menu.
+    * {applies_to}`stack: ga 9.0-9.1` As separate buttons at the top of the page.
 
 ::::{note}
 **Run test manually** is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
@@ -302,7 +304,7 @@ stack: ga 9.5+
 serverless: unavailable
 ```
 
-When you configure {{ccs-init}} in [**{{synthetics-app}}** → **More** → **Settings** → **Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters) (**{{synthetics-app}}** → **Settings** → **Remote clusters** in 9.5), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
+When you configure {{ccs-init}} in [**{{synthetics-app}}** → **Settings** → **Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
 
 When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set. To group monitors by remote cluster, select **Group by** → **Remote cluster**.
 

@@ -40,7 +40,7 @@ To use the UI to add a lightweight monitor:
 
 1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create monitor**.
-3. Set the monitor type to **HTTP**, **TCP**, or **ICMP** (**HTTP Ping**, **TCP Ping**, or **ICMP Ping** in 9.5 and earlier).
+3. Set the monitor type to **HTTP**, **TCP**, or **ICMP**, or to **HTTP Ping**, **TCP Ping**, or **ICMP Ping** depending on your {{stack}} version.
 4. In *Locations*, select one or more locations.
 
     ::::{note}
@@ -74,7 +74,7 @@ To use the UI to add a lightweight monitor:
 
     ::::{note}
     :applies_to: stack: ga 9.4+
-    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. To review and manage these rules, select {icon}`ellipsis` **More** → **Settings** → **Alerting** in the Synthetics app. In 9.5 and earlier, **Settings** is a link at the top of the page instead.
+    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. You can review and manage these rules under **Settings** → **Alerting** in the Synthetics app.
     ::::
 
 ## Add a browser monitor [synthetics-get-started-ui-add-a-browser-monitor]
@@ -88,7 +88,7 @@ If you depend on external packages, have your journeys next to your code reposit
 To use the UI to add a browser monitor:
 
 1. Click **Create monitor**.
-2. Set the monitor type to **Browser Journey** (**Multistep** in 9.5 and earlier).
+2. Set the monitor type to **Browser Journey** or **Multistep**, depending on your {{stack}} version.
 3. In *Locations*, select one or more locations.
 
     ::::{note}
@@ -121,7 +121,7 @@ To use the UI to add a browser monitor:
 
     ::::{note}
     :applies_to: stack: ga 9.4+
-    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. To review and manage these rules, select {icon}`ellipsis` **More** → **Settings** → **Alerting** in the Synthetics app. In 9.5 and earlier, **Settings** is a link at the top of the page instead.
+    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. You can review and manage these rules under **Settings** → **Alerting** in the Synthetics app.
     ::::
 
 ## View in your Observability project [synthetics-get-started-ui-view-in-your-observability-project]

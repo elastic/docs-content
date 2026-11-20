@@ -128,7 +128,7 @@ serverless: ga
 
 A scalable {{private-location}} can still report extra results when:
 
-* **Rebalance private location shards** is turned off. While it's off, each monitor runs on every agent enrolled on the agent policy. Turn the switch back on in [**More** → **Settings** → **Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
+* **Rebalance private location shards** is turned off. While it's off, each monitor runs on every agent enrolled on the agent policy. Turn the switch back on in [**Settings** → **Advanced**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-advanced-rebalancing).
 * An agent failed over recently. While a monitor moves to another agent, it can briefly run on two agents. No action is needed.
 
 

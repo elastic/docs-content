@@ -67,7 +67,10 @@ Then, follow the prompts on screen to set up the correct default variables for y
 1. Generate an API key:
 
     1. Go to the **Synthetics** app in {{kib}}.
-    2. Select {icon}`ellipsis` **More** → **Settings** in the application menu. In 9.5 and earlier, select the **Settings** link at the top of the page.
+    2. Click **Settings**.
+
+        {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, **Settings** is in the {icon}`ellipsis` **More** menu.
+
     3. Switch to the **Project API Keys** tab.
     4. Click **Generate Project API key**.
 
