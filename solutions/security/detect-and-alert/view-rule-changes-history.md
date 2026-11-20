@@ -2,7 +2,8 @@
 navigation_title: View rule changes history
 applies_to:
   stack: ga 9.5
-  serverless: ga
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless

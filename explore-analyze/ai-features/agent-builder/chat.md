@@ -104,23 +104,36 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 ### Attach images to a message
 
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
-Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram. Pasting is the only way to attach an image. Dragging a file onto the input and selecting one from a file picker aren't supported.
+Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram.
 
-To attach an image, copy it to your clipboard, then press {kbd}`ctrl|cmd+v` in the chat input. A chip with the file name appears in the message text, and a thumbnail appears above the input. To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`.
+To attach an image:
+
+1. Copy the image to your clipboard.
+2. In the chat input, press {kbd}`ctrl|cmd+v`. A chip with the file name appears in the message text, and a thumbnail appears above the message text when the upload finishes.
+3. Wait for all attached images to finish uploading, then submit the message. You can't submit it while an upload is in progress.
+
+The following example shows a pasted image attached to a message, ready to send:
 
 :::{image} images/agent-builder-image-attachment.png
-:alt: Chat input with an image thumbnail attached, a file chip in the message text, and the model selector below
+:alt: Chat input with an image thumbnail above the message text, followed by an image.png file chip, with the model selector and send button below
 :width: 650px
 :screenshot:
 :::
 
-You can attach up to 10 images to a single message. Each image must be a PNG or JPEG file no larger than 3.5 MB. You can't submit the message until all attached images finish uploading.
+To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`, or delete the image's chip from the message text.
 
-After you submit the message, the image appears in the conversation history, and the agent can refer to it in later messages in the same conversation.
+After you submit the message, the image appears in the conversation history. In later messages, the agent can look at the image again if it needs to.
+
+#### Requirements and limits
+
+- The selected [model](models.md) must support image input. {{agent-builder}} doesn't check this before sending. If the model doesn't support images, the agent might fail partway through its response, or ignore the image without saying so.
+- You can attach up to 10 images to a single message.
+- Each image must be a PNG or JPEG file no larger than 3.5 MB.
+- Pasting is the only way to attach an image. You can't drag a file onto the input or select one from a file picker.
 
 ### Chat with data from multiple projects [agent-builder-cps-scope]
 ```{applies_to}
@@ -389,6 +402,22 @@ The agent's progress appears only in the chat where you sent the message or answ
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent also keeps working without showing progress if you go to another app from standalone mode. After the agent finishes, its steps and response appear the next time you interact with the conversation, for example, when you reopen the sidebar, come back from another app, or select another conversation and return. In a [shared or public conversation](#share-a-conversation), the conversation also updates automatically a few seconds after the agent finishes, in any browser tab.
 
+### Conversation templates [conversation-templates]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+A conversation can be created from a built-in template. A template defines the structured metadata that the conversation stores, such as its status, severity, and assignees. The conversation shows the template name next to its title. You can’t create or edit templates, or switch a conversation to a different template.
+
+You don’t usually create these conversations yourself. Features such as [{{alertzero}}](/solutions/security/alertzero/index.md) create them and use the template to keep track of their work. Workflows can also create them.
+
+In standalone mode, select **Chat info** in the header of a templated conversation to open a flyout with the details that the template defines, such as the summary and proposed actions. **Chat info** doesn't appear in [sidebar mode](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode). To copy a link that opens the conversation with **Chat info** open, select the **Copy link** icon {icon}`link`.
+
+What you can change in **Chat info** depends on your privileges. For details, refer to the documentation for the feature that created the conversation. To create templated conversations, or to read and update their metadata from a workflow, refer to [Conversation metadata steps](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-steps).
+
+
 ### Inspect tool calls and reasoning
 
 ::::{note}
@@ -647,23 +676,23 @@ At certain points an agent pauses and hands control back to you before it contin
 | Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
 | Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
 
-HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
+These prompts don't replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
-HITL prompts require an interactive conversation, so [subagents cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+These prompts require an interactive conversation, so [a subagent that another agent starts can't answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Confirm a change
 
 Some tools and skills pause for confirmation before they perform consequential actions. Elastic-built tools and skills decide for themselves when to ask.
 
-For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For custom tools, you decide when the agent asks by setting **Require user confirmation** to **Never**, **Once**, or **Always**: in the UI for workflow and MCP tools, or through the API for any custom tool type. For details, refer to [Require confirmation before a tool runs](tools/custom-tools.md#require-confirmation-before-a-tool-runs).
 
-What the prompt shows depends on the tool:
+The prompt you get depends on the tool:
 
-* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
-* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
+* **Change preview**: Some Elastic-built tools and skills show the proposed change before it takes effect. Review the preview, then confirm the action to proceed or deny it to cancel. The preview format and the button labels vary by tool or skill.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **API confirmation**: The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
+* **Generic prompt**: Other tools, including all custom tools, show a prompt that names the tool and asks whether to proceed. Click **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
-For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
+When an agent updates a workflow, it shows the proposed change as a diff and waits for your review before applying it, as in the following screenshot:
 
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
@@ -671,7 +700,7 @@ For example, when an agent updates a workflow, it shows the proposed change as a
 :width: 700px
 :::
 
-The Streams management skill also previews the proposed configuration when it creates a stream:
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The following screenshot shows the Streams management skill previewing the configuration of a new stream:
 
 :::{image} images/agent-builder-confirm-create-stream.png
 :screenshot:
@@ -679,7 +708,9 @@ The Streams management skill also previews the proposed configuration when it cr
 :width: 700px
 :::
 
-For irreversible actions, the prompt highlights the consequences before you proceed:
+For irreversible actions, the prompt highlights the consequences before you proceed.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The following screenshot shows the Streams management skill prompting you to delete a stream:
 
 :::{image} images/agent-builder-confirm-delete-stream.png
 :screenshot:
@@ -687,7 +718,7 @@ For irreversible actions, the prompt highlights the consequences before you proc
 :width: 700px
 :::
 
-Custom tools show the generic prompt instead. Here, a tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
+The following screenshot shows the generic prompt for a custom tool that cancels an order. The prompt names the tool, but not the order:
 
 :::{image} images/agent-builder-tool-confirmation-prompt.png
 :screenshot:
@@ -711,9 +742,9 @@ Whether you see a prompt depends on the operation, not on its HTTP method:
 
 The prompt shows the HTTP method, path, and whether the call goes to {{es}} or {{kib}}. It doesn't show the request body.
 
-Select **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
+Click **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
 
-A parent agent can also ask you to approve operations before starting a subagent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+An agent can also ask you to approve operations before it starts a subagent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Authorize a connector
 ```{applies_to}
@@ -721,9 +752,9 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When an agent uses a [connector](connectors.md) to reach an external service that requires authorization, the chat pauses so you can grant access. Select **Authorize** to complete the sign-in flow for the connector, or **Deny** to decline. After you authorize, the agent retries the tool call and continues.
+When an agent uses a [connector](connectors.md) to reach an external service that requires authorization, the chat pauses so you can grant access. Click **Authorize** to complete the sign-in flow for the connector, or **Deny** to decline. After you authorize, the agent retries the tool call and continues.
 
-For example, an agent that needs to read your Notion workspace pauses until you authorize the connector:
+For example, the following screenshot shows the prompt from an agent that needs to read your Notion workspace:
 
 :::{image} images/agent-builder-authorization-prompt.png
 :screenshot:
@@ -737,11 +768,11 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or choose the custom option and type your own answer. Some questions let you select more than one option. To move on without answering, select **Skip question**.
+When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or select the custom option and enter your own answer. Some questions let you select more than one option. To move on without answering, click **Skip question**.
 
-When there's more than one question, use **Back** and **Continue** to move between them, then select **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
+When there's more than one question, click **Back** and **Continue** to move between them, then click **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
 
-For example, before creating a dashboard the agent might ask which sample data set to use:
+For example, the following screenshot shows the agent asking which sample data set to use before it creates a dashboard:
 
 :::{image} images/agent-builder-clarifying-question.png
 :screenshot:
@@ -821,7 +852,11 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 :   Lists the [connectors](connectors.md) assigned to the current agent. Select a connector to open a detail panel that shows its sub-actions. To assign a connector, select **Add connector**. To view and manage the connectors library, select **Manage all connectors**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
 
 **Tools**
-:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
+:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To view and manage all tools, click **Manage all tools**.
+
+    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **Add tool** to import an existing tool from the tool library, or to create a tool and attach it to the agent. Refer to [Assign tools to agents](tools/custom-tools.md#assign-tools-to-agents) and [Create and attach a tool](tools/custom-tools.md#create-and-attach-a-tool).
+
+    {applies_to}`stack: ga =9.4` Click **Add tool** to assign tools from the tool library. Refer to [Assign tools to agents](tools/custom-tools.md#assign-tools-to-agents).
 
 The following image shows the **Customize** section of the left sidebar:
 
