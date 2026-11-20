@@ -97,12 +97,21 @@ After you apply the policy changes, validate that both the ECS-based logs and th
 
 ::::{step} Validate the log collection
 
-1. In {{kib}}, go to **Discover**, then filter the results using the KQL search bar.
-2. Search for NGINX data stream datasets such as `nginx.access` and `nginx.error`, or enter:
+1. In {{kib}}, go to **Discover**.
+2. Filter the results to NGINX data stream datasets such as `nginx.access` and `nginx.error`:
 
-   ```text
-   data_stream.dataset : "nginx.access" or "nginx.error"
-   ```
+   * In {{esql}} mode, enter:
+
+     ```esql
+     FROM logs-*
+     | WHERE data_stream.dataset IN ("nginx.access", "nginx.error")
+     ```
+
+   * In classic mode, enter the following query in the KQL search bar:
+
+     ```text
+     data_stream.dataset : ("nginx.access" or "nginx.error")
+     ```
 
 3. Go to **Dashboards**, then select **[Logs Nginx] Access and error logs** to view the dashboard installed by the Nginx integration.
 

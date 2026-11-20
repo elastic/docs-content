@@ -52,7 +52,7 @@ Prefer not to subscribe to yet another service? You can also get {{ech}} through
 
 ## Connect securely [ec-beats-logstash-connect-securely]
 
-When connecting to your {{ech}} or {{ece}} deployment, you can use a Cloud ID to specify the connection details. You must pass the Cloud ID that you can find in the cloud console.  Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+When connecting to your {{ech}} or {{ece}} deployment, you can use a Cloud ID to specify the connection details. You must pass the Cloud ID that you can find in the cloud console.  Find your Cloud ID by going to the {{kib}} main menu and selecting Management → Integrations, and then selecting View deployment details.
 
 To connect to, stream data to, and issue queries with {{ech}} or {{ece}}, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
@@ -96,7 +96,7 @@ sudo ./metricbeat setup \
   -E cloud.auth=<username>:<password> <2>
 ```
 
-1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management → Integrations, and then selecting View deployment details.
 2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
 
     ::::{important}
@@ -186,7 +186,7 @@ sudo ./filebeat setup \
   -E cloud.auth=<username>:<password> <2>
 ```
 
-1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management → Integrations, and then selecting View deployment details.
 2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
 
     ::::{important}
@@ -213,7 +213,7 @@ Loaded Ingest pipelines
 The data views for _filebeat-*_ and _metricbeat-*_ are now available in {{es}}. To verify:
 
 1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
-2. Open the Kibana main menu and select **Management** and go to **Kibana** > **Data views**.
+2. Open the Kibana main menu and select **Management** and go to **Kibana** → **Data views**.
 3. In the search bar, search for *data views*.
 4. In the search results, choose *Kibana / Data Views Management*.
 
@@ -393,7 +393,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
     }
     ```
 
-    1. Use the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+    1. Use the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management → Integrations, and then selecting View deployment details.
     2. the default usename is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check the [Grant access to secured resources](beats://reference/filebeat/feature-roles.md) for information on the writer role and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Grant access to secured resources](beats://reference/filebeat/feature-roles.md) documentation.
 
 

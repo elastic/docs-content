@@ -78,7 +78,7 @@ The non-ECS fields listed below are beta and subject to change.
 | `kibana.alert.new_terms` | The value of the new term that generated this alert.<br>Type: keyword |
 | `kibana.alert.original_data_stream.*` {applies_to}`stack: ga 9.1`| Data stream information copied from the original source event, including `dataset`, `namespace`, and `type` fields.<br>Type: object |
 | `kibana.alert.original_event.*` | Event information copied from the original source event.<br>Type: object |
-| `kibana.alert.original_time` | The value copied from the source event (`@timestamp`).<br>Type: date |
+| `kibana.alert.original_time` | The value copied from the source event (`@timestamp`). On an EQL sequence alert, this is when the rule created the alert. Refer to [](/solutions/security/detect-and-alert/triage-eql-alerts.md).<br>Type: date |
 | `kibana.alert.reason` | Type: keyword |
 | `kibana.alert.rule.author` | The value of the `author` who created the rule. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params).<br>Type: keyword |
 | `kibana.alert.building_block_type` | The value of `building_block_type` from the rule that generated this alert. Refer to [configure advanced rule settings](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params).<br>Type: keyword |
@@ -114,8 +114,8 @@ The non-ECS fields listed below are beta and subject to change.
 |`kibana.alert.workflow_status` | Type: keyword |
 |`kibana.alert.workflow_status_updated_at` | The timestamp of when the alert’s status was last updated.<br>Type: date |
 | `kibana.alert.threshold_result.*` | Type: object |
-| `kibana.alert.group.id` | Type: keyword |
-| `kibana.alert.group.index` | Type: integer |
+| `kibana.alert.group.id` | Links an EQL sequence alert to its building block alerts, which all have the same value.<br>Type: keyword |
+| `kibana.alert.group.index` | The position of a building block alert's event in its EQL sequence, starting from `0`.<br>Type: integer |
 | `kibana.alert.rule.parameters.index` | Type: flattened |
 | `kibana.alert.rule.parameters.language` | Type: flattened |
 | `kibana.alert.rule.parameters.query` | Type: flattened |

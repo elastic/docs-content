@@ -73,14 +73,14 @@ Prefer not to subscribe to yet another service? You can also get {{ech}} through
 
 ## Connect securely [ec_connect_securely]
 
-When connecting to {{ech}} or {{ece}}, you need to use your Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+When connecting to {{ech}} or {{ece}}, you need to use your Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management → Integrations, and then selecting View deployment details.
 
 To connect to, stream data to, and issue queries, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 
 ### Basic authentication [ec_basic_authentication_2]
 
-For basic authentication, use the same deployment credentials (`username` and `password` parameters) and Cloud ID you copied down earlier. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details. (If you did not save the password, you can [reset it](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).)
+For basic authentication, use the same deployment credentials (`username` and `password` parameters) and Cloud ID you copied down earlier. Find your Cloud ID by going to the {{kib}} main menu and selecting Management → Integrations, and then selecting View deployment details. (If you did not save the password, you can [reset it](../../../deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md).)
 
 You first need to create and edit an `example.ini` file with your deployment details:
 
@@ -311,7 +311,7 @@ To get started, authentication to Elasticsearch used the `elastic` superuser and
 
 In the example that follows, an API key is created with the cluster `monitor` privilege which gives read-only access for determining the cluster state. Some additional privileges also allow `create_index`, `write`, `read`, and `manage` operations for the specified index. The index `manage` privilege is added to enable index refreshes.
 
-The easiest way to create this key is in the API console for your deployment. Select the deployment name and go to **☰** > **Management** > **Dev Tools**:
+The easiest way to create this key is in the API console for your deployment. Select the deployment name and go to **☰** → **Management** → **Dev Tools**:
 
 ```json
 POST /_security/api_key

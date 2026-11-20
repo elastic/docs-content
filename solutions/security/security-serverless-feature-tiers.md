@@ -1,7 +1,8 @@
 ---
 navigation_title: Serverless feature tiers
 applies_to:
-  serverless: ga
+  serverless:
+    security: ga
 products:
   - id: security
 ---

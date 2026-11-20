@@ -18,7 +18,7 @@ products:
 If the {{agent}} or EDOT SDKs appear to be running, but you see no logs, metrics, or traces in the {{kib}} UI, try to use these solutions to identify and resolve the issue.
 
 :::{tip}
-If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, keep in mind that this flow is not supported. Send data to an [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](opentelemetry://reference/motlp.md) instead.
+If you're sending EDOT SDK telemetry directly to {{apm-server}}'s OTel intake, keep in mind that this flow is not supported. Send data to an [{{agent}} Gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) or [Managed OTel intake](/reference/managed-inputs/managed-otlp-endpoint.md) instead.
 :::
 
 ## Symptoms
@@ -52,7 +52,7 @@ To confirm:
 
 1. Open {{kib}} for your deployment.
 2. In the top right, select **Add data**.
-3. Select **Application** > **OpenTelemetry**.
+3. Select **Application** → **OpenTelemetry**.
 4. In the **APM Agents** panel, locate **OpenTelemetry**.
 5. Ensure the `endpoint` in your Collector configuration matches exactly.
 
