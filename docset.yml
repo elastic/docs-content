@@ -23,7 +23,7 @@ api:
       product: kibana
       repository: elastic/kibana
       children:
-        - file: kibana-api-overview.md
+        - file: spaces.md
   kibana-serverless:
     - spec: kibana-serverless.yaml
       product: kibana
