@@ -1,6 +1,7 @@
 ---
 applies_to:
   stack: ga
+  serverless: ga
 products:
   - id: elasticsearch
   - id: kibana
@@ -42,6 +43,7 @@ Stack audit logging records security events inside your cluster. Cloud audit tra
 |---|---|---|
 | [](./stack-audit-logging.md) | Enable and configure audit logging for {{es}} and {{kib}} deployments. Captures security events such as authentication, authorization, and configuration changes. | {applies_to}`stack: ga` |
 | [](./cloud-audit-trail.md) | Audit organization-level actions such as sign-in activity, deployment management, user and role changes, and API key usage. | {applies_to}`ech: ga` {{fedramp-mod}} only |
+| [](./log-delivery.md) | Deliver logs from a {{serverless-short}} project to a destination project for centralized investigation and alerting. [Audit trail](./log-delivery/audit-trail.md) is the first supported log type, capturing {{es}} and {{kib}} activity such as sign-ins, configuration changes, data access, and UI access. | {applies_to}`serverless: ga` |
 
 :::{tip}
 Activity logs record events for later analysis. For real-time visibility into running queries, use [Query activity](./query-activity.md). For real-time cluster health and performance monitoring, refer to the [monitoring tools](/deploy-manage/monitor.md) available for your deployment type.

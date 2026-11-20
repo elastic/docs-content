@@ -1,8 +1,9 @@
 ---
 navigation_title: Tags, runbooks, and dashboards
 applies_to:
-  stack: ga 9.6+, experimental =9.5
-  serverless: ga
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Add tags, runbooks, and related dashboards to rules, for filtering, triage context, and investigation dashboards."
@@ -10,15 +11,12 @@ description: "Add tags, runbooks, and related dashboards to rules, for filtering
 
 # Tags, runbooks, and dashboards in {{alerting-v2-system}} [rule-artifacts]
 
-Tags, runbooks, and related dashboards are optional artifacts you attach to a {{alerting-v2-system}} rule. Decide when each one is worth adding, then attach tags and runbooks in the rule form or link dashboards from the rule details page.
+Tags, runbooks, and related dashboards are optional artifacts you attach to a {{alerting-v2-system-short}} rule. Decide when each one is worth adding, then attach tags and runbooks in the rule form or link dashboards from the rule details page.
 
 ## When to add artifacts [artifacts-when-to-use]
 
 Tags
-:   Free-form labels for filtering and organization. Add them to filter alerts on the **Alerts** page or to mark which team owns a rule.
-
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Tags don't affect which action policies apply. To link a rule to action policies, add [routing tags](../action-policies/create-configure-action-policy.md#add-routing-tags) in the **Actions** step instead.
-    * {applies_to}`stack: removed 9.6+, experimental =9.5` {applies_to}`serverless: unavailable` Alerts inherit tags, so any tag on the rule is available as a KQL matcher in action policies.
+:   Free-form labels for organizing rules. Add them to filter the **Rules** page or to mark which team owns a rule. Tags don't affect which action policies apply. To link a rule to action policies, add [routing tags](../action-policies/create-configure-action-policy.md#add-routing-tags) in the **Actions** step instead.
 
 Runbooks
 :   An investigation guide stored with the rule. Add one when responders who don't know the service need triage steps next to the alert, or when the response should stay consistent.
@@ -45,9 +43,8 @@ To link dashboards, your role needs the [privileges to manage rules](../manage/c
 
 1. Go to **Alerting** → **Rules** in the {{observability}} navigation menu, or find **Rules** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then select the rule.
 2. On the **Overview** tab, expand **Artifacts**.
-3. In the **Dashboards** section:
-   * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Select **Attach related dashboards**. Search for a dashboard. Results are grouped into **Attached** and **Other dashboards**. Select the dashboards to link, then select **Save**. This updates the rule right away.
-   * {applies_to}`stack: experimental =9.5` Select **Manage linked dashboards**. In **Related dashboards**, search for a dashboard and select it, then save the rule.
+3. In the **Dashboards** section, select **Attach related dashboards**, then search for a dashboard. Results are grouped into **Attached** and **Other dashboards**.
+4. Select the dashboards to link, then select **Save**. This updates the rule right away.
 
 To remove a link, select the remove icon next to the dashboard, then select **Remove** to confirm. Removing a link updates the rule right away. This removes the link only. The dashboard itself is unaffected.
 
@@ -61,13 +58,13 @@ Keep the link if someone might restore the dashboard or grant you access. Otherw
 
 ### Tag a rule for team ownership and severity
 
-Tags let you filter alerts by team, environment, or severity tier. For a checkout service rule, you might add tags like:
+Tags let you filter the **Rules** page by team, environment, or severity tier. For a checkout service rule, you might add tags like:
 
 - `team:payments`
 - `env:production`
 - `sev:p1`
 
-On-call engineers can then narrow the **Alerts** page to rules their team owns without scanning every active alert.
+On-call engineers can then narrow the **Rules** page to the rules their team owns without scanning every rule.
 
 ### Add a runbook with triage steps
 
@@ -91,5 +88,5 @@ For the same checkout rule, link the dashboard that breaks down checkout errors 
 
 - [Configure a rule](configure-a-rule.md): All configurable rule settings, required and optional.
 - [View and manage rules](view-manage-rules.md): Filter the rules list by tag, and review a rule's runbook and linked dashboards on the rule details page.
-- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by tag to narrow alerts to your team's rules.
+- [View and manage alerts](../alerts/view-and-manage-alerts.md): Filter the **Alerts** page by the tags you add to alerts during triage.
 - [YAML rule schema reference](yaml-rule-schema-reference.md): Artifact field names, types, and limits.

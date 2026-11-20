@@ -1,8 +1,9 @@
 ---
 navigation_title: Configure a rule
 applies_to:
-  stack: ga 9.6+, experimental =9.5
-  serverless: ga
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Overview of configurable rule settings: required settings (mode, query, schedule) and optional settings (severity, grouping, alert delay, recovery, no-data, artifacts)."
@@ -10,7 +11,7 @@ description: "Overview of configurable rule settings: required settings (mode, q
 
 # Configure a rule in {{alerting-v2-system}} [rule-settings]
 
-{{alerting-v2-system-cap}} rules have required settings and several optional ones. Start with the required settings, then add optional settings after you've validated the detection logic, for example by previewing results in the [query sandbox](create-esql-rule.md#rule-builder-query-sandbox) when writing {{esql}} directly. The following table links to a dedicated page for each setting, with field descriptions, accepted values, and when to configure it.
+{{alerting-v2-system}} rules have required settings and several optional ones. Start with the required settings, then add optional settings after you've validated the detection logic, for example by previewing results in the [query sandbox](create-esql-rule.md#rule-builder-query-sandbox) when writing {{esql}} directly. The following table links to a dedicated page for each setting, with field descriptions, accepted values, and when to configure it.
 
 | Setting | Description | Required |
 | --- | --- | --- |
@@ -23,4 +24,4 @@ description: "Overview of configurable rule settings: required settings (mode, q
 | [Recovery condition](configure-rule-recovery.md) | Whether an alert closes automatically, and how much confirmation it needs before it does. Only when matches are grouped into an alert. | Optional |
 | [No-data handling](configure-no-data-handling.md) | What the rule records when the base query returns no results. Only when matches are grouped into an alert. | Optional |
 | [Tags, runbooks, and dashboards](configure-rule-artifacts.md) | Labels, investigation guides, and linked dashboards attached to the rule. Tags and runbooks apply only when matches are grouped into an alert. Dashboards apply to any rule. | Optional |
-| [Routing tags](../action-policies/create-configure-action-policy.md#add-routing-tags) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Tags that link the rule's alerts to action policies with the same tag. Only when matches are grouped into an alert. | Optional |
+| [Routing tags](../action-policies/create-configure-action-policy.md#add-routing-tags) | Tags that link the rule's alerts to action policies with the same tag. Only when matches are grouped into an alert. | Optional |

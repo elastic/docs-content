@@ -25,13 +25,15 @@ You can add {{esql}} visualizations to a dashboard directly from queries in Disc
 :::{note}
 :applies_to: {"stack": "preview 9.5", "serverless": "preview"}
 If your visualization's query uses exactly one `STATS` command, dashboard users can turn on {icon}`bolt` **Fast mode** to get faster, estimated results for it. Refer to [](/explore-analyze/query-filter/languages/esql-kibana.md#approximation-fast-mode).
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` A {icon}`bolt` badge in the panel header shows when approximation was applied. Refer to [Interpret approximate results](/explore-analyze/query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
 :::
 
 ## Edit and add from Discover [_edit_and_add_from_discover]
 
 In Discover, an [ES|QL query](../query-filter/languages/esql-kibana.md) shows a visualization when the query transforms the results, for example, with `STATS` or `KEEP`, or when the results have a time field. The time field is `@timestamp`, or the field that the query compares with the `?_tstart` and `?_tend` parameters. The query determines the visualization type, such as a histogram or a bar chart. To change the visualization type and display options, select {icon}`pencil` **Edit visualization**.
 
-To add the visualization to an existing or a new dashboard, select {icon}`app_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
+To add the visualization to an existing or a new dashboard, select {icon}`add_to_dashboard` **Save visualization to dashboard**. In earlier versions, select {icon}`save` **Save visualization**.
 
 ## Create from dashboard [_create_from_dashboard]
 
@@ -100,6 +102,141 @@ In the resulting chart, the time buckets are placed on the **Horizontal axis**, 
 ![Stacked bar chart of web log events over time, broken down by host and file extension](/explore-analyze/images/esql-visualization-multi-field-breakdown.png)
 
 To add another field to the breakdown, select **Add a field** under **Breakdown** and choose a column from your query. You can also drag the fields inside the **Breakdown** dimension to change the order in which their values appear in the combined label.
+
+### Add multiple layers to {{esql}} charts [esql-viz-multi-layer]
+```{applies_to}
+stack: ga 9.6
+serverless: ga
+```
+
+When you create an {{esql}} visualization from a dashboard, you can combine the results of several queries on one chart by giving each query its own layer. Layers can also hold annotations and reference lines, which mark events and thresholds on top of your data.
+
+Every {{esql}} data layer has its own query and its own dimensions, so you can change one query without touching the others. To split the results of a single query into several series instead, use the [**Breakdown** dimension](#esql-viz-multi-field-breakdown).
+
+Layers are available on bar, line, and area charts. Other chart types, such as pie or metric, use a single query.
+
+A chart can combine these layer types:
+
+- [**Visualization**](#add-another-visualization-as-a-layer): The results of its own query.
+- [**Annotations**](#mark-events-with-annotations): An event or a period, such as a deployment, marked on a time axis.
+- [**Reference lines**](#add-reference-lines): A threshold, such as a target or a budget, drawn across the chart.
+
+To add a layer, select {icon}`plus` **Add layer** in the editor, then select the type of layer. The new layer opens in its own tab.
+
+:::{image} /explore-analyze/images/esql-visualization-add-layer.png
+:alt: The Configuration flyout of an ES|QL visualization, showing the Add layer button next to the layer tabs
+:screenshot:
+:width: 50%
+:::
+
+#### Add another visualization as a layer
+
+To compare two sets of results on one chart, add a layer with its own query:
+
+1. Select {icon}`plus` **Add layer** → **Visualization**.
+2. If you're asked, select the chart type for the layer. Each layer can use a different type, for example a line over bars.
+3. In the new layer's tab, enter the query and run it.
+4. Assign the column that holds time to the **Horizontal axis** and the column that holds the values to the **Vertical axis**.
+
+Before you look at the chart, make sure both dimensions have a column. If the **Horizontal axis** of a layer is empty, the values of that layer don't follow time and stack at a single position. To line the layers up in time, group every query by the same time buckets and assign that column to the **Horizontal axis** of each layer.
+
+If you edit a layer's query and its results no longer contain a compatible column for every dimension of that layer, {{kib}} rejects the query and shows an error. Remove the incompatible dimensions, then run the query again.
+
+**Example: Compare server and client errors**
+
+1. Start from the [stacked bar chart of web log events](#esql-viz-multi-field-breakdown).
+2. Add a layer for the events that returned a server error (response codes that start with 5). If you're asked for a chart type, select **Line**. Use this query:
+
+   ```esql
+   FROM kibana_sample_data_logs
+   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "5*" AND extension.keyword != ""
+   | STATS server_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 100, ?_tstart, ?_tend)
+   ```
+
+3. In this layer, assign `time_bucket` to the **Horizontal axis** and `server_errors` to the **Vertical axis**.
+
+   :::{image} /explore-analyze/images/esql-visualization-layer-server-errors.png
+   :alt: A stacked bar chart of web log events by host and file extension, with a line for server errors over the same time range
+   :screenshot:
+   :::
+
+4. Add a third layer for the events that returned a client error (response codes that start with 4). Select **Line** again if you're asked for a chart type. Use this query:
+
+   ```esql
+   FROM kibana_sample_data_logs
+   | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND response.keyword LIKE "4*" AND extension.keyword != ""
+   | STATS client_errors = COUNT(*) BY time_bucket = BUCKET(@timestamp, 100, ?_tstart, ?_tend)
+   ```
+
+5. In this layer, assign `time_bucket` to the **Horizontal axis** and `client_errors` to the **Vertical axis**.
+
+   :::{image} /explore-analyze/images/esql-visualization-layer-client-errors.png
+   :alt: The same chart with a second line for client errors
+   :screenshot:
+   :::
+
+#### Mark events with annotations
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
+
+Annotations mark an event or a period on a time chart, such as a deployment or an outage. The chart needs a time axis, so **Annotations** stays unavailable until the horizontal axis shows time.
+
+In the chart example that compares server and client errors of the previous section, the client errors spike on one day. To mark the outage behind that spike:
+
+1. Select {icon}`plus` **Add layer** → **Annotations**. {{kib}} creates an annotation immediately.
+2. Turn on **Apply as range**, then set **From** and **To** to the start and end of the outage.
+3. In **Name**, enter a label for the annotation, such as `eu-west-36 outage`.
+
+:::{image} /explore-analyze/images/esql-visualization-layer-annotation.png
+:alt: The chart of web log events with an annotation named eu-west-36 outage, shading the period of the client errors spike
+:screenshot:
+:::
+
+To mark a single moment instead, such as a deployment, leave **Apply as range** off and set **Annotation date**.
+
+If you're used to adding [annotations](lens.md#add-annotations) to visualizations created using the point-and-click editor, annotations on {{esql}} visualizations work differently. You place each annotation yourself, by date or by date range. You can't base an annotation on a query or reuse one from the annotation library.
+
+#### Add reference lines
+
+A reference line shows a threshold, such as a target or a budget, so you can see at a glance where your data crosses it.
+
+On {{esql}} visualizations, you can define a reference line in the following ways:
+
+- **With a fixed value**: Draw the line at a number that you choose.
+
+    1. Select {icon}`plus` **Add layer** → **Reference lines**.
+    2. If you're asked for a source, select **Static reference lines**.
+    3. Set the value where you want the line to appear.
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` **With a value from an {{esql}} query**: Calculate the threshold from your data, for example an average.
+
+    1. Select {icon}`plus` **Add layer** → **Reference lines** → **ES|QL reference lines**.
+    2. Enter a query that returns the threshold in its first row, then run it.
+    3. Select the column that holds the value for the line as the **Vertical axis**.
+
+    The line uses the first row of the results, and the column must contain a number. If the query returns more than one row, {{kib}} uses the first row and shows a warning.
+
+    The chart in the previous examples groups web log events into time buckets. To draw a line at the average number of events across those buckets, use this query. It counts the events in each time bucket, as the chart does, then averages the counts:
+
+    ```esql
+    FROM kibana_sample_data_logs
+    | WHERE @timestamp <= ?_tend AND @timestamp > ?_tstart AND extension.keyword != ""
+    | STATS requests = COUNT(*) BY time_bucket = BUCKET(@timestamp, 100, ?_tstart, ?_tend)
+    | STATS average_requests = AVG(requests)
+    ```
+
+    For this query, select `average_requests` as the **Vertical axis**.
+
+    :::{image} /explore-analyze/images/esql-visualization-layer-reference-line.png
+    :alt: The chart of web log events with a horizontal reference line at the average number of events across the time buckets
+    :screenshot:
+    :::
+
+#### Suggestions with several layers
+
+The **Suggestions** panel is hidden while the chart has more than one layer, because applying a suggestion would replace the other layers.
 
 ### Chart configuration persistence over {{esql}} query update [chart-config-persist]
 ```{applies_to}
@@ -179,6 +316,8 @@ serverless: ga
 - {applies_to}`stack: ga 9.5+` {applies_to}`serverless:` [Discover](../dashboards/create-discover-drilldown.md) drilldowns: Open **Discover** from a data point. Dashboard filters and the dashboard KQL or Lucene query are translated into the panel's ES|QL query, so the same context applies.
 
 Drilldowns are compatible only with indexed fields. Fields created at query time are not supported. Refer to [Values that cannot open a drilldown](../dashboards/drilldowns.md#drilldowns-requirements).
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the visualization reads from an [{{esql}} view](elasticsearch://reference/query-languages/esql/esql-views.md), you can also open a drilldown from a column that the view computes.
 
 ## Ignore dashboard filters [esql-viz-ignore-dashboard-filters]
 ```{applies_to}

@@ -1,8 +1,9 @@
 ---
 navigation_title: Field reference
 applies_to:
-  stack: ga 9.6+, experimental =9.5
-  serverless: ga
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Query alerting data in Discover with .rule-events and .alert-actions field schemas. Reference tables list shared rule event fields, episode.* fields, and all action_type values."
@@ -10,7 +11,7 @@ description: "Query alerting data in Discover with .rule-events and .alert-actio
 
 # Rule event and alert action field reference [field-reference]
 
-{{alerting-v2-system-cap}} writes rule output and triage data to two data streams:
+{{alerting-v2-system}} writes rule output and triage data to two data streams:
 
 - **`.rule-events` field schema**: Fields written on each [rule event](../rules/rule-event-field-reference.md). Events with `type: signal` and events that belong to an alert (`type: alert`) share this stream and most fields. The `episode.*` fields appear only on events with `type: alert`.
 - **`.alert-actions` field schema**: Fields written when a user or the system acts on an alert, including all `action_type` values.
@@ -47,10 +48,8 @@ When a user or the system records an action on an alert, {{kib}} writes a docume
 | Field | Type | Description |
 |---|---|---|
 | `@timestamp` | date | When {{kib}} wrote this action document. |
-| `alert_id` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | keyword | ID of the alert. |
-| `episode_id` {applies_to}`stack: experimental =9.5` | keyword | ID of the alert. Replaced by `alert_id` in later versions. |
-| `alert_status` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | keyword | Lifecycle state of the alert at the time of this action. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
-| `episode_status` {applies_to}`stack: experimental =9.5` | keyword | Lifecycle state of the alert at the time of this action. Replaced by `alert_status` in later versions. |
+| `alert_id` | keyword | ID of the alert. |
+| `alert_status` | keyword | Lifecycle state of the alert at the time of this action. Can be one of the following: `inactive`, `pending`, `active`, `recovering`. |
 | `rule_id` | keyword | ID of the rule that owns the alert. |
 | `group_hash` | keyword | Identifies the series the alert belongs to. |
 | `action_type` | keyword | Identifies what happened and who initiated it. For more information, refer to [Action type values](#action-type-values). |

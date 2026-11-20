@@ -16,13 +16,11 @@ products:
 Use the Synthetics UI to view results from monitors you create and manage directly in the [Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md) or externally through a [Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md). You can run lightweight or browser-based monitors from Elastic's global managed testing infrastructure or from your own [{{private-location}}s](/solutions/observability/synthetics/monitor-resources-on-private-networks.md).
 
 ::::{important}
-**Synthetics UI does not support autodiscovery for infrastructure or {{k8s}} monitoring**
+The {{synthetics-app}} runs active checks against URLs and user journeys. It does not discover infrastructure or {{k8s}} targets on its own.
 
-For infrastructure or {{k8s}} uptime monitoring, use one of the following approaches instead:
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The Synthetics UI lists monitors that {{heartbeat}} or {{agent}} runs, including autodiscovered ones, as read-only entries. Refer to [Autodiscovered monitors](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-autodiscovered-monitors) for more information.
 
-* **[{{heartbeat}}](beats://reference/heartbeat/index.md) with autodiscovery**: Run {{heartbeat}} on your infrastructure and use [autodiscovery](beats://reference/heartbeat/configuration-autodiscover.md) to dynamically monitor hosts and pods. Results appear in the [{{uptime-app}}](/solutions/observability/uptime/index.md).
-* **{{agent}} with the Uptime Monitors integration**: Deploy a standalone {{agent}} and configure the Uptime Monitors ({{heartbeat}}) integration to collect availability data from your infrastructure. The Uptime app is deprecated as of 8.15 and is not available in Serverless.
-
+For infrastructure or {{k8s}} uptime monitoring, refer to [monitoring infrastructure and {{k8s}}](/solutions/observability/synthetics/scale-architect-synthetics-deployment.md#synthetics-no-autodiscovery-for-k8s-infra).
 ::::
 
 Synthetics periodically checks the status of your services and applications. Monitor the availability of network endpoints and services using the following types of monitors:
@@ -31,7 +29,7 @@ Synthetics periodically checks the status of your services and applications. Mon
 * [Browser monitors](/solutions/observability/synthetics/index.md#monitoring-synthetics)
 
 :::{image} /solutions/images/observability-synthetics-monitor-page.png
-:alt: {{synthetics-app}} in {{kib}}
+:alt: Synthetics Overview in 9.6 with monitor status counts, ping history, and monitor cards
 :screenshot:
 :::
 
