@@ -76,12 +76,6 @@ Then, follow the prompts on screen to set up the correct default variables for y
 
         ::::
 
-        % Candidate for removal: low value. It is older than the Project API keys image on the Settings page, its title and tabs moved to the app header, and the steps around it already name each click.
-        :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
-        :alt: Project API Keys tab in Synthetics settings
-        :screenshot:
-        :::
-
         ::::{note}
         To use an API key to push to Elastic’s global managed testing infrastructure, the *Elastic managed locations enabled* toggle must be on when generating the API key. If the *Elastic managed locations enabled* toggle is disabled, an administrator has restricted access to Elastic’s global managed testing infrastructure.
 

@@ -48,12 +48,6 @@ To use the UI to add a lightweight monitor:
 
     If you’ve [added a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), you’ll see the {{private-location}} in the list of *Locations*.
 
-    % Candidate for removal: low value. A generic Locations dropdown crop, and the prose already says private locations appear in that list.
-    ```{image} /solutions/images/serverless-private-locations-monitor-locations.png
-    :alt: Screenshot of Monitor locations options including a {{private-location}}
-    :screenshot:
-    ```
-
     ::::
 
 5. Set the *Frequency*, and configure the monitor as needed.
@@ -65,12 +59,6 @@ To use the UI to add a lightweight monitor:
 
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
-
-    % Candidate for removal: low value. Full Create monitor page with the old page header, in-page title and 9.5 tile names, and the prose that follows names every field.
-    :::{image} /solutions/images/observability-synthetics-get-started-ui-lightweight.png
-    :alt: Synthetics Create monitor UI
-    :screenshot:
-    :::
 
     ::::{note}
     :applies_to: stack: ga 9.4+
@@ -98,11 +86,6 @@ To use the UI to add a browser monitor:
 
 4. Set the *Frequency*.
 5. Add steps to the **Script editor** code block directly. The `journey` keyword isn’t required, and variables like `page` and `params` will be part of your script’s scope. You cannot `import` any dependencies when using inline browser monitors.
-
-    :::{image} /solutions/images/observability-synthetics-ui-inline-script.png
-    :alt: Configure a synthetic monitor using an inline script in Elastic {{fleet}}
-    :screenshot:
-    :::
 
     ::::{note}
     Alternatively, you can use the **Script recorder** option. You can use the Elastic Synthetics Recorder to interact with a web page, export journey code that reflects all the actions you took, and upload the results in the UI. For more information, refer to [Use the Synthetics Recorder](/solutions/observability/synthetics/use-synthetics-recorder.md).
