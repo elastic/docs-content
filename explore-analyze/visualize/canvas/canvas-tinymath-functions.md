@@ -23,10 +23,10 @@ An expression combines numbers, variables, operators, and function calls, such a
 | Calculate | `+`, `-`, `*`, `/`, and parentheses, as in `(2 + 3) * 4` | `*` and `/` run before `+` and `-`. Operators of the same rank run from left to right. `^` and `%` aren't supported, so use [`pow`](#_pow_a_b) and [`mod`](#_mod_a_b). |
 | Write a number | `10`, `-10`, `1.5`, or `1e3` | Write `0.5`, not `.5`. Leading zeros and a leading `+` aren't accepted. |
 | Subtract or negate a variable | `a - b` or `0 - x` | Put spaces around `-`. TinyMath reads `a-b` as one variable named `a-b`, and `-x` as one variable named `-x`. |
-| Use a value from the data | `price` or `context.value` | Names are case-sensitive. A dot reads a nested value, so `context.value` reads `value` inside `context`. A name can contain letters, digits, `_`, `.`, `@`, and `-`, but can't start with a digit. |
+| Use a value from the data | `price` or `context.value` | Names are case-sensitive, and a name that isn't in the data is an error, not null. A dot reads a nested value, so `context.value` reads `value` inside `context`. A name can contain letters, digits, `_`, `.`, `@`, and `-`, but can't start with a digit. |
 | Use a name with spaces or other characters | `"sales total"` or `'sales total'` | Quote a name that contains a space, starts with a digit, or contains a character such as `+`. |
 | Call a function | `round(x, 2)` | Put `(` right after the function name, with no space. Separate arguments with commas. An argument can be an expression, as in `add(1 + 2, 3 * 4)`. Function names are case-sensitive and can't contain digits. |
-| Compare values | `<`, `<=`, `>`, `>=`, `==` | `!=`, `=`, and `===` aren't supported. A comparison gives `true` or `false`. Use it on its own, in parentheses, or as a function argument, as in `ifelse(x > 1, 10, 20)`. You can't chain comparisons or use the result in arithmetic. |
+| Compare values | `<`, `<=`, `>`, `>=`, `==` | `!=`, `=`, and `===` aren't supported. A comparison of two numbers gives `true` or `false`. Use it on its own, in parentheses, or as a function argument, as in `ifelse(x > 1, 10, 20)`. You can't chain comparisons or use the result in arithmetic. |
 
 Each operator gives the same result as the function with the same meaning, including for arrays and when an error occurs. `+` matches [`add`](#_add_args), `-` matches [`subtract`](#_subtract_a_b), `*` matches [`multiply`](#_multiply_a_b), `/` matches [`divide`](#_divide_a_b), `<` matches [`lt`](#_lt_a_b), `<=` matches [`lte`](#_lte_a_b), `>` matches [`gt`](#_gt_a_b), `>=` matches [`gte`](#_gte_a_b), and `==` matches [`eq`](#_eq_a_b).
 
@@ -38,7 +38,7 @@ You can wrap any function in another function as long as the return type of the 
 
 :::{note}
 :applies_to: {"serverless": "ga", "stack": "ga 9.4+"}
-A TinyMath expression can contain up to 20 levels of nested parentheses. The expression can be up to 8,192 characters, not counting quoted text, such as a quoted column name or a Kibana Query Language (KQL) or Lucene filter. TinyMath rejects expressions that exceed these limits before it parses them. Typical expressions stay well within these limits.
+A TinyMath expression can contain up to 20 levels of nested parentheses, including the parentheses of function calls. The expression can be up to 8,192 characters, not counting quoted text, such as a quoted column name or a Kibana Query Language (KQL) or Lucene filter. TinyMath rejects expressions that exceed these limits before it parses them. Typical expressions stay well within these limits.
 :::
 
 ## How functions treat arrays and non-numbers
@@ -47,7 +47,7 @@ Most of the functions accept arrays and apply to each element of the array. For 
 
 If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column. An empty array makes `add`, `max`, `mean`, `min`, and `range` throw an error.
 
-If a value isn't a number, such as null, most functions return `NaN`. The exceptions, which don't check that values are numbers, are `count`, `defaults`, `first`, `ifelse`, `last`, `size`, and `unique`. To replace null values before you calculate, use [`defaults`](#_defaults_a_b). For example, if `prices` is `[1, null]`, `abs(prices)` returns `NaN`, while `abs(defaults(prices, 0))` returns `[1, 0]`.
+If a value isn't a number, such as null, most functions return `NaN`. The exceptions, which don't check that values are numbers, are `count`, `defaults`, `first`, `ifelse`, `last`, `size`, and `unique`. To replace null values before you calculate, use [`defaults`](#_defaults_a_b). For example, if `prices` is `[1, null]`, `abs(prices)` returns `NaN`, while `abs(defaults(prices, 0))` returns `[1, 0]`. A comparison with null returns `NaN`, not `true` or `false`, and `ifelse` then throws `'Condition clause is of the wrong type'`.
 
 ## Functions by task
 
@@ -150,7 +150,7 @@ Restricts a value to a given range. Returns `min` if the value is below it, `max
 | min | number &#124; Array.<number> | the minimum value this function returns |
 | max | number &#124; Array.<number> | the maximum value this function returns |
 
-**Returns**: `number` | `Array.<number>`. The closest value between `min` (inclusive) and `max` (inclusive). Returns an array with values greater than or equal to `min` and less than or equal to `max` at each index if `a`, `min`, or `max` is an array. If you leave out `min` or `max`, the result is `NaN`, or an array of `NaN` values if `a` is an array. If `a` and `min` are both arrays and `max` is a number, each element of the result is `NaN`.
+**Returns**: `number` | `Array.<number>`. The closest value between `min` (inclusive) and `max` (inclusive). Returns an array with values greater than or equal to `min` and less than or equal to `max` at each index if `a`, `min`, or `max` is an array. If you leave out `min` or `max`, the result is `NaN`, or an array of `NaN` values if `a` or `min` is an array. If `a` and `min` are both arrays and `max` is a number, each element of the result is `NaN`.
 
 **Throws**:
 
@@ -227,14 +227,14 @@ cube([3, 4, 5]) // returns [27, 64, 125]
 
 ## defaults( a, b ) [_defaults_a_b]
 
-Replaces null or undefined values with a fallback value. For arrays, the function applies to each element.
+Replaces null values with a fallback value. For arrays, the function applies to each element and also replaces undefined elements, such as the value of a row that doesn't have the column.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | any &#124; Array.<any> | a value or an array of values that can include null or undefined values |
-| b | any | the value to use in place of null or undefined |
+| a | any &#124; Array.<any> | a value or an array of values that can include null |
+| b | any | the value to use in place of null |
 
-**Returns**: `any` | `Array.<any>`. `a` if it isn't null or undefined, otherwise `b`. Returns an array with `b` in place of each null or undefined element if `a` is an array.
+**Returns**: `any` | `Array.<any>`. `a` if it isn't null, otherwise `b`. Returns an array with `b` in place of each null or undefined element if `a` is an array.
 
 **Example**
 
@@ -481,8 +481,8 @@ Comparing arrays gives one boolean. `ifelse` therefore picks one value for the w
 **Throws**:
 
 * `'Condition clause is of the wrong type'` if `cond` is not a boolean
-* `'Missing a value'` if `a` is not provided
-* `'Missing b value'` if `b` is not provided
+* `'Missing a value'` if `a` is not provided or is null
+* `'Missing b value'` if `b` is not provided or is null
 
 **Example**
 
@@ -851,7 +851,7 @@ radtodeg([0, 1.5707963267948966, 3.141592653589793, 6.283185307179586]) // retur
 
 ## random( a, b ) [_random_a_b]
 
-Generates a random number within the given range where the lower bound is inclusive and the upper bound is exclusive. If you pass no numbers, it returns a number between 0 and 1. If you pass one number, it returns a number between 0 and that number. If both bounds are equal, it returns that value.
+Generates a random number within the given range where the lower bound is inclusive and the upper bound is exclusive. If you pass no numbers, it returns a number between 0 and 1. If you pass one number, it returns a number between 0 and that number. If both bounds are the same finite number, as in `random(0)` or `random(5, 5)`, it returns that number.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -895,7 +895,7 @@ range([1, 9, 4]) // returns 8
 
 ## round( a, b ) [_round_a_b]
 
-Rounds a number to the nearest integer by default, or to a number of decimal places if you pass `b`. For arrays, the function applies to each element.
+Rounds a number to the nearest integer by default, or to a number of decimal places if you pass `b`. A value exactly halfway rounds toward positive infinity. For arrays, the function applies to each element.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -911,6 +911,8 @@ round(1.2) // returns 1
 round(-10.51) // returns -11
 round(-10.1, 2) // returns -10.1
 round(10.93745987, 4) // returns 10.9375
+round(2.5) // returns 3
+round(-2.5) // returns -2
 round([2.9234, 5.1234, 3.5234, 4.49234324], 2) // returns [2.92, 5.12, 3.52, 4.49]
 ```
 
