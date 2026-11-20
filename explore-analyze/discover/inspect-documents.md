@@ -85,3 +85,4 @@ To use them, open **Discover** in classic mode and run a search that returns res
 
 - To compare several results side by side, refer to [Compare documents in Discover](compare-documents.md).
 - To copy a link to a document, refer to [Copy results and share links to documents in Discover](copy-and-share-documents.md).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To see how common a log message is, refer to [classic mode](run-pattern-analysis-discover.md#find-similar-values-classic) or [{{esql}} mode](esql-results.md#find-similar-values-esql).
