@@ -434,8 +434,9 @@ toc:
               - file: observability/infra-and-hosts/analyze-compare-hosts.md
               - file: observability/infra-and-hosts/detect-metric-anomalies.md
               - file: observability/infra-and-hosts/configure-settings.md
-          - file: observability/infra-and-hosts/universal-profiling.md
+          - file: observability/infra-and-hosts/profiling.md
             children:
+              - file: observability/infra-and-hosts/get-started-with-otel-profiling.md
               - file: observability/infra-and-hosts/get-started-with-universal-profiling.md
               - file: observability/infra-and-hosts/manage-data-storage.md
                 children:

@@ -1,32 +1,63 @@
 ---
+navigation_title: Profiling
+description: Continuously profile CPU usage across your Linux hosts with OpenTelemetry profiling or Universal Profiling, and analyze stacktraces, flamegraphs, and functions in Kibana.
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/universal-profiling.html
 applies_to:
   stack: ga
-  serverless: unavailable
+  serverless: preview
 products:
   - id: observability
 ---
 
-# Universal Profiling [universal-profiling]
+# Profiling [universal-profiling]
 
-Elastic Universal Profiling is a whole-system, always-on, continuous profiling solution that eliminates the need for code instrumentation, recompilation, on-host debug symbols, and service restarts. Leveraging eBPF technology, Universal Profiling operates within the Linux kernel space, capturing only the needed data with minimal overhead in an unobtrusive manner. For a quick overview of Universal Profiling, see the [Universal Profiling product page](https://www.elastic.co/observability/ebpf-continuous-code-profiling).
+Profiling shows you which code uses the most CPU on your Linux hosts, including your applications, the libraries they use, and the kernel. Use it to find expensive functions, unexpected CPU usage, and performance changes over time, all without changing your applications.
 
-On this page, you’ll find information on:
+## Choose how to collect profiling data [profiling-collection-options]
 
-* inspecting data through [stacktraces](#profiling-stacktraces-intro), [flamegraphs](#profiling-flamegraphs-intro), and [functions](#profiling-functions-intro)
-* [filtering](#profiling-filtering-intro) your data
-* comparing time ranges through [differential views](#profiling-differential-views-intro)
+In {{stack}} 9.6 and later, and on {{serverless-short}}, the {{kib}} app is called **Profiling**. In earlier versions it is labeled **Universal Profiling**, the name this page also uses to reference the original agent and backend.
 
+Whichever option you use, profiles show up in the same stacktraces, flamegraphs, and functions views.
+
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` **OpenTelemetry profiling** is the recommended option for new deployments and the only option on {{obs-serverless}}. It uses the OpenTelemetry eBPF profiler with {{agent}}. Install the **OpenTelemetry Profiling** integration on your hosts and the data starts flowing, with no extra setup in {{kib}}. For the host requirements and the deployment steps, refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md).
+* **Universal Profiling** uses Elastic's original profiling agent and backend. It requires a one-time setup in {{kib}} and isn't available on {{serverless-short}}. For the setup step and the agent installation, refer to [Get started with Universal Profiling](get-started-with-universal-profiling.md).
+
+## Select a profiling schema [profiling-schema-selector]
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+OpenTelemetry profiling and Universal Profiling can run in the same deployment, and they store their data in different formats, called schemas. The views show one schema at a time. The schema selector at the top of the **Stacktraces**, **Flamegraphs**, and **Functions** views, including the differential views, lets you pick which one to look at. The same selector appears in the profiling views embedded in **Applications** and **Infrastructure**.
+
+:::{image} /solutions/images/observability-profiling-schema-selector.jpg
+:alt: Profiling schema selector with OpenTelemetry selected.
+:screenshot:
+:::
+
+The selector works as follows:
+
+* It lists schemas that have data for the current time range and query. If neither schema has data, it shows **No schema available**. If your selected schema has no matching data but another schema does, the selector warns that the selected schema is unavailable.
+* **OpenTelemetry** is selected by default. However, if only **Universal Profiling** data is available, it is selected instead.
+* Your choice is stored in the page URL, so it survives reloads and stays with you as you move between the Profiling views.
+* In the differential views, the selector lists schemas that have data for the baseline time range and query. The schema you select applies to both the baseline and the comparison.
+
+On {{serverless-short}}, only OpenTelemetry profiling is supported. The **Add profiling data** page shows only the OpenTelemetry instructions, and the selector shows **OpenTelemetry** when matching data is available, or **No schema available** when it is not.
+
+**Storage explorer** reports Universal Profiling data only. The **Storage explorer** link stays disabled until you set up Universal Profiling. When a deployment has data in both schemas, a dismissible **OpenTelemetry profiling data isn't shown here yet** callout reminds you that the view reports Universal Profiling data only. To manage the retention of OpenTelemetry profiling data, refer to [Where profiles are stored](get-started-with-otel-profiling.md#profiling-otel-data-streams).
 
 ## Inspecting data in {{kib}} [profiling-inspecting-data-in-kibana]
 
-To open **Universal Profiling**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+The views below work the same way for every profiling option, except where a difference is noted.
 
-Under **Universal Profiling**, click **Stacktraces** to open the [stacktraces view](#profiling-stacktraces-intro).
+Find **Infrastructure** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md):
+
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: preview` Open **Profiling** and click **Stacktraces** to open the [stacktraces view](#profiling-stacktraces-intro).
+* {applies_to}`stack: ga 9.0-9.5` Open **Universal Profiling** and click **Stacktraces** to open the [stacktraces view](#profiling-stacktraces-intro).
 
 ::::{note}
-Universal Profiling currently only supports CPU profiling through stack sampling.
+Profiling currently only supports CPU profiling through stack sampling.
 ::::
 
 
@@ -45,7 +76,7 @@ Your stacktrace can be:
 
 In the following screenshot, you can see that unsymbolized frames *do not* show a filename and line number, but a hexadecimal number such as `0x80d2f4` or `<unsymbolized>`.
 
-Adding symbols for unsymbolized frames is currently a manual operation. See [Add symbols for native frames](add-symbols-for-native-frames.md).
+For Universal Profiling data, adding symbols for unsymbolized frames is currently a manual operation. See [Add symbols for native frames](add-symbols-for-native-frames.md).
 
 :::{image} /solutions/images/observability-profiling-stacktraces-unsymbolized.png
 :alt: profiling stacktraces unsymbolized
@@ -67,10 +98,11 @@ The stacktraces view shows graphs of stacktraces grouped by threads, traces, hos
 
 The different views on the stacktraces page show:
 
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` **Executables:** stacktraces grouped by executable name
 * **Threads:** stacktraces grouped by the process' thread name
 * **Traces:** un-grouped stacktraces
 * **Hosts:** stacktraces grouped by machine’s hostname or IP address
-* **Deployments:** stacktraces grouped by deployment name set by the container orchestration (e.g. {{k8s}} `ReplicaSet`, `DaemonSet`, or `StatefulSet` name)
+* **Deployments:** stacktraces grouped by the container orchestration name. Universal Profiling uses the deployment name, such as a {{k8s}} `ReplicaSet`, `DaemonSet`, or `StatefulSet`. OpenTelemetry profiling uses the {{k8s}} pod name.
 * **Containers:** stacktraces grouped by container name discovered by the host-agent
 
 The stacktraces view provides valuable information that you can use to:
@@ -79,7 +111,7 @@ The stacktraces view provides valuable information that you can use to:
 * Discover how much relative overhead comes from third-party software running on your machines.
 * Detect unexpected CPU spikes across threads, and drill-down into a smaller time range to investigate further with a flamegraph.
 
-Stacktraces are grouped based on the origin of collected stacktraces. You may find an empty view in containers and deployments if your host-agent deployment is profiling systems that do not run any containers or container orchestrators. In a deployment where Universal Profiling is correctly receiving data from host-agents you should always see a graph in the threads, hosts, and traces view.
+Stacktraces are grouped based on the origin of collected stacktraces. You might find an empty view in containers and deployments if your host-agent deployment is profiling systems that do not run any containers or container orchestrators. In a deployment where Profiling is correctly receiving data from the profiling agents you should always see a graph in the threads, hosts, and traces view.
 
 
 #### Navigating the stacktraces view [profiling-navigating-stacktraces]
@@ -96,7 +128,7 @@ Below the top graph, there are individual graphs that show the individual trend-
 The percentage displayed in the top-right corner of every individual graph is the relative number of occurrences of every time over the total of samples in the group.
 
 ::::{note}
-The displayed percentage is different from the percentage of CPU usage. Universal Profiling is not meant to show absolute monitoring data. Instead, it allows for relative comparisons between software running in your infrastructure (e.g. which is the most expensive?)
+The displayed percentage is different from the percentage of CPU usage. Profiling is not meant to show absolute monitoring data. Instead, it allows for relative comparisons between software running in your infrastructure (for example, "which is the most expensive?")
 ::::
 
 
@@ -126,7 +158,7 @@ Flamegraphs provide immediate feedback on which parts of the software should be 
 
 You can use flamegraphs to:
 
-* detect unexpected usage of system calls or native libraries linked to your own software: Universal Profiling is able to unwind stacktraces across user-space boundary into kernel-space
+* detect unexpected usage of system calls or native libraries linked to your own software: Profiling is able to unwind stacktraces across user-space boundary into kernel-space
 * inspect the call stacks of the most CPU-intensive application, detecting hot code paths and scouting for optimization opportunities
 * find "deep" call stack, usually hinting areas where there are many indirections across classes or objects
 
@@ -135,7 +167,7 @@ You can use flamegraphs to:
 
 You can navigate a flamegraph on both the horizontal and vertical axes:
 
-* Horizontal axes: every process that is sampled has at least a rectangle under the `root` frame. In Universal Profiling flamegraphs, you will likely discover the existence of processes you don’t control, but that are eating a significant portion of your CPU resources.
+* Horizontal axes: every process that is sampled has at least a rectangle under the `root` frame. In Profiling flamegraphs, you will likely discover the existence of processes you don’t control, but that are eating a significant portion of your CPU resources.
 * Vertical axes: traversing a process' call stack allows you to identify which parts of the process are executing most frequently. This allows pinpointing functions or methods that *should* be negligible but are instead a big portion of your call sites.
 
 You can drag the graph up, down, right, or left to move the visible area.
@@ -156,7 +188,7 @@ Below the graph area, you can use the search bar to find specific text in the fl
 
 ### Functions [profiling-functions-intro]
 
-The functions view presents an ordered list of functions that Universal Profiling samples most often. From this view, you can spot the functions that are running the most across your entire infrastructure, applying filters to drill down into individual components.
+The functions view presents an ordered list of functions that Profiling samples most often. From this view, you can spot the functions that are running the most across your entire infrastructure, applying filters to drill down into individual components.
 
 :::{image} /solutions/images/observability-profiling-functions-default-view.png
 :alt: profiling functions default view
@@ -166,13 +198,13 @@ The functions view presents an ordered list of functions that Universal Profilin
 
 ## Filtering [profiling-filtering-intro]
 
-In all of the Universal Profiling views, the search bar accepts a filter in the {{kib}} Query Language [KQL](/explore-analyze/query-filter/languages/kql.md).
+In all the Profiling views, the search bar accepts a filter in the {{kib}} Query Language [KQL](/explore-analyze/query-filter/languages/kql.md).
 
-Most notably, you may want to filter on:
+Most notably, you can filter on:
 
-* `profiling.project.id`: the corresponding value of `project-id` host-agent flag, logical group of deployed host-agents
-* `process.thread.name`: the process' thread name, e.g. `python`, `java`, or `kauditd`
-* `orchestrator.resource.name`: the name of the group of the containerized deployment as set by the orchestrator
+* `profiling.project.id`: the value of the `project-id` host-agent flag, which groups deployed host-agents. This field exists only for Universal Profiling data.
+* `process.thread.name`: the process' thread name, for example `python`, `java`, or `kauditd`
+* `orchestrator.resource.name`: the name of the containerized deployment as set by the orchestrator. For OpenTelemetry profiling, this field is an alias for `resource.attributes.k8s.pod.name`.
 * `container.name`: the name of the single container instance, as set by the container engine
 * `host.name` or `host.ip`: the machine’s hostname or IP address (useful for debugging issues on a single Virtual Machine)
 
@@ -198,22 +230,3 @@ In differential flamegraphs, the difference with the baseline is highlighted wit
 :alt: profiling flamegraph differential view
 :screenshot:
 :::
-
-
-## Resource constraints [profiling-resource-constraints]
-
-One of the key goals of Universal Profiling is to have net positive cost benefit for users: the cost of profiling and observing applications should not be higher than the savings produced by the optimizations.
-
-In this spirit, both the host-agent and storage are engineered to use as little resources as possible.
-
-
-### {{es}} storage [profiling-es-storage]
-
-The Universal Profiling storage budget is predictable on a per-profiled-core basis. The data we generate, at the fixed sampling frequency of 20 Hz, will be stored in {{es}} at the rate of approximately 40 MB per core per day.
-
-
-### Host-agent CPU and memory [profiling-host-agent-cpu-and-memory]
-
-Because Universal Profiling provides whole-system continuous profiling, the resource usage of host-agent is highly correlated with the number of processes running on the machine.
-
-We have recorded real-world, in-production host-agent deployments to be consuming between 0.5% and 1% of CPU time, with the process' memory being as low as 50 MB, and as high as 250 MB on busier hosts.

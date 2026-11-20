@@ -1,5 +1,5 @@
 ---
-navigation_title: Get started
+navigation_title: Get started with Universal Profiling
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/profiling-get-started.html
 applies_to:
@@ -16,14 +16,13 @@ products:
 
 This page shows you how to configure and use Universal Profiling on an {{ecloud}} deployment. To set up a self-hosted deployment of {{stack}}, refer to [Run Universal Profiling on self-hosted Elastic stack ](./run-universal-profiling-on-self-hosted-elastic-stack.md).
 
-This page covers:
+Universal Profiling is Elastic's original profiling agent and backend.
 
-* Prerequisites to setting up Universal Profiling on {{ecloud}}
-* Setting up Universal Profiling in your {{ecloud}} deployment
-* Installing the Universal Profiling Agent
-* Installing the Universal Profiling Agent integration
+:::{note}
+:applies_to: stack: preview 9.6+
 
-We would appreciate feedback on your experience with this product and any other profiling pain points you may have. See the [send feedback](/troubleshoot/observability/troubleshoot-your-universal-profiling-agent-deployment.md#profiling-send-feedback) section of the troubleshooting documentation for more information.
+For new deployments or {{obs-serverless}}, use OpenTelemetry profiling instead. Refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md) for the host requirements and deployment steps.
+:::
 
 
 ## Prerequisites [profiling-prereqs]
@@ -64,6 +63,21 @@ The following deployment configuration example was tested to support profiling d
 
 Even if you’re profiling a smaller fleet, we recommend configuring at least two zones for Elasticsearch and 4 GB of memory each for the Integrations Server and Kibana.
 
+## Resource use [profiling-resource-constraints]
+
+One of the key goals of Universal Profiling is to have net positive cost benefit for users: the cost of profiling and observing applications should not be higher than the savings produced by the optimizations.
+
+In this spirit, both the host-agent and storage are engineered to use as little resources as possible.
+
+### {{es}} storage [profiling-es-storage]
+
+The Universal Profiling storage budget is predictable on a per-profiled-core basis. The data we generate, at the fixed sampling frequency of 20 Hz, will be stored in {{es}} at the rate of approximately 40 MB per core per day.
+
+### Host-agent CPU and memory [profiling-host-agent-cpu-and-memory]
+
+Because Universal Profiling provides whole-system continuous profiling, the resource usage of host-agent is highly correlated with the number of processes running on the machine.
+
+We have recorded real-world, in-production host-agent deployments to be consuming between 0.5% and 1% of CPU time, with the process' memory being as low as 50 MB, and as high as 250 MB on busier hosts.
 
 ## Set up Universal Profiling on an {{ecloud}} deployment [profiling-set-up-on-cloud]
 
@@ -72,7 +86,19 @@ To set up Universal Profiling on your {{ecloud}} deployment, you need to [config
 
 ### Configure data ingestion [profiling-configure-data-ingestion]
 
-After enabling Universal Profiling on your deployment for the first time, select any subheading under **Universal Profiling** in the navigation menu to open the following page:
+Universal Profiling needs a one-time setup step in {{kib}} that creates the {{es}} resources it ingests into. Where you run it depends on your version:
+
+:::::{applies-switch}
+::::{applies-item} stack: ga 9.6+
+
+Find **Profiling** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Add data**. If your deployment has no profiling data yet, the **Add profiling data** page opens directly. Select the **Universal Profiling (legacy)** tab and click **Set up Universal Profiling**. When the setup completes, the tab shows the instructions for installing the Universal Profiling Agent.
+
+The setup step no longer blocks the rest of the app. Until you run it, the Profiling views work with OpenTelemetry profiling data, and only the **Storage explorer** link stays disabled. If Universal Profiling already has data but the resources it needs are missing or out of date, the views show a **Universal Profiling setup is incomplete** callout. Click **Complete setup** to return to this tab.
+
+::::
+::::{applies-item} stack: ga 9.0-9.5
+
+Select any view under **Universal Profiling** in the navigation menu to open the following page:
 
 :::{image} /solutions/images/observability-profiling-setup-popup.png
 :alt: profiling setup popup
@@ -81,10 +107,12 @@ After enabling Universal Profiling on your deployment for the first time, select
 
 Click **Set up Universal Profiling** to configure data ingestion.
 
-::::{note}
-To configure data ingestion, you need elevated privileges, typically the `elastic` user.
 ::::
+:::::
 
+::::{note}
+To configure data ingestion, you need the `superuser` role, typically the `elastic` user.
+::::
 
 If you’re upgrading from a previous version with Universal Profiling enabled, see the [upgrade guide](upgrade-universal-profiling.md).
 
@@ -168,6 +196,8 @@ securityContext:
 The Universal Profiling Agent profiles your fleet. You need to install and configure it on every machine that you want to profile. The Universal Profiling Agent needs  `root` / `CAP_SYS_ADMIN` privileges to run.
 
 After clicking **Set up Universal Profiling** in the previous step, you’ll see the instructions for installing the Universal Profiling Agent. You can also find these instructions by clicking the **Add data** button in the top-right corner of the page.
+
+{applies_to}`stack: ga 9.6+` The instructions are on the **Universal Profiling (legacy)** tab of the **Add profiling data** page.
 
 The following is an example of the provided instructions for {{k8s}}:
 
