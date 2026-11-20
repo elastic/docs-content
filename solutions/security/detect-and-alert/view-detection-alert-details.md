@@ -103,7 +103,7 @@ The About section appears on the **Overview** tab. It provides a brief descripti
 The About section has the following information:
 
 * **Rule description**: Describes the rule's purpose or detection goals. Click **Show rule summary** to open the rule's details in a new flyout. From there, click the rule name to view the full rule details page.
-* **Alert reason**: Describes the source event that generated the alert. Event details are displayed in plain text and ordered logically to provide context for the alert. Click **Show full reason** to display the alert reason in the event rendered format in a popover. For an [EQL sequence alert](/solutions/security/detect-and-alert/triage-eql-alerts.md), the reason includes only the values that all events in the sequence share.
+* **Alert reason**: Describes the source event that generated the alert. It shows event details as plain text, in a logical order, to provide context for the alert. Select **Show full reason** to display the alert reason in the event rendered format in a popover. For an [EQL sequence alert](/solutions/security/detect-and-alert/triage-eql-alerts.md), the reason includes only the values that all events in the sequence share.
 
     ::::{note}
     The event renderer only displays if an event renderer exists for the alert type. Fields are interactive; hover over them to access the available actions.

@@ -20,7 +20,7 @@ Threshold rules search your {{es}} indices and generate an alert when the number
 Threshold rules are the right fit when:
 
 * You want to detect volume-based anomalies, such as a brute-force attack (many failed logins from a single source IP) or a data exfiltration attempt (an unusually high number of outbound connections).
-* The signal is not a single event but a count crossing a boundary within a time window.
+* The signal isn't a single event but a count crossing a boundary within a time window.
 * You need to group counts by fields like `source.ip`, `user.name`, or `destination.ip` and alert on each group independently.
 
 Threshold rules aren't the best fit when:

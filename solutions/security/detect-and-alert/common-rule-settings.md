@@ -66,7 +66,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 :   The rule's authors.
 
 **Mark all generated alerts as "building block" alerts** (optional)
-:   Select this checkbox if another rule will look for combinations of activity across this rule's alerts. To learn more about building block alerts and when to use them, refer to [](/solutions/security/detect-and-alert/about-building-block-rules.md).
+:   If another rule looks for combinations of activity across this rule's alerts, select this checkbox. To learn more about building block alerts and when to use them, refer to [](/solutions/security/detect-and-alert/about-building-block-rules.md).
 
     ::::{warning}
     Don't select this checkbox if analysts need to see and triage the rule's alerts. The Alerts table hides building block alerts by default, so analysts don't see them unless they [include building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md#security-building-block-rules-view-building-block-alerts-in-the-ui) in the Alerts table.
@@ -114,7 +114,7 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 :   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).
 
 **Required fields** (optional)
-:   An informational list of fields the rule needs to function. This does not affect rule execution. It helps other users understand the rule's data dependencies. The **Required fields** setting is unavailable for {{ml}} rules.
+:   An informational list of fields the rule needs to function. This doesn't affect rule execution. It helps other users understand the rule's data dependencies. The **Required fields** setting is unavailable for {{ml}} rules.
 
 **Rule name override** (optional)
 :   Select a source event field to use as the rule name in the UI (Alerts table). This is useful for exposing, at a glance, more information about an alert. For example, if the rule generates alerts from Suricata, selecting `event.action` lets you see what action (Suricata category) caused the event directly in the Alerts table.
@@ -135,7 +135,7 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
     The options include only the framework versions that {{elastic-sec}} supports. If an upgrade affects existing mappings, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
 
 **Timestamp override** (optional)
-:   Select a source event timestamp field. When selected, the rule's query uses the selected field, instead of the default `@timestamp` field, to search for alerts. This can help reduce missing alerts due to network or server outages. Specifically, if your ingest pipeline adds a timestamp when events are sent to {{es}}, this can prevent missing alerts from ingestion delays. For example, the [Microsoft](beats://reference/filebeat/filebeat-module-microsoft.md) and [Google Workspace](beats://reference/filebeat/filebeat-module-google_workspace.md) {{filebeat}} modules have an `event.ingested` timestamp field that you can select.
+:   Select a source event timestamp field. When selected, the rule's query uses the selected field, instead of the default `@timestamp` field, to search for alerts. This can help reduce missing alerts due to network or server outages. Specifically, if your ingest pipeline adds a timestamp when events reach {{es}}, this can prevent missing alerts from ingestion delays. For example, the [Microsoft](beats://reference/filebeat/filebeat-module-microsoft.md) and [Google Workspace](beats://reference/filebeat/filebeat-module-google_workspace.md) {{filebeat}} modules have an `event.ingested` timestamp field that you can select.
 
     If the selected field is unavailable, the rule query will use the `@timestamp` field instead. If you don't want to use the `@timestamp` field because your data source has an inaccurate `@timestamp` value, select the **Do not use @timestamp as a fallback timestamp field** option instead. This ensures the rule query ignores the `@timestamp` field entirely.
 

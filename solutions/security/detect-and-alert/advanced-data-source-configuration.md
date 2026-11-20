@@ -12,9 +12,9 @@ description: Write Elastic Security detection rules that search data in other cl
 
 # Query data from other clusters, projects, and indices
 
-Some rules search data that needs extra setup or care: data in another {{es}} cluster or a linked {{serverless-short}} project, indices that use logsdb index mode, or the alerts that other rules create. To learn how to set the index patterns, data views, and data tiers that any rule searches, refer to [](/solutions/security/detect-and-alert/set-rule-data-sources.md).
+Some rules search data that needs extra setup or care, such as data in another {{es}} cluster or a linked {{serverless-short}} project, indices that use logsdb index mode, or the alerts that other rules create. To learn how to set the index patterns, data views, and data tiers that any rule searches, refer to [](/solutions/security/detect-and-alert/set-rule-data-sources.md).
 
-Each of these pages explains how to write rules for one kind of data:
+Start with the page for the data that your rule searches:
 
 **[{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md)** {applies_to}`stack: ga`
 :   For data in other {{es}} clusters. Explains how to establish trust between clusters, connect to remote clusters, and reference remote indices in a rule's index patterns.

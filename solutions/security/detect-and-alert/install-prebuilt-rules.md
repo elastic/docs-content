@@ -57,7 +57,7 @@ Reading rule logic backwards to understand which fields the rule queries is one 
 :::::::
 
 :::::::{step} Exclude rules that create building block alerts
-Some prebuilt rules create [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md), which feed signals into higher-order correlation rules. They are not meant to appear in your alert queue for triage. Enabling these rules early is the most common cause of alert floods for new deployments.
+Some prebuilt rules create [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md), which feed signals into higher-order correlation rules. They aren't meant to appear in your alert queue for triage. Enabling these rules early is the most common cause of alert floods for new deployments.
 
 In the Rules table, look for rules tagged as `Rule Type: BBR` and exclude them from your first wave. Focus on standard query, threshold, and EQL rules that produce direct alerts.
 
@@ -109,7 +109,7 @@ Once your Critical and High rules are tuned and your triage workflow is stable, 
 :::::
 
 :::::{dropdown} Enable rules that create building block alerts
-Rules tagged `Rule Type: BBR` create building block alerts. These alerts elevate entity risk scores and feed into [correlation rules you build](/solutions/security/detect-and-alert/query-alert-indices.md#rules-that-search-alerts) to detect multi-stage attack patterns that no single rule would catch. Enable these rules once you understand what signals matter in your environment.
+Rules tagged `Rule Type: BBR` create building block alerts. These alerts elevate entity risk scores and feed into [correlation rules you build](/solutions/security/detect-and-alert/query-alert-indices.md#rules-that-search-alerts) to detect multi-stage attack patterns that no single rule can catch. Enable these rules once you understand what signals matter in your environment.
 :::::
 
 :::::{dropdown} Use hunting queries for noisy behaviors

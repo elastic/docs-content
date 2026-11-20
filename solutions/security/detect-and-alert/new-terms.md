@@ -17,9 +17,9 @@ New terms rules detect the first appearance of a field value (or combination of 
 
 New terms rules are the right fit when:
 
-* You want to detect first-seen activity, such as a user logging in from a new country, a process executing for the first time on a host, or a new domain appearing in DNS logs.
+* You want to detect first-seen activity, such as a user logging in from a new country, a process running for the first time on a host, or a new domain appearing in DNS logs.
 * The threat signal is novelty, not a specific pattern or count.
-* You want to combine up to three fields to detect novel combinations, such as a `host.ip` and `user.name` pair that has never been observed together before.
+* You want to combine up to three fields to detect novel combinations, such as a `host.ip` and `user.name` pair that has never appeared together before.
 
 New terms rules aren't the best fit when:
 

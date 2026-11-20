@@ -22,10 +22,10 @@ When the rule detects the full sequence, it creates an EQL alert and a building 
 EQL rules are the right fit when:
 
 * You need to detect a sequence of events that must occur in a specific order, such as a process creation followed by a network connection from the same process.
-* You want to detect missing events in a sequence, for example, a login that is never followed by a logout within a time window.
+* You want to detect missing events in a sequence, for example, a login without a matching logout within a time window.
 * The detection logic involves correlating events by a shared field (such as `process.entity_id` or `host.id`) across time.
 * You need richer event-level logic than KQL allows, such as filtering by event category within a sequence step.
-* You need to detect an ordered sequence of alerts from other rules, rather than raw events. To learn how one rule can search the alerts that other rules create, refer to [Correlate alerts in detection rules](/solutions/security/detect-and-alert/query-alert-indices.md#rules-that-search-alerts).
+* You need to detect an ordered sequence of alerts from other rules, rather than raw events. To learn how one rule can search the alerts that other rules create, refer to [](/solutions/security/detect-and-alert/about-building-block-rules.md#security-building-block-rules-set-up-rules-that-run-on-alert-indices).
 
 EQL rules aren't the best fit when:
 
