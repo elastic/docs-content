@@ -168,7 +168,7 @@ Deleted or not visible
 :   If the space default agent is deleted or isn't visible to a user, that user isn't restricted to it. {{agent-builder}} opens on the agent they last used in that browser and space, or on the Elastic AI Agent.
 
 Changed to **Private**
-:   Changing the space default agent to **Private** doesn't remove the setting. Users who can still see the agent remain restricted to it, and everyone else falls back as described in the previous case. To stop restricting users, select **Remove as space default**.
+:   Changing the space default agent to **Private** doesn't remove the setting. Users who can still see the agent remain restricted to it, and everyone else falls back to the agent they last used in that browser and space, or to the Elastic AI Agent. To stop restricting users, select **Remove as space default**.
 
 APIs
 :   The space default agent only affects the {{agent-builder}} UI. It doesn't restrict which agents users can call through the [{{agent-builder}} APIs](kibana-api.md). To control who can use an agent, use its [access control settings](custom-agents.md#access-control-settings).
