@@ -19,6 +19,7 @@ This section covers security settings for your {{ece}} orchestrator.
 - [**TLS certificates**](secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md): Apply security controls to network communications. With {{ece}}, you manage proxy certificates for the HTTP layer. The transport layer is managed by ECE.
 - [**Platform role-based access control**](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md): Define the roles of users who have access to your organization and its resources. Note that you can also [manage non-cloud users and roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 - [**Authentication providers**](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md): Integrate with external authentication providers, including Active Directory, LDAP, and SAML.
+- {applies_to}`ece: ga 4.3+` [**Install password**](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/configure-ece-install-password.md): Protect the bootstrap secrets that additional hosts read when they join your installation.
 
 
 **Additional deployment-level security settings**

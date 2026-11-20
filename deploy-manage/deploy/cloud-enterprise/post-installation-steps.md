@@ -42,6 +42,8 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
 
 * [Add more platform users](../../users-roles/cloud-enterprise-orchestrator/manage-users-roles.md) with role-based access control.
 
+* {applies_to}`ece: ga 4.3+` If you didn't set an install password during installation, [configure an install password](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/configure-ece-install-password.md) to protect the bootstrap secrets that additional hosts read when they join.
+
 * Consider enabling encryption-at-rest (EAR) on your hosts.
 
   :::{{note}}
@@ -56,4 +58,6 @@ To start creating {{es}} deployments directly, refer to [](./working-with-deploy
 
 ::::{warning}
 During installation, the system generates secrets that are placed into the `/mnt/data/elastic/bootstrap-state/bootstrap-secrets.json` secrets file, unless you passed in a different path with the --host-storage-path parameter. Keep the information in the `bootstrap-secrets.json` file secure by removing it from its default location and placing it into a secure storage location.
+
+{applies_to}`ece: ga 4.3+` Configuring an [install password](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/configure-ece-install-password.md) doesn't protect this local file. Keep the file secure even when your installation has an install password.
 ::::

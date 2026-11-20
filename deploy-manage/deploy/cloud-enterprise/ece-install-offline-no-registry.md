@@ -79,11 +79,17 @@ To perform an offline installation without a private Docker registry, you have t
 
     1. On the first host:
 
+        ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-first-host.md
+        ::::
+
         ```sh
         bash elastic-cloud-enterprise.sh install
         ```
 
     2. On additional hosts, include the `--coordinator-host HOST_IP` and `--roles-token 'TOKEN'` parameters provided to you when you installed on the first host:
+
+        ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-additional-hosts.md
+        ::::
 
         ```sh
         bash elastic-cloud-enterprise.sh install

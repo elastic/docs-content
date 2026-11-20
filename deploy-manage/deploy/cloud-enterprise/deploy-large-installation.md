@@ -64,6 +64,9 @@ Make sure you have completed all prerequisites and environment preparations desc
 
 1. Install {{ece}} on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation, but you will remove some of its roles in a later step.
 
+    ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-first-host.md
+    ::::
+
     ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --availability-zone MY_ZONE-1 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"allocator":{"xms":"4G","xmx":"4G"},"zookeeper":{"xms":"24G","xmx":"24G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"24G","xmx":"24G"}}'
     ```
@@ -77,6 +80,9 @@ Make sure you have completed all prerequisites and environment preparations desc
     ```
 
 3. Install {{ece}} on a second and third host, placing them into a second and a third availability zone, and assign them the `director` and `coordinator` roles. Do not assign the `allocator` or the `proxy` role, as these hosts should not handle or route any user requests. Make sure you include the coordinator host IP information from step 1 and the new roles token from step 2.
+
+    ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-additional-hosts.md
+    ::::
 
     ```sh
     bash <(curl -fsSL https://download.elastic.co/cloud/elastic-cloud-enterprise.sh) install --coordinator-host HOST_IP --roles-token 'MY_TOKEN' --roles "director,coordinator" --availability-zone MY_ZONE-2 --memory-settings '{"runner":{"xms":"1G","xmx":"1G"},"zookeeper":{"xms":"24G","xmx":"24G"},"director":{"xms":"1G","xmx":"1G"},"constructor":{"xms":"4G","xmx":"4G"},"admin-console":{"xms":"24G","xmx":"24G"}}'

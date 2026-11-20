@@ -28,6 +28,9 @@ This section provides guidelines and recommendations to install ECE using a Podm
 
     Use the ECE installer script together with the `--podman` flag.
 
+    ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-first-host.md
+    ::::
+
     Refer to the official [ECE installation](./install-ece-procedures.md) documentation to adapt the command line parameters to your environment.
 
     [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
@@ -45,6 +48,9 @@ This section provides guidelines and recommendations to install ECE using a Podm
     ::::
 
 2. Add additional Podman hosts
+
+    ::::{include} /deploy-manage/deploy/_snippets/ece-install-password-additional-hosts.md
+    ::::
 
     Refer to the official [Install {{ece}} on an additional host](install-ece-on-additional-hosts.md) and [ECE installation](./install-ece-procedures.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
