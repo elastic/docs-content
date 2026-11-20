@@ -89,7 +89,7 @@ The minimum lifecycle applies to a data stream when all the following are true:
 Adding a data stream lifecycle to the data stream replaces the minimum lifecycle with your configuration.
 
 ::::{important}
-Before {applies_to}`stack: 9.6`, a {{tsds-init}} without a lifecycle or an {{ilm-init}} policy was never rolled over automatically. If an external process rolls over your {{tsds-init}}, you might now see additional backing indices. A {{tsds-init}} that has an {{ilm-init}} policy, `index.lifecycle.prefer_ilm` set to `false`, and no data stream lifecycle also moves from {{ilm-init}} to the minimum lifecycle. As a result, {{ilm-init}} phases such as delete or downsample stop running for it.
+Before {applies_to}`stack: 9.6 ga`, a {{tsds-init}} without a lifecycle or an {{ilm-init}} policy was never rolled over automatically. If an external process rolls over your {{tsds-init}}, you might now see additional backing indices. A {{tsds-init}} that has an {{ilm-init}} policy, `index.lifecycle.prefer_ilm` set to `false`, and no data stream lifecycle also moves from {{ilm-init}} to the minimum lifecycle. As a result, {{ilm-init}} phases such as delete or downsample stop running for it.
 
 To restore the previous behavior, set `data_streams.lifecycle.minimum.enabled` to `false`. The setting is dynamic, so you don't need to restart {{es}}.
 
@@ -110,7 +110,7 @@ stack: ga 9.6
 serverless: unavailable
 ```
 
-{applies_to}`stack: 9.6` {{es}} migrates {{tsds}} that use the pre-installed `metrics` {{ilm-init}} policy from {{ilm-init}} to the minimum lifecycle. 
+{applies_to}`stack: 9.6 ga` {{es}} migrates {{tsds}} that use the pre-installed `metrics` {{ilm-init}} policy from {{ilm-init}} to the minimum lifecycle. 
 
 #### How it works
 
