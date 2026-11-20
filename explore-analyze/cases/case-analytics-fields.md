@@ -47,7 +47,7 @@ The `.cases` index holds one document per case, with the current state of each c
 | `case.category` | keyword | Case category. |
 | `case.status` | keyword | Case status: `open`, `in-progress`, or `closed`. |
 | `case.severity` | keyword | Case severity: `low`, `medium`, `high`, or `critical`. |
-| `case.assignees.uid` | keyword | Profile UIDs of the case's assignees (a case can have several), not display names. To resolve a UID to a name, look it up with the [user profile API]({{es-apis}}operation/operation-security-get-user-profile), or match it to `actor.profile_uid` in `.cases-activity`, which also carries `actor.username`, `.full_name`, and `.email`. The `.cases-activity` method only resolves users who have acted on a case. |
+| `case.assignees.uid` | keyword | Profile UIDs of the case's assignees (a case can have several), not display names. For names and emails, use the [assignee name and email fields](#case-analytics-fields-people). |
 
 ### Timestamps and timing metrics [case-analytics-fields-timing]
 
@@ -71,6 +71,9 @@ Timing fields store values in seconds and are `null` until the case reaches the 
 | `case.created_by.username` | keyword | Username of the case creator. Also includes `.email`, `.full_name`, and `.profile_uid`. |
 | `case.updated_by.username` | keyword | Username of the last editor. Also includes `.email`, `.full_name`, and `.profile_uid`. |
 | `case.closed_by.username` | keyword | Username of the person who closed the case. Also includes `.email`, `.full_name`, and `.profile_uid`. |
+| `case.assignees.username` | keyword | Username of each assignee on the case. Also includes `.email` and `.full_name`. The assignee's profile UID is in `case.assignees.uid`. |
+
+The assignee name and email fields are a snapshot. {{kib}} copies `case.assignees.username`, `case.assignees.full_name`, and `case.assignees.email` from each user's profile when someone sets the case's assignees, so later profile changes don't update them. Cases where someone set the assignees before {{kib}} started storing these fields have only `case.assignees.uid` until someone updates the assignees. These fields also have no value when {{kib}} can't retrieve a user's profile, and `case.assignees.full_name` and `case.assignees.email` have no value when the profile doesn't include them. To find names for those assignees, match `case.assignees.uid` to `actor.profile_uid` in `.cases-activity`, which also includes `actor.username`, `.full_name`, and `.email`. This works only for users who have acted on a case.
 
 ### Counters [case-analytics-fields-counters]
 
