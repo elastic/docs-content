@@ -30,36 +30,36 @@ Every step type available for Elastic Workflows, ordered alphabetically. Use thi
 | [`ai.conversation.metadata.read`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-read) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` | AI | Read the metadata of an {{agent-builder}} conversation. |
 | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) | AI | Prompt a model, optionally with structured output. |
 | [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) | AI | Summarize content with an LLM. |
-| [`cases.addAlerts`](/explore-analyze/workflows/steps/cases.md#cases-addalerts) | Cases | Attach detection alerts to a case. |
-| [`cases.addAttachments`](/explore-analyze/workflows/steps/cases.md#cases-addattachments) {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Cases | Attach several attachment types to a case in one request. |
-| [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) | Cases | Add a comment to a case. |
-| [`cases.addEvents`](/explore-analyze/workflows/steps/cases.md#cases-addevents) | Cases | Attach events to a case. |
-| [`cases.addObservables`](/explore-analyze/workflows/steps/cases.md#cases-addobservables) | Cases | Add observables (IPs, hashes, domains) to a case. |
-| [`cases.addTags`](/explore-analyze/workflows/steps/cases.md#cases-addtags) | Cases | Add tags to a case. |
-| [`cases.assignCase`](/explore-analyze/workflows/steps/cases.md#cases-assigncase) | Cases | Assign a case to one or more users. |
-| [`cases.closeCase`](/explore-analyze/workflows/steps/cases.md#cases-closecase) | Cases | Close a case. |
-| [`cases.createCase`](/explore-analyze/workflows/steps/cases.md#cases-createcase) | Cases | Create a case. |
-| [`cases.createCaseFromTemplate`](/explore-analyze/workflows/steps/cases.md#cases-createcasefromtemplate) | Cases | Create a case from a template. |
-| [`cases.deleteCases`](/explore-analyze/workflows/steps/cases.md#cases-deletecases) | Cases | Delete one or more cases. |
-| [`cases.deleteObservable`](/explore-analyze/workflows/steps/cases.md#cases-deleteobservable) | Cases | Delete an observable from a case. |
-| [`cases.findCases`](/explore-analyze/workflows/steps/cases.md#cases-findcases) | Cases | Search for cases. |
-| [`cases.findSimilarCases`](/explore-analyze/workflows/steps/cases.md#cases-findsimilarcases) | Cases | Find cases similar to a given case. |
-| [`cases.getAllAttachments`](/explore-analyze/workflows/steps/cases.md#cases-getallattachments) | Cases | List every attachment on a case. |
-| [`cases.getCase`](/explore-analyze/workflows/steps/cases.md#cases-getcase) | Cases | Fetch a case by ID. |
-| [`cases.getCases`](/explore-analyze/workflows/steps/cases.md#cases-getcases) | Cases | Fetch multiple cases by ID. |
-| [`cases.getCasesByAlertId`](/explore-analyze/workflows/steps/cases.md#cases-getcasesbyalertid) | Cases | Find cases containing a specific alert. |
-| [`cases.pushCases`](/explore-analyze/workflows/steps/cases.md#cases-pushcases) | Cases | Push one or more cases to their configured external connector. |
-| [`cases.removeTags`](/explore-analyze/workflows/steps/cases.md#cases-removetags) | Cases | Remove tags from a case. |
-| [`cases.setCategory`](/explore-analyze/workflows/steps/cases.md#cases-setcategory) | Cases | Set a case's category. |
-| [`cases.setCustomField`](/explore-analyze/workflows/steps/cases.md#cases-setcustomfield) | Cases | Set a custom field on a case. |
-| [`cases.setDescription`](/explore-analyze/workflows/steps/cases.md#cases-setdescription) | Cases | Update a case's description. |
-| [`cases.setSeverity`](/explore-analyze/workflows/steps/cases.md#cases-setseverity) | Cases | Set a case's severity. |
-| [`cases.setStatus`](/explore-analyze/workflows/steps/cases.md#cases-setstatus) | Cases | Set a case's status. |
-| [`cases.setTitle`](/explore-analyze/workflows/steps/cases.md#cases-settitle) | Cases | Update a case's title. |
-| [`cases.unassignCase`](/explore-analyze/workflows/steps/cases.md#cases-unassigncase) | Cases | Remove assignees from a case. |
-| [`cases.updateCase`](/explore-analyze/workflows/steps/cases.md#cases-updatecase) | Cases | Update one case's fields. |
-| [`cases.updateCases`](/explore-analyze/workflows/steps/cases.md#cases-updatecases) | Cases | Bulk update multiple cases. |
-| [`cases.updateObservable`](/explore-analyze/workflows/steps/cases.md#cases-updateobservable) | Cases | Update an observable. |
+| `cases.addAlerts` | Cases | Attach detection alerts to a case. |
+| `cases.addAttachments` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` | Cases | Attach several attachment types to a case in one request. |
+| `cases.addComment` | Cases | Add a comment to a case. |
+| `cases.addEvents` | Cases | Attach events to a case. |
+| `cases.addObservables` | Cases | Add observables (IPs, hashes, domains) to a case. |
+| `cases.addTags` | Cases | Add tags to a case. |
+| `cases.assignCase` | Cases | Assign a case to one or more users. |
+| `cases.closeCase` | Cases | Close a case. |
+| `cases.createCase` | Cases | Create a case. |
+| `cases.createCaseFromTemplate` | Cases | Create a case from a template. |
+| `cases.deleteCases` | Cases | Delete one or more cases. |
+| `cases.deleteObservable` | Cases | Delete an observable from a case. |
+| `cases.findCases` | Cases | Search for cases. |
+| `cases.findSimilarCases` | Cases | Find cases similar to a given case. |
+| `cases.getAllAttachments` | Cases | List every attachment on a case. |
+| `cases.getCase` | Cases | Fetch a case by ID. |
+| `cases.getCases` | Cases | Fetch multiple cases by ID. |
+| `cases.getCasesByAlertId` | Cases | Find cases containing a specific alert. |
+| `cases.pushCases` | Cases | Push one or more cases to their configured external connector. |
+| `cases.removeTags` | Cases | Remove tags from a case. |
+| `cases.setCategory` | Cases | Set a case's category. |
+| `cases.setCustomField` | Cases | Set a custom field on a case. |
+| `cases.setDescription` | Cases | Update a case's description. |
+| `cases.setSeverity` | Cases | Set a case's severity. |
+| `cases.setStatus` | Cases | Set a case's status. |
+| `cases.setTitle` | Cases | Update a case's title. |
+| `cases.unassignCase` | Cases | Remove assignees from a case. |
+| `cases.updateCase` | Cases | Update one case's fields. |
+| `cases.updateCases` | Cases | Bulk update multiple cases. |
+| `cases.updateObservable` | Cases | Update an observable. |
 | [`console`](/explore-analyze/workflows/steps/external-systems-apps.md) | HTTP and console | Log a message to the workflow execution view. |
 | [`data.aggregate`](/explore-analyze/workflows/steps/data.md#data-aggregate) | Data | Group and aggregate a collection. |
 | [`data.concat`](/explore-analyze/workflows/steps/data.md#data-concat) | Data | Concatenate arrays. |
@@ -131,10 +131,10 @@ Refer to the [migration guide](/explore-analyze/workflows/authoring-techniques/m
 
 | Deprecated | Replacement |
 |---|---|
-| `kibana.createCaseDefaultSpace` | [`cases.createCase`](/explore-analyze/workflows/steps/cases.md#cases-createcase) |
-| `kibana.getCaseDefaultSpace` | [`cases.getCase`](/explore-analyze/workflows/steps/cases.md#cases-getcase) |
-| `kibana.updateCaseDefaultSpace` | [`cases.updateCase`](/explore-analyze/workflows/steps/cases.md#cases-updatecase) |
-| `kibana.addCaseCommentDefaultSpace` | [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment) |
+| `kibana.createCaseDefaultSpace` | `cases.createCase` |
+| `kibana.getCaseDefaultSpace` | `cases.getCase` |
+| `kibana.updateCaseDefaultSpace` | `cases.updateCase` |
+| `kibana.addCaseCommentDefaultSpace` | `cases.addComment` |
 | `inference.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
 | `bedrock.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |
 | `gen-ai.*` | [`ai.prompt`](/explore-analyze/workflows/steps/ai-steps.md#ai-prompt) |

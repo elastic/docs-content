@@ -147,7 +147,7 @@ Link the alert that triggered the workflow with `cases.addAlerts`, then attach t
         description: "Source of the malicious activity"
 ```
 
-Observable `typeKey` values must match the built-in observable types. Refer to [`cases.addObservables`](/explore-analyze/workflows/steps/cases.md#cases-addobservables) for the full list.
+Observable `typeKey` values must match the built-in observable types. Refer to `cases.addObservables` for the full list.
 ::::
 
 ::::{step} Isolate the affected host
@@ -311,10 +311,10 @@ steps:
 
 ## Extend this workflow [workflows-alert-triage-with-case-extend]
 
-- **Add historical context.** Before opening the case, run an [`elasticsearch.esql.query`](/explore-analyze/workflows/steps/elasticsearch.md) to count how many times the hash appears across your logs. Attach the count to the case with [`cases.addComment`](/explore-analyze/workflows/steps/cases.md#cases-addcomment).
+- **Add historical context.** Before opening the case, run an [`elasticsearch.esql.query`](/explore-analyze/workflows/steps/elasticsearch.md) to count how many times the hash appears across your logs. Attach the count to the case with `cases.addComment`.
 - **Route by severity.** Replace the single `if` branch with a [`switch` step](/explore-analyze/workflows/steps/switch.md) that opens cases of different severities based on the malicious-engine count.
 - **Enrich with an AI summary.** Add an [`ai.summarize` step](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize) after `attach_observables` to produce a triage summary, then append it to the case with `cases.addComment`.
-- **Assign the case.** Query your on-call schedule and use [`cases.assignCase`](/explore-analyze/workflows/steps/cases.md#cases-assigncase) to assign the case to the current on-call analyst.
+- **Assign the case.** Query your on-call schedule and use `cases.assignCase` to assign the case to the current on-call analyst.
 
 ## Related pages [workflows-alert-triage-with-case-related]
 
