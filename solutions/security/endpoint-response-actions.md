@@ -199,11 +199,17 @@ Terminate a process. You must include one of the following parameters to identif
 * `--pid` : A process ID (PID) representing the process to terminate.
 * `--entityId` : An entity ID representing the process to terminate.
 
+You can also use this optional parameter:
+
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `--kill-descendants` : ({{elastic-defend}} hosts only) Also terminate all descendant processes of the target process (the processes it started, and the processes those started in turn). The host's {{elastic-endpoint}} must support terminating process descendants. If it doesn't, upgrade {{agent}} to 9.6 or later to use this parameter.
+
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
 
 Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **Process Operations**
 
 Example: `kill-process --pid 123 --comment "Terminate suspicious process"`
+
+Example: `kill-process --pid 123 --kill-descendants --comment "Terminate suspicious process and its descendant processes"`
 
 ::::{note}
 For SentinelOne-enrolled hosts, you must use the parameter `--processName` to identify the process to terminate. `--pid` and `--entityId` are not supported.
