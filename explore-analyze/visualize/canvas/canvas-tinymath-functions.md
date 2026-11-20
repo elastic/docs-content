@@ -20,6 +20,8 @@ An expression can't contain an array directly. Arrays come from the data that th
 
 If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column.
 
+If a value isn't a number, such as null, most functions return `NaN`. The exceptions, which don't check that values are numbers, are `count`, `defaults`, `first`, `ifelse`, `last`, `size`, and `unique`. To replace null values before you calculate, use [`defaults`](#_defaults_a_b).
+
 You can wrap any function in another function as long as the return type of the inner function matches the parameter type of the outer function.
 
 :::{note}
@@ -128,7 +130,7 @@ Restricts a value to a given range. Returns `min` if the value is below it, `max
 | min | number &#124; Array.<number> | the minimum value this function returns |
 | max | number &#124; Array.<number> | the maximum value this function returns |
 
-**Returns**: `number` | `Array.<number>`. The closest value between `min` (inclusive) and `max` (inclusive). Returns an array with values greater than or equal to `min` and less than or equal to `max` at each index if `a`, `min`, or `max` is an array. If you leave out `min` or `max`, the result is `NaN`.
+**Returns**: `number` | `Array.<number>`. The closest value between `min` (inclusive) and `max` (inclusive). Returns an array with values greater than or equal to `min` and less than or equal to `max` at each index if `a`, `min`, or `max` is an array. If you leave out `min` or `max`, the result is `NaN`, or an array of `NaN` values if `a` is an array.
 
 **Throws**:
 
@@ -308,8 +310,8 @@ Calculates *e^x* where *e* is Euler's number. For arrays, the function applies t
 **Example**
 
 ```js
-exp(2) // returns e^2 = 7.3890560989306495
-exp([1, 2, 3]) // returns [e^1, e^2, e^3] = [2.718281828459045, 7.3890560989306495, 20.085536923187668]
+exp(2) // returns e^2 = 7.38905609893065
+exp([1, 2, 3]) // returns [e^1, e^2, e^3] = [2.718281828459045, 7.38905609893065, 20.085536923187668]
 ```
 
 
@@ -433,7 +435,7 @@ Returns one of two values, depending on a condition.
 | a | any &#124; Array.<any> | the value to return if `cond` is true |
 | b | any &#124; Array.<any> | the value to return if `cond` is false |
 
-**Returns**: `any` | `Array.<any>`. `a` if `cond` is true, otherwise `b`.
+**Returns**: `any` | `Array.<any>`. `a` if `cond` is true, otherwise `b`. TinyMath evaluates both `a` and `b` first, so an error in either one stops the expression.
 
 **Throws**:
 
