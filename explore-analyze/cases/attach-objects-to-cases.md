@@ -84,7 +84,18 @@ You can view and manage case observables under **Observables** on the case's **A
 
 3. Select **Add observable**.
 
-After adding an observable to a case, you can remove or edit it using the action menu {icon}`boxes_horizontal`. To find related investigations, check the **Similar cases** tab for other cases that share the same observables.
+After adding an observable to a case, you can remove or edit it using the action menu {icon}`boxes_horizontal`. To find related investigations, check the [Similar cases](#cases-similar-cases) tab for other cases that share the same observables.
+
+### Delete multiple observables [cases-delete-multiple-observables]
+```{applies_to}
+serverless:
+  security: ga
+stack: ga 9.6+
+```
+
+To delete observables, you need the appropriate subscription and the `All` privilege for the **Cases** feature under **{{stack-manage-app}}** or **Security**. For details, refer to [Control access to cases](/explore-analyze/cases/control-case-access.md).
+
+To delete several observables from a case at once, select the checkbox for each observable on the **Observables** tab. Then select **Bulk actions** → **Delete**, and select **Delete** again to confirm. {{kib}} adds a single entry to the case activity that shows how many observables you deleted.
 
 ### Auto-extract observables [cases-auto-extract-observables]
 
@@ -96,10 +107,45 @@ serverless:
 
 With the appropriate subscription, you can auto-extract observables from alerts instead of adding them manually. Note that auto-extracting observables is unavailable for {{observability}} cases.
 
-{applies_to}`stack: ga 9.5` Auto-extraction can also run for cases created outside the UI, such as with the Cases API or a [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md) action:
+{applies_to}`stack: ga 9.6+` You can set the default for every new case in the space with the [Extract observables setting](/explore-analyze/cases/configure-case-settings.md#cases-extract-observables-default). The setting is on by default.
 
-* When a [case template](/explore-analyze/cases/configure-case-settings.md#case-templates) is applied, extraction follows the template's **Auto-extract observables** setting, which is on by default.
-* For cases created directly with the Cases API, extraction is off by default. Set `extractObservables` to `true` in the create-case request to turn it on.
+{applies_to}`stack: ga 9.5` Auto-extraction can also run for cases created outside the UI, such as with the Cases API or a [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration) action.
+
+{applies_to}`stack: ga =9.5` When a case uses a [case template](/explore-analyze/cases/configure-case-settings.md#case-templates), extraction follows the template's **Extract observables** setting, which is on by default.
+
+For cases created directly with the Cases API, the default depends on your version.
+
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Extraction follows the space default. To override the default for one case, set `extractObservables` in the create-case request.
+* {applies_to}`stack: ga =9.5` Extraction is off by default. Set `extractObservables` to `true` in the create-case request to turn it on.
+
+#### Which extraction setting applies [cases-extract-observables-precedence]
+```{applies_to}
+serverless:
+  security: ga
+stack: ga 9.6+
+```
+
+When more than one setting applies to a case, {{kib}} uses the first one in this order.
+
+1. A value you set directly, such as the **Extract observables** toggle in the case form, `extractObservables` in a Cases API request, or **Auto-extract observables** in the Cases action of a detection rule
+2. The **Extract observables** setting of the case template, if the template sets one
+3. The space default
+
+### Find similar cases [cases-similar-cases]
+
+The **Similar cases** tab lists other cases that share observables with the current case. The **Similar observable values** column shows which values the cases have in common.
+
+#### Customize and sort similar cases [cases-similar-cases-table]
+```{applies_to}
+serverless:
+  security: ga
+stack: ga 9.6+
+```
+
+The table lists the newest cases first. You can change which columns it shows and how it sorts the cases.
+
+* To show or hide details such as assignees, comment counts, or custom fields, select **Columns**. The **Name** and **Similar observable values** columns always appear, so **Hide All** leaves them in place. Your browser remembers your selection, separately from the column settings on the **Cases** page.
+* To sort the table, select a column header. You can sort by **Name**, **Status**, **Severity**, **Category**, **Created on**, **Updated on**, and **Closed on**. Sorting applies to all similar cases, not only to the cases on the current page.
 
 ## Add Lens visualizations [cases-lens-visualization]
 
