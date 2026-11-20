@@ -152,6 +152,7 @@ The following limitations apply to {{elastic-sec}} apps. For how each app uses {
 - **Alerts:** The Alerts page doesn't show alerts that a linked project generated independently. Only alerts created by origin project rules appear.
 - **Attack Discovery:** Discoveries are based on origin project alerts only. Alerts from linked projects aren't included.
 - **Cases:** You can't attach an alert or event from a linked project to a case.
+- **Cloud security:** Cloud Security Posture Management (CSPM), Kubernetes Security Posture Management (KSPM), and Cloud Native Vulnerability Management (CNVM) show origin project data only. This includes the **Findings** and **Benchmarks** pages, the cloud security dashboards, and misconfiguration and vulnerability insights in flyouts.
 - **{{elastic-defend}} and Osquery:** Policies, artifacts, response actions, and Osquery saved queries and packs can't be shared or managed across linked projects.
 - **Entity store:** A host that appears in more than one project isn't combined into a single entity at the origin. Risk scoring runs on the origin project only.
 - **{{ml-cap}} rules:** {{ml-cap}} rules don't use the space-level {{cps}} scope. They use the scope of the underlying {{anomaly-detect}} job's {{dfeed}}, which might differ from the space default.

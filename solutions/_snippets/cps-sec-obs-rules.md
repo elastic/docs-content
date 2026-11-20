@@ -2,7 +2,7 @@ When [{{cps}}](/explore-analyze/cross-project-search.md) is enabled and you have
 
 ### Which projects rules query by default [cps-rules-space-scope]
 
-The [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header is read-only when you create or edit a rule. To change that default, update the [{{cps}} scope configured for the space](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
+Rules use the default scope from the current space. The [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) in the header is read-only when you create or edit a rule. To change the default scope, update it in the [space settings](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md#cps-default-search-scope).
 
 To link projects and configure that default, refer to [](/explore-analyze/cross-project-search.md) and [](/deploy-manage/cross-project-search-config/cps-config-access-and-scope.md).
 
