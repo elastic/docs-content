@@ -895,7 +895,7 @@ range([1, 9, 4]) // returns 8
 
 ## round( a, b ) [_round_a_b]
 
-Rounds a number to the nearest integer by default, or to a number of decimal places if you pass `b`. A value exactly halfway rounds toward positive infinity. For arrays, the function applies to each element.
+Rounds a number to the nearest integer by default, or to a number of decimal places if you pass `b`. A value exactly halfway rounds toward positive infinity. Decimals such as 1.005 aren't stored exactly in binary, so `round(1.005, 2)` returns 1, not 1.01. For arrays, the function applies to each element.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -913,6 +913,7 @@ round(-10.1, 2) // returns -10.1
 round(10.93745987, 4) // returns 10.9375
 round(2.5) // returns 3
 round(-2.5) // returns -2
+round(1.005, 2) // returns 1
 round([2.9234, 5.1234, 3.5234, 4.49234324], 2) // returns [2.92, 5.12, 3.52, 4.49]
 ```
 
