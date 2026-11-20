@@ -295,6 +295,7 @@ To generate the data, **Vega-Lite** uses the `source_0` and `data_0`. `source_0`
 
    :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_4.png
    :alt: Table for data_0 with columns key
+   :width: 75%
    :screenshot:
    :::
 
@@ -302,6 +303,7 @@ To generate the data, **Vega-Lite** uses the `source_0` and `data_0`. `source_0`
 
    :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_5.png
    :alt: Table for data_0 where the key is NaN instead of a string
+   :width: 75%
    :screenshot:
    :::
 
@@ -333,6 +335,7 @@ In the **Vega-Lite** spec, add the `encoding` block:
 
    :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_6.png
    :alt: Table for data_0 showing that the column time_buckets.buckets.key is undefined
+   :width: 75%
    :screenshot:
    :::
 
@@ -725,6 +728,7 @@ Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **U
 
 :::{image} /explore-analyze/images/kibana-vega_tutorial_3.png
 :alt: vega tutorial 3
+:width: 75%
 :screenshot:
 :::
 
@@ -815,6 +819,7 @@ To allow users to filter based on a time range, add a drag interaction, which re
 
 :::{image} /explore-analyze/images/kibana-vega_tutorial_4.png
 :alt: vega tutorial 4
+:width: 75%
 :screenshot:
 :::
 
@@ -1721,6 +1726,7 @@ The runtime data is read from the [runtime scope](https://vega.github.io/vega/do
 
 :::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_data_sets.png
 :alt: vega tutorial inspect data sets
+:width: 75%
 :screenshot:
 :::
 
