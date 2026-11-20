@@ -46,7 +46,7 @@ For guidance on writing effective descriptions and instructions, refer to [Skill
 :::::{stepper}
 ::::{step} Open the Create skill dialog
 
-Go to **Manage components → Skills**, then select **Create a skill**.
+Go to **Manage components → Skills**, then select **Create a skill**. The following screenshot shows the dialog:
 
 :::{image} images/create-new-skill.png
 :alt: Create skill dialog showing fields for ID, Name, Description, Instructions, and Associated tools
@@ -113,7 +113,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Open a conversation with any agent and ask it to create a skill. For example, "Create a skill that handles production alerts using our incident runbook." The agent asks clarifying questions when it needs more information, then presents the generated skill as a draft.
+Open a conversation with an agent that has [Elastic capabilities](agent-builder-agents.md#elastic-capabilities) turned on, or that has the `skill-management` skill assigned, and ask it to create a skill. For example, "Create a skill that handles production alerts using our incident runbook." The agent asks clarifying questions when it needs more information, then presents the generated skill as a draft.
 
 Review the description, instructions, associated tools, and references, and ask the agent to edit anything that needs changing. When the draft is ready, select **Create skill**. The skill is not added to your library until you select **Create skill**.
 
@@ -134,26 +134,53 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-Ask an agent to view or edit a custom skill that is already in your library. The agent shows the skill as a card in the conversation, so you can review and save changes without leaving the chat.
+Ask an agent to view or edit a custom skill that is already in your library. The agent shows the skill as a card in the conversation, so you can review and save changes without leaving the chat. You can't edit built-in skills or skills provided by plugins from chat.
 
-To save changes, you need the **Create and edit skills** privilege in the current space. This is the same privilege required to update a skill from **Manage components** → **Skills**. Refer to [{{agent-builder}} privileges](permissions.md#kib-privileges).
+Before you start:
+
+- Use an agent that has [Elastic capabilities](agent-builder-agents.md#elastic-capabilities) turned on (the default Elastic AI Agent does) or that has the `skill-management` skill assigned.
+- To save changes, you need the **Create and edit skills** privilege in the current space, the same privilege required to update a skill from **Manage components** → **Skills**. Refer to [{{agent-builder}} privileges](permissions.md#kib-privileges).
 
 To view or edit a custom skill:
 
 1. In an Agent Chat conversation, ask the agent to view or edit the skill by name or ID. For example, "Add a rate-limiting section to the incident-triage skill."
-1. Review the skill card. To read the full instructions, select **Preview**. To open the saved skill in a new tab, select **Edit in Management**. The skill opens on its own page under **Manage components** → **Skills**.
-1. To change the skill, describe the change in the conversation. The agent updates the card, which shows a **Draft** badge, a **Latest** badge, and **Save changes**.
-1. To compare the draft instructions with the instructions that were loaded into the conversation, turn on **Show diff**.
-1. When the draft is ready, select **Save changes**. Your library isn't updated until you do. After you save, the card shows a **Saved** badge and **Edit in Management**.
+1. Review the skill card. Select **Preview** ([where to find it](#skill-card-preview)) to read the full instructions, or **Edit in Management** to open the saved skill in a new tab.
+1. To change the skill, describe the change in the conversation. The agent shows an updated card with a **Draft** badge, a **Latest** badge, and **Save changes**.
+1. (Optional) To compare the draft with the instructions that were loaded into the conversation, turn on **Show diff**.
+1. Select **Save changes**. The card then shows a **Saved** badge and **Edit in Management**.
 
-Keep the following in mind:
+The following screenshot shows an edited skill draft with **Show diff** turned on. It shows the layout in stack 9.5 and 9.6. In stack 9.7+ and serverless, refer to [Where to find Preview](#skill-card-preview):
 
-- **Show diff** appears only when the draft instructions differ from the instructions that were loaded into the conversation and you haven't saved the draft. It compares instructions only. A change to only the description, tools, or references shows **Save changes** but no **Show diff**.
-- **Save changes** and **Edit in Management** appear only on the newest card for the skill. Older cards in the conversation don't show these buttons.
-- The **Latest** badge marks the newest draft in the conversation.
-- **Save changes** replaces the saved skill's description, instructions, tools, and references with the draft on the card. This includes any changes made in Management or through the API since the agent loaded the skill. There is no conflict warning.
-- Without the privilege, **Save changes** is disabled. **Edit in Management** stays available, but the skill page opens in read-only mode.
-- Built-in skills and skills provided by plugins are read-only and can't be edited from chat.
+:::{image} images/edit-skill-from-chat.png
+:screenshot:
+:alt: Skill card in Agent Chat showing Draft and Latest badges, Preview and Save changes buttons, and a diff of the added instructions
+:width: 750px
+:::
+
+### Where to find Preview [skill-card-preview]
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.7+, serverless: ga }
+**Preview** is in the **More actions** menu next to the primary button (**Save changes** or **Edit in Management**). On an older card in the same conversation, **Preview** is the main button.
+:::
+
+:::{applies-item} { stack: ga 9.5-9.6 }
+**Preview** is a standalone button on the card.
+:::
+
+::::
+
+### What to know before you save [skill-card-behavior]
+
+Your library isn't updated until you save. **Save changes** replaces the saved skill's name, description, instructions, tools, and references with the draft on the card. This overwrites any changes made in **Manage components** → **Skills** or through the API since the agent loaded the skill. There is no conflict warning.
+
+Which buttons you see depends on the card:
+
+- **Show diff** appears only for an unsaved draft whose instructions differ from the loaded instructions. It compares instructions only, so a change to just the description, tools, or references shows no **Show diff**. After you save and then ask for another change, **Show diff** still compares against the instructions first loaded, so your earlier saved changes also appear as additions.
+- **Save changes** and **Edit in Management** appear only on the newest version of a draft, which the **Latest** badge marks. If you ask the agent to load the skill again, it creates a separate card, and an earlier unsaved draft card keeps its own **Save changes**. Saving an older draft overwrites the library with that draft.
+
+Without the **Create and edit skills** privilege, **Save changes** is disabled. You can still view the skill and ask the agent to draft changes, but you can't save them.
 
 ## Related pages
 

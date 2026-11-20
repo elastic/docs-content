@@ -689,12 +689,12 @@ For example, the following screenshot shows a skill draft that you can review be
 :width: 750px
 :::
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can also ask the agent to view or edit a custom skill in your library, then review the changes and save them from the conversation. For the steps, refer to [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat).
+You can also ask the agent to view or edit a custom skill in your library, then review the changes and save them from the conversation. For the steps, refer to [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat).
 
 You need the same privileges that are required to create or update the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
 
 - [Create and manage custom skills](custom-skills.md#create-a-skill-from-chat)
-- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat)
+- [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat)
 - [Create and manage workflows](/explore-analyze/workflows.md)
 
 ## Customize your agent [customize-your-agent]
