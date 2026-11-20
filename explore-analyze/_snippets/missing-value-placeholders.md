@@ -42,3 +42,10 @@ To leave missing values out of your results, filter them out:
 
 - In {{esql}}, add `WHERE <field> IS NOT NULL` to your query.
 - In KQL, use `<field>: *`.
+
+:::{note}
+An empty string (`""`) is a value, not a missing value. How tables and charts show it depends on your version:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` Shown as `(blank)`.
+- {applies_to}`stack: ga 9.0-9.1` Shown as `(empty)`.
+:::
