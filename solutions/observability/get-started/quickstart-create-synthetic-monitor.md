@@ -48,17 +48,7 @@ Projects let you define your infrastructure as code. With project monitors you o
 
 Create a single page browser monitor. Make sure to select a URL and the locations where monitors will be executed, then select **Create monitor**.
 
-:::{image} /solutions/images/synthetics-create-browser-monitor.png
-:alt: Create browser monitor
-:screenshot:
-:::
-
 Synthetics will be executing the test across all of those locations, automatically refreshing the screen.
-
-:::{image} /solutions/images/synth-monitors.png
-:alt: Browser monitor
-:screenshot:
-:::
 
 ::::
 
@@ -85,17 +75,7 @@ When you set up alerts and receive notifications, you’ll also receive a deep l
 
 Go to **Monitors** and select one of the monitors, you’ll see a dialog with a quick summary of the monitor. Select **Go to monitor** to see high level insights. Charts will start to render as more tests come through but you can quickly see the availability, the duration to execute tests, the timeline, and you can also drill down into the waterfall chart. 
 
-:::{image} /solutions/images/Monitor_drill_down_1.png
-:alt: Monitor drill down
-:screenshot:
-:::
-
 To drill down, select the icon under **View test run**. From here you can see the waterfall chart, object weight, object count, and more.
-
-:::{image} /solutions/images/Monitor_drill_down_2.png
-:alt: Monitor drill down
-:screenshot:
-:::
 
 ::::
 :::::
