@@ -2,7 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tinymath-functions.html
 type: reference
-description: Look up the TinyMath functions you can use in Canvas expressions, with the parameters, return value, errors, and an example for each.
+description: Look up the TinyMath functions you can use in Canvas expressions, with their parameters, return values, errors, and examples.
 applies_to:
   serverless: ga
   stack: ga
@@ -43,7 +43,7 @@ A TinyMath expression can contain up to 20 levels of nested parentheses. The exp
 
 ## How functions treat arrays and non-numbers
 
-Most of the functions accept arrays and apply JavaScript Math methods to each element of that array. For the functions that accept multiple arrays as parameters, the function generally does the calculation index by index. The examples with arrays show what each function returns for the values in a datatable column.
+Most of the functions accept arrays and apply to each element of the array. For the functions that accept multiple arrays as parameters, the function generally does the calculation index by index. The examples with arrays show what each function returns for the values in a datatable column.
 
 If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column.
 
@@ -325,7 +325,7 @@ Calculates *e^x* where *e* is Euler's number. For arrays, the function applies t
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers |
 
-**Returns**: `number` | `Array.<number>`. Returns an array with the values of `e^x` evaluated where `x` is each element of `a` if `a` is an array.
+**Returns**: `number` | `Array.<number>`. `e^a`. Returns an array with the values of `e^x` evaluated where `x` is each element of `a` if `a` is an array.
 
 **Example**
 
@@ -756,7 +756,7 @@ Finds the mode value(s) of one or more numbers or arrays of numbers. If you pass
 | --- | --- | --- |
 | …args | number &#124; Array.<number> | one or more numbers or arrays of numbers |
 
-**Returns**: `Array.<number>` | `Array.<Array.<number>>`. An array of mode value(s) of all numbers if `args` contains only numbers. Returns an array of arrays with mode value(s) of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
+**Returns**: `number` | `Array.<number>` | `Array.<Array.<number>>`. If you pass a single number, returns that number. If you pass only numbers, or a single array, returns an array of the mode value(s) of every value. If you pass several arguments and at least one is an array, returns an array of arrays with the mode value(s) at each index, including all scalar numbers in `args` in the calculation at each index.
 
 **Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
 
