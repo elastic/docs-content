@@ -18,12 +18,6 @@ products:
 
 If you are monitoring Logstash nodes, click **Overview** in the Logstash section of the **Stack Monitoring** page in {{kib}}. You can view the overall health of the Logstash nodes.
 
-% Candidate for removal: low value. The charts are empty, so it does not show the overall health that the sentence before it describes. Used only on this page.
-:::{image} /deploy-manage/images/kibana-monitoring-logstash-overview.png
-:alt: Logstash Overview
-:screenshot:
-:::
-
 1. To view Logstash node metrics, click **Nodes**. The Nodes section shows the status of each Logstash node.
 2. Click the name of a node to view its statistics over time.
 

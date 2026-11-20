@@ -18,12 +18,6 @@ products:
 
 If you are monitoring Beats, the **Stack Monitoring** page in {{kib}} contains a panel for Beats in the cluster overview.
 
-% Candidate for removal: low value. The sentence before it already says the page has a Beats panel, so the crop adds counts only. Used only on this page.
-:::{image} /deploy-manage/images/kibana-monitoring-beats.png
-:alt: Monitoring Beats
-:screenshot:
-:::
-
 To view an overview of the Beats data in the cluster, click **Overview**. The overview page has a section for activity in the last day, which is a real-time sample of data. The summary bar and charts follow the typical paradigm of data in the Monitoring UI, which is bound to the span of the time filter. This overview page can therefore show up-to-date or historical information.
 
 :::{image} /deploy-manage/images/kibana-monitoring-beats-detail.png
