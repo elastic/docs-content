@@ -48,11 +48,6 @@ Projects let you define your infrastructure as code. With project monitors you o
 
 Create a single page browser monitor. Make sure to select a URL and the locations where monitors will be executed, then select **Create monitor**.
 
-:::{image} /solutions/images/synthetics-create-browser-monitor.png
-:alt: Create browser monitor
-:screenshot:
-:::
-
 Synthetics will be executing the test across all of those locations, automatically refreshing the screen.
 
 ::::
