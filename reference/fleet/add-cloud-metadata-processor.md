@@ -15,6 +15,8 @@ products:
 
 ::::{tip}
 Inputs that collect logs and metrics use this processor by default, so you do not need to configure it explicitly.
+
+{applies_to}`stack: ga 9.6+` To turn it off, refer to [Turn off this processor](#add-cloud-metadata-processor-turn-off).
 ::::
 
 
@@ -203,3 +205,13 @@ This metadata is only available when VPC is selected as the network type of the 
 }
 ```
 
+## Turn off this processor [add-cloud-metadata-processor-turn-off]
+
+```{applies_to}
+stack: ga 9.6+
+```
+
+Depending on the input, {{agent}} uses this processor by default. To turn it off, set `add_cloud_metadata` to `false`:
+
+:::{include} /reference/fleet/_snippets/turn-off-default-processor.md
+:::
