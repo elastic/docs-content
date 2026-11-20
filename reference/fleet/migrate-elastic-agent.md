@@ -185,7 +185,7 @@ After the restart, {{integrations-server}} will enroll a new {{agent}} for the {
 
 Now that the {{fleet}} settings are correctly set up, it pays to ensure that the {{agent}} policy is also correctly pointing to the correct entities.
 
-1. In the target cluster, go to **Fleet → Agent policies**.
+1. In the target cluster, go to **Fleet** → **Agent policies**.
 2. Select a policy to verify.
 3. Open the **Settings** tab.
 4. Ensure that **Fleet Server**, **Output for integrations**, and **Output for agent monitoring** are all set to the newly created entities.

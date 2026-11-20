@@ -164,8 +164,8 @@ Refer to [Limitations of {{edot}}](opentelemetry://reference/compatibility/limit
 
 After completing your quickstart, confirm that data is flowing:
 
-1. Open {{kib}} and go to **{{product.observability}} → Applications → Service inventory** (or use the global search to find **Service inventory**) to confirm your application traces appear.
-2. Go to **{{product.observability}} → Infrastructure** (or search for **Infrastructure**) to confirm host and container metrics are visible.
+1. Open {{kib}} and go to **{{product.observability}}** → **Applications** → **Service inventory** (or use the global search to find **Service inventory**) to confirm your application traces appear.
+2. Go to **{{product.observability}}** → **Infrastructure** (or search for **Infrastructure**) to confirm host and container metrics are visible.
 3. Go to **Discover** and filter by your service name to confirm log data is flowing.
 
 If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md).

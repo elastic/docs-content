@@ -2,7 +2,7 @@ To create an {{apm-agent}} key:
 
 1. In {{kib}}, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select any **Applications** page. 
-3. Go to **Settings** > **Agent keys**.
+3. Go to **Settings** → **Agent keys**.
 4. Select **Create {{apm-agent}} key**.
 5. Enter a name for your API key.
 6. Assign at least one privilege:

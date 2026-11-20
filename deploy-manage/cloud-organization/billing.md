@@ -37,15 +37,25 @@ Depending on your organization's needs, you can use one of several billing model
 
 ## Manage your subscription and billing in {{ecloud}}
 
-You can explore and manage billing, as well as your {{ecloud}} subscription, from the **Billing** section of the {{ecloud}} Console.
+You can explore and manage billing, as well as your {{ecloud}} subscription, from the **Billing** section of the {{ecloud}} Console. 
+
+:::{note}
+If you subscribe to {{ecloud}} [through a marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md), you manage some billing tasks in your marketplace account instead.
+:::
 
 * [Add your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md)
 * [View your billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md)
+* [Update the contacts that receive billing emails](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md)
 * [Manage your notifications](/deploy-manage/cloud-organization/billing/manage-billing-notifications.md)
 * [Manage your subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md)
 * [Monitor and analyze your account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md)
 
-You might also want to [update the contacts that receive billing emails](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md)
+To update your billing details, use the instructions for your subscription channel:
+
+* If you pay by credit card, [update your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md) in the **Billing** section of the {{ecloud}} Console.
+* If you subscribe through a marketplace, refer to the instructions for your marketplace:
+  * [Change the Billing Account used on Google Cloud Marketplace](/deploy-manage/deploy/elastic-cloud/google-cloud-platform-marketplace.md#ec-billing-gcp-account-change)
+  * [Change the AWS Account used on AWS Marketplace](/deploy-manage/deploy/elastic-cloud/aws-marketplace.md#ec-billing-aws-account-change)
 
 For any other questions that you have about billing, refer to our [billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq.md).
 

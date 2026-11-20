@@ -57,7 +57,7 @@ You can install only a single {{agent}} per host.
 To install an {{agent}} and enroll it in {{fleet}}:
 
 1. Find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Agents** tab.
-2. Click **Add → Agent**.
+2. Click **Add** → **Agent**.
 3. In the **Add agent** flyout, select an existing agent policy or create a new one. If you create a new policy, {{fleet}} generates a new [{{fleet}} enrollment token](/reference/fleet/fleet-enrollment-tokens.md).
 
     ::::{note}

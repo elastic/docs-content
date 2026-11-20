@@ -42,7 +42,7 @@ From the list view, you can:
 :screenshot:
 :::
 
-To create a pipeline, click **Create pipeline > New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
+To create a pipeline, click **Create pipeline** → **New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
 
 ::::{tip}
 The **New pipeline from CSV** option lets you use a CSV to create an ingest pipeline that maps custom data to the [Elastic Common Schema (ECS)](ecs://reference/index.md). Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other datasets. To get started, check [Map custom data to ECS](ecs://reference/ecs-converting.md).
@@ -298,7 +298,7 @@ $$$pipeline-custom-logs-index-template$$$
     }
     ```
 
-3. When adding or editing your **Custom logs** integration in {{fleet}}, click **Configure integration > Custom log file > Advanced options**.
+3. When adding or editing your **Custom logs** integration in {{fleet}}, click **Configure integration** → **Custom log file** → **Advanced options**.
 4. In **Dataset name**, specify your dataset’s name. {{fleet}} will add new data for the integration to the resulting `logs-<dataset-name>-default` data stream.
 
     For example, if your dataset’s name was `my_app`, {{fleet}} adds new data to the `logs-my_app-default` data stream.
@@ -330,7 +330,7 @@ $$$pipeline-custom-logs-configuration$$$
     }
     ```
 
-2. When adding or editing your **Custom logs** integration in {{fleet}}, click **Configure integration > Custom log file > Advanced options**.
+2. When adding or editing your **Custom logs** integration in {{fleet}}, click **Configure integration** → **Custom log file** → **Advanced options**.
 3. In **Dataset name**, specify your dataset’s name. {{fleet}} will add new data for the integration to the resulting `logs-<dataset-name>-default` data stream.
 
     For example, if your dataset’s name was `my_app`, {{fleet}} adds new data to the `logs-my_app-default` data stream.
