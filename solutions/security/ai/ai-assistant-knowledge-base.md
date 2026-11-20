@@ -166,15 +166,15 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 :::
 
 
-### Add knowledge to an index using a content connector or web crawler [knowledge-base-crawler-or-connector]
+### Add knowledge to an index using a connector or web crawler [knowledge-base-crawler-or-connector]
 
 You can use an {{es}} connector or web crawler to create an index that contains data you want to add to Knowledge Base.
 
-#### Use a content connector to ingest data from third-party applications to Knowledge Base
+#### Use a connector to ingest data from third-party applications to Knowledge Base [use-a-content-connector-to-ingest-data-from-third-party-applications-to-knowledge-base]
 
-You can ingest data from third-party platforms such as Github, Jira, Teams, Google Drive, Slack, email, and [more](elasticsearch://reference/search-connectors/index.md) using [content connectors](/solutions/security/get-started/content-connectors.md). 
+You can ingest data from third-party platforms such as GitHub, Jira, Teams, Google Drive, Slack, email, and [more](elasticsearch://reference/search-connectors/index.md) using [connectors](/solutions/security/get-started/content-connectors.md). 
 
-Once you've set up a content connector, data from the selected source is ingested to an {{es}} index. To add it to Knowledge Base, follow the steps to [add an index](#knowledge-base-add-knowledge-index). 
+Once you've set up a connector, data from the selected source is ingested to an {{es}} index. To add it to Knowledge Base, follow the steps to [add an index](#knowledge-base-add-knowledge-index). 
 
 
 #### Use a web crawler to add threat intelligence to Knowledge Base [_use_a_web_crawler_to_add_threat_intelligence_to_knowledge_base]
