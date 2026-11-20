@@ -45,7 +45,7 @@ An expression combines numbers, variables, operators, and function calls, such a
 
 Each operator gives the same result as the function with the same meaning, including for arrays and when an error occurs. `+` matches [`add`](#_add_args), `-` matches [`subtract`](#_subtract_a_b), `*` matches [`multiply`](#_multiply_a_b), `/` matches [`divide`](#_divide_a_b), `<` matches [`lt`](#_lt_a_b), `<=` matches [`lte`](#_lte_a_b), `>` matches [`gt`](#_gt_a_b), `>=` matches [`gte`](#_gte_a_b), and `==` matches [`eq`](#_eq_a_b).
 
-You can't write `null`, `true`, or `false`. TinyMath reads those words as variable names. To replace null values in your data, use [`defaults`](#_defaults_a_b).
+You can't write `null`, `true`, or `false`. TinyMath reads those words as variable names.
 
 ## Functions by task
 
@@ -59,7 +59,7 @@ You can't write `null`, `true`, or `false`. TinyMath reads those words as variab
 | Comparisons and conditions | [`eq`](#_eq_a_b), [`gt`](#_gt_a_b), [`gte`](#_gte_a_b), [`lt`](#_lt_a_b), [`lte`](#_lte_a_b), [`ifelse`](#_ifelse_cond_a_b), [`defaults`](#_defaults_a_b) |
 
 
-## abs( a ) [_abs_a] 
+## abs( a ) [_abs_a]
 
 Calculates the absolute value of a number. For arrays, the function applies to each element.
 
@@ -78,7 +78,7 @@ abs([-1, -2, 3, -4]) // returns [1, 2, 3, 4]
 ```
 
 
-## add( …args ) [_add_args] 
+## add( …args ) [_add_args]
 
 Calculates the sum of one or more numbers or arrays. If you pass several arguments and at least one is an array, the function calculates the sum by index.
 
@@ -100,7 +100,7 @@ add([1, 2, 3]) // returns 6
 ```
 
 
-## cbrt( a ) [_cbrt_a] 
+## cbrt( a ) [_cbrt_a]
 
 Calculates the cube root of a number. For arrays, the function applies to each element.
 
@@ -119,7 +119,7 @@ cbrt([27, 64, 125]) // returns [3, 4, 5]
 ```
 
 
-## ceil( a ) [_ceil_a] 
+## ceil( a ) [_ceil_a]
 
 Calculates the ceiling of a number, that is, rounds a number toward positive infinity. For arrays, the function applies to each element.
 
@@ -185,7 +185,7 @@ cos([0, 1.5707963267948966]) // returns [1, 6.123233995736766e-17]
 ```
 
 
-## count( a ) [_count_a] 
+## count( a ) [_count_a]
 
 Returns the length of an array. Alias for [`size`](#_size_a).
 
@@ -205,7 +205,7 @@ count([-1, -2, -3, -4]) // returns 4
 ```
 
 
-## cube( a ) [_cube_a] 
+## cube( a ) [_cube_a]
 
 Calculates the cube of a number. For arrays, the function applies to each element.
 
@@ -262,7 +262,7 @@ degtorad([0, 90, 180, 360]) // returns [0, 1.5707963267948966, 3.141592653589793
 ```
 
 
-## divide( a, b ) [_divide_a_b] 
+## divide( a, b ) [_divide_a_b]
 
 Divides two numbers. If either argument is an array, the function applies to each element.
 
@@ -315,7 +315,7 @@ eq([1, 2], [1, 2]) // returns true
 ```
 
 
-## exp( a ) [_exp_a] 
+## exp( a ) [_exp_a]
 
 Calculates *e^x* where *e* is Euler's number. For arrays, the function applies to each element.
 
@@ -333,7 +333,7 @@ exp([1, 2, 3]) // returns [e^1, e^2, e^3] = [2.718281828459045, 7.38905609893065
 ```
 
 
-## first( a ) [_first_a] 
+## first( a ) [_first_a]
 
 Returns the first element of an array. If `a` isn't an array, the function returns `a`.
 
@@ -351,7 +351,7 @@ first([1, 2, 3]) // returns 1
 ```
 
 
-## fix( a ) [_fix_a] 
+## fix( a ) [_fix_a]
 
 Calculates the fix of a number, that is, rounds a number toward 0. For arrays, the function applies to each element.
 
@@ -370,7 +370,7 @@ fix([1.8, 2.9, -3.7, -4.6]) // returns [1, 2, -3, -4]
 ```
 
 
-## floor( a ) [_floor_a] 
+## floor( a ) [_floor_a]
 
 Calculates the floor of a number, that is, rounds a number toward negative infinity. For arrays, the function applies to each element.
 
@@ -429,8 +429,8 @@ Checks whether one value is greater than or equal to another. You can also write
 
 The result for arrays depends on the version:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If `a` or `b` is an array, returns `true` only if every element satisfies the comparison.
-- {applies_to}`stack: ga 9.0-9.4` If `a` is an array, returns `true` only if every element is equal to the other value, or every element is greater.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If `a` or `b` is an array, returns `true` only if every element satisfies the comparison.
+* {applies_to}`stack: ga 9.0-9.4` If `a` is an array, returns `true` only if every element is equal to the other value, or every element is greater.
 
 **Throws**:
 
@@ -470,7 +470,11 @@ Returns one of two values, depending on a condition.
 | a | any &#124; Array.<any> | the value to return if `cond` is true |
 | b | any &#124; Array.<any> | the value to return if `cond` is false |
 
-**Returns**: `any` | `Array.<any>`. `a` if `cond` is true, otherwise `b`. TinyMath evaluates both `a` and `b` first, so an error in either one stops the expression. For example, `ifelse(5 < 6, 1, 1 / 0)` throws `'Cannot divide by 0'`. Comparing arrays gives one boolean. `ifelse` therefore picks one value for the whole array, not one per element.
+**Returns**: `any` | `Array.<any>`. `a` if `cond` is true, otherwise `b`.
+
+TinyMath evaluates both `a` and `b` first, so an error in either one stops the expression. For example, `ifelse(5 < 6, 1, 1 / 0)` throws `'Cannot divide by 0'`.
+
+Comparing arrays gives one boolean. `ifelse` therefore picks one value for the whole array, not one per element.
 
 **Throws**:
 
@@ -488,7 +492,7 @@ ifelse(gt([0, 3], 1), 10, 20) // returns 20
 ```
 
 
-## last( a ) [_last_a] 
+## last( a ) [_last_a]
 
 Returns the last element of an array. If `a` isn't an array, the function returns `a`.
 
@@ -596,8 +600,8 @@ Checks whether one value is less than or equal to another. You can also write th
 
 The result for arrays depends on the version:
 
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If `a` or `b` is an array, returns `true` only if every element satisfies the comparison.
-- {applies_to}`stack: ga 9.0-9.4` If `a` is an array, returns `true` only if every element is equal to the other value, or every element is less.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If `a` or `b` is an array, returns `true` only if every element satisfies the comparison.
+* {applies_to}`stack: ga 9.0-9.4` If `a` is an array, returns `true` only if every element is equal to the other value, or every element is less.
 
 **Throws**:
 
@@ -627,7 +631,7 @@ lte(1, [1, 2]) // returns false
 ```
 
 
-## max( …args ) [_max_args] 
+## max( …args ) [_max_args]
 
 Finds the maximum value of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the maximum by index.
 
@@ -649,7 +653,7 @@ max([3, 1, 4]) // returns 4
 ```
 
 
-## mean( …args ) [_mean_args] 
+## mean( …args ) [_mean_args]
 
 Finds the mean value of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the mean by index.
 
@@ -671,7 +675,7 @@ mean([1, 2, 6]) // returns 3
 ```
 
 
-## median( …args ) [_median_args] 
+## median( …args ) [_median_args]
 
 Finds the median value(s) of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the median by index.
 
@@ -694,7 +698,7 @@ median([3, 1, 4, 1, 5]) // returns 3
 ```
 
 
-## min( …args ) [_min_args] 
+## min( …args ) [_min_args]
 
 Finds the minimum value of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the minimum by index.
 
@@ -716,7 +720,7 @@ min([3, 1, 4]) // returns 1
 ```
 
 
-## mod( a, b ) [_mod_a_b] 
+## mod( a, b ) [_mod_a_b]
 
 Remainder after dividing two numbers. If either argument is an array, the function applies to each element.
 
@@ -742,7 +746,7 @@ mod([14, 42, 65, 108], [5, 4, 14, 2]) // returns [4, 2, 9, 0]
 ```
 
 
-## mode( …args ) [_mode_args] 
+## mode( …args ) [_mode_args]
 
 Finds the mode value(s) of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the mode by index.
 
@@ -765,7 +769,7 @@ mode([1, 1, 2]) // returns [1]
 ```
 
 
-## multiply( a, b ) [_multiply_a_b] 
+## multiply( a, b ) [_multiply_a_b]
 
 Multiplies two numbers. If either argument is an array, the function applies to each element.
 
@@ -801,14 +805,14 @@ pi() // returns 3.141592653589793
 ```
 
 
-## pow( a, b ) [_pow_a_b] 
+## pow( a, b ) [_pow_a_b]
 
 Raises a number to a given exponent. For arrays, the function applies to each element.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers |
-| b | number | the power that `a` is raised to |
+| b | number | the exponent |
 
 **Returns**: `number` | `Array.<number>`. `a` raised to the power of `b`. Returns an array with each element raised to the power of `b` if `a` is an array.
 
@@ -863,7 +867,7 @@ random(-10, 10) // returns a random number between -10 (inclusive) and 10 (exclu
 ```
 
 
-## range( …args ) [_range_args] 
+## range( …args ) [_range_args]
 
 Finds the range of one or more numbers or arrays of numbers. If you pass several arguments and at least one is an array, the function finds the range by index.
 
@@ -885,7 +889,7 @@ range([1, 9, 4]) // returns 8
 ```
 
 
-## round( a, b ) [_round_a_b] 
+## round( a, b ) [_round_a_b]
 
 Rounds a number to the nearest integer by default, or to a number of decimal places if you pass `b`. For arrays, the function applies to each element.
 
@@ -926,7 +930,7 @@ sin([0, 1.5707963267948966]) // returns [0, 1]
 ```
 
 
-## size( a ) [_size_a] 
+## size( a ) [_size_a]
 
 Returns the length of an array. Alias for [`count`](#_count_a).
 
@@ -946,7 +950,7 @@ size([-1, -2, -3, -4]) // returns 4
 ```
 
 
-## sqrt( a ) [_sqrt_a] 
+## sqrt( a ) [_sqrt_a]
 
 Calculates the square root of a number. For arrays, the function applies to each element.
 
@@ -967,7 +971,7 @@ sqrt([9, 16, 25]) // returns [3, 4, 5]
 ```
 
 
-## square( a ) [_square_a] 
+## square( a ) [_square_a]
 
 Calculates the square of a number. For arrays, the function applies to each element.
 
@@ -985,7 +989,7 @@ square([3, 4, 5]) // returns [9, 16, 25]
 ```
 
 
-## subtract( a, b ) [_subtract_a_b] 
+## subtract( a, b ) [_subtract_a_b]
 
 Subtracts two numbers. If either argument is an array, the function applies to each element.
 
