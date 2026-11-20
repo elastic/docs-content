@@ -863,7 +863,6 @@ toc:
               - file: security/dashboards/detection-response-dashboard.md
               - file: security/dashboards/cloud-security-posture-dashboard.md
               - file: security/dashboards/kubernetes-dashboard.md
-              - file: security/dashboards/entity-analytics-dashboard.md
               - file: security/dashboards/data-quality-dashboard.md
               - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
               - file: security/dashboards/detection-rule-monitoring-dashboard.md

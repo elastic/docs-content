@@ -65,7 +65,7 @@ You can also manage watchlists conversationally with {{agent-builder}} using the
 
 ## Filter entities by watchlist [watchlists-filter]
 
-On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can filter the **Entities** section by watchlist membership to focus on the entities most relevant to your investigation.
+On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can filter the entity table by watchlist membership to focus on the entities most relevant to your investigation.
 
 ## Known limitations [watchlists-limitations]
 

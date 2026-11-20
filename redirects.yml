@@ -1238,6 +1238,12 @@ redirects:
   'solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md': 'solutions/security/advanced-entity-analytics/entity-analytics-requirements.md'
   'solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md': 'solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md'
 
+# Related to https://github.com/elastic/docs-content/issues/9074
+  'solutions/security/dashboards/entity-analytics-dashboard.md':
+    to: 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
+    anchors:
+      'entity-entities': 'entity-entities-9-1'
+
 # Related to https://github.com/elastic/docs-content/pull/5222
   'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'
 
