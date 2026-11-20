@@ -141,16 +141,23 @@ These agents can be the space default:
 - **Public** and **Shared** custom agents.
 - Built-in agents, such as the Elastic AI Agent.
 
-% TODO: After #9180 (hidden agents) merges, add a note that hidden agents can't be the space default. The **Set as space default** action isn't available for them.
+[Hidden agents](#hidden-agents) can't be the space default. The **Set as space default** action isn't available for them.
 
 A **Private** agent can't be the space default. If you try, {{kib}} shows an error. To use one, first change its [access control level](custom-agents.md#access-control-settings) to **Public** or **Shared**.
 
 #### What users see
 
-| Users | Experience |
-| --- | --- |
-| Without the privilege to create and edit agents | {{agent-builder}} opens with the space default agent selected. The agent selector lists only that agent, and links to other agents open the space default agent instead. In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode) {applies_to}`serverless: preview`, the chat also uses the space default agent. |
-| With the privilege to create and edit agents | They can still use all the agents they have access to. {{agent-builder}} opens on the agent they last used in that browser and space. If they haven't used an agent yet, or their last agent is no longer available, it opens on the space default agent. In sidebar mode, the chat opens on the Elastic AI Agent unless the page that opens it specifies another agent. |
+Users without the privilege to create and edit agents:
+
+- {{agent-builder}} opens with the space default agent selected.
+- The agent selector lists only that agent, and links to other agents open the space default agent instead.
+- In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode) {applies_to}`serverless: preview`, the chat also uses the space default agent.
+
+Users with the privilege to create and edit agents:
+
+- They can still use all the agents they have access to.
+- {{agent-builder}} opens on the agent they last used in that browser and space. If they haven't used an agent yet, or their last agent is no longer available, it opens on the space default agent.
+- In sidebar mode, the chat opens on the Elastic AI Agent unless the page that opens it specifies another agent.
 
 For users without the privilege, the agent selector lists only the space default agent, and **New agent** and **Manage agents** are disabled:
 
