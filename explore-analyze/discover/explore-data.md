@@ -21,6 +21,7 @@ After a query returns results, you can use **Discover** to find out what your fi
 * [Detect change points](detect-change-points.md) in a time series ({{esql}} mode only).
 * [Analyze your data with AI](analyze-discover-data-with-ai.md) ({{esql}} mode only).
 * Find patterns in your log data with [pattern analysis](run-pattern-analysis-discover.md) (classic mode only).
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Check how common one message is by finding the messages similar to it, in [classic mode](run-pattern-analysis-discover.md#find-similar-values-classic) or in [{{esql}} mode](esql-results.md#find-similar-values-esql).
 * Check [how the values of each field are distributed](show-field-statistics.md) (classic mode only).
 * [Chart a field](visualize-field.md) from the fields list in the sidebar (classic mode only).
 

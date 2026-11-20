@@ -68,7 +68,7 @@ You can prevent {{fleet}} from downloading the PGP/GPG key from `server.pgp.upst
 
 To set a custom URL for {{fleet-server}} to access a PGP/GPG key and make it available to {{agents}}:
 
-1. In {{kib}}, go to **Management > {{fleet}} > Agent policies**.
+1. In {{kib}}, go to **Management** → **{{fleet}}** → **Agent policies**.
 2. Select a policy for the agents that you want to upgrade.
 3. On the policy page, in the **Actions** menu for the {{fleet-server}} integration, select **Edit integration**.
 4. In the {{fleet-server}} settings section expand **Change defaults** and **Advanced options**.
@@ -384,7 +384,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 2. Add the agent binary download location to {{fleet}} settings:
 
-    1. Open **{{fleet}} → Settings**.
+    1. Open **{{fleet}}** → **Settings**.
     2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more details, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agents}} to download binaries from this location, set it as the default.
 
         :::{note}
@@ -395,7 +395,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 3. If your artifact registry is not the default, edit your agent policies to override the default:
 
-    1. Go to **{{fleet}} → Agent policies** and click the policy name to edit it.
+    1. Go to **{{fleet}}** → **Agent policies** and click the policy name to edit it.
     2. Click **Settings**.
     3. Under **Agent Binary Download**, select your artifact registry.
 

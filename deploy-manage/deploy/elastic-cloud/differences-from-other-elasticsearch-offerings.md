@@ -76,7 +76,7 @@ These capabilities cover identity and access, security and networking, infrastru
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic <br><br> [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) is also available | Elastic automatically monitors Serverless projects, but you can additionally use AutoOps to [monitor usage patterns and resource consumption](/deploy-manage/monitor/autoops/autoops-for-serverless.md#how-autoops-monitors-your-serverless-short-project).|
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
-| **High availability** | ✅ | ✅ | Automatic resilience |
+| **High availability** | ✅ | ✅ | Automatic resilience. [Learn more](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md) |
 | **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | {{serverless-short}} does not support {{es}} authentication realms. User authentication is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
 | **Network security** | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>✅ [Published static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>❌ Published static IPs | Private connectivity for Serverless projects is currently supported in AWS and Azure regions only.<br><br>For Observability projects, requires [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md).<br><br>For Security projects, requires [Security Analytics Complete](/solutions/security/security-serverless-feature-tiers.md).<br><br>{{serverless-short}} does not offer public static IP lists. Use private connectivity where supported. |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
@@ -109,7 +109,7 @@ These capabilities cover how data is ingested, stored, replicated, queried, and 
 | [**Synonyms**](/solutions/search/full-text/search-with-synonyms.md) | - Index time synonyms <br>- File-based synonyms <br>- Synonyms API | [Synonyms API]({{es-serverless-apis}}group/endpoint-synonyms) only (does not support index-time or file-based synonyms) | |
 | **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler). |
 
-^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures data durability by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
+^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures [data durability](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md#resilience-serverless-data-durability) by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
 
 #### Alerting, reporting, and AI [alerting-and-ai]
 
@@ -120,7 +120,7 @@ These capabilities cover alerting, notifications, reporting, and AI-assisted exp
 | [**Agent Builder**](/explore-analyze/ai-features/elastic-agent-builder.md) | ✅ | ✅ | The AI Agent chat experience that Agent Builder powers is the default in all project types. |
 | **Email service** | ✅ | ✅ | Preconfigured email connector available - [Learn more about limits and usage](/deploy-manage/deploy/elastic-cloud/tools-apis.md#elastic-cloud-email-service) |
 | [**Kibana Alerts**](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md) | ✅ | ✅ | |
-| **[Reporting](/explore-analyze/report-and-share.md)** | ✅ All report types and file formats | ✅ Discover CSV, Lens CSV, Discover session JSON (preview), Dashboard JSON<br><br>❌ Dashboard and visualization PDF and PNG | |
+| **[Reporting](/explore-analyze/report-and-share.md)** | ✅ All report types and file formats | ✅ Discover CSV, Lens CSV, Discover session JSON, Dashboard JSON<br><br>❌ Dashboard and visualization PDF and PNG | |
 | [**Watcher**](/explore-analyze/alerting/watcher.md) | ✅ | ❌ | Use **Kibana Alerts** instead, which provides rich integrations across use cases |
 
 ### {{es}} [elasticsearch]
@@ -310,6 +310,7 @@ When attempting to use an unavailable index setting, you'll receive this error:
 - [Elasticsearch Serverless API reference]({{es-serverless-apis}}): Check out the complete list of available APIs in {{serverless-full}}.
 - [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}.
 - [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project.
+- [Resilience in Serverless](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md): Learn how {{serverless-full}} handles data durability, availability, and data recovery.
 - [{{ecloud}} pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects
   - [Serverless project billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md): Understand billing dimensions for Serverless projects.
   - [{{ech}} billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for {{ech}} deployments.

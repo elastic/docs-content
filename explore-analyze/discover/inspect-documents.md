@@ -6,7 +6,7 @@ applies_to:
 products:
   - id: kibana
 type: how-to
-description: Find a value in your results, read every field of a document in the document flyout, and check the request behind your results in Discover.
+description: Find a value in your results, read every field of a document, check the request behind your results, and see what a dash or (null) in a cell means in Discover.
 ---
 
 # Inspect documents and requests in Discover
@@ -81,7 +81,13 @@ To use them, open **Discover** in classic mode and run a search that returns res
 :::{include} ../_snippets/inspect-request.md
 :::
 
+## What a dash or `(null)` in your results means [missing-values-in-results]
+
+:::{include} ../_snippets/missing-value-placeholders.md
+:::
+
 ## Next steps
 
 - To compare several results side by side, refer to [Compare documents in Discover](compare-documents.md).
 - To copy a link to a document, refer to [Copy results and share links to documents in Discover](copy-and-share-documents.md).
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To see how common a log message is, refer to [classic mode](run-pattern-analysis-discover.md#find-similar-values-classic) or [{{esql}} mode](esql-results.md#find-similar-values-esql).
