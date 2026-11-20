@@ -123,13 +123,6 @@ The layout and size of PDF and PNG reports depend on what you are sharing. For s
 
 To change the output size, resize the browser before generating the report. The browser resizes the shareable container, which then determines the report dimensions. It might take some trial and error before you're satisfied.
 
-In the following dashboard, the shareable container is highlighted:
-
-:::{image} /explore-analyze/images/kibana-shareable-container.png
-:alt: Shareable Container
-:screenshot:
-:::
-
 ### CSV report limitations [csv-limitations]
 
 We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. The following conditions increase the risk of timeouts or incomplete data:
