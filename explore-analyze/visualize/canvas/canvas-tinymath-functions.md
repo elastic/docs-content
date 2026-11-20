@@ -14,21 +14,6 @@ products:
 
 Use TinyMath functions to do math in the [Canvas expression language](canvas-function-reference.md), from rounding and averages to trigonometry and comparisons. The [`EvalMath` lambda](../../alerting/alerts/rule-action-variables.md#_evalmath) in alert action templates accepts the same functions.
 
-Most of the functions accept arrays and apply JavaScript Math methods to each element of that array. For the functions that accept multiple arrays as parameters, the function generally does the calculation index by index.
-
-An expression can't contain an array directly. Arrays come from the data that the expression runs on, such as the columns of a datatable. The examples with arrays show what each function returns for those values.
-
-If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column.
-
-If a value isn't a number, such as null, most functions return `NaN`. The exceptions, which don't check that values are numbers, are `count`, `defaults`, `first`, `ifelse`, `last`, `size`, and `unique`. To replace null values before you calculate, use [`defaults`](#_defaults_a_b). For example, if `prices` is `[1, null]`, `abs(prices)` returns `NaN`, while `abs(defaults(prices, 0))` returns `[1, 0]`.
-
-You can wrap any function in another function as long as the return type of the inner function matches the parameter type of the outer function.
-
-:::{note}
-:applies_to: {"serverless": "ga", "stack": "ga 9.4+"}
-A TinyMath expression can contain up to 20 levels of nested parentheses. The expression can be up to 8,192 characters, not counting quoted text, such as a quoted column name or a Kibana Query Language (KQL) or Lucene filter. TinyMath rejects expressions that exceed these limits before it parses them. Typical expressions stay well within these limits.
-:::
-
 ## Expression syntax
 
 An expression combines numbers, variables, operators, and function calls, such as `round(price * 1.2, 2)`. A variable is a value from the data that the expression runs on, such as a datatable column in Canvas or a field in an alert action template.
@@ -46,6 +31,23 @@ An expression combines numbers, variables, operators, and function calls, such a
 Each operator gives the same result as the function with the same meaning, including for arrays and when an error occurs. `+` matches [`add`](#_add_args), `-` matches [`subtract`](#_subtract_a_b), `*` matches [`multiply`](#_multiply_a_b), `/` matches [`divide`](#_divide_a_b), `<` matches [`lt`](#_lt_a_b), `<=` matches [`lte`](#_lte_a_b), `>` matches [`gt`](#_gt_a_b), `>=` matches [`gte`](#_gte_a_b), and `==` matches [`eq`](#_eq_a_b).
 
 You can't write `null`, `true`, or `false`. TinyMath reads those words as variable names.
+
+An expression can't contain an array directly. Arrays come from the data that the expression runs on, such as the columns of a datatable.
+
+You can wrap any function in another function as long as the return type of the inner function matches the parameter type of the outer function.
+
+:::{note}
+:applies_to: {"serverless": "ga", "stack": "ga 9.4+"}
+A TinyMath expression can contain up to 20 levels of nested parentheses. The expression can be up to 8,192 characters, not counting quoted text, such as a quoted column name or a Kibana Query Language (KQL) or Lucene filter. TinyMath rejects expressions that exceed these limits before it parses them. Typical expressions stay well within these limits.
+:::
+
+## How functions treat arrays and non-numbers
+
+Most of the functions accept arrays and apply JavaScript Math methods to each element of that array. For the functions that accept multiple arrays as parameters, the function generally does the calculation index by index. The examples with arrays show what each function returns for the values in a datatable column.
+
+If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column.
+
+If a value isn't a number, such as null, most functions return `NaN`. The exceptions, which don't check that values are numbers, are `count`, `defaults`, `first`, `ifelse`, `last`, `size`, and `unique`. To replace null values before you calculate, use [`defaults`](#_defaults_a_b). For example, if `prices` is `[1, null]`, `abs(prices)` returns `NaN`, while `abs(defaults(prices, 0))` returns `[1, 0]`.
 
 ## Functions by task
 
