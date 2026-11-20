@@ -32,3 +32,14 @@ To detect a combination of building block alerts, create a rule that searches th
 :::
 
 In the rule's query, match the building block alerts you want to combine, for example by their `kibana.alert.rule.name` value. For more ways to query alerts, refer to [Query alert indices](/solutions/security/detect-and-alert/query-alert-indices.md).
+
+## View building block alerts [security-building-block-rules-view-building-block-alerts-in-the-ui]
+
+To show building block alerts in the Alerts table, select **Additional filters** → **Include building block alerts**. The table hides them by default.
+
+Including building block alerts helps when the visible alerts don't give you enough context, for example:
+
+* A host or user has a high [entity risk score](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md) but no visible alerts. Building block alerts count toward risk scores.
+* An alert comes from a rule that searches the alerts index, and you want to review the low-risk activity that led to it.
+* You're investigating a host or user and want to check for low-risk activity on it.
+* You need the details of each event in an EQL sequence. To learn how to review them, refer to [Review each event in the sequence](/solutions/security/detect-and-alert/triage-eql-alerts.md#eql-sequence-events).

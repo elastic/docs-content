@@ -115,6 +115,9 @@ When a user without the [appropriate privileges](/solutions/security/detect-and-
 **API key**
 :   A credential that rules use to execute queries and write alerts. The key type and ownership model depends on your deployment. Refer to [Elasticsearch API keys](/deploy-manage/api-keys/elasticsearch-api-keys.md) and [{{ecloud}} API keys](/deploy-manage/api-keys/elastic-cloud-api-keys.md) for details.
 
+**Building block alerts**
+:   Alerts that other detections build on. The Alerts table hides them by default. For example, a rule can alert when several of them appear on the same host, and [Event correlation (EQL) rules](/solutions/security/detect-and-alert/eql.md) create one for each event in a sequence. To learn how to use them to detect combinations of activity, refer to [Correlate alerts in detection rules](/solutions/security/detect-and-alert/query-alert-indices.md#rules-that-search-alerts).
+
 **Connectors**
 :   Integrations that connect actions to external services like Slack, {{jira}}, or PagerDuty.
 

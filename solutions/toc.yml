@@ -823,6 +823,7 @@ toc:
             children:
               - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
               - file: security/detect-and-alert/cross-project-search-detection-rules.md
+              - file: security/detect-and-alert/query-alert-indices.md
               - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/manage-detection-rules.md
             children:
@@ -845,8 +846,7 @@ toc:
             children:
               - file: security/detect-and-alert/visualize-detection-alerts.md
               - file: security/detect-and-alert/view-detection-alert-details.md
-              - file: security/detect-and-alert/interpret-eql-sequence-alerts.md
-              - file: security/detect-and-alert/query-alert-indices.md
+          - file: security/detect-and-alert/triage-eql-alerts.md
           - file: security/endpoint-response-actions.md
             children:
               - file: security/endpoint-response-actions/automated-response-actions.md

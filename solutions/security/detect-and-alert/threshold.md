@@ -19,14 +19,14 @@ Threshold rules search your {{es}} indices and generate an alert when the number
 
 Threshold rules are the right fit when:
 
-* You want to detect **volume-based anomalies**, such as a brute-force attack (many failed logins from a single source IP) or a data exfiltration attempt (an unusually high number of outbound connections).
-* The signal is not a single event but a **count crossing a boundary** within a time window.
+* You want to detect volume-based anomalies, such as a brute-force attack (many failed logins from a single source IP) or a data exfiltration attempt (an unusually high number of outbound connections).
+* The signal is not a single event but a count crossing a boundary within a time window.
 * You need to group counts by fields like `source.ip`, `user.name`, or `destination.ip` and alert on each group independently.
 
-Threshold rules are **not** the best fit when:
+Threshold rules aren't the best fit when:
 
 * A single matching event is sufficient. Use a [custom query rule](/solutions/security/detect-and-alert/custom-query.md) instead.
-* You need to detect a specific **order** of events. Use an [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
+* You need to detect a specific order of events. Use an [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
 * You need full aggregation pipelines with transformations. Use an [{{esql}} rule](/solutions/security/detect-and-alert/esql.md) instead.
 
 ### Data requirements

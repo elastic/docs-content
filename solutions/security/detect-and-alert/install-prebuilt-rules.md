@@ -56,13 +56,13 @@ Reading rule logic backwards to understand which fields the rule queries is one 
 :::
 :::::::
 
-:::::::{step} Exclude building block rules
-Building block rules (BBRs) feed signals into higher-order correlation rules. They are not meant to appear in your alert queue for triage. Enabling them early is the most common cause of alert floods for new deployments.
+:::::::{step} Exclude rules that create building block alerts
+Some prebuilt rules create [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md), which feed signals into higher-order correlation rules. They are not meant to appear in your alert queue for triage. Enabling these rules early is the most common cause of alert floods for new deployments.
 
 In the Rules table, look for rules tagged as `Rule Type: BBR` and exclude them from your first wave. Focus on standard query, threshold, and EQL rules that produce direct alerts.
 
 :::{tip}
-BBRs still have value. They elevate risk scores and feed correlation rules. Return to them once your baseline detection is stable.
+Rules tagged `Rule Type: BBR` still have value. Their alerts elevate risk scores and feed correlation rules. Return to these rules once your baseline detection is stable.
 :::
 :::::::
 
@@ -108,8 +108,8 @@ Disable a rule only as a last resort. When it has zero applicability to your env
 Once your Critical and High rules are tuned and your triage workflow is stable, add Medium severity rules one tactic at a time using the same data source and tactic filter approach from the steps above.
 :::::
 
-:::::{dropdown} Enable building block rules
-BBRs elevate entity risk scores and feed into correlation rules you build to detect multi-stage attack patterns that no single rule would catch. Enable them once you understand what signals matter in your environment.
+:::::{dropdown} Enable rules that create building block alerts
+Rules tagged `Rule Type: BBR` create building block alerts. These alerts elevate entity risk scores and feed into [correlation rules you build](/solutions/security/detect-and-alert/query-alert-indices.md#rules-that-search-alerts) to detect multi-stage attack patterns that no single rule would catch. Enable these rules once you understand what signals matter in your environment.
 :::::
 
 :::::{dropdown} Use hunting queries for noisy behaviors

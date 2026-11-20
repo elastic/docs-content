@@ -17,13 +17,13 @@ New terms rules detect the first appearance of a field value (or combination of 
 
 New terms rules are the right fit when:
 
-* You want to detect **first-seen activity**, such as a user logging in from a new country, a process executing for the first time on a host, or a new domain appearing in DNS logs.
-* The threat signal is **novelty**, not a specific pattern or count.
-* You want to combine up to three fields to detect **novel combinations**, such as a `host.ip` and `user.name` pair that has never been observed together before.
+* You want to detect first-seen activity, such as a user logging in from a new country, a process executing for the first time on a host, or a new domain appearing in DNS logs.
+* The threat signal is novelty, not a specific pattern or count.
+* You want to combine up to three fields to detect novel combinations, such as a `host.ip` and `user.name` pair that has never been observed together before.
 
-New terms rules are **not** the best fit when:
+New terms rules aren't the best fit when:
 
-* You are looking for a known bad value. Use a [indicator match rule](/solutions/security/detect-and-alert/indicator-match.md) instead.
+* You are looking for a known bad value. Use an [indicator match rule](/solutions/security/detect-and-alert/indicator-match.md) instead.
 * You need to detect spikes in volume. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.
 * You want statistical {{anomaly-detect}} without defining explicit fields. Use a [{{ml}} rule](/solutions/security/detect-and-alert/machine-learning.md) instead.
 

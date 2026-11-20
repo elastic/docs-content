@@ -19,11 +19,11 @@ description: Create detection rules using Elasticsearch Query Language (ESQL) wi
 
 {{esql}} rules are the right fit when:
 
-* You need **aggregation, transformation, or enrichment** within the query itself, such as computing statistics, renaming fields, or filtering on calculated values.
-* The detection logic requires **pipe-based processing** that KQL and EQL cannot express, such as `STATS...BY` followed by `WHERE` to filter aggregated results.
-* You want to create **new computed fields** (using `EVAL`) and alert on values derived from source data rather than raw field values.
+* You need aggregation, transformation, or enrichment within the query itself, such as computing statistics, renaming fields, or filtering on calculated values.
+* The detection logic requires pipe-based processing that KQL and EQL cannot express, such as `STATS...BY` followed by `WHERE` to filter aggregated results.
+* You want to create new computed fields (using `EVAL`) and alert on values derived from source data rather than raw field values.
 
-{{esql}} rules are **not** the best fit when:
+{{esql}} rules aren't the best fit when:
 
 * A field-value match is sufficient. Use a [custom query rule](/solutions/security/detect-and-alert/custom-query.md) instead.
 * You need to detect ordered event sequences. Use an [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
