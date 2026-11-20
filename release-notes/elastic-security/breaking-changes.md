@@ -22,6 +22,18 @@ Breaking changes can impact your Elastic applications, potentially disrupting no
 % **Action**<br> Steps for mitigating deprecation impact.
 % ::::
 
+## 9.5.0 [elastic-security-950-breaking-changes]
+
+::::{dropdown} {{elastic-defend}} requires the `remote_cluster_client` node role on clusters with custom node roles
+Starting in 9.5, the {{elastic-defend}} endpoint metadata transform (`endpoint.metadata_united-default-<version>`) includes a cross-cluster source so that {{elastic-sec}} can read endpoint data sent to a remote {{es}} output. {{es}} requires the `remote_cluster_client` node role for any transform with a cross-cluster source, even if no remote clusters are configured. This applies when using the {{elastic-defend}} integration 9.5.0 or later.
+
+**Impact**<br> If your nodes have customized roles that don't include `remote_cluster_client`, the transform fails to start with a `No appropriate node to run on` error, and the **Endpoints** list stops updating. Clusters that use the default node roles aren't affected.
+
+**Action**<br> Add `remote_cluster_client` to `node.roles` on the master-eligible nodes and on at least one node with the `transform` role, then restart those nodes. Find the transform ID with `GET _transform/endpoint.metadata_united-*`, then start the transform with `POST _transform/<transform_id>/_start`. For details, refer to [Node role requirements](/solutions/security/get-started/elastic-security-requirements.md#node-role-requirements).
+
+For more information, check [#756](https://github.com/elastic/endpoint-package/pull/756).
+::::
+
 ## 9.4.0 [elastic-security-940-breaking-changes]
 
 ::::{dropdown} Osquery: Scheduled query results no longer populate action_id
