@@ -20,8 +20,8 @@ Each Attack Discovery finding groups related alerts into a single attack narrati
 
 Before you start, make sure you have the following:
 
-- Attack Discovery is [configured with an LLM connector](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries). See [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md) if you need to set one up.
-- At least one finding has been generated, either [manually](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#attack-discovery-generate-discoveries) or through a [schedule](/solutions/security/ai/attack-discovery/run-from-attack-discovery-page.md#schedule-discoveries).
+- Attack Discovery is configured with an LLM connector. If you need to set one up, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
+- At least one finding exists, from either a manual or a scheduled run. To start a run, refer to [Run Attack Discovery](/solutions/security/ai/attack-discovery/run-attack-discovery.md).
 - Your role has the [required privileges](/solutions/security/ai/attack-discovery/grant-access.md) to view and modify Attack Discovery alerts.
 
 :::{tip}
@@ -41,13 +41,13 @@ Start by retrieving all open findings and prioritizing them by risk score. This 
 
 :::{applies-item} { "stack": "ga 9.5+", "serverless": {"security": "ga"} }
 
-1. Go to **Detections** → **Views** → **Attacks** (or **Attack Discovery** if you prefer that page).
+1. Go to **Detections** → **Views** → **Attacks**. In [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) projects, which don't have the **Attacks** view, go to **Attack Discovery** instead.
 2. Use the **Status** filter to show only **Open** findings.
-3. Sort to prioritize what to review first. On **Attacks**, use **Most recent** or **Most alerts**. On **Attack Discovery**, sort by risk score (highest first).
+3. Sort to prioritize what to review first. On **Attacks**, use **Most recent** or **Most alerts**. In EASE projects, sort by risk score (highest first).
 
 For each finding, note the following key signals:
 
-- **Risk score** (Attack Discovery page): The overall severity assigned to the discovery.
+- **Risk score** (EASE projects): The overall severity assigned to the discovery.
 - **Alert count**: How many underlying security alerts the discovery groups together.
 - **MITRE ATT&CK tactics**: Which tactics the discovery maps to. More tactics suggest a broader attack.
 - **Entities**: Which users and hosts are involved.
