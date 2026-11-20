@@ -13,6 +13,8 @@ products:
 
 A field that you add to the **Discover** table can show empty cells even though your data has values for it. For other common issues, refer to the blog post [Learn how to resolve common issues with Discover](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load).
 
+If a cell shows a dash (`-`) or `(null)` instead, the results contain no value for that field. To see what each placeholder means, refer to [What a dash or `(null)` in your results means](/explore-analyze/discover/inspect-documents.md#missing-values-in-results).
+
 ## Symptoms
 
 * The cells of a field that you added as a column in the results table are empty for some or all results.
