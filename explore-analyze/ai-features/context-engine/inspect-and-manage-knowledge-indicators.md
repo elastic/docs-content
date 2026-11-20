@@ -1,6 +1,6 @@
 ---
 navigation_title: "Manage KIs"
-description: Find and inspect Knowledge Indicators, then create, update, or delete them through supported Context Engine workflow steps.
+description: Find and inspect Knowledge Indicators, edit, delete, or restore them in Kibana, and manage them through Context Engine workflow steps.
 type: how-to
 applies_to:
   stack: experimental 9.6
@@ -19,6 +19,8 @@ products:
 
 Inspect [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) in an [AI index](concepts.md#ai-indices) from {{kib}}, and change them through [workflows](/explore-analyze/workflows.md). To correct generated context, update and rerun the owning [automation](create-and-manage-automations.md). When a workflow needs to create, update, or delete individual KIs, use the dedicated {{context-engine}} workflow steps.
 
+{applies_to}`stack: experimental 9.7+` You can also [edit, delete, and restore individual KIs](#change-ki-in-kibana) from their detail view in {{kib}}.
+
 ## Before you begin
 
 Requirements depend on what you want to do:
@@ -27,7 +29,10 @@ Requirements depend on what you want to do:
     - An AI index that contains at least one KI.
     - The **Read** privilege for the **Context Engine** feature.
     - The `read` and `view_index_metadata` index privileges on the backing index (`ai-index-*`).
-- To create, update, or delete KIs:
+- {applies_to}`stack: experimental 9.7+` To edit, delete, or restore KIs in {{kib}}:
+    - The **All** privilege for the **Context Engine** feature.
+    - {{es}} write access to the backing index.
+- To create, update, or delete KIs with workflows:
     - A custom AI index.
     - The **All** privilege for the **Context Engine** feature.
     - Permission to edit and run workflows.
@@ -49,7 +54,9 @@ The KI detail view shows the generated content and the metadata that identifies 
 
 Confirm that the title, type, status, and timestamps identify the KI you expected. The KI workflow steps automatically record provenance, including the workflow ID and run ID. Inspect these fields on the **Document** tab when you need to trace a KI to the workflow run that wrote it; you do not need to populate them yourself.
 
-The detail view is read-only. To assess whether the content is accurate and useful to an agent, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
+To assess whether the content is accurate and useful to an agent, refer to [Evaluate and improve Knowledge Indicators](evaluate-and-improve-knowledge-indicators.md).
+
+{applies_to}`stack: experimental =9.6` The detail view is read-only.
 
 <!-- Verify labels and add a screenshot after elastic/kibana#297691 and the planned follow-up KI visualization changes land.
 
@@ -61,6 +68,46 @@ The following image shows the Knowledge Indicators table and its type filter:
 :screenshot:
 :::
 -->
+
+## Edit, delete, or restore a Knowledge Indicator in {{kib}} [change-ki-in-kibana]
+
+```{applies_to}
+stack: experimental 9.7+
+serverless: experimental
+```
+
+With the **All** privilege for the **Context Engine** feature, you can change an individual KI from its detail view. Users with the **Read** privilege do not see the edit, delete, or restore actions.
+
+These actions change only the stored KI. They do not change the automation that generated it. If a later automation run would write the same KI again, update that automation as well.
+
+### Edit a KI's content
+
+1. Open the KI and select its **Content** tab.
+2. Select **Edit**.
+3. Change the KI's Markdown content in the editor.
+4. Select **Save**.
+
+You can edit only the content. The title, type, and other fields stay unchanged.
+
+To discard your changes, select **Cancel**. If you leave the page while editing, {{kib}} asks you to confirm that you want to discard unsaved changes.
+
+### Delete a KI [delete-ki-in-kibana]
+
+1. Open the KI. If you are editing its content, save or cancel your changes first.
+2. Select **Delete**. On the **Content** tab, **Delete** is in the overflow menu next to **Edit**.
+3. Confirm the deletion.
+
+Deleting a KI changes its lifecycle status to deleted and keeps the stored document. Retrieval excludes the KI, and the **Knowledge Indicators** tab hides it unless you filter by the **Deleted** status. You cannot edit a deleted KI until you restore it.
+
+For a data-stream-backed AI index, each edit, delete, or restore appends a revision instead of changing the existing document. Discover can therefore show earlier revisions of the KI.
+
+### Restore a deleted KI
+
+1. On the AI index's **Knowledge Indicators** tab, set the **Status** filter to **Deleted**.
+2. Select the KI.
+3. Select **Restore**, then confirm.
+
+Restoring a KI changes its lifecycle status back to active without changing its content. Agents can retrieve it again.
 
 ## Inspect raw Knowledge Indicator documents
 
@@ -79,6 +126,8 @@ How you change a KI depends on how it was created and whether the change must su
 | Situation | Recommended action |
 |---|---|
 | Generated content is incomplete or incorrect | Edit the source or owning automation, then run the automation again. |
+| One KI needs a correction that no automation run will replace | {applies_to}`stack: experimental 9.7+` [Edit its content in {{kib}}](#change-ki-in-kibana). |
+| A deleted KI must be retrieved again | {applies_to}`stack: experimental 9.7+` [Restore it in {{kib}}](#change-ki-in-kibana). |
 | A workflow maintains a long-lived KI across runs | Use `context-engine.updateKi` with a stable KI ID. |
 | A workflow must write a new KI | Use `context-engine.createKi`. |
 | A KI must no longer be retrieved | Use `context-engine.deleteKi`, then update its automation if another run would recreate it. |
@@ -222,7 +271,11 @@ Use `context-engine.deleteKi` to prevent a KI from appearing in normal retrieval
     ki_id: "account-123-support-connection-456-cases"
 ```
 
-For an index-backed AI index, the step removes the document. For a data-stream-backed AI index, it marks the KI as deleted and preserves its revisions. A deleted KI can therefore remain visible in the inspection UI with the **Deleted** status.
+The step marks the KI as deleted and keeps the stored document. For a data-stream-backed AI index, it appends a revision with the deleted status and preserves the earlier revisions. A deleted KI remains visible in {{kib}} with the **Deleted** status.
+
+{applies_to}`stack: experimental =9.6` For an index-backed AI index, the step removes the document instead.
+
+{applies_to}`stack: experimental 9.7+` To restore a deleted KI, refer to [Restore a deleted KI](#restore-a-deleted-ki).
 
 Deleting a KI does not change the workflow that generated it. If a later run would recreate the KI, update or stop that automation as well.
 
