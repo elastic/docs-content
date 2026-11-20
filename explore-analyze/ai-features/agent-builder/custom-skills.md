@@ -114,7 +114,7 @@ Complete the fields in the form. The identifier fields depend on your version:
   - You can't change the name in the UI after you save the skill.
   - The skills library and skill details show the name.
   - Create and update messages show the name.
-  - Delete confirmation dialogs show the name, and delete notifications use the ID.
+  - Delete confirmation dialog boxes show the name, and delete notifications use the ID.
 :::
 
 ::::
@@ -166,6 +166,14 @@ For guidance on writing effective instructions, refer to [Skill creation guideli
 
 Create and manage skills programmatically using the {{kib}} REST API. You can set the description, instructions (`content`), associated tools (`tool_ids`), and [`referenced_content`]({{kib-apis}}operation/operation-post-agent-builder-skills#operation-post-agent-builder-skills-body-application-json-referenced_content) the same way you do in the UI. For request examples, refer to [Skills APIs](kibana-api.md#skills-apis).
 
+The API provides these endpoints:
+
+- [List skills]({{kib-apis}}operation/operation-get-agent-builder-skills) `GET /api/agent_builder/skills`
+- [Create a skill]({{kib-apis}}operation/operation-post-agent-builder-skills) `POST /api/agent_builder/skills`
+- [Get a skill by ID]({{kib-apis}}operation/operation-get-agent-builder-skills-skillid) `GET /api/agent_builder/skills/{skillId}`
+- [Update a skill]({{kib-apis}}operation/operation-put-agent-builder-skills-skillid) `PUT /api/agent_builder/skills/{skillId}`
+- [Delete a skill]({{kib-apis}}operation/operation-delete-agent-builder-skills-skillid) `DELETE /api/agent_builder/skills/{skillId}`
+
 A create request requires separate `id` and `name` fields:
 
 - `id`: Use lowercase letters, numbers, hyphens, and underscores. Start and end with a lowercase letter or a number. The limit is 64 characters.
@@ -177,17 +185,10 @@ Keep these rules in mind:
 - An update can change `name` but not `id`.
 - The API rejects more than 5 `tool_ids`, even if the API reference shows a higher maximum.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The UI and Agent Chat set `id` and `name` differently:
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The UI and Agent Chat handle `id` and `name` differently:
 
-- The **Create a new skill** page and the **Create skill** flyout send the **Name** value for both `id` and `name`.
-- Agent Chat **Create skill** posts the `id` and `name` stored on the draft. The agent normally uses the same value for both, but nothing requires it.
+- The **Create a new skill** page and the **Create skill** flyout send the **Name** value as both `id` and `name`. Agent Chat **Create skill** posts the `id` and `name` stored on the draft. They're normally the same, but nothing requires it.
 - Skills created earlier keep their stored `id` and `name`. When those values differ, the skills library and skill details show `name`.
-
-- [List skills]({{kib-apis}}operation/operation-get-agent-builder-skills) `GET /api/agent_builder/skills`
-- [Create a skill]({{kib-apis}}operation/operation-post-agent-builder-skills) `POST /api/agent_builder/skills`
-- [Get a skill by ID]({{kib-apis}}operation/operation-get-agent-builder-skills-skillid) `GET /api/agent_builder/skills/{skillId}`
-- [Update a skill]({{kib-apis}}operation/operation-put-agent-builder-skills-skillid) `PUT /api/agent_builder/skills/{skillId}`
-- [Delete a skill]({{kib-apis}}operation/operation-delete-agent-builder-skills-skillid) `DELETE /api/agent_builder/skills/{skillId}`
 
 ### Create a skill from Agent Chat [create-a-skill-from-chat]
 
