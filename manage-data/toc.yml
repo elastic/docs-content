@@ -111,6 +111,7 @@ toc:
             children:
               - file: ingest/ingest-reference-architectures/agent-es-airgapped.md
               - file: ingest/ingest-reference-architectures/agent-ls-airgapped.md
+      - file: ingest/aws-guided-onboarding.md
       - file: ingest/otlp-endpoint.md
       - file: ingest/sample-data.md
       - file: ingest/upload-data-files.md

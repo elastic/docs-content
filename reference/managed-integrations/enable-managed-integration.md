@@ -73,6 +73,15 @@ Within a few minutes, data from the source appears in the integration's data str
 For integrations that authenticate to a cloud provider, you can use [federated identity authentication](/reference/managed-integrations/federated-identity.md) to avoid managing API keys directly.
 :::
 
+## Set up several AWS services at once [enable-managed-integration-aws]
+
+```{applies_to}
+serverless: preview
+stack: unavailable
+```
+
+To set up several AWS services together instead of adding each integration one at a time, use the [guided AWS onboarding flow](/manage-data/ingest/aws-guided-onboarding.md).
+
 ## Next steps [enable-managed-integration-next-steps]
 
 * Learn more about [how {{managed-integrations}} work](/reference/managed-integrations/index.md#managed-integrations-architecture).
