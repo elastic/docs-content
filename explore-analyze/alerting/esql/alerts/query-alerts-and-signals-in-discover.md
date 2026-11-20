@@ -1,8 +1,9 @@
 ---
 navigation_title: Query alert history
 applies_to:
-  stack: ga 9.6+, experimental =9.5
-  serverless: ga
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Use ES|QL in Discover to replay incidents, audit triage actions, and measure response times for alerts."
@@ -10,7 +11,7 @@ description: "Use ES|QL in Discover to replay incidents, audit triage actions, a
 
 # Query {{alerting-v2-system}} alert history in Discover [query-alert-history-discover]
 
-In {{alerting-v2-system}}, use {{esql}} in Discover to replay how an incident unfolded, see who acknowledged or snoozed an alert, measure time-to-acknowledge trends, or correlate alert history with other data in your environment. To check the current state of alerts instead, use the [**Alerts** page](view-and-manage-alerts.md).
+In {{alerting-v2-system-short}}, use {{esql}} in Discover to replay how an incident unfolded, see who acknowledged or snoozed an alert, measure time-to-acknowledge trends, or correlate alert history with other data in your environment. To check the current state of alerts instead, use the [**Alerts** page](view-and-manage-alerts.md).
 
 For events with `type: signal`, including basic queries and using them as input to a rule that opens an alert, refer to [Query rule events](query-signals.md).
 
@@ -29,20 +30,14 @@ Use the following table to jump to the query you need:
 | [Find snoozed series](#find-snoozed-series) | Active and historical snoozes, including who set them and when they expire | `.alert-actions` |
 | [Trace the full story of an incident](#trace-incident) | Both streams filtered or joined together for a complete incident timeline | Both |
 
-## Before you begin [add-data-views-before-begin]
+## Before you begin [alert-history-before-begin]
 
-Before you can query alert history in Discover, add the alert data streams as data views. Repeat these steps for each stream.
+The queries on this page run in **Discover** in {{esql}} mode and read two streams that {{kib}} fills for you:
 
-1. Open **Discover**, and then open the data view menu.
-2. Select **Create a data view**.
-3. Give your data view a name, for example `.rule-events` or `.alert-actions`.
-4. In the **Index pattern** field, enter the data stream name:
-   - `.ds-.rule-events-*` for rule evaluation history.
-   - `.ds-.alert-actions-*` for triage actions recorded on alerts.
-5. Open the **Timestamp field** dropdown and select `@timestamp`.
-6. Select **Save data view to Kibana**.
+- `.rule-events` holds the history of your rules. {{kib}} writes one [rule event](../rules/rule-event-field-reference.md) for each row that a scheduled run matches.
+- `.alert-actions` holds the actions that you or {{kib}} take on alerts, such as acknowledging, snoozing, or assigning an alert, and the dispatcher's outcome for each alert: notified, suppressed, or unmatched.
 
-For more details on data view options, refer to [Data views](../../../find-and-organize/data-views.md).
+If **Discover** opens in classic mode, [switch to {{esql}} mode](/explore-analyze/discover/switch-esql-mode.md).
 
 ## Query alert history [query-episode-signal-history]
 
@@ -103,8 +98,6 @@ FROM .rule-events
 ## Query triage and action history [query-triage-action-history]
 
 {{kib}} writes one document to `.alert-actions` for every action a user or the system takes on an alert. Use it to audit who did what, measure acknowledgment response times, or check current snooze and assignment state. The following sections provide example queries for common scenarios.
-
-{applies_to}`stack: experimental =9.5` In {{stack}} 9.5, `.alert-actions` stores the alert ID and status as `episode_id` and `episode_status`. Replace `alert_id` and `alert_status` with those names in the following queries.
 
 ### View the full triage history for an alert [full-triage-history]
 

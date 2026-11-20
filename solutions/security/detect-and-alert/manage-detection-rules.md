@@ -38,7 +38,8 @@ To filter the rules list, enter a search term in the search bar and press **Retu
 
 * **Rule name**: Partial matches work. Enter any word or phrase from a rule's name.
 * **Index pattern**: Exact match required. Enter the full pattern (for example, `filebeat-*` works, but `filebeat` does not).
-* **MITRE ATT&CK tactic or technique**: Exact, case-sensitive match required. Enter the full tactic name (`Defense Evasion`) or technique number (`TA0005`). Partial matches like `Defense` or `defense evasion` do not work.
+* **MITRE ATT&CK® tactic or technique**: Exact, case-sensitive match required. Enter the full tactic or technique name (`Persistence`) or ID (`TA0003`). Partial matches such as `Persist` or `persistence` don't work.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **MITRE ATLAS™ tactic or technique**: Exact, case-sensitive match required. Enter the full name or ID, such as `AML.T0051`.
 
 
 You can also filter the rules list by selecting the **Tags**, **Last response**, **Elastic rules**, **Custom rules**, **Enabled rules**, and **Disabled rules** filters next to the search bar.
@@ -266,7 +267,7 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 2. Do one of the following:
 
     * Export a single rule: Find the rule in the Rules table, then select **All actions** > **Export**. Alternatively, export the rule from its details page (click on the rule name to open its details, then click **All actions** > **Export**).
-    * Export multiple rules: In the Rules table, select the rules you want to export, then click **Bulk actions > Export**.
+    * Export multiple rules: In the Rules table, select the rules you want to export, then click **Bulk actions** → **Export**.
 
 The rules are exported to an `.ndjson` file.
 

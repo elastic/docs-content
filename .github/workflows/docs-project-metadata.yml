@@ -21,6 +21,7 @@ permissions:
   issues: write
   pull-requests: read
   copilot-requests: write
+  id-token: write
 
 jobs:
   prepare:

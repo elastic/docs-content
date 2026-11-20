@@ -31,6 +31,8 @@ The following LLM platforms are supported:
 
 See the [Supported Technologies section in the corresponding EDOT SDK](opentelemetry://reference/edot-sdks/index.md) for detailed information on supported versions.
 
+To collect traces from the Claude Platform, you don't need EDOT instrumentation. The Claude Platform sends traces to Elastic from a destination that you add in the Claude Console. Refer to [Send Claude Platform traces to Elastic](send-claude-platform-traces.md).
+
 ## Quickstart
 
 Follow these steps to instrument LLMs using {{edot}}.

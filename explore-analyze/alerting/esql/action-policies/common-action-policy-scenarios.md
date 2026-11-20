@@ -1,8 +1,9 @@
 ---
 navigation_title: Examples and common scenarios
 applies_to:
-  stack: ga 9.6+, experimental =9.5
-  serverless: ga
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Common action policy scenarios, including routing by severity, managing severity escalation, and controlling re-notification."

@@ -63,7 +63,7 @@ Revoked connections remain visible for 90 days and revoked clients for 1 year. E
 Select a client to open its details panel. The panel shows the connection details a user needs to configure an MCP host, for reference:
 
 * **Client ID**: The unique identifier for the OAuth client.
-* **MCP server URL**: The redirect URIs configured for this client. These are the callback URLs used during the OAuth authorization flow.
+* **MCP server URL**: The endpoint that an MCP host connects to with this client. For a custom {{kib}} space, the URL includes the space ID.
 * If a client secret is configured, an indicator that a client secret is required for this client.
 
 <!-- Do NOT hardcode the MCP server URL / AS URL in examples — format is changing per cp-iam-team #2957. -->

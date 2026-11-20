@@ -1,7 +1,9 @@
 ---
 navigation_title: "Prometheus remote write endpoint"
+description: Send metrics from Prometheus or any remote write client directly to the Elasticsearch Prometheus remote write endpoint and store them in a time series data stream (TSDS).
 applies_to:
-  stack: preview =9.4, ga 9.5+
+  stack: ga 9.5+, preview =9.4
+  serverless: ga
 products:
   - id: elasticsearch
 ---
@@ -14,7 +16,9 @@ In addition to the ingestion of metrics data through the bulk API,
 The endpoint is available under `/_prometheus/api/v1/write`.
 
 :::{note}
-If you are using {{serverless-full}}, use [managed inputs](opentelemetry://reference/motlp/prometheus-remote-write.md) to send Prometheus metrics instead. Managed inputs are the recommended ingestion path for {{ecloud}} deployments and provide durable buffering, unified authentication, and back-pressure handling.
+On {{serverless-full}} and {{ech}}, the recommended way to send Prometheus metrics is the [Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md) rather than this {{es}} endpoint. Managed inputs provide durable buffering, unified authentication, and back-pressure handling before data reaches {{es}}.
+
+For how Prometheus remote write fits alongside the other ways to ingest Prometheus metrics, such as scraping with an OpenTelemetry Collector or using the {{agent}} Prometheus integration, refer to [Ingest Prometheus metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-prometheus).
 :::
 
 ## Overview
@@ -112,7 +116,7 @@ In both cases, Elasticsearch sanitizes dataset and namespace values, replacing a
 
 ### Route by URL path
 
-Set the dataset and namespace via URL path segments:
+Set the dataset and namespace using URL path segments:
 
 | Endpoint | Data stream |
 | --- | --- |
@@ -226,7 +230,7 @@ serverless: ga
 
 [Exemplars](https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars) are individual observations that Prometheus can attach to a time series, such as a histogram bucket observation together with the trace ID of the request that produced it.
 The remote write endpoint stores the exemplars included in a `WriteRequest`, so you can navigate from a metric to a trace that contributed to it.
-Exemplars are only stored when you send remote write requests directly to the {{es}} endpoint. The [managed Prometheus remote write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md) doesn't forward exemplars yet.
+Exemplars are only stored when you send remote write requests directly to the {{es}} endpoint. The [managed Prometheus remote write endpoint](/reference/managed-inputs/prometheus-remote-write.md) doesn't forward exemplars yet.
 
 {{es}} stores exemplars in a time series data stream named after the metrics data stream of their time series: exemplars of time series routed to `metrics-<dataset>.prometheus-<namespace>` are written to `exemplars-<dataset>.prometheus-<namespace>`.
 [Routing](#send-data-to-different-data-streams) by URL path or by labels applies to exemplars in the same way as to samples.
@@ -271,8 +275,9 @@ If you don't need exemplars, or want to avoid the additional storage, turn it of
 
 ## Limitations
 
-* Only the Prometheus remote write 1.0 protocol is supported. Remote write 2.0 is not yet supported.
+* Only the Prometheus remote write 1.0 protocol is supported. The endpoint rejects remote write 2.0 requests, so configure clients to use 1.0.
 * Time series with a missing `__name__` label are dropped.
+* Native histograms, which Prometheus and OpenTelemetry Collector exporters use for exponential histograms, are not supported. Time series that carry them are silently dropped. Classic histograms sent as `_bucket`, `_sum`, and `_count` series are supported.
 * Samples with non-finite values (NaN, Infinity) are silently dropped.
 * {applies_to}`stack: ga 9.6+` Samples whose series and timestamp are already indexed are treated as duplicates and silently dropped, even if their value differs.
   This lets clients safely retry requests that were already partially or fully indexed.

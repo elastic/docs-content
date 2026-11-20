@@ -1,17 +1,18 @@
 ---
 navigation_title: Glossary
 applies_to:
-  stack: ga 9.6+, experimental =9.5
-  serverless: ga
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
   - id: cloud-serverless
 description: Definitions of key terms used throughout the documentation, such as alert, action policy, and rule event.
 ---
 
-# {{alerting-v2-system-cap}} glossary [glossary]
+# {{alerting-v2-system}} glossary [glossary]
 
-These terms appear throughout the {{alerting-v2-system}} documentation.
+These terms appear throughout the {{alerting-v2-system-short}} documentation.
 
 **Action policy**
 :   A configuration that controls which alerts invoke a workflow and how often. A single action policy can apply to alerts from one rule, several rules, or every rule in the space. To learn more, refer to [Notifications and actions](../notifications-actions.md).
@@ -31,7 +32,7 @@ These terms appear throughout the {{alerting-v2-system}} documentation.
 **Notification**
 :   The message or action a workflow sends (such as a Slack message, an email, or a webhook call) when an alert matches an action policy or a lifecycle trigger fires. To learn more, refer to [How the dispatcher evaluates action policies](../action-policies/about-action-policies.md#how-action-policies-evaluated).
 
-**Routing tag** {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+`
+**Routing tag**
 :   A tag that links rules to an action policy. When a rule and an action policy share a routing tag, the policy applies to that rule's alerts. Routing tags are separate from rule tags, which only label and filter rules. To learn more, refer to [Apply the policy to alerts from specific rules](../action-policies/create-configure-action-policy.md#routing-tags).
 
 **Rule**

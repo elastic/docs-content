@@ -14,13 +14,11 @@ products:
 :::{include} _snippets/hidden-docs-notice.md
 :::
 
-A LangChain agent can retrieve Knowledge Indicators (KIs) from {{context-engine}} using read-only tools.
+Use {{context-engine}} with LangChain to give an agent access to context distilled from your organization's data. By retrieving relevant [Knowledge Indicators (KIs)](concepts.md#knowledge-indicators) from an [AI index](concepts.md#ai-indices) instead of repeatedly discovering and interpreting source data, the agent can complete tasks faster and use fewer model tokens.
 
-For agent-specific access, instructions, and testing guidance, refer to [Configure agents to use an AI index](use-context-engine-with-agents.md).
+Wrap the {{context-engine}} list, describe, and query API operations as read-only LangChain tools, then provide them to the agent. The examples on this page use Python, but the same approach works in [LangChain.js](https://reference.langchain.com/javascript/langchain).
 
-To connect a LangChain agent to {{context-engine}}, use the {{context-engine}} APIs to wrap the available retrieval operations as LangChain tools in your application.
-
-Examples on this page use Python, but the same approach works in [LangChain.js](https://reference.langchain.com/javascript/langchain).
+For guidance that applies to every agent integration, refer to [Configure agents to use an AI index](use-context-engine-with-agents.md). For the list, describe, and query flow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
 
 ## Requirements
 
@@ -32,72 +30,21 @@ Before you begin, make sure you have:
 * An API key whose privileges cover both Kibana and Elasticsearch. [Step 1](#step-1-create-credentials) walks through this.
 * Python 3.10 or later, with `langchain` installed. The skill option in [Step 3](#step-3-create-the-agent) adds `deepagents`, which needs 3.11 or later.
 
-{{context-engine}} uses a list, describe, and query sequence to retrieve KIs. For the available query modes and complete retrieval workflow, refer to [Retrieve context from an AI index](retrieve-context-from-ai-index.md).
-
 All three operations run against one {{kib}} space, as the owner of the API key. An agent only ever sees the AI Indices that key is allowed to read.
 
 ## Step 1: Create credentials
 
-Your credential needs privileges in both Kibana and Elasticsearch.
+Your credential needs privileges in both {{kib}} and {{es}}.
 
-Create the credential as follows:
+:::{include} _snippets/create-query-api-key.md
+:::
 
-1. In Kibana, go to **Stack Management → API Keys** and click `Create API key`
-2. Leave **Control security privileges** off and define a role with the following privileges:
+Export the encoded value, along with your Kibana URL:
 
-    * **Index privileges**: `read` and `view_index_metadata` on `ai-index-*`.
-    * **Kibana privileges**, in the space you want to query: **{{context-engine}}** at **Read**.
-
-    ::::{dropdown} Example of a concrete definition
-    ```json
-    {
-      "contextEngineRole": {
-        "cluster": [],
-        "indices": [
-          {
-            "names": [
-              "ai-index-*"
-            ],
-            "privileges": [
-              "read",
-              "view_index_metadata"
-            ],
-            "field_security": {
-              "grant": [
-                "*"
-              ],
-              "except": []
-            },
-            "allow_restricted_indices": false
-          }
-        ],
-        "applications": [
-          {
-            "application": "kibana-.kibana",
-            "privileges": [
-              "feature_contextEngine.read"
-            ],
-            "resources": [
-              "*"
-            ]
-          }
-        ],
-        "run_as": [],
-        "metadata": {},
-        "transient_metadata": {
-          "enabled": true
-        }
-      }
-    }
-    ```
-    ::::
-
-3. Copy the `encoded` value and export it, along with your Kibana URL:
-
-    ```shell
-    export KIBANA_URL="https://my-deployment.kb.us-east-1.aws.elastic.cloud"
-    export KIBANA_API_KEY="VnVhQ2ZHY0JDZGJrU..."
-    ```
+```shell
+export KIBANA_URL="https://my-deployment.kb.us-east-1.aws.elastic.cloud"
+export KIBANA_API_KEY="VnVhQ2ZHY0JDZGJrU..."
+```
 
 This example also uses an OpenRouter key to reach the model:
 

@@ -36,6 +36,8 @@ If you want to install and manage {{es}} yourself, you can:
 * Run {{es}} using a [Linux, MacOS, or Windows install package](#elasticsearch-install-packages).
 * Run {{es}} in a [Docker container](#elasticsearch-docker-images).
 
+Which method you choose depends on your company's infrastructure policies and environment. If you don't have an existing preference, Docker containers and Linux packages (`deb` and `rpm`) offer the most straightforward setup. Archive installations (`tar.gz` and `zip`) require more manual effort for installation, upgrades, and ongoing maintenance.
+
 ::::{tip}
 To try out {{stack}} on your own machine, we recommend using Docker and running both {{es}} and {{kib}}. For more information, see [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md). This setup is not suitable for production use.
 ::::

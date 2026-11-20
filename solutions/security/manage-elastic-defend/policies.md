@@ -26,3 +26,8 @@ Click on an integration policy’s name to configure its settings. For more info
 :alt: policy list
 :screenshot:
 :::
+
+:::{tip}
+:applies_to: {stack: ga 9.6+, serverless: ga}
+To get help understanding policy settings, comparing policies, or assessing a change before you make it, use the [`elastic-defend-policy-management`](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-elastic-defend-policy-management-skill) {{agent-builder}} skill. For example prompts, refer to [{{elastic-defend}} policy management](/solutions/security/ai/agent-builder/skills-use-cases.md#defend-policy-management).
+:::

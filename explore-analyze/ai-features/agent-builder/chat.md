@@ -62,6 +62,15 @@ Use the text input area to chat with an agent in real time. Check the agent sele
 Conversations with agents consume tokens. To understand how usage is calculated, refer to [Token usage in Elastic Agent Builder](monitor-usage.md).
 :::
 
+#### Message length limit
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+You can send up to 100,000 characters in a single message. If your message is longer, the chat input shows a "Message is too long" warning with the current character count, and you can't send the message until you shorten it. Each [attached image](#attach-images-to-a-message) and [slash command](skills.md#how-skills-are-invoked) adds a short text reference to the count, such as the file name or skill ID, so the count can be slightly higher than the visible text. The image itself doesn't count toward the limit.
+
 #### Select a different agent
 
 ```{applies_to}
@@ -69,6 +78,8 @@ stack: ga 9.3+
 ```
 
 Use the agent selector to switch agents, to navigate to the agent management section, or to create a new agent. An agent's behavior is defined by its custom instructions and available tools. Switch agents when you need different capabilities for your tasks.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Hidden agents](agent-builder-agents.md#hidden-agents) aren't listed in the agent selector, even when you turn on **Show hidden agents** on the **Agents** page. If you start a chat with a hidden agent, for example from the **Agents** page, the selector still shows it as the current agent.
 
 :::{image} images/agent-builder-agent-selector.png
 :screenshot:
@@ -93,23 +104,36 @@ Use the model selector to switch the underlying [model](models.md) the agent use
 ### Attach images to a message
 
 ```{applies_to}
-stack: preview 9.6+
-serverless: preview
+stack: ga 9.6+
+serverless: ga
 ```
 
-Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram. Pasting is the only way to attach an image. Dragging a file onto the input and selecting one from a file picker aren't supported.
+Paste an image from your clipboard into the chat input to give the agent visual context, such as a screenshot, a photo, or a diagram.
 
-To attach an image, copy it to your clipboard, then press {kbd}`ctrl|cmd+v` in the chat input. A chip with the file name appears in the message text, and a thumbnail appears above the input. To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`.
+To attach an image:
+
+1. Copy the image to your clipboard.
+2. In the chat input, press {kbd}`ctrl|cmd+v`. A chip with the file name appears in the message text, and a thumbnail appears above the message text when the upload finishes.
+3. Wait for all attached images to finish uploading, then submit the message. You can't submit it while an upload is in progress.
+
+The following example shows a pasted image attached to a message, ready to send:
 
 :::{image} images/agent-builder-image-attachment.png
-:alt: Chat input with an image thumbnail attached, a file chip in the message text, and the model selector below
+:alt: Chat input with an image thumbnail above the message text, followed by an image.png file chip, with the model selector and send button below
 :width: 650px
 :screenshot:
 :::
 
-You can attach up to 10 images to a single message. Each image must be a PNG or JPEG file no larger than 3.5 MB. You can't submit the message until all attached images finish uploading.
+To remove an image before you submit the message, hover over its thumbnail and select the **Remove attachment** icon {icon}`cross`, or delete the image's chip from the message text.
 
-After you submit the message, the image appears in the conversation history, and the agent can refer to it in later messages in the same conversation.
+After you submit the message, the image appears in the conversation history. In later messages, the agent can look at the image again if it needs to.
+
+#### Requirements and limits
+
+- The selected [model](models.md) must support image input. {{agent-builder}} doesn't check this before sending. If the model doesn't support images, the agent might fail partway through its response, or ignore the image without saying so.
+- You can attach up to 10 images to a single message.
+- Each image must be a PNG or JPEG file no larger than 3.5 MB.
+- Pasting is the only way to attach an image. You can't drag a file onto the input or select one from a file picker.
 
 ### Chat with data from multiple projects [agent-builder-cps-scope]
 ```{applies_to}
@@ -125,6 +149,7 @@ serverless: ga
 
 ```{applies_to}
 stack: ga 9.3+
+serverless: ga
 ```
 
 Click the three-dot menu icon in the top-right corner to access additional options.
@@ -137,12 +162,14 @@ Click the three-dot menu icon in the top-right corner to access additional optio
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+::::{applies-item} stack: ga 9.4-9.5
 
 The options menu provides access to:
 
 - **Agent details**: View information about the currently selected agent.
 - **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
+
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the menu also includes **Open in full screen**. The following image shows the options menu in standalone mode:
 
 :::{image} images/more-actions-menu-options-9.4.png
 :screenshot:
@@ -150,16 +177,63 @@ The options menu provides access to:
 :width: 250px
 :::
 
+::::
 
-:::{tip}
-To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
+::::{applies-item} stack: ga 9.6+
+
+The options menu provides access to:
+
+- **Agent details**: View information about the currently selected agent.
+- **GenAI Settings**: Open the global GenAI settings page to configure default connectors and other AI settings. Refer to [](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
+- **Download conversation**: Save the conversation as a JSON file.
+  - **File name**: {{kib}} lowercases the conversation title, replaces each run of characters other than letters and numbers with a single hyphen, removes leading and trailing hyphens, and adds `.json`. For example, `New conversation` becomes `new-conversation.json`.
+  - **Contents**: A `conversation` object with the conversation `id`, `agent_id`, title, rounds, and the rest of the saved conversation.
+  - **Availability**: Unavailable until the saved conversation has loaded. While the agent responds, the file contains the last saved conversation and can omit the round in progress.
+- **Load trace from file**: Open a saved trace in the [trace flyout](#view-traces). Refer to [Load a trace from a file](#load-a-trace-from-a-file).
+
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the menu also includes **Open in full screen**. The following image shows the sidebar mode menu:
+
+:::{image} images/more-actions-menu-options-9.6-sidebar.png
+:screenshot:
+:alt: Options menu in sidebar mode showing Agent details, Open in full screen, GenAI Settings, Download conversation, and Load trace from file
+:width: 250px
 :::
+
+In [standalone mode](standalone-and-flyout-modes.md#standalone-mode), the options menu in the conversation header includes only **Download conversation** and **Load trace from file**. Open agent details from **Overview** in the [**Customize**](#customize-your-agent) accordion. The following image shows the standalone mode menu:
+
+:::{image} images/more-actions-menu-options-9.6-standalone.png
+:screenshot:
+:alt: Options menu in standalone mode showing Download conversation and Load trace from file
+:width: 250px
+:::
+
+::::
+
+::::{applies-item} serverless: ga
+
+In [standalone mode](standalone-and-flyout-modes.md#standalone-mode), the options menu in the conversation header provides access to the following actions:
+
+- **Chat details**: View the conversation's title, author, creation and last edited times, visibility, members, and type.
+- **Activity log**: View a timeline of events, such as when the chat was created and when its title changed.
+- **Download chat**: Save the conversation as a JSON file named after the conversation title.
+- **Delete**: Permanently delete the conversation after you confirm. You can't undo this action.
+- **Feedback**: Open a form to send feedback about the chat.
+
+The following image shows the standalone mode menu:
+
+:::{image} images/more-actions-menu-options-serverless.png
+:screenshot:
+:alt: Options menu in standalone mode showing Chat details, Activity log, Download chat, Delete, and Feedback
+:width: 250px
+:::
+
+In [sidebar mode](standalone-and-flyout-modes.md#sidebar-mode), the options menu provides access to **Agent details**, **Open in full screen**, **GenAI Settings**, and **Download conversation**. {{serverless-short}} doesn't include **Load trace from file**.
 
 ::::
 
 ::::{applies-item} { stack: ga =9.3 }
 
-This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication.
+This menu provides links to key actions and management pages, including agent management, tool management, agent editing, and duplication. The following image shows the options menu:
 
 :::{image} images/more-actions-menu-options.png
 :screenshot:
@@ -170,6 +244,12 @@ This menu provides links to key actions and management pages, including agent ma
 ::::
 
 :::::
+
+:::{tip}
+:applies_to: { stack: ga 9.4+, serverless: ga }
+
+To manage agents and tools, use the [**Manage components**](#manage-components) link at the bottom of the left sidebar, or the [**Customize**](#customize-your-agent) accordion to configure the current agent.
+:::
 
 ### Find conversation history
 
@@ -221,6 +301,8 @@ Your changes save immediately. If a change fails, the popover shows the error "F
 
 The user search includes users who can log in to the current space, but a member can open the conversation only if they can also access its agent. You can't add users who have never logged in to {{kib}}.
 
+{applies_to}`serverless: unavailable` Service accounts don't appear in this search. To add one as a member, use the API as described in [Service accounts in conversations](permissions.md#service-account-conversations). A service account that is only a member doesn't appear under **Current members** or **Participants**, but the user count on the sharing button includes it. A service account that owns the conversation appears as the author. To remove it, update the access control with the API or switch the conversation to **Public**.
+
 To remove a member, click the **Remove member** icon {icon}`cross` next to their name. Switching to **Public** removes all members, and switching back to **Restricted** doesn't restore them.
 
 When a conversation is public, the sharing button shows the {icon}`globe` icon and **Public**.
@@ -269,6 +351,17 @@ An open shared or public conversation refreshes about every five seconds, so mes
 
 The chat history panel doesn't refresh on a timer. A conversation that someone shares with you appears the next time the list refreshes, for example when you return to the browser tab or reload the page.
 
+#### Messages from a service account [messages-from-a-service-account]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: unavailable
+```
+
+Scripts and other programmatic clients can post to a conversation as a [service account](permissions.md#service-accounts) through the [{{kib}} API](kibana-api.md#chat-as-a-service-account). By default, Agent Chat shows these messages with the account username, such as `kibana/automation`, instead of a person's name. A workflow that runs as a service account can set `author_name` on an [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) or [`ai.conversation.add_user_message`](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-add-user-message) step to show a different name, such as the workflow name.
+
+If the service account created the conversation, **Author** in the conversation details shows the account username.
+
 ### Track conversation status
 ```{applies_to}
 stack: ga 9.5+
@@ -294,6 +387,13 @@ For example, the following chat history panel shows one conversation in progress
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` There's no status for stopped or failed responses. If a response stops or fails in a conversation you aren't viewing, that conversation shows as **Unread**, like any other new activity. To see the stopped response or the error, open the conversation. For more information, refer to [Stopped and failed responses](#stopped-and-failed-responses).
 
+Opening a conversation marks it as read. To change the read status of a conversation:
+
+1. In the chat history panel, hover over the conversation and select the **Open conversation menu** icon {icon}`boxes_vertical`.
+2. Select **Mark as read** or **Mark as unread**. The menu shows **Mark as read** when the conversation is unread, and **Mark as unread** otherwise.
+
+If you mark the conversation you're viewing as unread, it switches back to read right away, or as soon as the agent finishes responding. To keep a conversation unread, open a different conversation first, then mark it as unread.
+
 Conversations run independently, so you can work in several at the same time: start an agent in one conversation, switch to another while the first keeps working, and come back later without interrupting either one. New conversations appear in the panel as soon as you start them, before the agent finishes its first response.
 
 #### Where the agent's progress appears
@@ -301,6 +401,22 @@ Conversations run independently, so you can work in several at the same time: st
 The agent's progress appears only in the chat where you sent the message or answered a [human-in-the-loop prompt](#human-in-the-loop-prompts), and only while that chat stays open. The agent keeps working if you reload the page, close the sidebar, or open the conversation in another browser tab or in the other [chat mode](standalone-and-flyout-modes.md). In those cases, the conversation doesn't show **In progress** and doesn't update while the agent works. After the agent finishes, its steps and response appear when you switch back to that browser tab, reopen the conversation, or reload the page.
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The agent also keeps working without showing progress if you go to another app from standalone mode. After the agent finishes, its steps and response appear the next time you interact with the conversation, for example, when you reopen the sidebar, come back from another app, or select another conversation and return. In a [shared or public conversation](#share-a-conversation), the conversation also updates automatically a few seconds after the agent finishes, in any browser tab.
+
+### Conversation templates [conversation-templates]
+
+```{applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+A conversation can be created from a built-in template. A template defines the structured metadata that the conversation stores, such as its status, severity, and assignees. The conversation shows the template name next to its title. You can’t create or edit templates, or switch a conversation to a different template.
+
+You don’t usually create these conversations yourself. Features such as [{{alertzero}}](/solutions/security/alertzero/index.md) create them and use the template to keep track of their work. Workflows can also create them.
+
+In standalone mode, select **Chat info** in the header of a templated conversation to open a flyout with the details that the template defines, such as the summary and proposed actions. **Chat info** doesn't appear in [sidebar mode](/explore-analyze/ai-features/agent-builder/standalone-and-flyout-modes.md#sidebar-mode). To copy a link that opens the conversation with **Chat info** open, select the **Copy link** icon {icon}`link`.
+
+What you can change in **Chat info** depends on your privileges. For details, refer to the documentation for the feature that created the conversation. To create templated conversations, or to read and update their metadata from a workflow, refer to [Conversation metadata steps](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-steps).
+
 
 ### Inspect tool calls and reasoning
 
@@ -386,7 +502,71 @@ For example, the following **Reasoning** panel shows a tool call with its **Insp
 
 :::::
 
-{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details or select **View response JSON** to inspect the raw response data. For more information, refer to [Monitor token usage](monitor-usage.md).
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` After the agent finishes responding, use the response metadata menu to view timing and token usage details, or select **View response JSON**, which opens a flyout titled **Raw response**. For more information, refer to [Monitor token usage](monitor-usage.md).
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The JSON includes `conversation_id` and `agent_id`, and an `execution` object for that response.
+
+### Rate a response [rate-a-response]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+After the agent finishes responding, you can rate the response with the **Good response** icon {icon}`thumbUp` or the **Bad response** icon {icon}`thumbDown`. The icons appear with the other response actions, such as **Copy response**.
+
+Only the conversation owner can view the icons, so they don't appear when you view a [shared or public conversation](#share-a-conversation) that you don't own. The icons also stay hidden when:
+
+- The agent is still responding.
+- The response has [stopped or failed](#stopped-and-failed-responses).
+- The conversation is read-only. Conversations created through the API as read-only show a **Read-Only** badge and have no chat input.
+
+To rate a response, select the **Good response** or **Bad response** icon. Your rating is saved right away and stays on the response when you reload the page. What happens next depends on the rating:
+
+- **Good response**: **Glad it helped!** and **Tell us more** replace the icons. To keep the rating without adding details, select the **Dismiss** icon {icon}`cross`.
+- **Bad response**: The **What went wrong?** dialog opens so you can add details.
+
+#### Add details to a rating
+
+To tell Elastic more about a rating:
+
+1. Open the feedback dialog. For a good rating, select **Tell us more** to open the **What worked well?** dialog. For a bad rating, the **What went wrong?** dialog is already open.
+2. Select the options that apply. You can select more than one.
+   - **What worked well?**: **Accurate**, **Useful**, and **Well explained**
+   - **What went wrong?**: **Inaccurate**, **Incomplete**, and **Didn't follow instructions**
+3. Optional: In the **Add comment** field, enter a comment of up to 500 characters.
+4. Select **Submit**. The response actions briefly show **Thank you for your feedback**.
+
+To keep the rating without adding details, select **Cancel** or close the dialog.
+
+For example, the following **What went wrong?** dialog has one option selected and a comment:
+
+:::{image} images/agent-builder-rate-response-dialog.png
+:screenshot:
+:alt: The What went wrong? dialog with the Incomplete option selected and a comment entered
+:width: 400px
+:::
+
+#### Change or remove a rating
+
+- To change a rating, select the other icon. If **Glad it helped!** is showing, select the **Dismiss** icon {icon}`cross` first to bring the icons back. Changing the rating also deletes any options and comment you submitted for the previous rating.
+- To remove a rating, select the highlighted icon again. Removing the rating also deletes any options and comment you submitted.
+
+#### Data shared with Elastic
+
+Both feedback dialogs show this notice: "Your comment and metadata will be shared with Elastic." When [telemetry](kibana://reference/configuration-reference/telemetry-settings.md) is turned on, Elastic receives the following each time you rate a response or submit details:
+
+- The rating, good or bad
+- The options you select
+- Your comment, when you add one
+- The conversation ID, the response ID, and the trace ID
+- The agent ID
+- The connector and the model
+- The input and output token counts
+- The number of model calls
+
+When you remove a rating, Elastic receives the same information without the rating, options, and comment.
+
+Elastic doesn't receive the text of your messages or of the agent's responses. In {{serverless-full}}, telemetry is always on. For details, refer to the [Elastic Privacy Statement](https://www.elastic.co/legal/privacy-statement).
 
 ### Stopped and failed responses [stopped-and-failed-responses]
 ```{applies_to}
@@ -414,7 +594,7 @@ The end of the response shows why it ended:
 Stopped and failed responses:
 
 - Stay in the conversation when you reload the page or open another conversation.
-- Don't include the **Copy response** icon, the response metadata menu, or the [View Trace icon](#view-traces).
+- Don't include the **Copy response** icon, the response metadata menu, the [View Trace icon](#view-traces), or the [**Good response** and **Bad response** icons](#rate-a-response).
 - Can't be retried. To try again or change your request, send a new message. The agent can see the steps and any error from the stopped or failed response.
 
 ### Call a specific API operation [call-a-specific-api-operation]
@@ -439,6 +619,11 @@ Each conversation round can record OpenTelemetry traces of how the agent ran. To
 
 The flyout is titled with the trace id and reports the span count and total duration. Each row in the waterfall shows the span's kind and duration, and model calls also show their input and output token counts.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The header includes the **Download trace** icon {icon}`download`. Select it to save the spans as a JSON file:
+
+- **File name**: `trace-` followed by the trace id in lowercase, plus `.json`. When the flyout has no trace id, the file is named `trace-trace.json`.
+- **Contents**: A `spans` array. When the flyout has a trace id, the file also includes `trace_id`.
+
 Select a span to open its details, including its generative AI attributes and any captured input and output. Message content appears only when the matching [trace privacy settings](collect-traces.md#trace-privacy-settings) are on. Otherwise the span reports that no input or output data is available.
 
 The **View Trace** icon appears only when trace collection is enabled and the conversation round has a trace. If trace collection is off, or the round produced no trace, the icon doesn't appear.
@@ -446,6 +631,34 @@ The **View Trace** icon appears only when trace collection is enabled and the co
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The icon also doesn't appear on [stopped or failed responses](#stopped-and-failed-responses), even when the round has a trace.
 
 To learn how traces are collected, configured, and secured, refer to [Collect agent traces](collect-traces.md).
+
+#### Load a trace from a file [load-a-trace-from-a-file]
+
+```{applies_to}
+stack: ga 9.6+
+```
+
+To load a trace from a file:
+
+1. Select **Load trace from file** in the [options menu](#access-key-actions).
+2. Select a JSON file.
+
+A valid file is either of the following:
+
+- A JSON array of spans.
+- An object with a `spans` array, and optionally a string `trace_id`. A file saved with **Download trace** uses this format.
+
+Each span must include `span_id`.
+
+The trace flyout opens and shows the callout "Viewing a trace loaded from a file." You can load a file when trace collection is off, or when the round has no **View Trace** icon. The following image shows the flyout:
+
+:::{image} images/trace-flyout-loaded-from-file.png
+:screenshot:
+:alt: Trace flyout with the callout "Viewing a trace loaded from a file." above the span list
+:width: 600px
+:::
+
+If the file is not valid JSON or is not a valid trace, an error toast titled **Could not load trace file** shows the error `The file does not contain a valid trace. Expected a JSON array of spans or an object with a "spans" array.`
 
 ### Human-in-the-loop prompts
 ```{applies_to}
@@ -463,23 +676,23 @@ At certain points an agent pauses and hands control back to you before it contin
 | Connector authorization {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | An external connector needs access to continue | Authorize access or deny it |
 | Clarifying question {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` | The agent needs more information to continue | Answer or skip the question |
 
-HITL prompts do not replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
+These prompts don't replace role-based access control or grant additional privileges. Actions still run with your existing permissions.
 
-HITL prompts require an interactive conversation, so [sub-agent executions cannot answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+These prompts require an interactive conversation, so [a subagent that another agent starts can't answer them](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Confirm a change
 
 Some tools and skills pause for confirmation before they perform consequential actions. Elastic-built tools and skills decide for themselves when to ask.
 
-For [custom tools](tools/custom-tools.md), you decide when the agent asks: set **Require user confirmation** to **Never**, **Once**, or **Always**. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` For custom tools, you decide when the agent asks by setting **Require user confirmation** to **Never**, **Once**, or **Always**: in the UI for workflow and MCP tools, or through the API for any custom tool type. For details, refer to [Require confirmation before a tool runs](tools/custom-tools.md#require-confirmation-before-a-tool-runs).
 
-What the prompt shows depends on the tool:
+The prompt you get depends on the tool:
 
-* Some Elastic-built tools and skills preview the change before it takes effect. The preview format and the button labels depend on the tool or skill: a prompt to delete a [stream](/solutions/observability/streams/streams.md) offers **Delete permanently**, and a prompt to create one offers **Create stream**. Review the preview, then confirm the action to proceed or deny it to cancel.
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
-* Other tools, including all custom tools, show a generic prompt that names the tool and asks whether to proceed. Select **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
+* **Change preview**: Some Elastic-built tools and skills show the proposed change before it takes effect. Review the preview, then confirm the action to proceed or deny it to cancel. The preview format and the button labels vary by tool or skill.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **API confirmation**: The built-in `execute_api` tool shows an API confirmation prompt. Refer to [Confirm an API operation](#confirm-an-api-operation).
+* **Generic prompt**: Other tools, including all custom tools, show a prompt that names the tool and asks whether to proceed. Click **Allow** to proceed or **Deny** to cancel. The prompt identifies the tool by its ID and doesn't show the parameters that the agent passes to it, so give custom tools [descriptive IDs](tools/custom-tools.md#naming-conventions).
 
-For example, when an agent updates a workflow, it shows the proposed change as a diff and waits for you to review it before applying:
+When an agent updates a workflow, it shows the proposed change as a diff and waits for your review before applying it, as in the following screenshot:
 
 :::{image} images/agent-builder-preview-changes.png
 :screenshot:
@@ -487,7 +700,7 @@ For example, when an agent updates a workflow, it shows the proposed change as a
 :width: 700px
 :::
 
-The Streams management skill also previews the proposed configuration when it creates a stream:
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The following screenshot shows the Streams management skill previewing the configuration of a new stream:
 
 :::{image} images/agent-builder-confirm-create-stream.png
 :screenshot:
@@ -495,7 +708,9 @@ The Streams management skill also previews the proposed configuration when it cr
 :width: 700px
 :::
 
-For irreversible actions, the prompt highlights the consequences before you proceed:
+For irreversible actions, the prompt highlights the consequences before you proceed.
+
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` The following screenshot shows the Streams management skill prompting you to delete a stream:
 
 :::{image} images/agent-builder-confirm-delete-stream.png
 :screenshot:
@@ -503,7 +718,7 @@ For irreversible actions, the prompt highlights the consequences before you proc
 :width: 700px
 :::
 
-Custom tools show the generic prompt instead. Here, a tool that cancels an order asks for permission before it runs. The prompt names the tool but not the order:
+The following screenshot shows the generic prompt for a custom tool that cancels an order. The prompt names the tool, but not the order:
 
 :::{image} images/agent-builder-tool-confirmation-prompt.png
 :screenshot:
@@ -527,9 +742,9 @@ Whether you see a prompt depends on the operation, not on its HTTP method:
 
 The prompt shows the HTTP method, path, and whether the call goes to {{es}} or {{kib}}. It doesn't show the request body.
 
-Select **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
+Click **Approve** to proceed or **Deny** to cancel the call. Approving one call doesn't approve later ones.
 
-A parent agent can also ask you to approve operations before starting a sub-agent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+An agent can also ask you to approve operations before it starts a subagent. For approval scope and what happens when no one can respond to a prompt, refer to [Human-in-the-loop limitations](limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 #### Authorize a connector
 ```{applies_to}
@@ -537,9 +752,9 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When an agent uses a [connector](connectors.md) to reach an external service that requires authorization, the chat pauses so you can grant access. Select **Authorize** to complete the sign-in flow for the connector, or **Deny** to decline. After you authorize, the agent retries the tool call and continues.
+When an agent uses a [connector](connectors.md) to reach an external service that requires authorization, the chat pauses so you can grant access. Click **Authorize** to complete the sign-in flow for the connector, or **Deny** to decline. After you authorize, the agent retries the tool call and continues.
 
-For example, an agent that needs to read your Notion workspace pauses until you authorize the connector:
+For example, the following screenshot shows the prompt from an agent that needs to read your Notion workspace:
 
 :::{image} images/agent-builder-authorization-prompt.png
 :screenshot:
@@ -553,11 +768,11 @@ stack: preview 9.5+
 serverless: preview
 ```
 
-When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or choose the custom option and type your own answer. Some questions let you select more than one option. To move on without answering, select **Skip question**.
+When your request is ambiguous, an agent can pause and ask you up to five multiple-choice questions instead of guessing. For each question, select one of the options, or select the custom option and enter your own answer. Some questions let you select more than one option. To move on without answering, click **Skip question**.
 
-When there's more than one question, use **Back** and **Continue** to move between them, then select **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
+When there's more than one question, click **Back** and **Continue** to move between them, then click **Submit** on the last question. After you respond, the agent resumes. The agent's questions and your answers stay in the conversation, so you can revisit what was asked and how you responded.
 
-For example, before creating a dashboard the agent might ask which sample data set to use:
+For example, the following screenshot shows the agent asking which sample data set to use before it creates a dashboard:
 
 :::{image} images/agent-builder-clarifying-question.png
 :screenshot:
@@ -633,11 +848,21 @@ The **Customize** accordion in the left sidebar provides agent-scoped configurat
 The **Plugins** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 :::
 
+**Connectors** {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+:   Lists the [connectors](connectors.md) assigned to the current agent. Select a connector to open a detail panel that shows its sub-actions. To assign a connector, select **Add connector**. To view and manage the connectors library, select **Manage all connectors**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
+
 **Tools**
-:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To assign new tools, click **Add tool**. To view and manage all tools, click **Manage all tools**.
+:   Lists the [tools](tools.md) assigned to the current agent. Click a tool to open a read-only detail panel. To view and manage all tools, click **Manage all tools**.
+
+    {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Click **Add tool** to import an existing tool from the tool library, or to create a tool and attach it to the agent. Refer to [Assign tools to agents](tools/custom-tools.md#assign-tools-to-agents) and [Create and attach a tool](tools/custom-tools.md#create-and-attach-a-tool).
+
+    {applies_to}`stack: ga =9.4` Click **Add tool** to assign tools from the tool library. Refer to [Assign tools to agents](tools/custom-tools.md#assign-tools-to-agents).
+
+The following image shows the **Customize** section of the left sidebar:
 
 :::{image} images/customize-your-agent-accordion.png
-:alt: Customize accordion open
+:screenshot:
+:alt: Customize accordion in the agent sidebar listing Overview, Skills, Connectors, and Tools
 :width: 200px
 :::
 
@@ -647,10 +872,12 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 stack: ga 9.4+
 ```
 
-The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of all agents, skills, plugins, connectors, and tools available across the deployment.
+The **Manage components** link at the bottom of the left sidebar exits the single-agent view. It provides an overview of the agents, skills, plugins, connectors, and tools available across the deployment.
 
 **Agents**
-:   View all agents available in the current {{kib}} space. The list displays each agent's name and access control level (**Public**, **Shared**, or **Private**), a **Read-only** badge for built-in agents, and any labels. From this page, you can create new agents, edit existing ones, or start a chat.
+:   View the agents available in the current {{kib}} space. The list displays each agent's name and access control level (**Public**, **Shared**, or **Private**), a **Read-only** badge for built-in agents, and any labels. From this page, you can create new agents, edit existing ones, or start a chat.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list doesn't include [hidden agents](agent-builder-agents.md#hidden-agents) until you turn on **Show hidden agents**.
 
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
 
@@ -667,13 +894,11 @@ The **Plugins** option is hidden until you turn on the `agentBuilder:experimenta
 :::
 
 **Connectors** {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   View and manage the {{agent-builder}} connectors library, which gives agents access to external data sources and systems. {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use a connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
+:   View and manage the {{agent-builder}} connectors library, which gives agents access to external data sources and systems.
 
-:::{note}
-:applies_to: stack: preview 9.4-9.5
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` To let an agent use a connector, [assign it to the agent](connectors.md#assign-connectors-to-an-agent).
 
-The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
-:::
+    {applies_to}`stack: preview 9.4-9.5` The **Connectors** option is hidden until you turn on the `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) in {{kib}}.
 
 **Tools**
 :   View and manage all tools. The global Tools page includes a search bar, **Labels** filter, **Manage MCP** dropdown, **Manage agents** link, and **+ New tool** button.

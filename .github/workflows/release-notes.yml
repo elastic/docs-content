@@ -1,7 +1,7 @@
 name: "Release notes: Check"
 on:
   pull_request:
-    types: [opened, synchronize, reopened, labeled, unlabeled]
+    types: [opened, synchronize, reopened, labeled, unlabeled, ready_for_review, converted_to_draft]
   push:
     branches: [main]
 permissions: {}
@@ -15,3 +15,5 @@ jobs:
     uses: elastic/docs-actions/.github/workflows/release-notes.yml@v1
     with:
       config: changelog.yml
+      # Skip the checks and the PR comment on drafts. Needs ready_for_review above.
+      skip-drafts: true

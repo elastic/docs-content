@@ -1,8 +1,9 @@
 ---
 navigation_title: Connect workflows
 applies_to:
-  stack: ga 9.6+, experimental =9.5
-  serverless: ga
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How action policies and alert lifecycle triggers invoke workflows, and when to use each."
@@ -10,11 +11,11 @@ description: "How action policies and alert lifecycle triggers invoke workflows,
 
 # Connect workflows to {{alerting-v2-system}} [connect-workflows]
 
-In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens in response to an alert, such as sending a message, calling a webhook, or opening a ticket.
+In {{alerting-v2-system-short}}, [workflows](../../workflows.md) define what happens in response to an alert, such as sending a message, calling a webhook, or opening a ticket.
 
 ## How the alerting system connects to workflows [connection-pathways]
 
-{{alerting-v2-system-cap}} starts workflows in two ways: through action policies and through alert lifecycle triggers. Both require an alert.
+{{alerting-v2-system-short}} starts workflows in two ways: through action policies and through alert lifecycle triggers. Both require an alert.
 
 ### Action policies [action-policy-driven-workflows]
 
@@ -23,11 +24,12 @@ In {{alerting-v2-system}}, [workflows](../../workflows.md) define what happens i
 ### Alert lifecycle triggers [alert-episode-lifecycle-triggers]
 
 ```{applies_to}
-serverless: preview
-stack: ga 9.6+, experimental =9.5
+serverless:
+  observability: preview
+stack: preview 9.6+
 ```
 
-Lifecycle triggers are [event-driven triggers](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a user [resolves, assigns, acknowledges, or snoozes](alerts/triage-alert-episodes.md) an alert, with no scheduling or gating. Each action emits a named trigger event, such as `alerting.actions.alertAssigned` (`alerting.episodeAssigned` in earlier versions).
+Lifecycle triggers are [event-driven triggers](../../workflows/triggers/event-driven-triggers.md) that start a workflow immediately when a user [resolves, assigns, acknowledges, or snoozes](alerts/triage-alert-episodes.md) an alert, with no scheduling or gating. Each action emits a named trigger event, such as `alerting.actions.alertAssigned`.
 
 Lifecycle triggers don't fire on [automatic status changes](alerts.md#alert-episode-lifecycle), such as when an alert becomes active or recovers based on rule evaluations. To respond to those changes, use an action policy. For the full list of trigger IDs, refer to [Alert lifecycle triggers](../../workflows/triggers/event-driven-triggers.md#alert-episode-lifecycle-triggers-available).
 

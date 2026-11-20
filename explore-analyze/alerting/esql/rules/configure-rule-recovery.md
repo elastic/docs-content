@@ -1,8 +1,9 @@
 ---
 navigation_title: Recovery condition
 applies_to:
-  stack: ga 9.6+, experimental =9.5
-  serverless: ga
+  stack: ga 9.6+
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "How to configure when and how an alert recovers: the recovery strategy and the delay before an alert closes."
@@ -10,15 +11,11 @@ description: "How to configure when and how an alert recovers: the recovery stra
 
 # Recovery condition settings for {{alerting-v2-system}} [recovery-condition]
 
-Recovery condition settings are optional for {{alerting-v2-system}} rules that group matches into an alert. They control how the rule decides an alert has resolved and how much confirmation it needs before closing the alert. Setting these correctly ensures alerts close when the underlying problem is actually fixed, rather than staying open indefinitely, closing for the wrong reason, or flapping between open and closed.
+Recovery condition settings are optional for {{alerting-v2-system-short}} rules that group matches into an alert. They control how the rule decides an alert has resolved and how much confirmation it needs before closing the alert. Setting these correctly ensures alerts close when the underlying problem is actually fixed, rather than staying open indefinitely, closing for the wrong reason, or flapping between open and closed.
 
 ## Recovery strategy [recovery-strategy-options]
 
 Choose one of the following options in the **Recovery** field. Each maps to a recovery strategy value if you're editing YAML directly.
-
-:::::{applies-switch}
-
-::::{applies-item} { serverless: ga, stack: ga 9.6+ }
 
 | Option | `recovery.strategy` value | Description |
 | --- | --- | --- |
@@ -31,22 +28,6 @@ The rule form doesn't offer the `query` strategy, which evaluates an independent
 :::{note}
 If you omit `recovery` in the YAML editor of the rule form, {{kib}} uses **Default recovery**.
 :::
-::::
-
-::::{applies-item} stack: experimental =9.5
-
-| Option | `recovery_strategy` value | Description |
-| --- | --- | --- |
-| Default recovery | `no_breach` | Recovers an alert when its group no longer breaches and the base query (without the alert condition) still returns that group. That confirms the group is actually healthy, not just missing from the data. This is the default and covers most rules. |
-| Custom recovery | `query` | Evaluates a separate recovery condition. A match recovers the alert. No match falls back to the same base-query check as **Default recovery**. |
-| No recovery | `none` | Turns off automatic recovery entirely. Alerts stay open until closed manually. With recovery turned off, no-data handling doesn't run either. |
-
-:::{note}
-An unset `recovery_strategy` behaves the same as **No recovery**, but unset usually means the setting was overlooked rather than a deliberate choice.
-:::
-::::
-
-:::::
 
 An empty base query result triggers [no-data handling](configure-no-data-handling.md) for rules using **Default recovery** or **Custom recovery**.
 
@@ -55,6 +36,7 @@ An empty base query result triggers [no-data handling](configure-no-data-handlin
 Choose **Custom recovery** when:
 
 * The condition that should close an alert isn't simply "no longer breaching." For example, a value needs to drop back to a safe margin below the original breach threshold, not just dip under it once. Define a separate recovery condition to require that.
+* Alerts for the rule keep changing between `active` and `recovering` and show a **Flapping** badge. Set a recovery condition that requires the metric to move a safe margin back from the breach threshold. The alert then stays `active` until the metric clears that margin, instead of moving to `recovering` each time the alert condition stops matching. A [recovery delay](#recovery-delay) doesn't reduce flapping, because a breach during the delay returns the alert to `active`. To learn when an alert shows the badge, refer to [Spot a flapping alert](../alerts/investigate-alert-episodes.md#flapping).
 
 Choose **No recovery** when:
 
@@ -71,18 +53,14 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 | Mode | Behavior | When to use |
 | --- | --- | --- |
 | Immediate | Closes the alert as soon as recovery is detected on the first evaluation. | Use when a single non-breaching evaluation is enough confidence that the problem is resolved. |
-| Recoveries | Closes the alert after recovery is detected a set number of times in a row. | Use when a rule alternates between breaching and recovering on consecutive evaluations, and you want to avoid a constant stream of open and closed notifications. |
+| Recoveries | Closes the alert after recovery is detected a set number of times in a row. | Use when a rule alternates between breaching and recovering on consecutive evaluations, and you want to avoid a constant stream of open and closed notifications. During the delay, the alert stays open in `recovering`, and a breach returns it to `active`. To reduce [flapping](../alerts/investigate-alert-episodes.md#flapping), use a [custom recovery condition](#recovery-strategy-when-to-use) instead. |
 | Duration | Closes the alert after recovery has held continuously for a set time. | Use when you need the condition to stay resolved for a minimum stretch of time before you trust it, rather than just counting evaluations. |
 
 ### Recovery delay fields
 
-:::::{applies-switch}
-
-::::{applies-item} { serverless: ga, stack: ga 9.6+ }
-
 | Field | Type | Accepted values | Description |
 | --- | --- | --- | --- |
-| `state_transition.recovering.count` | integer | 0–1000 | Consecutive recoveries the alert spends in `recovering` before it becomes `inactive` on the next recovery. Set to `0` to close the alert on the first recovery. |
+| `state_transition.recovering.count` | integer | 0–1000 | Consecutive recoveries the alert spends in `recovering` before it becomes `inactive` on the next recovery. Set to `0` to close the alert on the first recovery. If you also set `timeframe` with `operator: and`, a count of `0` closes the alert only after the timeframe passes. |
 | `state_transition.recovering.timeframe` | duration | Any duration string | How long the condition must remain non-breaching before the alert closes. |
 | `state_transition.recovering.operator` | string | `and` or `or` | When you set both `count` and `timeframe`, controls whether both must be satisfied (`and`) or either one is enough (`or`). Defaults to `or`. |
 
@@ -90,27 +68,9 @@ Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Dura
 
 A rule with **No recovery** (`manual`) can't set `state_transition.recovering`, because a recovery delay has no effect when alerts never recover on their own.
 
+Recovery delay also doesn't apply when [no-data handling](configure-no-data-handling.md) closes an alert with **Recover immediately**. The alert skips the `recovering` state and closes the first time the rule finds no data for its group.
+
 You can combine Recoveries and Duration by setting both `count` and `timeframe`. Use `operator: and` to require both conditions before the alert closes, or `operator: or` if either condition alone is enough. For field details, refer to the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields).
-::::
-
-::::{applies-item} stack: experimental =9.5
-
-| Field | Type | Accepted values | Description |
-| --- | --- | --- | --- |
-| `recovering_count` | integer | 0–1000 | Number of consecutive non-breaching evaluations required before the alert closes. Set to `0` to skip the recovering phase and transition directly to inactive on recovery. |
-| `recovering_timeframe` | duration | Any duration string | How long the condition must remain non-breaching before the alert closes. |
-| `recovering_operator` | string | `AND` or `OR` | When both `recovering_count` and `recovering_timeframe` are set, controls whether both must be satisfied (`AND`) or either one is enough (`OR`). |
-
-Timeframe fields accept duration strings between `5s` and `365d`. Refer to [Duration format](yaml-rule-schema-reference.md#duration-format) for supported units.
-
-:::{note}
-In the YAML rule schema, these fields are prefixed with `state_transition.`. For example, `recovering_count` here is `state_transition.recovering_count` in the [YAML rule schema reference](yaml-rule-schema-reference.md#state-transition-fields). They are the same fields.
-:::
-
-You can combine Recoveries and Duration by setting both `recovering_count` and `recovering_timeframe`. Use `recovering_operator: AND` to require both conditions before the alert closes, or `recovering_operator: OR` if either condition alone is enough.
-::::
-
-:::::
 
 ## Examples
 

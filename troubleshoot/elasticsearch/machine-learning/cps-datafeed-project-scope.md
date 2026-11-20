@@ -22,7 +22,7 @@ Common symptoms include no results or origin-only results, slower extraction aft
 
 ### Check the effective scope in {{kib}}
 
-Open **Machine Learning → Anomaly Detection** and review the **Project scope** column. Each cell shows a parsed count out of the total project count (origin plus linked projects). For example, `2/5` means the expression targets 2 projects out of 5 available.
+Open **Machine Learning** → **Anomaly Detection** and review the **Project scope** column. Each cell shows a parsed count out of the total project count (origin plus linked projects). For example, `2/5` means the expression targets 2 projects out of 5 available.
 
 The parsed count comes from the routing expression text, not from which aliases match at runtime. To view the routing expression, open the job, go to the **Datafeed** tab, and check **Project scope**, or call `GET _ml/datafeeds/{datafeed_id}`.
 

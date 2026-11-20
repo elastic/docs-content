@@ -24,7 +24,7 @@ The **Hosts** page provides a metrics-driven view of your infrastructure backed 
 
 To access the **Hosts** page in:
 - **Elastic Stack,** find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-- **Serverless,** go to **Infrastructure → Hosts** in your Elastic Observability Serverless project.
+- **Serverless,** go to **Infrastructure** → **Hosts** in your Elastic Observability Serverless project.
 
 :::{image} /solutions/images/serverless-hosts.png
 :alt: Screenshot of the Hosts page
@@ -37,7 +37,7 @@ To learn more about the metrics shown on this page, refer to the [Metrics refere
 **Don’t see any metrics?**
 
 
-If you haven’t added data yet, click **Add data → Host** and select how you want to monitor your host—OpenTelemetry or Elastic Agent.
+If you haven’t added data yet, click **Add data** → **Host** and select how you want to monitor your host—OpenTelemetry or Elastic Agent.
 
 For more on collecting host data, refer to:
 * [OpenTelemetry](elastic-agent://reference/edot-collector/config/configure-metrics-collection.md#process-metrics)
@@ -155,7 +155,7 @@ To learn more about creating and managing rules, refer to [Alerting](/solutions/
 
 ::::
 
-## Select the data collection schema[host-schema-selector]
+## Select the data collection schema [host-schema-selector]
 ```{applies_to}
 stack: ga 9.2
 serverless: ga
@@ -421,7 +421,7 @@ When a host is detected by APM, but is not collecting full metrics (for example,
 
 This could mean that the APM agent has not been configured to use the correct host name. Instead, the host name might be the container name or the Kubernetes pod name.
 
-To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-intake-service-event-api.md#kubernetes-data).
+To get the correct host name, you need to set some additional configuration options, specifically `system.kubernetes.node.name` as described in [Kubernetes data](/solutions/observability/apm/managed-inputs-apm-intake-event-api.md#kubernetes-data).
 
 ### I don't see all of my host data [observability-analyze-hosts-i-dont-see-all-of-my-host-data]
 ```{applies_to}
