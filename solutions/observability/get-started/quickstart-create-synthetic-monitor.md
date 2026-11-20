@@ -80,11 +80,6 @@ When you set up alerts and receive notifications, you’ll also receive a deep l
 
 Go to **Monitors** and select one of the monitors, you’ll see a dialog with a quick summary of the monitor. Select **Go to monitor** to see high level insights. Charts will start to render as more tests come through but you can quickly see the availability, the duration to execute tests, the timeline, and you can also drill down into the waterfall chart. 
 
-:::{image} /solutions/images/synthetics-monitor-history.png
-:alt: The History tab of a monitor, with its availability, duration trends, status timeline, and test runs
-:screenshot:
-:::
-
 To drill down, select the icon under **View test run**. From here you can see the waterfall chart, object weight, object count, and more.
 
 ::::
