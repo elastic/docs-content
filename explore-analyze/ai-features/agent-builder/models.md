@@ -71,6 +71,8 @@ When you call an agent through the [Converse API](kibana-api.md#chat-and-convers
 
 Both parameters route the request to the same underlying model and are mutually exclusive. If you send both, the request fails with a `400` error. If you omit both, the request uses the default model for {{agent-builder}}, as set on the **Feature settings** page.
 
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` You can also pass `reasoning_level` to set how much reasoning the model does for that request. It accepts the same values as the [`reasoning-level` workflow step field](/explore-analyze/workflows/steps/ai-steps.md#ai-reasoning-level).
+
 For an example request, refer to [Route a request to a specific model](kibana-api.md#chat-and-conversations).
 
 ## Change the default model

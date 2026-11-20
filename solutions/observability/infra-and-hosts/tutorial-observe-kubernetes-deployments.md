@@ -184,7 +184,7 @@ Provide the following information for each of the kubelet API options:
 
 #### Configure kubelet API metadata enrichment [monitor-k8s-kubelet-configure-metadata]
 
-Under **Kubernetes Container metrics** and **Kubernetes Pod metrics**, you can configure metadata enrichment from **Advanced options → Add node and namespace metadata**.
+Under **Kubernetes Container metrics** and **Kubernetes Pod metrics**, you can configure metadata enrichment from **Advanced options** → **Add node and namespace metadata**.
 
 From here, update the `add_resource_metadata` block to configure enrichment:
 
@@ -281,7 +281,7 @@ Provide the following information for each of the `kube-state-metrics` options:
 
 #### Configure `kube-state-metrics` metadata enrichment [monitor-k8s-kube-state-configure-metadata]
 
-Under **Kubernetes Container metrics** and **Kubernetes Pod metrics**, you can configure metadata enrichment from **Advanced options → Add node and namespace metadata**.
+Under **Kubernetes Container metrics** and **Kubernetes Pod metrics**, you can configure metadata enrichment from **Advanced options** → **Add node and namespace metadata**.
 
 From here, update the `add_resource_metadata` block to configure enrichment:
 
@@ -538,7 +538,7 @@ For more on using the **Metrics Explorer** page, refer to [Explore infrastructur
 
 Find `Discover` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-From the **Data view** menu, select `All logs`. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
+In {{esql}} mode, enter `FROM logs-*`. In classic mode, select `All logs` from the **Data view** menu. From here, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. Then, you can filter your log data and dive deeper into individual logs to find and troubleshoot issues. For more information, refer to:
 
 * [Explore logs in Discover](../logs/discover-logs.md) for an overview of viewing your logs in Discover.
 * [Filter logs in Discover](../logs/filter-aggregate-logs.md#logs-filter-discover) for more on filtering logs in Discover.
@@ -575,8 +575,8 @@ A [secret token](/solutions/observability/apm/secret-token.md) is used to secure
 
 1. Find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Agent policies** tab, select the policy you would like to configure.
-3. Find the Elastic APM integration and select **Actions → Edit integration**.
-4. Navigate to **Agent authorization → Secret token** and set the value of your token.
+3. Find the Elastic APM integration and select **Actions** → **Edit integration**.
+4. Navigate to **Agent authorization** → **Secret token** and set the value of your token.
 5. Click Save integration. The APM Server will restart before the change takes effect.
 
 To avoid exposing the secret token, you can store it in a Kubernetes secret. For example:

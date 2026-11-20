@@ -1,0 +1,9 @@
+toc:
+  - file: index.md
+  - file: authentication-delivery-and-failure-handling.md
+  - file: rate-limiting.md
+  - file: managed-otlp-endpoint.md
+    children:
+      - file: troubleshooting.md
+  - file: prometheus-remote-write.md
+  - file: elasticsearch-bulk.md

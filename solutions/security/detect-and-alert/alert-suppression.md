@@ -147,7 +147,7 @@ Closing a suppressed alert can affect suppression behavior. Refer to [Impact of 
 
 ### Alert details flyout
 
-Open the **Insights** > **Correlations** section to see suppression details.
+Open the **Insights** → **Correlations** section to see suppression details.
 
 :::{image} /solutions/images/security-suppressed-alerts-details.png
 :alt: Suppressed alerts in the Correlations section within the alert details flyout
@@ -161,7 +161,7 @@ Open the **Insights** > **Correlations** section to see suppression details.
 Even though suppressed events don't generate their own alerts, you can still access the original events for analysis. Open Timeline with all the events associated with a suppressed alert using one of these methods:
 
 * Alerts table— select **Investigate in timeline** in the **Actions** column.
-* Alert details flyout— select **Take action > Investigate in timeline**.
+* Alert details flyout— select **Take action** → **Investigate in timeline**.
 
 The events visible in Timeline depend on the rule type:
 

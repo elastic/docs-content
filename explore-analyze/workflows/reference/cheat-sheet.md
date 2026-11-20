@@ -101,7 +101,7 @@ Minimum schedule interval: **1 minute**. Refer to [Triggers](/explore-analyze/wo
 | Enable or disable detection rules | `security.enableRule`, `security.disableRule` |
 | Manage asset criticality | `entityStore.updateAssetCriticality` |
 | Call an API | `http` (with optional `connector-id`) |
-| Call a service | `<connector>.<action>` (for example, `slack.postMessage`, `jira.createIssue`) |
+| Call a service | `<connector>` or `<connector>.<action>` (for example, `slack`, `jira.pushToService`) |
 | Branch | `if`, `switch` |
 | Loop | `foreach`, `while`, `loop.break`, `loop.continue` |
 | Run independent work at the same time | `parallel` |
@@ -199,22 +199,22 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
            url: "https://api.example.com/jobs/{{ inputs.job_id }}"
    ```
 
-3. **`switch.cases` is an array**, not a map. Each case is a `{ case: <value>, steps: [...] }` object. Refer to [`switch`](/explore-analyze/workflows/steps/switch.md).
+3. **`switch.cases` is an array**, not a map. Each case is a `{ match: <value>, steps: [...] }` object. Refer to [`switch`](/explore-analyze/workflows/steps/switch.md).
 
    ```yaml
    - name: route
      type: switch
      expression: "{{ steps.classify.output.severity }}"
      cases:
-       - case: critical
+       - match: critical
          steps:
            - name: page_oncall
-             type: pagerduty.triggerIncident
+             type: pagerduty
              with: { ... }
-       - case: high
+       - match: high
          steps:
            - name: notify_team
-             type: slack.postMessage
+             type: slack
              with: { ... }
      default:
        - name: log_only
@@ -249,16 +249,16 @@ Full reference: [Pass data and handle errors](/explore-analyze/workflows/authori
        reason: "Verified non-malicious."
    ```
 
-6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`. Liquid expressions in these top-level fields aren't evaluated; use literal values. Refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
+6. **AI step identifiers are top-level kebab-case:** `connector-id`, `agent-id`, `inference-id`. In 9.5 and later, Liquid expressions in these top-level fields are evaluated. In 9.3–9.4, use literal values. Refer to [AI steps](/explore-analyze/workflows/steps/ai-steps.md).
 
    ```yaml
-   # Wrong — fields nested under with, and templated agent-id is not substituted
+   # Wrong — fields nested under with, and camelCase agentId
    - type: ai.agent
      with:
        agentId: "{{ consts.agent_id }}"
        message: "..."
 
-   # Right — top-level kebab-case with literal values
+   # Right — top-level kebab-case
    - type: ai.agent
      agent-id: elastic-ai-agent
      with:

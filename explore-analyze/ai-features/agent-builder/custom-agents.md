@@ -185,6 +185,8 @@ Switch to the **Tools** tab to assign [tools](tools.md) to your agent.
 
 Select the combination of built-in and custom tools available to the agent, based on your use case.
 
+{applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can only assign existing tools on this tab. To create a tool for this agent, save the agent first, then follow [Create and attach a tool](tools/custom-tools.md#create-and-attach-a-tool).
+
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` You don't need to assign the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools). Every agent has them automatically.
 
 :::::
@@ -242,7 +244,7 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-New agents start with no connectors. To let your agent reach external systems, assign connectors after you save the agent: select the agent, then in the sidebar under **Customize**, select **Connectors**, then select **Add connector**.
+New agents start with no connectors. To let your agent reach external systems, assign connectors after you save the agent: select the agent, select **Customize** → **Connectors** in the left sidebar, and then select **Add connector**.
 
 If you left **Enable Elastic capabilities** off, also assign the built-in `connector-discovery` skill on the agent's **Skills** page. Without it, the agent can't find its connectors.
 
