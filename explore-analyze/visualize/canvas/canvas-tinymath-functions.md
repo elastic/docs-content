@@ -29,6 +29,24 @@ You can wrap any function in another function as long as the return type of the 
 A TinyMath expression can contain up to 20 levels of nested parentheses. The expression can be up to 8,192 characters, not counting quoted text, such as a quoted column name or a Kibana Query Language (KQL) or Lucene filter. TinyMath rejects expressions that exceed these limits before it parses them. Typical expressions stay well within these limits.
 :::
 
+## Expression syntax
+
+An expression combines numbers, variables, operators, and function calls, such as `round(price * 1.2, 2)`. A variable is a value from the data that the expression runs on, such as a datatable column in Canvas or a field in an alert action template.
+
+| To do this | Write this | Notes |
+| --- | --- | --- |
+| Calculate | `+`, `-`, `*`, `/`, and parentheses, as in `(2 + 3) * 4` | `*` and `/` run before `+` and `-`. Operators of the same rank run from left to right. `^` and `%` aren't supported, so use [`pow`](#_pow_a_b) and [`mod`](#_mod_a_b). |
+| Write a number | `10`, `-10`, `1.5`, or `1e3` | Write `0.5`, not `.5`. Leading zeros and a leading `+` aren't accepted. |
+| Subtract or negate a variable | `a - b` or `0 - x` | Put spaces around `-`. TinyMath reads `a-b` as one variable named `a-b`, and `-x` as one variable named `-x`. |
+| Use a value from the data | `price` or `context.value` | Names are case-sensitive. A dot reads a nested value, so `context.value` reads `value` inside `context`. A name can contain letters, digits, `_`, `.`, `@`, and `-`, but can't start with a digit. |
+| Use a name with spaces or other characters | `"sales total"` or `'sales total'` | Quote a name that contains a space, starts with a digit, or contains a character such as `+`. |
+| Call a function | `round(x, 2)` | Put `(` right after the function name, with no space. Separate arguments with commas. An argument can be an expression, as in `add(1 + 2, 3 * 4)`. Function names are case-sensitive and can't contain digits. |
+| Compare values | `<`, `<=`, `>`, `>=`, `==` | `!=`, `=`, and `===` aren't supported. A comparison gives `true` or `false`. Use it on its own, in parentheses, or as a function argument, as in `ifelse(x > 1, 10, 20)`. You can't chain comparisons or use the result in arithmetic. |
+
+Each operator gives the same result as the function with the same meaning, including for arrays and when an error occurs. `+` matches [`add`](#_add_args), `-` matches [`subtract`](#_subtract_a_b), `*` matches [`multiply`](#_multiply_a_b), `/` matches [`divide`](#_divide_a_b), `<` matches [`lt`](#_lt_a_b), `<=` matches [`lte`](#_lte_a_b), `>` matches [`gt`](#_gt_a_b), `>=` matches [`gte`](#_gte_a_b), and `==` matches [`eq`](#_eq_a_b).
+
+You can't write `null`, `true`, or `false`. TinyMath reads those words as variable names. To replace null values in your data, use [`defaults`](#_defaults_a_b).
+
 ## Functions by task
 
 | Task | Functions |
