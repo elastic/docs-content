@@ -86,7 +86,7 @@ To generate reports, you need the **Generate PDF or PNG reports** privilege, loc
 
 A notification confirms that the report is queued. When it is ready, download it from the **Reporting** page under **Stack Management** → **Alerts and Insights** → **Reporting**. If the report contains a data table or Discover session, the PDF includes only the visible data.
 
-{applies_to}`stack: ga 9.1+` You can also schedule recurring exports. Refer to [Automatically generate reports](../report-and-share/automating-report-generation.md) to learn more.
+{applies_to}`stack: ga 9.3+, preview 9.1-9.2` You can also schedule recurring exports. Refer to [Automatically generate reports](../report-and-share/automating-report-generation.md) to learn more.
 
 For general information about reporting across all {{kib}} apps, including known limitations and troubleshooting, refer to [Reporting and sharing](../report-and-share.md). To set up reporting, see [Configure reporting](/deploy-manage/kibana-reporting-configuration.md).
 
