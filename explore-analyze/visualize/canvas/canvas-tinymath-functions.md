@@ -400,14 +400,19 @@ gt([1, 2], [0, 1]) // returns true
 
 ## gte( a, b ) [_gte_a_b]
 
-Checks whether one value is greater than or equal to another. If either argument is an array, the function returns `true` only if every element satisfies the comparison. You can also write this comparison as `a >= b`.
+Checks whether one value is greater than or equal to another. You can also write this comparison as `a >= b`.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers |
 | b | number &#124; Array.<number> | a number or an array of numbers |
 
-**Returns**: `boolean`. `true` if `a` is greater than or equal to `b`, `false` otherwise. If `a` or `b` is an array, returns `true` only if every element satisfies the comparison.
+**Returns**: `boolean`. `true` if `a` is greater than or equal to `b`, `false` otherwise.
+
+The result for arrays depends on the version:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If `a` or `b` is an array, returns `true` only if every element satisfies the comparison.
+- {applies_to}`stack: ga 9.0-9.4` If `a` is an array, returns `true` only if every element is equal to the other value, or every element is greater.
 
 **Throws**:
 
@@ -420,8 +425,20 @@ Checks whether one value is greater than or equal to another. If either argument
 gte(1, 1) // returns true
 gte(1, 2) // returns false
 gte([1, 2], 2) // returns false
+```
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` More array comparisons:
+
+```js
 gte([1, 2], [1, 1]) // returns true
 gte(2, [1, 2]) // returns true
+```
+
+{applies_to}`stack: ga 9.0-9.4` More array comparisons:
+
+```js
+gte([1, 2], [1, 1]) // returns false
+gte(2, [1, 2]) // returns false
 ```
 
 
@@ -550,14 +567,19 @@ lt([1, 2], [2, 3]) // returns true
 
 ## lte( a, b ) [_lte_a_b]
 
-Checks whether one value is less than or equal to another. If either argument is an array, the function returns `true` only if every element satisfies the comparison. You can also write this comparison as `a <= b`.
+Checks whether one value is less than or equal to another. You can also write this comparison as `a <= b`.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers |
 | b | number &#124; Array.<number> | a number or an array of numbers |
 
-**Returns**: `boolean`. `true` if `a` is less than or equal to `b`, `false` otherwise. If `a` or `b` is an array, returns `true` only if every element satisfies the comparison.
+**Returns**: `boolean`. `true` if `a` is less than or equal to `b`, `false` otherwise.
+
+The result for arrays depends on the version:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` If `a` or `b` is an array, returns `true` only if every element satisfies the comparison.
+- {applies_to}`stack: ga 9.0-9.4` If `a` is an array, returns `true` only if every element is equal to the other value, or every element is less.
 
 **Throws**:
 
@@ -569,9 +591,21 @@ Checks whether one value is less than or equal to another. If either argument is
 ```js
 lte(1, 1) // returns true
 lte(1, 2) // returns true
-lte([1, 2], 2) // returns true
 lte([1, 2], [1, 1]) // returns false
+```
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` More array comparisons:
+
+```js
+lte([1, 2], 2) // returns true
 lte(1, [1, 2]) // returns true
+```
+
+{applies_to}`stack: ga 9.0-9.4` More array comparisons:
+
+```js
+lte([1, 2], 2) // returns false
+lte(1, [1, 2]) // returns false
 ```
 
 
