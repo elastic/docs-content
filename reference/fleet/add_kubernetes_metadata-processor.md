@@ -15,6 +15,8 @@ products:
 
 ::::{tip}
 Inputs that collect logs and metrics use this processor by default, so you do not need to configure it explicitly.
+
+{applies_to}`stack: ga 9.6+` To turn it off, refer to [Turn off this processor](#add_kubernetes_metadata-processor-turn-off).
 ::::
 
 
@@ -283,4 +285,13 @@ Available matchers are:
               resource_type: 'pod'
     ```
 
+## Turn off this processor [add_kubernetes_metadata-processor-turn-off]
 
+```{applies_to}
+stack: ga 9.6+
+```
+
+Depending on the input, {{agent}} uses this processor by default. To turn it off, set `add_kubernetes_metadata` to `false`:
+
+:::{include} /reference/fleet/_snippets/turn-off-default-processor.md
+:::
