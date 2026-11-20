@@ -20,20 +20,20 @@ An expression can't contain an array directly. Arrays come from the data that th
 
 If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column.
 
-If a value isn't a number, such as null, most functions return `NaN`. The exceptions, which don't check that values are numbers, are `count`, `defaults`, `first`, `ifelse`, `last`, `size`, and `unique`. To replace null values before you calculate, use [`defaults`](#_defaults_a_b).
+If a value isn't a number, such as null, most functions return `NaN`. The exceptions, which don't check that values are numbers, are `count`, `defaults`, `first`, `ifelse`, `last`, `size`, and `unique`. To replace null values before you calculate, use [`defaults`](#_defaults_a_b). For example, if `prices` is `[1, null]`, `abs(prices)` returns `NaN`, while `abs(defaults(prices, 0))` returns `[1, 0]`.
 
 You can wrap any function in another function as long as the return type of the inner function matches the parameter type of the outer function.
 
 :::{note}
 :applies_to: {"serverless": "ga", "stack": "ga 9.4+"}
-A TinyMath expression can contain up to 20 levels of nested parentheses. The expression can be up to 8,192 characters, not counting quoted Kibana Query Language (KQL) or Lucene filters. TinyMath rejects expressions that exceed these limits before it parses them. Typical expressions stay well within these limits.
+A TinyMath expression can contain up to 20 levels of nested parentheses. The expression can be up to 8,192 characters, not counting quoted text, such as a quoted column name or a Kibana Query Language (KQL) or Lucene filter. TinyMath rejects expressions that exceed these limits before it parses them. Typical expressions stay well within these limits.
 :::
 
 ## Functions by task
 
 | Task | Functions |
 | --- | --- |
-| Arithmetic | [`add`](#_add_args), [`subtract`](#_subtract_a_b), [`multiply`](#_multiply_a_b), [`divide`](#_divide_a_b), [`mod`](#_mod_a_b), [`pow`](#_pow_a_b), [`abs`](#_abs_a), [`exp`](#_exp_a), [`log`](#_log_a_b), [`log10`](#_log10_a), [`sqrt`](#_sqrt_a), [`cbrt`](#_cbrt_a), [`square`](#_square_a), [`cube`](#_cube_a) |
+| Arithmetic | [`add`](#_add_args), [`subtract`](#_subtract_a_b), [`multiply`](#_multiply_a_b), [`divide`](#_divide_a_b), [`mod`](#_mod_a_b), [`pow`](#_pow_a_b), [`abs`](#_abs_a), [`exp`](#_exp_a), [`log`](#_log_a_b), [`log10`](#_log10_a) (call it as `log(a, 10)`), [`sqrt`](#_sqrt_a), [`cbrt`](#_cbrt_a), [`square`](#_square_a), [`cube`](#_cube_a) |
 | Rounding | [`ceil`](#_ceil_a), [`floor`](#_floor_a), [`fix`](#_fix_a), [`round`](#_round_a_b) |
 | Summarize numbers or arrays | [`sum`](#_sum_args), [`mean`](#_mean_args), [`median`](#_median_args), [`mode`](#_mode_args), [`min`](#_min_args), [`max`](#_max_args), [`range`](#_range_args), [`count`](#_count_a), [`size`](#_size_a), [`unique`](#_unique_a), [`first`](#_first_a), [`last`](#_last_a) |
 | Limits and random numbers | [`clamp`](#_clamp_a_min_max), [`random`](#_random_a_b) |
@@ -122,7 +122,7 @@ ceil([1.1, 2.2, 3.3]) // returns [2, 3, 4]
 
 ## clamp( a, min, max ) [_clamp_a_min_max]
 
-Restricts a value to a given range. Returns `min` if the value is below it, `max` if the value is above it, and the value itself otherwise. To limit a value on one side only, use the [`max`](#_max_args) function for a lower limit or the [`min`](#_min_args) function for an upper limit.
+Restricts a value to a given range. Returns `min` if the value is below it, `max` if the value is above it, and the value itself otherwise. To limit a value on one side only, use the [`max`](#_max_args) function for a lower limit or the [`min`](#_min_args) function for an upper limit. For example, `max(value, 5)` returns at least 5, and `min(value, 5)` returns at most 5.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -277,7 +277,7 @@ Checks whether two values are equal. For arrays, the function returns `true` onl
 | Param | Type | Description |
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers |
-| b | number &#124; Array.<number> | a number, or an array of numbers with the same length as `a` if `a` is an array |
+| b | number &#124; Array.<number> | a number, or, if `a` is also an array, an array of numbers with the same length as `a` |
 
 **Returns**: `boolean`. `true` if `a` and `b` are equal, `false` otherwise. If `a` is an array, returns `true` only if every element of `a` equals `b`, or equals the element at the same index of `b` if `b` is an array.
 
@@ -321,7 +321,7 @@ Returns the first element of an array. If `a` isn't an array, the function retur
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | Array.<any> | array of any values |
+| a | any &#124; Array.<any> | a value or an array of values |
 
 **Returns**: `*`. The first element of `a`. Returns `a` if `a` is not an array.
 
@@ -378,7 +378,7 @@ Checks whether one value is greater than another. For arrays, the function retur
 | Param | Type | Description |
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers |
-| b | number &#124; Array.<number> | a number, or an array of numbers with the same length as `a` if `a` is an array |
+| b | number &#124; Array.<number> | a number, or, if `a` is also an array, an array of numbers with the same length as `a` |
 
 **Returns**: `boolean`. `true` if `a` is greater than `b`, `false` otherwise. If `a` is an array, returns `true` only if every element of `a` is greater than `b`, or greater than the element at the same index of `b` if `b` is an array.
 
@@ -435,7 +435,7 @@ Returns one of two values, depending on a condition.
 | a | any &#124; Array.<any> | the value to return if `cond` is true |
 | b | any &#124; Array.<any> | the value to return if `cond` is false |
 
-**Returns**: `any` | `Array.<any>`. `a` if `cond` is true, otherwise `b`. TinyMath evaluates both `a` and `b` first, so an error in either one stops the expression.
+**Returns**: `any` | `Array.<any>`. `a` if `cond` is true, otherwise `b`. TinyMath evaluates both `a` and `b` first, so an error in either one stops the expression. For example, `ifelse(5 < 6, 1, 1 / 0)` throws `'Cannot divide by 0'`. Comparing arrays gives one boolean. `ifelse` therefore picks one value for the whole array, not one per element.
 
 **Throws**:
 
@@ -449,6 +449,7 @@ Returns one of two values, depending on a condition.
 ifelse(5 > 6, 1, 0) // returns 0
 ifelse(1 == 1, 7, 5) // returns 7
 ifelse(1 < 2, [1, 2, 3], [2, 3, 4]) // returns [1, 2, 3]
+ifelse(gt([0, 3], 1), 10, 20) // returns 20
 ```
 
 
@@ -458,7 +459,7 @@ Returns the last element of an array. If `a` isn't an array, the function return
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | Array.<any> | array of any values |
+| a | any &#124; Array.<any> | a value or an array of values |
 
 **Returns**: `*`. The last element of `a`. Returns `a` if `a` is not an array.
 
@@ -506,7 +507,7 @@ Expressions don't accept the name `log10`, because function names can't contain 
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers that can't be negative |
 
-**Returns**: `number` | `Array.<number>`. The base 10 logarithm of `a`. Returns an array with the base 10 logarithms of each element if `a` is an array.
+**Returns**: `number` | `Array.<number>`. The base 10 logarithm of `a`. Returns an array with the base 10 logarithms of each element if `a` is an array. The result can differ from the exact value in the last digits, as in `log(1000, 10)`, which returns `2.9999999999999996`.
 
 **Throws**: `'Must be greater than 0'` if `a` < 0
 
@@ -527,7 +528,7 @@ Checks whether one value is less than another. For arrays, the function returns 
 | Param | Type | Description |
 | --- | --- | --- |
 | a | number &#124; Array.<number> | a number or an array of numbers |
-| b | number &#124; Array.<number> | a number, or an array of numbers with the same length as `a` if `a` is an array |
+| b | number &#124; Array.<number> | a number, or, if `a` is also an array, an array of numbers with the same length as `a` |
 
 **Returns**: `boolean`. `true` if `a` is less than `b`, `false` otherwise. If `a` is an array, returns `true` only if every element of `a` is less than `b`, or less than the element at the same index of `b` if `b` is an array.
 
