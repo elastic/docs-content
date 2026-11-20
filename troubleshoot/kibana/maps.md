@@ -26,12 +26,6 @@ Maps uses the [{{es}} vector tile search API]({{es-apis}}operation/operation-sea
 :screenshot:
 :::
 
-% Candidate for removal: low value. Inspector Requests view with the old Maps top bar and 2022 timestamps, and the vector tile image already shows the View dropdown.
-:::{image} /troubleshoot/images/kibana-requests_inspector.png
-:alt: requests inspector
-:screenshot:
-:::
-
 
 ## Solutions to common problems [_solutions_to_common_problems]
 

@@ -33,11 +33,6 @@ A term join uses a shared key to combine vector features, the left source, with 
 
 The cloropeth example uses the shared key, [ISO 3166-1 alpha-2 code](https://wikipedia.org/wiki/ISO_3166-1_alpha-2), to join world countries and web log traffic. ISO 3166-1 alpha-2 code is an international standard that identifies countries by a two-letter country code. For example, **Sweden** has an ISO 3166-1 alpha-2 code of **SE**.
 
-:::{image} /explore-analyze/images/kibana-terms_join_shared_key_config.png
-:alt: terms join shared key config
-:screenshot:
-:::
-
 
 ### Left source [_left_source]
 
@@ -70,12 +65,6 @@ The join defines two metric aggregations in its **Configure join metrics** popov
 
 * The count of all documents in the terms bucket.
 * The average of the field "bytes" for all documents in the terms bucket.
-
-% Candidate for removal: low value. Crop of the metrics popover whose two metrics the preceding bullets already list, and its header text is outdated.
-:::{image} /explore-analyze/images/kibana-terms_join_metric_config.png
-:alt: terms join metric config
-:screenshot:
-:::
 
 The right source does not provide individual documents, but instead provides the metrics from a terms aggregation. The metrics are calculated from the following sample web logs documents.
 

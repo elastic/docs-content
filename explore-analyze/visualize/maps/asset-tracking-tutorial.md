@@ -470,12 +470,6 @@ POST kbn:/api/data_views/data_view
 
 {{kib}} shows the fields in your data view.
 
-% Candidate for removal: low value. Shows the pre-9.6 Data views page layout, and the step only needs to say that fields appear.
-:::{image} /explore-analyze/images/kibana-data_view.png
-:alt: data view
-:screenshot:
-:::
-
 ::::{tip}
 You might want to tweak this Data View to adjust the field names and number or date formatting to your personal preferences. These settings are honored by the Maps application in the tooltips and other UI elements. Check [Format data fields](../../find-and-organize/data-views/field-formatters.md) for more details.
 ::::
@@ -488,12 +482,6 @@ You might want to tweak this Data View to adjust the field names and number or d
 2. Set the data view to **TriMet Positions**.
 3. Open the [time filter](../../query-filter/filtering.md), and set the time range to the last 15 minutes.
 4. Expand a document and explore some of the fields that you will use later in this tutorial: `trimet.bearing`, `trimet.inCongestion`, `trimet.location`, and `trimet.vehicleID`.
-
-% Candidate for removal: low value. Generic Discover view of TriMet positions from December 2023, and the step already names the fields to look for.
-:::{image} /explore-analyze/images/kibana-discover.png
-:alt: discover
-:screenshot:
-:::
 
 
 ## Part 2: Build an operational map [_part_2_build_an_operational_map]
@@ -617,12 +605,6 @@ The map now represents an operational view of live public transport traffic.  Yo
 
 Your map is now complete for now, congratulations!
 
-% Candidate for removal: low value. Second use of the same image as the page opener, and it adds nothing at the end of the step list.
-:::{image} /explore-analyze/images/kibana-construction_zones.png
-:alt: construction zones
-:screenshot:
-:::
-
 
 ### Step 2. Configure an alert [_step_2_configure_an_alert]
 
@@ -692,11 +674,6 @@ For this example, you will set the rule to check every minute. However, when run
 9. Set **Check every** to **1 minute**.
 10. Notify **Only on status change**.
 
-    :::{image} /explore-analyze/images/kibana-rule_configuration.png
-    :alt: rule configuration
-    :screenshot:
-    :::
-
 11. Under **Actions**, select the **Index** connector type.
 12. Add a new connector named **TriMet Alerts**
 
@@ -717,11 +694,6 @@ For this example, you will set the rule to check every minute. However, when run
      "boundaryId": "{{context.containingBoundaryId}}"
     }
     ```
-
-    :::{image} /explore-analyze/images/kibana-alert_connector.png
-    :alt: alert connector
-    :screenshot:
-    :::
 
 16. Click **Save**.
 

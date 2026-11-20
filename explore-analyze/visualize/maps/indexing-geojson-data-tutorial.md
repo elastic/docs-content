@@ -37,12 +37,6 @@ The data represents two real airports, two fictitious flight routes, and fictiti
 
    You’re adding flight paths to this area, and this sets up the map for a good view of the data.
 
-   % Candidate for removal: low value. Empty map with only a basemap framed on New England, and step 2 already says to zoom in on New England.
-   :::{image} /explore-analyze/images/kibana-fu_gs_new_england_map.png
-   :alt: fu gs new england map
-   :screenshot:
-   :::
-
 
 
 ## Upload and index GeoJSON files [upload-and-index-geojson-file]
