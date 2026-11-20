@@ -27,6 +27,7 @@ Beyond the [core case functionality](/explore-analyze/cases.md), {{elastic-sec}}
 * [Add threat intelligence indicators](#cases-indicators)
 * [Attach Timelines to preserve investigation context](#cases-timeline)
 * {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` [Attach entities under investigation](#cases-add-entities)
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Attach attacks from Attack Discovery](#cases-add-attacks)
 
 :::{agent-skill}
 :url: https://github.com/elastic/agent-skills/tree/main/skills/security/case-management
@@ -38,7 +39,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-If **Sync alert status** is on, closing the case opens the **Select alert close reason** popup, where you can choose how attached detection alerts are closed. You can close the attached alerts without a reason, or specify an alert closing reason. 
+If **Sync detections** or **Sync alerts** (depending on your {{stack}} version) is on, closing the case prompts you to select how to close its attached detection alerts. You can close them without a reason, or select a closing reason.
 
 The available options match the [closing reasons from the **Alerts** page](/solutions/security/detect-and-alert/manage-detection-alerts.md#closing-reasons), including any custom closing reasons defined in the `securitySolution:detectionsCloseReasons` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 
@@ -105,6 +106,26 @@ serverless:
 Attach a host, user, or service entity to a case to connect it to what's under investigation. From an entity's details flyout, select **Take action** → **Add to new case** or **Add to existing case**.
 
 Attached entities appear in their own **Entities** section on the case's **Attachments** tab. To access this section, you need the `read` privilege for the `.entities.v2.latest.*` index pattern.
+
+## Add attacks [cases-add-attacks]
+
+```{applies_to}
+serverless:
+  security: ga
+stack: ga 9.6+
+```
+
+Attach an attack to a case so your team can review the finding and the alerts it correlates in one place.
+
+To add attacks to a case:
+
+1. On the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** on the attack's row. In the attack details flyout, select **Take action**.
+2. Select **Add to case**.
+3. Select an existing case, or create a new one.
+
+{{kib}} attaches the attack and its alerts together. If **Sync detections** is on, attack statuses update when the case status changes.
+
+When you [remove an attack](/explore-analyze/cases/attach-objects-to-cases.md#cases-remove-attachments), you can also remove its alerts. Alerts that you added separately stay on the case.
 
 ## Automate case workflows [cases-automate]
 

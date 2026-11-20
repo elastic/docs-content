@@ -14,14 +14,16 @@ products:
   - id: security
   - id: observability
   - id: cloud-serverless
-description: Attach alerts, files, observables, dashboards, maps, Discover sessions, and Lens visualizations to cases to provide context and supporting materials.
+description: Attach alerts, files, observables, dashboards, maps, Discover sessions, and Lens visualizations to cases, and remove attachments that no longer belong.
 ---
 
 # Attach objects to cases [attach-objects-to-cases]
 
 After [creating a case](create-cases.md), you can attach supporting materials to build a complete picture of an incident.  You can attach [alerts](#add-case-alerts) to escalate and track detections, [files](#add-case-files) like screenshots or logs as evidence, [observables](#add-case-observables) such as IP addresses or file hashes to identify patterns, and more.  
 
-In {{elastic-sec}}, you can also attach [events](/solutions/security/investigate/security-cases.md#cases-add-events), [threat intelligence indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), [Timelines](/solutions/security/investigate/security-cases.md#cases-timeline), and [entities](/solutions/security/investigate/security-cases.md#cases-add-entities) to connect cases to known threats.
+In {{elastic-sec}}, you can also attach [events](/solutions/security/investigate/security-cases.md#cases-add-events), [attacks](/solutions/security/investigate/security-cases.md#cases-add-attacks), [threat intelligence indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), [Timelines](/solutions/security/investigate/security-cases.md#cases-timeline), and [entities](/solutions/security/investigate/security-cases.md#cases-add-entities) to connect cases to known threats.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` When an attachment no longer belongs in a case, you can [remove it](#cases-remove-attachments).
 
 ## Supported object types [supported-object-types]
 
@@ -38,12 +40,13 @@ In {{elastic-sec}}, you can also attach [events](/solutions/security/investigate
 | [Indicators](/solutions/security/investigate/indicators-of-compromise.md#attach-indicator-to-case) | Link threat intelligence indicators to document evidence of compromise. | Security | Security |
 | [Timelines](/solutions/security/investigate/security-cases.md#cases-timeline) | Attach a Timeline to preserve investigation context and share it with your team, as a link or a structured, filterable table {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` | Security | Security |
 | [Entities](/solutions/security/investigate/security-cases.md#cases-add-entities) {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` | Attach a host, user, or service entity to connect a case to what's under investigation. | Security | Security |
+| [Attacks](/solutions/security/investigate/security-cases.md#cases-add-attacks) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Attach an Attack Discovery finding together with its alerts to keep related detections in one place. | Security | Security |
 
 ## Add alerts [add-case-alerts]
 
 Escalate alerts and track them in a single place by attaching them to cases. 
 
-To add alerts, select **More actions (…)** on a single alert or use the **Bulk actions** menu for multiple alerts, then choose **Add to a new case** or **Add to existing case**. You can add up to 1,000 alerts to a case.
+To add alerts, select **More actions (…)** on a single alert or use the **Bulk actions** menu for multiple alerts, then select **Add to case** (or **Add to new case** and **Add to existing case**, depending on your {{stack}} version). You can add up to 1,000 alerts to a case.
 
 After adding alerts, you can review them under **Alerts** on the case's **Attachments** tab. Alerts are organized from oldest to newest, and you can select **View details** to inspect individual alerts.
 
@@ -142,3 +145,20 @@ To attach these objects:
 3. In the **Attach saved object** dialog, search for the dashboard, map, or Discover session by title. Optionally, filter by type, then select **Attach** next to the item you want.
 
 The attached object appears in the case activity log and in its own section on the **Attachments** tab, labeled with the object's title. Dashboards and maps also show an inline snapshot when one is available. Select the title to open the full dashboard, map, or Discover session.
+
+## Remove attachments from a case [cases-remove-attachments]
+
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+Remove an attachment when it no longer belongs in the case, such as an alert you attached by mistake.
+
+To remove attachments, you need the **Delete** privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#cases-sub-feature-privileges).
+
+1. Open the case and select the **Attachments** tab.
+2. In the attachment's row, select **Remove from case**. For files and saved objects, select the delete action instead. To remove several attachments of the same type, select their rows and use the bulk action.
+3. Confirm the removal. For attacks, you can also remove the alerts they added.
+
+Observables extracted from removed alerts or events stay on the case. In {{elastic-sec}}, you can't remove entities from the **Attachments** tab.
