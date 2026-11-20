@@ -68,9 +68,7 @@ When you open an individual monitor’s page, you see much more detail about the
 * The monitor’s **name** with a down arrow icon that you can use to quickly move between monitors.
 * The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
 * The latest **status** and when the monitor was **last run**.
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` The **Actions** menu. Use **Run test manually** to run the test on demand before the next scheduled run, and **Edit monitor** to edit the monitor’s configuration.
-* {applies_to}`stack: ga 9.0-9.1` The **![Beaker icon](/solutions/images/observability-beaker.svg "") Run test manually** button that allows you to run the test on demand before the next scheduled run.
-* {applies_to}`stack: ga 9.0-9.1` The **![Pencil icon](/solutions/images/observability-pencil.svg "") Edit monitor** button that allows you to edit the monitor’s configuration.
+* The **Run test manually** and **Edit monitor** actions. **Run test manually** runs the test on demand before the next scheduled run, and **Edit monitor** lets you edit the monitor’s configuration. Both are in the **Actions** menu. In 9.1 and earlier, they are separate buttons at the top of the page.
 
 ::::{note}
 **Run test manually** is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
