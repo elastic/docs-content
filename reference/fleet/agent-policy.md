@@ -259,7 +259,14 @@ Agent tags are added to data from most integrations, including when they run in 
 * Universal Profiling
 * [OpenTelemetry input packages](/reference/fleet/otel-integrations.md)
 
-To find data by agent tag, query the `tags` field. For example, the [KQL](/explore-analyze/query-filter/languages/kql.md) query `tags : "production"` matches events from agents tagged `production`. You can use this query in [Discover](/explore-analyze/discover.md), [dashboards](/explore-analyze/dashboards.md), [alerting rules](/explore-analyze/alerting.md), and [{{elastic-sec}} detection rules](/solutions/security/detect-and-alert.md).
+You can query the `tags` field to find data by agent tag in [Discover](/explore-analyze/discover.md), [dashboards](/explore-analyze/dashboards.md), [alerting rules](/explore-analyze/alerting.md), and [{{elastic-sec}} detection rules](/solutions/security/detect-and-alert.md). For example, the [KQL](/explore-analyze/query-filter/languages/kql.md) query `tags : "production"` matches events from agents tagged `production`.
+
+In [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md), use the [`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) function instead of the `==` operator, because `==` doesn't match fields with more than one value, such as `tags`. For example, to find events from agents tagged `production` in your logs and metrics, use:
+
+```esql
+FROM logs-*, metrics-*
+| WHERE MATCH(tags, "production")
+```
 
 To include agent tags in events for standalone {{agents}}, refer to [Configure feature flags for standalone {{agent}}s](/reference/fleet/elastic-agent-standalone-feature-flags.md#elastic-agent-standalone-feature-flag-settings).
 
