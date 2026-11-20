@@ -36,7 +36,6 @@ If you need specific alerting behavior, set up a different rule. To view all exi
 
 On the *Rules* page, you can manage the default synthetics rules including snoozing rules, disabling rules, deleting rules, and more.
 
-% Candidate for removal: low value. It shows the Observability Rules page, not Synthetics, with a title and controls that moved to an app header in 9.6, and the prose already lists snooze, disable and delete.
 :::{image} /solutions/images/observability-synthetics-settings-disable-default-rules.png
 :alt: Rules page with default Synthetics rules
 :screenshot:
@@ -56,21 +55,11 @@ In the **Alerting** tab on the **Monitor** Settings page, you can:
 - Add and configure connectors. For available connectors, refer to [Action types](/solutions/observability/incident-management/create-an-apm-anomaly-rule.md).
 - Set up email alerts, if you are running in Elastic Cloud. An SMTP connector is automatically configured.
 
-:::{image} /solutions/images/observability-synthetics-settings-alerting.png
-:alt: Alerting tab on the Synthetics Settings page in {{kib}}
-:screenshot:
-:::
-
 ## {{private-location}}s [synthetics-settings-private-locations]
 
 {{private-location}}s allow you to run monitors from your own premises.
 
 In the **{{private-location}}s** tab, you can add and manage {{private-location}}s. After you [Set up {{fleet-server}} and {{agent}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent) and [Connect to the {{stack}} or your serverless Observability project](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-connect), this is where you add the {{private-location}} so you can specify it as the location for a monitor created using the Synthetics UI or a Synthetics project.
-
-:::{image} /solutions/images/observability-synthetics-settings-private-locations.png
-:alt: {{private-location}}s tab on the Synthetics Settings page in {{kib}}
-:screenshot:
-:::
 
 {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` When a private location has monitors with broken {{fleet}} integrations, a badge showing the count of unhealthy monitors appears in the location's row. Click the badge to open a popover listing the affected monitors. From the popover, use **Reset monitors** to bulk-reset all monitors at that location that have a `missing_package_policy` status. Monitors with other failure types are excluded and must be resolved manually. Refer to [Monitor integration health](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#synthetics-private-location-health) for details on failure types and remediation steps.
 
@@ -103,22 +92,11 @@ In the **Global parameters** tab, you can define variables and parameters. This 
 
 {applies_to}`stack: preview 9.6+` This tab also holds **HashiCorp Vault connections**, which let a param or a monitor field reference a secret in Vault rather than store the value in {{kib}}. To set one up, refer to [Reference secrets from HashiCorp Vault](/solutions/observability/synthetics/work-with-params-secrets.md#synthetics-secrets-vault).
 
-% Candidate for removal: low value. The Settings title, tabs, description line and Create Parameter button moved to the app header, and the page has a second image of the same tab.
-:::{image} /solutions/images/observability-synthetics-settings-global-parameters.png
-:alt: Global parameters tab on the Synthetics Settings page in {{kib}}
-:screenshot:
-:::
-
 ## Data retention [synthetics-settings-data-retention]
 
 When you set up a synthetic monitor, data from the monitor is saved in [Elasticsearch data streams](/manage-data/data-store/data-streams.md), an append-only structure in Elasticsearch. You can customize how long synthetics data is stored by creating your own index lifecycle policy and attaching it to the relevant custom Component Template.
 
 In the **Data retention** tab, use the links to jump to the relevant policy for each data stream. Learn more about the data included in each data stream in [Manage data retention](/solutions/observability/synthetics/manage-data-retention.md).
-
-:::{image} /solutions/images/observability-synthetics-settings-data-retention.png
-:alt: Data retention tab on the Synthetics Settings page in {{kib}}
-:screenshot:
-:::
 
 ## Project API keys [synthetics-settings-api-keys]
 
@@ -132,12 +110,6 @@ In the **Project API keys** tab, you can generate project API keys to use with y
 In a serverless project, to create a Project API key you must be logged in as a user with [Editor](/solutions/observability/synthetics/grant-access-to-secured-resources.md) access.
 
 ::::
-
-% Candidate for removal: low value. A single-button page whose Settings title and tab row are stale chrome, and the surrounding steps already name every control.
-:::{image} /solutions/images/observability-synthetics-settings-api-keys.png
-:alt: Project API keys tab on the Synthetics Settings page in {{kib}}
-:screenshot:
-:::
 
 - The **Elastic managed locations enabled** toggle controls whether your Synthetics monitors are permitted to run from Elastic's globally distributed, cloud-hosted testing infrastructure. If enabled, the key can push monitors to both Elastic-managed and private locations. If disabled, the key is restricted to private locations only.
 - The **Spaces** menu allows you to select the space where your API keys are available.

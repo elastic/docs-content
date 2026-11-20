@@ -24,12 +24,6 @@ Lightweight monitors can be configured using either the [Synthetics UI](/solutio
 
 To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serverless project to create and configure monitors. For step-by-step instructions, refer to [Use the Synthetics UI](/solutions/observability/synthetics/create-monitors-ui.md).
 
-% Candidate for removal: low value. Full Create monitor page with the old page header, in-page title and 9.5 tile names, and the prose that follows names every field.
-:::{image} /solutions/images/observability-synthetics-get-started-ui-lightweight.png
-:alt: Synthetics Create monitor UI
-:screenshot:
-:::
-
 ## {{project-monitors-cap}} [synthetics-lightweight-projects]
 
 To use YAML files to create lightweight monitors in a Synthetics project, [set up the Synthetics project](/solutions/observability/synthetics/create-monitors-with-projects.md) and configure monitors in YAML files in the `lightweight` directory.

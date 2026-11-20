@@ -68,17 +68,12 @@ When you open an individual monitor’s page, you see much more detail about the
 * The monitor’s **name** with a down arrow icon that you can use to quickly move between monitors.
 * The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
 * The latest **status** and when the monitor was **last run**.
-* The **Run test manually** and **Edit monitor** actions. **Run test manually** runs the test on demand before the next scheduled run, and **Edit monitor** lets you edit the monitor’s configuration. Depending on your version, they are in the **Actions** menu or are separate buttons at the top of the page.
+* **Actions**: Use **Run test manually** to run the test on demand before the next scheduled run, and **Edit monitor** to edit the monitor’s configuration.
 
 ::::{note}
 **Run test manually** is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
 
 ::::
-
-:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-header.png
-:alt: Header at the top of the individual monitor page for all monitor types in the {{synthetics-app}}
-:screenshot:
-:::
 
 Each individual monitor’s page has the following tabs: Overview, History, Errors, and Alerts.
 
@@ -105,14 +100,8 @@ The **History** tab has information on every time the monitor has run. It includ
 
 For browser monitors, you can click on any run in the **Test runs** list to see the details for that run. Read more about that information in [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
 
-:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-history.png
-:alt: The History tab on the individual monitor page for all monitor types in the {{synthetics-app}}
-:screenshot:
-:::
-
 If the monitor is configured to [retest on failure](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor), you see retests listed in the **Test runs** table. Runs that are retests include a rerun icon (![Refresh icon](/solutions/images/observability-refresh.svg "")) next to the result badge.
 
-% Candidate for removal: low value. The table crop shows an Only show retests toggle that is absent from current Kibana source, and the prose already describes the retest icon.
 :::{image} /solutions/images/observability-synthetics-retest.png
 :alt: A failed run and a retest in the table of test runs in the {{synthetics-app}}
 :screenshot:
@@ -125,11 +114,6 @@ The **Errors** tab has information on failed runs. If the monitor is configured 
 The Errors tab includes a high-level overview of all alerts and a complete list of all failures. Use the calendar icon (![Calendar icon](/solutions/images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
 
 For browser monitors, you can click on any run in the **Error** list to open an **Error details** page that includes most of the same information as [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
-
-:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-errors.png
-:alt: The Errors tab on the individual monitor page for all monitor types in the {{synthetics-app}}
-:screenshot:
-:::
 
 ## Browser monitors [synthetics-analyze-journeys]
 
@@ -148,12 +132,7 @@ The journey page on the Overview tab includes:
 * **Duration by step** over the last 24 hours.
 * A list of the **last 10 test runs** that link to the [details for each run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
 
-:::{image} /solutions/images/observability-synthetics-analyze-journeys-over-time.png
-:alt: Individual journey page for browser monitors in the {{synthetics-app}}
-:screenshot:
-:::
-
-From here, you can either drill down into:
+From the journey page, you can either drill down into:
 
 * The latest run of the full journey by clicking **![Inspect icon](/solutions/images/observability-inspect.svg "") View test run** or a past run in the list of **Last 10 test runs**. This opens [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
 * An individual step in this run by clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) next to one of the steps. This opens [Details for one step](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step).
@@ -165,11 +144,6 @@ The page detailing one run for a journey includes more information on each step 
 At the top of the page, see the *Code executed* and any *Console* output for each step. If the step failed, this also includes a *Stacktrace* tab that you can use to diagnose the cause of errors.
 
 Navigate through each step using **![Previous icon](/solutions/images/observability-arrowLeft.svg "") Previous** and **Next ![Next icon](/solutions/images/observability-arrowRight.svg "")**.
-
-:::{image} /solutions/images/observability-synthetics-analyze-one-run-code-executed.png
-:alt: Step carousel on a page detailing one run of a browser monitor in the {{synthetics-app}}
-:screenshot:
-:::
 
 Open the steps in this journey run. Click the ![Arrow right icon](/solutions/images/observability-arrowRight.svg "") icon next to the step number to show details. The details include metrics for the step in the current run and the step in the last successful run. Read more about step-level metrics in [Timing](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-timing) and [Metrics](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-metrics).
 
@@ -194,7 +168,6 @@ Customize screenshot behavior for all monitors in the [configuration file](/solu
 
 Screenshots can be particularly helpful to identify what went wrong when a step fails because of a change to the UI. You can compare the failed step to the last time the step successfully completed.
 
-% Candidate for removal: low value. A Screenshot card with a faint thumbnail and a blank lower half that adds nothing the surrounding text about comparing screenshots does not already say.
 :::{image} /solutions/images/observability-synthetics-analyze-one-step-screenshot.png
 :alt: Screenshot for one step in a browser monitor in the {{synthetics-app}}
 :screenshot:
