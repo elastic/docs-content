@@ -408,9 +408,8 @@ curl -X POST "${KIBANA_URL}/api/agent_builder/tools/_execute" \
      -d '{
        "tool_id": "platform.core.search",
        "tool_params": {
-         "query": "can you find john doe's email from the employee index?"}
-       }
-     }'
+         "query": "can you find john doe'\''s email from the employee index?"}
+       }'
 ```
 :::{include} _snippets/spaces-api-note.md
 :::
@@ -655,9 +654,11 @@ curl -X DELETE "${KIBANA_URL}/api/agent_builder/skills/{skillId}" \
 
 Use these APIs to create, list, update, and delete agents, and to track token consumption.
 
-**Example:** List all agents
+**Example:** List agents
 
 This example uses the [list agents API]({{kib-apis}}operation/operation-get-agent-builder-agents).
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The response doesn't include [hidden agents](agent-builder-agents.md#hidden-agents) by default. To include them, add `?include_hidden=true` to the request.
 
 ::::{tab-set}
 :group: api-examples

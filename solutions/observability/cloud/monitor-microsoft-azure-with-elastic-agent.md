@@ -139,7 +139,7 @@ You can install {{agent}} on any host that can access the Azure account and forw
 1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout.
 
     ::::{tip}
-    If you accidentally closed the popup, go to **{{fleet}} → Agents**, then click **Add agent** to access the installation instructions.
+    If you accidentally closed the popup, go to **{{fleet}}** → **Agents**, then click **Add agent** to access the installation instructions.
     ::::
 
 
@@ -224,7 +224,7 @@ Every Azure service that creates logs has diagnostic settings that allow you to 
 
 To configure diagnostic settings for the Azure Monitor service:
 
-1. Go to the Azure portal and go to **Home → Monitor**.
+1. Go to the Azure portal and go to **Home** → **Monitor**.
 2. In the navigation page, select **Activity log**, and then click **Export Activity Logs**.
 3. Select your subscription and click **Add diagnostic setting**.
 4. Enter a name for the diagnostic setting.

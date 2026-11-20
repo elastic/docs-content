@@ -37,7 +37,7 @@ You can create a custom skill in three ways:
 
 Follow these steps to create a custom skill and add it to your skill library. Once saved, you need to add the skill to an agent before the agent can use it.
 
-You can create a skill from **Manage components → Skills**, or inline when adding skills to an agent from **Customize → Skills**.
+You can create a skill from **Manage components** → **Skills**, or inline when adding skills to an agent from **Customize** → **Skills**.
 
 :::{tip}
 For guidance on writing effective descriptions and instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
@@ -46,7 +46,7 @@ For guidance on writing effective descriptions and instructions, refer to [Skill
 :::::{stepper}
 ::::{step} Open the Create skill dialog
 
-Go to **Manage components → Skills**, then select **Create a skill**. The following screenshot shows the dialog:
+Go to **Manage components** → **Skills**, then select **Create a skill**. The following screenshot shows the dialog:
 
 :::{image} images/create-new-skill.png
 :alt: Create skill dialog showing fields for ID, Name, Description, Instructions, and Associated tools
@@ -77,9 +77,9 @@ Select **Save**. The skill is added to your library and becomes available to ass
 
 ::::{step} Add the skill to an agent
 
-Custom skills in your library are not available to your agents until you explicitly add them. To add a skill, go to **Customize → Skills** on the agent you want to configure and select **Add skills**. From here you can:
+Custom skills in your library are not available to your agents until you explicitly add them. To add a skill, go to **Customize** → **Skills** on the agent you want to configure and select **Add skills**. From here you can:
 
-- **Import from skill library**: Select an existing skill from **Manage components → Skills**. After importing, make sure the skill is turned on in the agent's skill list.
+- **Import from skill library**: Select an existing skill from **Manage components** → **Skills**. After importing, make sure the skill is turned on in the agent's skill list.
 - **Create a skill**: Build a new skill and add it to this agent in one step. The skill is enabled for the agent automatically and also saved to your library.
 
 Built-in skill availability depends on your deployment type. Refer to [Built-in skills reference](builtin-skills-reference.md) for details.

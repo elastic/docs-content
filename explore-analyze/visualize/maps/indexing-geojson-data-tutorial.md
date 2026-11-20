@@ -86,7 +86,7 @@ Looking at the `Lightning detected` layer, it’s clear where lightning has stru
 
     The remaining default settings are good, but there are a couple of settings that you might want to change.
 
-5. Play around with the **Layer Style** > **Color range** setting.
+5. Play around with the **Layer Style** → **Color range** setting.
 
     Again the default looks good, but feel free to choose a different color range.
 
