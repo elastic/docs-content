@@ -80,6 +80,6 @@ The list of starred dashboards is personal. Dashboards marked as favorite by oth
 
 ## View dashboard usage [_view_dashboard_usage]
 
-To check how much a dashboard is used, select its {icon}`info` **View details** icon in the dashboard list. In 9.1 and earlier, the icon is {icon}`controls`. The details include a graph of the total number of views during the last 90 days.
+To check how much a dashboard is used, select its {icon}`info` **View details** icon in the dashboard list. The details include a graph of the total number of views during the last 90 days.
 
 {applies_to}`stack: preview 9.5` For per-user records of dashboard creation, updates, deletion, views, and refreshes, configure [Kibana user activity logging](kibana://reference/user-activity.md#dashboard-event-fields).
