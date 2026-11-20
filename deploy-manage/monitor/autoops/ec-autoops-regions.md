@@ -41,7 +41,7 @@ A region is where a cloud service provider's data center hosts your deployments 
 | sa-east-1 | South America (São Paulo) |
 | us-east-1 | US East (N. Virginia) |
 | us-east-2 | US East (Ohio) |
-| us-gov-east-1 | AWS GovCloud (US-East) |
+| us-gov-east-1 | AWS GovCloud (US-East)<br>AutoOps is available in this region for [{{fedramp-mod}}](/deploy-manage/deploy/elastic-cloud/fedramp.md) deployments. |
 | us-west-1 | US West (N. California) |
 | us-west-2 | US West (Oregon) |
 

@@ -99,7 +99,7 @@ The configuration options differ for each **TSVB** visualization.
 
 ### Time Series [tsvb-time-series]
 
-By default, the y-axis displays the full range of data, including zero. To automatically scale the y-axis from the minimum to maximum values of the data, click **Data > Options > Fill**, then enter `0` in the **Fill** field. You can add annotations to the x-axis based on timestamped documents in a separate {{es}} index.
+By default, the y-axis displays the full range of data, including zero. To automatically scale the y-axis from the minimum to maximum values of the data, click **Data** → **Options** → **Fill**, then enter `0` in the **Fill** field. You can add annotations to the x-axis based on timestamped documents in a separate {{es}} index.
 
 
 ### All chart types except Time Series [all-chart-types-except-time-series]
@@ -222,7 +222,7 @@ Technical note: TSVB uses [Handlebars](https://handlebarsjs.com/) to perform the
 It depends, but most often there are two causes:
 
 * For **Time series** visualizations with a derivative function, the time interval can be too small. Derivatives require sequential values.
-* For all other **TSVB** visualizations, the cause is probably the **Data timerange mode**, which is controlled by **Panel options > Data timerange mode > Entire time range**. By default, **TSVB** displays the last whole bucket. For example, if the time filter is set to **Last 24 hours**, and the current time is 9:41, **TSVB** displays only the last 10 minutes — from 9:30 to 9:40.
+* For all other **TSVB** visualizations, the cause is probably the **Data timerange mode**, which is controlled by **Panel options** → **Data timerange mode** → **Entire time range**. By default, **TSVB** displays the last whole bucket. For example, if the time filter is set to **Last 24 hours**, and the current time is 9:41, **TSVB** displays only the last 10 minutes — from 9:30 to 9:40.
 
 ::::
 

@@ -24,7 +24,7 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
 
 1. Open the create form:
 
-   * In **Discover** or **Lens**, open the data view menu, then select **Create a {{data-source}}**.
+   * In **Discover** (in classic mode) or **Lens**, open the data view menu, then select **Create a {{data-source}}**.
    * Go to the **Data Views** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Create data view**.
 
    :::{image} /explore-analyze/images/kibana-discover-data-view.png
@@ -57,7 +57,7 @@ Create a {{data-source}} to make your own {{es}} data available in **Discover**,
 5. Select **Show advanced settings** to:
 
     * Allow hidden and system indices.
-    * Set a **Custom data view ID**. By default, {{kib}} assigns a randomly generated ID to the {{data-source}} saved object. A custom, human-readable ID (for example, `logs-prod`) makes the {{data-source}} easier to recreate with the same ID across spaces, deployments, or environments. Dashboards and visualizations that reference that ID keep working. Refer to [Manage dashboards as code](/explore-analyze/dashboards/manage-dashboards-as-code.md).
+    * Set a **Custom data view ID**. By default, {{kib}} assigns a randomly generated ID to the {{data-source}} saved object. A custom, human-readable ID (for example, `logs-prod`) makes the {{data-source}} easier to recreate with the same ID across spaces, deployments, or environments. Dashboards and visualizations that reference that ID keep working. Refer to [Manage dashboards as code](/explore-analyze/dashboards/manage-dashboards-as-code.md). A custom ID works only with a saved {{data-source}}. To use a [temporary one](#_create_a_temporary_data_source), leave this field empty.
 
 6. $$$reload-fields$$$ Select **Save {{data-source}} to {{kib}}**.
 
@@ -160,6 +160,8 @@ For an example, refer to [Create and visualize rolled up data](/manage-data/life
 To explore data or build a visualization without saving a {{data-source}}, select **Use without saving** in the **Create {{data-source}}** form in **Discover** or **Lens**. With a temporary {{data-source}}, you can add fields and create an {{es}} query alert, the same way you would with a saved {{data-source}}. Your work isn't visible to others in your space.
 
 A temporary {{data-source}} remains in your space until you change apps, or until you save it.
+
+To give a {{data-source}} a **Custom data view ID**, [create and save it](#create-data-view-steps). A temporary {{data-source}} can't have one, because a custom ID isn't guaranteed to be unique.
 
 :::{image} /explore-analyze/images/ad-hoc-data-view.gif
 :alt: Create a temporary data view in Discover using Use without saving

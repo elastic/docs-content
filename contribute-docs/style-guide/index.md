@@ -63,7 +63,7 @@ Clear UI documentation helps users accomplish tasks efficiently. Focus on what u
 
 - Focus on use cases, not piece-by-piece UI descriptions.
 - Keep procedures to 5–9 steps.
-- Use arrows for navigation: **Menu → Submenu → Item**.
+- Use arrows for navigation: **Menu** → **Submenu** → **Item**.
 - Include icon tooltips for accessibility.
 
 Refer to [Writing about the UI](./ui-writing.md) for the complete guidelines.

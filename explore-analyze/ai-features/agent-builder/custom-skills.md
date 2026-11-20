@@ -37,7 +37,7 @@ You can create a custom skill in three ways:
 
 Follow these steps to create a custom skill and add it to your skill library. Once saved, you need to add the skill to an agent before the agent can use it.
 
-You can create a skill from **Manage components → Skills**, or inline when adding skills to an agent from **Customize → Skills**.
+You can create a skill from **Manage components** → **Skills**, or inline when adding skills to an agent from **Customize** → **Skills**.
 
 :::{tip}
 For guidance on writing effective descriptions and instructions, refer to [Skill creation guidelines](skill-creation-guidelines.md).
@@ -48,9 +48,9 @@ To create skills, you need the **Manage skills** privilege. To add skills to an 
 ::::::{stepper}
 :::::{step} Open the create skill form
 
-Go to **Manage components → Skills**, then select **New skill**. This opens the **Create a new skill** page.
+Go to **Manage components** → **Skills**, then select **New skill**. This opens the **Create a new skill** page.
 
-From an agent's **Customize → Skills** page, select **Add skill**, then **Create a skill**. This opens the **Create skill** flyout. If the agent has no skills yet, the page shows **Add skills** instead, which only imports from the library. Refer to [Add the skill to an agent](#add-skill-to-agent).
+From an agent's **Customize** → **Skills** page, select **Add skill**, then **Create a skill**. This opens the **Create skill** flyout. If the agent has no skills yet, the page shows **Add skills** instead, which only imports from the library. Refer to [Add the skill to an agent](#add-skill-to-agent).
 
 ::::{applies-switch}
 
@@ -141,12 +141,12 @@ Select **Save**. The skill is added to your library and becomes available to ass
 :::::{step} Add the skill to an agent
 :anchor: add-skill-to-agent
 
-Custom skills in your library are not available to your agents until you add them. On the agent, go to **Customize → Skills**.
+Custom skills in your library are not available to your agents until you add them. On the agent, go to **Customize** → **Skills**.
 
 - If the agent already has skills, select **Add skill**. From there you can:
   - **Import from skill library**: Open the **Add skill from library** panel. Turn on the switch next to a skill to add it to this agent.
   - **Create a skill**: Open the **Create skill** flyout, save the skill, and add it to this agent. The skill is also saved to your library. This option appears only if you have permission to manage skills.
-- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` If the agent has no skills at all, including no built-in skills, select **Add skills**. That opens the **Add skill from library** panel, where you turn on the switch next to a skill. To create a new skill instead, use **Manage components → Skills**.
+- {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` If the agent has no skills at all, including no built-in skills, select **Add skills**. That opens the **Add skill from library** panel, where you turn on the switch next to a skill. To create a new skill instead, use **Manage components** → **Skills**.
 
 Built-in skill availability depends on your deployment type. Refer to [Built-in skills reference](builtin-skills-reference.md) for details.
 
