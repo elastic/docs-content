@@ -40,7 +40,7 @@ To use the UI to add a lightweight monitor:
 
 1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create monitor**.
-3. Set the monitor type to **HTTP**, **TCP**, or **ICMP**, or to **HTTP Ping**, **TCP Ping**, or **ICMP Ping** depending on your {{stack}} version.
+3. Set the monitor type to **HTTP**, **TCP**, or **ICMP** pings.
 4. In *Locations*, select one or more locations.
 
     ::::{note}

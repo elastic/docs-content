@@ -151,10 +151,7 @@ You may need to set other environment variables. Learn how in [{{agent}} environ
 When the {{agent}} is running you can add a new {{private-location}} in the UI:
 
 1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Go to **Settings**.
-
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, **Settings** is in the {icon}`ellipsis` **More** menu.
-
+1. Go to **Settings**. Depending on your version, it can be in the {icon}`ellipsis` **More** menu.
 1. Go to the **{{private-location}}s** tab.
 1. Click **Create location**.
 1. Give your new location a unique _Location name_.

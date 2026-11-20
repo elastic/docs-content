@@ -39,10 +39,7 @@ The values in the configuration file are read in the following order:
 
 From any page in the Synthetics UI:
 
-1. Go to **Settings**.
-
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, **Settings** is in the {icon}`ellipsis` **More** menu.
-
+1. Go to **Settings**. Depending on your version, it can be in the {icon}`ellipsis` **More** menu.
 2. Go to the **Global parameters** tab.
 3. Define parameters.
 

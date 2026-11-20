@@ -68,9 +68,7 @@ When you open an individual monitor’s page, you see much more detail about the
 * The monitor’s **name** with a down arrow icon that you can use to quickly move between monitors.
 * The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
 * The latest **status** and when the monitor was **last run**.
-* The **Run test manually** and **Edit monitor** actions. **Run test manually** runs the test on demand before the next scheduled run, and **Edit monitor** lets you edit the monitor’s configuration. Where they appear depends on your version:
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` In the **Actions** menu.
-    * {applies_to}`stack: ga 9.0-9.1` As separate buttons at the top of the page.
+* The **Run test manually** and **Edit monitor** actions. **Run test manually** runs the test on demand before the next scheduled run, and **Edit monitor** lets you edit the monitor’s configuration. Depending on your version, they are in the **Actions** menu or are separate buttons at the top of the page.
 
 ::::{note}
 **Run test manually** is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
@@ -82,7 +80,7 @@ When you open an individual monitor’s page, you see much more detail about the
 :screenshot:
 :::
 
-Each individual monitor’s page has four tabs: Overview, History, Errors, and Alerts.
+Each individual monitor’s page has the following tabs: Overview, History, Errors, and Alerts.
 
 :::{note}
 :applies_to: {"stack": "ga 9.4+"}
