@@ -45,7 +45,7 @@ A TinyMath expression can contain up to 20 levels of nested parentheses. The exp
 
 Most of the functions accept arrays and apply to each element of the array. For the functions that accept multiple arrays as parameters, the function generally does the calculation index by index. The examples with arrays show what each function returns for the values in a datatable column.
 
-If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column.
+If you pass a single array to `add`, `max`, `mean`, `median`, `min`, `mode`, or `range`, the function summarizes the whole array instead of working by index. For example, `mean` of a column returns the average of that column. An empty array makes `add`, `max`, `mean`, `min`, and `range` throw an error.
 
 If a value isn't a number, such as null, most functions return `NaN`. The exceptions, which don't check that values are numbers, are `count`, `defaults`, `first`, `ifelse`, `last`, `size`, and `unique`. To replace null values before you calculate, use [`defaults`](#_defaults_a_b). For example, if `prices` is `[1, null]`, `abs(prices)` returns `NaN`, while `abs(defaults(prices, 0))` returns `[1, 0]`.
 
@@ -150,7 +150,7 @@ Restricts a value to a given range. Returns `min` if the value is below it, `max
 | min | number &#124; Array.<number> | the minimum value this function returns |
 | max | number &#124; Array.<number> | the maximum value this function returns |
 
-**Returns**: `number` | `Array.<number>`. The closest value between `min` (inclusive) and `max` (inclusive). Returns an array with values greater than or equal to `min` and less than or equal to `max` at each index if `a`, `min`, or `max` is an array. If you leave out `min` or `max`, the result is `NaN`, or an array of `NaN` values if `a` is an array.
+**Returns**: `number` | `Array.<number>`. The closest value between `min` (inclusive) and `max` (inclusive). Returns an array with values greater than or equal to `min` and less than or equal to `max` at each index if `a`, `min`, or `max` is an array. If you leave out `min` or `max`, the result is `NaN`, or an array of `NaN` values if `a` is an array. If `a` and `min` are both arrays and `max` is a number, each element of the result is `NaN`.
 
 **Throws**:
 
@@ -227,14 +227,14 @@ cube([3, 4, 5]) // returns [27, 64, 125]
 
 ## defaults( a, b ) [_defaults_a_b]
 
-Replaces null values with a fallback value. For arrays, the function applies to each element.
+Replaces null or undefined values with a fallback value. For arrays, the function applies to each element.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | any &#124; Array.<any> | a value or an array of values that can include null |
-| b | any | the value to use in place of null |
+| a | any &#124; Array.<any> | a value or an array of values that can include null or undefined values |
+| b | any | the value to use in place of null or undefined |
 
-**Returns**: `any` | `Array.<any>`. `a` if it isn't null, otherwise `b`. Returns an array with `b` in place of each null element if `a` is an array.
+**Returns**: `any` | `Array.<any>`. `a` if it isn't null or undefined, otherwise `b`. Returns an array with `b` in place of each null or undefined element if `a` is an array.
 
 **Example**
 
@@ -687,7 +687,9 @@ Finds the median value(s) of one or more numbers or arrays of numbers. If you pa
 
 **Returns**: `number` | `Array.<number>`. The median value of all numbers if `args` contains only numbers. Returns an array with the median values of each index, including all scalar numbers in `args` in the calculation at each index if you pass several arguments and at least one is an array. If you pass a single array, the result covers every element.
 
-**Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
+If you pass a single array, `median` sorts that array in place, in descending order. A later use of the same array in the expression sees the sorted values. For example, with `x` as `[3, 1, 4, 1, 5]`, `median(x) + first(x)` returns 8, because `first(x)` reads the sorted array.
+
+**Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths, unless the first array is empty, in which case the result is an empty array
 
 **Example**
 
@@ -758,7 +760,7 @@ Finds the mode value(s) of one or more numbers or arrays of numbers. If you pass
 
 **Returns**: `number` | `Array.<number>` | `Array.<Array.<number>>`. If you pass a single number, returns that number. If you pass only numbers, or a single array, returns an array of the mode value(s) of every value. If you pass several arguments and at least one is an array, returns an array of arrays with the mode value(s) at each index, including all scalar numbers in `args` in the calculation at each index.
 
-**Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths
+**Throws**: `'Array length mismatch'` if `args` contains arrays of different lengths, unless the first array is empty, in which case the result is an empty array
 
 **Example**
 
@@ -849,7 +851,7 @@ radtodeg([0, 1.5707963267948966, 3.141592653589793, 6.283185307179586]) // retur
 
 ## random( a, b ) [_random_a_b]
 
-Generates a random number within the given range where the lower bound is inclusive and the upper bound is exclusive. If you pass no numbers, it returns a number between 0 and 1. If you pass one number, it returns a number between 0 and that number.
+Generates a random number within the given range where the lower bound is inclusive and the upper bound is exclusive. If you pass no numbers, it returns a number between 0 and 1. If you pass one number, it returns a number between 0 and that number. If both bounds are equal, it returns that value.
 
 | Param | Type | Description |
 | --- | --- | --- |
