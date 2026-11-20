@@ -1,6 +1,8 @@
 ---
 applies_to:
-  serverless: ga
+  serverless:
+    observability: ga
+    security: ga
   stack: ga 9.5+
 products:
   - id: observability
