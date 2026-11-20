@@ -53,5 +53,6 @@ Snooze operates at the series level, not the alert level. If you snooze `checkou
 ## What to do next with alerts [alerts-next-steps]
 
 - [View and manage alerts](alerts/view-and-manage-alerts.md): Open the alerts table, triage active alerts, and acknowledge, snooze, or resolve them.
+- [Import third-party alerts](alerts/import-third-party-alerts.md): Show alerts from Datadog and other monitoring tools on the **Alerts** page.
 - [Rule events](rules/rule-event-field-reference.md): What {{kib}} writes to `.rule-events` and how those events belong to an alert.
 - [Query alert history in Discover](alerts/query-alerts-and-signals-in-discover.md): Use {{esql}} to query `.rule-events` and `.alert-actions` for exploratory analysis and dashboards.
