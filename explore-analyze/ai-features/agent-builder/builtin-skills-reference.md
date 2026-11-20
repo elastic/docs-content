@@ -147,10 +147,13 @@ $$$agent-builder-cases-analytics-skill$$$ `cases-analytics` {applies_to}`stack: 
 
     :::
 
+    {applies_to}`stack: preview 9.6+` The skill is hidden in spaces that use the {{es}} solution view.
+
+    {applies_to}`serverless: preview` The skill is available only in {{observability}} and {{elastic-sec}} projects, not in {{es-serverless}} projects.
+
     **Prerequisites:**
 
     - The `xpack.cases.analyticsV2.enabled` setting must be `true`. It defaults to `true`. To turn off the skill in {{stack}}, set it to `false` in [`kibana.yml`](/deploy-manage/stack-settings.md). This also turns off the case analytics indices (`.cases`, `.cases-activity`, and `.cases-attachments`) and the **Case Analytics** data view.
-    - Starting in 9.6, the skill is hidden in spaces that use the {{es}} solution view. On {{serverless-short}}, it's available only in {{observability}} and {{elastic-sec}} projects, not in {{es-serverless}} projects.
     - Queries run as the current user. Users with **Cases** privilege **Read** or higher can query only the cases they can access. To report across all spaces and solutions, [grant direct access to the case analytics indices](/explore-analyze/cases/control-case-access.md#give-analytics-access).
 
 $$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$$$ `rule-authoring` {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
