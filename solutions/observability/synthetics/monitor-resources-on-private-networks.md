@@ -151,7 +151,7 @@ You may need to set other environment variables. Learn how in [{{agent}} environ
 When the {{agent}} is running you can add a new {{private-location}} in the UI:
 
 1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Select {icon}`ellipsis` **More** → **Settings** in the application menu. In 9.5 and earlier, select **Settings** in the top bar.
+1. Select {icon}`ellipsis` **More** → **Settings** in the application menu. In 9.5 and earlier, select the **Settings** link at the top of the page.
 1. Go to the **{{private-location}}s** tab.
 1. Click **Create location**.
 1. Give your new location a unique _Location name_.

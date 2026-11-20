@@ -66,7 +66,7 @@ To use the UI to add a lightweight monitor:
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
 
-    % Candidate for removal: low value. Full Create monitor page with the old top bar, in-page title and 9.5 tile names, and the prose that follows names every field.
+    % Candidate for removal: low value. Full Create monitor page with the old page header, in-page title and 9.5 tile names, and the prose that follows names every field.
     :::{image} /solutions/images/observability-synthetics-get-started-ui-lightweight.png
     :alt: Synthetics Create monitor UI
     :screenshot:
@@ -74,7 +74,7 @@ To use the UI to add a lightweight monitor:
 
     ::::{note}
     :applies_to: stack: ga 9.4+
-    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. To review and manage these rules, select {icon}`ellipsis` **More** → **Settings** → **Alerting** in the Synthetics app. In 9.5 and earlier, **Settings** is a link in the top bar instead.
+    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. To review and manage these rules, select {icon}`ellipsis` **More** → **Settings** → **Alerting** in the Synthetics app. In 9.5 and earlier, **Settings** is a link at the top of the page instead.
     ::::
 
 ## Add a browser monitor [synthetics-get-started-ui-add-a-browser-monitor]
@@ -121,7 +121,7 @@ To use the UI to add a browser monitor:
 
     ::::{note}
     :applies_to: stack: ga 9.4+
-    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. To review and manage these rules, select {icon}`ellipsis` **More** → **Settings** → **Alerting** in the Synthetics app. In 9.5 and earlier, **Settings** is a link in the top bar instead.
+    When you create or edit a monitor, default alert rules, including monitor status and TLS certificate rules, are automatically set up. To review and manage these rules, select {icon}`ellipsis` **More** → **Settings** → **Alerting** in the Synthetics app. In 9.5 and earlier, **Settings** is a link at the top of the page instead.
     ::::
 
 ## View in your Observability project [synthetics-get-started-ui-view-in-your-observability-project]
