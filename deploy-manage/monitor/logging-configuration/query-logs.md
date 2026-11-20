@@ -79,6 +79,7 @@ The following configuration options are available. Set them in `elasticsearch.ym
 - `elasticsearch.querylog.threshold`: Sets the request duration threshold (in [time units](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#time-units), like `100ms` or `5s`) for logging events. If greater than 0, only requests with durations equal to or greater than the threshold are logged. The default is 0.
 - `elasticsearch.querylog.include.user`: Enables or disables logging of user information. Set to `false` to disable. Defaults to `true`.
 - `elasticsearch.querylog.include.system_indices`: Controls whether queries targeting only system indices are included in the logs. Set to `true` to include them. Defaults to `false`.
+- `elasticsearch.querylog.vector_format`: Controls how `float` vectors in the logged Query DSL body are written. Set to `elided` to log an empty array in place of each vector, `array` to log the vector as an array of numbers, or `base64` to log it as a compact base64 string of the vector's float bytes. Defaults to `elided`. Byte vectors and vectors that were already supplied as encoded strings are logged as sent.
 
 ### Set up by deployment type
 
