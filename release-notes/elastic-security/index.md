@@ -392,6 +392,13 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes a partial-write bug so {{elastic-defend}} correctly sends data to a {{ls}} output when the kernel TCP send buffer is full, resolving premature connection failures.
 * Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
 
+## 9.4.10 [elastic-security-9.4.10-release-notes]
+
+### Fixes [elastic-security-9.4.10-fixes]
+
+* Fixes {{elastic-defend}} on Linux so it correctly reports failures to enable event collection.
+* Fixes {{elastic-defend}} so it no longer logs the signature portion of request URLs that carry a credential in their query string, keeping sensitive tokens out of debug logs and diagnostics bundles.
+
 ## 9.4.9 [elastic-security-9.4.9-release-notes]
 
 ### Features and enhancements [elastic-security-9.4.9-features-enhancements]
