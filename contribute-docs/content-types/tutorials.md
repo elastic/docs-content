@@ -111,5 +111,6 @@ Here are some examples of well-structured tutorials in the Elastic documentation
 
 - [Tutorial: Threat hunting with {{esql}}](/solutions/security/esql-for-security/esql-threat-hunting-tutorial.md): A **scenario-driven** tutorial that teaches {{esql}} through a realistic cybersecurity scenario, with extensive code annotations.
 - [{{esql}} for search tutorial](elasticsearch://reference/query-languages/esql/esql-search-tutorial.md): A **feature-focused** tutorial that systematically teaches search concepts using {{esql}}, from basic text matching to AI-powered semantic search, with subsections breaking down complex topics.
+- [](/solutions/search/get-started/quickstarts.md): A **hands-on** quickstart that walks you through connecting a client, indexing sample data, and comparing keyword, semantic, and hybrid search.
 
 % TODO: Add other links to exemplary tutorials in the docs
