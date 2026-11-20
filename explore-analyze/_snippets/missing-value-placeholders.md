@@ -13,12 +13,16 @@ An empty string (`""`) is a value, not a missing value. How tables and charts sh
 
 The placeholder matches the visualization that shows the value:
 
-- **Tables**, such as the results table in **Discover** and table panels on a dashboard: Shown as a dash (`-`). Hover over the dash to see `(null)`.
-- **Charts**, for a missing category such as an axis label, a legend entry, or a slice: Shown as `(null)`.
+| Where you see the value | What you see |
+|---|---|
+| **Tables**, such as the results table in **Discover** or a table panel on a dashboard | A dash (`-`). Hover over the dash to see `(null)`. |
+| **Charts**, for a missing category such as an axis label, a legend entry, or a slice | `(null)` |
 
-The same placeholder carries over to the data in [the Inspector](/explore-analyze/dashboards/using.md#view-and-download-the-data-in-visualizations) and to formatted CSV files, including the files from the **Download CSV** action in a panel menu. Tables that you build with the point-and-click editor or an {{esql}} query keep the dash. Charts and other visualizations use `(null)`.
+The same placeholder carries over to the data in [the Inspector](/explore-analyze/dashboards/using.md#view-and-download-the-data-in-visualizations) and to formatted CSV files, including the files from the **Download CSV** action in a panel menu.
 
-**Raw CSV** files are unformatted on purpose, so a missing value is an empty cell. CSV reports from **Discover** write a dash (`-`) in classic mode and an empty cell in {{esql}} mode.
+**Raw CSV** files are unformatted on purpose. A missing value is an empty cell.
+
+**CSV reports** from **Discover** in classic mode use the same formatting as the table, so a missing value is a dash (`-`). In {{esql}} mode, the report exports raw values, and a missing value is an empty cell.
 
 :::
 
