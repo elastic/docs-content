@@ -186,7 +186,7 @@ In the **Schedule** section of the pack, choose how the pack and its queries run
 
 3. Upload queries from a `.conf` query pack by dragging the pack to the drop zone under the query table. To explore the community packs that Osquery publishes, click **Example packs**.
 
-4. To save a new pack, select **Create pack** (**Save pack** in 9.5 and earlier). To save changes to an existing pack, select **Update pack**. The queries run when the policy receives the update.
+4. To save a new pack, select **Create pack** or **Save pack**, depending on your {{stack}} version. To save changes to an existing pack, select **Update pack**. The queries run when the policy receives the update.
 
 
 ### View status of scheduled packs [osquery-schedule-status]
