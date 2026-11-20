@@ -203,7 +203,7 @@ To let users report on case data across all spaces and solutions, grant them the
 
 A direct index grant only widens access. {{es}} combines it with the implicit access from the **Cases** privilege, so a role with unrestricted `read` on these indices removes the space and solution limit. You can't use an {{es}} role to narrow what **Cases: Read** already grants. To remove access, remove the **Cases** privilege.
 
-Implicit access relies on document-level security. If `xpack.security.dls_fls.enabled` is `false`, only direct index grants work.
+In self-managed clusters, implicit access relies on document-level security. If `xpack.security.dls_fls.enabled` is `false`, users with only a **Cases** privilege can't read the indices, and only direct index grants work.
 
 For example, the following request creates a `cases_analytics_reader` role with read access to all three indices:
 
