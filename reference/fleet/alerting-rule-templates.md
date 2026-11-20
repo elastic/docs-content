@@ -25,6 +25,7 @@ Although the alerts can be used as provided, threshold values should always be e
 
 ## Prerequisites
 
+- An installed integration that includes alerting rule templates. Not all integrations include them. To install one, refer to [Add an integration to a policy](/reference/fleet/add-integration-to-policy.md) or [Install and uninstall integration assets](/reference/fleet/install-uninstall-integration-assets.md).
 - Ensure the data collection is enabled for the metrics or events that you plan to use.
 - Appropriate [{{kib}} role privileges](../../explore-analyze/alerting/alerts/alerting-setup.md) to create and manage rules.
 
@@ -35,8 +36,8 @@ Alerting rule templates come with recommended, pre-populated values. Templates a
 **From an integration:**
 
 1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-1. Find and open the integration.
-1. On the integration page, select the tab that lists the alerting rule templates for that integration:
+1. On the **Installed integrations** tab, select the integration.
+1. Select the tab that lists the alerting rule templates for that integration:
 
     - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Alerting**
     - {applies_to}`stack: ga 9.2-9.3` **Assets**
@@ -119,7 +120,7 @@ serverless: ga
 
 If alerting assets are missing or need to be refreshed, you can reinstall them:
 
-1. Open the integration and select the **Alerting** tab.
+1. On the **Installed integrations** tab, select the integration, then select the **Alerting** tab.
 2. Click **Reinstall alerting assets**.
 
 Reinstalling alerting assets regenerates the Idle data streams template and restores any bundled alerting rule templates to their default state.

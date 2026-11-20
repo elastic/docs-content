@@ -314,6 +314,10 @@ Configure timeout and buffer size values for the Kafka brokers.
 
     **Default:** `json`
 
+`default_processors` {applies_to}`stack: ga 9.6+`
+:   :::{include} /reference/fleet/_snippets/output-default-processors-setting.md
+    :::
+
 `keep_alive` $$$output-kafka-fleet-settings-keep_alive-setting$$$
 :   (string) The keep-alive period for an active network connection. If `0s`, keep-alives are disabled.
 
