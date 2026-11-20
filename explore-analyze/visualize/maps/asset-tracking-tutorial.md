@@ -572,11 +572,6 @@ Add a layer that uses attributes in the data to set the style and orientation of
     4. Set **Border width** to 0.
     5. Change **Symbol orientation** to use **By value** and the `trimet.bearing` field.
 
-       :::{image} /explore-analyze/images/kibana-top_hits_layer_style.png
-       :alt: top hits layer style
-       :screenshot:
-       :::
-
 7. Click **Keep changes**.
 8. Open the [time filter](../../query-filter/filtering.md), turn on automatic refresh, and set the refresh interval to 10 seconds.
 
