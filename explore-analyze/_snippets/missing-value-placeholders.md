@@ -1,4 +1,4 @@
-A value is missing when its field is `null` or the document doesn't have the field. Instead of leaving the cell empty, {{kib}} shows a placeholder. The placeholder depends on your version. Select the tab for your version.
+A value is missing when its field is `null` or the document doesn't have the field. Instead of leaving the cell empty, {{kib}} shows a placeholder.
 
 :::{note}
 An empty string (`""`) is a value, not a missing value. How tables and charts show it depends on your version:
