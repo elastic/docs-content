@@ -92,34 +92,25 @@ Also see [Create an agent policy without using the UI](/reference/fleet/create-p
 
 An {{agent}} policy consists of one or more integrations that are applied to the agents enrolled in that policy. When you add an integration, the policy created for that integration can be shared with multiple {{agent}} policies. This reduces the number of integrations policies that you need to actively manage.
 
-To add a new integration to one or more {{agent}} policies:
+To add a new integration to an {{agent}} policy:
 
 1. In {{fleet}}, click **Agent policies**. Click the name of a policy you want to add an integration to.
-2. Click **Add <integration>**.
-3. The Integrations page shows {{agent}} integrations along with other types, such as {{beats}}. Scroll down and select **Elastic Agent only** to view only integrations that work with {{agent}}.
-4. You can opt to install an {{agent}} if you haven’t already, or choose **Add integration only** to proceed.
-5. In Step 1 on the **Add <integration>** page, you can select the configuration settings specific to the integration.
-6. In Step 2 on the page, you have two options:
+2. Select **Add integration**.
 
-    1. If you’d like to create a new policy for your {{agent}}s, on the **New hosts** tab specify a name for the new agent policy and choose whether or not to collect system logs and metrics. Collecting logs and metrics will add the System integration to the new agent policy.
-    2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you'd like to add the integration to. This feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
+    :::{note}
+    :applies_to: stack: ga =9.0
+    In this version, **Add integration** opens the **Integrations** page instead of a flyout. To add the integration from there, follow the steps in [](/reference/fleet/add-integration-to-policy.md).
+    :::
 
-    ::::{include} _snippets/version-specific-policy-integration-warning.md
-    ::::
+3. In the **Add integration to policy** flyout, under **Select integration**, search for and select an integration.
+4. Under **Configure integration**, configure the settings specific to the integration.
+5. Select **Add integration**.
 
-7. Click **Save and continue** to confirm your settings.
+To add the integration to several agent policies at once, [add it from the **Integrations** page](/reference/fleet/add-integration-to-policy.md) instead, and select the policies on the **Existing hosts** tab. This feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 This action installs the integration and adds it to the {{agent}} policies that you specified. {{fleet}} distributes the new integration policy to all {{agent}}s that are enrolled in the agent policies.
 
-You can update the settings for an installed integration at any time:
-
-1. In {{kib}}, go to the **Integrations** page.
-2. On the **Integration policies** tab, for the integration that you like to update open the **Actions** menu and select **Edit integration**.
-3. On the **Edit <integration>** page you can update any configuration settings and also update the list of {{agent}} polices to which the integration is added.
-
-    If you clear the **Agent policies** field, the integration will be removed from any {{agent}} policies to which it had been added.
-
-    To identify any integrations that have been "orphaned", that is, not associated with any {{agent}} policies, check the **Agent polices** column on the **Integration policies** tab. Any integrations that are installed but not associated with an {{agent}} policy are as labeled as `No agent policies`.
+You can update the settings of an integration policy, or the {{agent}} policies that it's added to, at any time. Refer to [Edit or delete an {{agent}} integration policy](/reference/fleet/edit-delete-integration-policy.md).
 
 
 
@@ -151,15 +142,12 @@ When you assign an agent to a policy that contains an integration with a minimum
 
 ## Edit or delete an integration policy [policy-edit-or-delete]
 
-Integrations can be reconfigured or deleted. To edit or delete an integration policy:
+To edit or delete an integration policy from the {{agent}} policy that it's added to:
 
-1. In {{fleet}}, click **Agent policies**. Click the name of the policy you want to edit or delete.
-2. Search or scroll to a specific integration. Open the **Actions** menu and select **Edit integration** or **Delete integration**.
+1. In {{fleet}}, select **Agent policies**. Select the name of the {{agent}} policy that includes the integration policy.
+2. Find the integration policy. From its **Actions** menu, select **Edit integration** or **Delete integration**.
 
-    Editing or deleting an integration is permanent and cannot be undone. If you make a mistake, you can always re-configure or re-add an integration.
-
-
-Any saved changes are immediately distributed and applied to all {{agent}}s enrolled in the given policy.
+For the full steps, and what happens when you delete an integration policy, refer to [](/reference/fleet/edit-delete-integration-policy.md).
 
 To update any secret values in an integration policy, refer to [Configure secret values in a policy](#agent-policy-secret-values).
 

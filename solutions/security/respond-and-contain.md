@@ -29,6 +29,7 @@ You usually move from an alert to a response action in a few steps:
 | Your goal | Start here |
 |---|---|
 | View, filter, and change the status of detection alerts | [Manage detection alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md) |
+| Triage Event correlation (EQL) alerts and find when each event in a sequence happened | [Triage EQL alerts](/solutions/security/detect-and-alert/triage-eql-alerts.md) |
 | Run response actions on an endpoint from the response console | [Endpoint response actions](/solutions/security/endpoint-response-actions.md) |
 | Block a host from communicating with your network | [Isolate a host](/solutions/security/endpoint-response-actions/isolate-host.md) |
 | Run response actions automatically when a rule generates an alert | [Automated response actions](/solutions/security/endpoint-response-actions/automated-response-actions.md) |

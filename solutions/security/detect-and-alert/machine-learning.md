@@ -17,11 +17,11 @@ description: Create detection rules that trigger on machine learning anomaly det
 
 {{ml-cap}} rules are the right fit when:
 
-* You want to detect **behavioral anomalies** that are difficult to express as static queries, such as unusual login times, atypical data transfer volumes, or rare process executions for a given user or host.
+* You want to detect behavioral anomalies that are difficult to express as static queries, such as unusual login times, atypical data transfer volumes, or rare process executions for a given user or host.
 * A {{ml}} job is already active (or you plan to enable one) that models the relevant behavior.
-* You want **adaptive detection** that automatically adjusts to changing baselines without manual threshold tuning.
+* You want adaptive detection that automatically adjusts to changing baselines without manual threshold tuning.
 
-{{ml-cap}} rules are **not** the best fit when:
+{{ml-cap}} rules aren't the best fit when:
 
 * You can define the exact pattern you're looking for. Use a [custom query rule](/solutions/security/detect-and-alert/custom-query.md) or [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
 * You need a count-based threshold. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.

@@ -48,6 +48,7 @@ The following Azure regions are currently available for {{serverless-short}} pro
 | :--- | :--- |
 | australiaeast | Australia East (New South Wales) |
 | brazilsouth | Brazil South (Sao Paulo State) |
+| canadacentral | Canada Central (Toronto) |
 | centralus | Central US (Iowa) |
 | eastus | East US (Virginia) |
 | eastus2 | East US 2 (Virginia) |
