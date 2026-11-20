@@ -28,6 +28,8 @@ To analyze the rows of a session in a spreadsheet or another tool, export them a
 
 **Result:** {{kib}} queues a CSV report of the results of the current tab. To download the file when it's ready, refer to [Manually generate reports](../report-and-share.md#manually-generate-reports).
 
+If a cell in the CSV file shows a dash or stays empty, the result has no value for that field. Refer to [What a dash or `(null)` in your results means](inspect-documents.md#missing-values-in-results).
+
 ### Row and file size limits [export-csv-limits]
 
 Your CSV file might not contain every row of your results. The export stops at the first limit that it reaches, either a number of rows or a file size.
@@ -67,8 +69,8 @@ To generate the same export automatically on a schedule, refer to [Automatically
 
 ## Export a Discover session as JSON [export-discover-session-json]
 ```{applies_to}
-serverless: preview
-stack: preview 9.6+
+serverless: ga
+stack: ga 9.6+
 ```
 
 To inspect a session's definition, or to use it as the starting point for managing the session as code, export it as JSON. For each tab you include, the file contains the query, the filters, the {{data-source}}, and the current view, including the columns and the chart, but not the query results. To export rows, refer to [Export Discover session results as CSV](#export-discover-session-csv).
@@ -88,6 +90,8 @@ To inspect a session's definition, or to use it as the starting point for managi
    - Select **Download JSON** to save the file. The file name is the session title. For an unsaved session, the file is named `Untitled Discover session.json`.
 
 **Result:** You have the JSON of the session, as a copy, as a request in **Console**, or as a file.
+
+To deploy the session to another space or environment from code, send the JSON to the [Discover sessions API]({{kib-apis}}group/endpoint-discover-sessions).
 
 ## Next steps
 
