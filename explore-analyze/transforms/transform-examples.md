@@ -257,7 +257,7 @@ The search result shows you data like this for each client IP:
           },
           "success" : 2,
           "error404" : 0,
-          "error503" : 0,
+          "error5xx" : 0,
           "clientip" : "0.72.176.46",
           "agent_dc" : 2.0,
           "bytes_sum" : 4422.0,
@@ -506,6 +506,32 @@ The API call above returns a response similar to this:
 }
 ```
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Each `top_metrics` result also contains a `top` array with the sort values and metrics of the top documents, in the same format as the `top_metrics` aggregation response in a search. For example, the first document of the preview looks similar to this:
+
+```js
+{
+  "top" : {
+    "clientip" : "223.87.60.27",
+    "geo.src" : "IN",
+    "top" : [
+      {
+        "sort" : [ 6219 ],
+        "metrics" : {
+          "clientip" : "223.87.60.27",
+          "geo.src" : "IN"
+        }
+      }
+    ]
+  },
+  "bytes" : {
+    "max" : 6219
+  },
+  "timestamp" : "2021-04-25T00:00:00.000Z"
+}
+```
+
+If you set the `size` parameter of `top_metrics` to a value greater than 1, the `top` array contains up to `size` entries, while the flattened fields contain the metrics of the first document. If you create the destination index yourself with `dynamic` set to `strict`, add the `top` field to its mappings.
+
 ## Getting customer name and email address by customer ID [example-customer-names]
 
 This example uses the ecommerce sample data set to create an entity-centric index based on customer ID, and to get the customer name and email address by using the `top_metrics` aggregation.
@@ -586,3 +612,5 @@ The API returns a response that is similar to this:
   ]
 }
 ```
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The `last` object also contains a `top` array with the sort value and metrics of the top document, as described in the [previous example](#example-bytes).

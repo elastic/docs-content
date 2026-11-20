@@ -19,11 +19,15 @@ The following limitations and known problems apply to the Elastic transform feat
 
 ## Configuration limitations [transform-config-limitations]
 
-### Field names prefixed with underscores are omitted from latest transforms [transforms-underscore-limitation]
+### Field names prefixed with underscores are omitted from the destination index [transforms-underscore-limitation]
 
-If you use the `latest` type of transform and the source index has field names that start with an underscore (_) character, they are assumed to be internal fields. Those fields are omitted from the documents in the destination index.
+Top-level field names that start with an underscore (_) character are assumed to be internal fields and are omitted from the documents in the destination index. For `latest` transforms, this applies to fields in the source documents. For `pivot` transforms, this applies to `group_by` and aggregation names, so don't start these names with an underscore.
 
 ### Transforms support {{ccs}} if the remote cluster is configured properly [transforms-ccs-limitation]
+```{applies_to}
+stack: ga
+serverless: unavailable
+```
 
 If you use [{{ccs}}](../../explore-analyze/cross-cluster-search.md), the remote cluster must support the search and aggregations you use in your transforms. Transforms validate their configuration; if you use {{ccs}} and the validation fails, make sure that the remote cluster supports the query and aggregations you use.
 
@@ -45,7 +49,11 @@ Transforms sort data by a user-defined time field, which is frequently accessed.
 
 ### {{ctransform-cap}} scheduling limitations [transform-scheduling-limitations]
 
-A {{ctransform}} periodically checks for changes to source data. The functionality of the scheduler is currently limited to a basic periodic timer which can be within the `frequency` range from 1s to 1h. The default is 1m. This is designed to run little and often. When choosing a `frequency` for this timer consider your ingest rate along with the impact that the transform search/index operations has other users in your cluster. Also, retries occur at `frequency` interval.
+A {{ctransform}} periodically checks for changes to source data. The functionality of the scheduler is currently limited to a basic periodic timer which can be within the `frequency` range from 1s to 1h. The default is 1m. This is designed to run little and often. When choosing a `frequency` for this timer consider your ingest rate along with the impact that the search/index operations has on other users in your cluster.
+
+{applies_to}`serverless: ga` On {{serverless-short}}, a `frequency` lower than 5s is treated as 5s.
+
+After a failure, the transform does not wait for the `frequency` interval before it retries. Instead, it retries with an exponential backoff that starts at 5 seconds and is capped at 1 hour.
 
 ## Operational limitations [transform-operational-limitations]
 
@@ -57,9 +65,9 @@ You can view the deduced mappings by using the [preview transform API]({{es-apis
 
 If it’s required, you may define custom mappings prior to starting the transform by creating a custom destination index using the [create index API]({{es-apis}}operation/operation-indices-create). As deduced mappings cannot be overwritten by an index template, use the create index API to define custom mappings. The index templates only apply to fields derived from scripts that use dynamic mappings.
 
-### Batch transforms may not account for changed documents [transform-batch-limitations]
+### Batch transforms without point in time might not account for changed documents [transform-batch-limitations]
 
-A batch transform uses a [composite aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md) which allows efficient pagination through all buckets. Composite aggregations do not yet support a search context, therefore if the source data is changed (deleted, updated, added) while the batch {{dataframe}} is in progress, then the results may not include these changes.
+A batch transform uses a [composite aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-composite-aggregation.md) which allows efficient pagination through all buckets. By default, transforms page through the source with a [point in time]({{es-apis}}operation/operation-open-point-in-time), which gives the search a consistent view of the data. Point in time is not used when `use_point_in_time` is set to `false`, when the source includes remote clusters, or when {{cps}} is enabled. When point in time is turned off, if the source data is changed (deleted, updated, added) while the batch {{dataframe}} is in progress, then the results might not include these changes.
 
 ### {{ctransform-cap}} consistency does not account for deleted or updated documents [transform-consistency-limitations]
 
@@ -71,9 +79,9 @@ If the indices that fall within the scope of the source index pattern are remove
 
 Depending on your use case, you may wish to recreate the transform entirely after deletions. Alternatively, if your use case is tolerant to historical archiving, you may wish to include a max ingest timestamp in your aggregation. This will allow you to exclude results that have not been recently updated when viewing the destination index.
 
-### Deleting a transform does not delete the destination index or {{kib}} index pattern [transform-deletion-limitations]
+### Deleting a transform does not delete the destination index by default [transform-deletion-limitations]
 
-When deleting a transform using `DELETE _transform/index` neither the destination index nor the {{kib}} index pattern, should one have been created, are deleted. These objects must be deleted separately.
+By default, deleting a transform with `DELETE _transform/<transform_id>` deletes neither the destination index nor the {{kib}} data view, if one was created. To also delete the destination index, use the `delete_dest_index=true` query parameter of the [delete transform API]({{es-apis}}operation/operation-transform-delete-transform). Delete the data view separately.
 
 ### Handling dynamic adjustment of aggregation page size [transform-aggregation-page-limitations]
 
@@ -81,15 +89,15 @@ During the development of transforms, control was favoured over performance. In 
 
 Composite aggregations are well suited for high cardinality data enabling pagination through results. If a [circuit breaker](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md) memory exception occurs when performing the composite aggregated search then we try again reducing the number of buckets requested. This circuit breaker is calculated based upon all activity within the cluster, not just activity from transforms, so it therefore may only be a temporary resource availability issue.
 
-For a batch transform, the number of buckets requested is only ever adjusted downwards. The lowering of value may result in a longer duration for the transform checkpoint to complete. For {{ctransforms}}, the number of buckets requested is reset back to its default at the start of every checkpoint and it is possible for circuit breaker exceptions to occur repeatedly in the {{es}} logs.
+For a batch transform, the number of buckets requested is only ever adjusted downwards. The lowering of value might result in a longer duration for the transform checkpoint to complete. For {{ctransforms}}, the number of buckets requested is reset back to the configured `max_page_search_size` when a checkpoint completes.
 
-The transform retrieves data in batches which means it calculates several buckets at once. Per default this is 500 buckets per search/index operation. The default can be changed using `max_page_search_size` and the minimum value is 10. If failures still occur once the number of buckets requested has been reduced to its minimum, then the transform will be set to a failed state.
+The transform retrieves data in batches which means it calculates several buckets at once. By default, this is 500 buckets per search/index operation for `pivot` transforms and 5000 for `latest` transforms. You can change the default using `max_page_search_size`. The minimum value is 10 and the maximum is 65,536. If failures still occur once the number of buckets requested has been reduced to its minimum, then the transform will be set to a failed state, unless it runs in `unattended` mode, in which case it keeps retrying.
 
 ### Handling dynamic adjustments for many terms [transform-dynamic-adjustments-limitations]
 
 For each checkpoint, entities are identified that have changed since the last time the check was performed. This list of changed entities is supplied as a [terms query](elasticsearch://reference/query-languages/query-dsl/query-dsl-terms-query.md) to the transform composite aggregation, one page at a time. Then updates are applied to the destination index for each page of entities.
 
-The page `size` is defined by `max_page_search_size` which is also used to define the number of buckets returned by the composite aggregation search. The default value is 500, the minimum is 10.
+The page `size` is defined by `max_page_search_size` which is also used to define the number of buckets returned by the composite aggregation search. The default value is 500 for `pivot` transforms and 5000 for `latest` transforms. The minimum is 10.
 
 The index setting [`index.max_terms_count`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-settings) defines the maximum number of terms that can be used in a terms query. The default value is 65536. If `max_page_search_size` exceeds `index.max_terms_count` the transform will fail.
 
@@ -99,7 +107,7 @@ Using smaller values for `max_page_search_size` may result in a longer duration 
 
 Failed transforms remain as a persistent task and should be handled appropriately, either by deleting it or by resolving the root cause of the failure and re-starting.
 
-When using the API to delete a failed transform, first stop it using `_stop?force=true`, then delete it.
+To delete a failed transform with the API, use `DELETE _transform/<transform_id>?force=true`. Alternatively, stop it first using `_stop?force=true`, then delete it.
 
 ### {{ctransforms-cap}} may give incorrect results if documents are not yet available to search [transform-availability-limitations]
 
@@ -121,9 +129,12 @@ Transforms update data in the destination index which requires writing into the 
 
 [ILM](../../manage-data/lifecycle/index-lifecycle-management.md) is not recommended to use as a transform destination index. Transforms update documents in the current destination, and cannot delete documents in the indices previously used by ILM. This may lead to duplicated documents when you use transforms combined with ILM in case of a rollover.
 
-If you use ILM to have time-based indices, consider using the [Date index name](elasticsearch://reference/enrich-processor/date-index-name-processor.md) instead. The processor works without duplicated documents if your transform contains a `group_by` based on `date_histogram`.
+If you use ILM to have time-based indices, consider using the [Date index name](elasticsearch://reference/ingest-processor/date-index-name-processor.md) instead. The processor works without duplicated documents if your transform contains a `group_by` based on `date_histogram`.
 
 ### SLO transforms at scale may misreport state and increase PIT activity
+```{applies_to}
+stack: ga
+```
 
 When running a large number of SLO transforms, two types of limitations can appear:
 
