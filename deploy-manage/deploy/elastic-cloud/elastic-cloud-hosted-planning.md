@@ -42,6 +42,9 @@ The data in your {{es}} clusters is also backed up every 30 minutes, 4 hours, or
 Clusters that use only one availability zone are not highly
 available and are at risk of data loss. To safeguard against data loss,
 you must use at least two availability zones.
+
+Note: Snapshots do not restore all configurations (e.g., custom repositories).
+Review the full [snapshot contents](https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore#snapshot-contents) list to understand recovery limitations.
 ::::
 
 
