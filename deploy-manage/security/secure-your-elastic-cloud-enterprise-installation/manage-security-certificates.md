@@ -33,8 +33,28 @@ You can change the certificates for the following ECE components separately:
 **Adminconsole certificate**
 :   This certificate facilitates a secure connection to an alternative API port, which can be used in rare scenarios where the UI is unavailable. We recommend using the same certificate as the one configured for the Cloud UI.
 
+## Generate a CA certificate and X.509 certificate chain [ece-tls-generate] 
 
-## Before you begin [ece_before_you_begin_7] 
+The steps in this section provide high-level instructions on what you need to do if you do not already have a CA certificate and X.509 certificate chain. The method by which you generate the certificate and certificate chain differs by operating system, and the exact steps are outside the scope of these instructions.
+
+The high-level steps to generate the necessary files include:
+
+1. Generate a certificate authority (CA) RSA key pair.
+2. Create a self-signed CA certificate.
+3. Generate a server RSA key pair.
+4. Create a certificate signing request (CSR) for server certificate with the common name and the alternative name set.
+5. Sign the server CSR with CA key pair.
+6. Concatenate the PEM encode server RSA private key, the server certificate, and the CA certificate into a single file.
+
+Use the concatenated file containing the unencrypted RSA private key, server certificate, and CA certificate when adding your own TLS/SSL certificates in subsequent steps.
+
+::::{note} 
+If your organization already uses a CA certificate and X.509 certificate chain, you need to have these files ready. You also need your unencrypted RSA private key.
+::::
+
+
+
+## Certificate chain requirements [ece-tls-chain-requirements]
 
 When uploading the certificate chain to ECE, the following requirements apply:
 
@@ -77,7 +97,10 @@ Review the documentation for your certificate generation tool to determine how t
 
 ## Get existing ECE security certificates [ece-existing-security-certificates] 
 
-Obtain the existing certificate generated during the installation of ECE.
+This step is optional. You need it only if you want to add your certificate from the command line instead of using the Cloud UI.
+
+Obtain the existing CA certificate generated during the installation of ECE. 
+This CA certificate might not be the same CA certificate associated with the certificate chain you are planning to add.
 
 1. You can use the [openssl](https://www.openssl.org/source/) command line tool to display the whole server certificate chain. Run the command against the Cloud UI URL provided at the end of the installation process on your first host, `192.168.43.10:12343` in our example:
 
@@ -225,27 +248,6 @@ Obtain the existing certificate generated during the installation of ECE.
     ```
 
     In subsequent steps, this `elastic-ece-ca-cert.pem` file is referred to as the `CA_CERTIFICATE_FILENAME` and used to add your own TLS/SSL certificates.
-
-
-
-## Generate a CA certificate and X.509 certificate chain [ece-tls-generate] 
-
-The steps in this section provide high-level instructions on what you need to do if you do not already have a CA certificate and X.509 certificate chain. The method by which you generate the certificate and certificate chain differs by operating system, and the exact steps are outside the scope of these instructions.
-
-The high-level steps to generate the necessary files include:
-
-1. Generate a certificate authority (CA) RSA key pair.
-2. Create a self-signed CA certificate.
-3. Generate a server RSA key pair.
-4. Create a certificate signing request (CSR) for server certificate with the common name and the alternative name set.
-5. Sign the server CSR with CA key pair.
-6. Concatenate the PEM encode server RSA private key, the server certificate, and the CA certificate into a single file.
-
-Use the concatenated file containing the unencrypted RSA private key, server certificate, and CA certificate when adding your own TLS/SSL certificates in subsequent steps.
-
-::::{note} 
-If your organization already uses a CA certificate and X.509 certificate chain, you need to have these files ready. You also need your unencrypted RSA private key.
-::::
 
 
 
