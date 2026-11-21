@@ -1,4 +1,8 @@
 project: "Solutions and use cases"
+
+suppress:
+  - DeepLinkingVirtualFile
+
 toc:
   - file: index.md
   - file: search.md

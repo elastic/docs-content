@@ -1,3 +1,6 @@
+suppress:
+  - DeepLinkingVirtualFile
+
 toc:
   - file: index.md
   - file: fields-and-object-schemas/index.md
