@@ -5,6 +5,7 @@ applies_to:
   stack: ga
 products:
   - id: elasticsearch
+  - id: cloud-serverless
   - id: cloud-hosted
 ---
 
@@ -22,7 +23,8 @@ For more advanced use cases, including data modification using scripts or ingest
 
 - An {{ech}} deployment with data to migrate
 - An [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md) project configured and running
-- An [API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) for authentication with the {{ech}} deployment
+- An [{{es}} API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) for authentication with the {{ech}} deployment
+- Network access from the destination project to the source {{ech}} endpoint. Any network security policy on the source must permit the connection.
 
   Basic authentication can be used in place of an API key, but an API key is recommended as a more secure option.
 
@@ -55,13 +57,13 @@ The following steps walk you through locating the source index and {{es}} endpoi
 
         Example: Reindex from an {{ech}} deployment to a {{serverless-short}} project using an API key:
 
-        ```
+        ```console
         POST _reindex
         {
           "source": {
             "remote": {
-              "host": "https://<SERVERLESS_HOST_URL>:443", <1>
-              "api_key": "<ECH_API_KEY>" <2>
+              "host": "<ECH_ELASTICSEARCH_ENDPOINT>", <1>
+              "api_key": "<ENCODED_ELASTICSEARCH_API_KEY>" <2>
             },
             "index": "<SOURCE_INDEX>" <3>
           },
@@ -70,36 +72,42 @@ The following steps walk you through locating the source index and {{es}} endpoi
           }
         }
         ```
-        1. The URL for your {{serverless-short}} project. This is the {{es}} endpoint that you copied in Step 1. If you're migrating to, for example, an {{ech}} cluster, you can modify the remote host address accordingly.
-        1. The API key for authenticating the connection to your {{ech}} deployment.
+        1. The complete {{es}} endpoint for your source {{ech}} deployment, including its scheme and port, that you copied in Step 1.
+        1. The encoded {{es}} API key for authenticating the connection to your {{ech}} deployment.
         1. The source index to copy from your {{ech}} deployment.
         1. The destination index in your {{serverless-short}} project.
 
     1. Verify that the new index is present:
 
-        ```sh
-        GET INDEX-NAME/_search?pretty
+        ```console
+        GET <DESTINATION_INDEX>/_search?pretty
         ```
-
-    1. If you are not planning to reindex more data from the remote and you configured a `reindex.remote.whitelist` user setting, that setting can now be removed.
-
 
 ## Notes for migrating between other deployment types [migrate-reindex-from-remote-others]
 
 The page demonstrates copying data from an {{ech}} deployment to {{serverless-short}}. When you use the reindex API to copy data across other deployment types there are a couple of things to consider.
 
+### Authenticating to the source
+
+The `source.remote.api_key` field is available in {{serverless-short}} and in the versioned {{stack}} 9.3 and later. For an earlier {{stack}} destination, use basic authentication or set `source.remote.headers.Authorization` to `ApiKey <ENCODED_ELASTICSEARCH_API_KEY>`.
+
+Use an {{es}} REST API key for the source. A cross-cluster API key does not authenticate requests to the REST API.
+
 ### Using non–publicly trusted TLS certificates
+
+This option applies only to destinations where you can configure certificate authority settings. A {{serverless-short}} destination can't reindex from a self-managed source.
 
 If you're migrating from a self-managed cluster that uses non–publicly trusted TLS certificates, including self-signed certificates and certificates signed by a private certificate authority (CA), refer to our guide [Reindex from a self-managed cluster using a private CA](/manage-data/migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md).
 
-
 ### Connecting to the source cluster
 
-The target deployment must be able to access your original source cluster to perform the reindex operation. When you migrate to {{serverless-short}}, access to all {{ech}} endpoints is allowed automatically. For migrating to other deployment types, access is controlled by the {{es}} `reindex.remote.whitelist` user setting.
+The target deployment must be able to access your source cluster to perform the reindex operation. A {{serverless-short}} destination can reindex from remote {{ech}} deployments and other {{serverless-short}} projects. Other remote source types are not supported.
 
-Domains matching the patterns `["*.io:*", "*.com:*"]` are allowed by default, so if your remote host URL matches that pattern you do not need to explicitly define `reindex.remote.whitelist`.
+The remote host allowlist controls which host names the destination can contact. It does not bypass network security policies on the source. The source endpoint must be reachable from the destination, and its network policy must permit the connection.
 
-Otherwise, if your remote endpoint is not covered by the default patterns, adjust the setting to add the remote {{es}} cluster as an allowed host:
+For destinations that run the versioned {{stack}}, access is controlled by the {{es}} `reindex.remote.whitelist` setting. In {{ech}} and {{ece}}, domains matching the patterns `["*.io:*", "*.com:*"]` are allowed by default, so you don't need to configure the setting if your remote host URL matches one of these patterns.
+
+If an {{ech}} or {{ece}} destination needs to access a remote endpoint that the default patterns don't cover, add the source {{es}} cluster as an allowed host:
 
   1. From your deployment menu, go to the **Edit** page.
   2. In the **Elasticsearch** section, select **Manage user settings and extensions**. For deployments with existing user settings, you might have to expand the **Edit elasticsearch.yml** caret for each node type instead.
@@ -112,3 +120,7 @@ Otherwise, if your remote endpoint is not covered by the default patterns, adjus
       `reindex.remote.whitelist: ["*.us-east-1.aws.found.io:9243", "*.com:*"]`
       
   4. Save your changes.
+
+After the migration, remove the source host from `reindex.remote.whitelist` if the destination no longer needs to access it.
+
+For {{eck}} and self-managed destinations, configure `reindex.remote.whitelist` in `elasticsearch.yml`. Refer to [`reindex.remote.whitelist`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#reindex-settings) for details.
