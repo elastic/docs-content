@@ -160,11 +160,28 @@ You must include the following parameter to specify the file’s location on the
 
 * `--path` : The file’s full path (including the file name).
 
+  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can repeat `--path` to retrieve up to 100 files in one action. The files are downloaded in one `.zip` archive.
+
+You can also use this optional parameter:
+
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--force` : ({{elastic-defend}} hosts on Windows only) Retrieve a file that the operating system has locked. {{elastic-defend}} reads the file from a snapshot of the disk volume that contains it.
+
+::::{note}
+:applies_to: {stack: ga 9.5+, serverless: ga}
+Retrieving multiple files and using the `--force` parameter require an [independent {{agent}} release](/reference/fleet/fleet-agent-release-process.md#independent-agent-releases) of 9.5.7 or 9.6.0, or a later version. The regular {{agent}} 9.5.7 and 9.6.0 releases don't support them.
+::::
+
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
 
 Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **File Operations**
 
-Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
+Examples:
+
+`get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
+
+`get-file --path "/var/log/syslog" --path "/var/log/auth.log" --comment "Collect logs"`
+
+`get-file --path "C:\Windows\System32\config\SAM" --force --comment "Collect locked registry hive"`
 
 ::::{note}
 :applies_to: stack: ga 9.0-9.2
