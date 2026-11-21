@@ -1,4 +1,5 @@
 ---
+navigation_title: Query clusters, projects, and indices
 applies_to:
   stack: all
   serverless:
@@ -6,20 +7,23 @@ applies_to:
 products:
   - id: security
   - id: cloud-serverless
-description: Deployment-level data source settings that affect detection rule behavior across your environment.
+description: Write Elastic Security detection rules that search data in other clusters or linked projects, logsdb indices, or the alerts that other rules create.
 ---
 
-# Advanced data source configuration
+# Query data from other clusters, projects, and indices
 
-These pages cover deployment-level data settings that affect detection rule behavior. Unlike [per-rule data source settings](/solutions/security/detect-and-alert/set-rule-data-sources.md), which apply to individual rules, the configurations below affect how your entire environment interacts with the detection engine.
+Some rules search data that needs extra setup or care, such as data in another {{es}} cluster or a linked {{serverless-short}} project, indices that use logsdb index mode, or the alerts that other rules create. To learn how to set the index patterns, data views, and data tiers that any rule searches, refer to [](/solutions/security/detect-and-alert/set-rule-data-sources.md).
 
-Most users don't need these pages during initial setup. Review them if any of the following apply to your environment:
+Start with the page for the data that your rule searches:
 
-**[{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md)**
-:   Relevant if your data is spread across multiple {{es}} clusters and you need detection rules on one cluster to query indices on another. Covers establishing trust between clusters, remote cluster connections, and how to reference remote indices in rule index patterns. {{stack}} only.
+**[{{ccs-cap}} and detection rules](/solutions/security/detect-and-alert/cross-cluster-search-detection-rules.md)** {applies_to}`stack: ga`
+:   For data in other {{es}} clusters. Explains how to establish trust between clusters, connect to remote clusters, and reference remote indices in a rule's index patterns.
 
-**[{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md)**
-:   Relevant if you use {{cps}} to query data across linked {{serverless-short}} projects. Explains how detection rules use the space-level {{cps}} scope and how to use project routing to target specific projects. {{serverless-short}} only.
+**[{{cps-cap}} and detection rules](/solutions/security/detect-and-alert/cross-project-search-detection-rules.md)** {applies_to}`serverless: ga`
+:   For data in linked {{serverless-short}} projects. Explains which projects a rule searches, where {{elastic-sec}} stores the rule's alerts, and how the alert limit applies across projects.
+
+**[Query alert indices](/solutions/security/detect-and-alert/query-alert-indices.md)**
+:   For the alerts that other rules create. Explains which index to query, gives example queries, and explains how to write rules that correlate alerts, such as building block alerts from several rules on the same host.
 
 **[Using logsdb index mode with {{elastic-sec}}](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md)**
-:   Relevant if your indices use logsdb index mode (enabled by default in {{serverless-short}}). Explains how synthetic `_source` reconstruction can affect field formatting in alerts and rule queries, and what to watch for when writing rules against logsdb-backed indices.
+:   For indices that use logsdb index mode, which is on by default in {{serverless-short}}. Explains how synthetic `_source` reconstruction can affect field formatting in alerts and rule queries, and what to watch for when you write rules for logsdb indices.

@@ -86,7 +86,7 @@ To walk through indexing sample embeddings and running a kNN search, follow [Bri
 :::::
 
 :::::{step} Search your data
-The search query type you can use depends on the vector field type you want to search. For an overview of field types and the queries you can use with each, refer to [Vector field types and queries](/solutions/search/vector.md#vector-queries-and-field-types). You can also combine vector queries with [filters](/solutions/search/vector/knn.md#knn-search-filter-example) on metadata fields in the same request.
+The search query type you can use depends on the vector field type you want to search. For an overview of field types and the queries you can use with each, refer to [Vector field types and queries](/solutions/search/vector.md#vector-queries-and-field-types). You can also combine vector queries with [filters](/solutions/search/vector/knn/filtered-knn-search.md) on metadata fields in the same request.
 :::::
 ::::::
 

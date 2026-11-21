@@ -41,26 +41,32 @@ Create a custom ingest pipeline that will be called by the default integration p
 
 Add a custom pipeline to an integration by calling it from the default ingest pipeline. The custom pipeline will run after the default pipeline but before the final pipeline.
 
+:::{note}
+You can only add a custom pipeline to an integration that's already added to an {{agent}} policy. The **Ingest pipelines** settings don't appear while you're adding an integration for the first time. If you haven't added the System integration yet, add it to an {{agent}} policy and save it, then follow the steps in this section to edit it.
+:::
+
 
 ### Edit integration [_edit_integration]
 
-Add a custom pipeline to an integration from the **Edit integration** workflow. The integration must already be configured and installed before a custom pipeline can be added. To enter this workflow, do the following:
+Add a custom pipeline to an integration from the **Edit integration** workflow. To enter this workflow, do the following:
 
-1. Navigate to **{{fleet}}**
-2. Select the relevant {{agent}} policy
-3. Search for the integration you want to edit
-4. Select **Actions** → **Edit integration**
-
+1. In {{kib}}, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agent policies**.
+2. Select the {{agent}} policy that includes the integration you want to edit.
+3. Find the integration in the list of integrations for the policy.
+4. From the integration's {icon}`ellipsis` actions menu, select **Edit integration**.
 
 ### Select a data stream [_select_a_data_stream]
 
 Most integrations write to multiple data streams. You’ll need to add the custom pipeline to each data stream individually.
 
+The custom pipeline is named after the data stream, so any change to it applies to every policy that uses this integration and writes to the same data stream.
+
 1. Find the first data stream you wish to edit and select **Change defaults**. For this tutorial, find the data stream configuration titled, **Collect metrics from System instances**.
-2. Scroll to **System CPU metrics** and under **Advanced options** select **Add custom pipeline**.
+2. Scroll to **System cpu metrics** and expand **Advanced options**.
+3. At the end of the advanced options, find the **Ingest pipelines** section. It lists the default ingest pipeline for the data stream, named `<type>-<dataset>-<integration version>`.
+4. Below the default pipeline, select **Add custom pipeline**. This takes you to the **Create pipeline** workflow, with the pipeline name already set to `metrics-system.cpu@custom`.
 
-    This will take you to the **Create pipeline** workflow.
-
+    If the data stream already has a custom pipeline, **Add custom pipeline** doesn't appear. Instead, the custom pipeline is listed below the default pipeline. Select {icon}`pencil` **Edit pipeline** to add the processor from the next section to the existing custom pipeline.
 
 
 ### Add the pipeline [_add_the_pipeline]
@@ -71,9 +77,8 @@ Add the pipeline you created in step one.
 
     * Processor: "Pipeline"
     * Pipeline name: "add_field"
-    * Value: `true`
 
-2. Click **Create pipeline** to return to the **Edit integration** page.
+2. Click **Create pipeline** to return to the **Edit integration** page. If you're editing an existing custom pipeline, click **Save pipeline** instead.
 
 After saving, note the name of the custom ingest pipeline. In this tutorial, it’s `metrics-system.cpu@custom`. The name follows the pattern `<type>-<dataset>@custom`:
 
@@ -121,17 +126,21 @@ Mapping and template changes are applied when a new backing index is created. To
 For more information, refer to [Index basics](../../manage-data/data-store/index-basics.md).
 :::
 
-In the **Edit integration** workflow, do the following:
+In the **Edit integration** workflow, return to **Collect metrics from System instances**, then expand **Advanced options** for **System cpu metrics**.
 
-1. Under **Advanced options** select the pencil icon to edit the `@custom` component template.
-2. Define the new field for your indexed documents. Select **Add field** and add the following information:
+1. Find the **Mappings** section. This is where you add custom mappings for fields your ingest pipeline creates. It lists the component templates for the data stream.
+2. Select **Add custom mappings**. This takes you to the component template workflow, with the template name already set to `metrics-system.cpu@custom`.
+
+    If the data stream already has a custom component template, **Add custom mappings** doesn't appear. Select {icon}`pencil` **Edit mappings** on the `@custom` component template instead.
+
+3. Define the new field for your indexed documents using the following information:
 
     * Field name: `test`
     * Field type: `Boolean`
 
-3. Click **Add field**.
-4. Click **Review** to fast-forward to the review step and click **Save component template** to return to the **Edit integration** workflow.
-5. To apply the new mapping immediately, roll over the data stream. You can do this with the rollover API, for example:
+4. Click **Add field**.
+5. Click **Review** to fast-forward to the review step and click **Create component template** to return to the **Edit integration** workflow. If you're editing an existing custom component template, click **Save component template** instead.
+6. To apply the new mapping immediately, roll over the data stream. You can do this with the rollover API, for example:
 
     ```console
     POST metrics-system.cpu-default/_rollover  

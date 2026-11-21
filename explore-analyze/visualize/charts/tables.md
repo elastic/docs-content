@@ -29,7 +29,9 @@ To automate table or dashboard creation, use the [Dashboards and Visualizations 
 
 ![A table visualization in {{kib}}](/explore-analyze/images/table-charts.png)
 
-## Build a table with the point-and-click editor [build-a-table]
+## Create a table [create-a-table]
+
+### Create a table with the point-and-click editor [build-a-table]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -37,6 +39,7 @@ To automate table or dashboard creation, use the [Dashboards and Visualizations 
 To build a table:
 
 :::::{stepper}
+:toc: false
 
 ::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -59,6 +62,8 @@ Using the dropdown indicating **Bar**, select **Table**.
 
 The table preview updates to show your metrics as columns. If you added row dimensions, each unique value creates a separate row. If you added a **Split metrics by** dimension, metrics are broken into multiple columns by category.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` A cell with no value shows a dash (`-`). Refer to [What a dash or `(null)` in panel data means](/explore-analyze/dashboards/using.md#missing-values-in-panel-data).
+
 See [](#settings) for all configuration options for your table.
 ::::
 
@@ -69,7 +74,7 @@ See [](#settings) for all configuration options for your table.
 
 :::::
 
-## Build a table with an {{esql}} query [build-a-table-with-esql]
+### Create a table with an {{esql}} query [build-a-table-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::

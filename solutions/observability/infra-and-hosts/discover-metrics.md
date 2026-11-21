@@ -1,8 +1,8 @@
 ---
 applies_to:
-  stack: ga 9.4+
+  stack: ga 9.4+, preview 9.2-9.3
   serverless: ga
-description: Make the most of Discover to explore metrics data.
+description: Explore metrics data in Discover with an automatic grid of charts. Search, filter, and break down metrics by dimension, then add them to dashboards.
 products:
   - id: observability
   - id: security
@@ -21,23 +21,33 @@ If you're just getting started with **Discover** and want to learn its main prin
 
 ## Requirements
 
+The dedicated metrics view is only available in {{esql}} mode. If **Discover** doesn't open in {{esql}} mode, select {icon}`code` **Query in ES|QL** (**Try ES|QL** in earlier {{stack}} versions) in the application menu.
+
 Use the `TS` command to select the data source. For example, the following query returns all of your metrics data:
 
   ```esql
   TS metrics-*
   ```
 
-To visualize your metrics data as charts:
-  - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
-  - The metric must be a time series metric.
-
-The dedicated metrics view is only available in ES|QL mode. Select {icon}`code` **{{esql}}** or **Try {{esql}}** from Discover.
-
 You can also query a specific index:
 
 ```esql
 TS metrics-index-1
 ```
+
+The query can also use the following commands. If it uses any other command, **Discover** shows the default experience instead of the dedicated metrics view.
+
+- `LIMIT`
+- `SORT`
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` `WHERE`
+
+To visualize your metrics data as charts:
+  - The data stream needs its **Index mode** set to **Time series**. Open **Index Management** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Data Streams** tab to find your data stream's index mode.
+  - The metric must be a time series metric. Gauge, counter, and histogram metrics are supported.
+
+    {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Histogram metrics are charted using the 95th percentile by default. Supported field types are [`tdigest`](elasticsearch://reference/elasticsearch/mapping-reference/t-digest.md) and [`exponential_histogram`](elasticsearch://reference/elasticsearch/mapping-reference/exponential-histogram.md).
+
+    Metrics stored as the legacy [`histogram`](elasticsearch://reference/elasticsearch/mapping-reference/histogram.md) field type are also charted, but their percentiles are calculated assuming T-Digest encoding. If the histogram was encoded differently, the chart shows a warning that the values might be approximate.
 
 :::{note}
 By default, all data stored in a `metrics-*` index is recognized as metrics data and triggers the **Discover** experience described on this page.
@@ -57,7 +67,7 @@ When the metrics profile is active, the documents table is collapsed by default 
 All metrics in the grid have data. If a metric appears empty, it's likely a counter metric where the scrape interval is smaller than the bucket size. To view the data, either expand the time range or click Explore for that metric and reduce the number of buckets in the query.
 :::
 
-With your data loaded, use the metrics charts to:
+With your data loaded, use the metrics grid to:
 
 **Search for specific metrics**
 
@@ -68,9 +78,18 @@ Use the search function to find and visualize specific metric data:
 :screenshot:
 :::
 
+**Sort the metrics grid** {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Choose a sort order for the metrics grid:
+    - **Alphabetically** (default)
+    - **Recently explored**: Metrics you've interacted with, for example through **View details** or **Copy to dashboard**, appear first, the most recent first.
+
 **Break down metrics by dimensions**
 
 Break down your metrics by dimensions to find metrics that contain those dimensions and identify which values in those dimensions contribute the most to each metric.
+
+{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` You can break down by up to five dimensions at a time. Each chart shows a separate line for every combination of the selected dimension values.
+
+The **Dimensions** control shows a badge with the number of selected dimensions. Select **Clear selection** to deselect them all. If you select five dimensions, you must deselect a dimension before you can add another.
 
 :::{note}
 Only fields mapped as dimensions in a [time series data stream](https://www.elastic.co/docs/reference/elasticsearch/index-settings/time-series) are available for metric breakdown. If an expected dimension is missing, verify that the field is mapped as a `time_series_dimension` in your 
@@ -84,14 +103,14 @@ Only fields mapped as dimensions in a [time series data stream](https://www.elas
 
 :::::{applies-switch}
 
-::::{applies-item} stack: ga 9.4+
+::::{applies-item} { stack: ga 9.4+, serverless: ga }
 You can filter the view to focus on specific values in two ways:
 
 - **Click a chart value**: After you break down by one or more dimensions, hover over a chart and click the value you want to filter by. This adds the corresponding dimension-value pairs to your query and updates the metrics view to show only metrics with those dimension values.
 - **Edit the query directly**: Manually add a `| WHERE` clause to your ES|QL query. For example: `| WHERE <dimension> = <value>`
 ::::
 
-::::{applies-item} stack: ga 9.2-9.3
+::::{applies-item} stack: preview 9.2-9.3
 **Filter dimensions by a specific value**
 
 Select specific values to focus on within the dimension. You can select up to 10 values to filter your dimension by.
@@ -104,6 +123,12 @@ Select specific values to focus on within the dimension. You can select up to 10
 ::::
 
 :::::
+
+**Change how metrics are aggregated** {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Select **Edit grid of metrics** ({icon}`pencil`) in the toolbar to open the **Configuration** flyout, where you can change the default aggregation for each metric type. Select **Apply and close** to update every metric of that type in the current Discover tab.
+    - **Counter**: average, sum (default), minimum, and maximum
+    - **Gauge**: average (default), sum, minimum, and maximum
+    - **Histogram**: 50th percentile, 75th percentile, 90th percentile, 95th percentile (default), and 99th percentile
 
 **View metric charts in full screen**
 
@@ -118,3 +143,13 @@ For each metric chart, you can perform the following actions:
 * **View details** ({icon}`eye`): Get additional information about the metric like metric type, dimensions, and ES|QL query.
 * **Copy to dashboard** ({icon}`app_dashboard`): Save the metric chart to an existing or new [dashboard](/explore-analyze/dashboards.md).
 * **Add to case** ({icon}`app_cases`): Add the metric chart to a [case](/solutions/observability/incident-management/observability-cases.md).
+
+## Save or share your metrics exploration [save-or-share-metrics-exploration]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+When you want to reopen a metrics exploration later or build on it, save it as a Discover session. Refer to [Save and manage Discover sessions](/explore-analyze/discover/save-open-search.md).
+
+To show a teammate the metrics view you're looking at, send a link that reopens that view. Refer to [Share a link to the current view](/explore-analyze/discover/copy-and-share-documents.md#share-your-findings).

@@ -1,7 +1,9 @@
 ---
 navigation_title: Configure data lifecycle
 applies_to:
-  serverless: ga
+  serverless:
+    observability: ga
+    security: ga
   stack: preview =9.1, ga 9.2+
 description: Learn how to configure data retention policies for your streams.
 products:
@@ -74,7 +76,7 @@ To use the lifecycle settings from the stream's index template (classic streams)
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.5+", "serverless": {"observability": "ga", "security": "ga"} }
 
 1. Select {icon}`controls` **Edit lifecycle method**.
 1. Turn on **Inherit lifecycle from index template** or **parent stream**.
@@ -99,7 +101,7 @@ To set a specific lifecycle period:
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.5+", "serverless": {"observability": "ga", "security": "ga"} }
 
 1. Select {icon}`controls` **Edit lifecycle method**.
 1. Turn off **Inherit lifecycle from index template** or **parent stream** if enabled.
@@ -107,7 +109,9 @@ To set a specific lifecycle period:
 1. From the **Data stream lifecycle** panel, select **Add data phase** → **Delete phase**.
 1. Set the delete phase to the number of days you want to retain data and select **Apply**.
 
-To define a global default lifecycle policy for serverless projects, refer to [project settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+In {{serverless-short}}, if your project has a maximum retention period configured, the **Edit delete phase** flyout shows the maximum below the input and won't let you apply a longer period. If a default retention period is configured, the flyout pre-fills it and you can return to it with **Restore default**. To learn how default and maximum retention are applied, refer to [Data stream retention](../../../manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
+
+To define a global default lifecycle policy for {{serverless-short}} projects, refer to [project settings](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 :::
 
 :::{applies-item} { "stack": "ga 9.1-9.4" }
@@ -168,7 +172,9 @@ The **Data lifecycle** tab (**Retention** in earlier versions) shows your stream
 - To edit an existing phase, select the phase from the **Data phases** timeline and select **Edit**.
 - To add a phase, select **Add data phase**, then choose a phase.
 
-This opens **Edit data phases**, where you can configure or update your phases. {applies_to}`stack: ga 9.5+` For streams using a data stream lifecycle, you can add **Frozen** and **Delete** phases. For streams using an {{ilm-init}}, you can add any of the following phases:
+This opens **Edit data phases**, where you can configure or update your phases.
+
+{applies_to}`stack: ga 9.5+` For streams using a data stream lifecycle, you can add **Frozen** and **Delete** phases. For streams using an {{ilm-init}}, you can add any of the following phases:
 
 **Hot**
 :   The index is actively updated and queried. This is the default phase for all data. Options include enabling read-only access and [downsampling](#streams-configure-retention-downsampling).
@@ -205,17 +211,38 @@ Downsampling is available in the Hot, Warm, and Cold phases and only applies to 
 
 For more information, refer to [Downsampling concepts](../../../manage-data/data-store/data-streams/downsampling-concepts.md).
 
+## Import lifecycle settings from another stream [streams-import-lifecycle]
+```{applies_to}
+stack: ga 9.5+
+serverless:
+  observability: ga
+  security: ga
+```
+
+Instead of configuring a new lifecycle, you can import the lifecycle settings from another stream. Importing copies both the stream's data lifecycle and its [failed data lifecycle](#streams-configure-failure-store-retention), and replaces the target stream's current settings.
+
+To import lifecycle settings:
+
+1. On the **Data lifecycle** tab, open the {icon}`ellipsis` **More actions** menu next to the tab name and select **Import from another stream**.
+1. Find the source stream by searching for the stream name, or use the **Method** filter to show only streams that use a **Data stream lifecycle** or an **{{ilm-init}} policy**. Each stream in the list shows a summary of its lifecycle settings for successful and failed data.
+1. {applies_to}`serverless: unavailable` Optional: For streams that follow an {{ilm-init}} policy, select {icon}`inspect` to review the policy's phases before importing.
+1. Select the source stream and select **Apply**, then confirm that you want to override the target stream's current settings.
+
+:::{note}
+Only streams for which you have `read_failure_store` privileges are available as source streams.
+:::
+
 ## Set failed data lifecycle [streams-configure-failure-store-retention]
 
 When a document fails to be ingested because of a processor error or a mapping conflict, Streams writes it to the [failure store](../../../manage-data/data-store/data-streams/failure-store.md) instead of dropping it. This lets you inspect what went wrong and fix issues using the actual failing documents, rather than losing data silently.
 
 ::::{applies-switch}
 
-:::{applies-item} { "stack": "ga 9.5+", "serverless": "ga" }
+:::{applies-item} { "stack": "ga 9.5+", "serverless": {"observability": "ga", "security": "ga"} }
 
 1. Under **Failed data**, select {icon}`controls` **Edit failed data lifecycle**.
 1. Turn off **Inherit lifecycle from index template** or **parent stream** if enabled.
-1. From the **Data stream lifecycle** panel, select **Add **Add delete phase**.
+1. From the **Data stream lifecycle** panel, select **Add delete phase**.
 1. Set the delete phase to the number of days you want to retain data and select **Apply**.
 
 :::

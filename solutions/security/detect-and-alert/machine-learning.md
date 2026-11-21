@@ -17,11 +17,11 @@ description: Create detection rules that trigger on machine learning anomaly det
 
 {{ml-cap}} rules are the right fit when:
 
-* You want to detect **behavioral anomalies** that are difficult to express as static queries, such as unusual login times, atypical data transfer volumes, or rare process executions for a given user or host.
+* You want to detect behavioral anomalies that are difficult to express as static queries, such as unusual login times, atypical data transfer volumes, or rare process executions for a given user or host.
 * A {{ml}} job is already active (or you plan to enable one) that models the relevant behavior.
-* You want **adaptive detection** that automatically adjusts to changing baselines without manual threshold tuning.
+* You want adaptive detection that automatically adjusts to changing baselines without manual threshold tuning.
 
-{{ml-cap}} rules are **not** the best fit when:
+{{ml-cap}} rules aren't the best fit when:
 
 * You can define the exact pattern you're looking for. Use a [custom query rule](/solutions/security/detect-and-alert/custom-query.md) or [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
 * You need a count-based threshold. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.
@@ -45,6 +45,8 @@ For an overview of using {{ml}} with {{elastic-sec}}, refer to [{{anomaly-detect
 2. Select the settings menu in the upper-right corner of the page, then select **ML job settings**.
 
 From there you can view, start, and stop all {{ml}} jobs associated with prebuilt detection rules.
+
+{applies_to}`serverless: ga` When {{cps}} is enabled, jobs you start here search all linked projects. To change the job's project scope, refer to [{{cps-cap}} scope](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-cps-scope).
 
 ::::{note}
 You can also create custom {{ml}} jobs in the {{ml-app}} app and reference them when creating custom {{ml}} rules. Custom jobs are managed in the {{ml-app}} app, not the **{{siem-rules-ui}}** page settings menu.

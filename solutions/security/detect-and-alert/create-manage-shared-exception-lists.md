@@ -24,7 +24,7 @@ Shared exception lists let you group exception items and apply them to multiple 
 ## Create a shared exception list [create-shared-exception-list]
 
 1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create shared exception list** > **Create shared list**.
+2. Click **Create shared exception list** → **Create shared list**.
 3. Give the shared exception list a name.
 4. (Optional) Provide a description.
 5. Click **Create shared exception list**.
@@ -34,7 +34,7 @@ Shared exception lists let you group exception items and apply them to multiple 
 After creating a shared exception list, add exception items to it:
 
 1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Click **Create shared exception list** > **Create exception item**.
+2. Click **Create shared exception list** → **Create exception item**.
 
     ::::{tip}
     You can also add exceptions to an empty shared exception list by expanding the list or viewing its details page and clicking **Create rule exception**.
@@ -46,7 +46,7 @@ After creating a shared exception list, add exception items to it:
 6. Choose one or more shared exception lists to add the exception to.
 
     ::::{note}
-    This option is unavailable if no shared exception list exists. You also can't add an endpoint exception item to the Endpoint Security Exception List from this UI. Refer to [Add {{elastic-endpoint}} exceptions](add-manage-exceptions.md#endpoint-rule-exceptions) for instructions.
+    This option is unavailable if no shared exception list exists. You also can't add an endpoint exception item to the Endpoint Security Exception List from this UI. Refer to [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) for instructions.
     ::::
 
 7. (Optional) Enter a comment describing the exception.
@@ -73,7 +73,7 @@ After creating a shared exception list, associate it with the rules that should 
 4. Click **Save**.
 5. (Optional) To verify the association:
 
-    1. Open a rule's details page (**Rules > {{siem-rules-ui}} > Rule name**).
+    1. Open a rule's details page (**Rules** → **{{siem-rules-ui}}** → **Rule name**).
     2. Scroll down and select the **Rule exceptions** tab.
     3. Navigate to the exception items from the shared list. Click the **Affects shared list** link to view the associated shared exception lists.
 

@@ -28,7 +28,7 @@ When you type, you can begin to see some of the transaction fields available for
 :::
 
 ::::{tip}
-To learn more about the {{kib}} query language capabilities, see the [Kibana Query Language Enhancements](/explore-analyze/query-filter/languages/kql.md) documentation.
+To learn more about the {{kib}} query language capabilities, refer to the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md).
 
 ::::
 

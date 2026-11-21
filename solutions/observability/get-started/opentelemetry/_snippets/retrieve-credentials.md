@@ -4,6 +4,6 @@ Retrieve your {{es}} URL and your API key:
 
     1. Go to the [{{ecloud}} console](https://cloud.elastic.co/).
     2. Next to your deployment, select **Manage**.
-    3. Under **Applications** next to **{{es}}**, select **Copy endpoint**.
+    3. Under **Application endpoints, cluster and component IDs**, select **{{es}}** and copy the **Direct endpoint** value from the flyout.
 
 2. Create an API Key following [these instructions](/deploy-manage/api-keys/elasticsearch-api-keys.md).

@@ -82,7 +82,7 @@ Dual-stack ECE hosts are required for IPv6 egress. IPv6 ingress alone does not r
 To create a new environment using this tutorial, you need the following:
 
 - An {{aws}} account with permissions to create VPCs, subnets, EC2 instances, NLBs, ALBs, and ACM certificates.
-- A RHEL 8 or RHEL 9 AMI (official Red Hat AMI, not marketplace variants).
+- A RHEL 8, RHEL 9, or RHEL 10 AMI (official Red Hat AMI, not marketplace variants).
 - An instance type that meets the [ECE requirements](/deploy-manage/deploy/cloud-enterprise/ece-hardware-prereq.md), with at least 32 GB of RAM for single-node testing.
 
 ::::{note}
@@ -350,7 +350,7 @@ Application Load Balancers require an ACM certificate and subnets in at least tw
 
 ALBs require subnets in at least two availability zones. If you only have one subnet, create a second:
 
-1. Go to **VPC → Subnets → Create subnet**
+1. Go to **VPC** → **Subnets** → **Create subnet**
 2. Configure the following settings:
    - **VPC**: Select your VPC
    - **Subnet name**: for example, `ece-subnet-2`
@@ -358,13 +358,13 @@ ALBs require subnets in at least two availability zones. If you only have one su
    - **IPv4 CIDR**: An unused range (for example, `10.0.32.0/24`)
 3. Click **Create subnet**
 4. Add IPv6 to the new subnet:
-   - Select the new subnet → **Actions → Edit IPv6 CIDRs**
+   - Select the new subnet → **Actions** → **Edit IPv6 CIDRs**
    - Click **Add IPv6 CIDR**
    - Choose the **VPC CIDR block**
    - Edit the **Subnet CIDR block**. The console pre-fills an IPv6 CIDR, for example `2a05:d018:xxx:xx00::/64`. Replace the suffix with one that is not already in use, for example `20`
 5. Associate the new subnet with your route table:
-   - Go to **VPC → Route Tables** → select your route table
-   - **Subnet associations → Edit** → Add the new subnet
+   - Go to **VPC** → **Route Tables** → select your route table
+   - **Subnet associations** → **Edit** → Add the new subnet
    - Ensure the route table has routes for `0.0.0.0/0` and `::/0` to the internet gateway
 
 ### Create the ECE coordinators target group
@@ -590,7 +590,7 @@ To support IPv6 egress in an existing IPv4 ECE environment, you must update both
 
 2. Reconfigure host network interfaces for dual-stack connectivity:
 
-    After assigning IPv6 addresses in {{aws}}, RHEL 8/9 might not automatically configure IPv6 on the active interface. Configure NetworkManager explicitly:
+    After assigning IPv6 addresses in {{aws}}, RHEL 8, 9, and 10 might not automatically configure IPv6 on the active interface. Configure NetworkManager explicitly:
 
     ```bash
     # List connections and identify the active one
@@ -624,7 +624,7 @@ To support IPv6 egress in an existing IPv4 ECE environment, you must update both
       ece-network
     ```
 
-    Then open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it. On RHEL 9 and Rocky Linux 9, merge this setting with the existing `network_backend="cni"` configuration rather than creating a duplicate `[network]` section:
+    Then open `/etc/containers/containers.conf` and, in the `[network]` section, set `default_network`. If the file or section does not exist yet, create it. Make sure not to create a duplicate `[network]` section if one already exists.
 
     ```text
     [network]

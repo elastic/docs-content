@@ -68,7 +68,7 @@ You can prevent {{fleet}} from downloading the PGP/GPG key from `server.pgp.upst
 
 To set a custom URL for {{fleet-server}} to access a PGP/GPG key and make it available to {{agents}}:
 
-1. In {{kib}}, go to **Management > {{fleet}} > Agent policies**.
+1. In {{kib}}, go to **Management** → **{{fleet}}** → **Agent policies**.
 2. Select a policy for the agents that you want to upgrade.
 3. On the policy page, in the **Actions** menu for the {{fleet-server}} integration, select **Edit integration**.
 4. In the {{fleet-server}} settings section expand **Change defaults** and **Advanced options**.
@@ -130,6 +130,7 @@ There are different distributions available:
 * production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
 * lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
 
+{applies_to}`stack: ga 9.6+` Each of these distributions is also available as a FIPS 140-3 compliant image with a `-fips` suffix. For details, refer to [FIPS 140-3 images](#air-gapped-diy-epr-fips).
 
 To update the distribution image, re-pull the image and then restart the docker container.
 
@@ -180,6 +181,24 @@ These steps use the standard Docker CLI, but you can create a Kubernetes manifes
     When either endpoint returns a `200` HTTP status code, the service is ready to handle requests.
 
 
+### FIPS 140-3 images [air-gapped-diy-epr-fips]
+```{applies_to}
+stack: ga 9.6+
+```
+
+If you need to host the {{package-registry}} in an environment that requires FIPS 140-3 validated cryptography, use the FIPS variant of the distribution image. Append `-fips` to any of the distribution tags, for example:
+
+* *docker.elastic.co/package-registry/distribution:{{version.stack}}-fips*
+* *docker.elastic.co/package-registry/distribution:lite-{{version.stack}}-fips*
+
+The FIPS images are available for `linux/amd64` and `linux/arm64`, like the regular images. They contain the same packages, and use the same port, environment variables, and configuration file. The {{package-registry}} binary is built with the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library. For the FIPS variants of {{agent}} and other ingest tools, refer to [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
+
+By default, the FIPS images use the validated module for all supported cryptographic operations, and algorithms that the module doesn't approve stay available as a fallback. To refuse non-approved algorithms instead, set `GODEBUG=fips140=only` when you run the container:
+
+```sh subs=true
+docker run -it -p 8080:8080 -e GODEBUG=fips140=only docker.elastic.co/package-registry/distribution:{{version.stack}}-fips
+```
+
 ### Connect {{kib}} to your hosted {{package-registry}} [air-gapped-diy-epr-kibana]
 
 Use the `xpack.fleet.registryUrl` property in the {{kib}} config to set the URL of your hosted package registry. For example:
@@ -207,6 +226,8 @@ docker run -it -p 443:443 \
 
 The {{package-registry}} supports TLS versions from 1.0 to 1.3. The minimum version accepted can be configured with `EPR_TLS_MIN_VERSION`, it defaults to 1.0. If you want to restrict the supported versions from 1.2 to 1.3, you can use `EPR_TLS_MIN_VERSION=1.2`.
 
+{applies_to}`stack: ga 9.6+` The [FIPS 140-3 images](#air-gapped-diy-epr-fips) require TLS 1.2 or later. If you set `EPR_TLS_MIN_VERSION` to `1.0` or `1.1`, the {{package-registry}} doesn't start.
+
 
 ### Using custom CA certificates [_using_custom_ca_certificates]
 
@@ -225,51 +246,112 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 1. Create a custom artifact registry in a location accessible to your {{agent}}s:
 
-    1. Download the latest release artifacts from the public {{artifact-registry}} at `https://artifacts.elastic.co/downloads/`. For example, the following cURL commands download all the artifacts that may be needed to upgrade {{agent}}s running on Linux x86_64. You may replace `x86_64` with `arm64` for the ARM64 version. The exact list depends on which integrations you’re using.  Make sure to also download the corresponding sha512, and PGP Signature (.asc) files for each binary.  These are used for file integrity validations during installations and upgrades.
+    1. Download the latest release artifacts from the public {{artifact-registry}} at `https://artifacts.elastic.co/downloads/`. The required artifacts depend on which integrations you’re using and which operating systems your {{agent}}s run on. Make sure to also download the corresponding `.sha512` and PGP signature (`.asc`) files for each binary, as these are used for file integrity validation during installation and upgrade.
+
+        To generate the full set of `curl` commands for all supported architectures and package types, save the following script and run it with your stack version as the argument:
 
         ```shell subs=true
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/osquerybeat/osquerybeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/cloudbeat/cloudbeat-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/endpoint-dev/endpoint-security-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/fleet-server/fleet-server-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-host-agent-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-collector-{{version.stack}}-linux-x86_64.tar.gz.asc
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version.stack}}-linux-x86_64.tar.gz
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version.stack}}-linux-x86_64.tar.gz.sha512
-        curl -O https://artifacts.elastic.co/downloads/prodfiler/pf-elastic-symbolizer-{{version.stack}}-linux-x86_64.tar.gz.asc
+        #!/bin/sh
+
+        VERSION="${1:-{{version.stack}}}"
+
+        ARCHITECTURES="linux-x86_64 linux-arm64 windows-x86_64 darwin-x86_64 darwin-aarch64"
+
+        COMPONENTS="apm-server apm-server
+        auditbeat beats/auditbeat
+        elastic-agent beats/elastic-agent
+        filebeat beats/filebeat
+        heartbeat beats/heartbeat
+        metricbeat beats/metricbeat
+        osquerybeat beats/osquerybeat
+        packetbeat beats/packetbeat
+        cloudbeat cloudbeat
+        endpoint-security endpoint-dev
+        fleet-server fleet-server
+        pf-host-agent prodfiler
+        pf-elastic-collector prodfiler
+        pf-elastic-symbolizer prodfiler"
+
+        WINDOWS_EXCLUSIONS="apm-server osquerybeat fleet-server pf-host-agent pf-elastic-collector pf-elastic-symbolizer cloudbeat endpoint-security"
+        DEB_EXCLUSIONS="fleet-server endpoint-security osquerybeat cloudbeat"
+        RPM_EXCLUSIONS="fleet-server endpoint-security osquerybeat cloudbeat"
+        DARWIN_EXCLUSIONS="pf-host-agent pf-elastic-symbolizer pf-elastic-collector cloudbeat apm-server"
+
+        for ARCH in $ARCHITECTURES; do
+          echo "# Architecture: $ARCH"
+
+          echo "$COMPONENTS" | while read COMPONENT PATH; do
+            SKIP=no
+            case "$ARCH" in
+              windows-*)
+                for EXCL in $WINDOWS_EXCLUSIONS; do
+                  [ "$COMPONENT" = "$EXCL" ] && SKIP=yes && break
+                done
+                ;;
+              darwin-*)
+                for EXCL in $DARWIN_EXCLUSIONS; do
+                  [ "$COMPONENT" = "$EXCL" ] && SKIP=yes && break
+                done
+                ;;
+            esac
+            [ "$SKIP" = "yes" ] && continue
+
+            BASE_URL="https://artifacts.elastic.co/downloads/${PATH}"
+
+            case "$ARCH" in
+              windows-*)
+                FILE="${COMPONENT}-${VERSION}-${ARCH}.msi"
+                echo "curl -O ${BASE_URL}/${FILE}"
+                echo "curl -O ${BASE_URL}/${FILE}.sha512"
+                echo "curl -O ${BASE_URL}/${FILE}.asc"
+                ;;
+              darwin-*)
+                FILE="${COMPONENT}-${VERSION}-${ARCH}.tar.gz"
+                echo "curl -O ${BASE_URL}/${FILE}"
+                echo "curl -O ${BASE_URL}/${FILE}.sha512"
+                echo "curl -O ${BASE_URL}/${FILE}.asc"
+                ;;
+              linux-*)
+                FILE_TAR="${COMPONENT}-${VERSION}-${ARCH}.tar.gz"
+                echo "curl -O ${BASE_URL}/${FILE_TAR}"
+                echo "curl -O ${BASE_URL}/${FILE_TAR}.sha512"
+                echo "curl -O ${BASE_URL}/${FILE_TAR}.asc"
+
+                SKIP_DEB=no
+                for EXCL in $DEB_EXCLUSIONS; do
+                  [ "$COMPONENT" = "$EXCL" ] && SKIP_DEB=yes && break
+                done
+                [ "$SKIP_DEB" != "yes" ] && {
+                  case "$ARCH" in
+                    linux-x86_64) DEB_ARCH="amd64" ;;
+                    linux-arm64)  DEB_ARCH="arm64" ;;
+                  esac
+                  FILE_DEB="${COMPONENT}-${VERSION}-${DEB_ARCH}.deb"
+                  echo "curl -O ${BASE_URL}/${FILE_DEB}"
+                  echo "curl -O ${BASE_URL}/${FILE_DEB}.sha512"
+                  echo "curl -O ${BASE_URL}/${FILE_DEB}.asc"
+                }
+
+                SKIP_RPM=no
+                for EXCL in $RPM_EXCLUSIONS; do
+                  [ "$COMPONENT" = "$EXCL" ] && SKIP_RPM=yes && break
+                done
+                [ "$SKIP_RPM" != "yes" ] && {
+                  case "$ARCH" in
+                    linux-x86_64) RPM_ARCH="x86_64" ;;
+                    linux-arm64)  RPM_ARCH="aarch64" ;;
+                  esac
+                  FILE_RPM="${COMPONENT}-${VERSION}-${RPM_ARCH}.rpm"
+                  echo "curl -O ${BASE_URL}/${FILE_RPM}"
+                  echo "curl -O ${BASE_URL}/${FILE_RPM}.sha512"
+                  echo "curl -O ${BASE_URL}/${FILE_RPM}.asc"
+                }
+                ;;
+            esac
+          done
+
+          echo
+        done
         ```
 
     2. On your HTTP file server, group the artifacts into directories and sub-directories that follow the same convention used by the {{artifact-registry}}:
@@ -282,7 +364,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
         * `<artifact_type>` is in the format `beats/elastic-agent`, `fleet-server`, `endpoint-dev`, and so on.
         * `<artifict_name>` is in the format `elastic-agent`, `endpoint-security`, or `fleet-server` and so on.
-        * `arch-package-type` is in the format `linux-x86_64`, `linux-arm64`, `windows_x86_64`, `darwin_x86_64`, or darwin_aarch64`.
+        * `arch-package-type` is in the format `linux-x86_64`, `linux-arm64`, `windows_x86_64`, `darwin_x86_64`, or `darwin_aarch64`.
         * If you’re using the DEB package manager:
 
             * The 64bit variant has the format `<artifact_name>-<version>-amd64.deb`.
@@ -302,7 +384,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 2. Add the agent binary download location to {{fleet}} settings:
 
-    1. Open **{{fleet}} → Settings**.
+    1. Open **{{fleet}}** → **Settings**.
     2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more details, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agents}} to download binaries from this location, set it as the default.
 
         :::{note}
@@ -313,7 +395,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 3. If your artifact registry is not the default, edit your agent policies to override the default:
 
-    1. Go to **{{fleet}} → Agent policies** and click the policy name to edit it.
+    1. Go to **{{fleet}}** → **Agent policies** and click the policy name to edit it.
     2. Click **Settings**.
     3. Under **Agent Binary Download**, select your artifact registry.
 

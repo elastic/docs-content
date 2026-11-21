@@ -92,7 +92,7 @@ If you intended to form a new multi-node cluster but instead bootstrapped a coll
 
 1. Shut down all the nodes.
 2. Completely wipe each node by deleting the contents of their [data folders](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#data-path).
-3. Configure `cluster.initial_master_nodes` as described above.
+3. Configure `cluster.initial_master_nodes` as described earlier on this page.
 4. Configure `discovery.seed_hosts` or `discovery.seed_providers` and other relevant discovery settings.
 5. Restart all the nodes and verify that they have formed a single cluster.
 6. Remove `cluster.initial_master_nodes` from every node’s configuration.

@@ -15,6 +15,8 @@ products:
 
 ::::{tip}
 Inputs that collect logs and metrics use this processor by default, so you do not need to configure it explicitly.
+
+{applies_to}`stack: ga 9.6+` To turn it off, refer to [Turn off this processor](#add_kubernetes_metadata-processor-turn-off).
 ::::
 
 
@@ -260,7 +262,7 @@ Available matchers are:
     :   (Optional) Type of the resource to obtain the ID of. Valid `resource_type`:
         * `pod`: to make the lookup based on the Pod UID. When `resource_type` is set to `pod`, `logs_path` must be set as well, supported path in this case:
             * `/var/lib/kubelet/pods/` used to read logs from mounted into the Pod volumes, those logs end up under `/var/lib/kubelet/pods/<pod UID>/volumes/<volume name>/...` To use `/var/lib/kubelet/pods/` as a `log_path`, `/var/lib/kubelet/pods` must be mounted into the filebeat Pods.
-            * `/var/log/pods/` Note: when using `resource_type: 'pod'` logs will be enriched only with Pod metadata: Pod id, Pod name, etc., not container metadata.
+            * `/var/log/pods/` Note: when using `resource_type: 'pod'` logs will be enriched only with Pod metadata, such as Pod id and Pod name, not container metadata.
         * `container`: to make the lookup based on the container ID, `logs_path` must be set to `/var/log/containers/`. It defaults to `container`.
 
 
@@ -283,4 +285,13 @@ Available matchers are:
               resource_type: 'pod'
     ```
 
+## Turn off this processor [add_kubernetes_metadata-processor-turn-off]
 
+```{applies_to}
+stack: ga 9.6+
+```
+
+Depending on the input, {{agent}} uses this processor by default. To turn it off, set `add_kubernetes_metadata` to `false`:
+
+:::{include} /reference/fleet/_snippets/turn-off-default-processor.md
+:::

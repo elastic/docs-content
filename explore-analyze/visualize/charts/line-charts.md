@@ -26,7 +26,9 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 
 ![Example Lens line chart](../../images/kibana-line-new.png)
 
-## Build a line chart with the point-and-click editor [build-a-line-chart]
+## Create a line chart [create-a-line-chart]
+
+### Create a line chart with the point-and-click editor [build-a-line-chart]
 
 :::{include} ../../_snippets/lens-prerequisites.md
 :::
@@ -34,6 +36,7 @@ To automate chart or dashboard creation, use the [Dashboards and Visualizations 
 To build a line chart:
 
 ::::::{stepper}
+:toc: false
 
 :::::{step} Access Lens
 :::{include} ../../_snippets/access-lens.md
@@ -66,7 +69,7 @@ Refer to [](#settings) for all data configuration options for your line chart.
 
 ::::::
 
-## Build a line chart with an {{esql}} query [build-a-line-chart-with-esql]
+### Create a line chart with an {{esql}} query [build-a-line-chart-with-esql]
 
 :::{include} ../../_snippets/esql-visualization-prerequisites.md
 :::
@@ -92,6 +95,12 @@ To build the chart:
 5. Select **Apply and close**.
 
 The chart preview shows how the request count changes over time.
+
+::::{tip}
+:applies_to: { "serverless": "ga", "stack": "ga 9.6+" }
+
+If you want the chart to show the results of more than one query, you can add a layer for each query. Refer to [Add multiple layers to {{esql}} charts](../esorql.md#esql-viz-multi-layer).
+::::
 
 ## Apply line chart best practices [line-chart-best-practices]
 

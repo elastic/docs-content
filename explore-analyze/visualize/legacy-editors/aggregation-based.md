@@ -1,14 +1,15 @@
 ---
+description: Create aggregation-based visualizations such as bar, line, and pie charts in Kibana, convert them to Lens, and add them to a dashboard.
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: kibana
-  - id: cloud-serverless
   - id: cloud-hosted
   - id: cloud-enterprise
   - id: cloud-kubernetes
   - id: elastic-stack
+type: how-to
 ---
 
 # Aggregation-based [add-aggregation-based-visualization-panels]
@@ -53,7 +54,7 @@ Aggregation-based visualizations include the following limitations:
 
 Choose the type of visualization you want to create, then use the editor to configure the options.
 
-1. On the dashboard, click **All types > Aggregation based**.
+1. On the dashboard, click **All types** → **Aggregation based**.
 
     1. Select the visualization type you want to create.
     2. Select the data source you want to visualize.
@@ -96,7 +97,7 @@ Add the sample web logs data that you’ll use to create the bar chart, then cre
 
 Open the **Aggregation based** editor and change the time range.
 
-1. On the dashboard, click **All types > Aggregation based**, select **Vertical bar**, then select **Kibana Sample Data Logs**.
+1. On the dashboard, click **All types** → **Aggregation based**, select **Vertical bar**, then select **Kibana Sample Data Logs**.
 2. Make sure the [time filter](../../query-filter/filtering.md) is **Last 7 days**.
 
 
@@ -145,6 +146,8 @@ You can open the following aggregation-based visualizations in **Lens**:
 * Vertical bar
 
 To get started, click **Edit visualization in Lens** in the toolbar.
+
+You can also convert an aggregation-based visualization that's already on a dashboard. In **Edit** mode, open the panel menu {icon}`boxes_vertical` and select **Convert to Lens**. The option appears only when {{kib}} can convert the visualization's configuration, and you need at least **Read** access to the **Visualize library** feature. **Lens** opens with the converted visualization. To replace the panel with it, select **Save and return**.
 
 For more information, check out [Create visualizations with Lens](../lens.md).
 

@@ -56,13 +56,13 @@ Reading rule logic backwards to understand which fields the rule queries is one 
 :::
 :::::::
 
-:::::::{step} Exclude building block rules
-Building block rules (BBRs) feed signals into higher-order correlation rules. They are not meant to appear in your alert queue for triage. Enabling them early is the most common cause of alert floods for new deployments.
+:::::::{step} Exclude rules that create building block alerts
+Some prebuilt rules create [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md), which feed signals into higher-order correlation rules. They aren't meant to appear in your alert queue for triage. Enabling these rules early is the most common cause of alert floods for new deployments.
 
 In the Rules table, look for rules tagged as `Rule Type: BBR` and exclude them from your first wave. Focus on standard query, threshold, and EQL rules that produce direct alerts.
 
 :::{tip}
-BBRs still have value. They elevate risk scores and feed correlation rules. Return to them once your baseline detection is stable.
+Rules tagged `Rule Type: BBR` still have value. Their alerts elevate risk scores and feed correlation rules. Return to these rules once your baseline detection is stable.
 :::
 :::::::
 
@@ -72,12 +72,14 @@ Elastic's severity ratings reflect the team's confidence that a match indicates 
 :::{tip}
 For most environments, this combination brings the list from 1,000+ rules down to a manageable 30–80. That's a set you can actually review and understand before enabling.
 :::
+
+Alternatively, filter by the `Profile: Recommended` tag instead of by severity. Elastic assigns this tag based on severity, alert volume, query cost, and threat coverage, so it includes some Medium severity rules that a severity filter excludes. Refer to [Operational profile tags](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-operational-tags).
 :::::::
 
 :::::::{step} Pick 2–3 MITRE tactics relevant to your environment
-Don't try to cover the full MITRE ATT&CK matrix from day one. Anchor your first wave around the techniques that matter most given your environment, data sources, and any past incidents. Common starting choices include Execution, Persistence, Credential Access, Initial Access, and Defense Evasion.
+Don't try to cover the full MITRE ATT&CK® matrix from day one. Anchor your first wave around the techniques that matter most given your environment, data sources, and any past incidents. Common starting choices include Execution, Persistence, Credential Access, Initial Access, Stealth, and Defense Impairment. If your {{elastic-sec}} version uses a [MITRE ATT&CK version](/solutions/security/detect-and-alert/mitre-attack-coverage.md#supported-versions) earlier than v19, pick Defense Evasion instead of Stealth and Defense Impairment.
 
-Use the [MITRE ATT&CK coverage view](/solutions/security/detect-and-alert/mitre-attack-coverage.md) to visualize where your enabled rules provide coverage and where gaps remain.
+Use the [MITRE coverage page](/solutions/security/detect-and-alert/mitre-attack-coverage.md) to visualize where your enabled rules provide coverage and where gaps remain.
 
 :::{tip}
 If you've had a past incident, those tactics and techniques are almost always worth enabling first. They reflect real attacker behavior in your specific environment.
@@ -106,8 +108,8 @@ Disable a rule only as a last resort. When it has zero applicability to your env
 Once your Critical and High rules are tuned and your triage workflow is stable, add Medium severity rules one tactic at a time using the same data source and tactic filter approach from the steps above.
 :::::
 
-:::::{dropdown} Enable building block rules
-BBRs elevate entity risk scores and feed into correlation rules you build to detect multi-stage attack patterns that no single rule would catch. Enable them once you understand what signals matter in your environment.
+:::::{dropdown} Enable rules that create building block alerts
+Rules tagged `Rule Type: BBR` create building block alerts. These alerts elevate entity risk scores and feed into [correlation rules you build](/solutions/security/detect-and-alert/query-alert-indices.md#rules-that-search-alerts) to detect multi-stage attack patterns that no single rule can catch. Enable these rules once you understand what signals matter in your environment.
 :::::
 
 :::::{dropdown} Use hunting queries for noisy behaviors

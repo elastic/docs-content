@@ -1,7 +1,7 @@
 ---
 applies_to:
   stack: unavailable
-  serverless: preview
+  serverless: ga
 products:
   - id: elasticsearch
 description: Learn about project tags in cross-project search (CPS), including predefined and custom tags, and how to use them in search queries.
