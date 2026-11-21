@@ -112,6 +112,14 @@ outputs:
        by: "Name"
        direction: "ascending"
 #
+   - filename: "decision-models.csv"
+     filter:
+       column: "Type"
+       values: ["Decision"]
+     sort:
+       by: "Name"
+       direction: "ascending"
+#
 #   - filename: "all-models.csv"
 #     # No filter: includes all rows
 #     sort:
