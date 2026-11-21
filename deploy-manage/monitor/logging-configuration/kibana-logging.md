@@ -51,27 +51,27 @@ If you run {{kib}} as a service, the default location of the logs varies based o
 :::::::{tab-set}
 
 ::::::{tab-item} Docker
-On [Docker](/deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
+On [Docker](/deploy-manage/deploy/self-managed/install-kibana-with-docker.md), log messages go to the console and are handled by the configured Docker logging driver. To access logs, run `docker logs`.
 ::::::
 
 ::::::{tab-item} Debian (APT) and RPM
-For [Debian](/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package.md) and [RPM](/deploy-manage/deploy/self-managed/install-elasticsearch-with-rpm.md) installations, {{es}} writes logs to `/var/log/kibana`.
+For [Debian](/deploy-manage/deploy/self-managed/install-kibana-with-debian-package.md) and [RPM](/deploy-manage/deploy/self-managed/install-kibana-with-rpm.md) installations, {{kib}} writes logs to `/var/log/kibana`.
 ::::::
 
 ::::::{tab-item} macOS and Linux
-For [macOS and Linux `.tar.gz`](/deploy-manage/deploy/self-managed/install-elasticsearch-from-archive-on-linux-macos.md) installations, {{es}} writes logs to `$KIBANA_HOME/logs`.
+For [macOS and Linux `.tar.gz`](/deploy-manage/deploy/self-managed/install-kibana-from-archive-on-linux-macos.md) installations, {{kib}} writes logs to `$KIBANA_HOME/logs`.
 
 Files in `$KIBANA_HOME` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).
 ::::::
 
 ::::::{tab-item} Windows .zip
-For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows.md) installations, {{es}} writes logs to `%KIBANA_HOME%\logs`.
+For [Windows `.zip`](/deploy-manage/deploy/self-managed/install-kibana-on-windows.md) installations, {{kib}} writes logs to `%KIBANA_HOME%\logs`.
 
 Files in `%KIBANA_HOME%` risk deletion during an upgrade. In production, you should configure a [different location for your logs](/deploy-manage/monitor/logging-configuration/kib-advanced-logging.md).
 ::::::
 
 :::::::
 
-If you run {{kib}} from the command line, {{es}} prints logs to the standard output (`stdout`).
+If you run {{kib}} from the command line, {{kib}} prints logs to the standard output (`stdout`).
 
 You can also consume logs using [stack monitoring](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-self-managed.md).
