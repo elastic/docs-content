@@ -23,8 +23,7 @@ A: {{serverless-full}} is available in select AWS, GCP, and Azure regions, with 
 ## Data management
 
 **Q: How can I move data to or from {{serverless-short}} projects?**  
-A: You can [use Reindex from remote](/manage-data/migrate/migrate-data-using-reindex-api.md) as the preferred
-option. You can also [use Logstash](logstash://reference/index.md) with {{es}} input and output plugins to move data to and from {{serverless-short}} projects.
+A: Follow [Migrate to {{serverless-full}}](migrate-to-serverless.md) for the complete journey, including compatibility, planning, data and configuration transfer, application updates, validation, monitoring, and cost considerations. To compare only the available data transfer methods, refer to [Migrate your {{es}} data](/manage-data/migrate.md#data-migration-guides-serverless).
 
 **Q: How does {{serverless-full}} handle availability and data durability?**  
 A: {{serverless-short}} manages resilience automatically. Indexed data is written to cloud-provider object storage rather than stored as local replicas on cluster nodes, and {{serverless-short}} manages the placement of nodes into availability zones within each region. For details, refer to [](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md).
