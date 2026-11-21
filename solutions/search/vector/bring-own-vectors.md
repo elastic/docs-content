@@ -164,6 +164,10 @@ POST /amazon-reviews/_search
 2. The `k` parameter specifies the number of results to return.
 3. The `num_candidates` parameter is optional. It limits the number of candidates returned by the search node. This can improve performance and reduce costs.
 
+:::{note}
+{applies_to}`stack: ga 9.2` {applies_to}`serverless: ga` By default, search responses don't include `dense_vector` fields in `_source`, even though {{es}} indexes the vectors. To return them, use the `fields` option or set `_source.exclude_vectors` to `false`. Refer to [Accessing `dense_vector` fields in search responses](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#accessing-dense_vector-fields-in-search-responses).
+:::
+
 ## Next steps: Implementing vector search
 
 If you want to try a similar workflow from an {{es}} client, use the following guided index workflow in {{es}} Serverless, {{ech}}, or a self-managed cluster:
