@@ -120,6 +120,12 @@ products:
           - '9.5'
         tag: Monitoring
         featured: true
+      - title: SNMP table rows and enum names
+        description: The SNMP input can emit one event per table row, replace MIB enum numbers with their names, and tune max_repetitions for walk and table requests.
+        link: logstash://release-notes/index.md
+        availability:
+          - '9.6'
+        tag: Integrations
       - title: Kafka integration plugin 12
         description: The plugin now uses Kafka client 4.x, supports an opt-in consumer group protocol, and drops two partitioner options. Review the breaking changes before you upgrade.
         link: logstash-docs-md://lsr/plugins-integrations-kafka.md
@@ -132,12 +138,6 @@ products:
         availability:
           - '9.5'
         tag: Security
-      - title: cgroup v2 awareness
-        description: Read resource limits from cgroup v2 as well as v1, for modern Linux hosts and Kubernetes.
-        link: logstash://release-notes/index.md
-        availability:
-          - '9.5'
-        tag: Containers
       - title: Cloud API keys in Elasticsearch plugins
         description: The Elasticsearch input, filter, and output plugins accept Elastic Cloud API keys in the api_key option.
         link: logstash-docs-md://lsr/plugins-outputs-elasticsearch.md

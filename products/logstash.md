@@ -146,6 +146,8 @@ links:
     url: logstash://reference/monitoring-logstash.md
   - label: Monitoring UI
     url: logstash://reference/logstash-monitoring-ui.md
+  - label: Monitor with OpenTelemetry
+    url: logstash://reference/monitoring-with-opentelemetry.md
 :::
 
 :::{link-card}
