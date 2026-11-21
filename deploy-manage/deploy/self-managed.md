@@ -12,7 +12,9 @@ products:
 
 # Self-managed {{es}} cluster
 
-If you want to install Elastic on your own premises without the assistance of an [orchestrator](/deploy-manage/deploy.md#about-orchestration), then you can deploy a self-managed cluster. If you deploy a self-managed cluster, then you have complete control and responsibility over every aspect of your Elastic deployment.
+With a self-managed cluster, you install and manage {{es}} and {{kib}} directly, without orchestration by {{ece}} (ECE) or {{eck}} (ECK). The cluster can run on physical hardware, VMs, or containers, on premises or in a public cloud. You control and maintain the deployment, manually or with your own automation.
+
+ECE and ECK are [self-managed orchestration platforms](/deploy-manage/deploy.md#about-orchestration): you operate the platform, and it orchestrates your deployments. For instructions specific to those deployments, refer to [](/deploy-manage/deploy/cloud-enterprise.md) or [](/deploy-manage/deploy/cloud-on-k8s.md).
 
 To quickly set up {{es}} and {{kib}} in Docker for local development or testing, jump to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
@@ -20,14 +22,14 @@ To quickly set up {{es}} and {{kib}} in Docker for local development or testing,
 :::
 
 :::{admonition} Use cloud services in your self-managed cluster with Cloud Connect
-If you need to run Elastic on your own infrastructure, use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud connect enables you to use Elastic-managed cloud services in your self-managed cluster without having to install and manage their infrastructure yourself.
+With [Cloud Connect](/deploy-manage/cloud-connect.md), you can use Elastic-managed cloud services in your self-managed cluster without installing and managing their infrastructure yourself.
 
 This way, you can get faster access to new cloud features while still meeting your infrastructure requirements.
 :::: 
 
 ## Section overview
 
-This section focuses on deploying {{es}} and {{kib}} without an orchestrator.
+This section focuses on deploying {{es}} and {{kib}} directly, without ECE or ECK orchestration.
 
 Depending on your use case, you might need to deploy other components, such as APM, Fleet, or Logstash.
 Deploying those components is not covered in this section. [Learn more about optional components](/get-started/the-stack.md).

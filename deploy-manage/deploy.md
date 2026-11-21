@@ -56,12 +56,14 @@ Both of these options use [{{ecloud}}](/deploy-manage/deploy/elastic-cloud.md) a
 
 #### Self-hosted options
 
-If you need to run Elastic on your infrastructure, choose between a fully self-managed deployment or using an orchestrator:
+These options form a group of *self-managed environments*: you operate either the {{stack}} directly or the platform that orchestrates it. You can run these environments on premises or in a public cloud.
 
-- **Fully self-managed**: Complete control and responsibility for your Elastic deployment
-- **With orchestration**:
+- **[Self-managed cluster](/deploy-manage/deploy/self-managed.md)**: Install and manage {{es}} and {{kib}} directly, with or without your own automation
+- **Self-managed orchestration platforms**:
   - **{{eck}} (ECK)**: If you need Kubernetes-native orchestration
   - **{{ece}} (ECE)**: If you need a multi-tenant orchestration platform
+
+In deployment-specific instructions and applicability badges, **Self-managed** refers to the first option. Deployments orchestrated by ECE or ECK belong to their respective deployment types, even though you operate those platforms yourself.
 
 :::{admonition} Use cloud services in your self-hosted environment with Cloud Connect
 With [Cloud Connect](/deploy-manage/cloud-connect.md), you can use Elastic-managed cloud services in your self-managed, ECE, or ECK environment without having to install and manage their infrastructure yourself. In this way, you can get faster access to new features without adding to your operational overhead.
@@ -87,7 +89,7 @@ Orchestrators manage the lifecycle of your Elastic deployments but don't change 
 
 In {{serverless-full}}, you automatically get access to the latest versions of Elastic features and you don't need to manage version compatibility.
 
-With other deployment types (fully self-managed, ECH, ECE, and ECK), you control which {{stack}} versions you deploy and when you upgrade. The ECE and ECK orchestrators themselves also receive regular version updates, independent of the {{stack}} versions they manage.
+With other deployment types (self-managed, ECH, ECE, and ECK), you control which {{stack}} versions you deploy and when you upgrade. The ECE and ECK orchestrators themselves also receive regular version updates, independent of the {{stack}} versions they manage.
 
 Consider this when choosing your deployment type:
 
@@ -102,7 +104,7 @@ Learn more about [versioning and availability](/get-started/versioning-availabil
 
 - **{{serverless-full}}**: Pay for what you use
 - **{{ech}}**: Subscription-based with resource allocation
-- **Self-hosted options**, **including fully self-managed, ECE, and ECK**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
+- **Self-hosted options**, **including self-managed clusters, ECE, and ECK**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
 
 :::::{tip}
 For a detailed comparison of features and capabilities across deployment types, see the [](./deploy/deployment-comparison.md).
