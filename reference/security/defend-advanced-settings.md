@@ -218,9 +218,9 @@ Advanced settings are not recommended for most users. Use them only if you have 
 `[linux,mac].advanced.capture_env_vars`
 :   Added in 8.6.0 (Linux), 8.7.0 (macOS).
 
-    *Provide a comma-separated list of up to five environment variables to capture in process creation events. Default: none.*
+    *Provide a comma-separated list of up to five environment variables to capture in process creation events.*
 
-    Use this setting to include a limited number of environment variables in process `create` events.
+    New Linux policies capture `LD_PRELOAD`, `LD_LIBRARY_PATH`, and `LD_AUDIT` by default. New macOS policies capture `DYLD_INSERT_LIBRARIES`, `DYLD_FRAMEWORK_PATH`, `DYLD_LIBRARY_PATH`, and `LD_PRELOAD` by default. Existing policies retain their configured values. If this setting is unset, no environment variables are captured.
 
 
 `[mac,windows].advanced.device_control.filter_images`

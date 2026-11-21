@@ -15,6 +15,8 @@ products:
 
 You can configure an {{agent}} policy to capture up to five environment variables (`env vars`).
 
+New Elastic Defend policies capture `LD_PRELOAD`, `LD_LIBRARY_PATH`, and `LD_AUDIT` on Linux by default. On macOS, new policies capture `DYLD_INSERT_LIBRARIES`, `DYLD_FRAMEWORK_PATH`, `DYLD_LIBRARY_PATH`, and `LD_PRELOAD` by default. Existing policies retain their configured values.
+
 ::::{note}
 * Env var names must be no more than 63 characters, and env var values must be no more than 1023 characters. Values outside these limits are silently ignored.
 * Env var names are case sensitive in Linux.
