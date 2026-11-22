@@ -1,27 +1,6 @@
-% Include this snippet under a heading or page tagged stack: preview 9.6+ and serverless observability: preview.
-% It has no heading of its own, and it doesn't list requirements, so the including page supplies both.
+% Steps to import alerts into Universal Alerting from any tool that can send a webhook, in one H2 section:
 
-::::{tab-set}
-:group: import-alert-source
-
-:::{tab-item} Datadog
-:sync: datadog
-
-You don't need to write a workflow for Datadog. {{kib}} includes a [managed workflow](/explore-analyze/workflows/managed-workflows.md) called **Datadog alert translation**, which turns monitor webhooks from every Datadog connector into alerts.
-
-1. Set up a Datadog connector to receive events, as described in [Receive Datadog webhook events](kibana://reference/connectors-kibana/datadog-action-type.md#datadog-inbound-events).
-2. In Datadog, create a webhook that sends monitor alerts to {{kib}}, then add it to your monitors, as described in [Create the Datadog webhook](kibana://reference/connectors-kibana/datadog-action-type.md#datadog-inbound-webhook).
-3. To test the setup, trigger a monitor or send a test from the Datadog webhook integration. The alert appears on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md).
-
-The managed workflow follows these rules.
-
-- Each combination of monitor and scope gets its own alert. A monitor that fires for two hosts creates two alerts.
-- A `Recovered` transition in Datadog closes the alert. Any other transition opens it or keeps it open.
-- The alert has no severity. Datadog's monitor priority is in the alert data, as `priority`.
-:::
-
-:::{tab-item} Other tools
-:sync: other
+## Import alerts with an Inbound Webhook connector [import-alerts-inbound-webhook]
 
 Any tool that can send a webhook with a JSON body, such as Zabbix or PagerDuty, can send alerts to an Inbound Webhook connector. You write a workflow that turns each request into an alert.
 
@@ -60,13 +39,13 @@ Any tool that can send a webhook with a JSON body, such as Zabbix or PagerDuty, 
            source_alert_url: "{{ event.body.url }}"
    ```
 
-   {applies_to}`stack: preview =9.6` Name the URL field `alert_url` instead of `source_alert_url`.
+   {applies_to}`stack: experimental =9.6` Name the URL field `alert_url` instead of `source_alert_url`.
 
-   The workflow receives the request body as `event.body`. To run one workflow for every Inbound Webhook connector in the space, set `connector-id` to `"*"`. If the tool sends several alerts in one request, loop over them with a [`foreach` step](/explore-analyze/workflows/steps/foreach.md). The field descriptions after these steps explain how to map each field.
+   The workflow receives the request body as `event.body`. To run one workflow for every Inbound Webhook connector in the space, set `connector-id` to `"*"`. If the tool sends several alerts in one request, loop over them with a [`foreach` step](/explore-analyze/workflows/steps/foreach.md). To decide how to map each field, read the field descriptions that follow these steps.
 4. Configure the tool to send each alert as a `POST` request with a JSON body to the webhook URL. Add the ingest token in an `Authorization: Bearer <ingest-token>` header. If the tool can't set headers, append `?token=<ingest-token>` to the URL.
-5. To test the setup, have the tool send an alert. The alert appears on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md). If it doesn't, check the workflow's [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history) for a failed step.
+5. To check the setup, have the tool send an alert. The alert appears on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md). If no alert appears, check the workflow's [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history) for a failed step.
 
-The `alerting.create_alert` fields decide which alert each request updates, when that alert opens and closes, and how it appears.
+The `alerting.create_alert` fields decide which alert each request updates, when that alert opens and closes, and how it appears:
 
 Identity
 :   The step uses `fingerprint` to identify the alert. If the event has no `fingerprint`, the step uses `fingerprint_fields`, a list of field names under `data` whose values together identify the alert. If neither is present, it uses `rule_id`. Each event needs at least one of the three.
@@ -81,10 +60,17 @@ Display
 
     `severity` accepts `info`, `low`, `medium`, `high`, or `critical`. The step fails on any other value, including an empty one, so map the tool's values when they differ. If the tool doesn't always send a severity, add a Liquid `default` filter to the value.
 
-    A URL in one of the following fields adds a link back to the tool.
+    A URL in one of the following fields adds a link back to the tool:
 
-    - {applies_to}`{stack: preview 9.7+, serverless: {observability: preview}}` `data.source_alert_url`
-    - {applies_to}`stack: preview =9.6` `data.alert_url`
-:::
+    - {applies_to}`{serverless: {observability: experimental}, stack: experimental 9.7+}` `data.source_alert_url`
+    - {applies_to}`stack: experimental =9.6` `data.alert_url`
 
-::::
+Imported alerts appear on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md) with the alerts from your rules. To open the page, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+
+% TODO: PMs need to provide why analysts and SREs look for imported alerts. Use the reason to open the next paragraph with the reader's goal.
+
+To find a tool's alerts among your other alerts, look for the `source` value that your workflow sets, such as `my-monitoring-tool`, in the **Source** column. To view an alert in the tool, open its details flyout and select **View in source system**. The link appears only when your workflow sets a URL that starts with `http://` or `https://`.
+
+{applies_to}`{serverless: {observability: experimental}, stack: experimental 9.7+}` To list only one tool's alerts, filter the page by **Source** and select that value.
+
+To stop importing alerts from a tool, turn off the workflow that its connector triggers. {{kib}} still accepts the tool's requests but creates no alerts. To have {{kib}} reject the requests too, delete the connector.

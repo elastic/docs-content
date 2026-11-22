@@ -23,6 +23,7 @@ The type of operation determines which credential authorizes it.
 | Rule runs | The rule runs with an API key based on the credentials of the user who created the rule, last enabled it, or last rotated its key. The key determines what data the rule can query, and editing the rule doesn't replace it. The key is an {{es}} API key, except in {{serverless-short}} where it is an {{ecloud}} API key. To learn how each key type handles role changes, refer to [Which type of API key a rule uses](#rule-api-key-type). To replace the key with one based on your credentials, refer to [Rotate a rule's API key](../rules/view-manage-rules.md#rotate-rule-api-key). |
 | Action policy evaluates and dispatches | Uses different credentials at different phases. Refer to [How action policies authorize a workflow run](#action-policy-workflow-keys). |
 | Workflow steps run | The workflow runs with the action policy's API key, so its steps can do only what that key's privileges allow. |
+| {applies_to}`{serverless: {observability: preview}, stack: preview 9.6+}` A connector's incoming event starts a workflow | The workflow runs with an API key based on the credentials of the last user who saved the connector, so its steps can do only what that key allows. For example, to [import third-party alerts](../alerts/import-third-party-alerts.md), that user needs **Alerts: All**. Saving the connector replaces the key, but rotating its ingest token doesn't. |
 
 ## Which type of API key a rule uses [rule-api-key-type]
 

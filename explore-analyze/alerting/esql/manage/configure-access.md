@@ -29,6 +29,7 @@ The following table shows the minimum privileges for each activity. Higher privi
 | Triage alerts | **Alerts: All** (under **Universal Alerting**) |
 | Configure notifications | **Action Policies: All** (under **Universal Alerting**) + **Workflows: Read** (under **Analytics** → **Workflows**) |
 | Create rules and action policies with {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
+| {applies_to}`{serverless: {observability: experimental}, stack: experimental 9.6+}` Import third-party alerts | **Actions and Connectors: All** (under **Management**) + **Alerts: All** (under **Universal Alerting**) + [**Workflows: All** for tools other than Datadog](#alerting-import-privileges) |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
@@ -109,6 +110,24 @@ To create rules and action policies with [{{agent-builder}}](../rules/create-rul
 | Save the rule | **Rules: All** (under **Universal Alerting**) |
 | Save the action policy | **Action Policies: All** (under **Universal Alerting**) |
 | Select or create the workflow destination | **Workflows: Read** to select an existing workflow, or **Workflows: All** to create one (under **Analytics** → **Workflows**) |
+
+## Import third-party alerts [alerting-import-privileges]
+
+```yaml {applies_to}
+serverless:
+  observability: experimental
+stack: experimental 9.6+
+```
+
+To [import alerts from Datadog and other monitoring tools](../alerts/import-third-party-alerts.md), your role needs these privileges:
+
+| To... | Minimum required |
+|---|---|
+| Create the Datadog or Inbound Webhook connector | **Actions and Connectors: All** (under **Management**) |
+| Let the connector's workflows create alerts | **Alerts: All** (under **Universal Alerting**) |
+| Create the workflow for a tool other than Datadog | **Workflows: All** (under **Analytics** → **Workflows**) |
+
+Workflows that the connector starts run as the last user who saved the connector, so that user needs **Alerts: All**. If a user without it saves the connector, the workflows can't create alerts. For details, refer to [Which key authorizes each operation](authorization.md#key-per-operation).
 
 ## Query rule output and alert data [alerting-data-investigation-privileges]
 
