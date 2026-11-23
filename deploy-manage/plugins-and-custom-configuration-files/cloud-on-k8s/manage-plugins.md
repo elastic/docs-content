@@ -10,7 +10,7 @@ products:
 
 # Add plugins and custom configuration files in {{eck}} [eck-add-plugins-overview]
 
-On {{eck}}, {{es}} and {{kib}} run in Kubernetes pods. Unlike {{ech}} and {{ece}}, {{eck}} does not host a catalog of plugins that you enable on a deployment. You must install any plugin that is not already in the base image before the main {{es}} container starts. That includes [official {{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), community or third-party plugins, and [plugins you write yourself](elasticsearch://extend/index.md).
+On {{eck}}, {{es}} and {{kib}} run in Kubernetes pods. Unlike {{ech}} and {{ece}}, {{eck}} does not host a catalog of plugins that you enable on a deployment. You must install any plugin that is not already in the base image before {{es}} starts. That includes [official {{es}} plugins](elasticsearch://reference/elasticsearch-plugins/index.md), community or third-party plugins, and [plugins you write yourself](elasticsearch://extend/index.md).
 
 You can also add custom configuration files such as synonym dictionaries, SAML metadata, or CA certificates to the {{es}} configuration directory.
 
@@ -18,13 +18,15 @@ Refer to [](/deploy-manage/plugins-and-custom-configuration-files.md) for option
 
 ## Install {{es}} plugins [install-plugins]
 
-Custom container images and init containers install the same plugins. They differ in when the installation occurs: a custom image includes the plugins at build time, while an init container installs them each time a pod starts. This determines the infrastructure you need to maintain, how quickly nodes become ready, and whether node startup depends on network access.
+You can install plugins with the `spec.plugins` field, a custom container image, or init containers. They differ in when the installation occurs: a custom image includes the plugins at build time, while the `spec.plugins` field and init containers install them each time a pod starts. This determines the infrastructure you need to maintain, how quickly nodes become ready, and whether node startup depends on network access.
 
 With a [custom container image](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md), you build the plugins into an image based on the official Elastic images, so they are already in place when the container starts. Nodes start faster, need no internet access at runtime, and every node runs an identical image. In exchange, you need a container registry and build infrastructure, and each {{es}} version upgrade means building and publishing a new image. You can include custom configuration files in the image as well.
 
 With [init containers](init-containers-for-plugin-downloads.md), an init container runs `elasticsearch-plugin install` before {{es}} starts. You can get started without a registry and change plugin versions by editing the manifest, but every new node repeats the download, which uses bandwidth and delays startup. It also ties node creation to network availability, so a network problem or an incorrect plugin reference can cause new nodes to fail. If your pods run in a service mesh, review [the note about using Istio](init-containers-for-plugin-downloads.md#istio-note).
 
-Use a custom image when reproducibility and predictable startup are priorities, such as in production environments. Use init containers when you need to iterate quickly, or when maintaining a container registry and build pipeline is not practical.
+{applies_to}`eck: ga 3.7+` With the [`spec.plugins` field](declarative-plugins.md), you list the plugins in the {{es}} resource, and {{es}} installs them when it starts. This requires {{es}} 8.17.0 or later. When you change the list, ECK performs a rolling restart to apply it. Like init containers, new nodes download the plugins unless their location is a `file://` path. You can't combine the field with init containers that install or remove plugins. If you use it with a custom image, list the plugins built into the image as well, otherwise {{es}} removes them.
+
+Use `spec.plugins` when your cluster runs {{es}} 8.17.0 or later on ECK 3.7 or later and you want to manage plugins in the manifest without building images. Use a custom image when reproducibility and predictable startup are priorities, such as in production environments. Use init containers when you need to iterate quickly, or when maintaining a container registry and build pipeline is not practical.
 
 ## Add custom configuration files [add-configuration-files]
 

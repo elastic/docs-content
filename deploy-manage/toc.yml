@@ -484,6 +484,7 @@ toc:
           - file: plugins-and-custom-configuration-files/cloud-enterprise/ece-include-additional-kibana-plugin.md
       - file: plugins-and-custom-configuration-files/cloud-on-k8s/manage-plugins.md
         children:
+          - file: plugins-and-custom-configuration-files/cloud-on-k8s/declarative-plugins.md
           - file: plugins-and-custom-configuration-files/cloud-on-k8s/init-containers-for-plugin-downloads.md
           - file: plugins-and-custom-configuration-files/cloud-on-k8s/custom-configuration-files-plugins.md
           - file: plugins-and-custom-configuration-files/cloud-on-k8s/k8s-kibana-plugins.md

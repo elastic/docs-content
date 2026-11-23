@@ -36,9 +36,11 @@ spec:
 For more information on how init containers behave in Kubernetes, refer to the [Kubernetes init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) documentation.
 
 :::{tip}
-You can also build the plugins into your own {{es}} image, as described in [Create custom images](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md). To compare that approach with init containers, refer to [Add plugins and custom configuration files in {{eck}}](manage-plugins.md).
-:::
+You can also install plugins in the following ways. To compare them with init containers, refer to [Add plugins and custom configuration files in {{eck}}](manage-plugins.md).
 
+* Build the plugins into your own {{es}} image, as described in [Create custom images](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md).
+* {applies_to}`eck: ga 3.7+` With {{es}} 8.17.0 or later, list the plugins in the [`spec.plugins` field](declarative-plugins.md). Don't combine the field with init containers that install or remove plugins, because those init containers fail when it's set.
+:::
 
 ## What the init container inherits
 
