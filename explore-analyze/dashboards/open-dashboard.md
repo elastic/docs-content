@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/open-the-dashboard.html
-description: Edit an existing Kibana dashboard to change its panels, settings, and controls, and restore an earlier version if a change doesn't work out.
+description: Edit an existing Kibana dashboard to change its panels, settings, and controls, and restore an earlier version from its version history.
 applies_to:
   stack: ga
   serverless: ga
