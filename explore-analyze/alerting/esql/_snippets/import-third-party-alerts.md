@@ -1,7 +1,6 @@
 % Steps to import alerts into Universal Alerting from any tool that can send a webhook.
 
-1. Create an **Inbound Webhook** connector. When you save it, {{kib}} generates a **Webhook URL** and an **Ingest token** for the connector and shows them in the flyout. Copy both before you close the flyout, because {{kib}} doesn't show the token again. If you lose the token, open the connector and select **Rotate ingest token** to get a new one.
-   % For instructions, refer to [](kibana://reference/connectors-kibana/inbound-webhook-action-type.md)
+1. Create an **Inbound Webhook** connector. When you save it, {{kib}} generates a **Webhook URL** and an **Ingest token** for the connector and shows them in the flyout. Copy both before you close the flyout, because {{kib}} doesn't show the token again. If you lose the token, open the connector and select **Rotate ingest token** to get a new one. For more infomation, refer to [](kibana://reference/connectors-kibana/inbound-webhook-action-type.md)
 2. Open **Workflows** from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). If you already have workflows, select **Create workflow**. Then select **Start manually** to open the editor with a sample workflow.
 
 3. Replace the sample workflow with the following one:
@@ -65,4 +64,5 @@
    - If the run succeeded, the alert is on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md).
    - If the run failed, open it to find the step that failed and why.
    - If no run appears, check the HTTP status that the tool received. A `202` status means that {{kib}} accepted the request, so make sure that the workflow is enabled, is in the same space as the connector, and has your connector's ID in `connector-id`. A `404` status means that {{kib}} rejected the URL or the ingest token.
-   % For every status code, refer to [Troubleshoot webhook requests](kibana://reference/connectors-kibana/inbound-webhook-action-type.md#inbound-webhook-troubleshoot)
+   
+   For status codes, refer to [Troubleshoot webhook requests](kibana://reference/connectors-kibana/inbound-webhook-action-type.md#inbound-webhook-troubleshoot)
