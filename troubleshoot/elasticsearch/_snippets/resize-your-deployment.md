@@ -14,7 +14,7 @@ To resize your deployment and increase its capacity by expanding a data tier or 
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or ECE Cloud UI.
 1. On the home page, find your deployment and select **Manage**.
-1. Go to **Actions** > **Edit deployment** and check that autoscaling is enabled. Adjust the **Enable Autoscaling for** dropdown menu as needed and select **Save**.
+1. Go to **Actions** → **Edit deployment** and check that autoscaling is enabled. Adjust the **Enable Autoscaling for** dropdown menu as needed and select **Save**.
 1. If autoscaling is successful, the cluster returns to a `healthy` status.
 If the cluster is still out of disk, check if autoscaling has reached its set limits and [update your autoscaling settings](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md#ec-autoscaling-update).
 

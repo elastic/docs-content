@@ -80,6 +80,30 @@ host.name: "web-server-01" AND kibana.alert.status: "active"
 - `host.name`: The hostname from the original event
 - `kibana.alert.status`: System status (`active` means the alert condition is ongoing)
 
+### Find the alerts for an EQL sequence (KQL) [find-eql-sequence-alerts]
+
+Returns an Event correlation (EQL) alert and its building block alerts, which hold the details of each event in the sequence. Use this to see what happened at each step and when. On the Alerts page, [include building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md#security-building-block-rules-view-building-block-alerts-in-the-ui) to see the results.
+
+```text
+kibana.alert.group.id: "<group-id>"
+```
+
+- `kibana.alert.group.id`: The ID that an EQL alert and its building block alerts share
+- `kibana.alert.original_time`: On each building block alert, when its event happened
+
+To learn what each of these alerts tells you, refer to [](/solutions/security/detect-and-alert/triage-eql-alerts.md).
+
+## Correlate alerts in detection rules [rules-that-search-alerts]
+
+A detection rule can search the alert index instead of your event data, and create an alert when several alerts happen together. For example, it can alert when one host has [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) from several rules, so analysts triage one alert instead of an alert for each behavior. In the rule's index patterns, enter the [alert index alias](#alert-index-aliases) for your space. For an {{esql}} rule, use the alias in the query's `FROM` command instead.
+
+When you write the rule, check these points:
+
+* Match only the alerts that you want to combine. The alert index holds every alert in the space, including the correlation rule's own alerts. Match the rules by `kibana.alert.rule.name`, or by `kibana.alert.rule.rule_id` if someone might rename them.
+* Leave **Mark all generated alerts as "building block" alerts** cleared for the correlation rule, so that analysts see its alerts.
+* Set **Runs every** and **Additional look-back time** so that together they cover how far apart the alerts can happen. An alert's `@timestamp` shows when its rule created it. If you set a [timestamp override](/solutions/security/detect-and-alert/common-rule-settings.md#rule-ui-advanced-params) such as `event.ingested`, the rule uses the time from each alert's source event instead, so add look-back time to cover how long the other rules take to create their alerts.
+* Before you enable the rule, [preview it](/solutions/security/detect-and-alert/validate-and-test-rules.md#validate-historical-data) over a time range in which the other rules created alerts.
+
 ### Correlate alerts in a threshold rule
 
 Detects hosts triggering multiple alerts within a time window—useful for identifying systems under active attack.
@@ -91,6 +115,33 @@ Create a [threshold rule](/solutions/security/detect-and-alert/threshold.md) wit
 - **Threshold**: Count ≥ 5 (or your preferred value)
 
 This generates a new alert when the same host appears in 5 or more open alerts.
+
+### Correlate building block alerts in a threshold rule [correlate-building-block-alerts]
+
+Detects hosts that have building block alerts from three rules, each of which detects one behavior. Use this pattern when the order of the behaviors doesn't matter.
+
+Create a [threshold rule](/solutions/security/detect-and-alert/threshold.md) with:
+- **Index pattern**: `.alerts-security.alerts-default`
+- **Custom query**: `kibana.alert.rule.name : ("Registry modification" or "Scheduled task created" or "Rare domain connection")`
+- **Group by**: `host.name`
+- **Threshold**: `3`
+- **Count**: `kibana.alert.rule.name`, with **Unique values** set to `3`
+- **Runs every**: 10 minutes, with 50 minutes of **Additional look-back time**
+
+This creates an alert for each host that has building block alerts from all three rules within an hour.
+
+### Correlate alerts in a specific order (EQL) [correlate-alerts-in-order]
+
+Detects the same three behaviors only when they happen in order on one host. Create an [Event correlation (EQL) rule](/solutions/security/detect-and-alert/eql.md) that searches the alert index alias, with this query:
+
+```eql
+sequence by host.name with maxspan=1h
+  [any where kibana.alert.rule.name == "Registry modification"]
+  [any where kibana.alert.rule.name == "Scheduled task created"]
+  [any where kibana.alert.rule.name == "Rare domain connection"]
+```
+
+In **EQL settings**, set **Timestamp field** to `kibana.alert.original_time` so that the sequence follows the order in which the events happened, not the order in which the rules created their alerts.
 
 ## Common alert fields [common-alert-fields]
 

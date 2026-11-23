@@ -170,7 +170,7 @@ Follow these steps when deploying {{fleet-server}} behind a load balancer/revers
     You can use the {{fleet-server}} `GET /api/status` API endpoint to determine instance health from the load balancer.
     ::::
 
-3. In **{{fleet}} > Settings**, add the load balancer (for example, `https://fleet.example.com:8220`) as a {{fleet-server}} host.
+3. In **{{fleet}}** → **Settings**, add the load balancer (for example, `https://fleet.example.com:8220`) as a {{fleet-server}} host.
 
 4. Install {{fleet-server}} on each backing host using the in-product instructions which should specify the load balancer as the URL.
 

@@ -1,6 +1,8 @@
 ---
 applies_to:
-  serverless: preview
+  serverless:
+    observability: preview
+    security: preview
   stack: preview 9.2+
 description: Learn how wired streams normalize field names across the logs.otel and logs.ecs endpoints.
 products:
@@ -20,9 +22,9 @@ When data is ingested into a wired stream, field names are normalized depending 
 
 ## Field naming by endpoint [streams-field-naming-by-endpoint]
 
-::::{applies-switch}
+::::{tab-set}
 
-:::{applies-item} { serverless: preview, stack: preview 9.4+ }
+:::{tab-item} {{serverless-short}} and {{stack}} 9.4+
 
 Field naming depends on the endpoint you use.
 
@@ -45,7 +47,7 @@ Refer to the [field naming table](#streams-field-naming-table) for ECS fields an
 
 :::
 
-:::{applies-item} stack: preview 9.2-9.3
+:::{tab-item} {{stack}} 9.2-9.3
 
 Data ingested into the `/logs` endpoint is stored and processed in a normalized OpenTelemetry (OTel)–compatible format. This format aligns ECS fields with OTel semantic conventions so all data is consistently structured and OTTL-expressible.
 

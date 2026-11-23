@@ -22,7 +22,7 @@ The **Entity analytics** page provides a centralized workspace for investigating
 :::{admonition} Requirements
 * This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
 
-* To access this page, you need **Read** for the **Management → Saved Objects Management** feature.
+* To access this page, you need **Read** for the **Management** → **Saved Objects Management** feature.
 * You also need the `read` index privilege for these index patterns:
   * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `entities-latest-<space-id>`, `.entities.v2.latest.<space-id>-*`, and `risk-score.risk-score-<space-id>`
   * {applies_to}`stack: ga 9.4-9.5` `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>` 
@@ -46,7 +46,7 @@ serverless: preview
   * **View leads**: `read` for `.entity_analytics.entity-leads*`
   * **Generate leads**:
     * `read`, `create_index`, and `write` for `.entity_analytics.entity-leads*`
-    * **Read** for the **Management > Actions and Connectors** feature
+    * **Read** for the **Management** → **Actions and Connectors** feature
 :::
 
 AI-generated leads appear at the top of the page, giving threat hunters a curated starting point for their investigations. Leads are refreshed every 24 hours and are derived from observations about entities in the entity store, including:
