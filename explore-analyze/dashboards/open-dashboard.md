@@ -69,7 +69,7 @@ When editing a dashboard, you can revert any changes you’ve made since the las
 ::::{note}
 Once changes are saved, you can no longer revert them in one click.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To go back to an earlier saved version instead, refer to [Restore an earlier version of a dashboard](#restore-dashboard-version).
+To go back to an earlier saved version instead, refer to [Restore an earlier version of a dashboard](#restore-dashboard-version).
 ::::
 
 ## Restore an earlier version of a dashboard [restore-dashboard-version]
