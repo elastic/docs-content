@@ -2,6 +2,8 @@
 description: Log every search operation on an Elasticsearch cluster including Query DSL, ES|QL, EQL, and SQL query types, with configurable duration thresholds and per-field output control.
 applies_to:
   stack: preview 9.4
+  deployment:
+    ece: ga 4.2
   serverless: unavailable
 products:
   - id: "elasticsearch"
@@ -22,10 +24,6 @@ The following query types are supported:
 - `eql`: [EQL](elasticsearch://reference/query-languages/eql/eql-syntax.md) queries
 - `sql`: [SQL](elasticsearch://reference/query-languages/sql.md) queries
 - `promql`: [PromQL API](elasticsearch://reference/query-languages/promql/promql-http-api.md) queries {applies_to}`stack: ga 9.6`
-
-:::{note}
-On ECE, query logging requires version 4.2 or later.
-:::
 
 ## When to use query logging
 
@@ -108,11 +106,6 @@ ECK clusters automatically collect from the `*_querylog.json` path using the def
 :::::
 
 :::::{applies-item} { self:, ece: ga 4.2 }
-
-:::{note}
-
-On ECE, query logging requires version 4.2 or later.
-:::
 
 To set up query logging on self-managed or ECE clusters:
 
