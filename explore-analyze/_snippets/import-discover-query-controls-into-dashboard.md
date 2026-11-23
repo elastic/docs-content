@@ -14,7 +14,7 @@ This method allows you to add the result table of your Discover {{esql}} query t
 
 1. Find and select the Discover session you saved earlier.
 
-A new panel appears on the dashboard with the results of the query along with any attached controls. If the dashboard already has a control with the same variable name, {{kib}} doesn't add a second one and keeps the existing control as it is. The new panel then responds to that control's current selection.
+A new panel appears on the dashboard with the results of the query along with any attached controls. If the dashboard already has a control with the same variable name, {{kib}} doesn't add a second one. The existing control keeps its selection and settings, and the new panel responds to that selection.
 
 :::{image} /explore-analyze/images/import-discover-control-dashboard.png
 :alt: Importing Discover session with controls into a dashboard
@@ -38,5 +38,8 @@ This method allows you to add the visualization of your Discover {{esql}} query 
 
 The selected dashboard opens. It now includes a new panel that shows the visualization imported from Discover. Existing controls from the initial query in Discover are also added. You can find them at the top of the dashboard.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the dashboard already has a control for the same variable, saving the visualization updates that control instead of adding a second one. The control takes the selection and settings from Discover and keeps its position, whether it's pinned or unpinned. Controls match when they have the same variable name and both use **Static values**, or both use **Values from a query**. If the existing control is inside a section, {{kib}} doesn't update it and adds the control from Discover as a second control.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the dashboard already has a control with the same variable name, saving the visualization updates that control instead of adding a second one. The control takes the selection and settings from Discover and keeps its position, whether it's pinned or unpinned. {{kib}} still adds the control from Discover as a second control in these cases:
+
+- The existing control is inside a section.
+- The existing control has a different type. One uses **Static values** and the other uses **Values from a query**.
 
