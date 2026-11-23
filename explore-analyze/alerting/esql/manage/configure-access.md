@@ -127,7 +127,8 @@ To [import alerts from Datadog and other monitoring tools](../alerts/import-thir
 | Let the connector's workflows create alerts | **Alerts: All** (under **Universal Alerting**) |
 | Create the workflow for a tool other than Datadog | **Workflows: All** (under **Analytics** → **Workflows**) |
 
-Workflows that the connector starts run as the last user who saved the connector, so that user needs **Alerts: All**. If a user without it saves the connector, the workflows can't create alerts. For details, refer to [Which key authorizes each operation](authorization.md#key-per-operation).
+Workflows that the connector starts run as the last user who saved the connector, so that user needs **Alerts: All**. If a user without it saves the connector, the workflows can't create alerts.
+% For details, refer to [Authenticate requests](kibana://reference/connectors-kibana/inbound-webhook-action-type.md#inbound-webhook-authenticate)
 
 ## Query rule output and alert data [alerting-data-investigation-privileges]
 
