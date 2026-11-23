@@ -100,7 +100,7 @@ The {{stack}} provides several options for processing data collected by {{agent}
 | If you need to… | Do this… |
 | --- | --- |
 | Sanitize or enrich raw data at the source | Use an {{agent}} processor |
-| Convert data to ECS, normalize field data, or enrich incoming data | Use [ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md#pipelines-for-fleet-elastic-agent) |
+| Convert data to ECS, normalize field data, or enrich incoming data | Use [ingest pipelines](/manage-data/ingest/transform-enrich/apply-ingest-pipelines.md#pipelines-for-fleet-elastic-agent) |
 | Define or alter the schema at query time | Use [runtime fields](/manage-data/data-store/mapping/runtime-fields.md) |
 | Split one event into multiple documents | Refer to [Split an event into multiple documents](/manage-data/ingest/transform-enrich/split-events-into-multiple-documents.md) |
 | Do something else with your data | Use [Logstash plugins](logstash-docs-md://lsr/filter-plugins.md) |

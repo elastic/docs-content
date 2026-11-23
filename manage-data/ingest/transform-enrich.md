@@ -28,9 +28,10 @@ You can also perform transforms on existing {{es}} indices to pivot data into a 
 :   You can use [{{es}} ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to enrich incoming data or normalize field data before the data is indexed. {{es}} ingest pipelines enable you to manipulate the data as it comes in. This approach helps you avoid adding processing overhead to the hosts from which you’re collecting data.
 
 :   When you define a pipeline, you can configure one or more processors to operate on the incoming data. A typical use case is to transform specific strings to lowercase, or to sort the elements of incoming arrays into a given order. This section describes:
-* How to create, view, edit, and delete an ingest pipeline
-* How to set up processors to transform the data
-* How to test a pipeline before putting it into production.
+* How to [create, view, edit, test, and delete an ingest pipeline](/manage-data/ingest/transform-enrich/create-ingest-pipelines.md)
+* How to [apply a pipeline](/manage-data/ingest/transform-enrich/apply-ingest-pipelines.md) to your data
+* How to [access data in processors](/manage-data/ingest/transform-enrich/access-data-in-processors.md) and [run processors conditionally](/manage-data/ingest/transform-enrich/conditionally-run-ingest-processors.md)
+* How to [handle pipeline errors](/manage-data/ingest/transform-enrich/error-handling.md).
 
 :   You can try out the [Parse logs](/manage-data/ingest/transform-enrich/example-parse-logs.md) example which shows you how to set up in ingest pipeline to transform incoming server logs into a standard format.
 

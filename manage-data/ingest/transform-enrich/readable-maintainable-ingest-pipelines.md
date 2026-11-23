@@ -17,6 +17,8 @@ This guide does not provide guidance on optimizing for ingest pipeline performan
 
 ## Access fields
 
+For a full reference on reading and writing source fields, metadata fields, and ingest metadata, refer to [Access data in processors](/manage-data/ingest/transform-enrich/access-data-in-processors.md).
+
 When creating ingest pipelines, there are are few options for accessing fields in conditional statements and scripts. All formats can be used to reference fields, so choose the one that makes your pipeline easier to read and maintain.
 
 | Notation                       | Example                                               | Notes                                                                           |
@@ -94,7 +96,7 @@ This is the preferred way to access fields.
 
 ## Write concise conditionals (`if` statements) [conditionals]
 
-Use conditionals (`if` statements) to ensure that an ingest pipeline processor is only applied when specific conditions are met.
+Use conditionals (`if` statements) to ensure that an ingest pipeline processor is only applied when specific conditions are met. For how to run a processor or a whole pipeline conditionally, refer to [Conditionally run processors and pipelines](/manage-data/ingest/transform-enrich/conditionally-run-ingest-processors.md).
 
 % In an ingest pipeline, when working with conditionals inside processors. The topic around error processing is a bit more complex, most importantly any errors that are coming from null values, missing keys, missing values, inside the conditional, will lead to an error that is not captured by the `ignore_failure` handler and will exit the pipeline.
 
@@ -374,14 +376,14 @@ After storing values as bytes, you can use Kibana's field formatting to display 
 
 ## Rename fields
 
-The [rename processor](elasticsearch://reference/enrich-processor/rename-processor.md) renames a field. There are two flags:
+The [rename processor](elasticsearch://reference/ingest-processor/rename-processor.md) renames a field. There are two flags:
 
 - `ignore_missing`: Useful when you are not sure that the field you want to rename exists.
 - `ignore_failure`: Helps with any failures encountered. For example, the rename processor can only rename to non-existing fields. If you already have the field `abc` and you want to rename `def` to `abc`, the operation will fail.
 
 ## Script processor
 
-If no built-in processor can achieve your goal, you may need to use a [script processor](elasticsearch://reference/enrich-processor/script-processor.md) in your ingest pipeline. Be sure to write scripts that are clear, concise, and maintainable.
+If no built-in processor can achieve your goal, you may need to use a [script processor](elasticsearch://reference/ingest-processor/script-processor.md) in your ingest pipeline. Be sure to write scripts that are clear, concise, and maintainable.
 
 ### Add new fields
 
@@ -656,7 +658,7 @@ In this example, `{{tags.0}}` retrieves the first element of the `tags` array (`
 
 ### Transform into a JSON string
 
-Whenever you need to store the original `_source` within a field `event.original`, use mustache function `{{#toJson}}<field>{{/toJson}}`.
+{{es}} indexes only the transformed document, not the original. To keep the original `_source`, store it in the `event.original` field with the mustache function `{{#toJson}}<field>{{/toJson}}`. To keep a single field value instead, copy it to another field before a processor changes it, using the `copy_from` option of the [`set` processor](elasticsearch://reference/ingest-processor/set-processor.md).
 
 ```json
 POST _ingest/pipeline/_simulate

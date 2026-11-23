@@ -1840,3 +1840,43 @@ redirects:
   
   # related to https://github.com/elastic/docs-content-internal/issues/1919
   'solutions/security/alertzero/track-escalations.md': 'solutions/security/alertzero/manage-escalations.md'
+
+  # Ingest pipelines page split into the hub and child pages
+  'manage-data/ingest/transform-enrich/ingest-pipelines.md':
+    to: 'manage-data/ingest/transform-enrich/ingest-pipelines.md'
+    many:
+      - to: 'manage-data/ingest/transform-enrich/create-ingest-pipelines.md'
+        anchors:
+          'ingest-prerequisites': 'ingest-prerequisites'
+          'create-manage-ingest-pipelines': 'create-manage-ingest-pipelines'
+          'test-pipeline': 'test-pipeline'
+          'manage-pipeline-versions': 'manage-pipeline-versions'
+      - to: 'troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md'
+        anchors:
+          'get-pipeline-usage-stats': 'troubleshooting-pipelines-metrics'
+      - to: 'manage-data/ingest/transform-enrich/apply-ingest-pipelines.md'
+        anchors:
+          'add-pipeline-to-indexing-request': 'add-pipeline-to-indexing-request'
+          'set-default-pipeline': 'set-default-pipeline'
+          'set-final-pipeline': 'set-final-pipeline'
+          'pipelines-for-beats': 'pipelines-for-beats'
+          'pipelines-for-fleet-elastic-agent': 'pipelines-for-fleet-elastic-agent'
+          'pipeline-custom-logs-index-template': 'pipeline-custom-logs-index-template'
+          'pipeline-custom-logs-configuration': 'pipeline-custom-logs-configuration'
+          'pipelines-in-enterprise-search': 'pipelines-in-enterprise-search'
+      - to: 'manage-data/ingest/transform-enrich/access-data-in-processors.md'
+        anchors:
+          'access-source-fields': 'access-source-fields'
+          'template-snippets': 'template-snippets'
+          'access-source-pattern': 'access-source-pattern'
+          'access-source-pattern-classic': 'access-source-pattern-classic'
+          'access-source-pattern-flexible': 'access-source-pattern-flexible'
+          'access-metadata-fields': 'access-metadata-fields'
+          'access-ingest-metadata': 'access-ingest-metadata'
+      - to: 'manage-data/ingest/transform-enrich/conditionally-run-ingest-processors.md'
+        anchors:
+          'conditionally-run-processor': 'conditionally-run-processor'
+          'conditionally-apply-pipelines': 'conditionally-apply-pipelines'
+      - to: 'manage-data/ingest/transform-enrich/error-handling.md'
+        anchors:
+          'handling-pipeline-failures': 'handling-pipeline-failures'

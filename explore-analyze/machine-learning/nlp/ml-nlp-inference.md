@@ -12,7 +12,7 @@ products:
 
 After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you can use it to perform {{nlp}} tasks in ingest pipelines.
 
-1. Verify that all of the [ingest pipeline prerequisites](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md#ingest-prerequisites) are met.
+1. Verify that all of the [ingest pipeline prerequisites](../../../manage-data/ingest/transform-enrich/create-ingest-pipelines.md#ingest-prerequisites) are met.
 2. [Add an {{infer}} processor to an ingest pipeline](#ml-nlp-inference-processor).
 3. [Ingest documents](#ml-nlp-inference-ingest-docs).
 4. [View the results](#ml-nlp-inference-discover).
@@ -56,13 +56,13 @@ In {{kib}}, you can create and edit pipelines from the **Ingest Pipelines** mana
 3. Optional: Add a [set processor](elasticsearch://reference/enrich-processor/set-processor.md) to index the ingest timestamp.
 
     1. Click **Add a processor** and select the **Set** processor type.
-    2. Choose a name for the field (such as `event.ingested`) and set its value to `{{{_ingest.timestamp}}}`. For more details, refer to [Access ingest metadata in a processor](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md#access-ingest-metadata).
+    2. Choose a name for the field (such as `event.ingested`) and set its value to `{{{_ingest.timestamp}}}`. For more details, refer to [Access ingest metadata in a processor](../../../manage-data/ingest/transform-enrich/access-data-in-processors.md#access-ingest-metadata).
     3. Click **Add** to save the processor.
 
 4. Optional: Add failure processors to handle exceptions. For example, in the **Failure processors** section:
 
     1. Add a set processor to capture the pipeline error message. Choose a name for the field (such as `ml.inference_failure`) and set its value to the `{{_ingest.on_failure_message}}` document metadata field.
-    2. Add a set processor to reroute problematic documents to a different index for troubleshooting purposes. Use the `_index` metadata field and set its value to a new name (such as `failed-{{{ _index }}}`). For more details, refer to [Handling pipeline failures](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md#handling-pipeline-failures).
+    2. Add a set processor to reroute problematic documents to a different index for troubleshooting purposes. Use the `_index` metadata field and set its value to a new name (such as `failed-{{{ _index }}}`). For more details, refer to [Handling pipeline failures](../../../manage-data/ingest/transform-enrich/error-handling.md#handling-pipeline-failures).
 
 5. To test the pipeline, click **Add documents**.
 
@@ -197,7 +197,7 @@ If you encounter problems while using your trained model in an ingest pipeline, 
 2. The default input field name expected by your trained model is not present in your source document. Use the **Field Map** option in your {{infer}} processor to set the appropriate field name.
 3. There are too many requests. If you are using bulk ingest, reduce the number of documents in the bulk request. If you are reindexing, use the `size` parameter to decrease the number of documents processed in each batch.
 
-These common failure scenarios and others can be captured by adding failure processors to your pipeline. For more examples, refer to [Handling pipeline failures](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md#handling-pipeline-failures).
+These common failure scenarios and others can be captured by adding failure processors to your pipeline. For more examples, refer to [Handling pipeline failures](../../../manage-data/ingest/transform-enrich/error-handling.md#handling-pipeline-failures).
 
 ## Further reading [nlp-example-reading]
 
