@@ -98,6 +98,12 @@ To leave without restoring anything, select **Back to dashboard**.
 
 To check what changed before you restore, select the changes link on a version, such as **3 changes**, to compare it with the version before it. To compare it with a different version, open the **Version actions** menu {icon}`boxes_vertical` on that other version and select **Compare to this version**. {{kib}} shows the differences as JSON. To switch between **Unified** and **Split** views, select **Settings** {icon}`controls` at the bottom of the comparison.
 
+:::{image} /explore-analyze/images/dashboard-version-comparison.png
+:alt: Version 3 compared with version 2 of a dashboard in split view, with the changed lines highlighted and the Comparison mode menu open with Split selected
+:screenshot:
+:width: 90%
+:::
+
 For changes that you haven't saved yet, use [Undo and redo](#undo-redo-dashboard) or [Reset changes](#reset-the-dashboard) instead.
 
 :::{note}
