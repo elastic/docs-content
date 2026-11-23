@@ -31,10 +31,6 @@ The {{es}} platform provides tools to share insights, get notified about importa
 
 [Alerting](alerting.md) monitors your {{es}} data continuously and notifies you when specific conditions are met, so you don't have to watch dashboards around the clock.
 
-:::{image} /explore-analyze/images/kibana-create-threshold-alert-created.png
-:alt: The Watcher form for creating a threshold alert, with the watch name, indices to query, time field, and schedule
-:screenshot:
-:::
 
 Define rules that evaluate your data on a schedule and trigger actions when criteria are met:
 
