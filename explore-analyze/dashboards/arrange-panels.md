@@ -237,8 +237,6 @@ To start a selection, open the dashboard in **Edit** mode, hold {kbd}`cmd` (Mac)
 * Select a panel, anywhere except on its links, buttons, and input fields, to add it to the selection.
 * Drag across the dashboard to draw a rectangle that selects every panel it touches. The page scrolls automatically when you drag near its top or bottom edge.
 
-If you select a panel header without the key held, a brief hint shows the gesture: **⌘ + Click to select panel** on Mac, or **Ctrl + Click to select panel** on Windows and Linux.
-
 After you select the first panel, you no longer need to hold the key. On every panel, a round checkbox replaces the icons and panel menu that appear when you hover, and the corner handles disappear. Selecting any part of a panel, or its checkbox, adds the panel to the selection or removes it if it's already selected, instead of interacting with its content.
 
 To make a control part of the selection:
