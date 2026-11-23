@@ -19,8 +19,6 @@ Go to the **Watcher** page using the navigation menu or the [global search field
 * [Deactivate and delete a watch](#watcher-deactivate)
 * [Create an advanced watch using API syntax](#watcher-create-advanced-watch)
 
-![Watcher list](/explore-analyze/images/kibana-watches.png "")
-
 [Alerting on cluster and index events](../watcher.md) is a good source for detailed information on how watches work. If you are using the UI to create a threshold watch, take a look at the different watcher actions. If you are creating an advanced watch, you should be familiar with the parts of a watch—input, schedule, condition, and actions.
 
 ::::{note}

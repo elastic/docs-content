@@ -47,7 +47,7 @@ Spatial filters have the following properties:
 
 You can create spatial filters in two ways:
 
-* Click the tool icon ![tool icon](/explore-analyze/images/kibana-tools_icon.png ""), and then draw a shape, bounding box, or distance on the map to define the spatial filter.
+* Click the tool icon {icon}`wrench`, and then draw a shape, bounding box, or distance on the map to define the spatial filter.
 * Click **Filter by geometry** in a [locked tooltip](vector-tooltip.md#maps-vector-tooltip-locking), and then use the feature’s geometry for the spatial filter.
 
 :::{image} /explore-analyze/images/kibana-create_spatial_filter.png
@@ -58,5 +58,5 @@ You can create spatial filters in two ways:
 
 ## Phrase filters [maps-phrase-filter]
 
-A phrase filter narrows search results to documents that contain the specified text. You can create a phrase filter by clicking the plus icon ![gs plus icon](/explore-analyze/images/kibana-gs_plus_icon.png "") in a [locked tooltip](vector-tooltip.md#maps-vector-tooltip-locking). If the map is a dashboard panel with drilldowns, you can apply a phrase filter to a drilldown by selecting the drilldown action.
+A phrase filter narrows search results to documents that contain the specified text. You can create a phrase filter by selecting the {icon}`filter` icon next to a property in a [locked tooltip](vector-tooltip.md#maps-vector-tooltip-locking). If the map is a dashboard panel with drilldowns, you can apply a phrase filter to a drilldown by selecting the drilldown action.
 
