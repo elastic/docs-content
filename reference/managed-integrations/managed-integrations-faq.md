@@ -197,6 +197,13 @@ If you want to collect a diagnostics bundle before contacting support:
 
 {{managed-integrations}} are a fully managed service, so Elastic handles diagnostics for you. Errors that are relevant to you are surfaced for each integration in the **{{integrations}}** app. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
 
+### How do I get the information about my deployment that support would need?
+
+In the **{{integrations}}** app of {{kib}}:
+1. Find the {{managed-integrations}} of interest
+2. Go to **Actions**
+3. Select **Copy Support Info** and provide the details to your support representative.
+
 ### How do I make the underlying collectors visible in {{fleet}}? [managed-integrations-faq-fleet-show]
 
 ```{applies_to}
@@ -204,7 +211,7 @@ stack: preview 9.1-9.4
 serverless: unavailable
 ```
 
-On {{stack}} 9.1 through 9.4, you can override the default and expose the underlying collectors in {{fleet}}:
+On {{stack}} 9.1 through 9.4, you can override the default and expose the underlying collectors in {{fleet}}. This option is not available on 9.5 and above:
 
 ::::{applies-switch}
 
