@@ -127,7 +127,7 @@ Actions for deactivating and deleting a watch are on each watch detail page:
 * **Deactivate a watch** if you know a situation is planned that will cause a false alarm. You can reactivate the watch when the situation is resolved.
 * **Delete a watch** to permanently remove it from the system. You can delete the watch you are currently viewing, or go to the Watcher overview, and delete watches in bulk.
 
-{applies_to}`stack: ga 9.6+` To change whether a watch runs, select **Deactivate** or **Activate** in the application menu of its detail page. To delete the watch, select {icon}`ellipsis` **More** → **Delete** on that page.
+If you don't see these actions, look for the {icon}`ellipsis` **More** menu.
 
 ## Create an advanced watch [watcher-create-advanced-watch]
 
