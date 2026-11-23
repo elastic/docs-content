@@ -27,8 +27,10 @@ You can also access this rule from the **Data Set Quality** page:
 
 1. To open the **Data Set Quality** management page, find it in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 1. Select a data set name from the data set table.
-1. Select **Actions** in the upper-right corner of the page.
-1. Select **Create rule**.
+1. Start the rule from the data set details:
+
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.2+` In **Document trends**, select the {icon}`bell` **Create rule** icon. The icon appears when the chart shows degraded documents.
+    * {applies_to}`stack: ga 9.1` Select **Actions** in the upper-right corner of the page, then select **Create rule**.
 
 ## Requirements
 

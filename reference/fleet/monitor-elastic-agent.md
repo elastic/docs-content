@@ -105,7 +105,7 @@ The **Integrations** section lists the integrations in the agent policy. Expand 
 :screenshot:
 :::
 
-To gather more detail about a particular error or warning, select **Actions → Maintenance and diagnostics → View agent JSON**. The JSON contains all of the raw agent data tracked by Fleet.
+To gather more detail about a particular error or warning, select **Actions** → **Maintenance and diagnostics** → **View agent JSON**. The JSON contains all of the raw agent data tracked by Fleet.
 
 
 
@@ -130,12 +130,12 @@ serverless: ga
 
 Because the configuration sent to an {{agent}} on a [version-specific agent policy](/reference/fleet/version-specific-agent-policies.md) can differ from the primary policy template, {{fleet}} provides an action to view the rendered YAML delivered to a specific agent.
 
-On the **Agents** tab, from the **Actions** menu for a specific {{agent}} (or from the **Actions** menu on the agent's details page), select **Maintenance and diagnostics → View agent policy**.
+On the **Agents** tab, from the **Actions** menu for a specific {{agent}} (or from the **Actions** menu on the agent's details page), select **Maintenance and diagnostics** → **View agent policy**.
 
 The flyout shows the rendered YAML configuration and the revision of the primary policy the agent uses.
 
 :::{note}
-This action is different from the **Actions → View policy** action on the agent policy itself, which shows the primary policy template before {{fleet}} renders it for each agent.
+This action is different from the **Actions** → **View policy** action on the agent policy itself, which shows the primary policy template before {{fleet}} renders it for each agent.
 :::
 
 

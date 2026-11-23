@@ -36,6 +36,7 @@ We cover the following examples:
   * [Azure Private Link](#private-connection-policy-azure)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
   * [GCP Private Service Connect](#private-connection-policy-gcp)  {applies_to}`ess:`
 
+* [Create a remote cluster filter](#create-remote-cluster-filter)
 * [Update a policy or rule set](#update-policy-rs)
 * [Associate a policy or rule set with a project or deployment](#associate-policy-rs-with-deployment)
 * [Find the resources associated with a policy or rule set](#find-associated-resources)
@@ -161,7 +162,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 ```
 
 1. The region is always the same region as the deployment you want to associate with an IP filter policy. For details, check the [list of available regions](cloud://reference/cloud-hosted/ec-regions-templates-instances.md).
-2. The type of policy. In the JSON object, we use `ip` for IP filter policies. Currently, we support `ip`, `egress_firewall`, `vpce` (AWS Private Link), `azure_private_endpoint` and `gcp_private_service_connect_endpoint`. These are described in further detail below.
+2. The type of policy. For IP filter policies, set `type` to `ip`.
 :::
 
 :::{applies-item} ece:
@@ -499,6 +500,72 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 ```
 
 1. To learn how to find the value for `source` for type `gcp_private_service_connect_endpoint`, refer to [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
+
+
+## Create a remote cluster filter [create-remote-cluster-filter]
+```{applies_to}
+deployment:
+  ech: ga
+  ece: ga
+```
+
+Use the {{ecloud}} or {{ece}} API to create a [remote cluster filter](remote-cluster-filtering.md). Set `type` to `remote_cluster` and specify at least one of the following fields in each rule:
+
+* `remote_cluster_org_id`: The organization ID ({{ech}}) or environment ID ({{ece}}) of the local cluster that initiates the connection.
+* `remote_cluster_id`: The {{es}} cluster ID of the local cluster that initiates the connection. This is different from the deployment ID.
+
+Set `region` to the region of the remote deployment where you want to apply the filter.
+
+The following requests create a filter that allows connections from a specific local cluster. Replace `<LOCAL_ELASTICSEARCH_CLUSTER_ID>` with that cluster's {{es}} ID:
+
+::::{applies-switch}
+
+:::{applies-item} ech:
+
+```bash
+curl -X POST \
+  -H "Authorization: ApiKey $API_KEY" \
+  -H 'Content-Type: application/json' \
+  https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
+  -d '{
+    "name": "My remote cluster filter",
+    "region": "azure-japaneast",
+    "type": "remote_cluster",
+    "rules": [
+      {
+        "remote_cluster_id": "<LOCAL_ELASTICSEARCH_CLUSTER_ID>"
+      }
+    ],
+    "include_by_default": false
+  }'
+```
+
+:::
+
+:::{applies-item} ece:
+
+```bash
+curl -X POST \
+  -H "Authorization: ApiKey $API_KEY" \
+  -H 'Content-Type: application/json' \
+  "https://$COORDINATOR_HOST:12443/api/v1/deployments/traffic-filter/rulesets" \
+  -d '{
+    "name": "My remote cluster filter",
+    "region": "ece-region",
+    "type": "remote_cluster",
+    "rules": [
+      {
+        "remote_cluster_id": "<LOCAL_ELASTICSEARCH_CLUSTER_ID>"
+      }
+    ],
+    "include_by_default": false
+  }'
+```
+
+:::
+::::
+
+Use the returned `id` to [associate the filter with the remote deployment](#associate-policy-rs-with-deployment). To update or delete the filter, use the [update](#update-policy-rs) or [delete](#delete-policy-rs) operations. When updating, keep `type` set to `remote_cluster` and provide the complete list of remote cluster rules.
 
 
 ## Update a policy or rule set [update-policy-rs]
