@@ -133,7 +133,7 @@ Available EDOT SDKs (all GA unless noted):
 * [EDOT PHP](elastic-otel-php://reference/edot-php/setup/index.md)
 * [EDOT Android](apm-agent-android://reference/edot-android/index.md)
 * [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md)
-* {applies_to}`edot_browser: preview` [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md). For production real user monitoring, continue using the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
+* {applies_to}`edot_browser: preview 0.1-0.5, ga 1.0+` [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md)
 * {applies_to}`edot_react_native: preview` [EDOT React Native](elastic-otel-react-native://reference/edot-react-native/index.md)
 
 For languages without an EDOT SDK (Go, C++, Ruby, and others), you can use the [contrib OpenTelemetry SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md). These work with Elastic over OTLP but receive community support only.
@@ -148,7 +148,7 @@ Configure your EDOT SDKs and edge {{agent}} instances to use the OTLP exporter. 
 
 {{edot}} covers most core {{observability}} use cases, but the following scenarios still work better with classic Elastic ingestion:
 
-* **Web real user monitoring (RUM)**: OTel-native RUM data is not yet available for production use. EDOT Browser is in Technical Preview. For production RUM, use the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
+* **Web real user monitoring (RUM)**: The {{kib}} **{{user-experience}}** app only shows data from the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md), not from EDOT Browser. If you rely on the {{user-experience}} app, keep using the classic browser agent. EDOT Browser also has fewer stable configuration options than the classic agent. Refer to [EDOT Browser limitations](elastic-otel-rum-js://reference/edot-browser/index.md#limitations) for other differences from the classic agent.
 * **Universal Profiling**: Only available with classic Elastic ingestion, and not through OTel-native data.
 * **Existing ECS integrations and dashboards**: Many prebuilt integrations and dashboards use ECS-formatted data and may not work with OpenTelemetry semantic conventions without customization. Install OpenTelemetry content packs from the {{kib}} {{integrations}} UI (search for `otel`) to get OTel-compatible dashboards.
 * **Tail-based sampling (TBS)**: {{edot}} does not provide managed TBS. The {{motlp}} has no TBS support, so you have to configure sampling at the edge before sending. You can configure self-managed TBS, with [some caveats](opentelemetry://reference/compatibility/limitations.md#tail-based-sampling-tbs), in:
