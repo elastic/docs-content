@@ -66,7 +66,7 @@ Deploys Filebeat as a DaemonSet with the autodiscover feature disabled. Uses the
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/{{version.eck | M.M}}/config/recipes/beats/stack_monitoring.yaml
 ```
 
-Deploys Metricbeat configured for {{es}} and {{kib}} [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) and Filebeat using autodiscover. Deploys one monitored {{es}} cluster and one monitoring {{es}} cluster. You can access the Stack Monitoring app in the monitoring cluster’s {{kib}}. To monitor {{es}} and {{kib}} without maintaining your own Metricbeat configuration, you can also use the [built-in stack monitoring support](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md) of the {{es}} and {{kib}} resources.
+This example deploys Metricbeat configured for {{es}} and {{kib}} [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) and Filebeat using autodiscover, along with one monitored {{es}} cluster and one monitoring {{es}} cluster. You can access the Stack Monitoring app in the monitoring cluster’s {{kib}}. To monitor {{es}} and {{kib}} without maintaining your own Metricbeat configuration, you can also use the [built-in stack monitoring support](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md) of the {{es}} and {{kib}} resources.
 
 ::::{note}
 In this example, TLS verification is disabled when Metricbeat communicates with the monitored cluster, which is not secure and should not be used in production. To solve this, use custom certificates and configure Metricbeat to verify them.
