@@ -258,6 +258,8 @@ When a custom panel has a query, it responds to filters and options active on th
 
 A panel without a query renders the same content regardless of the dashboard state.
 
+To find out why a panel with a query shows unexpected values, open the panel menu and select **Inspect**. The **Inspector** shows the {{esql}} request with the dashboard's query bar, filters, time range, and variable controls applied, and the response that {{es}} returned. Refer to [View the panel data and requests](/explore-analyze/dashboards/using.md#download-csv).
+
 ### Connect the panel to the time filter [custom-panels-time-filter]
 
 When the queried indices have a field named `@timestamp`, the dashboard time filter applies to the query automatically. For any other time field, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters so the query follows the time filter. If you generate the query with chat, the agent can include these parameters. When a query has neither, the **Data source (ES|QL)** section of the flyout shows a hint. The following query follows the time filter through `my_date_field`:

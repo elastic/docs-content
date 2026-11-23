@@ -188,7 +188,7 @@ Consider this configuration for ingestion use cases with 1-4 days of data availa
 
 ### CPU optimized (ARM) [ec-profiles-compute-optimized-arm]
 
-This profile is similar to CPU optimized profile but powered by ARM instances. Currently, we offer ARM instances on AWS. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+This profile is similar to CPU optimized profile but powered by ARM instances. Currently, we offer ARM instances on AWS, Azure, and GCP. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -204,7 +204,7 @@ Optimized for applications that leverage Vector Search and/or Generative AI. Als
 
 ### Vector search optimized (ARM) [ec-profiles-vector-search-arm]
 
-This profile is suited for Vector search, Generative AI and Semantic search optimized workloads powered by ARM instances. Currently, we offer ARM instances on AWS. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
+This profile is suited for Vector search, Generative AI and Semantic search optimized workloads powered by ARM instances. Currently, we offer ARM instances on AWS and GCP. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](cloud://reference/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
