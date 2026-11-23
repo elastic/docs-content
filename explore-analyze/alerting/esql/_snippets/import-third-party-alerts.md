@@ -52,12 +52,12 @@
    For that body, `<alert-id-field>` is `id`, `<status-field>` is `state`, `<severity-field>` is `severity`, `<name-field>` is `name`, and `<url-field>` is `url`. `<resolved-value>` is the value of `state` that marks the problem as resolved, such as `resolved`. If the tool sends several alerts in one request, use a [`foreach` step](/explore-analyze/workflows/steps/foreach.md) to create an alert for each one.
 
 4. Select **Save**. The workflow sets `enabled: true`, so it runs for each request as soon as you save it.
-5. In the tool's webhook settings, enter these values:
+5. In the system that sends the alerts, such as your monitoring tool or the other cluster, set up a webhook with these values:
 
    - **URL**: The **Webhook URL** that you copied in step 1.
    - **Method**: Use `POST`.
    - **Body**: The alert as JSON, with a `Content-Type: application/json` header.
-   - **Authentication**: An `Authorization: Bearer <ingest-token>` header, where `<ingest-token>` is the **Ingest token** that you copied from the connector in step 1. If the tool can't set headers, add `?token=<ingest-token>` to the end of the URL instead. Prefer the header, because URLs and logs can expose the token.
+   - **Authentication**: An `Authorization: Bearer <ingest-token>` header, where `<ingest-token>` is the **Ingest token** that you copied from the connector in step 1. If the system can't set headers, add `?token=<ingest-token>` to the end of the URL instead. Prefer the header, because URLs and logs can expose the token.
 
    Protect the ingest token like a password. Anyone who has it can start the connector's workflows.
 6. To check that the connector and the workflow work, have the tool send an alert. Then open the workflow and select **Executions** to see its [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history). Each request that {{kib}} accepts starts a run:
