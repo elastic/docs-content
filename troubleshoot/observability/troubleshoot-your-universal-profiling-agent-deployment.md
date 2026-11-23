@@ -92,7 +92,7 @@ If running this command outputs error-level logs, the following are possible cau
     Error: failed to invoke XXX(): Unavailable rpc error: code = Unavailable desc = unexpected HTTP status code received from server: 502 (Bad Gateway); transport: received unexpected content-type "application/json; charset=UTF-8"
     ```
 
-    Verify that the collector is running by navigating to **{{ecloud}} → Deployments → `<Deployment Name>` → Integrations Server** in [Elastic Cloud](https://cloud.elastic.co/home). If the **Copy endpoint** link next to **Profiling** is grayed out, you need to restart the collector by clicking **Force Restart** under **Integrations Server Management**.
+    Verify that the collector is running by navigating to **{{ecloud}}** → **Deployments** → **`<Deployment Name>`** → **Integrations Server** in [Elastic Cloud](https://cloud.elastic.co/home). If the **Copy endpoint** link next to **Profiling** is grayed out, you need to restart the collector by clicking **Force Restart** under **Integrations Server Management**.
 
     For non-demo workloads, verify that the Integrations Server has at least the recommended 4GB of RAM. You can check this on the Integrations Server page under **Instances**.
 

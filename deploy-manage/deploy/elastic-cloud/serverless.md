@@ -34,7 +34,7 @@ To compare {{serverless-short}} against every other deployment type, review the 
 
 ### Benefits of {{serverless-short}} projects [_benefits_of_serverless_projects]
 
-**Management free:** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, and business continuity.
+**Management free:** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, and [resilience and business continuity](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md).
 
 **Autoscale:** To meet your performance requirements, the system automatically adjusts to your workloads. For example, when you have a short-term spike on the data you ingest, more resources are allocated for that period of time. When the spike is over, the system uses less resources, without any action on your end. Some project-level limits apply to ensure performance and stability, including a [limit on the number of indices per project](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-index-size) that can be adjusted by request.
 

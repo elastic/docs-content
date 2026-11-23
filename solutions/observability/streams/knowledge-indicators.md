@@ -2,7 +2,9 @@
 navigation_title: Knowledge Indicators
 description: Knowledge Indicators automatically extract structured facts about services, infrastructure, and dependencies from raw log data in Streams.
 applies_to:
-  serverless: preview
+  serverless:
+    observability: preview
+    security: preview
   stack: preview 9.4+
 products:
   - id: observability

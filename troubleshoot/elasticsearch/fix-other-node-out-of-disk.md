@@ -24,7 +24,7 @@ In ECE, resizing is limited by your [allocator capacity](/deploy-manage/deploy/c
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or ECE Cloud UI.
 2. On the home page, find your deployment and select **Manage**.
-3. Go to **Actions** > **Edit deployment** and then go to the **Coordinating instances** or the **Machine Learning instances** section depending on the roles listed in the diagnosis:
+3. Go to **Actions** → **Edit deployment** and then go to the **Coordinating instances** or the **Machine Learning instances** section depending on the roles listed in the diagnosis:
 
     :::{image} /troubleshoot/images/elasticsearch-reference-increase-disk-capacity-other-node.png
     :alt: Increase disk capacity of other nodes

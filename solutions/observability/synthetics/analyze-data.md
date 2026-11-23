@@ -68,21 +68,14 @@ When you open an individual monitor’s page, you see much more detail about the
 * The monitor’s **name** with a down arrow icon that you can use to quickly move between monitors.
 * The **location** of the monitor. If the same monitor configuration was used to create monitors in multiple locations, you also see a down arrow icon that you can use to quickly move between locations that use the same configuration.
 * The latest **status** and when the monitor was **last run**.
-* The **![Beaker icon](/solutions/images/observability-beaker.svg "") Run test manually** button that allows you to run the test on demand before the next scheduled run.
+* **Actions**: Use **Run test manually** to run the test on demand before the next scheduled run, and **Edit monitor** to edit the monitor’s configuration.
 
-    ::::{note}
-    This is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
+::::{note}
+**Run test manually** is only available for monitors running on Elastic’s global managed testing infrastructure. It is not available for monitors running on {{private-location}}s.
 
-    ::::
+::::
 
-* The **![Pencil icon](/solutions/images/observability-pencil.svg "") Edit monitor** button that allows you to edit the monitor’s configuration.
-
-:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-header.png
-:alt: Header at the top of the individual monitor page for all monitor types in the {{synthetics-app}}
-:screenshot:
-:::
-
-Each individual monitor’s page has three tabs: Overview, History, and Errors.
+Each individual monitor’s page has the following tabs: Overview, History, Errors, and Alerts.
 
 :::{note}
 :applies_to: {"stack": "ga 9.4+"}
@@ -107,11 +100,6 @@ The **History** tab has information on every time the monitor has run. It includ
 
 For browser monitors, you can click on any run in the **Test runs** list to see the details for that run. Read more about that information in [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
 
-:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-history.png
-:alt: The History tab on the individual monitor page for all monitor types in the {{synthetics-app}}
-:screenshot:
-:::
-
 If the monitor is configured to [retest on failure](/solutions/observability/synthetics/configure-projects.md#synthetics-configuration-monitor), you see retests listed in the **Test runs** table. Runs that are retests include a rerun icon (![Refresh icon](/solutions/images/observability-refresh.svg "")) next to the result badge.
 
 :::{image} /solutions/images/observability-synthetics-retest.png
@@ -126,11 +114,6 @@ The **Errors** tab has information on failed runs. If the monitor is configured 
 The Errors tab includes a high-level overview of all alerts and a complete list of all failures. Use the calendar icon (![Calendar icon](/solutions/images/observability-calendar.svg "")) and search bar to filter for runs that occurred in a specific time period.
 
 For browser monitors, you can click on any run in the **Error** list to open an **Error details** page that includes most of the same information as [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
-
-:::{image} /solutions/images/observability-synthetics-analyze-individual-monitor-errors.png
-:alt: The Errors tab on the individual monitor page for all monitor types in the {{synthetics-app}}
-:screenshot:
-:::
 
 ## Browser monitors [synthetics-analyze-journeys]
 
@@ -149,12 +132,7 @@ The journey page on the Overview tab includes:
 * **Duration by step** over the last 24 hours.
 * A list of the **last 10 test runs** that link to the [details for each run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
 
-:::{image} /solutions/images/observability-synthetics-analyze-journeys-over-time.png
-:alt: Individual journey page for browser monitors in the {{synthetics-app}}
-:screenshot:
-:::
-
-From here, you can either drill down into:
+From the journey page, you can either drill down into:
 
 * The latest run of the full journey by clicking **![Inspect icon](/solutions/images/observability-inspect.svg "") View test run** or a past run in the list of **Last 10 test runs**. This opens [Details for one run](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-run).
 * An individual step in this run by clicking the performance breakdown icon (![Performance breakdown icon](/solutions/images/observability-apmTrace.svg "")) next to one of the steps. This opens [Details for one step](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step).
@@ -166,11 +144,6 @@ The page detailing one run for a journey includes more information on each step 
 At the top of the page, see the *Code executed* and any *Console* output for each step. If the step failed, this also includes a *Stacktrace* tab that you can use to diagnose the cause of errors.
 
 Navigate through each step using **![Previous icon](/solutions/images/observability-arrowLeft.svg "") Previous** and **Next ![Next icon](/solutions/images/observability-arrowRight.svg "")**.
-
-:::{image} /solutions/images/observability-synthetics-analyze-one-run-code-executed.png
-:alt: Step carousel on a page detailing one run of a browser monitor in the {{synthetics-app}}
-:screenshot:
-:::
 
 Open the steps in this journey run. Click the ![Arrow right icon](/solutions/images/observability-arrowRight.svg "") icon next to the step number to show details. The details include metrics for the step in the current run and the step in the last successful run. Read more about step-level metrics in [Timing](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-timing) and [Metrics](/solutions/observability/synthetics/analyze-data.md#synthetics-analyze-one-step-metrics).
 
@@ -281,7 +254,7 @@ stack: unavailable
 
 When [projects are linked](/deploy-manage/cross-project-search-config/cps-config-link-and-manage.md), the Synthetics **Overview**, monitor details, certificates, errors, and journeys pages use the [{{cps-init}} scope selector](/explore-analyze/cross-project-search/cross-project-search-manage-scope.md#cps-in-kibana) ({icon}`cross_project_search`) in the project header. Select **All projects** or a linked project to include monitor data from those projects.
 
-Monitors from linked projects appear alongside monitors from the origin project and show a **Linked** badge next to the monitor type. When they are present, a **Linked project** filter appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more linked projects. When that filter is active, monitors from the origin project are hidden and status counts reflect only the filtered set. To group monitors by linked project, select **Group by → Linked project**.
+Monitors from linked projects appear alongside monitors from the origin project and show a **Linked** badge next to the monitor type. When they are present, a **Linked project** filter appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more linked projects. When that filter is active, monitors from the origin project are hidden and status counts reflect only the filtered set. To group monitors by linked project, select **Group by** → **Linked project**.
 
 You can open a monitor from a linked project the same way as a monitor from the origin project. The details page shows a **Linked project monitor** callout. Click **View on linked project** when the linked project's {{kib}} URL is available. Because these monitors have no local saved object, the following actions are not available:
 
@@ -302,9 +275,9 @@ stack: ga 9.5+
 serverless: unavailable
 ```
 
-When you configure {{ccs-init}} in [**{{synthetics-app}} → Settings → Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
+When you configure {{ccs-init}} in [**{{synthetics-app}}** → **Settings** → **Remote clusters**](/solutions/observability/synthetics/configure-settings.md#synthetics-settings-remote-clusters), monitors from remote {{es}} clusters appear in the Synthetics UI alongside your local monitors. Remote monitors are identified by a **Remote** badge showing the cluster name, displayed next to the monitor type badge.
 
-When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set. To group monitors by remote cluster, select **Group by → Remote cluster**.
+When remote monitors are present, a **Remote cluster** filter option appears alongside **Type**, **Location**, **Tags**, and **Frequency**. Use it to scope the overview to monitors from one or more specific remote clusters. When a remote cluster filter is active, local monitors are hidden and status counts (for example, Up or Down) reflect only the filtered set. To group monitors by remote cluster, select **Group by** → **Remote cluster**.
 
 You can open a remote monitor's individual page the same way as a local monitor. Because remote monitors have no local saved object, the following actions are not available:
 

@@ -26,9 +26,9 @@ You must have the appropriate subscription. Refer to the subscription page for [
 
 To open and save the **Alert analysis workflow** settings page, you also need the following [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md):
 
-- `All` for **Management → Advanced Settings**.
-- `All` for **Security → Rules and Exceptions**.
-- **Update managed workflows** under **Analytics → Workflows → Managed Workflows Actions**.
+- `All` for **Management** → **Advanced Settings**.
+- `All` for **Security** → **Rules and Exceptions**.
+- **Update managed workflows** under **Analytics** → **Workflows** → **Managed Workflows Actions**.
 
 You also need a configured [AI connector](/deploy-manage/manage-connectors.md) for the agent to call.
 

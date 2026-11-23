@@ -38,6 +38,7 @@ Make sure you have the following before you start:
 
 * A local cluster running {{fleet}} and {{elastic-sec}}, and a separate remote cluster to receive endpoint data.
 * Permission to use {{fleet}} in {{kib}} on the local cluster, so you can create outputs and manage {{agent}} policies.
+* The `remote_cluster_client` node role on the local cluster's master-eligible nodes and on at least one of its nodes with the `transform` role. This is a default role, so you only need to check it if your nodes have customized roles. For details, refer to [Node role requirements](/solutions/security/get-started/elastic-security-requirements.md#node-role-requirements).
 
 ## Set up {{elastic-defend}} with a remote {{es}} output [setup]
 
@@ -47,14 +48,14 @@ Make sure you have the following before you start:
 
 In the local cluster, create a [remote {{es}} output](/reference/fleet/remote-elasticsearch-output.md) and point an {{agent}} policy at it, so that {{agents}} on that policy send their data to the remote cluster.
 
-To confirm the output is working, go to **{{fleet}} → Settings** and check that the remote {{es}} output appears in the **Outputs** list without connection errors.
+To confirm the output is working, go to **{{fleet}}** → **Settings** and check that the remote {{es}} output appears in the **Outputs** list without connection errors.
 :::::
 
 :::::{step} Add {{elastic-defend}} and enroll {{agents}}
 
 [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md): add the {{elastic-defend}} integration to the {{agent}} policy that uses the remote output, then enroll your {{agents}} into the local cluster. Their endpoint data now lands on the remote cluster.
 
-To confirm enrollment, go to **{{fleet}} → Agents** and check that each {{agent}} shows a **Healthy** status.
+To confirm enrollment, go to **{{fleet}}** → **Agents** and check that each {{agent}} shows a **Healthy** status.
 :::::
 
 :::::{step} Configure {{ccs}}
