@@ -78,7 +78,7 @@ serverless: ga
 stack: ga 9.7+
 ```
 
-If you save a change that you later regret, or you want to see how a dashboard used to look, you can browse its earlier versions, compare them, and bring one back. Each time you save a dashboard and its content changes, {{kib}} records a new version with a number (v1, v2, and so on), the name of the user who saved it, and the time. Saving without changing anything doesn't create a version, and changes saved before version history was available aren't recorded. By default, versions are kept indefinitely.
+You can browse a dashboard's earlier versions, compare them, and restore one. Each time you save a dashboard and its content changes, {{kib}} records a new version with a number (v1, v2, and so on), the name of the user who saved it, and the time. Saving without changing anything doesn't create a version, and changes saved before version history was available aren't recorded. By default, versions are kept indefinitely.
 
 To restore an earlier version:
 
