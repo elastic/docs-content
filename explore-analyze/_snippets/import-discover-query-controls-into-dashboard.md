@@ -41,5 +41,5 @@ The selected dashboard opens. It now includes a new panel that shows the visuali
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the dashboard already has a control with the same variable name, saving the visualization updates that control instead of adding a second one. The control takes the selection and settings from Discover and keeps its position, whether it's pinned or unpinned. {{kib}} still adds the control from Discover as a second control in these cases:
 
 - The existing control is inside a collapsible section.
-- The existing control has a different type. One uses **Static values** and the other uses **Values from a query**.
+- The existing control has a different type. For example, if one uses **Static values** and the other uses **Values from a query**.
 
