@@ -17,7 +17,7 @@ products:
 
 ## Creating a rule [creating-transform-rules]
 
-You can create transform rules under **{{stack-manage-app}} > {{rules-ui}}**.
+You can create transform rules under **{{stack-manage-app}}** → **{{rules-ui}}**.
 
 1. Click **Create rule** and select the transform health rule type.
 2. Give a name to the rule and optionally provide tags.

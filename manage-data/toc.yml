@@ -131,6 +131,38 @@ toc:
               - file: ingest/transform-enrich/example-enrich-data-based-on-exact-values.md
               - file: ingest/transform-enrich/example-enrich-data-by-matching-value-to-range.md
           - file: ingest/transform-enrich/index-mapping-text-analysis.md
+      # Streams: ingest, process, and route data before it reaches Elasticsearch (private technical preview).
+      # Hidden until the public technical preview.
+      - hidden: ingest/streams/index.md
+        children:
+          - hidden: ingest/streams/get-started/index.md
+            children:
+              - hidden: ingest/streams/get-started/how-streams-work.md
+              - hidden: ingest/streams/get-started/build-your-first-stream.md
+          - hidden: ingest/streams/streams-map.md
+          - hidden: ingest/streams/sources.md
+            children:
+              - hidden: ingest/streams/sources/otlp.md
+              - hidden: ingest/streams/sources/prometheus-remote-write.md
+              - hidden: ingest/streams/sources/elasticsearch-bulk.md
+          - hidden: ingest/streams/destinations.md
+            children:
+              - hidden: ingest/streams/destinations/elasticsearch.md
+              - hidden: ingest/streams/destinations/remote-elasticsearch.md
+              - hidden: ingest/streams/destinations/s3.md
+          - hidden: ingest/streams/process-data.md
+            children:
+              - hidden: ingest/streams/processors/add-fields.md
+              - hidden: ingest/streams/processors/filter.md
+              - hidden: ingest/streams/processors/rename-fields.md
+              - hidden: ingest/streams/processors/set.md
+              - hidden: ingest/streams/processors/transform.md
+          - hidden: ingest/streams/route-data.md
+          - hidden: ingest/streams/monitor-streams.md
+          - hidden: ingest/streams/security.md
+          - hidden: ingest/streams/troubleshooting.md
+          - hidden: ingest/streams/limitations.md
+          - hidden: ingest/streams/glossary.md
       - file: ingest/tools.md
   - file: lifecycle.md
     children:
