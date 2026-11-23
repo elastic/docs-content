@@ -163,12 +163,14 @@ The `service token` required by the {{fleet-server}} is different from the `enro
 
 3. Open the created policy, and from the **Integrations** tab select **Add integration**:
 
-    * Search for and select the {{fleet-server}} integration.
-    * Select **Add {{fleet-server}}** to add the integration to the {{agent}} policy.
+    1. In the **Add integration to policy** flyout, under **Select integration**, search for and select **{{fleet-server}}**.
+    2. Under **Configure integration**, configure the integration settings per [{{fleet-server}} scalability](/reference/fleet/fleet-server-scalability.md).
+    3. When done, select **Add integration**.
 
-        You can now configure the integration settings per [{{fleet-server}} scalability](/reference/fleet/fleet-server-scalability.md).
-
-    * When done, select **Save and continue**. Do not add an {{agent}} at this stage.
+    :::{note}
+    :applies_to: stack: ga =9.0
+    In this version, **Add integration** opens the **Integrations** page instead of a flyout. To add the {{fleet-server}} integration from there, follow the steps in [](/reference/fleet/add-integration-to-policy.md). When prompted, select **Add {{agent}} later**. You add the {{fleet-server}} in the next step.
+    :::
 
 4. Open the configured policy, which now includes the {{fleet-server}} integration, and select **Actions** → **Add {{fleet-server}}**. In the next dialog:
 

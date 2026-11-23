@@ -126,10 +126,6 @@ PUT _watcher/watch/test-alarm
 
 **In Elasticsearch versions before 7.0:**, you are not required to use the Elasticsearch keystore. Instead, you can use the console Elasticsearch settings editor for your deployment.
 
-:::{image} /explore-analyze/images/cloud-user-settings.png
-:alt: Advanced Alerting configuration
-:::
-
 ## Configuring a custom mail server [watcher-custom-mail-server]
 
 It is possible to use a custom mail service instead of the one configured by default. It can be configured by following the [Elasticsearch documentation for configuring email accounts](/explore-analyze/alerting/watcher/actions-email.md).
