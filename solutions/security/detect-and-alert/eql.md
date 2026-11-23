@@ -13,18 +13,21 @@ description: Create detection rules using Event Query Language (EQL) to detect e
 
 ## Overview
 
-Event correlation rules use [Event Query Language (EQL)](elasticsearch://reference/query-languages/eql/eql-syntax.md) to detect ordered sequences of events, single events with complex conditions, or the absence of expected events. EQL is purpose-built for event-based data and excels at expressing time-ordered relationships that other query languages cannot.
+Event correlation rules use [Event Query Language (EQL)](/explore-analyze/query-filter/languages/eql.md) to detect ordered sequences of events, single events that match complex conditions, or sequences in which an expected event doesn't happen.
+
+When the rule detects the full sequence, it creates an EQL alert and a building block alert for each event in the sequence. To learn what each alert contains and how to triage them, refer to [](/solutions/security/detect-and-alert/triage-eql-alerts.md).
 
 ### When to use an EQL rule
 
 EQL rules are the right fit when:
 
-* You need to detect a **sequence** of events that must occur in a specific order, such as a process creation followed by a network connection from the same process.
-* You want to detect **missing events** in a sequence, for example, a login that is never followed by a logout within a time window.
-* The detection logic involves correlating events by a **shared field** (such as `process.entity_id` or `host.id`) across time.
+* You need to detect a sequence of events that must occur in a specific order, such as a process creation followed by a network connection from the same process.
+* You want to detect missing events in a sequence, for example, a login without a matching logout within a time window.
+* The detection logic involves correlating events by a shared field (such as `process.entity_id` or `host.id`) across time.
 * You need richer event-level logic than KQL allows, such as filtering by event category within a sequence step.
+* You need to detect an ordered sequence of alerts from other rules, rather than raw events. To learn how one rule can search the alerts that other rules create, refer to [](/solutions/security/detect-and-alert/about-building-block-rules.md#security-building-block-rules-set-up-rules-that-run-on-alert-indices).
 
-EQL rules are **not** the best fit when:
+EQL rules aren't the best fit when:
 
 * A single-event match is sufficient. Use a [custom query rule](/solutions/security/detect-and-alert/custom-query.md) instead.
 * You need to count how often something happens. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.
@@ -32,59 +35,19 @@ EQL rules are **not** the best fit when:
 
 ### Data requirements
 
-EQL rules require at least one {{es}} index pattern or [{{data-source}}](/solutions/security/get-started/data-views-elastic-security.md). The indexed data must include a timestamp field (defaults to `@timestamp`) and an event category field (defaults to `event.category`). Sequence queries also benefit from a tiebreaker field to resolve events that share the same timestamp.
+EQL rules require at least one {{es}} index pattern or [{{data-source}}](/solutions/security/get-started/data-views-elastic-security.md). The data must include a timestamp field and an event category field. To learn how EQL uses these fields and their defaults, refer to [Required fields](/explore-analyze/query-filter/languages/eql.md#eql-required-fields).
 
-<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ## Writing effective EQL queries [craft-eql]
 
-### Sequence queries
+An EQL rule can use a single-event query, a sequence query, or a sequence with missing events. To learn the syntax for each, including `by`, `maxspan`, and missing events (`!`), refer to [Search for a sequence of events](/explore-analyze/query-filter/languages/eql.md#eql-search-sequence) and the [EQL syntax reference](elasticsearch://reference/query-languages/eql/eql-syntax.md), which also covers conditions and functions. 
 
-Sequence queries are the signature capability of EQL. A sequence defines two or more event conditions that must occur in order, optionally joined by a shared field:
+To practice building a sequence query against sample attack data before you turn it into a rule, refer to [](/explore-analyze/query-filter/languages/example-detect-threats-with-eql.md).
 
-```eql
-sequence by process.entity_id
-  [process where event.type in ("start", "process_started")
-    and process.name == "msxsl.exe"]
-  [network where event.type == "connection"
-    and process.name == "msxsl.exe"
-    and network.direction == "outgoing"]
-```
-
-| Clause | Purpose |
-|---|---|
-| `sequence by process.entity_id` | Correlates events that share the same process entity, ensuring the network event came from the same process instance that started. |
-| First `[ ]` bracket | Matches the process-start event for `msxsl.exe`. |
-| Second `[ ]` bracket | Matches an outbound network connection from the same `msxsl.exe` process. |
-
-The rule generates a single alert when the full sequence is detected.
-
-### Single-event queries
-
-EQL also supports single-event queries when you need EQL-specific syntax features, such as function calls or the `wildcard` function:
-
-```eql
-process where event.type == "start"
-  and process.name == "certutil.exe"
-  and process.args : "-urlcache"
-```
-
-### Missing event detection
-
-The `!` (missing events) syntax detects events that should have occurred but did not:
-
-```eql
-sequence by user.name with maxspan=1h
-  [authentication where event.outcome == "success"]
-  ![authentication where event.action == "logout"]
-```
-
-This detects a successful login that is never followed by a logout within one hour.
-
+<!-- CRAFT LAYER - COMMENTED OUT FOR REVIEW
 ### Best practices
 
-* **Use `by` clauses for precision.** Joining on a shared field like `process.entity_id` or `host.id` prevents unrelated events on different hosts from matching.
-* **Set `maxspan` to limit time windows.** Without a `maxspan`, a sequence can match events that are days apart, generating noisy alerts.
-* **Order conditions from most specific to least.** Put the rarest event first to reduce the number of partial sequences the engine must track.
+* **Join on a field that identifies one entity.** For process activity, use `process.entity_id` instead of `process.pid`, because operating systems reuse process IDs. Joining on a shared field like `host.id` also prevents unrelated events on different hosts from matching.
+* **Set `maxspan` to limit time windows.** Without a `maxspan`, events anywhere in the rule's look-back window can match, which can create noisy alerts.
 
 ::::{tip}
 **See it in practice.** These prebuilt rules demonstrate different EQL patterns:
@@ -167,7 +130,7 @@ The following settings appear in the **Define rule** section when creating an EQ
 :   Additional fields used by [EQL search](/explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
 
     * **Event category field**: The field containing event {{classification}} (such as `process`, `file`, or `network`). Typically a [keyword family](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) field. Defaults to `event.category`.
-    * **Tiebreaker field**: A secondary field for sorting events in ascending, lexicographic order when they share the same timestamp.
+    * **Tiebreaker field**: A secondary field for sorting events in ascending, lexicographic order when they share the same timestamp. To learn how EQL uses this field, refer to [Specify a sort tiebreaker](/explore-analyze/query-filter/languages/eql.md#eql-search-specify-a-sort-tiebreaker).
     * **Timestamp field**: The field containing the event timestamp, used for ordering sequence events. Defaults to `@timestamp`. This is different from the **Timestamp override** advanced setting, which controls the query time range.
 
 **Suppress alerts by** (optional)

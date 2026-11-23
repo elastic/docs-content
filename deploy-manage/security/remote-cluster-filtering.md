@@ -45,6 +45,8 @@ This guide covers the following remote cluster filtering tasks:
 
 ## Create a remote cluster filter [create-remote-cluster-filter]
 
+Follow the steps for your deployment type to create a remote cluster filter through the UI. To use the API instead, refer to [Manage network security through the API](network-security-api.md#create-remote-cluster-filter).
+
 :::::{applies-switch}
 
 ::::{applies-item} ess:
@@ -53,7 +55,7 @@ Remote cluster filters are presented in {{ecloud}} as a type of Private Connecti
 
 :::{include} _snippets/network-security-page.md
 :::
-3. Select **Create** > **Private connection**.
+3. Select **Create** → **Private connection**.
 4. Select the cloud provider and region for the remote cluster filter. 
     
     :::{note}
@@ -102,7 +104,7 @@ To create a remote cluster filter:
     You can provide one or both values. To add multiple rules to the filter, use the plus (`+`) button.
 
     ::::{tip}
-    You can find the ECE environment ID under **Platform → Trust Management → Trust parameters**, and the {{es}} cluster ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
+    You can find the ECE environment ID under **Platform** → **Trust Management** → **Trust parameters**, and the {{es}} cluster ID of a deployment by selecting **Copy cluster ID** on the deployment management page.
     ::::
 
     ::::{note}
