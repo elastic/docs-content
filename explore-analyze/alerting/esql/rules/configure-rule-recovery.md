@@ -36,6 +36,7 @@ An empty base query result triggers [no-data handling](configure-no-data-handlin
 Choose **Custom recovery** when:
 
 * The condition that should close an alert isn't simply "no longer breaching." For example, a value needs to drop back to a safe margin below the original breach threshold, not just dip under it once. Define a separate recovery condition to require that.
+* Alerts for the rule keep changing between `active` and `recovering` and show a **Flapping** badge. Set a recovery condition that requires the metric to move a safe margin back from the breach threshold. The alert then stays `active` until the metric clears that margin, instead of moving to `recovering` each time the alert condition stops matching. A [recovery delay](#recovery-delay) doesn't reduce flapping, because a breach during the delay returns the alert to `active`. To learn when an alert shows the badge, refer to [Spot a flapping alert](../alerts/investigate-alert-episodes.md#flapping).
 
 Choose **No recovery** when:
 
@@ -52,7 +53,7 @@ Recovery delay controls how much confirmation the rule needs, once the recovery 
 | Mode | Behavior | When to use |
 | --- | --- | --- |
 | Immediate | Closes the alert as soon as recovery is detected on the first evaluation. | Use when a single non-breaching evaluation is enough confidence that the problem is resolved. |
-| Recoveries | Closes the alert after recovery is detected a set number of times in a row. | Use when a rule alternates between breaching and recovering on consecutive evaluations, and you want to avoid a constant stream of open and closed notifications. |
+| Recoveries | Closes the alert after recovery is detected a set number of times in a row. | Use when a rule alternates between breaching and recovering on consecutive evaluations, and you want to avoid a constant stream of open and closed notifications. During the delay, the alert stays open in `recovering`, and a breach returns it to `active`. To reduce [flapping](../alerts/investigate-alert-episodes.md#flapping), use a [custom recovery condition](#recovery-strategy-when-to-use) instead. |
 | Duration | Closes the alert after recovery has held continuously for a set time. | Use when you need the condition to stay resolved for a minimum stretch of time before you trust it, rather than just counting evaluations. |
 
 ### Recovery delay fields

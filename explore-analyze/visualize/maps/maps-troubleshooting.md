@@ -26,11 +26,6 @@ Maps uses the [{{es}} vector tile search API]({{es-apis}}operation/operation-sea
 :screenshot:
 :::
 
-:::{image} /explore-analyze/images/kibana-requests_inspector.png
-:alt: requests inspector
-:screenshot:
-:::
-
 
 ## Solutions to common problems [_solutions_to_common_problems]
 
