@@ -24,6 +24,7 @@ If you want to keep a **Discover** exploration, share it with others, or tailor 
 * [Add sessions to dashboards](use-sessions-in-dashboards.md) as charts, tables, or whole sessions.
 * [Copy results](copy-and-share-documents.md) as text, JSON, or Markdown, or share a link to a session or a document.
 * [Export your results](export-discover-session.md) as a CSV file, or the session itself as JSON.
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` [Manage sessions programmatically](manage-sessions-programmatically.md) from scripts or a CI/CD pipeline, with the Discover sessions API.
 * Run long queries in the [background](background-search.md).
 * [Create an alert rule](generate-alerts-from-discover.md) from the query and filters of a session.
 

@@ -713,7 +713,7 @@ The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data
 
 To verify that OpenTelemetry RUM data is reaching Elastic:
 
-1. Open the **Service Inventory**. To do so, find `Services` or `Applications` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) or go to **{{observability}} → Applications → Service Inventory**.
+1. Open the **Service Inventory**. To do so, find `Services` or `Applications` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) or go to **{{observability}}** → **Applications** → **Service Inventory**.
 2. Look for your browser application in the **Service Inventory**.
 3. Open **Discover** and filter for recent events from your browser application to verify that data is indexed.
 

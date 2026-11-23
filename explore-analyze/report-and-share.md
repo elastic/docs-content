@@ -68,7 +68,7 @@ Create and download PDF, PNG, or CSV reports of Discover sessions, dashboards, v
 * **Download as JSON** {applies_to}`serverless: unavailable` — Generate and download JSON files of **Canvas** workpads.
 * **Export JSON**
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, preview 9.4-9.5` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
-    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/export-discover-session.md#export-discover-session-json).
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/export-discover-session.md#export-discover-session-json).
 
 :::{tip}
 Several applications let you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation).
@@ -86,7 +86,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 
     :::{dropdown} PDF
     * When a dashboard report includes a data table or Discover session, the PDF includes only the visible data.
-    * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * For dashboard PDFs, turn on **Print format** (or **Optimize for printing**, depending on your {{stack}} version) to get a printer-friendly report that uses multiple A4 portrait pages and shows at most two visualizations per page. Use it for reports that you want to print or share, and for dashboards that are too tall or too wide for a standard PDF. If a dashboard is more than 16000 pixels tall or 14400 pixels wide, {{kib}} fails the report and suggests print format in the error message. The option appears in the export flyout and, when you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation), in the schedule form.
     * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
     * Certain [limitations apply](#pdf-limitations).
     :::
@@ -106,7 +106,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
     * {applies_to}`serverless: unavailable` Trigger reports from [{{watcher}}](report-and-share/automating-report-generation.md#use-watcher).
     ::::
 
-Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management > Alerts and Insights > Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
+Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management** → **Alerts and Insights** → **Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
 
 ::::{note}
 In self-managed installations and {{ech}} deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
@@ -198,7 +198,7 @@ Create and securely share static **Canvas** workpads on a website. To customize 
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.
-3. Click **Share > Share on a website**.
+3. Click **Share** → **Share on a website**.
 4. To customize the workpad behavior to autoplay the pages or hide the toolbar, use the inline parameters.
 
    To make sure that your data remains secure, the data in the JSON file is not connected to {{kib}}. **Canvas** does not display elements that manipulate the data on the workpad.
@@ -221,6 +221,6 @@ Display your dashboards on an internal company website or personal web page with
 For information about granting access to embedded dashboards, refer to [Authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
 
 1. Open the dashboard you want to share.
-2. Click **Share > Embed code**.
+2. Click **Share** → **Embed code**.
 3. Specify which parts of the dashboard you want to include: Top menu, query, time filter, and filter bar.
 4. Click **Copy embed code**.
