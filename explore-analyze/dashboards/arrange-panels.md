@@ -241,9 +241,12 @@ If you select a panel header without the key held, a brief hint shows the gestur
 
 After you select the first panel, you no longer need to hold the key. On every panel, a round checkbox replaces the icons and panel menu that appear when you hover, and the corner handles disappear. Selecting any part of a panel, or its checkbox, adds the panel to the selection or removes it if it's already selected, instead of interacting with its content.
 
-To add an [{{esql}} variable control](../visualize/add-variable-controls.md), select another panel first, then select the control or its checkbox. [Pinned controls](../visualize/dashboard-controls.md#pinned-unpinned-controls) can't be selected.
+To make a control part of the selection:
 
-To select every panel that isn't in a collapsed section, press {kbd}`cmd+a` (Mac) or {kbd}`ctrl+a` (Windows and Linux).
+* The control must be unpinned. You can't select [pinned controls](../visualize/dashboard-controls.md#pinned-unpinned-controls).
+* Select another panel first, then select the control or its checkbox.
+
+To select every panel on the dashboard, press {kbd}`cmd+a` (Mac) or {kbd}`ctrl+a` (Windows and Linux). This includes panels in expanded sections, but not panels in collapsed sections.
 
 To clear the selection, press {kbd}`esc`, select an empty area of the dashboard, or select the **Clear selection (Esc)** icon {icon}`cross` in the toolbar.
 
@@ -254,8 +257,27 @@ To clear the selection, press {kbd}`esc`, select an empty area of the dashboard,
 
 While panels are selected, a toolbar at the bottom of the page shows how many you selected and the actions available for the whole selection:
 
-* **Group into a section**: Moves the selected panels, including panels from other sections, into a new, expanded collapsible section at the bottom of the dashboard. The panels keep their sizes and line up from the top left of the section in the order they had on the dashboard. The dashboard scrolls to the new section, and the selection clears. The grouping applies when you save the dashboard, and a single [undo](open-dashboard.md#undo-redo-dashboard) puts all the panels back where they were, even after you save. A control that moves into the new section filters only the panels in that section, as described in [Arrange panels in collapsible sections](#collapsible-sections).
-* **Copy to dashboard**: Opens the same **Copy to dashboard** window as the panel menu. After you select a dashboard and then select **Copy and go to dashboard**, that dashboard opens in **Edit** mode with all the selected panels added to it. The copies appear together in the first open space from the top left, keep their sizes, and stay linked to the [Visualize library](../visualize/visualize-library.md) if the originals were. The originals stay on the dashboard you copied them from, and you save the other dashboard to keep the copies. Until you save, an undo removes the copies.
-* **Remove**: Removes every selected panel at once, and the removal applies when you save the dashboard. A single [undo](open-dashboard.md#undo-redo-dashboard) brings all of them back, even after you save, until you leave the dashboard. Removing a panel you created directly on the dashboard deletes it. To keep a copy first, refer to [Remove a panel from a dashboard](create-dashboard.md#remove-panel).
+**Group into a section**
+:   Moves the selected panels, including panels from other sections, into a new, expanded collapsible section at the bottom of the dashboard. The dashboard scrolls to the new section, and the selection clears.
 
-**Copy to dashboard** is unavailable, with a tooltip that says why, when the selection includes a panel that can't be copied. Deselect that panel to copy the rest. The action doesn't appear if you can't create or edit dashboards.
+    The panels keep their sizes and line up from the top left of the section in the order they had on the dashboard. A control that moves into the new section filters only the panels in that section, as described in [Arrange panels in collapsible sections](#collapsible-sections).
+
+    The grouping applies when you save the dashboard. A single [undo](open-dashboard.md#undo-redo-dashboard) puts all the panels back where they were, even after you save.
+
+**Copy to dashboard**
+:   Opens the same **Copy to dashboard** window as the panel menu. After you select a dashboard and then select **Copy and go to dashboard**, that dashboard opens in **Edit** mode with all the selected panels added to it.
+
+    The copies appear together in the first open space from the top left, keep their sizes, and stay linked to the [Visualize library](../visualize/visualize-library.md) if the originals were. The originals stay on the dashboard you copied them from. Until you save the other dashboard, an undo removes the copies. Save it to keep them.
+
+    :::{note}
+    The **Copy to dashboard** action has these limits:
+
+    * If the selection includes a panel that can't be copied, such as an {{esql}} variable control, the action is unavailable and a tooltip says why. Deselect that panel to copy the rest.
+    * If the dashboard isn't saved yet, **New dashboard** isn't available in the **Copy to dashboard** window. You can still copy to an existing dashboard.
+    * The action doesn't appear if you can't create or edit dashboards.
+    :::
+
+**Remove**
+:   Removes every selected panel at once, and the removal applies when you save the dashboard. A single [undo](open-dashboard.md#undo-redo-dashboard) brings every removed panel back, even after you save, until you leave the dashboard.
+
+    Removing a panel you created directly on the dashboard deletes it. To keep a copy first, refer to [Remove a panel from a dashboard](create-dashboard.md#remove-panel).
