@@ -25,7 +25,11 @@ On the **Search Tier** page, the top half of the page offers general insights at
 
 Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
+* Select **custom time windows** to explore usage and performance data up to the last 10 days.
+
+  :::{include} /deploy-manage/monitor/_snippets/autoops-serverless-chart-intervals.md
+  :::
+
 * Gain insights from **performance charts** depicting search rate and latency trends over time.
 * {applies_to}`elasticsearch:` Explore the **Search VCUs** chart to understand the trend of Search VCU usage over time. Use the **annotations** overlaying this chart to understand when the search power, boost window, and minimum search VCUs changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption).
 * {applies_to}`vectordb:` Explore the **Reserved search capacity** chart to see your project's search capacity over time. Use the **annotations** overlaying this chart to understand when **Search Power** changed during the selected time period, with exact timestamps. 

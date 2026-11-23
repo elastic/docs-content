@@ -24,7 +24,11 @@ The top half of the **Indexing Tier** page offers general insights at the projec
 :::
 
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
+* Select **custom time windows** to explore usage and performance data up to the last 10 days.
+
+  :::{include} /deploy-manage/monitor/_snippets/autoops-serverless-chart-intervals.md
+  :::
+
 * Gain insights from **performance charts** depicting indexing rate and latency trends over time.
 * {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to see how [ingest VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) usage compares to indexing rate and latency.
 
