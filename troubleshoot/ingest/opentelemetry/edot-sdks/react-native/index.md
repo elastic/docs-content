@@ -360,8 +360,6 @@ For problems outside React Native setup and startup, use these guides:
   [Connectivity issues](/troubleshoot/ingest/opentelemetry/connectivity.md),
   [No application-level telemetry visible in {{kib}}](/troubleshoot/ingest/opentelemetry/edot-sdks/missing-app-telemetry.md),
   and [No data visible in {{kib}}](/troubleshoot/ingest/opentelemetry/no-data-in-kibana.md).
-* Diagnostics:
-  [Enable SDK debug logging](/troubleshoot/ingest/opentelemetry/edot-sdks/enable-debug-logging.md).
 * Kibana visualizations:
   [Android dashboard troubleshooting](integration-docs://reference/otel_android_dashboards.md#troubleshooting)
   and [iOS dashboard troubleshooting](integration-docs://reference/otel_ios_dashboards.md#troubleshooting).

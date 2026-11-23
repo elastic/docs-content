@@ -1,7 +1,9 @@
 ---
 navigation_title: Get data into Streams
 applies_to:
-  serverless: ga
+  serverless:
+    observability: ga
+    security: ga
   stack: preview =9.1, ga 9.2+
 description: Learn how to get data into Streams.
 products:
@@ -29,7 +31,7 @@ Streams requires the following permissions:
 
 ::::{applies-switch}
 
-:::{applies-item} serverless:
+:::{applies-item} { serverless: { observability: ga, security: ga } }
 Streams requires one of the following {{serverless-full}} roles:
 
 - Admin: Able to manage all Streams
@@ -56,14 +58,16 @@ For more information, refer to [Cluster privileges](elasticsearch://reference/el
 
 ```{applies_to}
 stack: preview 9.2+
-serverless: preview
+serverless:
+  observability: preview
+  security: preview
 ```
 
 Wired streams send documents to a managed endpoint, from which you can route data into child streams based on [partitioning](./organize-your-data.md) rules. Child streams inherit mappings, lifecycle settings, and processors from the parent.
 
 Select the endpoint that matches your deployment:
 
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Use **`logs.otel`** for OTel-native data or for a consistent, normalized format. Streams translates ECS field names to OTel equivalents automatically. Use **`logs.ecs`** when your data already uses ECS field names and you want to preserve them without transformation.
+- {applies_to}`serverless: { observability: preview, security: preview }` {applies_to}`stack: preview 9.4+` Use **`logs.otel`** for OTel-native data or for a consistent, normalized format. Streams translates ECS field names to OTel equivalents automatically. Use **`logs.ecs`** when your data already uses ECS field names and you want to preserve them without transformation.
 - {applies_to}`stack: preview 9.2-9.3` Use **`logs`**. This is the only wired-stream endpoint available in these versions. Replace `logs.otel` with `logs` in the following examples.
 
 Configure your shipper to use the endpoint:
@@ -94,7 +98,7 @@ service:
 filebeat.inputs:
   - type: filestream
     id: my-filestream-id
-    index: logs.otel # Set to `logs.otel` or `logs.ecs` (Serverless and Stack 9.4+), or logs (Stack 9.2–9.3)
+    index: logs.otel # Set to `logs.otel` or `logs.ecs` (Serverless and Stack 9.4+), or `logs` (Stack 9.2–9.3)
     enabled: true
     paths:
       - /var/log/*.log
@@ -164,7 +168,9 @@ Once data appears in Discover, you're ready to start organizing, parsing, and co
 #### Query unmapped fields [streams-wired-streams-discover-unmapped]
 ```{applies_to}
 stack: preview 9.4+
-serverless: preview
+serverless:
+  observability: preview
+  security: preview
 ```
 
 Wired streams can contain fields stored in `_source` that are not explicitly mapped. By default, ES|QL returns an error when a query references an unmapped field. To make unmapped fields queryable, add `SET unmapped_fields = "LOAD";` at the start of your ES|QL query:
@@ -203,7 +209,7 @@ Open classic streams from the following places in {{kib}}:
     1. From the **Documents** table, select the {icon}`expand` icon for a document to expand the details flyout.
     1. Under **Stream**, select the link to the stream (for example, `logs-generic.default`). The Streams UI opens filtered to the stream that contains the document.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.1+` You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
+{applies_to}`serverless: { observability: preview, security: preview }` {applies_to}`stack: preview 9.1+` You can also access Streams features using the Streams API. Refer to the [Streams API documentation]({{kib-apis}}group/endpoint-streams) for more information.
 
 ## Next steps [get-data-in-next-steps]
 
