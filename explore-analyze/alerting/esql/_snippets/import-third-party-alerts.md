@@ -1,76 +1,68 @@
-% Steps to import alerts into Universal Alerting from any tool that can send a webhook, in one H2 section:
+% Steps to import alerts into Universal Alerting from any tool that can send a webhook.
 
-## Import alerts with an Inbound Webhook connector [import-alerts-inbound-webhook]
+1. Create an **Inbound Webhook** connector. When you save it, {{kib}} generates a **Webhook URL** and an **Ingest token** for the connector and shows them in the flyout. Copy both before you close the flyout, because {{kib}} doesn't show the token again. If you lose the token, open the connector and select **Rotate ingest token** to get a new one.
+   % For instructions, refer to [](kibana://reference/connectors-kibana/inbound-webhook-action-type.md)
+2. Create a workflow that turns each request into an alert. The workflow needs an `inboundWebhook.received` trigger for your connector and an `alerting.create_alert` step that maps the tool's request body to alert fields. To create the workflow:
 
-Any tool that can send a webhook with a JSON body, such as Zabbix or PagerDuty, can send alerts to an Inbound Webhook connector. You write a workflow that turns each request into an alert.
+   1. Open **Workflows** from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+   2. If you already have workflows, select **Create workflow**. Then select **Start manually**. The editor opens with a sample workflow.
+   3. Replace the sample workflow with the following one, and then replace each placeholder as the notes after it describe:
 
-1. Create an **Inbound Webhook** connector on the **{{connectors-ui}}** page, which you can open from the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). After you save it, {{kib}} shows the **Webhook URL** and the **Ingest token**.
-2. Copy the webhook URL and the ingest token. {{kib}} shows the token only once. If you lose it, select **Rotate ingest token** to get a new one. The old token stops working right away.
-3. [Create a workflow](/explore-analyze/workflows/authoring-techniques/use-yaml-editor.md) that the connector's events trigger, with an `alerting.create_alert` step that maps the tool's request body to alert fields. For example, a tool might send one alert per request with this body.
+      ```yaml
+      name: Import alerts from my monitoring tool
+      enabled: true
+      triggers:
+        - type: inboundWebhook.received
+          connector-id: "<connector-id>" <1>
+      steps:
+        - name: create_alert_from_webhook
+          type: alerting.create_alert
+          with:
+            source: "<tool-name>" <2>
+            fingerprint: "{{ event.body.<alert-id-field> }}" <3>
+            alert_status: '{% if event.body.<status-field> == "<resolved-value>" %}inactive{% else %}active{% endif %}' <4>
+            severity: "{{ event.body.<severity-field> }}" <5>
+            data:
+              rule_name: "{{ event.body.<name-field> }}" <6>
+              source_alert_url: "{{ event.body.<url-field> }}" <7>
+      ```
 
-   ```json
-   {
-     "id": "disk-web-1",
-     "name": "Disk almost full",
-     "state": "firing",
-     "severity": "high",
-     "url": "https://monitoring.example.com/alerts/disk-web-1"
-   }
-   ```
+      1. Replace `<connector-id>` with the value in your connector's **Connector ID** field. To choose the connector from a list instead, remove `"<connector-id>"`, press {kbd}`ctrl+space`, and select your connector. To run the workflow for every Inbound Webhook connector in the space, select **All connectors of this type**, which sets the value to `"*"`.
+      2. Replace `<tool-name>` with a name for your tool, such as `zabbix`. The name appears in the **Source** column on the **Alerts** page and can't start with `elastic`.
+      3. Replace `<alert-id-field>` with the field that identifies the alert. Requests with the same `fingerprint` update the same alert, so use a field whose value stays the same while a problem lasts. If no single field identifies the alert, replace `fingerprint` with `fingerprint_fields`, a list of fields under `data` whose values together identify it. If you set neither, the step uses `rule_id`. Alerts from different tools or spaces never share an identity, even when their fingerprints match.
+      4. Replace `<status-field>` with the field that holds the alert's state, and `<resolved-value>` with the value that marks the problem as resolved. `active` opens the alert, or updates it if it's already open, and `inactive` closes it. If the tool reports the problem again after the alert closes, a new alert opens. If you leave out `alert_status`, the step uses `active`. The step also accepts `pending` and `recovering`.
+      5. Replace `<severity-field>` with the field that holds the alert's severity. The value must be `info`, `low`, `medium`, `high`, or `critical`, and the step fails on any other value, including an empty one, so map the tool's values when they differ. If the tool doesn't always send a severity, add a Liquid `default` filter. If it never does, remove this line.
+      6. Replace `<name-field>` with the field that holds the alert's name, which appears on the **Alerts** page. You can add other fields from the request under `data`, up to 100 keys.
+      7. Replace `<url-field>` with the field that holds a link to the alert in the tool. In the alert's details flyout, **View in source system** opens the link, but only for URLs that start with `http://` or `https://`. If the tool doesn't send a link, remove this line. {applies_to}`stack: experimental =9.6` Use `alert_url` instead of `source_alert_url`.
 
-   The following workflow turns each of those requests into an alert. Replace `<connector-id>` with the ID of your connector, which is the last part of the webhook URL.
+      The workflow reads each field in the tool's request body as `event.body.<field>`, so look at a request from your tool to find the field names. For example, a tool that sends one alert in each request might send this body:
 
-   ```yaml
-   name: Import alerts from my monitoring tool
-   enabled: true
-   triggers:
-     - type: inboundWebhook.received
-       connector-id: "<connector-id>"
-   steps:
-     - name: create_alert_from_webhook
-       type: alerting.create_alert
-       with:
-         source: my-monitoring-tool
-         fingerprint: "{{ event.body.id }}"
-         alert_status: '{% if event.body.state == "resolved" %}inactive{% else %}active{% endif %}'
-         severity: "{{ event.body.severity }}"
-         data:
-           rule_name: "{{ event.body.name }}"
-           source_alert_url: "{{ event.body.url }}"
-   ```
+      ```json
+      {
+        "id": "disk-web-1",
+        "name": "Disk almost full",
+        "state": "firing",
+        "severity": "high",
+        "url": "https://monitoring.example.com/alerts/disk-web-1"
+      }
+      ```
 
-   {applies_to}`stack: experimental =9.6` Name the URL field `alert_url` instead of `source_alert_url`.
+      For that body, `<alert-id-field>` is `id`, `<status-field>` is `state`, `<severity-field>` is `severity`, `<name-field>` is `name`, and `<url-field>` is `url`. `<resolved-value>` is the value of `state` that marks the problem as resolved, such as `resolved`. If the tool sends several alerts in one request, loop over them with a [`foreach` step](/explore-analyze/workflows/steps/foreach.md).
 
-   The workflow receives the request body as `event.body`. To run one workflow for every Inbound Webhook connector in the space, set `connector-id` to `"*"`. If the tool sends several alerts in one request, loop over them with a [`foreach` step](/explore-analyze/workflows/steps/foreach.md). To decide how to map each field, read the field descriptions that follow these steps.
-4. Configure the tool to send each alert as a `POST` request with a JSON body to the webhook URL. Add the ingest token in an `Authorization: Bearer <ingest-token>` header. If the tool can't set headers, append `?token=<ingest-token>` to the URL.
-5. To check the setup, have the tool send an alert. The alert appears on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md). If no alert appears, check the workflow's [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history) for a failed step.
+   4. If the editor lists validation errors, fix them.
+   5. Select **Save**. The workflow sets `enabled: true`, so it runs for each request as soon as you save it.
 
-The `alerting.create_alert` fields decide which alert each request updates, when that alert opens and closes, and how it appears:
+3. In the tool's webhook settings, enter these values:
 
-Identity
-:   The step uses `fingerprint` to identify the alert. If the event has no `fingerprint`, the step uses `fingerprint_fields`, a list of field names under `data` whose values together identify the alert. If neither is present, it uses `rule_id`. Each event needs at least one of the three.
+   - **URL**: The **Webhook URL** that you copied from the connector in step 1.
+   - **Method**: `POST`.
+   - **Body**: The alert as JSON, with a `Content-Type: application/json` header.
+   - **Authentication**: An `Authorization: Bearer <ingest-token>` header, where `<ingest-token>` is the **Ingest token** that you copied from the connector in step 1. If the tool can't set headers, add `?token=<ingest-token>` to the end of the URL instead. The header is safer, because it keeps the token out of URLs and logs.
 
-    The identity also includes `source` and the {{kib}} space, so the same fingerprint from two tools, or in two spaces, creates separate alerts. Use a value that stays the same while one problem lasts, such as a check ID together with a host name. Otherwise, each update opens a new alert instead of updating the open one.
+   Protect the ingest token like a password. Anyone who has it can start the connector's workflows.
+4. To check that the connector and the workflow work, have the tool send an alert. Then open the workflow and select **Executions** to see its [execution history](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-history). Each request that {{kib}} accepts starts a run:
 
-Lifecycle
-:   An event with `alert_status: active` opens an alert or updates the open alert that has the same identity. An event with `alert_status: inactive` closes that alert. If the same identity becomes `active` again later, a new alert opens in the same series as the earlier ones. If you leave out `alert_status`, the step uses `active`. The step also accepts `pending` and `recovering`.
-
-Display
-:   `source` names the tool and can't start with `elastic`. Put any other request fields under `data`, up to 100 keys. `data.rule_name` is the alert's name in the alerts table.
-
-    `severity` accepts `info`, `low`, `medium`, `high`, or `critical`. The step fails on any other value, including an empty one, so map the tool's values when they differ. If the tool doesn't always send a severity, add a Liquid `default` filter to the value.
-
-    A URL in one of the following fields adds a link back to the tool:
-
-    - {applies_to}`{serverless: {observability: experimental}, stack: experimental 9.7+}` `data.source_alert_url`
-    - {applies_to}`stack: experimental =9.6` `data.alert_url`
-
-Imported alerts appear on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md) with the alerts from your rules. To open the page, go to **Alerting** → **Alerts** in the {{observability}} navigation menu, or find **Alerts** using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
-% TODO: PMs need to provide why analysts and SREs look for imported alerts. Use the reason to open the next paragraph with the reader's goal.
-
-To find a tool's alerts among your other alerts, look for the `source` value that your workflow sets, such as `my-monitoring-tool`, in the **Source** column. To view an alert in the tool, open its details flyout and select **View in source system**. The link appears only when your workflow sets a URL that starts with `http://` or `https://`.
-
-{applies_to}`{serverless: {observability: experimental}, stack: experimental 9.7+}` To list only one tool's alerts, filter the page by **Source** and select that value.
-
-To stop importing alerts from a tool, turn off the workflow that its connector triggers. {{kib}} still accepts the tool's requests but creates no alerts. To have {{kib}} reject the requests too, delete the connector.
+   - If the run succeeded, the alert is on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md).
+   - If the run failed, open it to find the step that failed and why.
+   - If no run appears, check the HTTP status that the tool received. `202` means that {{kib}} accepted the request, so check that the workflow is enabled, is in the same space as the connector, and has your connector's ID in `connector-id`. `404` means that {{kib}} rejected the URL or the ingest token.
+   % For every status code, refer to [Troubleshoot webhook requests](kibana://reference/connectors-kibana/inbound-webhook-action-type.md#inbound-webhook-troubleshoot)
