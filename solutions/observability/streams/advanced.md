@@ -1,6 +1,7 @@
 ---
 applies_to:
-  stack: preview =9.1, ga 9.2-9.5
+  stack: preview =9.1, ga 9.2-9.4, removed 9.5+
+  serverless: unavailable
 navigation_title: Configure advanced settings
 description: Configure advanced Streams settings, including stream descriptions, feature identification, and underlying Elasticsearch index configuration.
 products:
@@ -46,7 +47,7 @@ For classic streams, you can access the following components:
 - [Pipelines](../../../manage-data/ingest/transform-enrich.md)
 - [Data streams](../../../manage-data/data-store/data-streams.md)
 
-For both wired ({applies_to}`stack: preview 9.2` {applies_to}`serverless: preview`) and classic streams, you can manually configure:
+For both wired and classic streams, you can manually configure:
 
 - **Shards:** Control how the index is split across nodes. More shards can improve parallelism but may increase overhead.
 - **Replicas:** Define how many copies of the data exist. More replicas improve resilience and read performance but increase storage usage.

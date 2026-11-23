@@ -23,7 +23,7 @@ api:
       product: kibana
       repository: elastic/kibana
       children:
-        - file: kibana-api-overview.md
+        - file: spaces.md
   kibana-serverless:
     - spec: kibana-serverless.yaml
       product: kibana
@@ -357,9 +357,9 @@ subs:
   watcher-transforms-cap:   "Payload transforms"
   dfanalytics-cap:   "Data frame analytics"
   dfanalytics:   "data frame analytics"
-  dfanalytics-job:   "data frame analytics analytics job"
-  dfanalytics-jobs:   "data frame analytics analytics jobs"
-  dfanalytics-jobs-cap:   "Data frame analytics analytics jobs"
+  dfanalytics-job:   "data frame analytics job"
+  dfanalytics-jobs:   "data frame analytics jobs"
+  dfanalytics-jobs-cap:   "Data frame analytics jobs"
   ctransform:   "continuous transform"
   ctransform-cap:   "Continuous transform"
   ctransforms:   "continuous transforms"
@@ -473,8 +473,8 @@ subs:
   daybreak: "Daybreak"
   kube-stack-version: 0.16.0
   helm-version: 4.3.0
-  ece-docker-images-8: 8.19.23
-  ece-docker-images-9: 9.5.5
+  ece-docker-images-8: 8.19.24
+  ece-docker-images-9: 9.5.6
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
