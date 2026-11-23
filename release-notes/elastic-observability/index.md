@@ -211,6 +211,14 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
 
+## 9.4.10 [elastic-observability-9.4.10-release-notes]
+
+:::{important}
+The 9.4.10 release contains fixes for potential security vulnerabilities. Check our [security advisory](https://discuss.elastic.co/c/announcements/security-announcements/31) for more details.
+:::
+
+There are no user-facing changes in {{observability}} for the 9.4.10 release.
+
 ## 9.4.9 [elastic-observability-9.4.9-release-notes]
 
 ### Fixes [elastic-observability-9.4.9-fixes]
