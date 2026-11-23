@@ -247,6 +247,11 @@ To select every panel that isn't in a collapsed section, press {kbd}`cmd+a` (Mac
 
 To clear the selection, press {kbd}`esc`, select an empty area of the dashboard, or select the **Clear selection (Esc)** icon {icon}`cross` in the toolbar.
 
+:::{image} /explore-analyze/images/dashboard-select-panels-toolbar.png
+:alt: Four dashboard panels with checked round checkboxes while a selection rectangle is dragged across them. A toolbar at the bottom shows 4 selected, followed by the Group into a section, Copy to dashboard, and Remove icons.
+:screenshot:
+:::
+
 While panels are selected, a toolbar at the bottom of the page shows how many you selected and the actions available for the whole selection:
 
 * **Group into a section**: Moves the selected panels, including panels from other sections, into a new, expanded collapsible section at the bottom of the dashboard. The panels keep their sizes and line up from the top left of the section in the order they had on the dashboard. The dashboard scrolls to the new section, and the selection clears. The grouping applies when you save the dashboard, and a single [undo](open-dashboard.md#undo-redo-dashboard) puts all the panels back where they were, even after you save. A control that moves into the new section filters only the panels in that section, as described in [Arrange panels in collapsible sections](#collapsible-sections).
