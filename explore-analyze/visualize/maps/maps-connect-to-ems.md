@@ -516,11 +516,6 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
     Once {{hosted-ems}} is running, follow instructions from the webpage at `localhost:8080` to define a configuration file and optionally download a more detailed basemaps database.
 
-   :::{image} /explore-analyze/images/kibana-elastic-maps-server-instructions.png
-   :alt: Set-up instructions
-   :screenshot:
-   :::
-
 
 
 ### Configuration [elastic-maps-server-configuration]
