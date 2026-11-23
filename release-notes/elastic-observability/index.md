@@ -23,6 +23,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ## 9.5.7 [elastic-observability-9.5.7-release-notes]
 
+:::{important}
+The 9.5.7 release contains fixes for potential security vulnerabilities. Check our [security advisory](https://discuss.elastic.co/c/announcements/security-announcements/31) for more details.
+:::
+
 ### Features and enhancements [elastic-observability-9.5.7-features-enhancements]
 * Shows the Synthetics **Can run tests manually** and **Can manage rules** sub-feature privileges as included when Synthetics is set to **All** in the role editor [#302481]({{kib-pull}}302481).
 
