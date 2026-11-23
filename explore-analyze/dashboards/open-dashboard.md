@@ -82,7 +82,7 @@ If you save a change that you later regret, or you want to see how a dashboard u
 
 To restore an earlier version:
 
-1. In edit mode, select **History** in the application menu. **History** is unavailable until you save the dashboard for the first time.
+1. In edit mode, select {icon}`ellipsis` **More** → **History** in the application menu. **History** is unavailable until you save the dashboard for the first time.
 2. In the **Version history** list, select a version to see the dashboard as it looked then. The preview isn't interactive. Your unsaved changes, if any, appear at the top of the list as **Unsaved changes**.
 
    :::{image} /explore-analyze/images/dashboard-version-history.png
