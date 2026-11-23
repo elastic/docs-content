@@ -90,6 +90,7 @@ To restore an earlier version:
    :screenshot:
    :width: 90%
    :::
+
 3. Select **Restore**, or open the **Version actions** menu {icon}`boxes_vertical` on the version and select **Restore this version**. The current version has no restore option. If you have unsaved changes, the restored version replaces them.
 4. Confirm the restore. {{kib}} saves the restored version as a new version, which appears at the top of the list with a note such as **Restored from v3**. Restoring never rewinds the history. The earlier versions stay in the list.
 
