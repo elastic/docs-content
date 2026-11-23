@@ -372,6 +372,8 @@ To reduce clutter, consider hiding redundant axis titles. For example, on a bar 
 
 :::{tip}
 For larger dashboards, you can also group panels into [collapsible sections](dashboards/arrange-panels.md) to keep things organized.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To gather several panels into a section at once, hold {kbd}`cmd` (Mac) or {kbd}`ctrl` (Windows and Linux) while you select them. Then select **Group into a section** in the toolbar that appears with your selection. To learn more, refer to [Select several panels to copy, remove, or group them](dashboards/arrange-panels.md#select-several-panels).
 :::
 
 When you are happy with the layout, select **Save** in the toolbar.
