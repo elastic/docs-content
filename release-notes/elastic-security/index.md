@@ -439,6 +439,17 @@ The 9.5.7 release contains fixes for potential security vulnerabilities. Check o
 * Fixes a partial-write bug so {{elastic-defend}} correctly sends data to a {{ls}} output when the kernel TCP send buffer is full, resolving premature connection failures.
 * Fixes a sharing violation in the `get-file` response action in {{elastic-defend}}.
 
+## 9.4.10 [elastic-security-9.4.10-release-notes]
+
+:::{important}
+The 9.4.10 release contains fixes for potential security vulnerabilities. Check our [security advisory](https://discuss.elastic.co/c/announcements/security-announcements/31) for more details.
+:::
+
+### Fixes [elastic-security-9.4.10-fixes]
+
+* Fixes {{elastic-defend}} on Linux so it correctly reports failures to enable event collection.
+* Fixes {{elastic-defend}} so it no longer logs the signature portion of request URLs that carry a credential in their query string, keeping sensitive tokens out of debug logs and diagnostics bundles.
+
 ## 9.4.9 [elastic-security-9.4.9-release-notes]
 
 ### Features and enhancements [elastic-security-9.4.9-features-enhancements]
