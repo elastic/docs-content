@@ -6,7 +6,7 @@
 
    1. Open **Workflows** from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
    2. If you already have workflows, select **Create workflow**. Then select **Start manually**. The editor opens with a sample workflow.
-   3. Replace the sample workflow with the following one, and then replace each placeholder as the notes after it describe:
+   3. Replace the sample workflow with the following one. Then use the numbered notes to replace each placeholder:
 
       ```yaml
       name: Import alerts from my monitoring tool
@@ -27,12 +27,12 @@
               source_alert_url: "{{ event.body.<url-field> }}" <7>
       ```
 
-      1. Replace `<connector-id>` with the value in your connector's **Connector ID** field. To choose the connector from a list instead, remove `"<connector-id>"`, press {kbd}`ctrl+space`, and select your connector. To run the workflow for every Inbound Webhook connector in the space, select **All connectors of this type**, which sets the value to `"*"`.
+      1. Replace `<connector-id>` with the value in your connector's **Connector ID** field. You can also remove `"<connector-id>"`, press {kbd}`ctrl+space`, and select the connector from the list. To run the workflow for every Inbound Webhook connector in the space, select **All connectors of this type** from that list, which sets the value to `"*"`.
       2. Replace `<tool-name>` with a name for your tool, such as `zabbix`. The name appears in the **Source** column on the **Alerts** page and can't start with `elastic`.
-      3. Replace `<alert-id-field>` with the field that identifies the alert. Requests with the same `fingerprint` update the same alert, so use a field whose value stays the same while a problem lasts. If no single field identifies the alert, replace `fingerprint` with `fingerprint_fields`, a list of fields under `data` whose values together identify it. If you set neither, the step uses `rule_id`. Alerts from different tools or spaces never share an identity, even when their fingerprints match.
+      3. Replace `<alert-id-field>` with the field that identifies the alert. Requests with the same `fingerprint` update the same alert, so use a field whose value stays the same while a problem lasts. If no single field identifies the alert, replace `fingerprint` with `fingerprint_fields`, a list of fields in `data` whose values together identify it. If you set neither, the step uses `rule_id`. Alerts from different tools or spaces stay separate, even when their fingerprints match.
       4. Replace `<status-field>` with the field that holds the alert's state, and `<resolved-value>` with the value that marks the problem as resolved. `active` opens the alert, or updates it if it's already open, and `inactive` closes it. If the tool reports the problem again after the alert closes, a new alert opens. If you leave out `alert_status`, the step uses `active`. The step also accepts `pending` and `recovering`.
-      5. Replace `<severity-field>` with the field that holds the alert's severity. The value must be `info`, `low`, `medium`, `high`, or `critical`, and the step fails on any other value, including an empty one, so map the tool's values when they differ. If the tool doesn't always send a severity, add a Liquid `default` filter. If it never does, remove this line.
-      6. Replace `<name-field>` with the field that holds the alert's name, which appears on the **Alerts** page. You can add other fields from the request under `data`, up to 100 keys.
+      5. Replace `<severity-field>` with the field that holds the alert's severity. The value must be `info`, `low`, `medium`, `high`, or `critical`. Any other value, including an empty one, makes the step fail, so map the tool's values when they differ. If the tool doesn't always send a severity, add a Liquid `default` filter. If it never does, remove this line.
+      6. Replace `<name-field>` with the field that holds the alert's name, which appears on the **Alerts** page. You can also add other fields from the request to `data`, up to 100 in total.
       7. Replace `<url-field>` with the field that holds a link to the alert in the tool. In the alert's details flyout, **View in source system** opens the link, but only for URLs that start with `http://` or `https://`. If the tool doesn't send a link, remove this line. {applies_to}`stack: experimental =9.6` Use `alert_url` instead of `source_alert_url`.
 
       The workflow reads each field in the tool's request body as `event.body.<field>`, so look at a request from your tool to find the field names. For example, a tool that sends one alert in each request might send this body:
@@ -47,7 +47,7 @@
       }
       ```
 
-      For that body, `<alert-id-field>` is `id`, `<status-field>` is `state`, `<severity-field>` is `severity`, `<name-field>` is `name`, and `<url-field>` is `url`. `<resolved-value>` is the value of `state` that marks the problem as resolved, such as `resolved`. If the tool sends several alerts in one request, loop over them with a [`foreach` step](/explore-analyze/workflows/steps/foreach.md).
+      For that body, `<alert-id-field>` is `id`, `<status-field>` is `state`, `<severity-field>` is `severity`, `<name-field>` is `name`, and `<url-field>` is `url`. `<resolved-value>` is the value of `state` that marks the problem as resolved, such as `resolved`. If the tool sends several alerts in one request, use a [`foreach` step](/explore-analyze/workflows/steps/foreach.md) to create an alert for each one.
 
    4. If the editor lists validation errors, fix them.
    5. Select **Save**. The workflow sets `enabled: true`, so it runs for each request as soon as you save it.
@@ -55,7 +55,7 @@
 3. In the tool's webhook settings, enter these values:
 
    - **URL**: The **Webhook URL** that you copied from the connector in step 1.
-   - **Method**: `POST`.
+   - **Method**: Use `POST`.
    - **Body**: The alert as JSON, with a `Content-Type: application/json` header.
    - **Authentication**: An `Authorization: Bearer <ingest-token>` header, where `<ingest-token>` is the **Ingest token** that you copied from the connector in step 1. If the tool can't set headers, add `?token=<ingest-token>` to the end of the URL instead. The header is safer, because it keeps the token out of URLs and logs.
 
@@ -64,5 +64,5 @@
 
    - If the run succeeded, the alert is on the [**Alerts** page](/explore-analyze/alerting/esql/alerts/view-and-manage-alerts.md).
    - If the run failed, open it to find the step that failed and why.
-   - If no run appears, check the HTTP status that the tool received. `202` means that {{kib}} accepted the request, so check that the workflow is enabled, is in the same space as the connector, and has your connector's ID in `connector-id`. `404` means that {{kib}} rejected the URL or the ingest token.
+   - If no run appears, check the HTTP status that the tool received. A `202` status means that {{kib}} accepted the request, so make sure that the workflow is enabled, is in the same space as the connector, and has your connector's ID in `connector-id`. A `404` status means that {{kib}} rejected the URL or the ingest token.
    % For every status code, refer to [Troubleshoot webhook requests](kibana://reference/connectors-kibana/inbound-webhook-action-type.md#inbound-webhook-troubleshoot)

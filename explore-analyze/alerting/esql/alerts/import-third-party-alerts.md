@@ -16,12 +16,12 @@ description: "Import alerts from Datadog and other third-party monitoring tools 
 For Datadog, you set up a [Datadog connector](kibana://reference/connectors-kibana/datadog-action-type.md), and Elastic provides a [managed workflow](/explore-analyze/workflows/managed-workflows.md) that creates the alerts. For any other tool that can send a webhook, you set up an Inbound Webhook connector and write a short workflow that turns each request from the tool into an alert.
 
 :::{note}
-To import third-party alerts, your role must have the [appropriate privileges](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-import-privileges) and your subscription must include workflows. Refer to the subscription page for [{{ecloud}}]({{subscriptions}}/cloud) and [{{stack}}/self-managed]({{subscriptions}}) for a breakdown of available features by tier.
+To import third-party alerts, your role needs the [import privileges](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-import-privileges), and your subscription must include workflows. To find out which subscriptions include workflows, compare the subscriptions for [{{ecloud}}]({{subscriptions}}/cloud) and [self-managed]({{subscriptions}}) deployments.
 :::
 
 ## Import alerts from Datadog [import-alerts-datadog]
 
-Elastic provides a [managed workflow](/explore-analyze/workflows/managed-workflows.md) called **Datadog alert translation** that turns monitor webhooks from every Datadog connector into alerts, so you don't need to write your own.
+You don't need to write a workflow to import Datadog alerts. A [managed workflow](/explore-analyze/workflows/managed-workflows.md) called **Datadog alert translation** turns the monitor webhooks that any Datadog connector receives into alerts.
 
 The managed workflow creates one alert for each combination of monitor and scope, so a monitor that fires for two hosts creates two alerts. A `Recovered` transition in Datadog closes the alert, and any other transition opens it or keeps it open. The alerts have no severity, but their data includes the monitor's priority as `priority`.
 
@@ -47,5 +47,5 @@ How you stop importing alerts depends on the tool:
 - **Datadog**: Open the Datadog connector, turn off **Receive events**, and save. {{kib}} stops accepting Datadog's requests immediately, so the managed workflow and any other workflows that the connector starts stop running. The connector's other actions keep working.
 - **Other tools**: Turn off the workflow that the tool's connector starts. {{kib}} still accepts the tool's requests but doesn't create alerts from them. To have {{kib}} reject the requests too, delete the connector.
 
-{applies_to}`{serverless: unavailable, stack: experimental 9.6+, ess: unavailable}` To stop importing alerts from every tool at once, set `xpack.actions.inboundEvents.enabled: false` in `kibana.yml` and restart {{kib}}. This turns off incoming requests for every connector, including connectors that start workflows for other tasks.
+{applies_to}`{stack: experimental 9.6+, ess: unavailable, serverless: unavailable}` To stop importing alerts from every tool at once, set `xpack.actions.inboundEvents.enabled: false` in `kibana.yml` and restart {{kib}}. This turns off incoming requests for every connector, including connectors that start workflows for other tasks.
 % For details about this setting, refer to [`xpack.actions.inboundEvents.enabled`](kibana://reference/configuration-reference/alerting-settings.md#xpack-actions-inboundevents-enabled)
