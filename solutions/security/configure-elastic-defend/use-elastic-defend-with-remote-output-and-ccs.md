@@ -38,6 +38,7 @@ Make sure you have the following before you start:
 
 * A local cluster running {{fleet}} and {{elastic-sec}}, and a separate remote cluster to receive endpoint data.
 * Permission to use {{fleet}} in {{kib}} on the local cluster, so you can create outputs and manage {{agent}} policies.
+* The `remote_cluster_client` node role on the local cluster's master-eligible nodes and on at least one of its nodes with the `transform` role. This is a default role, so you only need to check it if your nodes have customized roles. For details, refer to [Node role requirements](/solutions/security/get-started/elastic-security-requirements.md#node-role-requirements).
 
 ## Set up {{elastic-defend}} with a remote {{es}} output [setup]
 
