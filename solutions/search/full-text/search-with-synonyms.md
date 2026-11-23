@@ -184,7 +184,13 @@ When `lenient` is `false`, invalid synonym rules cause errors: analyzer changes 
 
 ## Step 3: Create an index with your synonym analyzer [synonyms-apply-synonyms]
 
-Synonyms can be applied at [search time or index time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). Search time is recommended because you can update your synonym sets without [reindexing]({{es-apis}}operation/operation-reindex). If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes.
+Synonyms can be applied at [search time or index time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). Use search time unless you have a specific reason to use index time.
+
+|  | Search time (recommended) | Index time |
+|---|---|---|
+| **Token filter** | `synonym_graph`, which handles multi-word synonyms | `synonym`, which isn't recommended for multi-word synonyms |
+| **Synonym sources** | Synonyms API, {{kib}} UI, file, or inline | File or inline only |
+| **Updating synonyms** | Update the synonym set. If token filters are configured with `"updateable": true`, you can [reload]({{es-apis}}operation/operation-indices-reload-search-analyzers) search analyzers without [reindexing]({{es-apis}}operation/operation-reindex). | Requires [reindexing]({{es-apis}}operation/operation-reindex) |
 
 The following example creates an index with `synonyms_analyzer` as a search analyzer on the `title` field.
 
