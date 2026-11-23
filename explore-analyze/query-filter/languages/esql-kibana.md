@@ -270,7 +270,9 @@ The explanation appears with the error message and includes:
 
 The agent hasn't run the corrected query, and results can vary between runs, so review it before you rely on it. To try the corrected query, select **Run query**. {{kib}} replaces the query in the editor with the corrected one and runs it. To use the corrected query somewhere else, select **Copy**, then paste it where you want to run it, for example in a new Discover tab.
 
+:::{note}
 With the required license but no configured model, **Explain with AI** still appears. Selecting it shows **No AI connector is set up.** and, if your role lets you manage connectors, a **Set up a connector** link.
+:::
 
 ### Commands with additional editor support
 
