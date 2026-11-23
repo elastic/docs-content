@@ -394,6 +394,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ## 9.4.10 [elastic-security-9.4.10-release-notes]
 
+:::{important}
+The 9.4.10 release contains fixes for potential security vulnerabilities. Check our [security advisory](https://discuss.elastic.co/c/announcements/security-announcements/31) for more details.
+:::
+
 ### Fixes [elastic-security-9.4.10-fixes]
 
 * Fixes {{elastic-defend}} on Linux so it correctly reports failures to enable event collection.
