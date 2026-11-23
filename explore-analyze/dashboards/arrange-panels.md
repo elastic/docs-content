@@ -22,7 +22,7 @@ This page covers:
 - [Moving and resizing panels](#resizing-containers)
 - [Customizing a panel's title, description, and border](#customize-panel-settings)
 - [Copying and duplicating panels](#duplicate-panels)
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` [Selecting several panels to copy or remove them](#select-several-panels)
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` [Selecting several panels to copy, remove, or group them](#select-several-panels)
 
 ## Requirements [arrange-panels-requirements]
 
@@ -141,6 +141,8 @@ Users viewing the dashboard will find the section in the same state as when you 
 
 ![Collapsible sections](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8c368aecdd095010/685e8fcb9c34ed3c353812a5/collapsible_panels.gif)
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To move several existing panels into a new section at once, refer to [Select several panels to copy, remove, or group them](#select-several-panels).
+
 ## Move and resize panels [resizing-containers]
 
 Compare the data in your panels side-by-side, organize panels by priority, resize the panels so they all appear immediately on the dashboard, and more.
@@ -220,17 +222,17 @@ Copy panels from one dashboard to another dashboard.
 
     ![Copy a panel to another dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt48304cb3cd1ee2e6/6753879eb7c4663812148d47/copy-to-dashboard-8.17.0.gif "")
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To copy several panels at once, refer to [Select several panels to copy or remove them](#select-several-panels).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To copy several panels at once, refer to [Select several panels to copy, remove, or group them](#select-several-panels).
 
-## Select several panels to copy or remove them [select-several-panels]
+## Select several panels to copy, remove, or group them [select-several-panels]
 ```{applies_to}
 serverless: ga
 stack: ga 9.7+
 ```
 
-If you want to copy a group of panels to another dashboard, or remove several panels from the one you're editing, you can select them together and act on them at once instead of repeating the panel menu steps for each panel.
+If you want to copy several panels to another dashboard, remove them, or gather them into a collapsible section, you can select them together and act on them at once instead of handling each panel one by one.
 
-To start a selection, open the dashboard in **Edit** mode, hold {kbd}`cmd` (Mac) or {kbd}`ctrl` (Windows and Linux), and do one of the following:
+To start a selection, open the dashboard in **Edit** mode, hold {kbd}`cmd` (Mac) or {kbd}`ctrl` (Windows and Linux) by itself, and do one of the following:
 
 * Select any part of a panel to add it to the selection.
 * Drag across the dashboard to draw a rectangle that selects every panel it touches. The page scrolls automatically when you drag near its top or bottom edge.
@@ -243,5 +245,6 @@ To clear the selection, press {kbd}`esc`, select an empty area of the dashboard,
 
 While panels are selected, a toolbar at the bottom of the page shows how many you selected and the actions available for the whole selection:
 
+* **Group into a section**: Moves the selected panels into a new, expanded collapsible section at the bottom of the dashboard. The panels keep their sizes and line up from the top left of the section in the order they had on the dashboard. The dashboard scrolls to the new section, and the selection clears. A single [undo](open-dashboard.md#undo-redo-dashboard) puts all the panels back where they were.
 * **Copy to dashboard**: Opens the same **Copy to dashboard** window as the panel menu. After you select a dashboard and then select **Copy and go to dashboard**, that dashboard opens in **Edit** mode with all the selected panels added to it. The originals stay on the dashboard you copied them from, and you save the other dashboard to keep the copies. If the selection includes a panel that can't be copied, the action is turned off and a tooltip says why. Remove that panel from the selection to copy the rest. The action doesn't appear if you can't create or edit dashboards.
 * **Remove**: Removes every selected panel at once, and the removal applies when you save the dashboard. A single [undo](open-dashboard.md#undo-redo-dashboard) brings all of them back. Panels you created directly on the dashboard are deleted, so to keep a copy, refer to [Remove a panel from a dashboard](create-dashboard.md#remove-panel).
