@@ -30,8 +30,7 @@ option. You can also [use Logstash](logstash://reference/index.md) with {{es}} i
 A: {{serverless-short}} manages resilience automatically. Indexed data is written to cloud-provider object storage rather than stored as local replicas on cluster nodes, and {{serverless-short}} manages the placement of nodes into availability zones within each region. For details, refer to [](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md).
 
 **Q: Can I request backups or restores for my serverless projects?**  
-A: On-demand project backups or restores are currently unavailable. 
-User-initiated data recovery is anticipated in a future release. You can follow its progress by referring to the [public roadmap](https://github.com/elastic/roadmap/issues/228).
+A: {{serverless-short}} does not offer on-demand project backups or a self-service recovery workflow for data loss resulting from user-initiated operations, such as accidental index deletion or bulk document removal. If you experience this type of data loss, [contact Elastic Support](/troubleshoot/index.md#contact-us) to discuss your options. Self-service data recovery is planned for a future release. You can follow its progress on the [public roadmap](https://github.com/elastic/roadmap/issues/228).
 
 ## Security, compliance, and access
 

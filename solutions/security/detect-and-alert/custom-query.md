@@ -23,12 +23,12 @@ Custom query rules are the right fit when:
 * The detection logic can be expressed as a single query without requiring event ordering, aggregation, or comparison against external threat feeds.
 * You want to reuse an existing {{kib}} saved query or Timeline query as the basis for a detection.
 
-Custom query rules are **not** the best fit when you need to:
+Custom query rules aren't the best fit when:
 
-* Detect **sequences** of events in a specific order. Use an [event correlation (EQL) rule](/solutions/security/detect-and-alert/eql.md) instead.
-* Fire only when a field value **exceeds a count**. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.
-* Match events against an **external indicator feed**. Use an [indicator match rule](/solutions/security/detect-and-alert/indicator-match.md) instead.
-* Detect a **field value that has never appeared before**. Use a [new terms rule](/solutions/security/detect-and-alert/new-terms.md) instead.
+* You need to detect sequences of events in a specific order. Use an [event correlation (EQL) rule](/solutions/security/detect-and-alert/eql.md) instead.
+* You need the rule to fire only when a field value exceeds a count. Use a [threshold rule](/solutions/security/detect-and-alert/threshold.md) instead.
+* You need to match events against an external indicator feed. Use an [indicator match rule](/solutions/security/detect-and-alert/indicator-match.md) instead.
+* You need to detect a field value that has never appeared before. Use a [new terms rule](/solutions/security/detect-and-alert/new-terms.md) instead.
 
 ### Data requirements
 
