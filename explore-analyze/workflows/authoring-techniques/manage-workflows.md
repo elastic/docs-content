@@ -88,7 +88,7 @@ Select a version in the timeline to preview its YAML in the editor:
   To flag validation errors, select the settings icon {icon}`controls` at the bottom right of the YAML preview, then turn on validation error highlighting.
   :::
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To view the differences side by side instead of in one editor, select the same settings icon, then select **Split** under **Comparison mode**. Select **Unified** to switch back.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To view the differences side by side instead of in one editor, select the settings icon {icon}`controls` at the bottom right of the YAML preview, then select **Split** under **Comparison mode**. To switch back, select **Unified**.
 
 If you have unsaved edits, they appear at the top of the timeline as **Unsaved changes**. Select that row to compare your draft against the last committed version before you save.
 
