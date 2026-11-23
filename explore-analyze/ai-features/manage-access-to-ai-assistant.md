@@ -193,7 +193,7 @@ stack: ga 9.7+
 
 If you want a model to reason more or less for a specific feature, you can set its reasoning effort. The effort applies only to that feature, so the same model can use a different effort in another one.
 
-Only [EIS](/explore-analyze/elastic-inference/eis.md) models that support reasoning effort offer this setting. If a feature has recommended models, you also need to turn off **Use recommended defaults** for that feature before the setting appears.
+This setting is available for [EIS](/explore-analyze/elastic-inference/eis.md) models that support reasoning effort. If a feature has recommended models, turn off **Use recommended defaults** for that feature before the setting appears.
 
 To set the effort for a model:
 
@@ -205,4 +205,4 @@ To set the effort for a model:
 
 To stop customizing the effort for a model, open the **Reasoning effort** popover again, select **Remove effort customization**, and save your settings.
 
-When you copy a feature's assigned models to other features, the efforts you set are copied with them. If you reset a feature to its defaults, your custom efforts are discarded.
+When you copy a feature's assigned models to other features, the efforts you set come with them. Resetting a feature to its defaults also removes your custom efforts.
