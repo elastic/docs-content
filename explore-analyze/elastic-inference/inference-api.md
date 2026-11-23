@@ -15,8 +15,6 @@ products:
 You can use the default {{infer}} endpoints your deployment contains or create a new {{infer}} endpoint using the [create an {{infer}} endpoint API]({{es-apis}}operation/operation-inference-put).
 Alternatively, you can use [EIS](/explore-analyze/elastic-inference/eis.md) or [External {{infer}}](/explore-analyze/elastic-inference/external.md) apps in {{kib}}.
 
-To use the `openai` service with a locally hosted model or another server that follows the OpenAI API shape, set the `url` in the endpoint's service settings. For a walkthrough, refer to [](/solutions/search/semantic-search/using-openai-compatible-models.md).
-
 ## Default {{infer}} endpoints [default-enpoints]
 
 Your {{es}} deployment contains preconfigured {{infer}} endpoints, which makes them easier to use when defining `semantic_text` fields or using {{infer}} processors. These endpoints come in two forms:
