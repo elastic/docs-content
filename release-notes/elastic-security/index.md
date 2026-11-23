@@ -29,6 +29,10 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ## 9.5.7 [elastic-security-9.5.7-release-notes]
 
+:::{important}
+The 9.5.7 release contains fixes for potential security vulnerabilities. Check our [security advisory](https://discuss.elastic.co/c/announcements/security-announcements/31) for more details.
+:::
+
 ### Features and enhancements [elastic-security-9.5.7-features-enhancements]
 
 * Adds the `POST /api/entity_analytics/watchlists/{watchlist_id}/entity_source/{id}/_update_api_key` API, which replaces the API key that syncs a watchlist's index entity source with a key granted from the calling user [#303648]({{kib-pull}}303648).
