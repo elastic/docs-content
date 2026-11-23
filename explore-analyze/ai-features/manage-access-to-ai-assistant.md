@@ -201,7 +201,7 @@ To set the effort for a model:
 2. If **Use recommended defaults** is turned on for the feature, turn it off, then select **Turn off recommended defaults** to confirm.
 3. In the **Assigned models** list, hover over the model and select **Effort**. If the model already shows an effort, select that instead.
 4. In the **Reasoning effort** popover, select a level. The popover lists only the levels the model supports, out of **none**, **minimal**, **low**, **medium**, **high**, and **xhigh**.
-5. Select **Save settings**.
+5. Select **Save settings**. The model's row shows the level you chose.
 
 To stop customizing the effort for a model, open the **Reasoning effort** popover again, select **Remove effort customization**, and save your settings.
 
