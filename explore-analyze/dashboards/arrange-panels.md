@@ -275,6 +275,7 @@ While panels are selected, a toolbar at the bottom of the page shows how many yo
     * If the selection includes a panel that can't be copied, such as an {{esql}} variable control, the action is unavailable and a tooltip says why. Deselect that panel to copy the rest.
     * If the dashboard isn't saved yet, **New dashboard** isn't available in the **Copy to dashboard** window. You can still copy to an existing dashboard.
     * The action doesn't appear if you can't create or edit dashboards.
+
     :::
 
 **Remove**
