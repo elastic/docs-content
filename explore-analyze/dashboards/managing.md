@@ -52,10 +52,6 @@ Similarly, managed dashboards created by integrations are identified as created 
 The creator information is only available for dashboards created on or after version 8.14. For dashboards from previous versions, the creator is empty.
 ::::
 
-:::{image} /explore-analyze/images/kibana-dashboard-filter-by-creator.png
-:alt: Option to filter the list of dashboards by creator
-:::
-
 **Sort by name or last update date**
 
 By default, your most recently viewed dashboards are displayed first. You can instead sort the dashboard list based on their name or their last update date.
@@ -77,21 +73,13 @@ To browse your saved visualizations and annotation groups, open the [Visualize l
 
 You can mark any dashboards as favorite, using the ✩ **star icon** from the **Dashboards** page or from the dashboard itself.
 
-All dashboards marked as favorite are gathered in the **Starred** tab so you can find them quickly.
+To list only the dashboards you marked as favorite, select **Starred**.
 
 The list of starred dashboards is personal. Dashboards marked as favorite by other users only appear for those users.
-
-![List of starred dashboards](/explore-analyze/images/kibana-dashboard-starred-list.png "")
 
 
 ## View dashboard usage [_view_dashboard_usage]
 
-You can check how much a dashboard is being used by clicking its **View details** icon in your list of dashboards.
-
-![View details icon in the list of dashboards](/explore-analyze/images/kibana-view-details-dashboards-8.16.0.png "")
-
-These details include a graph showing the total number of views during the last 90 days.
-
-![Graph showing the number of views during the last 90 days](/explore-analyze/images/kibana-dashboard-usage-count.png "")
+To check how much a dashboard is used, select its {icon}`info` **View details** icon in the dashboard list. The details include a graph of the total number of views during the last 90 days.
 
 {applies_to}`stack: preview 9.5` For per-user records of dashboard creation, updates, deletion, views, and refreshes, configure [Kibana user activity logging](kibana://reference/user-activity.md#dashboard-event-fields).

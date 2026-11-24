@@ -54,6 +54,8 @@ Each of the following privileges controls access to a different part of {{elasti
 :applies_to: {"serverless": "ga"}
 
 In {{serverless-short}}, the **Security** group also includes privileges that belong to the **Analytics** group in {{stack}}. Which ones appear depends on your [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md). For those privileges, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+
+For example, Security Analytics Complete and EASE projects list **Agent Builder** in the **Security** group. For its privileges, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 :::
 
 ## Security sub-feature privileges
