@@ -134,7 +134,7 @@ You can open the following **TSVB** visualizations in **Lens**:
 * Gauge
 * Table
 
-To get started, click **Edit visualization in Lens** in the toolbar.
+To get started, select **Edit visualization in Lens** in the [application menu](/explore-analyze/find-and-organize/kibana-interface.md#application-menu).
 
 You can also convert a **TSVB** visualization that's already on a dashboard. In **Edit** mode, open the panel menu {icon}`boxes_vertical` and select **Convert to Lens**. The option appears only when {{kib}} can convert the visualization's configuration, and you need at least **Read** access to the **Visualize library** feature. **Lens** opens with the converted visualization. To replace the panel with it, select **Save and return**.
 
@@ -145,7 +145,7 @@ For more information, check out [Create visualizations with Lens](../lens.md).
 
 View the requests that collect the visualization data.
 
-1. In the toolbar, click **Inspect**.
+1. In the application menu, select **Inspect**.
 2. From the **Request** dropdown, select the series you want to view.
 
 
@@ -155,7 +155,10 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 
 To save the panel to the **Visualize Library**:
 
-1. Click **Save to library**.
+1. In the application menu, select **Save to library**.
+
+    :::{include} ../_snippets/save-to-library-more.md
+    :::
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
@@ -181,7 +184,7 @@ For answers to frequently asked **TSVB** question, review the following.
 You can create dashboard drilldowns that include the specified time range for **Top N** and **Table** visualizations.
 
 1. Open the dashboard that you want to link to, then copy the URL.
-2. Open the dashboard with the **Top N** and **Table** visualization panel, then click **Edit** in the toolbar.
+2. Open the dashboard with the **Top N** and **Table** visualization panel, then select **Edit** in the application menu.
 3. Open the **Top N** or **Table** panel menu, then select **Edit visualization**.
 4. Click **Panel options**.
 5. In the **Item URL** field, enter the URL.
@@ -189,7 +192,9 @@ You can create dashboard drilldowns that include the specified time range for **
     For example `dashboards#/view/f193ca90-c9f4-11eb-b038-dd3270053a27`.
 
 6. Click **Save and return**.
-7. In the toolbar, click **Save as**, then make sure **Store time with dashboard** is deselected.
+7. In the application menu, select **Save as**, then make sure **Store time with dashboard** is deselected.
+
+    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+` **Save as** is in the menu that opens from the arrow next to **Save**.
 
 ::::
 
