@@ -666,6 +666,7 @@ toc:
               - file: security/integrations/tenablevm.md
               - file: security/integrations/wiz.md
           - file: security/get-started/automatic-import.md
+          - file: security/get-started/content-connectors.md
           - file: security/get-started/enable-threat-intelligence-integrations.md
       - file: security/manage.md
         children:
@@ -776,7 +777,6 @@ toc:
           - file: security/mcp-app/elastic-security-mcp-app.md
           - file: security/ai/ai-assistant-knowledge-base.md
             children:
-              - file: security/get-started/content-connectors.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/ease/ease-value-report.md
           - file: security/ai/ease/ease-intro.md
