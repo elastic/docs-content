@@ -72,19 +72,9 @@ When the channel is connected, `@Elastic` tells the channel which project it now
 
 > Elastic `<project ID>` (`<project host>`) is connected to this channel and ready. Mention @Elastic in a thread to get started.
 
-:::{image} ../../images/nightshift-slack-join-and-welcome.png
-:alt: The join notice @Elastic posts when it's invited, followed by the welcome message after the channel is connected
-:screenshot:
-:::
-
 If `@Elastic` isn't in the channel yet, or the channel is private and the workspace doesn't allow private channel access, {{kib}} refuses it and says what to do:
 
 > Invite @Elastic to the channel, then try again. If the channel is private, the workspace also needs private channel access. To allow it, disconnect the workspace and connect it again. A Slack admin may need to approve it, and you will need to reconnect your channels.
-
-:::{image} ../../images/nightshift-slack-connect-invite-hint.png
-:alt: Kibana refusing to connect a channel that @Elastic isn't a member of
-:screenshot:
-:::
 
 A channel answers for one project only. If another project already connected it, {{kib}} says the channel is already connected to another Elastic deployment, and that project has to disconnect it first.
 
@@ -100,20 +90,15 @@ Anyone in a connected channel can mention `@Elastic`, either in a new message or
 
 To follow up, mention `@Elastic` again in the same thread. It continues the same conversation, so you don't need to repeat yourself.
 
-:::{image} ../../images/nightshift-slack-follow-up-thread.png
-:alt: A mention inside an existing thread, answered using what was said earlier in the thread
-:screenshot:
-:::
-
 When you mention it in a thread, `@Elastic` also reads the thread's first message and up to four of the latest messages from other people since its last answer. In a long thread, it may read only the first message.
 
 `@Elastic` answers people. When another app posts a message that mentions `@Elastic`, it doesn't answer. That message can start an automation instead.
 
 A mention that opens a new conversation counts toward the daily investigation limits, even though it doesn't start an investigation. Follow-up mentions in the same thread don't count. Refer to [Investigation limits](./investigation/limits.md).
 
-### Troubleshoot `@Elastic` reponses [nightshift-slack-app-notices]
+### Troubleshoot `@Elastic` responses [nightshift-slack-app-notices]
 
-The following table lists the messages that `@Elastic` posts when it can't answer you question, and what to do. If your project rejects a request for another reason, `@Elastic` posts the project's explanation without changing it.
+The following table lists the messages that `@Elastic` posts when it can't answer your question, and what to do. If your project rejects a request for another reason, `@Elastic` posts the project's explanation without changing it.
 
 | Where or when | The message `@Elastic` posts | What to do |
 | --- | --- | --- |
@@ -131,34 +116,9 @@ The following table lists the messages that `@Elastic` posts when it can't answe
 
 When your project refuses your message, for example because the daily limit is reached, or `@Elastic` can't get it there at all, `@Elastic` also adds a `:warning:` reaction to your message, so you can spot it in a busy channel. An answer that fails after it started gets no reaction.
 
-:::{image} ../../images/nightshift-slack-not-connected-mention.png
-:alt: The reply @Elastic posts when someone mentions it in a channel that isn't connected
-:screenshot:
-:::
-
-:::{image} ../../images/nightshift-slack-dm-not-supported.png
-:alt: The notice @Elastic posts in its Messages tab, where Slack doesn't allow sending messages to the app
-:screenshot:
-:::
-
-:::{image} ../../images/nightshift-slack-limit-warning.png
-:alt: The daily limit notice in a thread, with a warning reaction on the person's mention
-:screenshot:
-:::
-
-:::{image} ../../images/nightshift-slack-response-failed.png
-:alt: A follow-up whose answer failed, showing Stopped and Elastic response failed
-:screenshot:
-:::
-
 ## Follow an investigation in Slack (on-call engineers) [nightshift-slack-app-investigations]
 
 An automation can post an investigation to a connected channel, for example when an alert arrives from another tool. Within a minute, {{nightshift}} replies in the alert's thread with **⏳ Investigating…**, the automation's name, and a **View Full Investigation** button.
-
-:::{image} ../../images/nightshift-slack-investigation-running.png
-:alt: An investigation starting in an alert's thread, showing Investigating and the automation's name
-:screenshot:
-:::
 
 When the investigation finishes, {{nightshift}} edits that same message with the result: a title, the severity, the automation, **What happened**, **Impact**, **Conclusion**, and **Investigation details**, and the **View Full Investigation** button. If the investigation fails or times out, the message shows **⚠️ Investigation failed** or **⚠️ Investigation timed out** under the title, and says why under **What went wrong**.
 
@@ -177,11 +137,6 @@ Replies without a mention work in public channels only. Refer to [Investigate in
 ## Private channels [nightshift-slack-app-private]
 
 In a private channel, `@Elastic` answers mentions the same way it does in a public channel. Nothing else from a private channel reaches your project: messages there can't start automations, replies without a mention aren't added to an investigation, and investigations can't read the channel.
-
-:::{image} ../../images/nightshift-slack-private-mention.png
-:alt: A mention in a private channel, answered in its thread
-:screenshot:
-:::
 
 Private channel access is optional, and it's decided once for the whole Slack workspace, for every Elastic project connected to it. `@Elastic` still sees only the private channels that someone invites it to.
 
@@ -256,7 +211,7 @@ Disconnecting doesn't delete conversations or investigations from your project, 
 
 ## Slack permissions [nightshift-slack-app-scopes]
 
-Slack shows these permissions when you install the app. The following table lists each one and what `@Elastic` uses it for. `@Elastic` reads channel content only in channels that it has been invited to.
+Slack shows these permissions when you install the app. The following table lists each one and what `@Elastic` uses it for. Slack sends `@Elastic` channel messages only from channels that it has been invited to, and `@Elastic` passes their content to a project only when the channel is connected to that project. In a channel that isn't connected, `@Elastic` answers a mention only with a notice that the channel isn't connected yet.
 
 | Permission | Required | What `@Elastic` uses it for |
 | --- | --- | --- |
