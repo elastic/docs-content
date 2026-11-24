@@ -31,11 +31,11 @@ The following LLM platforms are supported:
 
 See the [Supported Technologies section in the corresponding EDOT SDK](opentelemetry://reference/edot-sdks/index.md) for detailed information on supported versions.
 
-Some AI platforms send traces to Elastic directly, so you don't need EDOT instrumentation for them:
+Some AI platforms send telemetry to Elastic directly, so you don't need EDOT instrumentation for them:
 
 - Claude Platform sends traces from a destination that you add in the Claude Console. Refer to [Send Claude Platform traces to Elastic](send-claude-platform-traces.md).
 - OpenRouter sends traces from a Broadcast destination that you add in the OpenRouter console. Refer to [Send OpenRouter traces to Elastic](send-openrouter-broadcast-traces.md).
-- Microsoft Foundry hosted agents send traces from OTLP exporter settings that you add to the agent version. Refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](send-microsoft-foundry-hosted-agent-telemetry.md).
+- Microsoft Foundry hosted agents send traces, logs, and metrics from OTLP exporter settings that you add to the agent version. Refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](send-microsoft-foundry-hosted-agent-telemetry.md).
 
 ## Quickstart
 
