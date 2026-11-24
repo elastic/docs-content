@@ -23,7 +23,7 @@ To run a log pattern analysis:
 1. In your {{obs-serverless}} project, go to **Discover**. If **Discover** opens in {{esql}} mode, [switch to classic mode](/explore-analyze/discover/switch-esql-mode.md#revert-to-classic-mode). Then select **All logs** from the **Data view** menu.
 
    :::{tip}
-   :applies_to: { serverless: preview, stack: preview 9.4+ }
+   :applies_to: {"serverless": "ga", "stack": "ga 9.7+, preview 9.4-9.6"}
    To group log messages by pattern in {{esql}} mode instead, refer to [Inspect grouped STATS results in Discover](/explore-analyze/discover/inspect-grouped-stats.md).
    :::
 2. Apply any filters that you want.
