@@ -11,7 +11,7 @@ products:
 
 # Elastic app for Slack [nightshift-slack-app]
 
-The Elastic app for Slack brings {{nightshift}} into your Slack workspace as `@Elastic`. Anyone in a connected channel can mention `@Elastic` and get an answer in the thread, and automations post investigation results where your team already talks.
+The Elastic app for Slack brings {{nightshift}} into your Slack workspace as `@Elastic`. In a connected channel, anyone can mention `@Elastic` to ask a question, and {{nightshift}} answers in the thread. Automations can also post investigation results to a connected channel.
 
 This page follows the people who meet `@Elastic`, in the order they meet it: the admins who set it up, the people who ask it questions, and the security reviewers who need to know where Slack data goes. The messages `@Elastic` posts are shown here, so nothing in your channels comes as a surprise.
 
@@ -22,12 +22,12 @@ This page follows the people who meet `@Elastic`, in the order they meet it: the
 
 ## Who does what [nightshift-slack-app-people]
 
-| Person | What they do | Where |
+| Role | What they do | Where they do it |
 | --- | --- | --- |
-| Slack admin | Approves the app if your workspace requires approval, and decides whether `@Elastic` can work in private channels | Slack |
-| {{nightshift}} admin | Connects the Slack workspace to the project, then connects each channel. Needs **Nightshift**: **All** and **Manage engines**. Refer to [Grant access](./privileges.md). Without **Manage engines**, {{kib}} shows the Slack settings but you can't change them. | {{kib}} |
-| Channel member | Invites `@Elastic` to the channel, then mentions it to ask questions | Slack |
-| Security reviewer | Reviews the permissions, the identity `@Elastic` acts as, and where Slack data goes | This page |
+| Slack admin | Approves the app if your workspace requires approval, and decides whether `@Elastic` can work in private channels. | Slack |
+| {{nightshift}} admin | Connects the Slack workspace to the project, then connects each channel. Needs **nightshift**: **All** and **Manage engines**. Refer to [Grant access](./privileges.md). Without **Manage engines**, {{kib}} shows the Slack settings but you can't change them. | {{kib}} |
+| Channel member | Invites `@Elastic` to the channel, then mentions it to ask questions. | Slack |
+| Security reviewer | Reviews the permissions, the identity `@Elastic` acts as, and where Slack data goes. | This page |
 
 Slack users don't need an Elastic account, and they aren't matched to Elastic users. Refer to [Who `@Elastic` acts as](#nightshift-slack-app-identity).
 
@@ -90,9 +90,9 @@ A channel answers for one project only. If another project already connected it,
 
 Slack Connect channels shared with another organization aren't supported in Tech Preview. `@Elastic` ignores messages from the other organization, and investigations can't read the channel.
 
-## Ask `@Elastic` a question (anyone in the channel) [nightshift-slack-app-ask]
+## Ask `@Elastic` a question [nightshift-slack-app-ask]
 
-Mention `@Elastic` in a connected channel, either in a new message or in an existing thread. `@Elastic` replies in the thread, never in the channel itself.
+Anyone in a connected channel can mention `@Elastic`, either in a new message or in an existing thread. `@Elastic` replies in the thread, never in the channel itself.
 
 1. **It shows that it's working.** The thread shows a plan titled **Rolling up my sleeves**, with a row for each step it runs, such as a query or a file it reads.
 1. **The answer appears when it's done.** The answer appears under the plan, and the plan's title changes to **Finished N steps**, or **Done** when no steps ran.
@@ -111,14 +111,14 @@ When you mention it in a thread, `@Elastic` also reads the thread's first messag
 
 A mention that opens a new conversation counts toward the daily investigation limits, even though it doesn't start an investigation. Follow-up mentions in the same thread don't count. Refer to [Investigation limits](./investigation/limits.md).
 
-### When `@Elastic` doesn't answer the way you expect [nightshift-slack-app-notices]
+### Troubleshoot `@Elastic` reponses [nightshift-slack-app-notices]
 
-These are the messages `@Elastic` can post instead of an answer, and what to do about each. Your project can also refuse a message with its own explanation, which `@Elastic` posts as it is.
+The following table lists the messages that `@Elastic` posts when it can't answer you question, and what to do. If your project rejects a request for another reason, `@Elastic` posts the project's explanation without changing it.
 
-| Where or when | What `@Elastic` posts | What to do |
+| Where or when | The message `@Elastic` posts | What to do |
 | --- | --- | --- |
 | You mention it in a channel that isn't connected | This channel isn't connected yet. Ask your Elastic admin to connect it in Kibana Settings using channel ID `C0123456789`, then mention me again. | Send the channel ID to your admin. `@Elastic` posts this at most once every 10 minutes per channel, so later mentions in that window get no reply. |
-| You open its **Messages** tab | Direct messages aren't supported yet. Mention me in a channel that's connected to Kibana instead. | Mention it in a connected channel. You get this at most once an hour, and Slack doesn't let you type a message to the app. |
+| You open its **Messages** tab | Direct messages aren't supported yet. Mention me in a channel that's connected to Kibana instead. | Mention it in a connected channel. `@Elastic` posts this at most once an hour, and Slack doesn't let you type a message to the app. |
 | You mention it while it's still answering in the same thread | Elastic is still answering an earlier message in this thread. Please ask again once that reply is posted. | `@Elastic` waits up to two minutes for the earlier answer before it posts this. Ask again once the answer is posted. |
 | Your project can't be reached, or refuses the request | Sorry, I couldn't reach Elastic right now. Please try again in a few minutes. | `@Elastic` retries for about two minutes before it posts this. Try again later. If it keeps happening, ask your admin to check the Slack connection. Refer to [Who `@Elastic` acts as](#nightshift-slack-app-identity). |
 | The Slack connection needs to be set up again | Your Elastic connection has expired. Please reconnect it in Kibana and try again. | Ask your {{nightshift}} admin to disconnect and connect the workspace again. |
@@ -160,7 +160,7 @@ An automation can post an investigation to a connected channel, for example when
 :screenshot:
 :::
 
-When the investigation finishes, {{nightshift}} edits that same message with the result: a title, the severity, the automation, **What happened**, **Impact**, **Conclusion**, and **Investigation details**, still with the **View Full Investigation** button. If the investigation fails or times out, the message shows **⚠️ Investigation failed** or **⚠️ Investigation timed out** under the title, and says why under **What went wrong**.
+When the investigation finishes, {{nightshift}} edits that same message with the result: a title, the severity, the automation, **What happened**, **Impact**, **Conclusion**, and **Investigation details**, and the **View Full Investigation** button. If the investigation fails or times out, the message shows **⚠️ Investigation failed** or **⚠️ Investigation timed out** under the title, and says why under **What went wrong**.
 
 :::{image} ../../images/nightshift-slack-investigation-result.png
 :alt: An investigation result in an alert's thread, with what happened, impact, conclusion, and the View Full Investigation button
@@ -256,7 +256,7 @@ Disconnecting doesn't delete conversations or investigations from your project, 
 
 ## Slack permissions [nightshift-slack-app-scopes]
 
-Slack shows these permissions when you install the app. `@Elastic` reads channel content only in channels that it has been invited to.
+Slack shows these permissions when you install the app. The following table lists each one and what `@Elastic` uses it for. `@Elastic` reads channel content only in channels that it has been invited to.
 
 | Permission | Required | What `@Elastic` uses it for |
 | --- | --- | --- |
