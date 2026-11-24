@@ -179,7 +179,7 @@ PUT movies
 ```
 
 :::{note}
-In the previous example, `name` and `plot` are still indexed individually alongside `name_and_plot`, which adds storage overhead for each source field. If you don't need to search those fields individually, you can avoid this by setting `"index": false` on them. See [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) for more on using `copy_to` to reduce per-field mapping overhead.
+In the previous example, `name` and `plot` are still indexed individually alongside `name_and_plot`, which adds storage overhead for each source field. If you don't need to search those fields individually, you can avoid this by setting `"index": false` on them. For more ways to reduce field storage overhead, refer to [Avoid indexing unused fields](./disk-usage.md#avoid-indexing-unused-fields). For information about the memory that mapped fields use, refer to [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
 :::
 
 ### Pre-index data [_pre_index_data]
