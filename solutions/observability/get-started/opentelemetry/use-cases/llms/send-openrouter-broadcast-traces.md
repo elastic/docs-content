@@ -28,7 +28,7 @@ Make sure you have the following:
 
 ## Add Elastic as a Broadcast destination
 
-Full step-by-step setup is in OpenRouter's guide: [Broadcast — Elastic Observability](https://openrouter.ai/docs/guides/features/broadcast/elastic). The three steps:
+Full step-by-step setup is in OpenRouter's guide: [Broadcast — Elastic Observability](https://openrouter.ai/docs/guides/features/broadcast/elastic).
 
 :::::{stepper}
 
