@@ -65,7 +65,7 @@ Hosted agent telemetry can include prompts, tool calls, and model responses. Bef
 Send a request to your hosted agent and allow a few seconds for the telemetry to arrive. Foundry sets `service.name` to the name of your agent. In {{kib}} **Discover**, run the following {{esql}} query to find the traces:
 
 ```esql
-FROM traces-*
+FROM traces-generic.otel-default
 | WHERE service.name == "<your-agent-name>"
 ```
 
@@ -90,7 +90,7 @@ Foundry can send the telemetry of your hosted agents to Application Insights. Th
 In {{kib}} **Discover**, run this {{esql}} query to sum input and output tokens by model. The `attributes.gen_ai.operation.name == "chat"` filter restricts the query to the spans of model calls:
 
 ```esql
-FROM traces-*
+FROM traces-generic.otel-default
 | WHERE service.name == "<your-agent-name>" AND attributes.gen_ai.operation.name == "chat"
 | STATS
     input_tokens = SUM(attributes.gen_ai.usage.input_tokens),
