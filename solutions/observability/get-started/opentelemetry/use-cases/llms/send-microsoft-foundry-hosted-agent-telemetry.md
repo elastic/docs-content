@@ -51,7 +51,7 @@ environment_variables:
 ::::
 
 ::::{step} Create a new agent version
-Foundry sets environment variables per agent version. Deploy a new version of the agent to apply them.
+Foundry sets environment variables per agent version, so deploy the agent again to apply them. With `azd`, run `azd deploy`. Each deployment creates a new version, and the agent's endpoint serves the latest one by default.
 ::::
 
 :::::
@@ -60,7 +60,7 @@ Foundry sets environment variables per agent version. Deploy a new version of th
 Hosted agent telemetry can include prompts, tool calls, and model responses. Before you export, check that your organization's policies allow this data to be kept in Elastic.
 :::
 
-## Check that traces arrive
+## Check that telemetry arrives
 
 Send a request to your hosted agent and allow a few seconds for the telemetry to arrive. Foundry sets `service.name` to the name of your agent. In {{kib}} **Discover**, run the following {{esql}} query to find the traces:
 
