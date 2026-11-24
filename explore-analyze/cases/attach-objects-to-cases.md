@@ -128,7 +128,7 @@ To turn auto-extraction on or off for a single case:
 
 To set auto-extraction in advance for new cases:
 
-* For every new case in the space, turn **Extract observables** on or off in the space's [case settings](/explore-analyze/cases/configure-case-settings.md#cases-extract-observables-default). It's on by default.
+* For every new case in the space, turn **Extract observables** on or off in the [case settings](/explore-analyze/cases/configure-case-settings.md#cases-extract-observables-default). It's on by default.
 * For cases created from a template, turn **Extract observables** on or off on the template's **Configuration** tab. If you apply the template to an existing case, the case switches to the template's setting. If the template doesn't set one, auto-extraction turns off. For details, refer to [Create case templates](/explore-analyze/cases/create-case-templates.md).
 * For cases that a detection rule creates, set **Auto-extract observables** to **On** or **Off** in the rule's [Cases action](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration). To use the template or space setting instead, keep the default option.
 
