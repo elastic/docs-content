@@ -207,14 +207,16 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-On {{elastic-defend}} hosts, you can use these wildcards in `--path`:
+On {{elastic-defend}} hosts, you can use these wildcards in `--path`. A plain directory path without a wildcard (such as `/var/log`) doesn't retrieve files; append `/*` or `/**` instead.
 
-* `*` matches any number of characters. You can use it in any part of the path, such as a folder name or a file name. For example:
-  * `/var/log/*.log` retrieves the files in `/var/log` whose names end in `.log`.
+* `*` matches any number of characters within a single directory or file name (it doesn't cross `/` or `\`). You can use it in any part of the path. For example:
+  * `/var/log/*.log` retrieves the files directly in `/var/log` whose names end in `.log`.
   * `/var/log/*` retrieves the files directly in `/var/log`.
-  * `/home/*/.bash_history` retrieves the `.bash_history` file from each user's home folder.
-* `?` matches exactly one character. For example, `/var/log/syslog.?` retrieves `syslog.1` but not `syslog.10`. Like `*`, you can use it in any part of the path.
-* `**` retrieves every file in a folder and all of its subfolders. It must be the last part of the path, for example `/var/log/**`.
+  * `/home/*/.bash_history` retrieves the `.bash_history` file from each user's home directory.
+* `?` matches exactly one character within a single directory or file name. For example, `/var/log/syslog.?` retrieves `syslog.1` but not `syslog.10`. Like `*`, you can use it in any part of the path.
+* `**` retrieves every file in a directory and all of its subdirectories. It must be the last part of the path, for example `/var/log/**`.
+
+Character classes (`[...]`), regular expressions, and escapes aren't supported; those characters are matched literally. On Windows, wildcard and multi-path requests require drive-letter paths (UNC and device paths aren't supported).
 
 Wildcards also match hidden files, whose names start with `.`. Matching ignores case on Windows and on macOS volumes that aren't case-sensitive. On Linux, matching is case-sensitive.
 
