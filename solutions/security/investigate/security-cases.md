@@ -115,13 +115,10 @@ serverless:
 stack: ga 9.6+
 ```
 
-Attach an attack to a case so your team can review the finding and the alerts it correlates in one place.
+Attach an attack to a case so your team can review the finding and the alerts it correlates in one place:
 
-To add attacks to a case:
-
-1. On the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** on the attack's row. In the attack details flyout, select **Take action**.
-2. Select **Add to case**.
-3. Select an existing case, or create a new one.
+1. On the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** → **Add to case** on the attack's row, or **Take action** → **Add to case** in the attack details flyout.
+2. Select an existing case, or create a new one.
 
 {{kib}} attaches the attack and its alerts together. If **Sync detections** is on, attack statuses update when the case status changes.
 
