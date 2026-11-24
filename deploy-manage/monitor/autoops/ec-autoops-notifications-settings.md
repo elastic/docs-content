@@ -40,7 +40,7 @@ To add a connector, follow these steps:
 The following connectors are available with AutoOps. 
 
 :::{note}
-The Webhook connector is not available for deployments in AWS GovCloud (US-East).
+The Webhook connector is not available for deployments in AWS GovCloud (us-gov-east-1).
 :::
 
 Expand each section for specific configuration instructions.
@@ -156,7 +156,7 @@ To set up this integration, you need to perform configurations in Microsoft Team
 :name: ec-autoops-webhook
 
 :::{note}
-The Webhook connector is not available for deployments in AWS GovCloud (US-East).
+The Webhook connector is not available for deployments in AWS GovCloud (us-gov-east-1).
 :::
 
 To set up notifications through a custom webhook, follow these steps:
