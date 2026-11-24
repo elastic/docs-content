@@ -93,4 +93,4 @@ To send telemetry only to Elastic, disable monitoring at the project level in Fo
 * [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry) (Microsoft documentation)
 * [{{motlp}} reference](/reference/managed-inputs/managed-otlp-endpoint.md)
 * [LLM and agentic AI observability](/solutions/observability/applications/llm-observability.md)
-* To collect platform metrics and logs from Microsoft Foundry, use the [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) integration.
+* To collect platform metrics and logs from Microsoft Foundry, use the [Microsoft Foundry](integration-docs://reference/azure_ai_foundry.md) integration.
