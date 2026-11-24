@@ -33,7 +33,7 @@ Full step-by-step setup is in Microsoft's guide: [Export hosted agent telemetry 
 :::::{stepper}
 
 ::::{step} Store the API key in a Foundry connection
-In your Foundry project, add a **Custom keys** connection with a field named `otlp_headers`. Set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). Create the connection before you deploy the agent version.
+In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Add a field named `otlp_headers` and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). Create the connection before you deploy the agent version.
 ::::
 
 ::::{step} Add the exporter settings to agent.yaml
