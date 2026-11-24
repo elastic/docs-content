@@ -1,6 +1,6 @@
 ---
 navigation_title: FAQ
-description: Frequently asked questions about Elastic Managed integrations, including limits, supportability, data residency, and common setup questions.
+description: Frequently asked questions about Elastic Managed integrations, including limits, supportability, where collectors run, data residency, and common setup questions.
 applies_to:
   stack: ga 9.5+, preview 9.0-9.4
   serverless: ga
@@ -72,6 +72,13 @@ In these versions, {{managed-integrations}} are in technical preview and are pro
 
 Documents ingested through {{managed-integrations}} are stored in your project or {{ech}} deployment, the same as data ingested by agent-based integrations.
 
+### Where do the collectors run? [managed-integrations-faq-collector-location]
+
+{{managed-integrations}} run on Elastic-managed infrastructure that Elastic operates as part of {{serverless-full}}. Where a collector runs in relation to your cluster depends on your deployment type:
+
+* **{{serverless-full}} projects**: The collector runs in the same [region](/deploy-manage/deploy/elastic-cloud/regions.md) as your project, on the same infrastructure that hosts the project's {{es}} and {{kib}} components. Collecting data from the source, processing it, and writing it to your project all happen within that region.
+* **{{ech}} deployments**: The collector runs on {{serverless-full}} infrastructure, which isn't necessarily in the same region as your deployment.
+
 ### What are the `agentless-state-*` indices in my cluster? [managed-integrations-faq-state-indices]
 
 Some {{managed-integrations}} keep track of their own collection progress — for example, the point up to which they've already collected data from a source. {{managed-integrations}} store this progress information in your cluster, in indices whose names start with `agentless-state-`. Elastic creates and updates these indices automatically as part of running the integration.
@@ -101,7 +108,10 @@ No. These indices hold current state that's updated in place, not time-based dat
 
 ### Does my data travel over the public internet? [managed-integrations-faq-public-internet]
 
-Usually not. Data flows from Elastic-managed infrastructure to your cluster over Elastic's internal network. However, if your {{ech}} deployment is in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach your cluster.
+It depends on your deployment type:
+
+* **{{serverless-full}} projects**: No. The collector runs in the same region and on the same infrastructure as your project, so data travels to your project over Elastic's internal network and doesn't leave the region.
+* **{{ech}} deployments**: Usually not. Data flows from Elastic-managed infrastructure to your deployment over Elastic's internal network. However, if your deployment is in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach your deployment.
 
 ### Who at Elastic has access to my data? [managed-integrations-faq-data-access]
 
