@@ -47,7 +47,7 @@ The `.cases` index holds one document per case, with the current state of each c
 | `case.category` | keyword | Case category. |
 | `case.status` | keyword | Case status: `open`, `in-progress`, or `closed`. |
 | `case.severity` | keyword | Case severity: `low`, `medium`, `high`, or `critical`. |
-| `case.assignees.uid` | keyword | Profile UIDs of the case's assignees (a case can have several), not display names. For names and emails, use the [assignee name and email fields](#case-analytics-fields-people). |
+| `case.assignees.uid` | keyword | Profile UIDs of the case's assignees (a case can have several), not display names. For names and emails, use [`case.assignees.username`](#case-analytics-fields-people), `.full_name`, and `.email`. |
 
 ### Timestamps and timing metrics [case-analytics-fields-timing]
 
@@ -73,7 +73,17 @@ Timing fields store values in seconds and are `null` until the case reaches the 
 | `case.closed_by.username` | keyword | Username of the person who closed the case. Also includes `.email`, `.full_name`, and `.profile_uid`. |
 | `case.assignees.username` | keyword | Username of each assignee on the case. Also includes `.email` and `.full_name`. The assignee's profile UID is in `case.assignees.uid`. |
 
-The assignee name and email fields are a snapshot. {{kib}} copies `case.assignees.username`, `case.assignees.full_name`, and `case.assignees.email` from each user's profile when someone sets the case's assignees, so later profile changes don't update them. Cases where someone set the assignees before {{kib}} started storing these fields have only `case.assignees.uid` until someone updates the assignees. These fields also have no value when {{kib}} can't retrieve a user's profile, and `case.assignees.full_name` and `case.assignees.email` have no value when the profile doesn't include them. To find names for those assignees, match `case.assignees.uid` to `actor.profile_uid` in `.cases-activity`, which also includes `actor.username`, `.full_name`, and `.email`. This works only for users who have acted on a case.
+:::{note}
+{{kib}} fills in the assignee username, full name, and email fields from each user's profile when someone sets the case's assignees. Later profile changes don't update these fields.
+
+The fields are empty in the following situations:
+
+* Someone set the assignees before {{kib}} started storing these fields. The fields stay empty until someone updates the assignees.
+* {{kib}} can't retrieve the user's profile.
+* The user's profile doesn't include a full name or email. Only that field is empty.
+
+To find the missing names and emails, refer to [Query case data with {{esql}}](query-case-data-esql.md).
+:::
 
 ### Counters [case-analytics-fields-counters]
 
