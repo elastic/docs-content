@@ -131,7 +131,7 @@ The process of setting up a private connection with Azure Private Link is split 
 | 2. [Create a DNS record pointing to the private endpoint](#ec-private-link-azure-dns). |  |
 |  | 3. [Create a private connection policy](#ec-azure-allow-traffic-from-link-id). |
 |  | 4. [Associate the Azure private connection policy with your deployments or projects](#associate-private-connection-policy). |
-|  | 5. **Optional**: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console.](#sso-kib-ip-filter) |
+|  | 5. Optional: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console](#sso-kib-ip-filter). |
 |  | 6. [Interact with your deployments or projects over Private Link](#ec-azure-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
@@ -232,7 +232,7 @@ The Private Link connection will be approved automatically after the private con
     :::{tip}
     Private connection policies are bound to a single resource type and region, and can be assigned only to resources with the same resource type and in the same region. If you want to associate a policy with multiple resource types or resources in multiple regions, then you have to recreate the policy for all applicable resource types and regions.
     :::
-6.  Under **Connectivity**, select **PrivateLink**.
+6.  {applies_to}`ech: ga` Under **Connectivity**, select **PrivateLink**.
 7.  Enter your private endpoint **Resource name** and **Resource ID**. When applied to a deployment or project, this information will be used to filter traffic. Select **Add description** to add an optional description that helps you identify the filter later.
 
     :::{tip}
