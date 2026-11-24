@@ -391,7 +391,7 @@ Example: `runscript --script="copy.sh" --inputParams="~/logs/log.txt /tmp/log.ba
 
 ### `scan` [_scan]
 
-Scan a specific file or directory on the host for malware. This uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) (such as **Detect** or **Prevent** options, or enabling the blocklist) as configured in the host’s associated {{elastic-defend}} integration policy. Use these parameters:
+Scan a specific file or directory on the host for malware. This uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) (such as the protection level and whether the blocklist is enabled) as configured in the host’s associated {{elastic-defend}} integration policy. Use these parameters:
 
 * `--path` : (Required) The absolute path to a file or directory to be recursively scanned.
 
