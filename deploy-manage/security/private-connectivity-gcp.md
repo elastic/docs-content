@@ -106,7 +106,7 @@ Service Attachments are set up by Elastic in all supported GCP regions under the
 :::
 ::::
 ::::{applies-item} serverless: ga
-:::{caution}
+:::{warning}
 {{serverless-full}} supports Private Service Connect only in the regions in the following table. If the region of your project is not listed, then you can't set up Private Service Connect for that project.
 :::
 
