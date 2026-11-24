@@ -13,7 +13,7 @@ products:
 There may be situations where you want to perform a full-cluster restart, and others where you might want to perform a rolling restart. In the case of [full-cluster restart](#restart-cluster-full), you shut down and restart all the nodes in the cluster while in the case of [rolling restart](#restart-cluster-rolling), you shut down only one node at a time, so the service remains uninterrupted.
 
 ::::{warning}
-Nodes exceeding the low watermark threshold will be slow to restart. Reduce the disk usage below the [low watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low) before restarting nodes.
+Nodes exceeding the low watermark threshold will be slow to restart. Reduce the disk usage below the [low watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low) before restarting nodes. If a node that holds [fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted) is above the low watermark, its shards can also be allocated to other nodes after the restart, which then download them again from the snapshot repository.
 
 ::::
 
@@ -124,6 +124,13 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
    If you closed all {{ml}} jobs before stopping the nodes, open the jobs and start the datafeeds from {{kib}} or with the [open jobs]({{es-apis}}operation/operation-ml-open-job) and [start datafeed]({{es-apis}}operation/operation-ml-start-datafeed) APIs.
 
 ## Rolling restart [restart-cluster-rolling]
+
+If your data nodes hold [fully mounted {{search-snaps}}](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#fully-mounted), which have no replicas, a shard that is allocated to a different node is downloaded again from the snapshot repository. To give each node the best chance of getting its own shards back after the restart:
+
+* **Keep disk usage comfortably below the low watermark on every node that holds fully mounted indices.** A node above the [low watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low) can't receive shards, including its own, so they are allocated to other nodes instead. Before you start, check `GET _cat/allocation?v&h=node,disk.percent,disk.avail,disk.total` against your [disk-based shard allocation settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). The low watermark can be capped by a maximum headroom, so check the absolute free space as well as the percentage. If nodes are close to the watermark, free up space or add capacity before the maintenance.
+* **Keep allocation restricted until the node has rejoined.** Restore `cluster.routing.allocation.enable` only after the restarted node appears in the `GET _cat/nodes` response. If you re-enable allocation while the node is still away, its fully mounted shards are allocated to other nodes immediately.
+* **Check before you re-enable allocation.** Run the [cluster allocation explain API]({{es-apis}}operation/operation-cluster-allocation-explain) for one unassigned fully mounted shard. If the response shows the restarted node being rejected by the `disk_threshold` decider, resolve the disk space issue first.
+* **Check before you move on.** After you re-enable allocation, confirm that the node's shards have started on it and that `GET _cat/recovery?v&active_only=true` shows no snapshot recoveries. If recoveries are starting on other nodes, pause the rolling restart and check disk usage against the watermarks.
 
 1. **Disable replica shard allocation.**
    When you shut down a data node, the allocation process waits for `index.unassigned.node_left.delayed_timeout` (by default, one minute) before starting to replicate the shards on that node to other nodes in the cluster, which can involve a lot of I/O. Since the node is shortly going to be restarted, this I/O is unnecessary. You can avoid racing the clock by [disabling allocation of replicas](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) before shutting down [data nodes](../../distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role):
