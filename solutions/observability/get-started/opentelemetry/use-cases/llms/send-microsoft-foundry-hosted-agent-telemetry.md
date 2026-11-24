@@ -33,7 +33,7 @@ Full step-by-step setup is in Microsoft's guide: [Export hosted agent telemetry 
 :::::{stepper}
 
 ::::{step} Store the API key in a Foundry connection
-In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Add a field named `otlp_headers` and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). Create the connection before you deploy the agent version.
+In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Name the connection `otel-secrets`, add a field named `otlp_headers`, and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). Create the connection before you deploy the agent.
 ::::
 
 ::::{step} Add the exporter settings to agent.yaml and deploy
@@ -49,7 +49,7 @@ environment_variables:
     value: ${{connections.otel-secrets.credentials.otlp_headers}}
 ```
 
-Then deploy the agent again. Foundry sets environment variables per agent version, so the settings apply only to a new version.
+In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from the previous step. Then deploy the agent again. Foundry sets environment variables per agent version, so the settings apply only to a new version.
 ::::
 
 :::::
