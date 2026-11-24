@@ -238,7 +238,7 @@ PRICING_SERVICE_ENABLED=true \
 :::::{step} View metrics in Discover
 :anchor: _step_8_view_metrics_in_discover
 
-Metrics Explorer is deprecated as of {{stack}} 9.4 and planned for removal. Use **Discover** instead, which has a dedicated experience for metrics data.
+{applies_to}`stack: deprecated 9.4+` Metrics Explorer is deprecated and planned for removal. Use **Discover** instead, which has a dedicated experience for metrics data.
 
 Find **Discover**, switch to {{esql}} mode, and run:
 
