@@ -22,7 +22,7 @@ The telemetry is stored in Elastic in OTLP format.
 
 Make sure you have the following:
 
-* A Microsoft Foundry project with a hosted agent that you deploy with the Azure Developer CLI (`azd`). The steps on this page change the agent's `azure.yaml` file. To set one up, refer to [Quickstart: Deploy your first hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/quickstart-hosted-agent) in the Microsoft documentation.
+* A Microsoft Foundry project with a hosted agent that you deploy with the Azure Developer CLI (`azd`). To set one up, refer to [Quickstart: Deploy your first hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/quickstart-hosted-agent) in the Microsoft documentation.
 * An {{obs-serverless}} project or an {{ech}} deployment. On {{ech}}, the {{motlp}} requires version 9.0 or later. The {{motlp}} isn't available for self-managed, {{ece}}, or {{eck}} deployments.
 * Your {{motlp}} endpoint and an API key with the `event:write` privilege for the `apm` application. To get both, follow the **Find your endpoint** and **Create an API key** steps in [Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md#send-data-to-elastic).
 
