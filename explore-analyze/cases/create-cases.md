@@ -39,7 +39,7 @@ To create a new case:
    * **Sync detection status with case status** or **Sync alert status with case status** (depending on your {{stack}} version) syncs alert statuses with the case status (on by default).
 
      {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, it also syncs [attack statuses](/solutions/security/investigate/security-cases.md#cases-add-attacks).
-   * **Auto-extract observables** extracts observables from attached alerts (on by default, requires appropriate subscription). {applies_to}`stack: ga 9.5` Auto-extraction can also run for cases created through the Cases API or automations. For details, refer to [Auto-extract observables](attach-objects-to-cases.md#cases-auto-extract-observables).
+   * **Extract observables** extracts observables from attached alerts and events (on by default, requires the appropriate subscription). To change the default or set it for cases created outside this form, refer to [Auto-extract observables](attach-objects-to-cases.md#cases-auto-extract-observables).
 
       :::{note}
       Auto-extracting observables is only available in {{sec-serverless}} and {{elastic-sec}} 9.2+.
