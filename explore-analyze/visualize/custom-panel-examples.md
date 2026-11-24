@@ -1175,7 +1175,9 @@ FROM kibana_sample_data_logs
 
 ## Headline numbers with a ranked table [custom-panel-examples-several-queries]
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` Three headline numbers from one query and a ranked list of destination countries from a second query, shown in one panel. For the rules about several queries, refer to [Use several queries in one panel](custom-panels.md#custom-panels-several-queries). Sample data: **Sample web logs**.
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+`
+
+Three headline numbers from one query and a ranked list of destination countries from a second query, shown in one panel. For the rules about several queries, refer to [Use several queries in one panel](custom-panels.md#custom-panels-several-queries). Sample data: **Sample web logs**.
 
 :::{dropdown} Query 1
 The template reads this query as `rows`, the same as `queries[0].rows`.
