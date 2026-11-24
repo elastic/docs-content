@@ -22,7 +22,7 @@ The telemetry is stored in Elastic in OTLP format.
 
 Make sure you have the following:
 
-* A Microsoft Foundry project with a hosted agent that you deploy with the Azure Developer CLI (`azd`). The steps on this page change the agent's `azure.yaml` file.
+* A Microsoft Foundry project with a hosted agent that you deploy with the Azure Developer CLI (`azd`). The steps on this page change the agent's `azure.yaml` file. To set one up, refer to [Quickstart: Deploy your first hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/quickstart-hosted-agent) in the Microsoft documentation.
 * An {{obs-serverless}} project or an {{ech}} deployment. On {{ech}}, the {{motlp}} requires version 9.0 or later. The {{motlp}} isn't available for self-managed, {{ece}}, or {{eck}} deployments.
 * Your {{motlp}} endpoint and an API key with the `event:write` privilege for the `apm` application. To get both, follow the **Find your endpoint** and **Create an API key** steps in [Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md#send-data-to-elastic).
 
@@ -33,7 +33,7 @@ For more about how hosted agents export telemetry, refer to [Export hosted agent
 :::::{stepper}
 
 ::::{step} Store the API key in a Foundry connection
-Create the connection before you deploy the agent, so the agent can read the key when it starts. In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Name the connection `otel-secrets`, add a field named `otlp_headers`, and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key).
+Create the connection before you deploy the agent, so the agent can read the key when it starts. In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Name the connection `otel-secrets`, add a field named `otlp_headers`, and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). For more about connections, refer to [Add a new connection to your project](https://learn.microsoft.com/en-us/azure/foundry/how-to/connections-add) in the Microsoft documentation.
 ::::
 
 ::::{step} Add the exporter settings
@@ -52,7 +52,7 @@ In the last setting, `otel-secrets` is the connection name and `otlp_headers` is
 ::::
 
 ::::{step} Deploy the agent again
-Foundry stores environment variables with each agent version, so the settings only apply to a new version. Run `azd deploy` to create one.
+Foundry stores environment variables with each agent version, so the settings only apply to a new version. Run `azd deploy` to create one. For more about deploying, refer to [Deploy a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/deploy-hosted-agent) in the Microsoft documentation.
 ::::
 
 :::::
