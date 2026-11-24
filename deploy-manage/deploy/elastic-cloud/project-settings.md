@@ -58,14 +58,14 @@ Increase **Search Power** to add resources for improved query throughput and per
 
 The following Search Power settings are available:
 
-**On-demand**
-:   Low cost option. Query latency is variable and maximum throughput is limited, particularly during demand spikes.
+**Economy**
+:   Lowest cost option. Resources scale with demand with a limited ceiling.
 
-**Performant**
-:   Delivers low _average_ query latency with no practical query throughput limits to meet varying demand.
+**Balanced**
+:   Resources scale with demand with a balance of performance and cost.
 
-**High availability**
-:   Maintains consistent low query latency across most search workloads, from steady baseline to peak demand.
+**High capacity**
+:   Resources scale with demand with a higher baseline capacity provisioned.
 
 During a trial, some limits apply to {{es-serverless}} projects. Refer to [Trial limitations](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-limits-are-in-place-during-a-trial).
 :::
