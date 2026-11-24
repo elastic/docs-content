@@ -45,10 +45,10 @@ services:
     env:
       OTEL_EXPORTER_OTLP_ENDPOINT: https://<your-motlp-endpoint>
       OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
-      OTEL_EXPORTER_OTLP_HEADERS: ${{connections.otel-secrets.credentials.otlp_headers}}
+      OTEL_EXPORTER_OTLP_HEADERS: $${{connections.otel-secrets.credentials.otlp_headers}}
 ```
 
-In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
+In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. Keep the two dollar signs at the start: with only one, `azd` tries to expand the value itself and the deploy fails with `unable to parse variable name`. For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
 ::::
 
 ::::{step} Deploy the agent again
