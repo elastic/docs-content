@@ -15,7 +15,7 @@ On the **Settings** page, admins can control what {{nightshift}} can reach and w
 
 ## Before you begin [nightshift-settings-prereqs]
 
-Make sure you have the privileges to open {{nightshift}} **Settings**, and to turn developer mode on or off if you need it. Refer to [Grant access](./privileges.md#nightshift-privileges-admin).
+Make sure you have the privileges to open {{nightshift}} **Settings**. To change daily limits, you need these privileges in all spaces. To change the settings on the **Detections** tab or turn developer mode on or off, you also need **Advanced Settings**: **All**. Refer to [Grant access](./privileges.md#nightshift-privileges-admin).
 
 ## Open Settings [nightshift-settings-open]
 
@@ -49,6 +49,7 @@ When you change a run limit, a schedule setting, continuous KI onboarding, or to
 Developer mode shows experimental and expert parts of {{nightshift}}. It's off by default and applies to everyone in the space. To turn it on, on the **General** tab, turn on **Enable nightshift developer mode**. It adds:
 
 - The **Signals** tab on the **Detections** page. Refer to [Rules and signals](./detection/rules-and-signals.md).
+- The **Topology** tab on the **Detections** page. Refer to [Explore the topology](./detection/learning.md#nightshift-detection-learning-topology).
 - The **Decision Trees** tab on the **Knowledge** page. Refer to [Decision trees](./context/decision-trees.md).
 - **Advanced developer settings** on the **Detections** tab, including the cost estimate. Refer to [Advanced developer settings](#nightshift-settings-advanced-dev).
 - Extra details, such as the service account's role and raw metadata on Knowledge Indicators.
@@ -61,7 +62,7 @@ Developer mode shows experimental and expert parts of {{nightshift}}. It's off b
 
 ### Run limits [nightshift-settings-run-limits]
 
-The **Automatic** (5), **Manual** (5), and **All investigations** (10) daily limits, and the **Enforce daily limits** switch. Refer to [Investigation limits](./investigation/limits.md).
+The **Automatic** (5), **Manual** (5), and **All investigations** (10) daily limits, and the **Enforce daily limits** switch. To change them, you need **nightshift**: **All** and **Manage engines** in all spaces. Refer to [Investigation limits](./investigation/limits.md).
 
 ### Service account [nightshift-settings-service-account]
 
@@ -73,7 +74,7 @@ Notes added to the instructions of every investigation and chat in the space, up
 
 ### Sandbox egress allowlist [nightshift-settings-egress]
 
-The hosts that commands in the investigation sandbox can reach. The hosts of your active connectors are included automatically, so you need it only for other hosts, such as a package index to install a tool, or an API that has no connector.
+The hosts that commands in the investigation sandbox can reach. A command that uses a connector can already reach that connector's host, so you need the allowlist only for other hosts, such as a package index to install a tool, or an API that has no connector.
 
 Enter one hostname or rule per line in **Allowed hosts and rules**, up to 32 rules, then select **Save allowlist**. The allowlist applies to the current space.
 
@@ -115,7 +116,7 @@ The **Detections** page now shows **Paused**. To start again, select **Resume de
 
 ### Detection run limits [nightshift-settings-detection-limits]
 
-Daily limits on scheduled detection runs. Runs that you start yourself aren't limited.
+Daily limits on scheduled detection runs. Runs that you start yourself aren't limited. To change them, you need **nightshift**: **All** and **Manage engines** in all spaces.
 
 | Limit | Counts | Default |
 | --- | --- | --- |
@@ -137,7 +138,7 @@ With developer mode on, the **Detections** tab has an **Advanced developer setti
 :   An estimate of what {{nightshift}} costs, once you turn on **Enable token tracking in this space**. Refer to [Monitor your cost](./cost-and-models.md#nightshift-cost-monitor).
 
 **Stale event cleanup**
-:   Closes open significant events whose rules no longer exist. This cleanup also runs automatically every day. Select **Clean up stale events** to run it now.
+:   Closes open significant events whose rules no longer exist, and events that stayed **Recovering** for more than 48 hours with no new evidence. This cleanup also runs automatically every day. Select **Clean up stale events** to run it now.
 
 **Reset Significant Events data**
 :   Permanently deletes the Knowledge Indicators, rules, and detections that {{nightshift}} generated in this space, and turns off continuous KI onboarding and scheduled discovery. Significant event history, investigations, source definitions, and your data are kept. You can't undo this.

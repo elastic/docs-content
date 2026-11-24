@@ -113,4 +113,4 @@ Before you raise a limit, check whether the investigations are worth it. If one 
 - [Cost and models](../cost-and-models.md): Learn what investigations cost and how to monitor it.
 - [Settings and limits](../settings.md): Find every other setting for investigations and detection.
 - [Automations](./automations.md): Set a daily trigger limit on each automation.
-- [Known issues](../known-issues.md): Check the current Tech Preview limitations.
+- [Limitations](../known-issues.md): Check the current Tech Preview limitations.

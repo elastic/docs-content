@@ -60,7 +60,7 @@ This works in public channels only, because messages in private channels never r
 
 ## What you can do in Slack versus {{kib}} [nightshift-uc-slack-compare]
 
-Use Slack to ask questions, follow up on investigations that automations post, and read the impact, conclusion, and hypotheses. To explore the hypothesis tree, mark proposed actions as applied or declined, or close, reopen, or assign an investigation, open it in {{kib}}. If a conversation started in Slack, ask follow-up questions in the thread, because its chat in {{kib}} is read-only. Refer to [Known issues](../known-issues.md#nightshift-known-issues-slack).
+Use Slack to ask questions, follow up on investigations that automations post, and read the impact, conclusion, and hypotheses. To explore the hypothesis tree, mark proposed actions as applied or declined, or close, reopen, or assign an investigation, open it in {{kib}}. If a conversation started in Slack, ask follow-up questions in the thread, because its chat in {{kib}} is read-only. Refer to [Limitations](../known-issues.md#nightshift-known-issues-slack).
 
 ## Next steps [nightshift-uc-slack-next]
 

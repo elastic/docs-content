@@ -38,7 +38,7 @@ The first three are **feature KIs**: they describe your system. The last one is 
 
 Detection samples the logs in each [source](../detection/sources.md) and extracts feature KIs and query KIs, then turns query KIs into rules. Refer to [How detection works](../detection/index.md#nightshift-detection-flow).
 
-In Tech Preview, detection learns from logs only. Refer to [Known issues](../known-issues.md).
+In Tech Preview, detection is optimized for logs. Refer to [Limitations](../known-issues.md).
 
 ## Review KIs [nightshift-ki-review]
 

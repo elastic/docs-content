@@ -42,7 +42,7 @@ Choose the {{es}} data that investigations query.
 
 **If your data is in this project**: <br> {{nightshift}} automatically creates a **Local {{es}}** connector that can read your `logs-*`, `metrics-*`, and `traces-*` data. The **External Elasticsearch** card shows a **1 connector** badge. Select **Proceed**.
 
-**If your data is in another cluster or project**: <br> Add an External {{es}} connector. You need this only when [{{cps}}](/deploy-manage/cross-project-search-config.md) can't access that data. For what works with each deployment type, refer to [Reference architecture](./reference-architecture.md).
+**If your data is in another cluster or project**: <br> Add an External {{es}} connector. The **Local {{es}}** connector searches only this project, so you also need an External {{es}} connector for projects linked through [{{cps}}](/deploy-manage/cross-project-search-config.md). For linked projects, create the API key in the {{ecloud}} console. Refer to [Search projects linked through {{cps}}](./investigation/set-up.md#nightshift-set-up-cps). For what works with each deployment type, refer to [Reference architecture](./reference-architecture.md).
 
 1. Create an API key on the cluster that holds the data. Grant only read access to the indices that you want {{nightshift}} to search. For example, run this request in that cluster's **Console**:
 
@@ -67,7 +67,7 @@ Choose the {{es}} data that investigations query.
 
    Copy the `encoded` value from the response.
 
-1. Find the cluster's {{es}} endpoint. In the [{{ecloud}} console](https://cloud.elastic.co/), open the project or deployment and copy its {{es}} endpoint (the `direct_endpoint`). Use the endpoint on port 443. Remove any other port.
+1. Find the cluster's {{es}} endpoint. In the [{{ecloud}} console](https://cloud.elastic.co/), open the project or deployment and copy its {{es}} endpoint (the `direct_endpoint`).
 1. From {{nightshift}}, on the **External Elasticsearch** card, select **Connect** → **Create connector**.
 1. Enter a **Connector name** and a **Connector ID**, for example `prod-logs`.
 1. In **Elasticsearch URL**, add the endpoint.
@@ -144,7 +144,7 @@ Alerts catch the problems you think of in advance. Detection finds the problems 
 1. Under **Select data sources to analyze**, keep **All logs** (`FROM logs*`) selected. To watch only some of your data, select **Create new source**. Refer to [Manage what detection monitors](./detection/sources.md).
 1. Select **Enable detection**.
 
-A badge by the **Detection engine** heading now shows **Monitoring**, and there's nothing else to turn on. {{nightshift}} starts learning your system, and the first signals appear 40 to 100 minutes later. Significant events appear only when something unusual happens, so a quiet system can stay at zero for a while.
+A badge by the **Detection engine** heading now shows **Monitoring**, and there's nothing else to turn on. {{nightshift}} starts learning your system, and the first signals appear 40 minutes to about 2.5 hours later, while the rules warm up. After that, a new problem takes about 10 to 30 minutes to detect. Significant events appear only when something unusual happens, so a quiet system can stay at zero for a while.
 
 To follow what {{nightshift}} learns, refer to [How detection learns your system](./detection/learning.md). To review and investigate events, refer to [Review significant events](./detection/significant-events.md). To investigate each new event automatically, refer to [Automatically investigate your alerts](./use-cases/auto-investigate-alerts.md).
 ::::

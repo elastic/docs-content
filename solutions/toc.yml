@@ -547,6 +547,7 @@ toc:
         children:
           - file: observability/nightshift/get-started.md
           - file: observability/nightshift/privileges.md
+          - file: observability/nightshift/investigation/set-up.md
           - file: observability/nightshift/slack-app.md
           - file: observability/nightshift/reference-architecture.md
           - file: observability/nightshift/homepage.md
@@ -560,7 +561,6 @@ toc:
               - file: observability/nightshift/use-cases/detect-problems.md
           - file: observability/nightshift/investigation/index.md
             children:
-              - file: observability/nightshift/investigation/set-up.md
               - file: observability/nightshift/investigation/extend.md
               - file: observability/nightshift/investigation/automations.md
               - file: observability/nightshift/investigation/limits.md

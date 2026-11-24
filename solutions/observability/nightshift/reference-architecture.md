@@ -23,11 +23,11 @@ products:
 | Where your data lives | Detection | Investigation | How investigations reach the data |
 | --- | --- | --- | --- |
 | [A single serverless project](#nightshift-reference-architecture-single) | Yes | Yes | **Local Elasticsearch** connector, created for you |
-| [Serverless projects linked by {{cps}}](#nightshift-reference-architecture-cps) | Yes | Yes | **Local Elasticsearch** connector, through {{cps}} |
+| [Serverless projects linked by {{cps}}](#nightshift-reference-architecture-cps) | Yes | Yes | External {{es}} connector to the {{nightshift}} project, with an {{ecloud}} API key that has connected cluster access |
 | [An {{ech}} deployment](#nightshift-reference-architecture-ech) | No | Yes | External {{es}} connector with an API key |
 | [A self-managed cluster](#nightshift-reference-architecture-self-managed) | No | Possible, with care | External {{es}} connector to a public, secured endpoint |
 
-For the best results, keep your data in {{serverless-short}}, either in the {{nightshift}} project or in projects linked to it. Then detection and investigation both work, and you don't manage any credentials.
+For the best results, keep your data in {{serverless-short}}, either in the {{nightshift}} project or in projects linked to it. Then detection and investigation both work. For linked projects, you create one API key.
 
 ## A single {{serverless-short}} project [nightshift-reference-architecture-single]
 
@@ -51,9 +51,9 @@ Your data is spread across several Serverless projects, for example one project 
 :::
 
 - **Detection**: Works across the linked projects. A source query reads the linked projects in the same way as the local one.
-- **Investigation**: Works across the linked projects through the **Local Elasticsearch** connector. You don't need an External {{es}} connector for linked projects.
+- **Investigation**: The **Local Elasticsearch** connector searches only the {{nightshift}} project. To search the linked projects, add an External {{es}} connector that points to the {{nightshift}} project, with an API key that you create in the {{ecloud}} console and that has connected cluster access. Refer to [Search projects linked through {{cps}}](./investigation/set-up.md#nightshift-set-up-cps).
 
-This is the recommended setup when your data lives in more than one place. Link the projects once, and {{nightshift}} sees all of them.
+This is the recommended setup when your data lives in more than one place. Link the projects once, and add one connector, and {{nightshift}} sees all of them.
 
 ## An {{ech}} deployment [nightshift-reference-architecture-ech]
 
@@ -96,4 +96,4 @@ If you can't expose the cluster, consider sending the data you want {{nightshift
 - [Get started](./get-started.md): Enable {{nightshift}} and connect your data
 - [Connect your data and tools](./investigation/set-up.md): Set up Local and External {{es}} connectors, GitHub, and Slack
 - [How detection works](./detection/index.md): Learn what detection needs from your data
-- [Known issues](./known-issues.md): Check the Tech Preview limitations
+- [Limitations](./known-issues.md): Check the Tech Preview limitations

@@ -13,7 +13,7 @@ products:
 
 Tell {{nightshift}} which logs to learn from and watch for problems. Start with all your logs in one step, or narrow detection down to the services you care about most.
 
-Each set of data that detection watches is a *source*. In Tech Preview, detection learns from and watches logs only, so a source can only select logs. Metrics and traces aren't supported yet. You choose sources when you turn detection on, and you can add, change, pause, or remove them at any time.
+Each set of data that detection watches is a *source*. Detection is optimized for logs. Sources can also select metrics or traces, but in Tech Preview, results are best with logs. You choose sources when you turn detection on, and you can add, change, pause, or remove them at any time.
 
 ## Before you begin [nightshift-detection-sources-before]
 
@@ -33,7 +33,7 @@ A source is an {{esql}} query that selects rows of data, and nothing else. The q
 
 - Start with `FROM` or `TS`.
 - Contain only `WHERE` commands after that. Commands that change the rows, such as `STATS`, `EVAL`, or `KEEP`, aren't allowed.
-- Target logs. In Tech Preview, detection learns only from logs, so all indices in the query must be logs. {{nightshift}} derives the kind of data from the index names. For example, `FROM logs-*, my-app-*` is rejected because `my-app-*` isn't recognized as logs. A wildcard for everything, such as `*`, is also rejected.
+- Select one kind of data. {{nightshift}} derives the kind of data, such as logs or metrics, from the index names. A query that mixes kinds is rejected. For example, `FROM logs-*, my-app-*` is rejected because `my-app-*` isn't recognized as logs. A wildcard for everything, such as `*`, is also rejected.
 
 Sources apply to detection only. Investigations don't need a source. They query all the logs, metrics, and traces that your connectors reach.
 
@@ -91,7 +91,7 @@ To work with a source:
 - **Learn from it again now.** Select **Onboard source** in its row. To stop a run, select **Stop source onboarding**. For several sources, select them and then **Generate**. To run only one step, open the menu next to **Generate** and select **Generate KI Features** or **Generate KI Queries**.
 - **Look for significant events now.** Select **Find significant events** to run discovery without waiting for the next scheduled run. To stop it, open the menu next to the button and select **Cancel**.
 - **Pause it.** Turn off **Enabled**.
-- **Delete it.** Select the delete icon in its row, then **Delete source**. This deletes the source, its KIs, and its rules. Significant events that detection already found are kept.
+- **Delete it.** Select the delete icon in its row, then **Delete source**. This deletes the source, its KIs, and its rules. Significant events that detection already found are kept, and the daily stale event cleanup marks them **Inactive**.
 
 Runs that you start yourself don't count toward the daily run limits. If you delete your last source, detection stops and the **Detections** page shows only earlier results.
 

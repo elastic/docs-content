@@ -1,15 +1,15 @@
 ---
-navigation_title: Known issues
+navigation_title: Limitations
 applies_to:
   serverless:
     observability: preview
-description: Check the known issues and Tech Preview limitations of Elastic nightshift, and how to work around them.
+description: Check the Tech Preview limitations of Elastic nightshift, and how to work around them.
 products:
   - id: observability
   - id: cloud-serverless
 ---
 
-# Known issues and Tech Preview limitations [nightshift-known-issues]
+# {{nightshift}} limitations [nightshift-known-issues]
 
 {{nightshift}} is in Tech Preview. This page lists what doesn't work yet, what can go wrong, and how to work around it. Check it when something behaves differently than you expect.
 
@@ -37,13 +37,13 @@ products:
 
 ## Data and detection [nightshift-known-issues-detection]
 
-**Detection learns from logs only**
-:   Detection learns from and watches logs. Sources that query metrics or traces, such as {{esql}} `TS` queries, aren't supported yet.
+**Detection is optimized for logs**
+:   Detection works best with logs. Sources that query metrics or traces, such as {{esql}} `TS` queries, are accepted, but detection can find fewer problems in them.
 
-    **Workaround:** Investigations can still query metrics and traces through your connectors.
+    **Workaround:** Use logs for detection. Investigations query metrics and traces through your connectors.
 
 **Detection needs time to warm up**
-:   After you turn on detection, the first Knowledge Indicators and rules appear within a few minutes. Expect the first signals 40 to 100 minutes after you turn it on. Early on, it can have few rules, or rules with no matches.
+:   After you turn on detection, the first Knowledge Indicators and rules appear within a few minutes. Expect the first signals 40 minutes to about 2.5 hours after you turn it on, while the rules warm up. After that, detecting a new problem takes about 10 to 30 minutes. Early on, it can have few rules, or rules with no matches.
 
     **Workaround:** Wait, and check progress on the **Detections** page. Refer to [How long learning takes](./detection/learning.md#nightshift-detection-learning-warmup).
 
@@ -88,11 +88,6 @@ products:
 :   Investigations can use Local and External {{es}}, GitHub, and HTTP connectors. Slack connects your team, not data.
 
     **Workaround:** Reach any other tool with an HTTP API through an HTTP connector, and describe the API in custom context. Refer to [Connect any system with an HTTP API](./investigation/extend.md#nightshift-extend-http).
-
-**Connectors on ports other than 443 fail**
-:   A connector whose URL has a port other than 443, such as the `:9243` port in some {{ecloud}} endpoints, passes its test but fails in investigations with a `502` error.
-
-    **Workaround:** Use an endpoint on port 443. For an {{ecloud}} endpoint, remove the port from the URL.
 
 **Anyone with connector access can run your connectors**
 :   Any user who can use connectors in {{kib}} can run the connectors that {{nightshift}} uses, with their stored credentials. HTTP connectors can't be restricted.

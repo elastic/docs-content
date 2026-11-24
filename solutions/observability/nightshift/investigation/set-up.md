@@ -16,7 +16,7 @@ An investigation can only test what it can reach. Connect the telemetry, code, c
 Investigations can use the following connections:
 
 - [Local {{es}}](#nightshift-set-up-local-es): Logs, metrics, and traces in your {{nightshift}} project, created when {{nightshift}} is enabled.
-- [External {{es}}](#nightshift-set-up-external-es): Data in another cluster or project that [{{cps}}](/deploy-manage/cross-project-search-config.md) can't reach.
+- [External {{es}}](#nightshift-set-up-external-es): Data in another cluster or project, or in projects linked through [{{cps}}](/deploy-manage/cross-project-search-config.md).
 - [GitHub](#nightshift-set-up-github): Code, configuration, runbooks, and recent commits, pull requests, and issues. Connecting gives more information on *why* something broke.
 - [HTTP](#nightshift-set-up-http): Data from any other API, such as a runbook service or deploy history. Optional.
 - [Slack](#nightshift-set-up-slack): A place to ask for help and to post results. Optional, but required to post automation results to a channel.
@@ -30,7 +30,7 @@ To reach any other tool, use an HTTP connector. Refer to [Extend investigations]
 
 You manage connections on the **General** tab of the **Settings** page. On the {{nightshift}} home page, open the {icon}`boxes_vertical` menu and select **Settings**.
 
-To add a connector, select **Add connector**. The flyout lists the connector types that investigations can use, with how many you have of each. Select **Create connector** next to a type. To manage connectors in the rest of {{kib}}, select **Open in Stack Management**. Refer to [Connectors](kibana://reference/connectors-kibana.md).
+To add a connector, select **Add connector**. The flyout lists the connector types that investigations can use, with how many you have of each. Select **Create connector** next to a type. Investigations can use only connectors that you add from this flyout. A connector that you create in **Stack Management** isn't assigned to investigations. To manage connectors in the rest of {{kib}}, select **Open in Stack Management**. Refer to [Connectors](kibana://reference/connectors-kibana.md).
 
 
 ## How investigations use connections [nightshift-set-up-how]
@@ -39,31 +39,22 @@ Investigations reach your systems through connectors, from a temporary sandbox.
 
 - **Each investigation gets its own sandbox**: which is discarded when the investigation ends.
 - **Connectors hold shared credentials**: A connector uses one set of credentials for every investigation, from whoever started it.
-- **Access is as read-only as your credentials**: Give every connector, HTTP included, credentials that can only read, such as a read-only {{es}} API key and GitHub token. A connector with write access lets investigations write too.
-- **The sandbox can reach only known hosts**: Your connectors' hosts are allowed automatically. To allow others, refer to [Sandbox egress allowlist](#nightshift-set-up-egress).
+- **Access is as read-only as your credentials**: Give every connector, HTTP included, credentials that can only read, such as a read-only {{es}} API key and GitHub token. A connector with write access lets investigations write too. The exception is a connector for remediation workflows. Refer to [Remediate with workflows](./extend.md#nightshift-extend-remediate).
+- **The sandbox can reach only known hosts**: A command that uses a connector can reach that connector's host. To allow other hosts, refer to [Sandbox egress allowlist](#nightshift-set-up-egress).
 
 ## Set up a Local {{es}} connector [nightshift-set-up-local-es]
 
 When {{nightshift}} is enabled, it creates a **Local Elasticsearch** connector, type `.elasticsearch`, that investigations use to query the logs, metrics, and traces in this project. You don't need to set anything up. Don't delete it.
 
-Investigations also reach data in projects linked through [{{cps}}](/deploy-manage/cross-project-search-config.md).
+The **Local Elasticsearch** connector searches only this project. To search projects linked through [{{cps}}](/deploy-manage/cross-project-search-config.md), add an External {{es}} connector with an API key that has connected cluster access. Refer to [Search projects linked through {{cps}}](#nightshift-set-up-cps).
 
 ## Set up an External {{es}} connector [nightshift-set-up-external-es]
 
-Add an External {{es}} connector when your data is in another cluster or project that [{{cps}}](/deploy-manage/cross-project-search-config.md) can't reach, for example a separate production deployment. For what works with each deployment type, refer to [Reference architecture](../reference-architecture.md).
+Add an External {{es}} connector when your data is in another cluster or project, for example a separate production deployment, or in projects linked through {{cps}}. For what works with each deployment type, refer to [Reference architecture](../reference-architecture.md).
 
 For the steps, including the API key request, refer to [Add data](../get-started.md#nightshift-get-started-add-data). After setup, start from **Add connector** on the **General** tab, then select **Create connector** next to **External Elasticsearch**.
 
-:::{dropdown} Authentication and connector actions
-The connector setup includes six read-only actions, which other {{kib}} features can use. Investigations don't use them:
-
-- `esql`: Runs an {{esql}} query.
-- `search`: Runs a search request.
-- `listIndices`: Lists the indices.
-- `getMapping`: Reads the mapping of an index.
-- `getClusterInfo`: Reads basic information about the cluster.
-- `request`: Sends a `GET` request to any {{es}} REST API endpoint.
-
+:::{dropdown} Authentication
 **API key format.** Paste the `encoded` value as it is. You don't need to add the `ApiKey` prefix: {{kib}} adds it when it's missing. If you already added it, that works too.
 
 **Username and password.** You can also authenticate with a **Username and password**. The user needs at least the `read` privilege on the indices that investigations search. An API key is easier to limit and to revoke.
@@ -71,6 +62,18 @@ The connector setup includes six read-only actions, which other {{kib}} features
 For all connector settings, refer to [External {{es}} connector](kibana://reference/connectors-kibana/elasticsearch-action-type.md).
 :::
 
+
+### Search projects linked through {{cps}} [nightshift-set-up-cps]
+
+To let investigations search the projects linked to your {{nightshift}} project, create an External {{es}} connector that points to the {{nightshift}} project, with an API key that you create in the {{ecloud}} console. An API key that you create in {{kib}} can't search linked projects.
+
+1. In the [{{ecloud}} console](https://cloud.elastic.co/), open your {{nightshift}} project and select **Manage project**.
+1. Select **Actions** at the top right, then **Create API key**.
+1. Turn on **Cloud resource access**, and grant at least the **Viewer** role on the project.
+1. Turn on **Connected cluster access**.
+1. Create the key, and copy its `encoded` value.
+1. Copy the {{es}} endpoint of the {{nightshift}} project.
+1. Create an External {{es}} connector with this endpoint and API key. Follow the steps in [Add data](../get-started.md#nightshift-get-started-add-data), and skip the API key request.
 
 ## Set up GitHub [nightshift-set-up-github]
 
@@ -115,4 +118,4 @@ The investigation sandbox can reach only your connectors' hosts and the hosts yo
 - [How investigations work](./index.md): Learn how investigations use your data and code.
 - [Automations](./automations.md): Start investigations for you, and post the results to Slack.
 - [Investigate in Slack](../use-cases/investigate-in-slack.md): Ask {{nightshift}} for help from a connected channel.
-- [Extend investigations](./extend.md): Add custom context, connect other APIs, and run your own workflows from chat.
+- [Extend investigations](./extend.md): Add custom context, connect other APIs, and let investigations run your workflows.

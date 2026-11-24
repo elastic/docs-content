@@ -19,6 +19,8 @@ For the privileges to view events and start investigations, refer to [Grant acce
 
 On the {{nightshift}} home page, select **Detections**. The **Events** tab lists your significant events, the most recently updated first.
 
+By default, the list shows only **Active** and **Recovering** events. Inactive events are filtered out of the list, not deleted, so you can still inspect them. To see them, select **Inactive** in the **Status** filter.
+
 Each row shows the event's title and summary, when it was **Updated at** and **Created at**, its **Status**, its **Severity**, and its **Investigation** state: **Not started**, **In progress**, or **Completed**.
 
 To narrow the list:
@@ -52,9 +54,17 @@ A significant event has one of the following statuses, which show whether the pr
 
 - **Active**: A current failure is confirmed, or is plausible and not yet ruled out. Review it and investigate.
 - **Recovering**: Every rule behind the event looks healthy again. If any of them breaches again, the event returns to **Active**. No action is needed yet, but keep an eye on it.
-- **Inactive**: Every signal that confirmed the event was checked again and cleared, or someone marked the event inactive. The event is resolved, so no action is needed.
+- **Inactive**: The event is closed, so no action is needed.
 
-An event doesn't become inactive only because a rule goes quiet. It stays **Active** or **Recovering** until its signals are checked again and cleared.
+Detection doesn't close an event on its own. An event becomes **Inactive** only when one of the following happens:
+
+- Someone marks it inactive.
+- It stays **Recovering** for 48 hours with no new evidence.
+- All the rules behind it are deleted.
+
+The daily stale event cleanup closes the last two cases. Refer to [Advanced developer settings](../settings.md#nightshift-settings-advanced-dev).
+
+The **Events** tab hides inactive events by default. To inspect one, select **Inactive** in the **Status** filter. Refer to [Find an event](#nightshift-detection-events-find).
 
 ## Act on an event [nightshift-detection-events-act]
 
@@ -65,7 +75,7 @@ The **Actions** menu in the event's details also has:
 - **Run follow-up**: Queue another investigation, while one is still running. It starts when the first one finishes.
 - **Open investigation in chat**: Continue a completed investigation with your own questions.
 - **New chat about this event**: Ask questions about the event without starting an investigation, for example "Which services does this affect?".
-- **Mark inactive**: Close an event that no longer needs attention. Optionally, add an **Assessment note** with your reason.
+- **Mark inactive**: Close an event that no longer needs attention. Optionally, add an **Assessment note** with your reason. The event moves out of the default list, and you can still find it with the **Status** filter.
 
 ## Route significant events and investigate them automatically [nightshift-detection-events-route]
 

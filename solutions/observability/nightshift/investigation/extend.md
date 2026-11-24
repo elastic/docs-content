@@ -3,7 +3,7 @@ navigation_title: Extend investigations
 applies_to:
   serverless:
     observability: preview
-description: Help Elastic nightshift investigate your environment. Add custom context, connect any system with an HTTP API, add custom tools, and run your own workflows from chat.
+description: Help Elastic nightshift investigate your environment. Add custom context, connect any system with an HTTP API, add custom tools, and let investigations run your workflows.
 products:
   - id: observability
   - id: cloud-serverless
@@ -11,7 +11,7 @@ products:
 
 # Extend {{nightshift}} investigations using custom context, connectors, tools, and workflows [nightshift-extend]
 
-Investigations work better when {{nightshift}} has notes about your environment and can reach the systems that your team uses. Tell it where your data and runbooks are, connect the APIs it can't reach yet, and run your own workflows from chat.
+Investigations work better when {{nightshift}} has notes about your environment and can reach the systems that your team uses. Tell it where your data and runbooks are, connect the APIs it can't reach yet, and let it run your workflows to fix a problem.
 
 ## How the extensions fit together [nightshift-extend-overview]
 
@@ -22,8 +22,9 @@ flowchart LR
     I --> S["Sandbox"]
     S --> H["HTTP connector"]
     H --> A["Your APIs"]
-    I -->|you ask in chat| W["Your workflow"]
-    W --> P["Approval step"]
+    S --> K["HTTP connector<br/>to Kibana"]
+    K --> W["Your workflow"]
+    W --> P["Approval step<br/>(optional)"]
 ```
 
 You can extend investigations in the following ways:
@@ -31,7 +32,7 @@ You can extend investigations in the following ways:
 - [**Custom context**](#nightshift-extend-custom-context): Notes about your environment and conventions, added to every investigation and chat.
 - [**HTTP connector**](#nightshift-extend-http): Access to any system with an HTTP API, from the investigation sandbox. Custom context describes the API.
 - [**{{agent-builder}} tools**](#nightshift-extend-tools): Custom tools that fetch more context. Advanced.
-- [**Workflows**](#nightshift-extend-workflows): Actions that you build, with approval steps, run when you ask in chat.
+- [**Remediation**](#nightshift-extend-remediate): Workflows that you build, run by investigations through an HTTP connector to {{kib}}.
 
 ## Custom context [nightshift-extend-custom-context]
 
@@ -76,20 +77,19 @@ How an investigation uses an HTTP connector:
 
 - **It calls the API from the sandbox.** Each investigation runs commands in its own temporary sandbox, and calls the API from there.
 - **Credentials stay out of the investigation.** {{nightshift}} adds the connector's credentials to requests to the connector's host. The investigation's instructions and results don't include them.
-- **The host is allowed automatically.** The connector's host is added to the sandbox egress allowlist. To reach other hosts, for example a host that the API redirects to, refer to [Sandbox egress allowlist](../settings.md#nightshift-settings-egress).
+- **The host is allowed for the connector.** A command that uses the connector can reach the connector's host. To reach other hosts, for example a host that the API redirects to, refer to [Sandbox egress allowlist](../settings.md#nightshift-settings-egress).
 
 ### Before you begin [nightshift-extend-http-prereqs]
 
 - You have the privileges to open **Settings**. Refer to [Grant access](../privileges.md#nightshift-privileges-admin).
-- The API uses HTTPS on port 443. In Tech Preview, requests to other ports fail with a `502` error.
-- You have credentials for the API that can only read.
+- You have credentials for the API that can only read. The exception is a connector for remediation workflows. Refer to [Remediate with workflows](#nightshift-extend-remediate).
 
 ### Add an HTTP connector [nightshift-extend-http-add]
 
 1. On the {{nightshift}} **Settings** page, on the **General** tab, select **Add connector**.
 1. Next to **HTTP**, select **Create connector**.
 1. Enter a **Connector name** that says what the API is, for example `runbooks-api`. {{kib}} suggests a **Connector ID**, which you can change before you save.
-1. In **Base URL**, enter the base URL of the API, for example `https://runbooks.example.com`. Don't add a port number.
+1. In **Base URL**, enter the base URL of the API, for example `https://runbooks.example.com`.
 1. Under **Authentication**, select one of these options:
 
    - **None**: For APIs without authentication, or with an API key or token in a header. To send a key, turn on **Add HTTP header**, enter the header **Key** and **Value**, and set **Type** to **Secret**.
@@ -107,12 +107,12 @@ For connectors in {{kib}}, refer to [Connectors](kibana://reference/connectors-k
 
 ### Describe the API in custom context [nightshift-extend-http-context]
 
-An investigation gets only the connector's name, ID, and type. It doesn't get the base URL, and nothing tells it what the API does or how to call it. Without custom context, an investigation can't use the connector well.
+Nothing tells an investigation what the API does or how to call it. Without custom context, an investigation can't use the connector well.
 
 Add a snippet that says:
 
 - Which connector to use, by name.
-- The base path, and that authentication is added for you.
+- The base path.
 - The endpoints to call, with their method, parameters, and what they return.
 - Paging, if the API pages its results.
 - Which calls are safe, and which to never make.
@@ -122,7 +122,7 @@ For example, for an HTTP connector called `runbooks-api`, with the base URL `htt
 
 ```text
 Runbooks API: use the HTTP connector `runbooks-api` to find the runbook for a service.
-- All endpoints are under /api/v1. Authentication is added for you. Don't ask for keys.
+- All endpoints are under /api/v1.
 - GET /api/v1/runbooks?service=<service-name> returns a JSON list of the runbooks for
   that service, with id, title, owner, and updated_at. Results are paged, 20 for each
   page. Add &page=<n> for the next page.
@@ -141,13 +141,40 @@ You can build custom tools in {{agent-builder}} that fetch context, such as an {
 Investigations run as the **nightshift Investigator** agent in {{agent-builder}}. You can add tools and skills to it, but this isn't tested or supported in Tech Preview. Use it at your own risk, and check your investigations after you change the agent. To edit an agent, refer to [Create and manage custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md).
 :::
 
-## Run workflows from chat [nightshift-extend-workflows]
+## Remediate with workflows [nightshift-extend-remediate]
 
-In an investigation's chat, you can ask {{nightshift}} to run a workflow that you built, by name. For example: "Run the `restart-service` workflow" or "Run the `open-incident-ticket` workflow for this investigation." Refer to [Workflows](/explore-analyze/workflows.md).
+In Tech Preview, investigations propose actions: short next steps for you to take. {{nightshift}} doesn't run them. Elastic plans to make proposed actions easier to act on, so you can run workflows and use your connectors to fix a problem from an investigation, with an optional approval step.
 
-{{nightshift}} itself never changes your environment. A workflow that you ask it to run does what you built it to do, with the connectors and permissions that it has. To keep a person in control, add an approval step before any step that changes something. The workflow then waits until someone approves or rejects it. Refer to [Human-in-the-loop workflows](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
+Until then, you can let investigations run your workflows through the {{kib}} Workflows API. Build the workflow, then add an HTTP connector that points to {{kib}}. Without this connector, {{nightshift}} can't run workflows, from an investigation or from chat.
 
-Elastic plans to make running workflows from investigations more built in.
+A workflow that {{nightshift}} runs does what you built it to do, with the connectors and permissions that it has. To keep a person in control, add an approval step before any step that changes something. The workflow then waits until someone approves or rejects it.
+
+:::{warning}
+This connector can change your environment. Give its API key only the privileges that your workflows need, add an approval step before any step that changes something, and list in custom context which workflows {{nightshift}} can run.
+:::
+
+1. Build a workflow that makes the change, for example a workflow that restarts a service. Refer to [Workflows](/explore-analyze/workflows.md) and [Human-in-the-loop workflows](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md).
+1. Create an API key that can run workflows. Refer to [Serverless project API keys](/deploy-manage/api-keys/serverless-project-api-keys.md).
+1. Add an HTTP connector as described in [Add an HTTP connector](#nightshift-extend-http-add), with these values:
+
+   - **Connector name**: A name that says what the connector does, for example `kibana-workflows`.
+   - **Base URL**: The direct {{kib}} endpoint of your project, for example `https://my-project.kb.us-east-1.aws.elastic.cloud`.
+   - **Authentication**: **None**. Turn on **Add HTTP header**, then enter `Authorization` as the **Key**, `ApiKey <your-encoded-api-key>` as the **Value**, and set **Type** to **Secret**.
+
+1. Describe the workflows in custom context. Refer to [Describe the API in custom context](#nightshift-extend-http-context).
+
+For example, for an HTTP connector called `kibana-workflows`. The workflow IDs and inputs are examples. Use your own.
+
+```text
+Kibana workflows: use the HTTP connector `kibana-workflows` to run a remediation workflow.
+- POST /api/workflows/workflow/<workflow-id>/run starts a workflow. Send the header
+  kbn-xsrf: true and a JSON body {"inputs": {...}}. It returns an execution ID.
+- GET /api/workflows/executions/<execution-id> returns the status of a run.
+- You can run only these workflows:
+  - restart-service (id: <workflow-id>). Inputs: service, environment.
+- Run a workflow only when a person asks for it in chat. Never run one on your own.
+  Say which workflow you ran and its execution ID in your findings.
+```
 
 ## Next steps [nightshift-extend-next]
 
