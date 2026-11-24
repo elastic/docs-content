@@ -12,7 +12,7 @@ products:
 
 # Create a map layer from an {{esql}} query [maps-esql-layer]
 
-If you want to map the result of a calculation, such as the number of requests per area, an {{esql}} layer draws each row that your query returns as a point, line, or polygon. The layer can narrow the query to the visible map area, the time range, and your search, so the query covers only the data you're looking at.
+If you want to map the result of a calculation, such as the number of requests per area, an {{esql}} layer draws each row that your query returns as a point, line, or polygon. The layer can narrow the query to the visible map area, the time range, and your search. The query then covers only the data you're looking at.
 
 ## Before you begin
 
@@ -33,9 +33,10 @@ To follow these steps, you need data that your query can turn into a location, s
    ```
 
 4. Run the query. The map previews the layer. If the editor shows an error, refer to [](#maps-esql-layer-query) for what the query must return.
-5. Select **Add and continue**.
-6. In **Layer settings**, enter a **Name** for the layer, and adjust **Layer style** if you want.
-7. Select **Keep changes**.
+5. Check the options that narrow the layer to the visible map area, the time range, and your search. They appear with the query editor. Refer to [](#maps-esql-layer-narrow).
+6. Select **Add and continue**.
+7. In **Layer settings**, enter a **Name** for the layer, and adjust **Layer style** if you want.
+8. Select **Keep changes**.
 
 The map draws one feature for each row that the query returns. To see how many rows came back, hover over the layer's icon in the layer list. To see the other columns of a row, hover over or select its feature on the map.
 
@@ -50,18 +51,20 @@ The map draws each row of the result as a feature, so the result needs one colum
 
 ## Narrow the layer by map area, time, and search [maps-esql-layer-narrow]
 
-By default, an {{esql}} layer asks only for the data that matters to the current view. These options apply as filters on the documents before your query runs, so a `STATS` command aggregates only the narrowed documents.
+An {{esql}} layer can ask only for the data that matters to the current view. The following options appear with the query editor, both when you add the layer and when you edit it later. All three are on by default when your data has the fields they need.
+
+These options apply as filters on the documents before your query runs, so a `STATS` command aggregates only the narrowed documents.
 
 **Dynamically filter for data in the visible map area**
-:   Limits the query to the documents inside the visible map area. Use **Filter by** to select the geospatial field that the filter uses.
+:   Limits the query to the documents inside the visible map area. **Filter by** lists the geospatial fields of your data, so you can select the one that the filter uses.
 
 **Apply global search to ES|QL statement**
 :   Applies the filters and the query that narrow the whole map. Refer to [Search geographic data](maps-search.md).
 
 **Apply global time range to ES|QL statement**
-:   Applies the time range of the map. Use **Filter by** to select the time field that the range uses.
+:   Applies the time range of the map. **Filter by** lists the time fields of your data, so you can select the one that the range uses.
 
-To control where the time range applies inside the query, use the `?_tstart` and `?_tend` parameters instead. Refer to [Custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters).
+To apply the time range at a specific point in the query, use the `?_tstart` and `?_tend` parameters in the query. Refer to [Custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
 When the map refreshes automatically or you select **Refresh**, the layer runs the query again. To stop that for one layer, turn off **Re-fetch layer data on refresh** in the layer settings.
 
@@ -73,7 +76,7 @@ stack: beta 9.7+
 
 If a layer groups documents into grid cells, you can let the map pick the cell size from the zoom level. The cells then stay readable as you zoom in and out.
 
-The cell size of a grid comes from the `precision` argument of the [`ST_GEOTILE`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_geotile.md), [`ST_GEOHEX`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_geohex.md), and [`ST_GEOHASH`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_geohash.md) functions. Instead of a fixed number, pass the matching parameter, and Maps fills in a value for the current zoom level:
+The cell size of a grid comes from the `precision` argument of the [`ST_GEOTILE`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_geotile.md), [`ST_GEOHEX`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_geohex.md), and [`ST_GEOHASH`](elasticsearch://reference/query-languages/esql/functions-operators/spatial-functions/st_geohash.md) functions. Instead of a fixed number, pass the matching parameter, and {{kib}} fills in a value for the current zoom level:
 
 * `?_geotile_precision` for `ST_GEOTILE`
 * `?_geohex_precision` for `ST_GEOHEX`
@@ -91,9 +94,9 @@ FROM kibana_sample_data_logs
 
 When you zoom far enough to change the value, the layer runs the query again with the new precision. When you write the `precision` argument, autocomplete suggests the matching parameter, and hovering over the parameter shows a description.
 
-To make the cells smaller or larger at every zoom level, move the **Resolution** slider toward **high** for finer detail or toward **low** for coarser detail. The slider appears only when the query uses one of the three parameters.
+To make the cells smaller or larger at every zoom level, move the **Resolution** slider toward **high** for finer detail or toward **low** for coarser detail. The slider appears with the other layer options, both when you add the layer and when you edit it later, but only when the query uses one of the three parameters.
 
-Only Maps fills in these parameters. A query that uses them doesn't work in a Vega visualization.
+These parameters work only in Maps layers, not in a [Vega visualization](/explore-analyze/visualize/custom-visualizations-with-vega.md).
 
 ## Next steps
 
