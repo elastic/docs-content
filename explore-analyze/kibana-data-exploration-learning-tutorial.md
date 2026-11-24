@@ -1024,7 +1024,7 @@ How each panel maps back to the tutorial:
 
 :::::
 
-For the full request schema, including sections, filter controls, and library-linked panels, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards/operation/post-dashboards).
+For the full request schema, including sections, filter controls, and library-linked panels, refer to the [Dashboards API reference](https://www.elastic.co/docs/api/kibana/operation/operation-create-dashboard).
 :::::::
 
 
