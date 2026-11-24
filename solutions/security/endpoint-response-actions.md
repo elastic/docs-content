@@ -220,7 +220,7 @@ Character classes (`[...]`), regular expressions, and escapes aren't supported; 
 
 Wildcards also match hidden files, whose names start with `.`. Matching ignores case on Windows and on macOS volumes that aren't case-sensitive. On Linux, matching is case-sensitive.
 
-When you retrieve multiple files or use wildcards, the `.zip` archive includes a manifest that lists each file and whether it was retrieved. Files that can't be retrieved are listed with a reason instead. These include files locked by another process, files stored only in cloud storage such as OneDrive or iCloud, and symbolic links. One action can include up to 10,000 files and folders, 20 GiB in total, and folders up to 32 levels deep. If a request exceeds any of these limits, no files are retrieved. Use a more specific path, then try again.
+The `.zip` archive includes a `manifest.json` file that lists each file, its SHA-256 hash and size, and whether it was retrieved. In multi-file and wildcard actions, items that can't be retrieved are listed with a reason instead. These include files locked by another process (unless you use `--force` on Windows), files stored only in cloud storage such as OneDrive or iCloud (which aren't downloaded), symbolic links matched by a wildcard, mount points, and pseudo-filesystems. By default, one multi-file or wildcard action can include up to 10,000 entries (matched files and skipped items), 20 GiB of uncompressed file data in total, and subdirectories up to 32 levels deep from the wildcard root. If a request exceeds any of these limits, no files are retrieved. Use a more specific path, then try again.
 
 
 ### `isolate` [_isolate]
