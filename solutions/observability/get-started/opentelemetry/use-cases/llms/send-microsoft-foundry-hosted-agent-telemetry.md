@@ -37,7 +37,7 @@ In the Foundry portal, open **Manage** → **Project details** → **Connections
 ::::
 
 ::::{step} Add the exporter settings and deploy
-Add the settings to the environment variables of your hosted agent. In `agent.yaml`, they go under `environment_variables`. If you deploy with `azd`, they go in the `env` map of the `azure.ai.agent` service in `azure.yaml`, as `KEY: value` entries.
+Add the settings to the `environment_variables` section of your agent's `agent.yaml` file.
 
 Set the endpoint to your {{motlp}} URL, the protocol to `http/protobuf`, and the headers to the connection field:
 
