@@ -1967,7 +1967,7 @@ They match the query for different reasons:
 The exact word match moves **The Left Hand of Darkness** to the top. Hybrid search ranks it above the book that is closest in meaning, so you get both kinds of relevance in one ranking. In this small dataset, the semantic clause already returns all five books, so the full-text clause doesn't add results. It changes their order.
 :::
 
-## Summarize the data with {{esql}} [vector-full-text-search-esql]
+## Aggregate the data with {{esql}} [vector-full-text-search-esql]
 
 Use [{{esql}}](elasticsearch://reference/query-languages/esql.md) to summarize, analyze, and calculate metrics on your data. This query counts the books released in each decade:
 
