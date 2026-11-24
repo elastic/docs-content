@@ -200,6 +200,21 @@ A Discover session panel displays one tab at a time. When the underlying session
 
 **Result:** The panel shows the tab you selected.
 
+### Load more documents in a session panel [discover-session-load-more]
+```{applies_to}
+serverless: ga
+stack: ga 9.7
+```
+
+If a classic mode panel matches more documents than it loaded, you can load more of them without leaving the dashboard. A panel first loads as many documents as its [sample size](document-explorer.md#document-explorer-sample-size) allows. When more matching documents exist, the footer of the table's last page says that results are limited and shows **Load more**.
+
+1. In the panel, go to the last page of the table.
+2. In the table footer, select **Load more**.
+
+**Result:** The table adds the next documents.
+
+**Load more** is unavailable while auto-refresh is on. {{esql}} panels don't have it, because the `LIMIT` command in their query sets how many rows load.
+
 ## Next steps
 
 - [Organize dashboard panels](../dashboards/arrange-panels.md): Position and resize the new panel on the dashboard.

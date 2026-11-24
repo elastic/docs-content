@@ -109,6 +109,8 @@ To load fewer documents into the table, or to keep the number of results managea
 
 When your search matches more documents than the table loaded, the last page shows a message that the results are limited. From that message, you can select **Load more** to continue exploring. **Load more** is unavailable while auto-refresh is on.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` In classic mode, you can also load more documents in a Discover session panel on a dashboard. Refer to [Load more documents in a session panel](use-sessions-in-dashboards.md#discover-session-load-more).
+
 ### Sort documents by one or more fields [document-explorer-sort-data]
 
 Sort the data by one or more fields, in ascending or descending order. In classic mode, the default sort is based on the time field, from new to old. In {{esql}} mode, the query sets the order of the results. Sorting in the table reorders only the rows that are loaded and doesn't change the query.
