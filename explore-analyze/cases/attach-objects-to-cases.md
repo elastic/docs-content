@@ -76,12 +76,7 @@ serverless:
 
 Observables are discrete pieces of data relevant to an investigation, such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you might be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
 
-You can view and manage a case's observables in the **Observables** section of its **Attachments** tab. Each case supports up to 50 observables.
-
-:::{note}
-:applies_to: stack: ga 9.0-9.2
-In {{stack}} 9.0-9.2, observables are on their own **Observables** tab instead of the **Attachments** tab.
-:::
+You can view and manage a case's observables in the **Observables** section of its **Attachments** tab, or in the **Observables** tab, depending on your {{stack}} version. Each case supports up to 50 observables.
 
 ### Manually add an observable [cases-manual-add-observable]
 
