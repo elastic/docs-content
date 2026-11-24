@@ -34,7 +34,7 @@ You need:
 
 - An {{ech}} deployment or {{obs-serverless}} project, version 9.4 or later. If you don't have one, refer to [Create an Observability project](/solutions/observability/get-started.md).
 - A Linux host (a VM works well) with outbound internet access. You'll run both {{agent}} and the sample application on it.
-- Java 17 (or later) and Maven installed on that host.
+- Java 17 (or later) installed on that host. The sample application bundles its own Gradle wrapper, so you don't need Gradle or Maven installed separately.
 - The sample application source, `java-monitor-demo`.
 
 :::{note}
@@ -113,7 +113,7 @@ The {{edot}} Java SDK auto-instruments your application: there's no code to chan
 
    ```bash
    cd java-monitor-demo
-   mvn -q package
+   ./gradlew -q bootJar
    ```
 
 2. Download the {{edot}} Java agent from [Maven Central](https://repo1.maven.org/maven2/co/elastic/otel/elastic-otel-javaagent/), picking the [latest release](https://github.com/elastic/elastic-otel-java/releases/latest):
@@ -126,7 +126,7 @@ The {{edot}} Java SDK auto-instruments your application: there's no code to chan
 
    ```bash
    OTEL_SERVICE_NAME=java-monitor-demo \
-     java -javaagent:./elastic-otel-javaagent-<version>.jar -jar target/java-monitor-demo-1.0.0.jar <1>
+     java -javaagent:./elastic-otel-javaagent-<version>.jar -jar build/libs/java-monitor-demo-1.0.0.jar <1>
    ```
    1. No `OTEL_EXPORTER_OTLP_ENDPOINT` is needed here: when a local collector is running on its default ports, as yours is from Step 1, the {{edot}} Java SDK sends data to it automatically.
 
@@ -228,7 +228,7 @@ To fix it, stop the application on its host (press Ctrl+C) and restart it with t
 ```bash
 OTEL_SERVICE_NAME=java-monitor-demo \
 PRICING_SERVICE_ENABLED=true \
-  java -javaagent:./elastic-otel-javaagent-<version>.jar -jar target/java-monitor-demo-1.0.0.jar
+  java -javaagent:./elastic-otel-javaagent-<version>.jar -jar build/libs/java-monitor-demo-1.0.0.jar
 ```
 
 **Result:** within a few request cycles, `/error` starts returning `200` instead of `503`. Back in the Applications UI, **GET /error**'s failed transaction rate drops to zero, and in Discover, the `ERROR` log lines stop appearing.
