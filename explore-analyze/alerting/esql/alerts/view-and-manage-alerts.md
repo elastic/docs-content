@@ -38,7 +38,7 @@ Use the following controls on the **Alerts** page to narrow the alert list:
 
 - **Rule**: Limit to one or more rules.
 - **Status**: Limit by lifecycle state (inactive, pending, active, recovering).
-- **Source**: Limit to **Universal** or **Classic** alerts, or to [imported alerts](import-third-party-alerts.md) from specific tools. {applies_to}`{serverless: {observability: ga}, stack: ga 9.7+}`
+- **Source** {applies_to}`{serverless: {observability: ga}, stack: ga 9.7+}`: Limit to **Universal** or **Classic** alerts, or to [imported alerts](import-third-party-alerts.md) from specific sources.
 - **Severity**: Limit to one or more severity levels.
 - **Alert tags** or **Tags** (depending on your {{stack}} version): Limit to alerts matching any selected tag. Tag choices come from the tags on alerts in the selected time range.
 - **Assignee**: Limit to alerts assigned to one or more users.
