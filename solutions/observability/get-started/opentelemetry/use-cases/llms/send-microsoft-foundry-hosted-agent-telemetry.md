@@ -73,7 +73,7 @@ The hosted agent also sends logs and metrics, which land in the `logs-*` and `me
 
 ## Send telemetry to Application Insights and Elastic
 
-Foundry can send the telemetry of your hosted agents to Application Insights. This is called project monitoring. When it's on, an Application Insights resource is connected to your Foundry project, and every hosted agent sends its telemetry there automatically. If you also add the exporter settings from this page, the agent sends its telemetry to Application Insights and to Elastic in parallel. Each backend can map, store, and display the telemetry differently, so the data in Elastic might not match Application Insights field for field.
+Foundry can send the telemetry of your hosted agents to Application Insights. This is called project monitoring. When it's on, an Application Insights resource is [connected to your Foundry project](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-agent-setup), and every hosted agent sends its telemetry there automatically. If you also add the exporter settings from this page, the agent sends its telemetry to Application Insights and to Elastic in parallel. Each backend can map, store, and display the telemetry differently, so the data in Elastic might not match Application Insights field for field.
 
 To send telemetry only to Elastic, turn off project monitoring by disconnecting Application Insights from your Foundry project. Refer to [Disable tracing](https://learn.microsoft.com/en-us/azure/foundry/observability/concepts/trace-data#disable-tracing) in the Microsoft documentation.
 
