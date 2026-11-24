@@ -304,7 +304,7 @@ To authenticate with a keytab instead, set `auth_type` to `keytab`, and replace 
 :   (string) **Required**. How {{agent}} authenticates with the Kerberos Key Distribution Center (KDC). Set to `password` to authenticate with a principal name and password, or to `keytab` to authenticate with a keytab file.
 
 `kerberos.username`
-:   (string) **Required** for the `password` authentication type. The name of the principal that {{agent}} authenticates as. With the `keytab` authentication type, set it to the principal whose keys the keytab contains.
+:   (string) **Required**. The name of the principal that {{agent}} authenticates as. With the `keytab` authentication type, this is the principal whose keys the keytab contains.
 
 `kerberos.password`
 :   (string) **Required** for the `password` authentication type. The password of the principal.
