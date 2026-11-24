@@ -207,7 +207,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-On {{elastic-defend}} hosts, you can use these wildcards in `--path`. A plain directory path without a wildcard (such as `/var/log`) doesn't retrieve files; append `/*` or `/**` instead.
+On {{elastic-defend}} hosts, you can use these wildcards in `--path`:
 
 * `*` matches any number of characters within a single directory or file name (it doesn't cross `/` or `\`). You can use it in any part of the path. For example:
   * `/var/log/*.log` retrieves the files directly in `/var/log` whose names end in `.log`.
@@ -216,7 +216,9 @@ On {{elastic-defend}} hosts, you can use these wildcards in `--path`. A plain di
 * `?` matches exactly one character within a single directory or file name. For example, `/var/log/syslog.?` retrieves `syslog.1` but not `syslog.10`. Like `*`, you can use it in any part of the path.
 * `**` retrieves every file in a directory and all of its subdirectories. It must be the last part of the path, for example `/var/log/**`.
 
-Character classes (`[...]`), regular expressions, and escapes aren't supported; those characters are matched literally. On Windows, wildcard and multi-path requests require drive-letter paths (UNC and device paths aren't supported).
+A directory path without a wildcard, such as `/var/log`, doesn't retrieve any files. To retrieve the files in a directory, add `/*` or `/**` to the path.
+
+Character classes (`[...]`), regular expressions, and escapes aren't supported — those characters are matched literally. On Windows, wildcard and multi-path requests require drive-letter paths (UNC and device paths aren't supported).
 
 Wildcards also match hidden files, whose names start with `.`. Matching ignores case on Windows and on macOS volumes that aren't case-sensitive. On Linux, matching is case-sensitive.
 
