@@ -39,7 +39,7 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-If **Sync detections** or **Sync alerts** (depending on your {{stack}} version) is on, closing the case prompts you to select how to close its attached detection alerts. You can close them without a reason, or select a closing reason.
+If the case syncs alert statuses with the case status, closing the case prompts you to select how to close its attached detection alerts. You can close them without a reason, or select a closing reason.
 
 The available options match the [closing reasons from the **Alerts** page](/solutions/security/detect-and-alert/manage-detection-alerts.md#closing-reasons), including any custom closing reasons defined in the `securitySolution:detectionsCloseReasons` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
 
@@ -115,12 +115,12 @@ serverless:
 stack: ga 9.6+
 ```
 
-Attach an attack to a case so your team can review the finding and the alerts it correlates in one place:
+Attach an attack to a case so your team can review it and the alerts it correlates in one place:
 
 1. On the [Attacks page](/solutions/security/ai/attack-discovery/manage-discoveries-from-attacks-page.md), select **Take actions** → **Add to case** on the attack's row, or **Take action** → **Add to case** in the attack details flyout.
 2. Select an existing case, or create a new one.
 
-{{kib}} attaches the attack and its alerts together. If **Sync detections** is on, attack statuses update when the case status changes.
+{{kib}} attaches the attack and its alerts together. If the case syncs alert statuses with the case status, attack statuses also update when the case status changes.
 
 When you [remove an attack](/explore-analyze/cases/attach-objects-to-cases.md#cases-remove-attachments), you can also remove its alerts. Alerts that you added separately stay on the case.
 
