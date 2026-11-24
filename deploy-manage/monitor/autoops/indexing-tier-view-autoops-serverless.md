@@ -30,7 +30,7 @@ The top half of the **Indexing Tier** page offers general insights at the projec
   :::
 
 * Gain insights from **performance charts** depicting indexing rate and latency trends over the selected time range.
-* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to understand the amount of [ingest VCUs](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumed over the selected time range.
+* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to understand the amount of [Ingest VCUs](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumed over the selected time range.
 
 ## Index and data stream-level insights
  
