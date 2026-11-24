@@ -45,7 +45,7 @@ Most {{ecloud}} and {{ech}} features are also available in FedRAMP authorized Cl
 | [Managed OTLP Endpoint (mOTLP)](/reference/managed-inputs/managed-otlp-endpoint.md) | Yes | No | No |
 | [Managed {{es}} _bulk endpoint](/reference/managed-inputs/elasticsearch-bulk.md) | Yes | No | No |
 | [Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md) | Yes | No | No |
-| [{{managed-integrations}}](/reference/managed-integrations/managed-integrations.md) | Yes | {applies_to}`stack: ga 9.6+` Yes, with [limitations](#ec-fedramp-managed-integrations) | No |
+| [{{managed-integrations}}](/reference/managed-integrations/index.md) | Yes | {applies_to}`stack: ga 9.6+` Yes, with [limitations](#ec-fedramp-managed-integrations) | No |
 | [Custom bundles and plugins](/deploy-manage/plugins-and-custom-configuration-files/elastic-cloud/upload-custom-plugins-bundles.md) | Yes | Yes | No |
 | [Elastic AI Assistant for Observability and Search](/solutions/observability/ai/observability-ai-assistant.md), [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) | Yes | Elastic Managed LLM not available | Elastic Managed LLM not available |
 | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) | Yes | Yes | TBD |

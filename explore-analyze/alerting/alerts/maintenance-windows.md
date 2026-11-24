@@ -14,7 +14,9 @@ products:
 
 # Maintenance windows
 
-You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
+Maintenance windows are part of {{alerting-v1-system}}. You can schedule single or recurring maintenance windows to temporarily reduce rule notifications. For example, a maintenance window prevents false alarms during planned outages.
+
+{applies_to}`stack: ga 9.6+` {applies_to}`observability: ga` Maintenance windows also apply to {{alerting-v2-system-short}}, where they [pause action policy dispatch](/explore-analyze/alerting/esql/action-policies/manage-action-policies.md#maintenance-windows).
 
 By default, a maintenance window affects all rules in all {{kib}} apps within its space. You can refine the scope of a maintenance window by adding filters and rule categories.
 
@@ -27,14 +29,14 @@ Alerts continue to be generated, however notifications are suppressed as follows
 
 To use maintenance windows, you must have the appropriate [subscription](https://www.elastic.co/subscriptions) and {{kib}} feature privileges.
 
-* To have full access to maintenance windows, you must have `All` privileges for the **Management > Maintenance Windows** feature.
-* To have view-only access to maintenance windows, you must have `Read` privileges for the **Management > Maintenance Windows** feature.
+* To have full access to maintenance windows, you must have `All` privileges for the **Management** → **Maintenance Windows** feature.
+* To have view-only access to maintenance windows, you must have `Read` privileges for the **Management** → **Maintenance Windows** feature.
 
 For more details, refer to [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ## Create and manage maintenance windows [manage-maintenance-windows]
 
-In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-settings}} > {{manage-app}} > {{maint-windows-app}}** in Serverless, you can create, edit, cancel, and archive maintenance windows. 
+In **Management** → **{{stack-manage-app}}** → **Maintenance Windows** or **{{project-settings}}** → **{{manage-app}}** → **{{maint-windows-app}}** in Serverless, you can create, edit, cancel, and archive maintenance windows. 
 
 {applies_to}`stack: ga 9.1` In {{stack}} 9.1.0 and later, you can also delete maintenance windows that are running, canceled, or archived. Be aware that you can't recover maintenance windows once you delete them.
 

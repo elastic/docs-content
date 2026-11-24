@@ -253,7 +253,7 @@ When security is enabled, you grant users access to reporting features with Kiba
 1. Enable application privileges in **Reporting**.
 1. Create the reporting role.
     1. Open the navigation menu, then select **Stack Management**.
-    1. Click **Roles → Create role**.
+    1. Click **Roles** → **Create role**.
 1. Specify the role settings.
     1. Enter the **Role name**. For example, `custom_reporting_user`.
     1. Specify the **Indices** and **Privileges**.

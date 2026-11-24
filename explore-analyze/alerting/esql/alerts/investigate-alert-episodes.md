@@ -2,7 +2,8 @@
 navigation_title: Investigate alerts
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Investigate alerts. Understand what triggered an alert, assess metric behavior, find related alerts, review responders, and inspect underlying data."
@@ -10,9 +11,9 @@ description: "Investigate alerts. Understand what triggered an alert, assess met
 
 # Investigate alerts in {{alerting-v2-system}} [investigate-alert-episodes]
 
-From the **Alerts** page in {{alerting-v2-system}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
+From the **Alerts** page in {{alerting-v2-system-short}}, select an alert to open its detail page, which surfaces what triggered the alert, its severity, recurring patterns, and response history, so you can investigate and coordinate a response.
 
-Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system}}](#investigate-classic-alerts).
+Alerts from {{alerting-v1-system}} rules open a simpler flyout instead. Refer to [Investigate alerts from {{alerting-v1-system-short}}](#investigate-classic-alerts).
 
 ## Understand the trigger and scope [understand-trigger]
 
@@ -45,6 +46,21 @@ Related alerts from the same rule are grouped to help you answer whether this is
 - **Same alert group** - Alerts for this rule that share the same group as the current alert (same `group_hash`). A long list here suggests the underlying condition isn't being fully resolved between alerts.
 - **Other groups for this rule** - Alerts from the same rule firing on different entities (different `group_hash`). Use this to gauge how broadly the rule is triggering across your environment.
 
+## Spot a flapping alert [flapping]
+
+A flapping alert keeps changing status instead of staying active or closing, so its status doesn't tell you whether the problem is ongoing or fixed. To warn you not to rely on that status, {{kib}} marks the alert as **Flapping**. {{kib}} shows the mark in different places for alerts from {{alerting-v2-system-short}} and {{alerting-v1-system-short}} rules, and uses different criteria to add it:
+
+| Behavior | {{alerting-v2-system-short}} alerts | {{alerting-v1-system-short}} alerts |
+|---|---|---|
+| In the **Alerts** table | The table doesn't show that the alert is flapping. | A {icon}`chart_gauge` **Flapping** icon appears in the **Status** column while the alert is active. |
+| In the alert details | A **Flapping** badge appears next to the status, including after the alert becomes `inactive`. Select the badge to see why {{kib}} added it. | No badge appears. On the **Fields** tab, `kibana.alert.flapping` is `true` when the alert is flapping. |
+| When {{kib}} marks the alert as flapping | The alert's last 20 rule events include at least 4 changes between `active` and `recovering`. {{kib}} doesn't check alerts with fewer than 20 rule events, and changes into or out of `pending` or `inactive` don't count. | The {{alerting-v1-system-short}} [flapping settings](/explore-analyze/alerting/alerts/create-manage-rules.md#defining-rules-flapping-details) decide when an alert is flapping. |
+| How to respond | Follow the steps in [Triage a flapping alert](triage-alert-episodes.md#triage-flapping). | Acknowledging the alert doesn't stop its notifications. For other differences, refer to [How actions affect alerts from {{alerting-v1-system-short}}](triage-alert-episodes.md#classic-triage-action-results). |
+
+:::{tip}
+If a {{alerting-v2-system-short}} alert's status in the **Alerts** table keeps changing between `active` and `recovering`, open the alert details to check for the **Flapping** badge. If an [action policy](../action-policies/create-configure-action-policy.md#reduce-noise-grouping) notifies on status changes, repeated notifications for the same alert are another reason to check.
+:::
+
 ## Review who has responded [review-responders]
 
 Each alert tracks who performed the most recent response action of each type, so you can avoid duplicating work or missing a step someone else already handled:
@@ -55,9 +71,25 @@ Each alert tracks who performed the most recent response action of each type, so
 
 These rows only appear when the alert is in the corresponding state. System-generated actions display as **System**.
 
+## Check whether an alert's notifications went out [policy-history]
+
+To find out whether {{kib}} sent a notification for an alert, open the **Policy history** tab on the alert's details page. For each time an action policy handled the alert since it started, the tab shows whether the policy sent the notification (**Dispatched**), held it back because of its frequency setting (**Throttled**), or failed to send it (**Failed**).
+
+To narrow the list, filter by outcome or search it. To check which alerts a policy matches and where it sends notifications, select the policy's name.
+
+If a notification you expected isn't listed, no action policy tried to send it. This happens when:
+
+- No action policy matches the alert.
+- The alert is acknowledged, snoozed, or resolved.
+- A maintenance window covers the alert.
+
+An empty tab means no action policy has handled the alert yet, even though the empty message mentions the last 24 hours.
+
+To review notifications for every alert in the space, use the [action policy execution history](../action-policies/review-action-policy-execution-history.md).
+
 ## Inspect the underlying data [inspect-data]
 
-Each alert includes a metadata view that surfaces the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
+Each alert includes a **Data container** tab that shows the field values computed or retained by the rule's {{esql}} query. For example, a query using `STATS ... BY` stores aggregated values, not all fields from the underlying events. Use it to inspect rule-specific context such as resource identifiers or computed metrics. You can search by field name or value and toggle off null fields to focus on populated data.
 
 :::{tip}
 Use the **Open in Discover** action to view the full source documents instead of these computed values. The action runs the rule's base query in Discover, aligned with the alert's timeframe. Once there, adjust the query to see what you need. For example, remove the aggregation to return source documents instead of aggregated output.
@@ -67,14 +99,14 @@ Use the **Open in Discover** action to view the full source documents instead of
 
 If the rule has a runbook attached, you can view it directly from the alert to follow the documented triage steps.
 
-## Investigate alerts from {{alerting-v1-system}} [investigate-classic-alerts]
+## Investigate alerts from {{alerting-v1-system-short}} [investigate-classic-alerts]
 
 Select an alert with **Classic** in the **Source** column to open its details flyout, then use its tabs to check the alert:
 
 - **Overview**: Check the alert's status, severity, reason, and timing, along with its rule and the rule's tags.
 - **Fields**: Look up any value stored on the alert, such as the rule type in `kibana.alert.rule.rule_type_id`.
 
-Trend charts, timelines, and related alerts are available only for {{alerting-v2-system}} alerts.
+Trend charts, timelines, and related alerts are available only for {{alerting-v2-system-short}} alerts.
 
 To triage the alert from the flyout, use the **Take action** menu. It has the same actions as the alerts table on the **Alerts** page. For details, refer to [Triage alerts from {{alerting-v1-system}}](triage-alert-episodes.md#triage-classic-alerts).
 

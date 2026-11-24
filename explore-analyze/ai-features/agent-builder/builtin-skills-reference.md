@@ -28,7 +28,7 @@ Some skills are in technical preview or require an [advanced setting](kibana://r
 
 ## Platform skills
 
-Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, streams, significant events, and workflows.
+Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, anomaly detection, streams, significant events, and workflows.
 
 ### Core skills
 
@@ -119,7 +119,7 @@ $$$agent-builder-ki-retrieval-skill$$$ `ki-retrieval` {applies_to}`stack: experi
 
 For the relationship between these skills, AI indices, automations, and KIs, refer to [{{context-engine}} concepts](/explore-analyze/ai-features/context-engine/concepts.md).
 
-### Cases and alerting
+### Cases
 
 $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Manages investigation and incident cases across {{elastic-sec}}, {{observability}}, and Stack Management. Covers creating, updating, searching, and enriching cases with comments, alerts, events, and observables such as indicators of compromise.
@@ -131,57 +131,68 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 
     :::
 
-$$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$$$ `rule-authoring` {applies_to}`stack: experimental 9.5+` {applies_to}`serverless: experimental`
-:   Composes, discovers, and modifies {{alerting-v2-system}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover:
+### {{alerting-v2-system}}
+
+$$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$$$ `rule-authoring` {applies_to}`stack: ga 9.6+` {applies_to}`observability: ga`
+:   Composes, discovers, and modifies {{alerting-v2-system-short}} rules from within a conversation. Covers threshold, aggregation, and grouped conditions over any {{es}} index. Doesn't cover:
 
     * [{{alerting-v1-system}}](/explore-analyze/alerting/alerts.md) rules
-    * {{observability}} rules created with {{alerting-v1-system}}
+    * {{observability}} rules created with {{alerting-v1-system-short}}
     * {{elastic-sec}} detection rules
 
-    {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This skill was previously named `rule-management`. If a custom agent lists `rule-management`, replace that id with `rule-authoring`.
-
-    {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` [`action-policy-authoring`](#agent-builder-action-policy-authoring-skill) sets up notifications. After this skill proposes a complete rule that opens alerts, it offers to set up notifications. If you accept, the agent loads `action-policy-authoring`.
-
-    {applies_to}`stack: experimental =9.5` In 9.5, this skill is named `rule-management` and also composes action policies.
+    [`action-policy-authoring`](#agent-builder-action-policy-authoring-skill) sets up notifications. After this skill proposes a complete rule that opens alerts, it offers to set up notifications. If you accept, the agent loads `action-policy-authoring`.
 
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_rule`
-
-    {applies_to}`stack: experimental =9.5` `platform.alerting.manage_action_policy`
+    `platform.alerting.manage_rule`, `platform.alerting.attach_rule`
 
     :::
 
     **Prerequisites:**
 
-    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental` This setting is on by default.
-    * {applies_to}`stack: experimental =9.5` The `agentBuilder:experimentalFeatures` advanced setting turned on. You can find it on the **Space Settings** tab. Refer to [Enable experimental features](get-started.md#enable-experimental-features-optional).
-    * {applies_to}`stack: experimental =9.5` To find or edit saved rules and action policies, the `contextEngine:enabled` advanced setting also turned on. You can find it on the **Space Settings** tab.
-    * {applies_to}`stack: experimental 9.6+` A space that uses the Classic or {{observability}} solution view.
-    * {applies_to}`serverless: experimental` An {{obs-serverless}} project.
+    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system-short}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). This setting is on by default.
+    * {applies_to}`stack: ga 9.6+` A space that uses the Classic or {{observability}} solution view.
+    * {applies_to}`observability: ga` An {{obs-serverless}} Complete project.
 
     Saving a rule requires the **Rules: All** privilege. For all the privileges you need, refer to [Create rules and action policies with {{agent-builder}}](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-agent-builder-privileges).
 
-$$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {applies_to}`stack: experimental 9.6+` {applies_to}`serverless: experimental`
+$$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {applies_to}`stack: ga 9.6+` {applies_to}`observability: ga`
 :   Composes, discovers, and modifies action policies from within a conversation. Use it to set up, inspect, or edit alert notifications, such as email or paging an on-call responder.
 
     An [action policy](/explore-analyze/alerting/esql/action-policies/about-action-policies.md) controls how alerts are matched, grouped, throttled, and sent to workflows. A policy belongs to a space, so one policy can match alerts from many rules.
 
-    {applies_to}`serverless: experimental` This skill was previously named `action-policy-management`. If a custom agent lists `action-policy-management`, replace that id with `action-policy-authoring`.
-
     :::{dropdown} Assigned tools
-    `platform.alerting.manage_action_policy`
+    `platform.alerting.manage_action_policy`, `platform.alerting.attach_action_policy`
+
+    {applies_to}`stack: ga =9.6` `platform.alerting.find_action_policies`
 
     :::
 
     **Prerequisites:**
 
-    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). This setting is on by default.
-    * {applies_to}`stack: experimental 9.6+` A space that uses the Classic or {{observability}} solution view.
-    * {applies_to}`serverless: experimental` An {{obs-serverless}} project.
+    * The `alerting:v2:enabled` advanced setting turned on. You can find it on the **Global Settings** tab. Refer to [Adjust {{alerting-v2-system-short}} settings](/explore-analyze/alerting/esql/setup.md#alerting-setup-settings). This setting is on by default.
+    * {applies_to}`stack: ga 9.6+` A space that uses the Classic or {{observability}} solution view.
+    * {applies_to}`observability: ga` An {{obs-serverless}} Complete project.
 
     Saving an action policy requires the **Action Policies: All** privilege and, on {{stack}} deployments, an Enterprise license. The policy sends alerts to a workflow. The workflow steps use a configured connector. For all the privileges you need, refer to [Create rules and action policies with {{agent-builder}}](/explore-analyze/alerting/esql/manage/configure-access.md#alerting-agent-builder-privileges).
 
     **Related skills:** [`rule-authoring`](#agent-builder-rule-authoring-skill) composes the rules whose alerts a policy matches.
+
+### Anomaly detection
+
+$$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6`
+:   Use this skill to work with {{ml}} {{anomaly-jobs}} from within a conversation:
+
+    * **Create:** Set up jobs by describing your data and goal. The skill explores your data, asks about your goal in everyday language, tests a setup on your historical data, and creates real-time jobs after you approve the results. For the full workflow, refer to [Create {{anomaly-jobs}} with AI in chat](/explore-analyze/machine-learning/anomaly-detection/ml-jobs-from-agent-builder.md).
+    * **Manage:** Start or stop jobs and {{dfeeds}}, update job settings such as the query delay, and add calendar events that suppress anomalies during planned events.
+    * **Investigate:** Find the cause of an anomaly across jobs, and understand why a score is high or low.
+    * **Troubleshoot:** Diagnose problems such as a stopped {{dfeed}} or a model memory limit.
+
+    :::{dropdown} Assigned tools
+    `platform.core.execute_esql`, `platform.dashboard.generate_dashboard`, plus internal tools to read job details and anomaly results, create and validate jobs and {{dfeeds}}, open, close, start, and stop jobs, change job settings and calendar events, and show anomaly charts in the conversation.
+
+    :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear. You also need the privileges to read or manage {{anomaly-jobs}}, depending on the request. Refer to [Setting up machine learning](/explore-analyze/machine-learning/setting-up-machine-learning.md#setup-privileges).
 
 ### Streams and significant events
 
@@ -300,20 +311,22 @@ serverless:
 ```
 
 $$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: ga 9.4+`
-:   Answers observability questions, lists and diagnoses observability alerts, and investigates service or infrastructure issues. Covers APM, logs, metrics, threshold, SLO burn rate, uptime and synthetics, and infrastructure alerts. Use when a user asks about alerts, service health, error rates, latency, failed transactions, topology, traces, log patterns, SLO breaches, or infrastructure issues.
+:   Answers observability questions, lists and diagnoses observability alerts, and investigates service or infrastructure issues. Covers APM, logs, metrics, threshold, SLO burn rate, uptime and synthetics, and infrastructure alerts. Use when a user asks about alerts, service health, error rates, latency, failed transactions, topology, traces, log patterns, SLO breaches, or infrastructure issues. Also use when a user wants to know why a service is broken, slow, or failing.
 
     :::{dropdown} Assigned tools
     All [Observability tools](tools/builtin-tools-reference.md#observability-tools).
 
     :::
 
-$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, failing, or slow, when an alert fires or an SLA is breached, when they need to understand what happened during an outage or performance regression, or when they need to trace a cascading failure across services.
+$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: removed 9.6+, preview 9.4-9.5` {applies_to}`serverless: removed`
+:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, failing, or slow, when an alert fires or an SLA is breached, when they need to understand what happened during an outage or performance regression, or when they need to trace a cascading failure across services. After this skill's removal, the [`observability.investigation`](#agent-builder-observability-investigation-skill) skill handles these questions.
 
     :::{dropdown} Assigned tools
     Observability log analysis tools, `platform.core.generate_esql`, `platform.core.execute_esql`, and significant events knowledge indicator search.
 
     :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
 
 $$$agent-builder-observability-service-map-skill$$$ `observability.service-map` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Shows a service map when a user asks to see or visualize a service map, service topology, or service dependencies in an APM or observability context. Use for questions about how services connect or their upstream and downstream dependencies.
@@ -481,6 +494,75 @@ $$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-polic
 
     - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) installed, with at least one integration policy in the current space.
     - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
+
+### Automatic Migration skills [agent-builder-automatic-migration-skills]
+```{applies_to}
+serverless:
+  security: preview
+stack: preview 9.6+
+```
+
+These skills let the agent report on and run the rule migrations you create with [Automatic Migration](/solutions/security/get-started/automatic-migration.md), install their rules, and fix translated rules. They have the same requirements as Automatic Migration and don't cover dashboard migrations. For the workflow, refer to [Manage rule migrations with {{agent-builder}}](/solutions/security/get-started/automatic-migration.md#siem-migration-agent-builder).
+
+$$$agent-builder-automatic-migration-rules-summarize-skill$$$ `automatic-migration-rules-summarize` {applies_to}`stack: preview 9.6+`
+:   Reports on your rule migrations. Lists every migration with its source platform, status, and progress, or reports one migration's translation results and the macros, lookups, reference sets, or watchlists it's still missing. This is a read-only skill.
+
+    :::{dropdown} Assigned tools
+    `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.get_rule_migration_translation_stats`, `security.siem_migration.get_migration_rules`, `security.siem_migration.get_missing_rule_migration_resources`
+
+    :::
+
+$$$agent-builder-automatic-migration-rules-start-migration-skill$$$ `automatic-migration-rules-start-migration` {applies_to}`stack: preview 9.6+`
+:   Starts translating a migration's uploaded rules, resumes a stopped or interrupted migration, or reprocesses failed rules, rules that weren't fully translated, or selected rules. Before a first run or a reprocess, it lists any missing resources. For a first run, it also asks which AI connector to use and whether to match rules to Elastic prebuilt rules.
+
+    :::{dropdown} Assigned tools
+    `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.get_rule_migration_translation_stats`, `security.siem_migration.get_migration_rules`, `security.siem_migration.get_missing_rule_migration_resources`, `security.siem_migration.start_rule_migration`, `platform.core.list_inference_endpoints`
+
+    :::
+
+$$$agent-builder-automatic-migration-rules-stop-migration-skill$$$ `automatic-migration-rules-stop-migration` {applies_to}`stack: preview 9.6+`
+:   Stops a running rule migration.
+
+    :::{dropdown} Assigned tools
+    `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.stop_rule_migration`
+
+    :::
+
+$$$agent-builder-automatic-migration-rules-update-translated-rule-skill$$$ `automatic-migration-rules-update-translated-rule` {applies_to}`stack: preview 9.6+`
+:   Fixes problems in translated rules that aren't installed yet, such as a wrong prebuilt rule match, integration, index pattern, or field names, or unresolved macro and lookup placeholders. It asks you to confirm each change and adds a note to the rule's **Summary** tab. For details, refer to [Rule problems you can fix in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-chat-fixes).
+
+    :::{dropdown} Assigned tools
+    `security.siem_migration.get_migration_rules`, `security.siem_migration.update_translated_rule`, `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.get_missing_rule_migration_resources`, `platform.core.product_documentation`. To look up integrations, the skill also uses the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools).
+
+    :::
+
+    **How to activate:** In addition to the [standard activation methods](skills.md#how-skills-are-invoked), this skill activates when you select **Add to chat** on the **Translated rules** page. Refer to [Fix translated rules in chat](/solutions/security/get-started/automatic-migration.md#siem-migration-fix-rules-in-chat).
+
+$$$agent-builder-automatic-migration-rules-install-rules-skill$$$ `automatic-migration-rules-install-rules` {applies_to}`stack: preview 9.6+`
+:   Installs translated rules from a migration, either every rule that's ready to install or the rules you name. Before it installs, the skill tells you how many rules it's about to install and asks whether to enable them. If you don't enable them, the rules stay disabled. Afterward, it links to the installed rules, or to a sample of them when you install all rules.
+
+    :::{dropdown} Assigned tools
+    `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.get_rule_migration_translation_stats`, `security.siem_migration.get_migration_rules`, `security.build_redirect_url`, `security.siem_migration.install_migration_rules`
+
+    :::
+
+    **Prerequisites:** You need `All` privileges for the **Rules and Exceptions** feature.
+
+$$$agent-builder-automatic-migration-rules-update-migration-skill$$$ `automatic-migration-rules-update-migration` {applies_to}`stack: preview 9.6+`
+:   Renames a rule migration.
+
+    :::{dropdown} Assigned tools
+    `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.update_rule_migration`
+
+    :::
+
+$$$agent-builder-automatic-migration-rules-delete-migration-skill$$$ `automatic-migration-rules-delete-migration` {applies_to}`stack: preview 9.6+`
+:   Permanently deletes a rule migration and its rules. If the migration is running, the skill offers to stop it first. After it stops, ask again to delete it.
+
+    :::{dropdown} Assigned tools
+    `security.siem_migration.get_all_rule_migration_stats`, `security.siem_migration.get_rule_migration_stats`, `security.siem_migration.stop_rule_migration`, `security.siem_migration.delete_rule_migration`
+
+    :::
 
 ## Elasticsearch skills
 ```{applies_to}
