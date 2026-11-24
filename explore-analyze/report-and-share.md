@@ -27,7 +27,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the toolbar. In **Discover** 9.4 and later, and in {{serverless-short}}, **Export** is in the application menu instead.
+{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the application menu. In **Canvas**, you use the **Share** menu in the workpad toolbar instead.
 
 ## Permissions
 
@@ -77,8 +77,10 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 1. Open the Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Select a file type for the report.
 
-    * {applies_to}`stack: ga 9.1+` From the toolbar, select the {icon}`download` **Export** icon, then select a file type.
-    * {applies_to}`stack: ga =9.0` From the toolbar, select **Share** → **Export** tab, then select a file type.
+    * {applies_to}`stack: ga 9.1+` In the application menu, select {icon}`download` **Export**, then select a file type.
+    * {applies_to}`stack: ga =9.0` In the application menu, select **Share** → **Export** tab, then select a file type.
+
+    In **Canvas**, select **Share** in the workpad toolbar, then **PDF reports** or **Download as JSON**.
 
     In **Discover**, look for the CSV export action in the actions available in the application menu. Depending on your version, this action can be called **Export** → **CSV**, **Export tab results** → **CSV**, or **Export** → **Tab results as CSV**, and can be nested under {icon}`ellipsis` **More** or {icon}`share` **Share**.
 
@@ -121,13 +123,6 @@ The layout and size of PDF and PNG reports depend on what you are sharing. For s
 
 To change the output size, resize the browser before generating the report. The browser resizes the shareable container, which then determines the report dimensions. It might take some trial and error before you're satisfied.
 
-In the following dashboard, the shareable container is highlighted:
-
-:::{image} /explore-analyze/images/kibana-shareable-container.png
-:alt: Shareable Container
-:screenshot:
-:::
-
 ### CSV report limitations [csv-limitations]
 
 We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. The following conditions increase the risk of timeouts or incomplete data:
@@ -167,7 +162,7 @@ Create and share JSON files for workpads.
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.
-3. From the toolbar, click {icon}`download` **Export**, then select **JSON**.
+3. In the workpad toolbar, select **Share**, then **Download as JSON**.
 
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]

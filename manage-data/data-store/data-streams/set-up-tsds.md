@@ -248,7 +248,9 @@ GET metrics-weather-sensors/_search
 
 ### Convert an existing data stream to a {{tsds-init}} [convert-existing-data-stream-to-tsds]
 
-You can convert an existing regular data stream to a {{tsds-init}}. Follow these steps:
+You can convert an existing data stream to a {{tsds-init}} only if it uses the `standard` [index mode](/manage-data/data-store/index-basics.md#index-mode). Converting a data stream that uses any other index mode, such as `logsdb`, is not supported.
+
+To convert the data stream, follow these steps:
 
 1. Update your existing index template and component templates (if any) to include time series settings. For {{stack}}, configure lifecycle management. 
 2. Use the [rollover API]({{es-apis}}operation/operation-indices-rollover) to manually roll over the existing data stream's write index, to apply the changes you made in step 1:
