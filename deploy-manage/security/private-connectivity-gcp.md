@@ -133,9 +133,9 @@ The process of setting up the Private Service Connect connection to your deploym
 | --- | --- |
 | 1. [Create a Private Service Connect endpoint using {{ecloud}} Service Attachment URI](#ec-private-service-connect-enpoint-dns). |  |
 | 2. [Create a DNS record pointing to the Private Service Connect endpoint](#ec-private-service-connect-enpoint-dns). |  |
-|  | 3. Optional: [Create a private connection policy with the PSC Connection ID](#create-private-connection-policy). |
-|  | 4. Optional: [Associate the private connection policy with your deployments or projects](#associate-private-connection-policy). |
-|  | 5. Optional: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console](#sso-kib-ip-filter). |
+|  | 3. **Optional**: [Create a private connection policy with the PSC Connection ID](#create-private-connection-policy). |
+|  | 4. **Optional**: [Associate the private connection policy with your deployments or projects](#associate-private-connection-policy). |
+|  | 5. **Optional**: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console](#sso-kib-ip-filter). |
 |  | 6. [Interact with your deployments or projects over Private Service Connect](#ec-psc-access-the-deployment-over-psc). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.

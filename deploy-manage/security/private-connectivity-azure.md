@@ -131,7 +131,7 @@ The process of setting up a private connection with Azure Private Link is split 
 | 2. [Create a DNS record pointing to the private endpoint](#ec-private-link-azure-dns). |  |
 |  | 3. [Create a private connection policy](#ec-azure-allow-traffic-from-link-id). |
 |  | 4. [Associate the Azure private connection policy with your deployments or projects](#associate-private-connection-policy). |
-|  | 5. Optional: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console](#sso-kib-ip-filter). |
+|  | 5. **Optional**: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console](#sso-kib-ip-filter). |
 |  | 6. [Interact with your deployments or projects over Private Link](#ec-azure-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
