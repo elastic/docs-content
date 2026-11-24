@@ -149,8 +149,10 @@ The panel shows the version you applied last, and that version is what the dashb
 Each card shows its version of the panel using the dashboard's time range, query bar, filters, and {{esql}} variable controls from the moment you opened the conversation. The card doesn't follow later changes to the dashboard, so it can differ from the panel on the dashboard. It also caps the height of very tall panels. To see a version at full height and with the current dashboard settings, apply it to the panel on the dashboard with **Preview**.
 
 ## Use several queries in one panel [custom-panels-several-queries]
-
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+`
+```{applies_to}
+serverless: preview
+stack: preview 9.7+
+```
 
 If a panel needs data of more than one shape, such as headline numbers next to a ranked table, give it one query for each shape. A panel can hold up to 10 queries. {{kib}} runs all of them with the dashboard's time range, query bar, filters, and {{esql}} variable controls, and the template reads each result by its position.
 
@@ -312,7 +314,7 @@ Custom panels render in a sandbox that protects the dashboard and your browser:
 - A template can't exceed 500 KB.
 - The number of {{esql}} queries a panel can hold depends on your version:
   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` Up to 10 queries.
-  - {applies_to}`stack: preview 9.6` One query.
+  - {applies_to}`stack: preview =9.6` One query.
 - You can't save a custom panel to the **Visualize Library**. Custom panels are saved with the dashboard.
 
 ## Related pages [custom-panels-related-pages]
