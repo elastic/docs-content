@@ -68,10 +68,20 @@ Cases accepts the following categories of files:
 If your file isn't one of these types (for example, a Microsoft Office format like `.xlsx` or `.docx`) compress it into a ZIP archive and attach the archive instead.
 
 ## Add observables [add-case-observables]
+```{applies_to}
+stack: ga
+serverless:
+  security: ga
+```
 
 Observables are discrete pieces of data relevant to an investigation, such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you might be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
 
-You can view and manage case observables under **Observables** on the case's **Attachments** tab. Each case supports up to 50 observables.
+You can view and manage a case's observables in the **Observables** section of its **Attachments** tab. Each case supports up to 50 observables.
+
+:::{note}
+:applies_to: stack: ga 9.0-9.2
+In {{stack}} 9.0-9.2, observables are on their own **Observables** tab instead of the **Attachments** tab.
+:::
 
 ### Manually add an observable [cases-manual-add-observable]
 
@@ -97,45 +107,48 @@ To delete observables, you need the appropriate subscription and the `All` privi
 
 To delete several observables from a case at once:
 
-1. On the case's **Attachments** tab, go to the **Observables** section and select the checkbox for each observable you want to delete.
+1. In the **Observables** section, select the checkbox for each observable you want to delete.
 2. Select **Bulk actions** → **Delete**.
 3. Select **Delete** again to confirm.
 
 {{kib}} adds a single entry to the case activity that shows how many observables you deleted.
 
 ### Auto-extract observables [cases-auto-extract-observables]
-
 ```{applies_to}
 stack: ga 9.2
 serverless:
   security: ga
 ```
 
-With the appropriate subscription, you can auto-extract observables from alerts instead of adding them manually. Note that auto-extracting observables is unavailable for {{observability}} cases.
+With the appropriate subscription, you can auto-extract observables from alerts instead of adding them manually.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` You can set the default for every new case in the space with the [Extract observables setting](/explore-analyze/cases/configure-case-settings.md#cases-extract-observables-default). The setting is on by default.
+To turn auto-extraction on or off for a single case:
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.5` Auto-extraction can also run for cases created outside the UI, such as with the Cases API or a [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration) action.
+* When you create the case, turn **Extract observables** on or off in the **Case settings** step.
+* For an existing case, turn **Auto-extract observables** on or off in the **Observables** section.
 
-{applies_to}`stack: ga =9.5` When a case uses a [case template](/explore-analyze/cases/manage-case-templates.md), extraction follows the template's **Extract observables** setting, which is on by default.
+::::{applies-switch}
 
-For cases created directly with the Cases API, the default depends on your version:
+:::{applies-item} { serverless: ga, stack: ga 9.6+ }
 
-* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Extraction follows the space default. To override the default for one case, set `extractObservables` in the create-case request.
-* {applies_to}`stack: ga =9.5` Extraction is off by default. Set `extractObservables` to `true` in the create-case request to turn it on.
+To set auto-extraction in advance for new cases:
 
-#### Which extraction setting applies [cases-extract-observables-precedence]
-```{applies_to}
-serverless:
-  security: ga
-stack: ga 9.6+
-```
+* For every new case in the space, turn **Extract observables** on or off in the space's [case settings](/explore-analyze/cases/configure-case-settings.md#cases-extract-observables-default). It's on by default.
+* For cases created from a template, turn **Extract observables** on or off on the template's **Configuration** tab. If you apply the template to an existing case, the case switches to the template's setting. If the template doesn't set one, auto-extraction turns off. For details, refer to [Create case templates](/explore-analyze/cases/create-case-templates.md).
+* For cases that a detection rule creates, set **Auto-extract observables** to **On** or **Off** in the rule's [Cases action](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration). To use the template or space setting instead, keep the default option.
 
-When more than one setting applies to a case, {{kib}} uses the first one in this order:
+:::
 
-1. A value you set directly, such as the **Extract observables** toggle in the case form, the **Auto-extract observables** toggle in the case's **Observables** section, `extractObservables` in a Cases API request, or **Auto-extract observables** in the Cases action of a detection rule
-2. The **Extract observables** setting of the case template, if the template sets one
-3. The space default
+:::{applies-item} stack: ga =9.5
+
+To set auto-extraction in advance for new cases:
+
+* For cases created from a template, turn **Extract observables** on or off on the template's **Configuration** tab. It's on by default. If you apply the template to an existing case, the case switches to the template's setting. If the template doesn't set one, auto-extraction turns off. For details, refer to [Create case templates](/explore-analyze/cases/create-case-templates.md).
+* For cases that a detection rule creates, select a template in the rule's [Cases action](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration). The case uses the template's **Extract observables** setting. If you don't select a template, auto-extraction is on.
+
+:::
+
+::::
 
 ### Find similar cases [cases-similar-cases]
 
