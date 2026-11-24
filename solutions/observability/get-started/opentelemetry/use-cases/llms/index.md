@@ -35,6 +35,7 @@ Some AI platforms send traces to Elastic directly, so you don't need EDOT instru
 
 - Claude Platform sends traces from a destination that you add in the Claude Console. Refer to [Send Claude Platform traces to Elastic](send-claude-platform-traces.md).
 - OpenRouter sends traces from a Broadcast destination that you add in the OpenRouter console. Refer to [Send OpenRouter traces to Elastic](send-openrouter-broadcast-traces.md).
+- Microsoft Foundry hosted agents send telemetry from OTLP exporter settings that you add to the agent version. Refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](send-microsoft-foundry-hosted-agent-telemetry.md).
 
 ## Quickstart
 

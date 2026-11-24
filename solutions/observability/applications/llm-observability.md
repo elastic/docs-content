@@ -39,6 +39,8 @@ Elastic's LLM integrations now support the most widely adopted models, including
 | [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ |
 | [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 |
 
+The Azure AI Foundry integration collects platform metrics and logs. To collect the OpenTelemetry traces, logs, and metrics that a Microsoft Foundry hosted agent emits, refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-microsoft-foundry-hosted-agent-telemetry.md).
+
 
 ## LLM and agentic AI application observability with APM (distributed tracing)
 
@@ -56,6 +58,7 @@ Some AI platforms can export OpenTelemetry traces directly to Elastic without ch
 
 - Claude Platform covers Messages API requests and Claude Managed Agents sessions. Refer to [Send Claude Platform traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-claude-platform-traces.md).
 - OpenRouter Broadcast covers every chat completion request. Refer to [Send OpenRouter traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-openrouter-broadcast-traces.md).
+- Microsoft Foundry hosted agents export traces, logs, and metrics from the agent runtime. Refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-microsoft-foundry-hosted-agent-telemetry.md).
 
 ### Getting started
 

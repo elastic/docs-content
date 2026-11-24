@@ -162,6 +162,7 @@ toc:
                 children:
                   - file: send-claude-platform-traces.md
                   - file: send-openrouter-broadcast-traces.md
+                  - file: send-microsoft-foundry-hosted-agent-telemetry.md
               - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:
