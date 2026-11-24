@@ -1,8 +1,8 @@
 ---
 navigation_title: Inspect grouped STATS
 applies_to:
-  serverless: preview
-  stack: preview 9.4
+  serverless: ga
+  stack: ga 9.7+, preview 9.4-9.6
 products:
   - id: kibana
 type: how-to
@@ -102,6 +102,16 @@ Select the {icon}`boxes_vertical` actions button on any group row to:
 
 If the grouping field isn't filterable, **Filter in** and **Filter out** are unavailable.
 
+## Find a value in a group [find-value-in-group]
+```{applies_to}
+serverless: ga
+stack: ga 9.7
+```
+
+To find a value in the documents of one group, expand the group, select **Find in table** in the group's table toolbar, and enter your text. **Discover** highlights the matches in that group and moves to each one as you step through them. For how the search works, refer to [](inspect-documents.md#in-table-search).
+
+As you scroll through the group's documents, the group's row title and its toolbar stay in view. You can start a new search without scrolling back to the start of the group.
+
 ## Compare documents in a group [compare-documents-in-group]
 ```{applies_to}
 serverless: preview
@@ -114,7 +124,9 @@ For the comparison settings and how **Discover** highlights differences, refer t
 
 ## Opt out of grouped results [opt-out-of-the-grouped-layout]
 
-If you prefer the flat results table, you can switch grouped results off. When grouped results are active, Discover replaces the regular results table toolbar with a **Group by** button that carries a {icon}`flask` badge and shows the number of active groupings. Discover preselects the grouping field from your `STATS BY` clause. To go back to the flat results table and the regular toolbar, open the **Group by** menu and select **none**. The **Group by** button stays in the toolbar of the flat table. To bring the grouping back, open the menu again and select the grouping field.
+If you prefer the flat results table, you can switch grouped results off. When grouped results are active, Discover replaces the regular results table toolbar with a **Group by** button that shows the number of active groupings. Discover preselects the grouping field from your `STATS BY` clause. To go back to the flat results table and the regular toolbar, open the **Group by** menu and select **none**. The **Group by** button stays in the toolbar of the flat table. To bring the grouping back, open the menu again and select the grouping field.
+
+{applies_to}`stack: preview 9.4-9.6` In these versions, the **Group by** button also carries a {icon}`flask` badge.
 
 ## Related pages
 
