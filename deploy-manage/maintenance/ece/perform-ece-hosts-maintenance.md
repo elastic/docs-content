@@ -48,7 +48,7 @@ The following methods allow you to perform maintenance on individual hosts while
 
 The way that you disable container services differs based on the platform you used to deploy your ECE hosts.
 
-If you restart the host without first moving its {{es}} nodes to other allocators, the nodes shut down with the host. Before you start, prepare each affected cluster as you would for a rolling restart. The [rolling restart procedure](../start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) describes the allocation steps and the checks for nodes that hold fully mounted {{search-snaps}}.
+If you restart the host without first moving its {{es}} nodes to other allocators, the nodes shut down with the host. Before you start, prepare each affected cluster as you would for a rolling restart. The [rolling restart procedure](../start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling-search-snaps) describes the allocation steps and the checks for nodes that hold fully mounted {{search-snaps}}.
 
 #### For Docker-based installations: disable the Docker service [ece-perform-host-maintenance-docker-disable]
 
