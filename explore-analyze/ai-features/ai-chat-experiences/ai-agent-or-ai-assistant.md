@@ -68,6 +68,7 @@ Most AI Assistant features have an {{agent-builder}} equivalent. Availability va
 
 ### Replace knowledge base content [replace-knowledge-base-content]
 
+
 {{agent-builder}} has no dedicated knowledge base UI. Use these equivalents for what you stored in AI Assistant:
 
 | AI Assistant knowledge base feature | In Agent Builder |
