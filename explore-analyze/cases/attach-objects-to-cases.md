@@ -161,4 +161,4 @@ Remove an attachment when it no longer belongs in the case, such as an alert you
    * **Several attachments**: Select their rows, then open the **Selected** menu and select **Remove from case**. For events, select {icon}`trash` **Remove** instead.
 3. Confirm the removal. For attacks, you can also remove the alerts they added.
 
-Observables extracted from removed alerts or events stay on the case. In {{elastic-sec}}, you can't remove entities from the **Attachments** tab.
+Observables extracted from removed alerts or events stay on the case. In {{elastic-sec}}, you can't remove entities from the **Attachments** tab. To remove an entity, go to the **Activity** tab and select **Delete attachment** from the entity card's menu.
