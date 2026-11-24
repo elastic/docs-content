@@ -4,3 +4,4 @@ toc:
   - file: elasticsearch.md
   - file: kibana.md
   - file: logstash.md
+  - file: security.md
