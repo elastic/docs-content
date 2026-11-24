@@ -36,7 +36,7 @@ Full step-by-step setup is in Microsoft's guide: [Export hosted agent telemetry 
 In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Add a field named `otlp_headers` and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). Create the connection before you deploy the agent version.
 ::::
 
-::::{step} Add the exporter settings to agent.yaml
+::::{step} Add the exporter settings to agent.yaml and deploy
 Set the endpoint to your {{motlp}} URL, the protocol to `http/protobuf`, and the headers to the connection field:
 
 ```yaml
@@ -48,10 +48,8 @@ environment_variables:
   - name: OTEL_EXPORTER_OTLP_HEADERS
     value: ${{connections.otel-secrets.credentials.otlp_headers}}
 ```
-::::
 
-::::{step} Create a new agent version
-Foundry sets environment variables per agent version, so deploy the agent again to apply them. Refer to [Deploy a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/deploy-hosted-agent) in the Microsoft documentation.
+Then deploy the agent again. Foundry sets environment variables per agent version, so the settings apply only to a new version.
 ::::
 
 :::::
