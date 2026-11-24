@@ -18,7 +18,7 @@ After you [create and test an ingest pipeline](/manage-data/ingest/transform-enr
 | Apply a pipeline to everything sent to an index or data stream, without each request naming it. A request can still specify a different pipeline instead. | [Set a default pipeline](#set-default-pipeline) |
 | Enforce a pipeline on every document sent to an index or data stream, so that no request can skip it or replace it. | [Set a final pipeline](#set-final-pipeline) |
 | Apply a pipeline to data sent by {{beats}}. | [Pipelines for {{beats}}](#pipelines-for-beats) |
-| Apply a pipeline to data collected with {{agent}} integrations or the Custom logs integration. | [Pipelines for {{fleet}} and {{agent}}](#pipelines-for-fleet-elastic-agent) |
+| Apply a pipeline to data collected with {{agent}} integrations | [Pipelines for {{fleet}} and {{agent}}](#pipelines-for-fleet-elastic-agent) |
 | Learn how pipelines work on indices created for search use cases. | [Pipelines for search indices](#pipelines-in-enterprise-search) |
 
 To learn what happens when more than one pipeline applies to a document, refer to [How pipelines run together](#pipeline-order).
@@ -216,7 +216,7 @@ Create the pipeline and set up the integration. Then apply the pipeline.
 
 ### Standalone {{agent}} [pipelines-agent-standalone]
 
-If you run {{agent}} standalone, you can apply pipelines using an [index template](/manage-data/data-store/templates.md) that includes the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Alternatively, you can specify the `pipeline` policy setting in your `elastic-agent.yml` configuration. Refer to [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md).
+If you run {{agent}} standalone, you can apply pipelines using an [index template](/manage-data/data-store/templates.md) that includes the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Alternatively, you can specify the `pipeline` policy settings in your `elastic-agent.yml` configuration. Refer to [Install standalone {{agent}}s](/reference/fleet/install-standalone-elastic-agent.md) and [Create a standalone agent policy](/reference/fleet/create-standalone-agent-policy.md) for more details.
 
 ## Pipelines for search indices [pipelines-in-enterprise-search]
 
