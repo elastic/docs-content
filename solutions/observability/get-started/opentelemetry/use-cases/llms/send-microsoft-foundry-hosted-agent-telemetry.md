@@ -14,7 +14,7 @@ products:
 
 # Send Microsoft Foundry hosted agent telemetry to Elastic
 
-Microsoft Foundry hosted agents can send OpenTelemetry traces, logs, and metrics straight to Elastic. You set the OTLP exporter settings on the hosted agent version and point them at the Elastic Cloud Managed OTLP Endpoint. You don't need to change your agent code, add an OpenTelemetry SDK, or run an OpenTelemetry Collector.
+[Microsoft Foundry](https://learn.microsoft.com/en-us/azure/foundry/what-is-foundry) hosted agents can send OpenTelemetry traces, logs, and metrics straight to Elastic. You set the OTLP exporter settings on your hosted agent and point them at the Elastic Cloud Managed OTLP Endpoint. You don't need to change your agent code, add an OpenTelemetry SDK, or run an OpenTelemetry Collector.
 
 The telemetry is stored in Elastic in OTLP format.
 
