@@ -25,7 +25,7 @@ If you belong to any organization that enforces a specific authentication method
 
 If you log in using a standard email and password, follow these steps to update your email address:
 
-1. To edit your account settings, select the user icon on the header bar and select **Settings**.
+1. To edit your account settings, open the user menu in the header and select **Profile**.
 2. In the **Email address** section, select **edit**.
 3. Enter a new email address and your current password.
 

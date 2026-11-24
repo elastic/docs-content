@@ -53,9 +53,9 @@ elasticsearch>=7.0.0,<8.0.0
 :::{applies-item} ess:
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
-3. Select **Create deployment**.
+3. Select **Create hosted deployment**.
 4. Give your deployment a name. You can leave all other settings at their default values.
-5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
+5. Select **Create hosted deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
 Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).

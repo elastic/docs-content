@@ -30,7 +30,7 @@ There are two options to create serverless projects:
 
 * If you're a new user, [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For more information about {{ecloud}} trials, refer to [Trial information](/deploy-manage/deploy/elastic-cloud/create-an-organization.md#general-sign-up-trial-what-is-included-in-my-trial).
 * If you're an existing customer, [log in to {{ecloud}}](https://cloud.elastic.co/login) and do the following:
-  1. Select **Create project** from the **Serverless projects** panel.
+  1. Select **Create serverless project** from the **Serverless projects** panel.
   2. Select **Next** from the **{{vectordb}}** panel.
   3. Name your project.
   4. Select a cloud provider and region. For available regions, refer to [Regions](/deploy-manage/deploy/elastic-cloud/regions.md).

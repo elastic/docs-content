@@ -52,7 +52,7 @@ Leaving an organization revokes your access to all of its resources, including d
 To leave your current organization:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the top navigation menu, click on the user menu and select **Profile**.
+2. Open the user menu in the header and select **Profile**.
 3. Click the **My organizations** tab.
 4. Click **Leave current organization**.
 5. In the confirmation dialog, click **Leave current organization** to confirm.

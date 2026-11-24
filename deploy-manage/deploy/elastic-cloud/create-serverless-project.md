@@ -39,7 +39,7 @@ You can have up to 500 {{serverless-short}} projects in your organization. This 
 
 The steps to create a {{serverless-short}} project are the same regardless of which project type you select.
 
-1. On the {{ecloud}} home page, find the **Serverless projects** panel and select **Create project**.
+1. On the {{ecloud}} home page, find the **Serverless projects** panel and select **Create serverless project**.
 2. Select a project type that matches your use case, then select **Next**. If you're not sure which type to choose, refer to our [project type comparison](serverless.md#get-started).
 3. Enter a name for your project.
 4. Select a cloud provider and region. For available regions, refer to [](/deploy-manage/deploy/elastic-cloud/regions.md).

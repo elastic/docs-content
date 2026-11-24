@@ -25,9 +25,9 @@ Review [{{es}} data tiers](/manage-data/lifecycle/data-tiers.md) so you choose t
 
 ### Add capacity when you create a deployment
 
-1. On the **Create deployment** page, click **Advanced Settings**.
+1. On the deployment creation page, click **Advanced Settings**.
 2. Click **+ Add capacity** for any data tiers to add.
-3. Click **Create deployment** at the bottom of the page to save your changes.
+3. Click **Create hosted deployment** ({{ech}}) or **Create deployment** ({{ece}}) at the bottom of the page to save your changes.
 
 :::{image} /manage-data/images/elasticsearch-reference-ess-advanced-config-data-tiers.png
 :alt: {{ecloud}}'s deployment Advanced configuration page

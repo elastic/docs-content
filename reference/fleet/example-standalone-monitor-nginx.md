@@ -70,8 +70,8 @@ Now that your web server is running, let’s get set up to monitor it in {{eclou
     :screenshot:
     :::
 
-3. After you’ve [logged in](https://cloud.elastic.co/login), select **Create deployment** and give your deployment a name. You can leave the default options or select a different cloud provider, region, hardware profile, or version.
-4. Select **Create deployment**.
+3. After you’ve [logged in](https://cloud.elastic.co/login), select **Create hosted deployment** and give your deployment a name. You can leave the default options or select a different cloud provider, region, hardware profile, or version.
+4. Select **Create hosted deployment**.
 5. While the deployment sets up, make a note of your `elastic` superuser password and keep it in a safe place.
 6. Once the deployment is ready, select **Continue**. At this point, you access {{kib}} and a selection of setup guides.
 
