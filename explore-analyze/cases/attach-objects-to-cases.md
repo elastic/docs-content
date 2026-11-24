@@ -153,12 +153,12 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-Remove an attachment when it no longer belongs in the case, such as an alert you attached by mistake.
-
-To remove attachments, you need the **Delete** privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#cases-sub-feature-privileges).
+Remove an attachment when it no longer belongs in the case, such as an alert you attached by mistake. To remove attachments, you need the **Delete** privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#cases-sub-feature-privileges).
 
 1. Open the case and select the **Attachments** tab.
-2. In the attachment's row, select **Remove from case**. For files and saved objects, select {icon}`trash` instead. To remove several attachments of the same type, select their rows and use the bulk action.
+2. Remove one attachment or several of the same type:
+   * **One attachment**: In the attachment's row, select **Remove from case**. For a file, select {icon}`trash` **Delete file** instead. For a saved object, select {icon}`trash` **Delete attachment**.
+   * **Several attachments**: Select their rows, then open the **Selected** menu and select **Remove from case**. For events, select {icon}`trash` **Remove** instead.
 3. Confirm the removal. For attacks, you can also remove the alerts they added.
 
 Observables extracted from removed alerts or events stay on the case. In {{elastic-sec}}, you can't remove entities from the **Attachments** tab.
