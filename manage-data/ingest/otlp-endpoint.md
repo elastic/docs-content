@@ -15,11 +15,8 @@ products:
 The {{es}} OTLP/HTTP endpoint is a native ingest API, like the [bulk API]({{es-apis}}operation/operation-bulk).
 It accepts [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otlp) requests on the same host and port as the other {{es}} APIs, under the `/_otlp` path, and writes the records to data streams as they are received.
 The endpoint does not run the [`elasticapm` processor](elastic-agent://reference/edot-collector/components/elasticapmprocessor.md) or [`elasticapm` connector](elastic-agent://reference/edot-collector/components/elasticapmconnector.md): traces are not enriched, no aggregated {{product.apm}} metrics are produced, and {{product.apm}} views that depend on them, such as the service inventory and service map, stay empty.
-
-The intended client for this endpoint is a gateway Collector, not an application. How you send OpenTelemetry data to {{es}} depends on your deployment type:
-
-* On {{ech}} and {{serverless-full}}, use the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) rather than `/_otlp`. The {{motlp}} is a separate ingestion host, and it enriches traces and produces aggregated {{product.apm}} metrics.
-* On self-managed, {{ece}}, and {{eck}} deployments, send application data to an [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode). The gateway runs the `elasticapm` processor and connector, then writes the enriched result to {{es}}, either to `/_otlp` or through the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md).
+The intended client for this endpoint is a gateway Collector, not an application.
+Refer to [When to use the {{es}} OTLP endpoint](#when-to-use) to find which ingestion path to use for your deployment type.
 
 The {{es}} OTLP/HTTP endpoint exposes three signal-specific paths:
 
@@ -29,31 +26,26 @@ The {{es}} OTLP/HTTP endpoint exposes three signal-specific paths:
 | Logs | `/_otlp/v1/logs` | {applies_to}`stack: preview 9.5` |
 | Traces | `/_otlp/v1/traces` | {applies_to}`stack: preview 9.5` |
 
-`/_otlp/v1/traces` stores spans as they are received: it does not run the `elasticapm` processor or connector, so traces ingested through it are not enriched and produce no aggregated {{product.apm}} metrics.
-
 :::{important}
 {{es}} only supports [OTLP/HTTP](https://opentelemetry.io/docs/specs/otlp/#otlphttp), not [OTLP/gRPC](https://opentelemetry.io/docs/specs/otlp/#otlpgrpc).
 :::
 
 ## When to use the {{es}} OTLP endpoint [when-to-use]
 
-For most users, one of the following higher-level ingestion paths is recommended:
+How you send OpenTelemetry data to {{es}} depends on your deployment type:
 
-| Deployment | Recommended ingestion path |
-| --- | --- |
-| {{ech}} and {{serverless-short}} | [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) |
-| {{ece}}, {{eck}}, and self-managed | [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode), which runs the `elasticapm` processor and connector before writing to {{es}} |
-
-Use {{motlp}} if it's available in your deployment, even when an application can target the {{es}} OTLP endpoint directly.
+* On {{ech}} and {{serverless-full}}, use the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) rather than `/_otlp`, even when an application can target the {{es}} OTLP endpoint directly.
+  The {{motlp}} is a separate ingestion host, and it enriches traces and produces aggregated {{product.apm}} metrics.
+* On self-managed, {{ece}}, and {{eck}} deployments, send application data to an [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode).
+  The gateway runs the `elasticapm` processor and connector, then writes the enriched result to {{es}}, either to `/_otlp` or through the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md).
 
 For an overview of the recommended OpenTelemetry-based ingestion architecture, refer to the [{{edot}} reference architecture](opentelemetry://reference/architecture/index.md). For how the endpoint fits into the {{observability}} metrics workflows, refer to [Ingest metrics](/solutions/observability/metrics/ingest.md#metrics-ingest-otlp).
 
 Use the {{es}} OTLP endpoint directly only in the following cases:
 
-* You operate a self-managed OpenTelemetry Collector gateway that runs the `elasticapm` processor and connector, and you prefer the `OTLP/HTTP` exporter over the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md) to send data from the gateway to {{es}}.
-  The {{es}} exporter writes through the [bulk API]({{es-apis}}operation/operation-bulk) and the `OTLP/HTTP` exporter writes to `/_otlp`. Run the `elasticapm` processor and connector in the gateway pipeline before whichever exporter you choose.
-* You build a development-only setup in which an application SDK sends OTLP data straight to the cluster.
-  Traces sent this way are stored without `elasticapm` enrichment or aggregated {{product.apm}} metrics, so the {{product.apm}} views that depend on them stay empty.
+* You operate a gateway Collector and send data from the gateway to {{es}} with the `OTLP/HTTP` exporter.
+  Refer to [Choose an exporter for the gateway](#gateway-exporter) for how this exporter compares to the {{es}} exporter.
+* You build a development-only setup in which an application SDK sends OTLP data directly to the cluster, and you accept the [trace enrichment and {{product.apm}} metrics limitation](#limitations).
 
 :::{warning}
 Don't send telemetry from applications or pods directly to `/_otlp`.
@@ -65,9 +57,12 @@ A gateway Collector combines data from many clients into larger batches and writ
 This limit is about the number of connections to {{es}}, not the number of applications you monitor.
 :::
 
-## Advantages of OTLP ingest over Bulk API
+### Choose an exporter for the gateway [gateway-exporter]
 
-Compared to the [bulk API]({{es-apis}}operation/operation-bulk), ingesting through OTLP offers:
+A gateway Collector can write to {{es}} in two ways: the [`OTLP/HTTP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) writes to `/_otlp`, and the [{{es}} exporter](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md) writes through the [bulk API]({{es-apis}}operation/operation-bulk).
+Neither exporter enriches traces or produces aggregated {{product.apm}} metrics on its own, so run the `elasticapm` processor and connector in the gateway pipeline before whichever exporter you choose.
+
+To send data from the gateway to {{es}}, prefer the `OTLP/HTTP` exporter. Compared to the bulk API, ingesting through OTLP offers:
 
 * Improved ingestion performance, especially for payloads with many resource attributes.
 * Simplified mapping: data streams, index templates, dimensions, and metrics are derived dynamically from OTLP metadata.
@@ -78,8 +73,7 @@ Compared to the [bulk API]({{es-apis}}operation/operation-bulk), ingesting throu
 ### Create an API key
 
 Authenticate to the {{es}} OTLP endpoint with an API key.
-
-On {{ech}} and {{serverless-short}}, send OTLP data to the {{motlp}} instead of to `/_otlp`, and authenticate with an API key as described in [{{motlp}} authentication](/reference/managed-inputs/managed-otlp-endpoint.md#authentication).
+On {{ech}} and {{serverless-short}}, where the [intended ingestion path is the {{motlp}}](#when-to-use), create the key as described in [{{motlp}} authentication](/reference/managed-inputs/managed-otlp-endpoint.md#authentication) instead.
 
 On self-managed, {{ece}}, and {{eck}} deployments, refer to the API key documentation for your deployment type for instructions on how to create one:
 
@@ -158,18 +152,14 @@ service:
 
 The exporter appends the signal-specific path (`/v1/logs`, `/v1/traces`, `/v1/metrics`) to the configured `endpoint`.
 
-To ingest enriched traces and aggregated {{product.apm}} metrics, run the `elasticapm` processor and connector in the pipeline before this exporter, as [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) does.
-
 These values are starting points for a gateway Collector.
 Tune them for your workload and Collector resources.
 They are local to each Collector instance and don't increase {{es}} ingest capacity.
-If many applications need to send telemetry, scale out the gateway Collector instead of sending directly from each application.
+If many applications need to send telemetry, scale out the gateway Collector.
 
 Supported `compression` values are `gzip` (the `OTLP/HTTP` exporter default) and `none`.
 
-In development-only setups, you can send data from a custom application by pointing the OTLP/HTTP exporter of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-started/dev/) at the corresponding {{es}} OTLP endpoint path.
-Traces sent this way are stored without `elasticapm` enrichment or aggregated {{product.apm}} metrics, so the {{product.apm}} views that depend on them stay empty.
-In production, point SDKs at a gateway Collector or at the {{motlp}}.
+In a [development-only setup](#when-to-use), you can send data from a custom application by pointing the `OTLP/HTTP` exporter of an [OpenTelemetry language SDK](https://opentelemetry.io/docs/getting-started/dev/) at the corresponding {{es}} OTLP endpoint path.
 
 :::{note}
 Only `encoding: proto` is supported, which the `OTLP/HTTP` exporter uses by default.

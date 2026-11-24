@@ -19,8 +19,10 @@ The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using
 
 The endpoint provides a resilient ingestion layer that integrates with serverless autoscaling and offloads ingestion processing from {{ech}} clusters.
 
+The {{motlp}} has its own ingestion host, separate from the {{es}} endpoint of your deployment or project. It isn't the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md), which accepts OTLP requests on the `/_otlp` path of the {{es}} host itself. The two differ in what they do with your data as well as in where you send it: the {{motlp}} enriches traces and produces pre-aggregated {{product.apm}} metrics, while `/_otlp` is a native ingest API that stores records as it receives them.
+
 :::{important}
-The {{motlp}} endpoint is not available for Elastic [self-managed](/deploy-manage/deploy/self-managed.md), [ECE](/deploy-manage/deploy/cloud-enterprise.md), or [ECK](/deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [{{agent}} as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway).
+The {{motlp}} endpoint is not available for Elastic [self-managed](/deploy-manage/deploy/self-managed.md), [ECE](/deploy-manage/deploy/cloud-enterprise.md), or [ECK](/deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [{{agent}} as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway). The gateway runs the `elasticapm` processor and connector, then writes to {{es}} through the bulk API or `/_otlp`.
 :::
 
 ## Prerequisites
@@ -140,7 +142,7 @@ For a detailed comparison of how OTel data streams differ from classic Elastic A
 
 ## Metrics ingestion on {{ech}}
 
-For {{ech}} deployments running Elastic Stack 9.5.3 or later, the {{motlp}} routes metrics to the native {{es}} OTLP endpoint. Deployments running Elastic Stack 9.0 through 9.5.2 use the {{es}} bulk API compatibility path instead. This routing is automatic and does not require client-side configuration changes.
+For {{ech}} deployments running Elastic Stack 9.5.3 or later, the {{motlp}} routes metrics to the native {{es}} OTLP endpoint. Deployments running Elastic Stack 9.0 through 9.5.2 use the {{es}} bulk API compatibility path instead. This routing is internal to {{ecloud}} and is automatic: you still send data to the {{motlp}} host, and no client-side configuration changes are required.
 
 The native {{es}} OTLP endpoint supports both `delta` and `cumulative` temporality starting in Elastic Stack 9.5. When sending metrics through the {{motlp}} on {{ech}}, use Elastic Stack 9.5.3 or later to access these capabilities. Refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality) for details.
 

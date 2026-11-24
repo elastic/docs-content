@@ -95,7 +95,11 @@ The {{motlp}} is not available for self-managed Elastic, ECE, or ECK deployments
 * {applies_to}`edot_collector: ga 9.2+` Runs the `elasticapm` processor to enrich trace data with attributes the {{product.observability}} UIs rely on.
 * {applies_to}`edot_collector: ga 9.0-9.1` Runs the `elastictrace` processor to enrich trace data with attributes.
 * Runs the `elasticapm` connector to generate pre-aggregated {{product.apm}} metrics from traces.
-* Routes telemetry to the correct data streams and writes to {{es}} using the `elasticsearch` exporter in the `otel` mapping mode.
+* Routes telemetry to the correct data streams and writes it to {{es}}.
+
+{applies_to}`edot_collector: ga 9.6+` The gateway writes to {{es}} over two paths. It sends metrics, including the pre-aggregated {{product.apm}} metrics from the `elasticapm` connector, to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) on the `/_otlp` path using the OTLP/HTTP exporter. It sends traces and logs using the `elasticsearch` exporter in the `otel` mapping mode. The `/_otlp` endpoint doesn't run the `elasticapm` processor or connector, so both run in the gateway pipelines before the export.
+
+{applies_to}`edot_collector: ga 9.0-9.5` The gateway writes every signal to {{es}} through the `elasticsearch` exporter.
 
 For edge collectors running on your hosts, Kubernetes nodes, or alongside your applications, use the OTLP exporter to forward data to the gateway. The `elasticsearch` exporter is only recommended for the gateway itself, not for edge collectors.
 
@@ -142,7 +146,9 @@ For languages without an EDOT SDK (Go, C++, Ruby, and others), you can use the [
 
 ### Use the OTLP exporter at the edge [start-with-otel-otlp-exporter]
 
-Configure your EDOT SDKs and edge {{agent}} instances to use the OTLP exporter. Elastic recommends the `elasticsearch` exporter only for the {{agent}} gateway in a self-managed deployment. Using it at the edge can lead to data loss or incorrect mapping.
+Configure your EDOT SDKs and edge {{agent}} instances to use the OTLP exporter, pointing at the gateway or at the {{motlp}}. Elastic recommends the `elasticsearch` exporter only for the {{agent}} gateway in a self-managed deployment. Using it at the edge can lead to data loss or incorrect mapping.
+
+Don't point edge collectors or SDKs at the {{es}} `/_otlp` endpoint instead. It's a native {{es}} ingest API, so it stores traces without `elasticapm` enrichment and produces no pre-aggregated {{product.apm}} metrics, and many direct clients open many connections to {{es}} and send small batches. For details, refer to [When to use the {{es}} OTLP endpoint](/manage-data/ingest/otlp-endpoint.md#when-to-use).
 
 ### Know when to keep using classic Elastic components [start-with-otel-when-classic]
 
