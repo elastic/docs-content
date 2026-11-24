@@ -75,6 +75,19 @@ The hosted agent also sends logs and metrics, which land in the `logs-*` and `me
 
 When project monitoring is enabled, Foundry also sends the hosted agent's telemetry to Application Insights. With both configured, the agent sends to both in parallel. To send telemetry only to Elastic, disable monitoring at the project level in Foundry. Refer to Microsoft's guide for details.
 
+## Example: Token usage by model
+
+In {{kib}} **Discover**, run this {{esql}} query to sum input and output tokens by model. The `attributes.gen_ai.operation.name == "chat"` filter restricts the query to the spans of model calls:
+
+```esql
+FROM traces-*
+| WHERE service.name == "<your-agent-name>" AND attributes.gen_ai.operation.name == "chat"
+| STATS
+    input_tokens = SUM(attributes.gen_ai.usage.input_tokens),
+    output_tokens = SUM(attributes.gen_ai.usage.output_tokens)
+  BY attributes.gen_ai.request.model
+```
+
 ## Related pages
 
 * [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry?tabs=otlp-export) (Microsoft documentation)
