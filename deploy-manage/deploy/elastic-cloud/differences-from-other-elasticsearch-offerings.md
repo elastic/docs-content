@@ -76,7 +76,7 @@ These capabilities cover identity and access, security and networking, infrastru
 | **Deployment model** | Single deployments with multiple solutions | Separate projects for specific use cases | Fundamental architectural difference - [Learn more](https://www.elastic.co/blog/elastic-serverless-architecture) |
 | **Deployment monitoring** | [AutoOps](/deploy-manage/monitor/autoops.md) or monitoring cluster | Managed by Elastic <br><br> [AutoOps](/deploy-manage/monitor/autoops/autoops-for-serverless.md) is also available | Elastic automatically monitors Serverless projects, but you can additionally use AutoOps to [monitor usage patterns and resource consumption](/deploy-manage/monitor/autoops/autoops-for-serverless.md#how-autoops-monitors-your-serverless-short-project).|
 | **Hardware configuration** | Limited control | Managed | Hardware choices are managed by Elastic |
-| **High availability** | ✅ | ✅ | Automatic resilience |
+| **High availability** | ✅ | ✅ | Automatic resilience. [Learn more](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md) |
 | **[Native realm authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)** | ✅ | ❌ | {{serverless-short}} does not support {{es}} authentication realms. User authentication is managed at the [organization level](/deploy-manage/users-roles/cloud-organization.md). |
 | **Network security** | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>✅ [Published static IPs](/deploy-manage/security/elastic-cloud-static-ips.md) | ✅ [IP filtering](/deploy-manage/security/ip-filtering-cloud.md)<br><br>✅ [Private connectivity](/deploy-manage/security/private-connectivity.md) (VPCs, PrivateLink)<br><br>❌ Published static IPs | Private connectivity for Serverless projects is currently supported in AWS and Azure regions only.<br><br>For Observability projects, requires [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md).<br><br>For Security projects, requires [Security Analytics Complete](/solutions/security/security-serverless-feature-tiers.md).<br><br>{{serverless-short}} does not offer public static IP lists. Use private connectivity where supported. |
 | **Node management** | User-controlled | Managed | No node configuration access by design |
@@ -109,7 +109,7 @@ These capabilities cover how data is ingested, stored, replicated, queried, and 
 | [**Synonyms**](/solutions/search/full-text/search-with-synonyms.md) | - Index time synonyms <br>- File-based synonyms <br>- Synonyms API | [Synonyms API]({{es-serverless-apis}}group/endpoint-synonyms) only (does not support index-time or file-based synonyms) | |
 | **Web crawler** | ❌ (Managed Elastic Crawler discontinued with Enterprise Search in 9.0) | Self-managed only | Use [**self-managed crawler**](https://github.com/elastic/crawler). |
 
-^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures data durability by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
+^1^ $$$footnote-1$$$ In {{serverless-short}}, Elastic ensures [data durability](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md#resilience-serverless-data-durability) by storing indexed data in an [object store](https://www.elastic.co/blog/elastic-serverless-architecture) rather than local replicas. Writes are batched over a 200ms window to ensure durability while optimizing performance and cost, which means that single-document indexing can appear slower than in {{ech}}. However, this design makes {{serverless-short}} more scalable and resilient to high indexing loads without relying on in-cluster replication for fault tolerance. Because of a higher baseline write latency, {{serverless-short}} indexing can be scaled by increasing concurrent indexing clients.
 
 #### Alerting, reporting, and AI [alerting-and-ai]
 
@@ -149,8 +149,9 @@ This table compares the {{observability}} solution on {{ech}} deployments with O
 
 | **Feature** | {{ech}} | Serverless Observability Complete projects | Serverless notes |
 |---------|----------------------|-----------------------------------|------------------|
-| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ (deprecated) | ✅ (deprecated) | The {{obs-ai-assistant}} is deprecated. The [Elastic AI Agent](/explore-analyze/ai-features/elastic-agent-builder.md) is now the default chat experience. Refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
-| **APM integration** | ✅ | ✅ | Use **Managed Inputs** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](opentelemetry://reference/motlp.md) for OTLP data ingestion |
+| [**Agent Builder**](/solutions/observability/ai/agent-builder-observability.md) | ✅ | ✅ | The default AI chat experience. |
+| [**AI Assistant**](/solutions/observability/ai/observability-ai-assistant.md) | ✅ (deprecated in 9.4) | ✅ (deprecated) | The {{obs-ai-assistant}} is deprecated. Use [Agent Builder](/solutions/observability/ai/agent-builder-observability.md) instead. [Learn how to migrate](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
+| **APM integration** | ✅ | ✅ | Use **Managed Inputs** (supports Elastic APM and OTLP protocols) <br> Refer to [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md) for OTLP data ingestion |
 | [**APM Agent Central Configuration**](/solutions/observability/apm/apm-server/apm-agent-central-configuration.md) | ✅ | ❌ | Not available in Serverless |
 | [**APM Tail-based sampling**](/solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling) | ✅ | ❌ | - Not available in Serverless <br>- Consider **OpenTelemetry** tail sampling processor as an alternative |
 | [**Android agent/SDK instrumentation**](apm-agent-android://reference/edot-android/index.md) | ✅ | ✅ | |
@@ -168,9 +169,9 @@ This table compares the {{observability}} solution on {{ech}} deployments with O
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **[LogsDB index mode](/manage-data/data-store/data-streams/logs-data-stream.md)** | ✅ | ✅ | - Reduces storage footprint <br> - Enabled by default <br>- Cannot be disabled |
 | **[Logs management](/solutions/observability/logs.md)** | ✅ | ✅ | |
-| **[Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md)** | ✅ | ✅ | |
-| **[Managed OTLP Endpoint](opentelemetry://reference/motlp.md)** | ✅ | ✅ | |
-| **[Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md)** | ✅ | ✅ | |
+| **[Managed {{es}} _bulk endpoint](/reference/managed-inputs/elasticsearch-bulk.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](/reference/managed-inputs/managed-otlp-endpoint.md)** | ✅ | ✅ | |
+| **[Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md)** | ✅ | ✅ | |
 | **[Metrics monitoring](/solutions/observability/apm/metrics.md)** | ✅ | ✅ | |
 | **[Observability SLO](/solutions/observability/incident-management/service-level-objectives-slos.md)** | ✅ | ✅ | |
 | [**Real User Monitoring (RUM)**](/solutions/observability/applications/user-experience.md) | ✅ | **Planned** | Anticipated in a future release |
@@ -184,16 +185,17 @@ This table compares the Security solution on {{ech}} deployments with {{serverle
 | **Feature** | {{ech}} | Serverless Security projects | Serverless notes |
 |---------|---------------------|------------------------------|------------------|
 | **[Entity analytics](/solutions/security/advanced-entity-analytics.md)** | ✅ | ✅ | |
-| **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ | ✅ | |
+| **[Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md)** | ✅ | ✅ | The default AI chat experience. |
+| **[AI Assistant](/solutions/security/ai/ai-assistant.md)** | ✅ (deprecated in 9.6) | ✅ (deprecated) | AI Assistant for Security is deprecated. Use [Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md) instead. [Learn how to migrate](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md). |
 | **[Cloud Security](/solutions/security/cloud.md)** | ✅ | ✅ | |
 | [**Defend for Containers integration**](https://www.elastic.co/guide/en/security/8.18/d4c-overview.html) | ✅ (deprecated in 9.0) | ❌ | Not available in Serverless |
 | **[Endpoint security](/solutions/security/configure-elastic-defend.md)** | ✅ | ✅ | |
 | **[Kibana Alerts](/deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md)** | ✅ | ✅ | |
 | **Kibana navigation** | Standard layout | Different layout | UI differences in Security projects |
 | **[LogsDB](/manage-data/data-store/data-streams/logs-data-stream.md)** | Optional | ✅ | - Enabled by default <br>- Cannot be disabled |
-| **[Managed {{es}} _bulk endpoint](opentelemetry://reference/managed-inputs/elasticsearch-bulk.md)** | ✅ | ✅ | |
-| **[Managed OTLP Endpoint](opentelemetry://reference/motlp.md)** | ✅ | ✅ | |
-| **[Managed Prometheus Remote Write endpoint](opentelemetry://reference/managed-inputs/prometheus-remote-write.md)** | ✅ | ✅ | |
+| **[Managed {{es}} _bulk endpoint](/reference/managed-inputs/elasticsearch-bulk.md)** | ✅ | ✅ | |
+| **[Managed OTLP Endpoint](/reference/managed-inputs/managed-otlp-endpoint.md)** | ✅ | ✅ | |
+| **[Managed Prometheus Remote Write endpoint](/reference/managed-inputs/prometheus-remote-write.md)** | ✅ | ✅ | |
 | **SIEM capabilities** | ✅ | ✅ | Core functionality supported |
 
 ## Serverless index sizing and project limits [elasticsearch-differences-serverless-index-size]
@@ -310,6 +312,7 @@ When attempting to use an unavailable index setting, you'll receive this error:
 - [Elasticsearch Serverless API reference]({{es-serverless-apis}}): Check out the complete list of available APIs in {{serverless-full}}.
 - [Project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md): Configure project settings in {{serverless-full}}.
 - [Serverless regions](/deploy-manage/deploy/elastic-cloud/regions.md): Choose the right region for your {{serverless-full}} project.
+- [Resilience in Serverless](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md): Learn how {{serverless-full}} handles data durability, availability, and data recovery.
 - [{{ecloud}} pricing](https://www.elastic.co/pricing/): Understand pricing for {{ech}} and Serverless projects
   - [Serverless project billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md): Understand billing dimensions for Serverless projects.
   - [{{ech}} billing](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md): Understand billing dimensions for {{ech}} deployments.

@@ -21,7 +21,7 @@ Some restrictions apply when adding alerts. To learn more, check [Restrictions f
 
 To enable Watcher on a cluster, you may first need to perform one or several of the following steps. The options shown in the UI differ between stack versions; if an option is not available, you can skip it.
 
-* To receive default Elasticsearch Watcher alerts (cluster status, nodes changed, version mismatch), you need to have monitoring enabled to send to the Admin email address specified in Kibana. To enable this, go to **Advanced Settings > Admin email**.
+* To receive default Elasticsearch Watcher alerts (cluster status, nodes changed, version mismatch), you need to have monitoring enabled to send to the Admin email address specified in Kibana. To enable this, go to **Advanced Settings** → **Admin email**.
 
 To learn more about {{kib}} alerting and how to use it, check [Alerting and Actions](../../../explore-analyze/alerting.md).
 
@@ -125,10 +125,6 @@ PUT _watcher/watch/test-alarm
 ```
 
 **In Elasticsearch versions before 7.0:**, you are not required to use the Elasticsearch keystore. Instead, you can use the console Elasticsearch settings editor for your deployment.
-
-:::{image} /explore-analyze/images/cloud-user-settings.png
-:alt: Advanced Alerting configuration
-:::
 
 ## Configuring a custom mail server [watcher-custom-mail-server]
 

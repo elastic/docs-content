@@ -19,8 +19,6 @@ Go to the **Watcher** page using the navigation menu or the [global search field
 * [Deactivate and delete a watch](#watcher-deactivate)
 * [Create an advanced watch using API syntax](#watcher-create-advanced-watch)
 
-![Watcher list](/explore-analyze/images/kibana-watches.png "")
-
 [Alerting on cluster and index events](../watcher.md) is a good source for detailed information on how watches work. If you are using the UI to create a threshold watch, take a look at the different watcher actions. If you are creating an advanced watch, you should be familiar with the parts of a watch—input, schedule, condition, and actions.
 
 ::::{note}
@@ -126,6 +124,8 @@ Actions for deactivating and deleting a watch are on each watch detail page:
 
 * **Deactivate a watch** if you know a situation is planned that will cause a false alarm. You can reactivate the watch when the situation is resolved.
 * **Delete a watch** to permanently remove it from the system. You can delete the watch you are currently viewing, or go to the Watcher overview, and delete watches in bulk.
+
+If you don't see these actions, look for the {icon}`ellipsis` **More** menu.
 
 ## Create an advanced watch [watcher-create-advanced-watch]
 

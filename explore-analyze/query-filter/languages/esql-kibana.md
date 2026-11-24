@@ -33,8 +33,8 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 |------|-----------------|--------------------|
 | [Discover](/explore-analyze/discover/use-esql.md) | Explore data, visualize results, and save findings to dashboards | {{esql}} editor |
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
-| [Alerting](/explore-analyze/alerting/alerts/rule-type-es-query.md) | Create alerting rules based on {{esql}} queries | {{esql}} editor |
-| [{{alerting-v2-system-cap}}](/explore-analyze/alerting/esql/system-overview.md) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
+| [{{alerting-v2-system}}](/explore-analyze/alerting/esql/rules/create-esql-rule.md) | Create alerting rules based on {{esql}} queries | Rule form or YAML editor |
+| [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md) {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
 | [Maps](/explore-analyze/visualize/maps.md) {applies_to}`serverless: beta` {applies_to}`stack: beta` | Create map layers from {{esql}} queries | {{esql}} editor |
 | [Data Visualizer](/explore-analyze/machine-learning/machine-learning-in-kibana.md) | Explore field statistics from query results | {{esql}} editor |
 | [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) | Create custom tools that run parameterized queries | Task-specific editor |
@@ -167,6 +167,7 @@ Choose the entry point that matches what you want to do:
 - [**Generate a full query from natural language**](#esql-kibana-quick-search-nl) in the editor's search bar, when you're starting from scratch or want to replace the whole query.
 - [**Generate {{esql}} from a comment**](#esql-kibana-ai-comment) to add or change a single pipe inside the query you're writing.
 - [**Fix query errors with AI**](#esql-kibana-ai-fix) when a query fails validation.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` [**Explain a failed query with AI**](#esql-kibana-ai-explain) in **Discover**, when a query returns an error after you run it.
 
 **Requirements**
 
@@ -178,7 +179,10 @@ Without an Enterprise license, the AI prompts and actions don't appear, and the 
 - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Natural language mode doesn't appear until you configure a model.
 - {applies_to}`stack: preview =9.5` Natural language mode appears, and selecting it shows a link to set up a connector.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The AI agent can also use [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md) as sources. It uses them when it writes a full query, in natural language mode or from a comment when the editor contains only comments, and when you use **Fix with AI**. It uses only the datasets that you have the `read_dataset_metadata`, `manage_dataset`, `manage`, or `all` index privilege on.
+The AI agent can also use these sources when it writes a full query in **Natural language** mode or from a comment in an editor that contains only comments, and when you use **Fix with AI**:
+
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md): The agent uses only the datasets that you have the `read_dataset_metadata`, `manage_dataset`, `manage`, or `all` index privilege on.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` [{{esql}} views](elasticsearch://reference/query-languages/esql/esql-views.md): You can ask for a view by name and get a query that reads from it. The agent uses only the views that you have the `read_view_metadata`, `manage_view`, `manage`, or `all` index privilege on.
 
 #### Generate a full query from natural language [esql-kibana-quick-search-nl]
 
@@ -247,9 +251,28 @@ The proposed fix appears directly below your query, with the original lines and 
 
 :::{tip}
 :applies_to: {"serverless": "preview", "stack": "preview 9.5"}
-After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/discover-get-started.md#analyze-with-ai).
+After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md).
 :::
 
+#### Explain a failed query with AI [esql-kibana-ai-explain]
+```{applies_to}
+serverless: preview
+stack: preview 9.7+
+```
+
+If an {{esql}} query fails when you run it in **Discover**, for example because it asks for more memory than {{es}} can give it, an AI agent can explain what went wrong and what to try next. The error message that replaces your results includes an **Explain with AI** action. Select it to send your query, the error message, and your deployment type to the [AI model that the editor uses](#esql-kibana-ai-assistance). The agent tailors its advice to what you can change.
+
+The explanation appears with the error message and includes:
+
+- A short summary of what went wrong
+- Up to four suggestions for what to do next
+- A corrected query, when a change to the query can fix the error
+
+The agent hasn't run the corrected query, and results can vary between runs, so review it before you rely on it. To try the corrected query, select **Run query**. {{kib}} replaces the query in the editor with the corrected one and runs it. To use the corrected query somewhere else, select **Copy**, then paste it where you want to run it, for example in a new Discover tab.
+
+:::{note}
+With the required license but no configured model, **Explain with AI** still appears. Selecting it shows **No AI connector is set up.** and, if your role lets you manage connectors, a **Set up a connector** link.
+:::
 
 ### Commands with additional editor support
 
@@ -621,7 +644,7 @@ For more details, refer to [Approximate `STATS` queries](elasticsearch://referen
 
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Complete list of commands, functions, and operators.
 - [Get started with {{esql}} in Discover](/explore-analyze/discover/try-esql.md): Hands-on tutorial for your first {{esql}} queries in Discover.
-- [Use Discover with {{esql}}](/explore-analyze/discover/use-esql.md): Discover tasks that are specific to {{esql}} mode.
+- [How to query in Discover's {{esql}} mode](/explore-analyze/discover/use-esql.md): Write and refine {{esql}} queries in Discover.
 - [{{esql}} for {{elastic-sec}}](/solutions/security/esql-for-security.md): Use cases and examples for threat hunting and detection rules.
 - [{{esql}} visualizations](/explore-analyze/visualize/esorql.md): Create and edit {{esql}}-based visualizations in dashboards.
 - [Add variable controls to dashboards](/explore-analyze/visualize/add-variable-controls.md): Add {{esql}}-powered variable controls to dashboards.

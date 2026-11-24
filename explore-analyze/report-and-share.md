@@ -27,7 +27,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the toolbar.
+{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the application menu. In **Canvas**, you use the **Share** menu in the workpad toolbar instead.
 
 ## Permissions
 
@@ -41,7 +41,7 @@ You can share direct links to saved Discover sessions, dashboards, and visualiza
 * **Relative time range**: The link shows current data. For example, if you share a "Last 7 days" view, users will see the most recent 7 days when they open the link.
 * **Absolute time range** (default): The link shows a fixed time period. For example, if you share a "Last 7 days" view on January 7, 2025, the link will always show that exact week of January 1-7, 2025, regardless of when users open the link.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens a specific document in **Discover**, refer to [Share a link to a document](discover/discover-get-started.md#share-a-document-link).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To copy a link that reopens a specific document in **Discover**, refer to [Share a link to a document](discover/copy-and-share-documents.md#share-a-document-link).
 
 ::::{tip}
 When sharing an object with unsaved changes, you get a temporary link that might break in the future, for example in case of upgrade. Save the object to get a permanent link instead.
@@ -59,32 +59,36 @@ Anonymous users can also access the link if you have configured [Anonymous authe
 For more information on how to configure reporting in {{kib}}, refer to [Configure reporting in {{kib}}](/deploy-manage/kibana-reporting-configuration.md).
 :::
 
-Create and download PDF, PNG, or CSV reports of saved Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [](/explore-analyze/dashboards/sharing.md).
+Create and download PDF, PNG, or CSV reports of Discover sessions, dashboards, visualizations, and workpads. For dashboard-specific export instructions, refer to [](/explore-analyze/dashboards/sharing.md).
 
 * **PDF** {applies_to}`serverless: unavailable` — Generate and download PDF files of dashboards, visualizations, and **Canvas** workpads. PDF reports are a [subscription feature](https://www.elastic.co/subscriptions).
 * **PNG** {applies_to}`serverless: unavailable` — Generate and download PNG files of dashboards and visualizations. PNG reports are a [subscription feature](https://www.elastic.co/subscriptions).
-* **CSV reports** — Generate CSV reports of saved Discover sessions.
+* **CSV reports**: Generate CSV reports of Discover sessions. You don't need to save a session before you export it.
 * **CSV download** — Generate and download CSV files of Lens visualizations.
 * **Download as JSON** {applies_to}`serverless: unavailable` — Generate and download JSON files of **Canvas** workpads.
 * **Export JSON**
     * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+, preview 9.4-9.5` For a dashboard, export the JSON source in a format that the dashboards API can consume. Refer to [Export as dashboards API-compatible JSON](dashboards/sharing.md#export-dashboard-json).
-    * {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/save-open-search.md#export-discover-session-json).
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` For a Discover session, export the definition as JSON, not the query results, to inspect its definition or to use that JSON as the starting point for managing the session as code. This export copies or downloads the JSON from the open session. It does not queue a report. Refer to [Export a Discover session as JSON](discover/export-discover-session.md#export-discover-session-json).
 
 :::{tip}
 Several applications let you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation).
 :::
 
-1. Open the saved Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
-2. Choose a file type for the report.
+1. Open the Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
+2. Select a file type for the report.
 
-    * {applies_to}`stack: ga 9.1+` From the toolbar, click the {icon}`download` **Export** icon, then choose a file type.
-    * {applies_to}`stack: ga =9.0` From the toolbar, click **Share** → **Export** tab, then choose a file type.
+    * {applies_to}`stack: ga 9.1+` In the application menu, select {icon}`download` **Export**, then select a file type.
+    * {applies_to}`stack: ga =9.0` In the application menu, select **Share** → **Export** tab, then select a file type.
+
+    In **Canvas**, select **Share** in the workpad toolbar, then **PDF reports** or **Download as JSON**.
+
+    In **Discover**, look for the CSV export action in the actions available in the application menu. Depending on your version, this action can be called **Export** → **CSV**, **Export tab results** → **CSV**, or **Export** → **Tab results as CSV**, and can be nested under {icon}`ellipsis` **More** or {icon}`share` **Share**.
 
     Some export formats have specific considerations:
 
     :::{dropdown} PDF
     * When a dashboard report includes a data table or Discover session, the PDF includes only the visible data.
-    * For dashboard PDFs, select **For printing** to create printer-friendly PDFs with multiple A4 portrait pages and two visualizations per page.
+    * For dashboard PDFs, turn on **Print format** (or **Optimize for printing**, depending on your {{stack}} version) to get a printer-friendly report that uses multiple A4 portrait pages and shows at most two visualizations per page. Use it for reports that you want to print or share, and for dashboards that are too tall or too wide for a standard PDF. If a dashboard is more than 16000 pixels tall or 14400 pixels wide, {{kib}} fails the report and suggests print format in the error message. The option appears in the export flyout and, when you [schedule exports](report-and-share/automating-report-generation.md#schedule-report-generation), in the schedule form.
     * For workpad PDFs, select **Full page layout** to create PDFs without the margins that surround the workpad.
     * Certain [limitations apply](#pdf-limitations).
     :::
@@ -94,7 +98,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
     * Certain [limitations apply](#csv-limitations).
     :::
 
-3. Click the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
+3. Select the button that generates or exports the report. A message appears, indicating that the report is in the export queue.
 
     ::::{note}
     To generate reports without exporting them by hand, use one of these methods:
@@ -104,7 +108,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
     * {applies_to}`serverless: unavailable` Trigger reports from [{{watcher}}](report-and-share/automating-report-generation.md#use-watcher).
     ::::
 
-Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management > Alerts and Insights > Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
+Go to the **Reporting** page to access all of your reports. To find the page, navigate to **Stack Management** → **Alerts and Insights** → **Reporting** in the main menu, or use the [global search field](find-and-organize/find-apps-and-objects.md).
 
 ::::{note}
 In self-managed installations and {{ech}} deployments, reports are stored in {{es}} and managed by the `kibana-reporting` {{ilm}} ({{ilm-init}}) policy. By default, the policy stores reports forever. To learn more about {{ilm-init}} policies, refer to the {{es}} [{{ilm-init}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
@@ -119,13 +123,6 @@ The layout and size of PDF and PNG reports depend on what you are sharing. For s
 
 To change the output size, resize the browser before generating the report. The browser resizes the shareable container, which then determines the report dimensions. It might take some trial and error before you're satisfied.
 
-In the following dashboard, the shareable container is highlighted:
-
-:::{image} /explore-analyze/images/kibana-shareable-container.png
-:alt: Shareable Container
-:screenshot:
-:::
-
 ### CSV report limitations [csv-limitations]
 
 We recommend using CSV reports to export moderate amounts of data only. The feature enables analysis of data in external tools, but it is not intended for bulk export or to backup Elasticsearch data. The following conditions increase the risk of timeouts or incomplete data:
@@ -137,7 +134,7 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 * Queries use cross-cluster search (CCS) across many indices or remote clusters
 * ES|QL is used and result row count exceeds the limits of ES|QL queries
 
-In Discover, a CSV report also stops at a row limit, and the file is truncated at a size limit. To find both limits for your deployment and how they work in each query mode, refer to [Export Discover session results as CSV](discover/save-open-search.md#export-discover-session-csv).
+In Discover, a CSV report also stops at a row limit, and the file is truncated at a size limit. To find both limits for your deployment and how they work in each query mode, refer to [Export Discover session results as CSV](discover/export-discover-session.md#export-discover-session-csv).
 
 For large or long-running exports, use the Elasticsearch APIs directly. They are the recommended path for bulk data extraction. To reduce report size, use filters to create multiple smaller reports.
 
@@ -165,7 +162,7 @@ Create and share JSON files for workpads.
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.
-3. From the toolbar, click {icon}`download` **Export**, then select **JSON**.
+3. In the workpad toolbar, select **Share**, then **Download as JSON**.
 
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]
@@ -196,7 +193,7 @@ Create and securely share static **Canvas** workpads on a website. To customize 
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.
-3. Click **Share > Share on a website**.
+3. Click **Share** → **Share on a website**.
 4. To customize the workpad behavior to autoplay the pages or hide the toolbar, use the inline parameters.
 
    To make sure that your data remains secure, the data in the JSON file is not connected to {{kib}}. **Canvas** does not display elements that manipulate the data on the workpad.
@@ -219,6 +216,6 @@ Display your dashboards on an internal company website or personal web page with
 For information about granting access to embedded dashboards, refer to [Authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
 
 1. Open the dashboard you want to share.
-2. Click **Share > Embed code**.
+2. Click **Share** → **Embed code**.
 3. Specify which parts of the dashboard you want to include: Top menu, query, time filter, and filter bar.
 4. Click **Copy embed code**.

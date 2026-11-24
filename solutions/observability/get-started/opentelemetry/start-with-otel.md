@@ -62,7 +62,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} ess:
@@ -80,7 +80,7 @@ Before committing to this path, note these {{motlp}} limitations:
 * Tail-based sampling (TBS) is not available. Configure head-based sampling at the edge before sending data.
 * Universal Profiling is not available.
 
-Refer to [{{motlp}}](opentelemetry://reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
+Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the full list of limitations and configuration details.
 ::::
 
 ::::{applies-item} self:
@@ -133,7 +133,8 @@ Available EDOT SDKs (all GA unless noted):
 * [EDOT PHP](elastic-otel-php://reference/edot-php/setup/index.md)
 * [EDOT Android](apm-agent-android://reference/edot-android/index.md)
 * [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md)
-* {applies_to}`edot_browser: preview` [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md). For production real user monitoring, continue using the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
+* {applies_to}`edot_browser: preview 0.1-0.5, ga 1.0+` [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md)
+* {applies_to}`edot_react_native: preview` [EDOT React Native](elastic-otel-react-native://reference/edot-react-native/index.md)
 
 For languages without an EDOT SDK (Go, C++, Ruby, and others), you can use the [contrib OpenTelemetry SDKs](/solutions/observability/apm/opentelemetry/upstream-opentelemetry-collectors-language-sdks.md). These work with Elastic over OTLP but receive community support only.
 
@@ -147,7 +148,7 @@ Configure your EDOT SDKs and edge {{agent}} instances to use the OTLP exporter. 
 
 {{edot}} covers most core {{observability}} use cases, but the following scenarios still work better with classic Elastic ingestion:
 
-* **Web real user monitoring (RUM)**: OTel-native RUM data is not yet available for production use. EDOT Browser is in Technical Preview. For production RUM, use the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md).
+* **Web real user monitoring (RUM)**: The {{kib}} **{{user-experience}}** app only shows data from the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md), not from EDOT Browser. If you rely on the {{user-experience}} app, keep using the classic browser agent. EDOT Browser also has fewer stable configuration options than the classic agent. Refer to [EDOT Browser limitations](elastic-otel-rum-js://reference/edot-browser/index.md#limitations) for other differences from the classic agent.
 * **Universal Profiling**: Only available with classic Elastic ingestion, and not through OTel-native data.
 * **Existing ECS integrations and dashboards**: Many prebuilt integrations and dashboards use ECS-formatted data and may not work with OpenTelemetry semantic conventions without customization. Install OpenTelemetry content packs from the {{kib}} {{integrations}} UI (search for `otel`) to get OTel-compatible dashboards.
 * **Tail-based sampling (TBS)**: {{edot}} does not provide managed TBS. The {{motlp}} has no TBS support, so you have to configure sampling at the edge before sending. You can configure self-managed TBS, with [some caveats](opentelemetry://reference/compatibility/limitations.md#tail-based-sampling-tbs), in:
@@ -163,8 +164,8 @@ Refer to [Limitations of {{edot}}](opentelemetry://reference/compatibility/limit
 
 After completing your quickstart, confirm that data is flowing:
 
-1. Open {{kib}} and go to **{{product.observability}} → Applications → Service inventory** (or use the global search to find **Service inventory**) to confirm your application traces appear.
-2. Go to **{{product.observability}} → Infrastructure** (or search for **Infrastructure**) to confirm host and container metrics are visible.
+1. Open {{kib}} and go to **{{product.observability}}** → **Applications** → **Service inventory** (or use the global search to find **Service inventory**) to confirm your application traces appear.
+2. Go to **{{product.observability}}** → **Infrastructure** (or search for **Infrastructure**) to confirm host and container metrics are visible.
 3. Go to **Discover** and filter by your service name to confirm log data is flowing.
 
 If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md).
@@ -183,4 +184,4 @@ If data is missing, refer to [Troubleshoot {{edot}}](/troubleshoot/ingest/opente
 * [Limitations of {{edot}}](opentelemetry://reference/compatibility/limitations.md)
 * [{{edot}} vs upstream OpenTelemetry](opentelemetry://reference/compatibility/edot-vs-upstream.md)
 * [{{agent}} reference](elastic-agent://reference/edot-collector/index.md)
-* [Managed inputs](opentelemetry://reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints
+* [Managed inputs](/reference/managed-inputs/index.md) — {{motlp}} and other managed endpoints

@@ -2,7 +2,8 @@
 navigation_title: Reduce notification noise
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "Silence alert notifications by acknowledging, snoozing, or resolving alerts, or with a maintenance window."
@@ -10,7 +11,7 @@ description: "Silence alert notifications by acknowledging, snoozing, or resolvi
 
 # Reduce notification noise in {{alerting-v2-system}} [reduce-notification-noise]
 
-{{alerting-v2-system-cap}} has several mechanisms that can silence notifications for an alert. When an alert is silenced, the dispatcher stops processing it before it evaluates any action policy against it. For where this fits in the full dispatch cycle, refer to [About action policies](about-action-policies.md).
+{{alerting-v2-system}} has several mechanisms that can silence notifications for an alert. When an alert is silenced, the dispatcher stops processing it before it evaluates any action policy against it. For where this fits in the full dispatch cycle, refer to [About action policies](about-action-policies.md).
 
 ## Silencing mechanisms [silencing-mechanisms]
 

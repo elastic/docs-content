@@ -1,5 +1,6 @@
 ---
 navigation_title: Policies
+description: Create and manage Elastic Agent policies with Fleet. Add integrations, apply policies to agents, and configure outputs, monitoring, upgrades, logging, and other agent settings.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-policy.html
 applies_to:
@@ -57,8 +58,9 @@ Hosted policies display a lock icon in the {{fleet}} UI, and actions are restric
 | [Copy a policy](#copy-policy) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Edit or delete a policy](#policy-main-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add custom fields](#add-custom-fields) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Include agent tags in events](#agent-policy-include-agent-tags) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure agent monitoring](#change-policy-enable-agent-monitoring) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
-| [Configure an automatic {{agent}} upgrade](#agent-policy-automatic-agent-upgrade) {applies_to}`stack: ga 9.1.0` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Configure an automatic {{agent}} upgrade](#agent-policy-automatic-agent-upgrade) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Change the output of a policy](#change-policy-output) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add a {{fleet-server}} to a policy](#add-fleet-server-to-policy) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure secret values in a policy](#agent-policy-secret-values) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
@@ -92,34 +94,25 @@ Also see [Create an agent policy without using the UI](/reference/fleet/create-p
 
 An {{agent}} policy consists of one or more integrations that are applied to the agents enrolled in that policy. When you add an integration, the policy created for that integration can be shared with multiple {{agent}} policies. This reduces the number of integrations policies that you need to actively manage.
 
-To add a new integration to one or more {{agent}} policies:
+To add a new integration to an {{agent}} policy:
 
 1. In {{fleet}}, click **Agent policies**. Click the name of a policy you want to add an integration to.
-2. Click **Add <integration>**.
-3. The Integrations page shows {{agent}} integrations along with other types, such as {{beats}}. Scroll down and select **Elastic Agent only** to view only integrations that work with {{agent}}.
-4. You can opt to install an {{agent}} if you haven’t already, or choose **Add integration only** to proceed.
-5. In Step 1 on the **Add <integration>** page, you can select the configuration settings specific to the integration.
-6. In Step 2 on the page, you have two options:
+2. Select **Add integration**.
 
-    1. If you’d like to create a new policy for your {{agent}}s, on the **New hosts** tab specify a name for the new agent policy and choose whether or not to collect system logs and metrics. Collecting logs and metrics will add the System integration to the new agent policy.
-    2. If you already have an {{agent}} policy created, on the **Existing hosts** tab use the drop-down menu to specify one or more agent policies that you'd like to add the integration to. This feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
+    :::{note}
+    :applies_to: stack: ga =9.0
+    In this version, **Add integration** opens the **Integrations** page instead of a flyout. To add the integration from there, follow the steps in [](/reference/fleet/add-integration-to-policy.md).
+    :::
 
-    ::::{include} _snippets/version-specific-policy-integration-warning.md
-    ::::
+3. In the **Add integration to policy** flyout, under **Select integration**, search for and select an integration.
+4. Under **Configure integration**, configure the settings specific to the integration.
+5. Select **Add integration**.
 
-7. Click **Save and continue** to confirm your settings.
+To add the integration to several agent policies at once, [add it from the **Integrations** page](/reference/fleet/add-integration-to-policy.md) instead, and select the policies on the **Existing hosts** tab. This feature, known as **reusable integration policies**, is available only for certain subscription levels. For more information, refer to [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 This action installs the integration and adds it to the {{agent}} policies that you specified. {{fleet}} distributes the new integration policy to all {{agent}}s that are enrolled in the agent policies.
 
-You can update the settings for an installed integration at any time:
-
-1. In {{kib}}, go to the **Integrations** page.
-2. On the **Integration policies** tab, for the integration that you like to update open the **Actions** menu and select **Edit integration**.
-3. On the **Edit <integration>** page you can update any configuration settings and also update the list of {{agent}} polices to which the integration is added.
-
-    If you clear the **Agent policies** field, the integration will be removed from any {{agent}} policies to which it had been added.
-
-    To identify any integrations that have been "orphaned", that is, not associated with any {{agent}} policies, check the **Agent polices** column on the **Integration policies** tab. Any integrations that are installed but not associated with an {{agent}} policy are as labeled as `No agent policies`.
+You can update the settings of an integration policy, or the {{agent}} policies that it's added to, at any time. Refer to [Edit or delete an {{agent}} integration policy](/reference/fleet/edit-delete-integration-policy.md).
 
 
 
@@ -151,15 +144,12 @@ When you assign an agent to a policy that contains an integration with a minimum
 
 ## Edit or delete an integration policy [policy-edit-or-delete]
 
-Integrations can be reconfigured or deleted. To edit or delete an integration policy:
+To edit or delete an integration policy from the {{agent}} policy that it's added to:
 
-1. In {{fleet}}, click **Agent policies**. Click the name of the policy you want to edit or delete.
-2. Search or scroll to a specific integration. Open the **Actions** menu and select **Edit integration** or **Delete integration**.
+1. In {{fleet}}, select **Agent policies**. Select the name of the {{agent}} policy that includes the integration policy.
+2. Find the integration policy. From its **Actions** menu, select **Edit integration** or **Delete integration**.
 
-    Editing or deleting an integration is permanent and cannot be undone. If you make a mistake, you can always re-configure or re-add an integration.
-
-
-Any saved changes are immediately distributed and applied to all {{agent}}s enrolled in the given policy.
+For the full steps, and what happens when you delete an integration policy, refer to [](/reference/fleet/edit-delete-integration-policy.md).
 
 To update any secret values in an integration policy, refer to [Configure secret values in a policy](#agent-policy-secret-values).
 
@@ -169,9 +159,9 @@ To update any secret values in an integration policy, refer to [Configure secret
 Policy definitions are stored in a plain-text YAML file that can be downloaded or copied to another policy:
 
 1. In {{fleet}}, click **Agent policies**. Click the name of the policy you want to copy or download.
-2. To copy a policy, click **Actions → Copy policy**. Name the new policy, and provide a description. The exact policy definition is copied to the new policy.
+2. To copy a policy, click **Actions** → **Copy policy**. Name the new policy, and provide a description. The exact policy definition is copied to the new policy.
 
-    Alternatively, view and download the policy definition by clicking **Actions → View policy**.
+    Alternatively, view and download the policy definition by clicking **Actions** → **View policy**.
 
 
 
@@ -219,6 +209,54 @@ Adding custom fields is not supported for a small set of inputs:
 * `pf-elastic-collector`, `pf-elastic-symbolizer`, and `pf-host-agent`
 * `endpoint` inputs. Instead, use the advanced settings (`*.advanced.document_enrichment.fields`) of the {{elastic-defend}} Integration.
 * `elastic_agent` inputs
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To add a value that differs from one agent to another in the same policy, use [agent tags](#agent-policy-include-agent-tags) instead.
+
+
+## Include agent tags in events [agent-policy-include-agent-tags]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Use this setting to add the [tags](/reference/fleet/filter-agent-list-by-tags.md) of each {{agent}} to the data it collects. You can then filter and group the data by agent tag in Discover, dashboards, alerting rules, and detection rules. Unlike [custom fields](#add-custom-fields), which add the same values for every agent in a policy, tags can differ from one agent to another.
+
+This setting is off by default. It takes effect only for {{agents}} on version 9.6 or later that connect to {{fleet-server}} 9.6 or later. On {{serverless-short}}, Elastic manages {{fleet-server}} for you, so only the {{agent}} version matters.
+
+To include agent tags in events:
+
+1. In {{fleet}}, select **Agent policies**, then select the name of the policy you want to edit.
+2. Select the **Settings** tab and scroll to **Advanced settings**.
+3. For the **Include agent tags in events** setting, select **Enable**.
+4. Select **Save changes**.
+
+{{agent}} adds its tags to the `tags` field of each event, after any tags that the integration sets. For example, if an agent has the tags `production` and `eu-west`, and an integration adds the tag `forwarded`, the events from that integration contain:
+
+```json
+"tags": ["forwarded", "production", "eu-west"]
+```
+
+When you [add or remove tags](/reference/fleet/filter-agent-list-by-tags.md#add-tags-in-fleet) for an agent, you don't need to update the agent policy. The agent gets the new tags the next time it checks in with {{fleet}}. Events collected before the change keep their previous tags.
+
+Agent tags are added to data from most integrations, including when they run in the [OTel runtime](/reference/fleet/elastic-agent-as-otel-collector.md). They aren't added to data from the following integrations:
+
+* {{elastic-defend}}
+* Elastic APM
+* Synthetics monitors
+* Universal Profiling
+* [OpenTelemetry input packages](/reference/fleet/otel-integrations.md)
+
+You can query the `tags` field to find data by agent tag in [Discover](/explore-analyze/discover.md), [dashboards](/explore-analyze/dashboards.md), [alerting rules](/explore-analyze/alerting.md), and [{{elastic-sec}} detection rules](/solutions/security/detect-and-alert.md). For example, the [KQL](/explore-analyze/query-filter/languages/kql.md) query `tags : "production"` matches events from agents tagged `production`.
+
+In [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md), use the [`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) function instead of the `==` operator, because `==` doesn't match fields with more than one value, such as `tags`. For example, to find events from agents tagged `production` in your logs and metrics, use:
+
+```esql
+FROM logs-*, metrics-*
+| WHERE MATCH(tags, "production")
+```
+
+To include agent tags in events for standalone {{agents}}, refer to [Configure feature flags for standalone {{agent}}s](/reference/fleet/elastic-agent-standalone-feature-flags.md#elastic-agent-standalone-feature-flag-settings).
 
 
 ## Configure agent monitoring [change-policy-enable-agent-monitoring]
@@ -277,7 +315,8 @@ This setting configures retries for the file upload client handling diagnostics 
 ## Configure an automatic {{agent}} upgrade [#agent-policy-automatic-agent-upgrade]
 
 ```{applies_to}
-stack: ga 9.1.0
+stack: ga 9.1+
+serverless: ga
 ```
 
 For a high-scale deployment of {{fleet}}, you can configure an automatic, gradual rollout of a new minor or patch version to a percentage of the {{agents}} in your policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](/reference/fleet/upgrade-elastic-agent.md#auto-upgrade-agents).
@@ -327,7 +366,7 @@ Make sure that the {{agent}}s assigned to this policy all have connectivity to t
 
 When you create an integration policy you often need to provide sensitive information such as an API key or a password. To help ensure that data can’t be accessed inappropriately, any secret values used in an integration policy are stored separately from other policy details.
 
-As well, after you’ve saved a secret value in {{fleet}}, the value is hidden in both the {{fleet}} UI and in the agent policy definition. When you view the agent policy (**Actions → View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
+As well, after you’ve saved a secret value in {{fleet}}, the value is hidden in both the {{fleet}} UI and in the agent policy definition. When you view the agent policy (**Actions** → **View policy**), an environment variable is displayed in place of any secret values, for example `${SECRET_0}`.
 
 ::::{warning}
 In order for sensitive values to be stored secretly in {{fleet}}, all configured {{fleet-server}}s must be on version 8.10.0 or higher.

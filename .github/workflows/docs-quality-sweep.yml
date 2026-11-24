@@ -55,22 +55,38 @@ jobs:
         run: |
           set -e
           want() { [[ "$SWEEPS" == "all" || "$SWEEPS" == *"$1"* ]]; }
+          declare -a dispatched_names=()
+          declare -a dispatched_urls=()
 
           fire() {
             local name="$1"
+            local run_url
             want "$name" || { echo "  skip $name (not in sweeps='$SWEEPS')"; return; }
             echo "→ dispatching docs-${name}-sweep.yml"
-            gh workflow run "docs-${name}-sweep.yml" --repo "${{ github.repository }}" \
+            run_url="$(gh workflow run "docs-${name}-sweep.yml" --repo "${{ github.repository }}" \
               -f source-repo="$SRC" \
               -f docs-root="$ROOT" \
               -f target-path="$TARGET_PATH" \
-              -f scope-mode="$SCOPE_MODE"
+              -f scope-mode="$SCOPE_MODE")"
+            dispatched_names+=("$name")
+            dispatched_urls+=("$run_url")
           }
 
           for n in frontmatter applies-to openings style typos staleness coherence; do
             fire "$n"
           done
 
-          echo ""
-          echo "Each dispatched sweep runs as its own workflow run — see the Actions tab."
+          {
+            echo "## Dispatched docs quality sweeps"
+            echo ""
+            echo "| Sweep | Workflow run |"
+            echo "| --- | --- |"
+            for i in "${!dispatched_names[@]}"; do
+              printf '| %s | [View run](%s) |\n' "${dispatched_names[$i]}" "${dispatched_urls[$i]}"
+            done
+            echo ""
+            echo "Each sweep runs independently. Open a run above for logs and outcomes; actionable findings are filed as labeled fix-issues in this repository."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          echo "Dispatched ${#dispatched_names[@]} sweep(s). See the run summary for links."
           echo "To tune per-sweep settings (batch size, caps, thresholds), dispatch the sub-workflow directly."

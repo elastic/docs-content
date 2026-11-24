@@ -39,7 +39,7 @@ Create an entry for the Azure client in the {{es}} keystore:
 
 ## Create the repository [ec-create-azure-repository]
 
-1. Open {{kib}} and go to **Management** > **Snapshot and Restore**.
+1. Open {{kib}} and go to **Management** → **Snapshot and Restore**.
 2. On the **Repositories** tab, select **Register a repository**.
 3. Provide a name for your repository and select type **Azure**.
 4. Provide the following settings:

@@ -2,7 +2,8 @@
 navigation_title: ES|QL query patterns
 applies_to:
   stack: ga 9.6+
-  serverless: ga
+  serverless:
+    observability: ga
 products:
   - id: kibana
 description: "ES|QL query patterns for rules, from basic event filters to SLO burn rates, silent source detection, and persistent breach checks."
@@ -10,7 +11,7 @@ description: "ES|QL query patterns for rules, from basic event filters to SLO bu
 
 # {{esql}} query patterns for {{alerting-v2-system}} rules [esql-query-patterns]
 
-The following pages cover {{esql}} query patterns for {{alerting-v2-system}} rules, ordered from the simplest starting point to advanced use cases. Start with [Your first rule query](esql-first-rule-query.md) if you're new, or jump to the pattern you need.
+The following pages cover {{esql}} query patterns for {{alerting-v2-system-short}} rules, ordered from the simplest starting point to advanced use cases. Start with [Your first rule query](esql-first-rule-query.md) if you're new, or jump to the pattern you need.
 
 | Pattern | What it solves | Complexity |
 | --- | --- | --- |

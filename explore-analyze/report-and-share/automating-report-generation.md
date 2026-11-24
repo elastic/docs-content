@@ -34,22 +34,20 @@ Create the POST URL that triggers a report to generate PDF and CSV reports.
 To create the POST URL for PDF reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
-2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report. From the toolbar, do one of the following:
+2. Open the dashboard or visualization you want to view as a report, then get the POST URL:
 
-    * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
-    * {applies_to}`stack: ga =9.0` If you are using **Dashboard** or **Visualize Library**, click **Share > Export**, select the PDF or PNG option, then click **Copy POST URL**.
-    * {applies_to}`stack: ga =9.0` If you are using **Canvas**, click **Share > PDF Reports**, then click **Advanced options > Copy POST URL**.
+    * {applies_to}`stack: ga 9.1+` In the application menu, select **Export**, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
+    * {applies_to}`stack: ga =9.0` In the application menu, select **Share** → **Export**, select the PDF or PNG option, then select **Copy POST URL**.
+
+    For a **Canvas** workpad, select **Share** in the workpad toolbar, then **PDF reports**. Select **Advanced options**, then **Copy POST URL**.
 
 ### CSV reports [csv-post-url]
 
 To create the POST URL for CSV reports:
 
 1. Go to **Discover**.
-2. Open the saved Discover session you want to share.
-3. In the toolbar, do one of the following:
-  
-   * {applies_to}`stack: ga 9.1+` Click the **Export** icon, then **CSV**. In the export flyout, copy the POST URL.  
-   * {applies_to}`stack: ga =9.0` Click **Share > Export > Copy POST URL**.
+2. Open the saved Discover session you want to share, so the POST URL keeps working. If the session has unsaved changes, the export flyout warns that the link might not be permanent.
+3. Open the CSV export, as described in [Export Discover session results as CSV](/explore-analyze/discover/export-discover-session.md#export-discover-session-csv). In the export flyout, copy the POST URL. In 9.0, select **Share** → **Export** → **Copy POST URL** instead.
 
 
 ## Use Watcher [use-watcher]
@@ -173,7 +171,7 @@ The response payload of a request to generate a report includes the path to down
 
 * **`400` (Bad Request)**: When sending requests to the POST URL, if you don’t use `POST` as the HTTP method, or if your request is missing the `kbn-xsrf` header, Kibana will return a code `400` status response for the request.
 * **`503` (Service Unavailable)**: When using the `path` to request the download, you will get a `503` status response if report generation hasn’t completed yet. The response will include a `Retry-After` header. You can set the script to wait the number of seconds in the `Retry-After` header, and then repeat if needed, until the report is complete.
-* **`500` (Internal Server Error)**: When using the `path` to request the download, you will get a `500` status response if the report isn’t available due to an error when generating the report. More information is available at **Management > Kibana > Reporting**.
+* **`500` (Internal Server Error)**: When using the `path` to request the download, you will get a `500` status response if the report isn’t available due to an error when generating the report. More information is available at **Management** → **Kibana** → **Reporting**.
 
 
 ## Deprecated report URLs [deprecated-report-urls]
@@ -250,7 +248,7 @@ Save time by setting up a recurring task that automatically generates reports an
 ### Create a schedule [create-scheduled-report]
 
 1. Open the saved Discover session, dashboard, or visualization you want to share. 
-2. Click the **Export** icon, then **Schedule export**.
+2. Look for the **Schedule export** action. In **Discover**, it's in the same menu as the CSV export action. In other apps, select the **Export** icon, then **Schedule export**.
 3. Enter the requested details, and (optional) enable **Print format** to generate the report in a printer-friendly format.
 4. Set up a schedule for generating the report.
 

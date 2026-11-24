@@ -19,7 +19,7 @@ You’ll learn to:
 * Use {{agent}} to ingest the [TriMet REST API](https://developer.trimet.org/ws_docs/) into {{es}}.
 * Create a map with layers that visualize asset tracks and last-known locations.
 * Use symbols and colors to style data values and show which direction an asset is heading.
-* Set up tracking containment alerts to monitor moving vehicles.
+* Set up tracking containment alerts in {{alerting-v1-system}} to monitor moving vehicles.
 * Display those alerts on a map.
 
 When you complete this tutorial, you’ll have a map that looks like this:
@@ -470,11 +470,6 @@ POST kbn:/api/data_views/data_view
 
 {{kib}} shows the fields in your data view.
 
-:::{image} /explore-analyze/images/kibana-data_view.png
-:alt: data view
-:screenshot:
-:::
-
 ::::{tip}
 You might want to tweak this Data View to adjust the field names and number or date formatting to your personal preferences. These settings are honored by the Maps application in the tooltips and other UI elements. Check [Format data fields](../../find-and-organize/data-views/field-formatters.md) for more details.
 ::::
@@ -488,11 +483,6 @@ You might want to tweak this Data View to adjust the field names and number or d
 3. Open the [time filter](../../query-filter/filtering.md), and set the time range to the last 15 minutes.
 4. Expand a document and explore some of the fields that you will use later in this tutorial: `trimet.bearing`, `trimet.inCongestion`, `trimet.location`, and `trimet.vehicleID`.
 
-:::{image} /explore-analyze/images/kibana-discover.png
-:alt: discover
-:screenshot:
-:::
-
 
 ## Part 2: Build an operational map [_part_2_build_an_operational_map]
 
@@ -505,8 +495,8 @@ Create your map and set the theme for the default layer to dark mode.
 
 1. Go to **Maps**.
 2. Click **Create map**.
-3. In the **Layers** list, click **Road map**, and then click **Edit layer settings**.
-4. Open the **Tile service** dropdown, and select **Road map - dark**.
+3. In the **Layers** list, click **Basemap**, and then click **Edit layer settings**.
+4. Open the **Tile service** dropdown, and select **Dark**.
 5. Click **Keep changes**.
 
 
@@ -528,7 +518,7 @@ Add a layer to show the vehicle routes for the last 15 minutes.
     1. Set **Name** to **Tracks**.
     2. Set **Opacity** to 80%.
 
-7. Scroll to **Layer Style**, and set **Border color** to pink.
+7. Scroll to **Layer style**, and set **Border color** to pink.
 8. Click **Keep changes**.
 9. In the **Layers** list, click **Tracks**, and then click **Fit to data**.
 
@@ -555,7 +545,7 @@ Add a layer that uses attributes in the data to set the style and orientation of
 
 4. Click **Add and continue**.
 5. Change the name to **Latest positions**.
-6. Scroll to **Layer Style**.
+6. Scroll to **Layer style**.
 
     1. Set **Symbol type** to **icon**.
     2. Set **Icon** to **Arrow**.
@@ -569,11 +559,6 @@ Add a layer that uses attributes in the data to set the style and orientation of
 
     4. Set **Border width** to 0.
     5. Change **Symbol orientation** to use **By value** and the `trimet.bearing` field.
-
-       :::{image} /explore-analyze/images/kibana-top_hits_layer_style.png
-       :alt: top hits layer style
-       :screenshot:
-       :::
 
 7. Click **Keep changes**.
 8. Open the [time filter](../../query-filter/filtering.md), turn on automatic refresh, and set the refresh interval to 10 seconds.
@@ -607,7 +592,7 @@ Add a layer for construction zones, which you will draw on the map. The construc
 
 6. When you finish drawing the construction zones, click **Exit** under the layer name in the legend.
 7. In **Layer settings**, set **Name** to **Construction zones**.
-8. Scroll to **Layer Style**, and set **Fill color** to yellow.
+8. Scroll to **Layer style**, and set **Fill color** to yellow.
 9. Click **Keep changes**.
 10. **Save** the map.
 
@@ -619,11 +604,6 @@ Add a layer for construction zones, which you will draw on the map. The construc
 The map now represents an operational view of live public transport traffic.  You’ll see the direction that the vehicles are traveling, and whether they are near or have entered a construction zone.
 
 Your map is now complete for now, congratulations!
-
-:::{image} /explore-analyze/images/kibana-construction_zones.png
-:alt: construction zones
-:screenshot:
-:::
 
 
 ### Step 2. Configure an alert [_step_2_configure_an_alert]
@@ -694,11 +674,6 @@ For this example, you will set the rule to check every minute. However, when run
 9. Set **Check every** to **1 minute**.
 10. Notify **Only on status change**.
 
-    :::{image} /explore-analyze/images/kibana-rule_configuration.png
-    :alt: rule configuration
-    :screenshot:
-    :::
-
 11. Under **Actions**, select the **Index** connector type.
 12. Add a new connector named **TriMet Alerts**
 
@@ -719,11 +694,6 @@ For this example, you will set the rule to check every minute. However, when run
      "boundaryId": "{{context.containingBoundaryId}}"
     }
     ```
-
-    :::{image} /explore-analyze/images/kibana-alert_connector.png
-    :alt: alert connector
-    :screenshot:
-    :::
 
 16. Click **Save**.
 
