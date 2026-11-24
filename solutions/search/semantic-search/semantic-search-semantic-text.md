@@ -392,9 +392,7 @@ Both queries return the documents ranked by semantic relevance. The documents ab
 }
 ```
 
-1. Documents are ranked by `_score`. A higher score means stronger semantic relevance to the query.
-   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` On {{ech}} and {{serverless-short}}, [`.jina-embeddings-v5-text-small`](/explore-analyze/elastic-inference/eis.md#jina-embeddings-v5-on-eis) scores are normalized between `0` and `1`. The scores in this example use that scale.
-   - {applies_to}`stack: ga 9.0-9.3` On {{ech}}, ELSER scores typically range from `0` to above `10`.
+1. Documents are ranked by `_score`. A higher score means stronger semantic relevance to the query. If you use a model other than [`.jina-embeddings-v5-text-small`](/explore-analyze/elastic-inference/eis.md#jina-embeddings-v5-on-eis), such as ELSER on a version before 9.4, the scores might differ from this example.
 2. The `_source` contains the original document text. Embeddings are stored internally and excluded from the response by default.
 
 ::::
