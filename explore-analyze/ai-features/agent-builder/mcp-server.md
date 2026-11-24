@@ -47,7 +47,7 @@ You can copy the MCP server URL for the current space in the Tools GUI. Refer to
 
 {applies_to}`serverless: ga` For setup instructions for specific MCP hosts, including prebuilt Elastic connectors in their directories, refer to [](/deploy-manage/app-connections/connect-mcp-host.md).
 
-For an end-to-end guide that builds a tool, then adds the MCP server URL and an API key to Cursor, refer to the Elastic Search Labs blog post [Connect Agent Builder tools to any AI agent with Elastic MCP server](https://www.elastic.co/search-labs/blog/elastic-mcp-server-agent-builder-tools).
+For a reference architecture that uses Agent Builder and the MCP server, refer to the Elastic Search Labs blog post [Implementing an agentic reference architecture with Elastic Agent Builder and MCP](https://www.elastic.co/search-labs/blog/agent-builder-mcp-reference-architecture-elasticsearch).
 
 ## Authentication and configuration [mcp-server-authentication]
 
