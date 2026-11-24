@@ -130,13 +130,13 @@ The **Extract observables** setting is available only for {{elastic-sec}} cases 
 
 To set whether new cases in the space extract observables from their attached alerts and events, turn **Extract observables** on or off. It's on by default, and changing it affects only the cases you create afterward.
 
-The default applies however you create a case.
+The default applies however you create a case:
 
-* In the case form, the **Extract observables** toggle is set to the default when you open the form.
+* In the case form, the **Extract observables** toggle starts at the default.
 * In the Cases API and in [workflow steps that create cases](/explore-analyze/workflows/steps/cases.md), a case follows the default when the request doesn't set `extractObservables`.
 * In the Cases action of a detection rule, a case follows the default unless the rule sets the [Auto-extract observables option](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration).
 
-A case template can set its own value, and you can change the value for an individual case on its **Observables** tab. To find out which value a case uses when more than one is set, refer to [Which extraction setting applies](/explore-analyze/cases/attach-objects-to-cases.md#cases-extract-observables-precedence).
+A case template can set its own value, and you can change it for an individual case with the **Auto-extract observables** toggle in the **Observables** section of its **Attachments** tab. To find out which value a case uses when more than one setting applies, refer to [Which extraction setting applies](/explore-analyze/cases/attach-objects-to-cases.md#cases-extract-observables-precedence).
 
 ## Add observable types [cases-observable-types]
 
