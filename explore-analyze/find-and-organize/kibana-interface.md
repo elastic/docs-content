@@ -49,7 +49,9 @@ The navigation menu lists the apps of your solution view. When a top-level item 
 
 ## Application menu
 
-The application menu sits at the top of the workspace and holds the actions available on the current page. When the actions don't all fit, the remaining ones move to the {icon}`ellipsis` **More** menu.
+The application menu sits at the top of the workspace and holds the actions available on the current page.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` When the actions don't all fit, the remaining ones move to the {icon}`ellipsis` **More** menu.
 
 
 ## Next steps
