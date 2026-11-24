@@ -13,7 +13,7 @@ products:
 
 {{ech}} billing is based on your actual usage across these categories of billing dimensions:
 
-* [Deployment charges](#ram-hours)
+* [Deployment charges](#deployment-charges)
 * [Organization charges](#data-transfer)
 * [Add-ons](#add-ons)
 
@@ -35,6 +35,8 @@ Deployment capacity is purely a function of your current deployment configuratio
 
 
 ## Organization charges [data-transfer]
+
+$$$ram-hours$$$
 
 Organization charges are applied across the {{ech}} deployments in your {{ecloud}} organization. The only organization charge is data transfer.
 
