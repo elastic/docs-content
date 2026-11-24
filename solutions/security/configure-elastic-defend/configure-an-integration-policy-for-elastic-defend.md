@@ -123,12 +123,7 @@ Malware protection levels are:
 
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Disable**: Turns off malware protection for the operating system.
 * **Detect**: Detects malware on the host and generates an alert. The agent will **not** block malware. You must pay attention to and analyze any malware alerts that are generated.
-* **Detect & prevent** (Default): Detects malware on the host, blocks it from executing, and generates an alert.
-
-  ::::{note}
-  :applies_to: stack: ga 9.0-9.5
-  In these versions, the **Detect & prevent** option is called **Prevent**.
-  ::::
+* **Detect & prevent** or **Prevent**, depending on your version (Default): Detects malware on the host, blocks it from executing, and generates an alert.
 
 These additional options are available for malware protection:
 
@@ -183,12 +178,7 @@ Ransomware protection levels are:
 
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Disable**: Turns off ransomware protection for the operating system.
 * **Detect**: Detects ransomware on the host and generates an alert. {{elastic-defend}} will **not** block ransomware. You must pay attention to and analyze any ransomware alerts that are generated.
-* **Detect & prevent** (Default): Detects ransomware on the host, blocks it from executing, and generates an alert.
-
-  ::::{note}
-  :applies_to: stack: ga 9.0-9.5
-  In these versions, the **Detect & prevent** option is called **Prevent**.
-  ::::
+* **Detect & prevent** or **Prevent**, depending on your version (Default): Detects ransomware on the host, blocks it from executing, and generates an alert.
 
 When ransomware protection is enabled, canary files placed in targeted locations on your hosts provide an early warning system for potential ransomware activity. When a canary file is modified, {{elastic-defend}} immediately generates a ransomware alert. If {{elastic-defend}} is set to block ransomware, it terminates the process that modified the file.
 
@@ -214,12 +204,7 @@ Memory threat protection levels are:
 
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Disable**: Turns off memory threat protection for the operating system.
 * **Detect**: Detects memory threat activity on the host and generates an alert. {{elastic-defend}} will **not** block the in-memory activity. You must pay attention to and analyze any alerts that are generated.
-* **Detect & prevent** (Default): Detects memory threat activity on the host, forces the process or thread to stop, and generates an alert.
-
-  ::::{note}
-  :applies_to: stack: ga 9.0-9.5
-  In these versions, the **Detect & prevent** option is called **Prevent**.
-  ::::
+* **Detect & prevent** or **Prevent**, depending on your version (Default): Detects memory threat activity on the host, forces the process or thread to stop, and generates an alert.
 
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default when {{elastic-defend}} is set to prevent threats.
 
@@ -243,12 +228,7 @@ Malicious behavior protection levels are:
 
 * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Disable**: Turns off malicious behavior protection for the operating system.
 * **Detect**: Detects malicious behavior on the host and generates an alert. {{elastic-defend}} will **not** block the malicious behavior. You must pay attention to and analyze any alerts that are generated.
-* **Detect & prevent** (Default): Detects malicious behavior on the host, forces the process to stop, and generates an alert.
-
-  ::::{note}
-  :applies_to: stack: ga 9.0-9.5
-  In these versions, the **Detect & prevent** option is called **Prevent**.
-  ::::
+* **Detect & prevent** or **Prevent**, depending on your version (Default): Detects malicious behavior on the host, forces the process to stop, and generates an alert.
 
 Select whether you want to use **Reputation service** for additional protection. Elastic’s reputation service leverages our extensive threat intelligence knowledge to make high confidence real-time prevention decisions. For example, reputation service can detect suspicious downloads of binaries with low or malicious reputation. Endpoints communicate with the reputation service directly at [https://cloud.security.elastic.co](https://cloud.security.elastic.co).
 
