@@ -32,9 +32,9 @@ We cover the following examples:
   * [Egress](#ip-filter-policy-egress) {applies_to}`ess: beta`
   
 * [Create a private connection policy](#private-connection)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
-  * [AWS PrivateLink](#private-connection-policy-aws) {applies_to}`ess: ga` {applies_to}`serverless: ga`
-  * [Azure Private Link](#private-connection-policy-azure)  {applies_to}`ess: ga` {applies_to}`serverless: ga`
-  * [GCP Private Service Connect](#private-connection-policy-gcp)  {applies_to}`ess:`
+  * [AWS PrivateLink](#private-connection-policy-aws)
+  * [Azure Private Link](#private-connection-policy-azure)
+  * [GCP Private Service Connect](#private-connection-policy-gcp)
 
 * [Create a remote cluster filter](#create-remote-cluster-filter)
 * [Update a policy or rule set](#update-policy-rs)
@@ -272,37 +272,11 @@ serverless:
 
 To create a private connection, cloud service providers require connectivity metadata, including a service name. For {{serverless-full}}, you can retrieve this metadata from an endpoint, optionally filtered by region or cloud service provider (`csp`).
 
-Filter by cloud service provider, for example `?csp=azure`, or by region using the prefixed region ID, for example `?region=azure-eastus2` or `?region=aws-eu-west-1`.
+Filter by cloud service provider, for example `?csp=azure`, or by region using the prefixed region ID, for example `?region=azure-eastus2`, `?region=aws-eu-west-1`, or `?region=gcp-us-central1`.
 
-#### Azure metadata
+::::::{tab-set}
 
-**Request:**
-
-```json
-curl \
-  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?csp=azure' \
-  --header "Authorization: ApiKey $API_KEY"
-```
-
-**Response:**
-
-```json
-{
-  "regions": [
-    {
-      "availability_zones": [],
-      "csp": "azure",
-      "private_hosted_zone_domain_name": "private.eastus2.azure.elastic.cloud",
-      "private_service_name": "eastus2-prod-privatelink-serverless.46552e7f-8404-48e2-8c79-66801ef74a76.eastus2.azure.privatelinkservice",
-      "region": "azure-eastus2",
-      "vpc_service_name": ""
-    }
-  ]
-}
-```
-
-#### AWS metadata
-
+:::::{tab-item} AWS
 **Request:**
 
 ```json
@@ -337,13 +311,66 @@ curl \
   ]
 }
 ```
+:::::
+
+:::::{tab-item} Azure
+**Request:**
+
+```json
+curl \
+  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?csp=azure' \
+  --header "Authorization: ApiKey $API_KEY"
+```
+
+**Response:**
+
+```json
+{
+  "regions": [
+    {
+      "availability_zones": [],
+      "csp": "azure",
+      "private_hosted_zone_domain_name": "private.eastus2.azure.elastic.cloud",
+      "private_service_name": "eastus2-prod-privatelink-serverless.46552e7f-8404-48e2-8c79-66801ef74a76.eastus2.azure.privatelinkservice",
+      "region": "azure-eastus2",
+      "vpc_service_name": ""
+    }
+  ]
+}
+```
+:::::
+
+:::::{tab-item} Google Cloud
+**Request:**
+
+```json
+curl \
+  --request GET 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters/metadata?region=gcp-us-central1' \
+  --header "Authorization: ApiKey $API_KEY"
+```
+
+**Response:**
+
+```json
+{
+  "regions": [
+    {
+      "availability_zones": [],
+      "csp": "gcp",
+      "private_hosted_zone_domain_name": "private.us-central1.gcp.elastic.cloud",
+      "private_service_name": "projects/esp-prod-usc1-ecp-privatelink/regions/us-central1/serviceAttachments/us-central1-production-privatelink-serverless",
+      "region": "gcp-us-central1"
+    }
+  ]
+}
+```
+
+In the response, `private_service_name` is the Service Attachment URI to use as the target service when you create your Private Service Connect endpoint.
+:::::
+
+::::::
 
 ### AWS PrivateLink [private-connection-policy-aws]
-```{applies_to}
-serverless:
-deployment:
-  ess:
-```
 
 Send a request like the following to create an AWS PrivateLink private connection policy:
 
@@ -404,11 +431,6 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 
 
 ### Azure Private Link [private-connection-policy-azure]
-```{applies_to}
-deployment:
-  ess:
-serverless:
-```
 
 Send a request like the following to create an Azure Private Link private connection policy:
 
@@ -471,13 +493,37 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 
 
 ### GCP Private Service Connect [private-connection-policy-gcp]
-```{applies_to}
-deployment:
-  ess:
-```
 
 Send a request like the following to create a GCP Private Service Connect private connection policy:
 
+::::{applies-switch}
+
+:::{applies-item} serverless:
+```json
+curl \
+  --request POST 'https://api.elastic-cloud.com/api/v1/serverless/traffic-filters' \
+  --header "Authorization: ApiKey $API_KEY" \
+  --header "Content-Type: application/json" \
+  -d '
+{
+  "name": "GCP Private Service Connect private connection policy (serverless)",
+  "region": "gcp-us-central1",
+  "description": "",
+  "type": "psc_endpoint",
+  "rules": [
+    {
+      "source": "18446744072646845332" <1>
+    }
+  ],
+  "include_by_default": false
+}
+'
+```
+
+1. To learn how to find the value for `source` for type `psc_endpoint`, refer to [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). The value must be the numeric PSC connection ID as a decimal string. This setting is supported only in GCP regions.
+:::
+
+:::{applies-item} ess:
 ```json
 curl -XPOST \
 -H "Authorization: ApiKey $API_KEY" \
@@ -500,6 +546,8 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 ```
 
 1. To learn how to find the value for `source` for type `gcp_private_service_connect_endpoint`, refer to [Find your Private Service Connect connection ID](private-connectivity-gcp.md#ec-find-your-psc-connection-id). This setting is supported only in GCP regions.
+:::
+::::
 
 
 ## Create a remote cluster filter [create-remote-cluster-filter]
