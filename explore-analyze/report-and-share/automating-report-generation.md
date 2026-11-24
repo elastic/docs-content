@@ -29,9 +29,7 @@ To trigger reports with a POST URL, you need the following:
 
 * A role with [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
 * For PDF and PNG reports, a {{kib}} instance with a minimum of 2 GB of RAM. CSV reports have no minimum requirement.
-* {applies_to}`stack: ga 9.1+` (Optional) If you generate reports from remote clusters in a cross-cluster search environment, the appropriate cluster and index privileges on both the remote cluster and the local cluster. For example, the API key that authenticates your request needs certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
-
-{applies_to}`stack: ga 9.1+` {{kib}} authenticates report generation requests with API keys instead of session cookies. API keys capture your role privileges, whereas session cookies are based on your user credentials. API keys are also longer-lived than session cookies.
+* {applies_to}`stack: ga 9.1+` (Optional) If you generate reports from remote clusters in a cross-cluster search environment, the appropriate cluster and index privileges on both the remote cluster and the local cluster. {{kib}} authenticates report generation requests with API keys, so the API key that authenticates your request needs these privileges. For more information and examples, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
 
 ### Create a POST URL [create-a-post-url]
 
@@ -62,7 +60,7 @@ To create the POST URL for CSV reports:
 
 ### Use Watcher [use-watcher]
 
-To configure a watch to email reports, use the `reporting` attachment type in an `email` action. {{watcher}} integrates with reporting only through this email attachment type. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
+To configure a watch to email reports, use the `reporting` attachment type in an `email` action. This is the only way {{watcher}} integrates with reporting. For more information, refer to [Configuring email accounts](../alerting/watcher/actions-email.md#configuring-email).
 
 For example, the following watch generates a PDF report and emails the report every hour:
 
@@ -197,6 +195,7 @@ Save time by setting up a recurring task that automatically generates reports an
 * To use the scheduled reports feature, your role needs [access to reporting](../../deploy-manage/kibana-reporting-configuration.md#grant-user-access).
 * (Optional) To view and manage other users' reports and schedules, your role needs `All` privileges for the **Manage Scheduled Reports** feature. You can set this by configuring your role's {{kib}} privileges. To learn how, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges), or to [{{kib}} privileges in project custom roles](/deploy-manage/users-roles/serverless-custom-roles.md#custom-roles-kib-privileges) for {{serverless-short}}. If your role doesn't have the **Manage Scheduled Reports** feature privilege, you can only share reports with yourself.
 * {applies_to}`serverless: unavailable` (Optional) The **Manage Scheduled Reports** feature must be enabled in the [**Feature visibility** settings](/deploy-manage/manage-spaces.md#spaces-managing) of the space.
+* {applies_to}`stack: ga 9.1+` (Optional) If you schedule reports from remote clusters in a cross-cluster search environment, the appropriate cluster and index privileges on both the remote cluster and the local cluster. {{kib}} authenticates report generation requests with API keys, so the API key that authenticates your schedule needs these privileges. For more information and examples, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
 * Sharing reports outside of {{kib}} requires a default preconfigured email connector.
 
    * {applies_to}`serverless: ga` {applies_to}`ech: ga` You don't need to set up a default preconfigured email connector. {{kib}} provides a built-in preconfigured email connector that uses SMTP to send emails. To view it, go to the **Connectors** page and find the `Elastic-Cloud-SMTP` connector.
