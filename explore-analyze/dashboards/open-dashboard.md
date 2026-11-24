@@ -83,7 +83,7 @@ You can browse a dashboard's earlier versions, compare them, and restore one. Ea
 To restore an earlier version:
 
 1. In edit mode, select {icon}`ellipsis` **More** → **History** in the application menu. **History** is unavailable until you save the dashboard for the first time.
-2. In the **Version history** list, select a version to see the dashboard as it looked then. The preview isn't interactive. Your unsaved changes, if any, appear at the top of the list as **Unsaved changes**.
+2. In the **Version history** list, select a version to see the dashboard as it looked then. The preview isn't interactive. Your unsaved changes, if any, appear at the top of the list as **Unsaved changes**. To see exactly what changed, [compare it with another version](#compare-dashboard-versions).
 
    :::{image} /explore-analyze/images/dashboard-version-history.png
    :alt: The History window for a dashboard named Server load, with a preview of version 2 and a Restore button next to the Version history list of versions v1 to v4
@@ -96,16 +96,23 @@ To restore an earlier version:
 
 To leave without restoring anything, select **Back to dashboard**.
 
-To check what changed before you restore, select the changes link on a version, such as **3 changes**, to compare it with the version before it. To compare it with a different version, open the **Version actions** menu {icon}`boxes_vertical` on that other version and select **Compare to this version**. {{kib}} shows the differences as JSON, and you can use the arrows at the bottom of the comparison to step through the changes one at a time. To switch between **Unified** and **Split** views, select **Settings** {icon}`controls` at the bottom of the comparison.
+For changes that you haven't saved yet, use [Undo and redo](#undo-redo-dashboard) or [Reset changes](#reset-the-dashboard) instead.
+
+:::{note}
+Deleting a dashboard doesn't delete its version history, but you can't open that history from the deleted dashboard. If you later create a dashboard with the same ID, for example through the [Dashboards API](create-dashboards-programmatically.md), its history continues from the earlier version numbers, and the deletion appears in the list as a version marked **Deleted**.
+:::
+
+### Compare two versions of a dashboard [compare-dashboard-versions]
+
+To see exactly what changed between two saved versions, for example before you restore one, start from the **Version history** list in one of two ways:
+
+* Select the changes link on a version, such as **3 changes**, to compare it with the version before it.
+* To compare it with a different version, open the **Version actions** menu {icon}`boxes_vertical` on that other version and select **Compare to this version**.
+
+{{kib}} shows the differences as JSON. Use the arrows at the bottom of the comparison to step through the changes one at a time. To switch between **Unified** and **Split** views, select **Settings** {icon}`controls` at the bottom of the comparison.
 
 :::{image} /explore-analyze/images/dashboard-version-comparison.png
 :alt: Version 3 compared with version 2 of a dashboard in split view, with the changed lines highlighted and the Comparison mode menu open with Split selected
 :screenshot:
 :width: 90%
-:::
-
-For changes that you haven't saved yet, use [Undo and redo](#undo-redo-dashboard) or [Reset changes](#reset-the-dashboard) instead.
-
-:::{note}
-Deleting a dashboard doesn't delete its version history, but you can't open that history from the deleted dashboard. If you later create a dashboard with the same ID, for example through the [Dashboards API](create-dashboards-programmatically.md), its history continues from the earlier version numbers, and the deletion appears in the list as a version marked **Deleted**.
 :::
