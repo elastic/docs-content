@@ -23,6 +23,36 @@ Known issues are significant defects or limitations that may impact your impleme
 
 % :::
 
+:::{dropdown} Workflows stay turned off after a license or subscription is restored
+**Applies to: {{stack}} 9.6.0**
+
+**Impact**<br>
+When the license drops below Enterprise (for example, a trial ends), {{kib}} turns off every workflow in every space, including the workflows that {{alertzero}} {{az-workers}} run on and your own workflows. When the license is restored, the workflows stay off, so the {{az-workers}} don't run. {{az-proposed-actions-cap}} that were pending during the lapse can expire.
+
+**Workaround**<br>
+After the license is restored: in each space, go to **Watches** and turn each {{az-worker}} off and on again. Then, in the Workflows app with **Show managed workflows** on, turn on the {{alertzero}} workflows that are still off, and any of your own workflows you need.
+:::
+
+:::{dropdown} Users with custom roles get errors instead of a privileges message in {{alertzero}}
+**Applies to: {{stack}} 9.6.0**
+
+**Impact**<br>
+Users with custom roles that lack some privileges get errors instead of a message about missing privileges. For example, opening an {{az-investigation}}'s chat fails with "Unable to load page" or "Unable to determine Agent Builder access".
+
+**Workaround**<br>
+Grant the privilege for what the user tried to do: **Actions and Connectors: Read** (in addition to **Agent Builder: Read**) to open {{az-investigation}} chats, **Attack Discovery: Read** to open attacks from an {{az-investigation}}, and **Rules and Exceptions: Read** to open rules from a {{az-rule-tuning}} {{az-investigation}}.
+:::
+
+:::{dropdown} {{alertzero}} {{az-workers}} keep running after their space is deleted
+**Applies to: {{stack}} 9.6.0**
+
+**Impact**<br>
+When you delete a space where {{alertzero}} was on, the scheduled runs of its {{az-workers}} keep firing, and each one fails.
+
+**Workaround**<br>
+Before you delete a space, turn off its {{az-workers}} on the **Watches** page. If the space is already deleted, create a space with the same ID and the Security solution view, turn on the **AlertZero** advanced setting, turn off the {{az-workers}}, and then delete the space again.
+:::
+
 :::{dropdown} Filtering the Add Elastic rules page by tag or search can install an outdated prebuilt rule version
 **Applies to: {{stack}} 9.3.0-9.3.8, 9.4.0-9.4.7, 9.5.0-9.5.4**
 
