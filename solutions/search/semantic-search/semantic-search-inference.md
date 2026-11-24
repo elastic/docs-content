@@ -33,6 +33,8 @@ The following examples use the:
 You can use any Cohere and OpenAI models, they are all supported by the {{infer}} API.
 For a list of recommended models available on HuggingFace, refer to the supported model list in the [API documentation]({{es-apis}}operation/operation-inference-put-hugging-face).
 
+You can also use a locally hosted model or another server that follows the OpenAI API. For an example, refer to [](/solutions/search/semantic-search/using-openai-compatible-models.md).
+
 Click the name of the service you want to use on any of the widgets below to review the corresponding instructions.
 
 
@@ -196,10 +198,6 @@ PUT _inference/text_embedding/openai_embeddings <1>
 1. The task type is `text_embedding` in the path and the `inference_id` which is the unique identifier of the {{infer}} endpoint is `openai_embeddings`.
 2. The API key of your OpenAI account. You can find your OpenAI API keys in your OpenAI account under the [API keys section](https://platform.openai.com/api-keys). You need to provide your API key only once. The [Get {{infer}} API]({{es-apis}}operation/operation-inference-get) does not return your API key.
 3. The name of the embedding model to use. You can find the list of OpenAI embedding models [here](https://platform.openai.com/docs/guides/embeddings/embedding-models).
-
-::::{tip}
-To use the OpenAI service with a locally hosted model or another server that follows the OpenAI API shape, set the `url` in `service_settings` to the full endpoint URL of that server. For an example, refer to [](/solutions/search/semantic-search/using-openai-compatible-models.md).
-::::
 
 ::::{note}
 When using this model the recommended similarity measure to use in the `dense_vector` field mapping is `dot_product`. In the case of OpenAI models, the embeddings are normalized to unit length in which case the `dot_product` and the `cosine` measures are equivalent.
