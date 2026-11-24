@@ -167,6 +167,7 @@ Choose the entry point that matches what you want to do:
 - [**Generate a full query from natural language**](#esql-kibana-quick-search-nl) in the editor's search bar, when you're starting from scratch or want to replace the whole query.
 - [**Generate {{esql}} from a comment**](#esql-kibana-ai-comment) to add or change a single pipe inside the query you're writing.
 - [**Fix query errors with AI**](#esql-kibana-ai-fix) when a query fails validation.
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` [**Explain a failed query with AI**](#esql-kibana-ai-explain) in **Discover**, when a query returns an error after you run it.
 
 **Requirements**
 
@@ -253,6 +254,25 @@ The proposed fix appears directly below your query, with the original lines and 
 After you run a query in **Discover**, an AI agent can also analyze the results, render a chart of the main finding, and suggest drill-down queries. Refer to [Analyze your data with AI](/explore-analyze/discover/analyze-discover-data-with-ai.md).
 :::
 
+#### Explain a failed query with AI [esql-kibana-ai-explain]
+```{applies_to}
+serverless: preview
+stack: preview 9.7+
+```
+
+If an {{esql}} query fails when you run it in **Discover**, for example because it asks for more memory than {{es}} can give it, an AI agent can explain what went wrong and what to try next. The error message that replaces your results includes an **Explain with AI** action. Select it to send your query, the error message, and your deployment type to the [AI model that the editor uses](#esql-kibana-ai-assistance). The agent tailors its advice to what you can change.
+
+The explanation appears with the error message and includes:
+
+- A short summary of what went wrong
+- Up to four suggestions for what to do next
+- A corrected query, when a change to the query can fix the error
+
+The agent hasn't run the corrected query, and results can vary between runs, so review it before you rely on it. To try the corrected query, select **Run query**. {{kib}} replaces the query in the editor with the corrected one and runs it. To use the corrected query somewhere else, select **Copy**, then paste it where you want to run it, for example in a new Discover tab.
+
+:::{note}
+With the required license but no configured model, **Explain with AI** still appears. Selecting it shows **No AI connector is set up.** and, if your role lets you manage connectors, a **Set up a connector** link.
+:::
 
 ### Commands with additional editor support
 
