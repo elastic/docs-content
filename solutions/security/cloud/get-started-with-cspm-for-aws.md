@@ -129,7 +129,7 @@ For most use cases, the simplest option is to use AWS CloudFormation to automati
 3. Return to your {{kib}} tab. Click **Save and continue** at the bottom of the page.
 4. Review the information, then click **Launch CloudFormation**.
 5. A CloudFormation template appears in a new browser tab.
-6. For organization-level deployments only, you must enter the ID of the organizational units where you want to deploy into the CloudFormation template’s `OrganizationalUnitIds` field. You can find the organizational unit IDs in the AWS console (**AWS Organizations → AWS Accounts**). You can also use this field to specify which accounts in your organization to monitor, and which to skip.
+6. For organization-level deployments only, you must enter the ID of the organizational units where you want to deploy into the CloudFormation template’s `OrganizationalUnitIds` field. You can find the organizational unit IDs in the AWS console (**AWS Organizations** → **AWS Accounts**). You can also use this field to specify which accounts in your organization to monitor, and which to skip.
 7. (Optional) Switch to the AWS region where you want to deploy using the controls in the upper right corner.
 8. Tick the **Capabilities** checkbox to authorize the creation of necessary resources.
 
@@ -291,7 +291,7 @@ Follow AWS’s [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/lat
 2. Attach your new IAM role to an EC2 instance:
 
     1. In AWS, select an EC2 instance.
-    2. Select **Actions > Security > Modify IAM role**.
+    2. Select **Actions** → **Security** → **Modify IAM role**.
 
        :::{image} /solutions/images/security-cspm-aws-auth-3.png
        :alt: The EC2 page in AWS

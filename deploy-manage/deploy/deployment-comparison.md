@@ -33,7 +33,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 | [Autoscaling](/deploy-manage/autoscaling.md) | No |  Available | Available | Available | Automatic |
 | [Data tier](/manage-data/lifecycle/data-tiers.md) management | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Through [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md) | Available | No data tiers |
 | [Snapshot management](/deploy-manage/tools/snapshot-and-restore.md) | Custom | Custom | Available | Available | Managed by Elastic |
-| [High availability and disaster recovery](/deploy-manage/production-guidance/availability-and-resilience.md) | Available | Available | Available | Available | Managed by Elastic |
+| [High availability and disaster recovery](/deploy-manage/production-guidance/availability-and-resilience.md) | Available | Available | Available | Available | Managed by Elastic. [Learn more](/deploy-manage/production-guidance/availability-and-resilience/resilience-in-serverless.md) |
 | [Shard management and replicas](/deploy-manage/distributed-architecture/clusters-nodes-shards.md) | Available | Available | Available | Available | Managed by Elastic |
 
 ## Monitoring
@@ -47,7 +47,7 @@ For more details about feature availability in {{serverless-short}}, refer to []
 
 | Feature/capability | Fully self-managed, ECE, ECK, ECH | {{serverless-short}} |
 |-------------------|-------------------------------|----------------------|
-| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for dashboards and for Discover sessions (preview).<br><br>PDF and PNG are not available. |
+| [Reporting](/explore-analyze/report-and-share.md) | All report types and file formats | CSV for Discover sessions and Lens visualizations.<br><br>JSON for dashboards and for Discover sessions.<br><br>PDF and PNG are not available. |
 
 ## Data lifecycle
 
