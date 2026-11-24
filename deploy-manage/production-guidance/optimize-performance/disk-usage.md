@@ -21,7 +21,7 @@ By default, {{es}} [automatically maps new fields](/manage-data/data-store/mappi
 
 If you do not need every field to be mapped, [set `dynamic` to `false`](elasticsearch://reference/elasticsearch/mapping-reference/dynamic.md#dynamic-parameters) and [define a mapping](/manage-data/data-store/mapping/explicit-mapping.md) for each field you need. You can also [configure `dynamic` mappings on specific objects within a document](elasticsearch://reference/elasticsearch/mapping-reference/dynamic.md#dynamic-inner-objects). You can do this in an [index template](/manage-data/data-store/templates.md) or when you create an index.
 
-If your index stores the original document in `_source`, unmapped fields still take up space there.
+If your index stores the original document in `_source`, unmapped fields still take up space there. To save disk space, you can [reduce `_source` storage overhead](#disable-source).
 
 If you only need to search a group of fields together, use [`copy_to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) to copy their values into one searchable field and turn off indexing for the individual fields. If you rarely query a field or can tolerate slower queries on it, consider a [runtime field](/manage-data/data-store/mapping/runtime-fields.md). {{es}} calculates the values of a runtime field at query time, which saves disk space but can make those queries slower.
 
