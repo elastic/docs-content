@@ -162,13 +162,15 @@ You must include the following parameter to specify the file’s location on the
 
   {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can repeat `--path` to retrieve up to 100 files in one action. The files are downloaded in one `.zip` archive.
 
+  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can also use [wildcards](#get-file-wildcards) in `--path` to retrieve all matching files.
+
 You can also use this optional parameter:
 
 * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--force` : ({{elastic-defend}} hosts on Windows only) Retrieve a file that the operating system has locked. {{elastic-defend}} reads the file from a snapshot of the disk volume that contains it.
 
 ::::{note}
 :applies_to: {stack: ga 9.5+, serverless: ga}
-Retrieving multiple files and using the `--force` parameter require an [independent {{agent}} release](/reference/fleet/fleet-agent-release-process.md#independent-agent-releases) of 9.5.7 or 9.6.0, or a later version. The regular {{agent}} 9.5.7 and 9.6.0 releases don't support them.
+Retrieving multiple files, using wildcards, and using the `--force` parameter require an [independent {{agent}} release](/reference/fleet/fleet-agent-release-process.md#independent-agent-releases) of 9.5.7 or 9.6.0, or a later version. The regular {{agent}} 9.5.7 and 9.6.0 releases don't support them.
 ::::
 
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
@@ -180,6 +182,8 @@ Examples:
 `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
 
 `get-file --path "/var/log/syslog" --path "/var/log/auth.log" --comment "Collect logs"`
+
+`get-file --path "/var/log/*.log" --comment "Collect all log files"`
 
 `get-file --path "C:\Windows\System32\config\SAM" --force --comment "Collect locked registry hive"`
 
@@ -196,6 +200,25 @@ You can use the [Osquery manager integration](/solutions/security/investigate/os
 ::::{note}
 When {{elastic-defend}} prevents file activity due to [malware prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection), the file is quarantined on the host and a malware prevention alert is created. To retrieve this file with `get-file`, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter.
 ::::
+
+#### Retrieve files with wildcards [get-file-wildcards]
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+On {{elastic-defend}} hosts, you can use these wildcards in `--path`:
+
+* `*` matches any number of characters. You can use it in any part of the path, such as a folder name or a file name. For example:
+  * `/var/log/*.log` retrieves the files in `/var/log` whose names end in `.log`.
+  * `/var/log/*` retrieves the files directly in `/var/log`.
+  * `/home/*/.bash_history` retrieves the `.bash_history` file from each user's home folder.
+* `?` matches exactly one character. For example, `/var/log/syslog.?` retrieves `syslog.1` but not `syslog.10`. Like `*`, you can use it in any part of the path.
+* `**` retrieves every file in a folder and all of its subfolders. It must be the last part of the path, for example `/var/log/**`.
+
+Wildcards also match hidden files, whose names start with `.`. Matching ignores case on Windows and on macOS volumes that aren't case-sensitive. On Linux, matching is case-sensitive.
+
+When you retrieve multiple files or use wildcards, the `.zip` archive includes a manifest that lists each file and whether it was retrieved. Files that can't be retrieved are listed with a reason instead. These include files locked by another process, files stored only in cloud storage such as OneDrive or iCloud, and symbolic links. One action can include up to 10,000 files and folders, 20 GiB in total, and folders up to 32 levels deep. If a request exceeds any of these limits, no files are retrieved. Use a more specific path, then try again.
 
 
 ### `isolate` [_isolate]
