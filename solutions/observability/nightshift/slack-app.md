@@ -17,7 +17,7 @@ This page is for Slack admins, {{nightshift}} admins, and security reviewers. It
 
 ## How it works [nightshift-slack-app-how]
 
-Slack delivers all of an app's events to a single URL, so Elastic hosts a service called the Slack relay between Slack and your project. The relay verifies that each event comes from Slack, finds the {{nightshift}} project that the channel is connected to, forwards the event, and posts the reply back to the thread.
+Slack delivers all of an app's events to a single URL, so Elastic hosts a service called the Slack relay between Slack and your project. The relay verifies that each event comes from Slack, finds the {{nightshift}} project that the channel is connected to, forwards the event, and posts the reply back to the thread. It also forwards messages from connected public channels, so that automations can start investigations from them.
 
 ```mermaid
 flowchart LR
@@ -35,7 +35,7 @@ flowchart LR
 | Role | What they do |
 | --- | --- |
 | Slack admin | Approves the Elastic app, if your workspace requires approval, and chooses whether to allow private channel access. |
-| {{nightshift}} admin | Connects the Slack workspace to the project, then connects each channel. Needs **Nightshift**: **All** and **Manage engines**. Refer to [Grant access](./privileges.md). Without **Manage engines**, {{kib}} shows the Slack settings but you can't change them. |
+| {{nightshift}} admin | Connects the Slack workspace to the project, then connects each channel. Needs **Nightshift**: **All** and **Manage engines**. Connecting the workspace also needs the `manage_security` cluster privilege. Refer to [Grant access](./privileges.md). Without **Manage engines**, {{kib}} shows the Slack settings but you can't change them. |
 | Channel member | Invites `@Elastic` to the channel, for example with `/invite @Elastic`. |
 
 ## Who `@Elastic` acts as [nightshift-slack-app-identity]
@@ -92,7 +92,7 @@ When your project refuses your message, for example because the daily limit is r
 
 ## Private channels [nightshift-slack-app-private]
 
-Private channel access is optional. The person who connects Slack, or the Slack admin who approves the app, can allow or decline it. This choice applies to the whole Slack workspace and every Elastic project connected to it. `@Elastic` still sees only the private channels that someone invites it to.
+Private channel access is optional. The person who connects Slack, or the Slack admin who approves the app, can allow or decline it. This choice applies to the whole Slack workspace and every Elastic project connected to it. `@Elastic` still sees only the private channels that someone invites it to. Allowing it adds the optional `groups:history` and `groups:read` permissions. Refer to [Slack permissions](#nightshift-slack-app-scopes).
 
 If you connected Slack without private channel access and want to turn it on, disconnect the workspace in {{kib}}, connect it again, and allow private channel access. Then connect your channels again. To connect a private channel, invite `@Elastic` to it in Slack, then enter its channel ID or link in **Connect a channel**. Private channels aren't listed in the **Channel** list.
 
