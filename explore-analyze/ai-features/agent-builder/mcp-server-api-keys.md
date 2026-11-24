@@ -70,33 +70,41 @@ Without the `feature_agentBuilder.read` application privilege, you'll receive a 
 
 ## Step 2: Configure your MCP client
 
-Configure a client connection in MCP hosts such as Claude Desktop, Cursor, or VS Code by adding your {{kib}} URL and API key to the client's configuration file. The following example is for reference only, and the exact format differs between MCP clients.
+Add your {{kib}} MCP server URL and API key to your MCP client, such as Claude Desktop, Cursor, or VS Code. Configuration formats differ between clients.
 
-```json
-{
-  "mcpServers": {
-    "elastic-agent-builder": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://<your-kibana-url>/api/agent_builder/mcp",
-        "--header",
-        "Authorization:${AUTH_HEADER}"
-      ],
-      "env": {
-        "AUTH_HEADER": "ApiKey <your-api-key>" <1>
-      }
-    }
-  }
-}
-```
+1. **Get your MCP server URL.** The URL is `https://<your-kibana-url>/api/agent_builder/mcp`. To copy it from the UI instead, use the MCP server dropdown on the Tools page and select **Copy MCP Server URL**. Refer to [MCP server access](/explore-analyze/ai-features/agent-builder/tools.md#mcp-server-access).
 
-1. Refer to [](#api-key-application-privileges)
+   If you use a custom {{kib}} space, use the endpoint for that space instead. Refer to [](/explore-analyze/ai-features/agent-builder/mcp-server.md#mcp-server-endpoint).
 
-The `mcp-remote` adapter replaces `${AUTH_HEADER}` with the value from `env`. Other clients might not expand `${VAR}` placeholders or inherit your shell variables, so use literal values unless your client's documentation says otherwise.
+2. **Test the connection outside your client.** In [MCP Inspector](https://github.com/modelcontextprotocol/inspector), connect to your MCP server URL over HTTP (the `streamable-http` transport option in the UI, or `--transport http` in the CLI), and add an `Authorization` header with the value `ApiKey <your-api-key>`.
+
+3. **Add the server to your client's configuration.** Use your client's documentation for the exact format. The following example is for reference only:
+
+   ```json
+   {
+     "mcpServers": {
+       "elastic-agent-builder": {
+         "command": "npx",
+         "args": [
+           "mcp-remote",
+           "https://<your-kibana-url>/api/agent_builder/mcp",
+           "--header",
+           "Authorization:${AUTH_HEADER}"
+         ],
+         "env": {
+           "AUTH_HEADER": "ApiKey <your-api-key>" <1>
+         }
+       }
+     }
+   }
+   ```
+
+   1. Refer to [](#api-key-application-privileges)
+
+   In this example, `mcp-remote` replaces `${AUTH_HEADER}` in the `--header` value with the `AUTH_HEADER` environment variable that your client sets from `env`. It doesn't expand variables in the server URL, so enter the URL literally. Other clients might not expand `${VAR}` placeholders or inherit your shell variables, so use literal values unless your client's documentation says otherwise.
 
 :::{note}
-Elastic doesn't provide support for third-party MCP clients. Refer to your client's documentation or contact the vendor for configuration help. Before you configure a client, test your {{kib}} URL and API key with [MCP Inspector](https://github.com/modelcontextprotocol/inspector) outside the client.
+Elastic doesn't provide support for third-party MCP clients. For help configuring a client, refer to its documentation or contact its vendor.
 :::
 
 ## Best practices
