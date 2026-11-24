@@ -94,7 +94,7 @@ Send a request to your hosted agent and allow a few seconds for the telemetry to
     | WHERE service.name == "<your-agent-name>"
     ```
 
-If the logs fill with `Operation returned an invalid status 'Forbidden'` errors, the agent's built-in Application Insights exporter can't write to your project's Application Insights resource. Assign the agent's identity the **Monitoring Metrics Publisher** role on that resource. These errors don't affect the data that reaches Elastic. For the steps, refer to [Configure Microsoft Entra authentication for Foundry Agent trace ingestion](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-ingestion-entra-authentication) in the Microsoft documentation.
+If the logs show `Forbidden` errors from Application Insights, assign the agent's identity the **Monitoring Metrics Publisher** role on your project's Application Insights resource. For the steps, refer to [Configure Microsoft Entra authentication for Foundry Agent trace ingestion](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-ingestion-entra-authentication) in the Microsoft documentation.
 
 ## Example: Token usage by model
 
