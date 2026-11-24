@@ -144,4 +144,4 @@ Volume tier usage resets at the start of each month. As a result, after your fre
 
 ### {{managed-integrations}} [managed-integrations]
 
-On {{ech}}, each deployed {{managed-integration}} is billed based on integration hours. For the rates, how usage is metered, and the {{managed-integrations}} that are exceptions, refer to [](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-pricing).
+On {{ech}}, each deployed {{managed-integration}} is billed based on integration hours. For the rates, how usage is metered, and the {{managed-integrations}} that are exceptions, refer to the [{{managed-integrations}} FAQ](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-pricing).
