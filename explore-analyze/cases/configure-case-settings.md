@@ -119,6 +119,25 @@ To create a template:
 
 ::::
 
+## Set the default for extracting observables [cases-extract-observables-default]
+```{applies_to}
+serverless:
+  security: ga
+stack: ga 9.6+
+```
+
+The **Extract observables** setting is available only for {{elastic-sec}} cases and requires the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+
+To set whether new cases in the space extract observables from their attached alerts and events, go to **Cases** → **Settings** and turn **Extract observables** on or off. It's on by default, and changing it affects only the cases you create afterward.
+
+The default applies however you create a case:
+
+* In the case form, the **Extract observables** toggle starts at the default.
+* In the Cases API and in [workflow steps that create cases](/explore-analyze/workflows/steps/cases.md), a case follows the default when the request doesn't set `extractObservables`.
+* In the Cases action of a detection rule, a case follows the default unless the rule sets the [Auto-extract observables option](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration).
+
+A case template can set its own value, which takes priority over the space default. A value that you set for the case itself, such as with the **Auto-extract observables** toggle in the **Observables** section of its **Attachments** tab, takes priority over both. For all the ways to turn auto-extraction on or off, refer to [Auto-extract observables](/explore-analyze/cases/attach-objects-to-cases.md#cases-auto-extract-observables).
+
 ## Add observable types [cases-observable-types]
 
 ::::{admonition} Requirements
