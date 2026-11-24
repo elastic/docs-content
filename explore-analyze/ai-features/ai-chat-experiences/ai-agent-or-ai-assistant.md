@@ -14,7 +14,7 @@ products:
 # Migrate from AI Assistant to Agent Builder
 
 ::::{admonition} Requirements
-To change the chat experience, you need access to at least one classic AI assistant and either the **Agent Builder: All** privilege or, {applies_to}`stack: ga 9.4+` **Agent Builder: Read** plus **Create and edit agents**. For details, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
+To change the chat experience, you need the appropriate {{stack}} [subscription](https://www.elastic.co/pricing) or {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md), **Actions and Connectors: Read** (to open **GenAI Settings**), **Advanced Settings: All**, access to at least one classic AI assistant, and either the **Agent Builder: All** privilege or, {applies_to}`stack: ga 9.4+` **Agent Builder: Read** plus **Create and edit agents**. Without **Advanced Settings: All**, the **Chat Experience** setting is visible but can't be saved. For details, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 ::::
 
 [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) replaces Elastic AI Assistants:
@@ -48,7 +48,7 @@ Most AI Assistant features have an {{agent-builder}} equivalent. Availability va
 | :--- | :--- |
 | **Chat sharing and duplication** | {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Conversation can be shared with specific users or publicly. Only the owner of a conversation can [share it](/explore-analyze/ai-features/agent-builder/chat.md#share-a-conversation). Members can continue a shared conversation. Duplication isn't available. |
 | **Chat archiving**<br>({{observability}}) | Not available.<br>{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Pin conversations](/explore-analyze/ai-features/agent-builder/chat.md#pin-conversations) instead. |
-| **Data anonymization** | {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Open **Stack Management**, then select **Anonymization** in the **AI** section. This page requires **Advanced Settings: All**, and **Actions and Connectors** privileges. For details, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management). Anonymization doesn't mask data that you send directly to a connector. |
+| **Data anonymization** | {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Pattern-based. Open **Stack Management**, then select **Anonymization** in the **AI** section to turn on masking and choose which patterns are masked: built-in rules for email addresses, IP addresses, and host names (and account names, if you turn that rule on), plus your own regular expressions. Unlike AI Assistant, you don't select individual alert fields to anonymize. The page requires an Enterprise [subscription](https://www.elastic.co/pricing) or the equivalent {{serverless-short}} [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md), and the **Advanced Settings: All** and **Actions and Connectors** privileges. For details, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-management). Masking applies to requests that {{kib}} AI features send through {{kib}}'s inference service. It doesn't apply to data sent directly to a connector, for example from a workflow connector step. |
 | **Knowledge base** | Partial. Refer to [Replace knowledge base content](#replace-knowledge-base-content). |
 | **Alerting rule connector action**<br>({{observability}}) | {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Partial. Use an [action policy to run a workflow](/explore-analyze/alerting/esql/workflows-alerting.md) that calls an agent with the [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) step. |
 | **Audit logging** | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Partial. {{kib}} records audit events when agents, tools, and skills are created, updated, or deleted. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` {{kib}} also records when a conversation is created. |
@@ -59,6 +59,7 @@ Most AI Assistant features have an {{agent-builder}} equivalent. Availability va
 {{agent-builder}} also adds [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md), [custom tools](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md), and [integration with Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md).
 
 ### Replace knowledge base content [replace-knowledge-base-content]
+
 
 {{agent-builder}} has no dedicated knowledge base UI. Use these equivalents for what you stored in AI Assistant:
 
