@@ -150,7 +150,9 @@ Before an upgrade, {{agent}} reserves disk space for the new agent package. If t
 
 If reserving disk space causes upgrade problems, edit the download source and turn off **Reserve disk space before upgrading agents**. The setting applies to agent policies that use the download source as their first source. To turn off the reservation for some agent policies only, add a second download source with the same host, turn off the switch on it, and select it as the first source in those policies.
 
-You can also set this behavior in `kibana.yml` with the `reserve_diskspace` setting of a [preconfigured download source](kibana://reference/configuration-reference/fleet-settings.md). For standalone {{agents}}, use the `agent.download.reserve_diskspace.enabled` setting. For details, refer to [Configure download settings for standalone {{agent}} upgrades](/reference/fleet/elastic-agent-standalone-download.md).
+On self-managed, {{ece}}, and {{eck}} deployments, you can also set this behavior in `kibana.yml` with the `reserve_diskspace` setting of a [preconfigured download source](kibana://reference/configuration-reference/fleet-settings.md).
+
+For standalone {{agents}}, use the `agent.download.reserve_diskspace.enabled` setting. For details, refer to [Configure download settings for standalone {{agent}} upgrades](/reference/fleet/elastic-agent-standalone-download.md).
 
 
 ### Configure TLS for binary downloads [agent-binary-ssl]
