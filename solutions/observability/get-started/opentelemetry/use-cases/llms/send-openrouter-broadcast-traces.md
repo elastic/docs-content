@@ -71,7 +71,7 @@ Traces land as OTLP spans under `service.name: openrouter`. Each span carries th
 * **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall; pick a transaction to view its details.
 * **Applications → Traces**: The list of root transactions.
 
-## Example: token usage by model
+## Example: Token usage by model
 
 In {{kib}} **Discover**, run this {{esql}} query to sum input and output tokens by model. The `name == "LLM Generation"` filter restricts the query to the parent request spans, so child `provider attempt` spans aren't counted twice:
 
