@@ -42,7 +42,7 @@ The map draws one feature for each row that the query returns. To see how many r
 
 ## Write a query the map can draw [maps-esql-layer-query]
 
-The map draws each row of the result as a feature, so the result needs one column that holds a location.
+The map draws each row of the result as a feature. The result needs one column that holds the location.
 
 * The query must return exactly one column of type `geo_point` or `geo_shape`. If it returns none or more than one, the editor shows an error. Use `KEEP` or `DROP` to narrow the columns.
 * The tooltip of a feature lists the other columns of its row.
@@ -56,13 +56,13 @@ An {{esql}} layer can ask only for the data that matters to the current view. Th
 These options apply as filters on the documents before your query runs, so a `STATS` command aggregates only the narrowed documents.
 
 **Dynamically filter for data in the visible map area**
-:   Limits the query to the documents inside the visible map area. **Filter by** lists the geospatial fields of your data, so you can select the one that the filter uses.
+:   Limits the query to the documents inside the visible map area. **Filter by** lists the geospatial fields of your data. Select the one that the filter uses.
 
 **Apply global search to ES|QL statement**
 :   Applies the filters and the query that narrow the whole map. Refer to [Search geographic data](maps-search.md).
 
 **Apply global time range to ES|QL statement**
-:   Applies the time range of the map. **Filter by** lists the time fields of your data, so you can select the one that the range uses.
+:   Applies the time range of the map. **Filter by** lists the time fields of your data. Select the one that the range uses.
 
 To apply the time range at a specific point in the query, use the `?_tstart` and `?_tend` parameters in the query. Refer to [Custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
