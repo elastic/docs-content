@@ -1,7 +1,9 @@
 ---
 navigation_title: Manage data quality
 applies_to:
-  serverless: preview
+  serverless:
+    observability: ga
+    security: ga
   stack: preview =9.1, ga 9.2+
 description: Monitor Streams data quality by tracking degraded documents, failed documents, quality scores, and ingestion trends over time.
 products:
