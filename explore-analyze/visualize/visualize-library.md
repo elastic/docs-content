@@ -82,8 +82,7 @@ To build a visualization before you add it to any dashboard, create it from the 
 1. [Open the library](#visualize-library-access).
 2. Select **Create visualization**:
 
-   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` On the **Dashboards** page, select the arrow next to **Create dashboard**, then select **Create visualization**.
-   - {applies_to}`stack: ga 9.5+` In the Classic view, you can also select **Create visualization** on the **Visualize library** page.
+   - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` On the **Dashboards** page, select the arrow next to **Create dashboard**, then select **Create visualization**. For deployments using the Classic view, you can also select **Create visualization** on the **Visualize library** page.
    - {applies_to}`stack: ga 9.0-9.4` Select **Create visualization**.
 
 3. Select the type of visualization to build. For the steps to build each type, refer to its page:
