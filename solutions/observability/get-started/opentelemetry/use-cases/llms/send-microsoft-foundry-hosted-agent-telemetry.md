@@ -28,7 +28,7 @@ Make sure you have the following:
 
 ## Add Elastic as an export destination
 
-Full step-by-step setup is in Microsoft's guide: [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry?tabs=otlp-export).
+For more about how hosted agents export telemetry, refer to [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry?tabs=otlp-export) in the Microsoft documentation.
 
 :::::{stepper}
 
