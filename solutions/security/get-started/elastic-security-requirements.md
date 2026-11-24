@@ -37,6 +37,8 @@ To use {{elastic-sec}}, at least one node in your Elasticsearch cluster must hav
 
 Changes might be required if your nodes have customized roles. When updating node roles, nodes are only assigned the roles you specify, and default roles are removed. If you need to reassign the `transform` role to a node, [create a dedicated transform node](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md#transform-node).
 
+{applies_to}`stack: ga 9.5+` If you use {{elastic-defend}}, the master-eligible nodes and at least one node with the `transform` role must also have the [`remote_cluster_client` role](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#remote-node). This is required even if you don't use {{ccs}} or a remote {{es}} output. Like `transform`, `remote_cluster_client` is a default role, so you only need to make changes if your nodes have customized roles. Assigning this role doesn't connect your cluster to other clusters unless you configure remote clusters.
+
 
 ## Space and index privileges [_space_and_index_privileges]
 

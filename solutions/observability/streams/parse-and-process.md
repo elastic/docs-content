@@ -1,7 +1,9 @@
 ---
 navigation_title: Process documents
 applies_to:
-  serverless: ga
+  serverless:
+    observability: ga
+    security: ga
   stack: preview =9.1, ga 9.2+
 description: Process and extract fields from incoming Streams documents using configurable processors, conditions, and live simulation previews.
 products:
@@ -21,8 +23,8 @@ Most log data arrives as unstructured text. To filter, search, and analyze it ef
 
 The Streams **Processing** tab provides a single place to build and manage your document processing pipeline:
 
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.3+` **[Add processors and conditions with pipeline suggestions](#streams-add-processors)**: Add processors and conditions in Streams without configuring pipeline JSON or Grok syntax, or let Streams analyze sample documents and suggest a pipeline for you to refine.
-- **[Generate pipeline suggestions using AI](#streams-generate-pipeline-suggestions)**:
+- **[Add processors and conditions](#streams-add-processors)**: Add processors and conditions in Streams without configuring pipeline JSON or Grok syntax.
+- {applies_to}`serverless: { observability: preview, security: preview }` {applies_to}`stack: preview 9.3+` **[Generate pipeline suggestions using AI](#streams-generate-pipeline-suggestions)**: Let Streams analyze sample documents and suggest a pipeline for you to refine.
 - **[Preview changes](#streams-preview-changes)**: Use the data preview to view which fields your pattern extracts per document, so you can verify field extraction before saving.
 - **[Detect and resolve processing issues](#streams-detect-failures)**: Identify which processor or condition is causing documents to fail during processing.
 - **[Catch mapping conflicts](#streams-detect-failures)**: Identify potential mapping conflicts before they cause cluster-wide failures. Streams simulates the indexing process end-to-end before deploying.
@@ -48,11 +50,7 @@ Use any combination of the following options to build your processing pipeline:
 - **Add conditions**: Attach Boolean expressions to define when to run processors.
 
 ::::{dropdown} Suggest a pipeline
-
-```{applies_to}
-stack: preview 9.3+
-serverless: preview
-```
+:applies_to: { serverless: preview, stack: preview 9.3+ }
 
 :::{note}
 This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).

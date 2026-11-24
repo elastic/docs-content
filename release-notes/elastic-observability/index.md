@@ -21,6 +21,25 @@ To check for security updates, go to [Security announcements for the Elastic sta
 % ### Fixes [elastic-observability-next-fixes]
 % *
 
+## 9.5.7 [elastic-observability-9.5.7-release-notes]
+
+:::{important}
+The 9.5.7 release contains fixes for potential security vulnerabilities. Check our [security advisory](https://discuss.elastic.co/c/announcements/security-announcements/31) for more details.
+:::
+
+### Features and enhancements [elastic-observability-9.5.7-features-enhancements]
+* Shows the Synthetics **Can run tests manually** and **Can manage rules** sub-feature privileges as included when Synthetics is set to **All** in the role editor [#302481]({{kib-pull}}302481).
+
+### Fixes [elastic-observability-9.5.7-fixes]
+* Fixes the Infrastructure **Inventory** page resetting the selected date to the current time when opened from a link or bookmark with a specific date, so the selected date and its hosts stay in view [#304536]({{kib-pull}}304536).
+* Fixes the {{product.apm}} service **Metrics** tab intermittently showing "Runtime metrics are not available for this Agent / SDK type" instead of the service's runtime dashboards by resolving the telemetry SDK fields across the selected time range [#303994]({{kib-pull}}303994).
+* Fixes grouped metric threshold and custom threshold rules not alerting when a group stops reporting data if the rule's check interval is much longer than its time window [#303559]({{kib-pull}}303559).
+* Fixes {{product.apm}} links to Discover failing with a fatal error when the KQL filter contains double quotes, backslashes, escaped spaces, or wildcards by escaping the filter as an {{esql}} string literal [#302893]({{kib-pull}}302893).
+* Fixes `FormatDate` returning shifted times for Synthetics monitor status rule alerts on non-UTC Kibana servers by adding `context.timestamp`, the time of the last check as an ISO 8601 string [#302776]({{kib-pull}}302776).
+* Fixes {{product.apm}} trace and dependency requests failing with a 500 error when a trace error or dependency span document is missing a required field [#302557]({{kib-pull}}302557), [#302541]({{kib-pull}}302541).
+* Fixes manual Synthetics test runs on Elastic managed locations being allowed through the API without the **Elastic managed locations** sub-feature privilege by enforcing the privilege on the server [#302483]({{kib-pull}}302483).
+* Fixes the {{product.apm}} environment filter and dropdown not recognizing OpenTelemetry data that uses `deployment.environment.name` [#297170]({{kib-pull}}297170).
+
 ## 9.5.6 [elastic-observability-9.5.6-release-notes]
 
 ### Fixes [elastic-observability-9.5.6-fixes]
@@ -207,9 +226,17 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Removes the `actionsAuthorization.execute` check from per-alert mute and unmute, fixing mute/unmute for users who have alert access but limited action execution permissions [#273392]({{kib-pull}}273392).
 * Fixes the Log threshold rule's alert details preview chart failing to render with a KQL syntax error when a criterion uses `matches phrase` or `does not match phrase` with values containing special characters such as `:` [#266783]({{kib-pull}}266783).
 * Fixes the active tab's query not running in the **Compose** Discover sandbox [#275853]({{kib-pull}}275853).
-* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes example log messages in the **Logs** → **Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Improves accessibility in the {{observability}} UI [#262975]({{kib-pull}}262975).
 * Fixes crashes caused by malformed URLs in plugins; affected pages now attempt automatic recovery [#257245]({{kib-pull}}257245).
+
+## 9.4.10 [elastic-observability-9.4.10-release-notes]
+
+:::{important}
+The 9.4.10 release contains fixes for potential security vulnerabilities. Check our [security advisory](https://discuss.elastic.co/c/announcements/security-announcements/31) for more details.
+:::
+
+There are no user-facing changes in {{observability}} for the 9.4.10 release.
 
 ## 9.4.9 [elastic-observability-9.4.9-release-notes]
 
@@ -277,7 +304,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 ### Fixes [elastic-observability-9.4.3-fixes]
 * Fixes the **SLOs** link in the {{product.apm}} SLO overview flyout to include all-environment SLOs [#273367]({{kib-pull}}273367).
-* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes example log messages in the **Logs** → **Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Fixes the AI Agent investigation skill to anchor time range queries to the alert start time when investigating an alert [#271983]({{kib-pull}}271983).
 * Fixes knowledge base recall in Observability AI Assistant when the selected connector is an inference endpoint [#271753]({{kib-pull}}271753).
 
@@ -521,7 +548,7 @@ There are no user-facing changes in {{observability}} for the 9.4.1 release.
 ## 9.3.6 [elastic-observability-9.3.6-release-notes]
 
 ### Fixes [elastic-observability-9.3.6-fixes]
-* Fixes example log messages in the **Logs → Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
+* Fixes example log messages in the **Logs** → **Anomalies** page from overlapping and becoming unreadable [#273221]({{kib-pull}}273221).
 * Fixes the **SLO Overview** **No data** tile to correctly count newly created SLOs and SLOs whose summary transform has not yet produced a document [#266315]({{kib-pull}}266315).
 
 ## 9.3.5 [elastic-observability-9.3.5-release-notes]

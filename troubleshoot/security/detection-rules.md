@@ -188,6 +188,19 @@ For **non-aggregating** {{esql}} detection rules, the engine uses document `_id`
 
 ## Rule executions
 
+### Troubleshoot rule timeouts caused by search load [security-search-capacity]
+```{applies_to}
+serverless:
+  security: ga
+```
+
+If many detection rules time out or fail at around the same time, your project might be running out of search capacity. Other signs include `Request timed out` errors in {{kib}}, circuit breaker exceptions, and slower queries in Discover. To check rule outcomes, use the [**Rule Monitoring** tab](/solutions/security/detect-and-alert/monitor-rule-executions.md#rule-monitoring-tab).
+
+To fix the problem:
+
+1. Reduce the search load from your rules. For what to change, refer to [Keep rules running on time](/solutions/security/detect-and-alert/plan-rule-performance.md#rule-performance-best-practices).
+2. If rules still time out, contact Elastic Support to request more search capacity. To learn how {{ecloud}} sizes your project's search capacity, refer to [How search capacity works](/solutions/security/detect-and-alert/plan-rule-performance.md#rule-performance-search-capacity).
+
 
 ### Troubleshoot missing alerts [troubleshoot-signals]
 
@@ -219,6 +232,7 @@ If you see gaps for numerous rules:
 
 * If you restarted {{kib}} when many rules were activated, try deactivating them and then reactivating them in small batches at staggered intervals. This ensures {{kib}} does not attempt to run all the rules at the same time.
 * Consider adding another {{kib}} instance to your environment.
+* {applies_to}`security: ga` If rules time out or fail alongside the gaps, your project might be running out of search capacity. Refer to [Troubleshoot rule timeouts caused by search load](#security-search-capacity).
 
 ::::
 

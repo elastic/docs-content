@@ -7,9 +7,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/slo-privileges.html
 products:
   - id: observability
-applies_to:
-  stack: ga
-  serverless: ga
 ---
 
 
@@ -64,7 +61,7 @@ Set the following privileges for the SLO Editor role:
 
 4. In the **Kibana** section, click **Assign to space**.
 5. In the **Select spaces** field, either select any specific spaces you want the role to apply to, or select **All Spaces**.
-6. Set **Observability → SLOs** to `All`.
+6. Set **Observability** → **SLOs** to `All`.
 
     :::{image} /solutions/images/observability-slo-kibana-priv-all.png
     :alt: SLO Kibana all privileges
@@ -88,7 +85,7 @@ Set the following privileges for the SLO Read role:
 
 2. In the **Kibana** section, click **Assign to space**.
 3. In the **Select spaces** field, either select any specific spaces you want the role to apply to, or select **All Spaces**.
-4. Set **Observability → SLOs** to `Read`.
+4. Set **Observability** → **SLOs** to `Read`.
 
     :::{image} /solutions/images/observability-slo-kibana-priv-read.png
     :alt: SLO Kibana read privileges

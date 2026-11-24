@@ -11,7 +11,7 @@ products:
 
 # Index threshold [rule-type-index-threshold]
 
-The index threshold rule type runs an {{es}} query. It aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met.
+The index threshold rule type is part of {{alerting-v1-system}}. It runs an {{es}} query. It aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met.
 
 In **{{rules-ui}}**, click **Create rule**. For help navigating to the Rules page, refer to [Create and manage alerting rules](create-manage-rules.md). Select the **Index threshold** rule type then fill in the name and optional tags.
 
@@ -90,7 +90,7 @@ The following action variables are specific to the index threshold rule. You can
 
 In this example, you will use the {{kib}} [sample weblog data set](/explore-analyze/index.md) to set up and tune the conditions on an index threshold rule. For this example, you want to detect when any of the top four sites serve more than 420,000 bytes over a 24 hour period.
 
-1. Go to **{{stack-manage-app}} > {{rules-ui}}** and click **Create rule**.
+1. Go to **{{stack-manage-app}}** → **{{rules-ui}}** and click **Create rule**.
 2. Select the **Index threshold** rule type.
 
     1. Provide a rule name.
@@ -139,7 +139,7 @@ In this example, you will use the {{kib}} [sample weblog data set](/explore-anal
 
     9. Save the rule.
 
-3. Find the rule and view its details in **{{stack-manage-app}} > {{rules-ui}}**. For example, you can see the status of the rule and its alerts:
+3. Find the rule and view its details in **{{stack-manage-app}}** → **{{rules-ui}}**. For example, you can see the status of the rule and its alerts:
    :::{image} /explore-analyze/images/kibana-rule-types-index-threshold-example-alerts.png
    :alt: View the list of alerts for the rule
    :screenshot:

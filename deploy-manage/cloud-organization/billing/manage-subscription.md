@@ -16,7 +16,7 @@ products:
 
 # Manage your subscription
 
-When you decide to add your credit card and become a paying customer, you can choose a subscription level.
+When you decide to [subscribe to {{ecloud}}](/deploy-manage/cloud-organization/billing/add-billing-details.md), you can choose a subscription level.
 
 Depending on whether you're using {{ech}} deployment or {{serverless-full}} projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
 
