@@ -13,6 +13,8 @@ products:
 
 ::::{admonition} Requirements
 This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+
+To view or manage watchlists, you also need the appropriate privileges. For more information, refer to [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md#_watchlists).
 ::::
 
 Watchlists let you define and manage groups of entities that are important to your organization — such as executives or critical infrastructure hosts — and factor watchlist membership directly into entity risk scoring. This keeps your most critical entities visible and easy to find during threat investigations. Watchlists sync automatically every 10 minutes to reflect changes in the underlying data sources.

@@ -1,6 +1,6 @@
 ---
 navigation_title: Entity analytics requirements
-description: Privileges, subscription tiers, roles, and limitations required to use entity risk scoring, asset criticality, and the entity store in Elastic Security.
+description: Privileges, subscription tiers, roles, and limitations required to use entity risk scoring, asset criticality, the entity store, and watchlists in Elastic Security.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ers-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-ers-requirements.html
@@ -15,7 +15,7 @@ products:
 
 # Entity analytics requirements
 
-This page covers the requirements and guidelines for using the entity risk scoring, asset criticality, and entity store features, as well as their known limitations.
+This page covers the requirements and guidelines for using the entity risk scoring, asset criticality, entity store, and watchlist features, as well as their known limitations.
 
 To use these features in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In {{serverless-short}}, you need the appropriate user roles or a custom role with the right privileges.
 
@@ -196,3 +196,51 @@ The entity store's background tasks run with the privileges of the user who turn
 :::
 
 ::::
+
+## Watchlists [_watchlists]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+To view or manage [watchlists](/solutions/security/advanced-entity-analytics/watchlists.md), you need the following:
+
+* In {{stack}}, you need the appropriate [privileges](#_privileges_4).
+* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#watchlists_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_4).
+
+### Privileges [_privileges_4]
+
+::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+| Action | Index privileges | {{kib}} privileges |
+| --- | --- | --- |
+| View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
+| View, edit, or delete watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*` | **All** for the **Security** feature |
+| View, create, edit, or delete watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>` and `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*` | **All** for the **Security** feature |
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
+
+| Action | Index privileges | {{kib}} privileges |
+| --- | --- | --- |
+| View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
+| View, edit, or delete watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+| View, create, edit, or delete watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>` and `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+:::
+
+::::
+
+In {{stack}} 9.4.0 through 9.4.2, **Read** for the **Security** feature is also enough to create, edit, or delete watchlists.
+
+### Predefined roles [watchlists_roles]
+```yaml {applies_to}
+serverless: ga
+```
+
+| Action | Predefined role |
+| --- | --- |
+| View watchlists | - Viewer<br>- Tier 1 analyst<br>- Tier 2 analyst<br>- Threat intelligence analyst<br>- Rule author<br>- Endpoint operations analyst<br>- Detections admin<br>- Endpoint policy manager |
+| View, edit, or delete watchlists | - Tier 3 analyst |
+| View, create, edit, or delete watchlists | - Editor<br>- SOC manager<br>- Platform engineer<br>- Admin |
