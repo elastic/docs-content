@@ -26,6 +26,7 @@ On the **Search Tier** page, the top half of the page offers general insights at
 Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
 * Select **custom time ranges** to explore usage and performance data up to the last 10 days.
+
   :::{include} /deploy-manage/monitor/_snippets/autoops-serverless-chart-intervals.md
   :::
 
