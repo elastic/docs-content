@@ -104,4 +104,4 @@ FROM traces-generic.otel-default
 * [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry?tabs=otlp-export) (Microsoft documentation)
 * [{{motlp}} reference](/reference/managed-inputs/managed-otlp-endpoint.md)
 * [LLM and agentic AI observability](/solutions/observability/applications/llm-observability.md)
-* To also collect Azure platform metrics and logs, use the [Microsoft Foundry integration](integration-docs://reference/azure_ai_foundry.md).
+* To collect Azure Monitor metrics and gateway logs from your Foundry resource, such as usage per model deployment and content filter results, use the [Microsoft Foundry integration](integration-docs://reference/azure_ai_foundry.md).
