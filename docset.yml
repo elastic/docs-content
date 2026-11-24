@@ -478,7 +478,6 @@ subs:
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
-  fedramp-il5: "FedRAMP IL5"
   tsds: "time series data stream"
   tsdses: "time series data streams"
   tsds-cap: "Time series data stream"
