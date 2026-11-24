@@ -61,7 +61,6 @@ Most AI Assistant features have an {{agent-builder}} equivalent. Availability va
 | **Alerting rule connector action**<br>({{observability}}) | {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Partial. Use an [action policy to run a workflow](/explore-analyze/alerting/esql/workflows-alerting.md) that calls an agent with the [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) step. |
 | **Audit logging** | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` {{kib}} records audit events when agents, tools, and skills are created, updated, or deleted. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` {{kib}} also records when a conversation is created. |
 | **Citations**<br>({{elastic-sec}}) | {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Available. |
-| **In-chat previews of attached data**<br>({{elastic-sec}}) | Not available. |
 | **Quick prompts**<br>({{elastic-sec}}) | {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Use [skills](/explore-analyze/ai-features/agent-builder/skills.md) and invoke them with slash commands. |
 
 {{agent-builder}} also adds [custom agents](/explore-analyze/ai-features/agent-builder/custom-agents.md), [custom tools](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md), and [integration with Elastic Workflows](/explore-analyze/ai-features/agent-builder/agents-and-workflows.md).
