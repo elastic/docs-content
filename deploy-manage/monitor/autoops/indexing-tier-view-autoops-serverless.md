@@ -24,13 +24,13 @@ The top half of the **Indexing Tier** page offers general insights at the projec
 :::
 
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage and performance data up to the last 10 days.
+* Select **custom time ranges** to explore usage and performance data up to the last 10 days.
 
   :::{include} /deploy-manage/monitor/_snippets/autoops-serverless-chart-intervals.md
   :::
 
-* Gain insights from **performance charts** depicting indexing rate and latency trends over the selected time window.
-* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to understand the amount of [ingest VCUs](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumed over the selected time window.
+* Gain insights from **performance charts** depicting indexing rate and latency trends over the selected time range.
+* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to understand the amount of [ingest VCUs](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumed over the selected time range.
 
 ## Index and data stream-level insights
  
@@ -43,8 +43,8 @@ The bottom half of the **Indexing Tier** page offers a more granular breakdown o
 
 A table lists all of your indices and data streams, with each row providing the following information:
 * The **number of documents** in the index or data stream.
-* The latest **indexing rate** in the selected time period.
-* The latest **indexing latency** in the selected time period.
+* The latest **indexing rate** in the selected time range.
+* The latest **indexing latency** in the selected time range.
 * The timestamp of the **last indexing operation** on the index or data stream.
 
 Using this table, you can detect which of your indices or data streams is currently being ingested and at what rate and latency. This helps you identify which indices have a high [ingestion load](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling#ingestion-load), so that you can deduce where that load is coming from and manage it accordingly.

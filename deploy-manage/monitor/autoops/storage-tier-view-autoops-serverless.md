@@ -14,7 +14,7 @@ To get to this view, [access AutoOps](/deploy-manage/monitor/autoops/access-auto
 
 ## Project-level insights
 
-On the **Storage Tier** page, the top half of the page offers project-level insights into the ingest rate and storage retained usage metrics over a selected time period.
+On the **Storage Tier** page, the top half of the page offers project-level insights into the ingest rate and storage retained usage metrics over a selected time range.
 
 :::{image} /deploy-manage/images/storage-tier-project-level-features.png
 :screenshot:
@@ -22,11 +22,11 @@ On the **Storage Tier** page, the top half of the page offers project-level insi
 :::
 
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage data up to the last 10 days.
+* Select **custom time ranges** to explore usage data up to the last 10 days.
   
-  The X-axis on each chart displays data at regular time buckets or intervals. The length of these intervals depends on the time window you select:
+  The X-axis on each chart displays data at regular time buckets or intervals. The length of these intervals depends on the time range you select:
 
-  | Selected time window | Length of time intervals |
+  | Selected time range | Length of time intervals |
   | --- | --- |
   | 3 hours or less | 5 minutes |
   | More than 3 hours, up to 24 hours | 5 minutes |
@@ -45,8 +45,8 @@ The bottom half of the page offers a more granular breakdown table of index-leve
 :::
 
 Each row of the table represents a single index or data stream, providing the following information:
-* the **average ingest rate** for the selected time period
-* the **total ingested data** for the selected time period
+* the **average ingest rate** for the selected time range
+* the **total ingested data** for the selected time range
 * the **latest recorded storage retained value** during that period
 * the timestamp of the **latest update** for these usage metrics
 
@@ -66,6 +66,6 @@ The **Storage Tier** view shows you how your project's ingest rate and storage r
 
 The main factor that influences storage consumption is the data retention duration set on your data streams. A longer retention period means more storage space needs to be allocated to accommodate that retention. 
 
-A long data retention duration combined with a high ingest rate will consume even more storage. Let's say your project is ingesting a significantly large amount of data in a certain time period, causing your ingest rate to increase. If your data retention duration is not adjusted accordingly, you will require even more storage to store the additional data.
+A long data retention duration combined with a high ingest rate will consume even more storage. Let's say your project is ingesting a significantly large amount of data in a certain time range, causing your ingest rate to increase. If your data retention duration is not adjusted accordingly, you will require even more storage to store the additional data.
 
 This is why you should adjust your data retention duration to fit your requirements so that you can make the most effective use of your storage.
