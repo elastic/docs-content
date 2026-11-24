@@ -160,7 +160,7 @@ You must include the following parameter to specify the file’s location on the
 
 * `--path` : The file’s full path (including the file name).
 
-  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can repeat `--path` to retrieve up to 100 files in one action. The files are downloaded in one `.zip` archive.
+  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can repeat `--path` up to 100 times in one action. The retrieved files are downloaded in one `.zip` archive.
 
   {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can also use [wildcards](#get-file-wildcards) in `--path` to retrieve all matching files.
 
@@ -183,7 +183,7 @@ Examples:
 
 `get-file --path "/var/log/syslog" --path "/var/log/auth.log" --comment "Collect logs"`
 
-`get-file --path "/var/log/*.log" --comment "Collect all log files"`
+`get-file --path "/var/log/*.log" --comment "Collect log files in /var/log"`
 
 `get-file --path "C:\Windows\System32\config\SAM" --force --comment "Collect locked registry hive"`
 
