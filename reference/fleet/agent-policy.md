@@ -450,11 +450,31 @@ The fields are empty by default. When left empty, the values are set by {{agent}
 
 For {{agent}}s that cannot access the internet, you can specify agent binary download settings, and then configure agents to download their artifacts from the alternate location. For more information about running {{agent}}s in a restricted environment, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` An agent policy can use up to three download sources in priority order. When an upgrade starts, {{agent}} downloads the binaries from the first source. If that download fails, {{agent}} tries the next sources in order. {{agents}} earlier than version 9.6.0 only use the first source.
+
 To change the binary download location:
 
-1. In {{fleet}}, click **Agent policies**. Select the name of the policy you want to edit.
-2. Click the **Settings** tab and scroll to **Agent binary download**.
-3. Specify the address where you are hosting the artifacts repository or select the default to use the location specified in the {{fleet}} [agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings).
+1. In {{fleet}}, select **Agent policies**. Select the name of the policy you want to edit.
+2. Select the **Settings** tab and scroll to **Agent binary download**.
+3. Select the download location:
+
+    ::::{applies-switch}
+
+    :::{applies-item} { serverless: ga, stack: ga 9.6+ }
+    1. In the **Download source order** section, select the first download source. To use the default source from the {{fleet}} [agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings), select **Default (currently *name*)**. This option follows the default source, even when you change it later.
+    2. (Optional) To add a fallback source, select **Add download source**, and then select the source. You can add each source once.
+    3. (Optional) To change the order, select a different source in each row. To remove a fallback source, select the **Remove download source** icon next to it.
+    4. Select **Save changes**.
+
+    The proxy, TLS, authentication, and disk space settings of the first source apply to all the sources in the list. For details, refer to [Fallback download sources](/reference/fleet/fleet-settings.md#agent-binary-multiple-sources).
+    :::
+
+    :::{applies-item} { stack: ga 9.0-9.5 }
+    1. Select a download source from the list. The list includes the sources from the {{fleet}} [agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). To use the default source, select **Default (currently *name*)**. This option follows the default source, even when you change it later.
+    2. Select **Save changes**.
+    :::
+
+    ::::
 
 
 ## Set the {{agent}} host name format [fleet-agent-hostname-format-settings]
