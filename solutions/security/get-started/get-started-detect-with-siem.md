@@ -79,7 +79,7 @@ This means that {{elastic-defend}} not only monitors these behaviors and generat
 :::{dropdown} Steps to modify an endpoint policy
 1. From the left navigation menu, go to **Assets** → **Endpoints** → **Policies**. 
 2. From the list, select the policy you want to configure. The policy configuration page appears.
-3. On the **Policy settings** tab, switch the protection level from `Prevent` to `Detect` for each protection. 
+3. On the **Policy settings** tab, switch the protection level to `Detect` for each protection. 
 4. Review and configure the event collection and antivirus settings as appropriate. 
 5. Once you're finished making changes, click **Save** in the lower-right corner to update the policy.  
 

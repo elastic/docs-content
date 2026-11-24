@@ -33,8 +33,8 @@ For testing, you can use alternatives to Nginx such as [Azure Dev Tunnels](https
 ::::
 
 
-::::{warning}
-Self-managed models work well for [AI Assistant](/solutions/security/ai/ai-assistant.md). For [Attack Discovery](/solutions/security/ai/attack-discovery/index.md), we recommend using one of the models in the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+::::{note}
+This guide uses Mistral-Nemo-Instruct-2407 as an example. That model hasn't been rated. Before you choose a model, check the [open-source models](/solutions/security/ai/large-language-model-performance-matrix.md#_open_source_models) table. Some models that do well in {{agent-builder}} fail Attack Discovery.
 ::::
 
 
@@ -234,5 +234,5 @@ Setup is now complete. You can use the model you’ve loaded in LM Studio to pow
 ::::::
 
 ::::{note}
-Self-managed models are likely to improve over time. As they do, using one for [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) may become more viable. For current guidance, refer to the warning near the top of this page.
+Self-managed models are likely to improve over time. As they do, using one for [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) may become more viable. For current guidance, refer to the note near the top of this page.
 ::::

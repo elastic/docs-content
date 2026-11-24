@@ -67,6 +67,21 @@ Go to Discover to check whether the data behind an alert shows a genuine problem
 |---|---|---|
 | Open in Discover | Opens the rule's base {{esql}} query scoped to the time window around when the alert opened. | Alert |
 
+## Triage a flapping alert [triage-flapping]
+
+Base your response to a flapping alert on the data behind it, not on its status. A flapping alert keeps changing between `active` and `recovering`, so its status can't tell you whether the problem is ongoing or fixed. To recognize a flapping alert, refer to [Spot a flapping alert](investigate-alert-episodes.md#flapping).
+
+The following steps are for alerts from {{alerting-v2-system-short}} rules. On alerts from {{alerting-v1-system-short}} rules, acknowledging an alert doesn't stop its notifications. For other differences, refer to [How actions affect alerts from {{alerting-v1-system-short}}](#classic-triage-action-results).
+
+To triage a flapping alert:
+
+1. [Acknowledge the alert](#track-review-status) to stop its notifications while you investigate, because flapping doesn't stop or delay them. The acknowledgment stays in place each time the alert returns to `active`, because it's still the same alert.
+2. Check the data behind the alert. If the alert has a [trend chart](investigate-alert-episodes.md#assess-metric-behavior), use it to compare the metric to the rule's threshold. To see the [values that the rule's query most recently returned](investigate-alert-episodes.md#inspect-data), open the alert's **Data container** tab. To see the source documents, select **Open in Discover**.
+3. Respond based on what the data shows:
+
+   - If the data shows a real problem each time the alert returns to `active`, the problem is recurring. For example, a metric clearly crosses the rule's threshold each time. Treat the alert like any other active alert, and investigate the cause. When the alert's status changes to `recovering`, don't resolve the alert until the data confirms the fix.
+   - If the data shows normal activity when the alert is `active`, the rule is too sensitive. For example, a metric hovers around the rule's threshold instead of clearly crossing it. Leave the alert acknowledged instead of resolving it. If you resolve it, a new alert starts the next time the rule's condition matches, and action policies might send notifications for it. To stop the rule's alerts from flapping, update the rule's condition, or add a [custom recovery condition](../rules/configure-rule-recovery.md#recovery-strategy-when-to-use) to the rule. If you can't edit the rule, ask someone who can.
+
 ## Triage alerts from {{alerting-v1-system}} [triage-classic-alerts]
 
 To act on alerts with **Classic** in the **Source** column, your role needs [privileges in both alerting systems](../manage/configure-access.md#alerting-classic-alert-privileges).

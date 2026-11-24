@@ -28,7 +28,7 @@ Some skills are in technical preview or require an [advanced setting](kibana://r
 
 ## Platform skills
 
-Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, streams, significant events, and workflows.
+Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, anomaly detection, streams, significant events, and workflows.
 
 ### Core skills
 
@@ -177,6 +177,23 @@ $$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {app
 
     **Related skills:** [`rule-authoring`](#agent-builder-rule-authoring-skill) composes the rules whose alerts a policy matches.
 
+### Anomaly detection
+
+$$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6`
+:   Use this skill to work with {{ml}} {{anomaly-jobs}} from within a conversation:
+
+    * **Create:** Set up jobs by describing your data and goal. The skill explores your data, asks about your goal in everyday language, tests a setup on your historical data, and creates real-time jobs after you approve the results. For the full workflow, refer to [Create {{anomaly-jobs}} with AI in chat](/explore-analyze/machine-learning/anomaly-detection/ml-jobs-from-agent-builder.md).
+    * **Manage:** Start or stop jobs and {{dfeeds}}, update job settings such as the query delay, and add calendar events that suppress anomalies during planned events.
+    * **Investigate:** Find the cause of an anomaly across jobs, and understand why a score is high or low.
+    * **Troubleshoot:** Diagnose problems such as a stopped {{dfeed}} or a model memory limit.
+
+    :::{dropdown} Assigned tools
+    `platform.core.execute_esql`, `platform.dashboard.generate_dashboard`, plus internal tools to read job details and anomaly results, create and validate jobs and {{dfeeds}}, open, close, start, and stop jobs, change job settings and calendar events, and show anomaly charts in the conversation.
+
+    :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear. You also need the privileges to read or manage {{anomaly-jobs}}, depending on the request. Refer to [Setting up machine learning](/explore-analyze/machine-learning/setting-up-machine-learning.md#setup-privileges).
+
 ### Streams and significant events
 
 $$$agent-builder-streams-management-skill$$$ `streams-management` {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga`
@@ -294,20 +311,22 @@ serverless:
 ```
 
 $$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: ga 9.4+`
-:   Answers observability questions, lists and diagnoses observability alerts, and investigates service or infrastructure issues. Covers APM, logs, metrics, threshold, SLO burn rate, uptime and synthetics, and infrastructure alerts. Use when a user asks about alerts, service health, error rates, latency, failed transactions, topology, traces, log patterns, SLO breaches, or infrastructure issues.
+:   Answers observability questions, lists and diagnoses observability alerts, and investigates service or infrastructure issues. Covers APM, logs, metrics, threshold, SLO burn rate, uptime and synthetics, and infrastructure alerts. Use when a user asks about alerts, service health, error rates, latency, failed transactions, topology, traces, log patterns, SLO breaches, or infrastructure issues. Also use when a user wants to know why a service is broken, slow, or failing.
 
     :::{dropdown} Assigned tools
     All [Observability tools](tools/builtin-tools-reference.md#observability-tools).
 
     :::
 
-$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, failing, or slow, when an alert fires or an SLA is breached, when they need to understand what happened during an outage or performance regression, or when they need to trace a cascading failure across services.
+$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: removed 9.6+, preview 9.4-9.5` {applies_to}`serverless: removed`
+:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, failing, or slow, when an alert fires or an SLA is breached, when they need to understand what happened during an outage or performance regression, or when they need to trace a cascading failure across services. After this skill's removal, the [`observability.investigation`](#agent-builder-observability-investigation-skill) skill handles these questions.
 
     :::{dropdown} Assigned tools
     Observability log analysis tools, `platform.core.generate_esql`, `platform.core.execute_esql`, and significant events knowledge indicator search.
 
     :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
 
 $$$agent-builder-observability-service-map-skill$$$ `observability.service-map` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Shows a service map when a user asks to see or visualize a service map, service topology, or service dependencies in an APM or observability context. Use for questions about how services connect or their upstream and downstream dependencies.
