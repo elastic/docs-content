@@ -108,7 +108,7 @@ serverless: ga
 stack: ga 9.7
 ```
 
-To find a value in the documents of one group, expand the group, select **Find in table** in the group's table toolbar, and enter your text. **Discover** highlights the matches in that group and moves to each one as you step through them. For how the search works, refer to [](inspect-documents.md#in-table-search).
+To find a value in the documents of one group, expand the group, select **Find in table** in the group's table toolbar, and enter your text. **Discover** highlights the matches in that group and moves to each one as you step through them. To move between matches with the keyboard, refer to [](inspect-documents.md#in-table-search).
 
 As you scroll through the group's documents, the group's row title and its toolbar stay in view. You can start a new search without scrolling back to the start of the group.
 
