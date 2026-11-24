@@ -20,7 +20,9 @@ To change the chat experience, you need:
 - The **Actions and Connectors: Read** privilege, to open **GenAI Settings**.
 - The **Advanced Settings: All** privilege. Without it, the **Chat Experience** setting is visible but you can't save it.
 - Access to at least one classic AI assistant.
-- The **Agent Builder: All** privilege or, {applies_to}`stack: ga 9.4+` **Agent Builder: Read** plus **Create and edit agents**.
+- One of these {{agent-builder}} privilege sets:
+  - **Agent Builder: All**
+  - {applies_to}`stack: ga 9.4+` **Agent Builder: Read** plus **Create and edit agents**
 
 For details, refer to [{{agent-builder}} permissions](/explore-analyze/ai-features/agent-builder/permissions.md).
 ::::

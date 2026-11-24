@@ -21,10 +21,10 @@ products:
 
 :::{warning}
 AI Assistant is deprecated:
-- {applies_to}`stack: ga 9.0-9.3, deprecated 9.4+` {applies_to}`serverless: deprecated` {{obs-ai-assistant}}
-- {applies_to}`stack: ga 9.0-9.5, deprecated 9.6+` {applies_to}`serverless: deprecated` AI Assistant for Security
+- {applies_to}`stack: deprecated 9.4+` {applies_to}`serverless: deprecated` {{obs-ai-assistant}}
+- {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` AI Assistant for Security
 
-Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
+Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead. To switch, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 :::
 
 $$$token-limits$$$
