@@ -34,12 +34,10 @@ Elastic's LLM integrations now support the most widely adopted models, including
 | [Amazon Bedrock](integration-docs://reference/aws_bedrock.md)| ✅ | ✅ |
 | [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |
 | Anthropic ([Metrics](integration-docs://reference/anthropic_metrics.md) / [Logs](integration-docs://reference/anthropic.md)) | ✅ | ✅ |
+| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ |
 | [Azure OpenAI](integration-docs://reference/azure_openai.md)| ✅ | ✅ |
 | [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ |
-| [Microsoft Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ |
 | [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 |
-
-The Microsoft Foundry integration collects platform metrics and logs. To collect the OpenTelemetry traces, logs, and metrics that a Microsoft Foundry hosted agent emits, refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-microsoft-foundry-hosted-agent-telemetry.md).
 
 
 ## LLM and agentic AI application observability with APM (distributed tracing)
