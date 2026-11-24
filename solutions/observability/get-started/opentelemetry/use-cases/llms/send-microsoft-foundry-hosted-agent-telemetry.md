@@ -33,7 +33,7 @@ For more about how hosted agents export telemetry, refer to [Export hosted agent
 :::::{stepper}
 
 ::::{step} Store the API key in a Foundry connection
-Create the connection before you deploy the agent, so the agent can read the key when it starts. In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Name the connection `otel-secrets`, add a field named `otlp_headers`, and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). For more about connections, refer to [Add a new connection to your project](https://learn.microsoft.com/en-us/azure/foundry/how-to/connections-add) in the Microsoft documentation.
+Create the connection before you deploy the agent, so the agent can read the key when it starts. In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Name the connection `otel-secrets`, add a field named `otlp_headers`, and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). The next step refers to the connection by these two names. For more about connections, refer to [Add a new connection to your project](https://learn.microsoft.com/en-us/azure/foundry/how-to/connections-add) in the Microsoft documentation.
 ::::
 
 ::::{step} Add the exporter settings
@@ -48,7 +48,7 @@ services:
       OTEL_EXPORTER_OTLP_HEADERS: $${{connections.otel-secrets.credentials.otlp_headers}}
 ```
 
-In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
+For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
 ::::
 
 ::::{step} Deploy the agent again
