@@ -97,6 +97,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Adds AI coding agent identification to {{elastic-defend}} on macOS and Windows. Events from AI agents, such as Claude Code, Codex, and Cursor, and their descendant processes populate `process.ai_agent.name` and `process.ai_agent.is_descendant`. Events can also include the signed-in account in `process.ai_agent.email`, or set `process.ai_agent.api_key_auth` to `true` when the agent authenticates with an API key. Account lookup is controlled by the `advanced.ai_auth_detection` advanced policy settings. The Codex lookup on Windows (`windows.advanced.enable_codex_spawning`) and the Cursor desktop lookup (`advanced.enable_vscdb_lookup`) are off by default.
 * Updates {{elastic-defend}} to populate `process.ai_agent.name` and `process.ai_agent.is_descendant` on file, network, and DNS events, which attributes activity to AI agent tools and their descendant processes.
 * Adds an **AI data collection** setting to {{elastic-defend}} integration policies that controls, for each operating system, whether events are enriched with AI agent information. The setting is off by default. On Linux, AI agent enrichment was previously on by default, so turn on **AI data collection** after you upgrade to keep it.
+* Adds the Claude Code session ID to {{elastic-defend}} process, file, network, and DNS events on Linux and macOS. `process.ai_agent.session_id` is populated for Claude Code and the processes it starts, which ties host activity to a specific Claude Code session. It's populated only when **AI data collection** is turned on.
 * Adds collection of impersonation API events, such as `ImpersonateNamedPipeClient`, `ImpersonateLoggedOnUser`, and `SetThreadToken`, to {{elastic-defend}} on Windows 11 24H2 and later (x86-64 only).
 * Adds volume unmount events on macOS when {{elastic-defend}} Device Control is enabled, and improves the reliability of Device Control enforcement on macOS.
 * Adds more data to kernel module load events for {{elastic-defend}} on Linux.
@@ -127,6 +128,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Updates the entity store so AWS CloudTrail users and IAM users and roles from Cloud Asset Inventory resolve to the same user entity, identified by the IAM ARN. CloudTrail activity then updates the matching inventory entities, and graph view actors show entity details [#296129]({{kib-pull}}296129).
 * Adds a **Generate AI brief** button to the Entity Analytics page that opens {{agent-builder}} with a short brief of the current view, including what needs attention, the period's counts, a recommended next step, and up to three entities to investigate first. The button appears when {{agent-builder}} is available to you [#297677]({{kib-pull}}297677).
 * Adds an **Add integrations** button to the Entity Analytics empty state that opens the user and entity behavior analytics (UEBA) integrations in a new tab [#298032]({{kib-pull}}298032).
+* Adds the `POST /api/security/entity_store/update_api_key` API, which replaces the API key that the entity store tasks run with by a key granted from the calling user [#303566]({{kib-pull}}303566).
+* Adds the `POST /api/entity_analytics/watchlists/{watchlist_id}/entity_source/{id}/_update_api_key` API, which replaces the API key that syncs a watchlist's index entity source with a key granted from the calling user [#303648]({{kib-pull}}303648).
 
 #### General [elastic-security-9.6.0-features-general]
 * Updates the {{elastic-sec}} **Overview** page with a sticky header that has a back button to the **Dashboards** page, and moves the {{data-source}} picker and search bar into the page [#297995]({{kib-pull}}297995).
@@ -155,6 +158,9 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where long text in table cells in the Security AI Assistant was cut off or caused the whole conversation to scroll horizontally [#293924]({{kib-pull}}293924).
 * Fixes an issue where opening the AI agent chat from a dashboard in {{elastic-sec}} didn't attach that dashboard to the conversation [#297732]({{kib-pull}}297732).
 * Fixes the Entity Analytics skill in {{agent-builder}} so the agent directs you to the Entity Analytics UI to turn Entity Analytics on or off, clear entity data, or change risk scoring settings, instead of performing those actions in the chat [#301628]({{kib-pull}}301628).
+* Fixes the Security AI Assistant so only the owner of a conversation can delete it. Other users get a `403` error [#303363]({{kib-pull}}303363).
+* Fixes the Security AI Assistant delete-all conversations action so it deletes only the conversations you own, and no longer returns an error when there are none to delete [#303365]({{kib-pull}}303365).
+* Improves the {{agent-builder}} alert analysis skill so it uses an alert that's already attached to the conversation instead of fetching it again, and keeps large alert lists within the tool result limit. This reduces the number of tool calls and the response time, especially with GPT models [#304299]({{kib-pull}}304299).
 
 #### Alerts and investigations [elastic-security-9.6.0-fixes-alerts-and-investigations]
 * Fixes the count label in Security donut charts so it's vertically centered [#286900]({{kib-pull}}286900).
@@ -174,15 +180,24 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes process node labels in the visual event analyzer so they show the process name from the analyzed event time, not a later executable name from the same process [#287934]({{kib-pull}}287934).
 * Fixes bulk **Investigate in Timeline** so it includes the correlated building-block events for selected EQL sequence alerts, instead of only the selected alerts [#289676]({{kib-pull}}289676).
 * Fixes **Open in Lens** on the **Hosts**, **Network**, and **Users** pages' KPI tiles, which previously opened Lens with a "Data view not found" error [#295261]({{kib-pull}}295261).
+* Fixes an issue where the attack flyout didn't open from the **Notes** page for notes added to an attack [#302875]({{kib-pull}}302875).
+* Fixes the Analyzer details panel not scrolling in the new flyout when a document has many fields [#303358]({{kib-pull}}303358).
+* Fixes KQL filters that start with a wildcard, such as `kibana.alert.rule.name: *DGA*`, being dropped from the alerts table when **Group alerts by** is on [#305574]({{kib-pull}}305574).
+* Fixes the AI summary in the alert details flyout failing on every alert when the default model is an external inference endpoint and other models aren't allowed [#306533]({{kib-pull}}306533).
+* Fixes Session View so an alert raised after the last process event of a session shows the alert button on its process [#306664]({{kib-pull}}306664).
 
 #### Attack Discovery [elastic-security-9.6.0-fixes-attack-discovery]
 * Fixes an issue where long-running Attack Discovery generations could fail with a `Security Exception: token expired` error [#291623]({{kib-pull}}291623).
 * Fixes an issue where Attack Discovery didn't automatically select a connector when multiple were available, which disabled **Run** and caused attack discovery generation to fail with a "No model selected" error [#293656]({{kib-pull}}293656).
 * Fixes Attack Discovery runs that failed or dropped alerts when the Attack Discovery skill retrieved fewer than 10 alerts, and skips the skill when no open alerts are available to avoid unnecessary model calls [#302303]({{kib-pull}}302303).
 * Fixes Attack Discovery so generation stops with a clear error when a provider content filter refuses the model's response, instead of retrying up to 10 times and reporting `Maximum generation attempts (10) reached` [#302304]({{kib-pull}}302304).
+* Fixes Attack Discovery generations that silently produced no results for users whose role has the Attack Discovery privileges but no access to the anonymization fields index [#305384]({{kib-pull}}305384).
 
 #### Automatic Import [elastic-security-9.6.0-fixes-automatic-import]
 * Fixes an issue where uploading a large sample log file in Automatic Import failed. Uploads now send at most 1000 samples and show a warning when additional lines are omitted [#287165]({{kib-pull}}287165).
+* Fixes the Automatic Import privilege so the base **All** and **Read** {{kib}} privileges grant the matching Automatic Import access. Users with **Read** no longer see create, edit, delete, and approve controls they can't use [#303093]({{kib-pull}}303093).
+* Fixes Automatic Import so generated ingest pipelines remove temporary fields from documents that fail processing, and so custom field names must use snake_case [#303129]({{kib-pull}}303129).
+* Fixes Automatic Import so analysis and pipeline testing use every uploaded sample, up to 1000, instead of only the first 500 [#304143]({{kib-pull}}304143).
 
 #### Automatic Migration [elastic-security-9.6.0-fixes-automatic-migration]
 * Fixes the Automatic Migration **Install selected** button on the **Translated rules** page so it's disabled when none of the selected rules can be installed, and counts only fully translated rules [#276696]({{kib-pull}}276696).
@@ -194,6 +209,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the success message after updating a missing index pattern for translated rules so it says "rules" instead of "migrations" [#295064]({{kib-pull}}295064).
 * Fixes Automatic Migration so Splunk lookup uploads accept only files whose names match a missing lookup, and skip files with no lookup name, such as `.DS_Store` [#300041]({{kib-pull}}300041).
 * Fixes Automatic Migration so the install buttons in the translated rule details flyout and the **Install translated** and **Install selected** bulk actions are disabled with a missing privileges tooltip when you don't have the required **Rules** or **Dashboards** `All` privilege [#300771]({{kib-pull}}300771).
+* Fixes an issue where searching the **Translated rules** and **Translated dashboards** pages by part of a name, such as a word joined by `_` or `-`, returned no results [#296500]({{kib-pull}}296500).
 
 #### Cases [elastic-security-9.6.0-fixes-cases]
 * Fixes a crash when opening a case whose comment contains a URL with an `&timestamp` query parameter [#282265]({{kib-pull}}282265).
@@ -202,11 +218,20 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where alert rule names in the Cases activity feed displayed as **Unknown rule** when expanding a collapsed entry that contained many alert attachments [#286890]({{kib-pull}}286890).
 * Fixes an issue where the Cases API accepted Security events as attachments on closed cases. Attaching an event to a closed case now returns an error, which matches the existing behavior for alerts [#291173]({{kib-pull}}291173).
 * Fixes the **Create case** button in the **Add to case** selector so it's disabled for users who can add attachments to cases but can't create cases. These users can still add attachments to existing cases [#292761]({{kib-pull}}292761).
+* Fixes searching cases by comment text, alert ID, or event ID, which returned no matching cases [#304470]({{kib-pull}}304470).
+* Fixes an issue where you couldn't close a case that had reached the limit of 10,000 user actions. Closing a case no longer counts toward the limit [#301378]({{kib-pull}}301378).
+* Fixes the **Case settings** popover on the case details page jumping to the top-left corner of the page after you changed a setting, when you opened it from the **More** menu [#301327]({{kib-pull}}301327).
+* Fixes the Cases API so it rejects turning on observable extraction (`extractObservables: true`) for Stack Management and Observability cases, which can't extract observables, and stores `false` when the value comes from a template or the space settings. Applying a template with extraction turned on to one of these cases no longer fails [#301895]({{kib-pull}}301895), [#304155]({{kib-pull}}304155).
+* Fixes `POST /api/cases/{case_id}/comments` and the workflow steps that add alerts, events, or attachments to a case so their response includes the observables extracted from the new attachments. Previously, a client that used the returned `version` for its next case update got a `409` conflict [#302629]({{kib-pull}}302629).
+* Fixes replacing a case attachment with `PUT /api/cases/{case_id}/attachments/{attachment_id}` or `PATCH /api/cases/{case_id}/comments` so it runs the same checks as adding one. A replace can no longer add alerts, events, or attacks to a closed case, or exceed the alert or attachment limits [#302633]({{kib-pull}}302633).
+* Fixes the case **Activity** tab failing to load when a user action has a source type that the {{kib}} version doesn't recognize, which can happen during a rolling upgrade [#302937]({{kib-pull}}302937).
+* Fixes cases missing their case number (`case.incremental_id`) in the `.cases` analytics index [#296586]({{kib-pull}}296586).
 
 #### Cloud Security [elastic-security-9.6.0-fixes-cloud-security]
 * Fixes the graph visualization in the alert and event details flyouts intermittently failing to load with a `null_pointer_exception` error [#285138]({{kib-pull}}285138).
 * Fixes the graph visualization failing to load with a `null_pointer_exception` error when entities are pinned [#285139]({{kib-pull}}285139).
 * Fixes the **Evaluated** count on the Cloud Security Posture **Benchmarks** page so it shows the exact number of evaluated assets instead of stopping at 500 [#286909]({{kib-pull}}286909).
+* Fixes the Cloud Security Posture **Rules** page showing an error instead of the rules table when the benchmarks request fails, for example for users without access to the findings indices [#303937]({{kib-pull}}303937).
 
 #### Detection rules and exceptions [elastic-security-9.6.0-fixes-detection-rules-and-exceptions]
 * Fixes rule preview so it no longer runs Osquery or {{elastic-defend}} response actions when the previewed rule matches events [#278393]({{kib-pull}}278393).
@@ -227,6 +252,8 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where prebuilt rules were flagged as customized, and showed non-solvable `required_fields` upgrade conflicts, even though you hadn't edited the field. Also improves the performance of the rule edit form and the upgrade flyout for rules with long `required_fields` lists [#294946]({{kib-pull}}294946).
 * Fixes an issue where detection rule exception items that use **IP range** value lists with more than 200 dash-notation entries were dropped during rule execution [#285178]({{kib-pull}}285178).
 * Fixes rule exception items being deleted immediately from the actions menu with no warning. {{kib}} now shows a confirmation dialog before it deletes the exception item [#286807]({{kib-pull}}286807).
+* Fixes a privilege check gap so that enabling a rule, or bulk-enabling rules, re-checks the privileges that the rule's parameters require, such as {{elastic-defend}} response actions, for the user who enables it [#301111]({{kib-pull}}301111).
+* Fixes ES|QL rules losing alerts, and failing, when the query returns a reserved metadata column such as `_source` or `_ignored`. {{kib}} now drops those columns from the alert, and the rule execution reports a warning that names them [#302055]({{kib-pull}}302055).
 
 #### {{elastic-defend}} [elastic-security-9.6.0-fixes-elastic-defend]
 * Fixes SentinelOne and Microsoft Defender for Endpoint response actions failing to retrieve large responses, and protects the SentinelOne `runscript` output file with the response actions file passcode [#279838]({{kib-pull}}279838).
@@ -235,6 +262,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes the response console command parser so it rejects un-prefixed positional arguments (such as `get-file path /some/file/here`) with an error, instead of silently treating them as valid [#290325]({{kib-pull}}290325).
 * Fixes the **Download script** action in the Script Library so the download link works in non-default {{kib}} spaces and when {{kib}} runs with a custom base path [#298398]({{kib-pull}}298398).
 * Fixes an issue where new {{elastic-defend}} policies on Platinum licenses enabled **Device Control** by default, even though that feature requires an Enterprise license. Affected policies blocked USB storage and later policy saves failed [#282133]({{kib-pull}}282133).
+* Fixes a crash when you switch to **Advanced** mode while creating a trusted application from an Automatic Troubleshooting insight on the endpoint details page [#306415]({{kib-pull}}306415).
 * Improves how {{elastic-defend}} on Linux handles DNS events when packet data is incomplete or unavailable.
 * Fixes {{elastic-defend}} on Linux to report DNS event sources as unsupported on kprobe-based kernels.
 * Fixes an issue where {{elastic-defend}} immediately retried sending documents when {{es}} failed to ingest them.
@@ -285,6 +313,23 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Reduces temporary memory usage when {{elastic-defend}} scans files on Linux and macOS.
 * Fixes {{elastic-defend}} on Linux so policy responses report a failure when the selected event collection source can't start, instead of reporting event collection as successful.
 * Fixes the {{elastic-defend}} status page that opens from Windows Security so it no longer shows stray content at the end of the page.
+* Improves the stability of {{elastic-defend}} when processing malformed data.
+* Fixes {{elastic-defend}} increasing the memory usage of scanned processes on some older Linux kernels.
+* Fixes {{elastic-defend}} on Windows so a failure to start one Event Tracing for Windows (ETW)-based event source no longer turns off the others. The policy response now reports the reason for the failure.
+* Fixes {{elastic-defend}} on Linux restarting event collection, and sending duplicate process events for all processes, each time it applies a policy. This occurred on hosts that use eBPF or kprobe event capture and have ransomware protection enabled.
+* Fixes {{elastic-defend}} failing to compress a file that grows during compression, such as a log that is still being written. The file is now captured at its size when compression started. This affects the Endpoint diagnostics bundle and the `get-file` response action.
+* Improves the accuracy of process names that {{elastic-defend}} reports on Linux, including for processes that run in a `chroot`.
+* Fixes {{elastic-defend}} so it no longer logs the signature of request URLs that carry a credential in their query string, which keeps sensitive tokens out of debug logs and diagnostics bundles.
+* Fixes an issue where {{elastic-defend}} treated advanced settings that are explicitly set to `false` as invalid or unset.
+* Fixes an issue on macOS where {{elastic-defend}} was restarted by the operating system about once an hour after it ran out of system resources.
+* Fixes {{elastic-defend}} {{ls}} outputs so that, when `ssl.verification_mode` is `full`, they check that the server certificate matches the configured host. Previously, any certificate signed by a trusted certificate authority was accepted.
+* Reduces delays in {{elastic-defend}} Kafka outputs while a Kafka broker is unreachable.
+* Fixes {{elastic-defend}} logging `Failed to resolve default topic, using fallback` for every document when the Kafka output topic is a template.
+* Fixes an issue where {{elastic-defend}} could drop queued events and alerts during uninstall when the host had recently reconnected after a long offline period. {{elastic-defend}} now retries the output connection immediately on uninstall.
+* Fixes {{elastic-defend}} reporting Linux process start times that were too early by the time the host spent in suspend. This also fixes `kill-process` failures with "Timestamp mismatch" after a suspend, and Session View trees that showed processes before they started.
+* Improves the reliability of {{elastic-defend}} filesystem monitoring on Linux across more mount configurations.
+* Fixes an issue where {{elastic-defend}} didn't treat the descendants of a trusted ancestor as trusted on Windows, and could lose track of the start time of processes trusted through a trusted ancestor on Linux and macOS.
+* Fixes an issue where {{elastic-defend}} could miss some descendants of a process, or act on processes outside the tree, when terminating a process tree.
 
 #### Entity Analytics [elastic-security-9.6.0-fixes-entity-analytics]
 * Fixes **Inspect** on the risk score table in {{agent-builder}} entity previews, which showed `Couldn't render this attachment` or became disabled after you closed the entity details flyout [#278949]({{kib-pull}}278949).
@@ -296,6 +341,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 * Fixes an issue where the entity summary in the entity details flyout failed to persist when the entity metadata data stream was missing [#288199]({{kib-pull}}288199).
 * Fixes {{kib}} global search showing two identical **Entity analytics** results by renaming the settings page result to **Entity analytics settings** [#292306]({{kib-pull}}292306).
 * Fixes the entity store so users with the {{elastic-sec}} `All` privilege can turn built-in entity resolution rules on or off, and so those settings take effect when a non-superuser set up the entity store. Turning these rules on or off now requires the Entity Analytics manage privilege, which the {{elastic-sec}} `All` privilege grants [#298009]({{kib-pull}}298009).
+* Fixes an issue where users who lost a privileged role stayed on the prebuilt Privileged Users watchlist when synced from the `okta` and `ad` integration sources, so the watchlist risk modifier kept applying to their risk score [#301374]({{kib-pull}}301374).
 
 #### General [elastic-security-9.6.0-fixes-general]
 * Fixes an issue where {{elastic-sec}} pages could stay stuck on a loading spinner when more than one data view selection was requested at the same time [#293909]({{kib-pull}}293909).
@@ -321,6 +367,7 @@ To check for security updates, go to [Security announcements for the Elastic sta
 
 #### Threat intelligence [elastic-security-9.6.0-fixes-threat-intelligence]
 * Fixes an issue where the Threat Intelligence **Indicators** page could stay stuck on a loading spinner when the request for installed integrations was cancelled before it finished [#295486]({{kib-pull}}295486).
+* Fixes the **Indicators** page, the threat intelligence details in the alert flyout, and the Overview dashboard's Threat Intelligence view showing each indicator once per ingested version for threat intel integrations that use a transform. They now show only the latest copy of each indicator, so counts match the integration dashboards, and expired indicators no longer appear [#302149]({{kib-pull}}302149).
 
 #### Workflows [elastic-security-9.6.0-fixes-workflows]
 * Fixes custom workflow steps so {{kib}} API requests are space-prefixed and target the workflow's space instead of the default space [#280986]({{kib-pull}}280986).
