@@ -63,26 +63,28 @@ Hosted agent telemetry can include prompts, tool calls, and model responses. Bef
 
 ## Check that telemetry arrives
 
-Send a request to your hosted agent and allow a few seconds for the telemetry to arrive. Foundry sets `service.name` to the name of your agent. In {{kib}} **Discover**, run the following {{esql}} query to find the traces:
+Send a request to your hosted agent and allow a few seconds for the telemetry to arrive. Then, in {{kib}} **Discover**, run the following {{esql}} queries. Each one filters on `service.name`, which Foundry sets to the name of your agent.
 
-```esql
-FROM traces-generic.otel-default
-| WHERE service.name == "<your-agent-name>"
-```
+* Traces:
 
-The hosted agent also sends logs and metrics, which land in the `logs-generic.otel-default` and `metrics-generic.otel-default` data streams. To find the logs, run the following query in **Discover**:
+    ```esql
+    FROM traces-generic.otel-default
+    | WHERE service.name == "<your-agent-name>"
+    ```
 
-```esql
-FROM logs-generic.otel-default
-| WHERE service.name == "<your-agent-name>"
-```
+* Logs:
 
-To find the metrics, run the following query:
+    ```esql
+    FROM logs-generic.otel-default
+    | WHERE service.name == "<your-agent-name>"
+    ```
 
-```esql
-TS metrics-generic.otel-default
-| WHERE service.name == "<your-agent-name>"
-```
+* Metrics:
+
+    ```esql
+    TS metrics-generic.otel-default
+    | WHERE service.name == "<your-agent-name>"
+    ```
 
 ## Example: Token usage by model
 
