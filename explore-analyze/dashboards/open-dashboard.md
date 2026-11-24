@@ -104,12 +104,12 @@ Deleting a dashboard doesn't delete its version history, but you can't open that
 
 ### Compare two versions of a dashboard [compare-dashboard-versions]
 
-To see exactly what changed between two saved versions, for example before you restore one, start from the **Version history** list in one of two ways:
+To see exactly what changed between two saved versions, for example before you restore one, open **History** and compare from the **Version history** list:
 
 * Select the changes link on a version, such as **3 changes**, to compare it with the version before it.
 * To compare it with a different version, open the **Version actions** menu {icon}`boxes_vertical` on that other version and select **Compare to this version**.
 
-{{kib}} shows the differences as JSON. Use the arrows at the bottom of the comparison to step through the changes one at a time. To switch between **Unified** and **Split** views, select **Settings** {icon}`controls` at the bottom of the comparison.
+{{kib}} shows the differences as JSON, with a **Comparing with** label for the version it's compared against. Use **Previous change** and **Next change** to step through the changes one at a time. To switch between **Unified** and **Split** views, open **Settings** {icon}`controls` and select a **Comparison mode**.
 
 :::{image} /explore-analyze/images/dashboard-version-comparison.png
 :alt: Version 3 compared with version 2 of a dashboard in split view, with the changed lines highlighted and the Comparison mode menu open with Split selected
