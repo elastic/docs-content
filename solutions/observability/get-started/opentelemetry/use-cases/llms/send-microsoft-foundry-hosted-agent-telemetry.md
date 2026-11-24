@@ -28,7 +28,7 @@ Make sure you have the following:
 
 ## Configure the hosted agent to export to Elastic
 
-Microsoft's own guide for this setup is [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry). The setup has three steps:
+Microsoft's own guide for this setup is [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry?tabs=otlp-export). The setup has three steps:
 
 :::::{stepper}
 
@@ -101,7 +101,7 @@ To send telemetry only to Elastic, disable monitoring at the project level in Fo
 
 ## Related pages
 
-* [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry) (Microsoft documentation)
+* [Export hosted agent telemetry by using OpenTelemetry](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-telemetry?tabs=otlp-export) (Microsoft documentation)
 * [{{motlp}} reference](/reference/managed-inputs/managed-otlp-endpoint.md)
 * [LLM and agentic AI observability](/solutions/observability/applications/llm-observability.md)
 * To collect platform metrics and logs from Microsoft Foundry, use the [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) integration.
