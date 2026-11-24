@@ -67,7 +67,7 @@ The following limits apply to {{managed-integrations}}:
 
 ## Security and data residency [managed-integrations-data-security]
 
-The collector for each {{managed-integration}} writes documents directly to your cluster. Data is stored in your project or deployment, and Elastic employees don't have access to it.
+The collector for each {{managed-integration}} writes documents directly to your cluster. Data is stored in your project or deployment, and Elastic employees don't have access to it. Each collector is dedicated to a single {{managed-integration}}: no other workloads can be added to it.
 
 Where the collector runs, and how its data reaches your cluster, depends on your deployment type:
 
@@ -75,8 +75,6 @@ Where the collector runs, and how its data reaches your cluster, depends on your
 * **{{ech}} deployments**: The collector runs on {{serverless-full}} infrastructure, which isn't necessarily in the same region as your deployment. Data typically travels over Elastic's internal network, but if your deployment is in a region that isn't served by {{serverless-full}}, it might traverse the public internet to reach your deployment.
 
 For more information, refer to [Where do the collectors run?](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-collector-location) and [Does my data travel over the public internet?](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-public-internet) in the FAQ.
-
-Each collector is dedicated to a single {{managed-integration}}: no other workloads can be added to it.
 
 ## Manage and monitor {{managed-integrations}} [managed-integrations-management]
 
