@@ -22,7 +22,7 @@ This image shows an example of global search and global time narrowing results.
 Only layers requesting data from {{es}} are narrowed by global search and global time. To add a layer that requests data from {{es}} to your map, click **Add layer**, then select one of the following:
 
 * Documents
-* {applies_to}`serverless: beta` {applies_to}`stack: beta` [ES|QL](maps-esql-layer.md)
+* {applies_to}`serverless: beta` {applies_to}`stack: beta` [ES|QL](maps-esql-layer.md#maps-esql-layer-narrow), which has its own options to apply global search and time
 * Choropleth
 * Clusters and grid
 * Heat map
