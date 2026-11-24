@@ -22,7 +22,7 @@ The telemetry is stored in Elastic in OTLP format.
 
 Make sure you have the following:
 
-* A Microsoft Foundry project with a deployed hosted agent.
+* A Microsoft Foundry project with a hosted agent that you deploy with the Azure Developer CLI (`azd`). The steps on this page change the agent's `azure.yaml` file.
 * An {{obs-serverless}} project or an {{ech}} deployment. On {{ech}}, the {{motlp}} requires version 9.0 or later. The {{motlp}} isn't available for self-managed, {{ece}}, or {{eck}} deployments.
 * Your {{motlp}} endpoint and an API key with the `event:write` privilege for the `apm` application. To get both, follow the **Find your endpoint** and **Create an API key** steps in [Quickstart: Send OTLP data to Elastic Serverless or Elastic Cloud Hosted](/solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md#send-data-to-elastic).
 
@@ -37,22 +37,22 @@ Create the connection before you deploy the agent, so the agent can read the key
 ::::
 
 ::::{step} Add the exporter settings
-Add these three environment variables to your hosted agent. They tell it where to send telemetry and how to log in. In `azure.yaml`, they go in the `env` map of your agent's service:
+Add these three environment variables to your hosted agent. They tell it where to send telemetry and how to authenticate. In `azure.yaml`, add them to the `env` map of the service whose `host` is `azure.ai.agent`:
 
 ```yaml
 services:
-  <your-agent-name>:
+  <your-agent-service>:
     env:
       OTEL_EXPORTER_OTLP_ENDPOINT: https://<your-motlp-endpoint>
       OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
       OTEL_EXPORTER_OTLP_HEADERS: $${{connections.otel-secrets.credentials.otlp_headers}}
 ```
 
-In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. Keep the two dollar signs at the start: with only one, `azd` tries to expand the value itself and the deploy fails with `unable to parse variable name`. For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
+In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. Keep the two dollar signs at the start of that value. `azd` expands values in this map that start with a dollar sign, so with only one, the deploy fails with `unable to parse variable name`. `azd` turns the two dollar signs into one, which is the form Foundry expects. For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
 ::::
 
 ::::{step} Deploy the agent again
-Foundry stores environment variables with each agent version. Deploy your agent again to create a new version with these settings.
+Foundry stores environment variables with each agent version, so the settings only apply to a new version. Run `azd deploy` to create one.
 ::::
 
 :::::
