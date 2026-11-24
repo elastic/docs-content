@@ -3,8 +3,8 @@ navigation_title: "ES|QL layer"
 description: Create a map layer from an ES|QL query to plot points, shapes, and grids, narrow it by map area, time, and search, and tie grid detail to the zoom level.
 type: how-to
 applies_to:
-  stack: beta
   serverless: beta
+  stack: beta
 products:
   - id: kibana
   - id: cloud-serverless
@@ -22,7 +22,7 @@ To follow these steps, you need data that your query can turn into a location, s
 
 1. Go to **Maps**, then open a map or select **Create map**.
 2. Select **Add layer**, then select **ES|QL**.
-3. Write a query that returns the data to plot, and run it. If your data has a geospatial field, {{kib}} starts you with a query that keeps that field. To see what the query can return, refer to [](#maps-esql-layer-query).
+3. Enter a query that returns the data to plot. If your data has a geospatial field, {{kib}} starts you with a query that keeps that field.
 
    For example, this query plots each request as a point and adds the client IP address and the bytes transferred to its tooltip:
 
@@ -32,8 +32,10 @@ To follow these steps, you need data that your query can turn into a location, s
    | LIMIT 10000
    ```
 
-4. Select **Add and continue**.
-5. In **Layer settings**, name the layer and adjust **Layer style**, then select **Keep changes**.
+4. Run the query. The map previews the layer. If the editor shows an error, refer to [](#maps-esql-layer-query) for what the query must return.
+5. Select **Add and continue**.
+6. In **Layer settings**, enter a **Name** for the layer, and adjust **Layer style** if you want.
+7. Select **Keep changes**.
 
 The map draws one feature for each row that the query returns. To see how many rows came back, hover over the layer's icon in the layer list. To see the other columns of a row, hover over or select its feature on the map.
 
@@ -44,7 +46,7 @@ The map draws each row of the result as a feature, so the result needs one colum
 * The query must return exactly one column of type `geo_point` or `geo_shape`. If it returns none or more than one, the editor shows an error. Use `KEEP` or `DROP` to narrow the columns.
 * The tooltip of a feature lists the other columns of its row.
 * When a query returns six or more columns, the editor suggests `KEEP` or `DROP` to narrow them, because fewer columns make the map faster.
-* A query returns up to 1,000 rows by default. A [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/limit.md) command can raise that to 10,000. When the results reach the limit, the tooltip on the layer's icon says that the results are limited to the first rows.
+* A `FROM` query returns up to 1,000 rows by default. A [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/limit.md) command can return more, within the [result set size limit](elasticsearch://reference/query-languages/esql/limitations.md) of your cluster. When the results reach the limit, the tooltip on the layer's icon says that the results are limited to the first rows.
 
 ## Narrow the layer by map area, time, and search [maps-esql-layer-narrow]
 
@@ -93,8 +95,11 @@ To make the cells smaller or larger at every zoom level, move the **Resolution**
 
 Only Maps fills in these parameters. A query that uses them doesn't work in a Vega visualization.
 
+## Next steps
+
+To change how the features that your query returns look, refer to [Vector styling](vector-style.md).
+
 ## Related pages
 
 * [Clusters](maps-grid-aggregation.md): Group documents into grids without writing a query.
-* [Vector style](vector-style.md): Change the colors and sizes of the features that your query returns.
 * [Use {{esql}} in {{kib}}](/explore-analyze/query-filter/languages/esql-kibana.md): Get help from the editor as you write queries.
