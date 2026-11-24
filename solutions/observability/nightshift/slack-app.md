@@ -122,11 +122,6 @@ An automation can post an investigation to a connected channel, for example when
 
 When the investigation finishes, {{nightshift}} edits that same message with the result: a title, the severity, the automation, **What happened**, **Impact**, **Conclusion**, and **Investigation details**, and the **View Full Investigation** button. If the investigation fails or times out, the message shows **⚠️ Investigation failed** or **⚠️ Investigation timed out** under the title, and says why under **What went wrong**.
 
-:::{image} ../../images/nightshift-slack-investigation-result.png
-:alt: An investigation result in an alert's thread, with what happened, impact, conclusion, and the View Full Investigation button
-:screenshot:
-:::
-
 In an investigation's thread, your team can work in two ways:
 
 - **Mention `@Elastic`** to ask a question. You get an answer, and the investigation doesn't run again.
