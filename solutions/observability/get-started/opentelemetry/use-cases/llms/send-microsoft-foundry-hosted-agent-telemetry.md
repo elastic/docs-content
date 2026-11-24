@@ -35,9 +35,9 @@ Microsoft's own guide for this setup is [Export hosted agent telemetry by using 
 ::::{step} Store the API key in a Foundry connection
 Keep the Elastic API key out of `agent.yaml` by storing it in a Foundry project connection:
 
-1. In the Foundry portal, open **Manage** → **Project details** → **Connected resources**, then select **Add connection**.
+1. In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection**.
 2. Select **Custom keys**.
-3. Name the connection, for example `otel-secrets`. Add a key named `otlp_headers` with the value `Authorization=ApiKey <your-api-key>`. That's the word `ApiKey`, a space, then the encoded key.
+3. Name the connection, for example `otel-secrets`. Add a key named `otlp_headers` with the value `Authorization=ApiKey <your-api-key>`. Enter it on one line, with one space after `ApiKey` and nothing after the key.
 
 Create the connection before you deploy the agent version. If the connection doesn't exist, the header resolves to an empty value and Elastic rejects the data.
 ::::
