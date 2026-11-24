@@ -48,7 +48,7 @@ services:
       OTEL_EXPORTER_OTLP_HEADERS: $${{connections.otel-secrets.credentials.otlp_headers}}
 ```
 
-In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. Keep the two dollar signs at the start of that value. `azd` expands values in this map that start with a dollar sign, so with only one, the deploy fails with `unable to parse variable name`. `azd` turns the two dollar signs into one, which is the form Foundry expects. For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
+In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
 ::::
 
 ::::{step} Deploy the agent again
