@@ -99,7 +99,7 @@ The Claude desktop app supports OAuth natively, so no additional adapter is requ
 To configure the Claude desktop app:
 
 1. Start the Claude desktop app and log in.
-2. Open **Settings → Connectors → Add → Add custom connector**.
+2. Open **Settings** → **Connectors** → **Add** → **Add custom connector**.
 3. Enter a name, the URL, and Client ID.
 
 
@@ -122,7 +122,7 @@ The Claude desktop app supports local MCP servers, and can use the [mcp-remote](
 
 To configure the Claude desktop app:
 
-1. In the Claude desktop app, open **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` in your text editor.
+1. In the Claude desktop app, open **Settings** → **Developer** → **Edit Config**. This opens `claude_desktop_config.json` in your text editor.
 2. Add your MCP client to the `mcpServers` object:
 
    ```json
@@ -170,7 +170,7 @@ Instead of adding a custom connector, you can add the [Elastic Cloud Serverless 
 To connect from claude.ai:
 
 1. Log in to claude.ai.
-2. Click your account menu, and then go to **Settings → Connectors → Add → Add custom connector**.
+2. Click your account menu, and then go to **Settings** → **Connectors** → **Add** → **Add custom connector**.
 3. Enter a name, the URL, and Client ID. Confidential clients also require a Client Secret.
 4. Click **Add**.
 5. Click **Connect**
@@ -190,8 +190,8 @@ ChatGPT assigns a unique callback URL to each app. You won't know this URL until
 
 To connect from ChatGPT:
 
-1. Go to **Settings → Security and login** and enable **Developer mode**.
-2. Go to **Settings → Plugins**, then click the plus button to create a new plugin.
+1. Go to **Settings** → **Security and login** and enable **Developer mode**.
+2. Go to **Settings** → **Plugins**, then click the plus button to create a new plugin.
 3. Enter a name and the MCP server URL, and select **OAuth** as the authentication type.
 4. Under **Registration method**, select **User-Defined OAuth Client**.
 5. Copy the **Callback URL** that ChatGPT displays. This URL is unique to the app and looks like `https://chatgpt.com/connector/oauth/{callback_id}`. Open your [OAuth client](/deploy-manage/app-connections/create-oauth-client.md#create-the-client) in a separate tab and add this URL as a **Remote** redirect URI.
@@ -224,7 +224,7 @@ To connect from Cursor:
 
    Replace `{MCP_SERVER_URL}`, `{CLIENT_ID}`, and `{CLIENT_SECRET}` with the values for your OAuth client. For public clients, omit the `CLIENT_SECRET` field.
 
-3. Open **Cursor Settings → Tools & MCP**. The server appears with a **Connect** button.
+3. Open **Cursor Settings** → **Tools & MCP**. The server appears with a **Connect** button.
 4. Click **Connect** to start the OAuth flow.
 
 When Cursor starts the OAuth flow, it redirects to one of two callback URLs depending on the surface:

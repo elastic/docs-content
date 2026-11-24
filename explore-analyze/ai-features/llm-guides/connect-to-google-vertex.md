@@ -26,7 +26,7 @@ Before continuing, you should have an active project in one of Google Vertex AI�
 
 ## Enable the Vertex AI API [_enable_the_vertex_ai_api]
 
-1. Log in to the GCP console and navigate to **Vertex AI → Vertex AI Studio → Overview**.
+1. Log in to the GCP console and navigate to **Vertex AI** → **Vertex AI Studio** → **Overview**.
 2. If you’re new to Vertex AI, the **Get started with Vertex AI Studio** popup appears. Click **Vertex AI API**, then click **ENABLE**.
 
 The following video demonstrates these steps.
@@ -42,7 +42,7 @@ For more information about enabling the Vertex AI API, refer to [Google’s docu
 
 ## Create a Vertex AI service account [_create_a_vertex_ai_service_account]
 
-1. In the GCP console, navigate to **APIs & Services → Library**.
+1. In the GCP console, navigate to **APIs & Services** → **Library**.
 2. Search for **Vertex AI API**, select it, and click **MANAGE**.
 3. In the left menu, navigate to **Credentials** then click **+ CREATE CREDENTIALS** and select **Service account**.
 4. Name the new service account, then click **CREATE AND CONTINUE**.

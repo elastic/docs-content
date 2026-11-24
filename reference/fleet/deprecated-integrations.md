@@ -67,11 +67,11 @@ If you've enabled the [automatic upgrade of integration policies](/reference/fle
 While the automatic upgrade is paused, you'll see:
 
 * A **Review upgrade** button on the integration's **Integration policies** page
-* A warning icon in the **Attached policies** column on the **Integrations** > **Installed integrations** page
+* A warning icon in the **Attached policies** column on the **Integrations** → **Installed integrations** page
 
 To review the pending upgrade:
 
-1. In {{kib}}, open **Integrations** > **Installed integrations**.
+1. In {{kib}}, open **Integrations** → **Installed integrations**.
 2. In the **Attached policies** column, open the integration's policies.
 3. In the **Version** column, select **Review upgrade** for the policy you want to update.
 4. Review the deprecation warnings and recommended alternatives.

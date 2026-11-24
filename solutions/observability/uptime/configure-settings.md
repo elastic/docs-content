@@ -21,7 +21,7 @@ The **Settings** page enables you to change which {{heartbeat}} indices are disp
 
 Uptime settings apply to the current space only. To segment different uptime use cases and domains, use different settings in other spaces.
 
-1. To access this page, go to **{{observability}} > Uptime**.
+1. To access this page, go to **{{observability}}** → **Uptime**.
 2. At the top of the page, click **Settings**.
 
     ::::{important}
