@@ -50,7 +50,7 @@ stack: unavailable
 ```
 
 
-Use these steps for the {{aws}} integrations listed in [Integrations that support federated identity authentication](#federated-identity-supported-integrations). For CSPM and Cloud Asset Discovery, follow the deployment instructions for those integrations instead. To set up several AWS services at once, use the [guided AWS onboarding flow](/manage-data/ingest/aws-guided-onboarding.md), which includes these steps.
+Use these steps for the {{aws}} integrations listed in [Integrations that support federated identity authentication](#federated-identity-supported-integrations). For CSPM and Cloud Asset Discovery, follow the deployment instructions for those integrations instead.
 
 ### How it works [federated-identity-aws-how-it-works]
 
