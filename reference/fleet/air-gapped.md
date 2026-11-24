@@ -406,6 +406,9 @@ To make binaries available in an air-gapped environment, you can host your own c
 
     {{agents}} 9.6 or later try the fallback sources in order if the download from the first source fails. The proxy, TLS, authentication, and disk space settings of the first source apply to all of them. For details, refer to [Change the {{agent}} binary download location](/reference/fleet/agent-policy.md#agent-binary-download-settings).
 
-For standalone {{agents}}, you can set the binary download location in the `agent.download` section of the [`elastic-agent.yml`](/reference/fleet/elastic-agent-reference-yaml.md) file, or run the [`elastic-agent upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command with the `--source-uri` flag. In the configuration file, set `sourceURI` to a single location. For details, refer to [Configure download settings for standalone {{agent}} upgrades](/reference/fleet/elastic-agent-standalone-download.md).
+For standalone {{agents}}, you can set the binary download location in the `agent.download` section of the [`elastic-agent.yml`](/reference/fleet/elastic-agent-reference-yaml.md) file, or run the [`elastic-agent upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command with the `--source-uri` flag. In the configuration file, set the location with one of these settings:
 
-{applies_to}`stack: ga 9.6+` Starting with version 9.6, set `sources` instead of `sourceURI`. The `sources` setting takes a list of locations, which {{agent}} tries in order.
+* {applies_to}`stack: ga 9.6+` `sources`: A list of locations, which {{agent}} tries in order.
+* {applies_to}`stack: deprecated 9.6+` `sourceURI`: A single location. Use this setting for {{agent}} versions earlier than 9.6.
+
+For details, refer to [Configure download settings for standalone {{agent}} upgrades](/reference/fleet/elastic-agent-standalone-download.md).

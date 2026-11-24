@@ -131,7 +131,7 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-An agent policy can use up to three download sources in priority order. If the download from the first source fails, {{agents}} try the next sources in order. {{agents}} earlier than version 9.6.0 only use the first source. To select the sources for a policy, refer to [Change the {{agent}} binary download location](/reference/fleet/agent-policy.md#agent-binary-download-settings).
+An agent policy can use up to three download sources in priority order. If the download from the first source fails, {{agents}} try the next sources in order. {{agents}} earlier than version 9.6 only use the first source. To select the sources for a policy, refer to [Change the {{agent}} binary download location](/reference/fleet/agent-policy.md#agent-binary-download-settings).
 
 When an agent policy uses more than one download source, {{fleet}} takes the proxy, TLS, authentication, and disk space settings from the first source in the policy and applies them to all the sources. The settings of the other sources in the list aren't used.
 

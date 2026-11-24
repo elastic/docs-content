@@ -450,7 +450,7 @@ The fields are empty by default. When left empty, the values are set by {{agent}
 
 For {{agent}}s that cannot access the internet, you can specify agent binary download settings, and then configure agents to download their artifacts from the alternate location. For more information about running {{agent}}s in a restricted environment, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` An agent policy can use up to three download sources in priority order. When an upgrade starts, {{agent}} downloads the binaries from the first source. If that download fails, {{agent}} tries the next sources in order. {{agents}} earlier than version 9.6.0 only use the first source.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` An agent policy can use up to three download sources in priority order. When an upgrade starts, {{agent}} downloads the binaries from the first source. If that download fails, {{agent}} tries the next sources in order. {{agents}} earlier than version 9.6 only use the first source.
 
 To change the binary download location:
 

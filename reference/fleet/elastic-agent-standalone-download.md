@@ -21,7 +21,7 @@ $$$elastic-agent-standalone-download-settings$$$
 | Setting | Description |
 | --- | --- |
 | $$$agent.download.sources$$$<br>`sources` {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+`<br> | (list) Ordered list of locations of artifacts used during {{agent}} upgrade. If the download from one location fails, {{agent}} tries the next one. If you set both `sources` and `sourceURI`, only `sources` is used. The `auth`, TLS, and proxy settings of the `agent.download` section apply to all locations. Default: `https://artifacts.elastic.co/downloads/`.<br> |
-| $$$agent.download.sourceURI$$$<br>`sourceURI` {applies_to}`stack: deprecated 9.6+`<br> | (string) Path to the location of artifacts used during {{agent}} upgrade. Starting with version 9.6, use `sources` instead.<br> |
+| $$$agent.download.sourceURI$$$<br>`sourceURI` {applies_to}`serverless: deprecated` {applies_to}`stack: deprecated 9.6+`<br> | (string) Path to the location of artifacts used during {{agent}} upgrade. Starting with version 9.6, use `sources` instead.<br> |
 | $$$agent.download.target_directory$$$<br>`target_directory`<br> | (string) Path to the directory where download artifacts are stored.<br> |
 | $$$agent.download.timeout$$$<br>`timeout`<br> | (string) The HTTP request timeout in seconds for the download package attempt.<br> |
 | $$$agent.download.install_path$$$<br>`install_path`<br> | (string) The location of installed packages and programs, as well as program specifications.<br> |
