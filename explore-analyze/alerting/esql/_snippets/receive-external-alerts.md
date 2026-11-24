@@ -1,4 +1,4 @@
-% Steps to import alerts into Universal Alerting from any source that can send a webhook.
+% Steps to receive alerts in Universal Alerting from any source that can send a webhook.
 
 1. Create an **Inbound Webhook** connector. When you save it, {{kib}} generates a **Webhook URL** and an **Ingest token** for the connector and shows them in the flyout. Copy both before you close the flyout, because {{kib}} doesn't show the token again. If you lose the token, open the connector and select **Rotate ingest token** to get a new one. For more information, refer to [Inbound Webhook connector](kibana://reference/connectors-kibana/inbound-webhook-action-type.md).
 2. Open **Workflows** from the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). If you already have workflows, select **Create workflow**. Then select **Start manually** to open the editor with a sample workflow.
@@ -6,7 +6,7 @@
 3. Replace the sample workflow with the following one:
 
    ```yaml
-   name: Import alerts from an external source
+   name: Receive alerts from an external source
    enabled: true
    triggers:
      - type: inboundWebhook.received
