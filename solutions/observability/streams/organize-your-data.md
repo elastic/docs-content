@@ -1,7 +1,9 @@
 ---
 navigation_title: Organize data
 applies_to:
-  serverless: preview
+  serverless:
+    observability: preview
+    security: preview
   stack: preview 9.2+
 description: Learn how to organize your data streams using routing and partitioning.
 products:
@@ -69,9 +71,9 @@ Under **Condition**, you can also set the field, comparator, and value directly.
 This feature requires a [Generative AI connector](kibana://reference/connectors-kibana/gen-ai-connectors.md).
 :::
 
-::::{applies-switch}
+::::{tab-set}
 
-:::{applies-item} { serverless: preview, stack: preview 9.4+ }
+:::{tab-item} {{serverless-short}} and {{stack}} 9.4+
 
 1. Select **Get partitions suggestions**. Streams analyzes your data and suggests groupings.
 1. Review the suggested partitions, then **Accept** or **Reject** each one.
@@ -82,7 +84,7 @@ This feature requires a [Generative AI connector](kibana://reference/connectors-
 
 :::
 
-:::{applies-item} { stack: preview 9.2-9.3 }
+:::{tab-item} {{stack}} 9.2-9.3
 
 1. Select **Suggest partitions with AI**. Streams analyzes your data and suggests groupings.
 1. **Accept** or **Reject** the suggestions. After accepting, review the **Stream name** and **Condition**.
