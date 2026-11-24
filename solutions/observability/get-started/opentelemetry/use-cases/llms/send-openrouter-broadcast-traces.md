@@ -68,7 +68,7 @@ The destination's delivery status in the OpenRouter console shows a healthy indi
 Traces land as OTLP spans under `service.name: openrouter`. Each span carries the request metadata (model, provider, tokens, cost, finish reason, response id) and the full conversation. You can reach them from:
 
 * **Discover**: Query with {{esql}}, then expand a row.
-* **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall; pick a transaction to view its details.
+* **Applications → Service inventory → `openrouter` → Transactions**: Opens the request waterfall. Pick a transaction to view its details.
 * **Applications → Traces**: The list of root transactions.
 
 ## Example: Token usage by model
