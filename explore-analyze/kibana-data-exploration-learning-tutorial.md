@@ -409,7 +409,8 @@ Everything you built in this tutorial can also be reproduced in a single API cal
   The curl example below is verified end-to-end by
   .github/scripts/verify-dashboards-api-example.py. Re-run that script (with
   KIBANA_URL and API_KEY set) whenever you edit the payload, or whenever the
-  spec at https://github.com/elastic/dashboards-api-spec is updated. Last
+  Dashboards API reference at
+  https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards changes. Last
   verified against dashboards-api-spec @ 84120e3 on 2026-05-06.
 -->
 :::::::{dropdown} Recreate this dashboard with one API call
@@ -1026,7 +1027,7 @@ How each panel maps back to the tutorial:
 
 :::::
 
-For the full request schema, including sections, filter controls, and library-linked panels, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards/operation/post-dashboards).
+For the full request schema, including sections, filter controls, and library-linked panels, refer to the [Dashboards API reference](https://www.elastic.co/docs/api/kibana/operation/operation-create-dashboard).
 :::::::
 
 
