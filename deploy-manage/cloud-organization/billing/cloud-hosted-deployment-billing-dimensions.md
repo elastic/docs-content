@@ -21,6 +21,8 @@ Read on for detail about each of these categories and the billing dimensions in 
 
 ## Deployment charges
 
+$$$ram-hours$$$
+
 Deployment charges are charges associated with running {{ech}} deployments. The only deployment charge is deployment capacity.
 
 Deployment capacity refers to the cost of the nodes in your {{es}} deployment, plus additional node types such as {{kib}}, APM, and ML.  Each node type is priced in terms of GB of RAM per hour (CPU and disk are scaled with RAM and included in this price).  To calculate deployment capacity costs, we total up the cost of the nodes in your deployment(s) and multiply by GBs of RAM and how long they’ve been running.
@@ -35,8 +37,6 @@ Deployment capacity is purely a function of your current deployment configuratio
 
 
 ## Organization charges [data-transfer]
-
-$$$ram-hours$$$
 
 Organization charges are applied across the {{ech}} deployments in your {{ecloud}} organization. The only organization charge is data transfer.
 
