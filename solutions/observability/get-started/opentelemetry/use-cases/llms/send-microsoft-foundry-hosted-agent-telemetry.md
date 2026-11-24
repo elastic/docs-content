@@ -33,13 +33,11 @@ Full step-by-step setup is in Microsoft's guide: [Export hosted agent telemetry 
 :::::{stepper}
 
 ::::{step} Store the API key in a Foundry connection
-In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Name the connection `otel-secrets`, add a field named `otlp_headers`, and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). Create the connection before you deploy the agent.
+Create the connection before you deploy the agent, so the agent can read the key when it starts. In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Name the connection `otel-secrets`, add a field named `otlp_headers`, and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key).
 ::::
 
-::::{step} Add the exporter settings and deploy
-Add the settings to the `environment_variables` section of your agent's `agent.yaml` file.
-
-Set the endpoint to your {{motlp}} URL, the protocol to `http/protobuf`, and the headers to the connection field:
+::::{step} Add the exporter settings
+Add these three environment variables to your hosted agent. They tell it where to send telemetry and how to log in:
 
 ```yaml
 environment_variables:
@@ -51,7 +49,11 @@ environment_variables:
     value: ${{connections.otel-secrets.credentials.otlp_headers}}
 ```
 
-In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from the previous step. Then deploy the agent again. Foundry sets environment variables per agent version, so the settings apply only to a new version.
+In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. Add the settings to the `environment_variables` section of your agent's `agent.yaml` file.
+::::
+
+::::{step} Deploy the agent again
+Foundry stores environment variables with each agent version. Deploy your agent again to create a new version with these settings.
 ::::
 
 :::::
@@ -80,10 +82,6 @@ FROM logs-generic.otel-default
 TS metrics-generic.otel-default
 | WHERE service.name == "<your-agent-name>"
 ```
-
-## Send telemetry to Application Insights and Elastic
-
-Foundry can send the telemetry of your hosted agents to Application Insights. This is called project monitoring. When it's on, an Application Insights resource is [connected to your Foundry project](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-agent-setup), and every hosted agent sends its telemetry there automatically. If you also add the exporter settings from this page, the agent sends its telemetry to Application Insights and to Elastic in parallel. Each backend can map, store, and display the telemetry differently, so the data in Elastic might not match Application Insights field for field.
 
 ## Example: Token usage by model
 
