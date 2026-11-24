@@ -2,7 +2,9 @@
 navigation_title: Map fields
 description: Map Streams fields to define how Elasticsearch stores and indexes your data, balancing query performance and storage cost.
 applies_to:
-  serverless: ga
+  serverless:
+    observability: ga
+    security: ga
   stack: preview =9.1, ga 9.2+
 products:
   - id: observability
@@ -48,11 +50,13 @@ From here, you can:
 
 The **Schema** tab provides an overview of how fields are defined within your stream.
 
-- **Classic streams:** the **Schema** tab lists all fields found in the underlying index or index template. Each field shows its mapping status and type, either **Mapped** or **Unmapped**.
+**Classic streams**
+:   The **Schema** tab lists all fields found in the underlying index or index template. Each field shows its mapping status and type, either **Mapped** or **Unmapped**.
 
-- **Wired streams:** {applies_to}`stack: preview 9.2` {applies_to}`serverless: preview` the **Schema** tab determines field mappings by combining information from the current stream’s index and its parent streams. Fields with a type defined in a parent stream have the **Inherited** status. You can navigate to that parent stream to view or edit the mapping (except for fields defined in the root logs stream, which you can't modify).
+**Wired streams** {applies_to}`serverless: { observability: preview, security: preview }` {applies_to}`stack: preview 9.2+`
+:   The **Schema** tab determines field mappings by combining information from the current stream’s index and its parent streams. Fields with a type defined in a parent stream have the **Inherited** status. You can navigate to that parent stream to view or edit the mapping (except for fields defined in the root logs stream, which you can't modify).
 
-  When you add a mapping to a wired stream, all of its child streams automatically inherit it.
+    When you add a mapping to a wired stream, all of its child streams automatically inherit it.
 
 ### Edit mappings from the Schema tab
 

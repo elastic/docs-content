@@ -67,19 +67,9 @@ Then, follow the prompts on screen to set up the correct default variables for y
 1. Generate an API key:
 
     1. Go to the **Synthetics** app in {{kib}}.
-    2. Click **Settings**.
+    2. Select **Settings**. Depending on your version, it can be in the {icon}`ellipsis` **More** menu.
     3. Switch to the **Project API Keys** tab.
-    4. Click **Generate Project API key**.
-
-        ::::{important}
-        To generate a Project API key, you must be logged in as a user with [Editor](/solutions/observability/synthetics/grant-access-to-secured-resources.md) access.
-
-        ::::
-
-        :::{image} /solutions/images/serverless-synthetics-monitor-management-api-key.png
-        :alt: Project API Keys tab in Synthetics settings
-        :screenshot:
-        :::
+    4. Click **Generate Project API key**. You must be logged in as a user with [Editor](/solutions/observability/synthetics/grant-access-to-secured-resources.md) access to generate a key.
 
         ::::{note}
         To use an API key to push to Elastic’s global managed testing infrastructure, the *Elastic managed locations enabled* toggle must be on when generating the API key. If the *Elastic managed locations enabled* toggle is disabled, an administrator has restricted access to Elastic’s global managed testing infrastructure.
