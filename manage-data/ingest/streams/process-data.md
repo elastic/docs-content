@@ -44,10 +44,14 @@ The two aren't exclusive. An ingest pipeline attached to a data stream still run
 The list in the **Processing** panel comes from the Streams backend, so it can change without a {{kib}} release. It currently includes:
 
 * [Add fields](processors/add-fields.md): add named fields to a record's body, resource, scope, attributes, or metadata, with a fixed value or an OTTL expression, optionally when a condition holds.
+* [Delete fields](processors/delete-fields.md): remove named fields from a location.
 * [Filter](processors/filter.md): drop records that match an OTTL condition.
+* [Move fields](processors/move-fields.md): move a field from one location to another, with the same or a new name.
 * [Rename fields](processors/rename-fields.md): give a field a new name in the same location.
 * [Set](processors/set.md): write to any field by its OTTL path, including fields of the record itself such as a log's severity or a span's name.
 * [Transform](processors/transform.md): run OTTL statements of your choice, for anything the other processors don't cover.
+
+Each processor in the **Processor** list carries a status badge from the backend unless it's stable. During the private preview, every processor is **Experimental**: new and still evolving, supported on a best-effort basis, and subject to change. Hover over the badge to read what a status means.
 
 There are no parsing processors, such as Grok, Dissect, or JSON, and no enrichment processors, such as GeoIP. Refer to [Streams limitations](limitations.md#streams-limitations-processing).
 
@@ -73,7 +77,7 @@ Saved processing applies to live data immediately. There's no way to test a proc
 
 ## Manage the processors in a pipeline [streams-process-manage]
 
-To open a pipeline, select its node on the Streams Map. In the **Processing** panel, each processor is a card, and processors run top to bottom.
+To open a pipeline, select its node on the Streams Map. In the **Processing** panel, each processor is a card, and processors run top to bottom. On the Map, the pipeline node shows the records per second that reach it and the time a record spends in it, for the saved pipeline. Until data flows through it, the node reads **No data**.
 
 From the panel, you can:
 

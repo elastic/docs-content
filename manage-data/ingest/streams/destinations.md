@@ -27,24 +27,24 @@ When you create a destination, you first answer **Where will this destination's 
 | Choice | Writes to | Credentials | Use it for |
 | --- | --- | --- | --- |
 | [Local Elasticsearch](destinations/elasticsearch.md) | The {{serverless-short}} project you're working in | Created by Streams and scoped to the destination's write patterns | Data you search and analyze in this project |
-| [Remote Elasticsearch](destinations/remote-elasticsearch.md) | Another Elastic Cloud deployment or project on 9.5 or later | An API key from the remote deployment that you supply | A copy in another region, team, or deployment, including {{ech}} |
+| [Remote Elasticsearch](destinations/remote-elasticsearch.md) | Another Elastic Cloud deployment or project: {{ech}} on 9.5.0 or later, or {{serverless-short}} | An API key from the remote deployment that you supply | A copy in another region, team, or deployment, including {{ech}} |
 | [External storage](destinations/s3.md) | An Amazon S3 bucket you own, as newline-delimited JSON | An AWS access key pair that you supply | The complete record, kept on infrastructure you control, while you index only a subset |
 
 **External storage** is the name of the choice in the dialog. Once the destination exists, the Streams Map and the **Destinations** tab show its type as **Amazon S3**, and these pages call it an Amazon S3 destination.
 
 Destinations can't be edited after you create them. To change a destination's name, type, credentials, or index settings, create a new destination, reconnect the routing rules, and delete the old one.
 
-## Signals and index modes [streams-destinations-signals-modes]
+## Signals and writing modes [streams-destinations-signals-modes]
 
-Destinations are signal-aware. The signals are logs, metrics, and traces, and documents from a Managed _bulk source, shown as **Documents**. A record of a signal that the destination doesn't accept is dropped at that destination. If a source accepts logs, metrics, and traces and the destination accepts only logs, add a [router](route-data.md) and send the metrics and traces to a destination of their own. A Remote Elasticsearch destination doesn't accept documents.
+Destinations are signal-aware. The signals are logs, metrics, and traces, and documents from a Managed _bulk source, shown as **Documents**. A record of a signal that the destination doesn't accept is dropped at that destination. If a source accepts logs, metrics, and traces and the destination accepts only logs, add a [router](route-data.md) and send the metrics and traces to a destination of their own.
 
-An {{es}} destination also has an index mode, which decides the data stream or index each record is written to. **Auto (default)** takes the target from the record itself, and **Fixed index per signal** writes every record of a signal to one index that you name. Refer to [Local Elasticsearch destination](destinations/elasticsearch.md#streams-es-destination-auto).
+An {{es}} destination also has a writing mode, which the dialog asks for as **How should its documents be written?** and which decides the data stream or index each record is written to. **Automatic** takes the target from the record itself, and **Fixed index per signal** writes every record of a signal to one data stream named from a dataset and a namespace that you enter. Refer to [Local Elasticsearch destination](destinations/elasticsearch.md#streams-es-destination-auto).
 
 ## Create a destination [streams-destinations-create]
 
 You create a destination from the **Destination** button in the toolbar at the bottom of the [Streams Map](streams-map.md), or from **Add destination** on the **Destinations** tab, which opens the same dialog. You need the **Admin** role. Refer to [Privileges and API keys](security.md#streams-security-view-edit).
 
-The dialog asks where the data will live, for the fields of that type, and for a **Destination name** that must be unique among your destinations and can't be changed later. Streams saves the destination when you select **Create destination**, and it appears on the Map. Connect a source, pipeline, or router to it and select **Save changes**. A Local Elasticsearch destination shows **Data not flowing in** until the first records arrive, then a rate and a write duration. Remote Elasticsearch and Amazon S3 destinations show no state, so check for the data on the remote side. Refer to [Monitor streams](monitor-streams.md).
+The dialog walks through where the data will live, the connection or storage fields of that type, how its documents are written for an {{es}} destination, and, under **Destination details**, a **Name** that must be unique among your destinations and can't be changed later. Streams saves the destination when you select **Create destination**, and it appears on the Map. Connect a source, pipeline, or router to it and select **Save changes**. The destination shows **Data not flowing in** until the first records arrive, then a rate and a write duration. Refer to [Monitor streams](monitor-streams.md).
 
 For the steps and the fields of each type, refer to [Local Elasticsearch destination](destinations/elasticsearch.md#streams-es-destination-create), [Remote Elasticsearch destination](destinations/remote-elasticsearch.md#streams-remote-es-create), or [Amazon S3 destination](destinations/s3.md#streams-s3-destination-create).
 
@@ -54,9 +54,9 @@ The **Destinations** tab in **Streams** lists every destination as a row, with i
 
 * **Find a destination**: Type in the search field to filter the list, or open **Type** and select one or more destination types. Select **Refresh** to reload the list.
 * **See a destination on the Map**: Select {icon}`waypoint` **Show on map** in its row. The [Streams Map](streams-map.md) opens with the search set to the destination's name, so you see the destination and everything connected to it.
-* **View the indices behind a Local Elasticsearch destination**: Expand its row to list every index and data stream in the project that matches the destination's write patterns. The list is based on the patterns, not on what the stream delivered, so with the default patterns it includes data streams that integrations and other shippers write to, and it's filled before the destination writes anything. If nothing matches, the row says **No indices match this destination's write scope yet.** Select an index name to open the index view described in [View the details of an index](#streams-destinations-index). For what the numbers tell you about a running stream, refer to [Monitor streams](monitor-streams.md#streams-monitor-indices).
+* **View the indices behind a Local Elasticsearch destination**: Expand its row to list every index and data stream in the project that matches the destination's write patterns. The list is based on the patterns, not on what the stream delivered, so with the default patterns it includes data streams that integrations and other shippers write to, and it's filled before the destination writes anything. If no source reaches the destination yet, the row says **No sources are connected to this destination yet. Connect one on the Map to start sending data.** If a source is connected but nothing matches, it says **No indices match this destination's write scope yet.** Select an index name to open the index view described in [View the details of an index](#streams-destinations-index). For what the numbers tell you about a running stream, refer to [Monitor streams](monitor-streams.md#streams-monitor-indices).
 * **View a Remote Elasticsearch or Amazon S3 destination**: Expand its row to see its configuration. Credentials show as **Configured**, never their value.
-* **Delete a destination**: Open the **Destination actions** menu in its row and select **Delete**, then confirm. The deletion is saved immediately. It removes the destination from the Map and invalidates the key Streams created for it. Routing rules that pointed to it must be given a new target before you can save.
+* **Delete a destination**: Open the **Destination actions** menu in its row and select **Delete**, then confirm **Delete destination**. The deletion is saved immediately. It removes the destination from the Map and invalidates the key Streams created for it. A routing rule whose only target was this destination is deleted with it, condition included, and the confirmation doesn't list those rules. If one of them was the rule with no condition, data that matches none of the remaining rules is dropped from then on, so check the router's rules before and after deleting a destination they pointed to. Refer to [Edit a router](route-data.md#streams-route-edit).
 * **Add a destination**: Select **Add destination**. It opens the same dialog as **Destination** on the Map. Refer to [Create a destination](#streams-destinations-create).
 
 Each row of the **Destinations** table has these columns:
@@ -80,14 +80,14 @@ The expanded row of a Local Elasticsearch destination lists the matching indices
 | **Failure store** | **On** or **Off**. The failure store is where {{es}} keeps records that failed to index instead of dropping them. Refer to [Failure stores](../../data-store/data-streams/failure-store.md). |
 | **Retention** | The data retention period, or **Indefinite** when none is set. |
 
-**Health**, **Data quality**, and **Failure store** are available for data streams only. An index you named in Fixed index mode that isn't a data stream shows no value for them.
+**Health**, **Data quality**, and **Failure store** are available for data streams only. A **Documents index** you named in Fixed mode that isn't a data stream shows no value for them.
 
 ### Open a destination from the Map [streams-destinations-open]
 
-Selecting a destination on the [Streams Map](streams-map.md) opens a panel with the same information as the expanded row on the **Destinations** tab. What's in it depends on the destination type:
+Selecting a destination on the [Streams Map](streams-map.md) opens a panel with the same information as the expanded row on the **Destinations** tab, plus the destination's delivery figures. What's in it depends on the destination type:
 
-* **Remote Elasticsearch or Amazon S3**: The destination's configuration.
-* **Local Elasticsearch**: The list of indices and data streams that match the destination's write patterns, with a **Documents** chart above it. In the panel, you can:
+* **Remote Elasticsearch or Amazon S3**: A **Configuration** panel with the destination's settings, and a **Delivery** panel with a chart of delivered and failed records for the time range you pick. When records failed with an authentication or authorization error, the panel is titled **Delivery failures** and lists each class with its rate and percentage. Refer to [Monitor streams](monitor-streams.md#streams-monitor-failures).
+* **Local Elasticsearch**: The list of indices and data streams that match the destination's write patterns, with a **Documents** chart above it and the same **Delivery failures** panel. In the panel, you can:
   * Pick a time range for the chart and read the **Docs total**, **Docs in time range**, and **Peak ingest rate** figures under it.
   * Search the indices or filter them by **Data quality**.
   * Select an index name to open the [index view](#streams-destinations-index) in the same panel.
@@ -105,7 +105,7 @@ The header shows two badges, the index's data quality, such as **Degraded qualit
 
 ## When a destination can't store data [streams-destinations-cant-store]
 
-A destination that can't store a record, because the target index is outside the write patterns, the credential is invalid, or the remote deployment isn't reachable, drops it after the retry window. A failing destination doesn't block the stream, so the other destinations connected to the same source keep receiving data. The shipper isn't told about the drop, and the Streams Map doesn't report it. To find out whether data is being stored, refer to [What isn't reported](monitor-streams.md#streams-monitor-not-reported). For what Streams doesn't guarantee, refer to [Streams limitations](limitations.md#streams-limitations-data).
+A destination that can't store a record, because the target index is outside the write patterns, the credential is invalid, or the remote deployment isn't reachable, drops it after the retry window. A failing destination doesn't block the stream, so the other destinations connected to the same source keep receiving data. The shipper isn't told about the drop. On the Streams Map, a destination whose credential is rejected shows a **Failures** badge, and the destination's details chart every failed record for the time range you pick. Other causes, such as a mapping conflict in {{es}}, aren't shown on the node. To find out whether data is being stored, refer to [Delivery failures](monitor-streams.md#streams-monitor-failures) and [What isn't reported](monitor-streams.md#streams-monitor-not-reported). For what Streams doesn't guarantee, refer to [Streams limitations](limitations.md#streams-limitations-data).
 
 ## Related pages [streams-destinations-related]
 

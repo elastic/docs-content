@@ -29,6 +29,7 @@ Streams offers three source types, each for a different protocol:
 | [Managed _bulk](sources/elasticsearch-bulk.md) | {{es}} bulk API | Documents | Scripts and applications that send bulk requests directly, such as with `curl` |
 
 An OTLP endpoint source accepts only the signals selected when it's created. Prometheus Remote Write and Managed _bulk sources each carry one signal, so there's nothing to select. A source's type and name can't be changed after you create it. To change either, create a new source and point your shippers at it.
+
 ## Endpoints and API keys [streams-sources-endpoints-keys]
 
 When you create a source, Streams generates an API key for it and shows the key once, together with the endpoint URLs and ready-made configuration snippets for common senders. The key allows writing to that source and nothing else. Senders send it in every request as the HTTP header `Authorization: ApiKey <key>`.

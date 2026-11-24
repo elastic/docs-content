@@ -95,7 +95,7 @@ If the request returns `404`, `401`, or `403`, refer to [Troubleshoot Streams](.
 
 ## How the data is stored [streams-otlp-source-storage]
 
-Where the data is stored depends on the destinations you connect. A **Local Elasticsearch** destination in Auto mode writes each record to an OpenTelemetry data stream named `<signal>-<dataset>.otel-<namespace>`, chosen from the record's `data_stream.dataset` and `data_stream.namespace` attributes, and records without them go to the default data stream for their signal. Refer to [How Auto mode picks a data stream](../destinations/elasticsearch.md#streams-es-destination-auto-data-stream).
+Where the data is stored depends on the destinations you connect. A **Local Elasticsearch** destination in **Automatic** mode writes each record to an OpenTelemetry data stream named `<signal>-<dataset>.otel-<namespace>`, chosen from the record's `data_stream.dataset` and `data_stream.namespace` attributes, and records without them go to the default data stream for their signal. Refer to [How Automatic mode picks a data stream](../destinations/elasticsearch.md#streams-es-destination-auto-data-stream).
 
 Processors in a pipeline see the OTLP data model, which has resource attributes, scope attributes, and the record's own fields and attributes. Refer to [Process data](../process-data.md).
 

@@ -15,7 +15,7 @@ products:
 
 The **Rename fields** processor gives a field a new name in the same location. Use it to bring attributes from a shipper or an application into the names your dashboards and detection rules expect, for example renaming a custom `env` attribute to `deployment.environment.name`, without a second copy of the data.
 
-To move a field between locations, such as from the record's attributes to the resource, use [Transform](transform.md).
+To move a field between locations, such as from the record's attributes to the resource, use [Move fields](move-fields.md).
 
 :::{include} /manage-data/ingest/streams/_snippets/private-preview-note.md
 :::
@@ -28,7 +28,7 @@ To move a field between locations, such as from the record's attributes to the r
 **Fields**
 :   One row per rename. Each row has:
 
-    * **Location**: where the field lives. **Record** (the default), **Body** (logs only), **Resource**, **Scope**, **Attributes**, or **Metadata**, or **Document** when the pipeline carries documents from a Managed _bulk source.
+    * **Location**: where the field lives. **Attributes** (the default), **Record**, **Body** (logs only), **Resource**, **Scope**, or **Metadata**, or **Document** when the pipeline carries documents from a Managed _bulk source.
     * **Name**: the field's current name within the location, such as `env`. With **Record**, the name is a path from the record instead. Select one of the suggested paths, such as `attributes["key"]`, `body["key"]`, or `trace_state["key"]`, and replace `key` with the field's name, or type a path.
     * **New name**: the name to give it, in the same form as **Name**.
 
@@ -51,5 +51,6 @@ Align a shipper's attribute names with OpenTelemetry semantic conventions:
 * [Process data](../process-data.md): Learn how pipelines run and how to add and manage processors.
 * [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Add fields](add-fields.md) and [Set](set.md): Write new fields or new values instead of renaming existing fields.
-* [Transform](transform.md): Move a field from one location to another, which Rename fields can't do.
+* [Move fields](move-fields.md): Move a field from one location to another, which Rename fields can't do.
+* [Delete fields](delete-fields.md): Remove fields instead of renaming them.
 * [Filter](filter.md): Drop whole records instead of changing them.

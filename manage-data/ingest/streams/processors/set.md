@@ -56,6 +56,7 @@ Set a span's status message from one of its attributes, with an explicit context
 * [Process data](../process-data.md): Learn how pipelines run and how to add and manage processors.
 * [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Add fields](add-fields.md): Use the simpler processor when you only need to add named fields within a location.
-* [Rename fields](rename-fields.md): Change a field's name instead of its value.
+* [Rename fields](rename-fields.md) and [Move fields](move-fields.md): Change a field's name or location instead of its value.
+* [Delete fields](delete-fields.md): Remove a field instead of setting its value.
 * [Transform](transform.md): Run OTTL statements of your choice when a single assignment isn't enough.
 * [Filter](filter.md): Drop whole records instead of changing them.

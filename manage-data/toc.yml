@@ -154,7 +154,9 @@ toc:
           - file: ingest/streams/process-data.md
             children:
               - file: ingest/streams/processors/add-fields.md
+              - file: ingest/streams/processors/delete-fields.md
               - file: ingest/streams/processors/filter.md
+              - file: ingest/streams/processors/move-fields.md
               - file: ingest/streams/processors/rename-fields.md
               - file: ingest/streams/processors/set.md
               - file: ingest/streams/processors/transform.md

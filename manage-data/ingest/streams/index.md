@@ -16,7 +16,7 @@ products:
 
 # Streams
 
-Streams is the part of {{kib}} where you manage how data gets into Elastic and what happens to it on the way. To open it, find **Streams** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+Streams is the part of {{kib}} where you manage how data gets into Elastic and what happens to it on the way. To open it, find **Streams** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). In an Observability project, **Streams** is a top-level entry. In a Security project, it's under **Data management** → **Indices and data streams**.
 
 Streams has two sets of capabilities. They differ in when they act on your data:
 
@@ -83,7 +83,7 @@ Use this table to decide which side of Streams a task belongs to:
 
 You can use both. An {{es}} destination writes to ordinary data streams, and an ingest pipeline attached to a data stream still runs when the data arrives. From a destination, you can open each data stream it can write to and view its overview and retention.
 
-Nothing is migrated between the two. Classic streams keep working as before and don't appear on the Map. To open a classic stream, select the **Classic Streams** tab, which lists everything the Streams list showed before. The tab appears only when the project has at least one classic stream or [wired stream](/solutions/observability/streams/get-data-in.md#get-data-in-wired).
+Nothing is migrated between the two. Classic streams keep working as before and don't appear on the Map. To open a classic stream, select the **Classic Streams** tab, which lists everything the Streams list showed before, including [wired streams](/solutions/observability/streams/get-data-in.md#get-data-in-wired). Which tab you land on depends on your privileges. With the Streams privilege as well as the Streams V2 privilege, Streams opens on **Classic Streams**, and a **New Streams experience** callout offers **Try the new experience** to open the Map. With the Streams V2 privilege alone, Streams opens on the Map and the **Classic Streams** tab is hidden. With the Streams privilege alone, you see the Streams list without tabs. Refer to [Privileges and API keys](security.md#streams-security-view-edit).
 
 ## Availability [streams-availability]
 

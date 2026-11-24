@@ -70,8 +70,8 @@ A destination is where data lands. For your first stream, write to the {{serverl
 
 1. On the Map, select **Destination**.
 1. Under **Where will this destination's data live?**, select **Local Elasticsearch**.
-1. For **Index mode**, keep **Auto (default)**. In Auto mode, each record chooses its own data stream, within the destination's write patterns. Select **Fixed index per signal** only if you want every record of a signal in one data stream that you name.
-1. Enter a **Destination name**, for example `my-elasticsearch`. Destinations can't be edited after you create them.
+1. Under **How should its documents be written?**, keep **Automatic**. In Automatic mode, each record chooses its own data stream, within the destination's write patterns. Select **Fixed index per signal** only if you want every record of a signal in one data stream named from a dataset and namespace you enter.
+1. Under **Destination details**, enter a **Name**, for example `my-elasticsearch`. Destinations can't be edited after you create them.
 1. Optionally, add a **Description**.
 1. Select **Create destination**.
 
@@ -86,7 +86,7 @@ Data flows only along connections you draw and save:
 1. On the Map, drag from the handle on the source node to the destination node.
 1. Select **Save changes**.
 
-The line under the destination's name changes from **No source** to **Auto**, its index mode, or to the description if you entered one, and the node shows **Data not flowing in** until data arrives. Nothing runs until you save, and saved changes apply to live data right away.
+The line under the destination's name changes from **No source** to **Auto**, its writing mode, or to the description if you entered one, and the node shows **Data not flowing in** until data arrives. Nothing runs until you save, and saved changes apply to live data right away. If you leave the Map with an unsaved connection, Streams asks whether to discard it.
 :::::
 
 :::::{step} Send data to the source
@@ -171,7 +171,7 @@ A `200` response with an empty body means the source accepted the records. Where
 Within a minute of the first request, you can see the data in two places:
 
 1. On the Map, the source node switches from **Waiting for data...** to **Live** with the rate of accepted records, and the destination node switches from **Data not flowing in** to a rate and the average time a write took. Statistics refresh every 30 seconds and cover the last 15 minutes, so a short delay after the first request is normal, and a single `curl` request shows as `<0.01/s`. The index count next to the state is the number of indices and data streams in the project that match the destination's write patterns, not what this stream wrote, so it can be high before your data arrives.
-1. Go to **Discover**, select **Query in ES|QL** in the application menu if the editor isn't in {{esql}} mode yet, then paste the following query and select **Run**. In Auto mode, a record that carries `data_stream.dataset` and `data_stream.namespace` attributes lands in `logs-<dataset>.otel-<namespace>`, and a record without them, like the ones in this tutorial, lands in the default data stream for its signal. Refer to [How Auto mode picks a data stream](../destinations/elasticsearch.md#streams-es-destination-auto-data-stream).
+1. Go to **Discover**, select **Query in ES|QL** in the application menu if the editor isn't in {{esql}} mode yet, then paste the following query and select **Run**. In Automatic mode, a record that carries `data_stream.dataset` and `data_stream.namespace` attributes lands in `logs-<dataset>.otel-<namespace>`, and a record without them, like the ones in this tutorial, lands in the default data stream for its signal. Refer to [How Auto mode picks a data stream](../destinations/elasticsearch.md#streams-es-destination-auto-data-stream).
 
    ```esql
    FROM logs-*

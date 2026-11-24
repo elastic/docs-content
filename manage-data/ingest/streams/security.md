@@ -24,12 +24,20 @@ Access to the Streams Map, the **Sources** tab, and the **Destinations** tab is 
 
 | Privilege | What it allows |
 | --- | --- |
-| **Read** | Open the Map and the **Sources** and **Destinations** tabs and see every source, pipeline, router, and destination. The Map and the tabs show a **You have read-only access** callout, and the toolbar, the plus icon on connections, **Add source**, **Add destination**, **Generate key**, and **Delete** aren't offered. |
+| **Read** | Open the Map and the **Sources** and **Destinations** tabs and see every source, pipeline, router, and destination. The Map and the tabs show a **You have read-only access** callout, and the toolbar, the save bar, the plus icon on connections, right-click menus, **Add source**, **Add destination**, **Generate API key**, and **Delete** aren't offered. **Show on map** in the tables still works. |
 | **All** | Everything in **Read**, plus saving changes to the Map, creating and deleting sources and destinations, and generating, listing, and deleting source API keys. |
 
 The privilege is granted per {{kib}} space, but a project has one Streams configuration shared by all spaces. A role that grants **All** in any space can change the project's streams.
 
-Creating a source or a Local Elasticsearch destination also needs {{es}} privileges of your own, because Streams creates their API keys as the signed-in user. The **Admin** predefined role has the **All** privilege and those {{es}} privileges, so use it to build and change streams. The **Viewer** predefined role has the **Read** privilege. What you see about a destination's indices depends on your own {{es}} privileges on them. Indices you can't view are left out of the list, and the destination panel names the privilege that's missing.
+Creating a source or a Local Elasticsearch destination also needs {{es}} privileges of your own, because Streams creates their API keys as the signed-in user. The **Admin** predefined role has the **All** privilege and those {{es}} privileges, so use it to build and change streams. The **Viewer** predefined role has the **Read** privilege. What you see about a destination's indices depends on your own {{es}} privileges on them. Indices you can't view are left out of the list, and the destination panel names the privilege that's missing. With **Read** and no index privileges, the list is empty and there are no counts or charts.
+
+If you build a custom role that can edit streams without being an **Admin**, give it the following in addition to **Streams V2: All**:
+
+* The `manage_own_api_key` cluster privilege. Without it, **Generate API key** is disabled, and creating a Local Elasticsearch destination in Automatic mode fails with **Your account can't create API keys.**
+* The `create_doc` and `auto_configure` index privileges on the data streams the destinations write to, such as `logs-*`, `metrics-*`, and `traces-*`, so the keys Streams creates for them can be granted those privileges. To see the indices behind a destination, add `read`, `view_index_metadata`, `monitor`, and `read_failure_store` on the same patterns.
+* The `write` privilege of the `streams` application on `source:*`, which source API keys are created with.
+
+A key is limited to what its creator could do, so a user who lacks one of these can't create the key, and Streams names the missing privilege in the dialog.
 
 Treat **All** as an administrative privilege. Anyone who can connect a source to a destination can direct that source's data anywhere the destination is allowed to write.
 
@@ -56,22 +64,24 @@ When you create a **Local Elasticsearch** destination, Streams creates an {{es}}
 * Deleting the destination invalidates its key.
 * You never see or manage this key. Streams stores it encrypted, and the configuration refers to it by name only.
 
-For how write patterns interact with Auto and Fixed index modes, refer to [Local Elasticsearch destination](destinations/elasticsearch.md).
+For how write patterns interact with the Automatic and Fixed writing modes, refer to [Local Elasticsearch destination](destinations/elasticsearch.md).
 
 ### Remote Elasticsearch and Amazon S3 [streams-security-remote-s3]
 
 For a [Remote Elasticsearch](destinations/remote-elasticsearch.md) destination, you supply an API key for the remote deployment. For an [Amazon S3](destinations/s3.md) destination, you supply an AWS access key ID and secret access key with write access to the bucket. In both cases, Streams encrypts what you enter when you save it. The credential is never shown again, and the running configuration refers to it by name only.
 
-Streams can't narrow a credential you supply. Create it with the least privilege the destination needs, which is write access to the target indices on the remote deployment, or `s3:PutObject` on the bucket and prefix.
+Streams can't narrow a credential you supply. Create it with the least privilege the destination needs. For a Remote Elasticsearch destination, that's `create_doc` and `auto_configure` on the data streams it writes to, including the `metrics-*.prometheus-*` names when Prometheus metrics flow through it, and the key must pass the write check Streams runs when you save. For an Amazon S3 destination, it's `s3:PutObject` on the bucket and prefix.
 
 ## What a failed authorization looks like [streams-security-failures]
 
-A source acknowledges data as soon as it's accepted, before processing and delivery finish. If a destination's credential is later rejected, or a record targets an index outside the destination's write patterns, the records are dropped after the retry window. The shipper that sent them isn't told, and the drop isn't reported in the UI. Refer to [Streams limitations](limitations.md#streams-limitations-data).
+A source acknowledges data as soon as it's accepted, before processing and delivery finish. If a destination's credential is later rejected, or a record targets an index outside the destination's write patterns, the records are dropped after the retry window. The shipper that sent them isn't told. On the Streams Map, the destination shows a **Failures** badge, and its details split the failures into **Authentication**, when the credential isn't recognized, and **Authorization**, when it's recognized but not allowed to write there. Refer to [Delivery failures](monitor-streams.md#streams-monitor-failures) and [Streams limitations](limitations.md#streams-limitations-data).
+
+Source API keys and the credentials of destinations are stored encrypted, and you can take them out of service at any time. Deleting a source key, a source, or a Local Elasticsearch destination invalidates the {{es}} API key behind it, whoever created it. For a Remote Elasticsearch or Amazon S3 destination, invalidate the credential where you created it, then delete the destination.
 
 ## Related pages [streams-security-related]
 
 * [Sources](sources.md): Create sources and configure your shippers with their endpoints and API keys.
-* [Local Elasticsearch destination](destinations/elasticsearch.md): Choose an index mode and write patterns for a Local Elasticsearch destination.
+* [Local Elasticsearch destination](destinations/elasticsearch.md): Choose a writing mode and write patterns for a Local Elasticsearch destination.
 * [Remote Elasticsearch destination](destinations/remote-elasticsearch.md): Send data to another Elastic Cloud deployment with credentials you supply.
 * [Amazon S3 destination](destinations/s3.md): Write data to an Amazon S3 bucket with an access key pair you supply.
 * [Troubleshooting](troubleshooting.md#streams-troubleshoot-401): Find out what to do when a source endpoint returns `401` or `403`.

@@ -25,14 +25,14 @@ For how the building blocks fit together, refer to [How Streams works](get-start
 The preview is limited in where it runs and in what you can rely on:
 
 * Ingesting, processing, and routing data before it reaches {{es}} is available only on {{serverless-full}} {{es}}, Observability, and Security projects, and Elastic enables it per project. It isn't available on {{es}} Vector DB projects. On {{ech}}, self-managed deployments, {{ece}}, and {{eck}}, Streams works only on data after it reaches {{es}}, as classic streams. Refer to [Availability](index.md#streams-availability).
-* Features and the API can change without notice, including in ways that aren't backward compatible.
+* Features and the API can change without notice, including in ways that aren't backward compatible. Every processor is marked **Experimental** in the **Processing** panel, and the source and destination types are at the same stage.
 * Classic streams aren't migrated into the new model. They keep working as before, continue to process data inside {{es}}, and don't appear on the Streams Map.
 
 ## Data handling [streams-limitations-data]
 
 These limitations affect whether, and how many times, a record reaches its destination:
 
-* Delivery is best effort. If an Elastic-managed collector restarts while data is buffered, that data is lost. If a destination rejects data, for example because of a wrong index name or an invalid credential, those records are dropped after the retry window, and the drop isn't reported in the UI. For data you rely on, consider keeping your current ingest path in place and sending a copy to a source.
+* Delivery is best effort. If an Elastic-managed collector restarts while data is buffered, that data is lost. If a destination rejects data, for example because of a wrong index name or an invalid credential, those records are dropped after the retry window. Only authentication and authorization failures are flagged on the Map. For data you rely on, consider keeping your current ingest path in place and sending a copy to a source.
 * Duplicates are possible. When Streams retries a failed write, records that were already stored can be stored again. Metrics written to time series data streams are deduplicated by {{es}}. Logs and traces aren't, unless the documents carry their own `_id`.
 * A source acknowledges data as soon as it's accepted, before processing and delivery finish. A shipper isn't told when its data is dropped later.
 * Changes you save apply to live data immediately. There's no way to test a processor or a routing rule against sample data, no draft mode, and no version history.
@@ -42,9 +42,9 @@ These limitations affect whether, and how many times, a record reaches its desti
 
 The Streams Map tells you whether data flows, but not much more:
 
-* Statistics are limited to throughput in records per second and, on pipeline and destination nodes, an average duration. Error rates, the number of dropped records, and the reasons records were dropped aren't shown.
+* Statistics are limited to throughput in records per second and, on pipeline and destination nodes, an average duration. Among failures, only a destination's authentication and authorization failures are reported, as a **Failures** badge and a **Delivery failures** panel. Records a processor dropped, records that matched no routing rule, and requests a source refused aren't counted, and other destination rejections appear only as **Other failures** in the delivery chart.
 * There's no end-to-end latency figure for a stream.
-* Among destinations, only Local Elasticsearch nodes show statistics. Router nodes, Remote Elasticsearch destinations, and Amazon S3 destinations show no state and no statistics. A source that isn't connected to any destination accepts records and drops them; its node shows **Live**, and nothing on the Map tells you the records went nowhere.
+* Router nodes show no statistics. A source that isn't connected to any destination accepts records and drops them; its node shows **Live**, and nothing on the Map tells you the records went nowhere.
 * The indices listed for a Local Elasticsearch destination are the ones that match its write patterns, not the ones the stream has written to.
 * There's no alerting on stream health.
 
@@ -60,7 +60,7 @@ These limitations affect what a source can receive, and from which shippers:
 * OTLP is accepted over HTTP only. OTLP over gRPC isn't supported.
 * A Prometheus Remote Write source accepts Remote Write 1.0 only. Remote Write 2.0 isn't supported.
 * A Managed _bulk source carries documents only and accepts only `create` actions, and only for index names that start with `logs-`, `metrics-`, or `traces-`. Other actions and index names are rejected.
-* A Managed _bulk source answers bulk requests only. Logstash, Beats, and standalone {{agent}} check the server with a `GET` request before sending, so they can't connect to it. Fleet-managed {{agent}} can't send to any source. OpenTelemetry Collectors, including {{agent}} in OpenTelemetry mode, and Prometheus can.
+* A Managed _bulk source answers bulk requests only. Logstash checks the server with a `GET` request before sending, so it can't connect to the source, and Beats and standalone {{agent}}, which check the server the same way, are expected to fail too. Fleet-managed {{agent}} can't send to any source. OpenTelemetry Collectors, including {{agent}} in OpenTelemetry mode, and Prometheus can.
 * Your project's existing managed OTLP and bulk endpoints, the ones that integrations and {{agent}} policies use, don't appear on the Streams Map, and the data they receive can't be processed or routed with Streams.
 
 For what each source type accepts, refer to [Sources](sources.md).
@@ -69,7 +69,7 @@ For what each source type accepts, refer to [Sources](sources.md).
 
 These limitations affect what a pipeline can do to a record:
 
-* The processors are **Add fields**, **Filter**, **Rename fields**, **Set**, and **Transform**. The list in the **Processing** panel comes from the Streams backend, so it can change without a {{kib}} release.
+* The processors are **Add fields**, **Delete fields**, **Filter**, **Move fields**, **Rename fields**, **Set**, and **Transform**, and all of them are marked **Experimental**. The list in the **Processing** panel comes from the Streams backend, so it can change without a {{kib}} release.
 * There are no dedicated parsing processors, such as Grok, Dissect, JSON, key-value, CSV, or date parsing, and no enrichment processors, such as GeoIP or lookups. For parsing, write OTTL statements in a [Transform](processors/transform.md) processor, for example with `ParseJSON` or `ExtractPatterns`.
 * Processor conditions and Transform statements are written in OpenTelemetry Transformation Language (OTTL) in a free-text field, with no autocompletion. You need to know OTTL syntax and the OTLP data model to write them. Refer to [Fields and conditions](fields-and-conditions.md).
 * {{es}} ingest pipelines and integration pipelines can't run inside a Streams pipeline. They still run in {{es}} when the data is indexed, after Streams.
@@ -80,8 +80,10 @@ For what the processors do, refer to [Process data](process-data.md).
 
 These limitations affect what a router can do with a record:
 
-* Each routing rule sends to one target.
-* Rules can't be named. On the Streams Map, each rule is labeled by its position, `rule-0`, `rule-1`, and so on, and the label changes when you reorder the rules.
+* Each routing rule sends to one target. The Map lets you draw one line from a rule. The configuration itself allows several targets, but there's no way to set them in the UI.
+* A copy rule needs a condition. Only one rule, the **Default** move rule, can have none, and it's always last. The routing panel accepts a copy rule without a condition, but **Save changes** then fails.
+* Rules can't be named. On the Streams Map, each rule is labeled by its position, **rule 1**, **rule 2**, and so on, and the label changes when you reorder the rules.
+* Deleting a destination deletes every routing rule whose only target it was, without listing the rules in the confirmation. Refer to [Route data](route-data.md#streams-route-edit).
 * Records that match no rule are dropped. The number of unmatched records isn't shown.
 * There's no discard destination. To drop data on purpose, filter it out with a [Filter](processors/filter.md) processor or leave it unmatched.
 * Routing rules can be viewed only on the Map, router by router. There's no list of all routing rules in the project.
@@ -94,12 +96,11 @@ These limitations affect where data can go and what you can change after creatin
 
 * Destination types are **Local Elasticsearch**, **Remote Elasticsearch**, and **External storage**, which writes to Amazon S3. Other object stores, such as Azure Blob Storage and Google Cloud Storage, aren't available.
 * Destinations can't be edited after you create them. To change anything about a destination, create a new one, reconnect the routing rules, and delete the old one.
-* In **Auto** index mode, a destination writes only to data streams matching `logs-*-*`, `metrics-*-*`, and `traces-*-*`. Custom write patterns can narrow this, but the signal prefix is fixed. Index names can't be built from field values.
-* In **Fixed index per signal** mode, a signal you leave blank, and data of a signal the destination doesn't accept, is dropped.
-* A **Remote Elasticsearch** destination doesn't accept documents from a Managed _bulk source. Documents routed to one are dropped.
-* Remote Elasticsearch destinations must be Elastic Cloud deployments, {{ech}} or {{serverless-short}}, on 9.5 or later, reachable at their public `https://` endpoint. Self-managed clusters, deployments behind traffic filters or private link, and versions before 9.5 aren't supported, and sending to them fails or drops data.
+* In **Automatic** mode, a destination writes only to data streams matching `logs-*-*`, `metrics-*-*`, and `traces-*-*`. Custom write patterns can narrow this, but the signal prefix is fixed. Index names can't be built from field values.
+* In **Fixed index per signal** mode, the names are composed as `<signal>-<dataset>.otel-<namespace>` from a dataset and a namespace you enter. You can't type an arbitrary index name for logs, metrics, or traces, and the dataset can't end in `.otel` or `.prometheus`. A signal you leave blank, and data of a signal the destination doesn't accept, is dropped.
+* Remote Elasticsearch destinations must be {{ecloud}} deployments, {{ech}} on 9.5.0 or later or {{serverless-short}}, reachable at an `https://` endpoint on `.elastic.cloud`, `.elastic-cloud.com`, or `.cloud.es.io`. Self-managed clusters, deployments behind traffic filters or private link, and earlier versions aren't accepted, and the dialog rejects endpoints that don't match.
 * Amazon S3 destinations write newline-delimited JSON only. Parquet isn't available.
-* Remote Elasticsearch and Amazon S3 destinations don't list what they've written, and Streams doesn't report a rejected credential. Check for the data on the remote side.
+* Remote Elasticsearch and Amazon S3 destinations don't list what they've written. Check for the data on the remote side.
 * A failing destination doesn't block the stream and doesn't retry indefinitely. Its records are dropped after the retry window and aren't recovered when the destination comes back.
 * The index details that a Local Elasticsearch destination opens are read-only. To change retention, mappings, or ingest pipelines, select **Manage in Stack Management** or use classic streams.
 
@@ -110,6 +111,5 @@ For what each destination type accepts and how it's set up, refer to [Destinatio
 These limitations affect how you operate Streams and who can change it:
 
 * A project has one Streams configuration, shared by all {{kib}} spaces. Separate configurations per space or team aren't available.
-* Creating sources and Local Elasticsearch destinations requires the **Admin** role, because Streams creates their API keys as you. The **Streams V2** feature privilege on its own isn't enough. Refer to [Privileges and API keys](security.md#streams-security-view-edit).
+* Creating sources and Local Elasticsearch destinations requires {{es}} privileges of your own, because Streams creates their API keys as you. The **Streams V2** feature privilege on its own isn't enough. The **Admin** role has what's needed. Refer to [Privileges and API keys](security.md#streams-security-view-edit).
 * There's no public API for sources, pipelines, routers, and destinations, and no export or import of the configuration. The Streams APIs that exist manage classic streams.
-* There's no published guidance on throughput per source or on the cost of processors.

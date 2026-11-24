@@ -15,7 +15,7 @@ products:
 
 The **Transform** processor runs OpenTelemetry Transformation Language (OTTL) statements on each record. It's the fallback when no other processor does what you need, such as parsing a value out of the body, truncating or hashing a field, replacing a pattern, converting a type, or changing several fields in one step. Each block of statements can be guarded by conditions, and blocks run in order, so a later block sees what an earlier one changed.
 
-Prefer [Add fields](add-fields.md), [Set](set.md), [Rename fields](rename-fields.md), and [Filter](filter.md) when they fit. Their cards in the **Processing** panel are easier to read, and they don't depend on OTTL syntax.
+Prefer [Add fields](add-fields.md), [Set](set.md), [Rename fields](rename-fields.md), [Move fields](move-fields.md), [Delete fields](delete-fields.md), and [Filter](filter.md) when they fit. Their cards in the **Processing** panel are easier to read, and they don't depend on OTTL syntax.
 
 :::{include} /manage-data/ingest/streams/_snippets/private-preview-note.md
 :::
@@ -83,5 +83,5 @@ Drop an attribute from spans of one service, with a block condition:
 
 * [Process data](../process-data.md): Learn how pipelines run and how to add and manage processors.
 * [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
-* [Add fields](add-fields.md), [Rename fields](rename-fields.md), and [Set](set.md): Prefer these processors when a single add, rename, or assignment does the job.
+* [Add fields](add-fields.md), [Delete fields](delete-fields.md), [Move fields](move-fields.md), [Rename fields](rename-fields.md), and [Set](set.md): Prefer these processors when a single add, delete, move, rename, or assignment does the job.
 * [Filter](filter.md): Drop whole records instead of changing them.

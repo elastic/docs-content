@@ -28,7 +28,7 @@ Add fields works on fields you name within a location, such as an attribute or a
 **Fields**
 :   One row per field to write. Each row has:
 
-    * **Location**: where the field lives. **Body** (logs only, the default), **Resource**, **Scope**, **Attributes**, or **Metadata**, or **Document** when the pipeline carries documents from a Managed _bulk source.
+    * **Location**: where the field lives. **Attributes** (the default), **Body** (logs only), **Resource**, **Scope**, or **Metadata**, or **Document** when the pipeline carries documents from a Managed _bulk source.
     * **Name**: the field's name within the location, such as `deployment.environment.name`. To reach a key inside a nested map, add the inner keys in brackets, such as `department["name"]` in the body.
     * **Value**: a literal value, with its type selected from **String**, **Integer**, **Number**, **Boolean**, or **Null**. To use an OTTL expression evaluated for each record instead, such as `Concat([attributes["host.name"], attributes["service.name"]], "/")`, select **Use OTTL value** and enter it in **OTTL value**. A field takes one or the other.
     * **Action**: **Upsert** writes unconditionally. **Update** writes only when the field already exists. **Insert** writes only when the field is absent.
@@ -51,13 +51,14 @@ Send logs from one service to their own data stream by setting the dataset attri
 * **Condition**: `resource.attributes["service.name"] == "checkout"`
 * **Fields**: Location **Attributes**, Name `data_stream.dataset`, Value `checkout`, Action **Upsert**
 
-With an {{es}} destination in Auto index mode, the records then land in `logs-checkout.otel-default`. Refer to [how Auto mode picks a data stream](../destinations/elasticsearch.md#streams-es-destination-auto-data-stream).
+With an {{es}} destination in Automatic mode, the records then land in `logs-checkout.otel-default`. Refer to [how Automatic mode picks a data stream](../destinations/elasticsearch.md#streams-es-destination-auto-data-stream).
 
 ## Related pages [streams-add-fields-related]
 
 * [Process data](../process-data.md): Learn how pipelines run and how to add and manage processors.
 * [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Set](set.md): Write to any field by its path, including fields of the record itself such as a log's severity.
-* [Rename fields](rename-fields.md): Change a field's name instead of adding a new field.
+* [Rename fields](rename-fields.md) and [Move fields](move-fields.md): Change a field's name or location instead of adding a new field.
+* [Delete fields](delete-fields.md): Remove fields instead of adding them.
 * [Filter](filter.md): Drop whole records instead of changing them.
 * [Transform](transform.md): Change several fields in one step with OTTL statements when a single add isn't enough.

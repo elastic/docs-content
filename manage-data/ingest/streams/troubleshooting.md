@@ -97,22 +97,82 @@ A source is identified by its URL path, which gRPC requests don't carry. Sources
 1. Wait a minute and refresh. Statistics on the Streams Map refresh every 30 seconds, and Discover shows records once they're indexed.
 1. On the Streams Map, check that the source is connected to a destination and that you selected **Save changes**. A connection you drew but didn't save doesn't exist. A confirmation message appears after a successful save.
 1. Check that the source accepts the signal you're sending. A source takes only the signals selected when it was created. Open the source's details on the **Sources** tab to see its signals.
-1. Check that the destination accepts that signal. In **Fixed index per signal** mode, a signal left blank isn't written. In **Auto** mode, data outside the destination's write patterns is dropped.
+1. Check that the destination accepts that signal. In **Fixed index per signal** mode, a signal left blank isn't written. In **Automatic** mode, data outside the destination's write patterns is dropped, and the destination shows a **Failures** badge with **Authorization** failures. Refer to [A destination shows a Failures badge](#streams-troubleshoot-destination-failures).
 1. Check the processors on the path. A Filter processor drops matching records before any destination, and dropped records aren't counted on the Map. Temporarily remove the Filter, select **Save and apply**, and see whether data appears.
 1. Check the router, if there is one. A record that matches no rule is dropped, and unmatched records aren't counted on the Map. Select the router to read the rules' conditions and check their order. Refer to [Route data](route-data.md).
 1. If the destination shows a rate, the records reach it and {{es}} rejects them. In the **Destinations** tab, expand the destination to see each index and its **Health**. A **Red** data stream rejects writes. If the failure store is **On**, open the index and read the **Top failure reasons**.
-1. In **Discover**, widen the time range and query the broad pattern for the signal, for example `FROM logs-*`. In **Auto** mode a record with `data_stream.dataset` set lands in that dataset's data stream, with `.otel` after the dataset, for example `logs-demo.otel-default`, not in the default one.
+1. In **Discover**, widen the time range and query the broad pattern for the signal, for example `FROM logs-*`. In **Automatic** mode a record with `data_stream.dataset` set lands in that dataset's data stream, with `.otel` after the dataset, for example `logs-demo.otel-default`, not in the default one.
 
-## A Local Elasticsearch destination shows Data not flowing in after working [streams-troubleshoot-destination-stopped]
+## A destination shows a Failures badge [streams-troubleshoot-destination-failures]
 
 **Symptoms**
 
-* A Local Elasticsearch destination node on the Streams Map that showed a rate shows **Data not flowing in**.
+* A destination node on the Streams Map shows a red **Failures** badge.
+* Hovering over the badge shows **Authentication** or **Authorization** with a percentage and a rate.
+* The destination's **Delivery failures** panel lists an **Error type** such as `security_exception`, or for Amazon S3 a code such as `InvalidAccessKeyId` or `AccessDenied`.
+
+**Cause**
+
+The destination refuses the records because of the credential. **Authentication** means the credential isn't recognized: the API key was invalidated or expired, or the AWS access key doesn't exist or its secret is wrong. **Authorization** means it's recognized but not allowed to write where the records are headed: the key lacks `create_doc` or `auto_configure` on the target data stream, the record targets an index outside a Local Elasticsearch destination's write patterns, or the bucket policy denies `s3:PutObject`. Refer to [Delivery failures](monitor-streams.md#streams-monitor-failures).
+
+**Resolution**
+
+1. Open the destination's panel and read the **Index name** and **Error type** of the failures, or the S3 error code, to see what the records were headed for.
+1. For **Authorization** failures on a Local Elasticsearch destination in **Automatic** mode, check the index names against the destination's write patterns. A record whose `data_stream.dataset` or `data_stream.namespace` puts it outside the patterns is rejected. Change the attributes with a processor, or create a destination whose patterns cover them.
+1. For any other failure, the credential has to change, and destinations can't be edited. Create a new destination with a valid credential that has the needed privileges, reconnect the routing rules or the source, select **Save changes**, and delete the old destination.
+
+Records that failed are dropped after the retry window and aren't recovered. Refer to [Streams limitations](limitations.md#streams-limitations-data).
+
+## Creating a Remote Elasticsearch destination fails or warns [streams-troubleshoot-remote]
+
+**Symptoms**
+
+* The dialog says **Remote Elasticsearch destinations must use an https:// Elastic Cloud endpoint on .elastic.cloud, .elastic-cloud.com or .cloud.es.io.**
+* The dialog says **<host> does not support Prometheus remote write. The remote cluster must run Elasticsearch 9.5.0 or later.**
+* The dialog says **<host> rejected the API key (HTTP 401)** or **The API key is not allowed to write to <host> (HTTP 403).**
+* The dialog says **<host> refused the request (HTTP 403). Check the deployment's traffic filters and the API key's privileges.**
+* The destination is created, but a **Could not verify the remote cluster** warning appears.
+
+**Cause**
+
+When you save a Remote Elasticsearch destination, Streams checks the endpoint and sends an empty Prometheus Remote Write request to the remote deployment to verify the API key. Each message names what failed. The warning means the deployment didn't answer in time or couldn't be reached, so the key couldn't be verified. Refer to [What Streams checks when you save](destinations/remote-elasticsearch.md#streams-remote-es-check).
+
+**Resolution**
+
+1. For the endpoint message, copy the {{es}} endpoint from the {{ecloud}} console. Self-managed clusters and other domains aren't accepted.
+1. For the Prometheus remote write message, upgrade the remote deployment to 9.5.0 or later, or use a {{serverless-short}} project.
+1. For `401`, create a new API key on the remote deployment and paste its **Encoded** value.
+1. For **The API key is not allowed to write**, grant the key `create_doc` and `auto_configure` on the data streams the destination writes to, including the `metrics-*.prometheus-*` names.
+1. For **refused the request**, check the remote deployment's traffic filters. The requests come from Elastic-managed infrastructure, not from your network.
+1. For **Could not verify the remote cluster**, check that the deployment is running and reachable. If data doesn't arrive once you connect a source, the destination shows a **Failures** badge when the key is the problem. Refer to [A destination shows a Failures badge](#streams-troubleshoot-destination-failures). Otherwise, delete the destination and create it again.
+
+## Save changes fails with a message about a fallback route [streams-troubleshoot-fallback-route]
+
+**Symptoms**
+
+* After you add a rule to a router, **Save changes** fails with a message that **the fallback route (without 'when') must be the last route**, or that **only one fallback route (without 'when') is allowed**.
+* In the **Edit routing** panel, the **Default** rule is marked as rejected, although you didn't change it.
+
+**Cause**
+
+A copy rule without a condition was added above the **Default** rule. The panel accepts it, shown as **No condition, copies all data**, but a rule without a condition has to be the last one, and only one is allowed. Refer to [How routing rules work](route-data.md#streams-route-rules).
+
+**Resolution**
+
+1. Open the router and select the copy rule's {icon}`pencil` pencil icon.
+1. Enter a condition that selects the records to copy, select **Apply** on the form, then **Apply** at the bottom of the panel.
+1. Select **Save changes**.
+
+## A destination shows Data not flowing in after working [streams-troubleshoot-destination-stopped]
+
+**Symptoms**
+
+* A destination node on the Streams Map that showed a rate shows **Data not flowing in**.
 * The source endpoints upstream still return `200`, and the shippers report success.
 
 **Cause**
 
-The state counts the records that reached the destination in the last 15 minutes, including records that {{es}} rejected. **Data not flowing in** after a rate means that nothing has reached the destination for 15 minutes, so the problem is on the path before the destination, not in {{es}}. If the source node upstream shows **Waiting for data...** too, the shippers stopped sending or their requests are refused; if it shows **Live**, the records are lost between the source and the destination.
+The state counts the records that reached the destination in the last 15 minutes, including records that {{es}} rejected. **Data not flowing in** after a rate means that nothing has reached the destination for 15 minutes, so the problem is on the path before the destination, not in {{es}}. If the source node upstream shows **Waiting for data...** too, the shippers stopped sending or their requests are refused; if it shows **Live**, the records are lost between the source and the destination. A destination that refuses records because of its credential doesn't show **Data not flowing in**. It shows a **Failures** badge instead.
 
 **Resolution**
 
@@ -121,7 +181,23 @@ The state counts the records that reached the destination in the last 15 minutes
 1. Check the router, if there is one. A rule whose condition or order changed can send records to another destination, or to none. Select the router to read the rules. Refer to [Route data](route-data.md).
 1. Check that the shippers still send to the source this destination is connected to, and not to another source or endpoint.
 
-If the destination shows a rate but the data isn't in **Discover**, the records reach it and {{es}} rejects them. Refer to [Requests succeed but nothing appears in Discover](#streams-troubleshoot-no-data). Remote Elasticsearch and Amazon S3 destinations don't show a state, so for those, check for the data on the remote side. Streams doesn't report rejected credentials, so a revoked API key or access key looks like silence. Destinations can't be edited, so create a new destination with the new credential, reconnect the routing rules, and delete the old one. Records that fail at a destination are dropped after the retry window and aren't recovered when the destination comes back. Refer to [Streams limitations](limitations.md#streams-limitations-data).
+If the destination shows a rate but the data isn't in **Discover**, the records reach it and {{es}} rejects them. Refer to [Requests succeed but nothing appears in Discover](#streams-troubleshoot-no-data). For a Remote Elasticsearch or Amazon S3 destination that shows a rate, check for the data on the remote side, and open the destination's **Delivery** panel for failures the badge doesn't flag, such as a bucket that doesn't exist. Records that fail at a destination are dropped after the retry window and aren't recovered when the destination comes back. Refer to [Streams limitations](limitations.md#streams-limitations-data).
+
+## A destination says no sources are connected [streams-troubleshoot-no-sources]
+
+**Symptoms**
+
+* The destination's panel says **No sources are connected to this destination yet. Connect one on the Map to start sending data.**
+* On the Streams Map, the line under the destination's name reads **No source**, and the node shows **Data not flowing in**.
+
+**Cause**
+
+No source leads to the destination. Either nothing is connected to it, or you drew the connection on the Map but didn't select **Save changes**. The panel opened from the Map counts the connection as soon as you draw it, but the **Destinations** tab and the statistics count it only once it's saved.
+
+**Resolution**
+
+1. On the Streams Map, drag from the handle of a source, pipeline, or routing rule to the destination's handle.
+1. Select **Save changes**. The node shows a rate once records arrive.
 
 ## The processor list is empty or can't be edited [streams-troubleshoot-processor-list]
 

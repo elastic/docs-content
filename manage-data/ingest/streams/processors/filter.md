@@ -89,4 +89,4 @@ Each line is one condition. Put them in the same block to drop a record that mat
 * [Fields and conditions](../fields-and-conditions.md): Learn what each location means, how to refer to fields in OTTL, and how to write conditions.
 * [Route data](../route-data.md): Keep unwanted data by sending it to a cheaper destination instead of dropping it.
 * [Transform](transform.md): Remove or mask individual fields instead of dropping the whole record.
-* [Add fields](add-fields.md), [Rename fields](rename-fields.md), and [Set](set.md): Change the fields of a record instead of dropping it.
+* [Add fields](add-fields.md), [Delete fields](delete-fields.md), [Move fields](move-fields.md), [Rename fields](rename-fields.md), and [Set](set.md): Change the fields of a record instead of dropping it.

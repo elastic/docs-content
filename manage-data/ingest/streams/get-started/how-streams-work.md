@@ -49,7 +49,7 @@ Copy rules are how you store the same data in two places, for example the comple
 
 A destination is where data lands and the credentials used to write it.
 
-* A **Local Elasticsearch** destination writes to the project you're working in, with an API key that Streams creates and scopes to the destination's write patterns. Its index mode decides which data stream each record is written to, so one destination node on the Streams Map can stand for many data streams.
+* A **Local Elasticsearch** destination writes to the project you're working in, with an API key that Streams creates and scopes to the destination's write patterns. Its writing mode, **Automatic** or **Fixed index per signal**, decides which data stream each record is written to, so one destination node on the Streams Map can stand for many data streams.
 * A **Remote Elasticsearch** destination writes to another Elastic Cloud deployment, with an endpoint and API key that you provide.
 * An **Amazon S3** destination writes newline-delimited JSON objects to a bucket you own, with an access key pair that you provide.
 
