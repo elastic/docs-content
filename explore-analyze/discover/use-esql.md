@@ -18,6 +18,7 @@ In {{esql}} mode, you write a query in [{{esql}}](elasticsearch://reference/quer
 * Learn by running your [first {{esql}} query](try-esql.md) step by step on sample data.
 * [Browse data sources and fields](browse-esql-sources.md) from the editor to find an index or a field name while you write a query.
 * Use the [{{esql}} editor](../query-filter/languages/esql-kibana.md) to get suggestions as you type, error fixes, and, when an AI model is configured, AI-generated queries.
+* {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` When a query returns an error, [get an AI explanation](../query-filter/languages/esql-kibana.md#esql-kibana-ai-explain) of what went wrong and, when one applies, a corrected query.
 * Add [variable controls](esql-variable-controls.md) to make a query dynamic without having to duplicate it.
 * Read, sort, and filter [{{esql}} results](esql-results.md) in the table.
 * Create [lookup indices](create-lookup-indices.md) to enrich your results with `LOOKUP JOIN`.
