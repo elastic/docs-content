@@ -283,7 +283,7 @@ outputs:
       service_name: kafka
 ```
 
-To authenticate with a keytab file instead, set `auth_type` to `keytab` and `keytab` to the path of the keytab file. You don't need `password` with a keytab:
+To authenticate with a keytab file instead, use this `kerberos` section:
 
 ```yaml
     kerberos:
