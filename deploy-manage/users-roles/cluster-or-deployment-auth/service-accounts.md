@@ -216,8 +216,8 @@ serverless: ga
 
 {{kib}} [audit events](kibana://reference/kibana-audit-events.md) record account creation and deletion, changes to workload assignments, and attempts to run a workload as an account. The `service_account_assume` event identifies the account and workload execution. Events caused by that workload identify the service account as the acting principal.
 
-In {{stack}}, {{es}} [audit events](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) also attribute requests that use a service account credential to the account.
+{{es}} [audit events](elasticsearch://reference/elasticsearch/elasticsearch-audit-events.md) also attribute requests that use a service account credential to the account.
 
-On {{serverless-short}}, configure [audit trail log delivery](/deploy-manage/monitor/log-delivery/audit-trail.md) to collect audit logs from your project.
+On {{serverless-short}}, `user.name` and `user.id` contain the service account's generated ID rather than its display name, and `user.domain` is `_cloud_service_account`. Configure [audit trail log delivery](/deploy-manage/monitor/log-delivery/audit-trail.md) to collect audit logs from your project.
 
-% Serverless verification: Confirm Elasticsearch audit attribution for UIAM-backed service accounts.
+Rules and tasks that use API keys owned by a service account appear as API key activity in the audit log.

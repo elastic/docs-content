@@ -27,6 +27,7 @@ Before you assign a service account to a workflow, make sure you meet these requ
 
 - You need the **Update** [Workflows privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) to assign an account. To run the workflow and review its execution, you also need **Execute** and **Read Workflow Execution**.
 - You need the `manage_security` cluster privilege to add, change, or remove the workflow's service account assignment. Editing or deleting a workflow assigned to a service account also requires this privilege, in addition to the corresponding Workflows privilege.
+- If the workflow uses `ai.agent`, assign the service account roles that grant [Agent Builder and model access](/explore-analyze/ai-features/agent-builder/permissions.md#privilege-reference). This includes **Agent Builder: Read** and, when using a {{kib}} connector, **Actions and Connectors: Read**. The account also needs access to the agent and the data privileges required by its tools.
 
 ## Assign a service account [assign-workflow-service-account]
 
@@ -64,7 +65,7 @@ After the test completes, open its execution details. The overview identifies bo
 
 Steps that call {{es}} or {{kib}} (`elasticsearch.*` and `kibana.*`) use the service account's privileges. {{connectors-ui}} use their own stored credentials to authenticate to external systems. For details about credentials and child workflows, refer to [Workflow authorization](/explore-analyze/workflows/authorization.md).
 
-% TBD: Confirm agent credential propagation with Workflows and Agent Builder after https://github.com/elastic/kibana/issues/293019 is resolved before adding a claim about agents invoked by a workflow assigned to a service account.
+The [`ai.agent` step](/explore-analyze/workflows/steps/ai-steps.md#ai-agent) passes the workflow's service account identity to {{agent-builder}}. By default, the agent's searches and tool calls use that account's privileges. If the step creates and stores a conversation, the service account owns it.
 
 ## Handle permission and identity failures [handle-workflow-service-account-failures]
 
