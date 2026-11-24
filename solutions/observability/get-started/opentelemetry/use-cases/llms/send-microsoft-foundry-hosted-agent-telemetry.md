@@ -33,7 +33,15 @@ For more about how hosted agents export telemetry, refer to [Export hosted agent
 :::::{stepper}
 
 ::::{step} Store the API key in a Foundry connection
-Create the connection before you deploy the agent, so the agent can read the key when it starts. In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**. Name the connection `otel-secrets`, add a field named `otlp_headers`, and set its value to `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key). For more about connections, refer to [Add a new connection to your project](https://learn.microsoft.com/en-us/azure/foundry/how-to/connections-add) in the Microsoft documentation.
+Create the connection before you deploy the agent, so the agent can read the key when it starts.
+
+1. In the Foundry portal, open **Manage** → **Project details** → **Connections**, then select **Add connection** and choose **Custom keys**.
+2. In **Key name**, enter `otlp_headers`.
+3. In **Key value**, enter `Authorization=ApiKey <your-api-key>` (the word `ApiKey`, a space, then the encoded key).
+4. Select **Is Secret**.
+5. In **Connection Name**, enter `otel-secrets`, then save the connection.
+
+For more about connections, refer to [Add a new connection to your project](https://learn.microsoft.com/en-us/azure/foundry/how-to/connections-add) in the Microsoft documentation.
 ::::
 
 ::::{step} Add the exporter settings
@@ -85,6 +93,8 @@ Send a request to your hosted agent and allow a few seconds for the telemetry to
     TS metrics-generic.otel-default
     | WHERE service.name == "<your-agent-name>"
     ```
+
+If the logs fill with `Operation returned an invalid status 'Forbidden'` errors, the agent's built-in Application Insights exporter can't write to your project's Application Insights resource. Assign the agent's identity the **Monitoring Metrics Publisher** role on that resource. These errors don't affect the data that reaches Elastic. For the steps, refer to [Configure Microsoft Entra authentication for Foundry Agent trace ingestion](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-ingestion-entra-authentication) in the Microsoft documentation.
 
 ## Example: Token usage by model
 
