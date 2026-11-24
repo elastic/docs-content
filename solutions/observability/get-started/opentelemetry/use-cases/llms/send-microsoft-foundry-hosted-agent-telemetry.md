@@ -55,7 +55,7 @@ environment_variables:
     value: ${{connections.otel-secrets.credentials.otlp_headers}}
 ```
 
-Use the base {{motlp}} URL as the endpoint. The exporter adds the signal paths, such as `/v1/traces`.
+Use the base {{motlp}} URL as the endpoint. The exporter adds the signal paths, such as `/v1/traces`. For the placeholder syntax, refer to [Reference project connections in environment variables](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/deploy-hosted-agent#reference-project-connections-in-environment-variables) in the Microsoft documentation.
 ::::
 
 ::::{step} Create a new agent version
@@ -78,7 +78,16 @@ Hosted agent telemetry can include prompts, tool calls, and model responses. Onc
     | WHERE service.name == "<your-agent-name>"
     ```
 
-The hosted agent also sends logs and metrics. They arrive in the `logs-*` and `metrics-*` data streams of your project.
+The traces include `invoke_agent` spans for agent runs and `chat <model-name>` spans for model calls. The runtime's outgoing HTTP calls also appear as `GET` and `POST` spans. For the spans that Foundry defines, refer to [Agent tracing overview](https://learn.microsoft.com/en-us/azure/foundry/observability/concepts/trace-agent-concept) in the Microsoft documentation.
+
+To see the prompt, the reply, and the token counts of a model call, open a `chat <model-name>` span in **Discover** and select the **GenAI** tab.
+
+## Check logs and metrics
+
+The hosted agent also sends logs and metrics:
+
+* **Logs** arrive in the `logs-*` data streams and include the trace ID.
+* **Metrics** arrive in the `metrics-*` data streams. They include `gen_ai.client.operation.duration`, `gen_ai.client.token.usage`, `http.client.duration`, and Azure Monitor performance counters such as memory and processor use.
 
 ## Send telemetry to Application Insights and Elastic
 
@@ -86,7 +95,9 @@ When project monitoring is enabled, Foundry also gives the hosted agent an Appli
 
 The two backends receive the same hosted agent telemetry, but each one can map, store, and display it differently. Don't expect field-for-field equivalence between them.
 
-To send telemetry only to Elastic, disable monitoring at the project level in Foundry. For details, refer to Microsoft's guide.
+If you keep Application Insights enabled, the agent identity needs the **Monitoring Metrics Publisher** role on the Application Insights resource. Without it, the Application Insights exporter fails and `Forbidden` errors fill your logs. These errors don't affect the data that reaches Elastic. For the steps, refer to [Configure Microsoft Entra authentication for Foundry Agent trace ingestion](https://learn.microsoft.com/en-us/azure/foundry/observability/how-to/trace-ingestion-entra-authentication) in the Microsoft documentation.
+
+To send telemetry only to Elastic, disable monitoring at the project level in Foundry. For details, refer to [Disable tracing](https://learn.microsoft.com/en-us/azure/foundry/observability/concepts/trace-data#disable-tracing) in the Microsoft documentation.
 
 ## Related pages
 
