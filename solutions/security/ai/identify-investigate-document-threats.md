@@ -20,7 +20,7 @@ In this guide, you'll learn how to:
 * [Use Attack Discovery to identify threats](#use-case-incident-reporting-use-attack-discovery-to-identify-threats)
 * [Use {{agent-builder}} to analyze a threat](#use-case-incident-reporting-agent-builder-analyze)
 * [Document the incident in a case](#use-case-incident-reporting-agent-builder-case)
-* [Translate incident information to a different human language](#use-case-incident-reporting-agent-builder-translate)
+* [Translate incident information to a different language](#use-case-incident-reporting-agent-builder-translate)
 
 If you use AI Assistant, refer to [Use AI Assistant (deprecated)](#use-case-incident-reporting-ai-assistant).
 

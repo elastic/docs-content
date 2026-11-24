@@ -69,32 +69,26 @@ stack: preview =9.3, ga 9.4+
 
 The following sections apply to specific features. Only use them if you plan to set up the feature it covers.
 
-### Install documentation for {{agent-builder}} [set-up-ai-agent-builder-docs]
+### Give {{agent-builder}} knowledge [set-up-ai-agent-builder-docs]
 
 ```{applies_to}
 serverless: ga
 stack: preview =9.3, ga 9.4+
 ```
 
-To give {{agent-builder}} more context for its answers, install Elastic documentation and Security Labs content. Installed content is available in every space.
-
-To check whether the content is already installed, or to install it, refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
-
-### Give {{agent-builder}} knowledge [set-up-ai-agent-builder-knowledge]
-```{applies_to}
-serverless: ga
-stack: preview =9.3, ga 9.4+
-```
 {{agent-builder}} gets product context from installed documentation, and your own data from tools.
+
 - **Elastic documentation and Security Labs**: Install from **GenAI Settings**. Installed content is available in every space. To check or install, refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
 - **Your own data**: Create an [index search tool](/explore-analyze/ai-features/agent-builder/tools/index-search-tools.md) for the indices you want the agent to search, then assign the tool to your agent.
 
 ### Set up the AI Assistant Knowledge Base [set-up-ai-knowledge-base]
+
 ```{applies_to}
 stack: deprecated 9.6+, ga 9.0-9.5
 serverless:
   security: deprecated
 ```
+
 The Knowledge Base gives AI Assistant more context, such as your internal documentation or threat research. The Knowledge Base requires a {{ml}} node of at least 4 GB. Enable the Knowledge Base in each {{kib}} space where you want to use it. For steps to enable it and add knowledge, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
 
 ### Turn on Attack Discovery workflows [set-up-ai-advanced-settings]

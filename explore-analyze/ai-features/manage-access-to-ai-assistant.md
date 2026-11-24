@@ -51,7 +51,7 @@ The **GenAI Settings** page has the following settings:
 The **GenAI Settings** page has the following settings:
 
 - **AI feature visibility**: This button opens the current Space's settings page, where you can specify which features are enabled in your environment, including AI-powered features.
-- **Chat Experience**: Select whether to use AI Assistant or AI Agent. The {{obs-ai-assistant}} is deprecated from 9.4. AI Assistant for Security is generally available through 9.5 and deprecated from 9.6. Use AI Agent. To switch from AI Assistant, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+- **Chat Experience**: Select whether to use AI Assistant or AI Agent. AI Assistant is deprecated. Use AI Agent. To switch from AI Assistant, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
 - **Token usage tracking**: {applies_to}`stack: ga 9.5` Turn on tracking of token usage by AI features.
 - **Stream inference endpoint responses**: {applies_to}`stack: ga 9.6+` If your LLM provider doesn't support streaming, turn this off so {{kib}} waits for the full response. For details, refer to [Turn off streaming for {{infer}} endpoint responses](#turn-off-inference-streaming).
 - **Agent Builder Traces**: {applies_to}`stack: ga 9.5` Turn collection of Agent Builder conversation traces on or off, install a prebuilt dashboard, and set which content traces capture. For details, refer to [Collect Agent Builder traces](/explore-analyze/ai-features/agent-builder/collect-traces.md).

@@ -89,7 +89,7 @@ The [{{es}}](/solutions/search.md) solution view (or project type in {{serverles
 
 ### AI assistant for {{es}}
 
-{applies_to}`stack: deprecated 9.4+` {applies_to}`serverless: deprecated` [](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps. Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
+{applies_to}`stack: ga 9.0-9.3, deprecated 9.4+` {applies_to}`serverless: deprecated` [](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights throughout {{kib}} that explain errors and messages and suggest remediation steps. Use [{{agent-builder}}](/explore-analyze/ai-features/elastic-agent-builder.md) instead.
 
 ### Model Context Protocol (MCP) servers
 
@@ -120,11 +120,11 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ### Agent Builder for {{observability}}
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [{{agent-builder}}](/solutions/observability/ai/agent-builder-observability.md) is the default AI chat experience in {{observability}}. It includes built-in agents and tools for observability tasks, and lets you create custom agents and tools.
+{applies_to}`stack: preview =9.3, ga 9.4+` {applies_to}`serverless: ga` [{{agent-builder}}](/solutions/observability/ai/agent-builder-observability.md) is the default AI chat experience in {{observability}}. It includes built-in agents and tools for observability tasks, and lets you create custom agents and tools.
 
 ### AI assistant for {{observability}}
 
-{applies_to}`stack: deprecated 9.4+` {applies_to}`serverless: deprecated` [](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps.
+{applies_to}`stack: ga 9.0-9.3, deprecated 9.4+` {applies_to}`serverless: deprecated` [](/solutions/observability/ai/observability-ai-assistant.md) helps you understand, analyze, and interact with your Elastic data throughout {{kib}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides [contextual insights](/solutions/observability/ai/observability-ai-assistant.md#obs-ai-prompts) throughout {{kib}} that explain errors and messages and suggest remediation steps. Use [{{agent-builder}}](/solutions/observability/ai/agent-builder-observability.md) instead.
 
 ### Streams
 
@@ -149,7 +149,7 @@ If you're running earlier versions of {{es}} without Agent Builder, you can use 
 
 ### AI Assistant for Security
 
-{applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps. Use [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) instead.
+{applies_to}`stack: ga 9.0-9.5, deprecated 9.6+` {applies_to}`serverless: deprecated` [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) helps you with tasks such as alert investigation, incident response, and query generation throughout {{elastic-sec}}. It provides a chat interface where you can ask questions about the {{stack}} and your data, and provides contextual insights that explain errors and messages and suggest remediation steps. Use [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) instead.
 
 
 ### Attack Discovery
