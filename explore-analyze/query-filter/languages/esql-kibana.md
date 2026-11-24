@@ -260,7 +260,7 @@ serverless: preview
 stack: preview 9.7+
 ```
 
-If an {{esql}} query fails when you run it in **Discover**, for example because it asks for more memory than {{es}} can give it, an AI agent can explain what went wrong and what to try next. The error message that replaces your results includes an **Explain with AI** action. Select it to send your query, the error message, and your deployment type, such as {{ech}} or self-managed, to the [model that the editor uses for AI](#esql-kibana-ai-assistance). The agent tailors its advice to what you can change.
+If an {{esql}} query fails when you run it in **Discover**, for example because it asks for more memory than {{es}} can give it, an AI agent can explain what went wrong and what to try next. The error message that replaces your results includes an **Explain with AI** action. Select it to send your query, the error message, and your deployment type to the [AI model that the editor uses](#esql-kibana-ai-assistance). The agent tailors its advice to what you can change.
 
 The explanation appears with the error message and includes:
 
