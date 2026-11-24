@@ -69,7 +69,17 @@ FROM traces-*
 | WHERE service.name == "<your-agent-name>"
 ```
 
-The hosted agent also sends logs and metrics, which land in the `logs-*` and `metrics-*` data streams of your project.
+The hosted agent also sends logs and metrics. To find them, run the following queries in **Discover**:
+
+```esql
+FROM logs-*
+| WHERE service.name == "<your-agent-name>"
+```
+
+```esql
+TS metrics-*
+| WHERE service.name == "<your-agent-name>"
+```
 
 ## Send telemetry to Application Insights and Elastic
 
