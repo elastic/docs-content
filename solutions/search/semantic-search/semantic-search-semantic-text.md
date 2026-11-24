@@ -65,7 +65,11 @@ PUT semantic-embeddings
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used. On {{serverless-short}} and on {{ech}} 9.4 and later, that endpoint is `.jina-embeddings-v5-text-small`.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default {{infer}} endpoint is used.
+
+   {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` In this example, [`.jina-embeddings-v5-text-small`](/explore-analyze/elastic-inference/eis.md#jina-embeddings-v5-on-eis) is used, which is the default on {{ech}} and {{serverless-short}}.
+
+   The default varies by {{stack}} version and deployment type. For details, refer to [Use default endpoints](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints).
 
 ::::::
 
@@ -109,7 +113,11 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used. On {{serverless-short}} and on {{ech}} 9.4 and later, that endpoint is `.jina-embeddings-v5-text-small`.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default {{infer}} endpoint is used.
+
+   {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` In this example, [`.jina-embeddings-v5-text-small`](/explore-analyze/elastic-inference/eis.md#jina-embeddings-v5-on-eis) is used, which is the default on {{ech}} and {{serverless-short}}.
+
+   The default varies by {{stack}} version and deployment type. For details, refer to [Use default endpoints](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints).
 
 ::::::
 
@@ -384,7 +392,9 @@ Both queries return the documents ranked by semantic relevance. The documents ab
 }
 ```
 
-1. Documents are ranked by `_score`. With `.jina-embeddings-v5-text-small`, scores are normalized between 0 and 1. A higher score means stronger semantic relevance to the query.
+1. Documents are ranked by `_score`. A higher score means stronger semantic relevance to the query.
+   - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` On {{ech}} and {{serverless-short}}, [`.jina-embeddings-v5-text-small`](/explore-analyze/elastic-inference/eis.md#jina-embeddings-v5-on-eis) scores are normalized between `0` and `1`. The scores in this example use that scale.
+   - {applies_to}`stack: ga 9.0-9.3` On {{ech}}, ELSER scores typically range from `0` to above `10`.
 2. The `_source` contains the original document text. Embeddings are stored internally and excluded from the response by default.
 
 ::::
