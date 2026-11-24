@@ -132,7 +132,10 @@ Let’s start by looking at this simple job in the **Single Metric Viewer**:
 
 1. Select the **Anomaly Detection Jobs** tab in **{{ml-app}}** to see the list of your {{anomaly-jobs}}.
 2. Click the chart icon in the **Actions** column for your `low_request_rate` job to view its results in the **Single Metric Viewer**.
-3. Use the relative mode of the date picker to select a start date one week in the past and an end date one month in the future to cover the majority of the analyzed data points.
+3. To cover the majority of the analyzed data points, set the time range to start one week in the past and end one month in the future.
+
+   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` Enter `-1w to now+1M` in the time filter and press {kbd}`enter`. Alternatively, select **Custom range**, set **Start date** to one week in the past and **End date** to one month in the future, then select **Apply**.
+   - {applies_to}`stack: ga 9.0-9.6` Use the relative mode of the time filter to select a start date one week in the past and an end date one month in the future.
 
 :::{image} /explore-analyze/images/machine-learning-ml-gs-job1-analysis.jpg
 :alt: Single Metric Viewer for low_request_rate job

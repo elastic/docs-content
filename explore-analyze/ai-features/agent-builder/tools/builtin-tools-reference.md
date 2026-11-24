@@ -52,7 +52,9 @@ $$$agent-builder-builtin-tools-frozen-tier$$$ {applies_to}`stack: ga 9.4.8+` The
 
 #### {{esql}} Data Federation datasets
 
-$$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The `generate_esql`, `index_explorer`, `list_indices`, and `search` tools also work with [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md). Datasets can only be queried with {{esql}}. If [{{esql}} Data Federation isn't enabled](elasticsearch://reference/query-languages/esql/esql-data-federation.md#enable-the-feature) in {{es}}, these tools find no datasets and don't return an error. The tools find only the datasets that you have the `read_dataset_metadata`, `manage_dataset`, `manage`, or `all` index privilege on. With only the `read` privilege, you can query a dataset with {{esql}}, but these tools don't find it.
+$$$agent-builder-builtin-tools-datasets$$$ {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The `generate_esql`, `index_explorer`, `list_indices`, and `search` tools also work with [{{esql}} Data Federation datasets](elasticsearch://reference/query-languages/esql/esql-data-federation-datasets.md). Datasets can only be queried with {{esql}}. The tools find only the datasets that you have the `read_dataset_metadata`, `manage_dataset`, `manage`, or `all` index privilege on. With only the `read` privilege, you can query a dataset with {{esql}}, but these tools don't find it.
+
+{applies_to}`stack: preview 9.6+` If [{{esql}} Data Federation isn't enabled](elasticsearch://reference/query-languages/esql/esql-data-federation.md#enable-the-feature) in {{es}}, these tools find no datasets and don't return an error.
 
 #### {{esql}} views
 
@@ -76,7 +78,7 @@ $$$agent-builder-builtin-tools-views$$$ {applies_to}`serverless: ga` {applies_to
 
     {applies_to}`stack: ga 9.4.8+` By default, the tool excludes [frozen tier data](#agent-builder-builtin-tools-frozen-tier).
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also generate queries against [datasets](#agent-builder-builtin-tools-datasets).
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool can also generate queries against [datasets](#agent-builder-builtin-tools-datasets).
 
     {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The tool can also generate queries against [views](#agent-builder-builtin-tools-views).
 
@@ -102,14 +104,14 @@ $$$agent-builder-builtin-tools-views$$$ {applies_to}`serverless: ga` {applies_to
 
     {applies_to}`stack: ga 9.4.8+` By default, the tool can omit fields that exist only in frozen indices on a remote cluster. Refer to [Frozen tier data](#agent-builder-builtin-tools-frozen-tier).
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also return relevant [federated datasets](#agent-builder-builtin-tools-datasets).
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool can also return relevant [federated datasets](#agent-builder-builtin-tools-datasets).
 
     {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The tool can also return relevant [views](#agent-builder-builtin-tools-views).
 
 `platform.core.list_indices` {applies_to}`stack: preview =9.2, ga 9.3+`
 :   Lists the indices, aliases, and data streams in the {{es}} cluster the current user has access to.
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool also lists [federated datasets](#agent-builder-builtin-tools-datasets), with the data source and resource of each one.
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool also lists [federated datasets](#agent-builder-builtin-tools-datasets), with the data source and resource of each one.
 
     {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The tool also lists [views](#agent-builder-builtin-tools-views), with the query of each one.
 
@@ -118,7 +120,7 @@ $$$agent-builder-builtin-search-tool$$$ `platform.core.search` {applies_to}`stac
 
     {applies_to}`stack: ga 9.4.8+` By default, the tool excludes [frozen tier data](#agent-builder-builtin-tools-frozen-tier).
 
-    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: unavailable` The tool can also search [federated datasets](#agent-builder-builtin-tools-datasets), which it always queries with {{esql}}.
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tool can also search [federated datasets](#agent-builder-builtin-tools-datasets), which it always queries with {{esql}}.
 
 $$$agent-builder-product-documentation-tool$$$ `platform.core.product_documentation` {applies_to}`stack: ga 9.3+`
 :   Searches and retrieves documentation about Elastic products. If **Elastic documentation** isn't installed, search for **GenAI Settings** in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and install it from the **Documentation** section. This takes a few minutes.
