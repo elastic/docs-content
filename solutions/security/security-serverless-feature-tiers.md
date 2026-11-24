@@ -35,7 +35,8 @@ The following table compares features available in each feature tier:
 | **[Machine learning](/solutions/security/advanced-entity-analytics/anomaly-detection.md)** | ✅ | ✅ | ❌ |
 | **[Triage](/solutions/security/detect-and-alert/manage-detection-alerts.md), [investigation](/solutions/security/investigate.md), and [hunting](https://www.elastic.co/security/threat-hunting)** | ✅ | ✅ | ❌ |
 | **[Threat intelligence integration](/solutions/security/get-started/enable-threat-intelligence-integrations.md)** | ✅ | ✅ | ❌ |
-| **[AI Assistant](/solutions/security/ai/ai-assistant.md) with custom knowledge support** | ✅ | ❌ | ✅ |
+| **[Agent Builder](/solutions/security/ai/agent-builder/agent-builder.md) (AI chat with agents, tools, and skills)** | ✅ | ❌ | ✅ |
+| **[AI Assistant](/solutions/security/ai/ai-assistant.md) with custom knowledge support (deprecated)** | ✅ | ❌ | ✅ |
 | **[Attack Discovery](/solutions/security/ai/attack-discovery/index.md) (AI-powered alert correlation)** | ✅ | ❌ | ✅ |
 | **[Automatic Import](/explore-analyze/ai-features/automatic-import.md) (AI-powered custom integrations)** | ✅ | ❌ | ❌ |
 | **[Entity analytics / UEBA](/solutions/security/advanced-entity-analytics.md)** | ✅ | ❌ | ❌ |
@@ -101,6 +102,7 @@ When you downgrade your Security project features selection from **Security Anal
 * Endpoint response actions history
 * Endpoint host isolation exceptions
 * Trusted devices
+* Agent Builder
 * AI Assistant
 * Attack discovery
 

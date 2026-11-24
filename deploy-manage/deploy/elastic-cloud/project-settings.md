@@ -142,7 +142,7 @@ For {{sec-serverless}} projects, edit the **Project features** to select a featu
 
 | Feature tier | Description and add-ons |
 | :--- | :--- |
-| **Elastic AI SOC Engine (EASE)** | A package of AI-powered tools meant to work with and enhance your existing SOC platforms: triage and correlate alerts from any platform using Attack Discovery, get realtime recommendations and assistance from AI Assistant, and share insights with your other tools.  |
+| **Elastic AI SOC Engine (EASE)** | A package of AI-powered tools meant to work with and enhance your existing SOC platforms: triage and correlate alerts from any platform using Attack Discovery, investigate and get recommendations with Agent Builder, and share insights with your other tools.  |
 | **Security Analytics Essentials** | A suite of security analytics, detections, investigations, and collaboration tools. Does not include AI-powered tools. Allows these add-ons:<br>• **Endpoint Protection Essentials**: endpoint protections with {{elastic-defend}}.<br>• **Cloud Protection Essentials**: Cloud native security features.|
 | **Security Analytics Complete** | Everything in **Security Analytics Essentials** and **EASE**, plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:<br><br>• **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.<br>• **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.|
 
