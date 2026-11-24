@@ -22,7 +22,16 @@ On the **Storage Tier** page, the top half of the page offers project-level insi
 :::
 
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage data up to the last 10 days. Each data point on a chart represents 1 hour for periods longer than 72 hours, 15 minutes for periods longer than 24 hours and up to 72 hours, and 5 minutes for periods of 24 hours or less.
+* Select **custom time windows** to explore usage data up to the last 10 days.
+  
+  The X-axis on each chart displays data at regular time buckets or intervals. The length of these intervals depends on the time window you select:
+
+  | Selected time window | Length of time intervals |
+  | --- | --- |
+  | 3 hours or less | 5 minutes |
+  | More than 3 hours, up to 24 hours | 5 minutes |
+  | More than 24 hours, up to 72 hours | 15 minutes |
+  | More than 72 hours | 1 hour |
 
 {applies_to}`elasticsearch:` {{es-serverless}} projects offer the same experience, except that unlike the other project types, they only focus on storage retained and not on ingest rate usage metrics.
 
