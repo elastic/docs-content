@@ -37,19 +37,18 @@ Create the connection before you deploy the agent, so the agent can read the key
 ::::
 
 ::::{step} Add the exporter settings
-Add these three environment variables to your hosted agent. They tell it where to send telemetry and how to log in:
+Add these three environment variables to your hosted agent. They tell it where to send telemetry and how to log in. In `azure.yaml`, they go in the `env` map of your agent's service:
 
 ```yaml
-environment_variables:
-  - name: OTEL_EXPORTER_OTLP_ENDPOINT
-    value: https://<your-motlp-endpoint>
-  - name: OTEL_EXPORTER_OTLP_PROTOCOL
-    value: http/protobuf
-  - name: OTEL_EXPORTER_OTLP_HEADERS
-    value: ${{connections.otel-secrets.credentials.otlp_headers}}
+services:
+  <your-agent-name>:
+    env:
+      OTEL_EXPORTER_OTLP_ENDPOINT: https://<your-motlp-endpoint>
+      OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+      OTEL_EXPORTER_OTLP_HEADERS: ${{connections.otel-secrets.credentials.otlp_headers}}
 ```
 
-In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. Add the settings to the `environment_variables` section of your agent's `agent.yaml` file.
+In the last setting, `otel-secrets` is the connection name and `otlp_headers` is the field name from step 1. For more about these settings, refer to [Configure environment variables for a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/configure-hosted-agent-env-variables) in the Microsoft documentation.
 ::::
 
 ::::{step} Deploy the agent again
