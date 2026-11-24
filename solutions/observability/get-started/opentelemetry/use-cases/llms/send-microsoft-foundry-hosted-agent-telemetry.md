@@ -70,12 +70,14 @@ FROM traces-generic.otel-default
 | WHERE service.name == "<your-agent-name>"
 ```
 
-The hosted agent also sends logs and metrics, which land in the `logs-generic.otel-default` and `metrics-generic.otel-default` data streams. To find them, run the following queries in **Discover**:
+The hosted agent also sends logs and metrics, which land in the `logs-generic.otel-default` and `metrics-generic.otel-default` data streams. To find the logs, run the following query in **Discover**:
 
 ```esql
 FROM logs-generic.otel-default
 | WHERE service.name == "<your-agent-name>"
 ```
+
+To find the metrics, run the following query:
 
 ```esql
 TS metrics-generic.otel-default
