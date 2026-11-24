@@ -51,7 +51,7 @@ environment_variables:
 ::::
 
 ::::{step} Create a new agent version
-Foundry sets environment variables per agent version, so deploy the agent again to apply them. With `azd`, run `azd deploy`. Each deployment creates a new version, and the agent's endpoint serves the latest one by default.
+Foundry sets environment variables per agent version, so deploy the agent again to apply them. Refer to [Deploy a hosted agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/deploy-hosted-agent) in the Microsoft documentation.
 ::::
 
 :::::
