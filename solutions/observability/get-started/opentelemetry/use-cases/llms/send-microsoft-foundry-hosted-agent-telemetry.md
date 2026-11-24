@@ -73,7 +73,7 @@ The hosted agent also sends logs and metrics, which land in the `logs-*` and `me
 
 ## Send telemetry to Application Insights and Elastic
 
-When project monitoring is enabled, Foundry also sends the hosted agent's telemetry to Application Insights. With both configured, the agent sends to both in parallel. To send telemetry only to Elastic, disable monitoring at the project level in Foundry. Refer to Microsoft's guide for details.
+When project monitoring is enabled, Foundry also sends the hosted agent's telemetry to Application Insights. With both configured, the agent sends to both in parallel. Each backend can map, store, and display the telemetry differently, so the data in Elastic might not match Application Insights field for field. To send telemetry only to Elastic, disable monitoring at the project level in Foundry. Refer to Microsoft's guide for details.
 
 ## Example: Token usage by model
 
