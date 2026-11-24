@@ -80,7 +80,7 @@ To generate reports, you need the **Generate PDF or PNG reports** privilege, loc
 
 1. Open the dashboard, then select {icon}`upload` **Export** in the application menu.
 2. Choose the PDF or PNG option.
-3. Optional: For PDF exports, enable **Print format** or **Optimize for printing** to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
+3. Optional: For PDF exports, enable **Print format** (or **Optimize for printing**, depending on your {{stack}} version) to create a printer-friendly report with multiple A4 portrait pages and two visualizations per page.
 4. Optional: To generate the report programmatically outside {{kib}}, for example in Watcher, copy the value from the **Post URL** field.
 5. Select **Export PDF** or **Export PNG** to generate the report.
 
@@ -96,6 +96,8 @@ You can export the data displayed in a visualization on a dashboard as a CSV fil
 
 1. On the dashboard, open the panel menu of the visualization.
 2. Select **Download CSV**. The file downloads to your machine.
+
+To see how the CSV file shows a missing value, which depends on your version and on whether the panel is a table or a chart, refer to [What a dash or `(null)` in panel data means](using.md#missing-values-in-panel-data).
 
 ## Export JSON [export-dashboards]
 

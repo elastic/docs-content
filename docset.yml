@@ -14,36 +14,20 @@ api:
     - spec: elasticsearch.json
       product: elasticsearch
       repository: elastic/elasticsearch-specification
-      catalog:
-        categories:
-          - self
-          - ece
-          - ess
   elasticsearch-serverless:
     - spec: elasticsearch-serverless.json
       product: serverless-elasticsearch
       repository: elastic/elasticsearch-specification
-      catalog:
-        categories:
-          - serverless
   kibana:
     - spec: kibana.yaml
       product: kibana
       repository: elastic/kibana
       children:
-        - file: kibana-api-overview.md
-      catalog:
-        categories:
-          - self
-          - ece
-          - ess
+        - file: spaces.md
   kibana-serverless:
     - spec: kibana-serverless.yaml
       product: kibana
       repository: elastic/kibana
-      catalog:
-        categories:
-          - serverless
   cloud:
     - spec: cloud.json
       product: cloud-hosted
@@ -56,9 +40,6 @@ api:
     - spec: cloud-billing.yaml
       product: ess
       repository: elastic/cloud
-      catalog:
-        categories:
-          - ess
   cloud-connect:
     - spec: cloud-connect.yml
       product: ess
@@ -67,16 +48,14 @@ api:
     - spec: elastic-cloud-serverless.yml
       product: cloud-serverless
       repository: elastic/serverless-api-specification
-      catalog:
-        categories:
-          - serverless
+  cloud-monitoring:
+    - spec: autoops.yaml
+      product: ess
+      repository: elastic/autoops-services
   logstash:
     - spec: logstash.yaml
       product: logstash
       repository: elastic/logstash
-      catalog:
-        categories:
-          - self
 
 cta:
   monitor-kubernetes:
@@ -378,9 +357,9 @@ subs:
   watcher-transforms-cap:   "Payload transforms"
   dfanalytics-cap:   "Data frame analytics"
   dfanalytics:   "data frame analytics"
-  dfanalytics-job:   "data frame analytics analytics job"
-  dfanalytics-jobs:   "data frame analytics analytics jobs"
-  dfanalytics-jobs-cap:   "Data frame analytics analytics jobs"
+  dfanalytics-job:   "data frame analytics job"
+  dfanalytics-jobs:   "data frame analytics jobs"
+  dfanalytics-jobs-cap:   "Data frame analytics jobs"
   ctransform:   "continuous transform"
   ctransform-cap:   "Continuous transform"
   ctransforms:   "continuous transforms"
@@ -494,12 +473,11 @@ subs:
   daybreak: "Daybreak"
   kube-stack-version: 0.16.0
   helm-version: 4.3.0
-  ece-docker-images-8: 8.19.23
-  ece-docker-images-9: 9.5.5
+  ece-docker-images-8: 8.19.24
+  ece-docker-images-9: 9.5.6
   search-platform: "Search AI Platform"
   fedramp-mod: "FedRAMP Moderate"
   fedramp-high: "FedRAMP High"
-  fedramp-il5: "FedRAMP IL5"
   tsds: "time series data stream"
   tsdses: "time series data streams"
   tsds-cap: "Time series data stream"

@@ -1,4 +1,5 @@
 - **Maximum of 100 linked projects:** Each origin project can have up to 100 linked projects. A linked project can be associated with any number of origin projects.
+- **Single organization only:** {{cps}} works only within a single {{ecloud}} organization. The origin project and all linked projects must belong to the same organization.
 - **System indices:** Indices such as `.security` and `.fleet-*` are excluded from {{cps}} results by design.
 - **{{anomaly-detect-cap}}:** {{anomaly-jobs}} created before {{cps-init}} was enabled default to origin-only scope (`_alias:_origin`) and must be manually updated to search linked projects.
 - **Transforms:** Transforms created before {{cps-init}} was enabled default to origin-only scope and must be manually updated to search linked projects.

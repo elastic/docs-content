@@ -42,11 +42,12 @@ Create the POST URL from the dashboard, visualization, workpad, or Discover sess
 To create the POST URL for PDF and PNG reports:
 
 1. Go to **Dashboards**, **Visualize Library**, or **Canvas**.
-2. Open the dashboard, visualization, or **Canvas** workpad you want to view as a report. From the toolbar, do one of the following:
+2. Open the dashboard or visualization you want to view as a report, then get the POST URL:
 
-    * {applies_to}`stack: ga 9.1+` Select the **Export** icon, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
-    * {applies_to}`stack: ga =9.0` If you are using **Dashboard** or **Visualize Library**, select **Share** → **Export**, select the **PDF** or **PNG** option, then select **Copy POST URL**.
-    * {applies_to}`stack: ga =9.0` If you are using **Canvas**, select **Share** → **PDF Reports**, then select **Advanced options** → **Copy POST URL**.
+    * {applies_to}`stack: ga 9.1+` In the application menu, select **Export**, then **PDF** or **PNG**. In the export flyout, copy the POST URL.
+    * {applies_to}`stack: ga =9.0` In the application menu, select **Share** → **Export**, select the PDF or PNG option, then select **Copy POST URL**.
+
+    For a **Canvas** workpad, select **Share** in the workpad toolbar, then **PDF reports**. Select **Advanced options**, then **Copy POST URL**.
 
 #### CSV reports [csv-post-url]
 
