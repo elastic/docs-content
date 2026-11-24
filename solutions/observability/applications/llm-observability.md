@@ -56,7 +56,7 @@ Some AI platforms can export OpenTelemetry signals directly to Elastic without c
 
 - Claude Platform covers Messages API requests and Claude Managed Agents sessions. Refer to [Send Claude Platform traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-claude-platform-traces.md).
 - OpenRouter Broadcast covers every chat completion request. Refer to [Send OpenRouter traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-openrouter-broadcast-traces.md).
-- Microsoft Foundry hosted agents export traces, logs, and metrics from the agent runtime. Refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-microsoft-foundry-hosted-agent-telemetry.md).
+- Microsoft Foundry hosted agents export traces, logs, and metrics. Refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-microsoft-foundry-hosted-agent-telemetry.md).
 
 ### Getting started
 
