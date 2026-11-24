@@ -36,3 +36,5 @@ To enable a blended layer that dynamically shows clusters or documents:
 2. Configure **Data view** and the **Geospatial field**.
 3. In **Scaling**, select **Show clusters when results exceed 10000**.
 
+{applies_to}`serverless: beta` {applies_to}`stack: beta 9.7+` To get grids from an {{esql}} query, and have their cell size follow the zoom level, refer to [Make grids follow the zoom level](maps-esql-layer.md#maps-esql-layer-zoom-precision).
+
