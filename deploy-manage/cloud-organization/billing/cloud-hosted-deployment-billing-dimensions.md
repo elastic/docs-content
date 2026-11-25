@@ -29,7 +29,7 @@ Deployment capacity refers to the cost of the nodes in your {{es}} deployment, p
 
 Deployment capacity typically constitutes the majority of your bill, and is the easiest to understand and control.
 
-The rate for deployment capacity depends on your [subscription level](manage-subscription.md), which also determines the level of support that you receive. Support does not appear as a separate charge on your bill.
+The rate for deployment capacity depends on your [subscription level](manage-subscription.md), which also determines the level of support that you receive. Support is not listed as a separate charge on your bill.
 
 ### How can I control the deployment capacity cost? [ec_how_can_i_control_the_deployment_capacity_cost] 
 
@@ -82,13 +82,13 @@ Add-ons are capabilities that you can enable on your {{ech}} deployments. They'r
 * [Snapshot storage](#storage)
 * [Synthetics](#synthetics)
 * [Elastic {{infer-cap}} Service](#inference)
-* [Workflows](#workflow-executions)
-* [{{agent-builder}}](#agent-builder-executions)
+* [Workflow executions](#workflow-executions)
+* [{{agent-builder}} executions](#agent-builder-executions)
 * [{{managed-integrations}}](#managed-integrations)
 
 ### Snapshot storage [storage] 
 
-Snapshot storage costs are tied to the cost of storing the backup snapshots in the underlying IaaS object store, such as AWS S3, Google Cloud GCS or Azure Storage.
+Snapshot storage costs are tied to the cost of storing the backup snapshots in the underlying IaaS object store, such as AWS S3, Google Cloud GCS, or Azure Storage.
 As is common with Cloud providers, we meter and bill snapshot storage using two dimensions:
 
 1. **Storage size (GB/month)**
@@ -132,7 +132,7 @@ Synthetic Monitoring browser tests are charged per test run (metered in 60 secon
 
 {{ech}} bills [workflows](/explore-analyze/workflows.md) based on workflow executions. Each workflow run counts as one execution. For metering details, including how unsuccessful and skipped runs are handled, refer to [Monitor workflow execution](/explore-analyze/workflows/authoring-techniques/monitor-workflows.md#workflows-execution-billing).
 
-The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included. Volume tier reductions apply at higher usage levels. Each tier's rate applies only to the executions in its range.
+The first 10,000 workflow executions across the {{ech}} deployments in an {{ecloud}} organization each month are included at no additional charge. Executions beyond 10,000 are billed for each execution, with volume tier discounts at higher usage levels. Each tier's rate applies only to the executions within that tier's range.
 
 Volume tier usage resets at the start of each month. As a result, after your free allocation is used, the same usage can cost more early in the month than at the end of the previous one. For current billing amounts and tier breakpoints, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).
 
@@ -140,7 +140,7 @@ Volume tier usage resets at the start of each month. As a result, after your fre
 
 {{ech}} bills {{agent-builder}} based on executions. Each completed interaction with an agent counts as at least one execution. For metering details, including how token volume and error responses are counted, refer to [Monitor usage and costs](/explore-analyze/ai-features/agent-builder/monitor-usage.md).
 
-The first 10,000 {{agent-builder}} executions across the {{ech}} deployments in an {{ecloud}} organization each month are included. Volume tier reductions apply at higher usage levels. Each tier's rate applies only to the executions in its range.
+The first 10,000 {{agent-builder}} executions across the {{ech}} deployments in an {{ecloud}} organization each month are included at no additional charge. Executions beyond 10,000 are billed for each execution, with volume tier discounts at higher usage levels. Each tier's rate applies only to the executions within that tier's range.
 
 Volume tier usage resets at the start of each month. As a result, after your free allocation is used, the same usage can cost more early in the month than at the end of the previous one. For current billing amounts and tier breakpoints, refer to the [Hosted add-ons pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=stack_hosted&group=addons&dimension=executions).
 
