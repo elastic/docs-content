@@ -249,7 +249,7 @@ The response contains tokens for both `laptop` and `notebook`, because `my-synon
 
 ## Step 5: Search with synonyms [synonyms-search-example]
 
-With the search-time configuration in this example, full-text queries against the `title` field expand to include synonym terms. Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md).
+After you configure search-time synonyms for a field, full-text queries against that field expand to include synonym terms. Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md).
 
 Index a document so the search has something to match:
 
