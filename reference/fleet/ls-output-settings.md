@@ -73,7 +73,7 @@ output {
     **Default:** `1s`
 
 `backoff.max` $$$output-logstash-fleet-settings-backoff.max-setting$$$
-:   (string) The maximum number of seconds to wait before attempting to connect to {{es}} after a network error.
+:   (string) The maximum number of seconds to wait before attempting to connect to {{ls}} after a network error.
 
     **Default:** `60s`
 
@@ -92,6 +92,10 @@ output {
 :   (int) The gzip compression level. Set this value to `0` to disable compression. The compression level must be in the range of `1` (best speed) to `9` (best compression).
 
     Increasing the compression level reduces network usage but increases CPU usage.
+
+`default_processors` {applies_to}`stack: ga 9.6+`
+:   :::{include} /reference/fleet/_snippets/output-default-processors-setting.md
+    :::
 
 `escape_html` $$$output-logstash-fleet-settings-escape_html-setting$$$
 :   (boolean) Configures escaping of HTML in strings. Set to `true` to enable escaping.

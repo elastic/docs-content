@@ -47,7 +47,7 @@ The `.cases` index holds one document per case, with the current state of each c
 | `case.category` | keyword | Case category. |
 | `case.status` | keyword | Case status: `open`, `in-progress`, or `closed`. |
 | `case.severity` | keyword | Case severity: `low`, `medium`, `high`, or `critical`. |
-| `case.assignees.uid` | keyword | Profile UIDs of the case's assignees (a case can have several), not display names. To resolve a UID to a name, look it up with the [user profile API]({{es-apis}}operation/operation-security-get-user-profile), or match it to `actor.profile_uid` in `.cases-activity`, which also carries `actor.username`, `.full_name`, and `.email`. The `.cases-activity` method only resolves users who have acted on a case. |
+| `case.assignees.uid` | keyword | Profile UIDs of the case's assignees (a case can have several), not display names. For names and emails, use [`case.assignees.username`](#case-analytics-fields-people), `.full_name`, and `.email`. |
 
 ### Timestamps and timing metrics [case-analytics-fields-timing]
 
@@ -71,6 +71,19 @@ Timing fields store values in seconds and are `null` until the case reaches the 
 | `case.created_by.username` | keyword | Username of the case creator. Also includes `.email`, `.full_name`, and `.profile_uid`. |
 | `case.updated_by.username` | keyword | Username of the last editor. Also includes `.email`, `.full_name`, and `.profile_uid`. |
 | `case.closed_by.username` | keyword | Username of the person who closed the case. Also includes `.email`, `.full_name`, and `.profile_uid`. |
+| `case.assignees.username` | keyword | Username of each assignee on the case. Also includes `.email` and `.full_name`. The assignee's profile UID is in `case.assignees.uid`. |
+
+:::{note}
+{{kib}} fills in the assignee username, full name, and email fields from each user's profile when someone sets the case's assignees. Later profile changes don't update these fields.
+
+The fields are empty in the following situations:
+
+* Someone set the assignees before {{kib}} started storing these fields. The fields stay empty until someone updates the assignees.
+* {{kib}} can't retrieve the user's profile.
+* The user's profile doesn't include a full name or email. Only that field is empty.
+
+To find the missing names and emails, refer to [Query case data with {{esql}}](query-case-data-esql.md).
+:::
 
 ### Counters [case-analytics-fields-counters]
 

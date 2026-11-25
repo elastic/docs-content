@@ -42,7 +42,7 @@ Find the **Query activity** page using the navigation menu or the [global search
 ## View running queries
 
 The **Query activity** page lists all in-flight search tasks in your cluster.
-The list does not auto-refresh. Select **Refresh** to update the data. The time of the last refresh is displayed next to the button.
+The list does not auto-refresh. Select **Refresh** to update the data. The page also shows how long ago the data was last refreshed.
 
 :::{tip}
 Searches that users [send to the background](/explore-analyze/discover/background-search.md) from Discover or Dashboards also appear on this page as **Async search** queries. Background search lets users queue their own Discover and Dashboards long-running searches and return to view results later. Query activity gives administrators cluster-wide visibility to monitor and manage all running queries.

@@ -1,6 +1,8 @@
 ---
 applies_to:
-  serverless: ga
+  serverless:
+    observability: ga
+    security: ga
   stack: preview =9.1, ga 9.2+
 description: Streams provides a centralized UI for extracting fields, setting retention, routing data, and managing Elasticsearch data streams.
 products:
@@ -22,8 +24,8 @@ When an incident occurs, Streams gets you to answers faster. AI-powered detectio
 
 ## What you can do with Streams
 
-**Organize logs automatically**
-:   Streams uses AI to partition your log data by source and component, without manual regex rules or pipeline configuration. As new log formats arrive, Streams continues to learn and extend its partitioning automatically.
+**Organize logs automatically** {applies_to}`serverless: { observability: preview, security: preview }` {applies_to}`stack: preview 9.2+`
+:   Streams uses AI to suggest partitions for your log data by source and component, without manual regex rules or pipeline configuration. Review the suggestions and accept the ones you want to create child streams that inherit the parent's configuration.
 
 **Get meaning from logs**
 :   The AI-powered processing pipeline detects log formats and generates parsing rules that extract structured fields from unstructured text. You get clean, queryable data without writing a single Grok expression.
@@ -48,7 +50,7 @@ To use Streams, you need the following prerequisites:
 
     ::::{applies-switch}
 
-    :::{applies-item} serverless:
+    :::{applies-item} { serverless: { observability: ga, security: ga } }
     Streams requires one of the following {{serverless-full}} roles:
 
     - Admin: Able to manage all Streams
@@ -76,7 +78,7 @@ To use Streams, you need the following prerequisites:
 
 Follow these main steps to get started with Streams in {{kib}}. You can find links to send data to Streams, organize your data, parse and enrich your logs, set retention policies, and monitor data quality.
 
-This overview helps you familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ech}} or {{serverless-short}} environment.
+This overview helps you familiarize yourself with the Streams UI and its core workflows. You can follow along directly in your {{ech}} deployment or in an {{obs-serverless}} or {{sec-serverless}} project.
 
 Open **Streams** from the navigation menu or use the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -90,9 +92,15 @@ Streams supports two ingestion paths:
 ::::
 
 ::::{step} Organize your data
+```{applies_to}
+serverless:
+  observability: preview
+  security: preview
+stack: preview 9.2+
+```
 
 :::{note}
-Organizing your data using partitions is only available when sending data to the `logs.otel` or `logs.ecs` managed endpoints. If you're using data that is already flowing to {{es}}, skip this step.
+Organizing your data using partitions is only available when sending data to the wired streams managed endpoints: `logs.otel` or `logs.ecs`, or `logs` on {{stack}} 9.2–9.3. If you're using data that is already flowing to {{es}}, skip this step.
 :::
 
 Use the [**Partitioning**](./organize-your-data.md) tab to route subsets of your stream data into dedicated child streams. Each child stream inherits the parent's configuration but can be managed independently with its own retention policy, processing rules, and field mappings.
@@ -132,9 +140,8 @@ When documents fail during ingestion, Streams preserves them in a [failure store
 For more information on Streams components, review the following links:
 
 - [**Retention**](./configure-retention.md): Manage how your stream retains data and get insight into data ingestion and storage size.
-- [**Partitioning**](./organize-your-data.md): {applies_to}`stack: preview 9.2+` {applies_to}`serverless: preview` Route data into child streams.
+- [**Partitioning**](./organize-your-data.md): Route data into child streams. {applies_to}`serverless: { observability: preview, security: preview }` {applies_to}`stack: preview 9.2+`
 - [**Processing**](./parse-and-process.md): Parse and extract information from documents into dedicated fields.
 - [**Schema**](./map-fields.md): Manage field mappings.
 - [**Data quality**](./manage-data-quality.md): Get information about failed and degraded documents in your stream.
-- [**Advanced**](./advanced.md): Review and manually modify underlying {{es}} components of your stream.
-- [**Knowledge Indicators**](./knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data.
+- [**Knowledge Indicators**](./knowledge-indicators.md): Automatically extract structured facts about your environment from raw log data. {applies_to}`serverless: { observability: preview, security: preview }` {applies_to}`stack: preview 9.4+`
