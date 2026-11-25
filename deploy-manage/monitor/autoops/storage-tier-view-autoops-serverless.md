@@ -22,11 +22,11 @@ On the **Storage Tier** page, the top half of the page offers project-level insi
 :::
 
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time ranges** to explore usage data up to the last 10 days.
+* Select **custom time ranges** to explore data on usage charts up to the last 10 days.
   
-  The X-axis on each chart displays data at regular time buckets or intervals. The length of these intervals depends on the time range you select:
+  Each point on a chart represents the data for one time bucket. The length of these buckets depends on the time range you select:
 
-  | Selected time range | Length of time intervals |
+  | Selected time range | Length of time buckets |
   | --- | --- |
   | 3 hours or less | 5 minutes |
   | More than 3 hours, up to 24 hours | 5 minutes |
@@ -39,7 +39,7 @@ On the **Storage Tier** page, the top half of the page offers project-level insi
 
 The bottom half of the page offers a more granular breakdown table of index-level and data stream-level insights into ingest rate and storage retained metrics. 
 
-:::{image} /deploy-manage/images/search-ai-lake-breakdown-table.png
+:::{image} /deploy-manage/images/storage-tier-breakdown-table.png
 :screenshot:
 :alt: Screenshot showing an expanded row in the table on the bottom half of the Storage Tier page
 :::

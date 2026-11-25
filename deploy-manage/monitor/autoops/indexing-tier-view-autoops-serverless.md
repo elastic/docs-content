@@ -24,13 +24,15 @@ The top half of the **Indexing Tier** page offers general insights at the projec
 :::
 
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time ranges** to explore usage and performance data up to the last 10 days.
+* Select **custom time ranges** to explore data on usage and performance charts up to the last 10 days.
 
   :::{include} /deploy-manage/monitor/_snippets/autoops-serverless-chart-intervals.md
   :::
-
+  
 * Gain insights from **performance charts** depicting indexing rate and latency trends over the selected time range.
-* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to understand the amount of [Ingest VCUs](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumed over the selected time range.
+* $$$ingest-vcus-chart$$${applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to understand [Ingest VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumption.
+
+  Each point on the chart shows the VCU-hours consumed in a time bucket. For example, `0.17/5 min (2/h)` means that 0.17 VCU-hours were consumed in a 5-minute bucket, which is a rate of about 2 VCU-hours per hour. To estimate the Ingest VCU-hours on your bill for the selected time range, add up the values of all the points.
 
 ## Index and data stream-level insights
  
