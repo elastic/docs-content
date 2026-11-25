@@ -351,6 +351,10 @@ If the policy doesn't contain a PSC endpoint filter, then the association can se
 5. Click **Update** to save your changes.
 
 ## Optional: Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console [sso-kib-ip-filter]
+```{applies_to}
+deployment:
+  ess: ga
+```
 
 :::{include} _snippets/ip-filter-for-pc.md
 :::
