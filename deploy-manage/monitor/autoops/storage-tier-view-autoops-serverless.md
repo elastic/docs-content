@@ -28,8 +28,7 @@ On the **Storage Tier** page, the top half of the page offers project-level insi
 
   | Selected time range | Length of time buckets |
   | --- | --- |
-  | 3 hours or less | 5 minutes |
-  | More than 3 hours, up to 24 hours | 5 minutes |
+  | 24 hours or less | 5 minutes |
   | More than 24 hours, up to 72 hours | 15 minutes |
   | More than 72 hours | 1 hour |
 
