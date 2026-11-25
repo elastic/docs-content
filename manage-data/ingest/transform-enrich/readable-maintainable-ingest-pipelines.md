@@ -383,7 +383,7 @@ The [rename processor](elasticsearch://reference/ingest-processor/rename-process
 
 ## Script processor
 
-If no built-in processor can achieve your goal, you may need to use a [script processor](elasticsearch://reference/ingest-processor/script-processor.md) in your ingest pipeline. Be sure to write scripts that are clear, concise, and maintainable.
+If no built-in processor can achieve your goal, you might need to use a [script processor](elasticsearch://reference/ingest-processor/script-processor.md) in your ingest pipeline. Be sure to write scripts that are clear, concise, and maintainable.
 
 ### Add new fields
 

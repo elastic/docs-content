@@ -21,7 +21,7 @@ Before you create a pipeline, check the following:
 * If the {{es}} security features are enabled, make sure you have the following [cluster privileges](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-cluster):
   * `manage_pipeline`, to create, edit, and delete pipelines.
   * `monitor`, to use {{kib}}'s **Ingest Pipelines** feature.
-* If your pipeline uses a processor that depends on another resource, set that resource up first. For example, the [`enrich`](elasticsearch://reference/ingest-processor/enrich-processor.md) processor needs an enrich policy, as described in [](/manage-data/ingest/transform-enrich/set-up-an-enrich-processor.md), and the [`inference`](elasticsearch://reference/ingest-processor/inference-processor.md) processor needs a deployed model or inference endpoint. Check the reference page of each processor you plan to use for details on the setup that may be required.
+* If your pipeline uses a processor that depends on another resource, set up that resource first. For example, the [`enrich`](elasticsearch://reference/ingest-processor/enrich-processor.md) processor needs an enrich policy, as described in [](/manage-data/ingest/transform-enrich/set-up-an-enrich-processor.md), and the [`inference`](elasticsearch://reference/ingest-processor/inference-processor.md) processor needs a deployed model or inference endpoint. Check the reference page of each processor you plan to use for any setup it requires.
 
 ## Create a pipeline [create-manage-ingest-pipelines]
 
@@ -41,7 +41,7 @@ You can create and manage pipelines in {{kib}} or with the [ingest APIs]({{es-ap
 
 If you want to map custom data to the [Elastic Common Schema (ECS)](ecs://reference/index.md), select **Create pipeline** → **New pipeline from CSV** instead. You provide a CSV that describes the mapping, and {{kib}} creates the pipeline from it. Mapping your data to ECS gives it the same field names as other ECS data, so you can use the same queries, dashboards, and visualizations across datasets. To get started, refer to [Map custom data to ECS](ecs://reference/ecs-converting.md).
 
-From the list view, you can view your pipelines and drill down into details, edit or clone existing pipelines, and delete pipelines.
+From the list view, you can view your pipelines and drill down into details, edit or copy existing pipelines, and delete pipelines.
 
 :::{image} /manage-data/images/elasticsearch-reference-ingest-pipeline-list.png
 :alt: Kibana's Ingest Pipelines list view

@@ -12,7 +12,7 @@ products:
 
 After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you can use it to perform {{nlp}} tasks in ingest pipelines.
 
-1. Verify that all of the [ingest pipeline prerequisites](../../../manage-data/ingest/transform-enrich/create-ingest-pipelines.md#ingest-prerequisites) are met.
+1. Verify that all the [ingest pipeline prerequisites](../../../manage-data/ingest/transform-enrich/create-ingest-pipelines.md#ingest-prerequisites) are met.
 2. [Add an {{infer}} processor to an ingest pipeline](#ml-nlp-inference-processor).
 3. [Ingest documents](#ml-nlp-inference-ingest-docs).
 4. [View the results](#ml-nlp-inference-discover).
