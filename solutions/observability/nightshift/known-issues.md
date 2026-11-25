@@ -85,7 +85,7 @@ products:
     **Workaround:** Connect GitHub with a fine-grained personal access token. Refer to [Get started](./get-started.md#nightshift-get-started-other-sources).
 
 **Four connector types**
-:   Investigations can use Local and External {{es}}, GitHub, and HTTP connectors. Slack connects your team, not data.
+:   Investigations can use Local and External {{es}}, GitHub, and HTTP connectors, and can read messages in connected public Slack channels.
 
     **Workaround:** Reach any other tool with an HTTP API through an HTTP connector, and describe the API in custom context. Refer to [Connect any system with an HTTP API](./investigation/extend.md#nightshift-extend-http).
 
@@ -101,18 +101,23 @@ products:
 
     **Workaround:** Use {{nightshift}} in {{kib}}, or connect a Slack workspace. Refer to [Set up Slack](./investigation/set-up.md#nightshift-set-up-slack).
 
-**Public Slack channels only**
-:   `@Elastic` works only in public channels. It doesn't work in private channels, direct messages, or Slack Connect channels, even though the authorization screen offers private-channel access. {{nightshift}} doesn't join channels on its own.
+**Private Slack channels support mentions only**
+:   In a private channel, `@Elastic` answers mentions, but no other messages reach your project. A **New message in channel** automation can't start there, and replies without a mention aren't added to an investigation. Private channels also need private channel access. Refer to [Private channels](./slack-app.md#nightshift-slack-app-private). `@Elastic` doesn't work in direct messages, and it doesn't join channels on its own. In a Slack Connect channel, `@Elastic` answers only members of your workspace, ignores messages from the other organization, and investigations can't read the channel.
 
-    **Workaround:** Use a public channel, and connect it on **Settings** → **General**. Refer to [Connect your data and tools](./investigation/set-up.md#nightshift-set-up-slack).
+    **Workaround:** For automations and thread discussions, use a public channel, and connect it on **Settings** → **General**. Refer to [Connect your data and tools](./investigation/set-up.md#nightshift-set-up-slack).
+
+**Automations accept private channels without a warning**
+:   The channel field of the **New message in channel** trigger lists only public channels, but it also accepts the ID or link of a private channel or a group direct message. The automation saves, but it never starts.
+
+    **Workaround:** Select a channel from the list.
 
 **Slack is the only destination**
 :   An automation can post results only to a Slack channel, with **Post in Slack**. It can't send direct messages or email, or create tickets.
 
     **Workaround:** To route significant events elsewhere, use an action policy. Refer to [Route significant events](./detection/significant-events.md#nightshift-detection-events-route).
 
-**Investigations started in Slack are read-only in {{kib}}**
-:   When an investigation starts from Slack, its chat in {{kib}} is read-only. You also can't close an investigation from Slack.
+**Conversations started in Slack are read-only in {{kib}}**
+:   When a conversation starts from Slack, its chat in {{kib}} is read-only. You also can't close an investigation from Slack.
 
     **Workaround:** Ask follow-up questions in the Slack thread. Close the investigation in {{kib}}.
 

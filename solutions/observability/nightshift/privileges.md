@@ -53,7 +53,8 @@ Add the privileges for each task the admin does.
 | **nightshift**: **All** and **Manage engines** in all spaces | Change daily limits |
 | **nightshift**: **All** and **Manage engines**, and **Advanced Settings**: **All** | Change the settings on the **Detections** tab |
 | **nightshift**: **All** and **Manage engines** | Create, edit, turn on or off, or delete detection sources |
-| **nightshift**: **All** and **Manage engines** | Connect a Slack workspace or channel |
+| **nightshift**: **All** and **Manage engines**, and the `manage_security` cluster privilege | Connect a Slack workspace |
+| **nightshift**: **All** and **Manage engines** | Connect a Slack channel |
 | **Advanced Settings**: **All** | Turn developer mode on or off |
 | **nightshift**: **All**, and the `manage_security` cluster privilege. {{nightshift}} must be enabled for the space. | Create, edit, turn on or off, or delete an automation |
 
@@ -63,12 +64,13 @@ Add the privileges for each task the admin does.
 
 ## Privileges that {{nightshift}} runs with [nightshift-privileges-accounts]
 
-{{nightshift}} runs investigations and automations as two service accounts. This way, they keep working no matter who set them up, and they can reach the same data for everyone.
+{{nightshift}} runs investigations and automations as two service accounts. Connecting Slack adds a third, for the Slack connection. This way, they keep working no matter who set them up, and they can reach the same data for everyone.
 
 | Account | Runs | What it can do |
 | --- | --- | --- |
 | `nightshift_agent` | Investigations, their sandbox tools, and chats with the investigation agent, including `@Elastic` in Slack | Read and write the Wiki, Memory, and decision trees. Use {{nightshift}} and **Agent Builder**. Run the connectors in the space. |
 | `nightshift_automations` | Automation workflows | Read alerts and alerting rules. Start investigations. Use **Agent Builder**. Run the connectors in the space. |
+| `nightshift-relay-agent-builder-<ID>` | Nothing on its own. The Slack relay uses it to pass each `@Elastic` mention to the {{nightshift}} agent, which then runs as `nightshift_agent`, and to forward messages from connected public channels to automations. {{kib}} creates it when an admin connects Slack and deletes it when an admin with the `manage_security` cluster privilege disconnects the workspace. | Holds the `_nightshift_agent` role, and only the Slack relay can use it. Its privileges are capped by those of the admin who connected Slack. Refer to [Elastic app for Slack](./slack-app.md#nightshift-slack-app-identity). |
 
 Investigations reach your data and code through the connectors in the space, with the credentials stored in each connector. The access you give a connector matters. A read-only API key or a token for selected repositories limits what every investigation can read. Detection reads the data that your detection sources select.
 

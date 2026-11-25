@@ -27,7 +27,7 @@ flowchart LR
     G --> H["You decide"]
 ```
 
-1. **Start from the trigger and context**: An alert, a significant event, your description of a problem, a Slack mention, or an automation starts an investigation. Refer to [Where investigations start](#nightshift-investigations-start). It reads the [Wiki](../context/wiki.md), [Memory](../context/memory.md), and your [custom context](../context/index.md#nightshift-context-custom) before investigating.
+1. **Start from the trigger and context**: An alert, a significant event, your description of a problem, or an automation starts an investigation. Refer to [Where investigations start](#nightshift-investigations-start). It reads the [Wiki](../context/wiki.md), [Memory](../context/memory.md), and your [custom context](../context/index.md#nightshift-context-custom) before investigating.
 1. **Check what changed**: It looks for recent changes, such as deploys and configuration changes, around the time the problem started.
 1. **Form hypotheses**: Each hypothesis is a possible explanation, such as lock contention in a database, or a recent deploy that added errors.
 1. **Test hypotheses**: It queries your logs, metrics, and traces, and reads your code in a temporary sandbox, only through the connectors you set up. It runs independent queries in parallel. Refer to [Connect your data and tools](./set-up.md).
@@ -42,7 +42,7 @@ Afterwards, {{nightshift}} saves what it learned to the Wiki and Memory. Refer t
 
 ## Where investigations start [nightshift-investigations-start]
 
-You can start an investigation from the home page, an alert in {{alerting-v1-system-short}}, an alert episode in {{alerting-v2-system-short}}, a significant event, or a Slack thread. You can also have an automation start one when an alert or significant event fires, a message arrives in Slack, or on a schedule. For step-by-step guides to each, refer to [{{nightshift}} use cases](../use-cases/index.md).
+You can start an investigation from the home page, an alert in {{alerting-v1-system-short}}, an alert episode in {{alerting-v2-system-short}}, or a significant event. You can also have an automation start one when an alert or significant event fires, a message arrives in Slack, or on a schedule. For step-by-step guides to each, refer to [{{nightshift}} use cases](../use-cases/index.md).
 
 Investigations that people start count toward the **Manual investigations daily limit**. Refer to [Investigation limits](./limits.md).
 

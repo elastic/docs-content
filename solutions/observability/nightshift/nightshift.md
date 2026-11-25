@@ -41,7 +41,7 @@ Knowledge of how your system fits together usually sits with a few engineers. A 
 :alt: How an investigation flows from a trigger, through detection and context, to the proposed actions you decide on.
 :::
 
-1. **An investigation starts.** The trigger can be a question, an `@Elastic` mention in Slack, selecting **Investigate** on an alert or significant event, or an automation.
+1. **An investigation starts.** The trigger can be a question, selecting **Investigate** on an alert or significant event, or an automation.
 1. **{{nightshift}} investigates.** It queries your data, reads connected code, and tests hypotheses, ranked by confidence.
 1. **It uses and builds context.** It reads its Wiki and Memory first to get context, and saves what it learns.
 1. **It proposes actions.** It provides a likely cause, the evidence, proposed actions, and what it was unsure of.

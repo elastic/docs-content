@@ -53,8 +53,10 @@ flowchart LR
 The run limits apply to the whole deployment, across all spaces. Each one counts a different kind of start:
 
 - **Automatic investigations daily limit**: Investigations that automations start, all automations combined.
-- **Manual investigations daily limit**: Investigations that people start: from the home page, with **Investigate** on an alert or a significant event, with a Slack mention, or with the API or the CLI. **Run** on an automation counts here too.
+- **Manual investigations daily limit**: Investigations that people start: from the home page, with **Investigate** on an alert or a significant event, or with the API or the CLI. **Run** on an automation also counts toward this limit, as does each `@Elastic` mention that opens a new conversation in Slack, even though a mention doesn't start an investigation.
 - **All investigations daily limit**: Automatic and manual investigations together. It can be lower than the other two added up, so you can cap the total while letting either kind use most of it.
+
+Follow-up mentions in a Slack thread, and replies in an investigation's thread that run the investigation again, don't count toward any limit.
 
 To change the limits, you need the privileges listed in [Grant access](../privileges.md#nightshift-privileges-admin).
 
@@ -79,11 +81,9 @@ Investigations of that kind don't start until the limit resets at midnight UTC. 
 How you find out depends on where the start came from:
 
 - **An automation**: The run appears as **Skipped** in the automation's **Run history**, with the reason. The **Automations** page shows a message at the top, with **Open settings**.
-- **An automation with a Slack trigger**: Also, {{nightshift}} replies in the Slack thread that triggered it, with the limit and a link to the settings. It replies once per channel each UTC day.
+- **An automation that posts to Slack**: {{nightshift}} also posts a notice in Slack. The notice names the limit that was reached, the automation's own **Daily trigger limit** or a deployment-wide limit, and says that new investigations resume at 00:00 UTC or when an admin raises the limit. If a Slack message started the run, the notice replies in that message's thread. Otherwise, it's a new message in each channel where the automation posts its results. {{nightshift}} posts each notice once per channel, limit, and UTC day, so later skipped runs that day post nothing more.
 - **A person, in {{kib}}**: The start is refused, with a message that names the limit that was reached. **Run** on an automation is turned off, and its tooltip names the limit.
-- **A Slack mention**: The mention is refused. {{nightshift}} replies that the daily limit for manual investigations is reached, and that an admin can raise it in the {{nightshift}} settings.
-
-Alert-triggered and scheduled automations post nothing to Slack when they're skipped. Check their run history.
+- **A Slack mention**: The mention is refused. {{nightshift}} replies in the thread with the limit that was reached, manual or all investigations, and that an admin can raise it in the {{nightshift}} settings.
 
 ## Daily trigger limits on automations [nightshift-limits-automation]
 
@@ -96,7 +96,7 @@ Each automation also has its own **Daily trigger limit**: 20 by default, up to 5
 
 ## Find out why a run was skipped and raise a limit [nightshift-limits-raise]
 
-A skipped run tells you which limit stopped it. To find the reason, open the automation on the **Automations** page and select the **Run history** tab. Then select the skipped run.
+A skipped run tells you which limit stopped it. If the automation posts to Slack, the limit notice in the channel or thread names it too. To find the reason in {{kib}}, open the automation on the **Automations** page and select the **Run history** tab. Then select the skipped run.
 
 | Reason | Limit that stopped it | How to raise it |
 | --- | --- | --- |

@@ -76,7 +76,7 @@ The investigation runs like any other, and counts toward the **Manual investigat
 1. Follow [Create the automation](./auto-investigate-alerts.md#nightshift-uc-auto-create).
 1. In the trigger, select **any source**, then **Only these sources** and **Significant events**.
 1. Optionally, select a severity, such as **High** and **Critical**, so only the most serious events are investigated.
-1. Add a **Post in Slack** action, so the findings go to your team's channel.
+1. Under **Notifications**, add **Post in Slack**, so the findings go to your team's channel.
 
 These investigations count toward the **Automatic investigations daily limit**. Refer to [Investigation limits](../investigation/limits.md).
 

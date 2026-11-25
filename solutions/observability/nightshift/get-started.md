@@ -129,7 +129,7 @@ An automation starts investigations for you. For example, you could have an inve
 1. Enter a **Name**, for example `Investigate critical alerts`.
 1. Under **Trigger**, select **Add trigger**.
 1. Under **Elastic**, select **Alert triggered**. Select **Any rule** and choose the rules, or a rule tag, that you want investigated.
-1. Optional: Under **Actions**, select **Add action**, then **Post in Slack**, and pick a channel that an admin has connected. Refer to [Set up Slack](./investigation/set-up.md#nightshift-set-up-slack).
+1. Optional: Under **Notifications**, select **Add notification**, then **Post in Slack**, and pick a channel that an admin has connected. Refer to [Set up Slack](./investigation/set-up.md#nightshift-set-up-slack).
 1. Select **Save and enable**.
 
 The automation now investigates each matching alert, within the daily limits. In the checklist, select **Done**. Not ready? Select **Skip this step**. For a full example, refer to [Automatically investigate your alerts](./use-cases/auto-investigate-alerts.md).
