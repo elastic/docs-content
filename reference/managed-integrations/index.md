@@ -71,8 +71,8 @@ The collector for each {{managed-integration}} writes documents directly to your
 
 Where the collector runs, and how its data reaches your cluster, depends on your deployment type:
 
-* **{{serverless-full}} projects**: The collector runs in the same [region](/deploy-manage/deploy/elastic-cloud/regions.md) as your project, on the same infrastructure that hosts the project's {{es}} and {{kib}} components. Collecting data from the source, processing it, and writing it to your project all happen within that region, over Elastic's internal network.
-* **{{ech}} deployments**: The collector runs on {{serverless-full}} infrastructure, which isn't necessarily in the same region as your deployment. Data typically travels over Elastic's internal network, but if your deployment is in a region that isn't served by {{serverless-full}}, it might traverse the public internet to reach your deployment.
+* **{{serverless-full}} projects**: The collector runs in the same [region](/deploy-manage/deploy/elastic-cloud/regions.md) as your project. It processes the data it collects and writes it to your project over Elastic's internal network, so the data stays within that region.
+* **{{ech}} deployments**: The collector runs on Elastic-managed infrastructure that isn't necessarily in the same region as your deployment. Data typically travels over Elastic's internal network, but if your deployment is in a [region that isn't served by {{serverless-full}}](/deploy-manage/deploy/elastic-cloud/regions.md), it might traverse the public internet to reach your deployment. {{fedramp-mod}} deployments are an exception. Their collectors run inside the FedRAMP Moderate environment, in the same region as the deployment, and data stays within that environment.
 
 ## Manage and monitor {{managed-integrations}} [managed-integrations-management]
 

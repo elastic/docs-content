@@ -101,7 +101,9 @@ No. These indices hold current state that's updated in place, not time-based dat
 
 ### Does my data travel over the public internet? [managed-integrations-faq-public-internet]
 
-On {{serverless-full}} projects, no. The collector runs in the same region as your project, and data stays within that region on Elastic's internal network. On {{ech}} deployments, usually not. If your deployment is in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach it. For details, refer to [Security and data residency](/reference/managed-integrations/index.md#managed-integrations-data-security).
+On {{serverless-full}} projects, data doesn't travel over the public internet. The collector runs in the same region as your project, and data stays within that region on Elastic's internal network.
+
+On {{ech}} deployments, data usually stays on Elastic's internal network as well. If your deployment is in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach it. For details, refer to [Security and data residency](/reference/managed-integrations/index.md#managed-integrations-data-security).
 
 ### Who at Elastic has access to my data? [managed-integrations-faq-data-access]
 
