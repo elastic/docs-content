@@ -12,7 +12,7 @@ type: reference
 
 When you [create a pipeline](/manage-data/ingest/transform-enrich/create-ingest-pipelines.md), you configure each processor with field names and values. Ingest processors read and write the data in each document as it passes through a pipeline. You access a field by name, so you can, for example, copy a value into another field, build a value from other fields, or route a document by changing a metadata field such as `_index`.
 
-This page describes how to access source fields, metadata fields, and ingest metadata. For shorter ways to write field access in your processors, refer to [Create readable and maintainable ingest pipelines](/manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md).
+This page describes how to access source fields, metadata fields, and ingest metadata. For shorter ways to write field access in your processors, refer to [Best practices for ingest pipelines](/manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md).
 
 ## Access source fields in a processor [access-source-fields]
 
@@ -400,4 +400,4 @@ PUT _ingest/pipeline/my-pipeline
 
 * [Conditionally run processors and pipelines](/manage-data/ingest/transform-enrich/conditionally-run-ingest-processors.md)
 * [Error handling](/manage-data/ingest/transform-enrich/error-handling.md)
-* [Create readable and maintainable ingest pipelines](/manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md)
+* [Best practices for ingest pipelines](/manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md)

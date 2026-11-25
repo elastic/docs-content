@@ -169,6 +169,6 @@ PUT _ingest/pipeline/one-pipeline-to-rule-them-all
 
 ## Related pages
 
-* [Create readable and maintainable ingest pipelines](/manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md)
+* [Best practices for ingest pipelines](/manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md)
 * [Access data in processors](/manage-data/ingest/transform-enrich/access-data-in-processors.md)
 * [Error handling](/manage-data/ingest/transform-enrich/error-handling.md)

@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: elasticsearch
+description: Build a pipeline in Kibana that parses Common Log Format server logs into searchable fields for the timestamp, source geolocation, and user agent.
 ---
 
 

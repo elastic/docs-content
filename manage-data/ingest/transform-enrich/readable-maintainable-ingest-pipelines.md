@@ -1,18 +1,20 @@
 ---
+navigation_title: Best practices
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: elasticsearch
   - id: cloud-serverless
+description: Follow patterns and do and don't examples that keep ingest pipelines readable and maintainable, such as concise conditionals and consistent field access.
 ---
 
-# Create readable and maintainable ingest pipelines
+# Best practices for ingest pipelines
 
 There are many ways to achieve similar results when creating ingest pipelines, which can make maintenance and readability difficult. This guide outlines patterns you can follow to make the maintenance and readability of ingest pipelines easier without sacrificing functionality.
 
 :::{note}
-This guide does not provide guidance on optimizing for ingest pipeline performance.
+This page does not provide guidance on optimizing for ingest pipeline performance. To find slow pipelines and processors, refer to [Monitor and troubleshoot ingest pipelines](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md#troubleshooting-pipelines-metrics).
 :::
 
 ## Access fields

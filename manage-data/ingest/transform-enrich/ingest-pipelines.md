@@ -14,7 +14,7 @@ type: overview
 
 You can set up ingest pipelines to perform common transformations on your documents as they reach {{es}} and before {{es}} indexes them. Because ingest pipelines run in {{es}}, they don't add processing overhead to the hosts that collect your data. To compare pipelines with other ways to transform data, such as {{agent}} processors and {{ls}}, refer to [Transform and enrich data](/manage-data/ingest/transform-enrich.md).
 
-Use a pipeline to transform your data in any the following ways:
+Use a pipeline to transform your data in the following ways:
 
 * Parse a log line into structured fields.
 * Remove, rename, or redact fields.
@@ -55,7 +55,7 @@ As your pipelines grow more complex, use these pages to build and maintain them:
 
 * [Access data in processors](/manage-data/ingest/transform-enrich/access-data-in-processors.md): read and write source fields, metadata, and template snippets.
 * [Conditionally run processors and pipelines](/manage-data/ingest/transform-enrich/conditionally-run-ingest-processors.md): run a processor or pipeline only for documents that meet a condition, and avoid errors when a field in the condition is missing.
-* [Create readable and maintainable ingest pipelines](/manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md): simplify your pipelines and avoid common mistakes, with do and don't examples.
+* [Best practices for ingest pipelines](/manage-data/ingest/transform-enrich/readable-maintainable-ingest-pipelines.md): simplify your pipelines and avoid common mistakes, with do and don't examples.
 * [Error handling](/manage-data/ingest/transform-enrich/error-handling.md): decide what happens when a processor fails, so one bad field doesn't stop the pipeline, and record what went wrong.
 * [Monitor and troubleshoot ingest pipelines](/troubleshoot/elasticsearch/troubleshoot-ingest-pipelines.md): check pipeline statistics and find slow or failing processors.
 
