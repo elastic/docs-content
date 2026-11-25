@@ -98,13 +98,16 @@ To create a {{fleet-server}} policy:
     1. Provide a meaningful name for the policy that will help you identify this {{fleet-server}} (or cluster) in the future.
     2. Ensure you select *Collect system logs and metrics* so the compute system hosting this {{fleet-server}} can be monitored. (This is not required, but is highly recommended.)
 
-3. After creating the {{fleet-server}} policy, navigate to the policy itself and click **Add integration**.
-4. Search for and select the **{{fleet-server}}** integration.
-5. Then click **Add {{fleet-server}}**.
-6. Configure the {{fleet-server}}:
+3. On the **Agent policies** tab, select the name of the {{fleet-server}} policy that you created, then select **Add integration**:
 
-    1. Expand **Change default**. Because you are deploying this {{fleet-server}} on-premises, you need to enter the *Host* address and *Port* number, `8220`. (In our example the {{fleet-server}} will be installed on the host `10.128.0.46`.)
-    2. It’s recommended that you also enter the *Max agents* you intend to support with this {{fleet-server}}. This can also be modified at a later stage. This will allow the {{fleet-server}} to handle the load and frequency of updates being sent to the agent and ensure a smooth operation in a bursty environment.
+    1. In the **Add integration to policy** flyout, under **Select integration**, search for and select **{{fleet-server}}**.
+    2. Under **Configure integration**, expand **Change defaults** and enter the **Max agents (per server)** you intend to support with this {{fleet-server}}. This is optional, but it helps the {{fleet-server}} handle the load and frequency of updates sent to agents. You can change it later. You set the {{fleet-server}} host when you add the {{fleet-server}}.
+    3. Select **Add integration**.
+
+    :::{note}
+    :applies_to: stack: ga =9.0
+    In this version, **Add integration** opens the **Integrations** page instead of a flyout. To add the {{fleet-server}} integration from there, follow the steps in [](/reference/fleet/add-integration-to-policy.md). When prompted, select **Add {{agent}} later**. You add the {{fleet-server}} in the next section.
+    :::
 
 
 ## Add {{fleet-server}}s [fleet-server-add-server]

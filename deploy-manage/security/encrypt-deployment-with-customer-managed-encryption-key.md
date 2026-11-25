@@ -272,7 +272,7 @@ You can encrypt a deployment with your customer-managed key when you [create a n
                   "key_resource_path": "<replace with your key or alias ARN>"
                 }
               }
-            }
+            }'
             ```
 
             ::::{tip}
@@ -348,7 +348,7 @@ After you have created the service principal and granted it the necessary permis
                   "key_resource_path": "<replace with your Azure key identifier>"
                 }
               }
-            }
+            }'
             ```
 
             ::::{tip}
@@ -439,7 +439,7 @@ After you have granted the Elastic principals the necessary roles, you can finis
                   "key_resource_path": "<replace with your Google Cloud resource ID>"
                 }
               }
-            }
+            }'
             ```
 
             ::::{tip}

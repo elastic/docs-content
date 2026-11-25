@@ -151,7 +151,7 @@ Manage and monitor {{managed-integrations}} from the **{{integrations}}** app:
 1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
    - Open the **Installed integrations** tab and select **View policies** for the integration you want.
-   - Open the integration's page and go to its **Integration policies** tab.
+   - Select the integration, then go to its **Integration policies** tab.
 
 Each integration policy shows the integration's status, so you can check its health and take action — such as updating credentials — without using {{fleet}}.
 
@@ -197,6 +197,18 @@ If you want to collect a diagnostics bundle before contacting support:
 
 {{managed-integrations}} are a fully managed service, so Elastic handles diagnostics for you. Errors that are relevant to you are surfaced for each integration in the **{{integrations}}** app. If you suspect a problem with the service or your deployment, contact [Elastic Support](https://support.elastic.co) — they'll collect diagnostics on your behalf and investigate.
 
+### How do I collect the deployment details that Elastic Support needs? [managed-integrations-faq-support-info]
+
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Installed integrations** tab, select your integration, then select its **Integration policies** tab.
+3. Find the integration policy that you need help with. Select the actions icon {icon}`ellipsis`, then select **Copy support info**.
+4. Include the copied details when you contact [Elastic Support](https://support.elastic.co).
+
 ### How do I make the underlying collectors visible in {{fleet}}? [managed-integrations-faq-fleet-show]
 
 ```{applies_to}
@@ -204,7 +216,7 @@ stack: preview 9.1-9.4
 serverless: unavailable
 ```
 
-On {{stack}} 9.1 through 9.4, you can override the default and expose the underlying collectors in {{fleet}}:
+This option isn't available on {{stack}} 9.5 and later. On {{stack}} 9.1 through 9.4, you can override the default and expose the underlying collectors in {{fleet}}:
 
 ::::{applies-switch}
 
@@ -256,7 +268,7 @@ On {{stack}} versions before 9.2, {{managed-integrations}} can't be upgraded to 
 Deleting an {{managed-integration}} removes all associated resources and stops data ingestion.
 ::::
 
-1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then search for your integration.
-2. Go to the integration's **Integration policies** tab.
+1. In {{kib}}, find **{{integrations}}** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+2. On the **Installed integrations** tab, select your integration, then select its **Integration policies** tab.
 3. Find the integration policy to delete. Click the actions icon {icon}`ellipsis`, then select **Delete integration**.
 4. Confirm by clicking **Delete integration** again.

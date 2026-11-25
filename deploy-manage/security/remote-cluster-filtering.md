@@ -45,6 +45,8 @@ This guide covers the following remote cluster filtering tasks:
 
 ## Create a remote cluster filter [create-remote-cluster-filter]
 
+Follow the steps for your deployment type to create a remote cluster filter through the UI. To use the API instead, refer to [Manage network security through the API](network-security-api.md#create-remote-cluster-filter).
+
 :::::{applies-switch}
 
 ::::{applies-item} ess:

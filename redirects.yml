@@ -1,4 +1,6 @@
 redirects:
+  # related to https://github.com/elastic/docs-content/pull/9392
+  'explore-analyze/ai-features/claude-plugin.md': 'explore-analyze/ai-features/agent-plugins/claude-plugin.md'
   # related to https://github.com/elastic/docs-content/pull/9157
   'solutions/security/alertzero/review-closed-proposed-actions.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
   'solutions/security/alertzero/decide-proposed-action.md': 'solutions/security/alertzero/close-false-positive-alerts.md'
@@ -90,6 +92,8 @@ redirects:
   'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
+  'solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md': 'solutions/observability/get-started/opentelemetry/quickstart/index.md'
+  'solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md': 'solutions/observability/get-started/opentelemetry/quickstart/index.md'
 
   # Related to https://github.com/elastic/docs-content/pull/7062
   'solutions/observability/streams/wired-streams.md': 'solutions/observability/streams/get-data-in.md'
@@ -1235,6 +1239,12 @@ redirects:
   'solutions/security/advanced-entity-analytics/overview.md': 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
   'solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md': 'solutions/security/advanced-entity-analytics/entity-analytics-requirements.md'
   'solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md': 'solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md'
+
+# Related to https://github.com/elastic/docs-content/issues/9074
+  'solutions/security/dashboards/entity-analytics-dashboard.md':
+    to: 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
+    anchors:
+      'entity-entities': 'entity-entities-9-1'
 
 # Related to https://github.com/elastic/docs-content/pull/5222
   'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'

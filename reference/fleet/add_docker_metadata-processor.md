@@ -15,6 +15,8 @@ products:
 
 ::::{tip}
 Inputs that collect logs and metrics use this processor by default, so you do not need to configure it explicitly.
+
+{applies_to}`stack: ga 9.6+` To turn it off, refer to [Turn off this processor](#add_docker_metadata-processor-turn-off).
 ::::
 
 
@@ -31,7 +33,7 @@ Each event is annotated with the following fields:
 | `container.image.name` | Container image name |
 | `container.labels.<key>` | One field per Docker label. By default, dots (`.`) in label keys are replaced with underscores (`_`). Refer to the [working with labels](#labels-dedot-behavior) section for more information. |
 
-### Working with labels [labels-dedot-behavior]
+## Working with labels [labels-dedot-behavior]
 
 Docker label keys often contain dots, for example `com.docker.compose.service`. By default, the processor replaces dots with underscores when writing labels to the event:
 
@@ -103,3 +105,13 @@ If the Docker daemon is restarted, the mounted socket will become invalid, and m
 | `cleanup_timeout` | No | `60s` | Time of inactivity before container metadata is cleaned up and forgotten. |
 | `labels.dedot` | No | `true` | Whether to replace dots (`.`) in labels with underscores (`_`). |
 
+## Turn off this processor [add_docker_metadata-processor-turn-off]
+
+```{applies_to}
+stack: ga 9.6+
+```
+
+Depending on the input, {{agent}} uses this processor by default. To turn it off, set `add_docker_metadata` to `false`:
+
+:::{include} /reference/fleet/_snippets/turn-off-default-processor.md
+:::
