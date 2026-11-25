@@ -41,7 +41,20 @@ To enable autoscaling on an {{es}} cluster, you need to define one or more autos
 Autoscaling policies can be defined in an `ElasticsearchAutoscaler` resource. Each autoscaling policy must have the following fields:
 
 * `name` is a unique name used to identify the autoscaling policy.
-* `roles` contains a set of node roles, unique across all the autoscaling policies, used to identify the NodeSets to which this policy applies. At least one NodeSet with the exact same set of roles must exist in the {{es}} resource specification.
+* `roles` contains a set of node roles that identifies the NodeSets this policy applies to. Each policy must have a different set of roles, but individual roles can appear in more than one policy. At least one NodeSet with the exact same set of roles must exist in the {{es}} resource specification.
+
+    A policy applies to node sets that have at least one data role (`data`, `data_content`, `data_hot`, `data_warm` or `data_cold`), or that have `ml` as their only role. ECK ignores the `remote_cluster_client` role when it checks that `ml` is the only role. Only one policy can include the `ml` role.
+
+    The following table shows examples of roles and whether they can be autoscaled:
+
+    | Roles | Supported |
+    | --- | --- |
+    | `["data"]` | Yes |
+    | `["data_hot", "data_content"]` | Yes. A policy can have more than one data role. It can coexist with a policy for `["data_hot"]`, because the sets of roles are different. |
+    | `["data", "ingest", "transform"]` | Yes. The policy applies because the roles include a data role. |
+    | `["ml"]` | Yes |
+    | `["ingest", "transform"]` | No. No autoscaling decider applies to node sets without a data role. |
+    | `["data", "ml"]` | No. Machine learning nodes must be in a dedicated autoscaling policy. |
 * `resources` helps define the minimum and maximum compute resources usage:
 
     * `nodeCount` defines the minimum and maximum nodes allowed in the tier.

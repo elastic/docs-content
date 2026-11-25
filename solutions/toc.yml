@@ -119,34 +119,32 @@ toc:
         children:
           - file: observability/get-started/quickstarts.md
             children:
-              - file: observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md
+              - file: observability/get-started/opentelemetry/quickstart/index.md
+                children:
+                  - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
+                  - file: observability/get-started/opentelemetry/quickstart/self-managed/index.md
+                    children:
+                      - file: observability/get-started/opentelemetry/quickstart/self-managed/k8s.md
+                      - file: observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md
+                      - file: observability/get-started/opentelemetry/quickstart/self-managed/docker.md
+                  - file: observability/get-started/opentelemetry/quickstart/serverless/index.md
+                    children:
+                      - file: observability/get-started/opentelemetry/quickstart/serverless/k8s.md
+                      - file: observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md
+                      - file: observability/get-started/opentelemetry/quickstart/serverless/docker.md
+                  - file: observability/get-started/opentelemetry/quickstart/ech/index.md
+                    children:
+                      - file: observability/get-started/opentelemetry/quickstart/ech/k8s.md
+                      - file: observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md
+                      - file: observability/get-started/opentelemetry/quickstart/ech/docker.md
               - file: observability/get-started/quickstart-monitor-your-application-performance.md
-              - file: observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md
-              - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
-              - file: observability/get-started/quickstart-create-synthetic-monitor.md
               - file: observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md
               - file: observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md
+              - file: observability/get-started/quickstart-create-synthetic-monitor.md
+              - file: observability/get-started/quickstart-elastic-cloud-otel-endpoint.md
               - file: observability/get-started/quickstart-collect-data-with-aws-firehose.md
           - file: observability/get-started/opentelemetry/start-with-otel.md
           - file: observability/get-started/opentelemetry/switch-to-otel.md
-          - file: observability/get-started/opentelemetry/quickstart/index.md
-            children:
-              - file: observability/get-started/opentelemetry/custom-metrics-quickstart.md
-              - file: observability/get-started/opentelemetry/quickstart/self-managed/index.md
-                children:
-                  - file: observability/get-started/opentelemetry/quickstart/self-managed/k8s.md
-                  - file: observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md
-                  - file: observability/get-started/opentelemetry/quickstart/self-managed/docker.md
-              - file: observability/get-started/opentelemetry/quickstart/serverless/index.md
-                children:
-                  - file: observability/get-started/opentelemetry/quickstart/serverless/k8s.md
-                  - file: observability/get-started/opentelemetry/quickstart/serverless/hosts_vms.md
-                  - file: observability/get-started/opentelemetry/quickstart/serverless/docker.md
-              - file: observability/get-started/opentelemetry/quickstart/ech/index.md
-                children:
-                  - file: observability/get-started/opentelemetry/quickstart/ech/k8s.md
-                  - file: observability/get-started/opentelemetry/quickstart/ech/hosts_vms.md
-                  - file: observability/get-started/opentelemetry/quickstart/ech/docker.md
           - file: observability/get-started/opentelemetry/use-cases/index.md
             children:
               - file: observability/get-started/opentelemetry/use-cases/kubernetes/index.md
@@ -161,6 +159,7 @@ toc:
                 file: index.md
                 children:
                   - file: send-claude-platform-traces.md
+                  - file: send-openrouter-broadcast-traces.md
               - file: observability/get-started/opentelemetry/use-cases/upstream-collector/index.md
           - file: observability/get-started/other-tutorials/index.md
             children:
@@ -665,6 +664,7 @@ toc:
               - file: security/integrations/tenablevm.md
               - file: security/integrations/wiz.md
           - file: security/get-started/automatic-import.md
+          - file: security/get-started/content-connectors.md
           - file: security/get-started/enable-threat-intelligence-integrations.md
       - file: security/manage.md
         children:
@@ -775,7 +775,6 @@ toc:
           - file: security/mcp-app/elastic-security-mcp-app.md
           - file: security/ai/ai-assistant-knowledge-base.md
             children:
-              - file: security/get-started/content-connectors.md
               - file: security/ai/usecase-knowledge-base-walkthrough.md
           - file: security/ai/ease/ease-value-report.md
           - file: security/ai/ease/ease-intro.md
@@ -823,6 +822,7 @@ toc:
             children:
               - file: security/detect-and-alert/cross-cluster-search-detection-rules.md
               - file: security/detect-and-alert/cross-project-search-detection-rules.md
+              - file: security/detect-and-alert/query-alert-indices.md
               - file: security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md
           - file: security/detect-and-alert/manage-detection-rules.md
             children:
@@ -845,7 +845,7 @@ toc:
             children:
               - file: security/detect-and-alert/visualize-detection-alerts.md
               - file: security/detect-and-alert/view-detection-alert-details.md
-              - file: security/detect-and-alert/query-alert-indices.md
+          - file: security/detect-and-alert/triage-eql-alerts.md
           - file: security/endpoint-response-actions.md
             children:
               - file: security/endpoint-response-actions/automated-response-actions.md
@@ -862,7 +862,6 @@ toc:
               - file: security/dashboards/detection-response-dashboard.md
               - file: security/dashboards/cloud-security-posture-dashboard.md
               - file: security/dashboards/kubernetes-dashboard.md
-              - file: security/dashboards/entity-analytics-dashboard.md
               - file: security/dashboards/data-quality-dashboard.md
               - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
               - file: security/dashboards/detection-rule-monitoring-dashboard.md
