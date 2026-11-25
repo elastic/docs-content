@@ -2,7 +2,7 @@
 navigation_title: Synonyms
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-synonyms.html
-description: Learn why search-time synonyms are recommended and how to define synonym sets, configure a search analyzer, and verify synonym expansion in Elasticsearch.
+description: Learn how to define synonym sets, configure synonym token filters and analyzers, and apply synonyms at search time or index time in Elasticsearch.
 applies_to:
   stack:
   serverless:
@@ -194,7 +194,9 @@ When `lenient` is `false`, invalid synonym rules cause errors: analyzer changes 
 
 ## Step 3: Create an index with your synonym analyzer [synonyms-apply-synonyms]
 
-The following example uses the recommended [search-time approach](#synonyms-index-search-time). It creates an index with `standard` as the index analyzer and `synonyms_analyzer` as the search analyzer on the `title` field.
+The following example uses the recommended [search-time approach](#synonyms-index-search-time). It creates an index with `synonyms_analyzer` as a search analyzer on the `title` field.
+
+The analyzer combines the `standard` tokenizer, which splits text into tokens, with token filters that process those tokens in order. The `lowercase` filter converts tokens to lowercase before `synonyms_filter` applies the synonym rules.
 
 ```console
 PUT /my-index
@@ -203,7 +205,6 @@ PUT /my-index
     "properties": {
       "title": {
         "type": "text",
-        "analyzer": "standard",
         "search_analyzer": "synonyms_analyzer" <2>
       }
     }
@@ -229,7 +230,7 @@ PUT /my-index
 ```
 
 1. For [file-based synonym sets](#synonyms-store-synonyms-file), use `"synonyms_path": "analysis/synonym-set.txt"` instead. {applies_to}`serverless: unavailable`
-2. The [`search_analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/search-analyzer.md) applies synonyms to queries. The `analyzer` setting uses `standard` to index documents without synonym expansion.
+2. The [`search_analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/search-analyzer.md) applies synonyms when analyzing queries, not when indexing documents.
 3. Required when you use `synonyms_set`: synonym sets can only be loaded into search-time analyzers. It also lets you [reload]({{es-apis}}operation/operation-indices-reload-search-analyzers) the analyzer when the set changes, without reindexing.
 
 ## Step 4: Test your analyzer [synonyms-test-analyzer]
@@ -248,7 +249,7 @@ The response contains tokens for both `laptop` and `notebook`, because `my-synon
 
 ## Step 5: Search with synonyms [synonyms-search-example]
 
-After you configure synonyms for a field, queries against that field automatically expand to include synonym terms. Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md).
+With the search-time configuration in this example, full-text queries against the `title` field expand to include synonym terms. Queries that support synonym expansion include [match](elasticsearch://reference/query-languages/query-dsl/query-dsl-match-query.md), [query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-query-string-query.md), and [simple_query_string](elasticsearch://reference/query-languages/query-dsl/query-dsl-simple-query-string-query.md).
 
 Index a document so the search has something to match:
 
