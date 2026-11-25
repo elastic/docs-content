@@ -138,6 +138,8 @@ The `kafka` output supports the following settings, grouped by category. Many of
 
     If `sasl.mechanism` is not set, `PLAIN` is used if `username` and `password` are provided. Otherwise, SASL authentication isn't used.
 
+    To authenticate with Kerberos, leave `sasl.mechanism` unset and use the [Kerberos settings](#output-kafka-kerberos-settings).
+
 `ssl` $$$kafka-ssl-setting$$$
 :   When sending data to a secured cluster through the `kafka` output, {{agent}} can use SSL/TLS. For a list of available settings, refer to [SSL/TLS](/reference/fleet/elastic-agent-ssl-configuration.md), specifically the settings under [Table 7, Common configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#common-ssl-options) and [Table 8, Client configuration options](/reference/fleet/elastic-agent-ssl-configuration.md#client-ssl-options).
 
@@ -249,6 +251,80 @@ The following settings apply only to the JWT bearer grant:
 
 `auth.oauth2client.claims`
 :   (map) Additional claims to include in the JWT.
+
+
+### Kerberos settings [output-kafka-kerberos-settings]
+```{applies_to}
+stack: beta
+```
+
+If your Kafka cluster uses Kerberos, {{agent}} can authenticate to it as a Kerberos principal, with either a password or a keytab file. To set this up, add a `kerberos` section to the output. This section holds all the credentials that {{agent}} needs, and {{agent}} selects the matching SASL mechanism (GSSAPI) for you. Leave `sasl.mechanism` and the output's `username` and `password` settings unset.
+
+Before you configure Kerberos authentication, make sure that:
+
+* Your `krb5.conf` file, and your keytab file if you use one, exist on each {{agent}} host that sends data to the output.
+* {{agent}} doesn't run in FIPS mode. Kerberos authentication isn't supported in FIPS mode. For details, refer to [FIPS limitations](/deploy-manage/security/fips-ingest.md#ingest-inputoutput-limitations).
+
+This example configures a Kafka output that authenticates with a principal name and password:
+
+```yaml
+outputs:
+  kafka-output:
+    type: kafka
+    hosts:
+      - 'kafka1.example.com:9092'
+    topic: 'elastic-agent'
+    kerberos:
+      auth_type: password
+      username: <my-principal>
+      password: <my-password>
+      config_path: /etc/krb5.conf
+      realm: EXAMPLE.COM
+      service_name: kafka
+```
+
+To authenticate with a keytab file instead, use this `kerberos` section:
+
+```yaml
+    kerberos:
+      auth_type: keytab
+      username: <my-principal>
+      keytab: /etc/security/elastic-agent.keytab
+      config_path: /etc/krb5.conf
+      realm: EXAMPLE.COM
+      service_name: kafka
+```
+
+`kerberos.enabled`
+:   (boolean) Turns Kerberos authentication on or off. Kerberos authentication is on when the `kerberos` section is present, unless you set `enabled` to `false`.
+
+    **Default:** `true`
+
+`kerberos.auth_type`
+:   (string) **Required**. How {{agent}} authenticates with the Kerberos Key Distribution Center (KDC). Set to `password` to authenticate with a principal name and password, or to `keytab` to authenticate with a keytab file.
+
+`kerberos.username`
+:   (string) **Required**. The name of the principal that {{agent}} authenticates as. With the `keytab` authentication type, this is the principal whose keys the keytab contains.
+
+`kerberos.password`
+:   (string) **Required** for the `password` authentication type. The password of the principal.
+
+`kerberos.keytab`
+:   (string) **Required** for the `keytab` authentication type. The path to the keytab file on the {{agent}} host.
+
+`kerberos.config_path`
+:   (string) **Required**. The path to the `krb5.conf` file on the {{agent}} host. {{agent}} uses this file to find the KDC.
+
+`kerberos.realm`
+:   (string) **Required**. The Kerberos realm, for example `EXAMPLE.COM`.
+
+`kerberos.service_name`
+:   (string) The Kerberos service name of the Kafka brokers, usually `kafka`. {{agent}} combines it with the host name of each broker to request a service ticket, for example `kafka/kafka1.example.com`.
+
+`kerberos.enable_krb5_fast`
+:   (boolean) Turns on Kerberos Flexible Authentication Secure Tunneling (FAST). FAST might conflict with some Active Directory installations.
+
+    **Default:** `false`
 
 
 ## Memory queue settings [output-kafka-memory-queue-settings]

@@ -36,7 +36,7 @@ In {{stack}} 9.3 and earlier {{agent-builder}} documentation, {{elastic-sec}} do
 
 ### How is this different from Elastic AI Assistant?
 
-[Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) is the legacy in-product assistant embedded across {{elastic-sec}} workflows. {{agent-builder}} is the platform for configurable agents, tools, and skills. Skills and tools in {{agent-builder}} replace the older split between broad capabilities and one-off workflows. For how skills relate to tools and prompts, refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
+[Elastic AI Assistant](/solutions/security/ai/ai-assistant.md) is the original in-product assistant embedded across {{elastic-sec}} workflows. {applies_to}`stack: deprecated 9.6+` {applies_to}`serverless: deprecated` AI Assistant is deprecated. Use {{agent-builder}} instead. {{agent-builder}} is the platform for configurable agents, tools, and skills. Skills and tools in {{agent-builder}} replace the older split between broad capabilities and one-off workflows. For how skills relate to tools and prompts, refer to [Skills in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/skills.md).
 
 ### Can I use more than one skill in a conversation?
 
