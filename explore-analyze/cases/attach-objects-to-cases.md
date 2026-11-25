@@ -68,14 +68,24 @@ Cases accepts the following categories of files:
 If your file isn't one of these types (for example, a Microsoft Office format like `.xlsx` or `.docx`) compress it into a ZIP archive and attach the archive instead.
 
 ## Add observables [add-case-observables]
+```{applies_to}
+serverless:
+  security: ga
+stack: ga
+```
+
+::::{admonition} Requirements
+* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+* To add, edit, or delete observables, the `All` privilege for the **Cases** feature under **{{stack-manage-app}}** or **Security**. For details, refer to [Control access to cases](/explore-analyze/cases/control-case-access.md).
+::::
 
 Observables are discrete pieces of data relevant to an investigation, such as IP addresses, file hashes, domain names, or URLs. By attaching observables to cases, you can spot patterns across incidents or events. For example, if the same malicious IP appears in multiple cases, you might be dealing with a coordinated attack or shared threat infrastructure. This correlation helps you assess the true scope of an incident and prioritize your response.
 
-You can view and manage case observables under **Observables** on the case's **Attachments** tab. Each case supports up to 50 observables.
+You can view and manage a case's observables in the **Observables** section of its **Attachments** tab or in the **Observables** tab (depending on your {{stack}} version). Each case supports up to 50 observables.
 
 ### Manually add an observable [cases-manual-add-observable]
 
-1. Select **Add observable** from the **Observables** tab.
+1. In the **Observables** section, select **Add observable**.
 2. Provide the necessary details:
 
     * **Type**: Select a type for the observable. You can choose a preset type or a [custom one](/explore-analyze/cases/configure-case-settings.md#cases-observable-types).
@@ -84,22 +94,75 @@ You can view and manage case observables under **Observables** on the case's **A
 
 3. Select **Add observable**.
 
-After adding an observable to a case, you can remove or edit it using the action menu {icon}`boxes_horizontal`. To find related investigations, check the **Similar cases** tab for other cases that share the same observables.
+After adding an observable to a case, you can remove or edit it using the action menu {icon}`boxes_horizontal`. To find related investigations, check the [Similar cases](#cases-similar-cases) tab for other cases that share the same observables.
 
-### Auto-extract observables [cases-auto-extract-observables]
-
+### Delete multiple observables [cases-delete-multiple-observables]
 ```{applies_to}
-stack: ga 9.2
 serverless:
   security: ga
+stack: ga 9.6+
 ```
 
-With the appropriate subscription, you can auto-extract observables from alerts instead of adding them manually. Note that auto-extracting observables is unavailable for {{observability}} cases.
+To delete multiple observables from a case at once:
 
-{applies_to}`stack: ga 9.5` Auto-extraction can also run for cases created outside the UI, such as with the Cases API or a [Cases connector](kibana://reference/connectors-kibana/cases-action-type.md) action:
+1. In the **Observables** section, select the checkbox for each observable you want to delete.
+2. Select **Bulk actions** → **Delete**.
+3. Select **Delete** again to confirm.
 
-* When a [case template](/explore-analyze/cases/configure-case-settings.md#case-templates) is applied, extraction follows the template's **Auto-extract observables** setting, which is on by default.
-* For cases created directly with the Cases API, extraction is off by default. Set `extractObservables` to `true` in the create-case request to turn it on.
+{{kib}} adds a single entry to the case activity that shows how many observables you deleted.
+
+### Auto-extract observables [cases-auto-extract-observables]
+```{applies_to}
+serverless:
+  security: ga
+stack: ga 9.2
+```
+
+You can auto-extract observables from alerts instead of adding them manually.
+
+To turn auto-extraction on or off for a single case:
+
+* When you create the case, turn **Extract observables** on or off in the **Case settings** step.
+* For an existing case, turn **Auto-extract observables** on or off in the **Observables** section.
+
+::::{applies-switch}
+
+:::{applies-item} { serverless: ga, stack: ga 9.6+ }
+
+To set auto-extraction in advance for new cases:
+
+* For every new case in the space, turn **Extract observables** on or off in the [case settings](/explore-analyze/cases/configure-case-settings.md#cases-extract-observables-default). It's on by default.
+* For cases created from a template, go to the template's **Configuration** tab and turn **Extract observables** on or off. If you apply the template to an existing case, the case switches to the template's setting. If the template doesn't set one, auto-extraction turns off. For details, refer to [Create case templates](/explore-analyze/cases/create-case-templates.md).
+* For cases that a detection rule creates, set **Auto-extract observables** to **On** or **Off** in the rule's [Cases action](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration). To use the template or space setting instead, keep the default option.
+
+:::
+
+:::{applies-item} stack: ga =9.5
+
+To set auto-extraction in advance for new cases:
+
+* For cases created from a template, go to the template's **Configuration** tab and turn **Extract observables** on or off. It's on by default. If you apply the template to an existing case, the case switches to the template's setting. If the template doesn't set one, auto-extraction turns off. For details, refer to [Create case templates](/explore-analyze/cases/create-case-templates.md).
+* For cases that a detection rule creates, select a template in the rule's [Cases action](kibana://reference/connectors-kibana/cases-action-type.md#cases-connector-configuration). The case uses the template's **Extract observables** setting. If you don't select a template, auto-extraction is on.
+
+:::
+
+::::
+
+### Find similar cases [cases-similar-cases]
+
+To find other cases that share observables with this one, open the **Similar cases** tab. The **Similar observable values** column shows which values they have in common.
+
+#### Customize and sort similar cases [cases-similar-cases-table]
+```{applies_to}
+serverless:
+  security: ga
+stack: ga 9.6+
+```
+
+You can change which columns the table shows and how it sorts the cases. By default, it lists the newest cases first.
+
+* To show or hide details such as assignees, comment counts, or custom fields, select **Columns**. The **Name** and **Similar observable values** columns always appear, so **Hide all** leaves them in place. Your browser remembers your selection, separately from the column settings on the **Cases** page.
+* To sort the table, select a column header. You can sort by **Name**, **Status**, **Severity**, **Category**, **Created on**, **Updated on**, and **Closed on**. Sorting applies to all similar cases, not only to the cases on the current page.
 
 ## Add Lens visualizations [cases-lens-visualization]
 
