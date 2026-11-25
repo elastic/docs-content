@@ -81,9 +81,12 @@ Because the field value and query string were analyzed in the same way, they cre
 
 While less common, it sometimes makes sense to use different analyzers at index and search time. To enable this, {{es}} allows you to [specify a separate search analyzer](specify-an-analyzer.md#specify-search-analyzer).
 
-Generally, a separate search analyzer should only be specified when using the same form of tokens for field values and query strings would create unexpected or irrelevant search matches.
+A separate search analyzer is useful in situations such as:
 
-[Search-time synonyms](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-index-search-time) are one reason to use a different search analyzer. In this case, add the synonym token filter only to the search analyzer. The index and search analyzers can still share the same tokenizer and other token filters.
+* **[Synonyms](../../../solutions/search/full-text/search-with-synonyms.md):** For most use cases, apply synonym rules at either search time (recommended) or index time, rather than processing them in both phases.
+* **Avoiding unintended matches:** Use different analyzers when applying the same analysis to indexed field values and query strings would produce unexpected or irrelevant matches.
+
+The following example shows how using the same analyzer at index and search time can produce unintended matches.
 
 ::::{dropdown} Example
 :name: different-analyzer-ex
