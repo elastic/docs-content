@@ -166,7 +166,7 @@ You must include the following parameter to specify the fileâ€™s location on the
 
 You can also use this optional parameter:
 
-* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--force` : ({{elastic-defend}} hosts on Windows only) Retrieve a file that the operating system has locked. {{elastic-defend}} reads the file from a snapshot of the disk volume that contains it.
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--force` : ({{elastic-defend}} hosts on Windows only) Retrieve a file that the operating system has locked. {{elastic-defend}} reads the file from a snapshot of the disk volume that contains it. If the snapshot cannot be created, the file is not retrieved. `--force` does not download a file that exists only in cloud storage.
 
 ::::{note}
 :applies_to: {stack: ga 9.5+, serverless: ga}
@@ -212,7 +212,7 @@ On {{elastic-defend}} hosts, you can use these wildcards in `--path`:
 * `*` matches any number of characters within a single directory or file name (it doesn't cross `/` or `\`). You can use it in any part of the path. For example:
   * `/var/log/*.log` retrieves the files directly in `/var/log` whose names end in `.log`.
   * `/var/log/*` retrieves the files directly in `/var/log`.
-  * `/home/*/.bash_history` retrieves the `.bash_history` file from each user's home directory.
+  * `/home/*/.bash_history` retrieves the `.bash_history` file from each user's home directory. A home directory on another filesystem, such as NFS or ZFS, is skipped.
 * `?` matches exactly one character within a single directory or file name. For example, `/var/log/syslog.?` retrieves `syslog.1` but not `syslog.10`. Like `*`, you can use it in any part of the path.
 * `**` retrieves every file in a directory and all of its subdirectories. It must be the last part of the path, for example `/var/log/**`.
 
@@ -222,7 +222,7 @@ Character classes (`[...]`), regular expressions, and escapes aren't supported â
 
 Wildcards also match hidden files, whose names start with `.`. Matching ignores case on Windows and on macOS volumes that aren't case-sensitive. On Linux, matching is case-sensitive.
 
-The `.zip` archive includes a `manifest.json` file that lists each file, its SHA-256 hash and size, and whether it was retrieved. In multi-file and wildcard actions, items that can't be retrieved are listed with a reason instead. These include files locked by another process (unless you use `--force` on Windows), files stored only in cloud storage such as OneDrive or iCloud (which aren't downloaded), symbolic links matched by a wildcard, mount points, and pseudo-filesystems. By default, one multi-file or wildcard action can include up to 10,000 entries (matched files and skipped items), 20 GiB of uncompressed file data in total, and subdirectories up to 32 levels deep from the wildcard root. If a request exceeds any of these limits, no files are retrieved. Use a more specific path, then try again.
+The `.zip` archive includes a `manifest.json` file that lists each file, its SHA-256 hash and size, and whether it was retrieved. In multi-file and wildcard actions, items that can't be retrieved are listed with a reason instead. These include files locked by another process (unless you use `--force` on Windows), files stored only in cloud storage such as OneDrive or iCloud (which aren't downloaded), symbolic links matched by a wildcard, mount points, and pseudo-filesystems. By default, one multi-file or wildcard action can include up to 10,000 entries (matched files and skipped items), 20 GiB of uncompressed file data in total, and subdirectories up to 32 levels deep from the wildcard root. If a request exceeds any of these limits, the action fails and no files are retrieved. Use a more specific path, then try again.
 
 
 ### `isolate` [_isolate]
