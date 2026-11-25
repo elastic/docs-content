@@ -13,7 +13,19 @@ products:
 
 # Tune for disk usage [tune-for-disk-usage]
 
-This page provides strategies to reduce the storage footprint of your {{es}} indices. Disk usage is influenced by field mappings, index settings, document structure, and how you manage segments and shards. Use these recommendations to improve compression, eliminate unnecessary data, and optimize storage for your specific use case.
+By default, {{es}} often prefers to use extra disk space to speed up the searches and aggregations you're likely to run. If your usage pattern does not make use of these extra data structures on disk then you can configure {{es}} to reduce the disk space it consumes. Depending on your data, settings, and workload, these recommendations can substantially reduce disk usage.
+
+## Avoid indexing unused fields
+
+By default, {{es}} [automatically maps new fields](/manage-data/data-store/mapping/dynamic-mapping.md) as you index documents, including fields that ingest pipelines add. Each mapped field uses disk space. How you map a field affects how much space it uses and how efficiently {{es}} can search, sort, and aggregate on its values. You can save disk space by mapping only the fields you need and by choosing an appropriate mapping for each mapped field. Use the [Field usage stats API]({{es-apis}}operation/operation-indices-field-usage-stats) to check which fields your requests have used. Use the [Analyze index disk usage API]({{es-apis}}operation/operation-indices-disk-usage) to estimate how much disk space each field takes up.
+
+If you do not need every field to be mapped, [set `dynamic` to `false`](elasticsearch://reference/elasticsearch/mapping-reference/dynamic.md#dynamic-parameters) and [define a mapping](/manage-data/data-store/mapping/explicit-mapping.md) for each field you need. You can also [configure `dynamic` mappings on specific objects within a document](elasticsearch://reference/elasticsearch/mapping-reference/dynamic.md#dynamic-inner-objects). You can define this mapping configuration in an [index template](/manage-data/data-store/templates.md) or when you create an index.
+
+If your index stores the original document in `_source`, unmapped fields still take up space there. To save disk space, you can [reduce `_source` storage overhead](#disable-source).
+
+If you only need to search a group of fields together, use [`copy_to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) to copy their values into one searchable field and turn off indexing for the individual fields. If you rarely query a field or can tolerate slower queries on it, consider a [runtime field](/manage-data/data-store/mapping/runtime-fields.md). {{es}} calculates the values of a runtime field at query time, which saves disk space but can make those queries slower.
+
+To rebuild an existing index with fewer indexed fields, create a new index with the updated mapping and [reindex]({{es-apis}}operation/operation-reindex) your documents into it.
 
 ## Disable the features you do not need [_disable_the_features_you_do_not_need]
 

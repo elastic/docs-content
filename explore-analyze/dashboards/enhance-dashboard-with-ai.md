@@ -87,6 +87,8 @@ In both options, the agent also rewrites the dashboard title and description to 
 
 If you'd rather not keep the agent's changes, select **Reset changes** from the menu next to **Save**, before you save. Resetting returns the dashboard to its last saved version, so it also discards any unsaved edits of your own. Once you save, the changes become part of the dashboard, and you can no longer discard them in one step.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` If you've already saved the agent's changes, you can restore an earlier version of the dashboard. Refer to [Restore an earlier version of a dashboard](open-dashboard.md#restore-dashboard-version).
+
 ## Next steps [enhance-dashboard-next-steps]
 
 - You can enhance the same dashboard as many times as you want. You can also open a new conversation while you edit the dashboard, and enter [`/dashboards`](/explore-analyze/ai-features/agent-builder/skills.md) followed by your request, for example `/dashboards Enhance this dashboard, appearance only`. If your request already says what to change, the agent skips the question and gets to work.
