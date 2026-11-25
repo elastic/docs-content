@@ -17,17 +17,17 @@ Ask {{nightshift}} for help without leaving Slack. Mention `@Elastic` in a threa
 
 - An admin has [enabled {{nightshift}}](../get-started.md#nightshift-get-started-enable).
 - An admin has connected your Slack workspace and the channel that you want to use. Refer to [Connect a Slack channel](#nightshift-uc-slack-connect).
-- For automations, the channel must be public. In a private channel, you can mention `@Elastic` and get answers, but messages there can't start automations. Private channels also need private channel access. Refer to [Private channels](../slack-app.md#nightshift-slack-app-private).
+- To start automations, the channel must be public. In a private channel, you can mention `@Elastic` and get answers, but messages there can't start automations. Automations can still post results to a connected private channel: enter its channel ID or link, because private channels aren't suggested. Private channels also need private channel access. Refer to [Private channels](../slack-app.md#nightshift-slack-app-private).
 
 ## Example: The on-call channel [nightshift-uc-slack-example]
 
-Your team's alerts go to the `#ticketing-oncall` Slack channel, where an automation with the **New message in channel** trigger watches for messages from your alerting app. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. Because the alert matches the automation's trigger, {{nightshift}} starts investigating a minute later. A few minutes after that it replies in the alert's thread with the impact, the conclusion, and the hypotheses it tested. To set up an automation, refer to [Investigate alerts from your other tools](./external-alerts.md#nightshift-uc-ext-slack).
+Your team's alerts go to the `#ticketing-oncall` Slack channel, where an automation with the **New message in channel** trigger watches for messages from your alerting app. At 02:10 UTC, an alert says that `inventory-api` latency is above its threshold. Because the alert matches the automation's trigger, {{nightshift}} starts investigating a minute later. It replies in the alert's thread that it's investigating, and a few minutes later updates that reply with the impact, the conclusion, and the hypotheses. To set up an automation, refer to [Investigate alerts from your other tools](./external-alerts.md#nightshift-uc-ext-slack).
 
 The on-call engineer reads the reply and asks in the thread: "@Elastic is ticket-issuer affected too?" {{nightshift}} continues the same investigation and answers in the thread.
 
 ## Connect a Slack channel [nightshift-uc-slack-connect]
 
-An admin connects the Slack workspace once, then each channel, on **Settings** → **General**. `@Elastic` answers only in connected channels. For the steps, refer to [Set up Slack](../investigation/set-up.md#nightshift-set-up-slack).
+An admin connects the Slack workspace once, then each channel, on **Settings** → **General**. `@Elastic` answers only in connected channels. In other channels, it replies with how to connect the channel. For the steps, refer to [Set up Slack](../investigation/set-up.md#nightshift-set-up-slack).
 
 ## Ask a question in a thread [nightshift-uc-slack-ask]
 
@@ -36,17 +36,20 @@ An admin connects the Slack workspace once, then each channel, on **Settings** �
 
 {{nightshift}} shows its progress in the thread and replies there with the answer, with a **View in {{kib}}** link to the conversation. A mention answers a question; it doesn't start an investigation. Investigations start from automations, or when you start one in {{kib}}. Refer to [Investigate anything](./investigate-anything.md).
 
-A mention that opens a new conversation counts toward the **Manual investigations daily limit**, even though it doesn't start an investigation. Follow-up mentions in the same thread don't count. Refer to [Investigation limits](../investigation/limits.md).
+A mention that opens a new conversation counts toward the **Manual investigations daily limit** and the daily limit for all investigations, even though it doesn't start an investigation. Follow-up mentions in the same thread don't count. Refer to [Investigation limits](../investigation/limits.md).
 
 ## Get automation results in a thread [nightshift-uc-slack-results]
 
-To get results in Slack automatically, set up an automation with a **Post in Slack** action. Refer to [Automatically investigate your alerts](./auto-investigate-alerts.md).
+To get results in Slack automatically, set up an automation with a **Post in Slack** notification. Refer to [Automatically investigate your alerts](./auto-investigate-alerts.md).
 
-When the automation runs, {{nightshift}} posts a message when the investigation starts. When the investigation finishes or fails, it replies in the same thread. The reply shows:
+When the automation runs, {{nightshift}} posts a message when the investigation starts. When the investigation finishes or fails, {{nightshift}} updates that message with the results. The message shows:
 
+- **What happened**: A summary of the problem.
 - **Impact**: What the problem affects and how badly.
 - **Conclusion**: The most likely cause and the evidence for it.
-- **Hypotheses**: The explanations that {{nightshift}} tested, and which ones it confirmed or dismissed.
+- **Investigation details**: A collapsed section with **Hypotheses**, up to three confirmed hypotheses with their confidence, or the leading open hypothesis if none is confirmed, and **Proposed actions**.
+
+If the investigation fails or times out, the message says why under **What went wrong** instead.
 
 If your alerts already arrive in Slack from another app, an automation can watch for those messages and reply in the alert's thread instead.
 
@@ -56,7 +59,7 @@ You don't need to mention `@Elastic` for {{nightshift}} to use what your team sa
 
 These runs don't count toward the daily limits, but each one uses model tokens. Refer to [Investigation limits](../investigation/limits.md).
 
-This works in public channels only, because messages in private channels never reach your project unless they mention `@Elastic`. In {{kib}}, each reply appears in the investigation's chat, with its Slack author named in the message text.
+This works in public channels only, because messages in private channels never reach your project unless they mention `@Elastic`. In {{kib}}, each reply appears in the investigation's chat, with the Slack member ID of its author in the message text.
 
 ## What you can do in Slack versus {{kib}} [nightshift-uc-slack-compare]
 

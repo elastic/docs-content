@@ -46,7 +46,7 @@ As a result, everyone in a connected channel can read what {{nightshift}} can re
 
 When an admin connects Slack, {{kib}} creates a service account for the Slack connection, named `nightshift-relay-agent-builder-<ID>`. The relay uses the account for two calls to your project: passing each mention to the {{nightshift}} agent, and forwarding messages from connected public channels so that automations can match them. The agent runs as the `nightshift_agent` account, so the Slack connection doesn't change what an answer can read.
 
-Only the relay can use the account. For every call, it exchanges the account ID for a token that expires after a few minutes, so no long-lived key is stored. When you disconnect the workspace, {{kib}} deletes the account.
+Only the relay can use the account. For every call, it exchanges the account ID for a token that expires after a few minutes, so no long-lived key is stored. When an admin with the `manage_security` cluster privilege disconnects the workspace, {{kib}} deletes the account. If the admin doesn't have it, the workspace still disconnects, but the account isn't deleted.
 
 The Slack connection account is also capped by the privileges that the connecting admin had when they connected Slack. If that admin couldn't chat with the {{nightshift}} agent in **Agent Builder**, mentions in Slack are refused and `@Elastic` replies with an error instead of an answer. To fix it, have an admin with **Agent Builder**: **All** disconnect the workspace and connect it again.
 
@@ -54,11 +54,11 @@ The Slack connection account is also capped by the privileges that the connectin
 
 | Where | What happens |
 | --- | --- |
-| A connected public channel | A mention of `@Elastic` gets a threaded answer, with a **View in {{kib}}** link to the conversation. Follow-up mentions in the thread continue the same conversation. Messages that other apps post can start investigations through an automation with the **New message in channel** trigger. |
+| A connected public channel | A mention of `@Elastic` gets a threaded answer, with a **View in {{kib}}** link to the conversation. Follow-up mentions in the thread continue the same conversation. Top-level messages, such as alerts that other apps post, can start investigations through an automation with the **New message in channel** trigger. |
 | A connected private channel | A mention of `@Elastic` gets a threaded answer, as in a public channel. Messages in private channels can't trigger automations, and investigations can't read the channel's history. An admin must allow private channel access first. Refer to [Private channels](#nightshift-slack-app-private). |
-| A channel that isn't connected | When `@Elastic` joins, it posts the channel ID and asks you to have an Elastic admin connect the channel. It gives the same reply to a mention instead of answering, at most once every 10 minutes per channel. |
+| A channel that isn't connected | When `@Elastic` joins, it posts the channel ID and asks you to have an Elastic admin connect the channel. It gives a similar reply to a mention instead of answering, at most once every 10 minutes per channel. |
 | A direct message to `@Elastic` | Not supported. `@Elastic` replies that direct messages aren't supported, at most once an hour per person. |
-| A Slack Connect channel shared with another organization | Not supported in Tech Preview. Messages from the other organization are never sent to your project, and investigations can't read a shared channel. |
+| A Slack Connect channel shared with another organization | Not supported in Tech Preview. {{kib}} doesn't stop you from connecting one, but people in the other organization can then read `@Elastic`'s answers. `@Elastic` ignores mentions from the other organization, leaves their messages out of the thread it reads, and investigations can't read a shared channel. |
 
 When a channel is connected, `@Elastic` posts a message there saying that the project is connected and ready.
 
@@ -68,20 +68,20 @@ While it works on an answer, `@Elastic` shows a plan in the thread titled **Roll
 
 Editing a message never changes an answer that `@Elastic` already gave. Edits and deletions in a connected public channel are still sent to your project, like any other message. Refer to [What `@Elastic` reads from Slack](#nightshift-slack-app-reads).
 
-A mention that opens a new conversation counts toward the **Manual investigations daily limit**. When the limit is reached, `@Elastic` replies that an admin can raise it. Follow-up mentions in the same thread aren't counted. Refer to [Investigation limits](./investigation/limits.md).
+A mention that opens a new conversation counts toward the **Manual investigations daily limit** and the daily limit for all investigations. When either limit is reached, `@Elastic` replies that an admin can raise it. Follow-up mentions in the same thread aren't counted. Refer to [Investigation limits](./investigation/limits.md).
 
 ### Troubleshoot `@Elastic` responses [nightshift-slack-app-notices]
 
-The following table lists the messages that `@Elastic` posts when it can't answer your question, and what to do. If your project rejects a request for another reason, `@Elastic` posts the project's explanation without changing it.
+The following table lists the messages that `@Elastic` posts when it can't answer your question, and what to do. If your project refuses a request for another reason and explains why, `@Elastic` posts that explanation. Otherwise it usually posts the "couldn't reach Elastic" message.
 
 | Where or when | The message `@Elastic` posts | What to do |
 | --- | --- | --- |
 | You mention it in a channel that isn't connected | This channel isn't connected yet. Ask your Elastic admin to connect it in Kibana Settings using channel ID `C0123456789`, then mention me again. | Send the channel ID to your admin. `@Elastic` posts this at most once every 10 minutes per channel, so later mentions in that window get no reply. |
-| You open its **Messages** tab | Direct messages aren't supported yet. Mention me in a channel that's connected to Kibana instead. | Mention it in a connected channel. `@Elastic` posts this at most once an hour, and Slack doesn't let you type a message to the app. |
+| You open its **Messages** tab | Direct messages aren't supported yet. Mention me in a channel that's connected to Kibana instead. | Mention it in a connected channel. `@Elastic` posts this at most once an hour. |
 | You mention it while it's still answering in the same thread | Elastic is still answering an earlier message in this thread. Please ask again once that reply is posted. | `@Elastic` waits up to two minutes for the earlier answer before it posts this. Ask again once the answer is posted. |
-| Your project can't be reached, or refuses the request | Sorry, I couldn't reach Elastic right now. Please try again in a few minutes. | `@Elastic` retries for about two minutes before it posts this. Try again later. If it keeps happening, ask your admin to check the Slack connection. Refer to [Who `@Elastic` acts as](#nightshift-slack-app-identity). |
+| Your project can't be reached, or refuses the request | Sorry, I couldn't reach Elastic right now. Please try again in a few minutes. | If your project can't be reached or is overloaded, `@Elastic` retries for about two minutes before it posts this. If your project rejects the request without a reason, it posts this right away. Try again later. If it keeps happening, ask your admin to check the Slack connection. Refer to [Who `@Elastic` acts as](#nightshift-slack-app-identity). |
 | The Slack connection needs to be set up again | Your Elastic connection has expired. Please reconnect it in Kibana and try again. | Ask your {{nightshift}} admin to disconnect and connect the workspace again. |
-| A daily limit is reached | The daily limit of 5 for manual investigations has been reached. An admin can raise it in nightshift settings. The number is your project's limit, and the message names the limit that was reached. | Ask your {{nightshift}} admin. Refer to [Investigation limits](./investigation/limits.md). |
+| A daily limit is reached | The daily limit of 5 for manual investigations has been reached. An admin can raise it in nightshift settings. The message names the limit that was reached, manual or all investigations, and its value when known. | Ask your {{nightshift}} admin. Refer to [Investigation limits](./investigation/limits.md). |
 | The answer fails or stops | Elastic response failed., Elastic could not finish this turn., or Elastic stopped working on this request., under a plan titled **Stopped**, with a **View in {{kib}}** link | Open the conversation in {{kib}}, or ask again. |
 | The agent finishes without an answer | Elastic completed without a response. | Open the conversation in {{kib}}, or ask again. |
 | Slack rejects the answer | Couldn't post the answer here - Slack rejected the message. Open this conversation in Kibana to read it. | Open the conversation in {{kib}}. |
@@ -89,6 +89,8 @@ The following table lists the messages that `@Elastic` posts when it can't answe
 | The answer is longer than Slack allows | The answer, ending with: _Response truncated. Open the conversation in Kibana for the full answer._ | Select **View in {{kib}}**. |
 
 When your project refuses your message, for example because the daily limit is reached, or `@Elastic` can't get it there at all, `@Elastic` also adds a `:warning:` reaction to your message, so you can spot it in a busy channel. An answer that fails after it started gets no reaction.
+
+When a daily limit skips an automation that posts to Slack, `@Elastic` posts a notice instead of the results, for example: "The automation *Checkout alerts* has reached its daily limit of 20 investigations. It resumes at 00:00 UTC, or an admin can raise the limit on the automation." If a deployment-wide limit was reached instead, the notice names that limit and points to the {{nightshift}} settings. Each notice is posted once per channel and limit each UTC day. Refer to [What happens when a limit is reached](./investigation/limits.md#nightshift-limits-reached).
 
 ## Private channels [nightshift-slack-app-private]
 
@@ -120,19 +122,19 @@ The app also subscribes to these Slack events: `app_mention`, `message.channels`
 ## What `@Elastic` reads from Slack [nightshift-slack-app-reads]
 
 **When you mention `@Elastic`**
-:   Your message. In a thread, the relay also reads the thread's first message and up to four of the latest messages from other people since `@Elastic` last posted there. In a long thread, it may read only the first message. Each message is capped at 2,000 characters. The relay reads the thread again for every mention and doesn't keep it.
+:   Your message. In a thread, the relay also reads the thread's first message and up to four of the latest messages from people and other apps since `@Elastic` last posted there. In a long thread, it may read only the first message. Each message is capped at 2,000 characters. The relay reads the thread again for every mention and doesn't keep it.
 
 **In connected public channels**
-:   Every message event, so that automations with the **New message in channel** trigger can match them, for example alerts that another app posts. This includes edits and deletions, and a deletion can include the deleted text. An automation that matches a message receives its text, up to 4,000 characters. Replies in an investigation's thread are added to that investigation, even without a mention. Refer to [Discuss an investigation in its thread](./use-cases/investigate-in-slack.md#nightshift-uc-slack-discuss).
+:   Every message event, so that automations with the **New message in channel** trigger can match them, for example alerts that another app posts. This includes edits and deletions, and a deletion can include the deleted text. Messages in which a person mentions `@Elastic` go to the agent instead, though edits of those messages are sent. `@Elastic`'s own posts aren't sent. An automation that matches a message receives its text, up to 4,000 characters. Replies in an investigation's thread are added to that investigation, even without a mention. Refer to [Discuss an investigation in its thread](./use-cases/investigate-in-slack.md#nightshift-uc-slack-discuss).
 
 **During an investigation**
-:   An investigation can read recent messages in a connected public channel that `@Elastic` is a member of. By default it reads the last two hours, up to seven days. It can't read private channels, shared channels, direct messages, or channels that aren't connected to the project.
+:   An investigation can read recent messages in a connected public channel that `@Elastic` is a member of. By default it reads the last two hours. It can read up to seven days at a time, or a whole thread. It can't read private channels, shared channels, direct messages, or channels that aren't connected to the project.
 
 **People's names**
 :   The display names of the people in the thread, so that answers and the investigation record show who said what. Names are held in memory for up to six hours and aren't written to disk.
 
 **What it doesn't read**
-:   Channels that `@Elastic` isn't a member of, the content of direct messages, and files.
+:   Channels that `@Elastic` isn't a member of, and the content of files. It receives direct messages only to reply that they aren't supported, and never forwards or stores them.
 
 ## Where your Slack data goes [nightshift-slack-app-data]
 
@@ -140,9 +142,9 @@ The app also subscribes to these Slack events: `app_mention`, `message.channels`
 | --- | --- | --- |
 | The Slack relay | The workspace installation and its Slack bot token, which channels connect to which project, the channel names, the project's {{kib}} URL, and the ID of each project's Slack connection service account. The token and the account ID are encrypted. No message content. | Until the channel or workspace is disconnected, or the app is removed from Slack. |
 | The Slack relay, in transit | Slack events that are waiting to be delivered to your project, encrypted. | Deleted when your project accepts the event, or within an hour if it can't be delivered. |
-| The Slack relay, per answer | IDs and state for an answer in progress, such as which message to update. No message content. | Up to one hour. |
+| The Slack relay, per answer | IDs and state for an answer in progress, such as which message to update, and IDs used to limit repeated notices. No message content. | About an hour after the answer's last update. |
 | Your project | Conversations, investigations, and the Slack messages that they include, with the names of the people who wrote them. | Until you delete them. Refer to [Deleting data](./cost-and-models.md#nightshift-data). |
-| Your project, the `.workflows-events` data stream | Every message in a connected public channel, with its text, including messages that no automation matches. {{nightshift}} itself doesn't keep them. Workflows logs them as trigger events. | No retention period is set on the data stream. |
+| Your project, the `.workflows-events` data stream | Every message event that the relay sends from a connected public channel, including edits and deletions, with its text, and including messages that no automation matches. {{nightshift}} itself doesn't keep them. Workflows logs them as trigger events. | No retention period is set on the data stream. |
 | Models through EIS | The Slack messages in a thread are sent to the model along with the rest of the investigation. | Refer to [What it sends to models](./cost-and-models.md#nightshift-data). |
 | Slack | The messages that `@Elastic` posts. | Your Slack workspace's retention settings. |
 
@@ -156,7 +158,7 @@ For how Elastic processes personal data, including the Data Processing Addendum 
 :   On the {{nightshift}} **Settings** page, select **Disconnect channel** next to the channel. `@Elastic` stops answering there and replies that the channel isn't connected. It stays in the channel until you remove it in Slack. Automations that post to the channel stop posting.
 
 **Disconnect the workspace**
-:   On the {{nightshift}} **Settings** page from the **Slack channels** section, open the {icon}boxes_vertical menu and select **Disconnect workspace**. This disconnects every channel for this project. Other Elastic projects connected to the same workspace aren't affected. When the last project disconnects, the relay revokes the bot token and deletes the installation.
+:   On the {{nightshift}} **Settings** page from the **Slack channels** section, open the {icon}`ellipsis` menu and select **Disconnect workspace**. This disconnects every channel for this project. Other Elastic projects connected to the same workspace aren't affected. When the last project disconnects, the relay revokes the bot token and deletes the installation.
 
 **Remove the app from Slack**
 :   When a Slack admin removes the app from the workspace, the relay deletes the installation and every channel connection for every project connected to the workspace.

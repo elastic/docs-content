@@ -11,7 +11,7 @@ products:
 
 # Automatically investigate your alerts [nightshift-auto-investigate-alerts]
 
-{{nightshift}} can automatically investigate your alerts using automations. An automation starts an investigation when an alert matches the conditions you set up, and posts the findings in a Slack thread, giving the on-call engineer a head start on fixing the problem.
+{{nightshift}} can automatically investigate your alerts using automations. An automation starts an investigation when an alert matches the conditions you set up, and posts the findings to Slack, giving the on-call engineer a head start on fixing the problem.
 
 ## Before you begin [nightshift-uc-auto-before]
 
@@ -31,7 +31,7 @@ The process looks something like this:
 1. A rule tagged `checkout` fires an alert with severity **Critical**.
 1. The automation checks that the alert matches and that no daily limit is reached.
 1. {{nightshift}} starts an investigation and posts a message in `#checkout-oncall`.
-1. When the investigation finishes, {{nightshift}} replies in that message's thread with the impact, the conclusion, and the hypotheses.
+1. When the investigation finishes, {{nightshift}} updates that message with the impact, the conclusion, and the hypotheses.
 
 ## Create the automation [nightshift-uc-auto-create]
 
@@ -47,7 +47,7 @@ For this process to work, you need to first create the automation that fires und
 1. Select **Any severity** and select the alert severity that you want to trigger an investigation. Only the severities that the selected rules support are available. {{nightshift}} checks the severity once, when the alert becomes active; later changes don't start an investigation.
 1. Set the **Daily trigger limit**. Refer to [Daily trigger limit](../investigation/automations.md#nightshift-automations-daily-limit).
 1. Optionally, in **Additional Instructions**, tell {{nightshift}} about these services. Refer to [Point {{nightshift}} to your runbooks and code](#nightshift-uc-auto-instructions).
-1. Under **Actions**, select **Add action** → **Post in Slack**. Search for and select the Slack channel you want to send investigation results to. If no channels are listed, select **Connect channels in Settings**.
+1. Under **Notifications**, select **Add notification** → **Post in Slack**. Search for and select the Slack channel you want to send investigation results to. If no channels are listed, select **Connect channels in Settings**.
 1. Select **Save and enable**. To save an automation, but leave it turned off, select **Save**.
 
 The automation now appears on the **Automations** page with **Enabled** on. To pause it, turn off **Enabled**.

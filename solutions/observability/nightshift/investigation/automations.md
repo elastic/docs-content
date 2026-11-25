@@ -24,7 +24,7 @@ flowchart LR
 1. **A trigger fires.** For example, a latency alert changes to **Active**.
 1. **The automation checks its limits.** If a limit is reached, the run is skipped. Refer to [Investigation limits](./limits.md).
 1. **It starts an investigation** with your instructions, or adds to an open investigation that already holds the alert.
-1. **It posts to Slack** when the investigation starts, then replies in the same thread with the results.
+1. **It posts to Slack** when the investigation starts, then updates that message with the results.
 
 ## Before you begin [nightshift-automations-prereqs]
 
@@ -41,7 +41,7 @@ To open the **Automations** page, select **Automations** on the {{nightshift}} h
 1. Under **Trigger**, select **Add trigger** and choose what starts the automation. Refer to [Triggers](#nightshift-automations-triggers).
 1. Check the **Daily trigger limit**. The default is 20 a day. Refer to [Daily trigger limit](#nightshift-automations-daily-limit).
 1. Enter **Additional Instructions**, or **Instructions** for a schedule. Refer to [Instructions](#nightshift-automations-instructions).
-1. Under **Actions**, select **Add action**, then **Post in Slack**, and search for a channel. If no channel is connected, select **Connect channels in Settings**.
+1. Under **Notifications**, select **Add notification**, then **Post in Slack**, and search for a channel. If no channel is connected, select **Connect channels in Settings**.
 1. Select **Save and enable** to turn the automation on now, or **Save** to save it turned off.
 
 The automation appears on the **Automations** page. When its trigger fires, it starts an investigation, and the run appears in its [run history](#nightshift-automations-run-history).
@@ -53,7 +53,7 @@ For a guided example, refer to [Automatically investigate your alerts](../use-ca
 The trigger picker groups triggers under **Elastic**, **Slack**, and **Scheduled**. Each trigger starts an investigation at a different moment:
 
 - [**Alert triggered**](#nightshift-automations-trigger-alert): When an alert or a significant event in this project changes to **Active**.
-- [**New message in channel**](#nightshift-automations-trigger-slack): When a message arrives in a connected Slack channel.
+- [**New message in channel**](#nightshift-automations-trigger-slack): When a top-level message is posted in a connected public Slack channel. Thread replies, edits, and messages in which a person mentions `@Elastic` don't start it.
 - [**Every…**](#nightshift-automations-trigger-schedule): At a scheduled time.
 
 ### Alert triggered [nightshift-automations-trigger-alert]
@@ -78,8 +78,8 @@ Use this trigger when alerts or reports already arrive in a Slack channel, for e
 1. Optionally, narrow which messages start the automation:
 
    - **Any message**: Match only messages that contain certain text, in **Message contains…**.
-   - **Anyone**: Match only messages from certain people.
-   - **Any app**: Match only messages that one app or bot posts. Enter its exact app name, app ID, or bot ID.
+   - **Anyone**: Match only messages from certain people. Enter their Slack member IDs.
+   - **Any app**: Match only messages that certain apps or bots post. Enter each one's exact app name, app ID, or bot ID.
 
 {{nightshift}} replies in the thread of the message that started the automation.
 
@@ -116,9 +116,9 @@ To give context to every investigation, not only this automation's, use custom c
 
 ## Post results to Slack [nightshift-automations-actions]
 
-With a **Post in Slack** action, the automation posts a message to a connected channel when the investigation starts, and replies in that thread with the results. Refer to [Get automation results in a thread](../use-cases/investigate-in-slack.md#nightshift-uc-slack-results).
+With a **Post in Slack** notification, the automation posts a message to a connected channel when the investigation starts, and updates it with the results when the investigation finishes. Refer to [Get automation results in a thread](../use-cases/investigate-in-slack.md#nightshift-uc-slack-results).
 
-Your team can ask follow-up questions in that thread. **Post in Slack**, through `@Elastic`, is the only action.
+Your team can ask follow-up questions in the message's thread. **Post in Slack**, through `@Elastic`, is the only notification.
 
 ## Daily trigger limit [nightshift-automations-daily-limit]
 
@@ -129,7 +129,7 @@ The **Daily trigger limit** caps how many investigations this automation can sta
 - **No limit:** Turn on **No daily limit** to remove the limit.
 - **Reset:** The count resets at midnight UTC.
 
-When the limit is reached, further triggers are skipped until the reset. Refer to [What happens when a limit is reached](./limits.md#nightshift-limits-reached).
+When the limit is reached, further triggers are skipped until the reset. If the automation posts to Slack, {{nightshift}} posts a notice there that the automation reached its daily limit, once per channel each day. Refer to [What happens when a limit is reached](./limits.md#nightshift-limits-reached).
 
 The deployment-wide limits on the **Settings** page apply too. Refer to [Investigation limits](./limits.md).
 

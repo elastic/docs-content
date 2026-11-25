@@ -38,8 +38,8 @@ When you change a run limit, a schedule setting, continuous KI onboarding, or to
 **Connectors**
 :   The connectors that investigations use, such as **Local Elasticsearch**, External {{es}}, and GitHub. Select **Add connector**, or **Open in Stack Management** to manage all connectors in {{kib}}. Preconfigured connectors are read-only. Refer to [Connect your data and tools](./investigation/set-up.md).
 
-**Slack channels**
-:   Select **Connect Slack** to connect the `@Elastic` Slack app to your workspace, then connect the channels where people can ask `@Elastic` for help and where automations post results. Refer to [Set up Slack](./investigation/set-up.md#nightshift-set-up-slack).
+**Slack**
+:   Titled **Slack channels** once a workspace is connected. Select **Connect Slack** to connect the `@Elastic` Slack app to your workspace, then connect the channels where people can ask `@Elastic` for help and where automations post results. Refer to [Set up Slack](./investigation/set-up.md#nightshift-set-up-slack).
 
 **nightshift developer mode**
 :   Shows extra tabs, details, and settings for expert users. Refer to [Developer mode](#nightshift-settings-developer-mode).

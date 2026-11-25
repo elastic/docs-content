@@ -95,7 +95,7 @@ Add an HTTP connector to reach any other system with an HTTP API, for example a 
 
 Connect Slack so your team can ask {{nightshift}} for help in a channel, and automations can post results there. An admin connects the workspace once, then each channel. Private channels need extra access and work only with mentions. Refer to [Private channels](../slack-app.md#nightshift-slack-app-private).
 
-1. On the {{nightshift}} **Settings** page, on the **General** tab, in **Slack channels**, select **Connect Slack**.
+1. On the {{nightshift}} **Settings** page, on the **General** tab, in the **Slack** section, select **Connect Slack**.
 1. Authorize the `@Elastic` Slack app in Slack. When {{kib}} asks **Is this the right workspace?**, select **Yes**.
 
    The authorization applies to the whole Slack workspace, including every Elastic deployment that's connected to it.
@@ -103,7 +103,7 @@ Connect Slack so your team can ask {{nightshift}} for help in a channel, and aut
 1. Back in **Slack channels**, select **Connect channels**.
 1. In **Connect a channel**, select the channel from the **Channel** list, then select **Connect**. The list shows only public channels, so for a private channel, or any channel that isn't listed, enter its channel ID or a link copied from Slack.
 
-The channel appears in the **Channels** table with its name and ID. `@Elastic` answers only in connected channels.
+The channel appears in the **Channels** table with its name and ID. A private channel shows only its ID. `@Elastic` answers only in connected channels.
 
 To stop `@Elastic` from answering in a channel, select **Disconnect channel** next to it. The bot stays in the channel until someone removes it in Slack, and replies that the channel isn't connected when someone mentions it. To remove the whole workspace, open the workspace's actions menu and select **Disconnect workspace**.
 

@@ -93,13 +93,13 @@ This section explains what {{nightshift}} reads, what it sends to models, and wh
 :   Investigations reach your data and code through the connectors in the space, with the credentials stored in each connector. Detection reads the data that your detection sources select. Refer to [Privileges that {{nightshift}} runs with](./privileges.md#nightshift-privileges-accounts).
 
 **What it sends to models**
-:   To investigate, {{nightshift}} sends your question or alert, the results of its queries, excerpts of logs, metrics, and traces, code it reads, and Slack messages in the thread to a model through EIS. Detection sends samples of the logs in your sources.
+:   To investigate, {{nightshift}} sends your question or alert, the results of its queries, excerpts of logs, metrics, and traces, code it reads, Slack messages in the thread, and messages it reads from connected public Slack channels to a model through EIS. Detection sends samples of the logs in your sources.
 
 **Model providers**
 :   Depending on the model, EIS processes requests on Elastic infrastructure or with trusted third-party model providers. Refer to [Supported models](/explore-analyze/elastic-inference/eis-supported-models.md).
 
 **What it stores**
-:   Investigations, the Wiki, Memory, decision trees, Knowledge Indicators, rules, and significant events are stored in your project, in the space where {{nightshift}} runs. Results that automations post to Slack are also stored in Slack.
+:   Investigations, the Wiki, Memory, decision trees, Knowledge Indicators, rules, and significant events are stored in your project, in the space where {{nightshift}} runs. Results that automations post to Slack, and `@Elastic` answers, are also stored in Slack.
 
 **Your code**
 :   When an investigation needs code, it clones the repository into a temporary sandbox, searches it, and discards it when the investigation ends. {{nightshift}} doesn't copy, sync, or index your repositories. The sandbox can only reach the hosts of your connectors and the hosts on the [sandbox egress allowlist](./settings.md#nightshift-settings-egress).

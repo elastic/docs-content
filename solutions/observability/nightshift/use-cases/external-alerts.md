@@ -44,7 +44,7 @@ flowchart LR
 
 Your Kubernetes clusters run Prometheus, and Alertmanager posts firing alerts to `#checkout-alerts` as an app called `Alertmanager`. The logs and traces for `web` and `inventory-api` are in your Elastic project.
 
-At 02:10 UTC, Alertmanager posts `[FIRING:1] HighLatency inventory-api` to the channel. A minute later, {{nightshift}} replies in that message's thread to say that it's investigating. A few minutes later, it replies there again with the impact, the conclusion, and the hypotheses it tested.
+At 02:10 UTC, Alertmanager posts `[FIRING:1] HighLatency inventory-api` to the channel. A minute later, {{nightshift}} replies in that message's thread to say that it's investigating. A few minutes later, it updates that reply with the impact, the conclusion, and the hypotheses.
 
 ## Choose a route [nightshift-uc-ext-choose]
 
@@ -72,7 +72,7 @@ Follow these instructions to investigate alerts from your other tools in Slack. 
 1. Select **Any app**, and enter the app's exact name, app ID, or bot ID, for example `Alertmanager`. Messages from people and from other apps in the channel no longer start the automation.
 1. Optionally, select **Any message** and enter text in **Message contains…** to match only some messages, for example `FIRING`. The match is case-sensitive, and it includes text in the message's attachments and blocks.
 1. Set the **Daily trigger limit**, and describe the tool and its messages in **Additional Instructions**. Refer to [Limits that apply](#nightshift-uc-ext-limits) and [Tell {{nightshift}} about your tool](#nightshift-uc-ext-instructions).
-1. Check **Actions**. With a Slack trigger, the **Post in Slack** action is added for you and shows "{{nightshift}} replies in the thread of the triggering message."
+1. Check **Notifications**. With a Slack trigger, **Post in Slack** is added for you and shows "Nightshift replies in the thread of the triggering message."
 1. Select **Save and enable**.
 
 The automation appears on the **Automations** page with **Enabled** on. When the app posts its next alert, {{nightshift}} replies in that message's thread.
@@ -145,7 +145,7 @@ For more about workflows, refer to [Workflows](/explore-analyze/workflows.md).
 1. Leave **Any rule** as it is. Alerts from the webhook have no rule, so a rule or tag filter never matches them.
 1. Optionally, select **Any severity** to match only some severities, for example **Critical**.
 1. Set the **Daily trigger limit**, and describe the tool and its alerts in **Additional Instructions**. Refer to [Limits that apply](#nightshift-uc-ext-limits) and [Tell {{nightshift}} about your tool](#nightshift-uc-ext-instructions).
-1. Under **Actions**, select **Add action**, then **Post in Slack**, and select a connected channel.
+1. Under **Notifications**, select **Add notification**, then **Post in Slack**, and select a connected channel.
 1. Select **Save and enable**.
 
 The automation appears on the **Automations** page with **Enabled** on. Send a test request, then check the automation's **Run history**. Refer to [Check what an automation did](../investigation/automations.md#nightshift-automations-run-history).
