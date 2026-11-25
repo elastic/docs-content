@@ -184,3 +184,53 @@ If you're using GKE to run ECK, then you can use a [custom ComputeClass](https:/
               cloud.google.com/compute-class: "elasticsearch"
     EOF
     ```
+
+## Using the Node Tuning Operator on OpenShift [k8s_using_the_node_tuning_operator_to_set_virtual_memory]
+
+OpenShift sets `vm.max_map_count` to `262144` on its nodes by default. This is enough for {{es}} to start, because the [bootstrap check](/deploy-manage/deploy/self-managed/bootstrap-checks.md) requires at least `262144`. To set the recommended value `1048576`, use the OpenShift [Node Tuning Operator](https://github.com/openshift/cluster-node-tuning-operator). Pods created by ECK usually run with the `restricted-v2` security context constraint, which doesn't allow a Pod to change kernel settings, so an init container or a DaemonSet doesn't work.
+
+Create a `Tuned` resource that applies the setting to the nodes that run {{es}} Pods:
+
+```yaml
+apiVersion: tuned.openshift.io/v1
+kind: Tuned
+metadata:
+  name: eck-elasticsearch
+  namespace: openshift-cluster-node-tuning-operator
+spec:
+  profile:
+  - name: eck-elasticsearch
+    data: |
+      [main]
+      summary=Set vm.max_map_count for Elasticsearch
+      include=openshift-node
+      [sysctl]
+      vm.max_map_count=1048576
+  recommend:
+  - match:
+    - label: tuned.openshift.io/elasticsearch <1>
+      type: pod
+    priority: 20
+    profile: eck-elasticsearch
+    operand:
+      tunedConfig:
+        reapply_sysctl: false <2>
+```
+
+1. Applies the profile to the nodes that run Pods with this label.
+2. OpenShift sets `vm.max_map_count` in a host configuration file. Without this setting, the host value is applied again after the profile, the node keeps `262144`, and the node tuning profile is reported as degraded.
+
+Add the label to the {{es}} Pods through the `podTemplate`:
+
+```yaml
+spec:
+  nodeSets:
+  - name: default
+    count: 3
+    podTemplate:
+      metadata:
+        labels:
+          tuned.openshift.io/elasticsearch: "true"
+```
+
+Nodes that don't run Pods with this label keep the default value.
