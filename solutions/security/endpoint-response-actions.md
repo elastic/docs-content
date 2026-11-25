@@ -216,13 +216,17 @@ On {{elastic-defend}} hosts, you can use these wildcards in `--path`:
 * `?` matches exactly one character within a single directory or file name. For example, `/var/log/syslog.?` retrieves `syslog.1` but not `syslog.10`. Like `*`, you can use it in any part of the path.
 * `**` retrieves every file in a directory and all of its subdirectories. It must be the last part of the path, for example `/var/log/**`.
 
+On Linux and macOS, file names can contain `*` and `?`. If a file exists at the exact path you enter, `get-file` treats `*` and `?` as literal characters and retrieves only that file. `*` and `?` work as wildcards only when no file exists at that path.
+
 A directory path without a wildcard, such as `/var/log`, doesn't retrieve any files. To retrieve the files in a directory, add `/*` or `/**` to the path.
 
 Character classes (`[...]`), regular expressions, and escapes aren't supported — those characters are matched literally. On Windows, wildcard and multi-path requests require drive-letter paths (UNC and device paths aren't supported).
 
-Wildcards also match hidden files, whose names start with `.`. Matching ignores case on Windows and on macOS volumes that aren't case-sensitive. On Linux, matching is case-sensitive.
+Wildcards also match hidden files, whose names start with `.`. Matching ignores case on Windows and on macOS volumes that aren't case-sensitive. On Linux, matching is case-sensitive. A symbolic link that you pass as the whole `--path` is followed, and the file it points to is retrieved. A symbolic link that a wildcard matches is skipped.
 
-The `.zip` archive includes a `manifest.json` file that lists each file, its SHA-256 hash and size, and whether it was retrieved. In multi-file and wildcard actions, items that can't be retrieved are listed with a reason instead. These include files locked by another process (unless you use `--force` on Windows), files stored only in cloud storage such as OneDrive or iCloud (which aren't downloaded), symbolic links matched by a wildcard, mount points, and pseudo-filesystems. By default, one multi-file or wildcard action can include up to 10,000 entries (matched files and skipped items), 20 GiB of uncompressed file data in total, and subdirectories up to 32 levels deep from the wildcard root. If a request exceeds any of these limits, the action fails and no files are retrieved. Use a more specific path, then try again.
+The `.zip` archive includes a `manifest.json` file that lists each file, its SHA-256 hash and size, and whether it was retrieved. In multi-file and wildcard actions, items that can't be retrieved are listed with a reason instead. These include files locked by another process (unless you use `--force` on Windows), files stored only in cloud storage such as OneDrive or iCloud (which aren't downloaded), symbolic links matched by a wildcard, mount points, and pseudo-filesystems.
+
+By default, one multi-file or wildcard action can include up to 10,000 entries (matched files and skipped items), 20 GiB of uncompressed file data in total, and subdirectories up to 32 levels deep from the wildcard root. If a request exceeds any of these limits, the action fails and no files are retrieved. Use a more specific path, then try again.
 
 
 ### `isolate` [_isolate]
