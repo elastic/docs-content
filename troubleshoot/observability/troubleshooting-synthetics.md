@@ -191,29 +191,33 @@ Verify that no active monitor uses the package policy across **all** {{kib}} spa
 
 To force-delete an abandoned Synthetics package policy, call the [Delete a package policy API](https://www.elastic.co/docs/api/kibana/operation/operation-delete-fleet-package-policies-packagepolicyid) with `force=true`. You need **All** privileges for **Fleet** → **Agent policies** and **Integrations**.
 
-1. Find the package policy ID in **{{fleet}}** → **Agent policies** by opening the Synthetics integration policy and copying the ID from the URL, or list Synthetics package policies with `GET /api/fleet/package_policies?kuery=ingest-package-policies.package.name:synthetics`.
+1. Find the package policy ID and its parent agent policy ID (`policy_ids`) in **{{fleet}}** → **Agent policies** by opening the Synthetics integration policy and copying the ID from the URL, or list Synthetics package policies with `GET /api/fleet/package_policies?kuery=ingest-package-policies.package.name:synthetics`.
 2. Delete the package policy with `force=true`:
 
-```shell
-curl --request DELETE \
-  --url 'https://<kibana-host>/api/fleet/package_policies/<package-policy-id>?force=true' \
-  --header 'Authorization: ApiKey <api-key>' \
-  --header 'kbn-xsrf: true'
-```
+   ```shell
+   curl --request DELETE \
+     --url 'https://<kibana-host>/api/fleet/package_policies/<package-policy-id>?force=true' \
+     --header 'Authorization: ApiKey <api-key>' \
+     --header 'kbn-xsrf: true'
+   ```
 
-To delete multiple abandoned package policies at once, use the [Bulk delete package policies API](https://www.elastic.co/docs/api/kibana/operation/operation-post-fleet-package-policies-delete) with `"force": true` in the request body:
+   To delete multiple abandoned package policies at once, use the [Bulk delete package policies API](https://www.elastic.co/docs/api/kibana/operation/operation-post-fleet-package-policies-delete) with `"force": true` in the request body:
 
-```shell
-curl --request POST \
-  --url 'https://<kibana-host>/api/fleet/package_policies/delete' \
-  --header 'Authorization: ApiKey <api-key>' \
-  --header 'Content-Type: application/json' \
-  --header 'kbn-xsrf: true' \
-  --data '{
-  "packagePolicyIds": ["<package-policy-id>"],
-  "force": true
-}'
-```
+   ```shell
+   curl --request POST \
+     --url 'https://<kibana-host>/api/fleet/package_policies/delete' \
+     --header 'Authorization: ApiKey <api-key>' \
+     --header 'Content-Type: application/json' \
+     --header 'kbn-xsrf: true' \
+     --data '{
+     "packagePolicyIds": ["<package-policy-id>"],
+     "force": true
+   }'
+   ```
+
+3. Redeploy each affected parent agent policy. Deleting with `force=true` removes the package policy without redeploying the parent agent policy, so {{agents}} on the {{private-location}} continue running the deleted monitor until the agent policy is redeployed. To trigger a redeploy, do one of the following:
+   - In **{{fleet}}** → **Agent policies**, open the parent agent policy, update a setting (such as the description) on the **Settings** tab, and select **Save changes**.
+   - Call the [Update an agent policy API](https://www.elastic.co/docs/api/kibana/operation/operation-put-fleet-agent-policies-agentpolicyid) (`PUT /api/fleet/agent_policies/<agent-policy-id>`) with the policy's existing fields from the [Get an agent policy API](https://www.elastic.co/docs/api/kibana/operation/operation-get-fleet-agent-policies-agentpolicyid) so {{fleet}} increments the policy revision and redeploys it to enrolled agents.
 
 
 ## Get help [synthetics-troubleshooting-get-help]
