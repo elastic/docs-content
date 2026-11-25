@@ -97,6 +97,8 @@ You can export the data displayed in a visualization on a dashboard as a CSV fil
 1. On the dashboard, open the panel menu of the visualization.
 2. Select **Download CSV**. The file downloads to your machine.
 
+To see how the CSV file shows a missing value, which depends on your version and on whether the panel is a table or a chart, refer to [What a dash or `(null)` in panel data means](using.md#missing-values-in-panel-data).
+
 ## Export JSON [export-dashboards]
 
 You can export a dashboard's configuration to recreate it in another space or instance, back it up, or version-control it.
@@ -109,7 +111,7 @@ $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
 ::::{applies-item} {serverless: ga, stack: "ga 9.6+, preview 9.4-9.5"}
 
-Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance. To version-control this JSON and deploy it across environments through a Git-based workflow, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
+Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance. To version-control this JSON and deploy it across environments through a Git-based workflow, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
 
 1. Open the dashboard, then select {icon}`upload` **Export** → **Export JSON** from the application menu.
 2. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.

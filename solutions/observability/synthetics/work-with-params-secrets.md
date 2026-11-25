@@ -39,14 +39,9 @@ The values in the configuration file are read in the following order:
 
 From any page in the Synthetics UI:
 
-1. Go to **Settings**.
+1. Go to **Settings**. Depending on your version, it can be in the {icon}`ellipsis` **More** menu.
 2. Go to the **Global parameters** tab.
 3. Define parameters.
-
-:::{image} /solutions/images/observability-synthetics-params-secrets-kibana-define.png
-:alt: Global parameters tab on the Synthetics Settings page
-:screenshot:
-:::
 
 ### Allow users to view global parameter values
 
@@ -137,17 +132,7 @@ journey("My Journey", ({ page, params }) => {
 
 To use a param in a lightweight monitor that is created in the Synthetics UI, wrap the name of the param in `${}` (for example, `${my_url}`).
 
-:::{image} /solutions/images/serverless-synthetics-params-secrets-kibana-use-lightweight.png
-:alt: Use a param in a lightweight monitor created in the Synthetics UI
-:screenshot:
-:::
-
 To use a param in a browser monitor that is created in the Synthetics UI, add `params.` before the name of the param (for example, `params.my_url`).
-
-:::{image} /solutions/images/serverless-synthetics-params-secrets-kibana-use-browser.png
-:alt: Use a param in a lightweight monitor created in the Synthetics UI
-:screenshot:
-:::
 
 ## Working with secrets and sensitive values [synthetics-secrets-sensitive]
 

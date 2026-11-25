@@ -30,7 +30,7 @@ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearm
 
 ## Step 2: Install {{kib}}
 
-You have several options for installing the {{es}} Debian package:
+You have several options for installing the {{kib}} Debian package:
 
 * [From the APT repository](#deb-repo)
 * [Manually](#install-deb)
