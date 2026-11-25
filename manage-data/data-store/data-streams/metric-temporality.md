@@ -54,30 +54,38 @@ This is the default temporality for [`histogram`](time-series-data-stream-tsds.m
 
 ## Configure temporality [configure-temporality]
 
-If you use the [HTTP OTLP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md), [managed OTLP intake](/reference/managed-inputs/managed-otlp-endpoint.md), or [Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md), you don't have to configure anything.
-Both OTLP intakes come with a dimension called `temporality` preconfigured in the mappings and preserve the temporality of ingested metrics from the OTLP [temporality metadata](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality).
-On {{ech}}, the {{motlp}} preserves temporality only for deployments running {{stack}} 9.5.3 or later. On deployments running earlier versions, the {{motlp}} writes metrics through the {{es}} bulk API compatibility path, which supports only delta temporality. For temporality support across all ingestion paths and deployment types, refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality).
-Prometheus remote write V1 only supports counters and classic Prometheus histograms (represented as counters), which are always cumulative. As this matches the default temporality for counters, the {{es}} remote write endpoint does not set up a temporality field.
+### Ingestion paths that need no configuration [temporality-no-configuration]
 
-If you are manually ingesting metrics into custom indices (for example via `_bulk`), you have to explicitly configure temporality on your data stream.
-To do so, use the [`index.time_series.temporality_field`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-temporality-field) index setting. This setting specifies the name of the field that stores the temporality for each document.
+You don't have to configure anything for these ingestion paths:
 
-The temporality field must:
+* **OTLP.** The [{{es}} OTLP endpoint](/manage-data/data-store/data-streams/tsds-ingest-otlp.md) and [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) both come with a `temporality` dimension preconfigured in the mappings. They preserve the temporality of ingested metrics from the OTLP [temporality metadata](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality).
 
-- Be mapped as [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type)
-- Be configured as a [dimension](time-series-data-stream-tsds.md#time-series-dimension) (`time_series_dimension: true`)
+  On {{ech}}, the {{motlp}} preserves temporality only for deployments running {{stack}} 9.5.3 or later. On deployments running earlier versions, it writes metrics through the {{es}} bulk API compatibility path, which supports only delta temporality.
 
-Its value must be one of:
+* **Prometheus remote write.** [Prometheus remote write](/manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) V1 supports only counters and classic Prometheus histograms (represented as counters), which are always cumulative. Because this matches the default temporality for counters, the {{es}} remote write endpoint doesn't set up a temporality field.
 
-- `delta`: metrics in the document use delta temporality
-- `cumulative`: metrics in the document use cumulative temporality
+For temporality support across all ingestion paths and deployment types, refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality).
+
+### Set the temporality field for custom indices [set-temporality-field]
+
+If you ingest metrics into custom indices, for example using `_bulk`, set [`index.time_series.temporality_field`](elasticsearch://reference/elasticsearch/index-settings/time-series.md#index-time-series-temporality-field) on the data stream. This setting names the field that stores the temporality of each document.
+
+The field must:
+
+* Be mapped as [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type)
+* Be configured as a [dimension](time-series-data-stream-tsds.md#time-series-dimension) (`time_series_dimension: true`)
+
+You don't need to define the mapping yourself. {{es}} creates it from the index setting.
+
+Set the field to one of these values:
+
+* `delta`: metrics in the document use delta temporality.
+* `cumulative`: metrics in the document use cumulative temporality.
 
 If the field is absent or contains any other value, {{es}} uses the default temporality for each metric type: cumulative for counters and delta for histograms.
-You don't need to explicitly define the mapping for the field. It's created automatically based on the index setting.
 
-:::{note} 
-Because `temporality` is a dimension, you can have mixed temporalities per metric: Some series can have `delta` temporality, while others are `cumulative`.
-This is automatically handled when the data is queried or downsampled.
+:::{note}
+Because `temporality` is a dimension, a metric can mix temporalities. Some time series can use `delta` while others use `cumulative`. Queries and downsampling handle this automatically.
 :::
 
 ## How temporality affects queries [temporality-and-queries]
