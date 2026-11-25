@@ -73,6 +73,7 @@ defaults:
      - source: "Name"
      - source: "ID"
      - source: "Model Card"
+     - source: "Author Terms"
      - source: "Provider Terms"
      - source: "Input Modalities"
      - source: "Output Modalities"
