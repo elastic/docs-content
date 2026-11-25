@@ -141,7 +141,7 @@ The process of setting up the Private Service Connect connection to your deploym
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 :::{admonition} Private connection policies are optional
-Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment or project using PSC endpoint filters.
+Private connection policies are optional for GCP Private Service Connect. After the Private Service Connect endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment or project using PSC endpoint filters, or to record that you've established private connectivity.
 :::
 
 ### Create your Private Service Connect endpoint and DNS entries in Google Cloud [ec-private-service-connect-enpoint-dns]

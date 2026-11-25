@@ -159,7 +159,7 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 :::{admonition} Private connection policies are optional
-Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment or project using VPC filters.
+Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment or project using VPC filters, or to record that you've established private connectivity.
 :::
 
 
