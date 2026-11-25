@@ -2,7 +2,7 @@
 navigation_title: Synonyms
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-synonyms.html
-description: Learn how to define synonym sets, configure synonym token filters and analyzers, and apply synonyms at search time or index time in Elasticsearch.
+description: Learn why search-time synonyms are recommended and how to define synonym sets, configure a search analyzer, and verify synonym expansion in Elasticsearch.
 applies_to:
   stack:
   serverless:
@@ -13,6 +13,8 @@ products:
 # Configure synonyms in {{es}} [search-with-synonyms]
 
 Synonyms are words or phrases that have the same or similar meaning. When you configure synonyms in {{product.elasticsearch}}, a search for one term automatically matches documents that use an equivalent term. For example, you can define synonym rules to match different terms for the same concept, surface results for domain-specific jargon, or handle common misspellings.
+
+In {{es}}, synonyms are applied through [analyzers](../../../manage-data/data-store/text-analysis/anatomy-of-an-analyzer.md). Analyzers process both documents and search queries, so you can apply synonyms at [index time or search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). Search-time synonyms are recommended for most use cases because you can update the rules without reindexing documents. For a comparison of both approaches, refer to [Index-time and search-time synonyms](#synonyms-index-search-time).
 
 This page walks you through defining synonym rules, grouping them into reusable synonym sets, configuring {{product.elasticsearch}} to apply them during text analysis, and verifying that queries return the expanded results you expect.
 
@@ -46,6 +48,14 @@ Synonym rules define which terms should be treated as equivalent. Each rule uses
 - **Equivalent mappings** use commas to group interchangeable terms (for example, `ipod, i-pod, i pod`).
 
 For full format details, refer to the [synonym graph token filter](elasticsearch://reference/text-analysis/analysis-synonym-graph-tokenfilter.md) reference.
+
+## Index-time and search-time synonyms [synonyms-index-search-time]
+
+Search-time synonyms add work to each query, but their flexibility generally outweighs this cost. You can update API-managed synonym sets without reindexing documents, and expansion leaves the indexed terms and their statistics unchanged.
+
+Index-time expansion can improve search performance by processing synonyms during indexing instead of expanding each query. However, it can increase indexing work and storage and affect the term statistics used for relevance scoring. To apply updated synonym rules to existing documents, you must [reindex](https://www.elastic.co/docs/api/elasticsearch/operation/operation-reindex) those documents. Consider this approach only when tests with your workload show that the search performance benefit justifies these trade-offs.
+
+In {{serverless-short}}, use synonym sets managed through the API or {{kib}} at search time. File-based synonyms are unavailable. Refer to [Compare Elastic Cloud Hosted and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) for deployment-specific support.
 
 ## Step 1: Create synonym sets and rules [synonyms-store-synonyms]
 
@@ -154,7 +164,7 @@ You can define synonyms directly in your token filter using the `synonyms` param
 ```
 
 ::::{warning}
-A large number of inline synonyms increases cluster size unnecessarily and can lead to performance issues. For production workloads, use the REST API or file-based approach instead.
+Many inline synonyms increase cluster size unnecessarily and can lead to performance issues. For production workloads, use the REST API. Elastic Stack deployments can also use file-based synonyms.
 ::::
 
 :::::
@@ -184,9 +194,7 @@ When `lenient` is `false`, invalid synonym rules cause errors: analyzer changes 
 
 ## Step 3: Create an index with your synonym analyzer [synonyms-apply-synonyms]
 
-Synonyms can be applied at [search time or index time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). Search time is recommended because you can update your synonym sets without [reindexing]({{es-apis}}operation/operation-reindex). If token filters are configured with `"updateable": true`, search analyzers can be [reloaded]({{es-apis}}operation/operation-indices-reload-search-analyzers) when you make changes.
-
-The following example creates an index with `synonyms_analyzer` as a search analyzer on the `title` field.
+The following example uses the recommended [search-time approach](#synonyms-index-search-time). It creates an index with `standard` as the index analyzer and `synonyms_analyzer` as the search analyzer on the `title` field.
 
 ```console
 PUT /my-index
@@ -195,6 +203,7 @@ PUT /my-index
     "properties": {
       "title": {
         "type": "text",
+        "analyzer": "standard",
         "search_analyzer": "synonyms_analyzer" <2>
       }
     }
@@ -220,7 +229,7 @@ PUT /my-index
 ```
 
 1. For [file-based synonym sets](#synonyms-store-synonyms-file), use `"synonyms_path": "analysis/synonym-set.txt"` instead. {applies_to}`serverless: unavailable`
-2. Applies synonyms at search time only, not when indexing documents.
+2. The [`search_analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/search-analyzer.md) applies synonyms to queries. The `analyzer` setting uses `standard` to index documents without synonym expansion.
 3. Required when you use `synonyms_set`: synonym sets can only be loaded into search-time analyzers. It also lets you [reload]({{es-apis}}operation/operation-indices-reload-search-analyzers) the analyzer when the set changes, without reindexing.
 
 ## Step 4: Test your analyzer [synonyms-test-analyzer]
