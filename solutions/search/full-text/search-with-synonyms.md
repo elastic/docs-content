@@ -51,9 +51,11 @@ For full format details, refer to the [synonym graph token filter](elasticsearch
 
 ## Index-time and search-time synonyms [synonyms-index-search-time]
 
-Search-time synonyms add work to each query, but their flexibility generally outweighs this cost. You can update API-managed synonym sets without reindexing documents, and expansion leaves the indexed terms and their statistics unchanged.
+Search-time synonyms apply rules when analyzing queries. This makes synonym management more flexible because you can update rules without reindexing documents.
 
-Index-time expansion can improve search performance by processing synonyms during indexing instead of expanding each query. However, it can increase indexing work and storage and affect the term statistics used for relevance scoring. To apply updated synonym rules to existing documents, you must [reindex](https://www.elastic.co/docs/api/elasticsearch/operation/operation-reindex) those documents. Consider this approach only when tests with your workload show that the search performance benefit justifies these trade-offs.
+Index-time synonyms apply rules when indexing documents. The resulting terms, including any added synonyms, are stored in the inverted index. This can reduce query-time processing, but it can increase indexing work and storage and affect the term statistics used for relevance scoring. To apply updated rules to existing documents, you must [reindex](https://www.elastic.co/docs/api/elasticsearch/operation/operation-reindex) those documents.
+
+Use search-time synonyms in most use cases for their balance of overall performance and flexibility. Consider index-time synonyms only for specific workloads where tests show that their benefits justify these trade-offs.
 
 In {{serverless-short}}, use synonym sets managed through the API or {{kib}} at search time. File-based synonyms are unavailable. Refer to [Compare Elastic Cloud Hosted and Serverless](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md) for deployment-specific support.
 
