@@ -14,7 +14,7 @@ This method allows you to add the result table of your Discover {{esql}} query t
 
 1. Find and select the Discover session you saved earlier.
 
-A new panel appears on the dashboard with the results of the query along with any attached controls. If the dashboard already has a control with the same variable name, {{kib}} doesn't add a second one. The existing control keeps its selection and settings, and the new panel responds to that selection.
+A new panel appears on the dashboard with the results of the query along with any attached controls. If the dashboard already has a control with the same variable name, {{kib}} doesn't add a second one. The existing control keeps its selection and settings, and the new panel responds to that selection. {{kib}} still adds a second control if the existing one is inside a collapsible section that hasn't been expanded since the dashboard was opened.
 
 :::{image} /explore-analyze/images/import-discover-control-dashboard.png
 :alt: Importing Discover session with controls into a dashboard
