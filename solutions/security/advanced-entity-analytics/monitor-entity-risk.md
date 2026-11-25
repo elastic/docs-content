@@ -29,7 +29,7 @@ The **Entity analytics** page provides a centralized workspace for investigating
   * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `entities-latest-<space-id>`, `.entities.v2.latest.<space-id>-*`, and `risk-score.risk-score-<space-id>`
   * {applies_to}`stack: ga 9.4-9.5` `entities-latest-<space-id>`, `.entities.v2.latest.security_<space-id>-*`, and `risk-score.risk-score-<space-id>` 
 * {applies_to}`serverless: ga` If you're using a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md), make sure it grants `read` access to all the required index patterns.
-* {applies_to}`stack: removed 9.3+, ga 9.1-9.2` {applies_to}`serverless: removed` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings).
+* {applies_to}`stack: ga 9.1-9.2` To get access to this page, turn on the `securitySolution:enablePrivilegedUserMonitoring` [advanced setting](kibana://reference/advanced-settings.md#kibana-siem-settings). In later versions, this page is displayed by default, and its visibility is no longer controlled by an advanced setting. 
 :::
 
 The way you access this page and the elements it contains differ based on your version. Select your version to see the details:
