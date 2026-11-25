@@ -35,6 +35,8 @@ Use the following features to explore this view:
 
   Each point on the chart shows the VCU-hours consumed in a time bucket. For example, `0.17/5 min (2/h)` means that 0.17 VCU-hours were consumed in a 5-minute bucket, which is a rate of about 2 VCU-hours per hour. To estimate the Search VCU-hours on your bill for the selected time range, add up the values of all the points.
 
+  Use the **annotations** overlaying this chart to understand when the search power, boost window, and minimum search VCUs changed during the selected time range and how that might have affected the autoscaling of your project (and consequently your VCU consumption).
+
 * {applies_to}`vectordb:` Explore the **Reserved search capacity** chart to see your project's search capacity over time. Use the **annotations** overlaying this chart to understand when **Search Power** changed during the selected time range, with exact timestamps. 
 * {applies_to}`vectordb:` View your project's **Uptime** for the selected time range and the current **Search Power** to track their effect on the search and infrastructure [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md). 
 
