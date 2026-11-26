@@ -29,7 +29,7 @@ products:
 
 2. Adjust the time period for the visualizations as needed.
 
-3. From this page you can also [create alerts](/explore-analyze/alerting/alerts/create-manage-rules.md) to be triggered when the {{integrations-server}} metrics meet a defined set of conditions. 
+3. To [create alerts](/explore-analyze/alerting/alerts/create-manage-rules.md) that trigger when the {{integrations-server}} metrics meet a defined set of conditions, select **Alerts and rules** → **Manage rules** in the application menu. The **{{rules-ui}}** page opens.
 
 **To view metrics for a specific {{integrations-server}} instance:**
 
@@ -41,4 +41,4 @@ products:
 
 1. Adjust the time period for the visualizations as needed.
 
-1. As with the **APM server overview** page, you can also [create alerts](/explore-analyze/alerting/alerts/create-manage-rules.md) to be triggered when the instance metrics meet a defined set of conditions. 
+1. As on the **APM server overview** page, select **Alerts and rules** → **Manage rules** in the application menu to [create alerts](/explore-analyze/alerting/alerts/create-manage-rules.md) that trigger when the instance metrics meet a defined set of conditions.
