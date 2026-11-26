@@ -13,13 +13,13 @@ products:
 description: "Kibana Classic Alerting uses rules to check your data on a schedule, creates alerts when conditions are met, and runs actions through connectors."
 ---
 
-# {{alerting-v1-system-cap}} [alerts]
+# {{alerting-v1-system}} [alerts]
 
-{{alerting-v1-system-cap}} lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
+{{alerting-v1-system}} lets you define rules that check your data on a schedule, create alerts when conditions are met, and trigger actions through connectors (email, Slack, webhooks, and more). It is available on all deployments.
 
 :::{note}
 :applies_to: {"serverless": "ga", "stack": "ga 9.6+"}
-Looking for {{alerting-v2-system}}? Refer to the [{{alerting-v2-system-cap}} overview](esql/system-overview.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
+Looking for {{alerting-v2-system}}? Refer to the [{{alerting-v2-system}} overview](esql/system-overview.md) instead. The two systems are separate, so APIs and instructions for one don't apply to the other.
 :::
 
 ## {{rules-ui}} [rules]

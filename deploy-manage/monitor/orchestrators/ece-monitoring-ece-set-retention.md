@@ -74,7 +74,7 @@ To customize the retention period:
 
 1. [Create a new {{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) with the required retention settings.
 
-2. [Create a component template](/manage-data/data-store/templates.md#component-templates) using the name that matches your target scope, and set `index.lifecycle.name` to the {{ilm-init}} policy you created. You can do this from {{kib}} **Index Management → Component templates**, or from the [{{kib}} Console](/explore-analyze/query-filter/tools/console.md). For example, to apply a custom {{ilm-init}} policy to all `cluster-logs` data streams:
+2. [Create a component template](/manage-data/data-store/templates.md#component-templates) using the name that matches your target scope, and set `index.lifecycle.name` to the {{ilm-init}} policy you created. You can do this from {{kib}} **Index Management** → **Component templates**, or from the [{{kib}} Console](/explore-analyze/query-filter/tools/console.md). For example, to apply a custom {{ilm-init}} policy to all `cluster-logs` data streams:
 
     ```console
     PUT _component_template/cluster-logs@custom
@@ -101,7 +101,7 @@ This method works on all ECE versions but requires repeating the procedure after
 
 To customize the retention period for the different data streams, [create a new {{ilm-init}} policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) with the required settings, and apply it to the relevant data sets as follows:
 
-1. In {{kib}}, go to **Index Management → Index Templates** and identify the template that applies to the data stream or indices whose retention you want to change. Refer to [Available index templates](#available-templates) for a list of the most common templates.
+1. In {{kib}}, go to **Index Management** → **Index Templates** and identify the template that applies to the data stream or indices whose retention you want to change. Refer to [Available index templates](#available-templates) for a list of the most common templates.
 
 2. Open the template's contextual menu and select **Clone** to [create a new template](/manage-data/data-store/templates.md). When cloning the template:
 

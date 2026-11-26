@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Organize dashboard panels [arrange-panels]
@@ -19,7 +20,9 @@ This page covers:
 - [Layout examples](#dashboard-layout-examples)
 - [Collapsible sections](#collapsible-sections)
 - [Moving and resizing panels](#resizing-containers)
+- [Customizing a panel's title, description, and border](#customize-panel-settings)
 - [Copying and duplicating panels](#duplicate-panels)
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` [Selecting several panels to copy, remove, or group them](#select-several-panels)
 
 ## Requirements [arrange-panels-requirements]
 
@@ -138,6 +141,8 @@ Users viewing the dashboard will find the section in the same state as when you 
 
 ![Collapsible sections](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8c368aecdd095010/685e8fcb9c34ed3c353812a5/collapsible_panels.gif)
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To move several existing panels into a new section at once, refer to [Select several panels to copy, remove, or group them](#select-several-panels).
+
 ## Move and resize panels [resizing-containers]
 
 Compare the data in your panels side-by-side, organize panels by priority, resize the panels so they all appear immediately on the dashboard, and more.
@@ -176,6 +181,25 @@ To resize a panel:
 While moving or resizing a panel, you can cancel the action at any time by pressing `Escape`.
 :::
 
+## Customize a panel's title, description, and border [customize-panel-settings]
+
+A clear title and a cleaner header help viewers read a dashboard faster. You can give one panel its own title and description, or hide its title. To set the default for every panel at once, use the display options in the dashboard **Settings**, as described in [Create a dashboard](create-dashboard.md).
+
+1. In the application menu, select **Edit**.
+2. Hover over the panel, open the panel menu {icon}`boxes_vertical`, and select **Settings**.
+3. In the **Settings** flyout, change the options you need:
+
+    * **Show title**: Turn off to hide the panel title.
+    * **Title** and **Description**: Enter your own text. Select **Reset to default** to go back to the original text.
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.4+` **Show panel border**: Turn off to remove the border from this panel, even if the dashboard shows borders by default.
+
+4. Select **Apply**.
+5. Save the dashboard.
+
+The panel shows your changes as soon as you select **Apply**, and the dashboard keeps them when you save it.
+
+The same flyout lets you [apply a custom time range to the panel](using.md#_apply_a_custom_time_range_to_a_panel).
+
 ## Copy and duplicate panels [duplicate-panels]
 
 To duplicate a panel and its configured functionality, use the clone and copy panel options. Cloned and copied panels replicate all of the functionality from the original panel, including renaming, editing, and cloning.
@@ -198,5 +222,60 @@ Copy panels from one dashboard to another dashboard.
 
     ![Copy a panel to another dashboard](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt48304cb3cd1ee2e6/6753879eb7c4663812148d47/copy-to-dashboard-8.17.0.gif "")
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To copy several panels at once, refer to [Select several panels to copy, remove, or group them](#select-several-panels).
 
+## Select several panels to copy, remove, or group them [select-several-panels]
+```{applies_to}
+serverless: ga
+stack: ga 9.7+
+```
 
+If you want to copy several panels to another dashboard, remove them, or gather them into a collapsible section, you can select them together and act on them at once instead of handling each panel one by one.
+
+To start a selection, open the dashboard in **Edit** mode, hold {kbd}`cmd` (Mac) or {kbd}`ctrl` (Windows and Linux) by itself, and do one of the following:
+
+* Select a panel, anywhere except on its links, buttons, and input fields, to add it to the selection.
+* Drag across the dashboard to draw a rectangle that selects every panel it touches. The page scrolls automatically when you drag near its top or bottom edge.
+
+After you select the first panel, you no longer need to hold the key. On every panel, a round checkbox replaces the icons and panel menu that appear when you hover, and the corner handles disappear. Selecting any part of a panel, or its checkbox, adds the panel to the selection or removes it if it's already selected, instead of interacting with its content.
+
+To make a control part of the selection:
+
+* The control must be unpinned. You can't select [pinned controls](../visualize/dashboard-controls.md#pinned-unpinned-controls).
+* Select another panel first, then select the control or its checkbox.
+
+To select every panel on the dashboard, press {kbd}`cmd+a` (Mac) or {kbd}`ctrl+a` (Windows and Linux). This includes panels in expanded sections, but not panels in collapsed sections.
+
+To clear the selection, press {kbd}`esc`, select an empty area of the dashboard, or select the **Clear selection (Esc)** icon {icon}`cross` in the toolbar.
+
+:::{image} /explore-analyze/images/dashboard-select-panels-toolbar.png
+:alt: Four dashboard panels with checked round checkboxes while a selection rectangle is dragged across them. A toolbar at the bottom shows 4 selected, followed by the Group into a section, Copy to dashboard, and Remove icons.
+:screenshot:
+:::
+
+While panels are selected, a toolbar at the bottom of the page shows how many you selected and the actions available for the whole selection:
+
+**Group into a section**
+:   Moves the selected panels, including panels from other sections, into a new, expanded collapsible section at the bottom of the dashboard. The dashboard scrolls to the new section, and the selection clears.
+
+    The panels keep their sizes and line up from the top left of the section in the order they had on the dashboard. A control that moves into the new section filters only the panels in that section, as described in [Arrange panels in collapsible sections](#collapsible-sections).
+
+    The grouping applies when you save the dashboard. A single [undo](open-dashboard.md#undo-redo-dashboard) puts all the panels back where they were, even after you save.
+
+**Copy to dashboard**
+:   Opens the same **Copy to dashboard** window as the panel menu. After you select a dashboard and then select **Copy and go to dashboard**, that dashboard opens in **Edit** mode with all the selected panels added to it.
+
+    The copies appear together in the first open space from the top left, keep their sizes, and stay linked to the [Visualize library](../visualize/visualize-library.md) if the originals were. The originals stay on the dashboard you copied them from. Until you save the other dashboard, an undo removes the copies. Save it to keep them.
+
+    :::{note}
+    The **Copy to dashboard** action has these limits:
+    * If the selection includes a panel that can't be copied, such as an {{esql}} variable control, the action is unavailable and a tooltip says why. Deselect that panel to copy the rest.
+    * If the dashboard isn't saved yet, **New dashboard** isn't available in the **Copy to dashboard** window. You can still copy to an existing dashboard.
+    * The action doesn't appear if you can't create or edit dashboards.
+
+    :::
+
+**Remove**
+:   Removes every selected panel at once, and the removal applies when you save the dashboard. A single [undo](open-dashboard.md#undo-redo-dashboard) brings every removed panel back, even after you save, until you leave the dashboard.
+
+    Removing a panel you created directly on the dashboard deletes it. To keep a copy first, refer to [Remove a panel from a dashboard](create-dashboard.md#remove-panel).

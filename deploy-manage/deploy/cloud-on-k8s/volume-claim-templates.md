@@ -16,7 +16,7 @@ products:
 By default, the operator creates a [`PersistentVolumeClaim`](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) with a capacity of 1Gi for each pod in an {{es}} cluster to prevent data loss in case of accidental pod deletion. For production workloads, you should define your own volume claim template with the desired storage capacity and (optionally) the Kubernetes [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/) to associate with the persistent volume.
 
 ::::{important}
-The name of the volume claim must always be `elasticsearch-data`. If you chose a different name you have to set up a corresponding volume mount matching the [`path.data`](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) yourself ( `/usr/share/elasticsearch/data` by default).
+The name of the volume claim must always be `elasticsearch-data`, unless you set up a corresponding volume mount yourself. Refer to [Use a custom volume claim name](#k8s-volume-claim-templates-custom-name).
 ::::
 
 
@@ -27,15 +27,51 @@ spec:
     count: 3
     volumeClaimTemplates:
     - metadata:
-        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+        name: elasticsearch-data # <1>
       spec:
         accessModes:
         - ReadWriteOnce
         resources:
           requests:
             storage: 5Gi
-        storageClassName: standard
+        storageClassName: standard # <2>
 ```
+
+1. Do not change this name unless you set up a volume mount for the data path. Refer to [Use a custom volume claim name](#k8s-volume-claim-templates-custom-name).
+2. `standard` is an example. Replace it with the name of a storage class that exists in your Kubernetes cluster, or omit `storageClassName` to use the default storage class. ECK does not create storage classes.
+
+
+### Use a custom volume claim name [k8s-volume-claim-templates-custom-name]
+
+If you name the volume claim something other than `elasticsearch-data`, add a volume mount with the same name to the `elasticsearch` container, and mount it at `/usr/share/elasticsearch/data`. This is the default data path of {{es}} in ECK, so you do not need to set `path.data`. ECK rejects a volume claim that is not mounted in any container.
+
+```yaml
+spec:
+  nodeSets:
+  - name: default
+    count: 3
+    podTemplate:
+      spec:
+        containers:
+        - name: elasticsearch
+          volumeMounts:
+          - name: my-data
+            mountPath: /usr/share/elasticsearch/data
+    volumeClaimTemplates:
+    - metadata:
+        name: my-data
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
+```
+
+::::{warning}
+Do not mount the volume at another path or set `path.data` yourself. If the mount path differs from the data path, {{es}} starts normally but writes its data to the ephemeral storage of the container, and the data is lost when the Pod is recreated.
+::::
+
 
 ## Controlling volume claim deletion [k8s_controlling_volume_claim_deletion]
 

@@ -37,7 +37,7 @@ The following log types are not supported as part of this integration:
 ::::{note}
 If your Azure resources and Elastic deployment or project are in different subscriptions, before creating diagnostic settings confirm that the `Microsoft.Elastic` resource provider is registered in the subscription in which the Azure resources exist. If not, register the resource provider following these steps:
 
-1. In Azure, navigate to **Subscriptions → Resource providers**.
+1. In Azure, navigate to **Subscriptions** → **Resource providers**.
 2. Search for `Microsoft.Elastic` and check that it is registered.
 
 If you already created diagnostic settings before the `Microsoft.Elastic` resource provider was registered, delete and add the diagnostic setting again.

@@ -38,7 +38,7 @@ To secure {{report-features}}, you must grant users access to reporting function
 
 :::{note}
 :applies_to: {stack: ga 9.1, serverless: unavailable}
-Report generation requests are authenticated by API keys instead of session cookies. There are several key differences between the authentication methods. API keys capture your role privileges, whereas session cookie are based on your user credentials. API keys are also longer-lived, compared to session cookies, which have a shorter lifespan.
+{{kib}} authenticates report generation requests with API keys instead of session cookies. API keys capture your role privileges, whereas session cookies are based on your user credentials. API keys are also longer-lived than session cookies.
 
 If you have a cross-cluster search environment and want to generate reports from remote clusters, you must have the appropriate cluster and index privileges on the remote cluster and local cluster. For example, if requests are authenticated with an API key, the API key requires certain privileges on the local cluster that contains the local index, in addition to the remote. For more information and examples, refer to [Configure privileges for cross-cluster search](/explore-analyze/cross-cluster-search.md#configure-privileges-for-ccs).
 :::
@@ -99,25 +99,23 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
 3. Add the {{kib}} privileges.
 
-    1. Click **Add {{kib}} privilege**.
-    2. Select one or more **Spaces**.
+    1. Click **Assign to space**.
+    2. In the **Select spaces** field, select one or more spaces.
     3. Click **Customize**, then click **Analytics**.
     4. For each application, select **All**, or to customize the privileges, select **Read** and **Customize sub-feature privileges**.
 
         :::{note}
-        If you have a Basic license, sub-feature privileges are unavailable.
-        :::
+        A Basic license doesn't support sub-feature application privileges. To get reporting privileges, select **All** for the corresponding applications instead.
 
-        :::{note}
         If the **Reporting** options for application features are unavailable, and the cluster license is higher than Basic, contact your administrator.
         :::
+
+    5. Click **Assign role**.
 
         :::{image} /deploy-manage/images/kibana-kibana-privileges-with-reporting.png
         :alt: {{kib}} privileges with Reporting options, Gold or higher license
         :screenshot:
         :::
-
-    5. Click **Add {{kib}} privilege**.
 
 4. Click **Create role**.
 5. Assign the reporting role to a user.
@@ -170,6 +168,32 @@ PUT <kibana host>:<port>/api/security/role/custom_reporting_user
 3. Grants access to generate CSV reports from saved Discover sessions in **Discover**.
 4. Grants access to generate PDF reports in **Canvas**.
 5. Grants access to generate PNG and PDF reports in **Visualize Library**.
+
+:::{note}
+A Basic license doesn't support sub-feature application privileges. Instead, grant **All** for the corresponding applications. For example, the following request grants access to CSV reports in **Dashboard** and **Discover**:
+
+```console
+PUT <kibana host>:<port>/api/security/role/custom_reporting_user
+{
+  "elasticsearch": { "cluster": [], "indices": [], "run_as": [] },
+  "kibana": [
+    {
+      "base": [],
+      "feature": {
+        "dashboard_v2": [ "all" ], <1>
+        "discover_v2": [ "all" ] <2>
+      },
+      "spaces": [ "*" ]
+    }
+  ],
+  "metadata": {} <3>
+}
+```
+
+1. Grants access to generate CSV reports from saved Discover session panels in **Dashboard**.
+2. Grants access to generate CSV reports from saved Discover sessions in **Discover**.
+3. Optional
+:::
 ::::
 
 ::::{tab-item} External providers
@@ -184,42 +208,6 @@ kibana_admin:
 custom_reporting_user:
   - "cn=Bill Murray,dc=example,dc=com"
 ```
-
-::::
-
-::::{tab-item} Basic license
-
-With a Basic license, sub-feature [application privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) are unavailable, requiring you to select **All** privileges for the applications where users can create reports. You can grant users access through the {{kib}} UI or role API.
-
-Example using {{kib}} UI:
-
-:::{image} /deploy-manage/images/kibana-kibana-privileges-with-reporting-basic.png
-:alt: {{kib}} privileges with Reporting options, Basic license
-:screenshot:
-:::
-
-Example using [role API]({{kib-apis}}group/endpoint-roles) to grant access to CSV {{report-features}}:
-
-```console
-PUT localhost:5601/api/security/role/custom_reporting_user
-{
-  "elasticsearch": { "cluster": [], "indices": [], "run_as": [] },
-  "kibana": [
-    {
-      "base": [],
-      "feature": {
-        "dashboard_v2": [ "all" ], <1>
-        "discover_v2": [ "all" ], <2>
-      },
-      "spaces": [ "*" ]
-    }
-  ],
-  "metadata": {} <3>
-}
-```
-1. Grants access to generate CSV reports from saved Discover sessions in **Discover**.
-2. Grants access to generate CSV reports from saved Discover session panels in **Dashboard**.
-3. Optional
 
 ::::
 

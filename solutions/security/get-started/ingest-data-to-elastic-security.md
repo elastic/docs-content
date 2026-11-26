@@ -46,7 +46,7 @@ You don't need every type of data to get started. Start with the data for the ta
 
 | Data type | What you can do with it | How to get it |
 |---|---|---|
-| Logs and events | Detect threats and find out what happened across your environment. Detection rules create alerts from suspicious events, and [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) groups related alerts into attack narratives. To investigate, [AI Assistant](/solutions/security/ai/triage-alerts.md) helps you interpret and prioritize alerts, and you can explore events yourself in [Timeline](/solutions/security/investigate/timeline.md) and [Discover](/solutions/security/investigate/discover-security.md). | Add the integration for each tool or service that produces the logs. Then [install the prebuilt detection rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) that match your data, and turn them on. To also find unusual activity with {{ml}}, add [behavioral detection integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations). |
+| Logs and events | Detect threats and find out what happened across your environment. Detection rules create alerts from suspicious events, and [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) groups related alerts into attack narratives. To investigate, [AI chat](/solutions/security/ai/triage-alerts.md) helps you interpret and prioritize alerts, and you can explore events yourself in [Timeline](/solutions/security/investigate/timeline.md) and [Discover](/solutions/security/investigate/discover-security.md). | Add the integration for each tool or service that produces the logs. Then [install the prebuilt detection rules](/solutions/security/detect-and-alert/install-prebuilt-rules.md) that match your data, and turn them on. To also find unusual activity with {{ml}}, add [behavioral detection integrations](/solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#ml-integrations). |
 | Posture and vulnerability findings | Find the cloud resources that fail security guidelines and the hosts with known vulnerabilities, so you can decide what to fix first. When you investigate an alert, the same findings show whether the host or user involved has misconfigurations or vulnerabilities. Review them on the [Findings](/solutions/security/cloud/findings-page.md) page. | To check your own cloud accounts and Kubernetes clusters against security guidelines, add Elastic's [cloud security posture management (CSPM)](/solutions/security/cloud/cloud-security-posture-management.md) or [Kubernetes security posture management (KSPM)](/solutions/security/cloud/kubernetes-security-posture-management.md) integration. To find known vulnerabilities in your cloud workloads, add [cloud native vulnerability management (CNVM)](/solutions/security/cloud/cloud-native-vulnerability-management.md). To bring in findings from other tools, add one of the [integrations that power Findings and Alerts](/solutions/security/integrations/ingest-third-party-security-data.md). |
 | Threat intelligence | Find out when activity in your environment involves known malicious IP addresses, domains, or files. [Indicator match rules](/solutions/security/detect-and-alert/indicator-match.md) create an alert when your events match an indicator, and you can review each indicator on the [Indicators](/solutions/security/investigate/indicators-of-compromise.md) page. | Add a [threat intel integration](/solutions/security/get-started/enable-threat-intelligence-integrations.md). |
 | Endpoint data and alerts from {{elastic-defend}} | Prevent threats on your hosts and find out how an attack unfolded. {{elastic-defend}} blocks malware, ransomware, and other malicious behavior, and it collects endpoint data for investigation. When it detects or blocks a threat, its [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) create an alert for you to triage. To see the processes that led to the alert, open it in the [visual event analyzer](/solutions/security/investigate/visual-event-analyzer.md). | [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md). To also review process sessions in [Session View](/solutions/security/investigate/session-view.md), select **Collect session data** in the [integration policy](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection). |
@@ -60,7 +60,7 @@ For other sources, and on self-managed deployments, use an integration that runs
 
 | Integration type | Who runs the collector | Data sources | To get started |
 |---|---|---|---|
-| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) | Elastic. You only provide credentials, such as an API key. | Cloud services, through an API | [Enable an {{managed-integration}}](/manage-data/ingest/managed-integrations/enable-managed-integration.md). |
+| {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+, preview 9.0-9.4` [{{managed-integrations}}](/reference/managed-integrations/index.md) | Elastic. You only provide credentials, such as an API key. | Cloud services, through an API | [Enable an {{managed-integration}}](/reference/managed-integrations/enable-managed-integration.md). |
 | Integrations that use [{{agent}}](/reference/fleet/index.md) | You. You install, update, and scale {{agent}} with {{fleet}}. | The host where {{agent}} runs, or remote sources such as syslog, cloud storage, or an API | [Install {{fleet}}-managed {{agent}}s](/reference/fleet/install-fleet-managed-elastic-agent.md). |
 
 ### Find and add an integration [security-ingest-add-integration]
@@ -75,13 +75,14 @@ After you decide which data you need and how to collect it, add the integration:
    To browse the full catalog, go to the **Integrations** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Security** category.
    :::
 
-4. On the integration's page, select **Add** followed by the integration's name, such as **Add Okta**.
-5. Follow the prompts to configure the integration. If you're adding an {{managed-integration}}, also select it as the deployment mode:
+4. If the integration's **Overview** page opens, select **Add <integration>**.
+5. If the **Ready to add your first integration?** page opens, select **Add integration only (skip agent installation)**.
+6. Follow the prompts to configure the integration. If you're adding an {{managed-integration}}, also select it as the deployment mode:
 
    - {applies_to}`{serverless: ga, stack: ga 9.5+}` In the **Deployment** section, select **Elastic Managed Integration**.
    - {applies_to}`{stack: preview 9.0-9.4}` In the **Deployment options** section, select **Agentless**.
 
-6. Select **Save and continue**.
+7. Select **Save and continue**.
 
 When you're done, [verify that your data reaches {{elastic-sec}}](#security-ingest-verify).
 
@@ -114,9 +115,9 @@ If your data goes to an index that doesn't match the default index patterns, suc
 
 Whichever method you use, confirm that your data reaches {{elastic-sec}}:
 
-- In [Discover](/solutions/security/investigate/discover-security.md), select or create a {{data-source}} that includes your index, then filter for documents from your source. For integration data, filter on the `data_stream.dataset` field, for example `data_stream.dataset : "okta.system"`. For data from other methods, filter on the index name, for example `_index : filebeat-*`.
+- In [Discover](/solutions/security/investigate/discover-security.md), filter for documents from your source. In {{esql}} mode, query your index, for example `FROM logs-* | WHERE data_stream.dataset == "okta.system"` for integration data, or `FROM filebeat-*` for data from other methods. In classic mode, select or create a {{data-source}} that includes your index, then filter on the `data_stream.dataset` field for integration data, for example `data_stream.dataset : "okta.system"`, or on the index name for data from other methods, for example `_index : filebeat-*`.
 
-  - If no documents appear, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md). For {{managed-integrations}}, refer to the [{{managed-integrations}} FAQ](/manage-data/ingest/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-health).
+  - If no documents appear, refer to [Common problems with {{fleet}} and {{agent}}](/troubleshoot/ingest/fleet/common-problems.md). For {{managed-integrations}}, refer to the [{{managed-integrations}} FAQ](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-health).
   - If documents appear in Discover but not on {{elastic-sec}} pages, the {{data-source}} that {{elastic-sec}} uses doesn't include their index. To fix this, [add the index to that {{data-source}}](#security-ingest-other-methods).
 
 - If you used an integration, open a dashboard that it installed. To find one, go to **Dashboards** and search for the integration's name.

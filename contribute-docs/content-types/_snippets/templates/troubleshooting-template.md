@@ -28,7 +28,7 @@ Example: {{agent}} doesn't propagate client metadata
 
 Introduction
 
-A brief summary of what the page helps users resolve. Keep it concise and focused on the problem, not the solution. Help users quickly confirm they're in the right place by describing the issue they're experiencing.
+State the intent of the page: a brief summary of what the page helps users resolve. Keep it concise and focused on the problem, not the solution. Help users quickly confirm they're in the right place by describing the issue they're experiencing. Where it helps, include a benefit statement: what's in it for the user, such as getting back to a working state.
 -->
 
 ## Symptoms

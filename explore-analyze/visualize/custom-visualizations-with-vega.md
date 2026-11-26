@@ -289,12 +289,13 @@ For information about the queries, refer to [reference for writing {{es}} querie
 
 To generate the data, **Vega-Lite** uses the `source_0` and `data_0`. `source_0` contains the results from the {{es}} query, and `data_0` contains the visually encoded results that are shown on the chart. To debug the warning, compare `source_0` and `data_0`.
 
-1. In the toolbar, click **Inspect**.
+1. In the [application menu](/explore-analyze/find-and-organize/kibana-interface.md#application-menu), select **Inspect**.
 2. From the **View** dropdown, select **Vega debug**.
 3. From the dropdown, select **source_0**.
 
    :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_4.png
    :alt: Table for data_0 with columns key
+   :width: 75%
    :screenshot:
    :::
 
@@ -302,6 +303,7 @@ To generate the data, **Vega-Lite** uses the `source_0` and `data_0`. `source_0`
 
    :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_5.png
    :alt: Table for data_0 where the key is NaN instead of a string
+   :width: 75%
    :screenshot:
    :::
 
@@ -333,6 +335,7 @@ In the **Vega-Lite** spec, add the `encoding` block:
 
    :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_6.png
    :alt: Table for data_0 showing that the column time_buckets.buckets.key is undefined
+   :width: 75%
    :screenshot:
    :::
 
@@ -356,11 +359,6 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 
 1. Click **Inspect**, then select **Vega Debug** from the **View** dropdown.
 2. From the dropdown, select **data_0**.
-
-   :::{image} /explore-analyze/images/kibana-vega_lite_tutorial_7.png
-   :alt: Table showing data_0 with multiple pages of results
-   :screenshot:
-   :::
 
     Vega-Lite displays **undefined** values because there are duplicate names.
 
@@ -481,12 +479,7 @@ Add a `selection` block inside `mark: point`:
 
 Move your cursor around the stacked area chart. The points are able to indicate the nearest point.
 
-:::{image} /explore-analyze/images/kibana-vega_lite_tutorial_2.png
-:alt: Vega-Lite tutorial selection enabled
-:screenshot:
-:::
-
-The selection is controlled by a signal. To view the signal, click **Inspect** in the toolbar.
+The selection is controlled by a signal. To view the signal, select **Inspect** in the application menu.
 
 ::::{dropdown} Expand final Vega-Lite spec
 ```yaml
@@ -735,6 +728,7 @@ Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **U
 
 :::{image} /explore-analyze/images/kibana-vega_tutorial_3.png
 :alt: vega tutorial 3
+:width: 75%
 :screenshot:
 :::
 
@@ -825,6 +819,7 @@ To allow users to filter based on a time range, add a drag interaction, which re
 
 :::{image} /explore-analyze/images/kibana-vega_tutorial_4.png
 :alt: vega tutorial 4
+:width: 75%
 :screenshot:
 :::
 
@@ -1326,7 +1321,7 @@ The full result includes the following structure:
     "time_buckets": {
       "buckets": [{
           "key_as_string": "2015-11-30T22:00:00.000Z",
-          "key": 1448920800000,<1>
+          "key": 1448920800000, <1>
           "doc_count": 28
         }, {
           "key_as_string": "2015-11-30T23:00:00.000Z",
@@ -1431,6 +1426,11 @@ The `url` object supports the following parameters:
 The response is converted from the {{esql}} columnar format into the row-based format that **Vega** expects, with one object per row keyed by column name.
 
 {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview` **Vega** and **Vega-Lite** panels that use an {{esql}} data source are subject to the {icon}`bolt` [**Fast mode**](../query-filter/languages/esql-kibana.md#approximation-fast-mode) dashboard option. When this option is active on a dashboard, these panels return faster, estimated results for `STATS` aggregations.
+
+:::{tip}
+:applies_to: {"serverless": "preview", "stack": "preview 9.6"}
+When {{es}} applies approximation, the panel header shows a {icon}`bolt` badge. Refer to [Interpret approximate results](../query-filter/languages/esql-kibana.md#esql-kibana-approximation-columns).
+:::
 
 
 #### Apply the dashboard time range to {{esql}} data sources [vega-esql-time-range]
@@ -1637,11 +1637,6 @@ Use the contextual **Inspect** tool to gain insights into different elements.
 
 **Vega** uses the [{{es}} search API]({{es-apis}}operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
 
-:::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_requests.png
-:alt: vega tutorial inspect requests
-:screenshot:
-:::
-
 
 ### Vega with a Map [vega-with-a-map]
 ```{applies_to}
@@ -1731,6 +1726,7 @@ The runtime data is read from the [runtime scope](https://vega.github.io/vega/do
 
 :::{image} /explore-analyze/images/kibana-vega_tutorial_inspect_data_sets.png
 :alt: vega tutorial inspect data sets
+:width: 75%
 :screenshot:
 :::
 
@@ -1740,11 +1736,6 @@ To debug more complex specs, copy the Vega spec from the **Spec** tab and use th
 #### Asking for help with a Vega spec [asking-for-help-with-a-vega-spec]
 
 Because of the dynamic nature of the data in {{es}}, it is hard to help you with **Vega** specs unless you can share a dataset. To do this, click **Inspect**, select the **Vega debug** view, then select **Spec**.
-
-:::{image} /explore-analyze/images/kibana-vega_tutorial_getting_help.png
-:alt: vega tutorial getting help
-:screenshot:
-:::
 
 To copy the response, click **Copy to clipboard**. Paste the copied data to [gist.github.com](https://gist.github.com/), possibly with a .json extension. Use the [raw] button, and share that when asking for help.
 

@@ -172,7 +172,7 @@ You can upgrade the {{agent}} version or change settings by editing the YAML spe
 
 ## Choose the deployment model [k8s-elastic-agent-fleet-configuration-chose-the-deployment-model]
 
-Depending on the use case, {{agent}} may need to be deployed as a [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), or a [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulSet/). To choose how to deploy your {{agents}}, provide a `podTemplate` element under the `deployment` or the `daemonSet` element in the specification. If you choose the `deployment` option, you can additionally specify the [strategy](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy) used to replace old Pods with new ones.
+Depending on the use case, {{agent}} may need to be deployed as a [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), or a [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulSet/). To choose how to deploy your {{agents}}, provide a `podTemplate` element under the `deployment` or the `daemonSet` element in the specification. If you choose the `deployment` option, you can additionally specify the [strategy](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy) used to replace old Pods with new ones. Because the default host path volume cannot be shared by two Pods on the same node, set `strategy.type` to `Recreate` for a `Deployment` with one replica. Refer to [Rolling updates and multiple replicas with host path volumes](known-limitations.md#k8s_agent_hostpath_rolling_updates).
 
 Similarly, you can set the [update strategy](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/) when deploying as a DaemonSet. This allows you to control the rollout speed for new configuration by modifying the `maxUnavailable` setting:
 
@@ -266,8 +266,9 @@ Note that the environment variables related to policy selection mentioned in the
 
 In order to run {{agent}} as a non-root user you must choose how you want to persist data to the Agent’s volume.
 
-1. Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
-2. Run {{agent}} with a `hostPath` volume in addition to a `DaemonSet` running as `root` that sets up permissions for the `agent` user.
+* Run {{agent}} with an `emptyDir` volume. This has the downside of not persisting data between restarts of the {{agent}} which can duplicate work done by the previous running Agent.
+* {applies_to}`stack: ga 8.16` Run {{agent}} with the default `hostPath` volume and give the Agent container the `CHOWN` and `SETPCAP` capabilities. At startup, {{agent}} changes the owner of its state directory to its own user and group.
+* Run {{agent}} with a `hostPath` volume in addition to a `DaemonSet` running as `root` that sets up permissions for the `agent` user. Use this option for {{agent}} versions before 8.16, or when you cannot add capabilities to the Agent container, for example on OpenShift.
 
 In addition to these decisions, if you are running {{agent}} in {{fleet}} mode as a non-root user, you must configure `ssl.certificate_authorities` in each `xpack.fleet.outputs` to trust the CA of the {{es}} Cluster.
 
@@ -291,6 +292,39 @@ spec:
 ```
 
 1. Gid 1000 is the default group at which the Agent container runs. Adjust as necessary if `runAsGroup` has been modified.
+
+
+To run {{agent}} 8.16 or later with the default `hostPath` volume and without a separate `DaemonSet`:
+
+```yaml subs=true
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: elastic-agent
+spec:
+  version: {{version.stack}}
+  daemonSet:
+    podTemplate:
+      spec:
+        containers:
+        - name: agent
+          securityContext:
+            runAsUser: 1000 <1>
+            runAsGroup: 1000
+            capabilities:
+              drop:
+              - ALL
+              add:
+              - CHOWN <2>
+              - SETPCAP <3>
+...
+```
+
+1. Uid and gid 1000 are the default user and group of the Agent container.
+2. {{agent}} uses `CHOWN` to change the owner of the state directory on the host to its own user and group.
+3. {{agent}} uses `SETPCAP` to make the capabilities of the container available to its processes when it does not run as root.
+
+Some integrations require more capabilities. For example, to read log files on the host, add `DAC_READ_SEARCH`. On OpenShift, the default security context constraints (SCC) remove all capabilities, and SELinux blocks writes to `hostPath` volumes. In this case, use the `DaemonSet` option that follows.
 
 
 To run {{agent}} with a `hostPath` volume and a `DaemonSet` to maintain permissions.

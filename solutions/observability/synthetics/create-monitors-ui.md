@@ -40,18 +40,13 @@ To use the UI to add a lightweight monitor:
 
 1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create monitor**.
-3. Set the monitor type to **HTTP Ping**, **TCP Ping**, or **ICMP Ping**.
+3. Set the monitor type to **HTTP**, **TCP**, or **ICMP** pings.
 4. In *Locations*, select one or more locations.
 
     ::::{note}
     If you don’t see any locations listed, refer to the [troubleshooting guide](/troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
 
     If you’ve [added a {{private-location}}](/solutions/observability/synthetics/monitor-resources-on-private-networks.md), you’ll see the {{private-location}} in the list of *Locations*.
-
-    ```{image} /solutions/images/serverless-private-locations-monitor-locations.png
-    :alt: Screenshot of Monitor locations options including a {{private-location}}
-    :screenshot:
-    ```
 
     ::::
 
@@ -60,13 +55,10 @@ To use the UI to add a lightweight monitor:
 
     {applies_to}`stack: ga 9.1+` In **Advanced options**, select which [**{{kib}} spaces**](/deploy-manage/manage-spaces.md) the monitor will be visible in. You can select multiple spaces or choose to make the monitor visible in all spaces.
 
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` For an HTTP monitor, **Advanced options** → **Authentication** sets how the monitor signs in to the endpoint: **None**, **Basic**, **Kerberos**, or **NTLM**. A monitor can use one method at a time, and the fields change to match the one you select. For what each field holds and which locations support it, refer to the [HTTP options](/solutions/observability/synthetics/configure-lightweight-monitors.md#synthetics-lightweight-http).
+
 7. (Optional) Click **Run test** to verify that the test is valid.
 8. Click **Create monitor**.
-
-    :::{image} /solutions/images/observability-synthetics-get-started-ui-lightweight.png
-    :alt: Synthetics Create monitor UI
-    :screenshot:
-    :::
 
     ::::{note}
     :applies_to: stack: ga 9.4+
@@ -84,7 +76,7 @@ If you depend on external packages, have your journeys next to your code reposit
 To use the UI to add a browser monitor:
 
 1. Click **Create monitor**.
-2. Set the monitor type to **Multistep**.
+2. Set the monitor type to **Browser Journey** or **Multistep**, depending on your {{stack}} version.
 3. In *Locations*, select one or more locations.
 
     ::::{note}
@@ -94,11 +86,6 @@ To use the UI to add a browser monitor:
 
 4. Set the *Frequency*.
 5. Add steps to the **Script editor** code block directly. The `journey` keyword isn’t required, and variables like `page` and `params` will be part of your script’s scope. You cannot `import` any dependencies when using inline browser monitors.
-
-    :::{image} /solutions/images/observability-synthetics-ui-inline-script.png
-    :alt: Configure a synthetic monitor using an inline script in Elastic {{fleet}}
-    :screenshot:
-    :::
 
     ::::{note}
     Alternatively, you can use the **Script recorder** option. You can use the Elastic Synthetics Recorder to interact with a web page, export journey code that reflects all the actions you took, and upload the results in the UI. For more information, refer to [Use the Synthetics Recorder](/solutions/observability/synthetics/use-synthetics-recorder.md).

@@ -36,13 +36,8 @@ Configure these settings in the **About rule** pane.
 **Severity override** (optional)
 :   Select to use source event values to override the **Default severity** in generated alerts. When selected, a UI component is displayed where you can map the source event field values to severity levels.
 
-    :::{image} /solutions/images/security-severity-mapping-ui.png
-    :alt: severity mapping ui
-    :screenshot:
-    :::
-
     ::::{note}
-    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the **Group by** fields) will contain data. Overrides are not supported for event correlation rules.
+    [Threshold rules](/solutions/security/detect-and-alert/threshold.md) can use only their **Group by** fields for overrides, because those are the only source event fields in their alerts. Alerts from [Event correlation (EQL) rules](/solutions/security/detect-and-alert/eql.md) with a sequence query always use the **Default severity**.
     ::::
 
 **Default risk score**
@@ -56,13 +51,8 @@ Configure these settings in the **About rule** pane.
 **Risk score override** (optional)
 :   Select to use a source event value to override the **Default risk score** in generated alerts. When selected, a UI component is displayed to select the source field used for the risk score.
 
-    :::{image} /solutions/images/security-risk-source-field-ui.png
-    :alt: risk source field ui
-    :screenshot:
-    :::
-
     ::::{note}
-    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the **Group by** fields) will contain data.
+    [Threshold rules](/solutions/security/detect-and-alert/threshold.md) can use only their **Group by** fields for overrides, because those are the only source event fields in their alerts. Alerts from [Event correlation (EQL) rules](/solutions/security/detect-and-alert/eql.md) with a sequence query always use the **Default risk score**.
     ::::
 
 **Tags** (optional)
@@ -75,8 +65,12 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 **Author** (optional)
 :   The rule's authors.
 
-**Building block** (optional)
-:   Select to create a building-block rule. By default, alerts generated from a building-block rule are not displayed in the UI. See [About building block rules](/solutions/security/detect-and-alert/about-building-block-rules.md) for more information.
+**Mark all generated alerts as "building block" alerts** (optional)
+:   If another rule looks for combinations of activity across this rule's alerts, select this checkbox. To learn more about building block alerts and when to use them, refer to [](/solutions/security/detect-and-alert/about-building-block-rules.md).
+
+    ::::{warning}
+    Don't select this checkbox if analysts need to see and triage the rule's alerts. The Alerts table hides building block alerts by default, so analysts don't see them unless they [include building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md#security-building-block-rules-view-building-block-alerts-in-the-ui) in the Alerts table.
+    ::::
 
 **Custom highlighted fields** (optional)
 :   Specify highlighted fields for unique alert investigation flows. These fields help analysts quickly access key information when triaging alerts, without needing to search through all available fields. You can select any fields that are available in the indices you selected for the rule's data source.
@@ -84,7 +78,7 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
     After you create the rule, you can find all custom highlighted fields in the About section of the rule details page. If the rule has alerts, you can find custom highlighted fields in the [Highlighted fields](/solutions/security/detect-and-alert/view-detection-alert-details.md#investigation-section) section of the alert details flyout.
 
 **Elastic endpoint exceptions** (optional)
-:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) to this rule.
+:   When this setting is available, it adds all [{{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md) to this rule.
 
     This setting is available on deployments where {{elastic-endpoint}} exceptions are evaluated by detection rules. It's not available on deployments that use [per-policy {{elastic-endpoint}} exceptions](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md#endpoint-exceptions-opt-in).
 
@@ -110,12 +104,8 @@ Configure these settings by clicking **Advanced settings** in the **About rule**
 The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/configuration-reference/alerting-settings.md) acts as a system-level limit on alerts per rule execution, and can supersede a security rule's **Max alerts per run** setting. If a rule's **Max alerts per run** value exceeds `xpack.alerting.rules.run.alerts.max`, the lower system setting takes precedence and the rule will not generate more alerts than it allows.
 ::::
 
-**MITRE ATT&CK threats** (optional)
-:   Add relevant [MITRE ATT&CK](https://attack.mitre.org/) tactics, techniques, and subtechniques.
-
-    ::::{note}
-    The tactic and technique options here only include the MITRE ATT&CK version currently supported by {{elastic-sec}}. If you're upgrading and existing mappings are affected by a MITRE ATT&CK version change, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
-    ::::
+**MITRE ATT&CK® threats** (optional) {applies_to}`stack: ga 9.0-9.5` {applies_to}`serverless: unavailable`
+:   Add relevant [MITRE ATT&CK®](https://attack.mitre.org/) tactics, techniques, and sub-techniques from the ATT&CK version that {{elastic-sec}} supports. To update mappings after an upgrade, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
 
 **Reference URLs** (optional)
 :   References to information that is relevant to the rule. For example, links to background information.
@@ -124,30 +114,36 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 :   Associate the rule with one or more [{{product.integrations}}](https://docs.elastic.co/en/integrations) to indicate data dependencies and allow users to verify each integration's [installation status](/solutions/security/detect-and-alert/prebuilt-rule-components.md#rule-prerequisites).
 
 **Required fields** (optional)
-:   An informational list of fields the rule needs to function. This does not affect rule execution. It helps other users understand the rule's data dependencies.
-
-    ::::{note}
-    This setting is not available for {{ml}} rules.
-    ::::
+:   An informational list of fields the rule needs to function. This doesn't affect rule execution. It helps other users understand the rule's data dependencies. The **Required fields** setting is unavailable for {{ml}} rules.
 
 **Rule name override** (optional)
 :   Select a source event field to use as the rule name in the UI (Alerts table). This is useful for exposing, at a glance, more information about an alert. For example, if the rule generates alerts from Suricata, selecting `event.action` lets you see what action (Suricata category) caused the event directly in the Alerts table.
 
     ::::{note}
-    For threshold rules, not all source event values can be used for overrides; only the fields that were aggregated over (the **Group by** fields) will contain data.
+    [Threshold rules](/solutions/security/detect-and-alert/threshold.md) can use only their **Group by** fields for overrides, because those are the only source event fields in their alerts. Alerts from [Event correlation (EQL) rules](/solutions/security/detect-and-alert/eql.md) with a sequence query always use the rule's name.
     ::::
 
 **Setup guide** (optional)
 :   Instructions on rule prerequisites such as required integrations, configuration steps, and anything else needed for the rule to work correctly.
 
+**Threat mappings** (optional) {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Map the rule to the tactics, techniques, and sub-techniques it detects. Mappings determine where the rule appears on the [MITRE coverage](/solutions/security/detect-and-alert/mitre-attack-coverage.md) page. You can use one or both frameworks:
+
+    * [MITRE ATT&CK®](https://attack.mitre.org/): Attacks on enterprise IT systems.
+    * [MITRE ATLAS™](https://atlas.mitre.org/): Attacks on AI and machine learning systems, such as prompt injection. To add it, select **Add framework** → **MITRE ATLAS**.
+
+    The options include only the framework versions that {{elastic-sec}} supports. If an upgrade affects existing mappings, refer to [Remap detection rules to MITRE ATT&CK v19](/solutions/security/detect-and-alert/remap-mitre-attack.md).
+
 **Timestamp override** (optional)
-:   Select a source event timestamp field. When selected, the rule's query uses the selected field, instead of the default `@timestamp` field, to search for alerts. This can help reduce missing alerts due to network or server outages. Specifically, if your ingest pipeline adds a timestamp when events are sent to {{es}}, this can prevent missing alerts from ingestion delays.
+:   Select a source event timestamp field. When selected, the rule's query uses the selected field, instead of the default `@timestamp` field, to search for alerts. This can help reduce missing alerts due to network or server outages. Specifically, if your ingest pipeline adds a timestamp when events reach {{es}}, this can prevent missing alerts from ingestion delays. For example, the [Microsoft](beats://reference/filebeat/filebeat-module-microsoft.md) and [Google Workspace](beats://reference/filebeat/filebeat-module-google_workspace.md) {{filebeat}} modules have an `event.ingested` timestamp field that you can select.
 
     If the selected field is unavailable, the rule query will use the `@timestamp` field instead. If you don't want to use the `@timestamp` field because your data source has an inaccurate `@timestamp` value, select the **Do not use @timestamp as a fallback timestamp field** option instead. This ensures the rule query ignores the `@timestamp` field entirely.
 
-    ::::{tip}
-    The [Microsoft](beats://reference/filebeat/filebeat-module-microsoft.md) and [Google Workspace](beats://reference/filebeat/filebeat-module-google_workspace.md) {{filebeat}} modules have an `event.ingested` timestamp field that can be used instead of the default `@timestamp` field.
-    ::::
+    The timestamp override works differently for some rules:
+
+    * Event correlation (EQL) rules use the override only for the time range that they search, and order the events in a sequence by their [**Timestamp field**](/solutions/security/detect-and-alert/eql.md#eql-fields) setting.
+    * [{{ml-cap}} rules](/solutions/security/detect-and-alert/machine-learning.md) don't use the override, because they search {{anomaly-detect}} results instead of source events.
+    * For rules that search alert indices, such as rules that [correlate building block alerts](/solutions/security/detect-and-alert/query-alert-indices.md#rules-that-search-alerts), an override such as `event.ingested` reflects when each alert's source event arrived, not when the alert was created.
 
 ## Schedule settings [rule-schedule]
 
@@ -159,10 +155,12 @@ The `xpack.alerting.rules.run.alerts.max` [{{kib}} setting](kibana://reference/c
 
     For example, if you set a rule to run every 5 minutes with an additional look-back time of 1 minute, the rule runs every 5 minutes but analyzes the documents added to indices during the last 6 minutes.
 
-::::{important}
-It is recommended to set the `Additional look-back time` to at least 1 minute. This ensures there are no missing alerts when a rule does not run exactly at its scheduled time.
+    Rules that run often or look back over long time ranges add search load. To set schedules that keep rules running on time, refer to [](/solutions/security/detect-and-alert/plan-rule-performance.md).
 
-{{elastic-sec}} prevents duplication. Any duplicate alerts that are discovered during the `Additional look-back time` are *not* created.
+::::{note}
+Set **Additional look-back time** to at least 1 minute so that the rule doesn't skip events when it starts later than scheduled.
+
+The look-back time overlaps the time range that the rule's previous run searched, but the rule doesn't create duplicate alerts for events in the overlap. The exception is {{esql}} rules whose query results don't include `_id`. To learn how {{esql}} rules avoid duplicate alerts, refer to [Alert deduplication and `_id` metadata](/solutions/security/detect-and-alert/esql.md#esql-alert-deduplication).
 ::::
 
 ## Rule actions [rule-notifications]
@@ -173,23 +171,10 @@ Use rule actions to set up notifications sent through other systems when alerts 
 To use rule actions for alert notifications, you need the [appropriate license]({{subscriptions}}). For more information, see [Control access to cases](/explore-analyze/cases/control-case-access.md).
 ::::
 
-:::{admonition} Rule actions versus workflows
-:applies_to: `preview 9.3+` :applies_to: `serverless preview`
-You can automate alert responses using either rule actions or [workflows](/explore-analyze/workflows.md). Rule actions are simpler to set up and work well for individual rules with specific notification needs. Workflows offer more flexibility for complex, multi-step processes that you want to standardize across multiple rules.
-
-| Use case | Rule actions | Workflows |
-|----------|--------------|-----------|
-| Respond to alerts from a specific rule | Yes | Yes |
-| Apply the same response process to multiple rules | Configure separately on each rule | Define once, trigger from any rule |
-| Include complex conditional logic | Basic conditions only | Advanced conditions and branching |
-| Chain multiple actions together | Limited | Yes |
-| Centralized management | No (per-rule configuration) | Yes |
-
-To set up a workflow as a rule action, refer to [Trigger a workflow from an alert](/explore-analyze/workflows/triggers/alert-triggers.md).
-:::
-
 **Connector type**
 :   Determines how notifications are sent. For example, if you select the {{jira}} connector, notifications are sent to your {{jira}} system. You can configure connectors while creating the rule or from the **{{connectors-ui}}** page. For available connector types, refer to [Action and connector types](/deploy-manage/manage-connectors.md).
+
+     {applies_to}`stack: preview 9.3, ga 9.4+` To run a workflow, use [](/explore-analyze/workflows/triggers/alert-triggers.md).
 
 **Action frequency**
 :   Defines when notifications are sent:

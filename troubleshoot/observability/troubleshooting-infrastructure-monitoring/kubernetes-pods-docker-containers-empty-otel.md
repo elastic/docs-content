@@ -14,7 +14,7 @@ After configuring {{agent}} to monitor a Kubernetes cluster on version 9.2 or la
 
 ## Symptoms [symptoms-kubernetes-pods-docker-containers-empty]
 
-Under **{{observability}} → Infrastructure → Inventory**, the **Docker Containers** view shows no data, and so do the main summary metrics (CPU, memory, traffic) at the top of the Inventory page.
+Under **{{observability}}** → **Infrastructure** → **Inventory**, the **Docker Containers** view shows no data, and so do the main summary metrics (CPU, memory, traffic) at the top of the Inventory page.
 
 :::{note}
 :applies_to: {"stack": "ga 9.2, removed 9.6", "serverless": "removed"}
@@ -80,20 +80,20 @@ Use one of these methods:
 
 - **Manual installation**
 
-  1. In {{kib}}, go to **Data management → Integrations**.
+  1. In {{kib}}, go to **Data management** → **Integrations**.
   2. Search for and install the [Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md) integration.
   3. Repeat for the **System OpenTelemetry Assets** integration, which is required for host-level metrics on the nodes.
 ::::
 
 ::::{step} Access the dashboards
 1. In {{kib}}, go to **Dashboards**.
-2. In the search bar, type `OTEL`.
-3. Select the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard to view your cluster's performance.
+2. In the search bar, type `Kubernetes OTel`.
+3. Select the **[Kubernetes OTel] Overview** dashboard to view your cluster's performance.
 ::::
 
 :::::
 
-For a full end-to-end setup guide, refer to [Quickstart: Unified Kubernetes Observability with {{edot}}](/solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md).
+For a full end-to-end setup guide, refer to the [{{edot}} {{k8s}} quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md).
 
 On {{stack}} versions before 9.6, use these dashboards for {{k8s}} pods as well.
 
