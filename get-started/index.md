@@ -37,6 +37,13 @@ You'll also find other helpful information, such as how to use our docs, trainin
 
 Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Search AI platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value.
 
+::::{admonition} About the term {{es}}
+:::{include} /solutions/_snippets/elasticsearch-disambiguation.md
+:::
+
+This section is the starting point for Elastic as a whole. To build search applications, go to the [Search use case](/solutions/search.md). To set up, secure, and configure {{es}}, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md). To deploy {{es}}, go to [Elastic deployment options](/deploy-manage/deploy.md). To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
+::::
+
 ## Explore the fundamentals
 
 Continue your journey with these essential guides that will help you understand and work with Elastic:

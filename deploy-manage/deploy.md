@@ -34,6 +34,13 @@ To learn how to deploy optional {{stack}} components, refer to the following sec
 * [Logstash](logstash://reference/index.md)
 :::
 
+::::{admonition} About the term {{es}}
+:::{include} /solutions/_snippets/elasticsearch-disambiguation.md
+:::
+
+This section describes how to deploy and manage Elastic. To learn the basics of Elastic and {{es}}, including the {{stack}} and solutions, go to [Elastic fundamentals](/get-started/index.md). To learn about search with {{es}}, go to the [Search use case](/solutions/search.md). To set up, secure, and configure {{es}}, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md). To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
+::::
+
 ## Choosing your deployment type
 
 :::{include} _snippets/deployment-options-overview.md

@@ -274,12 +274,14 @@ $$$glossary-elastic-stack$$$ {{stack}}
 :   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
 
 $$$glossary-elasticsearch$$$ {{es}}
-:   The [open source](https://github.com/elastic/elasticsearch) search and analytics engine, data store, and vector database which powers the Elastic platform and is fundamental to every Elastic [deployment type](/deploy-manage/deploy.md).
+:   The [open source](https://github.com/elastic/elasticsearch) search database for AI. It is the search and analytics engine, data store, and vector database at the core of the Elastic platform, and it is part of every Elastic [deployment type](/deploy-manage/deploy.md).
 
-    The term "{{es}}" has several additional meanings depending on the context in which it is used:
-  - {{es}} is the name of a [**project** type](/deploy-manage/deploy/elastic-cloud/serverless.md#get-started) on {{serverless-full}}, tailored for general-purpose search use cases.
-  - {{es}} is also the name of a **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own [solution view](#glossary-solution-view).
-  - The **{{es}} platform** (also known as the Elastic platform or Search AI Platform) is the umbrella term for Elastic's full suite of products and capabilities, built on the core {{es}} technology. It encompasses what was initially known as the {{stack}}, extended with additional capabilities (such as the Search AI Lake) to power Elastic's various deployment types and managed services.
+    Depending on the context, "{{es}}" can also refer to the following:
+  - A [**project** type](/deploy-manage/deploy/elastic-cloud/serverless.md#get-started) on {{serverless-full}} that is designed for general-purpose search use cases.
+  - A **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own [solution view](#glossary-solution-view).
+  - A cluster that you install and manage yourself. The {{es}} docs call this a [self-managed](/deploy-manage/deploy/self-managed.md) deployment.
+
+    The Elastic platform is the whole of what Elastic offers. It includes {{es}} and other foundational products, such as {{kib}}, that the Elastic solutions run on.
 
 $$$glossary-elasticsearch-service$$$ Elasticsearch Service
 :   The former name of {{ech}}, which is the official hosted {{stack}} offering, from the makers of {{es}}. Available as a software-as-a-service (SaaS) offering on different cloud platforms, such as AWS, GCP, and Microsoft Azure.

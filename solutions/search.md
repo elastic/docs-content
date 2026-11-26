@@ -21,6 +21,13 @@ This overview explains what you can build with {{es}} and how the pieces fit tog
 Not every capability described on this page is available in every deployment or {{serverless-short}} project type. For broader comparisons, refer to [](/deploy-manage/deploy/deployment-comparison.md) and [](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md). For exact availability, refer to the documentation for the specific feature.
 :::
 
+::::{admonition} About the term {{es}}
+:::{include} /solutions/_snippets/elasticsearch-disambiguation.md
+:::
+
+This section describes the search use case. To learn the basics of Elastic and {{es}}, including the {{stack}}, deployment options, and solutions, go to [Elastic fundamentals](/get-started/index.md). To set up, secure, and configure {{es}}, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md). To deploy {{es}}, go to [Elastic deployment options](/deploy-manage/deploy.md). To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
+::::
+
 ## What you can build
 
 {{es}} powers applications, AI systems, and agents that need fast, relevant results over large amounts of data. Common use cases include:

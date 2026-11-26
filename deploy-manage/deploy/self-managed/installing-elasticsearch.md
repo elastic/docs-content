@@ -26,6 +26,13 @@ This section includes information on how to set up {{es}} and get it running, in
 
 To quickly set up {{es}} and {{kib}} in Docker for local development or testing, jump to [](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md).
 
+::::{admonition} About the term {{es}}
+:::{include} /solutions/_snippets/elasticsearch-disambiguation.md
+:::
+
+This section describes how to install and run {{es}} yourself. To learn the basics of Elastic and {{es}}, including the {{stack}}, deployment options, and solutions, go to [Elastic fundamentals](/get-started/index.md). To compare self-managed installation with other deployment types, go to [Elastic deployment options](/deploy-manage/deploy.md). To learn about search with {{es}}, go to the [Search use case](/solutions/search.md). To configure {{es}} after you install it, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
+::::
+
 :::{include} /deploy-manage/deploy/_snippets/deploy-options.md
 :::
 
