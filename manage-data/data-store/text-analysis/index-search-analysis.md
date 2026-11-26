@@ -83,7 +83,7 @@ While less common, it sometimes makes sense to use different analyzers at index 
 
 A separate search analyzer is useful in situations such as:
 
-* **[Synonyms](../../../solutions/search/full-text/search-with-synonyms.md):** For most use cases, apply synonym rules at either search time (recommended) or index time, rather than processing them in both phases.
+* **[Synonyms](../../../solutions/search/full-text/search-with-synonyms.md):** For most use cases, apply synonym rules at either search time (recommended) or index time, rather than in both phases.
 * **Avoiding unintended matches:** Use different analyzers when applying the same analysis to indexed field values and query strings would produce unexpected or irrelevant matches.
 
 The following example shows how using the same analyzer at index and search time can produce unintended matches.

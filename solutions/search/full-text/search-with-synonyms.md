@@ -53,7 +53,7 @@ For full format details, refer to the [synonym graph token filter](elasticsearch
 
 Search-time synonyms apply rules when analyzing queries. This makes synonym management more flexible because you can update rules without reindexing documents.
 
-Index-time synonyms apply rules when indexing documents. The resulting terms, including any added synonyms, are stored in the inverted index. This can reduce query-time processing, but it can increase indexing work and storage and affect the term statistics used for relevance scoring. To apply updated rules to existing documents, you must [reindex](https://www.elastic.co/docs/api/elasticsearch/operation/operation-reindex) those documents.
+Index-time synonyms apply rules when indexing documents. The resulting terms, including any added synonyms, are stored in the inverted index. This can reduce query-time processing, but it can increase indexing work and storage and affect the term statistics used for relevance scoring. To apply updated rules to existing documents, you must [reindex]({{es-apis}}operation/operation-reindex) those documents.
 
 Use search-time synonyms in most use cases for their balance of overall performance and flexibility. Consider index-time synonyms only for specific workloads where tests show that their benefits justify these trade-offs.
 
