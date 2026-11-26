@@ -36,7 +36,7 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
 
 2. Select a field name to open its details. In classic mode, **Discover** shows the field's top 10 values and the number of records used to calculate them. In {{esql}} mode, the field details don't include top values. To see the most frequent values of a field, run a query such as `STATS COUNT(*) BY <field>`.
 
-   To see how the values of that field spread over time, [split the chart by it](#explore-fields-chart).
+   To see how the values of that field spread over time, [split the chart by it](#explore-fields-chart-breakdown).
 
 3. Next to a field in the fields list, select {icon}`plus` to add it to the results table as a column. You can also drag the field from the list into the table. To manage the columns after you add them, refer to [Manage the columns in the table](document-explorer.md#document-explorer-columns).
 
@@ -63,7 +63,11 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
 
 **Result:** You can see what your data contains, and the table shows the fields you added as columns.
 
-## Change what the chart shows [explore-fields-chart]
+## Customize the chart [explore-fields-chart]
+
+To read your results from a different angle, change what the chart shows or how it looks.
+
+### Split the chart by a field [explore-fields-chart-breakdown]
 
 To see how the values of a field spread over the time range, split the chart by that field. Discover calls this a breakdown. The results table and its columns stay the same.
 
@@ -77,11 +81,16 @@ In {{esql}} mode, splitting the chart works only when the data source has a time
 
 To remove the split, select the button that now shows **Breakdown by** and the field name, then select **No breakdown**. If you save the Discover session, it keeps the field that splits the chart.
 
-In classic mode, to change the time span that each bar covers, select the button that shows **Auto interval** and select a time interval.
+### Adjust, edit, or keep the chart
+
+- In classic mode, to change the time span that each bar covers, select the button that shows **Auto interval** and select a time interval.
+- In {{esql}} mode, to change the chart type and display options, select {icon}`pencil` **Edit visualization**. The editor opens in a flyout in **Discover**. Refer to [Edit and add from Discover](../visualize/esorql.md#_edit_and_add_from_discover).
+- In classic mode, to continue in **Lens**, select {icon}`pencil` **Edit visualization**. This button appears only when the data view has a time field that can be visualized.
+- To keep the chart on a dashboard, refer to [Add Discover visualizations to dashboards](use-sessions-in-dashboards.md#add-discover-visualization-to-dashboard).
+- To show, hide, or resize the chart, refer to [Hide or resize areas](document-explorer.md#document-explorer-c). The buttons for the interval, the breakdown, and editing are available only while the chart is visible.
 
 ## Next steps
 
-- To keep the chart on a dashboard, refer to [Add Discover visualizations to dashboards](use-sessions-in-dashboards.md#add-discover-visualization-to-dashboard).
 - To chart a field in classic mode, refer to [Visualize a field from Discover](visualize-field.md).
 - To read every field of a single result, refer to [Inspect documents and requests in Discover](inspect-documents.md).
 
