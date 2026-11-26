@@ -17,7 +17,7 @@ products:
 If you're new to using {{es}} for search, you can complete this quickstart in less than 10 minutes after setting up a deployment.
 
 :::{tip}
-If you're working with an AI coding agent, point it to the [Elasticsearch onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding). To complete the quickstart yourself, continue with the steps below.
+If you're working with an AI coding agent, point it to the [Elasticsearch onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding).
 :::
 
 ## Set up {{es}} [vector-full-text-search-create-project]

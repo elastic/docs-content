@@ -8,14 +8,14 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 navigation_title: Search use case
-description: Learn what you can build with Elasticsearch search, how search applications work, and how to choose a search approach.
+description: Learn what you can build with Elasticsearch search, how search applications work, and where to find resources for getting started.
 ---
 
 # Search with {{es}}
 
 {{es}} is a search database: one place to store and search documents, vectors, logs, and metrics. You can search them with full-text, semantic, and hybrid techniques. Search capabilities are available across all Elastic deployments, solutions, and project types.
 
-This overview explains what you can build with {{es}} search, how the pieces fit together, and how to choose a search approach. To start working with your own data, go to the pages listed in [Next steps](#next-steps).
+This overview explains what you can build with {{es}} and how the pieces fit together. It also provides resources to help you learn more and get started with your own data.
 
 :::{note}
 Not every capability described on this page is available in every deployment or {{serverless-short}} project type. For broader comparisons, refer to [](/deploy-manage/deploy/deployment-comparison.md) and [](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md). For exact availability, refer to the documentation for the specific feature.
