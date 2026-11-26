@@ -22,13 +22,9 @@ After reviewing an entity’s risk score, the recommended next step is to invest
 
 ## Entity analytics page [entity-analytics-overview]
 
-On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can view entity key performance indicators (KPIs), risk scores, and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
+On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can view entity risk scores and levels. You can also click the number link in the **Alerts** column to investigate and analyze the alerts on the Alerts page.
 
-If you have enabled the [entity store](entity-store.md), you'll also get access to the **Entities** section, where you can view all hosts, users, and services along with their risk and asset criticality data.
-
-Access this risk data from the following pages:
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) 
-* [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
+When the [entity store](entity-store.md) is enabled, the page also includes an entity table, where you can view all hosts, users, and services along with their risk and asset criticality data.
 
 
 ## Alert triaging [alert-triaging]

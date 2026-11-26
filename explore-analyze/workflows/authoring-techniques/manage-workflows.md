@@ -84,6 +84,8 @@ Select a version in the timeline to preview its YAML in the editor:
 - **Single-version view**: The full YAML for that version
 - **Compare view**: A line-by-line diff against the previous version, or against another version you choose with **Compare to this version**. Added and removed lines are highlighted in the YAML, and a counter at the bottom of the editor shows how many changes the version contains. Use the arrows beside it to step through the changes one at a time.
 
+  {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To view the differences side by side instead of in one editor, select the settings icon {icon}`controls` at the bottom right of the YAML preview, then select **Split** under **Comparison mode**. To switch back, select **Unified**.
+
   :::{tip}
   To flag validation errors, select the settings icon {icon}`controls` at the bottom right of the YAML preview, then turn on validation error highlighting.
   :::
