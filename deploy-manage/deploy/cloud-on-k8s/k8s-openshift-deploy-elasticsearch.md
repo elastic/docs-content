@@ -47,7 +47,7 @@ spec:
 EOF
 ```
 
-OpenShift sets `vm.max_map_count` to `262144` on its nodes by default, which is enough for {{es}} to start. To use the recommended value `1048576`, refer to [Virtual memory](virtual-memory.md#k8s_using_the_node_tuning_operator_to_set_virtual_memory).
+OpenShift 4.13 and later set `vm.max_map_count` to `262144` on their nodes by default, which is enough for {{es}} to start. On earlier versions, or to use the recommended value `1048576`, refer to [Virtual memory](virtual-memory.md#k8s_using_the_node_tuning_operator_to_set_virtual_memory).
 
 ## {{es}} plugins [k8s-openshift-es-plugins]
 
