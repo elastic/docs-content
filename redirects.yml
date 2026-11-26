@@ -1863,9 +1863,11 @@ redirects:
           'set-final-pipeline': 'set-final-pipeline'
           'pipelines-for-beats': 'pipelines-for-beats'
           'pipelines-for-fleet-elastic-agent': 'pipelines-for-fleet-elastic-agent'
+          'pipelines-in-enterprise-search': 'pipelines-in-enterprise-search'
+      - to: 'reference/fleet/data-streams-pipeline-custom-logs.md'
+        anchors:
           'pipeline-custom-logs-index-template': 'pipeline-custom-logs-index-template'
           'pipeline-custom-logs-configuration': 'pipeline-custom-logs-configuration'
-          'pipelines-in-enterprise-search': 'pipelines-in-enterprise-search'
       - to: 'manage-data/ingest/transform-enrich/access-data-in-processors.md'
         anchors:
           'access-source-fields': 'access-source-fields'

@@ -158,106 +158,17 @@ Because the pipeline is named in the request, it takes precedence over any `inde
 
 {{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/fleet/index.md) applies these pipelines using [index templates](/manage-data/data-store/templates.md) that include [pipeline index settings](#apply-with-index-settings). {{es}} matches these templates to your {{fleet}} data streams based on the [stream's naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 
-### Create a `@custom` pipeline (recommended) [pipelines-custom-pipeline]
+To add your own processing to the data an integration collects, such as parsing, enrichment, or redaction, without editing the integration's default pipeline, use one of the following methods. They are in order of preference, so start with the recommended method if it fits.
 
-Most integration pipelines call a nonexistent, unversioned `@custom` ingest pipeline. If you don't create it, the call has no effect on your data. To customize how an integration processes data, create the `@custom` pipeline. You don't need to change the integration configuration or index templates, and your pipeline persists across upgrades. In {{fleet}}, the **Ingest pipelines** settings of an integration data stream list the pipelines that run and help you create the `@custom` pipeline.
+% REVIEW (Fleet owner): please confirm this table and its order. (1) That most integration default pipelines call a `@custom` pipeline, and that it is the recommended first choice. (2) That the `pipeline` policy setting is available for the integrations that need method 2, and which integrations those are. (3) That setting `index.default_pipeline` in a `@custom` component template replaces the integration's default pipeline, so only `index.final_pipeline` should be recommended there. (4) Whether the Custom logs walkthrough in the {{fleet}} docs is accurate; it now lives at reference/fleet/data-streams-pipeline-custom-logs.md.
+| Method | Use it when | What you change | Risk |
+| --- | --- | --- | --- |
+| 1. [Create a `@custom` ingest pipeline](/reference/fleet/data-streams.md#data-streams-pipelines) (recommended) | The integration's default pipeline calls a `@custom` pipeline, as most do, and you only need to add processing. | Only your own pipeline. In {{fleet}}, the **Ingest pipelines** settings of an integration data stream help you create it. For a walkthrough, refer to [](/reference/fleet/data-streams-pipeline-tutorial.md). | Lowest. Your pipeline persists across upgrades. |
+| 2. [Add a pipeline to the integration configuration](/reference/fleet/data-streams-pipeline-custom-logs.md) | The integration doesn't ship a default pipeline, such as Custom logs, so there is no `@custom` pipeline to create. | The `pipeline` setting in the integration policy. | Low. You don't manage any templates. |
+| 3. [Edit the integration's `@custom` component template](/reference/fleet/data-streams.md#data-streams-index-templates-edit) | You need more than a pipeline: a final pipeline that runs on every document, or other index settings or mappings. | `index.final_pipeline`, or other settings or mappings, in the component template. | Higher. Settings or mappings can conflict with the integration's own. Don't set `index.default_pipeline`, which replaces the integration's pipeline. |
+| 4. [Create a new index template](/reference/fleet/data-streams-scenario3.md) | The changes must apply to a specific namespace, or no integration template fits. | A new index template for your data. | Highest. The template isn't updated when the integration is upgraded, and Elastic can't test it. |
 
-To learn more, refer to [](/reference/fleet/data-streams-pipeline-tutorial.md) and [Ingest pipelines](/reference/fleet/data-streams.md#data-streams-pipelines) in the {{fleet}} documentation.
-
-% REVIEW (Fleet owner): please confirm this section. (1) That "most integrations" call a `@custom` pipeline, and the recommendation to use it first. (2) That the Ingest pipelines settings in Fleet list the pipelines and help create the `@custom` pipeline for any integration data stream. (3) That the two options below are accurate, and that an index or component template is best described as a last resort.
-### Other options: Set the pipeline in the policy or a template [pipelines-fleet-other-options]
-
-If a `@custom` pipeline doesn't fit your use case, you have two other options:
-
-* **Configure the pipeline in the integration policy.** Set the pipeline to call in the integration's settings. For example, for the Custom logs integration, specify it in the `pipeline` policy setting, as shown in the [Custom logs example](#pipelines-custom-logs).
-* **Set the pipeline in an index template or component template.** Add `index.default_pipeline` or `index.final_pipeline` to the template's settings. Use this option when the pipeline must apply to every data stream that matches the template, or when you also need to change other index settings. Templates apply only when a data stream or index is created, so roll over existing data streams for the change to take effect. Because the change affects all matching data streams, use this option with caution and only when the other options don't meet your needs. For an example, refer to [step 3 of the Custom logs example](#pipelines-custom-logs-apply).
-
-{{fleet}} doesn't provide a default ingest pipeline for the **Custom logs** integration, so the `@custom` approach doesn't apply to it. Use one of the options above, as shown in the following example.
-
-% REVIEW (Fleet owner): the published integrations docs list "Custom Logs" as deprecated in favor of "Custom Logs (Filestream)". Confirm which integration and UI path (Custom log file > Advanced options > Dataset name) this section describes, and whether the "Ingest Pipeline" option still applies (the Filestream changelog says it is ignored when "Use logs stream" is set). Also decide whether this walkthrough should live in the Fleet docs and be replaced here with a link, since no other page covers applying a pipeline to this integration.
-#### Example: Apply a pipeline to the Custom logs integration [pipelines-custom-logs]
-
-Create the pipeline and set up the integration. Then apply the pipeline.
-
-% REVIEW (Fleet owner): questions on this procedure. (1) The data-streams-pipeline-tutorial covers integrations that ship a default pipeline and call `@custom`, not the Custom logs integration, so it doesn't replace this procedure. Agree? (2) Is the `logs-<dataset-name>-default` pipeline name required, or only a naming convention? Does the name matter for the index template or the `pipeline` policy setting? (3) Elasticsearch's `logs@default-pipeline` calls a `logs@custom` ingest pipeline that doesn't exist by default. Would creating `logs@custom` (or another `@custom` pipeline, such as `global@custom` or a dataset-level one) apply to Custom logs data streams, given the integration has no default pipeline? If so, is it a simpler option to document?
-1. [Create](/manage-data/ingest/transform-enrich/create-ingest-pipelines.md#create-manage-ingest-pipelines) and [test](/manage-data/ingest/transform-enrich/create-ingest-pipelines.md#test-pipeline) your ingest pipeline. Name your pipeline `logs-<dataset-name>-default`. This makes it easier to track the pipeline for your integration.
-
-    For example, the following request creates a pipeline for the `my_app` dataset. The pipeline's name is `logs-my_app-default`.
-
-    ```console
-    PUT _ingest/pipeline/logs-my_app-default
-    {
-      "description": "Pipeline for `my_app` dataset",
-      "processors": [ ... ]
-    }
-    ```
-
-2. When you add or edit your **Custom logs** integration in {{fleet}}, select **Configure integration** → **Custom log file** → **Advanced options**. In the **Dataset name** field, enter your dataset's name. {{fleet}} adds new data for the integration to the resulting `logs-<dataset-name>-default` data stream.
-
-    For example, if your dataset's name is `my_app`, {{fleet}} adds new data to the `logs-my_app-default` data stream.
-
-    :::{image} /manage-data/images/elasticsearch-reference-custom-logs.png
-    :alt: The Advanced options settings of the Custom logs integration in Fleet, with the Dataset name field
-    :screenshot:
-    :::
-
-% REVIEW (SME): confirm the rationale for choosing the index template vs. custom configuration option, and whether Fleet and Custom logs apply on Serverless.
-3. $$$pipelines-custom-logs-apply$$$Apply the pipeline with either an index template or a custom configuration. Use an index template to apply the pipeline to every document written to the data stream, whichever way it's indexed, or to set a final pipeline. Use a custom configuration to set the pipeline in the integration policy, without creating an index template.
-
-    :::::{tab-set}
-
-    ::::{tab-item} Index template
-    $$$pipeline-custom-logs-index-template$$$
-
-    1. Create an [index template](/manage-data/data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Ensure the template is [data stream enabled](/manage-data/data-store/data-streams/set-up-data-stream.md#create-index-template). The template's index pattern should match `logs-<dataset-name>-*`.
-
-        You can create this template using {{kib}}'s [**Index Management**](/manage-data/data-store/templates.md) feature or the [create index template API]({{es-apis}}operation/operation-indices-put-index-template).
-
-        For example, the following request creates a template matching `logs-my_app-*`. The template uses a component template that contains the `index.default_pipeline` index setting.
-
-        ```console
-        # Creates a component template for index settings
-        PUT _component_template/logs-my_app-settings
-        {
-          "template": {
-            "settings": {
-              "index.default_pipeline": "logs-my_app-default",
-              "index.lifecycle.name": "logs"
-            }
-          }
-        }
-
-        # Creates an index template matching `logs-my_app-*`
-        PUT _index_template/logs-my_app-template
-        {
-          "index_patterns": ["logs-my_app-*"],
-          "data_stream": { },
-          "priority": 500,
-          "composed_of": ["logs-my_app-settings", "logs-my_app-mappings"]
-        }
-        ```
-
-        The template's `composed_of` list includes a `logs-my_app-mappings` component template. Create it first, or remove it from the list if you don't need custom mappings.
-
-    2. Use the [rollover API]({{es-apis}}operation/operation-indices-rollover) to roll over your data stream. This ensures {{es}} applies the index template and its pipeline settings to any new data for the integration.
-
-        ```console
-        POST logs-my_app-default/_rollover/
-        ```
-    ::::
-
-    ::::{tab-item} Custom configuration
-    $$$pipeline-custom-logs-configuration$$$
-
-    In the integration's **Custom Configurations** field, specify your pipeline in the `pipeline` policy setting.
-
-    :::{image} /manage-data/images/elasticsearch-reference-custom-logs-pipeline.png
-    :alt: The Custom Configurations field of the Custom logs integration in Fleet, with the pipeline policy setting
-    :screenshot:
-    :::
-    ::::
-
-    :::::
+Editing the integration's `@custom` component template and creating a new index template change how {{es}} configures the integration's indices, so a mistake can cause indexing to fail, lose data, or break integration upgrades. For example, a custom setting can conflict with the integration's own if a later version of the integration changes the index mode, and overriding the type of a field that the integration's dashboards use can break them. Both methods apply only to newly created indices, so roll over existing data streams for the change to take effect. For details, refer to [Creating custom component templates](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-custom-component-templates) and [the risks of replacing an integration's index template](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template).
 
 ### Standalone {{agent}} [pipelines-agent-standalone]
 
