@@ -1,5 +1,6 @@
 ---
 navigation_title: Policies
+description: Create and manage Elastic Agent policies with Fleet. Add integrations, apply policies to agents, and configure outputs, monitoring, upgrades, logging, and other agent settings.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/agent-policy.html
 applies_to:
@@ -57,8 +58,9 @@ Hosted policies display a lock icon in the {{fleet}} UI, and actions are restric
 | [Copy a policy](#copy-policy) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Edit or delete a policy](#policy-main-settings) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add custom fields](#add-custom-fields) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Include agent tags in events](#agent-policy-include-agent-tags) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure agent monitoring](#change-policy-enable-agent-monitoring) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
-| [Configure an automatic {{agent}} upgrade](#agent-policy-automatic-agent-upgrade) {applies_to}`stack: ga 9.1.0` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
+| [Configure an automatic {{agent}} upgrade](#agent-policy-automatic-agent-upgrade) {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Change the output of a policy](#change-policy-output) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Add a {{fleet-server}} to a policy](#add-fleet-server-to-policy) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
 | [Configure secret values in a policy](#agent-policy-secret-values) | ![yes](images/green-check.svg "") | ![no](images/red-x.svg "") |
@@ -208,6 +210,54 @@ Adding custom fields is not supported for a small set of inputs:
 * `endpoint` inputs. Instead, use the advanced settings (`*.advanced.document_enrichment.fields`) of the {{elastic-defend}} Integration.
 * `elastic_agent` inputs
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To add a value that differs from one agent to another in the same policy, use [agent tags](#agent-policy-include-agent-tags) instead.
+
+
+## Include agent tags in events [agent-policy-include-agent-tags]
+
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+Use this setting to add the [tags](/reference/fleet/filter-agent-list-by-tags.md) of each {{agent}} to the data it collects. You can then filter and group the data by agent tag in Discover, dashboards, alerting rules, and detection rules. Unlike [custom fields](#add-custom-fields), which add the same values for every agent in a policy, tags can differ from one agent to another.
+
+This setting is off by default. It takes effect only for {{agents}} on version 9.6 or later that connect to {{fleet-server}} 9.6 or later. On {{serverless-short}}, Elastic manages {{fleet-server}} for you, so only the {{agent}} version matters.
+
+To include agent tags in events:
+
+1. In {{fleet}}, select **Agent policies**, then select the name of the policy you want to edit.
+2. Select the **Settings** tab and scroll to **Advanced settings**.
+3. For the **Include agent tags in events** setting, select **Enable**.
+4. Select **Save changes**.
+
+{{agent}} adds its tags to the `tags` field of each event, after any tags that the integration sets. For example, if an agent has the tags `production` and `eu-west`, and an integration adds the tag `forwarded`, the events from that integration contain:
+
+```json
+"tags": ["forwarded", "production", "eu-west"]
+```
+
+When you [add or remove tags](/reference/fleet/filter-agent-list-by-tags.md#add-tags-in-fleet) for an agent, you don't need to update the agent policy. The agent gets the new tags the next time it checks in with {{fleet}}. Events collected before the change keep their previous tags.
+
+Agent tags are added to data from most integrations, including when they run in the [OTel runtime](/reference/fleet/elastic-agent-as-otel-collector.md). They aren't added to data from the following integrations:
+
+* {{elastic-defend}}
+* Elastic APM
+* Synthetics monitors
+* Universal Profiling
+* [OpenTelemetry input packages](/reference/fleet/otel-integrations.md)
+
+You can query the `tags` field to find data by agent tag in [Discover](/explore-analyze/discover.md), [dashboards](/explore-analyze/dashboards.md), [alerting rules](/explore-analyze/alerting.md), and [{{elastic-sec}} detection rules](/solutions/security/detect-and-alert.md). For example, the [KQL](/explore-analyze/query-filter/languages/kql.md) query `tags : "production"` matches events from agents tagged `production`.
+
+In [{{esql}}](/explore-analyze/query-filter/languages/esql-kibana.md), use the [`MATCH`](elasticsearch://reference/query-languages/esql/functions-operators/search-functions/match.md) function instead of the `==` operator, because `==` doesn't match fields with more than one value, such as `tags`. For example, to find events from agents tagged `production` in your logs and metrics, use:
+
+```esql
+FROM logs-*, metrics-*
+| WHERE MATCH(tags, "production")
+```
+
+To include agent tags in events for standalone {{agents}}, refer to [Configure feature flags for standalone {{agent}}s](/reference/fleet/elastic-agent-standalone-feature-flags.md#elastic-agent-standalone-feature-flag-settings).
+
 
 ## Configure agent monitoring [change-policy-enable-agent-monitoring]
 
@@ -265,7 +315,8 @@ This setting configures retries for the file upload client handling diagnostics 
 ## Configure an automatic {{agent}} upgrade [#agent-policy-automatic-agent-upgrade]
 
 ```{applies_to}
-stack: ga 9.1.0
+stack: ga 9.1+
+serverless: ga
 ```
 
 For a high-scale deployment of {{fleet}}, you can configure an automatic, gradual rollout of a new minor or patch version to a percentage of the {{agents}} in your policy. For more information, refer to [Auto-upgrade agents enrolled in a policy](/reference/fleet/upgrade-elastic-agent.md#auto-upgrade-agents).
@@ -399,11 +450,31 @@ The fields are empty by default. When left empty, the values are set by {{agent}
 
 For {{agent}}s that cannot access the internet, you can specify agent binary download settings, and then configure agents to download their artifacts from the alternate location. For more information about running {{agent}}s in a restricted environment, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` An agent policy can use up to three download sources in priority order. When an upgrade starts, {{agent}} downloads the binaries from the first source. If that download fails, {{agent}} tries the next sources in order. {{agents}} earlier than version 9.6 only use the first source.
+
 To change the binary download location:
 
-1. In {{fleet}}, click **Agent policies**. Select the name of the policy you want to edit.
-2. Click the **Settings** tab and scroll to **Agent binary download**.
-3. Specify the address where you are hosting the artifacts repository or select the default to use the location specified in the {{fleet}} [agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings).
+1. In {{fleet}}, select **Agent policies**. Select the name of the policy you want to edit.
+2. Select the **Settings** tab and scroll to **Agent binary download**.
+3. Select the download location:
+
+    ::::{applies-switch}
+
+    :::{applies-item} { serverless: ga, stack: ga 9.6+ }
+    1. In the **Download source order** section, select the first download source. To use the default source from the {{fleet}} [agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings), select **Default (currently *name*)**. This option follows the default source, even when you change it later.
+    2. (Optional) To add a fallback source, select **Add download source**, and then select the source. You can add each source once.
+    3. (Optional) To change the order, select a different source in each row. To remove a fallback source, select the **Remove download source** icon next to it.
+    4. Select **Save changes**.
+
+    The proxy, TLS, authentication, and disk space settings of the first source apply to all the sources in the list. For details, refer to [Fallback download sources](/reference/fleet/fleet-settings.md#agent-binary-multiple-sources).
+    :::
+
+    :::{applies-item} { stack: ga 9.0-9.5 }
+    1. Select a download source from the list. The list includes the sources from the {{fleet}} [agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). To use the default source, select **Default (currently *name*)**. This option follows the default source, even when you change it later.
+    2. Select **Save changes**.
+    :::
+
+    ::::
 
 
 ## Set the {{agent}} host name format [fleet-agent-hostname-format-settings]
