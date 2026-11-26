@@ -23,8 +23,6 @@ After [creating a case](create-cases.md), you can attach supporting materials to
 
 In {{elastic-sec}}, you can also attach [events](/solutions/security/investigate/security-cases.md#cases-add-events), [attacks](/solutions/security/investigate/security-cases.md#cases-add-attacks), [threat intelligence indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case), [Timelines](/solutions/security/investigate/security-cases.md#cases-timeline), and [entities](/solutions/security/investigate/security-cases.md#cases-add-entities) to connect cases to known threats.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` When an attachment no longer belongs in a case, you can [remove it](#cases-remove-attachments).
-
 ## Supported object types [supported-object-types]
 
 | Object | Description | Stack | Serverless |
@@ -216,7 +214,7 @@ serverless: ga
 stack: ga 9.6+
 ```
 
-Remove an attachment when it no longer belongs in the case, such as an alert you attached by mistake. To remove attachments, you need the **Delete** privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#cases-sub-feature-privileges).
+You can remove alerts, events, attacks, files, and other attachments from a case when they no longer apply to the investigation. To remove attachments, you need the **Delete** privilege for **Cases**. Refer to [Control access to cases](control-case-access.md#cases-sub-feature-privileges).
 
 1. Open the case and select the **Attachments** tab.
 2. Remove one attachment or several of the same type:
