@@ -4,13 +4,20 @@ applies_to:
   serverless: ga
 products:
   - id: elasticsearch
-description: Apply an ingest pipeline to your data with a request parameter, a default or final pipeline index setting, Beats, Fleet and Elastic Agent, or search indices.
+description: Apply an ingest pipeline to your data in an indexing request, in index settings or templates, in Beats, or in Fleet and Elastic Agent integrations.
 type: how-to
 ---
 
 # Apply an ingest pipeline
 
-After you [create and test an ingest pipeline](/manage-data/ingest/transform-enrich/create-ingest-pipelines.md), apply it to your data. Applying a pipeline means specifying it so that {{es}} uses it to process your documents. Choose the option that matches what you want to do:
+After you [create and test an ingest pipeline](/manage-data/ingest/transform-enrich/create-ingest-pipelines.md), apply it to your data. Applying a pipeline means specifying it so that {{es}} uses it to process your documents. In {{es}}, you can apply a pipeline in two ways:
+
+* [In an indexing request](#add-pipeline-to-indexing-request), with the `pipeline` parameter. This gives you direct control over each request, for example when you use a client library.
+* [In index settings](#apply-with-index-settings), with the `index.default_pipeline` or `index.final_pipeline` setting. This is the most common way to apply a pipeline. You can set these on an index directly, or in an index template or component template so that every new index or data stream that matches the template gets them.
+
+If you collect data with {{beats}}, {{fleet}}, or {{agent}}, you can also configure the pipeline in those tools. 
+
+To go straight to the instructions that apply to your setup, find your goal in the following table:
 
 | Your goal | Go to |
 | --- | --- |
@@ -18,14 +25,22 @@ After you [create and test an ingest pipeline](/manage-data/ingest/transform-enr
 | Apply a pipeline to everything sent to an index or data stream, without each request naming it. A request can still specify a different pipeline instead. | [Set a default pipeline](#set-default-pipeline) |
 | Enforce a pipeline on every document sent to an index or data stream, so that no request can skip it or replace it. | [Set a final pipeline](#set-final-pipeline) |
 | Apply a pipeline to data sent by {{beats}}. | [Pipelines for {{beats}}](#pipelines-for-beats) |
-| Apply a pipeline to data collected with {{agent}} integrations | [Pipelines for {{fleet}} and {{agent}}](#pipelines-for-fleet-elastic-agent) |
+| Apply a pipeline to data collected with {{fleet}}, {{agent}}, or integrations. | [Pipelines for {{fleet}}, {{agent}}, and integrations](#pipelines-for-fleet-elastic-agent) |
 | Learn how pipelines work on indices created for search use cases. | [Pipelines for search indices](#pipelines-in-enterprise-search) |
 
-To learn what happens when more than one pipeline applies to a document, refer to [How pipelines run together](#pipeline-order).
+## How pipelines run together [pipeline-order]
+
+When more than one pipeline applies to a document, {{es}} runs them in this order:
+
+1. The request pipeline, set with the `pipeline` parameter. A `pipeline` parameter in the metadata line of a bulk action overrides a `pipeline` parameter in the request URL.
+2. The default pipeline, only if the request doesn't specify a pipeline.
+3. The final pipeline, always, after the request pipeline or default pipeline.
+
+The special pipeline name `_none` means that no pipeline runs. You can use it at the request or default level to skip pipelines set at a lower level of precedence.
 
 ## Add a pipeline to an indexing request [add-pipeline-to-indexing-request]
 
-Use the `pipeline` query parameter to apply a pipeline to documents in [individual]({{es-apis}}operation/operation-create) or [bulk]({{es-apis}}operation/operation-bulk) indexing requests. This is useful for one-off loads, or when different requests need different pipelines.
+Use the `pipeline` query parameter to apply a pipeline to documents in [individual]({{es-apis}}operation/operation-create) or [bulk]({{es-apis}}operation/operation-bulk) indexing requests. This gives you direct control over each request, which is useful when you use a client library, for one-off loads, or when different requests need different pipelines.
 
 ```console
 POST my-data-stream/_doc?pipeline=my-pipeline
@@ -67,11 +82,36 @@ POST _reindex
 }
 ```
 
-## Set a default pipeline [set-default-pipeline]
+## Set a pipeline in index settings [apply-with-index-settings]
+
+Use index settings to apply a pipeline to every document sent to an index or data stream, without each request naming it. Two settings are available:
+
+* [`index.default_pipeline`](#set-default-pipeline) applies a pipeline to requests that don't specify one.
+* [`index.final_pipeline`](#set-final-pipeline) applies a pipeline to every document, after any other pipeline.
+
+You can set these on an existing index, or include them in an [index template](/manage-data/data-store/templates.md#index-templates) or [component template](/manage-data/data-store/templates.md#component-templates). Every new index or data stream that matches the template then gets the settings. The following request creates an index template that sets a default pipeline for data streams whose names start with `my-data-stream`.
+
+```console
+PUT _index_template/my-template
+{
+  "index_patterns": ["my-data-stream*"],
+  "data_stream": { },
+  "priority": 500,
+  "template": {
+    "settings": {
+      "index.default_pipeline": "my-pipeline"
+    }
+  }
+}
+```
+
+Templates apply only when an index is created. To apply a template change to an existing data stream, [roll over]({{es-apis}}operation/operation-indices-rollover) the data stream, or update the setting directly on the index, as shown in the following sections.
+
+### Set a default pipeline [set-default-pipeline]
 
 Use a default pipeline when documents sent to an index or data stream should usually go through the same pipeline, without each request having to name it. {{es}} applies the default pipeline to indexing requests that don't specify a `pipeline` parameter.
 
-Use the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) index setting to set a default pipeline. To set it for every new index or data stream that matches a pattern, include the setting in an [index template](/manage-data/data-store/templates.md).
+Use the [`index.default_pipeline`](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) index setting to set a default pipeline.
 
 ```console
 PUT my-index/_settings
@@ -82,7 +122,7 @@ PUT my-index/_settings
 
 Indexing requests fail if the default pipeline is set and the pipeline doesn't exist.
 
-## Set a final pipeline [set-final-pipeline]
+### Set a final pipeline [set-final-pipeline]
 
 Use a final pipeline when a pipeline must run for every document in an index or data stream, whichever pipeline the request or default setting specifies. For example, use it to add a field that every document must have. {{es}} applies the final pipeline after the request or default pipeline, even if the request specifies a different pipeline.
 
@@ -97,16 +137,6 @@ PUT my-index/_settings
 
 Indexing requests fail if the final pipeline is set and the pipeline doesn't exist.
 
-## How pipelines run together [pipeline-order]
-
-When more than one pipeline applies to a document, {{es}} runs them in this order:
-
-1. The request pipeline, set with the `pipeline` parameter. A `pipeline` parameter in the metadata line of a bulk action overrides a `pipeline` parameter in the request URL.
-2. The default pipeline, only if the request doesn't specify a pipeline.
-3. The final pipeline, always, after the request pipeline or default pipeline.
-
-The special pipeline name `_none` means that no pipeline runs. You can use it at the request or default level to skip pipelines set at a lower level of precedence.
-
 ## Pipelines for {{beats}} [pipelines-for-beats]
 
 To add an ingest pipeline to an Elastic Beat, specify the `pipeline` parameter under `output.elasticsearch` in `<BEAT_NAME>.yml`. For example, for {{filebeat}}, you specify `pipeline` in `filebeat.yml`.
@@ -120,17 +150,28 @@ output.elasticsearch:
 % REVIEW (SME): confirm Beats can send data to Serverless with this configuration.
 {{beats}} versions follow the {{stack}}, but you can use the same configuration when your {{beats}} send data to {{serverless-short}}.
 
-## Pipelines for {{fleet}} and {{agent}} [pipelines-for-fleet-elastic-agent]
+## Pipelines for {{fleet}}, {{agent}}, and integrations [pipelines-for-fleet-elastic-agent]
 
-{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/fleet/index.md) applies these pipelines using [index templates](/manage-data/data-store/templates.md) that include [pipeline index settings](#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream's naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
+{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/fleet/index.md) applies these pipelines using [index templates](/manage-data/data-store/templates.md) that include [pipeline index settings](#apply-with-index-settings). {{es}} matches these templates to your {{fleet}} data streams based on the [stream's naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 
-% REVIEW (Fleet owner): this paragraph overlaps the "Ingest pipelines" section of reference/fleet/data-streams.md (#data-streams-pipelines), which also lists the levels of customization (global, type, integration, dataset). Should this page shorten it to a sentence and link to that section and the tutorial, or keep it here?
-Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. To walk through an example, refer to [](/reference/fleet/data-streams-pipeline-tutorial.md).
+### Create a `@custom` pipeline (recommended) [pipelines-custom-pipeline]
 
-{{fleet}} doesn't provide a default ingest pipeline for the **Custom logs** integration. You can specify a pipeline for this integration, as described in the next section.
+Most integration pipelines call a nonexistent, unversioned `@custom` ingest pipeline. If you don't create it, the call has no effect on your data. To customize how an integration processes data, create the `@custom` pipeline. You don't need to change the integration configuration or index templates, and your pipeline persists across upgrades. In {{fleet}}, the **Ingest pipelines** settings of an integration data stream list the pipelines that run and help you create the `@custom` pipeline.
 
-% REVIEW (Fleet owner): the published integrations docs list "Custom Logs" as deprecated in favor of "Custom Logs (Filestream)". Confirm which integration and UI path (Custom log file > Advanced options > Dataset name) this section describes, and whether the "Ingest Pipeline" option still applies (the Filestream changelog says it is ignored when "Use logs stream" is set). Also decide whether this walkthrough should live in the Fleet docs, since no other page covers applying a pipeline to this integration.
-### Apply a pipeline to the Custom logs integration [pipelines-custom-logs]
+To learn more, refer to [](/reference/fleet/data-streams-pipeline-tutorial.md) and [Ingest pipelines](/reference/fleet/data-streams.md#data-streams-pipelines) in the {{fleet}} documentation.
+
+% REVIEW (Fleet owner): please confirm this section. (1) That "most integrations" call a `@custom` pipeline, and the recommendation to use it first. (2) That the Ingest pipelines settings in Fleet list the pipelines and help create the `@custom` pipeline for any integration data stream. (3) That the two options below are accurate, and that an index or component template is best described as a last resort.
+### Other options: Set the pipeline in the policy or a template [pipelines-fleet-other-options]
+
+If a `@custom` pipeline doesn't fit your use case, you have two other options:
+
+* **Configure the pipeline in the integration policy.** Set the pipeline to call in the integration's settings. For example, for the Custom logs integration, specify it in the `pipeline` policy setting, as shown in the [Custom logs example](#pipelines-custom-logs).
+* **Set the pipeline in an index template or component template.** Add `index.default_pipeline` or `index.final_pipeline` to the template's settings. Use this option when the pipeline must apply to every data stream that matches the template, or when you also need to change other index settings. Templates apply only when a data stream or index is created, so roll over existing data streams for the change to take effect. Because the change affects all matching data streams, use this option with caution and only when the other options don't meet your needs. For an example, refer to [step 3 of the Custom logs example](#pipelines-custom-logs-apply).
+
+{{fleet}} doesn't provide a default ingest pipeline for the **Custom logs** integration, so the `@custom` approach doesn't apply to it. Use one of the options above, as shown in the following example.
+
+% REVIEW (Fleet owner): the published integrations docs list "Custom Logs" as deprecated in favor of "Custom Logs (Filestream)". Confirm which integration and UI path (Custom log file > Advanced options > Dataset name) this section describes, and whether the "Ingest Pipeline" option still applies (the Filestream changelog says it is ignored when "Use logs stream" is set). Also decide whether this walkthrough should live in the Fleet docs and be replaced here with a link, since no other page covers applying a pipeline to this integration.
+#### Example: Apply a pipeline to the Custom logs integration [pipelines-custom-logs]
 
 Create the pipeline and set up the integration. Then apply the pipeline.
 
@@ -157,7 +198,7 @@ Create the pipeline and set up the integration. Then apply the pipeline.
     :::
 
 % REVIEW (SME): confirm the rationale for choosing the index template vs. custom configuration option, and whether Fleet and Custom logs apply on Serverless.
-3. Apply the pipeline with either an index template or a custom configuration. Use an index template to apply the pipeline to every document written to the data stream, whichever way it's indexed, or to set a final pipeline. Use a custom configuration to set the pipeline in the integration policy, without creating an index template.
+3. $$$pipelines-custom-logs-apply$$$Apply the pipeline with either an index template or a custom configuration. Use an index template to apply the pipeline to every document written to the data stream, whichever way it's indexed, or to set a final pipeline. Use a custom configuration to set the pipeline in the integration policy, without creating an index template.
 
     :::::{tab-set}
 
