@@ -124,9 +124,7 @@ For the comparison settings and how **Discover** highlights differences, refer t
 
 ## Opt out of grouped results [opt-out-of-the-grouped-layout]
 
-If you prefer the flat results table, you can switch grouped results off. When grouped results are active, Discover replaces the regular results table toolbar with a **Group by** button that shows the number of active groupings. Discover preselects the grouping field from your `STATS BY` clause. To go back to the flat results table and the regular toolbar, open the **Group by** menu and select **none**. The **Group by** button stays in the toolbar of the flat table. To bring the grouping back, open the menu again and select the grouping field.
-
-{applies_to}`stack: preview 9.4-9.6` In these versions, the **Group by** button also carries a {icon}`flask` badge.
+If you prefer the flat results table, you can switch grouped results off. When grouped results are active, Discover replaces the regular results table toolbar with a **Group by** option that shows the number of active groupings. Discover preselects the grouping field from your `STATS BY` clause. To go back to the flat results table and the regular toolbar, open the **Group by** menu and select **none**. The **Group by** button stays in the toolbar of the flat table. To bring the grouping back, open the menu again and select the grouping field.
 
 ## Related pages
 
