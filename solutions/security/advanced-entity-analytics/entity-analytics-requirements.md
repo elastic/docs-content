@@ -1,6 +1,6 @@
 ---
 navigation_title: Entity analytics requirements
-description: Privileges, subscription tiers, roles, and limitations required to use entity risk scoring, asset criticality, and the entity store in Elastic Security.
+description: Privileges, subscription tiers, roles, and limitations required to use entity risk scoring, asset criticality, the entity store, and watchlists in Elastic Security.
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ers-requirements.html
   - https://www.elastic.co/guide/en/serverless/current/security-ers-requirements.html
@@ -15,7 +15,7 @@ products:
 
 # Entity analytics requirements
 
-This page covers the requirements and guidelines for using the entity risk scoring, asset criticality, and entity store features, as well as their known limitations.
+This page covers the requirements and guidelines for using the entity risk scoring, asset criticality, entity store, and watchlist features, as well as their known limitations.
 
 To use these features in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In {{serverless-short}}, you need the appropriate user roles or a custom role with the right privileges.
 
@@ -28,10 +28,11 @@ For the requirements to run {{anomaly-jobs}} and behavioral detection rules, ref
 
 ## Entity risk scoring [_entity_risk_scoring]
 
-To install or run risk scoring, you need the following:
+To install or run risk scoring, you need a role with the appropriate [privileges](#_privileges).
 
-* In {{stack}}, you need the appropriate [privileges](#_privileges).
-* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ers_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges).
+:::{tip}
+In {{serverless-short}}, the [predefined Security user roles](#ers_roles) already include the necessary privileges.
+:::
 
 
 ### Privileges [_privileges]
@@ -76,10 +77,11 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 
 ## Asset criticality [_asset_criticality]
 
-To use asset criticality, you need the following:
+To use asset criticality, you need a role with the appropriate [privileges](#_privileges_2).
 
-* In {{stack}}, you need the appropriate [privileges](#_privileges_2).
-* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2).
+:::{tip}
+In {{serverless-short}}, the [predefined Security user roles](#ac_roles) already include the necessary privileges.
+:::
 
 ### Privileges [_privileges_2]
 
@@ -124,10 +126,11 @@ serverless: all
 
 ## Entity store [_entity_store]
 
-To turn on the entity store, you need the following:
+To turn on the entity store, you need a role with the appropriate [privileges](#_privileges_3).
 
-* In {{stack}}, you need the appropriate [privileges](#_privileges_3).
-* In {{serverless-short}}, you need either the Admin role or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_3).
+:::{tip}
+In {{serverless-short}}, the Admin role already includes the necessary privileges.
+:::
 
 ### Privileges [_privileges_3]
 
@@ -196,3 +199,79 @@ The entity store's background tasks run with the privileges of the user who turn
 :::
 
 ::::
+
+## Watchlists [_watchlists]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+To view or manage [watchlists](/solutions/security/advanced-entity-analytics/watchlists.md), you need a role with the appropriate [privileges](#_privileges_4).
+
+:::{tip}
+In {{serverless-short}}, the [predefined Security user roles](#watchlists_roles) already include the necessary privileges.
+:::
+
+### Privileges [_privileges_4]
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+:::{table}
+:widths: 3-6-3
+
+| Action | Index privileges | {{kib}} privileges |
+| --- | --- | --- |
+| View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
+| Edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Create watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Delete watchlists, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*` | **All** for the **Security** feature |
+:::
+::::
+
+::::{applies-item} { stack: ga =9.5 }
+
+:::{table}
+:widths: 3-6-3
+
+| Action | Index privileges | {{kib}} privileges |
+| --- | --- | --- |
+| View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
+| Edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Create watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Delete watchlists, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+:::
+::::
+
+::::{applies-item} { stack: ga =9.4 }
+
+:::{table}
+:widths: 3-6-3
+
+| Action | Index privileges | {{kib}} privileges |
+| --- | --- | --- |
+| View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
+| Create or edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Delete watchlists, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+:::
+
+In {{stack}} 9.4.0 through 9.4.2, **Read** for the **Security** feature is also enough to create, edit, or delete watchlists.
+::::
+
+:::::
+
+### Predefined roles [watchlists_roles]
+```yaml {applies_to}
+serverless: ga
+```
+
+:::{table}
+:widths: 7-5
+
+| Action | Predefined role |
+| --- | --- |
+| View watchlists | - Viewer<br>- Tier 1 analyst<br>- Tier 2 analyst |
+| View and edit watchlists | - Threat intelligence analyst<br>- Rule author<br>- Endpoint operations analyst<br>- Endpoint policy manager<br>- Detections admin |
+| View, create, edit, or delete watchlists, or assign or unassign entities | - Tier 3 analyst<br>- Editor<br>- SOC manager<br>- Platform engineer<br>- Admin |
+:::
