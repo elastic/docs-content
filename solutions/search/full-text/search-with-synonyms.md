@@ -14,7 +14,7 @@ products:
 
 Synonyms are words or phrases that have the same or similar meaning. When you configure synonyms in {{product.elasticsearch}}, a search for one term automatically matches documents that use an equivalent term. For example, you can define synonym rules to match different terms for the same concept, surface results for domain-specific jargon, or handle common misspellings.
 
-In {{es}}, synonyms are applied through [analyzers](../../../manage-data/data-store/text-analysis/anatomy-of-an-analyzer.md). Analyzers process both documents and search queries, so you can apply synonyms at [index time or search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). Search-time synonyms are recommended for most use cases because you can update the rules without reindexing documents. For a comparison of both approaches, refer to [Index-time and search-time synonyms](#synonyms-index-search-time).
+In {{es}}, synonyms are applied through [analyzers](../../../manage-data/data-store/text-analysis/anatomy-of-an-analyzer.md). Analyzers process both documents and search queries, so you can apply synonyms at [index time or search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). For guidance on choosing between these approaches, refer to [Index-time and search-time synonyms](#synonyms-index-search-time).
 
 This page walks you through defining synonym rules, grouping them into reusable synonym sets, configuring {{product.elasticsearch}} to apply them during text analysis, and verifying that queries return the expanded results you expect.
 
