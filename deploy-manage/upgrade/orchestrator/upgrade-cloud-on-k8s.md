@@ -87,11 +87,32 @@ kubectl apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/crds.
 kubectl apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml
 ```
 
-If you are using Helm:
+If you are using Helm, run the command that matches where you installed the chart from:
+
+::::{tab-set}
+:group: eck-helm-source
+
+:::{tab-item} Helm repository
+:sync: helm-repository
 
 ```shell
 helm upgrade elastic-operator elastic/eck-operator -n elastic-system
 ```
+
+:::
+
+:::{tab-item} {{container-registry}}
+:sync: oci-registry
+
+{applies_to}`eck: ga 3.6+`
+
+```shell subs=true
+helm upgrade elastic-operator oci://docker.elastic.co/eck-charts/eck-operator --version {{version.eck}} -n elastic-system
+```
+
+:::
+
+::::
 
 This will update the ECK installation to the latest binary and update the CRDs and other ECK resources in the cluster.
 
@@ -121,7 +142,7 @@ A new version of the operator can depend on resource types that older CRDs don't
 
 Upgrading the operator results in a one-time update to existing managed resources in the cluster. This potentially triggers a rolling restart of pods by Kubernetes to apply those changes. The following list contains the ECK operator versions that would cause a rolling restart after they have been installed.
 
-1.6, 1.9, 2.0, 2.1, 2.2, 2.4, 2.5, 2.6, 2.7, 2.8, 2.14, 3.1^1^, 3.2^1^, 3.4^2^
+1.6, 1.9, 2.0, 2.1, 2.2, 2.4, 2.5, 2.6, 2.7, 2.8, 2.14, 3.1^1^, 3.2^1^, 3.4^2^, 3.6
 
 ^1^ The restart when upgrading to version 3.1 and 3.2 happens only for applications using [stack monitoring](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md).
 

@@ -64,7 +64,7 @@ Check [Set compute resources for {{kib}}, Elastic Maps Server, APM Server and Lo
 :::
 
 ::::{note}
-While most reconfigurations of your {{kib}} instances are carried out in rolling upgrade fashion, all version upgrades will cause {{kib}} downtime. This happens because you can only run a single version of {{kib}} at any given time. For more information, check [Upgrade {{kib}}](/deploy-manage/upgrade/deployment-or-cluster.md).
+While most reconfigurations of your {{kib}} instances are carried out in rolling upgrade fashion, all version upgrades will cause {{kib}} downtime. This happens because you can only run a single version of {{kib}} at any given time. For more information, check [Upgrade {{kib}}](/deploy-manage/upgrade/deployment-or-cluster.md). If you [run background tasks in a separate pool](kibana-background-tasks.md), ECK scales both pools down before starting the new version.
 ::::
 
 ## Scale out a {{kib}} deployment [k8s-kibana-scaling]

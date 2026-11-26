@@ -56,5 +56,5 @@ For more information, check the following references:
 * [Google Artifact Registry](https://cloud.google.com/artifact-registry/docs/overview)
 * [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/)
 * [Amazon Elastic Container Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
-* [OpenShift Container Platform registry](https://docs.openshift.com/container-platform/4.12/registry/index.html)
+* [OpenShift Container Platform registry](https://docs.redhat.com/en/documentation/openshift_container_platform/4.22/html/registry/registry-overview)
 
