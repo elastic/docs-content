@@ -210,37 +210,64 @@ To view or manage [watchlists](/solutions/security/advanced-entity-analytics/wat
 
 ### Privileges [_privileges_4]
 
-::::{applies-switch}
+:::::{applies-switch}
 
-:::{applies-item} { stack: ga 9.6+, serverless: ga }
+::::{applies-item} { stack: ga 9.6+, serverless: ga }
 
-| Action | Index privileges | {{kib}} privileges |
-| --- | --- | --- |
-| View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
-| View, edit, or delete watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*` | **All** for the **Security** feature |
-| View, create, edit, or delete watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>` and `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*` | **All** for the **Security** feature |
-:::
-
-:::{applies-item} { stack: ga 9.4-9.5 }
+:::{table}
+:widths: 3-6-3
 
 | Action | Index privileges | {{kib}} privileges |
 | --- | --- | --- |
 | View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
-| View, edit, or delete watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
-| View, create, edit, or delete watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>` and `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+| Edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Create watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Delete watchlists, sync them, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*` | **All** for the **Security** feature |
 :::
-
 ::::
 
+::::{applies-item} { stack: ga =9.5 }
+
+:::{table}
+:widths: 3-6-3
+
+| Action | Index privileges | {{kib}} privileges |
+| --- | --- | --- |
+| View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
+| Edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Create watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Delete watchlists, sync them, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+:::
+::::
+
+::::{applies-item} { stack: ga =9.4 }
+
+:::{table}
+:widths: 3-6-3
+
+| Action | Index privileges | {{kib}} privileges |
+| --- | --- | --- |
+| View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
+| Create or edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
+| Delete watchlists, sync them, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+:::
+
 In {{stack}} 9.4.0 through 9.4.2, **Read** for the **Security** feature is also enough to create, edit, or delete watchlists.
+::::
+
+:::::
 
 ### Predefined roles [watchlists_roles]
 ```yaml {applies_to}
 serverless: ga
 ```
 
+:::{table}
+:widths: 7-5
+
 | Action | Predefined role |
 | --- | --- |
-| View watchlists | - Viewer<br>- Tier 1 analyst<br>- Tier 2 analyst<br>- Threat intelligence analyst<br>- Rule author<br>- Endpoint operations analyst<br>- Detections admin<br>- Endpoint policy manager |
-| View, edit, or delete watchlists | - Tier 3 analyst |
-| View, create, edit, or delete watchlists | - Editor<br>- SOC manager<br>- Platform engineer<br>- Admin |
+| View watchlists | - Viewer<br>- Tier 1 analyst<br>- Tier 2 analyst |
+| View and edit watchlists | - Threat intelligence analyst<br>- Rule author<br>- Endpoint operations analyst<br>- Endpoint policy manager<br>- Detections admin |
+| View, create, edit, or delete watchlists, sync them, or assign or unassign entities | - Tier 3 analyst<br>- Editor<br>- SOC manager<br>- Platform engineer<br>- Admin |
+:::
