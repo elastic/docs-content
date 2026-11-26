@@ -42,15 +42,15 @@ If you used the examples from the [recipes directory](https://github.com/elastic
       type: heartbeat
       version: {{version.stack}}
       elasticsearchRef:
-        name: elasticsearch
+        name: elasticsearch-sample
       config:
         heartbeat.monitors:
         - type: tcp
           schedule: '@every 5s'
-          hosts: ["elasticsearch-es-http.default.svc:9200"]
+          hosts: ["elasticsearch-sample-es-http.elastic.svc:9200"]
         - type: tcp
           schedule: '@every 5s'
-          hosts: ["kibana-kb-http.default.svc:5601"]
+          hosts: ["kibana-sample-kb-http.elastic.svc:5601"]
       deployment:
         replicas: 1
         podTemplate:
@@ -58,16 +58,22 @@ If you used the examples from the [recipes directory](https://github.com/elastic
             serviceAccountName: heartbeat
             securityContext:
               runAsUser: 0
+            containers:
+            - name: heartbeat
+              securityContext:
+                privileged: true
     ```
 
+    The example uses the {{es}} and {{kib}} instances from the previous pages in this section. Replace the names and the namespace with the ones of your environment.
 
-If SELinux is enabled, the Beat Pod might fail with the following message:
+
+If the container is not privileged, SELinux can prevent the Beat from writing to its data directory on the node, and the Beat Pod fails with the following message:
 
 ```shell
 Exiting: Failed to create Beat meta file: open /usr/share/heartbeat/data/meta.json.new: permission denied
 ```
 
-To fix this error, apply the label `svirt_sandbox_file_t` to the directory `/var/lib/elastic/heartbeat/heartbeat-data/` on the Kubernetes node:
+To fix this error, run the container as privileged, as in the previous example. Alternatively, apply the label `svirt_sandbox_file_t` to the directory `/var/lib/elastic/heartbeat/heartbeat-data/` on the Kubernetes node:
 
 ```shell
 chcon -Rt svirt_sandbox_file_t /var/lib/elastic/heartbeat/heartbeat-data/
