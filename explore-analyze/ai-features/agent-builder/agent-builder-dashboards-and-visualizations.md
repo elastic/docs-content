@@ -152,18 +152,32 @@ The agent preserves your external edits when making further updates.
 You can also go back to any previously generated version of a dashboard in the conversation and save that version instead.
 
 ### Review the agent's changes to the dashboard you have open [review-agent-changes-to-open-dashboard]
-```{applies_to}
-serverless: ga
-stack: ga 9.6+
-```
 
-If you can edit the dashboard you have open in the **Dashboards** app, it switches to edit mode when the agent in the [sidebar](standalone-and-flyout-modes.md#sidebar-mode) changes it. The dashboard shows the agent's changes right away, but they stay unsaved until you review them and decide to keep them. To keep them, select **Save**. To discard them, select **Reset changes** from the menu next to **Save**, which returns the dashboard to its last saved version and also discards any unsaved edits of your own. If you select **Preview** on that dashboard's attachment in the chat, the dashboard gets the changes in edit mode in the same way.
+When the agent in the [sidebar](standalone-and-flyout-modes.md#sidebar-mode) changes a dashboard you have open in the **Dashboards** app, what you see depends on your deployment and version.
 
-{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` In the following cases, the agent's changes don't replace what the open dashboard shows:
+:::::{applies-switch}
 
-   - **The dashboard is [managed](/explore-analyze/dashboards/duplicate-dashboards.md) or [view-only for you](/explore-analyze/dashboards/sharing.md#manage-dashboard-access)**: The open dashboard stays as it is. The changes open in a new unsaved dashboard in the **Dashboards** app, in edit mode, and a warning says **The agent's changes were opened in a new dashboard**. Save the new dashboard to keep the changes. Later changes from the same conversation go to that dashboard. In earlier versions, the dashboard showed the changes but offered no way to save them.
-   - **Your role can't edit dashboards**: Without the **All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) for the **Dashboard** feature, the agent doesn't apply its changes to the open dashboard. A warning, shown once, tells you to select **Preview** on the dashboard's attachment in the chat, which shows the changes in the canvas next to the conversation. In earlier versions, the dashboard showed the changes but offered no way to save them.
-   - **The agent updates a different saved dashboard**: The open dashboard stays as it is. A notification says **The agent updated** followed by the title of that dashboard. Select **Open** in the notification to see that dashboard in edit mode, with the changes applied and unsaved. In earlier versions, no notification appeared.
+::::{applies-item} { "serverless": "ga", "stack": "ga 9.7+" }
+If you can edit the dashboard, it switches to edit mode with the agent's changes applied. The changes stay unsaved until you review them and decide to keep them. To keep them, select **Save**. To discard them, select **Reset changes** from the menu next to **Save**, which returns the dashboard to its last saved version and also discards any unsaved edits of your own. If you select **Preview** on that dashboard's attachment in the chat, the dashboard gets the changes in edit mode in the same way.
+
+In the following cases, the agent's changes don't replace what the open dashboard shows:
+
+- **The dashboard is [managed](/explore-analyze/dashboards/duplicate-dashboards.md) or [view-only for you](/explore-analyze/dashboards/sharing.md#manage-dashboard-access)**: The open dashboard stays as it is. The changes open in a new unsaved dashboard in the **Dashboards** app, in edit mode, and a warning says **The agent's changes were opened in a new dashboard**. Save the new dashboard to keep the changes. Later changes from the same conversation go to that dashboard.
+- **Your role can't edit dashboards**: Without the **All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) for the **Dashboard** feature, the agent doesn't apply its changes to the open dashboard. A warning, shown once, tells you to select **Preview** on the dashboard's attachment in the chat, which shows the changes in the canvas next to the conversation.
+- **The agent updates a different saved dashboard**: The open dashboard stays as it is. A notification says **The agent updated** followed by the title of that dashboard. Select **Open** in the notification to see that dashboard in edit mode, with the changes applied and unsaved.
+::::
+
+::::{applies-item} stack: ga =9.6
+If you can edit the dashboard, it switches to edit mode with the agent's changes applied. The changes stay unsaved until you review them and decide to keep them. To keep them, select **Save**. To discard them, select **Reset changes** from the menu next to **Save**, which returns the dashboard to its last saved version and also discards any unsaved edits of your own. If you select **Preview** on that dashboard's attachment in the chat, the dashboard gets the changes in edit mode in the same way.
+
+If the dashboard is managed, or you can't edit it, the dashboard shows the changes but offers no way to save them. If the agent updates a different saved dashboard, no notification appears.
+::::
+
+::::{applies-item} stack: ga =9.5
+The dashboard shows the changes and stays in view mode, with no **Save** button.
+::::
+
+:::::
 
 ## Supported panel types
 
