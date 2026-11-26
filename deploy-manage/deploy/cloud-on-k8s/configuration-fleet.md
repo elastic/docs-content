@@ -193,6 +193,11 @@ spec:
 
 Refer to [Set compute resources for Beats and Elastic Agent](manage-compute-resources.md#k8s-compute-resources-beats-agent) for more information on how to use the Pod template to adjust the resources given to {{agent}}.
 
+### Run a DaemonSet on control plane nodes [k8s-elastic-agent-fleet-control-plane-nodes]
+
+::::{include} _snippets/control-plane-nodes.md
+::::
+
 
 ## Role Based Access Control for {{agent}} [k8s-elastic-agent-fleet-configuration-role-based-access-control]
 

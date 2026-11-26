@@ -204,6 +204,12 @@ spec:
 
 Consider picking the `Recreate` strategy if you are using a `hostPath` volume as the Beats data directory to avoid two Pods competing for the same directory.
 
+### Run a DaemonSet on control plane nodes [k8s-beat-control-plane-nodes]
+
+::::{include} _snippets/control-plane-nodes.md
+::::
+
+
 
 ## Role Based Access Control for Beats [k8s-beat-role-based-access-control-for-beats]
 
