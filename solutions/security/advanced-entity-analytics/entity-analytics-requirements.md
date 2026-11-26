@@ -28,10 +28,11 @@ For the requirements to run {{anomaly-jobs}} and behavioral detection rules, ref
 
 ## Entity risk scoring [_entity_risk_scoring]
 
-To install or run risk scoring, you need the following:
+To install or run risk scoring, you need a role with the appropriate [privileges](#_privileges).
 
-* In {{stack}}, you need the appropriate [privileges](#_privileges).
-* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ers_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges).
+:::{tip}
+In {{serverless-short}}, the [predefined Security user roles](#ers_roles) already include the necessary privileges.
+:::
 
 
 ### Privileges [_privileges]
@@ -76,10 +77,11 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 
 ## Asset criticality [_asset_criticality]
 
-To use asset criticality, you need the following:
+To use asset criticality, you need a role with the appropriate [privileges](#_privileges_2).
 
-* In {{stack}}, you need the appropriate [privileges](#_privileges_2).
-* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2).
+:::{tip}
+In {{serverless-short}}, the [predefined Security user roles](#ac_roles) already include the necessary privileges.
+:::
 
 ### Privileges [_privileges_2]
 
@@ -124,10 +126,11 @@ serverless: all
 
 ## Entity store [_entity_store]
 
-To turn on the entity store, you need the following:
+To turn on the entity store, you need a role with the appropriate [privileges](#_privileges_3).
 
-* In {{stack}}, you need the appropriate [privileges](#_privileges_3).
-* In {{serverless-short}}, you need either the Admin role or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_3).
+:::{tip}
+In {{serverless-short}}, the Admin role already includes the necessary privileges.
+:::
 
 ### Privileges [_privileges_3]
 
@@ -203,10 +206,11 @@ stack: ga 9.4+
 serverless: ga
 ```
 
-To view or manage [watchlists](/solutions/security/advanced-entity-analytics/watchlists.md), you need the following:
+To view or manage [watchlists](/solutions/security/advanced-entity-analytics/watchlists.md), you need a role with the appropriate [privileges](#_privileges_4).
 
-* In {{stack}}, you need the appropriate [privileges](#_privileges_4).
-* In {{serverless-short}}, you need either the appropriate [predefined Security user role](#watchlists_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_4).
+:::{tip}
+In {{serverless-short}}, the [predefined Security user roles](#watchlists_roles) already include the necessary privileges.
+:::
 
 ### Privileges [_privileges_4]
 
