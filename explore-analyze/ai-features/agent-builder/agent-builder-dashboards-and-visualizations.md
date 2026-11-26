@@ -165,6 +165,8 @@ If you can edit the dashboard you have open in the **Dashboards** app, it switch
    - **Your role can't edit dashboards**: Without the **All** [privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) for the **Dashboard** feature, the agent doesn't apply its changes to the open dashboard. A warning, shown once, tells you to select **Preview** on the dashboard's attachment in the chat, which shows the changes in the canvas next to the conversation.
    - **The agent updates a different saved dashboard**: The open dashboard stays as it is. A notification says **The agent updated** followed by the title of that dashboard. Select **Open** in the notification to see that dashboard in edit mode, with the changes applied and unsaved.
 
+In earlier versions, a dashboard that you can't edit shows the agent's changes without a way to save them, and updates to a different dashboard give no notification.
+
 ## Supported panel types
 
 Agents can create and manage the following panel types:
