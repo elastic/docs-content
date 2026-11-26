@@ -203,6 +203,11 @@ To set the effort for a model:
 4. In the **Reasoning effort** popover, select a level. The popover lists only the levels the model supports, out of **none**, **minimal**, **low**, **medium**, **high**, and **xhigh**.
 5. Select **Save settings**. The model's row shows the level you chose.
 
+:::{image} /explore-analyze/images/feature-settings-reasoning-effort.png
+:alt: The Reasoning effort popover open on a model in the Assigned models list of the AI Prompt step, showing the none, low, medium, high, and xhigh levels
+:screenshot:
+:::
+
 To stop customizing the effort for a model, open the **Reasoning effort** popover again, select **Remove effort customization**, and save your settings.
 
 When you copy a feature's assigned models to other features, the efforts you set come with them. Resetting a feature to its defaults also removes your custom efforts.
