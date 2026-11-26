@@ -32,7 +32,7 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 ## Step 2: Install {{kib}}
 
-You have the following options for installing the {{es}} RPM package:
+You have the following options for installing the {{kib}} RPM package:
 
 * [From the RPM repository](#rpm-repo)
 * [Manually](#install-rpm)

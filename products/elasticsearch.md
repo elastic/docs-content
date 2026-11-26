@@ -133,28 +133,26 @@ links:
 :::{link-card}
 title: Search fundamentals
 links:
-  - label: Index and search basics
-    url: /solutions/search/get-started/index-basics.md
-  - label: Build your first query with Python
-    url: /solutions/search/get-started/keyword-search-python.md
+  - label: "Quickstart: Vector and full-text search"
+    url: /solutions/search/get-started/quickstarts.md
 :::
 
 :::{link-card}
 title: Semantic search and ES|QL
 links:
-  - label: Get started with semantic search
-    url: /solutions/search/get-started/semantic-search.md
+  - label: Semantic search with semantic_text
+    url: /solutions/search/semantic-search/semantic-search-semantic-text.md
   - label: ES|QL tutorials
     url: elasticsearch://reference/query-languages/esql/esql-examples.md
 :::
 
 :::{link-card}
-title: Specialized quickstarts
+title: Specialized hands-on tutorials
 links:
   - label: Time series data stream basics
     url: /manage-data/data-store/data-streams/quickstart-tsds.md
-  - label: Browse all quickstarts
-    url: /solutions/search/get-started/quickstarts.md
+  - label: "Build multimodal search"
+    url: /solutions/search/multimodal-search/multimodal-search-tutorial.md
 :::
 ::::
 

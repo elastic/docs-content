@@ -98,7 +98,7 @@ With monitoring enabled for your deployment, you can access the [logs](//solutio
 :::{include} /deploy-manage/monitor/stack-monitoring/_snippets/cloud-monitoring-access.md
 :::
 
-You can also create an `elastic-cloud-logs-*` data view (formerly *index pattern*) to view your deployment’s logs in the {{kib}} **Discover** tab.
+You can also view your deployment’s logs in the {{kib}} **Discover** tab. In {{esql}} mode, enter `FROM elastic-cloud-logs-*`. In classic mode, create an `elastic-cloud-logs-*` data view (formerly *index pattern*).
 
 Several fields are available for you to view logs based on key details, such as the source deployment:
 

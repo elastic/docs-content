@@ -1,6 +1,6 @@
 ---
 navigation_title: Set up AI features
-description: Set up the LLM access and privileges that Elastic Security AI features need, plus optional settings such as the chat experience, the Knowledge Base, and Agent Builder documentation.
+description: Set up the LLM access and privileges that Elastic Security AI features need, plus optional settings such as the chat experience, Agent Builder documentation, and the AI Assistant Knowledge Base.
 applies_to:
   serverless:
     security: all
@@ -12,11 +12,12 @@ products:
 
 # Set up AI features [set-up-ai-features]
 
-This page explains how to set up {{elastic-sec}} AI features. It covers the required setup, optional setup that control which models and chat experience are available, and setup that applies only to specific features.
+This page explains how to set up {{elastic-sec}} AI features. It covers the required setup, optional setup that controls which models and chat experience are available, and setup that applies only to specific features.
 
 ## Required setup [set-up-ai-required]
 
 {{elastic-sec}} AI features require a connection to a large language model (LLM), and users need privileges for the features they use.
+
 ### Connect to an LLM [set-up-ai-llm]
 
 If your subscription or project feature tier includes [Elastic Managed LLMs](kibana://reference/connectors-kibana/elastic-managed-llm.md), they're available by default with no setup required. To connect a different LLM, refer to [Configure access to LLMs](/explore-analyze/ai-features/llm-guides/llm-connectors.md).
@@ -27,9 +28,11 @@ Model performance varies by task. To compare models, refer to the [Large languag
 
 For the privileges that each feature needs, refer to:
 
-- AI Assistant: [AI Assistant for Security requirements](/solutions/security/ai/ai-assistant.md)
-- Attack Discovery: [Attack Discovery privileges](/solutions/security/ai/attack-discovery/grant-access.md)
 - {{agent-builder}}: [Permissions and access control in {{agent-builder}}](/explore-analyze/ai-features/agent-builder/permissions.md)
+- Attack Discovery: [Attack Discovery privileges](/solutions/security/ai/attack-discovery/grant-access.md)
+- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6` {{alertzero}}: [{{alertzero}} privileges](/solutions/security/alertzero/alertzero-privileges.md)
+
+If your space still uses AI Assistant, refer to the requirements in [AI Assistant for Security](/solutions/security/ai/ai-assistant.md).
 
 ## Optional setup [set-up-ai-optional]
 
@@ -44,6 +47,15 @@ stack: ga 9.2+
 
 To limit which connectors and models AI features can use, or to turn AI features off, go to **Feature Settings** or **GenAI Settings** (depending on your {{stack}} version). For details, refer to [Manage access to AI features](/explore-analyze/ai-features/manage-access-to-ai-assistant.md).
 
+#### Select models for {{alertzero}} [set-up-ai-alertzero-models]
+
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
+
+{{alertzero}} has its own model settings, which start with preset models instead of your default model. To learn how the {{az-workers}} pick a model and how to change it, refer to [Select models for the {{az-workers}}](/solutions/security/alertzero/set-up-alertzero.md#alertzero-choose-models).
+
 ### Switch chat experiences [set-up-ai-chat]
 
 ```{applies_to}
@@ -51,28 +63,33 @@ serverless: ga
 stack: preview =9.3, ga 9.4+
 ```
 
-Each space uses one of two chat experiences for all its users, either [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) or [AI Assistant for Security](/solutions/security/ai/ai-assistant.md). The other experience isn't available in that space. To change which experience a space uses, switch chat experiences in **GenAI Settings**. For the default experience in each version and the feature differences, refer to [Compare Agent Builder and AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+{{agent-builder}} is the recommended chat experience, and each space uses one experience for all its users. To change the experience a space uses, refer to [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
 ## Feature-specific setup [set-up-ai-by-feature]
 
 The following sections apply to specific features. Only use them if you plan to set up the feature it covers.
 
-### Install documentation for {{agent-builder}} [set-up-ai-agent-builder-docs]
+### Give {{agent-builder}} knowledge [set-up-ai-agent-builder-docs]
 
 ```{applies_to}
 serverless: ga
 stack: preview =9.3, ga 9.4+
 ```
 
-To give {{agent-builder}} more context for its answers, install Elastic documentation and Security Labs content. Installed content is available in every space.
+{{agent-builder}} gets product context from installed documentation, and your own data from tools.
 
-To check whether the content is already installed, or to install it, refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
+- **Elastic documentation and Security Labs**: Install from **GenAI Settings**. Installed content is available in every space. To check or install, refer to [Give {{agent-builder}} access to Elastic documentation](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#give-agent-builder-access-to-elastic-documentation).
+- **Your own data**: Create an [index search tool](/explore-analyze/ai-features/agent-builder/tools/index-search-tools.md) for the indices you want the agent to search, then assign the tool to your agent.
 
-### Set up the Knowledge Base [set-up-ai-knowledge-base]
+### Set up the AI Assistant Knowledge Base [set-up-ai-knowledge-base]
 
-The Knowledge Base gives AI Assistant more context, such as your internal documentation or threat research. {{agent-builder}} doesn't use the Knowledge Base.
+```{applies_to}
+stack: deprecated 9.6+, ga 9.0-9.5
+serverless:
+  security: deprecated
+```
 
-The Knowledge Base requires a {{ml}} node of at least 4 GB. If {{agent-builder}} is the chat experience in the space, [switch to AI Assistant](#set-up-ai-chat) first, because AI Assistant settings aren't available until you do. Then enable the Knowledge Base in each {{kib}} space where you want to use it. For steps to enable it and add knowledge, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
+The Knowledge Base gives AI Assistant more context, such as your internal documentation or threat research. The Knowledge Base requires a {{ml}} node of at least 4 GB. Enable the Knowledge Base in each {{kib}} space where you want to use it. For steps to enable it and add knowledge, refer to [AI Assistant Knowledge Base](/solutions/security/ai/ai-assistant-knowledge-base.md#enable-knowledge-base).
 
 ### Turn on Attack Discovery workflows [set-up-ai-advanced-settings]
 
@@ -82,6 +99,15 @@ stack: ga 9.5+
 ```
 
 To run Attack Discovery from a workflow or from {{agent-builder}}, turn on the [`securitySolution:enableAttackDiscoveryWorkflows`](kibana://reference/advanced-settings.md#kibana-siem-settings) advanced setting. This setting also lets you configure alert retrieval, generation, and validation in the **Attacks** view. After you turn it on, users also need [Workflows privileges](/solutions/security/ai/attack-discovery/grant-access.md#attack-discovery-workflows-privileges).
+
+### Set up {{alertzero}} [set-up-ai-alertzero]
+
+```{applies_to}
+serverless: preview
+stack: preview 9.6
+```
+
+{{alertzero}} is off by default, and you set it up in each space where you want it. Its {{az-workers}} need an AI model, and some also need other features turned on. For what each {{az-worker}} needs and how to start them, refer to [](/solutions/security/alertzero/set-up-alertzero.md).
 
 ### Features with their own setup [set-up-ai-feature-specific]
 

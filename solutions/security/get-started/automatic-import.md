@@ -3,7 +3,8 @@ navigation_title: Use Automatic Import for custom integrations
 description: Automatic Import parses and ingests data without a prebuilt integration; refer to the full Automatic Import guide for Elastic Security.
 applies_to:
   stack: ga
-  serverless: ga
+  serverless:
+    security: ga
 products:
   - id: security
   - id: cloud-serverless

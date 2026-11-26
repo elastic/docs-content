@@ -36,8 +36,8 @@ To learn how watchlist weighting fits into the overall risk score calculation, r
 To create a watchlist:
 
 1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
+    * **Security solution view**: Find **{{stack-manage-app}}** → **Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage** → **Entity Analytics** in the navigation menu.
 2. Go to the **Watchlists** tab.
 3. Click **Create watchlist**.
 4. Enter a name and, optionally, a description.
@@ -65,7 +65,7 @@ You can also manage watchlists conversationally with {{agent-builder}} using the
 
 ## Filter entities by watchlist [watchlists-filter]
 
-On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can filter the **Entities** section by watchlist membership to focus on the entities most relevant to your investigation.
+On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can filter the entity table by watchlist membership to focus on the entities most relevant to your investigation.
 
 ## Known limitations [watchlists-limitations]
 

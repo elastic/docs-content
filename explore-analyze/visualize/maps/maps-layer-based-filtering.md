@@ -17,8 +17,3 @@ Layer filters are not applied to the right side of **term joins**. You can apply
 ::::
 
 
-:::{image} /explore-analyze/images/kibana-layer_search.png
-:alt: layer search
-:screenshot:
-:::
-

@@ -58,6 +58,16 @@ Query the shared `.cases`, `.cases-activity`, and `.cases-attachments` indices, 
   | LOOKUP JOIN .cases ON case.id
   | KEEP case.id, case.title, case.status, actions
   ```
+
+* Find assignee names and emails that are [missing from `.cases`](case-analytics-fields.md#case-analytics-fields-people):
+
+  ```esql
+  FROM .cases-activity
+  | WHERE actor.profile_uid IS NOT NULL
+  | STATS BY actor.profile_uid, actor.username, actor.full_name, actor.email
+  ```
+
+  The query lists the username, full name, and email for each profile UID. Match the `actor.profile_uid` values to `case.assignees.uid`. The results include only users who have acted on a case.
 ::::
 
 ::::{applies-item} stack: preview 9.2-9.4

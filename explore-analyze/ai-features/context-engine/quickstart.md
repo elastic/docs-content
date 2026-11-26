@@ -42,7 +42,7 @@ Starting with existing data matters. An AI index does not ingest source data by 
 
 Turn on {{context-engine}} for the current Kibana space:
 
-1. In Kibana, open **Stack Management → Advanced Settings**.
+1. In Kibana, open **Stack Management** → **Advanced Settings**.
 2. Search for **{{context-engine}}**.
 3. Turn on **{{context-engine}}** (`contextEngine:enabled`).
 4. Open **Context** from the Kibana navigation.

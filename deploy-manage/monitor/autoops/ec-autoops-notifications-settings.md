@@ -37,7 +37,13 @@ To add a connector, follow these steps:
 
 #### Configure connectors [ec-built-in-connectors]
 
-The following connectors are available with AutoOps. Expand each section for specific configuration instructions.
+The following connectors are available with AutoOps. 
+
+:::{note}
+The Webhook connector is not available for deployments in AWS GovCloud (us-gov-east-1).
+:::
+
+Expand each section for specific configuration instructions.
 
 :::{dropdown} Email
 :name: email
@@ -97,7 +103,7 @@ To set up this integration, you need to perform configurations in VictorOps/Splu
 2. Copy the REST Endpoint URL.
 3. Replace `$routing_key` at the end of the URL with your routing key (for example `elastic`).
 4. Store the modified URL securely. You will need it when configuring the connector in AutoOps.
-5. Configure routing keys under **Settings** > **Keys** so notifications reach the right team.
+5. Configure routing keys under **Settings** → **Keys** so notifications reach the right team.
 
 **AutoOps configuration**
 
@@ -116,7 +122,7 @@ To set up this integration, you need to perform configurations in Opsgenie and A
 **Opsgenie configuration**
 
 1. Open the main page of your Opsgenie account and click the **Teams** tab. Make sure a team is defined.
-2. Go to **Settings** > **Integrations**.
+2. Go to **Settings** → **Integrations**.
 3. Click **Add Integration**. In the **Integration List**, search for **API**.
 4. Complete the fields and save your changes.
 5. Copy the API key and store it securely. You will need it when configuring the connector in AutoOps.
@@ -146,8 +152,12 @@ To set up this integration, you need to perform configurations in Microsoft Team
 :::
 
 
-:::{dropdown} Webhook
+::::{dropdown} Webhook
 :name: ec-autoops-webhook
+
+:::{note}
+The Webhook connector is not available for deployments in AWS GovCloud (us-gov-east-1).
+:::
 
 To set up notifications through a custom webhook, follow these steps:
 
@@ -175,7 +185,7 @@ To set up notifications through a custom webhook, follow these steps:
 4. Optionally, test the webhook integration by using a tool like [webhook.site](https://webhook.site/#!/view/fe9d630e-2f01-44b7-9e41-ef9520fbe9a7).
 5. Add a [notification filter](#ec-add-notification-filters) for this connector.
 
-:::
+::::
 
 ### Add notification filters [ec-add-notification-filters]
 

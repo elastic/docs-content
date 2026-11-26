@@ -1,4 +1,5 @@
 ---
+description: Configure global settings for enrolled Elastic Agents with the Fleet Settings tab, including Fleet Server hosts, outputs, agent binary download sources, proxies, and advanced options.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-settings.html
 applies_to:
@@ -116,6 +117,42 @@ To add or edit the source of binary downloads:
 3. Set the agent binary source name.
 4. For **Host**, specify the address where you are hosting the artifacts repository.
 5. (Optional) To make this location the default, select **Make this host the default for all agent policies**. {{agent}}s use the default location if you don’t select a different agent binary source in the agent policy.
+6. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` (Optional) To stop {{agents}} from reserving disk space before upgrades, turn off **Reserve disk space before upgrading agents**. For details, refer to [Reserve disk space before upgrades](#agent-binary-reserve-diskspace).
+7. Select **Save and apply settings**.
+
+Changes to a download source also affect the agent policies that use it:
+
+* If you make a different source the default, agent policies that use **Default** switch to the new default source.
+* If you delete a download source, {{fleet}} removes it from all agent policies that use it. A policy that has no download source left uses the default source.
+
+### Fallback download sources [agent-binary-multiple-sources]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+An agent policy can use up to three download sources in priority order. If the download from the first source fails, {{agents}} try the next sources in order. {{agents}} earlier than version 9.6 only use the first source. To select the sources for a policy, refer to [Change the {{agent}} binary download location](/reference/fleet/agent-policy.md#agent-binary-download-settings).
+
+When an agent policy uses more than one download source, {{fleet}} takes the proxy, TLS, authentication, and disk space settings from the first source in the policy and applies them to all the sources. The settings of the other sources in the list aren't used.
+
+Before you add fallback sources to a policy, make sure that:
+
+* Every source accepts the certificates and credentials of the first source. {{agents}} send the first source's credentials to every source in the list, so only add sources that you trust with them.
+* Every source can be reached through the proxy of the first source, if it uses one.
+
+### Reserve disk space before upgrades [agent-binary-reserve-diskspace]
+```{applies_to}
+serverless: ga
+stack: ga 9.6+
+```
+
+Before an upgrade, {{agent}} reserves disk space for the new agent package. If there isn't enough space, the upgrade fails early, before the download starts. This behavior is on by default.
+
+If reserving disk space causes upgrade problems, edit the download source and turn off **Reserve disk space before upgrading agents**. The setting applies to agent policies that use the download source as their first source. To turn off the reservation for some agent policies only, add a second download source with the same host, turn off the switch on it, and select it as the first source in those policies.
+
+On self-managed, {{ece}}, and {{eck}} deployments, you can also set this behavior in `kibana.yml` with the `reserve_diskspace` setting of a [preconfigured download source](kibana://reference/configuration-reference/fleet-settings.md).
+
+For standalone {{agents}}, use the `agent.download.reserve_diskspace.enabled` setting. For details, refer to [Configure download settings for standalone {{agent}} upgrades](/reference/fleet/elastic-agent-standalone-download.md).
 
 
 ### Configure TLS for binary downloads [agent-binary-ssl]
@@ -138,6 +175,8 @@ The following TLS options are available when adding or editing an agent binary s
 | Server SSL certificate authorities | Trusted certificate authorities (CAs) for verifying the server certificate. |
 | Client SSL certificate             | Client certificate to use for mTLS authentication with the download host.   |
 | Client SSL certificate key         | Private key associated with the client certificate.                         |
+
+If the download source uses a proxy, {{agents}} use the TLS settings of the proxy instead of these settings. For more information about proxies, refer to [Using a proxy server with {{agent}} and {{fleet}}](/reference/fleet/fleet-agent-proxy-support.md).
 
 
 ### Configure authentication for binary downloads [agent-binary-auth]
@@ -198,7 +237,7 @@ serverless: unavailable
 stack: preview 9.1-9.4
 ```
 
-If you have [{{managed-integrations}}](/manage-data/ingest/managed-integrations/managed-integrations.md) deployed, you can enable the **Show agentless resources** option to display the Managed integration collectors and the Managed integration policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
+If you have [{{managed-integrations}}](/reference/managed-integrations/index.md) deployed, you can enable the **Show agentless resources** option to display the Managed integration collectors and the Managed integration policies in {{fleet}} for inspection and diagnostics purposes. This setting is stored locally, and it's only visible to you.
 
 To display {{managed-integration}} resources in the agent and agent policy lists:
 
