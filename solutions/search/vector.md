@@ -63,7 +63,7 @@ To use {{es}} as a vector database, you can use the [`semantic_text`](elasticsea
 
 For an overview of use cases and guidance on how to implement them, refer to [Vector search use cases](vector/vector-search-use-cases.md).
 
-On {{serverless-full}}, we recommend using an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+The easiest way to run {{es}} as a vector database is on {{serverless-full}}, using an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). However, you can use {{es}} as a vector database on [any deployment type](/get-started/deployment-options.md) you prefer. 
 
 ### Semantic search and vector search [semantic-search-vs-vector-search]
 
