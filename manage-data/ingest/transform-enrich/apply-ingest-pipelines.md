@@ -22,8 +22,7 @@ To go straight to the instructions that apply to your setup, find your goal in t
 | Your goal | Go to |
 | --- | --- |
 | Apply a pipeline to specific requests, such as a one-off load, or use different pipelines for different requests. | [Add a pipeline to an indexing request](#add-pipeline-to-indexing-request) |
-| Apply a pipeline to everything sent to an index or data stream, without each request naming it. A request can still specify a different pipeline instead. | [Set a default pipeline](#set-default-pipeline) |
-| Enforce a pipeline on every document sent to an index or data stream, so that no request can skip it or replace it. | [Set a final pipeline](#set-final-pipeline) |
+| Apply a pipeline to all documents sent to an index or data stream, without each request naming it. Set it directly on the index or through an index or component template. Use a default pipeline that a request can replace, or a final pipeline that always runs. | [Set a pipeline in index settings](#apply-with-index-settings) |
 | Apply a pipeline to data sent by {{beats}}. | [Pipelines for {{beats}}](#pipelines-for-beats) |
 | Apply a pipeline to data collected with {{fleet}}, {{agent}}, or integrations. | [Pipelines for {{fleet}}, {{agent}}, and integrations](#pipelines-for-fleet-elastic-agent) |
 | Learn how pipelines work on indices created for search use cases. | [Pipelines for search indices](#pipelines-in-enterprise-search) |
@@ -146,6 +145,11 @@ output.elasticsearch:
   hosts: ["localhost:9200"]
   pipeline: my-pipeline
 ```
+
+% REVIEW (Beats SME): please confirm this section against the Beats behavior. First draft, based on `libbeat/outputs/elasticsearch` in elastic/beats (the `getPipeline` function and the `BulkMeta` struct, same in 8.15, 9.0, and main). (1) {{beats}} send the configured pipeline name in the metadata of each bulk action, so this is the "indexing request" method and not an index setting. (2) The `pipeline` setting doesn't add `index.default_pipeline` or `index.final_pipeline` to the index template that {{beats}} load with `setup.template`. I found no code that does this, but can't rule it out. (3) A `pipeline` value in the event metadata (for example, set by a module) takes precedence over the output setting.
+With this setting, the Beat [adds the pipeline to its indexing requests](#add-pipeline-to-indexing-request). The {{es}} output includes the pipeline name in the metadata of each action in the bulk request. The Beat doesn't change your index template or [index settings](#apply-with-index-settings), so the pipeline applies only to data sent by that Beat.
+
+Because the pipeline is named in the request, it takes precedence over any `index.default_pipeline` setting, and any `index.final_pipeline` setting still runs afterwards. Refer to [How pipelines run together](#pipeline-order). To apply a pipeline to all data sent to an index, whichever tool sends it, [set it in index settings](#apply-with-index-settings) instead.
 
 % REVIEW (SME): confirm Beats can send data to Serverless with this configuration.
 {{beats}} versions follow the {{stack}}, but you can use the same configuration when your {{beats}} send data to {{serverless-short}}.
