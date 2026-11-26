@@ -40,6 +40,8 @@ Use an {{es}} client, curl, or {{kib}} Console to run the examples.
 - **curl:** [Set the environment variables](#vector-full-text-search-connect), then continue to [Create an index and add data](#vector-full-text-search-add-data).
 - **Language client:** Install and initialize the client for your language, [set the environment variables](#vector-full-text-search-connect), then continue to [Create an index and add data](#vector-full-text-search-add-data).
 
+To install your client:
+
 :::::{tab-set}
 :group: languages
 
