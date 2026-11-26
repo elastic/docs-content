@@ -20,7 +20,7 @@ If you already have an {{ecloud}} trial, you can [upgrade it to a GCP Marketplac
 Some differences exist when you subscribe to {{ecloud}} through the GCP Marketplace:
 
 * New {{ecloud}} customers obtain a 7-day trial period. During this period, you can use a single deployment and three projects of {{ecloud}}. After this period, usage-based billing starts, unless you delete your cloud resources. Note that once customers unsubscribe from the GCP offer, their trial will end immediately. Even if they resubscribe, they will not be able to resume the trial.
-* Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud) page in the GCP Marketplace. Pricing is based the {{ecloud}} [billing dimensions](../../cloud-organization/billing.md#pricing-model).
+* Pricing for an {{ecloud}} subscription through the GCP Marketplace follows the pricing outlined on the [{{ecloud}}](https://console.cloud.google.com/marketplace/product/elastic-prod/elastic-cloud) page in the GCP Marketplace, in [Elastic Billing Units for GCP](#ec-gcp-marketplace-pricing). Pricing is based on the {{ecloud}} [billing dimensions](../../cloud-organization/billing.md#pricing-model).
 * To access your billing information at any time go to **Account & Billing**. You can also go to **Account & Billing** and then **Usage** to view your usage hours and units per hour.
 
 ::::{important} 
@@ -55,13 +55,20 @@ If you plan to use {{ech}} and have existing deployments that you want to migrat
 Your new account is automatically subscribed to the Enterprise subscription level. You can [change your subscription level](../../cloud-organization/billing/manage-subscription.md).
 ::::
 
-## Pricing
+## Pricing [ec-gcp-marketplace-pricing]
 
-Pricing in GCP MP is in Elastic Billing Units for GCP, to allow for proper hourly reporting at the right precision. In USD, this is priced in GCP MP at USD 0.0001/unit, and corresponds to the same price as Elastic Cloud in other channels.
+All {{ecloud}} usage is metered in [Elastic Consumption Units (ECU)](/deploy-manage/cloud-organization/billing/ecu.md), where 1 ECU = USD 1.00 at list price.
 
-Examples:
-- Monthly hourly usage of 1.043 ECU = 1.043 USD = 1043 units
-- Annual discounted on-demand usage of 1.043 ECU, 10% discount = USD 0.938 = 938 billing units
+On GCP Marketplace, usage is reported in **Elastic Billing Units for GCP** instead of ECU. Billing units are a smaller denomination: 10,000 billing units = 1 ECU, priced at USD 0.0001 per unit. This avoids rounding errors when GCP reports small amounts of hourly usage. The underlying price is the same as {{ecloud}} billed directly or through other marketplaces.
+
+To convert your ECU usage to billing units, multiply it by 10,000 and apply any discount from your private offer:
+
+| Scenario | Usage | Price | Billing units |
+| --- | --- | --- | --- |
+| Pay-as-you-go, list price | 1.043 ECU | USD 1.043 | 10,430 |
+| Private offer, 10% discount | 1.043 ECU | USD 0.9387 | 9,387 |
+
+If you pay in a currency other than USD, the price per unit in your currency is listed on [Google Cloud SKUs](https://cloud.google.com/skus).
 
 ## Changes to your billing account [ec-billing-gcp-account-change] 
 
@@ -78,8 +85,6 @@ To prevent downtime, do not remove the currently used billing account before the
 If you cancel your {{ecloud}} order on GCP through the [marketplace orders page](https://console.cloud.google.com/marketplace/orders) before the switch to the new billing account has been done, any running deployments will immediately enter a degraded state known as maintenance mode and they will be scheduled for termination in five days.
 
 If you already unsubscribed before the new billing account has been set up, you can subscribe again from the previously used billing account, which will cancel the termination and restore the deployments to a functional state.
-
-
 
 
 ## Native GCP integrations [ec-gcp-marketplace-native] 
