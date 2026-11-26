@@ -49,7 +49,7 @@ The API supports any panel type that has a defined schema:
 - {applies_to}`stack: ga 9.5` Links
 - {applies_to}`stack: ga 9.5` APM service map
 - {applies_to}`stack: ga 9.5` Machine learning and AIOps panels: single metric viewer, anomaly swim lane, anomaly charts, log rate analysis, change point detection, pattern analysis, and field statistics table
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Vega panels that you create after this support is available. Earlier Vega panels aren't compatible.
+- {applies_to}`stack: ga 9.7+` Vega panels, including the ones saved to the library. Vega panels from earlier versions and Vega visualizations created with **Create visualization** in the [library](../visualize/visualize-library.md#visualize-library-create) aren't supported.
 
 Panel types without a defined schema, such as Maps, aren't supported yet and return an error on write.
 
