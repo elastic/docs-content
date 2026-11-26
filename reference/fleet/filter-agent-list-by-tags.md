@@ -1,4 +1,6 @@
 ---
+navigation_title: Add and manage agent tags
+description: Add Elastic Agent tags in Fleet or during enrollment, rename or delete them in Fleet, and use them to filter the Fleet Agents list.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/filter-agent-list-by-tags.html
 applies_to:
@@ -9,56 +11,47 @@ products:
   - id: elastic-agent
 ---
 
-# Add tags to filter the Agents list [filter-agent-list-by-tags]
+# Add and manage {{agent}} tags [filter-agent-list-by-tags]
 
-You can add tags to {{agent}} during or after enrollment, then use the tags to filter the Agents list shown in {{fleet}}.
+You can add tags to {{agent}} during enrollment or later in {{fleet}}, then use the tags to filter the Agents list shown in {{fleet}}.
 
-Tags are useful for capturing information that is specific to the installation environment, such machine type, location, operating system, environment, and so on. Tags can be any arbitrary information that will help you filter and perform operations on {{agent}}s with the same attributes.
+Tags are useful for capturing information that is specific to the installation environment, such as machine type, location, operating system, or environment. Tags can be any information that helps you filter and perform operations on {{agent}}s with the same attributes.
 
-To filter the Agents list by tag, find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select **Agents**. Click **Tags**, then select the tags to filter on. The tags are also available in the KQL field for autocompletion.
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` You can also add the tags to the data that {{agent}}s collect, so you can filter it by tag in Discover, dashboards, alerting rules, and detection rules. Refer to [Include agent tags in events](/reference/fleet/agent-policy.md#agent-policy-include-agent-tags).
 
-:::{image} images/agent-tags.png
-:alt: Tags filter on the Fleet Agents page
-:screenshot:
+:::{note}
+You can't add, remove, rename, or delete tags in {{fleet}} for agents enrolled in a [hosted agent policy](/reference/fleet/agent-policy.md#agent-policy-types), such as the {{ecloud}} agent policy.
 :::
-
-If you haven’t added tags to any {{agent}}s yet, the list will be empty.
-
 
 ## Add, remove, rename, or delete tags in {{fleet}} [add-tags-in-fleet]
 
-You can use {{fleet}} to add, remove, or rename tags applied to one or more {{agent}}s.
-
-Want to add tags when enrolling from a host instead? See [Add tags during agent enrollment](#add-tags-at-enrollment).
-
 To manage tags in {{fleet}}:
 
-1. On the **Agents** tab, select one or more agents.
-2. Click **Actions** → **Add / remove tags**.
+1. Find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). On the **Agents** tab, select one or more agents.
+2. Select **Actions** → **Add / remove tags**.
 
     :::{image} images/add-remove-tags.png
-    :alt: Screenshot of add / remove tags menu
+    :alt: Actions menu with the Add / remove tags option and the tag list
     :screenshot:
     :::
 
     ::::{tip}
-    Make sure you use the correct **Actions** menu. To manage tags for a single agent, click the ellipsis button under the **Actions** column. To manage tags for multiple agents, click the **Actions** button to open the bulk actions menu.
+    To manage tags for a single agent, you don't need to select it first. In the agent's row, select the actions menu {icon}`ellipsis`, then select **Add / remove tags**.
     ::::
 
-3. In the tags menu, perform an action:
+3. The tag list shows all tags in {{fleet}}. The tags that the agents already have are checked. If you selected several agents, only the tags they all share are checked. Do one of the following:
 
-    | To… | Do this… |
+    | Action | Steps |
     | --- | --- |
-    | Create a new tag | Type the tag name and click **Create new tag…**. Notice the tag name has a check mark to show that the tag has been added to the selected agents. |
-    | Rename a tag | Hover over the tag name and click the ellipsis button. Type a new name and press Enter. The tag will be renamed in all agents that use it, even agents that are not selected. |
-    | Delete a tag | Hover over the tag name and click the ellipsis button. Click **Delete tag**. The tag will be deleted from all agents, even agents that are not selected. |
-    | Add or remove a tag from an agent | Click the tag name to add or clear the check mark. In the **Tags** column, notice that the tags are added or removed. The menu only shows tags that are common to all selected agents. |
-
+    | Create a tag | In the search field, enter the tag name, then select **Create a new tag "<tag name>"**. The new tag is checked, which shows that it's added to the selected agents. |
+    | Add or remove a tag | Select a tag to add it to or remove it from the selected agents. The tags shown with each agent's host name in the **Host** column update to match. |
+    | Rename a tag | Hover over the tag and select the tag options icon {icon}`ellipsis`. Enter a new name and press **Enter**. {applies_to}`serverless: ga` {applies_to}`stack: ga 9.5+` You can also select **Save**. The tag is renamed for all agents that have it, including agents that aren't selected. |
+    | Delete a tag | Hover over the tag, select the tag options icon {icon}`ellipsis`, then select **Delete tag**. The tag is removed from all agents that have it, including agents that aren't selected. |
 
 
 ## Add tags during agent enrollment [add-tags-at-enrollment]
 
-When you install or enroll {{agent}} in {{fleet}}, you can specify a comma-separated list of tags to apply to the agent, then use the tags to filter the Agents list shown in {{fleet}}.
+When you install or enroll {{agent}} in {{fleet}}, use the `--tag` option to specify a comma-separated list of tags to apply to the agent.
 
 The following command applies the `macOS` and `staging` tags during installation:
 
@@ -69,17 +62,29 @@ sudo ./elastic-agent install \
   --tag macOS,staging
 ```
 
-For the full command synopsis, refer to [elastic-agent install](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) and [elastic-agent enroll](/reference/fleet/agent-command-reference.md#elastic-agent-enroll-command).
+For all command options, refer to [elastic-agent install](/reference/fleet/agent-command-reference.md#elastic-agent-install-command) and [elastic-agent enroll](/reference/fleet/agent-command-reference.md#elastic-agent-enroll-command).
 
-The following command applies the `docker` and `dev` tags to {{agent}} running in a Docker container:
+When you run {{agent}} in a container, set the [`ELASTIC_AGENT_TAGS`](/reference/fleet/agent-environment-variables.md#env-enroll-elastic-agent-tag) environment variable to a comma-separated list of tags. For example, the following command applies the `docker` and `dev` tags to {{agent}} running in a Docker container:
 
-```yaml subs=true
+```shell subs=true
 docker run \
   --env FLEET_ENROLL=1 \
   --env FLEET_URL=<Fleet Server host URL> \
   --env FLEET_ENROLLMENT_TOKEN=<enrollment token> \
-  --env ELASTIC_AGENT_TAGS=docker,dev
+  --env ELASTIC_AGENT_TAGS=docker,dev \
   --rm docker.elastic.co/elastic-agent/elastic-agent:{{version.stack}}
 ```
 
-For more information about running on containers, refer to the guides under [Install {{agent}}s in a containerized environment](/reference/fleet/install-elastic-agents-in-containers.md).
+For more information about running {{agent}} in containers, refer to the guides under [Install {{agent}}s in a containerized environment](/reference/fleet/install-elastic-agents-in-containers.md).
+
+
+## Filter the Agents list by tag [filter-agents-by-tag]
+
+On the **Agents** tab in {{fleet}}, select the tags you want from the **Tags** filter. You can also use a KQL query in the search bar, such as `fleet-agents.tags : "production"`.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` To find agents that don't have any tags, select **No tags** in the **Tags** filter.
+
+:::{image} images/agent-tags.png
+:alt: Tags filter on the Fleet Agents tab
+:screenshot:
+:::

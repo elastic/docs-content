@@ -16,7 +16,7 @@ If you keep your {{kib}} content in version control or deploy it from a pipeline
 | API | {{kib}} API docs | {{kib}} Serverless API docs | Use it for | Result |
 |---|---|---|---|---|
 | Discover sessions API | [Open]({{kib-apis}}group/endpoint-discover-sessions) | [Open]({{kib-serverless-apis}}group/endpoint-discover-sessions) | Keeping sessions in version control and deploying them from CI/CD | Saved Discover session |
-| Dashboards API | [Open](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) | [Open](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) | Showing a session on a dashboard that you also manage as code | Dashboard with a Discover session panel |
+| Dashboards API | [Open](https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards) | [Open](https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards) | Showing a session on a dashboard that you also manage as code | Dashboard with a Discover session panel |
 | Data views v2 API | [Open]({{kib-apis}}group/endpoint-data-views-v2) | [Open]({{kib-serverless-apis}}group/endpoint-data-views-v2) | Creating a saved data view that a session tab can use as its data source, before you deploy the session | Data view |
 
 ## Related pages
