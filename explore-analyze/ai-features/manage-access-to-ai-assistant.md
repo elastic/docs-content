@@ -191,7 +191,7 @@ serverless: ga
 stack: ga 9.7+
 ```
 
-If you want a model to reason more or less for a specific feature, you can set its reasoning effort. The effort applies only to that feature, so the same model can use a different effort in another one.
+If you want a model to reason more or less for a specific feature, you can set its reasoning effort. If you don't set one, the model uses its own default effort, which varies by model. The effort you set applies only to that feature, so the same model can use a different effort in another one.
 
 This setting is available for [EIS](/explore-analyze/elastic-inference/eis.md) models that support reasoning effort. If a feature has recommended models, turn off **Use recommended defaults** for that feature before the setting appears.
 
