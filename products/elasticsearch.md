@@ -151,7 +151,7 @@ title: Specialized hands-on tutorials
 links:
   - label: Time series data stream basics
     url: /manage-data/data-store/data-streams/quickstart-tsds.md
-  - label: "Tutorial: Build multimodal search"
+  - label: "Build multimodal search"
     url: /solutions/search/multimodal-search/multimodal-search-tutorial.md
 :::
 ::::
