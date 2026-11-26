@@ -152,6 +152,10 @@ The agent preserves your external edits when making further updates.
 You can also go back to any previously generated version of a dashboard in the conversation and save that version instead.
 
 ### Review the agent's changes to the dashboard you have open [review-agent-changes-to-open-dashboard]
+```{applies_to}
+serverless: ga
+stack: ga 9.5+
+```
 
 When the agent in the [sidebar](standalone-and-flyout-modes.md#sidebar-mode) changes a dashboard you have open in the **Dashboards** app, what you see depends on your deployment and version.
 
