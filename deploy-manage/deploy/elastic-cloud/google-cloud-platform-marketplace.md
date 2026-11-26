@@ -63,10 +63,10 @@ On GCP Marketplace, usage is reported in **Elastic Billing Units for GCP** inste
 
 To convert your ECU usage to billing units, multiply it by 10,000 and apply any discount from your private offer:
 
-| Scenario | Usage | Price | Billing units |
+| Scenario | Usage | Billing units reported | Amount billed | 
 | --- | --- | --- | --- |
-| Pay-as-you-go, list price | 1.043 ECU | USD 1.043 | 10,430 |
-| Private offer, 10% discount | 1.043 ECU | USD 0.9387 | 9,387 |
+| Pay-as-you-go, list price | 1.043 ECU | 10,430 | USD 1.043 |
+| Private offer, 10% discount | 1.043 ECU | 9,387 | USD 0.9387 |
 
 If you pay in a currency other than USD, the price per unit in your currency is listed on [Google Cloud SKUs](https://cloud.google.com/skus).
 
