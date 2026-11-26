@@ -14,17 +14,17 @@ products:
 
 {{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. In this quickstart, you index five books, compare these search approaches, and use {{esql}} to count the books by publication decade.
 
-It is designed for anyone new to search in {{es}} and takes less than 10 minutes after deployment setup.
+If you're new to using {{es}} for search, you can complete this quickstart in less than 10 minutes after setting up a deployment.
 
 :::{tip}
-Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding).
+If you're working with an AI coding agent, point it to the [Elasticsearch onboarding skill](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding). To complete the quickstart yourself, continue with the steps below.
 :::
 
 ## Set up {{es}} [vector-full-text-search-create-project]
 
 You can use this quickstart with any type of deployment, although for most search use cases we recommend creating a free [{{es}} {{vectordb}} project](https://cloud.elastic.co/serverless-registration?onboarding_token=vector).
 
-The project takes about a minute to start. The **Getting started** page then displays the **{{es}} endpoint** and a generated API key. Copy both values. If you need a new API key, refer to [Create an API key](/solutions/search/set-up/api-key-and-endpoints.md#get-your-api-key).
+The project takes about a minute to start. When it is ready, open the project. The **Getting started** page displays the **{{es}} endpoint** and a generated API key. Copy both values. If you need a new API key, refer to [Create an API key](/solutions/search/set-up/api-key-and-endpoints.md#get-your-api-key).
 
 :::{important}
 If you use an existing deployment, ensure that it has an inference endpoint available for the `semantic_text` field. The [default inference endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) depends on your deployment type and version.
@@ -2193,10 +2193,12 @@ The output contains one row per decade:
 
 You can also use {{esql}} inference capabilities to build search workflows:
 
-- {applies_to}`stack: ga 9.4+, preview =9.3` [`TEXT_EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/text_embedding.md) generates embeddings from text. For example, turn a reader's description of their ideal book into a query vector for similarity search.
-- {applies_to}`stack: preview 9.5+` {applies_to}`serverless: preview` [`EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/embedding.md) generates embeddings from multimodal input. For example, use an image as the starting point for a search.
-- {applies_to}`stack: ga 9.3+, preview 9.1-9.2` [`COMPLETION`](elasticsearch://reference/query-languages/esql/commands/completion.md) sends prompts to an LLM. For example, summarize retrieved books or explain why they match a reader's interests.
-- {applies_to}`stack: ga 9.4+, preview 9.2-9.3` [`RERANK`](elasticsearch://reference/query-languages/esql/commands/rerank.md) re-scores search results with an inference model. For example, reorder books to better match a detailed reading request.
+- [`TEXT_EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/text_embedding.md) generates embeddings from text. For example, turn a reader's description of their ideal book into a query vector for similarity search.
+- [`EMBEDDING`](elasticsearch://reference/query-languages/esql/functions-operators/dense-vector-functions/embedding.md) generates embeddings from multimodal input. For example, use an image as the starting point for a search.
+- [`COMPLETION`](elasticsearch://reference/query-languages/esql/commands/completion.md) sends prompts to an LLM. For example, summarize retrieved books or explain why they match a reader's interests.
+- [`RERANK`](elasticsearch://reference/query-languages/esql/commands/rerank.md) re-scores search results with an inference model. For example, reorder books to better match a detailed reading request.
+
+Availability and lifecycle status vary by version and deployment type. Refer to each linked page for details.
 
 To explore these and other capabilities, refer to [{{esql}} for search](/solutions/search/esql-for-search.md).
 

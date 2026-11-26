@@ -13,12 +13,12 @@ description: Learn what you can build with Elasticsearch search, how search appl
 
 # Search with {{es}}
 
-{{es}} is a search database: one place to store and search documents, vectors, logs, and metrics. You can search them with full-text, semantic, and hybrid techniques, and search stays fast as your data grows. Search capabilities are available across all Elastic deployments, solutions, and project types.
+{{es}} is a search database: one place to store and search documents, vectors, logs, and metrics. You can search them with full-text, semantic, and hybrid techniques. Search capabilities are available across all Elastic deployments, solutions, and project types.
 
 This overview explains what you can build with {{es}} search, how the pieces fit together, and how to choose a search approach. To start working with your own data, go to the pages listed in [Next steps](#next-steps).
 
 :::{note}
-Not every capability described on this page is available in every deployment or {{serverless-short}} project type. For details, refer to the [detailed deployment comparison](/deploy-manage/deploy/deployment-comparison.md).
+Not every capability described on this page is available in every deployment or {{serverless-short}} project type. For broader comparisons, refer to [](/deploy-manage/deploy/deployment-comparison.md) and [](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md). For exact availability, refer to the documentation for the specific feature.
 :::
 
 ## What you can build
@@ -46,30 +46,27 @@ Not every capability described on this page is available in every deployment or 
 
 Event and time series data, such as application logs and infrastructure metrics, is stored and searched in the same search database as your documents and vectors, so you can analyze operational data alongside the rest of your data.
 
-Because these capabilities share one data store, you don't need a separate system for each retrieval method. You can add a retrieval method later without moving your data. Features such as [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization-bbq) for vectors and the [`logsdb` index mode](/manage-data/data-store/data-streams/logs-data-stream-configure.md) for logs help you retain more data using less storage.
+Because these capabilities share one data store, you don't need a separate system for each retrieval method. You can add a retrieval method later without moving your data. Features such as [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization-bbq) for vectors help you retain more data using less storage.
+
+For logs, the [`logsdb` index mode](/manage-data/data-store/data-streams/logs-data-stream-configure.md) also helps reduce storage.
 
 ## How it works
 
 The following flow shows how data moves through a search application built on {{es}}. It describes the stages, not the steps you must follow in order.
 
-```mermaid
-%%{init: {'themeVariables': {'fontSize': '13px'}}}%%
-flowchart TD
-    A[Your data sources] --> B["<b>Ingest</b><br/>Send data from your sources<br/>Optionally transform it"]
-    B --> C["<b>Index</b><br/>Store data in indices<br/>Build structures per field type"]
-    C --> D["<b>Search</b><br/>Retrieve matching documents<br/>with one or more approaches"]
-    Q["<b>Query</b><br/>Sent by your application"] --> D
-    D --> E["<b>Rank</b><br/>Score and order results<br/>Optionally rerank"]
-    E --> F["<b>Deliver</b><br/>Show results in your application<br/>or pass them to an LLM for RAG"]
-```
+:::{image} /solutions/images/search-engine-flow.png
+:alt: Flow through an Elasticsearch search application. Data is ingested and indexed, then the search engine combines it with a query before ranking and delivering results.
+:::
 
 - **Ingest:** You send data from your sources to {{es}}, where it is stored in indices. You can transform it on the way in, for example by generating vector embeddings.
-- **Index:** {{es}} builds the data structures that each field type needs, so searches stay fast as your data grows. To keep search fast at scale, refer to [](/deploy-manage/production-guidance/optimize-performance/search-speed.md).
+- **Index:** {{es}} builds data structures for each field type to support efficient searches. For search performance guidance, refer to [](/deploy-manage/production-guidance/optimize-performance/search-speed.md).
 - **Search:** Your application sends a query. {{es}} retrieves matching documents using one or more search approaches.
 - **Rank:** Results are scored and ordered by relevance. You can refine the order with reranking techniques.
 - **Deliver:** Your application displays the results, or passes them to a large language model as context for RAG.
 
-## Learn about concepts
+## Key concepts
+
+These concepts provide the foundation for understanding how {{es}} stores data and supports different search approaches.
 
 - [The {{es}} data store](/manage-data/data-store.md): How {{es}} stores data as documents in indices and how mappings define fields.
 - [Search approaches](/solutions/search/search-approaches.md): How full-text, vector, semantic, and hybrid search compare, and which fits your goals.
