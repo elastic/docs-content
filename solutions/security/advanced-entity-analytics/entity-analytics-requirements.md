@@ -222,7 +222,7 @@ To view or manage [watchlists](/solutions/security/advanced-entity-analytics/wat
 | View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
 | Edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
 | Create watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
-| Delete watchlists, sync them, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*` | **All** for the **Security** feature |
+| Delete watchlists, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.<space-id>-*` | **All** for the **Security** feature |
 :::
 ::::
 
@@ -236,7 +236,7 @@ To view or manage [watchlists](/solutions/security/advanced-entity-analytics/wat
 | View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
 | Edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
 | Create watchlists | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
-| Delete watchlists, sync them, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+| Delete watchlists, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
 :::
 ::::
 
@@ -249,7 +249,7 @@ To view or manage [watchlists](/solutions/security/advanced-entity-analytics/wat
 | --- | --- | --- |
 | View watchlists | `read` for `.entity_analytics.watchlists.<space-id>` | **Read** for the **Security** feature |
 | Create or edit watchlists | `read` for `.entity_analytics.watchlists.<space-id>`. For index sources, also `read` for the source index. | **All** for the **Security** feature |
-| Delete watchlists, sync them, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
+| Delete watchlists, or assign or unassign entities | `read` and `write` for `.entity_analytics.watchlists.<space-id>`, `read` for `entities-latest-<space-id>`, and `write` for `.entities.v2.latest.security_<space-id>-*` | **All** for the **Security** feature |
 :::
 
 In {{stack}} 9.4.0 through 9.4.2, **Read** for the **Security** feature is also enough to create, edit, or delete watchlists.
@@ -269,5 +269,5 @@ serverless: ga
 | --- | --- |
 | View watchlists | - Viewer<br>- Tier 1 analyst<br>- Tier 2 analyst |
 | View and edit watchlists | - Threat intelligence analyst<br>- Rule author<br>- Endpoint operations analyst<br>- Endpoint policy manager<br>- Detections admin |
-| View, create, edit, or delete watchlists, sync them, or assign or unassign entities | - Tier 3 analyst<br>- Editor<br>- SOC manager<br>- Platform engineer<br>- Admin |
+| View, create, edit, or delete watchlists, or assign or unassign entities | - Tier 3 analyst<br>- Editor<br>- SOC manager<br>- Platform engineer<br>- Admin |
 :::
