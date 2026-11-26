@@ -187,7 +187,7 @@ If you're using GKE to run ECK, then you can use a [custom ComputeClass](https:/
 
 ## Using the Node Tuning Operator on OpenShift [k8s_using_the_node_tuning_operator_to_set_virtual_memory]
 
-OpenShift 4.13 and later set `vm.max_map_count` to `262144` on their nodes by default. This is enough for {{es}} to start, because the [bootstrap check](/deploy-manage/deploy/self-managed/bootstrap-checks.md) requires at least `262144`. On earlier versions, you must set the value yourself. To set the recommended value `1048576`, or to set a value on an earlier version, use the OpenShift [Node Tuning Operator](https://github.com/openshift/cluster-node-tuning-operator). Pods created by ECK usually run with the `restricted-v2` security context constraint, which doesn't allow a Pod to change kernel settings, so an init container or a DaemonSet doesn't work.
+OpenShift sets `vm.max_map_count` to `262144` on its nodes by default. This is enough for {{es}} to start, because the [bootstrap check](/deploy-manage/deploy/self-managed/bootstrap-checks.md) requires at least `262144`. To set the recommended value `1048576`, use the OpenShift [Node Tuning Operator](https://github.com/openshift/cluster-node-tuning-operator). Pods created by ECK usually run with the `restricted-v2` security context constraint, which doesn't allow a Pod to change kernel settings, so an init container or a DaemonSet doesn't work.
 
 To set the recommended value, complete the following steps:
 
