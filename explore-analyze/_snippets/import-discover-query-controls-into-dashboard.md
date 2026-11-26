@@ -14,7 +14,7 @@ This method allows you to add the result table of your Discover {{esql}} query t
 
 1. Find and select the Discover session you saved earlier.
 
-A new panel appears on the dashboard with the results of the query along with any attached controls.
+A new panel appears on the dashboard with the results of the query along with any attached controls. If the dashboard already has a control with the same variable name, {{kib}} doesn't add a second one. The existing control keeps its selection and settings, and the new panel responds to that selection. {{kib}} still adds a second control if the existing one is inside a collapsible section that hasn't been expanded since the dashboard was opened.
 
 :::{image} /explore-analyze/images/import-discover-control-dashboard.png
 :alt: Importing Discover session with controls into a dashboard
@@ -37,4 +37,9 @@ This method allows you to add the visualization of your Discover {{esql}} query 
 1. Select the dashboard to add the visualization to. You can select an existing dashboard or create one.
 
 The selected dashboard opens. It now includes a new panel that shows the visualization imported from Discover. Existing controls from the initial query in Discover are also added. You can find them at the top of the dashboard.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If the dashboard already has a control with the same variable name, saving the visualization updates that control instead of adding a second one. The control takes the selection and settings from Discover and keeps its position, whether it's pinned or unpinned. {{kib}} still adds the control from Discover as a second control in these cases:
+
+- The existing control is inside a collapsible section.
+- The existing control has a different type. For example, if one uses **Static values** and the other uses **Values from a query**.
 
