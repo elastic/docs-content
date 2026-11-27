@@ -144,3 +144,52 @@ products:
         availability:
           - '9.5'
         tag: Elasticsearch
+
+  security:
+    title: What's new in Elastic Security
+    id: whats-new
+    intro: Highlights from recent releases.
+    release-links:
+      - label: '{{version.stack}}'
+        url: /release-notes/elastic-security/index.md
+      - label: Serverless
+        url: /release-notes/elastic-cloud-serverless/index.md
+    upgrade-link:
+      label: Upgrade your deployment
+      url: /deploy-manage/upgrade/deployment-or-cluster.md
+    items:
+      - title: Add alerts to Agent Builder chat
+        description: Send up to 100 alerts from the alerts table to Agent Builder chat for triage. Generally available.
+        link: /solutions/security/detect-and-alert/manage-detection-alerts.md#add-alerts-to-chat
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Alerts
+        featured: true
+      - title: Detection rule changes history
+        description: Review every change to a detection rule, compare revisions, and restore an earlier version. Generally available.
+        link: /solutions/security/detect-and-alert/view-rule-changes-history.md
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Detection rules
+      - title: Prebuilt rule recommendations in chat
+        description: Ask Agent Builder which Elastic prebuilt rules to install, filtered by MITRE ATT&CK® technique, integration, or keyword. Technical preview.
+        link: /explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#agent-builder-recommend-prebuilt-rules-skill
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Agent Builder
+      - title: Attack Discovery in workflows
+        description: Run Attack Discovery as a step in a workflow, so it runs as part of your automated response. Generally available.
+        link: /solutions/security/ai/attack-discovery/run-attack-discovery-in-a-workflow.md
+        availability:
+          - '9.5'
+          - Serverless
+        tag: Attack Discovery
+      - title: Elastic Defend with a remote output
+        description: Send endpoint data to a remote cluster and keep managing your endpoints with cross-cluster search. Generally available.
+        link: /solutions/security/configure-elastic-defend/use-elastic-defend-with-remote-output-and-ccs.md
+        availability:
+          - '9.5'
+        tag: Elastic Defend

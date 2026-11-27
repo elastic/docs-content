@@ -178,6 +178,8 @@ title: Security
 icon: security
 variant: sec
 links:
+  - label: Security docs hub
+    url: /products/security.md
   - label: Overview
     url: /solutions/security.md
   - label: Get started
