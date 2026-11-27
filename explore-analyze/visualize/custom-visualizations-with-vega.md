@@ -121,7 +121,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: "ga 9.7+", serverless: ga }
+:applies_to: { serverless: ga, stack: "ga 9.7+" }
 
 This example saves the line chart from this tutorial to the library as a **Vega** visualization.
 
@@ -692,7 +692,7 @@ The selection is controlled by a signal. To view the signal, select **Inspect** 
 ::::
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: "ga 9.7+", serverless: ga }
+:applies_to: { serverless: ga, stack: "ga 9.7+" }
 
 This example saves the stacked area chart from this tutorial to the library as a **Vega** visualization.
 
@@ -1480,7 +1480,7 @@ Add a signal that updates the {{kib}} time filter when the cursor is released wh
 ::::
 
 :::::::{dropdown} Create this chart using the API
-:applies_to: { stack: "ga 9.7+", serverless: ga }
+:applies_to: { serverless: ga, stack: "ga 9.7+" }
 
 This example saves the area chart from this tutorial to the library as a **Vega** visualization.
 
