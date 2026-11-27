@@ -17,7 +17,7 @@ How {{es}} does that depends on the deployment:
 * {applies_to}`stack: ga 9.6+` {applies_to}`serverless: unavailable` A {{tsds}} ({{tsds-init}}) gets a [minimum lifecycle](#minimum-data-stream-lifecycle), which rolls over and tail merges the stream.
 * {applies_to}`serverless: ga` {applies_to}`stack: unavailable` Any data stream created without a lifecycle gets a [default data stream lifecycle](#default-lifecycle-serverless).
 
-To leave a classic data stream unmanaged by data stream lifecycle, [turn off the lifecycle](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#turn-off-lifecycle). Removing the lifecycle isn't enough: {{es}} then treats the stream as having no configuration, so the default or minimum lifecycle can apply.
+To leave a classic data stream unmanaged by data stream lifecycle, [turn off the lifecycle](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#delete-lifecycle). Removing the lifecycle isn't enough: {{es}} then treats the stream as having no configuration, so the default or minimum lifecycle can apply.
 
 Wired streams have no option to leave a stream unmanaged. They inherit lifecycle from the parent, or you set a period or an {{ilm-init}} policy. Refer to [Configure data lifecycle with Streams](/solutions/observability/streams/configure-retention.md).
 
@@ -35,7 +35,7 @@ The stream is managed by ordinary data stream lifecycle: rollover, tail merging,
 
 The [`data_streams.lifecycle.minimum.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-minimum-enabled) cluster setting is not available on {{serverless-short}}.
 
-To leave a classic stream unmanaged, [turn off the lifecycle](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#turn-off-lifecycle) instead of omitting it from the template.
+To leave a classic stream unmanaged, [turn off the lifecycle](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#delete-lifecycle) instead of omitting it from the template.
 For wired streams, refer to [Configure data lifecycle with Streams](/solutions/observability/streams/configure-retention.md).
 
 ## Minimum data stream lifecycle [minimum-data-stream-lifecycle]
