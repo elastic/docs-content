@@ -109,15 +109,7 @@ An agent gets a connector skill automatically when you assign it a connector of 
 
 Connector skills run their lookups as workflows, so they need [Elastic Workflows](/explore-analyze/workflows.md) in your deployment or project. The user who chats with the agent also needs the **Execute** [sub-feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) for **Workflows**. If either is missing, the agent uses the connector's own actions through the [`connector-discovery`](#agent-builder-connector-discovery-skill) skill instead.
 
-The following connector types come with a skill. For what each skill covers, refer to the connector's page:
-
-- [GitHub](kibana://reference/connectors-kibana/github-action-type.md): The `connector-github` skill
-- [PagerDuty (MCP)](kibana://reference/connectors-kibana/pagerduty-mcp-action-type.md): The `connector-pagerduty` skill
-
-:::{dropdown} Assigned tools
-Each connector skill uses `platform.core.execute_workflow`, plus an internal tool to list the agent's connectors.
-
-:::
+To find out whether a connector type comes with a skill and what it covers, refer to the connector's page in [Data and context sources connectors](kibana://reference/connectors-kibana/data-context-sources-connectors.md).
 
 $$$agent-builder-context-engine-skills$$$
 ### {{context-engine}}
