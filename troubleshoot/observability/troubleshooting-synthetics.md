@@ -186,12 +186,12 @@ To fix this, manually roll over the affected data streams:
 The {{synthetics-app}} runs a daily background task that automatically removes leftover {{private-location}} Synthetics integration policies from {{fleet}}. If you suspect a managed Synthetics package policy is abandoned and want to remove it immediately, you cannot delete it from the {{fleet}} UI because it is marked as managed.
 
 ::::{warning}
-Verify that no active monitor uses the package policy across **all** {{kib}} spaces before you force-delete it. A monitor might exist in a different space from the one where you view {{fleet}}. If you delete a package policy for an active monitor, the monitor stops running on that {{private-location}} until you recreate the policy with **Reset monitor** (refer to [Recover unhealthy monitors](/solutions/observability/synthetics/manage-monitors.md#manage-monitors-health)).
+Verify that no active monitor uses the package policy across **all** {{kib}} spaces before you force-delete it. A monitor might exist in a different space from the one where you view {{fleet}}. To check, open the Synthetics integration policy in **{{fleet}}** and select **Edit in Synthetics** (which opens the monitor in its space if it exists), or inspect `add_fields.fields.config_id` and `add_fields.fields.meta.space_id` under `inputs[].streams[].vars.processors` in `GET /api/fleet/package_policies/<package-policy-id>`. If you delete a package policy for an active monitor, the monitor stops running on that {{private-location}} until you recreate the policy with **Reset monitor** (refer to [Recover unhealthy monitors](/solutions/observability/synthetics/manage-monitors.md#manage-monitors-health)).
 ::::
 
 To force-delete an abandoned Synthetics package policy, call the [Delete a package policy API](https://www.elastic.co/docs/api/kibana/operation/operation-delete-fleet-package-policies-packagepolicyid) with `force=true`. You need **All** privileges for **Fleet** → **Agent policies** and **Integrations**.
 
-1. Find the package policy ID and its parent agent policy ID (`policy_ids`) in **{{fleet}}** → **Agent policies** by opening the Synthetics integration policy and copying the ID from the URL, or list Synthetics package policies with `GET /api/fleet/package_policies?kuery=ingest-package-policies.package.name:synthetics`.
+1. Find the package policy ID and its parent agent policy ID (`policy_ids`). In **{{fleet}}** → **Agent policies**, open the Synthetics integration policy and copy the ID from the URL. Alternatively, list Synthetics package policies with `GET /api/fleet/package_policies?kuery=ingest-package-policies.package.name:synthetics`.
 2. Delete the package policy with `force=true`:
 
    ```shell
@@ -217,7 +217,7 @@ To force-delete an abandoned Synthetics package policy, call the [Delete a packa
 
 3. Redeploy each affected parent agent policy. Deleting with `force=true` removes the package policy without redeploying the parent agent policy, so {{agents}} on the {{private-location}} continue running the deleted monitor until the agent policy is redeployed. To trigger a redeploy, do one of the following:
    - In **{{fleet}}** → **Agent policies**, open the parent agent policy, update a setting (such as the description) on the **Settings** tab, and select **Save changes**.
-   - Call the [Update an agent policy API](https://www.elastic.co/docs/api/kibana/operation/operation-put-fleet-agent-policies-agentpolicyid) (`PUT /api/fleet/agent_policies/<agent-policy-id>`) with the policy's existing fields from the [Get an agent policy API](https://www.elastic.co/docs/api/kibana/operation/operation-get-fleet-agent-policies-agentpolicyid) so {{fleet}} increments the policy revision and redeploys it to enrolled agents.
+   - Call the [Update an agent policy API](https://www.elastic.co/docs/api/kibana/operation/operation-put-fleet-agent-policies-agentpolicyid) (`PUT /api/fleet/agent_policies/<agent-policy-id>`) with the policy's existing fields from the [Get an agent policy API](https://www.elastic.co/docs/api/kibana/operation/operation-get-fleet-agent-policies-agentpolicyid). {{fleet}} increments the policy revision and redeploys it to enrolled agents.
 
 
 ## Get help [synthetics-troubleshooting-get-help]
