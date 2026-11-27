@@ -13,7 +13,7 @@ products:
 
 # Infrastructure and host monitoring [infrastructure-and-host-monitoring-intro]
 
-% Stateful only for Profiling, Tutorials, Metrics reference.
+% Stateful only for Tutorials, Metrics reference.
 
 Explore the topics in this section to learn how to observe and monitor hosts and other systems running in your environment.
 

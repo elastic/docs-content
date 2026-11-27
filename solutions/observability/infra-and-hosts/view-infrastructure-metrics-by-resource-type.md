@@ -163,24 +163,25 @@ The processes listed in the **Top processes** table are based on an aggregation 
 :screenshot:
 :::
 
-% Stateful only for Profiling
-
 :::::
 
 :::::{dropdown} Profiling
+:applies_to: { stack: ga, serverless: preview }
 The **Profiling** tab (**Universal Profiling** in earlier versions) shows CPU usage down to the application code level. From here, you can find the sources of resource usage, and identify code that can be optimized to reduce infrastructure costs. The tab has the following views.
 
 |     |     |
 | --- | --- |
 | **Flamegraph** | A visual representation of the functions that consume the most resources. Each rectangle represents a function. The rectangle width represents the time spent in the function. The number of stacked rectangles represents the stack depth, or the number of functions called to reach the current function. |
 | **Top 10 Functions** | A list of the most expensive lines of code on your host. See the most frequently sampled functions, broken down by CPU time, annualized CO2, and annualized cost estimates. |
+| **Threads** | Stacktraces grouped by thread name for the selected host. |
 
-{applies_to}`stack: preview 9.6+` The tab shows OpenTelemetry profiling data as well as Universal Profiling data. When the host has data in both formats, use the schema selector on the tab to choose which one to view.
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tab shows OpenTelemetry profiling data. On {{stack}} deployments where the host also has Universal Profiling data, use the schema selector on the tab to choose which data to view.
 
 To learn how to read these views, refer to [Profiling](/solutions/observability/infra-and-hosts/profiling.md).
 
 :::{image} /solutions/images/observability-universal-profiling-overlay.png
-:alt: Profiling tab on the host details page
+:alt: Host details with the Profiling tab selected, a flamegraph of OpenTelemetry samples, and the Go to Profiling Flamegraph link.
+:width: 763px
 :screenshot:
 :::
 

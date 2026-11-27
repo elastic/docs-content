@@ -6,13 +6,14 @@ applies_to:
   serverless: preview
 products:
   - id: observability
+type: how-to
 ---
 
 # Get started with OpenTelemetry profiling [profiling-otel-get-started]
 
 OpenTelemetry profiling collects whole-system, always-on CPU profiles from your Linux hosts with the [OpenTelemetry eBPF profiler](https://opentelemetry.io/docs/concepts/signals/profiles/). It doesn't require code instrumentation, debug symbols on the host, or service restarts, and it works with native code and most popular languages, such as Java, Python, and Node.js, out of the box.
 
-To use Universal Profiling, install the **OpenTelemetry Profiling** integration on the hosts you want to profile, point it at your deployment, and the data shows up in the **Profiling** app. 
+To use OpenTelemetry profiling, install the **OpenTelemetry Profiling** integration on the hosts you want to profile, point it at your deployment or project, and the data shows up in the **Profiling** app.
 
 On {{serverless-full}}, OpenTelemetry profiling is the only supported way to collect profiles.
 
@@ -20,9 +21,9 @@ On {{serverless-full}}, OpenTelemetry profiling is the only supported way to col
 
 The profiler is a receiver that runs inside {{agent}}, or inside any OpenTelemetry Collector that includes it, on each host you profile. It reads stack samples from the kernel through eBPF (which is why it needs elevated privileges) and sends the profiles straight to {{es}} with the `elasticsearch` exporter. There is no separate backend to install or operate, as OpenTelemetry profiling only needs the profiler on the host and an {{es}} endpoint it can reach. {{es}} stores the profiles in data streams that it creates automatically.
 
-## Requirements [profiling-otel-requirements]
+## Before you begin [profiling-otel-requirements]
 
-### Elastic deployment [profiling-otel-requirements-deployment]
+### Deployment or project [profiling-otel-requirements-deployment]
 
 * {{stack}} 9.6 or later on {{ech}}, {{ece}}, {{eck}}, or a self-managed deployment, or an {{obs-serverless}} project. For the serverless tiers required, refer to [{{obs-serverless}} feature tiers](/solutions/observability/observability-serverless-feature-tiers.md).
 * On {{ech}}, {{ece}}, {{eck}}, and self-managed deployments, a [subscription]({{subscriptions}}) that includes Profiling.
@@ -66,9 +67,9 @@ On {{eck}}, add this setting under `spec.config` in the {{kib}} resource. For mo
 
 Select the deployment option that matches how you run {{agent}}:
 
-* [{{agent}} managed by {{fleet}}](#profiling-otel-deploy-fleet): you configure the profiler once, in an agent policy, and {{fleet}} rolls it out to every enrolled host.
-* [Standalone {{agent}} configured as an OTel Collector](#profiling-otel-deploy-standalone): when you manage the Collector configuration yourself.
-* [{{k8s}}](#profiling-otel-deploy-kubernetes): when you want to profile every node in a cluster.
+* [{{agent}} managed by {{fleet}}](#profiling-otel-deploy-fleet): Configure the profiler once in an agent policy, and {{fleet}} rolls it out to every enrolled host.
+* [Standalone {{agent}} configured as an OTel Collector](#profiling-otel-deploy-standalone): Manage the Collector configuration yourself on each host.
+* [{{agent}} configured as an OTel Collector on {{k8s}}](#profiling-otel-deploy-kubernetes): Run the Collector as a DaemonSet to profile every node in a cluster.
 
 These options run the same `profiling` receiver. For details about the integration, refer to [OpenTelemetry Profiling](integration-docs://reference/profiling_otel.md).
 
@@ -78,12 +79,11 @@ Whichever option you select, run exactly one profiler per host. Don't run a sepa
 
 ### Deploy with {{agent}} managed by {{fleet}} [profiling-otel-deploy-fleet]
 
-1. In {{kib}}, find **Profiling** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Add data**. If your deployment has no profiling data yet, the **Add profiling data** page opens directly.
+1. In {{kib}}, find **Infrastructure** in the navigation menu and open **Profiling**, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Add data**. If your deployment or project has no profiling data yet, the **Add profiling data** page opens directly.
 2. On the **Profiling** tab, click **Add OpenTelemetry Profiling integration**. The page opens in **{{integrations}}**. You can also find it by searching for **OpenTelemetry Profiling** in **{{integrations}}**.
-
 3. Click **Add OpenTelemetry Profiling** and configure the integration:
     * Optionally, expand the settings for **OpenTelemetry Profiling receiver**, then **Advanced options**, and set `samples_per_second` to change how often the profiler samples each CPU. Lower values reduce overhead and storage at the cost of detail.
-    * Select an existing agent policy or create a new one. Every {{agent}} enrolled in this policy runs the profiler, so use a policy for hosts that meet the [host requirements](#profiling-otel-requirements-hosts).
+    * Select an existing agent policy or [create a new one](/reference/fleet/agent-policy.md#create-a-policy). Every {{agent}} enrolled in this policy runs the profiler, so use a policy for hosts that meet the [host requirements](#profiling-otel-requirements-hosts).
 4. Click **Save and continue**. {{fleet}} installs the integration and adds it to the agent policy you selected. Agents already enrolled in that policy receive it automatically.
 5. [Install a {{fleet}}-managed {{agent}}](/reference/fleet/install-fleet-managed-elastic-agent.md) on each host you want to profile and enroll it in the policy. The agent must run as root.
 
@@ -107,12 +107,12 @@ If you run {{agent}} on {{k8s}} managed by {{fleet}}, follow [Run {{agent}} on {
 ### Deploy with a standalone {{agent}} configured as an OTel Collector [profiling-otel-deploy-standalone]
 
 1. [Download and extract {{agent}}](elastic-agent://reference/edot-collector/download.md) for your Linux architecture. The package includes the `otelcol` executable.
-2. In the extracted directory, save the following configuration as `otel.yml`. It adds the `profiling` receiver to a `profiles` pipeline and sends the profiles to {{es}} with the `elasticsearch` exporter in the `otel` mapping mode. Replace `<ELASTICSEARCH_ENDPOINT>` with your {{es}} URL, for example `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`, and `<ELASTICSEARCH_API_KEY>` with an encoded {{es}} API key:
+2. In the extracted directory, save the following configuration as `otel.yml`. It adds the `profiling` receiver to a `profiles` pipeline and sends the profiles to {{es}} with the `elasticsearch` exporter in the `otel` mapping mode. Replace `<ELASTICSEARCH_ENDPOINT>` with your {{es}} URL and `<ELASTICSEARCH_API_KEY>` with an encoded {{es}} API key:
 
     ```yaml
     receivers:
       profiling:
-        samples_per_second: 19
+        samples_per_second: 19 # Optional. Defaults to 20.
 
     exporters:
       elasticsearch:
@@ -143,7 +143,7 @@ Optionally, you can collect metrics instead of raw profiles. The `profilingmetri
     ```yaml
     receivers:
       profiling:
-        samples_per_second: 19
+        samples_per_second: 19 # Optional. Defaults to 20.
 
     connectors:
       profilingmetrics:
@@ -173,11 +173,11 @@ Optionally, you can collect metrics instead of raw profiles. The `profilingmetri
 
    If it is already running, stop it and start it again with the same command.
 
-### Deploy on {{k8s}} [profiling-otel-deploy-kubernetes]
+### Deploy {{agent}} configured as an OTel Collector on {{k8s}} [profiling-otel-deploy-kubernetes]
 
 To profile every node in a cluster, run the Collector as a DaemonSet. The [OpenTelemetry Collector Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector) has a `profiling` preset that adds the receiver to a `profiles` pipeline and configures the host PID access, security context, and volumes the eBPF profiler needs.
 
-1. Save the following example as `profiling-values.yml`. It uses the {{agent}} image in Collector mode. Replace `<ELASTIC_AGENT_VERSION>` with the version you deploy, and replace the endpoint and API key placeholders with your {{es}} connection details. Set the image tag explicitly: the chart's default tag is an upstream Collector version, not an {{agent}} version.
+1. Save the following example as `profiling-values.yml`. It uses the {{agent}} image, and the `ELASTIC_AGENT_OTEL` environment variable configures {{agent}} as an OTel Collector. Replace `<ELASTIC_AGENT_VERSION>` with the version you deploy, and replace the endpoint and API key placeholders with your {{es}} connection details. Set the image tag explicitly: the chart's default tag is an upstream Collector version, not an {{agent}} version.
 
     ```yaml
     mode: daemonset
@@ -225,7 +225,7 @@ To profile every node in a cluster, run the Collector as a DaemonSet. The [OpenT
 
 A few minutes after the profiler starts, check if data is arriving:
 
-* In {{kib}}, find **Profiling** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Stacktraces**. The **Threads**, **Traces**, and **Hosts** graphs show data. If your deployment also has Universal Profiling data, make sure that the schema selector at the top of the page shows **OpenTelemetry**. For more information on how the selector picks a default and which schemas it lists, refer to [Select a profiling schema](profiling.md#profiling-schema-selector).
+* In {{kib}}, find **Infrastructure** in the navigation menu and open **Profiling**, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Stacktraces**. The **Threads**, **Traces**, and **Hosts** graphs show data. If your deployment also has Universal Profiling data, make sure that the schema selector at the top of the page shows **OpenTelemetry**. For more information on how the selector picks a default and which schemas it lists, refer to [Select a profiling schema](profiling.md#profiling-schema-selector).
 * In **{{dev-tools-app}}**, count events in the OpenTelemetry profiling data streams:
 
     ```console
@@ -235,6 +235,8 @@ A few minutes after the profiler starts, check if data is arriving:
     A `count` greater than `0` confirms that OpenTelemetry profile events have been indexed. This count includes all retained events. You can use the time picker in **Stacktraces** to check recent ingestion.
 
 Profiles appear in stacktraces, flamegraphs, and functions views. To learn how to read them, refer to [Profiling](profiling.md).
+
+If no data arrives, refer to [Troubleshoot OpenTelemetry profiling](/troubleshoot/observability/troubleshoot-opentelemetry-profiling.md) to match the symptom you see in the {{agent}} logs or in {{kib}} with its fix.
 
 ## Where profiles are stored [profiling-otel-data-streams]
 
@@ -253,71 +255,3 @@ Retention is managed with the [data stream lifecycle](/manage-data/lifecycle/dat
 :::{note}
 The Universal Profiling pages about [{{ilm}}](universal-profiling-index-life-cycle-management.md) and the **Storage explorer** don't apply to these data streams. Any data that you might have collected with Universal Profiling is not migrated.
 :::
-
-## Troubleshoot [profiling-otel-troubleshoot]
-
-Start with the symptom that matches what you see in the {{agent}} logs or in {{kib}}.
-
-### The agent is healthy but no profiles arrive
-
-The profiler can't load its eBPF programs when it lacks privileges or runs on an unsupported kernel, and {{fleet}} doesn't always report this as an error. Check the {{agent}} logs for messages such as:
-
-```txt
-failed to load eBPF tracer: failed to read kernel symbols: unable to read kallsyms addresses - check capabilities
-```
-
-Run the agent as root, or grant the `CAP_SYS_ADMIN` capability, and confirm that the host meets the [kernel requirements](#profiling-otel-requirements-hosts).
-
-### The receiver reports that neither `debugfs` nor `tracefs` is mounted
-
-The profiler needs access to scheduler tracepoints. Mount `tracefs` on the Linux host:
-
-```bash
-sudo mount -t tracefs tracefs /sys/kernel/tracing
-```
-
-For a container deployment, expose that directory at `/sys/kernel/tracing` in the container. The Helm profiling preset configures this container mount for you.
-
-### The receiver fails with `system analysis request was not handled` on a local kind cluster
-
-kind runs its nodes in containers, so the profiler runs in a nested PID namespace. With {{agent}} 9.6, enable PID namespace translation by adding the following receiver setting to your Helm values:
-
-```yaml
-config:
-  receivers:
-    profiling:
-      pid_namespace_translation_mode: auto
-```
-
-### Agents cannot create profiling data streams
-
-{{agent}} logs show an error like this one:
-
-```txt
-action [indices:admin/auto_create] is unauthorized for API key id [...] of user [elastic/fleet-server] on indices [profiling-stacktraces.otel-default]
-```
-
-If the agent's API key lacks permission to create these data streams, ingestion fails even when the templates are installed. As a user with the `superuser` role, create the missing data streams before the agents start sending data. The event streams include the full stream and downsampled streams from `5pow01` through `5pow11`. Run only the requests for streams that do not already exist:
-
-```console
-PUT _data_stream/profiling-events-all.otel-default
-PUT _data_stream/profiling-events-5pow01.otel-default
-PUT _data_stream/profiling-events-5pow02.otel-default
-PUT _data_stream/profiling-events-5pow03.otel-default
-PUT _data_stream/profiling-events-5pow04.otel-default
-PUT _data_stream/profiling-events-5pow05.otel-default
-PUT _data_stream/profiling-events-5pow06.otel-default
-PUT _data_stream/profiling-events-5pow07.otel-default
-PUT _data_stream/profiling-events-5pow08.otel-default
-PUT _data_stream/profiling-events-5pow09.otel-default
-PUT _data_stream/profiling-events-5pow10.otel-default
-PUT _data_stream/profiling-events-5pow11.otel-default
-PUT _data_stream/profiling-stacktraces.otel-default
-PUT _data_stream/profiling-stackframes.otel-default
-PUT _data_stream/profiling-executables.otel-default
-PUT _data_stream/profiling-hosts.otel-default
-```
-
-### {{kib}} reports that no profiling data was found
-
-Check that the schema selector is set to **OpenTelemetry** and widen the time range. Run the event count query in [Verify that profiles are flowing](#profiling-otel-verify). If the count is `0`, check the agent's health and logs in {{fleet}}. The `resources.has_data` field from `GET /_profiling/status` covers both profiling schemas, so `true` does not by itself confirm OpenTelemetry ingestion. In an OpenTelemetry-only deployment, `resource_management.enabled` and `resources.created` can both be `false`: those fields describe Universal Profiling resources.

@@ -20,8 +20,8 @@ In {{stack}} 9.6 and later, and on {{serverless-short}}, the {{kib}} app is call
 
 Whichever option you use, profiles show up in the same stacktraces, flamegraphs, and functions views.
 
-* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` **OpenTelemetry profiling** is the recommended option for new deployments and the only option on {{obs-serverless}}. It uses the OpenTelemetry eBPF profiler with {{agent}}. Install the **OpenTelemetry Profiling** integration on your hosts and the data starts flowing, with no extra setup in {{kib}}. For the host requirements and the deployment steps, refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md).
-* **Universal Profiling** uses Elastic's original profiling agent and backend. It requires a one-time setup in {{kib}} and isn't available on {{serverless-short}}. For the setup step and the agent installation, refer to [Get started with Universal Profiling](get-started-with-universal-profiling.md).
+* {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` **OpenTelemetry profiling** is the recommended option for new deployments and the only option on {{obs-serverless}}. It uses the OpenTelemetry eBPF profiler with {{agent}}. Install the **OpenTelemetry Profiling** integration on your hosts and the data starts flowing, with no setup step in {{kib}}. For the host requirements and the deployment steps, refer to [Get started with OpenTelemetry profiling](get-started-with-otel-profiling.md).
+* {applies_to}`serverless: unavailable` **Universal Profiling** uses Elastic's original profiling agent and backend. It requires a one-time setup in {{kib}} and isn't available on {{serverless-short}}. For the setup step and the agent installation, refer to [Get started with Universal Profiling](get-started-with-universal-profiling.md).
 
 ## Select a profiling schema [profiling-schema-selector]
 ```{applies_to}
@@ -31,8 +31,9 @@ serverless: preview
 
 OpenTelemetry profiling and Universal Profiling can run in the same deployment, and they store their data in different formats, called schemas. The views show one schema at a time. The schema selector at the top of the **Stacktraces**, **Flamegraphs**, and **Functions** views, including the differential views, lets you pick which one to look at. The same selector appears in the profiling views embedded in **Applications** and **Infrastructure**.
 
-:::{image} /solutions/images/observability-profiling-schema-selector.jpg
-:alt: Profiling schema selector with OpenTelemetry selected.
+:::{image} /solutions/images/observability-profiling-schema-selector.png
+:alt: Stacktraces view with OpenTelemetry selected in the Schema menu below the query and time filters.
+:width: 758px
 :screenshot:
 :::
 
@@ -76,7 +77,7 @@ Your stacktrace can be:
 
 In the following screenshot, you can see that unsymbolized frames *do not* show a filename and line number, but a hexadecimal number such as `0x80d2f4` or `<unsymbolized>`.
 
-For Universal Profiling data, adding symbols for unsymbolized frames is currently a manual operation. See [Add symbols for native frames](add-symbols-for-native-frames.md).
+For Universal Profiling data, adding symbols for unsymbolized frames is currently a manual operation. See [Add symbols for native frames](add-symbols-for-native-frames.md). This procedure doesn't apply to OpenTelemetry profiling data.
 
 :::{image} /solutions/images/observability-profiling-stacktraces-unsymbolized.png
 :alt: profiling stacktraces unsymbolized

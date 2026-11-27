@@ -97,14 +97,6 @@ redirects:
           'profiling-resource-constraints': 'profiling-resource-constraints'
           'profiling-es-storage': 'profiling-es-storage'
           'profiling-host-agent-cpu-and-memory': 'profiling-host-agent-cpu-and-memory'
-  'solutions/observability/infra-and-hosts/profiling.md':
-    to: 'solutions/observability/infra-and-hosts/profiling.md'
-    many:
-      - to: 'solutions/observability/infra-and-hosts/get-started-with-universal-profiling.md'
-        anchors:
-          'profiling-resource-constraints': 'profiling-resource-constraints'
-          'profiling-es-storage': 'profiling-es-storage'
-          'profiling-host-agent-cpu-and-memory': 'profiling-host-agent-cpu-and-memory'
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
 
   # Related to https://github.com/elastic/docs-content/pull/7062
