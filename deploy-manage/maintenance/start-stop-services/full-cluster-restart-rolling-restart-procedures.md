@@ -212,3 +212,12 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
     ```
 
    If you closed all {{ml}} jobs before stopping the nodes, open the jobs and start the datafeeds from {{kib}} or with the [open jobs]({{es-apis}}operation/operation-ml-open-job) and [start datafeed]({{es-apis}}operation/operation-ml-start-datafeed) APIs.
+
+### Avoid downloading fully mounted {{search-snaps}} again [restart-cluster-rolling-search-snaps]
+
+Fully mounted {{search-snaps}} have no replicas, so a shard that is allocated to a different node is downloaded again from the snapshot repository. To give each node the best chance of getting its own shards back after the restart:
+
+* **Keep disk usage comfortably below the low watermark on every node that holds fully mounted indices.** A node above the [low watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-low) can't receive shards, including its own, so they are allocated to other nodes instead. Before you start, check `GET _cat/allocation?v&h=node,disk.percent,disk.avail,disk.total` against your [disk-based shard allocation settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). The low watermark can be capped by a maximum headroom, so check the absolute free space as well as the percentage. If nodes are close to the watermark, free up space or add capacity before the maintenance.
+* **Re-enable allocation only after the node has rejoined.** Follow steps 6 and 7 in order: if you remove the `cluster.routing.allocation.enable` setting while the restarted node is still away, its fully mounted shards are allocated to other nodes immediately.
+* **Check before you re-enable allocation.** Run the [cluster allocation explain API]({{es-apis}}operation/operation-cluster-allocation-explain) for one unassigned fully mounted shard. If the response shows the restarted node being rejected by the `disk_threshold` decider, resolve the disk space issue first.
+* **Check before you repeat for the next node.** As part of step 8, confirm that the node's shards have started on it and that `GET _cat/recovery?v&active_only=true` shows no snapshot recoveries. If recoveries are starting on other nodes, pause the rolling restart and check disk usage against the watermarks.
