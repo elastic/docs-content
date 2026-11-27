@@ -215,7 +215,7 @@ A group the endpoint already accepted stays accepted. The endpoint drops documen
 Direct {{es}} also returns HTTP `400` with no `items` list for a line that is not JSON. On this endpoint, a full group of 256 can already be accepted before that error.
 
 :::{warning}
-A client that resends this HTTP `400` sends the whole request again. The endpoint writes the accepted group of 256 documents again and keeps both copies. {{es}} bulk clients do not retry HTTP `400`. {{product.logstash}} retries every HTTP status other than `200`. It resends this request.
+A client that retries this HTTP `400` resends the whole request, and the endpoint stores the documents it already enqueued a second time. {{es}} bulk clients don't retry a `400`. {{product.logstash}} retries every HTTP status other than `200`, so it resends the request.
 :::
 
 ### After a document is enqueued [bulk-after-enqueue]
