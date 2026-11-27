@@ -160,11 +160,34 @@ You must include the following parameter to specify the file’s location on the
 
 * `--path` : The file’s full path (including the file name).
 
+  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can:
+
+  * Repeat `--path` up to 100 times in one action. The retrieved files are downloaded in one `.zip` archive.
+  * Use [wildcards](#get-file-wildcards) in `--path` to retrieve all matching files.
+
+You can also use this optional parameter:
+
+* {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--force` : ({{elastic-defend}} hosts on Windows only) Retrieve a file that the operating system has locked. {{elastic-defend}} reads the file from a snapshot of the disk volume that contains it. If the snapshot cannot be created, the file is not retrieved. `--force` does not download a file that exists only in cloud storage.
+
+::::{note}
+The regular {{agent}} 9.5.7 and 9.6.0 releases don't support retrieving multiple files, using wildcards, or using the `--force` parameter. To use these options, you need an [independent {{agent}} release](/reference/fleet/fleet-agent-release-process.md#independent-agent-releases) of 9.5.7 or 9.6.0.
+
+Later regular {{agent}} releases support these options.
+::::
+
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
 
 Required privilege (in {{stack}}) or custom role privilege (in {{serverless-short}}): **File Operations**
 
-Example: `get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
+Examples:
+
+`get-file --path "/full/path/to/file.txt" --comment "Possible malware"`
+
+`get-file --path "/var/log/syslog" --path "/var/log/auth.log" --comment "Collect logs"`
+
+`get-file --path "/var/log/*.log" --comment "Collect log files in /var/log"`
+
+`get-file --path "C:\Windows\System32\config\SAM" --force --comment "Collect locked registry hive"`
 
 ::::{note}
 :applies_to: stack: ga 9.0-9.2
@@ -179,6 +202,33 @@ You can use the [Osquery manager integration](/solutions/security/investigate/os
 ::::{note}
 When {{elastic-defend}} prevents file activity due to [malware prevention](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection), the file is quarantined on the host and a malware prevention alert is created. To retrieve this file with `get-file`, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter.
 ::::
+
+#### Retrieve files with wildcards [get-file-wildcards]
+```yaml {applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+On {{elastic-defend}} hosts, you can use these wildcards in `--path`:
+
+* `*` matches any number of characters within a single directory or file name (it doesn't cross `/` or `\`). You can use it in any part of the path. For example:
+  * `/var/log/*.log` retrieves the files directly in `/var/log` whose names end in `.log`.
+  * `/var/log/*` retrieves the files directly in `/var/log`.
+  * `/home/*/.bash_history` retrieves the `.bash_history` file from each user's home directory. A home directory on another filesystem, such as NFS or ZFS, is skipped.
+* `?` matches exactly one character within a single directory or file name. For example, `/var/log/syslog.?` retrieves `syslog.1` but not `syslog.10`. Like `*`, you can use it in any part of the path.
+* `**` retrieves every file in a directory and all of its subdirectories. It must be the last part of the path, for example `/var/log/**`.
+
+On Linux and macOS, file names can contain `*` and `?`. If a file exists at the exact path you enter, `get-file` treats `*` and `?` as literal characters and retrieves only that file. `*` and `?` work as wildcards only when no file exists at that path.
+
+A directory path without a wildcard, such as `/var/log`, doesn't retrieve any files. To retrieve the files in a directory, add `/*` or `/**` to the path.
+
+Character classes (`[...]`), regular expressions, and escapes aren't supported — those characters are matched literally. On Windows, wildcard and multi-path requests require drive-letter paths (UNC and device paths aren't supported).
+
+Wildcards also match hidden files, whose names start with `.`. Matching ignores case on Windows and on macOS volumes that aren't case-sensitive. On Linux, matching is case-sensitive. A symbolic link that you pass as the whole `--path` is followed, and the file it points to is retrieved. A symbolic link that a wildcard matches is skipped.
+
+The `.zip` archive includes a `manifest.json` file that lists each file, its SHA-256 hash and size, and whether it was retrieved. In multi-file and wildcard actions, items that can't be retrieved are listed with a reason instead. These include files locked by another process (unless you use `--force` on Windows), files stored only in cloud storage such as OneDrive or iCloud (which aren't downloaded), symbolic links matched by a wildcard, mount points, and pseudo-filesystems.
+
+By default, one multi-file or wildcard action can include up to 10,000 entries (matched files and skipped items), 20 GiB of uncompressed file data in total, and subdirectories up to 32 levels deep from the wildcard root. If a request exceeds any of these limits, the action fails and no files are retrieved. Use a more specific path, then try again.
 
 
 ### `isolate` [_isolate]
