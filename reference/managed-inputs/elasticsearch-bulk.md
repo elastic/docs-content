@@ -176,7 +176,7 @@ Each action in a `_bulk` request can specify its target through the `_index` fie
 
 ## Delivery behavior [delivery-behavior]
 
-The Managed {{es}} `_bulk` endpoint handles each request in groups of 256 documents. It enqueues a group when the group is full. It enqueues the final group when it can parse the whole request. Enqueued means the endpoint stored the documents for later indexing. {{es}} has not indexed them yet. A later failure keeps an enqueued group enqueued. Check the HTTP status, the `errors` field, and the status of each item.
+The Managed {{es}} _bulk endpoint doesn't accept a request as a single unit. It reads the request in groups of up to 256 documents and enqueues each group as soon as the group is complete, so part of a request can already be enqueued when a later part fails. Enqueued means the endpoint has stored the documents for later indexing; {{es}} hasn't indexed them yet. Because the result can differ within one request, always check the HTTP status, the `errors` field, and the status of each item.
 
 ### Item results inside HTTP 200 [bulk-item-results]
 
