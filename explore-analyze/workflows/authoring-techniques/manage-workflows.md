@@ -20,6 +20,8 @@ The **Workflows** page allows you to view and manage all your workflows. From th
 ::::{admonition} Requirements
 To use workflows, you must turn on the feature and ensure your role has the appropriate privileges. Refer to [](/explore-analyze/workflows/get-started/setup.md) for more information.
 
+{applies_to}`stack: ga 9.6+` Updating or deleting a workflow [assigned to a service account](/explore-analyze/workflows/authoring-techniques/run-workflow-as-service-account.md) also requires the `manage_security` cluster privilege.
+
 You must also have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.
 ::::
 

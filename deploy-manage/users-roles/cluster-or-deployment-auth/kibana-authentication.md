@@ -416,6 +416,7 @@ xpack.security.authc.http.schemes: [apikey, bearer, basic, something-custom]
 
 With this configuration, you can send requests to {{kib}} with the `Authorization` header using `ApiKey`, `Bearer`, `Basic` or `Something-Custom` HTTP schemes (case insensitive). Under the hood, {{kib}} relays this header to {{es}}, then {{es}} authenticates the request using the credentials in the header.
 
+{applies_to}`{stack: ga 9.6+, serverless: unavailable}` User-managed service accounts provide another option for programmatic access to {{kib}} APIs. Their service tokens use the `Bearer` scheme, but they can't be used to log in to the {{kib}} UI. To create a token and authenticate a request, refer to [Authenticate to the {{kib}} API with a service account](authenticate-kibana-api-with-service-account.md).
 
 ### Embedded content authentication [embedded-content-authentication]
 

@@ -18,7 +18,7 @@ products:
 Concept and reference material for Elastic Workflows, including the components that make up a workflow definition. Use this section when you need to know what a specific trigger or step accepts, what its output looks like, or how templating expressions are evaluated.
 
 - [Managed workflows](/explore-analyze/workflows/managed-workflows.md): Elastic-shipped workflows that install automatically and power product features.
-- [Authorization](/explore-analyze/workflows/authorization.md): Whose privileges authorize a workflow run and what the run's API key can access.
+- [Authorization](/explore-analyze/workflows/authorization.md): How a user or service account's privileges authorize a workflow run and determine what it can access.
 - [Triggers](/explore-analyze/workflows/triggers.md): Manual, scheduled, alert, and event-driven triggers.
 - [Steps](/explore-analyze/workflows/steps.md): Action, flow control, AI, data, and composition steps.
 - [Templating engine](/explore-analyze/workflows/templating.md): Liquid templating syntax and custom filters.

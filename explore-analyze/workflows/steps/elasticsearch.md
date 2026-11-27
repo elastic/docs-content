@@ -18,7 +18,7 @@ products:
 
 {{es}} actions are built-in steps that allow your workflows to interact directly with {{es}} APIs. You can search, index, update, and delete documents, manage indices, and perform any other operation supported by the {{es}} REST API.
 
-All {{es}} actions are automatically authenticated using the permissions or API key of the user executing the workflow.
+All {{es}} actions are automatically authenticated as the workflow's execution identity. Refer to [Workflow authorization](/explore-analyze/workflows/authorization.md) to understand which privileges each run uses.
 
 There are two ways to use {{es}} actions:
 
