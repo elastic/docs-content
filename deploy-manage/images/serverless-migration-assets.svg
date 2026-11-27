@@ -1,7 +1,7 @@
 <!-- Editable SVG: update labels, grouping, and geometry directly. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 960 904" role="img" aria-labelledby="title desc">
 <title id="title">Prepare and test the destination</title>
-<desc id="desc">Prepare the integration packages and Elasticsearch data structures, using a single ingest pipelines step after enrich reference data and policies. Transfer historical data before migrating Kibana spaces and content. Prepare solution configuration, Fleet policies, AI and machine learning resources, and access. Test reads and indexing and evaluate the destination. Refine or recreate the project and repeat preparation if needed, or complete the migration and switch to production after validation. Colors distinguish resource groups and do not indicate compatibility.</desc>
+<desc id="desc">Prepare the integration packages and Fleet outputs and policies, then Elasticsearch data structures, using a single ingest pipelines step after enrich reference data and policies. Transfer a subset of data for testing before migrating Kibana spaces and content. Prepare solution configuration, AI and machine learning resources, and access. Test reads and indexing and evaluate the destination. Refine or recreate the project and repeat preparation if needed, or complete the migration and switch to production after validation. Colors distinguish resource groups and do not indicate compatibility.</desc>
 <defs>
 <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L8 5L1 9" fill="none" stroke="#7B8798" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
 </defs>
@@ -39,104 +39,104 @@ text {font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-ser
 <rect class="box access" x="292" y="82" width="11" height="11" rx="2"/>
 <text class="legend" x="311" y="93">Access</text>
 <rect class="box data" x="520" y="82" width="11" height="11" rx="2"/>
-<text class="legend" x="539" y="93">Historical data</text>
+<text class="legend" x="539" y="93">Data for testing</text>
 <rect class="box control" x="740" y="82" width="11" height="11" rx="2"/>
 <text class="legend" x="759" y="93">Testing and transition</text>
 <rect class="box fleet" x="48" y="122" width="200" height="44" rx="8"/>
 <text class="label" x="148" y="150">Integration packages</text>
 <path class="arrow" d="M251 144H266"/>
-<rect class="box structures" x="270" y="122" width="200" height="44" rx="8"/>
-<text class="label" x="370" y="150">Stored scripts</text>
+<rect class="box fleet" x="270" y="122" width="200" height="44" rx="8"/>
+<text class="label" x="370" y="150">Outputs and proxies</text>
 <path class="arrow" d="M473 144H488"/>
-<rect class="box structures" x="492" y="122" width="200" height="44" rx="8"/>
-<text class="label" x="592" y="150">Synonym sets</text>
+<rect class="box fleet" x="492" y="122" width="200" height="44" rx="8"/>
+<text class="label" x="592" y="150">Agent policies</text>
 <path class="arrow" d="M695 144H710"/>
-<rect class="box structures" x="714" y="122" width="200" height="44" rx="8"/>
-<text class="label" x="814" y="150">Enrich reference data</text>
+<rect class="box fleet" x="714" y="122" width="200" height="44" rx="8"/>
+<text class="label" x="814" y="150">Integration policies</text>
 <path class="arrow wrap" d="M814 166V177H148V188"/>
 <rect class="box structures" x="48" y="188" width="200" height="44" rx="8"/>
-<text class="label" x="148" y="216">Enrich policies</text>
+<text class="label" x="148" y="216">Stored scripts</text>
 <path class="arrow" d="M251 210H266"/>
 <rect class="box structures" x="270" y="188" width="200" height="44" rx="8"/>
-<text class="label" x="370" y="216">Ingest pipelines</text>
+<text class="label" x="370" y="216">Synonym sets</text>
 <path class="arrow" d="M473 210H488"/>
 <rect class="box structures" x="492" y="188" width="200" height="44" rx="8"/>
-<text class="label" x="592" y="216">Component templates</text>
+<text class="label" x="592" y="216">Enrich reference data</text>
 <path class="arrow" d="M695 210H710"/>
 <rect class="box structures" x="714" y="188" width="200" height="44" rx="8"/>
-<text class="label" x="814" y="216">Index templates</text>
+<text class="label" x="814" y="216">Enrich policies</text>
 <path class="arrow wrap" d="M814 232V243H148V254"/>
 <rect class="box structures" x="48" y="254" width="200" height="44" rx="8"/>
-<text class="label" x="148" y="272">Legacy template</text>
-<text class="label" x="148" y="291">conversion</text>
+<text class="label" x="148" y="282">Ingest pipelines</text>
 <path class="arrow" d="M251 276H266"/>
 <rect class="box structures" x="270" y="254" width="200" height="44" rx="8"/>
-<text class="label" x="370" y="272">Lifecycle adaptation</text>
-<text class="label" x="370" y="291">ILM to DSL</text>
+<text class="label" x="370" y="282">Component templates</text>
 <path class="arrow" d="M473 276H488"/>
 <rect class="box structures" x="492" y="254" width="200" height="44" rx="8"/>
-<text class="label" x="592" y="282">Transforms</text>
+<text class="label" x="592" y="282">Index templates</text>
 <path class="arrow" d="M695 276H710"/>
-<rect class="box data" x="714" y="254" width="200" height="44" rx="8"/>
-<text class="label" x="814" y="272">Transfer historical data</text>
-<text class="label" x="814" y="291">Indices, streams, aliases</text>
+<rect class="box structures" x="714" y="254" width="200" height="44" rx="8"/>
+<text class="label" x="814" y="272">Legacy template</text>
+<text class="label" x="814" y="291">conversion</text>
 <path class="arrow wrap" d="M814 298V309H148V320"/>
-<rect class="box kibana" x="48" y="320" width="200" height="44" rx="8"/>
-<text class="label" x="148" y="348">Spaces</text>
+<rect class="box structures" x="48" y="320" width="200" height="44" rx="8"/>
+<text class="label" x="148" y="338">Lifecycle adaptation</text>
+<text class="label" x="148" y="357">ILM to DSL</text>
 <path class="arrow" d="M251 342H266"/>
-<rect class="box kibana" x="270" y="320" width="200" height="44" rx="8"/>
-<text class="label" x="370" y="348">Saved objects</text>
+<rect class="box structures" x="270" y="320" width="200" height="44" rx="8"/>
+<text class="label" x="370" y="348">Transforms</text>
 <path class="arrow" d="M473 342H488"/>
-<rect class="box kibana" x="492" y="320" width="200" height="44" rx="8"/>
-<text class="label" x="592" y="348">Connectors</text>
+<rect class="box data" x="492" y="320" width="200" height="44" rx="8"/>
+<text class="label" x="592" y="338">Transfer data for testing</text>
+<text class="label" x="592" y="357">Indices, streams, aliases</text>
 <path class="arrow" d="M695 342H710"/>
-<rect class="box solution" x="714" y="320" width="200" height="44" rx="8"/>
-<text class="label" x="814" y="338">Observability rules /</text>
-<text class="label" x="814" y="357">Watcher replacement</text>
+<rect class="box kibana" x="714" y="320" width="200" height="44" rx="8"/>
+<text class="label" x="814" y="348">Spaces</text>
 <path class="arrow wrap" d="M814 364V375H148V386"/>
-<rect class="box solution" x="48" y="386" width="200" height="44" rx="8"/>
-<text class="label" x="148" y="404">Detection rules</text>
-<text class="label" x="148" y="423">and lists</text>
+<rect class="box kibana" x="48" y="386" width="200" height="44" rx="8"/>
+<text class="label" x="148" y="414">Saved objects</text>
 <path class="arrow" d="M251 408H266"/>
-<rect class="box solution" x="270" y="386" width="200" height="44" rx="8"/>
-<text class="label" x="370" y="404">Cases, Timelines</text>
-<text class="label" x="370" y="423">and case templates</text>
+<rect class="box kibana" x="270" y="386" width="200" height="44" rx="8"/>
+<text class="label" x="370" y="414">Connectors</text>
 <path class="arrow" d="M473 408H488"/>
-<rect class="box kibana" x="492" y="386" width="200" height="44" rx="8"/>
-<text class="label" x="592" y="414">Maintenance windows</text>
+<rect class="box solution" x="492" y="386" width="200" height="44" rx="8"/>
+<text class="label" x="592" y="404">Observability rules /</text>
+<text class="label" x="592" y="423">Watcher replacement</text>
 <path class="arrow" d="M695 408H710"/>
-<rect class="box kibana" x="714" y="386" width="200" height="44" rx="8"/>
-<text class="label" x="814" y="414">Workflows</text>
+<rect class="box solution" x="714" y="386" width="200" height="44" rx="8"/>
+<text class="label" x="814" y="404">Detection rules</text>
+<text class="label" x="814" y="423">and lists</text>
 <path class="arrow wrap" d="M814 430V441H148V452"/>
 <rect class="box solution" x="48" y="452" width="200" height="44" rx="8"/>
-<text class="label" x="148" y="480">SLOs</text>
+<text class="label" x="148" y="470">Cases, Timelines</text>
+<text class="label" x="148" y="489">and case templates</text>
 <path class="arrow" d="M251 474H266"/>
-<rect class="box solution" x="270" y="452" width="200" height="44" rx="8"/>
-<text class="label" x="370" y="470">Synthetics monitors</text>
-<text class="label" x="370" y="489">and Private Locations</text>
+<rect class="box kibana" x="270" y="452" width="200" height="44" rx="8"/>
+<text class="label" x="370" y="480">Maintenance windows</text>
 <path class="arrow" d="M473 474H488"/>
 <rect class="box kibana" x="492" y="452" width="200" height="44" rx="8"/>
-<text class="label" x="592" y="480">Reporting schedules</text>
+<text class="label" x="592" y="480">Workflows</text>
 <path class="arrow" d="M695 474H710"/>
 <rect class="box solution" x="714" y="452" width="200" height="44" rx="8"/>
-<text class="label" x="814" y="480">Streams configuration</text>
+<text class="label" x="814" y="480">SLOs</text>
 <path class="arrow wrap" d="M814 496V507H148V518"/>
 <rect class="box solution" x="48" y="518" width="200" height="44" rx="8"/>
-<text class="label" x="148" y="536">Endpoint policies</text>
-<text class="label" x="148" y="555">and artifacts</text>
+<text class="label" x="148" y="536">Synthetics monitors</text>
+<text class="label" x="148" y="555">and Private Locations</text>
 <path class="arrow" d="M251 540H266"/>
-<rect class="box solution" x="270" y="518" width="200" height="44" rx="8"/>
-<text class="label" x="370" y="536">Attack Discovery</text>
-<text class="label" x="370" y="555">configuration</text>
+<rect class="box kibana" x="270" y="518" width="200" height="44" rx="8"/>
+<text class="label" x="370" y="546">Reporting schedules</text>
 <path class="arrow" d="M473 540H488"/>
-<rect class="box fleet" x="492" y="518" width="200" height="44" rx="8"/>
-<text class="label" x="592" y="546">Outputs and proxies</text>
+<rect class="box solution" x="492" y="518" width="200" height="44" rx="8"/>
+<text class="label" x="592" y="546">Streams configuration</text>
 <path class="arrow" d="M695 540H710"/>
-<rect class="box fleet" x="714" y="518" width="200" height="44" rx="8"/>
-<text class="label" x="814" y="546">Agent policies</text>
+<rect class="box solution" x="714" y="518" width="200" height="44" rx="8"/>
+<text class="label" x="814" y="536">Endpoint policies</text>
+<text class="label" x="814" y="555">and artifacts</text>
 <path class="arrow wrap" d="M814 562V573H148V584"/>
-<rect class="box fleet" x="48" y="584" width="200" height="44" rx="8"/>
-<text class="label" x="148" y="612">Integration policies</text>
+<rect class="box solution" x="48" y="584" width="200" height="44" rx="8"/>
+<text class="label" x="148" y="602">Attack Discovery</text>
+<text class="label" x="148" y="621">configuration</text>
 <path class="arrow" d="M251 606H266"/>
 <rect class="box ai" x="270" y="584" width="200" height="44" rx="8"/>
 <text class="label" x="370" y="612">ML filters and calendars</text>
