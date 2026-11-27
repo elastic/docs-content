@@ -222,7 +222,7 @@ A client that resends this HTTP `400` sends the whole request again. The endpoin
 
 ### After a document is enqueued [bulk-after-enqueue]
 
-- **A `201` means the endpoint enqueued the document.** {{es}} indexes it later. The bulk response does not include later errors, such as mapping conflicts. Your shipper counts the document as sent.
+- **A `201` means the endpoint enqueued the document.** {{es}} indexes it later. The bulk response doesn't include later errors, such as mapping conflicts. Your shipper counts the document as sent.
 - **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still can't accept the data when buffer retention ends, the endpoint discards it. The `201` your shipper already received doesn't change.
 - **Delivery delay isn't visible to your shipper.** A direct `_bulk` request slows down or fails when {{es}} is under pressure, so your shipper can back off. The managed endpoint returns `201` as soon as it enqueues a group, even if delivery to {{es}} is delayed.
 - **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target the way they do with {{es}}. The endpoint still rejects targets outside the allowed prefixes.
