@@ -25,7 +25,7 @@ Elastic also provides the [EDOT Browser](elastic-otel-rum-js://reference/edot-br
 
 ## Before you begin [before-you-begin]
 
-You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](opentelemetry://reference/motlp.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure [{{agent}} in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
+You need an OTLP endpoint to ingest data from the OpenTelemetry RUM instrumentation. If you're setting up a new deployment, [create](/solutions/observability/get-started.md) an {{ecloud}} hosted deployment or {{serverless-short}} project, which includes the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md). If you own a self-hosted stack or your deployment does not have the {{motlp}}, configure [{{agent}} in Gateway mode](https://www.elastic.co/docs/reference/edot-collector/modes#edot-collector-as-gateway).
 
 After you have prepared the OTLP endpoint, set up a reverse proxy to forward the telemetry from your web application origin to the Collector. You need a reverse proxy for the following reasons:
 
@@ -713,7 +713,7 @@ The **{{user-experience}} (UX)** app shows only Elastic {{product.apm}} RUM data
 
 To verify that OpenTelemetry RUM data is reaching Elastic:
 
-1. Open the **Service Inventory**. To do so, find `Services` or `Applications` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) or go to **{{observability}} → Applications → Service Inventory**.
+1. Open the **Service Inventory**. To do so, find `Services` or `Applications` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) or go to **{{observability}}** → **Applications** → **Service Inventory**.
 2. Look for your browser application in the **Service Inventory**.
 3. Open **Discover** and filter for recent events from your browser application to verify that data is indexed.
 

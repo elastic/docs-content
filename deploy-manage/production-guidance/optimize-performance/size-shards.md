@@ -1,4 +1,5 @@
 ---
+navigation_title: Size your shards
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html
 applies_to:
@@ -11,7 +12,7 @@ products:
   - id: elasticsearch
 ---
 
-# Size your shards
+# Size your {{es}} shards
 
 A shard is a basic unit of storage in {{es}}. Every index is divided into one or more shards to help distribute data and workload across nodes in a cluster. This division allows {{es}} to handle large datasets and perform operations like searches and indexing efficiently. For more detailed information on shards, refer to [nodes and shards](/deploy-manage/distributed-architecture/clusters-nodes-shards.md).
 
@@ -270,7 +271,9 @@ PUT my-index-000001/_settings
 
 By default {{es}} [automatically creates a mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md) for every field in every document it indexes. Every mapped field corresponds to some data structures on disk which are needed for efficient search, retrieval, and aggregations on this field. Details about each mapped field are also held in memory. In many cases this overhead is unnecessary because a field is not used in any searches or aggregations. Use [*Explicit mapping*](../../../manage-data/data-store/mapping/explicit-mapping.md) instead of dynamic mapping to avoid creating fields that are never used. If a collection of fields are typically used together, consider using [`copy_to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) to consolidate them at index time. If a field is only rarely used, it may be better to make it a [Runtime field](../../../manage-data/data-store/mapping/runtime-fields.md) instead.
 
-You can get information about which fields are being used with the [Field usage stats]({{es-apis}}operation/operation-indices-field-usage-stats) API, and you can analyze the disk usage of mapped fields using the [Analyze index disk usage]({{es-apis}}operation/operation-indices-disk-usage) API. Note however that unnecessary mapped fields also carry some memory overhead as well as their disk usage.
+Use the [Field usage stats API]({{es-apis}}operation/operation-indices-field-usage-stats) to check which fields your requests have used.
+
+For more on reducing disk usage through field mappings, refer to [Avoid indexing unused fields](./disk-usage.md#avoid-indexing-unused-fields).
 
 
 ## Reduce a cluster’s shard count [reduce-cluster-shard-count]
@@ -340,7 +343,7 @@ POST _reindex
 Here’s how to resolve common shard-related errors.
 
 
-### this action would add [x] total shards, but this cluster currently has [y]/[z] maximum shards open; [troubleshooting-max-shards-open]
+### this action would add [x] shards, but this cluster currently has [y]/[z] maximum normal shards open; [troubleshooting-max-shards-open]
 
 The [`cluster.max_shards_per_node`](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Node roles
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html
 applies_to:
@@ -7,7 +8,7 @@ products:
   - id: elasticsearch
 ---
 
-# Node roles [node-roles-overview]
+# Node roles in {{es}} [node-roles-overview]
 
 Any time that you start an instance of {{es}}, you are starting a *node*. A collection of connected nodes is called a [cluster](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md). If you are running a single node of {{es}}, then you have a cluster of one node. All nodes know about all the other nodes in the cluster and can forward client requests to the appropriate node.
 

@@ -17,7 +17,7 @@ Are you an agent? Use the [elasticsearch-onboarding skill](https://github.com/el
 
 ## Create a Vector Database project [vector-full-text-search-create-project]
 
-Create a free [{{es}} Vector Database project](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). It's serverless and built for search and vector workloads, so you don't need to size or manage a cluster.
+Create a free [{{es}} Vector Database project](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). It's serverless and built for search and vector workloads, so you don't need to size or manage a cluster. For other quick start options that don't use a Vector Database project, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
 
 The project takes about a minute to start. The **Getting started** page then displays the **Project endpoint** and a generated API key. Copy both values.
 
@@ -110,7 +110,7 @@ For supported Ruby versions and other requirements, refer to the [Ruby client in
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```bash
@@ -220,7 +220,7 @@ es = Elasticsearch::Client.new(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -414,7 +414,7 @@ es.indices.create(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -732,7 +732,7 @@ es.bulk(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1078,7 +1078,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1377,7 +1377,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1680,7 +1680,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -2230,7 +2230,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 :::{dropdown} Complete runnable script

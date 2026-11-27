@@ -40,9 +40,8 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-cloudwatch-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Browse the catalog to find the AWS integration.
-3. Navigate to the **Settings** tab and click **Install AWS assets**.
+:::{include} _snippets/install-aws-integration-assets.md
+:::
 
 
 ## Step 2: Select a CloudWatch log group to monitor [firehose-cloudwatch-step-two]
@@ -118,7 +117,7 @@ Take note of the log group name for this Lambda function, as you will need it in
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
-        3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        3. Under **Application endpoints, cluster and component IDs**, select **Elasticsearch** and copy the **Direct endpoint** value from the flyout.
         4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:
@@ -232,7 +231,7 @@ The Firehose delivery stream reports:
 
 With the logs streaming to the Elastic stack, you can now visualize them in {{kib}}.
 
-In {{kib}}, navigate to the **Discover** page and select the index pattern that matches the Firehose stream name. Here is a sample of logs from the Lambda function you forwarded to the `logs-aws.generic-default` data stream:
+In {{kib}}, open **Discover**. In {{esql}} mode, enter `FROM logs-aws.generic-default`. In classic mode, select the data view that matches the Firehose stream name. Here is a sample of logs from the Lambda function you forwarded to the `logs-aws.generic-default` data stream:
 
 :::{image} /solutions/images/observability-firehose-cloudwatch-verify-discover.png
 :alt: Sample logs in Discover

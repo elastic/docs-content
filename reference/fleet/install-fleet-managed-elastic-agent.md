@@ -1,4 +1,5 @@
 ---
+description: Install Elastic Agent on a host and enroll it in Fleet for central management. Check the prerequisites, then add the agent from the Agents tab and run the install command.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html
 applies_to:
@@ -34,7 +35,7 @@ Want to learn how to install {{agent}}? Continue reading this page.
 
 You will always need:
 
-* **A {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}.** Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
+* **A {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}.** For the minimum privileges and how they apply across spaces, refer to [](/reference/fleet/fleet-roles-privileges.md).
 * **[{{fleet-server}}](/reference/fleet/fleet-server.md) running in a location accessible to {{agent}}.** {{agent}} must have a direct network connection to {{fleet-server}} and {{es}}. If you’re using {{ecloud}}, {{fleet-server}} is already available as part of the {{integrations-server}}. For self-managed deployments, refer to [Deploy on-premises and self-managed](/reference/fleet/add-fleet-server-on-prem.md).
 * **Internet connection for {{kib}} to download integration packages from the {{package-registry}}.** Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](/reference/fleet/air-gapped.md) for more information.
 
@@ -57,7 +58,7 @@ You can install only a single {{agent}} per host.
 To install an {{agent}} and enroll it in {{fleet}}:
 
 1. Find **Fleet** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Agents** tab.
-2. Click **Add → Agent**.
+2. Click **Add** → **Agent**.
 3. In the **Add agent** flyout, select an existing agent policy or create a new one. If you create a new policy, {{fleet}} generates a new [{{fleet}} enrollment token](/reference/fleet/fleet-enrollment-tokens.md).
 
     ::::{note}
@@ -84,7 +85,7 @@ After about a minute, the agent will enroll in {{fleet}}, download the configura
 **Notes:**
 
 * If you encounter an "x509: certificate signed by unknown authority" error, you might be trying to enroll in a {{fleet-server}} that uses self-signed certs. To fix this problem in a non-production environment, pass the `--insecure` flag. For more information, refer to the [troubleshooting guide](/troubleshoot/ingest/fleet/common-problems.md#agent-enrollment-certs).
-* Optionally, you can use the `--tag` flag to specify a comma-separated list of tags to apply to the enrolled {{agent}}. For more information, refer to [Filter list of Agents by tags](/reference/fleet/filter-agent-list-by-tags.md).
+* Optionally, you can use the `--tag` flag to specify a comma-separated list of tags to apply to the enrolled {{agent}}. For more information, refer to [](/reference/fleet/filter-agent-list-by-tags.md#add-tags-at-enrollment).
 * Refer to [Installation layout](/reference/fleet/installation-layout.md) for the location of installed {{agent}} files.
 * Because {{agent}} is installed as an auto-starting service, it will restart automatically if the system is rebooted.
 

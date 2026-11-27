@@ -40,9 +40,8 @@ Make sure the deployment is on AWS, because the Amazon Data Firehose delivery st
 
 ## Step 1: Install the AWS integration in {{kib}} [firehose-waf-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Browse the catalog to find the AWS integration.
-3. Navigate to the **Settings** tab and click **Install AWS assets**.
+:::{include} _snippets/install-aws-integration-assets.md
+:::
 
 
 ## Step 2: Create a delivery stream in Amazon Data Firehose [firehose-waf-step-two]
@@ -65,7 +64,7 @@ For advanced use cases, source records can be transformed by invoking a custom L
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
-        3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        3. Under **Application endpoints, cluster and component IDs**, select **Elasticsearch** and copy the **Direct endpoint** value from the flyout.
 
     * **To create the API key**:
 

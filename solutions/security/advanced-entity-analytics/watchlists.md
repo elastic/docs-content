@@ -13,6 +13,8 @@ products:
 
 ::::{admonition} Requirements
 This feature requires the appropriate [subscription](https://www.elastic.co/pricing) in {{stack}} or [project feature tier](/deploy-manage/deploy/elastic-cloud/project-settings.md) in {{serverless-short}}.
+
+To view or manage watchlists, you also need the appropriate privileges. For more information, refer to [Entity analytics requirements](/solutions/security/advanced-entity-analytics/entity-analytics-requirements.md#_watchlists).
 ::::
 
 Watchlists let you define and manage groups of entities that are important to your organization — such as executives or critical infrastructure hosts — and factor watchlist membership directly into entity risk scoring. This keeps your most critical entities visible and easy to find during threat investigations. Watchlists sync automatically every 10 minutes to reflect changes in the underlying data sources.
@@ -36,8 +38,8 @@ To learn how watchlist weighting fits into the overall risk score calculation, r
 To create a watchlist:
 
 1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
+    * **Security solution view**: Find **{{stack-manage-app}}** → **Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage** → **Entity Analytics** in the navigation menu.
 2. Go to the **Watchlists** tab.
 3. Click **Create watchlist**.
 4. Enter a name and, optionally, a description.
@@ -65,7 +67,7 @@ You can also manage watchlists conversationally with {{agent-builder}} using the
 
 ## Filter entities by watchlist [watchlists-filter]
 
-On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can filter the **Entities** section by watchlist membership to focus on the entities most relevant to your investigation.
+On the [Entity analytics page](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md), you can filter the entity table by watchlist membership to focus on the entities most relevant to your investigation.
 
 ## Known limitations [watchlists-limitations]
 

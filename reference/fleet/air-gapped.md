@@ -1,4 +1,5 @@
 ---
+description: Run Elastic Agent in an air-gapped environment. Turn on air-gapped mode in Fleet, distribute the PGP key, and self-host or proxy the Elastic Package Registry and artifact registry.
 navigation_title: Air-gapped environments
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/air-gapped.html
@@ -20,7 +21,7 @@ When running {{agent}}s in a restricted or closed network, you need to take extr
 
 The {{package-registry}} must therefore be accessible from {{kib}} through an HTTP Proxy or self-hosted.
 
-The {{artifact-registry}} must therefore be accessible from {{kib}} through an HTTP Proxy or self-hosted.
+The {{artifact-registry}} must therefore be accessible from {{agents}} through an HTTP Proxy or self-hosted.
 
 ::::{tip}
 See the {{elastic-sec}} Solution documentation for air-gapped [offline endpoints](/solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md).
@@ -68,7 +69,7 @@ You can prevent {{fleet}} from downloading the PGP/GPG key from `server.pgp.upst
 
 To set a custom URL for {{fleet-server}} to access a PGP/GPG key and make it available to {{agents}}:
 
-1. In {{kib}}, go to **Management > {{fleet}} > Agent policies**.
+1. In {{kib}}, go to **Management** → **{{fleet}}** → **Agent policies**.
 2. Select a policy for the agents that you want to upgrade.
 3. On the policy page, in the **Actions** menu for the {{fleet-server}} integration, select **Edit integration**.
 4. In the {{fleet-server}} settings section expand **Change defaults** and **Advanced options**.
@@ -130,6 +131,7 @@ There are different distributions available:
 * production: *docker.elastic.co/package-registry/distribution:production* - Packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
 * lite: *docker.elastic.co/package-registry/distribution:lite* - Subset of the most commonly used packages available in the production registry ([https://epr.elastic.co](https://epr.elastic.co)). This image is updated every time a new version of a package gets published.
 
+{applies_to}`stack: ga 9.6+` Each of these distributions is also available as a FIPS 140-3 compliant image with a `-fips` suffix. For details, refer to [FIPS 140-3 images](#air-gapped-diy-epr-fips).
 
 To update the distribution image, re-pull the image and then restart the docker container.
 
@@ -180,6 +182,24 @@ These steps use the standard Docker CLI, but you can create a Kubernetes manifes
     When either endpoint returns a `200` HTTP status code, the service is ready to handle requests.
 
 
+### FIPS 140-3 images [air-gapped-diy-epr-fips]
+```{applies_to}
+stack: ga 9.6+
+```
+
+If you need to host the {{package-registry}} in an environment that requires FIPS 140-3 validated cryptography, use the FIPS variant of the distribution image. Append `-fips` to any of the distribution tags, for example:
+
+* *docker.elastic.co/package-registry/distribution:{{version.stack}}-fips*
+* *docker.elastic.co/package-registry/distribution:lite-{{version.stack}}-fips*
+
+The FIPS images are available for `linux/amd64` and `linux/arm64`, like the regular images. They contain the same packages, and use the same port, environment variables, and configuration file. The {{package-registry}} binary is built with the [Go Cryptographic Module](https://go.dev/doc/security/fips140), the native FIPS 140-3 module in the Go standard library. For the FIPS variants of {{agent}} and other ingest tools, refer to [FIPS mode for Ingest tools](/deploy-manage/security/fips-ingest.md).
+
+By default, the FIPS images use the validated module for all supported cryptographic operations, and algorithms that the module doesn't approve stay available as a fallback. To refuse non-approved algorithms instead, set `GODEBUG=fips140=only` when you run the container:
+
+```sh subs=true
+docker run -it -p 8080:8080 -e GODEBUG=fips140=only docker.elastic.co/package-registry/distribution:{{version.stack}}-fips
+```
+
 ### Connect {{kib}} to your hosted {{package-registry}} [air-gapped-diy-epr-kibana]
 
 Use the `xpack.fleet.registryUrl` property in the {{kib}} config to set the URL of your hosted package registry. For example:
@@ -207,6 +227,8 @@ docker run -it -p 443:443 \
 
 The {{package-registry}} supports TLS versions from 1.0 to 1.3. The minimum version accepted can be configured with `EPR_TLS_MIN_VERSION`, it defaults to 1.0. If you want to restrict the supported versions from 1.2 to 1.3, you can use `EPR_TLS_MIN_VERSION=1.2`.
 
+{applies_to}`stack: ga 9.6+` The [FIPS 140-3 images](#air-gapped-diy-epr-fips) require TLS 1.2 or later. If you set `EPR_TLS_MIN_VERSION` to `1.0` or `1.1`, the {{package-registry}} doesn't start.
+
 
 ### Using custom CA certificates [_using_custom_ca_certificates]
 
@@ -225,7 +247,7 @@ To make binaries available in an air-gapped environment, you can host your own c
 
 1. Create a custom artifact registry in a location accessible to your {{agent}}s:
 
-    1. Download the latest release artifacts from the public {{artifact-registry}} at `https://artifacts.elastic.co/downloads/`. The required artifacts depend on which integrations you’re using and which operating systems your {{agent}}s run on. Make sure to also download the corresponding `.sha512` and PGP signature (`.asc`) files for each binary, as these are used for file integrity validation during installation and upgrade.
+    1. Download the latest release artifacts from the public {{artifact-registry}} at `https://artifacts.elastic.co/downloads/`. To check the download URL of each binary, go to the [{{agent}} download page](https://www.elastic.co/downloads/elastic-agent). The required artifacts depend on which integrations you’re using and which operating systems your {{agents}} run on. Make sure to also download the corresponding `.sha512` and PGP signature (`.asc`) files for each binary, as these are used for file integrity validation during installation and upgrade.
 
         To generate the full set of `curl` commands for all supported architectures and package types, save the following script and run it with your stack version as the argument:
 
@@ -354,31 +376,39 @@ To make binaries available in an air-gapped environment, you can host your own c
             * The 64bit  variant has a format  `<artifact_name>-<version>-x86_64.rpm`.
             * The aarch64 variant has a format  `<artifact_name>-<version>-aarch64.rpm`.
 
+    {{agents}} can only upgrade to versions that are available in your artifact registry. When a new {{agent}} version is released, add its artifacts to the registry, for example by running the preceding script with the new version number.
 
-    ::::{tip}
-    * If you’re ever in doubt, visit the [{{agent}} download page](https://www.elastic.co/downloads/elastic-agent) to see what URL the various binaries are downloaded from.
-    * Make sure you have a plan or automation in place to update your artifact registry when new versions of {{agent}} are available.
+2. Add your artifact registry as an agent binary source in {{fleet}}:
 
-    ::::
+    1. Open **{{fleet}}** → **Settings**.
+    2. In the **Agent Binary Download** section, select **Add agent binary source**.
+    3. Enter a **Name** and, in **Host**, the URL of your artifact registry. If you want all {{agents}} to download binaries from this location, select **Make this host the default for all agent policies**.
+    4. {applies_to}`stack: ga 9.4+` (Optional) To authenticate requests to your artifact registry, expand the **Authentication** section. In **Authentication type**, select **Username & password** or **API key**, and then enter the credentials. You can also add custom HTTP headers in the **Headers** section. For details, refer to [Configure authentication for binary downloads](/reference/fleet/fleet-settings.md#agent-binary-auth).
+    5. Select **Save and apply settings**.
 
-2. Add the agent binary download location to {{fleet}} settings:
-
-    1. Open **{{fleet}} → Settings**.
-    2. Under **Agent Binary Download**, click **Add agent binary source** to add the location of your artifact registry. For more details, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings). If you want all {{agents}} to download binaries from this location, set it as the default.
-
-        :::{note}
-        :applies_to: stack: ga 9.4+
-
-        To authenticate requests to your artifact registry, expand the **Authentication** section, and provide either a username and password, or an API key. Optionally, you can also add custom HTTP headers. For more details, refer to [Configure authentication for binary downloads](/reference/fleet/fleet-settings.md#agent-binary-auth).
-        :::
+    For more details, refer to [Agent binary download settings](/reference/fleet/fleet-settings.md#fleet-agent-binary-download-settings).
 
 3. If your artifact registry is not the default, edit your agent policies to override the default:
 
-    1. Go to **{{fleet}} → Agent policies** and click the policy name to edit it.
-    2. Click **Settings**.
-    3. Under **Agent Binary Download**, select your artifact registry.
+    1. Go to **{{fleet}}** → **Agent policies** and select the policy to edit it.
+    2. Select the **Settings** tab.
+    3. In the **Agent binary download** section, select your artifact registry.
+    4. Select **Save changes**.
 
-        When you trigger an upgrade for any {{agent}}s enrolled in the policy, the binaries are downloaded from your artifact registry instead of the public repository.
+    When you trigger an upgrade for any {{agents}} enrolled in the policy, the binaries are downloaded from your artifact registry instead of the public repository.
 
+4. {applies_to}`stack: ga 9.6+` (Optional) If you host more than one artifact registry, use the others as fallback sources:
 
-**Not using {{fleet}}?** For standalone {{agent}}s, you can set the binary download location under `agent.download.sourceURI` in the [`elastic-agent.yml`](/reference/fleet/elastic-agent-reference-yaml.md) file, or run the [`elastic-agent upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command with the `--source-uri` flag specified.
+    1. Add each artifact registry as an agent binary source, as described in step 2.
+    2. Go to **{{fleet}}** → **Agent policies** and select the policy to edit it.
+    3. Select the **Settings** tab. In the **Download source order** section, select **Add download source**, and then select an artifact registry. You can add up to two fallback sources.
+    4. Select **Save changes**.
+
+    {{agents}} 9.6 or later try the fallback sources in order if the download from the first source fails. The proxy, TLS, authentication, and disk space settings of the first source apply to all of them. For details, refer to [Change the {{agent}} binary download location](/reference/fleet/agent-policy.md#agent-binary-download-settings).
+
+For standalone {{agents}}, you can set the binary download location in the `agent.download` section of the [`elastic-agent.yml`](/reference/fleet/elastic-agent-reference-yaml.md) file, or run the [`elastic-agent upgrade`](/reference/fleet/agent-command-reference.md#elastic-agent-upgrade-command) command with the `--source-uri` flag. In the configuration file, set the location with one of these settings:
+
+* {applies_to}`stack: ga 9.6+` `sources`: A list of locations, which {{agent}} tries in order.
+* {applies_to}`stack: ga 9.0-9.5, deprecated 9.6+` `sourceURI`: A single location.
+
+For details, refer to [Configure download settings for standalone {{agent}} upgrades](/reference/fleet/elastic-agent-standalone-download.md).

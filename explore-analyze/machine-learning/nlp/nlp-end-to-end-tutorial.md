@@ -66,7 +66,7 @@ For the purposes of this guide, let’s say we have a data set of photo comments
 
 To upload this model to your deployment, you need a few pieces of data:
 
-* The deployment URL. You can get this via the **Copy endpoint** link next to **Elasticsearch** on the deployment management screen. It will look like `https://ml-test.es.us-west1.gcp.cloud.es.io:443`. Make sure to append the port if it isn’t present, as Eland requires the URL to have a scheme, host, and port. 443 is the default port for HTTPS.
+* The deployment URL. To find it, select **Elasticsearch** under **Application endpoints, cluster and component IDs** on the deployment management page, then copy the **Direct endpoint** value from the flyout. It will look like `https://ml-test.es.us-west1.gcp.cloud.es.io:443`. Make sure to append the port if it isn’t present, as Eland requires the URL to have a scheme, host, and port. 443 is the default port for HTTPS.
 * The deployment username and password for your deployment. This is displayed one time when the deployment is created. It will look like `elastic` and `xUjaFNTyycG34tQx5Iq9JIIA`.
 * The trained model id. This comes from Hugging Face. It will look like `distilbert-base-uncased-finetuned-sst-2-english`.
 * The trained model task type. This is the kind of machine learning task the model is designed to achieve. It will be one of: `fill_mask`, `ner`, `text_classification`, `text_embedding`, and `zero_shot_classification`. For our use case, we will use `text_classification`.
@@ -84,7 +84,7 @@ docker run -it --rm --network host \
       --start
 ```
 
-This script should take roughly 2-3 minutes to run. Once your model has been successfully deployed to your Elastic deployment, navigate to Kibana’s **Trained Models** page to verify it is ready. You can find this page under **Machine Learning > Analytics** menu and then **Trained Models > Model Management**. If you do not see your model in the list, you may need to click **Synchronize your jobs and trained models**. Your model is now ready to be used.
+This script should take roughly 2-3 minutes to run. Once your model has been successfully deployed to your Elastic deployment, navigate to Kibana’s **Trained Models** page to verify it is ready. You can find this page under **Machine Learning** → **Analytics** menu and then **Trained Models** → **Model Management**. If you do not see your model in the list, you may need to click **Synchronize your jobs and trained models**. Your model is now ready to be used.
 
 ## Create an index and define an ML inference pipeline [nlp-example-create-index-and-define-ml-inference-pipeline]
 

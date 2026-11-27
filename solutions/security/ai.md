@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/security/current/ai-for-security.html
   - https://www.elastic.co/guide/en/serverless/current/security-ai-for-security.html
 navigation_title: AI-assisted operations
-description: Learn how Elastic Security uses AI to automate alert triage, accelerate threat investigation, and augment SOC analyst workflows with Attack Discovery, AI Assistant, and Agent Builder.
+description: Learn how Elastic Security uses AI to automate alert triage, accelerate threat investigation, and augment SOC analyst workflows with Agent Builder and Attack Discovery.
 applies_to:
   stack: all
   serverless:
@@ -23,13 +23,14 @@ These security-specific AI capabilities build on Elastic's [platform-level AI in
 
 | Your goal | Start here |
 |---|---|
+| Set up AI features for the first time | [Set up AI features](/solutions/security/ai/set-up-ai-features.md) |
 | Automatically discover attacks across alerts | [Attack Discovery](/solutions/security/ai/attack-discovery/index.md) |
-| Get AI help with investigation, queries, and incident response | [AI Assistant](/solutions/security/ai/ai-assistant.md) or [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) |
+| Get AI help with investigation, queries, and incident response | [AI chat](#ai-chat-overview) |
 | Deploy an AI-powered SOC on {{sec-serverless}} | [Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) |
 | Compare LLM performance for security tasks | [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md) |
 | Walk through AI-driven security workflows end-to-end | [AI use case guides](#ai-use-case-guides) |
 | Connect to an LLM provider | [LLM connectors](/explore-analyze/ai-features/llm-guides/llm-connectors.md) |
-| {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4` Install the Security MCP App to open interactive {{elastic-sec}} dashboards in Claude, Cursor, or another AI tool | [Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md) |
+| Install the Security MCP App to open interactive {{elastic-sec}} dashboards in Claude, Cursor, or another AI tool | [Security MCP App](/solutions/security/mcp-app/elastic-security-mcp-app.md) |
 
 ## Interactive AI tools [interactive-ai-tools]
 
@@ -41,9 +42,27 @@ The following tools provide interactive, LLM-driven capabilities for security an
 
 ### AI chat [ai-chat-overview]
 
-{{elastic-sec}} offers two AI chat experiences: [Elastic AI Assistant for Security](/solutions/security/ai/ai-assistant.md) and [{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md). Both provide an LLM-powered chat interface that helps you with alert investigation, incident response, and {{esql}} query generation throughout {{elastic-sec}}, and both provide contextual insights that explain errors and suggest remediation steps.
+{{elastic-sec}} provides an LLM-powered chat interface for alert investigation, incident response, and {{esql}} query generation.
 
-However, there are several important differences in their capabilities. To learn more and choose which to use, refer to [AI Agent or AI Assistant](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
+#### {{agent-builder}} [ai-chat-agent-builder]
+
+```{applies_to}
+stack: preview =9.3, ga 9.4+
+serverless:
+  security: ga
+```
+
+[{{agent-builder}}](/solutions/security/ai/agent-builder/agent-builder.md) is the recommended AI chat experience for {{elastic-sec}}. It adds custom agents, tools, and skills to chat.
+
+#### AI Assistant [ai-chat-ai-assistant]
+
+```{applies_to}
+stack: ga 9.0-9.5, deprecated 9.6+
+serverless:
+  security: deprecated
+```
+
+The [AI Assistant for Security](/solutions/security/ai/ai-assistant.md) is deprecated and has been replaced by {{agent-builder}}. To move from AI Assistant, follow [](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md).
 
 ## Elastic AI SOC Engine [ease-overview]
 
@@ -52,7 +71,7 @@ serverless:
   security: preview
 ```
 
-[Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) is an {{sec-serverless}} project type that provides AI-powered tools to augment your existing SIEM and EDR/XDR platforms. EASE combines Attack Discovery, AI Assistant, and agentless data ingestion in a serverless deployment that you can start using in minutes. It's designed for teams that want to get value from AI-driven security operations quickly, without managing infrastructure.
+[Elastic AI SOC Engine (EASE)](/solutions/security/ai/ease/ease-intro.md) is an {{sec-serverless}} project type that provides AI-powered tools to augment your existing SIEM and EDR/XDR platforms. EASE combines Attack Discovery, {{agent-builder}}, and agentless data ingestion in a serverless deployment that you can start using in minutes. It's designed for teams that want to get value from AI-driven security operations quickly, without managing infrastructure.
 
 EASE also offers a [Value report](/solutions/security/ai/ease/ease-value-report.md) that summarizes key security metrics and helps you measure the impact of your AI-powered SOC.
 
@@ -66,16 +85,17 @@ In addition to the interactive tools described on this page, {{elastic-sec}} pro
 
 ## Choose the right LLM [choose-llm]
 
-Most security AI features require at least one working LLM connector. You can use Elastic Managed LLMs, which are available by default with a supported license, or [connect to third-party providers](/explore-analyze/ai-features/llm-guides/llm-connectors.md) such as OpenAI, Amazon Bedrock, Azure OpenAI, or Google Vertex AI. To compare how different models perform across security AI use cases, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md).
+Most security AI features require at least one working LLM connector. You can use Elastic Managed LLMs, which are available by default with a supported license, or [connect to third-party providers](/explore-analyze/ai-features/llm-guides/llm-connectors.md) such as OpenAI, Amazon Bedrock, Azure OpenAI, or Google Vertex AI. To compare how different models perform across security AI use cases, refer to the [LLM performance matrix](/solutions/security/ai/large-language-model-performance-matrix.md). For the other setup steps, refer to [Set up AI features](/solutions/security/ai/set-up-ai-features.md).
 
 ## AI use case guides [ai-use-case-guides]
 
-The following guides walk you through example workflows that demonstrate how AI Assistant and Attack Discovery work individually and together:
+The following guides walk you through example workflows that demonstrate how AI chat and Attack Discovery work individually and together.
 
-- [Triage alerts](/solutions/security/ai/triage-alerts.md): Use AI Assistant to analyze and triage alerts, including generating investigation reports.
-- [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md): Use Attack Discovery and AI Assistant together to find, investigate, and document potential threats.
-- [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md): Use AI Assistant to write and understand {{esql}} queries.
-- [Use AI Assistant's Knowledge Base to improve response quality](/solutions/security/ai/usecase-knowledge-base-walkthrough.md): Add custom knowledge to AI Assistant to improve the quality and relevance of its responses.
+- [Triage alerts](/solutions/security/ai/triage-alerts.md): Use AI chat to analyze and triage alerts, including generating investigation reports.
+- [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md): Use Attack Discovery and AI chat together to find, investigate, and document potential threats.
+- [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md): Use AI chat to write, run, and understand {{esql}} queries.
+- [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md): Example prompts for each built-in Security skill.
+- [Replace knowledge base content](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#replace-knowledge-base-content): Give {{agent-builder}} the context that you would keep in an AI Assistant Knowledge Base.
 
 ## Related capabilities [related-capabilities]
 

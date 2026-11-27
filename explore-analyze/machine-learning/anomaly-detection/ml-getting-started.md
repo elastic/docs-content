@@ -82,7 +82,7 @@ The results on this page might be different than the actual values you get when 
 
 The {{kib}} sample data sets include some pre-configured {{anomaly-jobs}} for you to play with. You can use either of the following methods to add the jobs:
 
-* After you load the [sample web logs data set](../../index.md#gs-get-data-into-kibana), click **View data** > **ML jobs**.
+* After you load the [sample web logs data set](../../index.md#gs-get-data-into-kibana), click **View data** → **ML jobs**.
 * In the Machine Learning app, when you select the `kibana_sample_data_logs` {{data-sources}} in the **Data Visualizer** or the **Anomaly Detection** job wizards, it recommends that you create a job using its known configuration. Select the **Kibana sample data web logs** configuration.
 * Accept the default values and click **Create Jobs**.
 
@@ -99,7 +99,7 @@ For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [
 
 ::::
 
-If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Stack Management** > **Anomaly Detection Jobs** page, which you can access from the navigation menu or using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). Alternatively, you can see the configuration files in [GitHub](https://github.com/elastic/kibana/tree/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
+If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Stack Management** → **Anomaly Detection Jobs** page, which you can access from the navigation menu or using the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md). Alternatively, you can see the configuration files in [GitHub](https://github.com/elastic/kibana/tree/master/x-pack/platform/plugins/shared/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
 
 * `low_request_rate` uses the `low_count` function to find unusually low request rates
 * `response_code_rates` uses the `count` function and partitions the analysis by `response.keyword` values to find unusual event rates by HTTP response code
@@ -132,7 +132,10 @@ Let’s start by looking at this simple job in the **Single Metric Viewer**:
 
 1. Select the **Anomaly Detection Jobs** tab in **{{ml-app}}** to see the list of your {{anomaly-jobs}}.
 2. Click the chart icon in the **Actions** column for your `low_request_rate` job to view its results in the **Single Metric Viewer**.
-3. Use the relative mode of the date picker to select a start date one week in the past and an end date one month in the future to cover the majority of the analyzed data points.
+3. To cover the majority of the analyzed data points, set the time range to start one week in the past and end one month in the future.
+
+   - {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` Enter `-1w to now+1M` in the time filter and press {kbd}`enter`. Alternatively, select **Custom range**, set **Start date** to one week in the past and **End date** to one month in the future, then select **Apply**.
+   - {applies_to}`stack: ga 9.0-9.6` Use the relative mode of the time filter to select a start date one week in the past and an end date one month in the future.
 
 :::{image} /explore-analyze/images/machine-learning-ml-gs-job1-analysis.jpg
 :alt: Single Metric Viewer for low_request_rate job
@@ -315,6 +318,8 @@ If you’re now thinking about where {{anomaly-detect}} can be most impactful fo
 3. Ideally, the data is located in {{es}} and you can therefore create a {{dfeed}} that retrieves data in real time.  If your data is outside of {{es}}, you cannot use {{kib}} to create your jobs and you cannot use {{dfeeds}}.
 
 In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](/explore-analyze/machine-learning/anomaly-detection/anomaly-how-tos.md).
+
+{applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6` To set up jobs for your own data without choosing the job settings yourself, you can [create {{anomaly-jobs}} with AI in a chat with {{agent-builder}}](ml-jobs-from-agent-builder.md).
 
 If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](/reference/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](/reference/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
 

@@ -13,9 +13,9 @@ description: Learn how ES|QL commands change the results you see in Discover by 
 
 # Get started with {{esql}} in Discover [try-esql]
 
-In this tutorial, you explore the {{kib}} sample web logs in **Discover** with Elasticsearch Query Language ({{esql}}). You build one query step by step and see how each command changes the results in the table and the chart.
+If you want to see what an {{esql}} query does in **Discover**, this tutorial builds one query step by step on the {{kib}} sample web logs. After each command you add, you see how the table and the chart change. No {{esql}} experience is needed.
 
-You don't need a [data view](discover-get-started.md#find-the-data-you-want-to-use), and you don't need {{esql}} experience. For the rest of Discover, refer to [Explore fields and data with Discover](discover-get-started.md). For the language itself, refer to the [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md).
+For anyone who knows **Discover**'s classic mode, the main difference is that {{esql}} queries an {{es}} index, a data stream, or another data source directly by name, with no [data view](../find-and-organize/data-views.md) to create first.
 
 By the end of this tutorial, you'll know the main elements of your query and how they shape the results you see in **Discover**. You'll practice how to:
 
@@ -36,9 +36,9 @@ To follow this tutorial, you need the following:
 - {{esql}} enabled in {{kib}}. It's enabled by default. On {{stack}} deployments, an administrator can turn it off with the `enableESQL` advanced setting.
 - The {{kib}} sample web logs. Add them from [Add sample data](/manage-data/ingest/sample-data.md). You can use your own indices instead. Replace `kibana_sample_data_logs` in the examples with a data source you can query, and replace the field names in later steps with fields from your data.
 
-Depending on the solution you use and the data you query, Discover can show slightly different columns and options than this tutorial. Refer to [Context-aware data exploration](discover-get-started.md#context-aware-discover).
+Depending on the solution you use and the data you query, Discover can show slightly different columns and options than this tutorial. Refer to [Context-aware experiences](discover-get-started.md#context-aware-discover).
 
-To help you go faster with what you learn in this tutorial, or to go further once you know the basics, the {{esql}} editor offers several tools. It suggests commands, fields, and values as you type, and its in-app help shows the syntax of each command. Depending on your version and setup, you can also browse data sources and fields, filter your data with KQL, or have AI write or fix a query. This tutorial has you write each command yourself so that you learn what it does. Refer to [Write queries with the {{esql}} editor](../query-filter/languages/esql-kibana.md#esql-kibana-get-started).
+To help you go faster with what you learn in this tutorial, or to go further once you know the basics, the {{esql}} editor offers several tools. It suggests commands, fields, and values as you type, and its in-app help shows the syntax of each command. Depending on your version and setup, you can also browse data sources and fields, filter your data with Kibana Query Language (KQL), or have AI write or fix a query. This tutorial has you write each command yourself so that you learn what it does. Refer to [Write queries with the {{esql}} editor](../query-filter/languages/esql-kibana.md#esql-kibana-get-started).
 
 ::::
 
@@ -82,7 +82,7 @@ Command names aren't case-sensitive, so `from` and `FROM` are the same.
 :width: 90%
 :::
 
-The table isn't the end of your exploration. To look at one result in detail, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier versions) on its row. The flyout lists all its fields, and you can filter the results from any of its values. Refer to [Explore individual result or document details in depth](discover-get-started.md#look-inside-a-document).
+The table isn't the end of your exploration. To look at one result in detail, select {icon}`maximize` **View details** (**Toggle dialog with details** in earlier versions) on its row. The flyout lists all its fields, and you can filter the results from any of its values. Refer to [Look inside a document](inspect-documents.md#look-inside-a-document).
 
 ::::
 
@@ -143,11 +143,13 @@ Because `WHERE` removes results, it changes both the table and the chart.
 
 **Result:** The results with `GB` as their destination are gone from the table and from the chart. The result count stays at 1,000 because of the default limit, but no `geo.dest` value is `GB`.
 
+To keep the results for one destination instead of excluding it, use `==`, as in `WHERE geo.dest == "GB"`. To keep the results for several destinations, list them with `IN`, as in `WHERE geo.dest IN ("GB", "CN", "US")`.
+
 You can also filter from the table, so you don't need to enter the field name and value. Hover over a value, then select **Filter for this** or **Filter out this**, and Discover writes the `WHERE` line for you. Refer to [Filter from a value in the results table](esql-results.md#refine-esql-query-from-table).
 
 :::{tip}
 :applies_to: { serverless: preview, stack: preview 9.3+ }
-If you know KQL, you can also filter from the editor's [search bar](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search). When you submit a KQL query there, Discover replaces your whole query with a `FROM` command and a `WHERE KQL()` line that contains your KQL query. Commands such as `KEEP` are removed, so to keep building on your query, use `WHERE`.
+If you know KQL, you can also filter from the editor's [search bar](../query-filter/languages/esql-kibana.md#esql-kibana-quick-search). When you submit a KQL query there, the editor replaces the query with a source command (`TS` if the query starts with `TS`, otherwise `FROM`) and a `WHERE KQL()` line that contains your KQL query. Commands such as `KEEP` are removed, so to keep building on your query, use `WHERE`.
 :::
 
 ::::
@@ -231,7 +233,7 @@ A Discover session saves the query, not a copy of the results. When you open the
 
 **Result:** Discover saves the session. To reopen it later, select **Open session** in the application menu, then select the session.
 
-To share the session, refer to [Share your Discover session](discover-get-started.md#share-your-findings). To add the chart or the table to a dashboard, refer to [Keep the chart or the table](esql-results.md#_edit_the_esql_visualization).
+To share the session, refer to [Share a link to the current view](copy-and-share-documents.md#share-your-findings). To add the chart or the table to a dashboard, refer to [Keep the chart or the table](esql-results.md#_edit_the_esql_visualization).
 
 ::::
 
@@ -239,15 +241,15 @@ To share the session, refer to [Share your Discover session](discover-get-starte
 
 ## Next steps
 
-- [Use Discover with {{esql}}](use-esql.md): Explore the other {{esql}} tasks in Discover, including variable controls.
+- [How to query in Discover's {{esql}} mode](use-esql.md): Find more ways to write and refine {{esql}} queries, including variable controls.
 - [Create lookup indices from Discover queries](create-lookup-indices.md): Add fields from a lookup index with `LOOKUP JOIN`.
 - [Detect change points in Discover](detect-change-points.md): Find a spike, dip, or shift in a time series.
 - [{{esql}} reference](elasticsearch://reference/query-languages/esql/esql-syntax-reference.md): Look up commands, functions, and operators beyond this tutorial.
-- [Use {{esql}} in the {{kib}} UI](../query-filter/languages/esql-kibana.md): Use editor tools, time parameters, AI assistance, and Fast mode.
+- [](../query-filter/languages/esql-kibana.md): Use editor tools, time parameters, AI assistance, and Fast mode.
 - [Learn data exploration and visualization with Kibana](../kibana-data-exploration-learning-tutorial.md): Follow a longer path from Discover into dashboards.
 
 ## Related pages
 
 - [Discover](../discover.md)
-- [Explore fields and data with Discover](discover-get-started.md)
+- [How Discover works](discover-get-started.md)
 - [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md)

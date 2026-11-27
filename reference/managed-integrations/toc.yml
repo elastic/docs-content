@@ -1,0 +1,5 @@
+toc:
+  - file: index.md
+  - file: enable-managed-integration.md
+  - file: federated-identity.md
+  - file: managed-integrations-faq.md

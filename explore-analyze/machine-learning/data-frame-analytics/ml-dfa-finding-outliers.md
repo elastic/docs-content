@@ -238,7 +238,7 @@ POST _transform/logs-by-clientip/_start
 
 4. Create a {{dfanalytics-job}} to detect outliers in the new entity-centric index.
 
-   In the wizard on the **Machine Learning** > **Data Frame Analytics** page in {{kib}}, select your new {{data-source}} then use the default values for {{oldetection}}. For example:
+   In the wizard on the **Machine Learning** → **Data Frame Analytics** page in {{kib}}, select your new {{data-source}} then use the default values for {{oldetection}}. For example:
    :::{image} /explore-analyze/images/machine-learning-weblog-outlier-job-1.jpg
    :alt: Create a {{dfanalytics-job}} in {{kib}}
    :screenshot:
@@ -280,7 +280,7 @@ PUT _ml/data_frame/analytics/weblog-outliers
    After you configured your job, the configuration details are automatically validated. If the checks are successful, you can proceed and start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
 
 5. Start the {{dfanalytics}} job.
-   You can start, stop, and manage {{dfanalytics-jobs}} on the **Machine Learning** > **Data Frame Analytics** page. Alternatively, you can use the [start {{dfanalytics}} jobs]({{es-apis}}operation/operation-ml-start-data-frame-analytics) and [stop {{dfanalytics}} jobs]({{es-apis}}operation/operation-ml-stop-data-frame-analytics) APIs.
+   You can start, stop, and manage {{dfanalytics-jobs}} on the **Machine Learning** → **Data Frame Analytics** page. Alternatively, you can use the [start {{dfanalytics}} jobs]({{es-apis}}operation/operation-ml-start-data-frame-analytics) and [stop {{dfanalytics}} jobs]({{es-apis}}operation/operation-ml-stop-data-frame-analytics) APIs.
 
 ::::{dropdown} API example
 

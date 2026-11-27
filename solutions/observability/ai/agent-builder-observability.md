@@ -26,9 +26,11 @@ While Agent Builder works with any [configured model](/explore-analyze/ai-featur
 
 ## {{observability}} capabilities
 
-::::{applies-switch}
-
-:::{applies-item} { stack: preview 9.4+, serverless: preview }
+### Built-in skills
+```{applies_to}
+stack: preview 9.4+
+serverless: preview
+```
 
 The Elastic AI Agent includes built-in [{{observability}} skills](/explore-analyze/ai-features/agent-builder/builtin-skills-reference.md#observability-skills) designed to assist with infrastructure monitoring, application performance troubleshooting, and root cause analysis.
 
@@ -56,17 +58,44 @@ When you chat with the agent from a Synthetics monitor detail page, it automatic
 - Configured locations (public and private)
 - Tags
 
-:::
+### Investigate an alert or the service map [observability-agent-investigation-requirements]
+```{applies_to}
+stack: ga 9.6+
+serverless: ga
+```
 
-:::{applies-item} stack: preview =9.3, removed =9.4
+{{agent-builder}} can start an investigation from the {{observability}} view where you spotted a problem. Use **Add to chat** in the header of an alert detail page, or **Investigate map** on the full **Service map** page. Each action opens a new conversation that already includes the context of what you were viewing, so the agent can begin investigating without you describing the problem first.
 
-Agent Builder features a built-in [{{observability}} agent](/explore-analyze/ai-features/agent-builder/builtin-agents-reference.md#observability-agent) designed to assist with infrastructure monitoring and application performance troubleshooting.
+Both actions require:
 
-By default it includes some of the [platform core tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#platform-core-tools) and [{{observability}} tools](/explore-analyze/ai-features/agent-builder/tools/builtin-tools-reference.md#observability-tools). You can [clone the agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-new-agent) to create a version with access to additional built-in or custom tools. To learn more about the available tools, refer to [](/explore-analyze/ai-features/agent-builder/tools/custom-tools.md).
+- An Enterprise license on the {{stack}}, or the [Observability Complete feature tier](/solutions/observability/observability-serverless-feature-tiers.md#obs-subscription-features) on {{obs-serverless}}.
+- The [Agent Builder chat experience](/explore-analyze/ai-features/ai-chat-experiences/ai-agent-or-ai-assistant.md#switch-between-chat-experiences).
+- An available model through a supported inference endpoint or Generative AI connector, including preconfigured models. Refer to [Model configuration](/explore-analyze/ai-features/agent-builder/models.md).
+- [Permission to use Agent Builder](/explore-analyze/ai-features/agent-builder/permissions.md) and read the data you want to investigate.
 
-:::
+If an action is missing, check these requirements with your administrator.
 
-::::
+#### Alert context [observability-agent-alert-context]
+
+When you click **Add to chat** on an {{observability}} alert detail page, the new conversation includes an `observability.alert` attachment. The attachment identifies the selected alert so the agent can retrieve its full details, including the rule, status, reason, and related entities, using your permissions.
+
+The conversation automatically starts with `Investigate this alert`. Follow the steps to [start an AI investigation from an alert](/solutions/observability/incident-management/view-alerts.md#observability-alert-ai-investigation).
+
+#### Service map context [observability-agent-service-map-context]
+
+When you click **Investigate map** on the full **Service map** page, the new conversation includes a **Service map context** attachment (`observability.service-map-context`). It captures these settings from the view:
+
+- Time range
+- Selected environment
+- KQL query
+- Selected service group
+- Highlighted services
+
+The attachment contains the view settings, not a snapshot of the map data. The agent retrieves data for the investigation and prioritizes highlighted services.
+
+The service group is included as context but does not restrict the investigation's data queries to that group. The environment and KQL query filter service health information, but the topology can include connections from other environments.
+
+For the entry point and the investigation's findings, refer to [Investigate the service map with AI](/solutions/observability/apm/service-map.md#service-map-ai-investigation).
 
 ## Use Agent Builder and Workflows together
 

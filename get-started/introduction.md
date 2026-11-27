@@ -10,7 +10,7 @@ applies_to:
   serverless:
 ---
 
-# Solutions overview [introduction]
+# Elastic solutions overview [introduction]
 
 Elastic offers four search-powered solution and project types, all built on an open source, extensible [platform](/get-started/the-stack.md): {{es}}, {{es}} {{vectordb}}, Elastic {{observability}}, and {{elastic-sec}}.
 
@@ -43,9 +43,6 @@ If you're new to Elastic, you can find quickstarts and introductory steps for ea
 :::{include} _snippets/observability-overview.md
 :::
 
-## {{elastic-sec}}
-:::{include} _snippets/security-overview.md
-:::
 -->
 % TODO: cleanup these links, consolidate with Explore and analyze
 $$$what-is-kib$$$

@@ -2,11 +2,13 @@
 navigation_title: Visualizations
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
+description: Build charts, tables, and metrics in Kibana with Lens. Add fields, use formulas and annotations, and save the result to a dashboard or the Visualize library.
 applies_to:
   stack: ga
   serverless: ga
 products:
   - id: kibana
+type: how-to
 ---
 
 # Lens visualizations [lens]
@@ -92,6 +94,8 @@ In the Lens editor, use the {icon}`brush` **Style** and ![Legend icon](/explore-
 You can add multiple layers to a visualization, such as **Visualization**, [**Annotations**](#add-annotations), or [**Reference lines**](#add-reference-lines). Click the **Add layer** icon {icon}`plus_square` , then choose the layer type and select the {{data-source}}. 
 To duplicate or delete a layer, click ![Actions menu to duplicate Lens visualization layers](/explore-analyze/images/kibana-vertical-actions-menu.png "") on the layer tab.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` To add layers to a visualization built from an {{esql}} query, refer to [Add multiple layers to {{esql}} charts](esorql.md#esql-viz-multi-layer).
+
 ::::
 
 ::::{step} Save and add the panel
@@ -104,7 +108,7 @@ $$$save-the-lens-panel$$$
 
 :::::
 
-Once you have created your visualization, you can edit it directly on the dashboard. Click the **Edit visualization configuration** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
+Once you have created your visualization, you can edit it directly on the dashboard. Select the **Edit visualization** icon ![Edit visualization icon](/explore-analyze/images/kibana-edit-visualization-icon.png "") on the panel.
 
 
 ### Change the fields list [change-the-fields]
@@ -231,7 +235,7 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 Lens formulas let you do math using a combination of {{es}} aggregations and math functions. For example, you can use formulas to divide two values and produce a percent value.
 
-When you add a categorical field to your visualization, select the field to open its appearance settings, choose **Formula**, and set **Appearance** > **Value format** to **Percent** for a more accurate display.
+When you add a categorical field to your visualization, select the field to open its appearance settings, choose **Formula**, and set **Appearance** → **Value format** to **Percent** for a more accurate display.
 
 For more details on how it works, click the **Formula reference** icon ![Formula reference icon](/explore-analyze/images/kibana-formula_reference.png "") on the Formula panel.
 
@@ -316,9 +320,9 @@ From the annotation panel, you can choose the type of placement and adjust the i
       2. In the **Annotation date** field, click ![Annodation date icon in Lens](/explore-analyze/images/kibana-lens_annotationDateIcon_8.6.0.png ""), then select the date.
       3. To display the annotation as a time range, select **Apply as range**, then specify the **From** and **To** dates.
 
-    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search). To create custom query annotations:
+    - **Custom query** — Displays annotations based on custom {{es}} queries. For information about queries, check the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md). To create custom query annotations:
       1. Select **Custom query**.
-      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
+      2. Enter the **Annotation query** for the data you want to display. For detailed information about queries and examples, check the [KQL syntax reference](elasticsearch://reference/query-languages/kql.md).
       3. Select the **Target date field**.
 
 **Appearance**
@@ -359,7 +363,7 @@ For example, to track the number of bytes in the 75th percentile, add a shaded *
 :screenshot:
 :::
 
-From your visualization, click **Add layer > Reference lines**. Click the vertical axis value, and specify the reference line you want to use by choosing one fhe following placement methods:
+From your visualization, click **Add layer** → **Reference lines**. Click the vertical axis value, and specify the reference line you want to use by choosing one fhe following placement methods:
 
 **Static**
 :   To add a static reference line.
@@ -418,7 +422,12 @@ In the legend, click the field, then choose one of the following options:
 
 When your visualization includes one data view, you can open and explore the visualization data in **Discover**.
 
-To get started, click **Explore data in Discover** in the toolbar.
+Open the data in **Discover**:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Open in Discover**.
+- {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Explore in Discover**.
+
+To open the data behind a visualization that's already on a dashboard, refer to [Open the data behind a panel in Discover](../dashboards/using.md#explore-panel-data-in-discover).
 
 For more information about exploring your data with **Discover**, check out [Discover](../discover.md).
 
@@ -427,7 +436,11 @@ For more information about exploring your data with **Discover**, check out [Dis
 
 To view the data included in the visualization and the requests that collected the data, use the **Inspector**.
 
-1. In the toolbar, click **Inspect**.
+1. Open the **Inspector**:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the application menu, select {icon}`ellipsis` **More** → **Inspect**.
+    - {applies_to}`stack: ga 9.0-9.5` In the toolbar, select **Inspect**.
+
 2. Open the **View** dropdown, then click **Data**.
 
     1. From the dropdown, select the table that contains the data you want to view.
@@ -452,7 +465,7 @@ For answers to common **Lens** questions, review the following.
 To normalize the interval:
 
 1. In the layer pane, click a field.
-2. Click **Add advanced options > Normalize by unit**.
+2. Click **Add advanced options** → **Normalize by unit**.
 3. From the **Normalize by unit** dropdown, select an option, then click **Close**.
 
 To create a custom interval:
@@ -525,7 +538,7 @@ Here’s a short list of few different aspects to check:
 ::::{dropdown} How do I sort by multiple columns?
 :name: can-i-sort-by-multiple-columns
 
-Multiple column sorting is unsupported, but is supported in **Discover**. For information on how to sort multiple columns in **Discover**, refer to [Explore the fields in your data](../discover/discover-get-started.md#explore-fields-in-your-data).
+Multiple column sorting is unsupported, but is supported in **Discover**. For information on how to sort multiple columns in **Discover**, refer to [Sort documents by one or more fields](../discover/document-explorer.md#document-explorer-sort-data).
 
 ::::
 

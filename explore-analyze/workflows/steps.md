@@ -58,6 +58,7 @@ AI steps introduce reasoning and language understanding into workflows. Use them
 * Classify inputs into a fixed category set with [`ai.classify`](/explore-analyze/workflows/steps/ai-steps.md#ai-classify).
 * Summarize content with [`ai.summarize`](/explore-analyze/workflows/steps/ai-steps.md#ai-summarize).
 * Invoke an {{agent-builder}} agent as a step with [`ai.agent`](/explore-analyze/workflows/steps/ai-steps.md#ai-agent).
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Manage the [attachments](/explore-analyze/workflows/steps/ai-steps.md#ai-attachment-steps) and [metadata](/explore-analyze/workflows/steps/ai-steps.md#ai-conversation-metadata-steps) of {{agent-builder}} conversations.
 
 Refer to [](/explore-analyze/workflows/steps/ai-steps.md) for the complete AI-step catalog.
 

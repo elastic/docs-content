@@ -1,4 +1,5 @@
 ---
+description: Manage Fleet-managed Elastic Agents from the Agents tab in Fleet. Unenroll, upgrade, migrate, restart, monitor, tag, and export agents, and check their health status.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/manage-agents.html
 applies_to:
@@ -25,8 +26,9 @@ To manage your {{agent}}s, find **Fleet** in the navigation menu or use the [glo
 | [Set inactivity timeout](/reference/fleet/set-inactivity-timeout.md) | Set inactivity timeout to move {{agent}}s to inactive status after being offline for the set amount of time. |
 | [Upgrade {{agent}}s](/reference/fleet/upgrade-elastic-agent.md) | Upgrade {{agent}}s to the latest version. |
 | [Migrate {{agent}}s](/reference/fleet/migrate-elastic-agent.md) | Migrate {{agent}}s from one cluster to another. |
+| [Restart {{agent}}s](/reference/fleet/restart-elastic-agent.md) {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` | Remotely restart the {{agent}} process on one or more hosts. |
 | [Monitor {{agent}}s](/reference/fleet/monitor-elastic-agent.md) | Monitor {{fleet}}-managed {{agent}}s by viewing agent status, logs, and metrics. |
-| [Add tags to filter the Agents list](/reference/fleet/filter-agent-list-by-tags.md) | Add tags to {{agent}}, then use the tags to filter the Agents list in {{fleet}}. |
+| [](/reference/fleet/filter-agent-list-by-tags.md) | Add, rename, and delete {{agent}} tags, then use the tags to filter the Agents list in {{fleet}}. |
 | [Export {{agent}}s to a CSV file](/reference/fleet/export-agents-csv.md) | Download a CSV report of selected agents, including the columns you select. |
 
 

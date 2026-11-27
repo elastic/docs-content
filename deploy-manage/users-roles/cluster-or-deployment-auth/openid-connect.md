@@ -175,6 +175,12 @@ That document should contain all the necessary information to configure the Open
 
 When authenticating to {{kib}} using OpenID Connect, the OP will provide information about the user in the form of **OpenID Connect Claims**. These claims can be included either in the ID Token, or be retrieved from the UserInfo endpoint of the OP.
 
+The OpenID Connect realm reads claims only from the ID Token and, when [`op.userinfo_endpoint`](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings) is configured, from the UserInfo response. It doesn't read claims from the access token, which it uses only to call the UserInfo endpoint. Which claims the UserInfo endpoint returns depends on your OP configuration.
+
+::::{important}
+Some OPs let you choose which token a custom claim is added to. If a claim is added only to the access token, it's not available to the OpenID Connect realm for claims mapping or role mapping. Configure the OP to include the claim in the ID Token or in the UserInfo response instead.
+::::
+
 An **OpenID Connect Claim** is a piece of information asserted by the OP for the authenticated user, and consists of a name/value pair that contains information about the user.
 
 **OpenID Connect Scopes** are identifiers that are used to request access to specific lists of claims. The standard defines a set of scope identifiers that can be requested.

@@ -44,7 +44,7 @@ You can also update an entity's asset criticality conversationally with {{agent-
 :::
 
 ::::{note}
-If you assign asset criticality using the file import feature, risk scores are **not** immediately recalculated. However, you can trigger an immediate recalculation by clicking **Recalculate entity risk scores now**. Otherwise, the newly assigned or updated asset criticality levels will be factored in during the next hourly risk scoring calculation.
+If you assign asset criticality using the file import feature, risk scores are **not** immediately recalculated. The newly assigned or updated asset criticality levels are factored in during the next hourly risk scoring calculation.
 ::::
 
 
@@ -54,38 +54,13 @@ You can view, assign, change, or unassign asset criticality from the following p
 * The [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout)
 * The entity details flyout in [Timeline](../investigate/timeline.md)
 
-If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the **Entities** section on the following pages:
-
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md)
-* [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
+If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the entity table on the [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) page.
 
 ### Bulk assign asset criticality [bulk-assign-asset-criticality]
 
 You can bulk assign asset criticality to multiple entities by importing a CSV, TXT or TSV file from your asset management tools.
 
-The file must contain three columns, with each entity record listed on a separate row:
-
-1. The first column should indicate whether the entity is a `host`, `user`, or `service`.
-2. The second column should specify the entity’s `host.name`, `user.name`, or `service.name`.
-3. The third column should specify one of the following asset criticality levels:
-
-    * `extreme_impact`
-    * `high_impact`
-    * `medium_impact`
-    * `low_impact`
-    * {applies_to}`stack: ga 9.1` `unassigned`
-
-
-The maximum file size is 1 MB.
-
-File structure example:
-
-```txt
-user,user-001,low_impact
-user,user-002,medium_impact
-host,host-001,extreme_impact
-service,service-001,extreme_impact
-```
+The import UI shows the maximum file size, required file structure, and an example file.
 
 To import a file:
 
@@ -93,8 +68,8 @@ To import a file:
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
+    * **Security solution view**: Find **{{stack-manage-app}}** → **Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage** → **Entity Analytics** in the navigation menu.
 2. Go to the **Asset Criticality** tab.
 3. Select or drag the file you want to import.
 
@@ -120,7 +95,12 @@ To import a file:
 
 This process overwrites any previously assigned asset criticality levels for the entities included in the imported file. The newly assigned or updated asset criticality levels are immediately visible within all asset criticality workflows.
 
-You can trigger an immediate recalculation of entity risk scores by clicking **Recalculate entity risk scores now**. Otherwise, the newly assigned or updated asset criticality levels will be factored in during the next hourly risk scoring calculation.
+The new asset criticality levels are factored into entity risk scores during the next hourly risk scoring calculation.
+
+:::{note}
+:applies_to: {stack: removed 9.6+, serverless: removed}
+To recalculate entity risk scores immediately after importing a file, click **Recalculate entity risk scores now**.
+:::
 
 
 ## Improve your security operations [_improve_your_security_operations]

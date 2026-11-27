@@ -9,7 +9,7 @@ products:
   - id: cloud-kubernetes
   - id: elasticsearch
 ---
-# Prepare to upgrade
+# Prepare to upgrade {{es}}
 
 This document describes the preparation steps for upgrading {{es}}, which vary depending on the type of upgrade. These steps follow the [upgrade planning](./plan-upgrade.md) phase, and should be completed before proceeding to [upgrade your deployment or cluster](./deployment-or-cluster.md).
 

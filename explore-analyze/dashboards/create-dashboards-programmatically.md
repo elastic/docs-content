@@ -55,7 +55,7 @@ Panel types without a defined schema, such as Maps, aren't supported yet and ret
 
 Dashboard requests are subject to [panel limits](arrange-panels.md#dashboard-panel-limits): up to 1,000 top-level items (panels and sections combined), 1,000 panels per section, and 100 pinned controls. The total number of panels, sections, and pinned controls across the dashboard also can't exceed 1,000. Requests that exceed these limits are rejected with a validation error.
 
-Refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the full request schema, panel types, and authentication requirements. For panel sizing and layout guidance when specifying grid coordinates by hand, refer to [Organize dashboard panels](arrange-panels.md#dashboard-grid-layout).
+Refer to the [Dashboards API reference](https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards) for the full request schema, panel types, and authentication requirements. For panel sizing and layout guidance when specifying grid coordinates by hand, refer to [Organize dashboard panels](arrange-panels.md#dashboard-grid-layout).
 
 ## Visualizations API [lens-visualizations-api]
 ```{applies_to}
@@ -73,4 +73,4 @@ Use the Visualizations API when you need to:
 
 To embed a saved visualization in a dashboard, add a `vis` panel to your Dashboards API request with `config.ref_id` set to the visualization's ID.
 
-Refer to the [Visualizations API reference](https://elastic.github.io/dashboards-api-spec/visualizations#tag/Visualizations).
+Refer to the [Visualizations API reference](https://www.elastic.co/docs/api/kibana/group/endpoint-visualizations).

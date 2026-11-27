@@ -39,9 +39,8 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-firewall-step-one]
 
-1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-2. Browse the catalog to find the AWS integration.
-3. Navigate to the **Settings** tab and click **Install AWS assets**.
+:::{include} _snippets/install-aws-integration-assets.md
+:::
 
 
 ## Step 2: Select a resource [firehose-firewall-step-two]
@@ -69,7 +68,7 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
 
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
-        3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        3. Under **Application endpoints, cluster and component IDs**, select **Elasticsearch** and copy the **Direct endpoint** value from the flyout.
         4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:

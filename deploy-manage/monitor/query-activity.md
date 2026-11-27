@@ -17,6 +17,8 @@ The **Query activity** page in {{kib}} gives you a real-time view of all search 
 Query activity surfaces all in-flight search requests in your cluster, including ES|QL, DSL, EQL, and SQL queries, multi-search requests, and background searches.
 It shows only what is currently running. For historical query data, use [query logs](/deploy-manage/monitor/logging-configuration/query-logs.md) or [AutoOps](/deploy-manage/monitor/autoops.md).
 
+{applies_to}`serverless: unavailable` You can also find and cancel queries with the task management APIs. Refer to [Find and cancel long-running queries](elasticsearch://reference/query-languages/query-task-management.md).
+
 :::{image} /deploy-manage/images/query-activity.png
 :alt: The Query activity page showing a list of running queries with their task ID, query type, source, start time, and run time
 :screenshot:
@@ -40,7 +42,7 @@ Find the **Query activity** page using the navigation menu or the [global search
 ## View running queries
 
 The **Query activity** page lists all in-flight search tasks in your cluster.
-The list does not auto-refresh. Select **Refresh** to update the data. The time of the last refresh is displayed next to the button.
+The list does not auto-refresh. Select **Refresh** to update the data. The page also shows how long ago the data was last refreshed.
 
 :::{tip}
 Searches that users [send to the background](/explore-analyze/discover/background-search.md) from Discover or Dashboards also appear on this page as **Async search** queries. Background search lets users queue their own Discover and Dashboards long-running searches and return to view results later. Query activity gives administrators cluster-wide visibility to monitor and manage all running queries.

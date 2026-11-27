@@ -33,7 +33,7 @@ The same four stages apply whether you manage dashboards with the Dashboards API
 
 Once a dashboard is managed as code, treat Git as the single source of truth: changes made directly in the UI are overwritten the next time you deploy.
 
-For the request schema and authentication details, refer to the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards).
+For the request schema and authentication details, refer to the [Dashboards API reference](https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards).
 
 ## Keep references portable across environments [dashboards-as-code-portability]
 
@@ -58,8 +58,10 @@ The result carries no external references, so the dashboard stays fully portable
 
 If you keep references to saved objects, give each object the same ID in every environment so the references always resolve:
 
-- **Dashboards and library visualizations**: create them with the [Dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) and [Visualizations API](https://elastic.github.io/dashboards-api-spec/visualizations#tag/Visualizations) using `PUT` (upsert) with a chosen ID (`PUT /api/dashboards/{id}` or `PUT /api/visualizations/{id}`), rather than `POST`, which generates a new ID each time. Because the exported definition already contains these IDs, re-importing it with `PUT` recreates the same objects, with the same IDs, in the target environment.
-- **Data views**: create them with a chosen ID, either through the [Data Views API]({{kib-apis}}operation/operation-createdataviewdefaultw) by passing an `id` in the POST request, or in the UI by [setting a **Custom data view ID**](../find-and-organize/data-views/create-data-view.md). Use human-readable IDs, such as `logs-prod`, so they are easy to reuse and recognize.
+- **Dashboards and library visualizations**: create them with the [Dashboards API](https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards) and [Visualizations API](https://www.elastic.co/docs/api/kibana/group/endpoint-visualizations) using `PUT` (upsert) with a chosen ID (`PUT /api/dashboards/{id}` or `PUT /api/visualizations/{id}`), rather than `POST`, which generates a new ID each time. Because the exported definition already contains these IDs, re-importing it with `PUT` recreates the same objects, with the same IDs, in the target environment.
+- **Data views**: create them with a chosen ID, either through the API or in the UI by [setting a **Custom data view ID**](../find-and-organize/data-views/create-data-view.md). Use human-readable IDs, such as `logs-prod`, so they are easy to reuse and recognize. To choose the ID through the API:
+  - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Use the [Data views v2 API]({{kib-apis}}group/endpoint-data-views-v2).
+  - {applies_to}`stack: ga 9.0-9.5` Use the [Data views API]({{kib-apis}}operation/operation-createdataviewdefaultw) and pass an `id` in the `POST` request.
 
 Regardless of the approach, to deploy a dashboard to a different space within the same cluster, include the destination space's ID in the request URL. The [JSON export flow](sharing.md#export-dashboard-json) can open a pre-populated request in {{kib}} Dev Tools Console, where you set the destination space before sending it.
 
@@ -88,7 +90,7 @@ For every attribute and panel type, refer to the [`elasticstack_kibana_dashboard
 
 To put this workflow into practice, choose the path that matches your tooling:
 
-- **Use the Dashboards API directly**: see the [Dashboards API reference](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) for the request schema and authentication, or [Create dashboards programmatically](create-dashboards-programmatically.md) for an overview of the supported panel types and limits.
+- **Use the Dashboards API directly**: see the [Dashboards API reference](https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards) for the request schema and authentication, or [Create dashboards programmatically](create-dashboards-programmatically.md) for an overview of the supported panel types and limits.
 - **Manage dashboards with Terraform**: follow [Getting started with Kibana dashboards](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/guides/kibana-dashboard-getting-started) to build your first dashboard as code.
 
 For the background on this workflow and a worked Terraform example, see the [Kibana dashboards as code: GitOps with Terraform](https://www.elastic.co/search-labs/blog/kibana-dashboards-as-code-terraform-api) blog (May 2026).

@@ -73,6 +73,7 @@ defaults:
      - source: "Name"
      - source: "ID"
      - source: "Model Card"
+     - source: "Author Terms"
      - source: "Provider Terms"
      - source: "Input Modalities"
      - source: "Output Modalities"
@@ -108,6 +109,14 @@ outputs:
      filter:
        column: "Type"
        values: ["Reranker"]
+     sort:
+       by: "Name"
+       direction: "ascending"
+#
+   - filename: "decision-models.csv"
+     filter:
+       column: "Type"
+       values: ["Decision"]
      sort:
        by: "Name"
        direction: "ascending"

@@ -1,4 +1,5 @@
 ---
+navigation_title: Full-text search
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-search.html
 applies_to:
@@ -8,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Full-text search [full-text-search]
+# Full-text search in {{es}} [full-text-search]
 
 ::::{tip}
 If you'd prefer to start with a hands-on example, refer to our [full-text search tutorial](elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md).
@@ -48,6 +49,7 @@ Learn how to build full-text search queries using {{es}}'s query languages:
 
 * [Full-text queries using Query DSL](elasticsearch://reference/query-languages/query-dsl/full-text-queries.md)
 * [Full-text search functions in {{esql}}](elasticsearch://reference/query-languages/esql/functions-operators/search-functions.md)
+* [Search by term proximity and order with the Query DSL intervals query](full-text/intervals-query-tutorial.md)
 
 **Advanced topics**
 

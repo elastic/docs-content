@@ -32,17 +32,102 @@ In version 9.4+, [index search tools](tools/index-search-tools.md) support [cros
 
 In previous versions, only [{{esql}} tools](tools/esql-tools.md) support CCS. To search remote clusters, use a custom {{esql}} tool and instruct your agent to query `remote_cluster:index_name`.
 
+### Frozen tier data excluded by default [frozen-tier-data]
+
+```{applies_to}
+stack: ga 9.4.8+
+```
+
+{{agent-builder}} tools can exclude documents stored in the [frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier). Searching that data recovers [searchable snapshots](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) from object storage. These searches are slow and can cause tool calls to time out.
+
+:::{note}
+[Data tiers](/manage-data/lifecycle/data-tiers.md) are not relevant to {{serverless-short}} which automatically handles data storage and scaling. 
+:::
+
+{applies_to}`stack: ga 9.4.8+` Behavior depends on your version:
+
+* {applies_to}`stack: ga 9.4.8+` **9.4.0 through 9.4.7, and 9.5.0 through 9.5.4:** Tools read frozen tier data.
+* {applies_to}`stack: ga 9.4.8+` **9.4.8 and 9.5.5:** Tools always exclude frozen tier data, and the options to include it aren't available.
+* {applies_to}`stack: ga 9.4.8+` **9.4.9, 9.5.6, and later:** Tools exclude frozen tier data by default. You can include it with the options in this section.
+
+Query tools exclude documents in frozen tier indices. This includes the built-in `execute_esql`, `generate_esql`, and `search` tools, plus custom [{{esql}} tools](tools/esql-tools.md) and [index search tools](tools/index-search-tools.md).
+
+* If only some matching documents are frozen, the tool returns the rest.
+* If every matching document is frozen, the tool returns no documents.
+
+Mapping tools differ:
+
+* `get_index_mapping` can omit fields that exist only in frozen backing indices. This applies when it reads a data stream, an alias, an index pattern, or a remote index. A request for one local index still returns that index mapping.
+* `index_explorer` can omit those fields for remote clusters. For a local data stream, it returns the data stream mapping, which doesn't apply this filter.
+
+These Security tools have no `include_frozen` parameter. On versions that exclude frozen tier data, they always exclude it. The options in this section don't apply to them:
+
+* `security.alerts`
+* `security.attack_discovery_search`
+* `security.search_entities`
+* `security.get_entity`, when it reads profile history
+* {applies_to}`stack: preview 9.5` `security.pci_compliance`
+
+#### Include frozen tier data
+
+```{applies_to}
+stack: ga 9.4.9+
+```
+
+To include frozen tier data, use one of these options:
+
+* **For one tool call:** Ask the agent to include frozen tier data. Built-in tools accept an `include_frozen` parameter. The parameter description tells the agent to set it to `true` only when you or the agent instructions ask for frozen tier data. For details, refer to [Frozen tier data in built-in tools](tools/builtin-tools-reference.md#agent-builder-builtin-tools-frozen-tier).
+* **For a custom tool:** In **Data tiers**, select **Include frozen tier data**. Or set `include_frozen` to `true` in the tool `configuration` object in the [Tools API](kibana-api.md#tools-apis).
+* **For all five built-in tools in a space:** Turn on **Elastic Agent Builder: Include frozen tier data by default** (`agentBuilder:includeFrozenByDefault`). This is an [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings). Use it for [Model Context Protocol (MCP) clients](mcp-server.md), where you can't adjust a single agent prompt.
+
+  When the setting is on, the parameter description tells the agent to set `include_frozen` to `false` only when you or the agent instructions ask to exclude frozen tier data. An explicit `include_frozen` value on a tool call overrides the setting. The setting doesn't affect custom tools or the Security tools in this section.
+
+Including frozen tier data doesn't extend tool timeouts. Queries over large amounts of frozen data can still time out.
+
 ### A2A streaming not supported
 
-The [A2A server](a2a-server.md) does not currently support streaming operations. All agent interactions use the synchronous `message/send` method, which returns a complete response only after task execution completes.
+In 9.2 through 9.5, the [Agent-to-Agent (A2A) server](a2a-server.md) doesn't support the `message/stream` method. Use [`message/send`](a2a-server.md#send-messages) instead.
+
+Fixed on {{serverless-short}} and in 9.6 and later. Refer to [Stream responses](a2a-server.md#stream-responses).
 
 ### Human-in-the-loop prompts require an interactive conversation
 
-[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A sub-agent execution cannot collect a response to these prompts, whether the sub-agent runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
+[Human-in-the-loop prompts](chat.md#human-in-the-loop-prompts) work only in interactive {{agent-builder}} conversations. A [subagent](agent-builder-agents.md#subagents) cannot collect a response to these prompts, whether it runs in the foreground or the background, so {{agent-builder}} declines any action that requires confirmation or authorization.
 
-The sub-agent run itself does not fail. The tool call returns an error result and the sub-agent continues, so the sub-agent can report the declined action in its output.
+The subagent run itself does not fail. The tool call returns an error result and the subagent continues, so the subagent can report the declined action in its output.
 
-A2A executions behave differently: the action is not declined. Instead, the conversation round remains in the `awaiting_prompt` state, but A2A clients cannot respond to the prompt.
+A2A executions behave differently: the action isn't declined. Instead, the conversation round stays in the `awaiting_prompt` state, but A2A clients can't respond to the prompt.
+
+:::::{applies-switch}
+
+:::{applies-item} { stack: ga 9.6+, serverless: ga }
+
+What the client sees depends on the method:
+
+* [`message/send`](a2a-server.md#send-messages): Nothing in the response shows that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+* [`message/stream`](a2a-server.md#stream-responses): The stream ends with a status update in the `input-required` state that describes the prompt.
+
+:::
+
+:::{applies-item} { stack: ga 9.4-9.5 }
+
+A2A clients use [`message/send`](a2a-server.md#send-messages), and nothing in the response shows that the agent is waiting. A blocking request returns an agent message, and a polled task reports `completed`. In both cases, the response text is empty or partial.
+
+:::
+
+:::::
+
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [`execute_api` tool](tools/builtin-tools-reference.md#http-api-tools) follows the same rule in subagent runs and in [workflow `ai.agent` steps](/explore-analyze/workflows/steps/ai-steps.md#ai-agent): it declines any {{es}} or {{kib}} API operation that requires [confirmation](chat.md#confirm-an-api-operation), unless the operation is approved in advance. You can approve operations in advance in these ways:
+
+* **For every run of an agent:** Add the operations to the agent's [auto-approved APIs](custom-agents.md#auto-approve-api-operations-optional). This approval is stored with the agent, so it applies to every run, including runs from workflows, and to the subagents the agent starts.
+* **For one workflow step:** List the operations under `approvals.auto_approved_apis` in the `ai.agent` step. This approval applies only to that step and to the subagents it starts, in addition to the agent's auto-approved APIs.
+* **For one subagent run:** Before starting a subagent, a parent agent can ask you to approve operations for it. The request can name individual operations, a group such as all `indices` operations, or every such operation on {{es}} or {{kib}}. The outcome depends on your response and any existing auto-approvals:
+
+  * If you approve, the subagent can call those operations without another prompt.
+  * If you deny, the subagent runs without access to them.
+  * If all requested operations are already auto-approved, you aren't asked.
+
+  A subagent can also call any operation that the parent agent or the subagent itself auto-approves.
 
 This limitation is separate from the [`waitForInput`](/explore-analyze/workflows/authoring-techniques/human-in-the-loop.md) step in Workflows, which pauses a workflow execution for reviewer input.
 
@@ -55,6 +140,8 @@ Ensure your cluster version supports the {{esql}} features you intend to use.
 For a complete list of {{esql}} limitations, refer to the [{{esql}} limitations documentation](elasticsearch://reference/query-languages/esql/limitations.md).
 
 ## Known issues
+
+The following known issues affect current versions of {{agent-builder}}. For fixes and known issues in a specific release, refer to the **Elastic Agent Builder** entries in the [{{kib}} release notes](kibana://release-notes/index.md) and [{{kib}} known issues](kibana://release-notes/known-issues.md).
 
 ### Troubleshoot incompatible LLMs
 
@@ -116,15 +203,20 @@ Disabling a workflow doesn't remove it from the agents or spaces that use it as 
 
 **Workaround:** Re-enable the workflow, clear it from the selector, save, then disable the workflow again. You can also clear it through the API. To learn more, refer to [Disabled pre-execution workflow](troubleshooting/pre-execution-workflow-disabled.md).
 
-### MCP server URL copy button omits space name
+### MCP server URL copy button omits space ID [mcp-server-url-copy-button-omits-space-name]
+
+```{applies_to}
+stack: preview =9.2.0
+serverless: unavailable
+```
 
 :::{note}
-Fixed on serverless and 9.3.
+Fixed on {{serverless-short}} and in 9.2.1 and later.
 :::
 
-On 9.2 deployments, the **Copy your MCP server URL** button does not include the space name when used from a custom {{kib}} Space.
+**Copy MCP Server URL** doesn't include the space ID when you use it from a custom {{kib}} space.
 
-**Workaround:** Manually add `/s/<space-name>` to the URL. For example: `https://<deployment>/s/<space-name>/api/agent_builder/mcp`
+**Workaround:** Manually add `/s/<space-id>` to the URL. For example: `https://<deployment>/s/<space-id>/api/agent_builder/mcp`
 
 For more information about {{agent-builder}} and Spaces, refer to [Permissions and access control](permissions.md#space-scope).
 

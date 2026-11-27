@@ -26,7 +26,7 @@ You’ll need:
 
 1. A running instance of [{{es}}](../../../get-started/deployment-options.md), either on {{serverless-full}} or together with {{kib}} on Elastic Cloud Hosted/Self Managed deployments.
 
-    * If you don’t have a deployment, you can run the following command in your terminal to set up a [local dev environment](../../../solutions/search/get-started.md):
+    * If you don’t have a deployment, you can run the following command in your terminal to set up a [local dev environment](../../../deploy-manage/deploy/self-managed/local-development-installation-quickstart.md):
 
         ```sh
         curl -fsSL https://elastic.co/start-local | sh
@@ -37,7 +37,7 @@ You’ll need:
     * Open the **Integrations** pages by searching in the global search field.
     * Search for `sample data` in the **Integrations** search field.
     * Open the **Sample data** page.
-    * Select the **Other sample data sets** collapsible.
+    * {applies_to}`stack: ga 9.0-9.3` Select the **Other sample data sets** collapsible.
     * Add the **Sample eCommerce orders** data set. This will create and populate an index called `kibana_sample_data_ecommerce`.
 
 ## Inspect index structure [aggregations-tutorial-inspect-data]

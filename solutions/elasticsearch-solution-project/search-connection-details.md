@@ -1,6 +1,6 @@
 ---
 navigation_title: Find connection details
-description: Find your Elasticsearch endpoint and create an API key so that client applications and tools can connect to your cluster or project.
+description: Find your {{es}} endpoint and create an API key so that client applications and tools can connect to your cluster or project.
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
 applies_to:
@@ -18,88 +18,14 @@ To connect a client application or a third-party tool to {{es}}, you need two th
 
 ## Before you begin [before-you-begin]
 
-To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege.
+To create an API key, you need the `manage_api_key` or the `manage_own_api_key` cluster privilege. If you created the deployment or project, you already have this privilege. If you sign in as a different user, an administrator needs to grant it. In this case, refer to [](/deploy-manage/users-roles.md).
 
 ## Find your {{es}} endpoint [find-endpoint-cloud-self-managed]
 
-:::::{applies-switch}
-
-::::{applies-item} serverless: ga
-Your endpoint details are on your project's page in the {{ecloud}} Console.
-
-:::{include} /deploy-manage/deploy/elastic-cloud/_snippets/find-endpoint-serverless-console.md
+:::{include} /solutions/elasticsearch-solution-project/_snippets/find-elasticsearch-endpoint.md
 :::
 
-:::{tip}
-You can also find your endpoint details in {{kib}}. From the **Help menu** {icon}`question` or the project selector in the header, select **Connection details**, then copy the **{{es}} endpoint** from the **Endpoints** tab.
-:::
-::::
-
-::::{applies-item} ech: ga
-Your endpoint details are on your deployment's page in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-
-1. In the {{ecloud}} Console, select **Hosted**.
-2. Select your deployment.
-3. Under **Application endpoints, cluster and component IDs**, select **{{es}}**.
-4. Copy the **Endpoint** value.
-
-    :::{image} /solutions/images/cloud-console-hosted-endpoint.png
-    :alt: The Elasticsearch panel on a hosted deployment page in the Elastic Cloud Console, showing the Endpoint value with a copy button
-    :screenshot:
-    :width: 50%
-    :::
-
-:::{tip}
-You can also find your endpoint details in {{kib}}. From the **Help menu** {icon}`question`, select **Connection details**, then copy the **{{es}} endpoint** from the **Endpoints** tab.
-:::
-::::
-
-::::{applies-item} ece: ga
-Your endpoint details are in the **Connection details** panel in {{kib}}.
-
-1. Open {{kib}} for your deployment.
-2. From the **Help menu** {icon}`question`, select **Connection details**.
-3. Copy the **{{es}} endpoint** from the **Endpoints** tab.
-
-:::{image} /solutions/images/kibana-connection-details-endpoints.png
-:alt: The Connection details panel showing the Elasticsearch endpoint on the Endpoints tab, with the Show Cloud ID toggle and the API key tab
-:screenshot:
-:width: 50%
-:::
-
-:::{tip}
-When the space uses the **{{es}}** solution view, the **Getting started** page shows the endpoint directly.
-:::
-
-::::
-
-::::{applies-item} {"deployment": {"self": "ga"}}
-Your endpoint takes the form `<scheme>://<host>:<port>`. Each part comes from your cluster's HTTP settings:
-
-* **Scheme**: `https` when TLS is enabled on the HTTP layer, and `http` when it isn't. [Automatic security setup](/deploy-manage/security/self-auto-setup.md) enables TLS on a new archive or package installation.
-* **Host**: The address clients use to reach the node, set by [`http.host` or `network.host`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md).
-* **Port**: The HTTP port, set by [`http.port`](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md). It defaults to the range `9200-9300`, and a node binds to the first free port in that range.
-
-For example, a single-node cluster from the [local development quickstart](/deploy-manage/deploy/self-managed/local-development-installation-quickstart.md) runs without TLS on the default port, so its endpoint is `http://localhost:9200`.
-
-If clients reach your cluster through a load balancer, reverse proxy, or ingress, use that address rather than the node address.
-::::
-
-::::{applies-item} {"deployment": {"eck": "ga"}}
-The {{eck}} operator creates a `ClusterIP` service named `<cluster-name>-es-http` on port `9200`, with TLS enabled by default.
-
-From inside the Kubernetes cluster, your endpoint is `https://<cluster-name>-es-http:9200` in the same namespace, or `https://<cluster-name>-es-http.<namespace>.svc:9200` from another namespace. List your services to confirm the name:
-
-```sh
-kubectl get svc
-```
-
-To reach the cluster from outside, expose the service and use its external address. Refer to [Access the endpoint](/deploy-manage/deploy/cloud-on-k8s/accessing-services.md#k8s-request-elasticsearch-endpoint) for both cases, including how to retrieve the certificate authority (CA) certificate.
-::::
-
-:::::
-
-### Find your Cloud ID [find-cloud-id-cloud-self-managed]
+## Find your Cloud ID [find-cloud-id-cloud-self-managed]
 
 ```{applies_to}
 deployment:
@@ -127,32 +53,8 @@ To skip {{kib}}, select **Hosted** in the {{ecloud}} Console, open your deployme
 
 ## Create an API key [create-an-api-key-cloud-self-managed]
 
-:::::{applies-switch}
-
-::::{applies-item} { "deployment": { "ech": "ga", "ece": "ga" }, "serverless": "ga" }
-
-1. Open {{kib}} for your deployment or project.
-2. From the **Help menu** {icon}`question`, select **Connection details**.
-3. Select the **API key** tab.
-4. In the **API key name** field, enter a name, then select **Create API key**.
-5. Select an **API key format**: **Encoded** for {{es}} REST API requests, or **Beats** or **Logstash** to configure those products.
-6. Copy the key. It isn't available after you close the panel.
-
-Keys created here expire in 90 days and carry your own privileges. To set an expiration or restrict privileges, select **Manage API keys** and create the key there instead.
-::::
-
-::::{applies-item} {"deployment": {"eck": "ga", "self": "ga"}}
-1. Go to the **API keys** management page, using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find it.
-2. Select **Create API key**.
-3. Enter a name, then select **Create API key**.
-4. Copy the key. It isn't available after you leave the page.
-
-Keys created here don't expire unless you add an expiration date.
-::::
-
-:::::
-
-For key types, privileges, and expiration options, refer to [](/deploy-manage/api-keys.md).
+:::{include} /solutions/elasticsearch-solution-project/_snippets/create-an-api-key.md
+:::
 
 ## Test your connection [elasticsearch-get-started-test-connection]
 
@@ -196,6 +98,6 @@ If your cluster uses a self-signed certificate, pass your CA certificate with `c
 
 ## Related pages
 
-* [Configure Beats and {{ls}} with a Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md)
+* [Configure {{beats}} and {{ls}} with a Cloud ID](/deploy-manage/deploy/elastic-cloud/find-cloud-id.md)
 * [Connect to {{es}} on {{ece}}](/deploy-manage/deploy/cloud-enterprise/connect-elasticsearch.md)
 * [Securing HTTP client applications](/deploy-manage/security/httprest-clients-security.md)

@@ -11,7 +11,7 @@ products:
   - id: elastic-stack
 ---
 
-# Start a single-node cluster in Docker [docker-cli-run-dev-mode]
+# Start a single-node {{es}} cluster in Docker [docker-cli-run-dev-mode]
 
 Use Docker commands to start a single-node {{es}} cluster for development or testing. You can then run additional Docker commands to add nodes to the test cluster or run {{kib}}.
 
@@ -30,7 +30,7 @@ Use Docker commands to start a single-node {{es}} cluster for development or tes
 
 1. Install Docker. Visit [Get Docker](https://docs.docker.com/get-docker/) to install Docker for your environment.
 
-    If using Docker Desktop, make sure to allocate at least 4GB of memory. You can adjust memory usage in Docker Desktop by going to **Settings > Resources**.
+    If using Docker Desktop, make sure to allocate at least 4GB of memory. You can adjust memory usage in Docker Desktop by going to **Settings** → **Resources**.
 
 2. Create a new docker network.
 

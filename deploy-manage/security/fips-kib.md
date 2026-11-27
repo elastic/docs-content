@@ -36,6 +36,8 @@ Set `xpack.security.fipsMode.enabled` to `true` in your {{kib}} configuration:
 xpack.security.fipsMode.enabled: true
 ```
 
+{applies_to}`stack: ga 9.6+` When FIPS mode is enabled, {{fleet}} hides and blocks integrations that aren't FIPS compatible. For details, refer to [How {{fleet}} handles integrations that aren't FIPS compatible](/deploy-manage/security/fips-ingest.md#fips-fleet-integrations).
+
 ### {{kib}} keystore [_kibana_keystore]
 
 NIST Special Publication 800-132 (Recommendation for Password-Based Key Derivation: Part 1: Storage Applications) specifies a minimum security strength of 112 bits for password-protected key material, a requirement that applies in both FIPS 140-2 and FIPS 140-3 compliant environments. As such, the {{kib}} keystore password must be at least 14 bytes (112 bits) long. For single-byte ASCII characters, this means a minimum of 14 characters; for 2-byte UTF-8 characters (code points U+0080–U+07FF), a minimum of 7 characters.
