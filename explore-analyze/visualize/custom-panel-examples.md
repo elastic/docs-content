@@ -1181,6 +1181,12 @@ stack: preview 9.7+
 
 Three headline numbers from one query and a ranked list of destination countries from a second query, shown in one panel. For the rules about several queries, refer to [Use several queries in one panel](custom-panels.md#custom-panels-several-queries). Sample data: **Sample web logs**.
 
+:::{image} /explore-analyze/images/custom-panels-example-several-queries.png
+:alt: Three tiles for requests, unique visitors, and a red error rate, above five bars that rank destination countries by request count
+:screenshot:
+:width: 75%
+:::
+
 :::{dropdown} Query 1
 The template reads this query as `rows`, the same as `queries[0].rows`.
 

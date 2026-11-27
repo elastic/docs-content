@@ -48,7 +48,7 @@ A custom panel stores two things:
 - A **template**: HTML, CSS, and, when the panel has a query, Liquid tags that insert the query results. The template is what renders.
 - An optional **{{esql}} query**. When the panel has a query, {{kib}} runs it and fills the template with the results.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` A panel can hold up to 10 queries, for example to show headline numbers next to a ranked table. Refer to [Use several queries in one panel](#custom-panels-several-queries).
+   {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` A panel can hold up to 10 queries, for example to show headline numbers next to a ranked table. Refer to [Use several queries in one panel](#custom-panels-several-queries).
 
 When chat generates a panel, it writes the template once, at creation or edit time. Rendering never calls the model again, so the panel loads as fast as any other {{esql}} panel. Templates render in a sandbox that blocks scripts and external resources. For details, refer to [Limitations](#custom-panels-limitations).
 
@@ -80,7 +80,7 @@ A custom panel needs a template and, to show values from your data, an {{esql}} 
    - Manually, in **Template (HTML)** and **Data sources (ES|QL)**. For the template syntax, refer to [Write a template](#custom-panels-write-a-template). For the {{esql}} query, refer to [](/explore-analyze/query-filter/languages/esql-kibana.md).
    - Using AI. Select **Generate with chat** and describe the panel. The flyout closes and a conversation opens with the panel attached. When the answer completes, the panel shows the generated template and, if the panel shows values from your data, its query. Save the dashboard, or refer to [Refine a custom panel with chat](#custom-panels-refine-with-chat) to adjust the result.
 
-5. If you chose to provide the template and the query manually, select **Search** (**Preview data** in 9.6) to check the returned columns. The preview shows up to five rows and shortens long cell values. Hover over a shortened cell to see the full value.
+5. If you chose to provide the template and the query manually, select **Search** (or **Preview data**, depending on your {{stack}} version) to check the returned columns. The preview shows up to five rows and shortens long cell values. Hover over a shortened cell to see the full value.
 
    If the flyout reports that the query isn't connected to the dashboard time filter, add a `WHERE` clause with the `?_tstart` and `?_tend` parameters on your time field. Refer to [Connect the panel to the time filter](#custom-panels-time-filter).
 
@@ -124,7 +124,7 @@ For saving, previewing, and syncing agent-created dashboards, refer to [Dashboar
 
    The **Edit custom panel** flyout opens with the current template and query.
 
-2. Change the template, the query, or both. Use **Search** (**Preview data** in 9.6) to check the query results and **Run preview** to render your draft in the panel.
+2. Change the template, the query, or both. Use **Search** (or **Preview data**, depending on your {{stack}} version) to check the query results and **Run preview** to render your draft in the panel.
 
    If you change only the query, {{kib}} fills the existing template with the new results. Make sure the column names in the template match the new query output.
 
@@ -163,17 +163,16 @@ To add queries in the flyout:
 3. Enter the next query in the new tab, then select **Search** to check its columns. The text under the tabs shows how the template reads the selected query: `rows` for **Query 1** and `queries[1].rows` for **Query 2**.
 4. Select **Run preview** to render the panel with all of its queries, then select **Apply and close**.
 
-To read each query's results in the template, refer to [Write a template](#custom-panels-write-a-template). For a complete panel with two queries, refer to [Headline numbers with a ranked table](custom-panel-examples.md#custom-panel-examples-several-queries).
+To add queries from a conversation, describe each part of the panel. The agent can create a query for each part. For example: "Create a custom panel for `logs-*` with a row of headline numbers, a table of the five hosts with the most requests, and a table of the five most common HTTP status codes." Results can vary between runs. Review each query in the flyout before you save the dashboard.
 
-To remove a query, select **Remove query** from the {icon}`ellipsis` menu on the last tab. Only the last query can be removed. The template reads queries by position, and removing an earlier query moves the later ones. **Query 1** has no menu.
+To read each query's results in the template, refer to [Write a template](#custom-panels-write-a-template). For an example of a complete panel with two queries, refer to [Headline numbers with a ranked table](custom-panel-examples.md#custom-panel-examples-several-queries).
 
-You can't leave a tab blank when a later tab has a query. The flyout then shows a warning such as **Query 2 is empty**, and **Run preview**, **Apply and close**, and **Refine with chat** stay unavailable until you fill the tab. {{kib}} drops blank tabs after the last query when you apply your changes.
+To manage and troubleshoot a panel with several queries:
 
-If one query fails, the panel shows **Failed to render panel** with a message that starts with the position of the failing query, such as `Query 2 failed:`, followed by the {{esql}} error. The panel renders again when every query succeeds.
-
-To check what each query sends to {{es}}, select **Inspect** from the panel menu. The **Inspector** lists one request for each query, named **Data (query 1)**, **Data (query 2)**, and so on.
-
-From a conversation, describe each part of the panel and the agent can create a query for each one. For example: "Create a custom panel for `logs-*` with a row of headline numbers, a table of the five hosts with the most requests, and a table of the five most common HTTP status codes." Results can vary between runs, so check each query in the flyout.
+- **Remove a query**: Select **Remove query** from the {icon}`ellipsis` menu on the last tab. You can remove only the last query, because the template reads queries by position and removing an earlier one would move the queries after it. You can't remove **Query 1**.
+- **Fill an empty tab**: A tab can't stay empty when a later tab has a query. Until you fill it, the flyout shows a warning such as **Query 2 is empty**, and **Run preview**, **Apply and close**, and **Refine with chat** are unavailable. When you apply your changes, {{kib}} removes empty tabs after the last query.
+- **Find a failing query**: If one query fails, the whole panel shows **Failed to render panel**. The message starts with the position of the failing query, such as `Query 2 failed:`, followed by the {{esql}} error. The panel renders again when every query succeeds.
+- **Inspect each request**: To check what each query sends to {{es}}, select **Inspect** from the panel menu. The **Inspector** lists one request for each query, named **Data (query 1)**, **Data (query 2)**, and so on.
 
 ## Write a template [custom-panels-write-a-template]
 
@@ -183,7 +182,7 @@ A template is HTML with inline CSS in `<style>` tags. When the panel has a query
 | --- | --- |
 | `rows` | One object per result row. Access a column by its exact name in brackets, for example `row["total_revenue"]`. Each column resolves to an object with `.value`, the raw cell value, and `.pct`, the value as a percentage from 0 to 100 of that column's maximum across all rows. `.pct` is set for numeric columns only and is useful for bar widths. |
 | `max` | The maximum value of each numeric column, keyed by exact column name, for example `max["total_revenue"]`. |
-| `queries` | {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` The results of every query, in the order of the query tabs. Each entry has its own `rows` and `max`, for example `queries[1].rows` for **Query 2**. `queries[0]` holds the same data as `rows` and `max`. In each entry, `.pct` is relative to the maximum of that query's own rows. |
+| `queries` {applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` | The results of every query, in the order of the query tabs. Each entry has its own `rows` and `max`. For example, `{% for row in queries[1].rows %}` loops over the rows of **Query 2**. `queries[0]` holds the same data as `rows` and `max`. In each entry, `.pct` is relative to the maximum of that query's own rows. |
 
 The following template renders one bar per row for a query that returns `category` and `revenue` columns. The bar width is proportional to the column maximum:
 
