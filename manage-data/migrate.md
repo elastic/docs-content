@@ -23,7 +23,7 @@ Your migration options depend on the type of data that you need to migrate, whic
 
 - **Ingested user data**: All of the data that you've added into {{es}}, structured or unstructured, for your own applications.
 
-- **{{es}} system data**: Configuration and state stored in {{es}} [system indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices) that supports **core {{es}} platform operation**—cluster coordination, engine-level services, and other internal metadata—rather than the settings, rules, or operational history tied to a specific Elastic feature or integration. That product-specific data is covered under **Feature and component data**.
+- **{{es}} system data**: Configuration and state stored in {{es}} [system indices](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#system-indices) that supports **core {{es}} operation**—cluster coordination, engine-level services, and other internal metadata—rather than the settings, rules, or operational history tied to a specific Elastic feature or integration. That product-specific data is covered under **Feature and component data**.
 
 - **{{kib}} saved objects**: Dashboards, visualizations, maps, data views, Canvas workpads, and any other objects that you've saved in {{kib}}.
 

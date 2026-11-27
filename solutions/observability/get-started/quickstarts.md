@@ -56,5 +56,5 @@ Ready to dig into more features of Elastic Observability? See these guides:
 
 ## Related content for {{stack}} [_related_content]
 
-* [Starting with the {{es}} Platform and its Solutions](/get-started/index.md) for new users.
+* [](/get-started/index.md) for new users.
 * [Adding data to {{es}}](/manage-data/ingest.md) for other ways to ingest data.

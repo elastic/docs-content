@@ -37,7 +37,7 @@ For in-depth documentation about {{es}}, the search and analytics engine at the 
 :alt: The Elastic platform
 :::
 
-Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Search AI platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value.
+Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Elastic platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value.
 
 ## Explore the fundamentals
 

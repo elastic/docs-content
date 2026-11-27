@@ -9,7 +9,7 @@ products:
 :::{hero}
 :icon: kibana
 :title: Kibana documentation hub
-:description: The UI for the Elasticsearch platform. Explore and visualize your data, build dashboards, set up alerts, automate tasks with AI, and use purpose-built solutions for Search, Observability, and Security.
+:description: The UI for the Elastic platform. Explore and visualize your data, build dashboards, set up alerts, automate tasks with AI, and use purpose-built solutions for Search, Observability, and Security.
 :::
 
 :::{on-this-page}

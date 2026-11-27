@@ -147,7 +147,7 @@ $$$glossary-connector$$$ connector
 $$$glossary-console$$$ Console
 :   In {{kib}}, a tool for interacting with the {{es}} REST API. You can send requests to {{es}}, view responses, view API documentation, and get your request history. See [Console](/explore-analyze/query-filter/tools/console.md).
 
-    In {{ecloud}}, provides web-based access to manage your {{ecloud}} deployments.
+    In {{ecloud}}, provides web-based access to manage your {{ech}} deployments and {{serverless-short}} projects.
 
 
 $$$glossary-constructor$$$ constructor
@@ -214,7 +214,7 @@ $$$glossary-deployment-template$$$ deployment template
 :   A reusable configuration of Elastic products and solutions used to create an {{ecloud}} [deployment](/reference/glossary/index.md#glossary-deployment).
 
 $$$glossary-deployment$$$ deployment
-:   One or more products from the [{{stack}}](#glossary-elastic-stack), such as {{es}} and {{kib}}, configured to work together and managed by an orchestrator: [{{ech}}](#glossary-ech), [{{ece}}](#glossary-ece), or [{{eck}}](#glossary-eck).
+:   One or more products from the {{stack}}, such as {{es}} and {{kib}}, configured to work together. You can create a deployment using {{ecloud}} ({{ech}}), {{ece}}, or {{eck}}. You can also install these products directly. This is referred to as a self-managed deployment.
 
 $$$glossary-detection-alert$$$ detection alert
 :   {{elastic-sec}} produced alerts. Detection alerts are never received from external systems. When a rule's conditions are met, {{elastic-sec}} writes a detection alert to an {{es}} alerts index.

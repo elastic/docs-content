@@ -19,7 +19,7 @@ description: Explore and analyze your data with Kibana. Query, filter, visualize
 
 $$$elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library$$$
 
-The Elasticsearch platform and its UI, also known as Kibana, provide a comprehensive suite of tools to help you search, interact with, explore, and analyze your data effectively. These features empower you to gain deep insights, uncover trends, and take actionable steps based on your findings. This page is an overview of the key capabilities.
+The Elastic platform and its UI, also known as Kibana, provide a comprehensive suite of tools to help you search, interact with, explore, and analyze your data effectively. These features empower you to gain deep insights, uncover trends, and take actionable steps based on your findings. This page is an overview of the key capabilities.
 
 ## Querying and filtering
 
