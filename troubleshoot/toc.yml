@@ -60,6 +60,7 @@ toc:
           - file: elasticsearch/start-ilm.md
           - file: elasticsearch/index-lifecycle-management-errors.md
           - file: elasticsearch/data-stream-frozen-transition.md
+          - file: elasticsearch/metrics-policy-not-managed-by-ilm.md
       - file: elasticsearch/file-based-recovery.md
       - file: elasticsearch/troubleshooting-upgrades.md
       - file: elasticsearch/troubleshooting-upgrade-assistant.md
