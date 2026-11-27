@@ -25,6 +25,7 @@ The following table shows the minimum privileges for each activity. Higher privi
 | To... | Minimum required |
 |---|---|
 | Author and manage rules | **Rules: All** (under **Universal Alerting**) |
+| [Create a rule from a template](../rules/create-rule-from-template.md) in the **Rule library** | **Rules: All** (under **Universal Alerting**) |
 | Monitor rule execution | **Execution history: Read** (under **Universal Alerting**) |
 | Triage alerts | **Alerts: All** (under **Universal Alerting**) |
 | Configure notifications | **Action Policies: All** (under **Universal Alerting**) + **Workflows: Read** (under **Analytics** → **Workflows**) |
