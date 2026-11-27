@@ -29,7 +29,7 @@ You can narrow the Agents list to only display OTel Collectors in two ways:
 * From the **Tags** filter, select a tag. Every collector is automatically tagged with its service name, plus any tags you added when creating the collector group.
 * From the **Agent policies** filter, select **OpAMP**. {{fleet}} creates this managed policy automatically when you add your first collector, and enrolls every collector into it. The policy is hidden from the **Agent policies** tab, but you can still use it to filter the list.
 
-Each collector is automatically tagged with its service name. This is the **Service name** you set when you added the collector, which defaults to a slug of the collector group display name, such as `otel-collector-group`. {{agent}} running in OTel mode reports `elastic-otel-collector`. Any labels you enter in the **Tags** field are added as extra tags.
+Each collector is automatically tagged with its service name. This is the **Service name** you set when you added the collector, which defaults to a slug of the collector group display name, such as `otel-collector-group`. {{agent}} configured as an OTel Collector reports `elastic-otel-collector`. Any labels you enter in the **Tags** field are added as extra tags.
 
 ### Available actions
 

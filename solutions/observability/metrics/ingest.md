@@ -46,7 +46,7 @@ The {{es}} OTLP endpoint isn't a supported ingest path on {{ech}}: use the Manag
 ::::
 
 ::::{applies-item} { self:, ece:, eck: }
-Run {{agent}} configured as an OTel Collector gateway. The gateway exposes an OTLP endpoint that your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) and edge collectors send to, and it writes to {{es}} with the `elasticsearch` exporter. For gateway versus edge setup, refer to [{{agent}} deployment modes](elastic-agent://reference/edot-collector/modes.md).
+Run {{agent}} configured as an OTel Collector gateway. The gateway exposes an OTLP endpoint that your [EDOT SDKs](opentelemetry://reference/edot-sdks/index.md) and edge collectors send to, and it writes to {{es}} with the `elasticsearch` exporter. For gateway versus edge setup, refer to [{{agent}} deployment patterns](elastic-agent://reference/edot-collector/modes.md).
 
 The `elasticsearch` exporter drops histograms with cumulative temporality, the default in most OpenTelemetry SDKs. Export histograms with delta temporality, add the `cumulativetodelta` processor to the gateway, or send metrics to `/_otlp`, which accepts both temporalities from 9.5. For temporality support by deployment type, refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality).
 
@@ -75,7 +75,7 @@ Some services have both an ECS integration and an OpenTelemetry integration, for
 | **Prebuilt content** | The integration's ECS dashboards and alerts | Dashboards from the matching OpenTelemetry content pack, which {{kib}} installs |
 | **Use when** | You need the integration's ECS dashboards and alerts | You standardize on the OpenTelemetry schema and manage agents with {{fleet}} |
 
-OpenTelemetry input packages run only on {{agent}} in its default mode, not on {{agent}} configured as an OTel Collector. Refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md) for how to set up an OpenTelemetry input package.
+OpenTelemetry input packages run only on {{fleet}}-managed {{agent}} or standalone {{agent}} configured with `elastic-agent.yml`, not on {{agent}} configured as an OTel Collector. Refer to [Collect OpenTelemetry data with {{agent}} integrations](/reference/fleet/otel-integrations.md) for how to set up an OpenTelemetry input package.
 
 ### {{metricbeat}} [metrics-ingest-metricbeat]
 

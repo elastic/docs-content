@@ -26,7 +26,7 @@ Review the version requirements, what you gain, what you trade off, and how the 
 
 ### Version requirements [switch-to-otel-versions]
 
-EDOT SDKs and {{agent}} in OTel mode require {{stack}} 8.16 or later for basic compatibility. For a supported configuration, use:
+EDOT SDKs and {{agent}} configured as an OTel Collector require {{stack}} 8.16 or later for basic compatibility. For a supported configuration, use:
 
 * {{stack}} 9.x, or
 * {{stack}} 8.18 or 8.19 with {{agent}} version 9.x. You have to keep your configuration aligned to your Stack version, not the {{agent}} 9.x defaults.
@@ -54,7 +54,7 @@ Not every feature from the classic stack is available with {{edot}} yet. Review 
 | Universal Profiling | Not available | Only supported with classic Elastic ingestion (using the classic {{agent}}). |
 | Span compression | Not available | |
 | Breakdown metrics | Not available | The **Time spent by span type** chart on the transaction views doesn't populate. |
-| Managed tail-based sampling | Not available | {applies_to}`edot_collector: preview 9.2+` You can run TBS in a self-managed {{agent}} in OTel mode or any OTel-compatible Collector, with reduced metric accuracy, service map coverage, and SLO precision. Refer to [Limitations](opentelemetry://reference/compatibility/limitations.md#tail-based-sampling-tbs). |
+| Managed tail-based sampling | Not available | {applies_to}`edot_collector: preview 9.2+` You can run TBS in a self-managed {{agent}} configured as an OTel Collector or any OTel-compatible Collector, with reduced metric accuracy, service map coverage, and SLO precision. Refer to [Limitations](opentelemetry://reference/compatibility/limitations.md#tail-based-sampling-tbs). |
 | Language runtime metrics | Available with changes | Metric names and attributes change. Existing dashboards built on classic metric names need updates. |
 | Central and dynamic configuration | Partial {applies_to}`stack: preview 9.1+` {applies_to}`serverless: unavailable` | [Central configuration](opentelemetry://reference/central-configuration.md) manages a limited set of EDOT SDK settings from {{kib}} and propagates changes at runtime through OpAMP. EDOT .NET applies changes at startup. Settings from classic {{apm-agent}} central configuration don't carry over. |
 | Centralized log parsing using ingest pipelines | Not available | Process logs in the Collector instead. Refer to [Limitations](opentelemetry://reference/compatibility/limitations.md#centralized-parsing-and-processing-of-data). |
@@ -129,17 +129,17 @@ Classic {{product.apm}} agents send data directly to {{apm-server}}. EDOT SDKs u
 
 - **{{serverless-full}}**: Set `OTEL_EXPORTER_OTLP_ENDPOINT` to the Managed OTLP endpoint for your {{serverless-short}} project. You can copy the endpoint and generate a pre-configured API key from your project's **Add data** wizard. Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for details.
 - **{{ech}}**: Set `OTEL_EXPORTER_OTLP_ENDPOINT` to the Managed OTLP endpoint for your deployment (requires version 9.0 or later). {{agent}} is not required for application telemetry. You can copy the endpoint from the **Application endpoints, cluster and component IDs** section of your deployment in the {{ecloud}} Console. Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for details.
-- **Self-managed, ECE, or ECK**: Deploy {{agent}} in OTel mode as a [gateway](elastic-agent://reference/edot-collector/modes.md), then set `OTEL_EXPORTER_OTLP_ENDPOINT` to the gateway's OTLP receiver address.
+- **Self-managed, ECE, or ECK**: Deploy {{agent}} configured as an OTel Collector [gateway](elastic-agent://reference/edot-collector/modes.md), then set `OTEL_EXPORTER_OTLP_ENDPOINT` to the gateway's OTLP receiver address.
 
 :::{important}
-Direct {{apm-server}} ingestion of OTel-native data from EDOT SDKs is not supported. EDOT SDKs work only when sending data through {{agent}} in OTel mode or the {{motlp}}.
+Direct {{apm-server}} ingestion of OTel-native data from EDOT SDKs is not supported. EDOT SDKs work only when sending data through {{agent}} configured as an OTel Collector or the {{motlp}}.
 
-If you previously used unmapped resource attributes that {{apm-server}} stored under `labels.*`, those attributes are not automatically mapped by {{agent}} in OTel mode. To preserve mappings for queries or filters, use the [resource processor](../../apm/opentelemetry/attributes.md#elastic-distribution-of-opentelemetry-collector-edot-collector) to rename or insert resource attributes. For span, metric, or log attributes, use the [attributes processor](elastic-agent://reference/edot-collector/components/attributesprocessor.md).
+If you previously used unmapped resource attributes that {{apm-server}} stored under `labels.*`, those attributes are not automatically mapped by {{agent}} configured as an OTel Collector. To preserve mappings for queries or filters, use the [resource processor](../../apm/opentelemetry/attributes.md#elastic-distribution-of-opentelemetry-collector-edot-collector) to rename or insert resource attributes. For span, metric, or log attributes, use the [attributes processor](elastic-agent://reference/edot-collector/components/attributesprocessor.md).
 :::
 
 ## Migrate log and metric collection [switch-to-otel-collection]
 
-How you switch logs and metrics depends on whether you collect with {{fleet}}-managed {{agent}}, standalone {{agent}}, {{beats}}, or {{agent}} in OTel mode.
+How you switch logs and metrics depends on whether you collect with {{fleet}}-managed {{agent}}, standalone {{agent}}, {{beats}}, or {{agent}} configured as an OTel Collector.
 
 ### If you use {{agent}} ({{fleet}}-managed) [switch-to-otel-fleet]
 
@@ -163,15 +163,15 @@ For a practical reference on the {{agent}} OTel architecture, the Beat receiver 
 
 ### If you use {{beats}} directly [switch-to-otel-beats]
 
-{{beats}} ({{filebeat}}, {{metricbeat}}, and others) are not replaced by {{agent}} in OTel mode in a single step. The recommended path is to migrate from {{beats}} to {{fleet}}-managed {{agent}}, which then uses Beat receivers internally. This preserves your existing data structure and integrations while positioning you to adopt OTel-native receivers incrementally.
+{{beats}} ({{filebeat}}, {{metricbeat}}, and others) are not replaced by {{agent}} configured as an OTel Collector in a single step. The recommended path is to migrate from {{beats}} to {{fleet}}-managed {{agent}}, which then uses Beat receivers internally. This preserves your existing data structure and integrations while positioning you to adopt OTel-native receivers incrementally.
 
 ### If you use standalone {{agent}} [switch-to-otel-standalone]
 
 If you run standalone {{agent}} (not {{fleet}}-managed) and want to switch to OTel-native receivers, refer to [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) for standalone configuration options. You can migrate incrementally: a single `elastic-agent.yml` can run your existing Beat-based inputs alongside OTel-native pipelines.
 
-### If you already run {{agent}} in OTel mode [switch-to-otel-collector-migration]
+### If you already run {{agent}} configured as an OTel Collector [switch-to-otel-collector-migration]
 
-If you're already running {{agent}} in OTel mode (formerly the standalone EDOT Collector) and need to update deprecated components or older Collector configurations, refer to [Components included in {{agent}}](elastic-agent://reference/edot-collector/components.md).
+If you're already running {{agent}} configured as an OTel Collector (formerly the standalone EDOT Collector) and need to update deprecated components or older Collector configurations, refer to [Components included in {{agent}}](elastic-agent://reference/edot-collector/components.md).
 
 ## Verify your migrated data [switch-to-otel-verify]
 
@@ -216,7 +216,7 @@ You can run classic and EDOT instrumentation in parallel during a phased rollout
 
 ### Running both agents during transition [switch-to-otel-parallel]
 
-You can run a classic {{apm-agent}} and an EDOT SDK simultaneously during a phased rollout, as long as they serve different service instances or use distinct `OTEL_SERVICE_NAME` values. Both ingestion paths ({{apm-server}} for classic agents, and the {{motlp}} or {{agent}} in OTel mode for EDOT SDKs) can be active at the same time, so you can migrate one service at a time and verify before switching the rest.
+You can run a classic {{apm-agent}} and an EDOT SDK simultaneously during a phased rollout, as long as they serve different service instances or use distinct `OTEL_SERVICE_NAME` values. Both ingestion paths ({{apm-server}} for classic agents, and the {{motlp}} or {{agent}} configured as an OTel Collector for EDOT SDKs) can be active at the same time, so you can migrate one service at a time and verify before switching the rest.
 
 You can also mix instrumentation across components. For example, instrument your backend services with EDOT SDKs while keeping the classic Elastic {{product.apm}} browser agent for production RUM. Distributed tracing still connects the frontend and backend traces.
 
@@ -250,7 +250,7 @@ Review and update {{kib}} saved searches, dashboards, and alerts that referenced
 
 ::::{step} Confirm the OTLP endpoint
 
-If you were previously sending OTel data directly to {{apm-server}} (not supported), confirm the `OTEL_EXPORTER_OTLP_ENDPOINT` now points to the {{motlp}} or {{agent}} in OTel mode.
+If you were previously sending OTel data directly to {{apm-server}} (not supported), confirm the `OTEL_EXPORTER_OTLP_ENDPOINT` now points to the {{motlp}} or {{agent}} configured as an OTel Collector.
 
 ::::
 
@@ -268,6 +268,6 @@ Keep {{apm-server}} or the {{fleet}}-managed {{product.apm}} integration running
 - [Elastic features available with {{edot}}](opentelemetry://reference/compatibility/features.md) — feature compatibility matrix
 - [OpenTelemetry data streams compared to classic {{product.apm}}](opentelemetry://reference/compatibility/data-streams.md) — how field names and storage structures differ
 - [{{agent}} as an OpenTelemetry Collector](/reference/fleet/elastic-agent-as-otel-collector.md) — {{fleet}}-managed and standalone OTel collection architecture
-- [{{agent}} in OpenTelemetry mode](elastic-agent://reference/edot-collector/index.md) — setup and configuration
+- [{{agent}} configured as an OTel Collector](elastic-agent://reference/edot-collector/index.md) — setup and configuration
 - [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md) — {{serverless-short}} and {{ech}} ingestion reference
-- [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md) — troubleshooting for EDOT SDKs and {{agent}} in OTel mode
+- [Troubleshoot {{edot}}](/troubleshoot/ingest/opentelemetry/index.md) — troubleshooting for EDOT SDKs and {{agent}} configured as an OTel Collector

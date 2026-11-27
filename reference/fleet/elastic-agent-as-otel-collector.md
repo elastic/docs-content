@@ -150,7 +150,7 @@ The same automatic asset deployment applies when using standalone {{agent}}: onc
 
 ## Collector type comparison [collector-comparison]
 
-Depending on your environment, you can use {{agent}} (as described on this page), standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md) in OTel mode, or a third-party OpenTelemetry Collector to send OTel data to Elastic. The following table highlights the differences between these options in terms of management capabilities and feature support:
+Depending on your environment, you can use {{agent}} (as described on this page), standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md) configured as an OTel Collector, or a third-party OpenTelemetry Collector to send OTel data to Elastic. The following table highlights the differences between these options in terms of management capabilities and feature support:
 
 | Collector | {{fleet}} central monitoring | {{fleet}} central management | Beat receivers | {{ls}} exporter | {{elastic-defend}} | Cloud Security | Profiler |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -161,7 +161,7 @@ Depending on your environment, you can use {{agent}} (as described on this page)
 *Planned* indicates that support is on the roadmap and not yet generally available.
 
 :::{note}
-A standalone {{agent}} can enroll into {{fleet}} in the field if an in-place upgrade to {{fleet}}-managed is required. Standalone {{agent}} in OTel mode does not support enrollment into {{fleet}}.
+A standalone {{agent}} can enroll into {{fleet}} in the field if an in-place upgrade to {{fleet}}-managed is required. Standalone {{agent}} configured as an OTel Collector does not support enrollment into {{fleet}}.
 :::
 
 ## Frequently asked questions [faq]
@@ -205,12 +205,12 @@ receivers:
 
 :::{dropdown} What are the differences between {{fleet}}-managed {{agent}}, standalone {{agent}}, and a third-party OpenTelemetry Collector?
 
-The main difference is management support. {{agent}} can be managed by {{fleet}} when you use {{fleet}}-managed deployment. Standalone {{agent}} in OTel mode does not support {{fleet}} enrollment or central management. Some features, such as {{elastic-defend}}, are only available under {{fleet}} management and cannot be used with standalone {{agent}} alone. Refer to the [collector type comparison](#collector-comparison) table for a full breakdown.
+The main difference is management support. {{agent}} can be managed by {{fleet}} when you use {{fleet}}-managed deployment. Standalone {{agent}} configured as an OTel Collector does not support {{fleet}} enrollment or central management. Some features, such as {{elastic-defend}}, are only available under {{fleet}} management and cannot be used with standalone {{agent}} alone. Refer to the [collector type comparison](#collector-comparison) table for a full breakdown.
 :::
 
-:::{dropdown} What is the future of {{agent}} in standalone mode?
+:::{dropdown} What is the future of standalone {{agent}}?
 
-Standalone {{agent}} use cases can now be addressed using {{agent}} in OTel mode. A practical advantage of the standalone {{agent}} today is that it can be upgraded to {{fleet}}-managed in the field without having to reinstall it.
+Standalone {{agent}} use cases can now be addressed using {{agent}} configured as an OTel Collector. A practical advantage of the standalone {{agent}} today is that it can be upgraded to {{fleet}}-managed in the field without having to reinstall it.
 :::
 
 :::{dropdown} Can data collected with third-party OTel Collectors trigger the automatic installation of relevant assets?
