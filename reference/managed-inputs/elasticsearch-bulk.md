@@ -224,8 +224,8 @@ A client that resends this HTTP `400` sends the whole request again. The endpoin
 
 - **A `201` means the endpoint enqueued the document.** {{es}} indexes it later. The bulk response does not include later errors, such as mapping conflicts. Your shipper counts the document as sent.
 - **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still cannot accept the data when buffer retention ends, the endpoint discards it. The `201` your shipper already received does not change.
-- **A delay is not visible on an accepted group.** The endpoint returns `201` for a group when it enqueues that group. A later group in the same request can still return item `503`.
-- **`require_data_stream` and `require_alias` are ignored.** The endpoint does not enforce these query parameters. The endpoint still rejects targets outside the allowed prefixes.
+- **Delivery delay isn't visible to your shipper.** A direct `_bulk` request slows down or fails when {{es}} is under pressure, so your shipper can back off. The managed endpoint returns `201` as soon as it enqueues a group, even if delivery to {{es}} is delayed.
+- **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target the way they do with {{es}}. The endpoint still rejects targets outside the allowed prefixes.
 - **Compressed requests are supported.** The endpoint accepts `Content-Encoding: gzip` request bodies.
 
 For how long undelivered data can stay in the buffer, and what happens to it after that, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
