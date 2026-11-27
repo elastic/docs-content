@@ -36,7 +36,9 @@ To create a new case:
    * {applies_to}`stack: ga 9.0-9.4` Additional fields are [custom fields](configure-case-settings.md#case-custom-fields) configured in case settings.
 
 4. (Optional) Adjust sync and extraction options, or leave the defaults:
-   * **Sync alert status** syncs alert statuses with the case status (on by default).
+   * **Sync detection status with case status** or **Sync alert status with case status** (depending on your {{stack}} version) syncs alert statuses with the case status (on by default).
+
+     {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In {{elastic-sec}}, it also syncs [attack statuses](/solutions/security/investigate/security-cases.md#cases-add-attacks).
    * **Extract observables** extracts observables from attached alerts and events (on by default, requires the appropriate subscription). To change the default or set it for cases created outside this form, refer to [Auto-extract observables](attach-objects-to-cases.md#cases-auto-extract-observables).
 
       :::{note}
