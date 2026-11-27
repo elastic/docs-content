@@ -328,6 +328,16 @@ The following models are known to work well with {{agent-builder}}. These catego
 {{agent-builder}} automatically routes some low-effort tasks to a high-throughput model. Refer to [Fast model routing](#fast-model).
 :::
 
+:::{tip}
+For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude Sonnet 4.6 and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
+:::
+
+:::{note}
+For [dashboards and visualizations](agent-builder-dashboards-and-visualizations.md), choose an extended reasoning model when the workflow depends on complex {{esql}} generation. Testing with earlier models showed that Claude Opus 4.6 generates more reliable dashboard {{esql}} than Claude Sonnet 4.6.
+
+Claude Sonnet 4.6 and Claude Opus 4.6 are the default main models only on 9.5.0 to 9.5.2. Later versions default to newer models. Refer to [Models recommended by default](#recommended-by-default).
+:::
+
 #### Models recommended by default [recommended-by-default]
 
 ```{applies_to}
@@ -360,14 +370,6 @@ The default main models depend on your version:
 :::
 
 :::::
-
-:::{tip}
-For agents working with large documents or conversation histories, consider models with extended context windows. For example, Claude Sonnet 4.6 and Gemini 3.1 Pro support up to 1M tokens. Check your model provider's documentation for specific context limits.
-:::
-
-:::{note}
-For [dashboards and visualizations](agent-builder-dashboards-and-visualizations.md), choose a higher-tier model when the workflow depends on complex {{esql}} generation. Current testing shows Claude Opus 4.6 generates more reliable dashboard {{esql}} than Claude Sonnet 4.6.
-:::
 
 ### Incompatible models
 

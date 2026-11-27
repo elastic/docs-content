@@ -157,7 +157,7 @@ Security labs content gives agents access to [Elastic Security Labs](https://www
 - In serverless {{elastic-sec}} projects, when {{kib}} starts, if EIS is available and **Use AI features** is turned on.
 - In any {{elastic-sec}} deployment, when a user with the **Agent Builder: All** privilege opens {{elastic-sec}}, **Use AI features** is turned on, and the content isn't installed yet.
 
-## Feature settings
+## Feature Settings
 ```{applies_to}
 stack: ga 9.4+
 serverless: ga
@@ -169,16 +169,14 @@ Elastic's AI-powered features can use [EIS](/explore-analyze/elastic-inference/e
 
 To control the models used by each feature, go to **Feature Settings** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-The following screenshot shows the **Feature Settings** page on 9.5 and later and in {{serverless-full}}.
-
 :::{image} /explore-analyze/images/feature-settings.png
-:alt: Feature settings page showing the Use AI features toggle, the Global model menu, and the Feature specific models toggle
+:alt: Feature Settings page in 9.5 and Serverless, showing the Use AI features toggle, the Global model menu, and the Feature specific models toggle
 :screenshot:
 :::
 
 Available actions include:
 
-- Choose a default model.
+- Choose the **Global model**, which features use by default. {applies_to}`stack: ga =9.4` This setting is called **Default model**.
 - Add a model to a feature's list of assigned models.
 - Copy the list of assigned models across multiple features.
 - Reset all settings to their defaults.

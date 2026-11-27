@@ -161,7 +161,9 @@ To learn more, refer to [](models.md).
 
 Current testing shows that Claude Sonnet 4.6 can generate invalid {{esql}} for dashboard and visualization workflows, particularly with reserved keywords, dotted field names such as `system.load.1`, and incorrectly formatted aliases.
 
-**Workaround:** Use a higher-tier model, such as Claude Opus 4.6, for {{esql}}-heavy dashboard generation. To learn more, refer to [Recommended models](models.md#recommended-models).
+Claude Sonnet 4.6 and Claude Opus 4.6 are the default main models only on 9.5.0 to 9.5.2. Later versions default to newer models. Refer to [Models recommended by default](models.md#recommended-by-default).
+
+**Workaround:** Use an extended reasoning model, such as Claude Opus 4.6, for {{esql}}-heavy dashboard generation. To learn more, refer to [Recommended models](models.md#recommended-models).
 
 ### Context length exceeded error [conversation-length-exceeded]
 
