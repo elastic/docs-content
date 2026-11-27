@@ -61,12 +61,6 @@ These tutorials walk you through building **Vega** and **Vega-Lite** panels on a
 
 As you edit the specs, work in small steps and save often. Small changes can cause unexpected results. Specs can use [HJSON](https://hjson.github.io/), which allows optional quotes and commas, comments, and multiline strings.
 
-:::{note}
-:applies_to: {"serverless": "ga", "stack": "ga 9.7+"}
-The **Vega** editor opens in a flyout on the dashboard. Where a tutorial says to select **Update**, select **Run preview** to see your changes on the panel. When the chart looks right, select **Apply and close** to keep it. **Cancel** discards the changes you made since you opened the editor.
-:::
-
-
 ### Create a line chart from an {{esql}} query [vega-tutorial-create-a-line-chart-from-esql]
 ```{applies_to}
 stack: ga 9.4
@@ -86,10 +80,13 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 1. Select **Add** in the application menu.
 2. Select **Vega** or **Custom visualization**: you might see either name depending on your {{kib}} version.
 
-    A pre-populated line chart displays the total number of documents.
+    A pre-populated line chart displays the total number of documents. Where you edit its spec depends on your {{kib}} version:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` In a flyout on the dashboard. When you run a preview, the panel shows your changes.
+    - {applies_to}`stack: ga 9.4-9.6` On a separate editor page, next to the chart.
 
 3. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
-4. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
+4. Replace the entire **Vega-Lite** spec with the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```json
 {
@@ -125,6 +122,11 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 4. The {{esql}} query. {{kib}} converts the columnar response into the row-based format that **Vega** expects.
 
 The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
+
+To keep the chart, close the editor, then save the dashboard:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select **Apply and close**. To discard the changes you made since you opened the editor, select **Cancel** instead.
+- {applies_to}`stack: ga 9.4-9.6` Select **Save and return**.
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { serverless: ga, stack: "ga 9.7+" }
@@ -238,13 +240,16 @@ Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the resu
 3. On the **Dashboards** page, select **Create dashboard**.
 4. Select **Add** (or **Add panel** in earlier versions) in the application menu, then select **Vega** or **Custom visualization**: you might see either name depending on your {{kib}} version.
 
-    A pre-populated line chart displays the total number of documents.
+    A pre-populated line chart displays the total number of documents. Where you edit its spec depends on your {{kib}} version:
+
+    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` In a flyout on the dashboard. When you run a preview, the panel shows your changes.
+    - {applies_to}`stack: ga 9.0-9.6` On a separate editor page, next to the chart.
 
 5. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
 
 #### Add the index and time field [_vega_stacked_area_add_index_and_time_field]
 
-1. In the **Vega-Lite** spec, replace `index: _all` with the following, then click **Update**:
+1. In the **Vega-Lite** spec, replace `index: _all` with the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
 index: kibana_sample_data_ecommerce
@@ -252,7 +257,7 @@ index: kibana_sample_data_ecommerce
 
 A flat line appears with zero results.
 
-To add the data fields from the **kibana_sample_data_ecommerce** {{data-source}}, replace the following, then click **Update**:
+To add the data fields from the **kibana_sample_data_ecommerce** {{data-source}}, replace the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 * `%timefield%: @timestamp` with `%timefield%: order_date`
 * `field: @timestamp` with `field: order_date`
@@ -355,7 +360,7 @@ The response format is different from the first aggregation query:
 }
 ```
 
-In the **Vega-Lite** spec, enter the aggregations, then click **Update**:
+In the **Vega-Lite** spec, enter the aggregations, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   data: {
@@ -456,7 +461,7 @@ In {{kib}} 7.9 and later, use the **Vega-Lite** [flatten transformation](https:/
 
 If you are using {{kib}} 7.8 and earlier, the flatten transformation is available only in **Vega**.
 
-In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
+In the **Vega-Lite** spec, add a `transform` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   transform: [{
@@ -469,7 +474,7 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 
     Vega-Lite displays **undefined** values because there are duplicate names.
 
-3. To resolve the duplicate names, add the `transform` and `encoding` blocks, then click **Update**:
+3. To resolve the duplicate names, add the `transform` and `encoding` blocks, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   transform: [{
@@ -502,7 +507,7 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 
 With the **Vega-Lite** spec, you can add hover states and tooltips to the stacked area chart with the `selection` block.
 
-In the **Vega-Lite** spec, add the `encoding` block, then click **Update**:
+In the **Vega-Lite** spec, add the `encoding` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   encoding: {
@@ -524,7 +529,7 @@ In the **Vega-Lite** spec, add the `encoding` block, then click **Update**:
 
 When you hover over the area series on the stacked area chart, a multi-line tooltip appears, but is unable to indicate the nearest point. To indicate the nearest point, add a second layer.
 
-Add composite marks, then click **Update**:
+Add composite marks, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   layer: [{
@@ -696,6 +701,11 @@ The selection is controlled by a signal. To view the signal, select **Inspect** 
 ```
 
 ::::
+
+To keep the chart, close the editor, then save the dashboard:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select **Apply and close**. To discard the changes you made since you opened the editor, select **Cancel** instead.
+- {applies_to}`stack: ga 9.0-9.6` Select **Save and return**.
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { serverless: ga, stack: "ga 9.7+" }
@@ -907,7 +917,7 @@ For more information, refer to the [Vega API](https://www.elastic.co/docs/api/do
 
 To build an area chart using an {{es}} search query, edit the **Vega** spec, then add click and drag handlers to update the {{kib}} filters.
 
-In the **Vega** spec, enter the following, then click **Update**:
+In the **Vega** spec, enter the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
 {
@@ -949,7 +959,7 @@ In the **Vega** spec, enter the following, then click **Update**:
 }
 ```
 
-Add the {{es}} search query with the `data` block, then click **Update**:
+Add the {{es}} search query with the `data` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   data: [
@@ -986,7 +996,7 @@ Add the {{es}} search query with the `data` block, then click **Update**:
 
 Display labels for the x- and y-axes.
 
-In the **Vega** spec, add the `scales` block, then click **Update**:
+In the **Vega** spec, add the `scales` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   scales: [{
@@ -1008,7 +1018,7 @@ In the **Vega** spec, add the `scales` block, then click **Update**:
   }]
 ```
 
-Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **Update**:
+Add the `key` and `doc_count` fields as the X- and Y-axis values, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   marks: [
@@ -1048,7 +1058,7 @@ Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **U
 
 Show the clickable points on the area chart to filter for a specific date.
 
-In the **Vega** spec, add to the `marks` block, then click **Update**:
+In the **Vega** spec, add to the `marks` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   {
@@ -1084,7 +1094,7 @@ In the **Vega** spec, add to the `marks` block, then click **Update**:
 
 To make the points clickable, create a **Vega** signal. You can access the clicked `datum` in the expression used to update.
 
-In the **Vega** spec, add a `signals` block to specify that the cursor clicks add a time filter with the three hour interval, then click **Update**:
+In the **Vega** spec, add a `signals` block to specify that the cursor clicks add a time filter with the three hour interval, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   signals: [
@@ -1484,6 +1494,11 @@ Add a signal that updates the {{kib}} time filter when the cursor is released wh
 ```
 
 ::::
+
+To keep the chart, close the editor, then save the dashboard:
+
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select **Apply and close**. To discard the changes you made since you opened the editor, select **Cancel** instead.
+- {applies_to}`stack: ga 9.0-9.6` Select **Save and return**.
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { serverless: ga, stack: "ga 9.7+" }
