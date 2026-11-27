@@ -41,6 +41,15 @@ toc:
           - file: deploy/elastic-cloud/serverless.md
             children:
               - file: deploy/elastic-cloud/create-serverless-project.md
+              - file: deploy/elastic-cloud/migrate-to-serverless.md
+                children:
+                  - file: deploy/elastic-cloud/migrate-to-serverless-assess.md
+                  - file: deploy/elastic-cloud/migrate-to-serverless-create-project.md
+                  - file: deploy/elastic-cloud/migrate-to-serverless-prepare.md
+                    children:
+                      - file: deploy/elastic-cloud/migrate-to-serverless-transfer-data.md
+                      - file: deploy/elastic-cloud/migrate-to-serverless-test-and-validate.md
+                  - file: deploy/elastic-cloud/migrate-to-serverless-production.md
               - file: deploy/elastic-cloud/regions.md
               - file: deploy/elastic-cloud/project-settings.md
               - file: deploy/elastic-cloud/find-connection-details-serverless.md

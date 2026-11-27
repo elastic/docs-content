@@ -1,4 +1,91 @@
 redirects:
+  # Preserve section URLs after splitting the Serverless migration guide.
+  'deploy-manage/deploy/elastic-cloud/migrate-to-serverless.md':
+    to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless.md'
+    many:
+      - to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-assess.md'
+        anchors:
+          'migrate-to-serverless-assess':
+          'migrate-to-serverless-compatibility': 'migrate-to-serverless-compatibility'
+          'migrate-to-serverless-inventory': 'migrate-to-serverless-inventory'
+          'migrate-to-serverless-use-cases': 'migrate-to-serverless-use-cases'
+      - to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-create-project.md'
+        anchors:
+          'migrate-to-serverless-create':
+      - to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-prepare.md'
+        anchors:
+          'migrate-to-serverless-access': 'migrate-to-serverless-access'
+          'migrate-to-serverless-analytics-jobs': 'migrate-to-serverless-analytics-jobs'
+          'migrate-to-serverless-anomaly-jobs': 'migrate-to-serverless-anomaly-jobs'
+          'migrate-to-serverless-cases': 'migrate-to-serverless-cases'
+          'migrate-to-serverless-component-templates': 'migrate-to-serverless-component-templates'
+          'migrate-to-serverless-connectors': 'migrate-to-serverless-connectors'
+          'migrate-to-serverless-data': 'migrate-to-serverless-data'
+          'migrate-to-serverless-enrich': 'migrate-to-serverless-enrich'
+          'migrate-to-serverless-fleet': 'migrate-to-serverless-fleet'
+          'migrate-to-serverless-inference': 'migrate-to-serverless-inference'
+          'migrate-to-serverless-inference-endpoints': 'migrate-to-serverless-inference-endpoints'
+          'migrate-to-serverless-integrations': 'migrate-to-serverless-integrations'
+          'migrate-to-serverless-kibana': 'migrate-to-serverless-kibana'
+          'migrate-to-serverless-legacy-templates': 'migrate-to-serverless-legacy-templates'
+          'migrate-to-serverless-lifecycle': 'migrate-to-serverless-lifecycle'
+          'migrate-to-serverless-maintenance-windows': 'migrate-to-serverless-maintenance-windows'
+          'migrate-to-serverless-observability-rules': 'migrate-to-serverless-observability-rules'
+          'migrate-to-serverless-pipelines': 'migrate-to-serverless-pipelines'
+          'migrate-to-serverless-prepare':
+          'migrate-to-serverless-remote-clusters': 'migrate-to-serverless-remote-clusters'
+          'migrate-to-serverless-saved-objects': 'migrate-to-serverless-saved-objects'
+          'migrate-to-serverless-scripts': 'migrate-to-serverless-scripts'
+          'migrate-to-serverless-security-rules': 'migrate-to-serverless-security-rules'
+          'migrate-to-serverless-set-up': 'migrate-to-serverless-set-up'
+          'migrate-to-serverless-spaces': 'migrate-to-serverless-spaces'
+          'migrate-to-serverless-synonyms': 'migrate-to-serverless-synonyms'
+          'migrate-to-serverless-templates': 'migrate-to-serverless-templates'
+          'migrate-to-serverless-trained-models': 'migrate-to-serverless-trained-models'
+          'migrate-to-serverless-workflows': 'migrate-to-serverless-workflows'
+      - to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-production.md'
+        anchors:
+          'migrate-to-serverless-alternatives': 'migrate-to-serverless-alternatives'
+          'migrate-to-serverless-close': 'migrate-to-serverless-close'
+          'migrate-to-serverless-cutover-plan': 'migrate-to-serverless-cutover-plan'
+          'migrate-to-serverless-final-transfer': 'migrate-to-serverless-final-transfer'
+          'migrate-to-serverless-incremental': 'migrate-to-serverless-incremental'
+          'migrate-to-serverless-offline': 'migrate-to-serverless-offline'
+          'migrate-to-serverless-parallel': 'migrate-to-serverless-parallel'
+          'migrate-to-serverless-phased': 'migrate-to-serverless-phased'
+          'migrate-to-serverless-production':
+          'migrate-to-serverless-production-clients': 'migrate-to-serverless-production-clients'
+          'migrate-to-serverless-production-validation': 'migrate-to-serverless-production-validation'
+          'migrate-to-serverless-switch-before-history': 'migrate-to-serverless-switch-before-history'
+      - to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-transfer-data.md'
+        anchors:
+          'migrate-to-serverless-data-streams': 'migrate-to-serverless-data-streams'
+          'migrate-to-serverless-logstash-example': 'migrate-to-serverless-logstash-example'
+          'migrate-to-serverless-regular-indices': 'migrate-to-serverless-regular-indices'
+          'migrate-to-serverless-transfer-considerations': 'migrate-to-serverless-transfer-considerations'
+          'migrate-to-serverless-transfer-documents': 'migrate-to-serverless-transfer-documents'
+          'migrate-to-serverless-verify-data': 'migrate-to-serverless-verify-data'
+          'select-the-data-to-transfer': 'select-the-data-to-transfer'
+      - to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-test-and-validate.md'
+        anchors:
+          'migrate-to-serverless-reuse': 'migrate-to-serverless-reuse'
+          'migrate-to-serverless-test': 'migrate-to-serverless-test'
+  'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-prepare.md':
+    to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-prepare.md'
+    many:
+      - to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-transfer-data.md'
+        anchors:
+          'migrate-to-serverless-data-streams': 'migrate-to-serverless-data-streams'
+          'migrate-to-serverless-logstash-example': 'migrate-to-serverless-logstash-example'
+          'migrate-to-serverless-regular-indices': 'migrate-to-serverless-regular-indices'
+          'migrate-to-serverless-transfer-considerations': 'migrate-to-serverless-transfer-considerations'
+          'migrate-to-serverless-transfer-documents': 'migrate-to-serverless-transfer-documents'
+          'migrate-to-serverless-verify-data': 'migrate-to-serverless-verify-data'
+          'select-the-data-to-transfer': 'select-the-data-to-transfer'
+      - to: 'deploy-manage/deploy/elastic-cloud/migrate-to-serverless-test-and-validate.md'
+        anchors:
+          'migrate-to-serverless-reuse': 'migrate-to-serverless-reuse'
+          'migrate-to-serverless-test': 'migrate-to-serverless-test'
   # related to https://github.com/elastic/docs-content/pull/9392
   'explore-analyze/ai-features/claude-plugin.md': 'explore-analyze/ai-features/agent-plugins/claude-plugin.md'
   # related to https://github.com/elastic/docs-content/pull/9157

@@ -1,0 +1,36 @@
+---
+config:
+  theme: base
+  look: classic
+  themeCSS: 'text, tspan, .nodeLabel, .cluster-label { font-family: Arial, sans-serif !important; } .node rect, .cluster rect { filter: none !important; }'
+  flowchart:
+    htmlLabels: false
+    curve: basis
+    nodeSpacing: 36
+    rankSpacing: 36
+    padding: 12
+  themeVariables:
+    fontFamily: Arial, sans-serif
+    fontSize: 15px
+    lineColor: '#748297'
+---
+flowchart LR
+    assess("1. Assess") --> create("2. Create<br/>project")
+    create --> preparation
+    subgraph preparation["3. Prepare and test destination"]
+        direction LR
+        prepare("Prepare")
+        data("Transfer data")
+        test("Test and<br/>validate")
+        prepare --> data
+        data --> test
+        test --> prepare
+    end
+    preparation --> production("4. Switch to<br/>production")
+    style assess fill:#f6f9fc,stroke:#bdc2ca,color:#243247
+    style create fill:#f6f9fc,stroke:#bdc2ca,color:#243247
+    style production fill:#f6f9fc,stroke:#bdc2ca,color:#243247
+    style preparation fill:#f8fafc,stroke:#cbd5e1,rx:12,ry:12,color:#243247
+    style prepare fill:#d9e8ff,stroke:#3788ff,stroke-width:2px,color:#123778
+    style data fill:#f6f9fc,stroke:#bdc2ca,color:#243247
+    style test fill:#f6f9fc,stroke:#bdc2ca,color:#243247
