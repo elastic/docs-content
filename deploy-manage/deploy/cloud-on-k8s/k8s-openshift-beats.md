@@ -64,7 +64,7 @@ If you used the examples from the [recipes directory](https://github.com/elastic
                 privileged: true
     ```
 
-    The example uses the {{es}} and {{kib}} instances from the previous pages in this section. Replace the names and the namespace with the ones of your environment.
+    The example uses the {{es}} and {{kib}} instances from the previous pages in this section. Replace the names and the namespace with the values for your environment.
 
 
 If the container is not privileged, SELinux can prevent the Beat from writing to its data directory on the node, and the Beat Pod fails with the following message:
