@@ -1,3 +1,3 @@
 :::{important}
-OpenTelemetry input packages are used with {{fleet}} and {{agent}} running in default mode. They cannot be used with an [{{agent}} running as an OTel Collector](/reference/fleet/otel-agent.md) (an agent in `otel` mode).
+OpenTelemetry input packages are used with {{fleet}}-managed {{agent}} or standalone {{agent}} configured with `elastic-agent.yml`. They cannot be used with an [{{agent}} configured as an OTel Collector](/reference/fleet/otel-agent.md).
 :::

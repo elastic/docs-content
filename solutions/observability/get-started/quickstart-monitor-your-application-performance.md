@@ -36,9 +36,9 @@ In this quickstart guide, you’ll learn how to instrument your application usin
 
 ## Install the {{agent}} [_install_edot_collector]
 
-The {{agent}} in [Agent mode](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-agent) collects infrastructure and application telemetry data sent by the EDOT SDKs and forwards it to Elastic.
+The {{agent}} deployed as an [edge collector](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-agent) collects infrastructure and application telemetry data sent by the EDOT SDKs and forwards it to Elastic.
 
-Refer to the [{{edot}} Quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md) to install the {{agent}} for your deployment mode.
+Refer to the [{{edot}} Quickstarts](/solutions/observability/get-started/opentelemetry/quickstart/index.md) to install the {{agent}} for your deployment type.
 
 ## Collect application telemetry data [_collect_your_data]
 

@@ -22,7 +22,7 @@ If you already use classic Elastic {{product.apm}} agents, {{beats}}, or {{agent
 
 ## Before you begin [start-with-otel-prereqs]
 
-EDOT SDKs and {{agent}} in OTel mode require {{stack}} 8.16 or later for basic compatibility. For a supported configuration, use:
+EDOT SDKs and {{agent}} configured as an OTel Collector require {{stack}} 8.16 or later for basic compatibility. For a supported configuration, use:
 
 * {{stack}} 9.x, or
 * {{stack}} 8.18 or 8.19 with {{agent}} version 9.x. You have to keep your configuration aligned to your Stack version, not the {{agent}} 9.x defaults.
@@ -81,7 +81,7 @@ Refer to [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) for the
 
 ::::{applies-item} self:
 
-**Run {{agent}} in gateway mode.**
+**Run {{agent}} as a gateway.**
 
 The {{motlp}} is not available for self-managed Elastic, ECE, or ECK deployments. You need an {{agent}} running as a [gateway](elastic-agent://reference/edot-collector/modes.md).
 

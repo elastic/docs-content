@@ -50,7 +50,7 @@ The [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md) 
 You’ll need:
 
 * A running [self-managed](/deploy-manage/deploy/self-managed.md) {{es}} cluster
-* The {{agent}} installed on the gateway host. It ships as part of the {{agent}} package and runs as {{agent}} in `otel` mode.
+* The {{agent}} installed on the gateway host, where it runs configured as an OTel Collector.
 * An existing OpenTelemetry Collector installed on your agent hosts. This guide uses [`otelcol-contrib`](https://opentelemetry.io/docs/collector/installation/).
 * Network connectivity from your Collector hosts to the {{edot}} gateway host on port 4317
 
@@ -135,7 +135,7 @@ The {{edot}} gateway authenticates to {{es}} using an API key.
     Refer to [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md) for more information.
     :::
 
-3. Start the {{edot}} gateway. The {{agent}} is the {{agent}} binary run in `otel` mode, so start it with the `otel` subcommand:
+3. Start the {{edot}} gateway. To run {{agent}} configured as an OTel Collector, start it with the `otel` subcommand:
 
     ```bash
     elastic-agent otel --config gateway.yml
