@@ -110,7 +110,7 @@ For supported Ruby versions and other requirements, refer to the [Ruby client in
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```bash
@@ -220,7 +220,7 @@ es = Elasticsearch::Client.new(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -414,7 +414,7 @@ es.indices.create(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -732,7 +732,7 @@ es.bulk(
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1078,7 +1078,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1377,7 +1377,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -1680,7 +1680,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 ```csharp
@@ -2230,7 +2230,7 @@ end
 
 ::::
 
-::::{tab-item} C#/.NET
+::::{tab-item} C# (.NET)
 :sync: csharp
 
 :::{dropdown} Complete runnable script

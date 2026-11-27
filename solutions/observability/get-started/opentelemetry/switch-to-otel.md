@@ -50,7 +50,7 @@ Not every feature from the classic stack is available with {{edot}} yet. Review 
 
 | Feature | Status | Notes |
 |---|---|---|
-| Real User Monitoring (RUM) / Browser | Preview {applies_to}`edot_browser: preview` | For production RUM, continue using the classic Elastic {{product.apm}} browser agent. |
+| Real User Monitoring (RUM) / Browser | Available with changes {applies_to}`edot_browser: preview 0.1-0.5, ga 1.0+` | The **{{user-experience}}** app doesn't show EDOT Browser data. EDOT Browser has fewer stable configuration options, and full feature parity with the classic browser agent isn't available. Refer to [EDOT Browser limitations](elastic-otel-rum-js://reference/edot-browser/index.md#limitations). |
 | Universal Profiling | Not available | Only supported with classic Elastic ingestion (using the classic {{agent}}). |
 | Span compression | Not available | |
 | Breakdown metrics | Not available | The **Time spent by span type** chart on the transaction views doesn't populate. |
@@ -64,7 +64,8 @@ Not every feature from the classic stack is available with {{edot}} yet. Review 
 
 Consider waiting if:
 
-- You need production RUM. EDOT Browser is in technical preview.
+- You rely on the **{{user-experience}}** app for RUM data. It only shows data from the classic Elastic {{product.apm}} browser agent.
+- You need to fine-tune browser instrumentations. EDOT Browser has fewer stable configuration options than the classic browser agent, and per-instrumentation settings use the [`instrumentations`](elastic-otel-rum-js://reference/edot-browser/configuration.md#otel_browser_instrumentations-details) option, which isn't recommended because upstream settings can change between releases.
 - You depend on breakdown metrics to power the **Time spent by span type** chart on your transaction views.
 - You need managed tail-based sampling without additional operational complexity.
 - You have many custom dashboards or alerts built on classic {{product.apm}} field names (`labels.*`, `numeric_labels.*`) and can't absorb the query update work yet.
@@ -95,7 +96,7 @@ Replace each classic {{apm-agent}} with the corresponding EDOT SDK. Dedicated mi
 | PHP | [Migrate to EDOT PHP](elastic-otel-php://reference/edot-php/migration.md) | Span compression, breakdown metrics, `capture_errors`, and `sanitize_field_names` not available. |
 | iOS | No dedicated guide | Use the [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md) setup docs to replace the classic Elastic iOS {{apm-agent}}. |
 | Android | No dedicated guide | Use the [EDOT Android](apm-agent-android://reference/edot-android/index.md) setup docs to replace the classic Elastic Android {{apm-agent}}. |
-| Browser / RUM | No dedicated guide | {applies_to}`edot_browser: preview` Use the [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md) setup docs. For production RUM, continue using the [classic Elastic {{product.apm}} browser agent](apm-agent-rum-js://reference/index.md). |
+| Browser / RUM | No dedicated guide | Use the [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md) setup docs to replace the classic Elastic {{product.apm}} browser agent. There's no migration tooling, so plan a manual cutover of instrumentation and configuration. |
 
 ### If you use upstream OpenTelemetry SDKs or Jaeger [switch-to-otel-upstream]
 
@@ -187,7 +188,7 @@ The service's **Metrics** tab shows callouts when it detects an instrumentation 
 
 ::::{step} Check signal ingestion
 
-1. In {{kib}}, go to **{{product.observability}} → Applications → Service inventory** (or use the global search to find **Service inventory**) and confirm your service appears.
+1. In {{kib}}, go to **{{product.observability}}** → **Applications** → **Service inventory** (or use the global search to find **Service inventory**) and confirm your service appears.
 2. Open the service and verify that traces, metrics, and logs are present in each tab.
 3. Check the service's **Metrics** tab for runtime metrics. Metric names have changed. For example, for Java, `jvm.memory.heap.used` is now `jvm.memory.used` with a `jvm.memory.type = heap` attribute filter.
 

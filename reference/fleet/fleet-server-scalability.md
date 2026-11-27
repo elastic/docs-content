@@ -211,21 +211,21 @@ deployment:
   ess: ga
 ```
 
-The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. It should be noted that these compute resource can be spread across multiple availability zones (for example, a 32GB RAM requirement can be satisfied with 16GB of RAM in 2 different zones).
+The following tables provide the minimum resource requirements and scaling guidelines based on the number of agents required by your deployment. The memory values in the table are totals that you can spread across availability zones (for example, you can meet a 32 GiB memory requirement with 16 GiB in each of two zones).
 
 
 ### Resource requirements by number of agents [resource-requirements-by-number-agents]
 
-| Number of agents | {{fleet-server}} memory | {{fleet-server}} vCPU | {{es}} hot tier |
-| --- | --- | --- | --- |
-| 2,000 | 2GB | up to 8 vCPU | 32GB  RAM  &#124; 8 vCPU |
-| 5,000 | 4GB | up to 8 vCPU | 32GB  RAM  &#124; 8 vCPU |
-| 10,000 | 8GB | up to 8 vCPU | 128GB RAM  &#124; 32 vCPU |
-| 15,000 | 8GB | up to 8 vCPU | 256GB RAM  &#124; 64 vCPU |
-| 25,000 | 8GB | up to 8 vCPU | 256GB RAM  &#124; 64 vCPU |
-| 50,000 | 8GB | up to 8 vCPU | 384GB RAM  &#124; 96 vCPU |
-| 75,000 | 8GB | up to 8 vCPU | 384GB RAM  &#124; 96 vCPU |
-| 100,000 | 16GB | 16 vCPU | 512GB RAM  &#124; 128 vCPU |
+| Number of agents | {{fleet-server}} memory | {{fleet-server}} vCPU | {{es}} hot tier | {{kib}} memory |
+| --- | --- | --- | --- | --- |
+| 2,000 | 2 GiB | 8 vCPU | 16 GiB RAM &#124; 8 vCPU | 4 GiB |
+| 5,000 | 2 GiB | 8 vCPU | 16 GiB RAM &#124; 8 vCPU | 4 GiB |
+| 10,000 | 4 GiB | 8 vCPU | 32 GiB RAM &#124; 16 vCPU | 4 GiB |
+| 15,000 | 8 GiB | 8 vCPU | 32 GiB RAM &#124; 16 vCPU | 4 GiB |
+| 25,000 | 8 GiB | 8 vCPU | 32 GiB RAM &#124; 16 vCPU | 4 GiB |
+| 50,000 | 16 GiB | 16 vCPU | 256 GiB RAM &#124; 96 vCPU | 16 GiB |
+| 75,000 | 16 GiB | 16 vCPU | 256 GiB RAM &#124; 96 vCPU | 16 GiB |
+| 100,000 | 32 GiB | 24 vCPU | 512 GiB RAM &#124; 128 vCPU | 32 GiB |
 
 A series of scale performance tests are regularly executed in order to verify the above requirements and the ability for {{fleet}} to manage the advertised scale of {{agent}}s. These tests go through a set of acceptance criteria. The criteria mimics a typical platform operator workflow. The test cases are performing agent installations, version upgrades, policy modifications, and adding/removing integrations, tags, and policies. Acceptance criteria is passed when the {{agent}}s reach a `Healthy` state after any of these operations.
 

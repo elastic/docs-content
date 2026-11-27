@@ -29,7 +29,7 @@ spec:
       - name: kibana
         resources:
           limits:
-            memory: 1Gi
+            memory: 2Gi
             cpu: 1
 ---
 apiVersion: route.openshift.io/v1

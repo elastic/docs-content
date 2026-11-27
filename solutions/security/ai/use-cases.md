@@ -13,17 +13,16 @@ products:
 
 # AI use cases
 
-The guides in this section describe example workflows for AI Assistant and Attack discovery. Refer to them for examples of each tool’s individual capabilities and how they can work together.
+The guides in this section describe example workflows for {{agent-builder}} and Attack Discovery. Refer to them for examples of each tool's individual capabilities and how they can work together.
 
 * [Triage alerts](/solutions/security/ai/triage-alerts.md)
 * [Identify, investigate, and document threats](/solutions/security/ai/identify-investigate-document-threats.md)
 * [Generate, customize, and learn about {{esql}} queries](/solutions/security/ai/generate-customize-learn-about-esorql-queries.md)
-
-For general information, refer to [AI Assistant](/solutions/security/ai/ai-assistant.md) or [Attack discovery](/solutions/security/ai/attack-discovery/index.md).
+* [Security use cases for {{agent-builder}}](/solutions/security/ai/agent-builder/skills-use-cases.md): Example prompts for each built-in Security skill.
 
 ## Other AI-powered tools
 
-In addition to AI Assistant and Attack Discovery, {{elastic-sec}} provides several other AI-powered tools for specific use cases. These include:
+In addition to {{agent-builder}} and Attack Discovery, {{elastic-sec}} provides several other AI-powered tools for specific use cases. These include:
 
 * [Automatic Import](/explore-analyze/ai-features/automatic-import.md): Helps you quickly parse, ingest, and create [ECS mappings](https://www.elastic.co/elasticsearch/common-schema) for data from sources that don’t yet have prebuilt Elastic integrations. This can accelerate your migration to {{elastic-sec}}, and help you quickly add new data sources to an existing SIEM solution in {{elastic-sec}}.
 * [Automatic Migration](/solutions/security/get-started/automatic-migration.md): Helps you quickly convert SIEM rules from the Splunk Processing Language (SPL) to the Elasticsearch Query Language ({{esql}}). If comparable Elastic-authored rules exist, it simplifies onboarding by mapping your rules to them. Otherwise, it creates custom rules on the fly so you can verify and edit them instead of writing them from scratch.

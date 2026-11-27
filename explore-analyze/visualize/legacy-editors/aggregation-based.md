@@ -54,7 +54,7 @@ Aggregation-based visualizations include the following limitations:
 
 Choose the type of visualization you want to create, then use the editor to configure the options.
 
-1. On the dashboard, click **All types > Aggregation based**.
+1. [Create a visualization from the Visualize library](../visualize-library.md#visualize-library-create), open the **Legacy** tab, then select **Aggregation-based**.
 
     1. Select the visualization type you want to create.
     2. Select the data source you want to visualize.
@@ -95,9 +95,9 @@ Add the sample web logs data that you’ll use to create the bar chart, then cre
 
 ### Open and set up the aggregation-based bar chart [_open_and_set_up_the_aggregation_based_bar_chart]
 
-Open the **Aggregation based** editor and change the time range.
+Open the **Aggregation-based** editor and change the time range.
 
-1. On the dashboard, click **All types > Aggregation based**, select **Vertical bar**, then select **Kibana Sample Data Logs**.
+1. [Create a visualization from the Visualize library](../visualize-library.md#visualize-library-create), open the **Legacy** tab, select **Aggregation-based** and **Vertical bar**, then select **Kibana Sample Data Logs**.
 2. Make sure the [time filter](../../query-filter/filtering.md) is **Last 7 days**.
 
 
@@ -145,7 +145,7 @@ You can open the following aggregation-based visualizations in **Lens**:
 * Pie
 * Vertical bar
 
-To get started, click **Edit visualization in Lens** in the toolbar.
+To get started, select **Edit visualization in Lens** in the [application menu](/explore-analyze/find-and-organize/kibana-interface.md#application-menu).
 
 You can also convert an aggregation-based visualization that's already on a dashboard. In **Edit** mode, open the panel menu {icon}`boxes_vertical` and select **Convert to Lens**. The option appears only when {{kib}} can convert the visualization's configuration, and you need at least **Read** access to the **Visualize library** feature. **Lens** opens with the converted visualization. To replace the panel with it, select **Save and return**.
 
@@ -158,7 +158,10 @@ Save the panel to the **Visualize Library** and add it to the dashboard, or add 
 
 To save the panel to the **Visualize Library**:
 
-1. Click **Save to library**.
+1. In the application menu, select **Save to library**.
+
+    :::{include} ../_snippets/save-to-library-more.md
+    :::
 2. Enter the **Title** and add any applicable [**Tags**](../../find-and-organize/tags.md).
 3. Make sure that **Add to Dashboard after saving** is selected.
 4. Click **Save and return**.
