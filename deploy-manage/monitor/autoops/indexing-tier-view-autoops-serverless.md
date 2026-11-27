@@ -24,9 +24,15 @@ The top half of the **Indexing Tier** page offers general insights at the projec
 :::
 
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
-* Gain insights from **performance charts** depicting indexing rate and latency trends over time.
-* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to see how [ingest VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) usage compares to indexing rate and latency.
+* Select **custom time ranges** to explore data on usage and performance charts up to the last 10 days.
+
+  :::{include} /deploy-manage/monitor/_snippets/autoops-serverless-chart-buckets.md
+  :::
+
+* Gain insights from **performance charts** depicting indexing rate and latency trends over the selected time range.
+* {applies_to}`elasticsearch:` Explore the **Ingest VCUs** chart to understand [Ingest VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumption.
+
+  Each point on the chart shows the VCU-hours consumed in a time bucket. For example, `0.17/5 min (2/h)` means that 0.17 VCU-hours were consumed in a 5-minute bucket, which is a rate of about 2 VCUs per hour. Add up the values of all the points to see how many Ingest VCU-hours count toward your costs for the selected time range, whether you're anticipating an upcoming bill or reviewing past usage.
 
 ## Index and data stream-level insights
  
@@ -39,8 +45,8 @@ The bottom half of the **Indexing Tier** page offers a more granular breakdown o
 
 A table lists all of your indices and data streams, with each row providing the following information:
 * The **number of documents** in the index or data stream.
-* The latest **indexing rate** in the selected time period.
-* The latest **indexing latency** in the selected time period.
+* The latest **indexing rate** in the selected time range.
+* The latest **indexing latency** in the selected time range.
 * The timestamp of the **last indexing operation** on the index or data stream.
 
 Using this table, you can detect which of your indices or data streams is currently being ingested and at what rate and latency. This helps you identify which indices have a high [ingestion load](https://www.elastic.co/search-labs/blog/elasticsearch-ingest-autoscaling#ingestion-load), so that you can deduce where that load is coming from and manage it accordingly.

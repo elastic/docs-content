@@ -53,11 +53,19 @@ The number of VCUs you need is determined by:
   Because a small amount of memory is allocated for every index, the number of indices also affects ingest VCU consumption. A high index count can raise Ingest VCU use when the ingest rate is unchanged. To reduce this overhead, refer to [Indexing strategies](#elasticsearch-billing-indexing-strategies).
 
   Ingest VCU billing scales to zero during periods with no ingest activity.
+
+  :::{tip}
+  To see how your Ingest VCU consumption contributes to your bill, use the [Ingest VCUs chart](/deploy-manage/monitor/autoops/indexing-tier-view-autoops-serverless.md#project-level-insights) in the AutoOps **Indexing Tier** view.
+  :::
 * **Search:** The VCUs used to return search results with the latency and queries per second (QPS) you require. Search VCUs are calculated as a factor of the compute resources needed to run search queries, search throughput, and latency. Search VCUs are not charged per search request. Instead, they are a factor of the compute resources that scale up and down based on amount of searchable data, search load (QPS), and performance (latency and availability).
 
   Unlike ingest, Search VCU billing does not scale to zero during idle periods. A baseline of search capacity is always provisioned so your data remains instantly queryable, and you are billed a reduced rate for this baseline when no search activity is occurring. The baseline is determined primarily by your Search Power setting and your [search-ready](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings#elasticsearch-manage-project-search-ai-lake-settings) dataset size.
 
   If you set [Minimum Search VCUs](/deploy-manage/deploy/elastic-cloud/project-settings.md#minimum-search-vcus), the Search tier does not scale below that number of VCUs. Search VCUs provisioned through this setting are priced at the same per-VCU rate as any other Search VCU consumption.
+
+  :::{tip}
+  To see how your Search VCU consumption contributes to your bill, use the [Search VCUs chart](/deploy-manage/monitor/autoops/search-tier-view-autoops-serverless.md#project-level-insights) in the AutoOps **Search Tier** view.
+  :::
 * **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities. ML VCUs are a factor of the models deployed and number of ML operations such as inference for search and ingest. ML VCUs are typically consumed for generating embeddings during ingestion and during semantic search or reranking.
 
   Models that run on the [Elastic {{infer-cap}} Service](#elasticsearch-billing-elastic-managed-llms) are billed based on tokens as an add-on, not as ML VCUs.

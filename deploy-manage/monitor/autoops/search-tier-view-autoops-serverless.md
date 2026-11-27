@@ -25,11 +25,20 @@ On the **Search Tier** page, the top half of the page offers general insights at
 
 Use the following features to explore this view:
 * Use the built-in **project picker** to switch between projects. This allows you to make quick context changes without needing to navigate back to your {{ecloud}} home page to select a different project.
-* Select **custom time windows** to explore usage and performance data up to the last 10 days. For time periods up to 72 hours, the data on the chart is displayed per hour. For time periods greater than 72 hours, the data is displayed per day.
-* Gain insights from **performance charts** depicting search rate and latency trends over time.
-* {applies_to}`elasticsearch:` Explore the **Search VCUs** chart to understand the trend of Search VCU usage over time. Use the **annotations** overlaying this chart to understand when the search power, boost window, and minimum search VCUs changed during the selected time period and how that might have affected the autoscaling of your project (and consequently your VCU consumption).
-* {applies_to}`vectordb:` Explore the **Reserved search capacity** chart to see your project's search capacity over time. Use the **annotations** overlaying this chart to understand when **Search Power** changed during the selected time period, with exact timestamps. 
-* {applies_to}`vectordb:` View your project's **Uptime** for the selected time period and the current **Search Power** to track their effect on the search and infrastructure [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md). 
+* Select **custom time ranges** to explore data on usage and performance charts up to the last 10 days.
+
+  :::{include} /deploy-manage/monitor/_snippets/autoops-serverless-chart-buckets.md
+  :::
+
+* Gain insights from **performance charts** depicting search rate and latency trends over the selected time range.
+* {applies_to}`elasticsearch:` Explore the **Search VCUs** chart to understand [Search VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumption.
+
+  Each point on the chart shows the VCU-hours consumed in a time bucket. For example, `0.17/5 min (2/h)` means that 0.17 VCU-hours were consumed in a 5-minute bucket, which is a rate of about 2 VCUs per hour. Add up the values of all the points to see how many Search VCU-hours count toward your costs for the selected time range, whether you're anticipating an upcoming bill or reviewing past usage.
+
+  Use the **annotations** overlaying this chart to see when [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md#elasticsearch-manage-project-search-ai-lake-settings) changed during the selected time range and how that affected autoscaling and VCU consumption.
+
+* {applies_to}`vectordb:` Explore the **Reserved search capacity** chart to see your project's search capacity over time. Use the **annotations** overlaying this chart to understand when **Search Power** changed during the selected time range, with exact timestamps. 
+* {applies_to}`vectordb:` View your project's **Uptime** for the selected time range and the current **Search Power** to track their effect on the search and infrastructure [billing dimensions](/deploy-manage/cloud-organization/billing/vector-database-billing-dimensions.md). 
 
 :::{image} /deploy-manage/images/search-tier-project-level-features-vectordb.png
 :screenshot:
@@ -47,8 +56,8 @@ The bottom half of the page offers a more granular breakdown of index-level and 
 
 A table lists all of your indices and data streams, with each row providing the following information:
 * The **number of documents** in the index or data stream.
-* The latest **search rate** in the selected time period.
-* The latest **search latency** in the selected time period.
+* The latest **search rate** in the selected time range.
+* The latest **search latency** in the selected time range.
 * The timestamp of the **last search** on the index or data stream.
 
 Using this table, you can detect which of your indices or data streams is currently being searched and at what rate and latency. This helps you identify which indices are suffering from high [search load](https://www.elastic.co/search-labs/blog/elasticsearch-serverless-tier-autoscaling#what-is-search-load?), so that you can deduce where that load is coming from and manage it accordingly.
