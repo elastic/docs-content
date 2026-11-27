@@ -41,6 +41,9 @@ To add a vector layer to your map, click **Add layer**, then select one of the f
 **EMS Boundaries**
 :   Administrative boundaries from [Elastic Maps Service](https://www.elastic.co/elastic-maps-service).
 
+**ES|QL** {applies_to}`serverless: preview` {applies_to}`stack: preview`
+:   Points, lines, and polygons from the rows that an {{esql}} query returns. Refer to [Create a map layer from an {{esql}} query](maps-esql-layer.md).
+
 **ML Anomalies**
 :   Points and lines associated with anomalies. The {{anomaly-job}} must use a `lat_long` function. Go to [Detecting anomalous locations in geographic data](../../machine-learning/anomaly-detection/geographic-anomalies.md) for an example.
 

@@ -31,7 +31,7 @@ Use multiple layers and indices to show all your data in a single map. Show how 
 :screenshot:
 :::
 
-To learn about specific types of layers, check out [Heat map layer](../../explore-analyze/visualize/maps/heatmap-layer.md), [Tile layer](../../explore-analyze/visualize/maps/tile-layer.md), and [Vector layer](../../explore-analyze/visualize/maps/vector-layer.md).
+To learn about specific types of layers, check out [Heat map layer](../../explore-analyze/visualize/maps/heatmap-layer.md), [Tile layer](../../explore-analyze/visualize/maps/tile-layer.md), [Vector layer](../../explore-analyze/visualize/maps/vector-layer.md), and [{{esql}} layer](../../explore-analyze/visualize/maps/maps-esql-layer.md).
 
 
 ## Animate spatial temporal data [_animate_spatial_temporal_data]

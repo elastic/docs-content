@@ -426,6 +426,7 @@ toc:
               - file: visualize/maps/vector-style.md
               - file: visualize/maps/maps-vector-style-properties.md
               - file: visualize/maps/vector-tooltip.md
+          - file: visualize/maps/maps-esql-layer.md
           - file: visualize/maps/maps-aggregations.md
             children:
               - file: visualize/maps/maps-grid-aggregation.md
