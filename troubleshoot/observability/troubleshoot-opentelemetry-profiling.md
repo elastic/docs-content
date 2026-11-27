@@ -31,11 +31,11 @@ The profiler needs access to scheduler tracepoints. Mount `tracefs` on the Linux
 sudo mount -t tracefs tracefs /sys/kernel/tracing
 ```
 
-For a container deployment, expose that directory at `/sys/kernel/tracing` in the container. The Helm profiling preset configures this container mount for you.
+For a container deployment, expose that directory at `/sys/kernel/tracing` in the container. The [Helm `profiling` preset](/solutions/observability/infra-and-hosts/get-started-with-otel-profiling.md#profiling-otel-deploy-kubernetes) configures this container mount for you.
 
 ## The receiver fails with `system analysis request was not handled` on a local kind cluster
 
-kind runs its nodes in containers, so the profiler runs in a nested PID namespace. With {{agent}} 9.6, enable PID namespace translation by adding the following receiver setting to your Helm values:
+kind runs its nodes in containers, so the profiler runs in a nested PID namespace. With {{agent}} 9.6 or later, enable PID namespace translation by adding the following receiver setting to your Helm values:
 
 ```yaml
 config:

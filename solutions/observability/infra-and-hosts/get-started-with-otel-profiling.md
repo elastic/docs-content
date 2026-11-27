@@ -69,7 +69,7 @@ Select the deployment option that matches how you run {{agent}}:
 
 * [{{agent}} managed by {{fleet}}](#profiling-otel-deploy-fleet): Configure the profiler once in an agent policy, and {{fleet}} rolls it out to every enrolled host.
 * [Standalone {{agent}} configured as an OTel Collector](#profiling-otel-deploy-standalone): Manage the Collector configuration yourself on each host.
-* [{{agent}} configured as an OTel Collector on {{k8s}}](#profiling-otel-deploy-kubernetes): Run the Collector as a DaemonSet to profile every node in a cluster.
+* [{{agent}} configured as an OTel Collector on {{k8s}}](#profiling-otel-deploy-kubernetes): Run the Collector as a DaemonSet with the OpenTelemetry Collector Helm chart to profile every node in a cluster. If {{fleet}} manages your agents on {{k8s}}, use the {{fleet}} option instead.
 
 These options run the same `profiling` receiver. For details about the integration, refer to [OpenTelemetry Profiling](integration-docs://reference/profiling_otel.md).
 
@@ -134,7 +134,7 @@ If you run {{agent}} on {{k8s}} managed by {{fleet}}, follow [Run {{agent}} on {
     sudo ./otelcol --config otel.yml --feature-gates=service.profilesSupport
     ```
 
-#### Collect metrics using the `profilingmetrics` connector
+#### Collect metrics using the `profilingmetrics` connector [profiling-otel-profilingmetrics]
 
 Optionally, you can collect metrics instead of raw profiles. The `profilingmetrics` connector turns each stack sample into OpenTelemetry metrics that break down CPU time by frame type, shared library, kernel subsystem, and system call. Those metrics use less ingest and storage than raw profiles, and they power the [Elastic OTel Profiling Metrics](integration-docs://reference/profilingmetrics_otel.md) dashboards. However, as this configuration doesn't send raw profiles, the stacktraces, flamegraphs, and functions views stay empty.
 
@@ -225,7 +225,7 @@ To profile every node in a cluster, run the Collector as a DaemonSet. The [OpenT
 
 A few minutes after the profiler starts, check if data is arriving:
 
-* In {{kib}}, find **Infrastructure** in the navigation menu and open **Profiling**, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Stacktraces**. The **Threads**, **Traces**, and **Hosts** graphs show data. If your deployment also has Universal Profiling data, make sure that the schema selector at the top of the page shows **OpenTelemetry**. For more information on how the selector picks a default and which schemas it lists, refer to [Select a profiling schema](profiling.md#profiling-schema-selector).
+* In {{kib}}, find **Infrastructure** in the navigation menu and open **Profiling**, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open **Stacktraces**. The **Executables**, **Threads**, **Traces**, and **Hosts** graphs show data. If your deployment also has Universal Profiling data, make sure that the schema selector below the search bar shows **OpenTelemetry**. For more information on how the selector picks a default and which schemas it lists, refer to [Select a profiling schema](profiling.md#profiling-schema-selector).
 * In **{{dev-tools-app}}**, count events in the OpenTelemetry profiling data streams:
 
     ```console

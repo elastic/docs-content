@@ -91,7 +91,7 @@ Universal Profiling needs a one-time setup step in {{kib}} that creates the {{es
 :::::{applies-switch}
 ::::{applies-item} stack: ga 9.6+
 
-Find **Profiling** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Add data**. If your deployment has no profiling data yet, the **Add profiling data** page opens directly. Select the **Universal Profiling (legacy)** tab and click **Set up Universal Profiling**. When the setup completes, the tab shows the instructions for installing the Universal Profiling Agent.
+Find **Infrastructure** in the navigation menu and open **Profiling**, or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Add data**. If your deployment has no profiling data yet, the **Add profiling data** page opens directly. Select the **Universal Profiling (legacy)** tab and click **Set up Universal Profiling**. When the setup completes, the tab shows the instructions for installing the Universal Profiling Agent.
 
 The setup step no longer blocks the rest of the app. Until you run it, the Profiling views work with OpenTelemetry profiling data, and only the **Storage explorer** link stays disabled. If Universal Profiling already has data but the resources it needs are missing or out of date, the views show a **Universal Profiling setup is incomplete** callout. Click **Complete setup** to return to this tab.
 

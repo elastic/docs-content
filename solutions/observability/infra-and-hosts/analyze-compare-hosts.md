@@ -271,7 +271,7 @@ The **Profiling** tab (**Universal Profiling** in earlier versions) shows CPU us
 
 {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` The tab shows OpenTelemetry profiling data. On {{stack}} deployments where the host also has Universal Profiling data, use the schema selector on the tab to choose which data to view.
 
-To learn how to read these views, refer to [Profiling](/solutions/observability/infra-and-hosts/profiling.md).
+Each view has a link that opens the same view in the Profiling app, for example **Go to Profiling Flamegraph** (**Go to Universal Profiling Flamegraph** in earlier versions). To learn how to read these views, refer to [Profiling](/solutions/observability/infra-and-hosts/profiling.md).
 
 :::{image} /solutions/images/observability-universal-profiling-overlay.png
 :alt: Host details with the Profiling tab selected, a flamegraph of OpenTelemetry samples, and the Go to Profiling Flamegraph link.

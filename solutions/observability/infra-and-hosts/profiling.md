@@ -16,7 +16,7 @@ Profiling shows you which code uses the most CPU on your Linux hosts, including 
 
 ## Choose how to collect profiling data [profiling-collection-options]
 
-In {{stack}} 9.6 and later, and on {{serverless-short}}, the {{kib}} app is called **Profiling**. In earlier versions it is labeled **Universal Profiling**, the name this page also uses to reference the original agent and backend.
+In {{stack}} 9.6 and later, and on {{serverless-short}}, the {{kib}} app is called **Profiling**. In earlier versions it is labeled **Universal Profiling**. On this page, Universal Profiling refers to the original agent and backend.
 
 Whichever option you use, profiles show up in the same stacktraces, flamegraphs, and functions views.
 
@@ -29,7 +29,7 @@ stack: preview 9.6+
 serverless: preview
 ```
 
-OpenTelemetry profiling and Universal Profiling can run in the same deployment, and they store their data in different formats, called schemas. The views show one schema at a time. The schema selector at the top of the **Stacktraces**, **Flamegraphs**, and **Functions** views, including the differential views, lets you pick which one to look at. The same selector appears in the profiling views embedded in **Applications** and **Infrastructure**.
+OpenTelemetry profiling and Universal Profiling can run in the same deployment, and they store their data in different formats, called schemas. The views show one schema at a time. The schema selector below the search bar in the **Stacktraces**, **Flamegraphs**, and **Functions** views, including the differential views, lets you pick which one to look at. The same selector appears in the profiling views embedded in **Applications** and **Infrastructure**.
 
 :::{image} /solutions/images/observability-profiling-schema-selector.png
 :alt: Stacktraces view with OpenTelemetry selected in the Schema menu below the query and time filters.
@@ -44,7 +44,7 @@ The selector works as follows:
 * Your choice is stored in the page URL, so it survives reloads and stays with you as you move between the Profiling views.
 * In the differential views, the selector lists schemas that have data for the baseline time range and query. The schema you select applies to both the baseline and the comparison.
 
-On {{serverless-short}}, only OpenTelemetry profiling is supported. The **Add profiling data** page shows only the OpenTelemetry instructions, and the selector shows **OpenTelemetry** when matching data is available, or **No schema available** when it is not.
+On {{serverless-short}}, the **Add profiling data** page shows only the OpenTelemetry instructions, and the selector shows **OpenTelemetry** when matching data is available, or **No schema available** when it is not.
 
 **Storage explorer** reports Universal Profiling data only. The **Storage explorer** link stays disabled until you set up Universal Profiling. When a deployment has data in both schemas, a dismissible **OpenTelemetry profiling data isn't shown here yet** callout reminds you that the view reports Universal Profiling data only. To manage the retention of OpenTelemetry profiling data, refer to [Where profiles are stored](get-started-with-otel-profiling.md#profiling-otel-data-streams).
 
@@ -104,7 +104,7 @@ The different views on the stacktraces page show:
 * **Traces:** un-grouped stacktraces
 * **Hosts:** stacktraces grouped by machine’s hostname or IP address
 * **Deployments:** stacktraces grouped by the container orchestration name. Universal Profiling uses the deployment name, such as a {{k8s}} `ReplicaSet`, `DaemonSet`, or `StatefulSet`. OpenTelemetry profiling uses the {{k8s}} pod name.
-* **Containers:** stacktraces grouped by container name discovered by the host-agent
+* **Containers:** stacktraces grouped by container name discovered by the profiling agent
 
 The stacktraces view provides valuable information that you can use to:
 
@@ -112,7 +112,7 @@ The stacktraces view provides valuable information that you can use to:
 * Discover how much relative overhead comes from third-party software running on your machines.
 * Detect unexpected CPU spikes across threads, and drill-down into a smaller time range to investigate further with a flamegraph.
 
-Stacktraces are grouped based on the origin of collected stacktraces. You might find an empty view in containers and deployments if your host-agent deployment is profiling systems that do not run any containers or container orchestrators. In a deployment where Profiling is correctly receiving data from the profiling agents you should always see a graph in the threads, hosts, and traces view.
+Stacktraces are grouped based on the origin of collected stacktraces. You might find an empty view in containers and deployments if your profiling agents are profiling systems that do not run any containers or container orchestrators. In a deployment where Profiling is correctly receiving data from the profiling agents you should always see a graph in the threads, hosts, and traces view.
 
 
 #### Navigating the stacktraces view [profiling-navigating-stacktraces]
