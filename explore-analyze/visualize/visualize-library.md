@@ -90,7 +90,6 @@ To build a visualization before you add it to any dashboard, create it from the 
    * [Lens](lens.md)
    * [Maps](maps.md)
    * [Vega](custom-visualizations-with-vega.md)
-
    * {applies_to}`serverless: unavailable` [Aggregation-based](legacy-editors/aggregation-based.md) and [TSVB](legacy-editors/tsvb.md): Legacy visualizations that you find on the **Legacy** tab of the dialog.
 
 After you save the visualization, it appears in the library and you can add it to any dashboard.
