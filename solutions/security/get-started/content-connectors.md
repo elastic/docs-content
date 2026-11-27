@@ -13,13 +13,13 @@ products:
   - id: elastic-stack
 ---
 
-# Content connectors
+# Content crawlers
 
-Elastic's content connectors allow you to extract, transform, index, and sync data from third-party applications including Github, Jira, Teams, Google Drive, Slack, email, and more ([view all connectors](elasticsearch://reference/search-connectors/index.md)).
+Elastic's connectors allow you to extract, transform, index, and sync data from third-party applications including GitHub, Jira, Teams, Google Drive, Slack, email, and more ([view all connectors](elasticsearch://reference/search-connectors/index.md)).
 
 ## Managed vs self-managed connectors
 
-Content connectors are available in two deployment options: you can run them yourself or let Elastic run them within your managed deployment on {{ecloud}}.
+Connectors are available in two deployment options: you can run them yourself or let Elastic run them within your managed deployment on {{ecloud}}.
 
 ### Elastic managed connectors
 ```yaml {applies_to}
@@ -46,7 +46,7 @@ Self-managed connectors run on your own infrastructure, independent of where you
 
 To learn about setup for self-managed connectors, refer to [Self-managed connectors](elasticsearch://reference/search-connectors/self-managed-connectors.md). To set up an Elastic managed connector:
 
-1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content connectors".
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find **Content crawlers** {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` or **Content connectors** {applies_to}`stack: ga 9.0-9.6`.
 1. Click **New Connector**.
 1. Under **Connector**, select your desired data source.
 1. Under **Setup**, select your deployment method. 
@@ -59,7 +59,7 @@ To learn about setup for self-managed connectors, refer to [Self-managed connect
 
 To manage an existing connector:
 
-1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "Content connectors". 
+1. Use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find **Content crawlers** {applies_to}`stack: ga 9.7+` {applies_to}`serverless: ga` or **Content connectors** {applies_to}`stack: ga 9.0-9.6`. 
 1. Click the connector you want to manage to open its settings page, which has six tabs:
   - **Overview**: View general information such as the connector's name, ID, status, pipeline, and content sync history. Manage the connector's pipeline and attached index.
   - **Documents**: View data from the connector.
