@@ -36,13 +36,16 @@ flowchart LR
         C["elasticapm connector<br/>generates aggregated metrics"]
     end
 
-    G -->|"elasticsearch exporter<br/>mapping.mode: otel"| E[("Elasticsearch")]
+    G -->|"traces and logs<br/>elasticsearch exporter<br/>mapping.mode: otel"| E[("Elasticsearch")]
+    G -->|"metrics<br/>OTLP/HTTP exporter<br/>to /_otlp"| E
 ```
 
-The `elasticsearch` exporter with `mapping.mode: otel` is the recommended path for self-managed deployments.
+The gateway is the only component in this setup that writes to {{es}}, and it uses one exporter per destination API. The `elasticsearch` exporter writes traces and logs through the [bulk API]({{es-apis}}operation/operation-bulk) with `mapping.mode: otel`. The OTLP/HTTP exporter writes metrics to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) on the `/_otlp` path. Both produce OTel-native documents.
+
+Neither destination enriches traces or produces {{product.apm}} metrics on the {{es}} side, so the `elasticapm` processor and connector run in the gateway pipelines before the export.
 
 :::{note}
-The [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md) is an alternative ingest path available only on {{ecloud}}, so it doesn't apply to self-managed deployments. Sending directly to {{apm-server-or-mis}} through OTLP is also possible, but the {{edot}} gateway path in this guide is recommended for full {{product.apm}} functionality.
+The [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) is an alternative ingest path available only on {{ecloud}}, so it doesn't apply to self-managed deployments. It's a separate ingestion host and isn't the same as the cluster's `/_otlp` paths. Sending directly to {{apm-server-or-mis}} through OTLP is also possible, but the {{edot}} gateway path in this guide is recommended for full {{product.apm}} functionality.
 :::
 
 ## Before you begin
@@ -65,6 +68,9 @@ The {{edot}} gateway authenticates to {{es}} using an API key.
 1. Find **API keys** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Create API key**.
 3. Give the key a name (for example, `edot-gateway`) and assign it `auto_configure` and `create_doc` index privileges on the `logs-*.otel-*`, `metrics-*.otel-*`, and `traces-*.otel-*` indices.
+
+    {applies_to}`stack: ga 9.6+` Add `exemplars-*.otel-*` as well. The `/_otlp` endpoint writes [metric exemplars](/manage-data/ingest/otlp-endpoint.md#metric-exemplars) to those data streams. Without the privilege, metric data points are still indexed, but their exemplars are rejected and each response reports a warning.
+
 4. Copy the encoded key to use as the value of the `ELASTIC_API_KEY` environment variable in the gateway configuration.
 
 ::::
@@ -102,6 +108,18 @@ The {{edot}} gateway authenticates to {{es}} using an API key.
         api_key: ${env:ELASTIC_API_KEY}
         mapping:
           mode: otel
+      # Elasticsearch exposes OTLP over HTTP only (no gRPC), on the /_otlp path.
+      # The exporter appends the signal path (/v1/metrics) to the endpoint.
+      otlp_http/ingest_metrics:
+        endpoint: ${env:ELASTIC_ENDPOINT}/_otlp
+        headers:
+          Authorization: ApiKey ${env:ELASTIC_API_KEY}
+        sending_queue:
+          enabled: true
+          sizer: bytes
+          queue_size: 50000000 # 50MB uncompressed
+          block_on_overflow: true
+        timeout: 15s
 
     service:
       pipelines:
@@ -112,11 +130,11 @@ The {{edot}} gateway authenticates to {{es}} using an API key.
         metrics:
           receivers: [otlp]
           processors: []
-          exporters: [elasticsearch/otel]
+          exporters: [otlp_http/ingest_metrics]
         metrics/aggregated-otel-metrics:
           receivers: [elasticapm]
           processors: []
-          exporters: [elasticsearch/otel]
+          exporters: [otlp_http/ingest_metrics]
         logs:
           receivers: [otlp]
           processors: []
@@ -127,10 +145,15 @@ The {{edot}} gateway authenticates to {{es}} using an API key.
 
     * **`elasticapm` processor** (under `processors`): Enriches spans with attributes required by the {{product.apm}} UI.
     * **`elasticapm` connector** (under `connectors`): Generates pre-aggregated {{product.apm}} metrics from trace data. It appears as an exporter in the `traces` pipeline and as a receiver in the `metrics/aggregated-otel-metrics` pipeline.
-    * **`elasticsearch/otel` exporter**: Writes data directly to {{es}} using native OpenTelemetry data streams (`mapping.mode: otel`). The exporter handles batching automatically using `sending_queue`. Refer to [Performance and batching](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md#performance-and-batching) to customize throughput for your environment.
+    * **`elasticsearch/otel` exporter**: Writes traces and logs to {{es}} through the [bulk API]({{es-apis}}operation/operation-bulk), using native OpenTelemetry data streams (`mapping.mode: otel`). The exporter handles batching automatically using `sending_queue`. To customize throughput for your environment, refer to [Performance and batching](elastic-agent://reference/edot-collector/components/elasticsearchexporter.md#performance-and-batching).
+    * **`otlp_http/ingest_metrics` exporter**: Writes metrics, including the pre-aggregated {{product.apm}} metrics from the connector, to the [{{es}} OTLP/HTTP endpoint](/manage-data/ingest/otlp-endpoint.md) on the `/_otlp` path. The endpoint derives time series data streams, dimensions, and metric mappings from the OTLP metadata.
+
+    {applies_to}`edot_collector: ga 9.6+` This split matches the gateway sample configuration that ships with {{agent}}.
+
+    {applies_to}`edot_collector: ga 9.2-9.5` The gateway sample configurations for these versions export every signal through `elasticsearch/otel`. To match them, remove `otlp_http/ingest_metrics` and use `elasticsearch/otel` in the `metrics` and `metrics/aggregated-otel-metrics` pipelines.
 
     :::{note}
-    The `elasticapm` connector and processor are required for full {{product.apm}} functionality (service maps, transaction histograms, service-level indicators). You only need them when exporting directly to {{es}}. If you send data to the Managed OTLP endpoint or {{apm-server-or-mis}}, they are not required.
+    The `elasticapm` connector and processor are required for full {{product.apm}} functionality (service maps, transaction histograms, service-level indicators). Run them in the gateway whenever the gateway writes to {{es}} itself, with either exporter: the `/_otlp` endpoint stores records as they arrive, and so does the bulk API. If you send data to the {{motlp}} or {{apm-server-or-mis}} instead, they are not required.
 
     Refer to [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md) for more information.
     :::
@@ -203,4 +226,4 @@ If no data appears, refer to [No logs, metrics, or traces visible in {{kib}}](/t
 * [{{product.apm}} services missing due to misconfigured elasticapm connector](/troubleshoot/ingest/opentelemetry/edot-collector/misconfigured-elasticapm-connector.md)
 * [Attributes and labels](/solutions/observability/apm/opentelemetry/attributes.md)
 * [{{agent}}](elastic-agent://reference/edot-collector/index.md)
-* [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md)
+* [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md)
