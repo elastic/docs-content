@@ -291,8 +291,9 @@ Example: `release --comment "Release host, everything looks OK"`
 ### `runscript` [runscript]
 
 ::::{note}
-:applies_to: stack: ga 9.0-9.3
-This response action is supported only for hosts enrolled in [third-party endpoint protection systems](/solutions/security/endpoint-response-actions/third-party-response-actions.md).
+This response action is supported for:
+  - {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) hosts and hosts enrolled in [third-party endpoint protection systems](/solutions/security/endpoint-response-actions/third-party-response-actions.md)
+  - {applies_to}`stack: ga 9.0-9.3` Hosts enrolled in third-party endpoint protection systems only
 ::::
 
 Run a script on a host. 
