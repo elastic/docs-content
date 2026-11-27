@@ -33,7 +33,7 @@ The endpoint enqueues every 256 documents (default value) when that group is ful
 
     On {{ech}}, volume that your cluster can't keep up with still results in `429` responses. Refer to [Managed inputs rate limiting](rate-limiting.md).
 
-- **You want to limit local buffering on your shippers.** The managed endpoint buffers data while {{es}} is slow or unavailable, so your shippers need less local buffering. They still need to retry HTTP `429` and HTTP `503` responses. They also need to retry each document that reports status `503` inside an HTTP `200` response. A delay in indexing must be acceptable.
+- **You want to limit local buffering on your shippers.** The managed endpoint buffers data while {{es}} is slow or unavailable, so your shippers need less local buffering. They still need to retry `429` and `503` responses, including documents that report a `503` status inside a `200` response. A delay in indexing must be acceptable.
 
 If you switch an existing shipper to the managed endpoint, compare document counts between what your shipper sends and the destination data stream for a period after the switch, and monitor the destination with [Data Set Quality](/solutions/observability/data-set-quality-monitoring.md).
 
