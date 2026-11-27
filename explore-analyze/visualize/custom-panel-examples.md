@@ -12,7 +12,7 @@ products:
 
 Each example on this page shows what a [custom panel](custom-panels.md) can do that other panel types can't, with the query and the template that produce it. Three of them were generated with {{agent-builder}} chat and include the prompt.
 
-To try an example, [add a custom panel from the dashboard](custom-panels.md#custom-panels-create-from-dashboard), paste the query into **Data source (ES|QL)** and the template into **Template (HTML)**, then select **Run preview**. The queries use the [sample data sets](/manage-data/ingest/sample-data.md) named in each example. The screenshots use the dark theme. Templates that use the theme properties render in the light theme as well.
+To try an example, [add a custom panel from the dashboard](custom-panels.md#custom-panels-create-from-dashboard), paste the query into **Data sources (ES|QL)** and the template into **Template (HTML)**, then select **Run preview**. The queries use the [sample data sets](/manage-data/ingest/sample-data.md) named in each example. The screenshots use the dark theme. Templates that use the theme properties render in the light theme as well.
 
 You can change any template, whether generated or hand-written, as long as it follows the [LiquidJS syntax](https://liquidjs.com/tutorials/intro-to-liquid.html). Edit it in the flyout, or ask {{agent-builder}} to refine it. Templates that use the [theme CSS properties](custom-panels.md#custom-panels-theme) follow the {{kib}} theme.
 
@@ -1170,6 +1170,78 @@ FROM kibana_sample_data_logs
     <a class="open" href="/app/discover">Open &rarr;</a>
   </div>
 </div>
+```
+:::
+
+## Headline numbers with a ranked list [custom-panel-examples-several-queries]
+```{applies_to}
+serverless: preview
+stack: preview 9.7+
+```
+
+Three headline numbers from one query and a ranked list of destination countries from a second query, shown in one panel. The headline numbers need one aggregated row and the ranking needs one row for each country, so each comes from its own query. To add and manage queries, refer to [Use several queries in one panel](custom-panels.md#custom-panels-several-queries). Sample data: **Sample web logs**.
+
+:::{image} /explore-analyze/images/custom-panels-example-several-queries.png
+:alt: Three tiles for requests, unique visitors, and a red error rate, above five bars that rank destination countries by request count
+:screenshot:
+:width: 75%
+:::
+
+:::{dropdown} Query 1
+The template reads this query as `rows`, the same as `queries[0].rows`.
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS requests = COUNT(*),
+        errors = COUNT(*) WHERE response != "200",
+        visitors = COUNT_DISTINCT(clientip)
+| EVAL error_rate = ROUND(errors * 100.0 / requests, 1)
+```
+:::
+
+:::{dropdown} Query 2
+Select {icon}`plus` **Add query** and enter this query in the new tab. The template reads it as `queries[1].rows`.
+
+```esql
+FROM kibana_sample_data_logs
+| WHERE @timestamp >= ?_tstart AND @timestamp < ?_tend
+| STATS requests = COUNT(*) BY geo.dest
+| SORT requests DESC
+| LIMIT 5
+```
+:::
+
+:::{dropdown} Template
+```html
+<style>
+  body { margin: 0; padding: 12px; font-family: var(--cc-font-family); color: var(--cc-color-text); background: var(--cc-color-background); }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--cc-space-m); margin-bottom: var(--cc-space-l); }
+  .tile { background: var(--cc-color-surface); border-radius: var(--cc-radius); padding: var(--cc-space-m); }
+  .label { font-size: 12px; opacity: 0.7; }
+  .value { margin-top: var(--cc-space-xs); font-size: 24px; font-weight: 700; }
+  .bad { color: var(--cc-color-danger); }
+  .rank { display: flex; align-items: center; gap: var(--cc-space-s); margin-bottom: var(--cc-space-xs); font-size: 13px; }
+  .name { flex: 0 0 40px; font-weight: 600; }
+  .track { flex: 1; height: 10px; background: var(--cc-color-border); border-radius: 5px; overflow: hidden; }
+  .bar { height: 100%; background: var(--cc-color-primary); }
+  .count { flex: 0 0 56px; text-align: right; opacity: 0.8; }
+</style>
+{% if rows.size == 0 %}<p>No requests in the selected time range.</p>{% endif %}
+{% for row in rows %}
+<div class="tiles">
+  <div class="tile"><div class="label">Requests</div><div class="value">{{ row["requests"].value }}</div></div>
+  <div class="tile"><div class="label">Unique visitors</div><div class="value">{{ row["visitors"].value }}</div></div>
+  <div class="tile"><div class="label">Error rate</div><div class="value {% if row["error_rate"].value > 5 %}bad{% endif %}">{{ row["error_rate"].value }}%</div></div>
+</div>
+{% endfor %}
+{% for row in queries[1].rows %}
+<div class="rank">
+  <span class="name">{{ row["geo.dest"].value }}</span>
+  <div class="track"><div class="bar" style="width: {{ row["requests"].pct }}%"></div></div>
+  <span class="count">{{ row["requests"].value }}</span>
+</div>
+{% endfor %}
 ```
 :::
 
