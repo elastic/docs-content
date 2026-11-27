@@ -160,17 +160,19 @@ You must include the following parameter to specify the file’s location on the
 
 * `--path` : The file’s full path (including the file name).
 
-  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can repeat `--path` up to 100 times in one action. The retrieved files are downloaded in one `.zip` archive.
+  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can:
 
-  {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` On {{elastic-defend}} hosts, you can also use [wildcards](#get-file-wildcards) in `--path` to retrieve all matching files.
+  * Repeat `--path` up to 100 times in one action. The retrieved files are downloaded in one `.zip` archive.
+  * Use [wildcards](#get-file-wildcards) in `--path` to retrieve all matching files.
 
 You can also use this optional parameter:
 
 * {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` `--force` : ({{elastic-defend}} hosts on Windows only) Retrieve a file that the operating system has locked. {{elastic-defend}} reads the file from a snapshot of the disk volume that contains it. If the snapshot cannot be created, the file is not retrieved. `--force` does not download a file that exists only in cloud storage.
 
 ::::{note}
-:applies_to: {stack: ga 9.5+, serverless: ga}
-Retrieving multiple files, using wildcards, and using the `--force` parameter require an [independent {{agent}} release](/reference/fleet/fleet-agent-release-process.md#independent-agent-releases) of 9.5.7 or 9.6.0, or a later version. The regular {{agent}} 9.5.7 and 9.6.0 releases don't support them.
+The regular {{agent}} 9.5.7 and 9.6.0 releases don't support retrieving multiple files, using wildcards, or using the `--force` parameter. To use these options, you need an [independent {{agent}} release](/reference/fleet/fleet-agent-release-process.md#independent-agent-releases) of 9.5.7 or 9.6.0.
+
+Later regular {{agent}} releases support these options.
 ::::
 
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
