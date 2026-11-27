@@ -48,6 +48,6 @@ To add automated response actions to a new or existing rule:
     * Turn on the toggle to use the alert’s **process.pid** value as the identifier.
     * To use a different alert field value to identify the process, turn off the toggle and enter the **Custom field name**.
 
-4. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` For **Kill process** actions, you can turn on **Kill descendant processes** to also terminate the target process's descendant processes. Descendant processes are only terminated on hosts running {{agent}} 9.6 or later.
-5. Enter a comment describing why you’re performing the action on the host (optional).
+4. {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` Optional: For **Kill process** actions, turn on **Kill descendant processes** to also terminate the target process's descendant processes. {{elastic-endpoint}} terminates descendant processes only on hosts running {{agent}} 9.6 or later. On hosts running an earlier version, the action fails and the process isn't terminated.
+5. Optional: Enter a comment describing why you’re performing the action on the host.
 6. To finish adding the response action, click **Create & enable rule** (for a new rule) or **Save changes** (for existing rules).

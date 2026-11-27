@@ -201,7 +201,7 @@ Terminate a process. You must include one of the following parameters to identif
 
 You can also use this optional parameter:
 
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `--kill-descendants` : ({{elastic-defend}} hosts only) Also terminate all descendant processes of the target process (the processes it started, and the processes those started in turn). The host's {{elastic-endpoint}} must support terminating process descendants. If it doesn't, upgrade {{agent}} to 9.6 or later to use this parameter.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` `--kill-descendants` : ({{elastic-defend}} hosts only) Also terminate all descendant processes of the target process (the processes it started, and the processes those started in turn). Requires {{agent}} 9.6 or later on the host.
 
 Predefined role (in {{serverless-short}}): **Tier 3 analyst**, **SOC manager**, or **Endpoint operations analyst**
 
