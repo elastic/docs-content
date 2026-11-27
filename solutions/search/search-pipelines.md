@@ -133,7 +133,7 @@ This pipeline is a "managed" pipeline. That means that it is not intended to be 
 
 #### Control flow parameters [ingest-pipeline-search-details-generic-reference-params]
 
-The `search-default-ingestion` pipeline does not always run all processors. It utilizes a feature of ingest pipelines to [conditionally run processors](/manage-data/ingest/transform-enrich/ingest-pipelines.md#conditionally-run-processor) based on the contents of each individual document.
+The `search-default-ingestion` pipeline does not always run all processors. It utilizes a feature of ingest pipelines to [conditionally run processors](/manage-data/ingest/transform-enrich/conditionally-run-ingest-processors.md#conditionally-run-processor) based on the contents of each individual document.
 
 * `_extract_binary_content` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `attachment`, `set_body`, and `remove_replacement_chars` processors. Note that the document will also need an `_attachment` field populated with base64-encoded binary data in order for the `attachment` processor to have any output. If the `_extract_binary_content` field is missing or `false` on a source document, these processors will be skipped.
 * `_reduce_whitespace` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `remove_extra_whitespace` and `trim` processors. These processors only apply to the `body` field. If the `_reduce_whitespace` field is missing or `false` on a source document, these processors will be skipped.

@@ -105,13 +105,23 @@ To demonstrate a common example, a document can be rejected from indexing due to
 
 ## Metrics [troubleshooting-pipelines-metrics]
 
-When Ingest Pipelines run, they log their cumulative statistics to [List Node Statistics]({{es-apis}}operation/operation-nodes-stats).
+% REVIEW (SME): this section absorbed the "Monitor pipeline usage" section from the ingest pipelines overview. That section said the node stats API isn't available in Serverless. This page is stack-only, so the statement was dropped. Confirm the Serverless statement and whether it needs to appear anywhere.
+When Ingest Pipelines run, they log their cumulative statistics to [List Node Statistics]({{es-apis}}operation/operation-nodes-stats). Use these statistics to find the pipelines that run most often or spend the most time processing.
 
 ```console
 GET _nodes/stats/ingest
 ```
 
 This reports the overall Ingest Pipelines's statistics as well as statistics for each of its processors. If a pipeline calls a sub-pipeline the parent's statistics will record the total time and not subtract time spent waiting on the other. 
+
+For all ingest activity, and for each pipeline and processor, the response includes the following values:
+
+* `count`: the number of documents processed.
+* `time_in_millis`: the total time spent processing, in milliseconds.
+* `current`: the number of documents being processed now.
+* `failed`: the number of documents that failed processing.
+
+A pipeline with a high `time_in_millis` relative to its `count` is a candidate for optimization. A pipeline with a growing `failed` value has processors that fail on some documents. To handle those failures, refer to [Error handling](/manage-data/ingest/transform-enrich/error-handling.md).
 
 Storing this output into `nodes_stats.json` and then using [third-party tool JQ](https://jqlang.github.io/jq/) to parse through this JSON, some common views reported during troubleshooting include:
 

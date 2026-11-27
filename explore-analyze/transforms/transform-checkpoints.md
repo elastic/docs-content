@@ -64,7 +64,7 @@ PUT _ingest/pipeline/set_ingest_time
 
 After you created the ingest pipeline, apply it to the source indices of your transform. The pipeline adds the field `event.ingested` to every document with the value of the ingest timestamp. Configure the `sync`.`time`.`field` property of your transform to use the field by using the [create transform API]({{es-apis}}operation/operation-transform-put-transform) for new transforms or the [update transform API]({{es-apis}}operation/operation-transform-update-transform) for existing transforms. The `event.ingested` field is used for syncing the transform.
 
-Refer to [Add a pipeline to an indexing request](../../manage-data/ingest/transform-enrich/ingest-pipelines.md#add-pipeline-to-indexing-request) and [Ingest pipelines](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) to learn more about how to use an ingest pipeline.
+Refer to [Add a pipeline to an indexing request](../../manage-data/ingest/transform-enrich/apply-ingest-pipelines.md#add-pipeline-to-indexing-request) and [Ingest pipelines](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) to learn more about how to use an ingest pipeline.
 
 ## Change detection heuristics [ml-transform-checkpoint-heuristics]
 

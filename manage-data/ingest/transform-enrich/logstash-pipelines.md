@@ -9,9 +9,13 @@ applies_to:
     security: ga
 products:
   - id: cloud-serverless
+navigation_title: Logstash pipelines
+description: Create and manage centrally managed Logstash pipelines from the Logstash Pipelines page in Kibana.
 ---
 
-# Logstash pipelines [logstash-pipelines]
+# Manage {{ls}} pipelines in {{kib}} [logstash-pipelines]
+
+This page describes how to manage {{ls}} pipelines from {{kib}}. It doesn't cover how {{ls}} transforms data. To learn how to parse, enrich, and reshape events in a {{ls}} pipeline, refer to the {{ls}} [filter plugins](logstash-docs-md://lsr/filter-plugins.md) and the [{{ls}} reference](logstash://reference/index.md). To compare {{ls}} with other ways to transform data, such as {{es}} ingest pipelines and {{agent}} processors, refer to [Transform and enrich data](/manage-data/ingest/transform-enrich.md).
 
 On the **{{ls-pipelines-app}}** management page, you can control multiple {{ls}} instances and pipeline configurations.
 

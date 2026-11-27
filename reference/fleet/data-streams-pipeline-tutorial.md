@@ -39,12 +39,13 @@ Create a custom ingest pipeline that will be called by the default integration p
 
 ## Step 2: Apply your ingest pipeline [data-streams-pipeline-two]
 
-Add a custom pipeline to an integration by calling it from the default ingest pipeline. The custom pipeline will run after the default pipeline but before the final pipeline.
+Add a custom pipeline to an integration by calling it from the default ingest pipeline. The custom pipeline will run after the default pipeline but before the final pipeline. 
+
+If your integration doesn't ship a default pipeline, such as the Custom logs integration, there is no `@custom` pipeline call to rely on. To apply your pipeline in that case, refer to [](/reference/fleet/data-streams-pipeline-custom-logs.md).
 
 :::{note}
 You can only add a custom pipeline to an integration that's already added to an {{agent}} policy. The **Ingest pipelines** settings don't appear while you're adding an integration for the first time. If you haven't added the System integration yet, add it to an {{agent}} policy and save it, then follow the steps in this section to edit it.
 :::
-
 
 ### Edit integration [_edit_integration]
 

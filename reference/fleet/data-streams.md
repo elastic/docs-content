@@ -135,6 +135,18 @@ You can edit a `@custom` component template to customize your {{es}} indices:
         }
         ```
 
+    * Run a custom [ingest pipeline](#data-streams-pipelines) on every document sent to the data stream. Specify the pipeline in the `index.final_pipeline` setting. A final pipeline runs after the integration's default pipeline and any `@custom` pipeline, and integration packages don't set it.
+
+        ```json
+        {
+          "index": {
+            "final_pipeline": "my-pipeline"
+          }
+        }
+        ```
+
+        Don't set `index.default_pipeline` in a `@custom` component template for an integration that ships a default pipeline. The setting replaces the integration's pipeline, so the integration stops processing its data as designed.
+
 
 Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. You can do this with the {{es}} [Rollover API]({{es-apis}}operation/operation-indices-rollover).
 
@@ -270,5 +282,9 @@ Refer to the breaking change in the 8.12.0 Release Notes for more detail and wor
 
 ::::
 
+
+::::{tip}
+To compare the ways to apply a custom pipeline to an integration, such as a `@custom` pipeline, the integration configuration, or a component template, and to choose between them, refer to [Pipelines for {{fleet}}, {{agent}}, and integrations](/manage-data/ingest/transform-enrich/apply-ingest-pipelines.md#pipelines-for-fleet-elastic-agent).
+::::
 
 Refer to [](/reference/fleet/data-streams-pipeline-tutorial.md) to get started.

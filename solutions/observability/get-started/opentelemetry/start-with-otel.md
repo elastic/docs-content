@@ -146,7 +146,7 @@ Configure your EDOT SDKs and edge {{agent}} instances to use the OTLP exporter. 
   * Any OTel-compatible Collector
 * **Centrally managed log processing**: Elastic doesn't provide curated, centralized {{es}} ingest pipelines for OTel-native data. Process logs in the Collector instead, or define your own ingest pipeline. For dotted field names in user-defined pipelines, you can:
   * Use the [dot expander processor](elasticsearch://reference/enrich-processor/dot-expand-processor.md)
-  * {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Set `field_access_pattern` to [`flexible`](/manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern-flexible)
+  * {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Set `field_access_pattern` to [`flexible`](/manage-data/ingest/transform-enrich/access-data-in-processors.md#access-source-pattern-flexible)
 
 Refer to [Limitations of {{edot}}](opentelemetry://reference/compatibility/limitations.md) for the full list.
 

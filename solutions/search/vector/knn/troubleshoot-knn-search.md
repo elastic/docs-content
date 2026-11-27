@@ -249,7 +249,7 @@ Stored embeddings appear under `_inference_fields` in `_source`.
 ::::::
 :::::::
 
-If the expected field is missing, the ingest pipeline might not have run, or the {{infer}} processor might have failed. Learn more about how {{es}} handles processor failures in [Handling pipeline failures](/manage-data/ingest/transform-enrich/ingest-pipelines.md#handling-pipeline-failures).
+If the expected field is missing, the ingest pipeline might not have run, or the {{infer}} processor might have failed. Learn more about how {{es}} handles processor failures in [Handling pipeline failures](/manage-data/ingest/transform-enrich/error-handling.md#handling-pipeline-failures).
 
 ## Check that the field mapping supports kNN search [verify-embeddings-mapping]
 

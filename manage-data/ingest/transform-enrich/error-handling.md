@@ -5,9 +5,12 @@ applies_to:
 products:
   - id: elasticsearch
   - id: cloud-serverless
+description: Handle errors in Elasticsearch ingest pipelines by ignoring a processor failure, running on_failure processors, or setting a pipeline-level fallback.
 ---
 
 # Error handling
+
+$$$handling-pipeline-failures$$$
 
 Ingest pipelines in Elasticsearch are powerful tools for transforming and enriching data before indexing. However, errors can occur during processing. This guide outlines strategies for handling such errors effectively.
 
@@ -25,6 +28,125 @@ Create an `error-handling-pipeline` that sets `event.kind` to `pipeline_error` a
 :::
 
 The `on_failure` parameter can be defined either for individual processors or at the pipeline level to catch exceptions that may occur during document processing. The `ignore_failure` option allows a specific processor to silently skip errors without affecting the rest of the pipeline.
+
+A pipeline's processors run sequentially. By default, pipeline processing stops when one of these processors fails or encounters an error.
+
+## Ignore a processor failure [ignore-processor-failure]
+
+To ignore a processor failure and run the pipeline's remaining processors, set `ignore_failure` to `true`. Use this when a processor's work is optional. For example, if only some of your documents have a `provider` field, you can ignore a failed rename and still index the documents that don't have it, instead of stopping the pipeline.
+
+```console
+PUT _ingest/pipeline/my-pipeline
+{
+  "processors": [
+    {
+      "rename": {
+        "description": "Rename 'provider' to 'cloud.provider'",
+        "field": "provider",
+        "target_field": "cloud.provider",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
+```
+
+## Run processors when a processor fails [on-failure-processors]
+
+Use the `on_failure` parameter to specify a list of processors to run immediately after a processor failure. Use it when you want to record or fix the failure, instead of ignoring it. If `on_failure` is specified, {{es}} afterward runs the pipeline's remaining processors, even if the `on_failure` configuration is empty.
+
+```console
+PUT _ingest/pipeline/my-pipeline
+{
+  "processors": [
+    {
+      "rename": {
+        "description": "Rename 'provider' to 'cloud.provider'",
+        "field": "provider",
+        "target_field": "cloud.provider",
+        "on_failure": [
+          {
+            "set": {
+              "description": "Set 'error.message'",
+              "field": "error.message",
+              "value": "Field 'provider' does not exist. Cannot rename to 'cloud.provider'",
+              "override": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+Nest a list of `on_failure` processors for nested error handling.
+
+```console
+PUT _ingest/pipeline/my-pipeline
+{
+  "processors": [
+    {
+      "rename": {
+        "description": "Rename 'provider' to 'cloud.provider'",
+        "field": "provider",
+        "target_field": "cloud.provider",
+        "on_failure": [
+          {
+            "set": {
+              "description": "Set 'error.message'",
+              "field": "error.message",
+              "value": "Field 'provider' does not exist. Cannot rename to 'cloud.provider'",
+              "override": false,
+              "on_failure": [
+                {
+                  "set": {
+                    "description": "Set 'error.message.multi'",
+                    "field": "error.message.multi",
+                    "value": "Document encountered multiple ingest errors",
+                    "override": true
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+## Set a fallback for the whole pipeline [pipeline-level-on-failure]
+
+You can also specify `on_failure` for a pipeline. If a processor without an `on_failure` value fails, {{es}} uses this pipeline-level parameter as a fallback. {{es}} doesn't attempt to run the pipeline's remaining processors.
+
+```console
+PUT _ingest/pipeline/my-pipeline
+{
+  "processors": [ ... ],
+  "on_failure": [
+    {
+      "set": {
+        "description": "Index document to 'failed-<index>'",
+        "field": "_index",
+        "value": "failed-{{{ _index }}}"
+      }
+    }
+  ]
+}
+```
+
+## Failure metadata fields [on-failure-metadata]
+
+Inside an `on_failure` block, you can use the following ingest metadata fields to get more information about the failure:
+
+* `_ingest.on_failure_message`
+* `_ingest.on_failure_processor_type`
+* `_ingest.on_failure_processor_tag`
+* `_ingest.on_failure_pipeline`
+
+These fields are accessible only from within an `on_failure` block. The examples in the next section use them to record which processor failed.
 
 ## Global versus processor-specific
 

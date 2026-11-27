@@ -119,6 +119,10 @@ toc:
           - file: ingest/transform-enrich/ingest-lag.md
           - file: ingest/transform-enrich/ingest-pipelines.md
             children:
+              - file: ingest/transform-enrich/create-ingest-pipelines.md
+              - file: ingest/transform-enrich/apply-ingest-pipelines.md
+              - file: ingest/transform-enrich/access-data-in-processors.md
+              - file: ingest/transform-enrich/conditionally-run-ingest-processors.md
               - file: ingest/transform-enrich/example-parse-logs.md
               - file: ingest/transform-enrich/readable-maintainable-ingest-pipelines.md
               - file: ingest/transform-enrich/error-handling.md

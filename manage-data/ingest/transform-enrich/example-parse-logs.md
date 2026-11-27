@@ -1,5 +1,5 @@
 ---
-navigation_title: Example
+navigation_title: Parsing example
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/common-log-format-example.html
 applies_to:
@@ -7,6 +7,7 @@ applies_to:
   serverless: ga
 products:
   - id: elasticsearch
+description: Build a pipeline in Kibana that parses Common Log Format server logs into searchable fields for the timestamp, source geolocation, and user agent.
 ---
 
 
@@ -14,7 +15,7 @@ products:
 # Example: Parse logs [common-log-format-example]
 
 
-In this example tutorial, you’ll use an [ingest pipeline](ingest-pipelines.md) to parse server logs in the [Common Log Format](https://en.wikipedia.org/wiki/Common_Log_Format) before indexing. Before starting, check the [prerequisites](ingest-pipelines.md#ingest-prerequisites) for ingest pipelines.
+In this example tutorial, you’ll use an [ingest pipeline](ingest-pipelines.md) to parse server logs in the [Common Log Format](https://en.wikipedia.org/wiki/Common_Log_Format) before indexing. Before starting, check the [prerequisites](create-ingest-pipelines.md#ingest-prerequisites) for ingest pipelines.
 
 The logs you want to parse look similar to this:
 
@@ -33,7 +34,7 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
 2. Click **Create pipeline** → **New pipeline**.
 3. Set **Name** to `my-pipeline` and optionally add a description for the pipeline.
-4. Add a [grok processor](elasticsearch://reference/enrich-processor/grok-processor.md) to parse the log message:
+4. Add a [grok processor](elasticsearch://reference/ingest-processor/grok-processor.md) to parse the log message:
 
     1. Click **Add a processor** and select the **Grok** processor type.
     2. Set **Field** to `message` and **Patterns** to the following [grok pattern](../../../explore-analyze/scripting/grok.md):
@@ -49,9 +50,9 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 
     | Processor type | Field | Additional options | Description |
     | --- | --- | --- | --- |
-    | [**Date**](elasticsearch://reference/enrich-processor/date-processor.md) | `@timestamp` | **Formats**: `dd/MMM/yyyy:HH:mm:ss Z` | `Format '@timestamp' as 'dd/MMM/yyyy:HH:mm:ss Z'` |
-    | [**GeoIP**](elasticsearch://reference/enrich-processor/geoip-processor.md) | `source.ip` | **Target field**: `source.geo` | `Add 'source.geo' GeoIP data for 'source.ip'` |
-    | [**User agent**](elasticsearch://reference/enrich-processor/user-agent-processor.md) | `user_agent` |  | `Extract fields from 'user_agent'` |
+    | [**Date**](elasticsearch://reference/ingest-processor/date-processor.md) | `@timestamp` | **Formats**: `dd/MMM/yyyy:HH:mm:ss Z` | `Format '@timestamp' as 'dd/MMM/yyyy:HH:mm:ss Z'` |
+    | [**GeoIP**](elasticsearch://reference/ingest-processor/geoip-processor.md) | `source.ip` | **Target field**: `source.geo` | `Add 'source.geo' GeoIP data for 'source.ip'` |
+    | [**User agent**](elasticsearch://reference/ingest-processor/user-agent-processor.md) | `user_agent` |  | `Extract fields from 'user_agent'` |
 
     Your form should look similar to this:
 
