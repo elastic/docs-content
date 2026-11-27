@@ -81,6 +81,8 @@ Use the agent selector to switch agents, to navigate to the agent management sec
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` [Hidden agents](agent-builder-agents.md#hidden-agents) aren't listed in the agent selector, even when you turn on **Show hidden agents** on the **Agents** page. If you start a chat with a hidden agent, for example from the **Agents** page, the selector still shows it as the current agent.
 
+{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` If the space has a [space default agent](agent-builder-agents.md#space-default-agent) and you don't have the privilege to create and edit agents, the agent selector lists only that agent, as long as you can view it.
+
 :::{image} images/agent-builder-agent-selector.png
 :screenshot:
 :alt: Agent selector dropdown showing available agents with options to create or manage agents
@@ -806,7 +808,7 @@ Creating a resource from chat is a [human-in-the-loop](#human-in-the-loop-prompt
 
 When you create a workflow, include details such as its trigger, inputs, data sources, conditions, and connectors. The agent asks for any missing information, generates and validates the workflow YAML, and shows the proposed changes for you to review. You can continue refining the draft in the conversation before you open the preview.
 
-For example, the following response includes the generated workflow definition and a summary of its trigger and steps. Select **Preview** to review and save the workflow:
+For example, the following screenshot shows a response that includes the generated workflow definition and a summary of its trigger and steps. Select **Preview** to review and save the workflow:
 
 :::{image} images/create-workflow-from-chat.png
 :screenshot:
@@ -814,7 +816,7 @@ For example, the following response includes the generated workflow definition a
 :width: 720px
 :::
 
-For example, the following preview shows a skill draft that you can review before selecting **Create skill**:
+For example, the following screenshot shows a skill draft that you can review before selecting **Create skill**:
 
 :::{image} images/create-skill-from-chat.png
 :screenshot:
@@ -822,9 +824,12 @@ For example, the following preview shows a skill draft that you can review befor
 :width: 750px
 :::
 
-You need the same privileges that are required to create the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
+You can also ask the agent to view or edit a custom skill in your library, then review the changes and save them from the conversation. For the steps, refer to [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat).
+
+You need the same privileges that are required to create or update the resource in its management UI. For resource-specific fields, limitations, and alternative creation methods, refer to:
 
 - [Create and manage custom skills](custom-skills.md#create-a-skill-from-chat)
+- [Edit a custom skill from Agent Chat](custom-skills.md#edit-a-skill-from-chat)
 - [Create and manage workflows](/explore-analyze/workflows.md)
 
 ## Customize your agent [customize-your-agent]
@@ -884,6 +889,8 @@ The **Manage components** link at the bottom of the left sidebar exits the singl
     {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` Agents that individual users have been granted access to also show a badge with the number of those users.
 
     {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The list also includes **Created by** and **Last updated by** columns. When available, each column displays the user's name and a relative time, such as **3 months ago**. Point to or focus on the relative time to view the exact date and time. If the user's full name is unavailable, their username appears instead. The default agent and other agents installed automatically by {{kib}} display **Elastic**. Read-only built-in agents display a dash in both columns because no creator or editor is recorded for them. If only one value is recorded, only the corresponding column displays a value.
+
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The [space default agent](agent-builder-agents.md#space-default-agent), if one is set, shows a **Space default** badge.
 
 **Skills**
 :   View and manage all skills available in the deployment. Create new skills or edit existing ones.
