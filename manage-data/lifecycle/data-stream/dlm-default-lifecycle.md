@@ -11,20 +11,27 @@ products:
 
 # Default lifecycle for data streams
 
-Data streams without a [lifecycle](/manage-data/lifecycle/data-stream.md) can still be managed by default.
+If you create a data stream without configuring a [lifecycle](/manage-data/lifecycle/data-stream.md), in the following contexts it is automatically provided:
 
-* {applies_to}`serverless: ga` Any data stream created without a lifecycle gets a default lifecycle. That lifecycle supports all operations, including [global retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md) if you configure it.
-* {applies_to}`stack: ga 9.6+` Any {{tsds}} ({{tsds-init}}) created without a lifecycle get a minimal default lifecycle. It performs only the operations a stream needs to stay healthy: roll over and tail merging. It doesn't downsample, move data to {{search-snaps}}, or delete data, even when a global retention is set.
+* {applies_to}`serverless: ga` All data streams have a lifecycle by default.
+* {applies_to}`stack: ga 9.6+` Any {{tsds}} ({{tsds-init}}) created without a lifecycle gets a minimum lifecycle.
+
+The default and minimum lifecycles include the following operations:
+
+* **Rollover:** Rolls over the write index when the conditions in [`cluster.lifecycle.default.rollover`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#cluster-lifecycle-default-rollover) are met.
+  This keeps shards a usable size and allows backwards incompatible mapping changes.
+* **Tail merge:** After rollover, merges the long tail of small Lucene segments.
+  Those segments usually hold recent, often-queried data.
+  Tail merging costs a fraction of a full force merge.
 
 ## Requirements
 
 ::::{applies-switch}
 :::{applies-item} serverless: ga
 
-To configure or turn off the lifecycle, you need [`manage_data_stream_lifecycle`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) indices privilege.
+To configure the lifecycle, you need [`manage_data_stream_lifecycle`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) indices privilege.
 
 :::
-
 :::{applies-item} stack: ga 9.6+
 
 - To configure or turn off the lifecycle, you need [`manage_data_stream_lifecycle`](elasticsearch://reference/elasticsearch/security-privileges.md#privileges-list-indices) indices privilege.
@@ -35,60 +42,18 @@ To configure or turn off the lifecycle, you need [`manage_data_stream_lifecycle`
 
 ## How it works
 
-{{es}} keeps a stream operational without you configuring a policy.
-It rolls the write index over so shards stay a usable size, and it tail merges so recent data doesn't sit in a long tail of small segments.
-
 ::::{applies-switch}
 :::{applies-item} serverless: ga
 
-{{ilm-init}} isn't available in {{serverless-short}}, so omitting a lifecycle would leave the stream unmanaged.
-{{es}} writes an enabled data stream lifecycle onto every new stream so rollover, tail merging, and retention (including global retention) can run.
+When you create a data stream, {{es}} adds a lifecycle and turns it on so rollover, tail merging, and retention run.
 
-The default lifecycle runs these operations:
-
-* **Rollover:** Rolls over the write index when the conditions in [`cluster.lifecycle.default.rollover`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#cluster-lifecycle-default-rollover) are met.
-  This keeps shards a usable size and allows backwards incompatible mapping changes.
-* **Tail merge:** After rollover, merges the long tail of small Lucene segments.
-  Those segments usually hold recent, often-queried data.
-  Tail merging costs a fraction of a full force merge.
-
-{{es}} writes an enabled data stream lifecycle onto the stream at create time.
-Retention, including global retention, can delete data.
-Downsampling still needs an explicit configuration.
-Frozen {{search-snaps}} aren't available.
-
-A [data stream lifecycle](/manage-data/lifecycle/data-stream.md#data-streams-lifecycle-how-it-works) you configure replaces this fallback.
-It can add retention and downsampling.
-
-The default lifecycle applies when the matching index template has no lifecycle.
-Turning the lifecycle off leaves the stream unmanaged.
-
+To customize the data stream lifecycle, refer to [](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md). For example, you can change the data retention settings.
 :::
-
 :::{applies-item} stack: ga 9.6+
 
-A {{tsds}} with no lifecycle and no {{ilm-init}} policy was never rolled over automatically.
-The minimal default lifecycle adds only rollover and tail merging.
-It doesn't change the data set, so it's safe as a default on streams that already have no retention policy.
+When you create a {{tsds}} ({{tsds-init}}) without a data stream lifecycle, {{es}} adds a minimum lifecycle and turns it on so rollover and tail merging can run.
 
-The minimal default lifecycle runs these operations:
-
-* **Rollover:** Rolls over the write index when the conditions in [`cluster.lifecycle.default.rollover`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#cluster-lifecycle-default-rollover) are met.
-  This keeps shards a usable size and allows backwards incompatible mapping changes.
-* **Tail merge:** After rollover, merges the long tail of small Lucene segments.
-  Those segments usually hold recent, often-queried data.
-  Tail merging costs a fraction of a full force merge.
-
-The minimal default lifecycle doesn't write a lifecycle onto the stream.
-Retention is skipped even when global retention is set.
-It doesn't downsample or move data to {{search-snaps}}.
-Only a {{tsds-init}} gets this fallback. Other data streams stay unmanaged.
-
-A [data stream lifecycle](/manage-data/lifecycle/data-stream.md#data-streams-lifecycle-how-it-works) you configure replaces this fallback.
-It can add retention and downsampling.
-It can also add frozen transitions to {{search-snaps}}.
-
-The default lifecycle applies when the following are true:
+The minimum lifecycle applies when the following are true:
 
 * The data stream is a {{tsds-init}}.
 * The data stream has no data stream lifecycle configured.
@@ -96,12 +61,13 @@ The default lifecycle applies when the following are true:
 * The [`data_streams.lifecycle.minimum.enabled`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-minimum-enabled) cluster setting is `true`.
 * Backing indices are not managed by {{ilm-init}} policies.
   A backing index with an {{ilm-init}} policy stays managed by {{ilm-init}} unless [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) is `false`.
-  A {{tsds-init}} that still uses the unmodified, deprecated `metrics` policy is the exception, because {{es}} sets `prefer_ilm` to `false` on new backing indices.
-  <!--
-  TO-DO: Add link when troubleshooting page exists
-  Refer to [{{ilm-init}} no longer manages new indices that use the deprecated metrics policy](/troubleshoot/elasticsearch/metrics-policy-not-managed-by-ilm.md).
-  -->
 
+The minimum lifecycle performs only the operations a data stream needs to stay healthy: rollover and tail merging.
+It never changes the data set, so it doesn't downsample, move data to {{search-snaps}}, or delete data.
+It doesn't delete data even if you configure a global retention.
+
+Adding a data stream lifecycle to the data stream replaces the minimum lifecycle with your configuration.
+Refer to [](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md). For example, you can change the data retention settings and add frozen transitions to {{search-snaps}}.
 :::
 ::::
 
@@ -116,7 +82,7 @@ Refer to [](/solutions/observability/streams/configure-retention.md).
 stack: ga 9.6+
 ```
 
-To check whether a data stream or an index is managed by a minimal default lifecycle, use the following APIs:
+To check whether a data stream or an index is managed by a minimum lifecycle, use the following APIs:
 
 * [Get data stream API]({{es-apis}}operation/operation-indices-get-data-stream): returns `"minimum_lifecycle_enabled": true` and `"next_generation_managed_by": "Data stream lifecycle"` for the data stream.
 * [Get data stream lifecycle API]({{es-apis}}operation/operation-indices-get-data-lifecycle): returns `"minimum_lifecycle_enabled": true` for the data stream.

@@ -42,8 +42,10 @@ In intervals configured by [`data_streams.lifecycle.poll_interval`](elasticsearc
 
 1. Checks if the data stream has a data stream lifecycle configured, skipping any indices not part of a managed data stream.
 
-   * {applies_to}`serverless: ga` Every data stream gets a [default lifecycle](/manage-data/lifecycle/data-stream/dlm-default-lifecycle.md).
-   * {applies_to}`stack: ga 9.6+` A {{tsds}} without a lifecycle is managed by the minimal default lifecycle, which runs only steps 2 (roll over) and 3 (tail merge).
+   * {applies_to}`serverless: ga` All data streams get a lifecycle by default.
+   * {applies_to}`stack: ga 9.6+` A {{tsds}} without a lifecycle is managed by the minimum default lifecycle, which runs only steps 2 (roll over) and 3 (tail merge).
+
+   For more information about the default behavior, refer to [](/manage-data/lifecycle/data-stream/dlm-default-lifecycle.md).
 
 2. Rolls over the write index of the data stream, if it fulfills the conditions defined by [`cluster.lifecycle.default.rollover`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#cluster-lifecycle-default-rollover).
 3. After an index is not the write index anymore (that is, the data stream has been rolled over), automatically tail merges the index. Data stream lifecycle runs a merge operation that only targets the long tail of small segments instead of the whole shard. As the segments are organised into tiers of exponential sizes, merging the long tail of small segments is only a fraction of the cost of force merging to a single segment. The small segments would usually hold the most recent data so tail merging will focus the merging resources on the higher-value data that is most likely to keep being queried.
