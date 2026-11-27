@@ -1173,13 +1173,13 @@ FROM kibana_sample_data_logs
 ```
 :::
 
-## Headline numbers with a ranked table [custom-panel-examples-several-queries]
+## Headline numbers with a ranked list [custom-panel-examples-several-queries]
 ```{applies_to}
 serverless: preview
 stack: preview 9.7+
 ```
 
-Three headline numbers from one query and a ranked list of destination countries from a second query, shown in one panel. For the rules about several queries, refer to [Use several queries in one panel](custom-panels.md#custom-panels-several-queries). Sample data: **Sample web logs**.
+Three headline numbers from one query and a ranked list of destination countries from a second query, shown in one panel. The headline numbers need one aggregated row and the ranking needs one row for each country, so each comes from its own query. To add and manage queries, refer to [Use several queries in one panel](custom-panels.md#custom-panels-several-queries). Sample data: **Sample web logs**.
 
 :::{image} /explore-analyze/images/custom-panels-example-several-queries.png
 :alt: Three tiles for requests, unique visitors, and a red error rate, above five bars that rank destination countries by request count
