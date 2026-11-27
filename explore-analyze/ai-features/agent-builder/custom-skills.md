@@ -233,27 +233,33 @@ To view or edit a custom skill:
 1. (Optional) To compare the draft with the instructions that were loaded into the conversation, turn on **Show diff**.
 1. Select **Save changes**. The card then shows a **Saved** badge and **Edit in Management**.
 
-The following screenshot shows an edited skill draft with **Show diff** turned on. It shows the layout in stack 9.5 and 9.6. In stack 9.7+ and serverless, refer to [Where to find Preview](#skill-card-preview):
+Where **Preview** appears depends on your version. The screenshots in [Where to find Preview](#skill-card-preview) show an edited skill draft with **Show diff** turned on.
+
+### Where to find Preview [skill-card-preview]
+
+:::::{applies-switch}
+
+::::{applies-item} { stack: ga 9.7+, serverless: ga }
+**Preview** is in the **More actions** menu next to the primary button (**Save changes** or **Edit in Management**). On an older card in the same conversation, **Preview** is the main button.
+
+:::{image} images/edit-skill-from-chat-serverless.png
+:screenshot:
+:alt: Skill card in Agent Chat showing Draft and Latest badges, a Save changes button with a More actions menu, and a diff of the added instructions
+:width: 750px
+:::
+::::
+
+::::{applies-item} { stack: ga 9.5-9.6 }
+**Preview** is a standalone button on the card.
 
 :::{image} images/edit-skill-from-chat.png
 :screenshot:
 :alt: Skill card in Agent Chat showing Draft and Latest badges, Preview and Save changes buttons, and a diff of the added instructions
 :width: 750px
 :::
-
-### Where to find Preview [skill-card-preview]
-
-::::{applies-switch}
-
-:::{applies-item} { stack: ga 9.7+, serverless: ga }
-**Preview** is in the **More actions** menu next to the primary button (**Save changes** or **Edit in Management**). On an older card in the same conversation, **Preview** is the main button.
-:::
-
-:::{applies-item} { stack: ga 9.5-9.6 }
-**Preview** is a standalone button on the card.
-:::
-
 ::::
+
+:::::
 
 ### What to know before you save [skill-card-behavior]
 
