@@ -15,7 +15,7 @@ description: "Kibana feature privileges and Elasticsearch index privileges neede
 To create rules, triage alerts, and configure notifications in {{alerting-v2-system-short}}, your role needs specific {{kib}} feature privileges and, if you're querying alerting data in Discover, {{es}} index privileges. [Create or update a role](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and add the privileges that match the tasks your team performs.
 
 :::{note}
-Depending on how your rules and notifications are configured, your role might also need `read` index privileges on the indices their rules query and **Actions and Connectors: All** (under **Management**) to create or edit workflow connectors. Refer to [{{kib}} role management](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for guidance on building roles that combine privileges across features.
+Depending on how your rules and notifications are configured, your role might also need `read` index privileges on the indices their rules query and **{{connectors-feature}}: All** (under **{{manage-app}}**) to create or edit workflow connectors. Refer to [{{kib}} role management](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for guidance on building roles that combine privileges across features.
 :::
 
 ## Quick reference [alerting-quick-reference]
@@ -24,11 +24,12 @@ The following table shows the minimum privileges for each activity. Higher privi
 
 | To... | Minimum required |
 |---|---|
-| Author and manage rules | **Rules: All** (under **Universal Alerting**) |
-| Monitor rule execution | **Execution history: Read** (under **Universal Alerting**) |
-| Triage alerts | **Alerts: All** (under **Universal Alerting**) |
-| Configure notifications | **Action Policies: All** (under **Universal Alerting**) + **Workflows: Read** (under **Analytics** → **Workflows**) |
+| Author and manage rules | **Rules: All** (under **{{alerting-v2-system-short}}**) |
+| Monitor rule execution | **Execution history: Read** (under **{{alerting-v2-system-short}}**) |
+| Triage alerts | **Alerts: All** (under **{{alerting-v2-system-short}}**) |
+| Configure notifications | **Action Policies: All** (under **{{alerting-v2-system-short}}**) + **Workflows: Read** (under **Analytics** → **Workflows**) |
 | Create rules and action policies with {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) + the privileges to [save what the agent creates](#alerting-agent-builder-privileges) |
+| {applies_to}`{serverless: {observability: experimental}, stack: experimental 9.6+}` Receive alerts from external sources | **{{connectors-feature}}: All** (under **{{manage-app}}**) + **Alerts: All** (under **{{alerting-v2-system-short}}**) + **Workflows: All** (under **Analytics** → **Workflows**) for sources other than Datadog. Refer to [Receive alerts from external sources](#alerting-external-alerts-privileges). |
 | Query `.rule-events` and `.alert-actions` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + **Alerts: Read** (Elasticsearch `read` access is bundled automatically) |
 | Query `.kibana-event-log-*` in Discover | **Discover: Read** (under **Analytics** → **Discover**) + custom role with `read` index privilege on `.kibana-event-log-*` |
 
@@ -106,9 +107,27 @@ To create rules and action policies with [{{agent-builder}}](../rules/create-rul
 | To... | Minimum required |
 |---|---|
 | Access and use {{agent-builder}} | **{{agent-builder}}: Read** (under **Analytics**) |
-| Save the rule | **Rules: All** (under **Universal Alerting**) |
-| Save the action policy | **Action Policies: All** (under **Universal Alerting**) |
+| Save the rule | **Rules: All** (under **{{alerting-v2-system-short}}**) |
+| Save the action policy | **Action Policies: All** (under **{{alerting-v2-system-short}}**) |
 | Select or create the workflow destination | **Workflows: Read** to select an existing workflow, or **Workflows: All** to create one (under **Analytics** → **Workflows**) |
+
+## Receive alerts from external sources [alerting-external-alerts-privileges]
+
+```yaml {applies_to}
+serverless:
+  observability: experimental
+stack: experimental 9.6+
+```
+
+To [receive alerts from Datadog and other monitoring tools](../alerts/receive-external-alerts.md), your role needs these privileges:
+
+| To... | Minimum required |
+|---|---|
+| Create the Datadog or Inbound {{webhook}} connector | **{{connectors-feature}}: All** (under **{{manage-app}}**) |
+| Let the connector's workflows create alerts | **Alerts: All** (under **{{alerting-v2-system-short}}**) |
+| Create the workflow for a source other than Datadog | **Workflows: All** (under **Analytics** → **Workflows**) |
+
+Workflows that the connector starts run as the last user who saved the connector, so that user needs **Alerts: All**. If a user without it saves the connector, the workflows can't create alerts. For details, refer to [Authenticate requests](kibana://reference/connectors-kibana/inbound-webhook-action-type.md#inbound-webhook-authenticate).
 
 ## Query rule output and alert data [alerting-data-investigation-privileges]
 

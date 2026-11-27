@@ -540,6 +540,7 @@ toc:
                 children:
                   - file: alerting/esql/alerts/triage-alert-episodes.md
                   - file: alerting/esql/alerts/investigate-alert-episodes.md
+              - file: alerting/esql/alerts/receive-external-alerts.md
               - file: alerting/esql/alerts/query-alerts-and-signals-in-discover.md
               - file: alerting/esql/alerts/query-signals.md
               - file: alerting/esql/alerts/field-reference.md
