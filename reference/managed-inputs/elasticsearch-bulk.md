@@ -220,7 +220,7 @@ Direct {{es}} also returns HTTP `400` with no `items` list for a line that is no
 A client that resends this HTTP `400` sends the whole request again. The endpoint writes the accepted group of 256 documents again and keeps both copies. {{es}} bulk clients do not retry HTTP `400`. {{product.logstash}} retries every HTTP status other than `200`. It resends this request.
 :::
 
-### After a document is accepted [after-accept]
+### After a document is enqueued [bulk-after-enqueue]
 
 - **A `201` means the endpoint enqueued the document.** {{es}} indexes it later. The bulk response does not include later errors, such as mapping conflicts. Your shipper counts the document as sent.
 - **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still cannot accept the data when buffer retention ends, the endpoint discards it. The `201` your shipper already received does not change.
