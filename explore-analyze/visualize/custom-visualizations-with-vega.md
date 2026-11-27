@@ -80,10 +80,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 1. Select **Add** in the application menu.
 2. Select **Vega** or **Custom visualization**: you might see either name depending on your {{kib}} version.
 
-    A pre-populated line chart displays the total number of documents. Where you edit its spec depends on your {{kib}} version:
-
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` In a flyout on the dashboard. When you run a preview, the panel shows your changes.
-    - {applies_to}`stack: ga 9.4-9.6` On a separate editor page, next to the chart.
+    A pre-populated line chart displays the total number of documents.
 
 3. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
 4. Replace the entire **Vega-Lite** spec with the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
@@ -123,10 +120,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 
 The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
 
-To keep the chart, close the editor, then save the dashboard:
-
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select **Apply and close**. To discard the changes you made since you opened the editor, select **Cancel** instead.
-- {applies_to}`stack: ga 9.4-9.6` Select **Save and return**.
+To keep the chart, select **Apply and close** or **Save and return** (depending on your {{kib}} version), then save the dashboard. To discard the changes you made since you opened the editor, select **Cancel** instead.
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { serverless: ga, stack: "ga 9.7+" }
@@ -240,10 +234,7 @@ Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the resu
 3. On the **Dashboards** page, select **Create dashboard**.
 4. Select **Add** (or **Add panel** in earlier versions) in the application menu, then select **Vega** or **Custom visualization**: you might see either name depending on your {{kib}} version.
 
-    A pre-populated line chart displays the total number of documents. Where you edit its spec depends on your {{kib}} version:
-
-    - {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` In a flyout on the dashboard. When you run a preview, the panel shows your changes.
-    - {applies_to}`stack: ga 9.0-9.6` On a separate editor page, next to the chart.
+    A pre-populated line chart displays the total number of documents.
 
 5. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
 
@@ -702,10 +693,7 @@ The selection is controlled by a signal. To view the signal, select **Inspect** 
 
 ::::
 
-To keep the chart, close the editor, then save the dashboard:
-
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select **Apply and close**. To discard the changes you made since you opened the editor, select **Cancel** instead.
-- {applies_to}`stack: ga 9.0-9.6` Select **Save and return**.
+To keep the chart, select **Apply and close** or **Save and return** (depending on your {{kib}} version), then save the dashboard. To discard the changes you made since you opened the editor, select **Cancel** instead.
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { serverless: ga, stack: "ga 9.7+" }
@@ -1495,10 +1483,7 @@ Add a signal that updates the {{kib}} time filter when the cursor is released wh
 
 ::::
 
-To keep the chart, close the editor, then save the dashboard:
-
-- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Select **Apply and close**. To discard the changes you made since you opened the editor, select **Cancel** instead.
-- {applies_to}`stack: ga 9.0-9.6` Select **Save and return**.
+To keep the chart, select **Apply and close** or **Save and return** (depending on your {{kib}} version), then save the dashboard. To discard the changes you made since you opened the editor, select **Cancel** instead.
 
 :::::::{dropdown} Create this chart using the API
 :applies_to: { serverless: ga, stack: "ga 9.7+" }
