@@ -161,7 +161,7 @@ An {{esql}} layer loads the rows of one query, so some map features work differe
 
 ## Next steps
 
-To change how the features that your query returns look, refer to [Vector styling](vector-style.md).
+To change how the features that your query returns look, refer to [Vector styling](vector-style.md). An {{esql}} layer has the same style options as a [vector layer](vector-layer.md), such as colors, symbol sizes, and labels that depend on the values of a column.
 
 ## Related pages
 
