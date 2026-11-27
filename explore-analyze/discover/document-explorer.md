@@ -242,7 +242,7 @@ You can't break down the chart by every field:
 * In {{esql}} mode, you can't break down by [counter metrics](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-metric), histogram fields (`exponential_histogram` and `tdigest`), flattened and nested fields, number range fields, or fields with an unknown type. Breaking down the chart also works only when the data source has a time field and your query doesn't reshape the results with a command such as `STATS` or `KEEP`. If your query reshapes the results, Discover builds the chart from the query. Refer to [Break down a chart by multiple fields](../visualize/esorql.md#esql-viz-multi-field-breakdown).
 * In classic mode, you can break down by [aggregatable](../query-filter.md) string, boolean, number, and IP fields. You can't break down by [scripted fields](../find-and-organize/data-views/scripted-fields.md) or [counter metrics](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-metric).
 
-**Result:** The chart is broken down by the field you selected.
+**Result:** The chart shows a breakdown by the field you selected.
 
 
 ### Change the time interval [document-explorer-chart-interval]
