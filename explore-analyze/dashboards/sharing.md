@@ -155,7 +155,7 @@ The **Export JSON** option is available for:
 
 - Visualizations created with the [point-and-click editor](../visualize/lens.md) or with an [{{esql}} query](../visualize/esorql.md)
 - [**Links**](../visualize/link-panels.md) and [**Markdown**](../visualize/text-panels.md) panels
-- {applies_to}`stack: ga 9.7+` [**Vega**](../visualize/custom-visualizations-with-vega.md) panels. Vega panels from earlier versions and Vega visualizations created with **Create visualization** in the [library](../visualize/visualize-library.md#visualize-library-create) don't offer the option.
+- {applies_to}`stack: ga 9.7+` [**Vega**](../visualize/custom-visualizations-with-vega.md) panels that you add on a dashboard, even after you save them to the library. Vega visualizations that you create from the [library](../visualize/visualize-library.md#visualize-library-create) with **Create visualization** don't offer the option, and neither do Vega panels from earlier versions.
 - Unpinned [**Options list**](../visualize/dashboard-controls.md#control-types), [**Range slider**](../visualize/dashboard-controls.md#control-types), and [**Variable**](../visualize/add-variable-controls.md) controls
 
    :::{tip}
