@@ -271,7 +271,9 @@ PUT my-index-000001/_settings
 
 By default {{es}} [automatically creates a mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md) for every field in every document it indexes. Every mapped field corresponds to some data structures on disk which are needed for efficient search, retrieval, and aggregations on this field. Details about each mapped field are also held in memory. In many cases this overhead is unnecessary because a field is not used in any searches or aggregations. Use [*Explicit mapping*](../../../manage-data/data-store/mapping/explicit-mapping.md) instead of dynamic mapping to avoid creating fields that are never used. If a collection of fields are typically used together, consider using [`copy_to`](elasticsearch://reference/elasticsearch/mapping-reference/copy-to.md) to consolidate them at index time. If a field is only rarely used, it may be better to make it a [Runtime field](../../../manage-data/data-store/mapping/runtime-fields.md) instead.
 
-You can get information about which fields are being used with the [Field usage stats]({{es-apis}}operation/operation-indices-field-usage-stats) API, and you can analyze the disk usage of mapped fields using the [Analyze index disk usage]({{es-apis}}operation/operation-indices-disk-usage) API. Note however that unnecessary mapped fields also carry some memory overhead as well as their disk usage.
+Use the [Field usage stats API]({{es-apis}}operation/operation-indices-field-usage-stats) to check which fields your requests have used.
+
+For more on reducing disk usage through field mappings, refer to [Avoid indexing unused fields](./disk-usage.md#avoid-indexing-unused-fields).
 
 
 ## Reduce a cluster’s shard count [reduce-cluster-shard-count]

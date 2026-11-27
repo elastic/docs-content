@@ -73,7 +73,7 @@ output {
     **Default:** `1s`
 
 `backoff.max` $$$output-logstash-fleet-settings-backoff.max-setting$$$
-:   (string) The maximum number of seconds to wait before attempting to connect to {{es}} after a network error.
+:   (string) The maximum number of seconds to wait before attempting to connect to {{ls}} after a network error.
 
     **Default:** `60s`
 

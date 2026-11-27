@@ -54,10 +54,7 @@ You can view, assign, change, or unassign asset criticality from the following p
 * The [entity details flyout](/solutions/security/advanced-entity-analytics/view-entity-details.md#entity-details-flyout)
 * The entity details flyout in [Timeline](../investigate/timeline.md)
 
-If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the **Entities** section on the following pages:
-
-* {applies_to}`stack: ga 9.1` {applies_to}`serverless: ga` [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md)
-* [Entity analytics dashboard](/solutions/security/dashboards/entity-analytics-dashboard.md)
+If you have enabled the [entity store](entity-store.md), you can also view asset criticality assignments in the entity table on the [Entity analytics](/solutions/security/advanced-entity-analytics/monitor-entity-risk.md) page.
 
 ### Bulk assign asset criticality [bulk-assign-asset-criticality]
 

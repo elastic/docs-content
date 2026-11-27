@@ -101,3 +101,5 @@ If a panel no longer belongs on a dashboard, you can remove it without affecting
 
 If the panel came from the [Visualize library](../visualize/visualize-library.md), it stays in the library and on every other dashboard that uses it. If you created the panel directly on the dashboard, removing it deletes it. To keep a copy, [save the panel to the library](../visualize/visualize-library.md#save-to-visualize-library) before you remove it.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To remove several panels at once, [select them](arrange-panels.md#select-several-panels) and use **Remove** in the toolbar at the bottom of the page.
+
