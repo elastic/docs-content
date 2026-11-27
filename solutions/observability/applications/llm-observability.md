@@ -34,9 +34,9 @@ Elastic's LLM integrations now support the most widely adopted models, including
 | [Amazon Bedrock](integration-docs://reference/aws_bedrock.md)| ✅ | ✅ |
 | [Amazon Bedrock AgentCore](integration-docs://reference/aws_bedrock_agentcore.md)| ✅ | ✅ |
 | Anthropic ([Metrics](integration-docs://reference/anthropic_metrics.md) / [Logs](integration-docs://reference/anthropic.md)) | ✅ | ✅ |
-| [Azure AI Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ |
 | [Azure OpenAI](integration-docs://reference/azure_openai.md)| ✅ | ✅ |
 | [GCP Vertex AI](integration-docs://reference/gcp_vertexai.md) | ✅ | ✅ |
+| [Microsoft Foundry](integration-docs://reference/azure_ai_foundry.md) | ✅| ✅ |
 | [OpenAI](integration-docs://reference/openai.md) | ✅| 🚧 |
 
 
@@ -52,10 +52,11 @@ You can instrument the application with one of the following {{edot}} SDKs:
 
 {{edot}} includes many types of LLM instrumentation. This [table](/solutions/observability/get-started/opentelemetry/use-cases/llms/index.md#supported-technologies) lists the supported technologies.
 
-Some AI platforms can export OpenTelemetry traces directly to Elastic without changing your code or running an OpenTelemetry Collector:
+Some AI platforms can export OpenTelemetry signals directly to Elastic without changing your code or running an OpenTelemetry Collector:
 
 - Claude Platform covers Messages API requests and Claude Managed Agents sessions. Refer to [Send Claude Platform traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-claude-platform-traces.md).
 - OpenRouter Broadcast covers every chat completion request. Refer to [Send OpenRouter traces to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-openrouter-broadcast-traces.md).
+- Microsoft Foundry hosted agents export traces, logs, and metrics. Refer to [Send Microsoft Foundry hosted agent telemetry to Elastic](/solutions/observability/get-started/opentelemetry/use-cases/llms/send-microsoft-foundry-hosted-agent-telemetry.md).
 
 ### Getting started
 

@@ -147,7 +147,7 @@ For limitations that apply when {{agent}} is configured as an OTel Collector, re
 
 - [Azure Logs Integration (v2 preview)](integration-docs://reference/azure/events.md)
 - [Azure Event Hub Input](integration-docs://reference/azure/eventhub.md)
-- [Azure AI Foundry Integration](integration-docs://reference/azure_ai_foundry.md)
+- [Microsoft Foundry Integration](integration-docs://reference/azure_ai_foundry.md)
 - [Azure App Service Integration](integration-docs://reference/azure_app_service.md)
 - [Azure Application Insights Integration](integration-docs://reference/azure_application_insights.md)
 - [Azure Billing Metrics Integration](integration-docs://reference/azure_billing.md)
