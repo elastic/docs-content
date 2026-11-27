@@ -230,7 +230,7 @@ Observing CI/CD pipelines is achieved by instrumenting the different CI/CD and D
 
 #### Install the OpenTelemetry plugin [ci-cd-install-jenkins]
 
-1. On the Jenkins UI, go to **Manage Jenkins** > **Manage Plugins**.
+1. On the Jenkins UI, go to **Manage Jenkins** → **Manage Plugins**.
 
     :::{image} /solutions/images/observability-jenkins-plugin-manager.png
     :alt: Jenkins Plugin Manager
@@ -248,7 +248,7 @@ Observing CI/CD pipelines is achieved by instrumenting the different CI/CD and D
 
 The OpenTelemetry plugin needs to be configured to report data to an OpenTelemetry service. In addition, you will need the endpoint of the OpenTelemetry service, the type of authentication, and the access credentials.
 
-1. On the Jenkins UI, go to **Manage Jenkins** > **Configure System**.
+1. On the Jenkins UI, go to **Manage Jenkins** → **Configure System**.
 2. Go to the OpenTelemetry Plugin section.
 3. Configure your OpenTelemetry endpoint and authentication using the Elastic APM Server URL and the APM Server authentication:
 

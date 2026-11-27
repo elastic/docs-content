@@ -1,4 +1,5 @@
 ---
+description: Route Fleet-managed Elastic Agent traffic through a proxy server. Define proxies in Fleet and attach them to Fleet Server hosts, outputs, and agent binary download sources.
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-managed.html
 applies_to:
@@ -93,7 +94,9 @@ These steps describe how to set up {{fleet}} components to use a proxy.
         :alt: Screen capture of the Edit agent binary source UI in Fleet
         :::
 
-        In this example, all {{agents}} enrolled in a policy that is configured to download from the chosen agent download source will now download from that agent download source through the proxy server defined in `Proxy-A`.
+        In this example, all {{agents}} enrolled in a policy that is configured to download from the chosen agent download source will now download from that source through the proxy server defined in `Proxy-A`. The {{agents}} use the TLS settings of the proxy instead of the TLS settings of the download source.
+
+        {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` If an agent policy uses more than one download source, the proxy of the first source applies to all of them. For details, refer to [Fallback download sources](/reference/fleet/fleet-settings.md#agent-binary-multiple-sources).
 
 
     ::::{warning}

@@ -107,6 +107,10 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 :   (int) The gzip compression level. Set this value to `0` to disable compression. The compression level must be in the range of `1` (best speed) to `9` (best compression).
     Increasing the compression level reduces network usage but increases CPU usage.
 
+`default_processors` {applies_to}`stack: ga 9.6+`
+:   :::{include} /reference/fleet/_snippets/output-default-processors-setting.md
+    :::
+
 `max_retries` $$$output-elasticsearch-fleet-settings-max_retries-setting$$$
 :   (int) The number of times to retry publishing an event after a publishing failure. After the specified number of retries, the events are typically dropped.
     Set `max_retries` to a value less than 0 to retry until all events are published.

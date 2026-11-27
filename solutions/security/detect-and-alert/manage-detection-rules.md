@@ -267,7 +267,7 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 2. Do one of the following:
 
     * Export a single rule: Find the rule in the Rules table, then select **All actions** > **Export**. Alternatively, export the rule from its details page (click on the rule name to open its details, then click **All actions** > **Export**).
-    * Export multiple rules: In the Rules table, select the rules you want to export, then click **Bulk actions > Export**.
+    * Export multiple rules: In the Rules table, select the rules you want to export, then click **Bulk actions** → **Export**.
 
 The rules are exported to an `.ndjson` file.
 

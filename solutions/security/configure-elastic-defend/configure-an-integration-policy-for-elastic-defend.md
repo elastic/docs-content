@@ -64,6 +64,7 @@ To configure an integration policy:
     * [Memory threat protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#memory-protection)
     * [Malicious behavior protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#behavior-protection)
     * [Attack surface reduction](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#attack-surface-reduction)
+    * [AI data collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#ai-data-collection)
     * [Device control](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#device-control)
     * [Event collection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#event-collection)
     * [Register {{elastic-sec}} as antivirus (optional)](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#register-as-antivirus)
@@ -94,6 +95,18 @@ To configure an integration policy:
 
 5. Click the **Protection updates** tab to configure how {{elastic-defend}} receives updates from Elastic with the latest threat detections, malware models, and other protection artifacts. Refer to [Configure updates for protection artifacts](/solutions/security/configure-elastic-defend/configure-updates-for-protection-artifacts.md) for more information.
 
+### Set protections for each operating system [per-os-policy-settings]
+```yaml {applies_to}
+stack: ga 9.6+
+serverless: ga
+```
+
+You can configure protections differently for each operating system in a single policy, so you don't need separate policies for your Windows, macOS, and Linux hosts. For example, you can prevent malware on Windows hosts and only detect it on Linux hosts.
+
+Each protection shows a row for every operating system it supports, so you can set a separate protection level for each operating system. Options in a row, such as **Notify user** and **Blocklist**, apply only to that operating system.
+
+To turn a protection on or off for all operating systems at once, use the protection's main toggle, such as the **Malware protections** toggle.
+
 
 ## Malware protection [malware-protection]
 
@@ -108,15 +121,16 @@ In {{serverless-short}}, malware protection requires the Endpoint Protection Ess
 
 Malware protection levels are:
 
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Disable**: Turns off malware protection for the operating system.
 * **Detect**: Detects malware on the host and generates an alert. The agent will **not** block malware. You must pay attention to and analyze any malware alerts that are generated.
-* **Prevent** (Default): Detects malware on the host, blocks it from executing, and generates an alert.
+* **Detect & prevent** or **Prevent**, depending on your version (Default): Detects malware on the host, blocks it from executing, and generates an alert.
 
 These additional options are available for malware protection:
 
-* **Blocklist**: Enable or disable the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md) for all hosts associated with this {{elastic-defend}} policy. The blocklist allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
+* **Blocklist**: Enable or disable the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md) for hosts associated with this {{elastic-defend}} policy. The blocklist allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
 * **Scan files upon modification**: By default, {{elastic-defend}} scans files every time they’re modified, which can be resource-intensive on hosts where files are frequently modified, such as servers and developer machines. Turn off this option to only scan files when they’re executed. {{elastic-defend}} will continue to identify malware as it attempts to run, providing a robust level of protection while improving endpoint performance.
 
-Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
+Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default when {{elastic-defend}} is set to block malware.
 
 ::::{tip}
 If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {filename}` syntax.
@@ -125,7 +139,7 @@ If you have the appropriate license or project feature tier, you can customize t
 
 ### Manage quarantined files [manage-quarantined-files]
 
-When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically, {{elastic-defend}} will remove the file from its current location, apply a rolling XOR with the key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
+When {{elastic-defend}} is set to block malware, it will quarantine any malicious file it finds (this includes files defined in the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically, {{elastic-defend}} will remove the file from its current location, apply a rolling XOR with the key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
 
 The quarantine folder location varies by operating system:
 
@@ -162,12 +176,13 @@ Behavioral ransomware prevention detects and stops ransomware attacks on Windows
 
 Ransomware protection levels are:
 
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Disable**: Turns off ransomware protection for the operating system.
 * **Detect**: Detects ransomware on the host and generates an alert. {{elastic-defend}} will **not** block ransomware. You must pay attention to and analyze any ransomware alerts that are generated.
-* **Prevent** (Default): Detects ransomware on the host, blocks it from executing, and generates an alert.
+* **Detect & prevent** or **Prevent**, depending on your version (Default): Detects ransomware on the host, blocks it from executing, and generates an alert.
 
-When ransomware protection is enabled, canary files placed in targeted locations on your hosts provide an early warning system for potential ransomware activity. When a canary file is modified, Elastic Defend immediately generates a ransomware alert. If **prevent** ransomware is active, {{elastic-defend}} terminates the process that modified the file.
+When ransomware protection is enabled, canary files placed in targeted locations on your hosts provide an early warning system for potential ransomware activity. When a canary file is modified, {{elastic-defend}} immediately generates a ransomware alert. If {{elastic-defend}} is set to block ransomware, it terminates the process that modified the file.
 
-Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
+Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default when {{elastic-defend}} is set to block ransomware.
 
 ::::{tip}
 If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {filename}` syntax.
@@ -187,10 +202,11 @@ Memory threat protection detects and stops in-memory threats, such as shellcode 
 
 Memory threat protection levels are:
 
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Disable**: Turns off memory threat protection for the operating system.
 * **Detect**: Detects memory threat activity on the host and generates an alert. {{elastic-defend}} will **not** block the in-memory activity. You must pay attention to and analyze any alerts that are generated.
-* **Prevent** (Default): Detects memory threat activity on the host, forces the process or thread to stop, and generates an alert.
+* **Detect & prevent** or **Prevent**, depending on your version (Default): Detects memory threat activity on the host, forces the process or thread to stop, and generates an alert.
 
-Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
+Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default when {{elastic-defend}} is set to prevent threats.
 
 ::::{tip}
 If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
@@ -210,8 +226,9 @@ Malicious behavior protection detects and stops threats by monitoring the behavi
 
 Malicious behavior protection levels are:
 
+* {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` **Disable**: Turns off malicious behavior protection for the operating system.
 * **Detect**: Detects malicious behavior on the host and generates an alert. {{elastic-defend}} will **not** block the malicious behavior. You must pay attention to and analyze any alerts that are generated.
-* **Prevent** (Default): Detects malicious behavior on the host, forces the process to stop, and generates an alert.
+* **Detect & prevent** or **Prevent**, depending on your version (Default): Detects malicious behavior on the host, forces the process to stop, and generates an alert.
 
 Select whether you want to use **Reputation service** for additional protection. Elastic’s reputation service leverages our extensive threat intelligence knowledge to make high confidence real-time prevention decisions. For example, reputation service can detect suspicious downloads of binaries with low or malicious reputation. Endpoints communicate with the reputation service directly at [https://cloud.security.elastic.co](https://cloud.security.elastic.co).
 
@@ -220,7 +237,7 @@ In {{stack}}, reputation service requires an active [Platinum or Enterprise subs
 ::::
 
 
-Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
+Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default when {{elastic-defend}} is set to block malicious behavior.
 
 ::::{tip}
 If you have the appropriate license or project feature tier, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
@@ -240,8 +257,26 @@ In {{serverless-short}}, attack surface reduction requires the Endpoint Protecti
 
 **Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.
 
-{applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the SAM, SECURITY, and SYSTEM registry hives on Windows endpoints, a common credential dumping technique. Trusted applications are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Registry credential hardening**: Blocks attempts to save the Security Account Manager (`SAM`), `SECURITY`, and `SYSTEM` registry hives on Windows endpoints, a common credential dumping technique. [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md) are still allowed to save these hives. New policies have this turned on by default, while existing policies stay off until you turn on the toggle.
+
+
+## AI data collection [ai-data-collection]
+```yaml {applies_to}
+stack: preview 9.6+
+serverless: preview
+```
+
+{{elastic-defend}} can identify AI tools running on your hosts and add that context to the events it collects from them, which improves visibility into AI activity on your hosts.
+
+In the **AI data collection** section, turn on **AI event enrichment** for each operating system where you want {{elastic-defend}} to add this context.
+
+New policies have this setting turned on for every operating system by default. Existing policies don't collect AI data until you turn this on for the operating systems you want.
+
+::::{note}
+For AI event enrichment to take effect on a host, the host must be running {{elastic-endpoint}} version 9.6 or later.
+::::
+
+
 ## Device control [device-control]
 
 ```yaml {applies_to}
@@ -316,7 +351,7 @@ Windows Server versions are not supported. Antivirus registration requires Windo
 ::::
 
 
-By default, the **Sync with malware protection level** is selected to automatically set antivirus registration to match how you’ve configured {{elastic-defend}}'s [malware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection). If malware protection is turned on *and* set to **Prevent**, antivirus registration will also be enabled; in any other case, antivirus registration will be disabled.
+By default, **Sync with malware protection level** is selected to automatically set antivirus registration to match how you’ve configured {{elastic-defend}}'s [malware protection](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection). If {{elastic-defend}} is set to block malware on Windows, antivirus registration will also be enabled; in any other case, antivirus registration will be disabled.
 
 If you don’t want to sync antivirus registration, you can set it manually with **Enabled** or **Disabled**.
 

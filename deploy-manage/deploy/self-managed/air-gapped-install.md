@@ -35,7 +35,7 @@ Specifically:
 * To be able to use {{kib}} sample data, install or update hundreds of prebuilt alert rules, and explore available data integrations, you need to set up and configure the [{{package-registry}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry).
 * To provide detection rule updates for {{endpoint-sec}} agents, you need to set up and configure the [Elastic Endpoint Artifact Repository](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository).
 * To access the APM integration, you need to set up and configure [Elastic APM](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-apm).
-* To install and use the Elastic documentation for {{kib}} AI assistants, you need to set up and configure the [Elastic product documentation for {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana-product-documentation).
+* To install and use Elastic documentation in {{kib}} AI chat, set up and configure [Elastic product documentation for {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana-product-documentation).
 
 
 ## {{beats}} [air-gapped-beats]
@@ -79,15 +79,15 @@ Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-conne
 
 ## {{package-registry}} [air-gapped-elastic-package-registry]
 
-Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](/reference/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
+Air-gapped install of the {{package-registry}} (EPR) is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Usage instructions, along with container image names and pull instructions are available on [Run {{agents}} in an air-gapped environment](/reference/fleet/air-gapped.md).
 
 {applies_to}`stack: ga 9.6+` If your environment requires FIPS 140-3 validated cryptography, use the [FIPS 140-3 images](/reference/fleet/air-gapped.md#air-gapped-diy-epr-fips) of the {{package-registry}}.
 
-If using {{eck}}, you can follow the instructions in [Deploy {{package-registry}} on {{eck}}](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
-
 ::::{note}
-Besides setting up the EPR service, you also need to [configure {{kib}}](/deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana) to use this service. If using TLS with the EPR service, it is also necessary to set up {{kib}} to trust the certificate presented by the EPR.
+After you set up the EPR, [connect {{kib}} to it](/reference/fleet/air-gapped.md#air-gapped-diy-epr-kibana). If the EPR uses a self-signed certificate or a custom CA, also [configure {{kib}} to trust that CA](/reference/fleet/air-gapped.md#_using_custom_ca_certificates).
 ::::
+
+For {{eck}}, follow the instructions in [](/deploy-manage/deploy/cloud-on-k8s/package-registry.md).
 
 ### Additional {{package-registry}} examples
 
@@ -454,6 +454,6 @@ Some {{ml}} features, like natural language processing (NLP), require you to dep
 * [Install trained models in an air-gapped environment with Eland](eland://reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
 
 
-## {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
+## {{kib}} product documentation for AI chat [air-gapped-kibana-product-documentation]
 
-Installing the AI Assistant knowledge base content (Elastic documentation and Security Labs) requires network access to the artifact repository at `https://kibana-knowledge-base-artifacts.elastic.co/`. If you don't have access, which is common for deployments in air-gapped or restricted networks, you must deploy the knowledge base artifact repository manually. For details, refer to [Host a knowledge base artifact repo for AI assistants](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).
+Installing Elastic documentation for {{agent-builder}} or AI Assistant requires access to the artifact host at `https://kibana-knowledge-base-artifacts.elastic.co/`. If {{kib}} can't reach it, which is common in air-gapped or restricted networks, mirror the artifacts to infrastructure that {{kib}} can reach. For details, refer to [Host an artifact repo for Elastic product documentation](../../../explore-analyze/ai-features/ai-chat-experiences/ai-assistant-host-doc-artifacts.md).

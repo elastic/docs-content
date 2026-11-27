@@ -28,7 +28,7 @@ Because templates live in a central catalog, Elastic can publish new and updated
 ## Before you begin [workflows-templates-before-you-begin]
 
 - Workflows must be available in your deployment. Refer to [](/explore-analyze/workflows/get-started/setup.md).
-- You need the **`All`** privilege for **Analytics → Workflows** to create workflows, including workflows built from templates.
+- You need the **`All`** privilege for **Analytics** → **Workflows** to create workflows, including workflows built from templates.
 - The Template library is turned off by default. An administrator must enable it before you can use it. Refer to [Enable the Template library](/explore-analyze/workflows/get-started/setup.md#workflows-templates-enable).
 
 ## Browse and filter templates [workflows-templates-browse]
