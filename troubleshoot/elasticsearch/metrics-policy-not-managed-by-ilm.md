@@ -44,8 +44,10 @@ If it doesn't, the minimal default lifecycle does.
 <!--
 TO-DO: Add link [minimal default lifecycle](/manage-data/lifecycle/data-stream/dlm-default-lifecycle.md)
 -->
-The unmodified, deprecated `metrics` policy has no delete or downsample phase, so this switch doesn't stop a retention or downsample action that policy was running.
-Rollover moves from that {{ilm-init}} action to data stream lifecycle and tail merging starts.
+
+The unmodified `metrics` policy only rolled the write index over.
+It did not delete or downsample data, so those actions are unchanged.
+Data stream lifecycle takes over rollover, and tail merging starts.
 
 ## Resolution
 
@@ -53,7 +55,7 @@ If you do not mind migrating from {{ilm-init}} to data stream lifecycle, you don
 
 To keep {{ilm-init}} managing the indices, select the option that matches the scope you need:
 
-1. **All new backing indices in the cluster:** Set the dynamic cluster setting [`data_streams.lifecycle.prefer_by_default.metrics_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-prefer-by-default-metrics-enabled) to `false`. This doesn't change backing indices that already have [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) set to `false`.
+1. **All new backing indices in the cluster:** Set the dynamic cluster setting [`data_streams.lifecycle.prefer_by_default.metrics_enabled`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-prefer-by-default-metrics-enabled) to `false`:
 
    ```console
    PUT _cluster/settings
@@ -64,6 +66,10 @@ To keep {{ilm-init}} managing the indices, select the option that matches the sc
    }
    ```
 
+   :::{note}
+   This cluster setting doesn't change backing indices that already have [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) set to `false`.
+   To change those, refer to the third option.
+   :::
 2. **New backing indices of specific data streams:** Set [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) to `true` in the component or index template.
 3. **Existing backing indices of a data stream:** Update the data stream settings. The following request changes [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) on all backing indices of the data stream:
 
