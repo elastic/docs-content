@@ -35,7 +35,7 @@ When more than one pipeline applies to a document, {{es}} runs them in this orde
 2. The default pipeline, only if the request doesn't specify a pipeline.
 3. The final pipeline, always, after the request pipeline or default pipeline.
 
-The special pipeline name _none means that no pipeline runs at that level. Use pipeline=_none in a request to skip the default pipeline. It doesn't skip the final pipeline, which always runs.
+The special pipeline name `_none` means that no pipeline runs at that level. Use `pipeline=_none` in a request to skip the default pipeline. It doesn't skip the final pipeline, which always runs.
 
 ## Add a pipeline to an indexing request [add-pipeline-to-indexing-request]
 
