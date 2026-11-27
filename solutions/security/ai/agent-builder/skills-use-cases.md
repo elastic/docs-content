@@ -20,17 +20,22 @@ Skills can be activated three ways: the agent selects one automatically from you
 
 **Enable:** `alert-analysis` (optionally combine with [`entity-analytics`](#entity-risk-investigation) for deeper entity context)
 
-Use this skill to triage a specific alert or work through an alert queue. The agent fetches the alert, finds related alerts that share entities, correlates with {{elastic-sec}} Labs threat intelligence, and recommends a disposition (true positive, benign true positive, false positive, or needs more data). For a multi-skill flow that chains this into a tracking dashboard, refer to [Combining skills across use cases](#combining-skills-across-workflows).
+Use this skill to analyze a specific alert or work through an alert queue. The agent fetches the alert, finds related alerts that share entities, and recommends a disposition: true positive, benign true positive, false positive, or needs more data.
+
+Some results need extra setup:
+
+* Entity risk scores require [entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
+* {{elastic-sec}} Labs correlation requires [Security labs content](/explore-analyze/ai-features/manage-access-to-ai-assistant.md#security-labs-content) installed from **GenAI Settings**.
+
+For the full UI procedure, from **Add to chat** through disposition and case, refer to [Triage alerts](/solutions/security/ai/triage-alerts.md).
 
 | Example prompt | What the agent can do |
 |----------------|----------------------|
-| What's the context on this critical alert? | Pull alert details, find alerts that share host, user, or IP entities within a time window, and correlate with threat intelligence. |
+| What's the context on this critical alert? | Pull alert details and find alerts that share host, user, or IP entities within a time window. If Security labs content is installed, also correlate with threat intelligence. |
 | Find alerts related to this one over the last 7 days | Search for alerts sharing `host.name`, `user.name`, `source.ip`, or `destination.ip` with the source alert. |
-| Should we escalate this alert? | Summarize evidence, check entity risk scores for involved hosts and users, and recommend a disposition with supporting reasoning. |
+| Should we escalate this alert? | Summarize evidence and recommend a disposition with supporting reasoning. If entity risk scoring is on, include risk scores for the involved hosts and users. |
 
-:::{tip}
-You can also trigger this skill by attaching an alert from the alert flyout — the agent activates `alert-analysis` automatically based on the attachment.
-:::
+The skill also activates when you attach an alert to the conversation with **Add to chat** in the alert details flyout. {applies_to}`stack: ga 9.5+` {applies_to}`serverless: ga` You can also [add alerts to chat from the Alerts table](/solutions/security/detect-and-alert/manage-detection-alerts.md#add-alerts-to-chat).
 
 ## Entity risk investigation
 
@@ -161,7 +166,7 @@ Use this skill to create or edit detection rules. The skill supports **{{esql}} 
 `detection-rule-edit` operates on a rule attachment. The skill activates when a rule attachment is present in the conversation. You can start a rule attachment from the rule creation form, the rule details page, or by asking the agent to "create a detection rule" directly in chat — the skill creates the attachment and renders an **Apply to creation** button so you can save the rule from the chat.
 :::
 
-## {{elastic-defend}} troubleshooting
+## {{elastic-defend}} troubleshooting [elastic-defend-troubleshooting]
 
 ```{applies_to}
 stack: ga 9.5+, preview =9.4
@@ -205,6 +210,34 @@ Use this skill to decide how an {{elastic-defend}} [integration policy](/solutio
 :::{note}
 Before the agent applies a change, it shows a confirmation with each setting's current and new value, any warnings about weakened protections, and the number of endpoints enrolled in the policy. Select **Cancel** to leave the policy as it is.
 :::
+
+## {{elastic-defend}} response actions [defend-response-actions]
+
+```{applies_to}
+stack: ga 9.6+
+serverless:
+  security: ga
+```
+
+**Enable:** `endpoint-response-actions`
+
+Use this skill to list enrolled {{elastic-defend}} endpoints, check whether a host is isolated, and follow up on a [response action](/solutions/security/endpoint-response-actions.md) you already sent. After you confirm in the chat, the agent can isolate or release a host, request the processes running on a host, or scan a path for malware. Select **Deny** on the confirmation to cancel instead.
+
+Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the response console instead.
+
+If the agent can't match your request to a single host that can receive response actions, or you lack the required privilege, license, or project feature tier, the action is refused and nothing is sent, even if you confirm. If several endpoints share a hostname, ask again using the endpoint's agent ID.
+
+To find out why a host is unhealthy or why an action failed, use [`automatic_troubleshooting`](#elastic-defend-troubleshooting).
+
+| Example prompt | What the agent can do |
+|----------------|----------------------|
+| Which endpoints are enrolled? | List enrolled {{elastic-defend}} hosts with their agent ID, status, isolation state, operating system, last seen time, and applied policy. |
+| Is `host-12` isolated? | Look up that host and report its status and isolation state. If several endpoints share that hostname, the agent ignores any that are offline, inactive, or unenrolled. If more than one is left, it asks you for the endpoint's agent ID. |
+| Isolate `host-12` | Show a confirmation that names the host and its agent ID. The host is isolated only after you select **Isolate host**. |
+| Release `host-12` | Show a confirmation, then release the host after you select **Release host**. |
+| What processes are running on `host-12`? | Show a confirmation, then request the process list after you select **List processes**. |
+| Scan `/tmp` on `host-12` for malware | Show a confirmation that names the host and the path. The scan runs only after you select **Run scan**, and it uses the [malware protection settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#malware-protection) on the host's {{elastic-defend}} policy. |
+| What happened to action `<action-id>`? | Report that action's status and output. |
 
 ## Attack Discovery generation [attack-discovery-generation]
 ```{applies_to}

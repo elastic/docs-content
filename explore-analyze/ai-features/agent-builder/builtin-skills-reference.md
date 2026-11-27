@@ -131,6 +131,31 @@ $$$agent-builder-cases-management-skill$$$ `cases-management` {applies_to}`stack
 
     :::
 
+$$$agent-builder-cases-analytics-skill$$$ `cases-analytics` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
+:   Answers reporting questions about [cases](/explore-analyze/cases.md) by querying the [case analytics indices](/explore-analyze/cases/case-analytics-indices.md) with {{esql}}. Use it to:
+
+    - Report on case volume and trends, closure rate, time to resolve, and time in status.
+    - Report on assignee workload.
+    - Break down alerts, observables, and custom fields.
+    - Build a chart from the result.
+    - Arrange several charts on a dashboard, using the [`dashboards`](#agent-builder-dashboards-skill) skill (named `dashboard-management` in 9.5).
+
+    To create, read, or update a single case, use [`cases-management`](#agent-builder-cases-management-skill) instead.
+
+    :::{dropdown} Assigned tools
+    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.get_index_mapping`, `platform.core.create_visualization`, `platform.core.cases`
+
+    :::
+
+    {applies_to}`stack: preview 9.6+` The skill is hidden in spaces that use the {{es}} solution view.
+
+    {applies_to}`serverless: preview` The skill is available only in {{observability}} and {{elastic-sec}} projects, not in {{es-serverless}} projects.
+
+    **Prerequisites:**
+
+    - The `xpack.cases.analyticsV2.enabled` setting must be `true`. It defaults to `true`. To turn off the skill in {{stack}}, set it to `false` in [`kibana.yml`](/deploy-manage/stack-settings.md). This also turns off the case analytics indices (`.cases`, `.cases-activity`, and `.cases-attachments`) and the **Case Analytics** data view.
+    - Queries run as the current user. Users with **Cases** privilege **Read** or higher can query only the cases they can access. To report across all spaces and solutions, [grant direct access to the case analytics indices](/explore-analyze/cases/control-case-access.md#give-analytics-access).
+
 ### {{alerting-v2-system}}
 
 $$$agent-builder-rule-management-skill$$$ $$$agent-builder-rule-authoring-skill$$$ `rule-authoring` {applies_to}`stack: ga 9.6+` {applies_to}`observability: ga`
@@ -311,20 +336,22 @@ serverless:
 ```
 
 $$$agent-builder-observability-investigation-skill$$$ `observability.investigation` {applies_to}`stack: ga 9.4+`
-:   Answers observability questions, lists and diagnoses observability alerts, and investigates service or infrastructure issues. Covers APM, logs, metrics, threshold, SLO burn rate, uptime and synthetics, and infrastructure alerts. Use when a user asks about alerts, service health, error rates, latency, failed transactions, topology, traces, log patterns, SLO breaches, or infrastructure issues.
+:   Answers observability questions, lists and diagnoses observability alerts, and investigates service or infrastructure issues. Covers APM, logs, metrics, threshold, SLO burn rate, uptime and synthetics, and infrastructure alerts. Use when a user asks about alerts, service health, error rates, latency, failed transactions, topology, traces, log patterns, SLO breaches, or infrastructure issues. Also use when a user wants to know why a service is broken, slow, or failing.
 
     :::{dropdown} Assigned tools
     All [Observability tools](tools/builtin-tools-reference.md#observability-tools).
 
     :::
 
-$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: preview 9.4+` {applies_to}`serverless: preview`
-:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, failing, or slow, when an alert fires or an SLA is breached, when they need to understand what happened during an outage or performance regression, or when they need to trace a cascading failure across services.
+$$$agent-builder-observability-rca-skill$$$ `observability.rca` {applies_to}`stack: removed 9.6+, preview 9.4-9.5` {applies_to}`serverless: removed`
+:   Performs structured root cause analysis for incidents, outages, errors, and service degradations. Use when a user asks why something is broken, failing, or slow, when an alert fires or an SLA is breached, when they need to understand what happened during an outage or performance regression, or when they need to trace a cascading failure across services. After this skill's removal, the [`observability.investigation`](#agent-builder-observability-investigation-skill) skill handles these questions.
 
     :::{dropdown} Assigned tools
     Observability log analysis tools, `platform.core.generate_esql`, `platform.core.execute_esql`, and significant events knowledge indicator search.
 
     :::
+
+    **Prerequisites:** The `agentBuilder:experimentalFeatures` [advanced setting](get-started.md#enable-experimental-features-optional) must be turned on for the skill to appear.
 
 $$$agent-builder-observability-service-map-skill$$$ `observability.service-map` {applies_to}`stack: preview 9.5` {applies_to}`serverless: preview`
 :   Shows a service map when a user asks to see or visualize a service map, service topology, or service dependencies in an APM or observability context. Use for questions about how services connect or their upstream and downstream dependencies.
@@ -492,6 +519,28 @@ $$$agent-builder-elastic-defend-policy-management-skill$$$ `elastic-defend-polic
 
     - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) installed, with at least one integration policy in the current space.
     - The **{{elastic-defend}} Policy Management** [sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) with **Read** access to list, read, and compare policies, and **All** access to apply a change. Reporting which policies endpoints use, reporting how many endpoints haven't applied the latest policy revision, assessing a change, and applying a change also require the **Security** privilege.
+
+$$$agent-builder-endpoint-response-actions-skill$$$ `endpoint-response-actions` {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga`
+:   Looks up and runs [response actions](/solutions/security/endpoint-response-actions.md) on hosts enrolled in [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md). Hosts enrolled in third-party endpoint protection systems aren't included. The skill can:
+
+    - List enrolled endpoints, check a host's status and whether it's isolated, and look up the status and output of a response action that was already sent.
+    - After you confirm in the chat, isolate or release a host, request the list of processes running on a host, or scan a file or folder path for malware.
+
+    Other response actions aren't available from the chat. If you ask for one, the agent tells you to use the response console instead.
+
+    For questions about why a host is unhealthy, offline, or missing, or why a response action failed, use the [`automatic_troubleshooting`](#agent-builder-automatic-troubleshooting-skill) skill.
+
+    :::{dropdown} Assigned tools
+    Internal tools to list endpoints, check host and response action status, isolate or release a host, list running processes, and scan a path.
+    :::
+
+    **Prerequisites:**
+
+    - [{{elastic-defend}}](/solutions/security/configure-elastic-defend.md) deployed on the hosts you want to look up or act on.
+    - **Read** access to the **Security** privilege.
+    - The matching [{{elastic-defend}} sub-feature privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) for each action, and **Read** access to **Response Actions History** to check an action's status and output.
+    - In {{serverless-short}}, a [project feature tier](/solutions/security/security-serverless-feature-tiers.md) that includes endpoint response actions.
+    - Hosts that run an {{elastic-defend}} version that supports the action. The skill doesn't check the version before it sends an action, so an action sent to an unsupported version can fail or expire.
 
 ### Automatic Migration skills [agent-builder-automatic-migration-skills]
 ```{applies_to}

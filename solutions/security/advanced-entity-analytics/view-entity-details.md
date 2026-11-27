@@ -33,9 +33,9 @@ The entity details flyout includes the following sections:
 * {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` Flyout header, which displays key entity information and allows you to assign asset criticality.
 * [Entity summary](#entity-summary), which allows you to generate an AI summary of the entity.
 * [Risk score](#risk-score), which displays entity risk data and inputs.
+* [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Behavioral anomalies](#behavioral-anomalies), which shows {{ml}} anomalies detected for the entity, mapped to the MITRE ATT&CK framework.
 * [Visualizations](#visualizations), which shows a graph preview of the entity's connections and relationships.
-* [Resolution](#resolution), which allows you to view and manage the entity's resolution group.
 * [Insights](#insights), which displays vulnerabilities or misconfiguration findings for the entity.
 * [Observed attributes](#observed-attributes), which displays entity details.
 * [Asset Criticality](#asset-criticality), which allows you to view and assign asset criticality.
@@ -87,7 +87,8 @@ The risk score visualization shows the entity risk score and risk level. Hover o
 
 The risk score table shows the category, score, and number of risk inputs that determine the entity risk score. Hover over the table to display the **Inspect** button, which allows you to inspect the table's queries.
 
-{applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` For entities that belong to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), the section shows both the individual **Entity risk score** and the **Resolution group risk score** — the aggregated score across all linked entities in the group — each with their own score and inputs breakdown.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` For a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md), this section shows the group's risk score, which aggregates the risk inputs of all linked entities. For an entity that belongs to a resolution group, it shows only that entity's own risk score.
+* {applies_to}`stack: ga 9.4-9.5` For entities that belong to a resolution group, this section shows both the entity's own risk score and the group's risk score.
 
 Open the section's child flyout to access additional details about the entity's risk inputs.
 
@@ -116,6 +117,24 @@ The **Contexts** table shows non-alert risk inputs and their contribution scores
 #### Alerts [risk-alerts]
 
 The **Alerts** table shows the top 10 alerts that contributed to the risk scoring calculation, and each alert's contribution score. If more than 10 alerts contributed to the calculation, the remaining alerts' aggregate contribution score is displayed below the table.
+
+### Resolution [resolution]
+```yaml {applies_to}
+stack: ga 9.4+
+serverless: ga
+```
+
+The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open a child flyout that displays all entity records linked to this entity — including the primary entity and any aliases — with their entity name, ID, source, and risk score.
+
+To add an entity to the group, search by entity name or ID in the **Add entities to resolution group** table and click the add icon {icon}`plus_in_circle` next to the entity you want to link. To remove an entity from the group, click **X** {icon}`cross` in the **Actions** column of the **Resolution group** table. Entities must be removed individually.
+
+When you add an entity and neither the entity you're viewing, nor the one you're adding is in a resolution group yet, you need to select which one becomes the primary entity. The primary entity can't be removed from its group.
+
+::::{note}
+You can't add an entity that already belongs to another resolution group. Unlink it from that group first.
+::::
+
+After you link or unlink an entity, the group's risk score is recalculated at the next hourly run.
 
 ### Behavioral anomalies [behavioral-anomalies]
 ```yaml {applies_to}
@@ -162,24 +181,6 @@ The **Visualizations** section shows a collapsible graph preview centered on the
 * Filter the graph using KQL syntax in the search bar. Supported fields include EUID values (for example, `entity.id : "user:alice@example.com"`) and raw ECS identity fields such as `user.id`, `user.email`, or `user.name`.
 
 * Select **Investigate in Timeline** ({icon}`timeline`) to open the current graph view in Timeline.
-
-### Resolution [resolution]
-```yaml {applies_to}
-stack: ga 9.4+
-serverless: ga
-```
-
-The **Resolution** section shows whether the entity belongs to a [resolution group](/solutions/security/advanced-entity-analytics/entity-resolution.md). Click **Resolution group** to open a child flyout that displays all entity records linked to this entity — including the primary entity and any aliases — with their entity name, ID, source, and risk score.
-
-To add an entity to the group, search by entity name or ID in the **Add entities to resolution group** table and click the add icon {icon}`plus_in_circle` next to the entity you want to link. To remove an entity from the group, click **X** {icon}`cross` in the **Actions** column of the **Resolution group** table. Entities must be removed individually.
-
-When you add an entity and neither the entity you're viewing, nor the one you're adding is in a resolution group yet, you need to select which one becomes the primary entity. The primary entity can't be removed from its group.
-
-::::{note}
-You can't add an entity that already belongs to another resolution group. Unlink it from that group first.
-::::
-
-After you link or unlink an entity, the group's risk score is recalculated at the next hourly run.
 
 ### Insights
 

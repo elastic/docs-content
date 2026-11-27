@@ -18,11 +18,6 @@ products:
 
 You can drill down into the status of your {{es}} cluster in {{kib}} by clicking the [Overview](#cluster-overview-page), [Nodes](#nodes-page), [Indices](#indices-overview-page) and [Logs](#logs-monitor-page) links on the **Stack Monitoring** page.
 
-:::{image} /deploy-manage/images/kibana-monitoring-elasticsearch.png
-:alt: Monitoring clusters
-:screenshot:
-:::
-
 For more information, refer to [Monitor a cluster](../../monitor.md).
 
 
