@@ -16,7 +16,7 @@ type: how-to
 :alt: Assess, create project, prepare and test, and switch to production. The preparation cycle runs from Prepare to Transfer data to Test and validate and back to Prepare. Test and validate is the current procedure.
 :::
 
-Previous: [Prepare the destination](migrate-to-serverless-prepare.md) · [Transfer data](migrate-to-serverless-transfer-data.md) · Next: [Production](migrate-to-serverless-production.md)
+Previous: [Prepare destination](migrate-to-serverless-prepare.md) · Next: [Switch to production](migrate-to-serverless-production.md)
 
 Verify the complete solution before changing production connections, then use the results to decide whether to refine, recreate, or keep the destination project.
 

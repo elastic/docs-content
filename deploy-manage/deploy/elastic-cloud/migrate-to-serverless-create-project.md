@@ -16,7 +16,7 @@ type: how-to
 :alt: Assess, create project, prepare and test, and switch to production. The preparation cycle runs from Prepare to Transfer data to Test and validate and back to Prepare. Create project is the current phase.
 :::
 
-Previous: [Assess](migrate-to-serverless-assess.md) · Next: [Prepare and test](migrate-to-serverless-prepare.md)
+Previous: [Assess](migrate-to-serverless-assess.md) · Next: [Prepare destination](migrate-to-serverless-prepare.md)
 
 Confirm the project type selected during assessment. For {{observability}} and {{elastic-sec}} projects, confirm that the selected [{{observability}} feature tier](/solutions/observability/observability-serverless-feature-tiers.md) or [Security feature tier](/solutions/security/security-serverless-feature-tiers.md) supports all capabilities identified during assessment.
 

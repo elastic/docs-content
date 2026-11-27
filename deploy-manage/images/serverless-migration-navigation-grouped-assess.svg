@@ -20,7 +20,7 @@
   </style>
 
   <rect x="284" y="12" width="580" height="150" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-  <text class="group-title" x="574" y="38">3. Prepare and test</text>
+  <text class="group-title" x="574" y="38">3. Prepare and test destination</text>
 
   <path class="arrow" d="M120 95 H136"/>
   <path class="arrow" d="M264 95 H280"/>

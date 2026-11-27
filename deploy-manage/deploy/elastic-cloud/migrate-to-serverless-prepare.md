@@ -16,7 +16,7 @@ type: how-to
 :alt: Assess, create project, prepare and test, and switch to production. The preparation cycle runs from Prepare to Transfer data to Test and validate and back to Prepare. Prepare is highlighted for the destination preparation page.
 :::
 
-Previous: [Create project](migrate-to-serverless-create-project.md) · [Transfer data](migrate-to-serverless-transfer-data.md) · Next: [Test and validate](migrate-to-serverless-test-and-validate.md)
+Previous: [Create project](migrate-to-serverless-create-project.md) · Next: [Transfer data](migrate-to-serverless-transfer-data.md) | [Test and validate](migrate-to-serverless-test-and-validate.md)
 
 Use your inventory to migrate or recreate the assets your solution needs in the destination project. The following sections describe the methods, APIs, and tools for each resource type, including compatibility considerations and changes needed to adapt your configuration or data to {{serverless-short}}.
 
@@ -31,14 +31,15 @@ The suggested sequence helps you avoid resource creation errors caused by missin
 
 [Test the migrated configuration and data](migrate-to-serverless-test-and-validate.md) with representative read and indexing workflows to confirm that the solution works before changing production connections.
 
-:::::{stepper}
+::::::{stepper}
 
-::::{step} Configure {{fleet}} and integrations
+:::::{step} Configure {{fleet}} and integrations
 :anchor: migrate-to-serverless-configure-fleet
 
 Install the integration packages and recreate the {{fleet}} configuration your solution uses. If you organize integration assets or policies by [{{kib}} space](/deploy-manage/manage-spaces-fleet.md), create the required spaces in the destination before proceeding.
 
-### Install integration packages [migrate-to-serverless-integrations]
+::::{dropdown} Install integration packages
+:name: migrate-to-serverless-integrations
 
 [Integration packages](/reference/fleet/install-uninstall-integration-assets.md) supply {{es}} and {{kib}} assets, such as templates, ingest pipelines, and dashboards. Install the required packages in the destination instead of copying their managed assets from the source.
 
@@ -53,7 +54,10 @@ The Fleet Server integration package (`fleet_server`) is preinstalled in {{es}},
 Install only the integrations you still need. For example, omit the {{es}} or {{kib}} monitoring integrations if their only purpose was to monitor the source deployment and you plan to retire it.
 :::
 
-### Migrate {{fleet}} outputs and policies [migrate-to-serverless-fleet]
+::::
+
+::::{dropdown} Migrate {{fleet}} outputs and policies
+:name: migrate-to-serverless-fleet
 
 [Agent policies](/reference/fleet/agent-policy.md) configure groups of {{agent}}s. Their [integration policies](/reference/fleet/add-integration-to-policy.md) define what each integration collects, and [outputs](/reference/fleet/fleet-settings.md#output-settings) determine where agents send data. Recreate the user-managed configuration for the [packages installed earlier](#migrate-to-serverless-integrations).
 
@@ -71,7 +75,9 @@ Outputs, proxies, and Fleet Server hosts are shared across the deployment or pro
 
 ::::
 
-::::{step} Prepare data structures and processing
+:::::
+
+:::::{step} Prepare data structures and processing
 :anchor: migrate-to-serverless-set-up
 
 Recreate the {{es}} configuration your solution uses to structure, process, and search data, including index templates, ingest pipelines, stored scripts, synonym sets, and enrich policies.
@@ -79,7 +85,8 @@ Recreate the {{es}} configuration your solution uses to structure, process, and 
 % TODO: Develop the procedures for transforms and other data structures and processing resources as their procedures are verified.
 % Editorial grouping informed by Elevate Knowledge; retain only verified creation prerequisites, not the executor's entire ordering.
 
-### Stored scripts [migrate-to-serverless-scripts]
+::::{dropdown} Stored scripts
+:name: migrate-to-serverless-scripts
 
 [Stored scripts](/explore-analyze/scripting/modules-scripting-store-and-retrieve.md) let applications and other resources reference reusable scripts by ID. Stored search templates also use the script APIs.
 
@@ -87,7 +94,10 @@ Recreate the {{es}} configuration your solution uses to structure, process, and 
 - **Migrate:** Recreate each definition with [the create or update script API]({{es-serverless-apis}}operation/operation-put-script), `PUT /_scripts/{id}`, using the same script ID to preserve existing references. Use the returned `script` object as the request's `script` value, excluding response fields such as `_id` and `found`.
 - **Verify:** Retrieve the destination script and compare its definition with the source. Test its use in queries, search templates, or pipelines when you [verify the solution](migrate-to-serverless-test-and-validate.md#migrate-to-serverless-test).
 
-### Synonym sets [migrate-to-serverless-synonyms]
+::::
+
+::::{dropdown} Synonym sets
+:name: migrate-to-serverless-synonyms
 
 [Synonym sets](/solutions/search/full-text/search-with-synonyms.md) group rules that search analyzers use to match equivalent terms.
 
@@ -96,7 +106,10 @@ Recreate the {{es}} configuration your solution uses to structure, process, and 
 - **Migrate:** Recreate each set with [the create or update synonym set API]({{es-serverless-apis}}operation/operation-synonyms-put-synonym), `PUT /_synonyms/{id}`, sending all its rules in `synonyms_set`. Preserve the set ID or update analyzer references. You can also recreate sets through the [Synonyms UI](/solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-kibana) where available.
 - **Verify:** Retrieve the destination rules and compare them with the source. After preparing the dependent index, [test its analyzer](/solutions/search/full-text/search-with-synonyms.md#synonyms-test-analyzer) and run representative synonym queries.
 
-### Enrich policies and reference data [migrate-to-serverless-enrich]
+::::
+
+::::{dropdown} Enrich policies and reference data
+:name: migrate-to-serverless-enrich
 
 The [enrich processor](/manage-data/ingest/transform-enrich/data-enrichment.md) adds information from reference indices to incoming documents, such as product details matched by product ID. An enrich policy specifies which indices to use, how to match documents, and which fields to add. If any of your pipelines use this processor, transfer their reference data and recreate and run the policies in the destination before migrating those pipelines.
 
@@ -113,7 +126,10 @@ The following steps use the {{es}} APIs. You can also view, create, and run enri
 
 % TODO: Add an example using the user's tested LDAP reference data and user UUID enrichment once the exact lab definitions and sample documents are available.
 
-### Ingest pipelines [migrate-to-serverless-pipelines]
+::::
+
+::::{dropdown} Ingest pipelines
+:name: migrate-to-serverless-pipelines
 
 [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) transform incoming documents before indexing by running a sequence of processors. The following guidance uses the {{es}} APIs. You can also create, manage, and test pipelines on {{kib}}'s **Ingest pipelines** management page.
 
@@ -126,7 +142,10 @@ The following steps use the {{es}} APIs. You can also view, create, and run enri
 - **Migrate:** Recreate each pipeline with the same ID and configuration using [the create or update pipeline API]({{es-serverless-apis}}operation/operation-ingest-put-pipeline), `PUT /_ingest/pipeline/{id}`. Use the definition under that ID in the GET response as the request body. Omit the system-generated root fields `created_date`, `created_date_millis`, `modified_date`, and `modified_date_millis` if present. Update resource references if their IDs changed in the destination.
 - **Verify:** Retrieve the destination pipeline definitions and compare them with the source, accounting for any updated resource references. Test their processing when you [verify the solution](migrate-to-serverless-test-and-validate.md#migrate-to-serverless-test).
 
-### Component templates [migrate-to-serverless-component-templates]
+::::
+
+::::{dropdown} Component templates
+:name: migrate-to-serverless-component-templates
 
 [Component templates](/manage-data/data-store/templates.md#component-templates) define reusable mappings, settings, and aliases that index templates apply to new indices and data streams. Many integration package index templates reference `@custom` component templates as supported extension points for mapping and setting customizations. Account for these customizations and any other component templates your solution relies on when preparing the destination.
 
@@ -141,22 +160,7 @@ The following guidance uses the {{es}} APIs. You can also view, create, and mana
 Use `_meta.managed` to identify templates explicitly marked as managed. The `@custom` suffix identifies customization candidates and does not determine their managed status. A missing flag means the resource is unmarked, not necessarily user-created. Review your customizations, including any direct modifications to managed assets.
 :::
 
-:::{dropdown} Example: Filter out managed templates from API responses
-Save the responses from `GET /_component_template` and `GET /_index_template` as `component-templates.json` and `index-templates.json`. Use `jq` to list names for review, retaining unmarked resources and `@custom` extensions:
-
-```bash
-jq -r '.component_templates[] | select(.component_template._meta.managed != true or (.name | endswith("@custom"))) | .name' component-templates.json
-
-jq -r '.index_templates[] | select(.index_template._meta.managed != true or (.name | endswith("@custom"))) | .name' index-templates.json
-```
-
-These commands filter the saved responses locally. Review the resulting list before selecting resources to migrate.
-:::
-
-:::{dropdown} Example: Adapt a custom component template
-Suppose a custom component template sets the replica count and references an {{ilm-init}} policy in the source. After reviewing that policy and your destination requirements, you select a retention period of `730d` for new data streams in {{serverless-short}}.
-
-The source definition contains:
+For example, if a source component template contains the following definition:
 
 ```json
 {
@@ -169,28 +173,25 @@ The source definition contains:
 }
 ```
 
-Adapt the definition for the destination:
+Remove the replica setting managed by {{serverless-short}}. If, for example, the original {{ilm-init}} policy retains data for 60 days, you could replace its reference with the following data stream lifecycle configuration:
 
 ```json
 {
   "template": {
     "lifecycle": {
-      "data_retention": "730d",
+      "data_retention": "60d",
       "enabled": true
     }
   }
 }
 ```
 
-This adaptation makes two separate changes:
+This configures retention for new data streams without reproducing other {{ilm-init}} actions. For data streams that already exist in the destination, [update their lifecycle separately](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle).
 
-- Removes `index.number_of_replicas`, because Elastic manages replication in {{serverless-short}}.
-- Replaces the {{ilm-init}} policy reference with the selected data stream retention. Other {{ilm-init}} actions are not transferred by this change. Data stream retention specifies a minimum storage period, rather than an exact deletion time. Refer to [How data stream lifecycle works](/manage-data/lifecycle/data-stream.md#data-streams-lifecycle-how-it-works).
+::::
 
-The template configures the lifecycle of new data streams. For a data stream that already exists in the destination, [update its lifecycle separately](/manage-data/lifecycle/data-stream/tutorial-update-existing-data-stream.md#set-lifecycle).
-:::
-
-### Index templates [migrate-to-serverless-templates]
+::::{dropdown} Index templates
+:name: migrate-to-serverless-templates
 
 [Composable index templates](/manage-data/data-store/templates.md#index-templates) determine the configuration applied when a matching index or data stream is created. They can contain configuration directly and optionally reference component templates.
 
@@ -201,25 +202,19 @@ The following guidance uses the {{es}} APIs. You can also view, create, and mana
 - **Identify:** List source templates with [the get index templates API]({{es-apis}}operation/operation-indices-get-index-template). Select your custom templates and record their `index_patterns`, `priority`, `composed_of`, and any `data_stream` configuration. Leave integration-managed templates to the [installed packages](#migrate-to-serverless-integrations).
 - **Prepare:** Adapt settings and lifecycle configuration defined directly in the index template. Remove [settings unavailable in {{serverless-short}}](elasticsearch://reference/elasticsearch/index-settings/serverless.md), such as shard and replica counts. If configured, `index.refresh_interval` must be `5s` or higher, or `-1` to disable automatic refreshes. [Adapt {{ilm}} configuration](#migrate-to-serverless-lifecycle) where present. Preserve the order of entries in `composed_of`, because later components override earlier ones. Use `GET /_index_template` in the destination to compare existing patterns and priorities with your template, then [resolve any overlaps](/manage-data/data-store/templates.md#avoid-index-pattern-collisions).
 - **Migrate:** Create each template with [the create or update index template API]({{es-serverless-apis}}operation/operation-indices-put-index-template), or recreate it in {{kib}}. For the API, use the selected entry's `index_template` object from the GET response as a starting point, retaining only fields accepted by the destination API. Review any existing destination definition before replacing it.
-- **Verify:** Retrieve the destination definition, then [simulate the resolved configuration](/manage-data/data-store/templates/simulate-multi-component-templates.md) for a representative destination name. Check mappings, settings, aliases, and lifecycle configuration, including which template takes precedence. Template changes do not update existing indices or backing indices.
+- **Verify:** Retrieve the destination definition, then [simulate the configuration for an index]({{es-serverless-apis}}operation/operation-indices-simulate-index-template) for a representative destination name. Check mappings, settings, aliases, and lifecycle configuration, including which template takes precedence. Template changes do not update existing indices or backing indices.
 
-:::{dropdown} Example: Check the configuration for a destination name
-After recreating an index template named `application-logs` with the pattern `application-logs-*`, resolve its configuration:
+    For example, after migrating an index template and its component templates for the pattern `application-logs-*`, check the configuration for a matching destination name:
 
-```console
-POST /_index_template/_simulate/application-logs
-```
+    ```console
+    POST /_index_template/_simulate_index/application-logs-default
+    ```
 
-Then check the configuration selected for a representative destination name:
+::::
 
-```console
-POST /_index_template/_simulate_index/application-logs-default
-```
+::::{dropdown} Legacy index templates
+:name: migrate-to-serverless-legacy-templates
 
-Review the resolved configuration and reported overlaps. A template can exist in the destination while a higher-priority template takes precedence for the names you intend to use.
-:::
-
-### Legacy index templates [migrate-to-serverless-legacy-templates]
 ```{applies_to}
 serverless: unavailable
 ```
@@ -234,7 +229,11 @@ Legacy index templates are not supported in {{serverless-short}}. Convert those 
 Templates apply when indices are created. Copying documents from an existing index does not by itself require recreating the legacy template that originally configured it.
 :::
 
-### Lifecycle policies [migrate-to-serverless-lifecycle]
+::::
+
+::::{dropdown} Lifecycle policies
+:name: migrate-to-serverless-lifecycle
+
 ```{applies_to}
 serverless: unavailable
 ```
@@ -245,6 +244,8 @@ serverless: unavailable
 
 ::::
 
+:::::
+
 ::::{step} Transfer data for testing
 :anchor: migrate-to-serverless-data
 
@@ -254,7 +255,7 @@ If you plan to keep this project for production, you can also transfer all the h
 
 ::::
 
-::::{step} Migrate content and configuration in {{kib}}
+:::::{step} Migrate content and configuration in {{kib}}
 :anchor: migrate-to-serverless-kibana
 
 Use this section to migrate or recreate user-managed content and configuration in {{kib}}, including spaces, dashboards and visualizations, and resources specific to {{observability}} and {{elastic-sec}}. For each resource, use its supported mechanism: saved object export and import, a dedicated workflow or public API, or manual recreation.
@@ -263,7 +264,9 @@ The following procedures group related {{kib}} assets by functionality. Assets t
 
 Unless stated otherwise, API requests in this section use the {{kib}} endpoint. To make [API calls to a non-default space](/deploy-manage/manage-spaces.md#spaces-api-requests), include `/s/{space_id}` in the request path and repeat the procedure for each required space.
 
-### Spaces [migrate-to-serverless-spaces]
+::::{dropdown} Spaces
+:name: migrate-to-serverless-spaces
+
 
 [{{kib}} spaces](/deploy-manage/manage-spaces.md) organize saved objects and access into separate environments. Saved object export and import operates within a space and does not create the destination space. Prepare the required destination spaces before migrating their content.
 
@@ -271,7 +274,11 @@ Unless stated otherwise, API requests in this section use the {{kib}} endpoint. 
 - **Migrate:** Recreate each required space in the destination from the **Spaces** management page or with [the create space API]({{kib-serverless-apis}}operation/operation-post-spaces-space). The default destination space already exists. Preserve each source space ID when practical because you cannot change it after creating the space.
 - **Verify:** Confirm that each destination space has the intended ID and settings. Use that ID in the space-specific requests in the following procedures, and recreate its access when you [prepare project access](#migrate-to-serverless-access).
 
-### Dashboards, visualizations, and {{data-sources}} [migrate-to-serverless-saved-objects]
+::::
+
+::::{dropdown} Dashboards, visualizations, and {{data-sources}}
+:name: migrate-to-serverless-saved-objects
+
 
 Use [{{kib}} saved object export and import](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-import-and-export) to migrate compatible dashboards, Lens and other saved visualizations, maps, Discover sessions, {{data-sources}}, saved queries, tags, and annotation groups.
 
@@ -289,7 +296,11 @@ Use [{{kib}} saved object export and import](/explore-analyze/find-and-organize/
 
 - **Verify:** Review the import response's `successResults` and `errors`, including any generated destination IDs and unresolved references. Confirm that the imported resources are present and can be opened without errors. If you have already transferred data to the destination, verify that visualizations, filters, links, and queries load the expected content. Otherwise, defer this check until after the data migration.
 
-### {{connectors-ui}} [migrate-to-serverless-connectors]
+::::
+
+::::{dropdown} {{connectors-ui}}
+:name: migrate-to-serverless-connectors
+
 
 [{{kib}} connectors](/deploy-manage/manage-connectors.md) are available across {{serverless-short}} project types, but the available connector types depend on the destination project type and feature tier. Connectors are isolated to the space in which they are created, so migrate each connector to every destination space that requires it.
 
@@ -299,7 +310,11 @@ Use [{{kib}} saved object export and import](/explore-analyze/find-and-organize/
 - **Migrate:** Use saved object export and import in {{kib}} or the {{saved-objects-app}} [export]({{kib-apis}}operation/operation-post-saved-objects-export) and [import]({{kib-serverless-apis}}operation/operation-post-saved-objects-import) APIs to migrate the selected connectors. Connector IDs are immutable and identify the connectors referenced by dependent resources. Avoid `createNewCopies`, which generates new IDs. If you recreate a connector manually, assign its source ID when you create it or update every resource that references it.
 - **Verify:** Re-enter any secrets or complete any authorization required after import. [Test each connector](/explore-analyze/alerting/alerts/testing-connectors.md) from the **{{connectors-ui}}** page or with the [run connector API]({{kib-serverless-apis}}operation/operation-post-actions-connector-id-execute) before enabling resources that use it.
 
-### {{observability}} rules [migrate-to-serverless-observability-rules]
+::::
+
+::::{dropdown} {{observability}} rules
+:name: migrate-to-serverless-observability-rules
+
 ```{applies_to}
 serverless:
   observability: ga
@@ -311,7 +326,11 @@ serverless:
 - **Migrate:** Follow [rule export and import](/solutions/observability/incident-management/create-manage-rules.md#observability-create-manage-rules-import-and-export-rules), using `POST /api/saved_objects/_export` and `POST /api/saved_objects/_import`. Include related objects (`includeReferencesDeep: true` with the API) so that the export contains referenced connectors and other dependencies. Connector secrets are not included. If you migrated a connector earlier, retain the existing destination connector when resolving the import conflict instead of overwriting it.
 - **Verify:** Check the imported rules' data sources, queries, connectors, permissions, and feature dependencies. For rules that use {{ml}}, prepare the referenced [anomaly detection jobs](#migrate-to-serverless-anomaly-jobs). Test their actions, then enable the rules when the destination is ready to run them.
 
-### Security detection rules [migrate-to-serverless-security-rules]
+::::
+
+::::{dropdown} Security detection rules
+:name: migrate-to-serverless-security-rules
+
 ```{applies_to}
 serverless:
   security: ga
@@ -330,7 +349,11 @@ serverless:
 
 - **Verify:** Review the import summary and conflicts for rules, exception lists, and connectors. An existing connector can produce a connector conflict even when the rule imports successfully. Confirm that the required value lists, Endpoint exceptions, and {{data-sources}} are available in the correct space. Confirm each rule's enabled state, dependencies, permissions, actions, and prebuilt rule update status before allowing it to run.
 
-### Cases [migrate-to-serverless-cases]
+::::
+
+::::{dropdown} Cases
+:name: migrate-to-serverless-cases
+
 ```{applies_to}
 serverless:
   observability: ga
@@ -343,7 +366,11 @@ Cases are available in {{observability}} and {{elastic-sec}} projects. Migrate t
 - **Migrate:** [Export and import cases](/explore-analyze/cases/manage-cases.md#export-import-cases) with saved objects, including related objects. The export includes connectors, user actions, text comments, and supported saved object attachments. It does not include connector secrets, attached files, alerts, or Timelines. If you migrated a connector earlier, retain the existing destination connector when resolving the import conflict instead of overwriting it. Recreate Cases configuration, such as the default connector, custom fields, and templates, separately in the destination.
 - **Verify:** Open the imported cases and check their comments, attachments, saved object references, and connectors. Re-authenticate imported connectors when prompted.
 
-### Maintenance windows [migrate-to-serverless-maintenance-windows]
+::::
+
+::::{dropdown} Maintenance windows
+:name: migrate-to-serverless-maintenance-windows
+
 ```{applies_to}
 serverless:
   observability: ga
@@ -356,7 +383,11 @@ Maintenance windows are available in {{observability}} and {{elastic-sec}} proje
 - **Migrate:** Recreate each required window from the **Maintenance Windows** page or with the [create maintenance window API]({{kib-serverless-apis}}operation/operation-post-maintenance-window), `POST /api/maintenance_window`.
 - **Verify:** Confirm that each window has the intended status, schedule, recurrence, filters, and effect on rules in the destination.
 
-### Workflows [migrate-to-serverless-workflows]
+::::
+
+::::{dropdown} Workflows
+:name: migrate-to-serverless-workflows
+
 
 Workflows are available across {{serverless-short}} project types with the appropriate feature tier. Migrate user-managed workflows, not managed workflows supplied by Elastic features.
 
@@ -365,11 +396,12 @@ Workflows are available across {{serverless-short}} project types with the appro
 - **Verify:** Before enabling the migrated workflows, verify their dependencies, permissions, credentials, triggers, schedules, and external effects. Run controlled tests in the destination. Execution history is not migrated.
 
 % TODO: Develop SLOs, Timelines, Synthetics, Reporting schedules, Streams, Endpoint artifacts, Attack Discovery, and other feature-specific configuration from the research notes without implying saved object coverage.
-
 ::::
 
+:::::
 
-::::{step} Prepare AI and {{ml}} resources
+
+:::::{step} Prepare AI and {{ml}} resources
 :anchor: migrate-to-serverless-inference
 
 Prepare the {{ml}} jobs and datafeeds, trained models, and {{infer}} endpoints your solution uses. Include resources configured directly in **Machine Learning** and those created from {{observability}} or {{elastic-sec}} features.
@@ -378,7 +410,9 @@ Of the resources covered here, {{es}} {{vectordb}} projects support only [{{infe
 
 In {{observability}} projects, {{ml}} jobs require [Observability Complete](/solutions/observability/observability-serverless-feature-tiers.md). In {{elastic-sec}} projects, they require [Security Analytics Essentials or Complete](/solutions/security/security-serverless-feature-tiers.md). The {{infer}} management UI is unavailable in Observability Logs Essentials.
 
-### Anomaly detection jobs and datafeeds [migrate-to-serverless-anomaly-jobs]
+::::{dropdown} Anomaly detection jobs and datafeeds
+:name: migrate-to-serverless-anomaly-jobs
+
 ```{applies_to}
 serverless:
   vectordb: unavailable
@@ -391,7 +425,11 @@ serverless:
 - **Migrate:** Recreate unchanged prebuilt jobs from the corresponding [Security](/solutions/security/detect-and-alert/machine-learning.md#ml-job-settings-interface) or [Observability](/solutions/observability/logs/inspect-log-anomalies.md) feature. For custom or modified jobs, follow [Export and import anomaly detection jobs](/explore-analyze/machine-learning/setting-up-machine-learning.md#move-anomaly-detection-jobs). Adapt {{dfeed}} indices and restore calendars and space assignments. Preserve job IDs referenced by rules, or update those references.
 - **Verify:** Run jobs and {{dfeeds}} over the intended historical interval and confirm that they process destination data and produce results. Job exports contain configuration only, so imported jobs must rebuild their learned models from that data.
 
-### Data frame analytics jobs [migrate-to-serverless-analytics-jobs]
+::::
+
+::::{dropdown} Data frame analytics jobs
+:name: migrate-to-serverless-analytics-jobs
+
 ```{applies_to}
 serverless:
   vectordb: unavailable
@@ -404,7 +442,11 @@ serverless:
 - **Migrate:** Follow [Export and import data frame analytics jobs](/explore-analyze/machine-learning/setting-up-machine-learning.md#move-dataframe-analytics-jobs), adapting source and destination index references. To retain an existing trained model, transfer it separately as described in [Trained models](#migrate-to-serverless-trained-models).
 - **Verify:** Run the required analyses against destination data and check the output indices and results.
 
-### Trained models hosted in the project [migrate-to-serverless-trained-models]
+::::
+
+::::{dropdown} Trained models hosted in the project
+:name: migrate-to-serverless-trained-models
+
 ```{applies_to}
 serverless:
   vectordb: unavailable
@@ -423,7 +465,11 @@ serverless:
 
 - **Verify:** [Test {{infer}}](/explore-analyze/machine-learning/nlp/ml-nlp-test-inference.md) with the same sample inputs in the source and destination and compare the results. Use the IDs or aliases your pipelines and applications reference.
 
-### {{infer-cap}} endpoints [migrate-to-serverless-inference-endpoints]
+::::
+
+::::{dropdown} {{infer-cap}} endpoints
+:name: migrate-to-serverless-inference-endpoints
+
 
 [{{infer-cap}} endpoints](/explore-analyze/elastic-inference.md) provide named access to models hosted in the project, EIS, or external providers.
 
@@ -433,8 +479,9 @@ For embedding generation during migration, review the [data transfer considerati
 - **Prepare:** Obtain provider credentials for external endpoints. The get endpoint API does not return stored secrets.
 - **Migrate:** Recreate custom endpoints with the [create {{infer}} endpoint API]({{es-serverless-apis}}operation/operation-inference-put), using the same service, model, and settings. Preserve `inference_id` or update its references. For default endpoints, use the destination's equivalent when its model and configuration meet your requirements.
 - **Verify:** Send representative inputs using the [{{infer}} API]({{es-serverless-apis}}group/endpoint-inference) and confirm that each endpoint produces the expected results.
-
 ::::
+
+:::::
 
 ::::{step} Recreate project access
 :anchor: migrate-to-serverless-access
@@ -460,7 +507,7 @@ Remote cluster connections for cross-cluster search (CCS) and cross-cluster repl
 
 ::::
 
-:::::
+::::::
 
 ## Next step
 

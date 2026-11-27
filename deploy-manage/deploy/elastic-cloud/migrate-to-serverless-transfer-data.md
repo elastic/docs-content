@@ -16,7 +16,7 @@ type: how-to
 :alt: Assess, create project, prepare and test, and switch to production. The preparation cycle runs from Prepare to Transfer data to Test and validate and back to Prepare. Transfer data is the current procedure, used during preparation and production.
 :::
 
-Related: [Prepare and test](migrate-to-serverless-prepare.md) · [Test and validate](migrate-to-serverless-test-and-validate.md) · [Production](migrate-to-serverless-production.md)
+Previous: [Prepare destination](migrate-to-serverless-prepare.md) · Next: [Test and validate](migrate-to-serverless-test-and-validate.md)
 
 This guide explains how to transfer data from your source deployment to the destination {{serverless-short}} project. It helps you decide which data to transfer at each stage of the migration and describes how to prepare the destination, transfer the selected data, and verify the results.
 
