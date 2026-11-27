@@ -235,14 +235,14 @@ Documents ingested using the bulk API (for example through the {{es}} exporter f
 
 ## Metric temporality
 ```{applies_to}
-stack: ga 9.5
+stack: ga 9.2+
 ```
 
-The OTLP endpoint preserves the [temporality](/manage-data/data-store/data-streams/metric-temporality.md) of ingested metrics and stores it in a `temporality` [dimension](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension). This allows {{es}} to correctly interpret counter and histogram values during [ES|QL time series queries](/manage-data/data-store/data-streams/metric-temporality.md#temporality-and-queries) and [downsampling](/manage-data/data-store/data-streams/metric-temporality.md#temporality-and-downsampling).
+{applies_to}`stack: ga 9.5+` The OTLP endpoint preserves the [temporality](/manage-data/data-store/data-streams/metric-temporality.md) of ingested metrics and stores it in a `temporality` [dimension](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md#time-series-dimension). This allows {{es}} to correctly interpret counter and histogram values during [{{esql}} time series queries](/manage-data/data-store/data-streams/metric-temporality.md#temporality-and-queries) and [downsampling](/manage-data/data-store/data-streams/metric-temporality.md#temporality-and-downsampling). The dimension is set automatically based on the OTLP [AggregationTemporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) of each metric data point, so no additional configuration is needed. Cumulative temporality for histograms is only supported if `xpack.otel_data.histogram_field_type` is set to `exponential_histogram` (which is the default).
 
-The `temporality` dimension is set automatically based on the OTLP [AggregationTemporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) of each metric data point. No additional configuration is needed.
+{applies_to}`stack: ga 9.2-9.4` The endpoint doesn't store a `temporality` dimension. Monotonic sums with cumulative temporality are stored as counters, and sums with delta temporality are stored as gauges. Histograms are supported only with delta temporality: the endpoint rejects histograms with cumulative temporality.
 
-Note that cumulative temporality for histograms is only supported if `xpack.otel_data.histogram_field_type` is set to `exponential_histogram` (which is the default).
+For temporality support across all OpenTelemetry ingestion paths and deployment types, including the {{motlp}} and the collector {{es}} exporter, refer to [Histogram and counter temporality](opentelemetry://reference/compatibility/limitations.md#histogram-and-counter-temporality).
 
 ## Metric exemplars [metric-exemplars]
 ```{applies_to}
