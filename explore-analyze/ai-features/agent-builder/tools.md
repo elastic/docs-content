@@ -79,7 +79,7 @@ The Tools page lists each tool by ID and description. Use the search bar or filt
 :width: 600px
 :::
 
-{applies_to}`stack: ga 9.4+` The Tools page also includes a **Manage MCP** dropdown (for MCP server configuration and bulk imports) and a **Manage agents** link for quick navigation to the global agents list.
+{applies_to}`stack: ga 9.3+` The Tools page also includes a **Manage MCP** dropdown for MCP server configuration and bulk imports. {applies_to}`stack: ga 9.4+` It also includes a **Manage agents** link for quick navigation to the global agents list.
 
 ### Update and delete tools
 
