@@ -16,7 +16,19 @@ Whether you're planning to use Elastic's pre-built solutions or Serverless proje
 
 This page will help you understand your deployment options and choose the approach that best fits your needs.
 
-## Core components
+::::{admonition} Looking for something else?
+This section describes the ways that you can run Elastic and {{es}}, such as on {{ecloud}} or on your own infrastructure.
+
+- For an overview of the Elastic platform, including the {{stack}} and solutions, go to [](/get-started/index.md).
+- To build search experiences with {{es}}, from basic queries to AI-powered search, go to [](/solutions/search.md).
+- To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
+- For the {{es}} solution and serverless project type, which add UI tools for building search applications, go to [](/solutions/elasticsearch-solution-project.md).
+- For details about {{es}} API endpoints, go to the [Elastic API documentation]({{apis}}).
+
+To browse all {{es}} documentation, go to the [{{es}} documentation hub](/products/elasticsearch.md).
+::::
+
+## What you'll deploy
 
 All deployments include **{{es}}**. {{es}} is the distributed search and analytics engine, scalable data store, and vector database at the heart of all Elastic solutions.
 
@@ -24,7 +36,8 @@ In most cases, you also need to deploy **{{kib}}**. {{kib}} provides the user in
 
 Your choice of deployment type determines how you'll set up and manage these core components, as well as any additional components you need.
 
-:::{admonition} Other {{stack}} components
+### Other {{stack}} components
+
 This section focuses on deploying and managing {{es}} and {{kib}}, as well as supporting orchestration technologies. However, depending on your use case, you might need to deploy [other {{stack}} components](/get-started/the-stack.md). For example, you might need to add components to ingest logs or metrics.
 
 To learn how to deploy optional {{stack}} components, refer to the following sections:
@@ -32,17 +45,6 @@ To learn how to deploy optional {{stack}} components, refer to the following sec
 * [APM](/solutions/observability/apm/index.md)
 * [Beats](beats://reference/index.md)
 * [Logstash](logstash://reference/index.md)
-:::
-
-::::{admonition} Looking for something else?
-This section describes how to deploy Elastic.
-
-- For an overview of the Elastic platform, including the {{stack}}, deployment options, and solutions, go to [](/get-started/index.md).
-- To search your data with {{es}} in any deployment type, go to [](/solutions/search.md).
-- To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
-- To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
-- To run a cluster that you install and manage yourself, go to [](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
-::::
 
 ## Choosing your deployment type
 

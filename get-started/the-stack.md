@@ -31,7 +31,7 @@ The {{stack}} includes products for [ingesting](#_ingest), [storing](#_store), a
 
 ![Components of the {{stack}}](/get-started/images/platform-components-diagram.svg)
 
-Continue reading to learn how these products work together.
+Continue reading to learn how these products work together. To browse all {{stack}} documentation, go to the [{{stack}} documentation hub](/products/elastic-stack.md).
 
 ## Store, search, and analyze [_store]
 
@@ -58,16 +58,7 @@ This allows you to automate repetitive tasks and integrate Elastic management in
 For example, you can use the APIs to manage indices, update cluster settings, run complex queries, and configure security.
 This API-first approach is fundamental to enabling infrastructure-as-code practices and managing deployments at scale.
 
-::::{admonition} Looking for something else?
-This page describes {{es}} as one component of the {{stack}}.
-
-- For an overview of the Elastic platform, including the {{stack}}, deployment options, and solutions, go to [](/get-started/index.md).
-- To search your data with {{es}} in any deployment type, go to [](/solutions/search.md).
-- To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
-- To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
-::::
-
-Learn more about [the {{es}} data store](/manage-data/data-store.md), its [distributed architecture](/deploy-manage/distributed-architecture.md), and [APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md).
+Learn more about [the {{es}} data store](/manage-data/data-store.md), its [distributed architecture](/deploy-manage/distributed-architecture.md), and [APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md). To browse all {{es}} documentation, go to the [{{es}} documentation hub](/products/elasticsearch.md).
 
 ### {{es}} clients [stack-components-elasticsearch-clients]
 
@@ -100,7 +91,7 @@ Each solution or project type provides access to customized features in {{kib}} 
 {{kib}} also has [query tools](/explore-analyze/query-filter/tools.md) such as **Console**, which provides an interactive way to send requests directly to the {{es}} API and view the responses.
 For secure, automated access, you can create and manage API keys to authenticate your scripts and applications.
 
-Learn more in [](/explore-analyze/index.md).
+Learn more in [](/explore-analyze/index.md), or browse all {{kib}} documentation in the [{{kib}} documentation hub](/products/kibana.md).
 
 ## Ingest [_ingest]
 

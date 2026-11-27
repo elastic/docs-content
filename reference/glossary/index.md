@@ -249,11 +249,20 @@ $$$glossary-edge$$$ edge
 $$$glossary-elastic-agent$$$ {{agent}}
 :   A single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. See [{{agent}} overview](/reference/fleet/index.md).
 
+$$$glossary-elastic-cloud$$$ {{ecloud}}
+:   The Elastic-managed platform layer that hosts and orchestrates your Elastic resources. {{ecloud}} includes the {{ecloud}} Console, your [organizations](/deploy-manage/cloud-organization.md), user management and authentication, and billing. From an {{ecloud}} organization, you can create and manage [{{ech}}](#glossary-ech) deployments and [{{serverless-full}}](#glossary-serverless) projects, and connect clusters that run on your own infrastructure to [Cloud Connect](/deploy-manage/cloud-connect.md) services, such as AutoOps and the Elastic {{infer-cap}} Service. To learn more, go to [](/deploy-manage/deploy/elastic-cloud.md).
+
 $$$glossary-ece$$$ {{ece}} (ECE)
 :   The official enterprise offering to host and manage the {{stack}} yourself at scale. Can be installed on a public cloud platform, such as AWS, GCP or Microsoft Azure, on your own private cloud, or on bare metal.
 
+$$$glossary-ech$$$ {{ech}} (ECH)
+:   A deployment type that runs the [{{stack}}](#glossary-elastic-stack) as hosted deployments, in the cloud provider and region of your choice. You create and manage {{ech}} deployments from [{{ecloud}}](#glossary-elastic-cloud). Formerly known as [Elasticsearch Service](#glossary-elasticsearch-service). To learn more, go to [](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
+
 $$$glossary-eck$$$ {{eck}} (ECK)
 :   Built on the Kubernetes Operator pattern, ECK extends the basic Kubernetes orchestration capabilities to support the setup and management of Elastic products and solutions on Kubernetes.
+
+$$$glossary-serverless$$$ {{serverless-full}}
+:   A fully managed deployment type that runs Elastic as projects, with no clusters, infrastructure, or upgrades to manage. You create and manage {{serverless-short}} projects from [{{ecloud}}](#glossary-elastic-cloud). Project types include {{es}}, {{vectordb}}, {{observability}}, and Security. To learn more, go to [](/deploy-manage/deploy/elastic-cloud/serverless.md).
 
 $$$glossary-ecs$$$ Elastic Common Schema (ECS)
 :   A document schema for Elasticsearch, for use cases such as logging and metrics. ECS defines a common set of fields, their datatype, and gives guidance on their correct usage. ECS is used to improve uniformity of event data coming from different sources.
@@ -264,6 +273,11 @@ $$$EKS$$$ Elastic Kubernetes Service (EKS)
 $$$glossary-ems$$$ Elastic Maps Service (EMS)
 :   A service that provides basemap tiles, shape files, and other key features that are essential for visualizing geospatial data.
 
+$$$glossary-elastic-platform$$$ Elastic platform
+:   The [{{stack}}](#glossary-elastic-stack) plus other foundational products that the Elastic [solutions](/solutions/index.md) run on and that you can build on.
+
+    You can run the Elastic platform on {{ecloud}} or on your own infrastructure. To compare options, refer to [](/deploy-manage/deploy.md).
+
 $$$glossary-epr$$$ Elastic Package Registry (EPR)
 :   A service hosted by Elastic that stores Elastic package definitions in a central location. See the [EPR GitHub repository](https://github.com/elastic/package-registry).
 
@@ -271,17 +285,19 @@ $$$glossary-elastic-security-indices$$$ {{elastic-sec}} indices
 :   Indices containing host and network source events (such as `packetbeat-*`, `log-*`, and `winlogbeat-*`). When you [create a new rule in {{elastic-sec}}](/solutions/security/detect-and-alert/using-the-rule-ui.md), the default index pattern corresponds to the values defined in the `securitySolution:defaultIndex` advanced setting.
 
 $$$glossary-elastic-stack$$$ {{stack}}
-:   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
+:   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data. The {{stack}} includes [{{es}}](#glossary-elasticsearch), [{{kib}}](#glossary-kibana), [{{agent}}](#glossary-elastic-agent), [{{beats}}](beats://reference/index.md), and [{{ls}}](logstash://reference/index.md). It is part of the larger [Elastic platform](#glossary-elastic-platform).
+
+    To browse all {{stack}} documentation, go to the [{{stack}} documentation hub](/products/elastic-stack.md).
 
 $$$glossary-elasticsearch$$$ {{es}}
 :   The [open source](https://github.com/elastic/elasticsearch) search database for AI. It is the search and analytics engine, data store, and vector database at the core of the Elastic platform, and it is part of every Elastic [deployment type](/deploy-manage/deploy.md).
 
     Depending on the context, "{{es}}" can also refer to the following:
-  - A [**project** type](/deploy-manage/deploy/elastic-cloud/serverless.md#get-started) on {{serverless-full}} that is designed for general-purpose search use cases.
-  - A **solution** in other Elastic deployment types. Each [space](#glossary-space) has its own [solution view](#glossary-solution-view).
+  - A [project type](/solutions/elasticsearch-solution-project.md) on {{serverless-full}} that is designed for general-purpose search use cases.
+  - A [solution](/solutions/elasticsearch-solution-project.md) in other Elastic deployment types. Each [space](#glossary-space) has its own [solution view](#glossary-solution-view).
   - A cluster that you install and manage yourself. The {{es}} docs call this a [self-managed](/deploy-manage/deploy/self-managed.md) deployment.
 
-    The Elastic platform is the whole of what Elastic offers. It includes {{es}} and other foundational products, such as {{kib}}, that the Elastic solutions run on.
+    To browse all {{es}} documentation, go to the [{{es}} documentation hub](/products/elasticsearch.md).
 
 $$$glossary-elasticsearch-service$$$ Elasticsearch Service
 :   The former name of {{ech}}, which is the official hosted {{stack}} offering, from the makers of {{es}}. Available as a software-as-a-service (SaaS) offering on different cloud platforms, such as AWS, GCP, and Microsoft Azure.
@@ -499,7 +515,7 @@ $$$glossary-kql$$$ {{kib}} Query Language (KQL)
 :   The default language for querying in {{kib}}. KQL provides support for scripted fields. See [Kibana Query Language](/explore-analyze/query-filter/languages/kql.md).
 
 $$$glossary-kibana$$$ {{kib}}
-:   A user interface that lets you visualize your {{es}} data and navigate the {{stack}}.
+:   A user interface that lets you visualize your {{es}} data and navigate the {{stack}}. To browse all {{kib}} documentation, go to the [{{kib}} documentation hub](/products/kibana.md).
 
 
 ## L [l-glos]
@@ -724,6 +740,9 @@ $$$glossary-secondary-navigation$$$ secondary navigation
 
 $$$glossary-segment$$$ segment
 :   Data file in a [shard](/reference/glossary/index.md#glossary-shard)'s Lucene instance. {{es}} manages Lucene segments automatically.
+
+$$$glossary-serverless-short$$$ {{serverless-short}}
+:   Short for [{{serverless-full}}](#glossary-serverless).
 
 $$$glossary-services-forwarder$$$ services forwarder
 :   Routes data internally in an {{ece}} installation.

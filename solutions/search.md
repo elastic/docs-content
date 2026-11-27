@@ -22,13 +22,15 @@ Not every capability described on this page is available in every deployment or 
 :::
 
 ::::{admonition} Looking for something else?
-This section describes the {{es}} search capabilities that work in every deployment type.
+This section describes the {{es}} search capabilities that work across deployment types.
 
 - For an overview of the Elastic platform, including the {{stack}}, deployment options, and solutions, go to [](/get-started/index.md).
-- For the {{es}} solution and serverless project type, which add UI tools in {{kib}}, go to [](/solutions/elasticsearch-solution-project.md).
 - To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
-- To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
 - To compare deployment types and choose where to run Elastic, go to [](/deploy-manage/deploy.md).
+- For the {{es}} solution and serverless project type, which add UI tools for building search applications, go to [](/solutions/elasticsearch-solution-project.md).
+- For details about {{es}} API endpoints, go to the [Elastic API documentation]({{apis}}).
+
+To browse all {{es}} documentation, go to the [{{es}} documentation hub](/products/elasticsearch.md).
 ::::
 
 ## What you can build

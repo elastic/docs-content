@@ -28,12 +28,14 @@ Not sure which deployment type is right for you? Use the following resources to 
 ::::
 
 ::::{admonition} Looking for something else?
-This section describes the {{es}} solution and serverless project type.
+This section describes the UI tools for building search applications that come with the {{es}} solution and project type.
 
 - For an overview of the Elastic platform, including the {{stack}}, deployment options, and solutions, go to [](/get-started/index.md).
-- To search your data with {{es}} in any deployment type, go to [](/solutions/search.md).
+- To build search experiences with {{es}}, from basic queries to AI-powered search, go to [](/solutions/search.md).
 - To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
-- To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
+- For details about {{es}} API endpoints, go to the [Elastic API documentation]({{apis}}).
+
+To browse all {{es}} documentation, go to the [{{es}} documentation hub](/products/elasticsearch.md).
 ::::
 
 
