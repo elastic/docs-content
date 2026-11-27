@@ -1,0 +1,47 @@
+---
+navigation_title: Review decision trees
+applies_to:
+  serverless:
+    observability: preview
+description: View the decision trees that Elastic nightshift keeps for alerts it has investigated. Decision trees are experimental and available in developer mode.
+products:
+  - id: observability
+  - id: cloud-serverless
+---
+
+# Review decision trees [nightshift-decision-trees]
+
+A decision tree is the troubleshooting path that {{nightshift}} keeps for an alert it has investigated. It tells you which evidence to gather first, which checks decide between explanations, and where each branch led. When the same alert fires again, the investigation can follow the tree.
+
+A decision tree isn't the same as an investigation's hypothesis tree. The hypothesis tree shows what one investigation tested, and a decision tree keeps the path that worked across investigations of one alert. A tree can also steer an investigation down a path that doesn't fit this time, so check the hypothesis tree and the evidence before you act. Refer to [How investigations work](../investigation/index.md).
+
+Decision trees are experimental. You can view them only in developer mode, and they can change or go away in later releases.
+
+## How a tree grows [nightshift-decision-trees-grow]
+
+{{nightshift}} builds a tree for an alert after an investigation of that alert. Each later investigation can add nodes and branches, which creates a version of the tree.
+
+- A tree starts as **Tentative**.
+- It becomes **Established** when a person confirms the cause in a follow-up, and the investigation's own evidence supports that cause. A statement alone doesn't confirm it.
+
+Investigations use decision trees whether developer mode is on or off. Developer mode only shows the **Decision Trees** tab.
+
+## View decision trees [nightshift-decision-trees-view]
+
+1. Turn on [developer mode](../settings.md#nightshift-settings-developer-mode).
+1. Open the {icon}`boxes_vertical` menu and select **Knowledge**.
+1. Select the **Decision Trees** tab.
+
+The **Overview** shows how many trees there are, how many are established, and how many versions they have. Select a tree to open it:
+
+- **Decision tree**: The tree as a **Diagram**, or as its **Source**. Node types are **Symptom**, **Evidence Gatherer**, **Decision**, and **End**.
+- **Version history**: Each version of the tree, with the nodes and edges that an investigation added, changed, or removed.
+- **Learnings**: Lessons that people confirmed in follow-ups for this alert.
+- **Nodes** and **Edges**: The tree as tables.
+
+You can't edit or archive a decision tree. To remove decision tree versions, [purge knowledge](../settings.md#nightshift-settings-developer-mode).
+
+## Learn more [nightshift-decision-trees-next]
+
+- [How {{nightshift}} builds context](./index.md): Compare decision trees with the Wiki and Memory.
+- [Settings and limits](../settings.md#nightshift-settings-developer-mode): Find out what else developer mode shows.
