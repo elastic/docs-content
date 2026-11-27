@@ -30,7 +30,7 @@ spec:
   - name: default
     count: 1
     config:
-      node.store.allow_mmap: false
+      node.store.allow_mmap: false # Disables memory mapping, so that Elasticsearch doesn't depend on the `vm.max_map_count` kernel setting
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -46,6 +46,8 @@ spec:
     name: elasticsearch-sample-es-http
 EOF
 ```
+
+OpenShift sets `vm.max_map_count` to `262144` on its nodes by default, which is enough for {{es}} to start. To use the recommended value `1048576`, refer to [Virtual memory](virtual-memory.md#k8s_using_the_node_tuning_operator_to_set_virtual_memory).
 
 ## {{es}} plugins [k8s-openshift-es-plugins]
 
