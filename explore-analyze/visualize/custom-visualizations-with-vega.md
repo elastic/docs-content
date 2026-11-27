@@ -169,7 +169,7 @@ POST kbn://api/vega
 }
 ```
 
-1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as one string.
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
 2. The Vega-Lite spec from step 4.
 
 ::::
@@ -210,14 +210,14 @@ curl -X POST "${KIBANA_URL}/api/vega" \
 }'
 ```
 
-1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as one string.
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
 2. The Vega-Lite spec from step 4.
 
 ::::
 
 :::::
 
-To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` from the response.
+To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` that the Vega API returns.
 
 For more information, refer to the [Vega API](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-vega).
 :::::::
@@ -795,7 +795,7 @@ POST kbn://api/vega
 }
 ```
 
-1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as one string.
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
 2. The final Vega-Lite spec from this tutorial, converted to JSON.
 
 ::::
@@ -891,14 +891,14 @@ curl -X POST "${KIBANA_URL}/api/vega" \
 }'
 ```
 
-1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as one string.
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
 2. The final Vega-Lite spec from this tutorial, converted to JSON.
 
 ::::
 
 :::::
 
-To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` from the response.
+To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` that the Vega API returns.
 
 For more information, refer to the [Vega API](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-vega).
 :::::::
@@ -1679,7 +1679,7 @@ POST kbn://api/vega
 }
 ```
 
-1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as one string.
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
 2. The final Vega spec from this tutorial, converted to JSON.
 
 ::::
@@ -1871,14 +1871,14 @@ curl -X POST "${KIBANA_URL}/api/vega" \
 }'
 ```
 
-1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as one string.
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
 2. The final Vega spec from this tutorial, converted to JSON.
 
 ::::
 
 :::::
 
-To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` from the response.
+To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` that the Vega API returns.
 
 For more information, refer to the [Vega API](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-vega).
 :::::::

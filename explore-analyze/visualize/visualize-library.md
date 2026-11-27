@@ -91,7 +91,7 @@ To build a visualization before you add it to any dashboard, create it from the 
    * [Maps](maps.md)
    * [Vega](custom-visualizations-with-vega.md)
 
-     {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To get a Vega visualization that works with the [Dashboards API](../dashboards/create-dashboards-programmatically.md) and the panel's [**Export JSON** option](../dashboards/sharing.md#export-panel-json), add a **Vega** panel on a dashboard, then [save it to the library](#save-to-visualize-library). Vega visualizations that you create this way don't work with either.
+     {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` To get a Vega visualization that works with the [Dashboards API](../dashboards/create-dashboards-programmatically.md) and the panel's [**Export JSON** option](../dashboards/sharing.md#export-panel-json), create it on a dashboard with **Add** → **Vega**, then [save it to the library](#save-to-visualize-library). Vega visualizations that you create with **Create visualization** open in the full-page legacy editor and don't work with either.
 
    * {applies_to}`serverless: unavailable` [Aggregation-based](legacy-editors/aggregation-based.md) and [TSVB](legacy-editors/tsvb.md): Legacy visualizations that you find on the **Legacy** tab of the dialog.
 
