@@ -5,14 +5,14 @@ applies_to:
   stack: ga
   serverless: ga
 type: how-to
-description: Update the lifecycle of an Elasticsearch data stream. Change its data phases or remove the lifecycle.
+description: Update the lifecycle of an Elasticsearch data stream. Change its data phases or turn off the lifecycle.
 products:
   - id: elasticsearch
 ---
 
 # Update the lifecycle of a data stream [tutorial-manage-existing-data-stream]
 
-Change the lifecycle configuration for a classic {{es}} data stream, such as its data retention or phases.
+Change the lifecycle configuration for a classic {{es}} data stream, such as its data retention or phases. You can also turn off the lifecycle.
 
 For [wired](/solutions/observability/streams/get-data-in.md#get-data-in-wired) data streams, go to [](/solutions/observability/streams/configure-retention.md).
 For {{ilm}} ({{ilm-init}}), refer to [](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md).
@@ -151,14 +151,14 @@ For example:
   {{es}} can still delete indices when their `generation_time` exceeds the effective retention period, even after they are frozen.
   For prerequisites, how conversion works, and troubleshooting, refer to [](/manage-data/lifecycle/data-stream/dlm-searchable-snapshots.md).
 
-* Remove the lifecycle settings configured on the data stream:
+* Reset a customized lifecycle back to an enabled default:
 
     ```console
     PUT _data_stream/my-data-stream-test/_lifecycle
     { } <1>
     ```
 
-    1. An empty payload means that your data stream lifecycle uses global settings. For example, the global default and maximum retention settings apply. Refer to [](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md).
+    1. An empty payload means that your data stream lifecycle uses global settings. Data stream lifecycle keeps managing the stream (rollover and tail merging). Custom settings like `data_retention` and `frozen_after` are cleared, so [global retention](/manage-data/lifecycle/data-stream/tutorial-data-stream-retention.md) can apply. To stop data stream lifecycle instead, refer to [](#delete-lifecycle).
 
 These lifecycle changes apply to every backing index of the data stream.
 To check the settings, use the {{es}} [explain API]({{es-apis}}operation/operation-indices-explain-data-lifecycle):
@@ -210,16 +210,13 @@ GET my-data-stream-test/_lifecycle/explain
 
 ::::
 
-## Remove the lifecycle for a data stream [delete-lifecycle]
-```{applies_to}
-stack: ga
-serverless: unavailable
-```
+## Turn off the lifecycle [delete-lifecycle]
 
-<!-- NOTE: The Kibana instructions are commented out until https://github.com/elastic/kibana/issues/301013 is resolved -->
+To stop data stream lifecycle from managing a data stream, use the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle):
+<!--
+NOTE: The Kibana instructions are commented out until https://github.com/elastic/kibana/issues/301013 is resolved
 
-<!-- 
-Remove the lifecycle with the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle).
+Turn off the lifecycle with the **{{index-manage-app}}** tools in {{kib}} or the {{es}} [lifecycle API]({{es-apis}}operation/operation-indices-put-data-lifecycle):
 
 :::::{applies-switch}
 
@@ -248,50 +245,47 @@ Remove the lifecycle with the **{{index-manage-app}}** tools in {{kib}} or the {
 ::::
 :::::
 -->
+```console
+PUT _data_stream/my-data-stream-test/_lifecycle
+{
+  "enabled": false
+}
+```
 
-<!-- ::::{dropdown} API example -->
+This request turns off data stream lifecycle for every backing index of this stream, including indices that already exist.
+It doesn't change the index template, so new data streams that match the template can still be managed.
 
-Remove the lifecycle with the {{es}} [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle).
+To turn off the lifecycle in the index template, use the {{es}} [index template API]({{es-apis}}operation/operation-indices-put-index-template).
 For example:
 
 ```console
-DELETE _data_stream/my-data-stream-test/_lifecycle
-```
-
-After this request, the maintenance operations from the lifecycle no longer apply to the data stream or its backing indices.
-
-Use the [explain API]({{es-apis}}operation/operation-indices-explain-data-lifecycle) to verify that the indices are no longer managed.
-
-```console
-GET my-data-stream-test/_lifecycle/explain
-```
-
-```console-result
+PUT _index_template/my-data-stream-test-template
 {
-  "indices": {
-    ".ds-my-data-stream-test-2026.10.17-000001": {
-      "index": ".ds-my-data-stream-test-2026.10.17-000001", <1>
-      "managed_by_lifecycle": false, <2>
-      "unmanaged_reason": "Index [.ds-my-data-stream-test-2026.10.17-000001] belongs to data stream [my-data-stream-test] which does not have data stream lifecycle configuration." <3>
-    },
-    ".ds-my-data-stream-test-2026.10.19-000002": {
-      "index": ".ds-my-data-stream-test-2026.10.19-000002",
-      "managed_by_lifecycle": false,
-      "unmanaged_reason": "Index [.ds-my-data-stream-test-2026.10.19-000002] belongs to data stream [my-data-stream-test] which does not have data stream lifecycle configuration."
+  "index_patterns": ["my-data-stream-test*"],
+  "data_stream": {},
+  "template": {
+    "lifecycle": {
+      "enabled": false
     }
   }
 }
 ```
 
-1. The name of the backing index.
-1. The data stream lifecycle does not manage the index.
-1. {applies_to}`stack: ga 9.6+` The reason the data stream is not managed.
+:::{note}
+These APIs do not change the [failure store lifecycle](/manage-data/data-store/data-streams/failure-store.md#manage-failure-store-lifecycle).
+:::
 
-<!-- :::: -->
+You can use the [explain API]({{es-apis}}operation/operation-indices-explain-data-lifecycle) to get lifecycle information for each backing index.
+
+:::{tip}
+:applies_to: {"stack": "ga 9.6+", "serverless": "unavailable"}
+Use the [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle) when you want an existing {{tsds}} to use the [minimum lifecycle](/manage-data/lifecycle/data-stream/dlm-default-lifecycle.md#minimum-data-stream-lifecycle).
+:::
 
 ## Related pages [update-data-stream-lifecycle-related]
 
 * [](/manage-data/lifecycle/data-stream.md)
+* [](/manage-data/lifecycle/data-stream/dlm-default-lifecycle.md)
 * [](/manage-data/data-store/data-streams.md)
 * [](/manage-data/lifecycle/index-lifecycle-management.md)
 * [](/deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md)

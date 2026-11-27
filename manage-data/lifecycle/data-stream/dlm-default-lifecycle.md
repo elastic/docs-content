@@ -58,6 +58,7 @@ The minimum lifecycle applies to a data stream when all the following are true:
 * No {{ilm-init}} policy manages the backing index. A backing index with an {{ilm-init}} policy stays managed by {{ilm-init}} unless [`index.lifecycle.prefer_ilm`](elasticsearch://reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#index-lifecycle-prefer-ilm) is `false`.
 
 Adding a data stream lifecycle to the data stream replaces the minimum lifecycle with your configuration.
+To apply the minimum lifecycle to an existing {{tsds-init}} that already has a data stream lifecycle, use the [delete lifecycle API]({{es-apis}}operation/operation-indices-delete-data-lifecycle).
 
 ::::{important}
 Before {applies_to}`stack: ga 9.6`, a {{tsds-init}} without a lifecycle or an {{ilm-init}} policy was never rolled over automatically. If an external process rolls over your {{tsds-init}}, you might now see additional backing indices. A {{tsds-init}} that has an {{ilm-init}} policy, `index.lifecycle.prefer_ilm` set to `false`, and no data stream lifecycle also moves from {{ilm-init}} to the minimum lifecycle. As a result, {{ilm-init}} phases such as delete or downsample stop running for it.
