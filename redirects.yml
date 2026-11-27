@@ -179,6 +179,8 @@ redirects:
   'reference/observability/fields-and-object-schemas/logs-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'reference/observability/fields-and-object-schemas/metrics-app-fields.md': '!reference/observability/fields-and-object-schemas.md'
   'solutions/observability/infra-and-hosts/universal-profiling-issues.md': 'release-notes/elastic-observability/index.md'
+  'solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md': 'solutions/observability/get-started/opentelemetry/quickstart/index.md'
+  'solutions/observability/get-started/quickstart-unified-kubernetes-observability-with-elastic-distributions-of-opentelemetry-edot.md': 'solutions/observability/get-started/opentelemetry/quickstart/index.md'
 
   # Related to https://github.com/elastic/docs-content/pull/7062
   'solutions/observability/streams/wired-streams.md': 'solutions/observability/streams/get-data-in.md'
@@ -537,13 +539,19 @@ redirects:
   'deploy-manage/monitor/autoops/search-ai-lake-view-autoops-serverless.md': 'deploy-manage/monitor/autoops/storage-tier-view-autoops-serverless.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2245/
-  'solutions/search/elasticsearch-basics-quickstart.md': 'solutions/search/get-started/index-basics.md'
+  'solutions/search/elasticsearch-basics-quickstart.md': '!solutions/search/get-started/quickstarts.md'
+  'solutions/search/get-started/index-basics.md': '!solutions/search/get-started/quickstarts.md'
+  'solutions/search/get-started/keyword-search-python.md': '!solutions/search/get-started/quickstarts.md'
+  'solutions/search/get-started/semantic-search.md': '!solutions/search/get-started/quickstarts.md'
 
 # Related to https://github.com/elastic/elasticsearch/pull/133362
   'solutions/search/querydsl-full-text-filter-tutorial.md': 'elasticsearch://reference/query-languages/query-dsl/full-text-filter-tutorial.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2719
   'solutions/search/api-quickstarts.md': 'solutions/search/get-started/quickstarts.md'
+
+# Search use case: the Get started page is removed. Kept sections live on the use case landing page.
+  'solutions/search/get-started.md': '!solutions/search.md'
 
 # Related to https://github.com/elastic/docs-content/pull/2745
   'solutions/search/run-elasticsearch-locally.md': 'deploy-manage/deploy/self-managed/local-development-installation-quickstart.md'
@@ -1324,6 +1332,12 @@ redirects:
   'solutions/security/advanced-entity-analytics/overview.md': 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
   'solutions/security/advanced-entity-analytics/entity-risk-scoring-requirements.md': 'solutions/security/advanced-entity-analytics/entity-analytics-requirements.md'
   'solutions/security/advanced-entity-analytics/monitor-privileged-user-activitites.md': 'solutions/security/advanced-entity-analytics/monitor-privileged-user-activities.md'
+
+# Related to https://github.com/elastic/docs-content/issues/9074
+  'solutions/security/dashboards/entity-analytics-dashboard.md':
+    to: 'solutions/security/advanced-entity-analytics/monitor-entity-risk.md'
+    anchors:
+      'entity-entities': 'entity-entities-9-1'
 
 # Related to https://github.com/elastic/docs-content/pull/5222
   'troubleshoot/deployments/cloud-enterprise/node-bootlooping.md': 'troubleshoot/monitoring/node-bootlooping.md'

@@ -27,7 +27,7 @@ $$$reporting-roles-user-api$$$
 $$$securing-reporting$$$
 
 
-{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the toolbar. In **Discover** 9.4 and later, and in {{serverless-short}}, **Export** is in the application menu instead.
+{{kib}} provides you with several options to share **Discover** sessions, **Dashboards**, **Visualize Library** visualizations, and **Canvas** workpads. These sharing options are available from the icons **Share** {icon}`share` and **Export** {icon}`download` in the application menu. In **Canvas**, you use the **Share** menu in the workpad toolbar instead.
 
 ## Permissions
 
@@ -77,8 +77,10 @@ Several applications let you [schedule exports](report-and-share/automating-repo
 1. Open the Discover session, dashboard, visualization, or **Canvas** workpad you want to share.
 2. Select a file type for the report.
 
-    * {applies_to}`stack: ga 9.1+` From the toolbar, select the {icon}`download` **Export** icon, then select a file type.
-    * {applies_to}`stack: ga =9.0` From the toolbar, select **Share** → **Export** tab, then select a file type.
+    * {applies_to}`stack: ga 9.1+` In the application menu, select {icon}`download` **Export**, then select a file type.
+    * {applies_to}`stack: ga =9.0` In the application menu, select **Share** → **Export** tab, then select a file type.
+
+    In **Canvas**, select **Share** in the workpad toolbar, then **PDF reports** or **Download as JSON**.
 
     In **Discover**, look for the CSV export action in the actions available in the application menu. Depending on your version, this action can be called **Export** → **CSV**, **Export tab results** → **CSV**, or **Export** → **Tab results as CSV**, and can be nested under {icon}`ellipsis` **More** or {icon}`share` **Share**.
 
@@ -101,7 +103,7 @@ Several applications let you [schedule exports](report-and-share/automating-repo
     ::::{note}
     To generate reports without exporting them by hand, use one of these methods:
 
-    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.1+` Schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more.
+    * {applies_to}`serverless: ga` {applies_to}`stack: ga 9.3+, preview 9.1-9.2` Schedule a recurring task in {{kib}} that generates reports on a repeating basis. Refer to [Automatically generate reports](report-and-share/automating-report-generation.md) to learn more.
     * {applies_to}`serverless: unavailable` To generate the report from outside of {{kib}}, use the POST URL, then submit an HTTP `POST` request using a script.
     * {applies_to}`serverless: unavailable` Trigger reports from [{{watcher}}](report-and-share/automating-report-generation.md#use-watcher).
     ::::
@@ -120,13 +122,6 @@ serverless: unavailable
 The layout and size of PDF and PNG reports depend on what you are sharing. For saved Discover sessions, dashboards, and visualizations, the layout depends on the size of the panels. For workpads, the layout depends on the size of the worksheet dimensions.
 
 To change the output size, resize the browser before generating the report. The browser resizes the shareable container, which then determines the report dimensions. It might take some trial and error before you're satisfied.
-
-In the following dashboard, the shareable container is highlighted:
-
-:::{image} /explore-analyze/images/kibana-shareable-container.png
-:alt: Shareable Container
-:screenshot:
-:::
 
 ### CSV report limitations [csv-limitations]
 
@@ -167,7 +162,7 @@ Create and share JSON files for workpads.
 
 1. Go to **Canvas**.
 2. Open the workpad you want to share.
-3. From the toolbar, click {icon}`download` **Export**, then select **JSON**.
+3. In the workpad toolbar, select **Share**, then **Download as JSON**.
 
 
 ## Embed outside of {{kib}} [_embed_outside_of_kib]

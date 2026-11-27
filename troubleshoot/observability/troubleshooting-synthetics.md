@@ -23,7 +23,6 @@ For debugging synthetic tests locally, you can set an environment variable, `DEB
 
 ## Common issues [synthetics-troubleshooting-common-issues]
 
-
 ### Monitors stopped running after upgrading to 8.8.0 or above [synthetics-troubleshooting-missing-api-key]
 ```yaml {applies_to}
 stack: all
@@ -166,6 +165,59 @@ To fix this you can either:
 
 * Ask an administrator with a [setup role](/solutions/observability/synthetics/setup-role.md) to update [`Synthetics and Uptime` sub-feature privileges](/solutions/observability/synthetics/writer-role.md#disable-managed-locations) for the role you’re currently assigned or assign you a role that allows using Elastic’s global managed infrastructure.
 * Use a [Private Location](/solutions/observability/synthetics/monitor-resources-on-private-networks.md#monitor-via-private-agent).
+
+
+### Monitors stuck in pending state after stack upgrade
+
+After a stack upgrade, lightweight or browser-based monitors that run infrequently might appear in a pending state in the Synthetics app.
+
+This happens because the mapping for the field `observer.geo.name` changed from type `wildcard` to `keyword`. Backing indices created before the upgrade retain the old mapping, so new documents fail to index until the data stream rolls over.
+
+Monitors that run frequently resolve on their own, since their data streams hit the normal rollover thresholds quickly. Infrequently run monitors might take much longer.
+
+To fix this, manually roll over the affected data streams:
+
+1. Identify all Synthetics related data streams: `GET /_data_stream/synthetics-*?filter_path=data_streams.name`.
+2. Rollover each one of them with: `POST <data stream name>/_rollover`.
+
+
+### Delete an abandoned Synthetics package policy in {{fleet}} [synthetics-troubleshooting-delete-abandoned-package-policy]
+
+The {{synthetics-app}} runs a daily background task that automatically removes leftover {{private-location}} Synthetics integration policies from {{fleet}}. If you suspect a managed Synthetics package policy is abandoned and want to remove it immediately, you cannot delete it from the {{fleet}} UI because it is marked as managed.
+
+::::{warning}
+Verify that no active monitor uses the package policy across **all** {{kib}} spaces before you force-delete it. A monitor might exist in a different space from the one where you view {{fleet}}. To check, open the Synthetics integration policy in **{{fleet}}** and select **Edit in Synthetics** (which opens the monitor in its space if it exists), or inspect `add_fields.fields.config_id` and `add_fields.fields.meta.space_id` under `inputs[].streams[].vars.processors` in `GET /api/fleet/package_policies/<package-policy-id>`. If you delete a package policy for an active monitor, the monitor stops running on that {{private-location}} until you recreate the policy with **Reset monitor** (refer to [Recover unhealthy monitors](/solutions/observability/synthetics/manage-monitors.md#manage-monitors-health)).
+::::
+
+To force-delete an abandoned Synthetics package policy, call the [Delete a package policy API](https://www.elastic.co/docs/api/kibana/operation/operation-delete-fleet-package-policies-packagepolicyid) with `force=true`. You need **All** privileges for **Fleet** → **Agent policies** and **Integrations**.
+
+1. Find the package policy ID and its parent agent policy ID (`policy_ids`). In **{{fleet}}** → **Agent policies**, open the Synthetics integration policy and copy the ID from the URL. Alternatively, list Synthetics package policies with `GET /api/fleet/package_policies?kuery=ingest-package-policies.package.name:synthetics`.
+2. Delete the package policy with `force=true`:
+
+   ```shell
+   curl --request DELETE \
+     --url 'https://<kibana-host>/api/fleet/package_policies/<package-policy-id>?force=true' \
+     --header 'Authorization: ApiKey <api-key>' \
+     --header 'kbn-xsrf: true'
+   ```
+
+   To delete multiple abandoned package policies at once, use the [Bulk delete package policies API](https://www.elastic.co/docs/api/kibana/operation/operation-post-fleet-package-policies-delete) with `"force": true` in the request body:
+
+   ```shell
+   curl --request POST \
+     --url 'https://<kibana-host>/api/fleet/package_policies/delete' \
+     --header 'Authorization: ApiKey <api-key>' \
+     --header 'Content-Type: application/json' \
+     --header 'kbn-xsrf: true' \
+     --data '{
+     "packagePolicyIds": ["<package-policy-id>"],
+     "force": true
+   }'
+   ```
+
+3. Redeploy each affected parent agent policy. Deleting with `force=true` removes the package policy without redeploying the parent agent policy, so {{agents}} on the {{private-location}} continue running the deleted monitor until the agent policy is redeployed. To trigger a redeploy, do one of the following:
+   - In **{{fleet}}** → **Agent policies**, open the parent agent policy, update a setting (such as the description) on the **Settings** tab, and select **Save changes**.
+   - Call the [Update an agent policy API](https://www.elastic.co/docs/api/kibana/operation/operation-put-fleet-agent-policies-agentpolicyid) (`PUT /api/fleet/agent_policies/<agent-policy-id>`) with the policy's existing fields from the [Get an agent policy API](https://www.elastic.co/docs/api/kibana/operation/operation-get-fleet-agent-policies-agentpolicyid). {{fleet}} increments the policy revision and redeploys it to enrolled agents.
 
 
 ## Get help [synthetics-troubleshooting-get-help]

@@ -49,7 +49,7 @@ The Alerts page is your central hub for triaging and investigating detection ale
 | KQL search | Enter queries like `kibana.alert.rule.name: "SSH from the Internet"`. Autocomplete is available for `.alerts-security.alerts-*` indices. |
 | Date/time picker | Set a specific time range (default: last 24 hours). |
 | Drop-down controls | Filter by status, severity, user, host, or [custom fields](#drop-down-filter-controls). |
-| Additional filters | Include [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md) or show only indicator match rule alerts. |
+| Additional filters | Include [building block alerts](/solutions/security/detect-and-alert/about-building-block-rules.md#security-building-block-rules-view-building-block-alerts-in-the-ui) or show only indicator match rule alerts. |
 | Visualization section | Group and visualize alerts by field. Refer to [Visualize detection alerts](/solutions/security/detect-and-alert/visualize-detection-alerts.md). |
 
 ### Inline actions
@@ -71,7 +71,7 @@ Hover over any value in the Alerts table to see inline actions. Click the expand
 
 ### View rule-specific alerts
 
-Go to **Rules** → **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions.
+Go to **Rules** → **{{siem-rules-ui}}**, then select a rule name. The rule details page shows all alerts from that rule, including alerts from previous rule revisions. For a [building block rule](/solutions/security/detect-and-alert/about-building-block-rules.md), the page includes its building block alerts by default.
 
 
 ## Edit drop-down filter controls [drop-down-filter-controls]

@@ -86,7 +86,7 @@ To generate reports, you need the **Generate PDF or PNG reports** privilege, loc
 
 A notification confirms that the report is queued. When it is ready, download it from the **Reporting** page under **Stack Management** → **Alerts and Insights** → **Reporting**. If the report contains a data table or Discover session, the PDF includes only the visible data.
 
-{applies_to}`stack: ga 9.1+` You can also schedule recurring exports. Refer to [Automatically generate reports](../report-and-share/automating-report-generation.md) to learn more.
+{applies_to}`stack: ga 9.3+, preview 9.1-9.2` You can also schedule recurring exports. Refer to [Automatically generate reports](../report-and-share/automating-report-generation.md) to learn more.
 
 For general information about reporting across all {{kib}} apps, including known limitations and troubleshooting, refer to [Reporting and sharing](../report-and-share.md). To set up reporting, see [Configure reporting](/deploy-manage/kibana-reporting-configuration.md).
 
@@ -96,6 +96,8 @@ You can export the data displayed in a visualization on a dashboard as a CSV fil
 
 1. On the dashboard, open the panel menu of the visualization.
 2. Select **Download CSV**. The file downloads to your machine.
+
+To see how the CSV file shows a missing value, which depends on your version and on whether the panel is a table or a chart, refer to [What a dash or `(null)` in panel data means](using.md#missing-values-in-panel-data).
 
 ## Export JSON [export-dashboards]
 
@@ -109,7 +111,7 @@ $$$export-dashboard-json$$$ $$$export-ndjson$$$
 
 ::::{applies-item} {serverless: ga, stack: "ga 9.6+, preview 9.4-9.5"}
 
-Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://elastic.github.io/dashboards-api-spec/dashboards#tag/Dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance. To version-control this JSON and deploy it across environments through a Git-based workflow, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
+Export the dashboard's JSON source in a format that the [{{kib}} dashboards API](https://www.elastic.co/docs/api/kibana/group/endpoint-dashboards) can consume, so you can manage dashboards as code or work with the API. Use this option when you want to inspect the state of a dashboard, save it to a file, or send it to the API to recreate the dashboard in another space or instance. To version-control this JSON and deploy it across environments through a Git-based workflow, refer to [Manage dashboards as code](manage-dashboards-as-code.md).
 
 1. Open the dashboard, then select {icon}`upload` **Export** → **Export JSON** from the application menu.
 2. In the flyout, review the JSON source. If a panel type or property is not yet supported by the dashboards API, it is removed from the export and listed under **Unsupported properties were removed**. Expand **Show details** to see what was removed.

@@ -67,11 +67,12 @@ The following limits apply to {{managed-integrations}}:
 
 ## Security and data residency [managed-integrations-data-security]
 
-The collector for each {{managed-integration}} writes documents directly to your cluster. Data is stored in your project or deployment, and Elastic employees don't have access to it.
+The collector for each {{managed-integration}} writes documents directly to your cluster. Data is stored in your project or deployment, and Elastic employees don't have access to it. Each collector is dedicated to a single {{managed-integration}}: no other workloads can be added to it.
 
-Data typically travels from Elastic-managed infrastructure to your cluster over Elastic's internal network. On an {{ech}} deployment in a region that isn't served by {{serverless-full}}, data might traverse the public internet to reach your cluster. For more information, refer to [Does my data travel over the public internet?](/reference/managed-integrations/managed-integrations-faq.md#managed-integrations-faq-public-internet) in the FAQ.
+Where the collector runs, and how its data reaches your cluster, depends on your deployment type:
 
-Each collector is dedicated to a single {{managed-integration}}: no other workloads can be added to it.
+* **{{serverless-full}} projects**: The collector runs in the same [region](/deploy-manage/deploy/elastic-cloud/regions.md) as your project. It processes the data it collects and writes it to your project over Elastic's internal network, so the data stays within that region.
+* **{{ech}} deployments**: The collector runs on Elastic-managed infrastructure that isn't necessarily in the same region as your deployment. Data typically travels over Elastic's internal network, but if your deployment is in a [region that isn't served by {{serverless-full}}](/deploy-manage/deploy/elastic-cloud/regions.md), it might traverse the public internet to reach your deployment. {{fedramp-mod}} deployments are an exception. Their collectors run inside the FedRAMP Moderate environment, in the same region as the deployment, and data stays within that environment.
 
 ## Manage and monitor {{managed-integrations}} [managed-integrations-management]
 
