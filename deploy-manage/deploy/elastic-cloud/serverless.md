@@ -142,7 +142,7 @@ Control who can reach your organization and projects, from user accounts and pro
 * [](/deploy-manage/api-keys/elastic-cloud-api-keys.md): Authenticate against organization-level APIs, or create one key that spans multiple projects. These keys are required for the {{serverless-full}} API and for {{cps}}.
 * [](/deploy-manage/app-connections.md): Let users authorize external applications to act on their behalf with OAuth 2.1, instead of static API keys. Currently supported for MCP clients connecting to the {{agent-builder}} MCP server.
 * [](/deploy-manage/security/ip-filtering-cloud.md): Limit how your projects can be accessed by IP address.
-* [](/deploy-manage/security/private-connectivity.md): Connect to your projects over your cloud provider's private network. Projects support AWS PrivateLink and Azure Private Link.
+* [](/deploy-manage/security/private-connectivity.md): Connect to your projects over your cloud provider's private network. Projects support AWS PrivateLink, Azure Private Link, and GCP Private Service Connect.
 * [](/deploy-manage/cross-project-search-config.md): Set up {{cps}} so projects in your organization can search each other's data, and control the scope and access of those searches.
 * [Browser access requirements](/deploy-manage/deploy/elastic-cloud.md#browser-access): Allow required domains, including `kibana.estccdn.com`. If this domain is blocked, {{kib}} might appear as a blank page.
 * [Elastic Trust Center](https://www.elastic.co/trust): Compliance and privacy standards for the Elastic platform.

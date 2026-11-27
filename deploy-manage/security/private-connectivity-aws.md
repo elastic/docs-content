@@ -149,17 +149,17 @@ The process of setting up a private connection with AWS PrivateLink is split bet
 
 | AWS console | {{ecloud}} |
 | --- | --- |
-| 1. [Create a VPC endpoint using {{ecloud}} service name.](#ec-aws-vpc-dns) |  |
-| 2. [Create a DNS record pointing to the VPC endpoint.](#ec-aws-vpc-dns) |  |
-|  | 3. **Optional**: [Create a private connection policy.](#ec-add-vpc-elastic)<br><br>A private connection policy is required to filter traffic using the VPC endpoint ID. |
+| 1. [Create a VPC endpoint using {{ecloud}} service name](#ec-aws-vpc-dns). |  |
+| 2. [Create a DNS record pointing to the VPC endpoint](#ec-aws-vpc-dns). |  |
+|  | 3. **Optional**: [Create a private connection policy](#ec-add-vpc-elastic).<br><br>A private connection policy is required to filter traffic using the VPC endpoint ID. |
 |  | 4. **Optional**: [Associate the private connection policy with deployments or projects](#associate-private-connection-policy). |
-|  | 5. **Optional**: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console.](#sso-kib-ip-filter) |
+|  | 5. **Optional**: [Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console](#sso-kib-ip-filter). |
 |  | 6. [Interact with your deployments or projects over PrivateLink](#ec-access-the-deployment-over-private-link). |
 
 After you create your private connection policy, you can [edit](#edit-private-connection-policy), [disassociate](#remove-private-connection-policy), or [delete](#delete-private-connection-policy) it.
 
 :::{admonition} Private connection policies are optional
-Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment or project using VPC filters.
+Private connection policies are optional for AWS PrivateLink. After the VPC endpoint and DNS record are created, private connectivity is established. You only need to create a private connection policy if you want to filter traffic to your deployment or project using VPC filters, or to record that you've established private connectivity.
 :::
 
 
@@ -376,7 +376,7 @@ Create a new private connection policy.
     :::{tip}
     Private connection policies are bound to a single resource type and region, and can be assigned only to resources with the same resource type and in the same region. If you want to associate a policy with multiple resource types or resources in multiple regions, then you have to recreate the policy for all applicable resource types and regions.
     :::
-6.  Under **Connectivity**, select **PrivateLink**.
+6.  {applies_to}`ech: ga` Under **Connectivity**, select **PrivateLink**.
 7.  Optional: Under **VPC filter**, enter your VPC endpoint ID. You should only specify a VPC filter if you want to filter traffic to your deployment or project. For each VPC filter, select **Add description** to add an optional description that helps you identify the filter later.
 
     If you don't specify a VPC filter, then the private connection policy acts only as a record that you've established private connectivity between AWS and Elastic in the applicable region.
@@ -423,6 +423,10 @@ You can associate a private connection policy with your deployment or project fr
 5. Click **Update** to save your changes.
 
 ## Optional: Add an IP filter to allow SSO to {{kib}} from the {{ecloud}} console [sso-kib-ip-filter]
+```{applies_to}
+deployment:
+  ess: ga
+```
 
 :::{include} _snippets/ip-filter-for-pc.md
 :::
