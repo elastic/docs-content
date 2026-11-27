@@ -12,7 +12,7 @@ products:
 
 # Quickstart: Vector and full-text search [hybrid-search-quickstart]
 
-{{es}} is a search and vector engine that supports full-text, semantic, and hybrid search over your data. In this quickstart, you index five books, compare these search approaches, and use {{esql}} to count the books by publication decade.
+[{{es}}](/products/elasticsearch.md) is a search and vector engine that supports full-text, semantic, and hybrid search over your data. In this quickstart, you index five books, compare these search approaches, and use {{esql}} to count the books by publication decade.
 
 If you're new to using {{es}} for search, you can complete this quickstart in less than 10 minutes after setting up a deployment.
 

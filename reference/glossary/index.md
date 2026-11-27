@@ -214,7 +214,7 @@ $$$glossary-deployment-template$$$ deployment template
 :   A reusable configuration of Elastic products and solutions used to create an {{ecloud}} [deployment](/reference/glossary/index.md#glossary-deployment).
 
 $$$glossary-deployment$$$ deployment
-:   One or more products from the {{stack}} configured to work together and run on {{ecloud}}.
+:   One or more products from the [{{stack}}](#glossary-elastic-stack), such as {{es}} and {{kib}}, configured to work together and managed by an orchestrator: [{{ech}}](#glossary-ech), [{{ece}}](#glossary-ece), or [{{eck}}](#glossary-eck).
 
 $$$glossary-detection-alert$$$ detection alert
 :   {{elastic-sec}} produced alerts. Detection alerts are never received from external systems. When a rule's conditions are met, {{elastic-sec}} writes a detection alert to an {{es}} alerts index.
@@ -640,6 +640,9 @@ $$$glossary-plugin$$$ plugin
 $$$glossary-primary-shard$$$ primary shard
 :   Lucene instance containing some or all data for an [index](/reference/glossary/index.md#glossary-index). When you index a [document](/reference/glossary/index.md#glossary-document), {{es}} adds the document to primary shards before [replica shards](/reference/glossary/index.md#glossary-replica-shard). See [Clusters, nodes, and shards](/deploy-manage/production-guidance/elasticsearch-in-production-environments.md).
 
+$$$glossary-project$$$ project
+:   In [{{serverless-full}}](#glossary-serverless), the unit that you create to run Elastic for a use case. Each project has a project type, such as {{es}}, {{vectordb}}, {{observability}}, or Security, and Elastic manages its infrastructure. A project is the {{serverless-short}} equivalent of a [deployment](#glossary-deployment). To learn more, go to [](/deploy-manage/deploy/elastic-cloud/serverless.md).
+
 $$$glossary-project-tag$$$ project tag
 :   A key-value pair that you use as metadata for an {{serverless-full}} project. You can use project tags to categorize and organize projects, and to filter lists of projects. If [{{cps}}](/reference/glossary/index.md#glossary-cps) is enabled, you can also use project tags to [route searches to specific projects](/explore-analyze/cross-project-search/cross-project-search-tags.md). See [Project tags](/deploy-manage/deploy/elastic-cloud/project-settings.md#project-tags). _For tags on {{kib}} saved objects, see [tag](/reference/glossary/index.md#glossary-tag)._
 
@@ -772,7 +775,7 @@ $$$glossary-snapshot$$$ snapshot
 :   Backup taken of a running [cluster](/reference/glossary/index.md#glossary-cluster). You can take snapshots of the entire cluster or only specific [data streams](/reference/glossary/index.md#glossary-data-stream) and [indices](/reference/glossary/index.md#glossary-index). See [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md).
 
 $$$glossary-solution$$$ solution
-:   In {{ecloud}}, deployments with specialized [templates](/reference/glossary/index.md#glossary-deployment-template) that are pre-configured with sensible defaults and settings for common use cases.
+:   A package of Elastic capabilities optimized for a use case, such as search, observability, or security. In {{stack}} deployments, each [space](#glossary-space) has a [solution view](#glossary-solution-view) that sets its navigation. In [{{serverless-full}}](#glossary-serverless), you choose a solution by choosing a project type. To learn more, go to [](/solutions/index.md).
 
 $$$glossary-solution-view$$$ solution view
 :   The per-[space](/reference/glossary/index.md#glossary-space) setting that controls the [navigation menu](/reference/glossary/index.md#glossary-navigation-menu) in {{kib}}.

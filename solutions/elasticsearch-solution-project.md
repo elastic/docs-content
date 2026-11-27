@@ -23,8 +23,7 @@ These UI affordances are exclusive to the {{es}} solution and serverless project
 Not sure which deployment type is right for you? Use the following resources to help you decide:
 
 - Read the Elastic [deployment types overview](/deploy-manage/deploy.md)
-- Compare [serverless and {{ech}}](/deploy-manage/deploy/deployment-comparison.md)
-  - Compare pricing models between [{{ech}}](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) and [Serverless](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
+- Compare [{{serverless-short}} and {{ech}}](/deploy-manage/deploy/deployment-comparison.md) and their [pricing models](/deploy-manage/cloud-organization/billing.md)
 ::::
 
 ::::{admonition} Looking for something else?
