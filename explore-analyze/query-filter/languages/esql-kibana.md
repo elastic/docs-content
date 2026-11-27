@@ -35,7 +35,7 @@ Editor support varies by area. Some areas use the {{esql}} editor described on t
 | [Dashboards and visualizations](/explore-analyze/visualize/esorql.md) | Create visualization panels and interactive controls | {{esql}} editor |
 | [{{alerting-v2-system}}](/explore-analyze/alerting/esql/rules/create-esql-rule.md) | Create alerting rules based on {{esql}} queries | Rule form or YAML editor |
 | [{{alerting-v2-system}}](/explore-analyze/alerting/esql/system-overview.md) {applies_to}`observability: ga` {applies_to}`stack: ga 9.6+` | Build and preview rules with separate base, alert, and recovery queries | Task-specific editor and YAML editor |
-| [Maps](/explore-analyze/visualize/maps/maps-esql-layer.md) {applies_to}`serverless: beta` {applies_to}`stack: beta` | Create map layers from {{esql}} queries | {{esql}} editor |
+| [Maps](/explore-analyze/visualize/maps/maps-esql-layer.md) {applies_to}`serverless: preview` {applies_to}`stack: preview` | Create map layers from {{esql}} queries | {{esql}} editor |
 | [Data Visualizer](/explore-analyze/machine-learning/machine-learning-in-kibana.md) | Explore field statistics from query results | {{esql}} editor |
 | [{{agent-builder}}](/explore-analyze/ai-features/agent-builder/tools/esql-tools.md) | Create custom tools that run parameterized queries | Task-specific editor |
 | [Streams](/solutions/observability/streams/streams.md) {applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` | Define query streams | Task-specific editor |
