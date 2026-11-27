@@ -197,7 +197,7 @@ One request can mix these results. The endpoint can accept the first group and f
 
 ### Request errors [bulk-request-errors]
 
-Some failures reject the HTTP request. The body has no `items` list.
+Some failures reject the whole HTTP request. The response body has no `items` list.
 
 | Failure | HTTP status | `error.type` |
 | --- | --- | --- |
