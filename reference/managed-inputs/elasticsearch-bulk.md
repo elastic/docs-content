@@ -182,10 +182,10 @@ The endpoint returns HTTP `200` when it can parse the request. It sets `errors` 
 
 | Item status | `error.type` | Meaning |
 | --- | --- | --- |
-| `201` | none | The endpoint accepted that document's group. {{es}} indexes the document later. |
-| `403` | `security_exception` | The target is not allowed. The document is not enqueued. The endpoint still processes the other documents. The HTTP status stays `200` when every document is `403`. |
-| `503` | `unavailable` | The document parsed, and its target matches an allowed prefix, but the endpoint could not enqueue that group. Retry this item. |
-| `400` | `document_parsing_exception` | The document is JSON, but a number cannot be stored. One example is `1e10000`. The document is not enqueued. Other items can still be `201`. |
+| `201` | none | The endpoint enqueued the document. {{es}} indexes it later. |
+| `400` | `document_parsing_exception` | The document is valid JSON, but contains a value that can't be stored, for example a number that's too large, such as `1e10000`. The document isn't enqueued. Other items can still be `201`. |
+| `403` | `security_exception` | The target isn't allowed. Refer to [Limitations](#limitations) for allowed targets. The document isn't enqueued, and the other documents in the request are still processed. The HTTP status stays `200` even if every document is `403`. |
+| `503` | `unavailable` | The document is valid and its target is allowed, but the endpoint failed to enqueue the group it belongs to. Retry this item. |
 
 A group can contain a `403` item and a `503` item. The forbidden item stays `403` when the allowed documents in that group cannot be enqueued. For allowed targets, refer to [Limitations](#limitations).
 
