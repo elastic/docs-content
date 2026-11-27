@@ -251,7 +251,7 @@ In {{esql}} mode, Discover sets the interval automatically from the time range, 
 
 In classic mode, to change how much time each bar of the chart covers, select the button that shows **Auto interval**, then select a time interval.
 
-**Result:** In classic mode, the chart uses the interval you selected.
+**Result:** The chart uses the interval you defined.
 
 
 ### Edit the chart or keep it on a dashboard [document-explorer-chart-edit]
