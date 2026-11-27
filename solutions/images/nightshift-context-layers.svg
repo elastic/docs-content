@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 460" width="1100" height="460" role="img" aria-labelledby="ns-ctx-title ns-ctx-desc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<title id="ns-ctx-title">How nightshift builds context</title>
+<desc id="ns-ctx-desc">Context is a stack of four layers. At the bottom is your telemetry: logs, metrics, and traces. Above it are Knowledge Indicators: services, infrastructure, and dependencies that Detection learns from your telemetry. These two layers come from your data. Detection uses Knowledge Indicators to raise significant events, which can start an investigation. Next is your knowledge: runbooks and code in GitHub, custom context, and automation instructions, which come from you. At the top are learnings, the Wiki and Memory, which come from past investigations. An investigation reads your telemetry, your knowledge, and the learnings, but not Knowledge Indicators, and writes what it learns back to the Wiki and Memory.</desc>
+<rect x="0.75" y="0.75" width="1098.5" height="458.5" fill="#FFFFFF" stroke="#B7C2DC" stroke-width="1.5"/>
+<!-- source tags -->
+<path d="M258,76 H250 V140 H258" fill="none" stroke="#5E6C91" stroke-width="1.5"/>
+<line x1="236" y1="108" x2="250" y2="108" stroke="#5E6C91" stroke-width="1.5"/>
+<rect x="30" y="97" width="206" height="22" rx="2" fill="#FFFFFF" stroke="#101C3F" stroke-width="2"/>
+<text x="133" y="112.5" text-anchor="middle" font-size="14" font-weight="600" fill="#101C3F">from past investigations</text>
+<path d="M258,168 H250 V232 H258" fill="none" stroke="#5E6C91" stroke-width="1.5"/>
+<line x1="236" y1="200" x2="250" y2="200" stroke="#5E6C91" stroke-width="1.5"/>
+<rect x="152" y="189" width="84" height="22" rx="2" fill="#FFFFFF" stroke="#101C3F" stroke-width="2"/>
+<text x="194" y="204.5" text-anchor="middle" font-size="14" font-weight="600" fill="#101C3F">from you</text>
+<path d="M258,260 H250 V416 H258" fill="none" stroke="#5E6C91" stroke-width="1.5"/>
+<line x1="236" y1="338" x2="250" y2="338" stroke="#5E6C91" stroke-width="1.5"/>
+<rect x="106" y="327" width="130" height="22" rx="2" fill="#FFFFFF" stroke="#101C3F" stroke-width="2"/>
+<text x="171" y="342.5" text-anchor="middle" font-size="14" font-weight="600" fill="#101C3F">from your data</text>
+<!-- layer 4: learnings -->
+<rect x="274" y="74" width="506" height="76" fill="#DCE2EE"/>
+<rect x="270" y="70" width="506" height="76" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="271.25" y="71.25" width="53.5" height="73.5" fill="#F1F4FA"/>
+<line x1="326" y1="70" x2="326" y2="146" stroke="#101C3F" stroke-width="2"/>
+<path d="M283,108 A15,15 0 0 1 308.5,97.4" fill="none" stroke="#101C3F" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M313,108 A15,15 0 0 1 287.5,118.6" fill="none" stroke="#101C3F" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<polygon points="314.5,98.4 306.5,91.4 306.5,103.4" fill="#101C3F"/>
+<polygon points="281.5,117.6 289.5,124.6 289.5,112.6" fill="#101C3F"/>
+<text x="346" y="114" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Learnings</text>
+<rect x="524" y="89" width="100" height="46" fill="#DCE2EE"/>
+<rect x="520" y="85" width="100" height="46" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M532,94 H547 L554,101 V122 H532 Z" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M547,94 V101 H554" fill="#F1F4FA" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="537" y1="107" x2="549" y2="107" stroke="#101C3F" stroke-width="1.5"/>
+<line x1="537" y1="112" x2="549" y2="112" stroke="#101C3F" stroke-width="1.5"/>
+<line x1="537" y1="117" x2="544.2" y2="117" stroke="#101C3F" stroke-width="1.5"/>
+<text x="566" y="114" text-anchor="start" font-size="16" font-weight="600" fill="#101C3F">Wiki</text>
+<rect x="638" y="89" width="124" height="46" fill="#DCE2EE"/>
+<rect x="634" y="85" width="124" height="46" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="654" y="103" width="22" height="18" fill="#F1F4FA" stroke="#101C3F" stroke-width="2"/>
+<rect x="650" y="99" width="22" height="18" fill="#F1F4FA" stroke="#101C3F" stroke-width="2"/>
+<rect x="646" y="95" width="22" height="18" fill="#FFFFFF" stroke="#101C3F" stroke-width="2"/>
+<line x1="651" y1="102" x2="663" y2="102" stroke="#101C3F" stroke-width="1.5"/>
+<line x1="651" y1="107" x2="659" y2="107" stroke="#101C3F" stroke-width="1.5"/>
+<text x="688" y="114" text-anchor="start" font-size="16" font-weight="600" fill="#101C3F">Memory</text>
+<!-- layer 3: your knowledge -->
+<rect x="274" y="166" width="506" height="76" fill="#DCE2EE"/>
+<rect x="270" y="162" width="506" height="76" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="271.25" y="163.25" width="53.5" height="73.5" fill="#F1F4FA"/>
+<line x1="326" y1="162" x2="326" y2="238" stroke="#101C3F" stroke-width="2"/>
+<path d="M287,186 H302 L309,193 V214 H287 Z" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M302,186 V193 H309" fill="#F1F4FA" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="292" y1="199" x2="304" y2="199" stroke="#101C3F" stroke-width="1.5"/>
+<line x1="292" y1="204" x2="304" y2="204" stroke="#101C3F" stroke-width="1.5"/>
+<line x1="292" y1="209" x2="299.2" y2="209" stroke="#101C3F" stroke-width="1.5"/>
+<text x="346" y="196" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Your knowledge</text>
+<text x="346" y="217" text-anchor="start" font-size="14" font-weight="400" fill="#5E6C91">Runbooks, GitHub code, context, instructions</text>
+<!-- layer 2: knowledge indicators -->
+<rect x="274" y="258" width="506" height="76" fill="#DCE2EE"/>
+<rect x="270" y="254" width="506" height="76" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="271.25" y="255.25" width="53.5" height="73.5" fill="#F1F4FA"/>
+<line x1="326" y1="254" x2="326" y2="330" stroke="#101C3F" stroke-width="2"/>
+<rect x="283" y="294" width="8" height="10" fill="#FFFFFF" stroke="#101C3F" stroke-width="1.8"/>
+<rect x="294" y="288" width="8" height="16" fill="#FFFFFF" stroke="#101C3F" stroke-width="1.8"/>
+<rect x="305" y="282" width="8" height="22" fill="#FFFFFF" stroke="#101C3F" stroke-width="1.8"/>
+<line x1="277" y1="285" x2="321" y2="285" stroke="#0B64DD" stroke-width="1.8" stroke-dasharray="4 3"/>
+<text x="346" y="288" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Knowledge Indicators</text>
+<text x="346" y="309" text-anchor="start" font-size="14" font-weight="400" fill="#5E6C91">Services, infrastructure, dependencies</text>
+<rect x="640" y="276" width="120" height="40" fill="#DCE2EE"/>
+<rect x="636" y="272" width="120" height="40" fill="#F1F4FA" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<path d="M646,294 L654,294 L658,283 L664,301 L668,290 L676,290" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter"/>
+<text x="684" y="297.5" text-anchor="start" font-size="15" font-weight="600" fill="#101C3F">Detection</text>
+<!-- layer 1: your telemetry -->
+<rect x="274" y="350" width="506" height="76" fill="#DCE2EE"/>
+<rect x="270" y="346" width="506" height="76" fill="#FFFFFF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<rect x="271.25" y="347.25" width="53.5" height="73.5" fill="#F1F4FA"/>
+<line x1="326" y1="346" x2="326" y2="422" stroke="#101C3F" stroke-width="2"/>
+<rect x="284" y="384" width="6" height="12" fill="#0B64DD" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="294" y="374" width="6" height="22" fill="#0B64DD" stroke="#101C3F" stroke-width="1.5"/>
+<rect x="304" y="380" width="6" height="16" fill="#0B64DD" stroke="#101C3F" stroke-width="1.5"/>
+<text x="346" y="380" text-anchor="start" font-size="18" font-weight="600" fill="#101C3F">Your telemetry</text>
+<text x="346" y="401" text-anchor="start" font-size="14" font-weight="400" fill="#5E6C91">Logs, metrics, traces</text>
+<!-- detection learns from telemetry -->
+<path d="M696,346 L696,327" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<polygon points="696,316 701,327.1 691,327.1" fill="#0B64DD"/>
+<!-- reads: learnings and your knowledge -->
+<line x1="780" y1="108" x2="800" y2="108" stroke="#0B64DD" stroke-width="2.5"/>
+<line x1="780" y1="200" x2="800" y2="200" stroke="#0B64DD" stroke-width="2.5"/>
+<line x1="800" y1="108" x2="800" y2="220" stroke="#0B64DD" stroke-width="2.5"/>
+<path d="M800,220 L839,220" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<polygon points="850,220 838.9,225 838.9,215" fill="#0B64DD"/>
+<text x="824" y="242" text-anchor="middle" font-size="16" font-weight="600" fill="#5E6C91">reads</text>
+<!-- reads: your telemetry, queried directly -->
+<path d="M780,384 L1010,384 L1010,275" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<polygon points="1010,264 1015,275.1 1005,275.1" fill="#0B64DD"/>
+<text x="1020" y="334" text-anchor="start" font-size="16" font-weight="600" fill="#5E6C91">reads</text>
+<!-- detection raises significant events that can start an investigation -->
+<path d="M756,292 L926,292 L926,275" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<polygon points="926,264 931,275.1 921,275.1" fill="#0B64DD"/>
+<text x="850" y="314" text-anchor="middle" font-size="14" font-weight="600" fill="#5E6C91">significant events</text>
+<!-- learns: back to the learnings layer -->
+<path d="M958,180 L958,40 L627,40 L627,59" fill="none" stroke="#0B64DD" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="butt"/>
+<polygon points="627,70 622,58.9 632,58.9" fill="#0B64DD"/>
+<text x="792" y="31" text-anchor="middle" font-size="16" font-weight="600" fill="#5E6C91">learns</text>
+<!-- investigation (focus) -->
+<rect x="854" y="184" width="214" height="80" fill="#B7C2DC"/>
+<rect x="850" y="180" width="214" height="80" fill="#48EFCF" stroke="#101C3F" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt"/>
+<line x1="885.8" y1="227.8" x2="893.8" y2="235.8" stroke="#101C3F" stroke-width="6"/>
+<circle cx="878" cy="220" r="10" fill="#FFFFFF" stroke="#101C3F" stroke-width="2"/>
+<circle cx="878" cy="220" r="5.5" fill="#48EFCF" stroke="#101C3F" stroke-width="2"/>
+<text x="904" y="228" text-anchor="start" font-size="21" font-weight="700" fill="#101C3F">Investigation</text>
+</svg>
