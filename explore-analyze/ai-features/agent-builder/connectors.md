@@ -1,6 +1,6 @@
 ---
 navigation_title: "Connectors"
-description: "Give Elastic Agent Builder agents access to external systems such as GitHub, Slack, and PagerDuty with connectors. Add connectors, limit their actions, and assign them to agents."
+description: "Learn about the Agent Builder connectors library, which configures access to external systems for agents."
 applies_to:
   stack: preview 9.4+
   serverless: preview

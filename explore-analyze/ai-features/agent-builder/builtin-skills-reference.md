@@ -1,6 +1,6 @@
 ---
 navigation_title: "Built-in skills"
-description: "Find what each built-in skill in Elastic Agent Builder does, from dashboards and connectors to security investigations. Reference entries list each skill's use cases and assigned tools."
+description: "Reference of all built-in skills available in Elastic Agent Builder."
 applies_to:
   stack: ga 9.4+
   serverless: ga
