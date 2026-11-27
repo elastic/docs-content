@@ -15,7 +15,7 @@ After you [create and test an ingest pipeline](/manage-data/ingest/transform-enr
 * [In an indexing request](#add-pipeline-to-indexing-request), with the `pipeline` parameter. This gives you direct control over each request, for example when you use a client library.
 * [In index settings](#apply-with-index-settings), with the `index.default_pipeline` or `index.final_pipeline` setting. This is the most common way to apply a pipeline. You can set these on an index directly, or in an index template or component template so that every new index or data stream that matches the template gets them.
 
-If you collect data with {{beats}}, {{fleet}}, or {{agent}}, you can also configure the pipeline in those tools. 
+If you collect data with {{beats}}, {{fleet}}, or {{agent}}, you can also specify or customize the ingest pipelines used to process your data, for example, through integration policies in {{fleet}}.
 
 To go straight to the instructions that apply to your setup, find your goal in the following table:
 
@@ -83,7 +83,7 @@ POST _reindex
 
 ## Set a pipeline in index settings [apply-with-index-settings]
 
-Use index settings to apply a pipeline to every document sent to an index or data stream, without each request naming it. Two settings are available:
+Use index settings to apply a pipeline to every document sent to an index or data stream, without each request naming it. The following settings are available:
 
 * [`index.default_pipeline`](#set-default-pipeline) applies a pipeline to requests that don't specify one.
 * [`index.final_pipeline`](#set-final-pipeline) applies a pipeline to every document, after any other pipeline.
@@ -156,16 +156,16 @@ Because the pipeline is named in the request, it takes precedence over any `inde
 
 ## Pipelines for {{fleet}}, {{agent}}, and integrations [pipelines-for-fleet-elastic-agent]
 
-{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/fleet/index.md) applies these pipelines using [index templates](/manage-data/data-store/templates.md) that include [pipeline index settings](#apply-with-index-settings). {{es}} matches these templates to your {{fleet}} data streams based on the [stream's naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
+{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](/reference/fleet/index.md) applies these pipelines using [composable index templates](/manage-data/data-store/templates.md) that include [pipeline index settings](#apply-with-index-settings). {{es}} matches these templates to your {{fleet}} data streams based on the [stream's naming scheme](/reference/fleet/data-streams.md#data-streams-naming-scheme).
 
 To add your own processing to the data an integration collects, such as parsing, enrichment, or redaction, without editing the integration's default pipeline, use one of the following methods. They are in order of preference, so start with the recommended method if it fits.
 
 % REVIEW (Fleet owner): please confirm this table and its order. (1) That most integration default pipelines call a `@custom` pipeline, and that it is the recommended first choice. (2) That the `pipeline` policy setting is available for the integrations that need method 2, and which integrations those are. (3) That setting `index.default_pipeline` in a `@custom` component template replaces the integration's default pipeline, so only `index.final_pipeline` should be recommended there. (4) Whether the Custom logs walkthrough in the {{fleet}} docs is accurate; it now lives at reference/fleet/data-streams-pipeline-custom-logs.md.
 | Method | Use it when | What you change | Risk |
 | --- | --- | --- | --- |
-| 1. [Create a `@custom` ingest pipeline](/reference/fleet/data-streams.md#data-streams-pipelines) (recommended) | The integration's default pipeline calls a `@custom` pipeline, as most do, and you only need to add processing. | Only your own pipeline. In {{fleet}}, the **Ingest pipelines** settings of an integration data stream help you create it. For a walkthrough, refer to [](/reference/fleet/data-streams-pipeline-tutorial.md). | Lowest. Your pipeline persists across upgrades. |
-| 2. [Add a pipeline to the integration configuration](/reference/fleet/data-streams-pipeline-custom-logs.md) | The integration doesn't ship a default pipeline, such as Custom logs, so there is no `@custom` pipeline to create. | The `pipeline` setting in the integration policy. | Low. You don't manage any templates. |
-| 3. [Edit the integration's `@custom` component template](/reference/fleet/data-streams.md#data-streams-index-templates-edit) | You need more than a pipeline: a final pipeline that runs on every document, or other index settings or mappings. | `index.final_pipeline`, or other settings or mappings, in the component template. | Higher. Settings or mappings can conflict with the integration's own. Don't set `index.default_pipeline`, which replaces the integration's pipeline. |
+| 1. [Create a `@custom` ingest pipeline](/reference/fleet/data-streams.md#data-streams-pipelines) (recommended) | The integration's default pipeline calls a `@custom` pipeline, as most do, and you only need to add processing. | Only your own pipeline. In {{fleet}} UI, open the integration configured in your policy and select  **Add custom pipeline** within the **Ingest pipelines** section. This takes you to the create pipeline workflow, with the pipeline name already set to the required name. For a walkthrough, refer to [](/reference/fleet/data-streams-pipeline-tutorial.md). | Lowest. Your pipeline persists across upgrades. |
+| 2. [Create and add a pipeline to the integration configuration](/reference/fleet/data-streams-pipeline-custom-logs.md) | The integration doesn't ship a default pipeline, such as Custom logs, so there is no `@custom` pipeline to create. | Add the pipeline as **Custom configuration** in the integration policy. | Low. You don't manage any templates. |
+| 3. [Edit the integration's `@custom` component template](/reference/fleet/data-streams.md#data-streams-index-templates-edit) | You need more than a pipeline: a final pipeline that runs on every document, or other index settings or mappings. | `index.final_pipeline`, or other settings or mappings, in the component template. | Higher. Settings or mappings can conflict with the integration's own. Don't set `index.default_pipeline`, unless you want to replace the integration's pipeline. |
 | 4. [Create a new index template](/reference/fleet/data-streams-scenario3.md) | The changes must apply to a specific namespace, or no integration template fits. | A new index template for your data. | Highest. The template isn't updated when the integration is upgraded, and Elastic can't test it. |
 
 Editing the integration's `@custom` component template and creating a new index template change how {{es}} configures the integration's indices, so a mistake can cause indexing to fail, lose data, or break integration upgrades. For example, a custom setting can conflict with the integration's own if a later version of the integration changes the index mode, and overriding the type of a field that the integration's dashboards use can break them. Both methods apply only to newly created indices, so roll over existing data streams for the change to take effect. For details, refer to [Creating custom component templates](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-custom-component-templates) and [the risks of replacing an integration's index template](/reference/fleet/integrations-assets-best-practices.md#assets-restrictions-cloning-index-template).
