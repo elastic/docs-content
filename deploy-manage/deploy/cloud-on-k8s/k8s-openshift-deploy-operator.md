@@ -23,7 +23,7 @@ This page shows the installation steps to deploy ECK in Openshift:
    oc apply -f https://download.elastic.co/downloads/eck/{{version.eck}}/operator.yaml
    ```
 
-2. [Optional] If the Software Defined Network is configured with the `ovs-multitenant` plug-in, you must allow the `elastic-system` namespace to access other Pods and Services in the cluster:
+2. [Optional] Only if your cluster still uses the OpenShift SDN network plug-in with the `ovs-multitenant` mode, you must allow the `elastic-system` namespace to access other Pods and Services in the cluster. Clusters that use the default OVN-Kubernetes network plug-in don't need this step:
 
    ```shell
    oc adm pod-network make-projects-global elastic-system
@@ -41,7 +41,7 @@ This page shows the installation steps to deploy ECK in Openshift:
 4. [Optional] Allow another user or a group of users to manage the Elastic resources:
 
    ```shell
-   oc adm policy add-role-to-user elastic-operator developer -n elastic
+   oc adm policy add-role-to-user elastic-operator-edit developer -n elastic
    ```
 
-   In this example the user `developer` is allowed to manage Elastic resources in the namespace `elastic`.
+   In this example the user `developer` is allowed to manage Elastic resources in the namespace `elastic`. Use `elastic-operator-view` to grant read-only access. Users that already have the built-in `edit` or `admin` role in the namespace can manage Elastic resources without this step.

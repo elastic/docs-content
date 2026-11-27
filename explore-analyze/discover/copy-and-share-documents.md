@@ -29,8 +29,12 @@ To paste results into another tool, copy the rows you need from the table.
 
 **Result:** The text and Markdown formats copy the columns that are in the table. If you haven't added columns, they copy every field of the selected rows. The JSON format copies each selected document in full, whatever columns the table shows.
 
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` The text and Markdown formats copy a missing value as a dash (`-`), the same placeholder that the table shows. Refer to [What a dash or `(null)` in your results means](inspect-documents.md#missing-values-in-results).
+
 :::{tip}
 To copy the content of a single cell, use the quick actions that appear when you hover over the cell.
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In the **Summary** column, select **Copy value** to copy the whole document.
 :::
 
 {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` In **JSON** view, you can also copy a field, a nested object, or the whole document from the tree. Refer to [View documents as JSON](document-explorer.md#document-explorer-view-mode).

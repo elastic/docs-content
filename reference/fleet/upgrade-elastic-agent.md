@@ -1,4 +1,5 @@
 ---
+description: Upgrade Fleet-managed Elastic Agents with Fleet. Trigger upgrades immediately, during a maintenance window, or at a scheduled time, and restart stalled upgrades for one or many agents.
 navigation_title: Upgrade {{agent}}s
 mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html
@@ -25,6 +26,10 @@ In most failure cases the {{agent}} may retry an upgrade after a short wait. The
 This approach simplifies the process of keeping your agents up to date. It also saves you time because you don’t need third-party tools or processes to manage upgrades.
 
 By default, {{agent}}s require internet access to perform binary upgrades from {{fleet}}. However, you can host your own artifacts repository and configure {{agent}}s to download binaries from it. For more information, refer to [Air-gapped environments](/reference/fleet/air-gapped.md).
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` An agent policy can list up to three download sources, for example your own artifacts repository followed by a fallback location. If the download from the first source fails, {{agents}} try the next sources in order. For details, refer to [Change the {{agent}} binary download location](/reference/fleet/agent-policy.md#agent-binary-download-settings).
+
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` Before {{agents}} download the new version from these sources, they reserve disk space for the new agent package. If there isn't enough space, the upgrade fails before the download starts. To turn off this behavior, refer to [Reserve disk space before upgrades](/reference/fleet/fleet-settings.md#agent-binary-reserve-diskspace).
 
 For a detailed view of the {{agent}} upgrade process and the interactions between {{fleet}}, {{agent}}, and {{es}}, refer to the [Communications amongst components](https://github.com/elastic/elastic-agent/blob/main/docs/upgrades.md) diagram in the `elastic-agent` GitHub repository.
 

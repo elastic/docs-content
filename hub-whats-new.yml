@@ -34,9 +34,9 @@ products:
         availability:
           - Serverless
         tag: Search
-      - title: ES|QL HIGHLIGHT command
-        description: Show which terms matched a full-text query by wrapping them in highlight tags in your ES|QL results. Generally available.
-        link: elasticsearch://reference/query-languages/esql/commands/highlight.md
+      - title: ES|QL Data Federation
+        description: Query files in external cloud storage with ES|QL, without ingesting them into Elasticsearch. Technical preview.
+        link: elasticsearch://reference/query-languages/esql/esql-data-federation.md
         availability:
           - Serverless
         tag: ES|QL

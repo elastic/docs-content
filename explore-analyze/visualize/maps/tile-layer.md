@@ -12,11 +12,6 @@ products:
 
 Tile layers display image tiles served from a tile server.
 
-:::{image} /explore-analyze/images/kibana-tile_layer.png
-:alt: tile layer
-:screenshot:
-:::
-
 To add a tile layer to your map, click **Add layer**, then select one of the following:
 
 **Configured Tile Map Service**

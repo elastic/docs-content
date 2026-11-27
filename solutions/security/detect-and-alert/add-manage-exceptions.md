@@ -174,6 +174,10 @@ If an Elastic update changes a prebuilt rule's type, the rule keeps its exceptio
 stack: ga 9.0-9.3
 ```
 
+::::{note}
+In later versions, {{elastic-endpoint}} exceptions are managed from the **Artifacts** page. For more information, refer to [](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md).
+::::
+
 {{elastic-endpoint}} exceptions apply to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) and to any rules with the [**{{elastic-endpoint}} exceptions**](common-rule-settings.md#rule-ui-advanced-params) option selected. These exceptions are applied to both the detection rule and the {{elastic-endpoint}} on your hosts.
 
 ::::{important}

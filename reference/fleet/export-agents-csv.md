@@ -45,6 +45,6 @@ You need the following privileges:
 ## Related pages [export-agents-csv-related]
 
 * [{{agent}}s](/reference/fleet/manage-agents.md)
-* [Add tags to filter the Agents list](/reference/fleet/filter-agent-list-by-tags.md)
+* [](/reference/fleet/filter-agent-list-by-tags.md)
 * [{{fleet}} roles and privileges](/reference/fleet/fleet-roles-privileges.md)
 * [Configure {{kib}} reporting](/deploy-manage/kibana-reporting-configuration.md)

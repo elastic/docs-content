@@ -52,7 +52,7 @@ We reserve the right to force upgrade or restart a cluster immediately and witho
 
 A forced upgrade or restart might become necessary in a situation that:
 
-* Bypasses Shield, where knowing only the cluster endpoint is sufficient to gain access to data.
+* Bypasses authentication, allowing access to data with only the cluster endpoint
 * Disrupts our ability to effectively manage a cluster in disaster scenarios
 * Impairs stability to the point where we cannot guarantee cluster node or data integrity
 * Impairs or risks impairing our infrastructure

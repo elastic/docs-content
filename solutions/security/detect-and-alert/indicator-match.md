@@ -30,11 +30,11 @@ Indicator match rules have two additional constraints:
 
 Indicator match rules are the right fit when:
 
-* You maintain an index of **known threat indicators** (IP addresses, domains, file hashes, URLs) and want to detect when any of them appear in your event data.
-* You need to compare fields across **two separate indices** (source events and threat intelligence).
-* You want alerts automatically **enriched** with indicator metadata, such as threat type, confidence, and source feed.
+* You maintain an index of known threat indicators (IP addresses, domains, file hashes, URLs) and want to detect when any of them appear in your event data.
+* You need to compare fields across two separate indices (source events and threat intelligence).
+* You want alerts automatically enriched with indicator metadata, such as threat type, confidence, and source feed.
 
-Indicator match rules are **not** the best fit when:
+Indicator match rules aren't the best fit when:
 
 * You need to join data from multiple sources with transformations, aggregations, or complex filtering. Use an [{{esql}} rule](/solutions/security/detect-and-alert/esql.md) with [`LOOKUP JOIN`](elasticsearch://reference/query-languages/esql/commands/processing-commands.md#esql-lookup-join) for more flexible cross-index queries.
 * You need to detect event sequences or ordering. Use an [EQL rule](/solutions/security/detect-and-alert/eql.md) instead.
