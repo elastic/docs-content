@@ -73,7 +73,10 @@ For example, if downsampling makes indices read-only after seven days, you can't
 Instead, create a separate unmanaged historical {{tsds-init}}, load the data, then enable a [data stream lifecycle](/manage-data/lifecycle/data-stream.md) when the load is complete.
 
 :::{note}
-{applies_to}`stack: ga 9.6` A {{tsds-init}} that has no lifecycle configuration isn't unmanaged. The [minimum data stream lifecycle](/manage-data/lifecycle/data-stream.md#minimum-data-stream-lifecycle) rolls it over and tail merges it while you load data. To prevent this activity, explicitly turn off the lifecycle in the index template, as shown in the following step.
+:applies_to: stack: ga 9.6+
+A {{tsds-init}} that has no lifecycle configuration isn't unmanaged.
+The minimum data stream lifecycle](/manage-data/lifecycle/data-stream/dlm-default-lifecycle.md) rolls it over and tail merges it while you load data.
+To prevent this activity, explicitly turn off the lifecycle in the index template, as shown in the following step.
 :::
 
 :::::{stepper}
