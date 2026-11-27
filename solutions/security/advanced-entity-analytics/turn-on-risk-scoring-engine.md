@@ -33,8 +33,8 @@ The preview is limited to two risk scores per {{kib}} instance or serverless pro
 
 :::{applies-item} { stack: ga 9.4+, serverless: ga }
 To preview risky entities, go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-  * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-  * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
+  * **Security solution view**: Find **{{stack-manage-app}}** → **Entity Analytics** in the navigation menu.
+  * **Classic view**: Find **Manage** → **Entity Analytics** in the navigation menu.
 :::
 
 :::{applies-item} { stack: ga 9.0-9.3 }
@@ -69,8 +69,8 @@ In {{stack}} 9.4.0–9.4.5 and 9.5.0–9.5.1, risk scoring and the entity store 
 If you're enabling risk scoring for the first time:
 
 1. Go to the **Entity Analytics** management page. Accessing this page differs based on the [solution view](/deploy-manage/manage-spaces.md#spaces-managing) that you're using:
-    * **Security solution view**: Find **{{stack-manage-app}} → Entity Analytics** in the navigation menu.
-    * **Classic view**: Find **Manage → Entity Analytics** in the navigation menu.
+    * **Security solution view**: Find **{{stack-manage-app}}** → **Entity Analytics** in the navigation menu.
+    * **Classic view**: Find **Manage** → **Entity Analytics** in the navigation menu.
 2. Turn the toggle on.
 
    :::{note}

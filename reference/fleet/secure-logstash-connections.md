@@ -127,7 +127,7 @@ output {
 }
 ```
 
-1. The Elasticsearch endpoint URL for your {{es-serverless}} project is available in **Application endpoints, cluster and component IDs**. Select **Manage** next to your project to access this information. 
+1. The {{es}} endpoint URL for your {{es-serverless}} project is available on the project overview page in the **Application endpoints** flyout. Select **Manage** next to your project to access this information. Use the **Direct endpoint** value.
 
 2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
 
@@ -202,7 +202,7 @@ bin/logstash
 
 This section describes how to add a {{ls}} output and configure SSL settings in {{fleet}}. If you’re running {{agent}} standalone, refer to the [{{ls}} output](/reference/fleet/logstash-output.md) configuration docs.
 
-1. In {{kib}}, go to **{{fleet}} > Settings**.
+1. In {{kib}}, go to **{{fleet}}** → **Settings**.
 2. Under **Outputs**, click **Add output**. If you’ve been following the {{ls}} steps in {{fleet}}, you might already be on this page.
 3. Specify a name for the output.
 4. For **Type**, select **Logstash**.
@@ -223,7 +223,7 @@ When you’re done, save and apply the settings.
 
 {{ls}} is now listening for events from {{agent}}, but events are not streaming into {{es}} yet. You need to select the {{ls}} output in an agent policy. You can edit an existing policy or create a new one:
 
-1. In {{kib}}, go to **{{fleet}} > Agent policies** and either create a new agent policy or click an existing policy to edit it:
+1. In {{kib}}, go to **{{fleet}}** → **Agent policies** and either create a new agent policy or click an existing policy to edit it:
 
     * To change the output settings in a new policy, click **Create agent policy** and expand **Advanced options**.
     * To change the output settings in an existing policy, click the policy to edit it, then click **Settings**.

@@ -1,0 +1,6 @@
+project: 'Products'
+toc:
+  - file: elastic-stack.md
+  - file: elasticsearch.md
+  - file: kibana.md
+  - file: logstash.md

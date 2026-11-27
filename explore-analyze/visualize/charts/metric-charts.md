@@ -135,7 +135,7 @@ To add trend indicators to your metric visualization:
     Use the `shift` parameter in formulas to compare current values against historical data. For example, if your primary metric is counting orders (based on an `order_id` field) for the current week, you can use the `count(order_id, shift='1w')` formula to compare this week's count of orders to last week's count.
     ::::
 
-3. In the secondary metric configuration, look for the **Color by value** option. The possible choices are:
+3. In the secondary metric configuration, look for the **Color mode** option (**Color by value** in earlier versions). The possible choices are:
    * **None**: No trend indicators (default)
    * **Static**: Shows the secondary metric as a badge with a fixed color that you select
    * **Dynamic**: Enables both color coding and directional icons based on the comparison
@@ -478,7 +478,7 @@ Customize your metric chart to display exactly the information you need, formatt
       - **Line**: Show a light line chart in the background.
       - **Bar**: Show a progress bar that represents the current value of the chart measured against the [Maximum value](#max-value-options) defined for the chart.
     - **Bar orientation**: Options include **Vertical** and **Horizontal**.
-    - **Color mode** or **Color by value** (depending on your version): Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
+    - **Mode** (**Color mode** or **Color by value** in earlier versions): Apply colors to the chart. Choose between **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. By default, the color applies to the chart's background. 
       - **Static**: The color always remains the same and is independent from the metric's value.
         - **Color**: Pick a color and its opacity.
       - **Dynamic**: Define colors to apply to the chart based on the value of the primary metric.
@@ -501,7 +501,7 @@ Customize your metric chart to display exactly the information you need, formatt
     - **Value format**: Choose to display the metric as number, percent, bytes, bits, duration, or with a custom format that you can define.
     - **Label**: Define the label displayed next to the secondary metric. By default, the **Name** shows. You can instead show a **Custom** value or hide it by selecting **None**.
     - **Label position**: Choose to show the label **Before** or **After** the metric.
-    - **Color by value**: Apply colors to the chart. Choose between **None**, **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. This option allows you to use the secondary metric as a comparison point to highlight trends. Refer to [](#metric-trends) for more details.
+    - **Color mode** (**Color by value** in earlier versions): Apply colors to the chart. Choose between **None**, **Static** for a unique color and **Dynamic** for using different colors based on the metric's value. This option allows you to use the secondary metric as a comparison point to highlight trends. Refer to [](#metric-trends) for more details.
 
 ### Maximum value settings [max-value-options]
 
@@ -603,7 +603,7 @@ The following examples show various configuration options that you can use for b
     * **Title**: "Successful requests (2xx)"
     * **Primary metric**: `count(kql='response.keyword >= "200" and response.keyword < "300"') / count(response.keyword)`
       * **Value format**: `Percent`
-      * **Color mode** or **Color by value**: `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
+      * **Mode** (**Color mode** or **Color by value** in earlier versions): `Dynamic` (green when above 95%, yellow between 75% and 95%, red when below)
       * **Background chart** or **Supporting visualization**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Value format**: `Percent`
@@ -750,7 +750,7 @@ For more information, refer to the [Visualizations API](https://www.elastic.co/d
     * **Title**: "Successful requests per origin"
     * **Primary metric**: `count(kql='response.keyword >= "200" and response.keyword < "300"') / count(response.keyword)`
       * **Value format**: `Percent`
-      * **Color mode** or **Color by value**: `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
+      * **Mode** (**Color mode** or **Color by value** in earlier versions): `Dynamic`. Green when above 95%, yellow between 75% and 95%, red when below
       * **Background chart** or **Supporting visualization**: "Line" to show evolution over time
     * **Secondary metric**: `0.95` formula
       * **Label**: Custom, set to `Target:`

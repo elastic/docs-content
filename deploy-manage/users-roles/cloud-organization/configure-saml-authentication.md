@@ -242,7 +242,7 @@ To allow for role mapping verification, SSO must be configured and enabled for y
 1. From the navigation menu, select **Organization** → [**SSO**](https://cloud.elastic.co/account/idp).
 2. In the **Role mappings** section, click **Create role mapping**.
 3. Add a name for the role mapping. The name helps to identify the role mapping to other members, and must be unique.
-4. Click to configure the roles that you want to assign to users who meet the mapping rules, click **Add roles** and then select the roles. For more information, refer to [*User roles and privileges*](user-roles.md).
+4. Click to configure the roles that you want to assign to users who meet the mapping rules, click **Add roles** and then select the roles. For {{serverless-short}} projects, you can also set the [access level](user-roles.md#access) for each role assignment. For more information, refer to [](user-roles.md).
 5. In the **Mapping rules** section, add rules for the role mapping:
 
     1. Select **All are true** or **Any are true** to define how multiple rules are evaluated. **All are true** requires every rule to match; **Any are true** requires at least one rule to match.

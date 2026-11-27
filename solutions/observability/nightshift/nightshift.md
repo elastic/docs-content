@@ -35,14 +35,15 @@ From the home page you can:
 
 ### Look deeper into investigations [nightshift-investigation-flyout]
 
-Select an investigation from the home page to view more information. A flyout opens showing the investigation's status, such as **Running** or **Completed**, its severity, and its findings: what happened, the impact, the hypotheses and evidence, the conclusion, and proposed actions.
+Select an investigation from the home page to view more information. A flyout opens showing the investigation's status, such as **Running** or **Completed**, its severity, and its findings: what happened, the impact, the conclusion, a hypothesis tree, and proposed actions.
+
+### Knowledge page [nightshift-knowledge-page]
+
+To review, edit, and add to what Elastic nightshift knows about your systems, select {icon}`boxes_vertical` → **Knowledge**. Refer to [Context](./memory.md).
 
 ### Management page [nightshift-management-page]
 
-Go to **Elastic nightshift** → **Management** to control what Elastic nightshift knows and how it runs. From the management page, you can:
-
-- Review, edit, and add to what Elastic nightshift knows about your systems. Refer to [Context](./memory.md).
-- Manage Significant Events settings. Refer to the [operator guide](./significant-events/operator-guide.md).
+Go to **Elastic nightshift** → **Management** to manage how Elastic nightshift runs. From the management page, you can manage Significant Events settings. Refer to the [operator guide](./significant-events/operator-guide.md).
 
 ## Give feedback [nightshift-feedback]
 

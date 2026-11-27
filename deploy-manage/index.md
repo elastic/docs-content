@@ -1,4 +1,5 @@
 ---
+meta_title: Deploy and manage Elasticsearch
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/setup.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html

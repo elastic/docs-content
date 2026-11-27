@@ -1,6 +1,6 @@
 ---
 navigation_title: "Create alerts on trace data"
-description: "Create Kibana alerting rules on Agent Builder trace data to monitor token usage, agent error rates, and tool failures."
+description: "Create Kibana Classic Alerting rules on Agent Builder trace data to monitor token usage, agent error rates, and tool failures."
 applies_to:
   stack: ga 9.5+
   serverless: ga
@@ -14,7 +14,7 @@ products:
 
 # Create alerts on {{agent-builder}} trace data
 
-{{agent-builder}} collects execution traces into a data stream in your {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{kib}} alerting rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, total token usage that exceeds a budget, an agent error rate that spikes, or a tool that fails repeatedly.
+{{agent-builder}} collects execution traces into a data stream in your {{es}} cluster. These traces record token usage, errors, latency, and tool calls, so you can create {{alerting-v1-system}} rules that notify you when something needs your attention. For example, you can alert on a conversation that uses too many tokens, total token usage that exceeds a budget, an agent error rate that spikes, or a tool that fails repeatedly.
 
 Because traces are stored in a regular data stream, you can use the same {{kib}} rule types, check schedules, and connectors as any other alerting workflow.
 
@@ -24,7 +24,7 @@ Before you create a rule, make sure that:
 
 * **Trace collection is on.** {{agent-builder}} must be writing traces to the `traces-agent_builder.otel-<space-id>` data stream in the space where you create the rule. Collection is on by default. See [Collect agent traces](collect-traces.md).
 * **You can read the trace data.** The rule queries `traces-agent_builder.otel-*`, so you need read access to those data streams. See [Read trace data](permissions.md#read-trace-data).
-* **You can use {{kib}} alerting.** You need privileges to create and manage rules, plus a connector to send notifications such as Slack, email, or PagerDuty. See [Set up alerting](/explore-analyze/alerting/alerts/alerting-setup.md).
+* **You can use {{alerting-v1-system-short}}.** You need privileges to create and manage rules, plus a connector to send notifications such as Slack, email, or PagerDuty. See [Set up alerting](/explore-analyze/alerting/alerts/alerting-setup.md).
 
 ## Create a rule
 
@@ -160,5 +160,5 @@ Each alert identifies the tool by its span name, for example `execute_tool <tool
 * [Collect traces](collect-traces.md): turn on trace collection and learn about the data streams, privacy settings, and access model.
 * [Agent Builder traces dashboard](agent-traces-dashboard.md): the prebuilt overview dashboard and the full span and attribute reference.
 * [Monitor usage and costs](monitor-usage.md): how {{agent-builder}} counts tokens and how usage maps to cost.
-* [Create and manage rules](/explore-analyze/alerting/alerts/create-manage-rules.md): manage, snooze, and troubleshoot {{kib}} alerting rules.
+* [Create and manage rules](/explore-analyze/alerting/alerts/create-manage-rules.md): manage, snooze, and troubleshoot {{alerting-v1-system-short}} rules.
 * [{{es}} query rule](/explore-analyze/alerting/alerts/rule-type-es-query.md): full reference for the rule type used on this page.

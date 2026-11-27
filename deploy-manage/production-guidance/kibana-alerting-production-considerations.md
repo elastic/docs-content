@@ -1,5 +1,5 @@
 ---
-navigation_title: Optimize alerting performance
+navigation_title: Optimize {{alerting-v1-system-short}} performance
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-production-considerations.html
 applies_to:
@@ -12,11 +12,15 @@ products:
   - id: kibana
 ---
 
-# {{kib}} alerting: performance and scaling [alerting-production-considerations]
+# {{alerting-v1-system}}: Performance and scaling [alerting-production-considerations]
 
-Alerting runs both rule checks and actions as persistent background tasks managed by the Task Manager.
+{{alerting-v1-system-short}} runs both rule checks and actions as persistent background tasks managed by the Task Manager.
 
 When relying on rules and actions as mission critical services, make sure you follow the [production considerations](kibana-task-manager-scaling-considerations.md) for Task Manager.
+
+<!-- TODO: @nastasha to validate this paragraph with the RnA team and or ResponseOps before uncommenting it.
+{applies_to}`stack: ga 9.6+` {{alerting-v2-system}} rules also run as Task Manager tasks, one recurring task for each rule, so they use the same Task Manager capacity as {{alerting-v1-system-short}} rules. The `xpack.alerting.*` settings on this page apply only to {{alerting-v1-system-short}}. To limit how much data each {{alerting-v2-system-short}} rule run searches, set a [lookback window](/explore-analyze/alerting/esql/rules/configure-rule-schedule.md#schedule-lookback-window) that covers only the data the rule needs.
+-->
 
 ## Running background rule checks and actions [alerting-background-tasks]
 

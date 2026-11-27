@@ -33,6 +33,9 @@ Create custom detection rules tailored to your environment and threat model. The
 **[Set rule data sources](/solutions/security/detect-and-alert/set-rule-data-sources.md)**
 :   Override default index patterns, target specific indices, or exclude cold and frozen data tiers.
 
+**[Plan detection rules for search performance](/solutions/security/detect-and-alert/plan-rule-performance.md)** {applies_to}`security: ga`
+:   Set rule schedules that keep rules running on time, especially before you turn on many rules at once.
+
 **[Write investigation guides](/solutions/security/detect-and-alert/write-investigation-guides.md)**
 :   Add triage guidance to rules using Markdown, Timeline query buttons, and Osquery integration.
 

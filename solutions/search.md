@@ -8,68 +8,73 @@ products:
   - id: elasticsearch
   - id: cloud-serverless
 navigation_title: Search use case
+description: Learn what you can build with Elasticsearch search, how search applications work, and where to find resources for getting started.
 ---
 
-# Search use case
+# Search with {{es}}
 
-This section documents core {{es}} search capabilities. These capabilities are available across all Elastic deployments, solutions, and project types.
+{{es}} is a search database: one place to store and search documents, vectors, logs, and metrics. You can search them with full-text, semantic, and hybrid techniques. Search capabilities are available across all Elastic deployments, solutions, and project types.
 
-Use this section to understand search techniques, query methods, ranking strategies, and data ingestion for search-powered applications.
+This overview explains what you can build with {{es}} and how the pieces fit together. It also provides resources to help you learn more and get started with your own data.
 
-On {{serverless-full}}, there are two search project types. Use an [{{es}} project](/solutions/elasticsearch-solution-project.md) for general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, or when you need custom models on {{ml}} nodes. Use an [{{es}} {{vectordb}} project](/solutions/vector-database.md) when embeddings and similarity search are the primary workload. [Compare {{es}} and Vector Database projects](/solutions/vector-database.md#when-to-use-this-project-type) to choose the right project type for your use case.
-
-::::{tip}
-Using the {{es}} solution or serverless project type? The [{{es}} solution documentation](/solutions/elasticsearch-solution-project.md) covers additional UI tools included with these options.
-::::
+:::{note}
+Not every capability described on this page is available in every deployment or {{serverless-short}} project type. For broader comparisons, refer to [](/deploy-manage/deploy/deployment-comparison.md) and [](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md). For exact availability, refer to the documentation for the specific feature.
+:::
 
 ## What you can build
 
-Use {{es}} search capabilities for use cases such as:
+{{es}} powers applications, AI systems, and agents that need fast, relevant results over large amounts of data. Common use cases include:
 
-- Website and documentation search
-- Ecommerce product catalogs
-- Content recommendation systems
-- RAG (Retrieval Augmented Generation) systems
-- Geospatial search applications
-- Question answering systems
-- Analytics dashboards and data exploration
-- Custom observability or cybersecurity search tools
-- Much more!
+- **Retrieval Augmented Generation (RAG):** Retrieve relevant context from your own data to ground responses from large language models.
+- **Agentic retrieval:** Give AI agents access to your data so they can find the context they need to act.
+- **Question answering systems:** Return answers based on what a query means, not only on the words it contains.
+- **Website and documentation search:** Help visitors find the right page with typo tolerance, synonyms, and relevance tuning.
+- **Ecommerce product catalogs:** Combine text relevance with filters, facets, and business signals such as price or popularity.
+- **Content recommendation systems:** Surface similar items by meaning, using vector similarity.
+- **Multimodal search:** Search across images, video, or audio using a text description, or use an image as the query itself.
+- **Geospatial search applications:** Find results by location and distance.
+- **Analytics dashboards and data exploration:** Filter, sort, and aggregate the same data that you search.
+- **Observability and security:** Search and analyze logs, events, metrics, and other operational data.
 
-## Search use case documentation
+## A flexible data store for search
 
-The following subjects are covered in this section:
+{{es}} stores data as JSON documents in indices. Each field in a document is indexed according to its type, so one index can support several ways of retrieving the same data:
 
-| Topic | Description |
-|-------|-------------|
-| [**Get started**](/solutions/search/get-started.md) | Create deployments, connect to {{es}}, and run your first searches |
-| [**Ingest data**](/solutions/search/ingest-for-search.md) |  Learn about options for getting data into {{es}} for search use cases | 
-| [**Search approaches**](/solutions/search/search-approaches.md) | Compare search techniques available in {{es}}, including full-text, vector, semantic, and hybrid search |
-| [**Build your queries**](/solutions/search/querying-for-search.md) | Implement your search approaches using specific query languages |
-| [**Ranking and reranking**](/solutions/search/ranking.md) | Control result ordering and relevance |
-| [**RAG**](/solutions/search/rag.md) | Learn about tools for retrieval augmented generation with {{es}}|
-| [**Building applications**](/solutions/search/site-or-app.md) | Integrate {{es}} into your websites or applications |
+- Text fields support full-text search, with analysis, relevance scoring, and synonyms.
+- Vector fields store embeddings generated by machine learning models, and support semantic similarity search. Vectors live in the same search database as your other fields, so you can use {{es}} as a vector database without adding a separate system.
+- Structured fields such as numbers, dates, keywords, and geo points support exact-match filters, sorting, and aggregations.
 
-## Search concepts [search-concepts]
+Event and time series data, such as application logs and infrastructure metrics, is stored and searched in the same search database as your documents and vectors, so you can analyze operational data alongside the rest of your data.
 
-For an introduction to core {{es}} concepts such as indices, documents, and mappings, refer to [](/manage-data/data-store.md).
+Because these capabilities share one data store, you don't need a separate system for each retrieval method. You can add a retrieval method later without moving your data. Features such as [Better Binary Quantization (BBQ)](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization-bbq) for vectors help you retain more data using less storage.
 
-To dive more deeply into the building blocks of {{es}} clusters, including nodes, shards, primaries, and replicas, refer to [](/deploy-manage/distributed-architecture.md).
+For logs, the [`logsdb` index mode](/manage-data/data-store/data-streams/logs-data-stream-configure.md) also helps reduce storage.
 
-## {{es}} as a vector database [es-as-vector-database]
+## How it works
 
-{{es}} functions as a [vector database](/solutions/search/vector.md#vector-database) by storing [vector embeddings](/solutions/search/vector.md#vector-embedding) and retrieving the most similar results to a query vector. Vector embeddings are numerical representations of data, such as text, images, or audio, created by {{ml}} models. Because similar items are positioned closer together in vector space, {{es}} can use these embeddings to perform semantic similarity search and return results based on meaning rather than exact keyword matches.
+The following flow shows how data moves through a search application built on {{es}}. It describes the stages, not the steps you must follow in order.
 
-This capability is the foundation for vector search and related use cases in {{es}}. It enables you to work with semantic retrieval on the same data and infrastructure that you already use for full-text search, structured filters, and aggregations. {{es}} supports this by storing embeddings in vector field types such as [`dense_vector`](/solutions/search/vector.md#dense-vectors) and [`sparse_vector`](/solutions/search/vector.md#sparse-vectors), alongside your other indexed data.
+:::{image} /solutions/images/search-engine-flow.png
+:alt: Flow through an Elasticsearch search application. Data is ingested and indexed, then the search engine combines it with a query before ranking and delivering results.
+:::
 
-To use {{es}} as a vector database, you can use the [`semantic_text`](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md) field type. When you index content into a `semantic_text` field, {{es}} automatically generates vector embeddings using a configured {{ml}} model and stores them in the underlying vector field. These embeddings are indexed for efficient [k-nearest neighbor (kNN) search](elasticsearch://reference/query-languages/query-dsl/query-dsl-knn-query.md), enabling fast similarity-based retrieval at query time.
+- **Ingest:** You send data from your sources to {{es}}, where it is stored in indices. You can transform it on the way in, for example by generating vector embeddings.
+- **Index:** {{es}} builds data structures for each field type to support efficient searches. For search performance guidance, refer to [](/deploy-manage/production-guidance/optimize-performance/search-speed.md).
+- **Search:** Your application sends a query. {{es}} retrieves matching documents using one or more search approaches.
+- **Rank:** Results are scored and ordered by relevance. You can refine the order with reranking techniques.
+- **Deliver:** Your application displays the results, or passes them to a large language model as context for RAG.
 
-For a high-level understanding of vector search concepts and capabilities in {{es}}, refer to [Vector search](/solutions/search/vector.md). For an overview of use cases and guidance on how to implement them, refer to [Vector search use cases](/solutions/search/vector/vector-search-use-cases.md).
+## Key concepts
 
-On {{serverless-full}}, it's recommended to use an [{{es}} {{vectordb}} project](/solutions/vector-database.md). New users can [sign up for a free 14-day trial](https://cloud.elastic.co/serverless-registration?onboarding_token=vector). For other deployment types, refer to [Quick start options](/get-started/deployment-options.md#quick-start-options).
+These concepts provide the foundation for understanding how {{es}} stores data and supports different search approaches.
 
-## Related reference
+- [The {{es}} data store](/manage-data/data-store.md): How {{es}} stores data as documents in indices and how mappings define fields.
+- [Search approaches](/solutions/search/search-approaches.md): How full-text, vector, semantic, and hybrid search compare, and which fits your goals.
+- [Distributed architecture](/deploy-manage/distributed-architecture.md): How nodes, shards, primaries, and replicas work together to scale and protect your data.
+- [Vector search](/solutions/search/vector.md): How vector embeddings and semantic search work, and how {{es}} functions as a vector database.
 
-* [{{es}} reference documentation](elasticsearch://reference/elasticsearch/index.md)
-* [{{es}} API documentation]({{es-apis}})
+## Next steps
+
+- [](/solutions/search/get-started/quickstarts.md): Index sample data and run your first search.
+- [Set up {{es}}](/solutions/search/set-up.md): Choose where it runs and connect to it.
 

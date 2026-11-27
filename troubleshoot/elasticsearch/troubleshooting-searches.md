@@ -1,5 +1,7 @@
 ---
 navigation_title: Searches
+description: Diagnose and fix common Elasticsearch search problems including missing results, unexpected ordering, slow queries, and relevance issues.
+type: troubleshooting
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
   - https://www.elastic.co/guide/en/serverless/current/devtools-dev-tools-troubleshooting.html
@@ -196,7 +198,7 @@ GET /my-index-000001/_validate/query?rewrite=true
 }
 ```
 
-Use the [explain API]({{es-apis}}operation/operation-explain) to find out why a specific document matches or doesn’t match a query:
+Use the [explain API]({{es-apis}}operation/operation-explain) to find out why a specific document matches or doesn’t match a query. For deeper relevance debugging, refer to [Troubleshoot search relevance](troubleshooting-search-relevance.md).
 
 ```console
 GET /my-index-000001/_explain/0
@@ -240,7 +242,7 @@ Start with [slow logs](/deploy-manage/monitor/logging-configuration/slow-logs.md
 
 {applies_to}`stack: preview 9.4` Use [query logging](/deploy-manage/monitor/logging-configuration/query-logs.md) to determine the query source. A single configuration captures end-to-end request duration across all query types, including Query DSL, {{esql}}, EQL, and SQL.
 
-If you can't use query logging, enable [audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md) instead to determine the query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
+If you can't use query logging, enable [audit logging](/deploy-manage/monitor/stack-audit-logging/enabling-audit-logs.md) and configure [HTTP request body auditing](/deploy-manage/monitor/stack-audit-logging/auditing-http-request-bodies.md) to determine the query source. Add the following settings to the [`elasticsearch.yml`](/deploy-manage/stack-settings.md) configuration file to trace queries. The resulting logging is verbose, so turn off these settings when not troubleshooting.
 
 ```yaml
 xpack.security.audit.enabled: true
@@ -251,3 +253,7 @@ xpack.security.audit.logfile.events.emit_request_body: true
 Refer to [Advanced tuning: finding and fixing slow Elasticsearch queries](https://www.elastic.co/blog/advanced-tuning-finding-and-fixing-slow-elasticsearch-queries) for more information.
 
 For {{esql}}-specific slow query diagnosis and prevention, refer to [Optimize {{esql}} query performance](elasticsearch://reference/query-languages/esql/esql-query-performance.md).
+
+## Troubleshoot relevance quality [troubleshooting-relevance-quality]
+
+If your search returns results but they're in the wrong order, irrelevant, or missing expected matches, refer to [Troubleshoot search relevance](troubleshooting-search-relevance.md).

@@ -143,7 +143,7 @@ To configure document-level security (DLS), you create a custom role where you d
 
         ![Configuring document-level security another example](/deploy-manage/images/serverless-custom-role-document-level-privileges-ex-2.png)
         
-1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
+1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to space**. Specify the level of access required and click **Assign role**.
 1. Select **Create role** to save your custom role.
 ::::
 
@@ -357,7 +357,7 @@ To configure field-level security (FLS), you create a custom role where you defi
     
       ![Configuring field-level security by denying access to fields](/deploy-manage/images/serverless-custom-role-deny-field-level-privileges.png)
 
-1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to this space**. Specify the level of access required and click **Assign role**.
+1. Optional: To grant this role access to {{kib}} spaces for feature access and visibility, click **Assign to space**. Specify the level of access required and click **Assign role**.
 1. Select **Create role** to save your custom role.
 ::::
 :::::

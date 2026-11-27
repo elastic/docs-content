@@ -9,9 +9,9 @@ products:
   - id: cloud-kubernetes
 ---
 
-# Deploy an {{es}} cluster [k8s-deploy-elasticsearch]
+# Deploy an {{es}} cluster on Kubernetes [k8s-deploy-elasticsearch]
 
-To deploy a simple [{{es}}](/solutions/search/get-started.md) cluster specification, with one {{es}} node:
+To deploy a simple [{{es}}](/products/elasticsearch.md) cluster specification, with one {{es}} node:
 
 ```yaml subs=true
 cat <<EOF | kubectl apply -f -

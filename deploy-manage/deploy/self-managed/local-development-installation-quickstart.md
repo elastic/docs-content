@@ -9,7 +9,7 @@ products:
   - id: elasticsearch
 ---
 
-# Install {{es}} locally (quickstart) [run-elasticsearch-locally]
+# {{es}} local development quickstart [run-elasticsearch-locally]
 
 ::::{warning}
 **DO NOT USE THESE INSTRUCTIONS FOR PRODUCTION DEPLOYMENTS**
@@ -53,4 +53,4 @@ For more detailed information about the `start-local` setup, refer to the [READM
 
 ## Next steps [local-dev-next-steps]
 
-Use our [quick start guides](/solutions/search/get-started/quickstarts.md) to learn the basics of {{es}}.
+Use [](/solutions/search/get-started/quickstarts.md) to learn the basics of {{es}}.

@@ -36,7 +36,7 @@ To create a custom tool in the UI:
 
    ::::{applies-item} { stack: ga 9.4+, serverless: ga }
 
-    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize > Tools > Manage all tools**.
+    Click **Manage components** at the bottom of the left sidebar, then select **Tools**. You can also reach this page from **Customize** → **Tools** → **Manage all tools**.
    ::::
 
    ::::{applies-item} { stack: ga =9.3 }
@@ -54,22 +54,66 @@ To create a custom tool in the UI:
   :width: 150px
   :::
 
-4. Fill in the required fields:
-   - **ID**: Enter a unique identifier for your tool (e.g., `get_customer_orders`). Agents use this ID to reference the tool. Refer to [Naming conventions](#naming-conventions) for recommended patterns.
-   - **Name**: Enter a descriptive name for your tool.
+3. Fill in the required fields:
+   - **Tool ID**: Enter a unique identifier for your tool (for example, `get_customer_orders`). Agents use this ID to reference the tool. Refer to [Naming conventions](#naming-conventions) for recommended patterns.
    - **Description**: Write a clear explanation of what the tool does and when it should be used. Refer to [Writing effective tool descriptions](#writing-effective-tool-descriptions) for guidance.
-   - **Type**: Choose a tool type from the list.
+   - **Type**: Select a tool type from the list.
    - **Parameters**: For tools with {{esql}} queries, define any parameters your query needs.
    - **Labels**: (Optional) Add labels to categorize and organize your tools.
-5. Choose how to save your tool:
-   - Select **Save** to create the tool.
-   - Select **Save and test** to create the tool and immediately open the testing interface
+4. Choose how to save your tool:
+   - Click **Save** to create the tool.
+   - Click **Save & test** to create the tool and immediately open the testing interface.
 
     :::{image} ../images/tool-save-save-and-test-buttons.png
     :screenshot:
-    :alt: Save and Save and test buttons for tool creation
-    :width:250px
+    :alt: Save and Save & test buttons for tool creation
+    :width: 250px
     :::
+
+### Create and attach a tool [create-and-attach-a-tool]
+```{applies_to}
+stack: ga 9.5+
+serverless: ga
+```
+
+You can create a tool from an agent's **Tools** page. The tool is saved to the tool library and attached to the agent in one step.
+
+To create and attach a tool, you need:
+
+- **Agent Builder: All**, or both **Agent Builder > Management: Create and edit custom tools** and **Agent Builder > Management: Create and edit agents**. Refer to [{{kib}} feature privileges](../permissions.md#kib-privileges).
+- Edit access to the agent. Refer to [Access control settings](../custom-agents.md#access-control-settings).
+
+To create a tool for an agent:
+
+1. Select the agent from the agent selector in the sidebar.
+2. Under **Customize** in the sidebar, select **Tools**.
+3. Click **Add tool** → **Create a tool**.
+
+    :::{image} ../images/agent-tools-add-tool-menu.png
+    :screenshot:
+    :alt: An agent's Tools page with the Add tool menu open, showing the Import from tool library and Create a tool options
+    :width: 600px
+    :::
+
+    The **Create new tool** flyout opens.
+4. Complete the tool form. It's the same form that **+ New tool** opens from **Manage components** → **Tools**.
+5. Click **Save and attach**. The flyout has no **Save & test** option.
+
+:::{note}
+**Add tool** appears whenever you have edit access to the agent, even if you lack one of the privileges listed earlier. In that case:
+
+- Without **Create and edit custom tools**, saving the tool fails.
+- Without **Create and edit agents**, the tool is saved to the tool library but isn't attached to the agent.
+
+If the agent has no tools and **Enable Elastic capabilities** is off, the page shows **Add tools** instead of **Add tool**. **Add tools** only opens the tool library. To add a new tool to that agent, create it from **Manage components** → **Tools**, then [assign it](#assign-tools-to-agents).
+:::
+
+#### Edit or remove an attached tool
+
+To manage the tool, click it on the agent's **Tools** page to open its detail panel:
+
+- To change the tool, click **Edit in library**. The tool's page in the tool library opens in a new tab.
+- To stop this agent from using the tool, click **Remove**, then click **Remove** again to confirm. The tool is detached from the agent but stays in the tool library.
 
 ## Create custom tools with API
 
@@ -77,36 +121,53 @@ You can also create and manage tools programmatically. To learn more, refer to [
 
 ## Require confirmation before a tool runs
 ```{applies_to}
-stack: ga 9.6+
+stack: ga 9.5+
 serverless: ga
 ```
 
 An agent can pause and ask you to approve a call to a custom tool before it runs. To learn what these prompts look like in chat, refer to [Human-in-the-loop prompts](../chat.md#human-in-the-loop-prompts).
 
-Set **Require user confirmation** in the UI for [workflow tools](workflow-tools.md) and [MCP tools](mcp-tools.md), or use the [Tools API](../tools.md#tools-api) for any custom tool type. The API equivalent is the tool's `confirmation.askUser` property, which accepts `never`, `once`, or `always`. A request that retrieves the tool returns the current value.
+On {{stack}} 9.5, tool confirmation requires 9.5.5 or later.
 
-{{esql}} and index search tools accept `confirmation.askUser` through the API, and the agent applies it, but the setting does not appear when you open the tool in the UI. Use the API to check or change it for these tool types.
+The **Require user confirmation** setting controls when the agent asks:
 
-Confirmation applies only when an agent calls the tool. Calling the tool directly through the Tools API skips it, and [sub-agent executions cannot answer confirmation prompts](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
+| Option | Behavior |
+| --- | --- |
+| **Never** (default) | The tool runs without a prompt. |
+| **Once** | The agent asks the first time it calls the tool in a conversation. Your response, whether you allow or deny the call, applies to every later call to the tool in that conversation, including retries after a failed call. |
+| **Always** | The agent asks every time it calls the tool. |
+
+Where you set it depends on the tool type:
+
+- **[Workflow tools](workflow-tools.md#configuration) and [MCP tools](mcp-tools.md#configuration)**: Set it in the tool's configuration in the UI, or use the API.
+- **{{esql}} and index search tools**: Use the API. The agent applies the setting, but it doesn't appear when you open the tool in the UI.
+
+In the [Tools API](../tools.md#tools-api), the setting is the tool's `confirmation.askUser` property, which accepts `never`, `once`, or `always`. A request that retrieves the tool returns the current value.
+
+Confirmation applies only when an agent calls the tool:
+
+- Calls that don't come from an agent skip confirmation and run the tool. This includes calls through the Tools API and through the [{{agent-builder}} MCP server](../mcp-server.md).
+- When no one can answer the prompt, such as in a subagent run, the call is declined and the tool doesn't run. Refer to [Human-in-the-loop prompts require an interactive conversation](../limitations-known-issues.md#human-in-the-loop-prompts-require-an-interactive-conversation).
 
 ## Test your tools
 
 Before assigning tools to agents, verify they work correctly by testing them. Testing helps ensure your tool returns useful results and handles parameters correctly.
 
-If you didn't select **Save and test** immediately:
+If you didn't select **Save & test** immediately:
 
 1. Find your tool in the Tools list.
 2. Click the test icon (play button) associated with your tool.
 
-:::{image} ../images/test-icon.png
-:screenshot:
-:alt: Test icon (play button) for running tool tests
-:width: 150px
-:::
+   :::{image} ../images/test-icon.png
+   :screenshot:
+   :alt: Test icon (play button) for running tool tests
+   :width: 150px
+   :::
+
 3. Enter test data based on your tool type:
    - **For {{esql}} tools with parameters**: Enter realistic test values for each parameter in the **Inputs** section.
    - **For Index search tools**: Enter a sample search query to test the search functionality.
-4. Select **Submit** to run the test.
+4. Click **Submit** to run the test.
 5. Review the Response section to verify:
    - The tool executes without errors.
    - Results are returned in the expected format.
@@ -118,10 +179,23 @@ To start using a custom tool, you must assign it to a [custom agent](../custom-a
 
 :::::{applies-switch}
 
-::::{applies-item} { stack: ga 9.4+, serverless: ga }
+::::{applies-item} { stack: ga 9.5+, serverless: ga }
 
-1. Select the agent from the agent selector in the left sidebar.
-2. Expand the **Customize** accordion and select **Tools**.
+1. Select the agent from the agent selector in the sidebar.
+2. Under **Customize** in the sidebar, select **Tools**.
+3. Open the tool library:
+   - If the page shows **Add tools**, click it.
+   - Otherwise, click **Add tool** → **Import from tool library**.
+4. Select the tools to assign.
+
+To create a tool and attach it in the same action, refer to [Create and attach a tool](#create-and-attach-a-tool).
+
+::::
+
+::::{applies-item} { stack: ga =9.4 }
+
+1. Select the agent from the agent selector in the sidebar.
+2. Under **Customize** in the sidebar, select **Tools**.
 3. Click **Add tool** and select the tools to assign.
 
 ::::

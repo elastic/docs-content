@@ -146,18 +146,13 @@ To visualize CSA regions by web log traffic, the web log traffic must contain a 
     ```
 
 7. Go to **Discover**.
-8. Set the data view to **Kibana Sample Data Logs**.
+8. In {{esql}} mode, enter `FROM kibana_sample_data_logs`. In classic mode, set the data view to **Kibana Sample Data Logs**.
 9. Open the [time filter](../../query-filter/filtering.md), and set the time range to the last 30 days.
 10. Scan through the list of **Available fields** until you find the `csa.GEOID` field. You can also search for the field by name.
 11. Click ![Add icon](/explore-analyze/images/kibana-add-icon.png "") to toggle the field into the document table.
 12. Find the *csa.NAME* field and add it to your document table.
 
 Your web log data now contains `csa.GEOID` and `csa.NAME` fields from the matching **csa** region. Web log traffic not contained in a CSA region does not have values for `csa.GEOID` and `csa.NAME` fields.
-
-:::{image} /explore-analyze/images/kibana-discover_enriched_web_log.png
-:alt: View of data in Discover
-:screenshot:
-:::
 
 
 ## Step 4: Visualize Combined Statistical Area (CSA) regions by web traffic [_step_4_visualize_combined_statistical_area_csa_regions_by_web_traffic]
@@ -180,7 +175,7 @@ Now that our web traffic contains CSA region identifiers, you’ll visualize CSA
     2. Set **Join field** to **csa.GEOID.keyword**.
 
 7. Click **Add and continue**.
-8. Scroll to **Layer Style** and Set **Label** to **Fixed**.
+8. Scroll to **Layer style** and Set **Label** to **Fixed**.
 9. Click **Keep changes**.
 10. **Save** the map.
 
@@ -188,11 +183,6 @@ Now that our web traffic contains CSA region identifiers, you’ll visualize CSA
     2. Under **Add to dashboard**, select **None**.
     3. Click **Save and add to library**.
 
-
-:::{image} /explore-analyze/images/kibana-csa_regions_by_web_traffic.png
-:alt: Final map showing custom regions
-:screenshot:
-:::
 
 Congratulations! You have completed the tutorial and have the recipe for visualizing custom regions. You can now try replicating this same analysis with your own data.
 

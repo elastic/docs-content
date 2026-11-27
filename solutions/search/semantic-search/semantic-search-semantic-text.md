@@ -23,7 +23,7 @@ The `semantic_text` field type simplifies the {{infer}} workflow by providing {{
 
 We recommend using the `semantic_text` workflow for [semantic search](../semantic-search.md) in the {{stack}}. When you need more control over indexing and query settings, you can use the complete {{infer}} workflow instead (refer to [Semantic search with the Inference API](semantic-search-inference.md) for details).
 
-This tutorial uses the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md).
+This tutorial includes examples for the [Elastic {{infer-cap}} Service (EIS)](/explore-analyze/elastic-inference/eis.md) and for ML nodes.
 
 ## Requirements [semantic-text-requirements]
 
@@ -65,7 +65,11 @@ PUT semantic-embeddings
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default {{infer}} endpoint is used.
+
+   {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` In this example, [`.jina-embeddings-v5-text-small`](/explore-analyze/elastic-inference/eis.md#jina-embeddings-v5-on-eis) is used, which is the default on {{ech}} and {{serverless-short}}.
+
+   The default varies by {{stack}} version and deployment type. For details, refer to [Use default endpoints](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints).
 
 ::::::
 
@@ -109,14 +113,18 @@ curl -X PUT "${ELASTICSEARCH_URL}/semantic-embeddings" \
 ```
 
 1. The name of the field to contain the generated embeddings.
-2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the [default {{infer}} endpoint](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints) is used.
+2. The field to contain the embeddings is a `semantic_text` field. Since no `inference_id` is provided, the default {{infer}} endpoint is used.
+
+   {applies_to}`stack: ga 9.4+` {applies_to}`serverless: ga` In this example, [`.jina-embeddings-v5-text-small`](/explore-analyze/elastic-inference/eis.md#jina-embeddings-v5-on-eis) is used, which is the default on {{ech}} and {{serverless-short}}.
+
+   The default varies by {{stack}} version and deployment type. For details, refer to [Use default endpoints](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text-setup-configuration.md#default-endpoints).
 
 ::::::
 
 :::::::
 
 :::{dropdown} Example response
-```console
+```console-result
 {
   "acknowledged": true,
   "shards_acknowledged": true,
@@ -182,10 +190,10 @@ EOF
 
 :::{dropdown} Example response
 
-```console
+```console-result
 {
   "errors": false,
-  "took": 400,
+  "took": 5602,
   "items": [
     {
       "index": {
@@ -194,8 +202,8 @@ EOF
         "_version": 1,
         "result": "created",
         "_shards": {
-          "total": 2,
-          "successful": 2,
+          "total": 1,
+          "successful": 1,
           "failed": 0
         },
         "_seq_no": 0,
@@ -210,11 +218,11 @@ EOF
         "_version": 1,
         "result": "created",
         "_shards": {
-          "total": 2,
-          "successful": 2,
+          "total": 1,
+          "successful": 1,
           "failed": 0
         },
-        "_seq_no": 1,
+        "_seq_no": 0,
         "_primary_term": 1,
         "status": 201
       }
@@ -226,11 +234,11 @@ EOF
         "_version": 1,
         "result": "created",
         "_shards": {
-          "total": 2,
-          "successful": 2,
+          "total": 1,
+          "successful": 1,
           "failed": 0
         },
-        "_seq_no": 2,
+        "_seq_no": 0,
         "_primary_term": 1,
         "status": 201
       }
@@ -338,37 +346,45 @@ Both queries return the documents ranked by semantic relevance. The documents ab
 
 ::::{dropdown} Example Query DSL response
 
-```console
+```console-result
 {
-  "took": 87,
+  "took": 292,
   "timed_out": false,
   "_shards": {
-    "total": 1,
-    "successful": 1,
+    "total": 6,
+    "successful": 6,
     "skipped": 0,
     "failed": 0
   },
   "hits": {
     "total": {
-      "value": 2,
+      "value": 3,
       "relation": "eq"
     },
-    "max_score": 21.098728,
+    "max_score": 0.8133085,
     "hits": [
       {
-        "_index": "semantic-embeddings2",
+        "_index": "semantic-embeddings",
         "_id": "1",
-        "_score": 21.098728,
+        "_score": 0.8133085,
         "_source": {
           "content": "After running, cool down with light cardio for a few minutes to lower your heart rate and reduce muscle soreness."
         }
       },
       {
-        "_index": "semantic-embeddings2",
+        "_index": "semantic-embeddings",
         "_id": "2",
-        "_score": 8.030467,
+        "_score": 0.69976115,
         "_source": {
           "content": "Marathon plans stress weekly mileage; carb loading before a race does not replace recovery between hard sessions."
+        }
+      },
+      {
+        "_index": "semantic-embeddings",
+        "_id": "3",
+        "_score": 0.5577712,
+        "_source": {
+          "content": "Tune cluster performance by monitoring thread pools and refresh interval."
         }
       }
     ]
@@ -376,7 +392,7 @@ Both queries return the documents ranked by semantic relevance. The documents ab
 }
 ```
 
-1. Documents are ranked by `_score`. Higher scores indicate stronger semantic relevance to the query.
+1. Documents are ranked by `_score`. A higher score means stronger semantic relevance to the query. If you use a model other than [`.jina-embeddings-v5-text-small`](/explore-analyze/elastic-inference/eis.md#jina-embeddings-v5-on-eis), such as ELSER on a version before 9.4, the scores might differ from this example.
 2. The `_source` contains the original document text. Embeddings are stored internally and excluded from the response by default.
 
 ::::
@@ -395,6 +411,7 @@ Tune cluster performance by monitoring thread pools and refresh interval.       
 
 ## Related pages[semantic-text-further-examples]
 
+* If a kNN search fails or returns unexpected results, [troubleshoot your indexed vectors](../vector/knn/troubleshoot-knn-search.md). `semantic_text` stores embeddings internally, so a missing vector in `_source` does not mean indexing failed.
 * For an overview of all query types supported by `semantic_text` fields and guidance on when to use them, refer to [Querying `semantic_text` fields](elasticsearch://reference/elasticsearch/mapping-reference/semantic-text.md#querying-semantic-text-fields).
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
 * For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.

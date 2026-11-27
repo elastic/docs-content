@@ -73,7 +73,7 @@ Replace `<sqs-arn>` with the ARN of the SQS queue, `<s3-bucket-arn>` with the AR
 ::::
 
 
-```console
+```json
 {
   "Version": "2012-10-17",
   "Id": "example-ID",
@@ -392,7 +392,7 @@ Now, let’s configure the `s3access` fileset. The goal here is to be able to mo
 
 Create a new S3 bucket and SQS queue. Ensure that the event notifications on the new bucket are enabled, and that it’s sending notifications to the new queue.
 
-Now go back to the first bucket, and go to **Properties** > **Server access logging**. Specify that you want to ship the access logs to the bucket you most recently created.
+Now go back to the first bucket, and go to **Properties** → **Server access logging**. Specify that you want to ship the access logs to the bucket you most recently created.
 
 :::{image} /solutions/images/observability-Server-Access-Logging.png
 :alt: Enabling Server Access Logging

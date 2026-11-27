@@ -71,8 +71,8 @@ You can add exceptions from several places in the UI:
     :::
 
 * **Alerts table**: Find **Alerts** in the navigation menu, go to the alert, click the **More Actions** menu {icon}`boxes_horizontal`, and select **Add rule exception**.
-* **Alert details flyout**: Click **View details** on an alert, then click **Take action > Add rule exception**.
-* **Shared Exception Lists page**: Find **Shared exception lists** in the navigation menu, click **Create shared exception list** > **Create exception item**.
+* **Alert details flyout**: Click **View details** on an alert, then click **Take action** → **Add rule exception**.
+* **Shared Exception Lists page**: Find **Shared exception lists** in the navigation menu, click **Create shared exception list** → **Create exception item**.
 
 ### Configure exception conditions
 
@@ -166,17 +166,17 @@ When using ES|QL, you can append new fields with commands such as [`EVAL`](https
 
 * **Indicator match rules**: Exceptions are evaluated against both source and indicator indices. If the exception matches events in *either* index, alerts are not generated.
 
+If an Elastic update changes a prebuilt rule's type, the rule keeps its exceptions, but they might behave differently with the new type. For details, refer to [Update rules with a rule type change](/solutions/security/detect-and-alert/update-prebuilt-rules.md#update-rule-type-change).
+
 ## Add {{elastic-endpoint}} exceptions [endpoint-rule-exceptions]
-
-::::{note}
-:applies_to: { stack: ga 9.4+, serverless: ga }
-
-If you've opted in to per-policy {{elastic-endpoint}} exception behavior, {{elastic-endpoint}} exceptions are no longer evaluated by detection rules and cannot be added to them. For more information, refer to [](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md).
-::::
 
 ```yaml {applies_to}
 stack: ga 9.0-9.3
 ```
+
+::::{note}
+In later versions, {{elastic-endpoint}} exceptions are managed from the **Artifacts** page. For more information, refer to [](/solutions/security/manage-elastic-defend/elastic-endpoint-exceptions.md).
+::::
 
 {{elastic-endpoint}} exceptions apply to [endpoint protection rules](../manage-elastic-defend/endpoint-protection-rules.md) and to any rules with the [**{{elastic-endpoint}} exceptions**](common-rule-settings.md#rule-ui-advanced-params) option selected. These exceptions are applied to both the detection rule and the {{elastic-endpoint}} on your hosts.
 

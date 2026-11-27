@@ -44,7 +44,7 @@ For example, the following email action uses a template to include data from the
 
 You can attach the execution context payload or data from an any HTTP service to the email notification. There is no limit on the number of attachments you can configure.
 
-To configure attachments, specify a name for the attached file and the type of attachment: `data`, `http` or `reporting`. The `data` attachment type attaches the execution context payload to the email message. The `http` attachment type enables you to issue an HTTP request and attach the response to the email message. When configuring the `http` attachment type, you must specify the request URL. The `reporting` attachment type is a special type to include PDF rendered dashboards from kibana. This type is consistently polling the kibana app if the dashboard rendering is done, preventing long running HTTP connections, that are potentially killed by firewalls or load balancers in-between.
+To configure attachments, specify a name for the attached file and the type of attachment: `data`, `http` or `reporting`. The `data` attachment type attaches the execution context payload to the email message. The `http` attachment type enables you to issue an HTTP request and attach the response to the email message. When configuring the `http` attachment type, you must specify the request URL. The `reporting` attachment type is a special type to include reports, such as PDF rendered dashboards, from {{kib}}. This type is consistently polling the kibana app if the dashboard rendering is done, preventing long running HTTP connections, that are potentially killed by firewalls or load balancers in-between.
 
 ```js
 "actions" : {
@@ -62,7 +62,7 @@ To configure attachments, specify a name for the attached file and the type of a
         },
         "dashboard.pdf" : {
           "reporting" : {
-            "url": "http://example.org:5601/api/reporting/generate/dashboard/Error-Monitoring"
+            "url": "http://example.org:5601/api/reporting/generate/printablePdfV2?jobParams=..."
           }
         },
         "data.yml" : {

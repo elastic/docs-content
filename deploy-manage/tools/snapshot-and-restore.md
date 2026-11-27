@@ -1,4 +1,5 @@
 ---
+navigation_title: Snapshot and restore
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
   - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-restore.html
@@ -14,7 +15,7 @@ products:
   - id: cloud-enterprise
 ---
 
-# Snapshot and restore
+# Snapshot and restore in {{es}}
 
 A snapshot is a backup of a running {{es}} cluster. You can use snapshots to:
 

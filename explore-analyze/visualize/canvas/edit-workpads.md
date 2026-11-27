@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/edit-workpads.html
 applies_to:
   stack: ga
-  serverless: ga
+  serverless: unavailable
 products:
   - id: kibana
 ---
@@ -92,7 +92,7 @@ text.align: center;
 
 To use an element with the same functionality and appearance in multiple places, clone the element.
 
-Select the element, then click **Edit > Clone**.
+Select the element, then click **Edit** → **Clone**.
 
 
 ### Move and resize elements [move-and-resize-elements]
@@ -112,17 +112,17 @@ The element editing options allow you to arrange and organize the elements on yo
 To align two or more elements:
 
 1. Press and hold Shift, then select the elements you want to align.
-2. Click **Edit > Alignment**, then select the alignment option.
+2. Click **Edit** → **Alignment**, then select the alignment option.
 
 To distribute three or more elements:
 
 1. Press and hold Shift, then select the elements you want to distribute.
-2. Click **Edit > Distribution**, then select the distribution option.
+2. Click **Edit** → **Distribution**, then select the distribution option.
 
 To reorder elements:
 
 1. Select the element you want to reorder.
-2. Click **Edit > Order**, then select the order option.
+2. Click **Edit** → **Order**, then select the order option.
 
 
 ### Delete elements [delete-elements]
@@ -130,5 +130,5 @@ To reorder elements:
 When you no longer need an element, delete it from your workpad.
 
 1. Select the element you want to delete.
-2. Click **Edit > Delete**.
+2. Click **Edit** → **Delete**.
 
