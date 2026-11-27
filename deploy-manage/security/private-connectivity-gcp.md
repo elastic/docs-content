@@ -69,7 +69,7 @@ When using GCP Private Service Connect, the following limitations apply:
 ```{include} _snippets/private-connectivity-limitations-ech.md
 ```
 
-* {applies_to}`serverless: ga` **Limited region availability:** Private Service Connect is available for {{serverless-full}} projects only in the regions listed in [Private Service Connect URIs](#ec-private-service-connect-uris). Projects in other GCP regions can't use it.
+* {applies_to}`serverless: ga` **Limited region availability:** Private Service Connect for {{serverless-full}} is available in a limited set of GCP regions. Projects in other regions can't use it. Before you plan your setup, confirm that the region where your project is hosted is in the [list of supported regions](#ec-private-service-connect-uris). Your Private Service Connect endpoint must be in the same region as your project.
 
 * {applies_to}`ech: ga` **Remote clusters with API key authentication:** Remote cluster connections that use the API key based security model are not yet supported over GCP Private Service Connect because traffic on port `9443` is not currently allowed. Only the TLS certificate based security model (port `9400`) is currently supported for remote cluster traffic.
 
@@ -156,7 +156,7 @@ Private connection policies are optional for GCP Private Service Connect. After 
     * For {{serverless-short}} projects: The Service Attachment URI is `projects/esp-prod-asse1-ecp-privatelink/regions/asia-southeast1/serviceAttachments/asia-southeast1-production-privatelink-serverless`.
 
     ::::{note}
-    you need to [reserve a static internal IP address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) in your VPC. The address is used by Private Service Connect endpoint.
+    You need to [reserve a static internal IP address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) in your VPC. The address is used by Private Service Connect endpoint.
     ::::
 
 
