@@ -31,7 +31,7 @@ The Managed {{es}} _bulk endpoint isn't a drop-in replacement for sending `_bulk
 
     On {{ech}}, volume that your cluster can't keep up with still results in `429` responses. Refer to [Managed inputs rate limiting](rate-limiting.md).
 
-- **You want to limit local buffering on your shippers.** The managed endpoint buffers data while {{es}} is slow or unavailable, so your shippers need less local buffering. They still need to retry `429` and `503` responses, and a delay in indexing must be acceptable.
+- **You want to limit local buffering on your shippers.** The managed endpoint buffers data while {{es}} is slow or unavailable, so your shippers need less local buffering. They still need to retry `429` and `503` responses, including documents that report a `503` status inside a `200` response. A delay in indexing must be acceptable.
 
 If you switch an existing shipper to the managed endpoint, compare document counts between what your shipper sends and the destination data stream for a period after the switch, and monitor the destination with [Data Set Quality](/solutions/observability/data-set-quality-monitoring.md).
 
@@ -174,15 +174,56 @@ Each action in a `_bulk` request can specify its target through the `_index` fie
 
 ## Delivery behavior [delivery-behavior]
 
-The Managed {{es}} _bulk endpoint emulates the {{es}} `_bulk` API, but because it ingests through managed inputs, it behaves differently from indexing directly into {{es}}. Keep the following in mind:
+The Managed {{es}} _bulk endpoint doesn't accept a request as a single unit. It reads the request in groups of up to 256 documents and enqueues each group as soon as the group is complete, so part of a request can already be enqueued when a later part fails. Enqueued means the endpoint has stored the documents for later indexing; {{es}} hasn't indexed them yet. Because the result can differ within one request, always check the HTTP status, the `errors` field, and the status of each item.
 
-- **Documents with disallowed targets are rejected individually.** A document whose target doesn't start with `logs-`, `metrics-`, or `traces-` gets a `403` status with a `security_exception` error in its response item, and the response sets `errors: true`. The other documents in the request are still accepted. The response is `200 OK` even if every document is rejected, so check `errors` and the status of each item. For allowed targets, refer to [Limitations](#limitations).
-- **Rejected documents are handled by your shipper.** {{product.elastic-agent}} drops a rejected document and logs a warning. {{product.logstash}} retries it indefinitely by default. To change this, refer to the {{product.logstash}} example in [](#configure-your-shipper-and-send-data).
-- **Accepted documents are enqueued together.** The endpoint either enqueues all accepted documents in a request, or fails the entire request. If they can't be enqueued, the whole request fails with `503 Service Unavailable`, and no document is reported as successful. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`, and nothing in the request is enqueued.
-- **A success response means the data is enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each accepted item reports a `201` status. This confirms the managed input accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response. Your shipper counts these documents as sent.
-- **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still can't accept the data when buffer retention ends, the endpoint discards it. The success response your shipper already received doesn't change.
-- **Delivery delay isn't visible to your shipper.** A direct `_bulk` request slows down or fails when {{es}} is under pressure, so your shipper can retry or back off. The managed endpoint returns success as soon as the batch is enqueued, even if delivery to {{es}} is delayed.
-- **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target the way they do with {{es}}, although targets outside the allowed prefixes are rejected anyway.
+### Item results in an HTTP `200` response [bulk-item-results]
+
+The endpoint returns HTTP `200` when it can parse the request. It sets `errors` to `true` when any item failed. HTTP `200` does not make a client retry the request. Read each item.
+
+| Item status | `error.type` | Meaning |
+| --- | --- | --- |
+| `201` | none | The endpoint enqueued the document. {{es}} indexes it later. |
+| `400` | `document_parsing_exception` | The document is valid JSON, but contains a value that can't be stored, for example a number that's too large, such as `1e10000`. The document isn't enqueued. Other items can still be `201`. |
+| `403` | `security_exception` | The target isn't allowed. Refer to [Limitations](#limitations) for allowed targets. The document isn't enqueued, and the other documents in the request are still processed. The HTTP status stays `200` even if every document is `403`. |
+| `503` | `unavailable` | The document is valid and its target is allowed, but the endpoint failed to enqueue the group it belongs to. Retry this item. |
+
+A group can contain a `403` item and a `503` item. The forbidden item stays `403` when the allowed documents in that group cannot be enqueued. For allowed targets, refer to [Limitations](#limitations).
+
+{{product.elastic-agent}} drops a `403` item and logs a warning. {{product.logstash}} retries a `403` item until you change that behavior. Refer to the {{product.logstash}} example in [](#configure-your-shipper-and-send-data).
+
+Retry items with status `503`. A shipper that treats HTTP `200` as success for every document does not resend them. {{product.logstash}} retries an item `503`. When you enable the dead letter queue, {{product.logstash}} sends an item `400` there. Otherwise it drops the item.
+
+One request can mix these results. The endpoint can accept the first group and fail a later group. The first group stays accepted. Its items stay `201`. The failed group returns item `503`.
+
+### Request errors [bulk-request-errors]
+
+Some failures reject the whole HTTP request. The response body has no `items` list.
+
+| Failure | HTTP status | `error.type` |
+| --- | --- | --- |
+| A line is not valid JSON | `400` | `x_content_parse_exception` |
+| The action is not `create`, or the target is missing | `400` | `bad_request` |
+
+A group the endpoint already accepted stays accepted. The endpoint drops documents that are not yet in an accepted group. The HTTP status stays `400`. Some examples for different scenarios:
+
+| Body | Accepted documents | Response |
+| --- | --- | --- |
+| Fewer than 256 valid documents, then a line that is not JSON | The endpoint accepts no documents | HTTP `400`. |
+| 256 valid documents, then a line that is not JSON | The endpoint keeps those 256 | HTTP `400`. The body has no `items` list. |
+| 257 valid documents, then a line that is not JSON | The endpoint keeps the first 256 and drops document 257 | HTTP `400`. A retry sends the first 256 again. |
+
+Direct {{es}} also returns HTTP `400` with no `items` list for a line that is not JSON. On this endpoint, a full group of 256 can already be accepted before that error.
+
+:::{warning}
+A client that retries this HTTP `400` resends the whole request, and the endpoint stores the documents it already enqueued a second time. {{es}} bulk clients don't retry a `400`. {{product.logstash}} retries every HTTP status other than `200`, so it resends the request.
+:::
+
+### After a document is enqueued [bulk-after-enqueue]
+
+- **A `201` means the endpoint enqueued the document.** {{es}} indexes it later. The bulk response doesn't include later errors, such as mapping conflicts. Your shipper counts the document as sent.
+- **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still can't accept the data when buffer retention ends, the endpoint discards it. The `201` your shipper already received doesn't change.
+- **Delivery delay isn't visible to your shipper.** A direct `_bulk` request slows down or fails when {{es}} is under pressure, so your shipper can back off. The managed endpoint returns `201` as soon as it enqueues a group, even if delivery to {{es}} is delayed.
+- **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target the way they do with {{es}}. The endpoint still rejects targets outside the allowed prefixes.
 - **Compressed requests are supported.** The endpoint accepts `Content-Encoding: gzip` request bodies.
 
 For how long undelivered data can stay in the buffer, and what happens to it after that, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
@@ -191,7 +232,7 @@ For how long undelivered data can stay in the buffer, and what happens to it aft
 
 Because indexing happens asynchronously, indexing failures such as mapping conflicts aren't reported in the bulk response, and the endpoint doesn't provide client-side visibility into them. To confirm your data was indexed, verify that documents landed in the destination data stream and use [Data Set Quality](/solutions/observability/data-set-quality-monitoring.md) to monitor indexing issues. For more detail on how indexing errors are handled, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
-Under load, or when the service can't accept more data, the endpoint can respond with `429 Too Many Requests` or `503 Service Unavailable`. Configure your shipper to retry these responses with backoff and to queue data locally during transient rejections. For how rate limiting works and how it differs between {{serverless-full}} and {{ech}}, refer to [Managed inputs rate limiting](rate-limiting.md).
+Under load, the endpoint can respond with HTTP `429` or HTTP `503`. It can return those same statuses when it cannot accept more data. Retry these HTTP statuses with backoff. Queue data locally during the rejection. An enqueue failure inside a parsed `_bulk` request is an item `503` in an HTTP `200` response. Refer to [Delivery behavior](#delivery-behavior). For how rate limiting works and how it differs between {{serverless-full}} and {{ech}}, refer to [Managed inputs rate limiting](rate-limiting.md).
 
 ## Limitations [limitations]
 
@@ -199,9 +240,9 @@ The following limitations apply when using the Managed {{es}} _bulk endpoint:
 
 - **Only log data is supported.** It must target `logs-*` data streams, for example `logs-my_dataset-default`. The endpoint accepts only targets that start with `logs-`, `metrics-`, or `traces-`, and rejects any other target, including wired streams such as `logs.otel` and system indices, with a `403` status in the response item. `metrics-*` and `traces-*` targets are accepted but not supported. To send metrics and traces, use the direct {{es}} endpoint. For OpenTelemetry data, use the [Managed OTLP Endpoint](managed-otlp-endpoint.md).
 - **{{product.beats}} aren't supported with their default settings.** They write to `<beat>-*` indices such as `filebeat-*` by default, which the endpoint rejects with a `403` status for each document.
-- **Only `create` actions are supported.** Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. Features that depend on other actions, such as scripted upserts, aren't supported.
+- **Only `create` actions are supported.** The endpoint rejects `index`, `update`, or `delete` actions with `400 Bad Request`. Documents that it enqueued before reaching the unsupported action stay enqueued. Refer to [Delivery behavior](#delivery-behavior). Features that depend on other actions, such as scripted upserts, aren't supported.
 - **`require_data_stream` and `require_alias` aren't enforced.** Refer to [Delivery behavior](#delivery-behavior).
-- **Duplicate detection isn't applied.** The endpoint doesn't deduplicate documents by `_id`, so client retries can produce duplicate documents.
+- **Duplicate detection isn't applied.** The endpoint doesn't deduplicate documents by `_id`, so client retries can produce duplicate documents. This includes retrying a `400` response after the endpoint already enqueued part of the request. Refer to [Delivery behavior](#delivery-behavior).
 - **Indexing outcomes aren't reported to your shipper.** The bulk response confirms that data was enqueued, not indexed, so errors such as mapping conflicts never reach your shipper. Managed inputs don't expose ingestion health metrics either, so monitor indexing with [Data Set Quality](/solutions/observability/data-set-quality-monitoring.md).
 - **Delivery settings on the managed side aren't configurable.** Batching, flush intervals, retries, and worker counts are fixed, unlike the equivalent settings of a shipper's {{es}} output.
 - **{{product.fleet}}-managed {{product.elastic-agent}} outputs can't use the endpoint.** {{product.fleet}} issues its agents {{es}} API keys with index privileges, which the endpoint doesn't accept. Only shippers you configure yourself, such as standalone {{product.elastic-agent}} and {{product.logstash}}, can use an API key for managed inputs.
