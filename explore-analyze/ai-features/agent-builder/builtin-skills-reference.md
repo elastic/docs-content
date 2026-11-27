@@ -46,7 +46,7 @@ $$$agent-builder-graph-creation-skill$$$ `graph-creation` {applies_to}`stack: ga
 $$$agent-builder-dashboard-management-skill$$$ $$$agent-builder-dashboards-skill$$$ `dashboards` {applies_to}`stack: preview =9.4, ga 9.5+`
 :   Composes and updates in-memory {{kib}} dashboards. Use when a user asks to find, create, or modify a dashboard, add or remove panels, or edit existing panel visualizations.
 
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` This skill was previously named `dashboard-management`. 
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` This skill was previously named `dashboard-management`. 
        - If a custom agent that doesn't have **Elastic capabilities** turned on lists `dashboard-management`, change it to `dashboards`. Otherwise, the agent stops loading the skill without reporting an error. To retrieve the skill through the API, use `GET /api/agent_builder/skills/dashboards`.
        - If you created a custom skill with the ID `dashboards` before the rename, the built-in skill takes precedence over it. To keep using your custom skill, re-create it with a different ID.
 
@@ -63,7 +63,7 @@ $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {appli
     :::{dropdown} Assigned tools
     `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`
 
-    {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Also `platform.core.create_discover_session`.
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Also `platform.core.create_discover_session`.
 
     :::
 
@@ -99,8 +99,8 @@ $$$agent-builder-connector-discovery-skill$$$ `connector-discovery` {applies_to}
 
 ### Connector skills [agent-builder-connector-skills]
 ```{applies_to}
-serverless: preview
 stack: preview 9.7+
+serverless: preview
 ```
 
 Some [connector](connectors.md) types come with a skill for common lookups, such as searching GitHub issues or finding who's on call in PagerDuty. The skill returns compact results, such as an issue's number, title, state, and labels, instead of the full API response.
@@ -234,7 +234,7 @@ $$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {app
 
 ### Anomaly detection
 
-$$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6`
+$$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
 :   Use this skill to work with {{ml}} {{anomaly-jobs}} from within a conversation:
 
     * **Create:** Set up jobs by describing your data and goal. The skill explores your data, asks about your goal in everyday language, tests a setup on your historical data, and creates real-time jobs after you approve the results. For the full workflow, refer to [Create {{anomaly-jobs}} with AI in chat](/explore-analyze/machine-learning/anomaly-detection/ml-jobs-from-agent-builder.md).

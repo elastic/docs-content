@@ -34,10 +34,10 @@ When an agent needs to interact with an external system, it reads the schemas of
 
 Which connectors an agent can run depends on your deployment type and version:
 
-- {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Only the connectors [assigned to it](#assign-connectors-to-an-agent). Within those connectors, the agent sees only the actions that the connector [allows](#limit-a-connectors-actions) and that aren't marked **Workflow only**. At run time, the agent uses the built-in [`connector-discovery` skill](builtin-skills-reference.md#agent-builder-connector-discovery-skill) to look up its connectors and load their sub-actions and parameter schemas. **Enable Elastic capabilities** includes this skill.
+- {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Only the connectors [assigned to it](#assign-connectors-to-an-agent). Within those connectors, the agent sees only the actions that the connector [allows](#limit-a-connectors-actions) and that aren't marked **Workflow only**. At run time, the agent uses the built-in [`connector-discovery` skill](builtin-skills-reference.md#agent-builder-connector-discovery-skill) to look up its connectors and load their sub-actions and parameter schemas. **Enable Elastic capabilities** includes this skill.
 - {applies_to}`stack: preview 9.4-9.5` Any connector in the space. Unlike standalone tools, connectors don't need to be assigned to agents.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` When you assign a GitHub or PagerDuty (MCP) connector to an agent, the agent also gets a built-in skill for common lookups, such as searching issues or finding who's on call. The skill returns compact results instead of the full API response. For what each skill covers and what it needs, refer to [Connector skills](builtin-skills-reference.md#agent-builder-connector-skills).
+{applies_to}`stack: preview 9.7+` {applies_to}`serverless: preview` When you assign a GitHub or PagerDuty (MCP) connector to an agent, the agent also gets a built-in skill for common lookups, such as searching issues or finding who's on call. The skill returns compact results instead of the full API response. For what each skill covers and what it needs, refer to [Connector skills](builtin-skills-reference.md#agent-builder-connector-skills).
 
 ## Add a connector
 
