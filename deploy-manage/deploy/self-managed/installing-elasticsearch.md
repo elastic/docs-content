@@ -29,9 +29,9 @@ To quickly set up {{es}} and {{kib}} in Docker for local development or testing,
 ::::{admonition} Looking for something else?
 This section describes how to install {{es}} on infrastructure that you manage.
 
-- For an overview of the Elastic platform, including the {{stack}}, deployment options, and solutions, go to [](/get-started/index.md).
+- For an overview of the Elastic platform, go to [](/get-started/index.md).
 - To build search experiences with {{es}}, from basic queries to AI-powered search, go to [](/solutions/search.md).
-- To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
+- To look up {{es}} settings and configuration options, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
 - To compare self-managed installation with other deployment types, go to [](/deploy-manage/deploy.md).
 - For the {{es}} solution and serverless project type, which add UI tools for building search applications, go to [](/solutions/elasticsearch-solution-project.md).
 

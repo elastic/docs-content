@@ -19,9 +19,9 @@ This page will help you understand your deployment options and choose the approa
 ::::{admonition} Looking for something else?
 This section describes the ways that you can run Elastic and {{es}}, such as on {{ecloud}} or on your own infrastructure.
 
-- For an overview of the Elastic platform, including the {{stack}} and solutions, go to [](/get-started/index.md).
+- For an overview of the Elastic platform, go to [](/get-started/index.md).
 - To build search experiences with {{es}}, from basic queries to AI-powered search, go to [](/solutions/search.md).
-- To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
+- To look up {{es}} settings and configuration options, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
 - For the {{es}} solution and serverless project type, which add UI tools for building search applications, go to [](/solutions/elasticsearch-solution-project.md).
 - For details about {{es}} API endpoints, go to the [Elastic API documentation]({{apis}}).
 
