@@ -103,12 +103,12 @@ stack: preview 9.7+
 
 Some [connector](connectors.md) types come with a skill for common lookups, such as searching GitHub issues or finding who's on call in PagerDuty. The skill returns compact results, such as an issue's number, title, state, and labels, instead of the full API response.
 
-An agent gets a connector skill automatically when a connector of that type is assigned to it. You don't need to assign these skills, and they don't appear in the Skills library or on the agent's **Skills** page. They're available whether **Enable Elastic capabilities** is on or off.
+An agent gets a connector skill automatically when you assign it a connector of that type. You don't need to assign these skills, and they don't appear in the Skills library or on the agent's **Skills** tab. They're available whether **Enable Elastic capabilities** is on or off.
 
-Connector skills run their lookups as [workflows](/explore-analyze/workflows.md). To use them, you need Workflows available in your deployment and the **Execute** [workflows privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures). If either is missing, the agent uses the connector's own actions instead.
+Connector skills run their lookups as workflows, so they need [Elastic Workflows](/explore-analyze/workflows.md) in your deployment or project. The user who chats with the agent also needs the **Execute** [sub-feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) for **Workflows**. If either is missing, the agent uses the connector's own actions through the [`connector-discovery`](#agent-builder-connector-discovery-skill) skill instead.
 
 $$$agent-builder-connector-github-skill$$$ `connector-github`
-:   Searches and lists issues and pull requests through a [GitHub connector](kibana://reference/connectors-kibana/github-action-type.md). Use it to find issues or pull requests by label, author, assignee, text, or date, or to browse the issues or pull requests of one repository. For anything else, such as reading an issue's comments or creating a pull request, the agent uses the connector's own actions.
+:   Searches and lists issues and pull requests through a [GitHub connector](kibana://reference/connectors-kibana/github-action-type.md). Use it to find issues or pull requests by label, author, assignee, text, or date. It can also list the issues or pull requests of one repository. For anything else, such as reading an issue's comments or creating a pull request, the agent uses the connector's own actions.
 
     :::{dropdown} Assigned tools
     `platform.core.execute_workflow`, plus an internal tool to list the agent's connectors.
@@ -116,7 +116,7 @@ $$$agent-builder-connector-github-skill$$$ `connector-github`
     :::
 
 $$$agent-builder-connector-pagerduty-skill$$$ `connector-pagerduty`
-:   Looks up who's on call for a named schedule, and lists incidents, escalation policies, and users through a [PagerDuty (MCP) connector](kibana://reference/connectors-kibana/pagerduty-mcp-action-type.md). For anything else, such as finding who's on call without naming a schedule, listing teams, or creating and updating incidents, the agent uses the connector's own actions.
+:   Looks up who's on call for a named schedule and lists incidents, escalation policies, and users through a [PagerDuty (MCP) connector](kibana://reference/connectors-kibana/pagerduty-mcp-action-type.md). For anything else, such as finding who's on call without naming a schedule, listing teams, or creating and updating incidents, the agent uses the connector's own actions.
 
     :::{dropdown} Assigned tools
     `platform.core.execute_workflow`, plus an internal tool to list the agent's connectors.

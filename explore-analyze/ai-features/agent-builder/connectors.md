@@ -38,7 +38,7 @@ When an agent needs to interact with an external system, it reads the schemas of
 
 {applies_to}`stack: preview 9.4-9.5` Unlike standalone tools, connectors don't need to be assigned to agents. Any agent can run any connector in the space.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` When you assign a GitHub or PagerDuty connector, the agent also gets a built-in skill for common lookups, such as searching issues or finding who's on call. The skill returns compact results instead of the full API response. For what each skill covers and what it needs, refer to [Connector skills](builtin-skills-reference.md#agent-builder-connector-skills).
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` When you assign a GitHub or PagerDuty (MCP) connector to an agent, the agent also gets a built-in skill for common lookups, such as searching issues or finding who's on call. The skill returns compact results instead of the full API response. For what each skill covers and what it needs, refer to [Connector skills](builtin-skills-reference.md#agent-builder-connector-skills).
 
 ## Add a connector
 
