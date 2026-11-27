@@ -25,6 +25,8 @@ You need a custom AI index with at least one source, the **All** privilege for t
 
 Decide what each KI should represent before creating an automation. Refer to [Select a generation strategy](build-and-maintain-ai-index.md#select-a-generation-strategy) and [Design useful Knowledge Indicators](build-and-maintain-ai-index.md#design-useful-knowledge-indicators).
 
+For the privileges each task requires and how many source documents a templated automation processes in each run, refer to [](availability-and-limits.md).
+
 ## Create an automation with Agent Builder
 
 Use the guided route to have {{agent-builder}} propose and set up an automation for the AI index:

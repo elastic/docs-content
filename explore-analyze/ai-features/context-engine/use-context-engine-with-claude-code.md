@@ -36,6 +36,8 @@ You need:
 - The {{es}} `read` and `view_index_metadata` privileges for the AI index's backing indices.
 - Permission to create an API key with those {{kib}} and {{es}} privileges.
 
+For deployment, license, and privilege requirements, refer to [](availability-and-limits.md).
+
 ## Install the Elastic CLI
 
 Install [Elastic CLI](cli://cli/installation.md) 0.7.0 or later globally so Claude Code can run it from its shell environment:

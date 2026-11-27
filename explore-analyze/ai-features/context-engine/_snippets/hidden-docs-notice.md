@@ -5,6 +5,7 @@ The following {{context-engine}} pages are live:
 
 - [Landing page](/explore-analyze/ai-features/context-engine.md)
     - [{{context-engine}} quickstart](/explore-analyze/ai-features/context-engine/quickstart.md)
+    - [{{context-engine}} availability and limits](/explore-analyze/ai-features/context-engine/availability-and-limits.md)
     - [{{context-engine}} concepts](/explore-analyze/ai-features/context-engine/concepts.md)
     - [Build and maintain an AI index](/explore-analyze/ai-features/context-engine/build-and-maintain-ai-index.md)
         - [Create and manage AI indices](/explore-analyze/ai-features/context-engine/create-and-manage-ai-indices.md)

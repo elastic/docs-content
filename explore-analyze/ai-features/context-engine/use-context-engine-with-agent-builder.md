@@ -32,6 +32,8 @@ You need:
 - Access to create or edit an {{agent-builder}} agent and read the AI index.
 - Access to the underlying data and an appropriate agent tool if the agent must query source data.
 
+For deployment, license, and privilege requirements, refer to [](availability-and-limits.md).
+
 ## Add an AI index to an agent
 
 You can assign an AI index while [creating a custom agent](/explore-analyze/ai-features/agent-builder/custom-agents.md#create-a-custom-agent) or by editing an existing agent:
