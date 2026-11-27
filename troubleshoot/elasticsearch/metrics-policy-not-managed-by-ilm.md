@@ -18,8 +18,7 @@ Use this page to confirm that is what happened and, if you want {{ilm-init}} to 
 
 ## Symptoms
 
-- The deprecated `metrics` {{ilm-init}} policy is still attached to the data stream or its backing indices.
-- The [{{ilm-init}} explain API]({{es-apis}}operation/operation-ilm-explain-lifecycle) does not show {{ilm-init}} managing a new backing index.
+- The deprecated `metrics` {{ilm-init}} policy is still attached to the data stream or its backing indices but the [{{ilm-init}} explain API]({{es-apis}}operation/operation-ilm-explain-lifecycle) does not show {{ilm-init}} managing a new backing index.
 - The [explain data stream lifecycle API]({{es-apis}}operation/operation-indices-explain-data-lifecycle) shows data stream lifecycle or the minimum lifecycle managing that index.
 - Older backing indices remain managed by {{ilm-init}}.
 
