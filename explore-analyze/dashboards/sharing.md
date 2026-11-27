@@ -155,6 +155,7 @@ The **Export JSON** option is available for:
 
 - Visualizations created with the [point-and-click editor](../visualize/lens.md) or with an [{{esql}} query](../visualize/esorql.md)
 - [**Links**](../visualize/link-panels.md) and [**Markdown**](../visualize/text-panels.md) panels
+- {applies_to}`stack: ga 9.7+` [**Vega**](../visualize/custom-visualizations-with-vega.md) panels created from that version.
 - Unpinned [**Options list**](../visualize/dashboard-controls.md#control-types), [**Range slider**](../visualize/dashboard-controls.md#control-types), and [**Variable**](../visualize/add-variable-controls.md) controls
 
    :::{tip}

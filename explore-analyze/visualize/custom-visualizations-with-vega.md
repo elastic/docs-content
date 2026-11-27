@@ -51,10 +51,15 @@ Choose **Vega** when you need full control of the specification, for example:
 
 ## Tutorials [_tutorials_create_custom_panels]
 
+<!-- MAINTENANCE: the Vega API payload examples in the tutorials were verified
+against a live Kibana. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file custom-visualizations-with-vega.md
+Install jsonschema first to also validate each spec against its Vega or Vega-Lite schema.
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 These tutorials walk you through building **Vega** and **Vega-Lite** panels on a dashboard: define a data source, shape the chart, and optionally update {{kib}} filters from the visualization.
 
 As you edit the specs, work in small steps and save often. Small changes can cause unexpected results. Specs can use [HJSON](https://hjson.github.io/), which allows optional quotes and commas, comments, and multiline strings.
-
 
 ### Create a line chart from an {{esql}} query [vega-tutorial-create-a-line-chart-from-esql]
 ```{applies_to}
@@ -78,7 +83,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
     A pre-populated line chart displays the total number of documents.
 
 3. Set the [time filter](../query-filter/filtering.md) to a range that includes the sample data. Sample data timestamps are relative to when you installed the data set, so **Last 7 days** works if you just installed it.
-4. Replace the entire **Vega-Lite** spec with the following, then select **Update**:
+4. Replace the entire **Vega-Lite** spec with the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```json
 {
@@ -97,7 +102,7 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
     "x": {
       "field": "key",
       "type": "temporal",
-      "axis": {"title": false}
+      "axis": {"title": null}
     },
     "y": {
       "field": "doc_count",
@@ -114,6 +119,104 @@ Learn how to query your data with {{esql}} from **Vega-Lite** and display the re
 4. The {{esql}} query. {{kib}} converts the columnar response into the row-based format that **Vega** expects.
 
 The chart shows event counts over time from `kibana_sample_data_logs`. For the full list of {{esql}} `url` parameters, see [Writing {{esql}} queries in Vega](#vega-esql-queries).
+
+To keep the chart, select **Apply and close** or **Save and return** (depending on your {{kib}} version), then save the dashboard. To discard the changes you made since you opened the editor, select **Cancel** instead.
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { serverless: ga, stack: "ga 9.7+" }
+
+This example saves the line chart from this tutorial to the library as a **Vega** visualization.
+
+:::{include} ../_snippets/api-payload-version-note.md
+:::
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/vega
+{
+  "title": "Event counts over time",
+  "spec": {
+    "format": "json", <1>
+    "value": { <2>
+      "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+      "title": "Event counts over time",
+      "data": {
+        "url": {
+          "%type%": "esql",
+          "%context%": true,
+          "%timefield%": "@timestamp",
+          "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS doc_count=COUNT() BY key=DATE_TRUNC(2 hour, @timestamp) | SORT key"
+        }
+      },
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "key", "type": "temporal", "axis": {"title": null}},
+        "y": {
+          "field": "doc_count",
+          "type": "quantitative",
+          "axis": {"title": "Document count"}
+        }
+      }
+    }
+  }
+}
+```
+
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
+2. The Vega-Lite spec from step 4.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/vega" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "title": "Event counts over time",
+  "spec": {
+    "format": "json", <1>
+    "value": { <2>
+      "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+      "title": "Event counts over time",
+      "data": {
+        "url": {
+          "%type%": "esql",
+          "%context%": true,
+          "%timefield%": "@timestamp",
+          "query": "FROM kibana_sample_data_logs | WHERE @timestamp >= ?_tstart AND @timestamp <= ?_tend | STATS doc_count=COUNT() BY key=DATE_TRUNC(2 hour, @timestamp) | SORT key"
+        }
+      },
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "key", "type": "temporal", "axis": {"title": null}},
+        "y": {
+          "field": "doc_count",
+          "type": "quantitative",
+          "axis": {"title": "Document count"}
+        }
+      }
+    }
+  }
+}'
+```
+
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
+2. The Vega-Lite spec from step 4.
+
+::::
+
+:::::
+
+To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` that the Vega API returns.
+
+For more information, refer to the [Vega API](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-vega).
+:::::::
 
 To continue with interactive filtering and Query DSL examples, see [Create a stacked area chart from an {{es}} search query](#vega-tutorial-create-a-stacked-area-chart) and [Update {{kib}} filters from Vega](#vega-tutorial-update-kibana-filters-from-vega).
 
@@ -137,7 +240,7 @@ Learn how to query {{es}} with Query DSL from **Vega-Lite**, displaying the resu
 
 #### Add the index and time field [_vega_stacked_area_add_index_and_time_field]
 
-1. In the **Vega-Lite** spec, replace `index: _all` with the following, then click **Update**:
+1. In the **Vega-Lite** spec, replace `index: _all` with the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
 index: kibana_sample_data_ecommerce
@@ -145,7 +248,7 @@ index: kibana_sample_data_ecommerce
 
 A flat line appears with zero results.
 
-To add the data fields from the **kibana_sample_data_ecommerce** {{data-source}}, replace the following, then click **Update**:
+To add the data fields from the **kibana_sample_data_ecommerce** {{data-source}}, replace the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 * `%timefield%: @timestamp` with `%timefield%: order_date`
 * `field: @timestamp` with `field: order_date`
@@ -248,7 +351,7 @@ The response format is different from the first aggregation query:
 }
 ```
 
-In the **Vega-Lite** spec, enter the aggregations, then click **Update**:
+In the **Vega-Lite** spec, enter the aggregations, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   data: {
@@ -349,7 +452,7 @@ In {{kib}} 7.9 and later, use the **Vega-Lite** [flatten transformation](https:/
 
 If you are using {{kib}} 7.8 and earlier, the flatten transformation is available only in **Vega**.
 
-In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
+In the **Vega-Lite** spec, add a `transform` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   transform: [{
@@ -362,7 +465,7 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 
     Vega-Lite displays **undefined** values because there are duplicate names.
 
-3. To resolve the duplicate names, add the `transform` and `encoding` blocks, then click **Update**:
+3. To resolve the duplicate names, add the `transform` and `encoding` blocks, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   transform: [{
@@ -395,7 +498,7 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 
 With the **Vega-Lite** spec, you can add hover states and tooltips to the stacked area chart with the `selection` block.
 
-In the **Vega-Lite** spec, add the `encoding` block, then click **Update**:
+In the **Vega-Lite** spec, add the `encoding` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   encoding: {
@@ -417,7 +520,7 @@ In the **Vega-Lite** spec, add the `encoding` block, then click **Update**:
 
 When you hover over the area series on the stacked area chart, a multi-line tooltip appears, but is unable to indicate the nearest point. To indicate the nearest point, add a second layer.
 
-Add composite marks, then click **Update**:
+Add composite marks, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   layer: [{
@@ -590,13 +693,219 @@ The selection is controlled by a signal. To view the signal, select **Inspect** 
 
 ::::
 
+To keep the chart, select **Apply and close** or **Save and return** (depending on your {{kib}} version), then save the dashboard. To discard the changes you made since you opened the editor, select **Cancel** instead.
 
+:::::::{dropdown} Create this chart using the API
+:applies_to: { serverless: ga, stack: "ga 9.7+" }
+
+This example saves the stacked area chart from this tutorial to the library as a **Vega** visualization.
+
+:::{include} ../_snippets/api-payload-version-note.md
+:::
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/vega
+{
+  "title": "Event counts from ecommerce",
+  "spec": {
+    "format": "json", <1>
+    "value": { <2>
+      "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+      "title": "Event counts from ecommerce",
+      "data": {
+        "url": {
+          "%context%": true,
+          "%timefield%": "order_date",
+          "index": "kibana_sample_data_ecommerce",
+          "body": {
+            "aggs": {
+              "categories": {
+                "terms": {"field": "category.keyword"},
+                "aggs": {
+                  "time_buckets": {
+                    "date_histogram": {
+                      "field": "order_date",
+                      "interval": {"%autointerval%": true},
+                      "extended_bounds": {
+                        "min": {"%timefilter%": "min"},
+                        "max": {"%timefilter%": "max"}
+                      },
+                      "min_doc_count": 0
+                    }
+                  }
+                }
+              }
+            },
+            "size": 0
+          }
+        },
+        "format": {"property": "aggregations.categories.buckets"}
+      },
+      "transform": [{"flatten": ["time_buckets.buckets"], "as": ["buckets"]}],
+      "encoding": {
+        "x": {"field": "buckets.key", "type": "temporal", "axis": {"title": null}},
+        "y": {
+          "field": "buckets.doc_count",
+          "type": "quantitative",
+          "axis": {"title": "Document count"},
+          "stack": true
+        },
+        "color": {"field": "key", "type": "nominal", "title": "Category"},
+        "tooltip": [
+          {"field": "buckets.key", "type": "temporal", "title": "Date"},
+          {"field": "key", "type": "nominal", "title": "Category"},
+          {
+            "field": "buckets.doc_count",
+            "type": "quantitative",
+            "title": "Count"
+          }
+        ]
+      },
+      "layer": [
+        {"mark": "area"},
+        {
+          "mark": "point",
+          "selection": {
+            "pointhover": {
+              "type": "single",
+              "on": "mouseover",
+              "clear": "mouseout",
+              "empty": "none",
+              "fields": ["buckets.key", "key"],
+              "nearest": true
+            }
+          },
+          "encoding": {
+            "size": {
+              "condition": {"selection": "pointhover", "value": 100},
+              "value": 5
+            },
+            "fill": {"condition": {"selection": "pointhover", "value": "white"}}
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
+2. The final Vega-Lite spec from this tutorial, converted to JSON.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/vega" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "title": "Event counts from ecommerce",
+  "spec": {
+    "format": "json", <1>
+    "value": { <2>
+      "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+      "title": "Event counts from ecommerce",
+      "data": {
+        "url": {
+          "%context%": true,
+          "%timefield%": "order_date",
+          "index": "kibana_sample_data_ecommerce",
+          "body": {
+            "aggs": {
+              "categories": {
+                "terms": {"field": "category.keyword"},
+                "aggs": {
+                  "time_buckets": {
+                    "date_histogram": {
+                      "field": "order_date",
+                      "interval": {"%autointerval%": true},
+                      "extended_bounds": {
+                        "min": {"%timefilter%": "min"},
+                        "max": {"%timefilter%": "max"}
+                      },
+                      "min_doc_count": 0
+                    }
+                  }
+                }
+              }
+            },
+            "size": 0
+          }
+        },
+        "format": {"property": "aggregations.categories.buckets"}
+      },
+      "transform": [{"flatten": ["time_buckets.buckets"], "as": ["buckets"]}],
+      "encoding": {
+        "x": {"field": "buckets.key", "type": "temporal", "axis": {"title": null}},
+        "y": {
+          "field": "buckets.doc_count",
+          "type": "quantitative",
+          "axis": {"title": "Document count"},
+          "stack": true
+        },
+        "color": {"field": "key", "type": "nominal", "title": "Category"},
+        "tooltip": [
+          {"field": "buckets.key", "type": "temporal", "title": "Date"},
+          {"field": "key", "type": "nominal", "title": "Category"},
+          {
+            "field": "buckets.doc_count",
+            "type": "quantitative",
+            "title": "Count"
+          }
+        ]
+      },
+      "layer": [
+        {"mark": "area"},
+        {
+          "mark": "point",
+          "selection": {
+            "pointhover": {
+              "type": "single",
+              "on": "mouseover",
+              "clear": "mouseout",
+              "empty": "none",
+              "fields": ["buckets.key", "key"],
+              "nearest": true
+            }
+          },
+          "encoding": {
+            "size": {
+              "condition": {"selection": "pointhover", "value": 100},
+              "value": 5
+            },
+            "fill": {"condition": {"selection": "pointhover", "value": "white"}}
+          }
+        }
+      ]
+    }
+  }
+}'
+```
+
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
+2. The final Vega-Lite spec from this tutorial, converted to JSON.
+
+::::
+
+:::::
+
+To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` that the Vega API returns.
+
+For more information, refer to the [Vega API](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-vega).
+:::::::
 
 ### Update {{kib}} filters from Vega [vega-tutorial-update-kibana-filters-from-vega]
 
 To build an area chart using an {{es}} search query, edit the **Vega** spec, then add click and drag handlers to update the {{kib}} filters.
 
-In the **Vega** spec, enter the following, then click **Update**:
+In the **Vega** spec, enter the following, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
 {
@@ -638,7 +947,7 @@ In the **Vega** spec, enter the following, then click **Update**:
 }
 ```
 
-Add the {{es}} search query with the `data` block, then click **Update**:
+Add the {{es}} search query with the `data` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   data: [
@@ -675,7 +984,7 @@ Add the {{es}} search query with the `data` block, then click **Update**:
 
 Display labels for the x- and y-axes.
 
-In the **Vega** spec, add the `scales` block, then click **Update**:
+In the **Vega** spec, add the `scales` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   scales: [{
@@ -697,7 +1006,7 @@ In the **Vega** spec, add the `scales` block, then click **Update**:
   }]
 ```
 
-Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **Update**:
+Add the `key` and `doc_count` fields as the X- and Y-axis values, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   marks: [
@@ -737,7 +1046,7 @@ Add the `key` and `doc_count` fields as the X- and Y-axis values, then click **U
 
 Show the clickable points on the area chart to filter for a specific date.
 
-In the **Vega** spec, add to the `marks` block, then click **Update**:
+In the **Vega** spec, add to the `marks` block, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   {
@@ -773,7 +1082,7 @@ In the **Vega** spec, add to the `marks` block, then click **Update**:
 
 To make the points clickable, create a **Vega** signal. You can access the clicked `datum` in the expression used to update.
 
-In the **Vega** spec, add a `signals` block to specify that the cursor clicks add a time filter with the three hour interval, then click **Update**:
+In the **Vega** spec, add a `signals` block to specify that the cursor clicks add a time filter with the three hour interval, then select **Run preview** or **Update** (depending on your {{kib}} version):
 
 ```yaml
   signals: [
@@ -1174,6 +1483,405 @@ Add a signal that updates the {{kib}} time filter when the cursor is released wh
 
 ::::
 
+To keep the chart, select **Apply and close** or **Save and return** (depending on your {{kib}} version), then save the dashboard. To discard the changes you made since you opened the editor, select **Cancel** instead.
+
+:::::::{dropdown} Create this chart using the API
+:applies_to: { serverless: ga, stack: "ga 9.7+" }
+
+This example saves the area chart from this tutorial to the library as a **Vega** visualization.
+
+:::{include} ../_snippets/api-payload-version-note.md
+:::
+
+:::::{tab-set}
+
+::::{tab-item} Console
+:sync: api-console
+```console
+POST kbn://api/vega
+{
+  "title": "Ecommerce orders over time",
+  "spec": {
+    "format": "json", <1>
+    "value": { <2>
+      "$schema": "https://vega.github.io/schema/vega/v5.json",
+      "data": [
+        {
+          "name": "source_0",
+          "url": {
+            "%context%": true,
+            "%timefield%": "order_date",
+            "index": "kibana_sample_data_ecommerce",
+            "body": {
+              "aggs": {
+                "time_buckets": {
+                  "date_histogram": {
+                    "field": "order_date",
+                    "fixed_interval": "3h",
+                    "extended_bounds": {
+                      "min": {"%timefilter%": "min"},
+                      "max": {"%timefilter%": "max"}
+                    },
+                    "min_doc_count": 0
+                  }
+                }
+              },
+              "size": 0
+            }
+          },
+          "format": {"property": "aggregations.time_buckets.buckets"}
+        }
+      ],
+      "scales": [
+        {
+          "name": "x",
+          "type": "time",
+          "range": "width",
+          "domain": {"data": "source_0", "field": "key"}
+        },
+        {
+          "name": "y",
+          "type": "linear",
+          "range": "height",
+          "domain": {"data": "source_0", "field": "doc_count"}
+        }
+      ],
+      "axes": [{"orient": "bottom", "scale": "x"}, {"orient": "left", "scale": "y"}],
+      "marks": [
+        {
+          "type": "area",
+          "from": {"data": "source_0"},
+          "encode": {
+            "update": {
+              "x": {"scale": "x", "field": "key"},
+              "y": {"scale": "y", "value": 0},
+              "y2": {"scale": "y", "field": "doc_count"}
+            }
+          }
+        },
+        {
+          "name": "point",
+          "type": "symbol",
+          "style": ["point"],
+          "from": {"data": "source_0"},
+          "encode": {
+            "update": {
+              "x": {"scale": "x", "field": "key"},
+              "y": {"scale": "y", "field": "doc_count"},
+              "size": {"value": 100},
+              "fill": {"value": "black"},
+              "cursor": {"value": "pointer"}
+            }
+          }
+        },
+        {
+          "type": "rule",
+          "interactive": false,
+          "encode": {
+            "update": {
+              "y": {"value": 0},
+              "y2": {"signal": "height"},
+              "stroke": {"value": "gray"},
+              "strokeDash": {"value": [2, 1]},
+              "x": {"signal": "max(currentX,0)"},
+              "defined": {"signal": "currentX > 0"}
+            }
+          }
+        },
+        {
+          "type": "rect",
+          "name": "selectedRect",
+          "encode": {
+            "update": {
+              "height": {"signal": "height"},
+              "fill": {"value": "#333"},
+              "fillOpacity": {"value": 0.2},
+              "x": {"signal": "selected[0]"},
+              "x2": {"signal": "selected[1]"},
+              "defined": {"signal": "selected[0] !== selected[1]"}
+            }
+          }
+        }
+      ],
+      "signals": [
+        {
+          "name": "point_click",
+          "on": [
+            {
+              "events": {"source": "scope", "type": "click", "markname": "point"},
+              "update": "kibanaSetTimeFilter(datum.key, datum.key + 3 * 60 * 60 * 1000)"
+            }
+          ]
+        },
+        {
+          "name": "currentX",
+          "value": -1,
+          "on": [
+            {
+              "events": {"type": "mousemove", "source": "view"},
+              "update": "clamp(x(), 0, width)"
+            },
+            {"events": {"type": "mouseout", "source": "view"}, "update": "-1"}
+          ]
+        },
+        {
+          "name": "selected",
+          "value": [0, 0],
+          "on": [
+            {
+              "events": {"type": "mousedown", "source": "view"},
+              "update": "[clamp(x(), 0, width), clamp(x(), 0, width)]"
+            },
+            {
+              "events": {
+                "type": "mousemove",
+                "source": "window",
+                "consume": true,
+                "between": [
+                  {"type": "mousedown", "source": "view"},
+                  {
+                    "merge": [
+                      {"type": "mouseup", "source": "window"},
+                      {
+                        "type": "keydown",
+                        "source": "window",
+                        "filter": "event.key === \"Escape\""
+                      }
+                    ]
+                  }
+                ]
+              },
+              "update": "[selected[0], clamp(x(), 0, width)]"
+            },
+            {
+              "events": {
+                "type": "keydown",
+                "source": "window",
+                "filter": "event.key === \"Escape\""
+              },
+              "update": "[0, 0]"
+            }
+          ]
+        },
+        {
+          "name": "applyTimeFilter",
+          "value": null,
+          "on": [
+            {
+              "events": {"type": "mouseup", "source": "view"},
+              "update": "selected[0] !== selected[1] ? kibanaSetTimeFilter(invert(\"x\",selected[0]), invert(\"x\",selected[1])) : null"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
+2. The final Vega spec from this tutorial, converted to JSON.
+
+::::
+
+::::{tab-item} curl
+:sync: api-curl
+```bash
+curl -X POST "${KIBANA_URL}/api/vega" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "kbn-xsrf: true" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "title": "Ecommerce orders over time",
+  "spec": {
+    "format": "json", <1>
+    "value": { <2>
+      "$schema": "https://vega.github.io/schema/vega/v5.json",
+      "data": [
+        {
+          "name": "source_0",
+          "url": {
+            "%context%": true,
+            "%timefield%": "order_date",
+            "index": "kibana_sample_data_ecommerce",
+            "body": {
+              "aggs": {
+                "time_buckets": {
+                  "date_histogram": {
+                    "field": "order_date",
+                    "fixed_interval": "3h",
+                    "extended_bounds": {
+                      "min": {"%timefilter%": "min"},
+                      "max": {"%timefilter%": "max"}
+                    },
+                    "min_doc_count": 0
+                  }
+                }
+              },
+              "size": 0
+            }
+          },
+          "format": {"property": "aggregations.time_buckets.buckets"}
+        }
+      ],
+      "scales": [
+        {
+          "name": "x",
+          "type": "time",
+          "range": "width",
+          "domain": {"data": "source_0", "field": "key"}
+        },
+        {
+          "name": "y",
+          "type": "linear",
+          "range": "height",
+          "domain": {"data": "source_0", "field": "doc_count"}
+        }
+      ],
+      "axes": [{"orient": "bottom", "scale": "x"}, {"orient": "left", "scale": "y"}],
+      "marks": [
+        {
+          "type": "area",
+          "from": {"data": "source_0"},
+          "encode": {
+            "update": {
+              "x": {"scale": "x", "field": "key"},
+              "y": {"scale": "y", "value": 0},
+              "y2": {"scale": "y", "field": "doc_count"}
+            }
+          }
+        },
+        {
+          "name": "point",
+          "type": "symbol",
+          "style": ["point"],
+          "from": {"data": "source_0"},
+          "encode": {
+            "update": {
+              "x": {"scale": "x", "field": "key"},
+              "y": {"scale": "y", "field": "doc_count"},
+              "size": {"value": 100},
+              "fill": {"value": "black"},
+              "cursor": {"value": "pointer"}
+            }
+          }
+        },
+        {
+          "type": "rule",
+          "interactive": false,
+          "encode": {
+            "update": {
+              "y": {"value": 0},
+              "y2": {"signal": "height"},
+              "stroke": {"value": "gray"},
+              "strokeDash": {"value": [2, 1]},
+              "x": {"signal": "max(currentX,0)"},
+              "defined": {"signal": "currentX > 0"}
+            }
+          }
+        },
+        {
+          "type": "rect",
+          "name": "selectedRect",
+          "encode": {
+            "update": {
+              "height": {"signal": "height"},
+              "fill": {"value": "#333"},
+              "fillOpacity": {"value": 0.2},
+              "x": {"signal": "selected[0]"},
+              "x2": {"signal": "selected[1]"},
+              "defined": {"signal": "selected[0] !== selected[1]"}
+            }
+          }
+        }
+      ],
+      "signals": [
+        {
+          "name": "point_click",
+          "on": [
+            {
+              "events": {"source": "scope", "type": "click", "markname": "point"},
+              "update": "kibanaSetTimeFilter(datum.key, datum.key + 3 * 60 * 60 * 1000)"
+            }
+          ]
+        },
+        {
+          "name": "currentX",
+          "value": -1,
+          "on": [
+            {
+              "events": {"type": "mousemove", "source": "view"},
+              "update": "clamp(x(), 0, width)"
+            },
+            {"events": {"type": "mouseout", "source": "view"}, "update": "-1"}
+          ]
+        },
+        {
+          "name": "selected",
+          "value": [0, 0],
+          "on": [
+            {
+              "events": {"type": "mousedown", "source": "view"},
+              "update": "[clamp(x(), 0, width), clamp(x(), 0, width)]"
+            },
+            {
+              "events": {
+                "type": "mousemove",
+                "source": "window",
+                "consume": true,
+                "between": [
+                  {"type": "mousedown", "source": "view"},
+                  {
+                    "merge": [
+                      {"type": "mouseup", "source": "window"},
+                      {
+                        "type": "keydown",
+                        "source": "window",
+                        "filter": "event.key === \"Escape\""
+                      }
+                    ]
+                  }
+                ]
+              },
+              "update": "[selected[0], clamp(x(), 0, width)]"
+            },
+            {
+              "events": {
+                "type": "keydown",
+                "source": "window",
+                "filter": "event.key === \"Escape\""
+              },
+              "update": "[0, 0]"
+            }
+          ]
+        },
+        {
+          "name": "applyTimeFilter",
+          "value": null,
+          "on": [
+            {
+              "events": {"type": "mouseup", "source": "view"},
+              "update": "selected[0] !== selected[1] ? kibanaSetTimeFilter(invert(\"x\",selected[0]), invert(\"x\",selected[1])) : null"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}'
+```
+
+1. The `json` format takes the spec as a JSON object. To send HJSON instead, set `format` to `hjson` and pass the spec as a JSON string, with line breaks written as `\n`.
+2. The final Vega spec from this tutorial, converted to JSON.
+
+::::
+
+:::::
+
+To show the visualization on a dashboard, [add it from the library](visualize-library.md#add-a-library-panel). In a [Dashboards API](../dashboards/create-dashboards-programmatically.md) request, use a `vega` panel with `config.ref_id` set to the `id` that the Vega API returns.
+
+For more information, refer to the [Vega API](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-vega).
+:::::::
 
 ## Vega reference [vega-reference]
 
@@ -1521,7 +2229,7 @@ The following example creates a line chart of document counts over time. It wire
     "x": {
       "field": "key",
       "type": "temporal",
-      "axis": {"title": false}
+      "axis": {"title": null}
     },
     "y": {
       "field": "doc_count",
