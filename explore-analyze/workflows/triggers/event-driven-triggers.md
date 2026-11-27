@@ -461,7 +461,7 @@ stack: preview 9.6+
 ```
 
 :::{note}
-These triggers are available only when [{{alerting-v2-system-short}} is enabled](/explore-analyze/alerting/esql/setup.md).
+These triggers stay in the trigger picker when you turn off the **Universal Alerting** advanced setting, but they stop firing. While the setting is off, {{kib}} hides the {{alerting-v2-system-short}} UI and rejects its API requests, so no one can act on an alert. For more information, refer to [Opt out of {{alerting-v2-system-short}}](../../alerting/esql/setup.md#alerting-setup-turn-off).
 :::
 
 Alert lifecycle triggers run a workflow when a user acts on an alert in {{alerting-v2-system-short}}, either in the UI or through the API. They don't fire when an alert becomes active or recovers based on rule evaluations. To run a workflow when an alert's status changes automatically, use an action policy instead. For a comparison, refer to [When to use action policies or lifecycle triggers](../../alerting/esql/workflows-alerting.md#when-to-use-action-policies-lifecycle-triggers).
@@ -513,7 +513,7 @@ stack: preview 9.6+
 ```
 
 :::{note}
-These triggers are available only when [{{alerting-v2-system-short}} is enabled](/explore-analyze/alerting/esql/setup.md).
+These triggers stay in the trigger picker when you turn off the **Universal Alerting** advanced setting. While the setting is off, {{kib}} hides the {{alerting-v2-system-short}} UI and rejects its API requests, so no one can manage rules in the UI or through the API. For more information, refer to [Opt out of {{alerting-v2-system-short}}](../../alerting/esql/setup.md#alerting-setup-turn-off).
 :::
 
 Rule lifecycle triggers run a workflow when someone creates, updates, deletes, enables, or disables a rule. Use them to automate responses to rule management actions, for example, auditing rule changes, syncing rule inventory with an external CMDB, or notifying a team channel when a new rule is added to a space.
