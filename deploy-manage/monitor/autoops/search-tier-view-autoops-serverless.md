@@ -31,7 +31,7 @@ Use the following features to explore this view:
   :::
 
 * Gain insights from **performance charts** depicting search rate and latency trends over the selected time range.
-* $$$search-vcus-chart$$${applies_to}`elasticsearch:` Explore the **Search VCUs** chart to understand [Search VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumption.
+* {applies_to}`elasticsearch:` Explore the **Search VCUs** chart to understand [Search VCU](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md#elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml) consumption.
 
   Each point on the chart shows the VCU-hours consumed in a time bucket. For example, `0.17/5 min (2/h)` means that 0.17 VCU-hours were consumed in a 5-minute bucket, which is a rate of about 2 VCUs per hour. Add up the values of all the points to see how many Search VCU-hours count toward your costs for the selected time range, whether you're anticipating an upcoming bill or reviewing past usage.
 
