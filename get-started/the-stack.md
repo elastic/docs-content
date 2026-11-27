@@ -58,11 +58,13 @@ This allows you to automate repetitive tasks and integrate Elastic management in
 For example, you can use the APIs to manage indices, update cluster settings, run complex queries, and configure security.
 This API-first approach is fundamental to enabling infrastructure-as-code practices and managing deployments at scale.
 
-::::{admonition} About the term {{es}}
-:::{include} /solutions/_snippets/elasticsearch-disambiguation.md
-:::
+::::{admonition} Looking for something else?
+This page describes {{es}} as one component of the {{stack}}.
 
-This page describes {{es}} as a component of the {{stack}}. To learn the basics of Elastic, including deployment options and solutions, go to [Elastic fundamentals](/get-started/index.md). To build search applications, go to the [Search use case](/solutions/search.md). To set up, secure, and configure {{es}}, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md). To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
+- For an overview of the Elastic platform, including the {{stack}}, deployment options, and solutions, go to [](/get-started/index.md).
+- To search your data with {{es}} in any deployment type, go to [](/solutions/search.md).
+- To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
+- To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
 ::::
 
 Learn more about [the {{es}} data store](/manage-data/data-store.md), its [distributed architecture](/deploy-manage/distributed-architecture.md), and [APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md).

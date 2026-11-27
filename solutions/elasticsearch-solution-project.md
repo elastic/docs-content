@@ -27,11 +27,13 @@ Not sure which deployment type is right for you? Use the following resources to 
   - Compare pricing models between [{{ech}}](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) and [Serverless](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
 ::::
 
-::::{admonition} About the term {{es}}
-:::{include} /solutions/_snippets/elasticsearch-disambiguation.md
-:::
+::::{admonition} Looking for something else?
+This section describes the {{es}} solution and serverless project type.
 
-This page describes the {{es}} solution and serverless project type. To learn the basics of Elastic and {{es}}, including the {{stack}}, deployment options, and solutions, go to [Elastic fundamentals](/get-started/index.md). To learn about search techniques that work in every deployment type, go to the [Search use case](/solutions/search.md). To set up, secure, and configure {{es}}, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md). To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
+- For an overview of the Elastic platform, including the {{stack}}, deployment options, and solutions, go to [](/get-started/index.md).
+- To search your data with {{es}} in any deployment type, go to [](/solutions/search.md).
+- To look up {{es}} settings, security options, and configuration details, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
+- To call {{es}} from your code, go to the [{{es}} API documentation]({{es-apis}}).
 ::::
 
 
