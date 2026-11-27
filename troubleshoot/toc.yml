@@ -144,6 +144,7 @@ toc:
           - file: observability/apm-agent-ruby/apm-ruby-agent.md
           - file: observability/apm-agent-rum-js/apm-real-user-monitoring-javascript-agent.md
       - file: observability/amazon-data-firehose.md
+      - file: observability/troubleshoot-opentelemetry-profiling.md
       - file: observability/troubleshoot-your-universal-profiling-agent-deployment.md
         children:
           - file: observability/troubleshoot-your-universal-profiling-agent-deployment/troubleshoot-universal-profiling-backend.md

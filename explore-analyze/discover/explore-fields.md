@@ -36,7 +36,9 @@ Open **Discover** and run a query that returns results. In {{esql}} mode, run a 
 
 2. Select a field name to open its details. In classic mode, **Discover** shows the field's top 10 values and the number of records used to calculate them. In {{esql}} mode, the field details don't include top values. To see the most frequent values of a field, run a query such as `STATS COUNT(*) BY <field>`.
 
-   To split the chart by that field, select **Add breakdown** in the field details. In {{esql}} mode, this works only when the data source has a time field and your query doesn't reshape the results with a command such as `STATS` or `KEEP`.
+   To break down the chart by that field, select {icon}`chart_bar_vertical_stack` **Add breakdown** in the field details. For the other ways to break down the chart, and for the fields you can't break down by, refer to [Break down the chart by a field](document-explorer.md#document-explorer-chart-breakdown).
+
+   {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` You can also drag the field from the list onto the chart.
 
 3. Next to a field in the fields list, select {icon}`plus` to add it to the results table as a column. You can also drag the field from the list into the table. To manage the columns after you add them, refer to [Manage the columns in the table](document-explorer.md#document-explorer-columns).
 

@@ -4,13 +4,7 @@ toc:
   - file: search.md
     default_cta: search
     children:
-      - file: search/get-started.md
-        children:
-          - file: search/get-started/quickstarts.md
-            children:
-              - file: search/get-started/index-basics.md
-              - file: search/get-started/keyword-search-python.md
-              - file: search/get-started/semantic-search.md
+      - file: search/get-started/quickstarts.md
       - file: search/set-up.md
         children:
           - file: search/set-up/get-elasticsearch-running-for-search.md
@@ -433,8 +427,9 @@ toc:
               - file: observability/infra-and-hosts/analyze-compare-hosts.md
               - file: observability/infra-and-hosts/detect-metric-anomalies.md
               - file: observability/infra-and-hosts/configure-settings.md
-          - file: observability/infra-and-hosts/universal-profiling.md
+          - file: observability/infra-and-hosts/profiling.md
             children:
+              - file: observability/infra-and-hosts/get-started-with-otel-profiling.md
               - file: observability/infra-and-hosts/get-started-with-universal-profiling.md
               - file: observability/infra-and-hosts/manage-data-storage.md
                 children:
@@ -542,16 +537,43 @@ toc:
           - file: observability/streams/processors/uri-parts.md
           - file: observability/streams/processors/user-agent.md
           - file: observability/streams/processors/manual-pipeline-configuration.md
-      - hidden: observability/nightshift/nightshift.md
+      - file: observability/nightshift/nightshift.md
         children:
-          - hidden: observability/nightshift/get-started.md
-          - hidden: observability/nightshift/investigations.md
-          - hidden: observability/nightshift/memory.md
-          - hidden: observability/nightshift/significant-events/index.md
+          - file: observability/nightshift/get-started.md
+          - file: observability/nightshift/privileges.md
+          - file: observability/nightshift/investigation/set-up.md
+          - file: observability/nightshift/slack-app.md
+          - file: observability/nightshift/reference-architecture.md
+          - file: observability/nightshift/homepage.md
+          - file: observability/nightshift/use-cases/index.md
             children:
-              - hidden: observability/nightshift/significant-events/how-it-works.md
-              - hidden: observability/nightshift/significant-events/operator-guide.md
-              - hidden: observability/nightshift/significant-events/knowledge-indicators.md
+              - file: observability/nightshift/use-cases/investigate-anything.md
+              - file: observability/nightshift/use-cases/investigate-in-slack.md
+              - file: observability/nightshift/use-cases/investigate-alerts.md
+              - file: observability/nightshift/use-cases/auto-investigate-alerts.md
+              - file: observability/nightshift/use-cases/external-alerts.md
+              - file: observability/nightshift/use-cases/detect-problems.md
+          - file: observability/nightshift/investigation/index.md
+            children:
+              - file: observability/nightshift/investigation/extend.md
+              - file: observability/nightshift/investigation/automations.md
+              - file: observability/nightshift/investigation/limits.md
+          - file: observability/nightshift/detection/index.md
+            children:
+              - file: observability/nightshift/detection/sources.md
+              - file: observability/nightshift/detection/learning.md
+              - file: observability/nightshift/detection/rules-and-signals.md
+              - file: observability/nightshift/detection/significant-events.md
+              - file: observability/nightshift/significant-events/operator-guide.md
+          - file: observability/nightshift/context/index.md
+            children:
+              - file: observability/nightshift/context/wiki.md
+              - file: observability/nightshift/context/memory.md
+              - file: observability/nightshift/context/knowledge-indicators.md
+              - file: observability/nightshift/context/decision-trees.md
+          - file: observability/nightshift/settings.md
+          - file: observability/nightshift/cost-and-models.md
+          - file: observability/nightshift/known-issues.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
