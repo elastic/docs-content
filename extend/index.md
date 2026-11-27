@@ -1,12 +1,12 @@
 ---
-description: Extend the Elastic Platform by creating integrations for data ingestion
+description: Extend the Elastic platform by creating integrations for data ingestion
   or building custom applications with REST APIs. Learn how to contribute to Elastic
   documentation and ecosystem.
 ---
 
 # Extend and contribute 
 
-You can extend and build on the Elastic Platform in several ways. Whether you need to get data into Elasticsearch, add new functionality, edit the documentation, or build a custom application, here is an overview of the primary development paths to help you choose the right one for your project.
+You can extend and build on the Elastic platform in several ways. Whether you need to get data into Elasticsearch, add new functionality, edit the documentation, or build a custom application, here is an overview of the primary development paths to help you choose the right one for your project.
 
 There are two main approaches to extending Elastic: creating standardized Integrations for data ingestion or building custom solutions by developing directly against our REST APIs.
 

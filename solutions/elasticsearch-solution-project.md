@@ -23,8 +23,18 @@ These UI affordances are exclusive to the {{es}} solution and serverless project
 Not sure which deployment type is right for you? Use the following resources to help you decide:
 
 - Read the Elastic [deployment types overview](/deploy-manage/deploy.md)
-- Compare [serverless and {{ech}}](/deploy-manage/deploy/deployment-comparison.md)
-  - Compare pricing models between [{{ech}}](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md) and [Serverless](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
+- Compare [{{serverless-short}} and {{ech}}](/deploy-manage/deploy/deployment-comparison.md) and their [pricing models](/deploy-manage/cloud-organization/billing.md)
+::::
+
+::::{admonition} Looking for something else?
+This section describes the UI tools for building search applications that come with the {{es}} solution and project type.
+
+- For an overview of the Elastic platform, go to [](/get-started/index.md).
+- To build search experiences with {{es}}, from basic queries to AI-powered search, go to [](/solutions/search.md).
+- To look up {{es}} settings and configuration options, go to the [{{es}} reference](elasticsearch://reference/elasticsearch/index.md).
+- For details about {{es}} API endpoints, go to the [Elastic API documentation]({{apis}}).
+
+To browse all {{es}} documentation, go to the [{{es}} documentation hub](/products/elasticsearch.md).
 ::::
 
 

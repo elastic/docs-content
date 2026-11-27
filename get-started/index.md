@@ -29,13 +29,15 @@ In this section, we'll walk you through the basics of what our products offer, w
 
 You'll also find other helpful information, such as how to use our docs, training resources, and a link to our glossary so you can familiarize yourself with our terminology.
 
+For in-depth documentation about {{es}}, the search and analytics engine at the core of Elastic, go to the [{{es}} documentation hub](/products/elasticsearch.md).
+
 ## What is Elastic? [what-is-es]
 
 :::{image} /get-started/images/elastic-platform.png
 :alt: The Elastic platform
 :::
 
-Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Search AI platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value.
+Elastic provides an open source search, analytics, and AI platform, and out-of-the-box solutions for observability and security. The Elastic platform combines the power of search and generative AI to provide near real-time search and analysis with relevance to reduce your time to value.
 
 ## Explore the fundamentals
 

@@ -19,12 +19,6 @@ To quickly set up {{es}} and {{kib}} in Docker for local development or testing,
 :::{include} /deploy-manage/deploy/_snippets/deploy-options.md
 :::
 
-:::{admonition} Use cloud services in your self-managed cluster with Cloud Connect
-If you need to run Elastic on your own infrastructure, use [Cloud Connect](/deploy-manage/cloud-connect.md). Cloud connect enables you to use Elastic-managed cloud services in your self-managed cluster without having to install and manage their infrastructure yourself.
-
-This way, you can get faster access to new cloud features while still meeting your infrastructure requirements.
-:::: 
-
 ## Section overview
 
 This section focuses on deploying {{es}} and {{kib}} without an orchestrator.
@@ -101,6 +95,12 @@ Monitor the performance of your Elastic environment, administer your license, se
 * [](/deploy-manage/license.md): Learn how to manage your Elastic license.
 * [](/deploy-manage/maintenance/start-stop-services.md): Learn how to isolate or deactivate parts of your Elastic environment to perform maintenance, or restart parts of Elastic.
 * [](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md): Learn how to add nodes to a cluster or remove them from a cluster to change the size and capacity of {{es}}.
+
+### Connect to {{ecloud}} features
+
+Some Elastic features, such as [AutoOps](/deploy-manage/monitor/autoops.md) and [Elastic {{infer-cap}} Service](/explore-analyze/elastic-inference/eis.md), are available to self-managed clusters through Cloud Connect. Elastic runs these features on {{ecloud}}, and your cluster connects to them while it stays on your own infrastructure.
+
+To get started, refer to [Cloud Connect](/deploy-manage/cloud-connect.md).
 
 ### Upgrade
 

@@ -15,7 +15,7 @@ type: overview
 
 # Explore and visualize your data
 
-The {{es}} platform provides tools to explore, visualize, and monitor your data. They are available across all Elastic solutions and project types.
+The Elastic platform provides tools to explore, visualize, and monitor your data. They are available across all Elastic solutions and project types.
 
 The typical workflow progresses through three stages:
 
