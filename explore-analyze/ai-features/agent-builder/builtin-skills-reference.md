@@ -1,6 +1,6 @@
 ---
 navigation_title: "Built-in skills"
-description: "Reference of all built-in skills available in Elastic Agent Builder."
+description: "Find what each built-in skill in Elastic Agent Builder does, from dashboards and connectors to security investigations. Reference entries list each skill's use cases and assigned tools."
 applies_to:
   stack: ga 9.4+
   serverless: ga
@@ -28,7 +28,7 @@ Some skills are in technical preview or require an [advanced setting](kibana://r
 
 ## Platform skills
 
-Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, anomaly detection, streams, significant events, and workflows.
+Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, anomaly detection, streams, significant events, workflows, and connectors.
 
 ### Core skills
 
@@ -61,7 +61,9 @@ $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {appli
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you ask to see the documents in a **Discover** table, the skill can also show them in the conversation. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
     :::{dropdown} Assigned tools
-    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`, `platform.core.create_discover_session` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`
+
+    {applies_to}`serverless: preview` {applies_to}`stack: preview 9.6+` Also `platform.core.create_discover_session`.
 
     :::
 
@@ -88,7 +90,7 @@ $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: prev
     **Prerequisites:** Controlled by the `agentBuilder:tracing:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is on by default.
 
 $$$agent-builder-connector-discovery-skill$$$ `connector-discovery` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
-:   Looks up [connectors](connectors.md) and their sub-actions, and runs the connectors assigned to the agent. Use when a request involves an external service, such as creating a GitHub issue or sending a Slack message, or when a user asks what the agent can connect to. Agents need this skill to find their connectors. **Enable Elastic capabilities** includes it. If the toggle is off, assign the skill to the agent yourself.
+:   Looks up [connectors](connectors.md) and their sub-actions, and runs the connectors assigned to the agent. Use when a request involves an external service, such as creating a GitHub issue or sending a Slack message, or when a user asks what the agent can connect to. Agents need this skill to look up their connectors' actions and run them. **Enable Elastic capabilities** includes it. If the toggle is off, assign the skill to the agent yourself.
 
     :::{dropdown} Assigned tools
     `platform.core.execute_connector_sub_action`, plus internal tools to list the agent's connectors and load a connector's sub-actions.
@@ -411,9 +413,12 @@ $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack
 :   Finds and investigates security entities including hosts, users, services, and generic entities. Analyzes entity risk scores, asset criticality, and historical behavior, including signals from Security {{ml-app}} anomaly detection jobs. Use to discover risky entities or profile a specific entity by ID.
 
     :::{dropdown} Assigned tools
-    `security.get_entity`, `security.search_entities` <br><br>
-    {applies_to}`stack: ga 9.6+` Also `security.get_entity_graph`, `security.get_entity_risk_score_history`, `security.entity_relationship_history`, and `security.get_watchlist_id`, `security.build_redirect_url`.<br><br>
-    {applies_to}`stack: ga 9.5+` Also `security.set_asset_criticality`.<br><br>
+    `security.get_entity`, `security.search_entities`
+
+    {applies_to}`stack: ga 9.6+` Also `security.get_entity_graph`, `security.get_entity_risk_score_history`, `security.entity_relationship_history`, `security.get_watchlist_id`, and `security.build_redirect_url`.
+
+    {applies_to}`stack: ga 9.5+` Also `security.set_asset_criticality`.
+
     {applies_to}`stack: ga =9.5` Also `security.list_watchlists`.
     :::
 
@@ -442,7 +447,8 @@ $$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`sta
 :   Manages Entity Analytics watchlists. Creates, updates, and deletes watchlists and adds or removes entity membership. Resolves watchlist names to IDs by discovering existing watchlists. All mutating actions require explicit user confirmation before running.
 
     :::{dropdown} Assigned tools
-    `security.list_watchlists`, `security.create_watchlist`, `security.update_watchlist`, `security.delete_watchlist`, `security.add_entities_to_watchlist`, `security.remove_entities_from_watchlist`<br><br>
+    `security.list_watchlists`, `security.create_watchlist`, `security.update_watchlist`, `security.delete_watchlist`, `security.add_entities_to_watchlist`, `security.remove_entities_from_watchlist`
+
     {applies_to}`stack: ga 9.6+` Also `security.get_watchlist_id`, `security.set_watchlist_rule_based_data_source`, `security.remove_watchlist_rule_based_data_source`, `security.list_watchlist_data_sources`, and `security.build_redirect_url`.
     :::
 

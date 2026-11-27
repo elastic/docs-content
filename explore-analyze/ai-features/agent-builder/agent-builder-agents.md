@@ -208,7 +208,9 @@ This toggle is available for all agents, both built-in and custom.
 
 {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` The toggle doesn't affect the [HTTP API tools](tools/builtin-tools-reference.md#http-api-tools), which every agent has.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This toggle doesn't assign [connectors](connectors.md), but it includes the `connector-discovery` skill that agents need to find their assigned connectors. You assign connectors to each agent separately, and agents start with none, including the built-in **Elastic AI Agent**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
+{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` This toggle doesn't assign [connectors](connectors.md), but it includes the `connector-discovery` skill that agents need to look up and run the actions of their assigned connectors. You assign connectors to each agent separately, and agents start with none, including the built-in **Elastic AI Agent**. For details, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
+
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` [Connector skills](builtin-skills-reference.md#agent-builder-connector-skills) don't depend on this toggle. An agent gets them from its assigned GitHub or PagerDuty (MCP) connectors whether the toggle is on or off, and they don't appear on the agent's **Skills** tab.
 
 ### Default settings
 
