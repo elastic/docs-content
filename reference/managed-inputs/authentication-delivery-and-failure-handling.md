@@ -22,7 +22,7 @@ This page covers what all managed inputs share: how you authenticate, how data i
 Managed inputs authenticate with an {{es}} API key that includes the `event:write` privilege for the `apm` application. The same `event:write` / `apm` privilege applies to every managed endpoint, including the OTLP, Prometheus Remote Write, and _bulk endpoints.
 
 :::{note}
-Index-level privilege scoping is not supported for managed inputs.
+Index-level privilege scoping is not supported for managed inputs. The same API key works for every managed input, and it grants write access to all data streams the inputs can write to. For example, through the OTLP endpoint the key can write to any data stream with a `logs-`, `metrics-`, or `traces-` prefix, and any client that holds the key can route data to any of them. If you need write access scoped to specific indices or data streams, send data to {{es}} through a self-managed Collector, such as [{{agent}} configured as an OTel Collector and deployed as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway), using an API key with index-level privileges.
 :::
 
 You can create this API key in one of the following ways:
