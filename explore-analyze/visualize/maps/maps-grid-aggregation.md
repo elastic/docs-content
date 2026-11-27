@@ -26,6 +26,8 @@ Symbolize cluster metrics as:
 **Hexbins**
 :   Uses [Geohex grid aggregation](elasticsearch://reference/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) to group your documents into H3 hexagon grids. Creates a [vector layer](vector-layer.md) with a hexagon polygon for each gridded cell.
 
+{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` To build grids with an {{esql}} query and have their cell size follow the zoom level, refer to [Make grids follow the zoom level](maps-esql-layer.md#maps-esql-layer-zoom-precision).
+
 To enable a clusters layer:
 
 1. Click **Add layer**, then select the **Clusters** or **Heat map** layer.
@@ -35,6 +37,4 @@ To enable a blended layer that dynamically shows clusters or documents:
 1. Click **Add layer**, then select the **Documents** layer.
 2. Configure **Data view** and the **Geospatial field**.
 3. In **Scaling**, select **Show clusters when results exceed 10000**.
-
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.7+` To get grids from an {{esql}} query, and have their cell size follow the zoom level, refer to [Make grids follow the zoom level](maps-esql-layer.md#maps-esql-layer-zoom-precision).
 
