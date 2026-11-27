@@ -57,12 +57,12 @@ When the map refreshes automatically or you select **Refresh**, the layer runs t
 
 What the map draws depends on the columns and the number of rows that your query returns:
 
-* The query must return exactly one column of type `geo_point` or `geo_shape`. If it returns none or more than one, the editor shows an error. Use `KEEP` or `DROP` to narrow the columns.
+* The query must return exactly one column of type `geo_point` or `geo_shape`. If it returns none or more than one, the editor shows an error. Use [`KEEP`](elasticsearch://reference/query-languages/esql/commands/keep.md) or [`DROP`](elasticsearch://reference/query-languages/esql/commands/drop.md) to narrow the columns.
 * {applies_to}`stack: preview 9.2+` The tooltip of a feature lists the other columns of its row.
 * When a query returns six or more columns, the editor suggests `KEEP` or `DROP` to narrow them, because fewer columns make the map faster.
 * By default, a query without a [`LIMIT`](elasticsearch://reference/query-languages/esql/commands/limit.md) command returns up to 1,000 rows, and no query returns more than 10,000 rows. The query that {{kib}} starts you with ends with `limit 10000`, the maximum by default. When the results reach the limit, the tooltip on the layer's icon says that the results are limited to the first rows. To change these limits, refer to [Result set size limit](elasticsearch://reference/query-languages/esql/limitations.md#esql-max-rows).
 
-If your locations are stored as text instead of in a geospatial field, the query can convert them with [`TO_GEOPOINT`](elasticsearch://reference/query-languages/esql/functions-operators/type-conversion-functions/to_geopoint.md) or [`TO_GEOSHAPE`](elasticsearch://reference/query-languages/esql/functions-operators/type-conversion-functions/to_geoshape.md). Both functions read the well-known text (WKT) format, such as `POINT (-73.98 40.75)`, which lists the longitude first. With `ROW`, you can also mark a place that isn't in any index:
+If your locations are stored as text instead of in a geospatial field, the query can convert them with [`TO_GEOPOINT`](elasticsearch://reference/query-languages/esql/functions-operators/type-conversion-functions/to_geopoint.md) or [`TO_GEOSHAPE`](elasticsearch://reference/query-languages/esql/functions-operators/type-conversion-functions/to_geoshape.md). Both functions read the well-known text (WKT) format, such as `POINT (-73.98 40.75)`, which lists the longitude first. With [`ROW`](elasticsearch://reference/query-languages/esql/commands/row.md), you can also mark a place that isn't in any index:
 
 ```esql
 ROW location = TO_GEOPOINT("POINT (2.2945 48.8584)"), name = "Eiffel Tower"
@@ -74,7 +74,7 @@ When the query doesn't read a geospatial field from an index, {{kib}} turns off 
 
 Three options limit the documents that your query reads to the visible map area, the map's search, and its time range. They appear as switches with the query editor, both when you add the layer and when you edit it later. All three are on by default when your data has the fields they need.
 
-These options apply as filters on the documents before your query runs, so a `STATS` command aggregates only the narrowed documents.
+These options apply as filters on the documents before your query runs, so a [`STATS`](elasticsearch://reference/query-languages/esql/commands/stats-by.md) command aggregates only the narrowed documents.
 
 **Dynamically filter for data in the visible map area**
 :   Limits the query to the documents inside the visible map area. **Filter by** lists the geospatial fields of your data. Select the one that the filter uses. When the option is off, the layer loads matching rows from anywhere on the map, up to the query limit.
@@ -85,7 +85,7 @@ These options apply as filters on the documents before your query runs, so a `ST
 **Apply global time range to ES|QL statement**
 :   Limits the query to the time range selected in the time filter of the map, or of the dashboard when the map is on one. **Filter by** lists the time fields of your data. Select the one that the range uses. When the option is off, the layer ignores the time range, unless the query uses the `?_tstart` and `?_tend` parameters.
 
-To use the time range inside the query instead, add the `?_tstart` and `?_tend` parameters and turn off **Apply global time range to ES|QL statement**. For example, the parameters let you filter on a time field in a `WHERE` command, or use the start of the range in an `EVAL` calculation. The layer still runs the query again when the time range changes. Refer to [Custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters).
+To use the time range inside the query instead, add the `?_tstart` and `?_tend` parameters and turn off **Apply global time range to ES|QL statement**. For example, the parameters let you filter on a time field in a [`WHERE`](elasticsearch://reference/query-languages/esql/commands/where.md) command, or use the start of the range in an [`EVAL`](elasticsearch://reference/query-languages/esql/commands/eval.md) calculation. The layer still runs the query again when the time range changes. Refer to [Custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
 ## Color areas with shapes from another index [maps-esql-layer-join]
 
@@ -101,7 +101,7 @@ FROM kibana_sample_data_logs
 | KEEP geometry, iso2, count
 ```
 
-`RENAME` gives the country code the name of the matching field in the lookup index. To shade the countries, set **Fill color** to **By value** and select `count` in the layer style.
+[`RENAME`](elasticsearch://reference/query-languages/esql/commands/rename.md) gives the country code the name of the matching field in the lookup index. To shade the countries, set **Fill color** to **By value** and select `count` in the layer style.
 
 **Dynamically filter for data in the visible map area** filters the documents by the field selected in **Filter by**, not by the shapes that the join adds. When you zoom in on Europe, for example, each country counts only the requests whose `geo.coordinates` are in view, so the colors change as you pan. To count all requests, turn off the option.
 
@@ -167,5 +167,6 @@ To change how the features that your query returns look, refer to [Vector stylin
 
 * [Clusters](maps-grid-aggregation.md): Group documents into grids without writing a query.
 * [Use {{esql}} in {{kib}}](/explore-analyze/query-filter/languages/esql-kibana.md): Get help from the editor as you write queries.
+* [{{esql}} reference](elasticsearch://reference/query-languages/esql.md): Look up the commands, functions, and operators that a query can use.
 * {applies_to}`stack: preview 9.6+` [Approximate results on a dashboard](../maps.md#maps-esql-fast-mode): Get faster, estimated results for a `STATS` query when the map is on a dashboard.
-* {applies_to}`serverless: ga` {applies_to}`stack: unavailable` [Search across linked projects](../maps.md#maps-cps): Choose which projects the map queries, and change them for one layer with `SET project_routing`.
+* {applies_to}`serverless: ga` {applies_to}`stack: unavailable` [Search across linked projects](../maps.md#maps-cps): Choose which projects the map queries, and change them for one layer with [`SET project_routing`](elasticsearch://reference/query-languages/esql/directives/set.md).
