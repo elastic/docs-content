@@ -32,11 +32,12 @@ You manage connectors per {{kib}} space from **Manage components** → **Connect
 
 When an agent needs to interact with an external system, it reads the schemas of the connectors available to it. It then runs the sub-action it needs through a built-in system tool, `platform.core.execute_connector_sub_action`, and fills in the sub-action's parameters itself. For example, it can look up a Slack channel ID or search AlienVault OTX for threat intelligence.
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` An agent can only run the connectors assigned to it. At run time, it uses the built-in [`connector-discovery` skill](builtin-skills-reference.md#agent-builder-connector-discovery-skill) to look up its connectors and load their sub-actions and parameter schemas. **Enable Elastic capabilities** includes this skill. To assign connectors, refer to [Assign connectors to an agent](#assign-connectors-to-an-agent).
+Which connectors an agent can run depends on your deployment type and version:
 
-{applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Within those connectors, an agent sees only the actions that the connector allows and that aren't marked **Workflow only**. Refer to [Limit a connector's actions](#limit-a-connectors-actions).
+- {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Only the connectors [assigned to it](#assign-connectors-to-an-agent). Within those connectors, the agent sees only the actions that the connector [allows](#limit-a-connectors-actions) and that aren't marked **Workflow only**. At run time, the agent uses the built-in [`connector-discovery` skill](builtin-skills-reference.md#agent-builder-connector-discovery-skill) to look up its connectors and load their sub-actions and parameter schemas. **Enable Elastic capabilities** includes this skill.
+- {applies_to}`stack: preview 9.4-9.5` Any connector in the space. Unlike standalone tools, connectors don't need to be assigned to agents.
 
-{applies_to}`stack: preview 9.4-9.5` Unlike standalone tools, connectors don't need to be assigned to agents. Any agent can run any connector in the space.
+{applies_to}`stack: preview 9.7+` {applies_to}`serverless: preview` When you assign a GitHub or PagerDuty (MCP) connector to an agent, the agent also gets a built-in skill for common lookups, such as searching issues or finding who's on call. The skill returns compact results instead of the full API response. For what each skill covers and what it needs, refer to [Connector skills](builtin-skills-reference.md#agent-builder-connector-skills).
 
 ## Add a connector
 
@@ -123,7 +124,7 @@ To assign connectors in {{kib}}, you need:
 - Permission to edit the agent
 - The **Actions and Connectors: All** {{kib}} privilege
 
-If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill on the agent's **Skills** page. Without it, the agent can't find its connectors.
+If **Enable Elastic capabilities** is off for the agent, also assign the built-in `connector-discovery` skill on the agent's **Skills** tab. Without it, the agent can't look up its connectors' actions or run them.
 
 To assign a connector to an agent:
 

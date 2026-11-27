@@ -28,7 +28,7 @@ Some skills are in technical preview or require an [advanced setting](kibana://r
 
 ## Platform skills
 
-Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, anomaly detection, streams, significant events, and workflows.
+Platform skills are available across all deployment types. They cover core capabilities such as visualizations, dashboards, cases, alerting rules, anomaly detection, streams, significant events, workflows, and connectors.
 
 ### Core skills
 
@@ -46,7 +46,7 @@ $$$agent-builder-graph-creation-skill$$$ `graph-creation` {applies_to}`stack: ga
 $$$agent-builder-dashboard-management-skill$$$ $$$agent-builder-dashboards-skill$$$ `dashboards` {applies_to}`stack: preview =9.4, ga 9.5+`
 :   Composes and updates in-memory {{kib}} dashboards. Use when a user asks to find, create, or modify a dashboard, add or remove panels, or edit existing panel visualizations.
 
-    {applies_to}`serverless: ga` {applies_to}`stack: ga 9.6+` This skill was previously named `dashboard-management`. 
+    {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` This skill was previously named `dashboard-management`. 
        - If a custom agent that doesn't have **Elastic capabilities** turned on lists `dashboard-management`, change it to `dashboards`. Otherwise, the agent stops loading the skill without reporting an error. To retrieve the skill through the API, use `GET /api/agent_builder/skills/dashboards`.
        - If you created a custom skill with the ID `dashboards` before the rename, the built-in skill takes precedence over it. To keep using your custom skill, re-create it with a different ID.
 
@@ -61,7 +61,9 @@ $$$agent-builder-discover-data-analysis-skill$$$ `discover-data-analysis` {appli
     {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` If you ask to see the documents in a **Discover** table, the skill can also show them in the conversation. Refer to [Discover tables in chat](agent-builder-discover-tables.md).
 
     :::{dropdown} Assigned tools
-    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`, `platform.core.create_discover_session` {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview`
+    `platform.core.generate_esql`, `platform.core.execute_esql`, `platform.core.search`, `platform.core.list_indices`, `platform.core.product_documentation`, `platform.core.create_visualization`
+
+    {applies_to}`stack: preview 9.6+` {applies_to}`serverless: preview` Also `platform.core.create_discover_session`.
 
     :::
 
@@ -88,12 +90,26 @@ $$$agent-builder-traces-skill$$$ `agent-builder-traces` {applies_to}`stack: prev
     **Prerequisites:** Controlled by the `agentBuilder:tracing:enabled` [advanced setting](kibana://reference/advanced-settings.md#kibana-general-settings), which is on by default.
 
 $$$agent-builder-connector-discovery-skill$$$ `connector-discovery` {applies_to}`stack: preview 9.6` {applies_to}`serverless: preview`
-:   Looks up [connectors](connectors.md) and their sub-actions, and runs the connectors assigned to the agent. Use when a request involves an external service, such as creating a GitHub issue or sending a Slack message, or when a user asks what the agent can connect to. Agents need this skill to find their connectors. **Enable Elastic capabilities** includes it. If the toggle is off, assign the skill to the agent yourself.
+:   Looks up [connectors](connectors.md) and their sub-actions, and runs the connectors assigned to the agent. Use when a request involves an external service, such as creating a GitHub issue or sending a Slack message, or when a user asks what the agent can connect to. Agents need this skill to look up their connectors' actions and run them. **Enable Elastic capabilities** includes it. If the toggle is off, assign the skill to the agent yourself.
 
     :::{dropdown} Assigned tools
     `platform.core.execute_connector_sub_action`, plus internal tools to list the agent's connectors and load a connector's sub-actions.
 
     :::
+
+### Connector skills [agent-builder-connector-skills]
+```{applies_to}
+stack: preview 9.7+
+serverless: preview
+```
+
+Some [connector](connectors.md) types come with a skill for common lookups, such as searching GitHub issues or finding who's on call in PagerDuty. The skill returns compact results, such as an issue's number, title, state, and labels, instead of the full API response.
+
+An agent gets a connector skill automatically when you assign it a connector of that type. You don't need to assign these skills, and they don't appear in the Skills library or on the agent's **Skills** tab. They're available whether **Enable Elastic capabilities** is on or off.
+
+Connector skills run their lookups as workflows, so they need [Elastic Workflows](/explore-analyze/workflows.md) in your deployment or project. The user who chats with the agent also needs the **Execute** [sub-feature privilege](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-privileges-workflows-subfeatures) for **Workflows**. If either is missing, the agent uses the connector's own actions through the [`connector-discovery`](#agent-builder-connector-discovery-skill) skill instead.
+
+To find out whether a connector type comes with a skill and what it covers, refer to the connector's page in [Data and context sources connectors](kibana://reference/connectors-kibana/data-context-sources-connectors.md).
 
 $$$agent-builder-context-engine-skills$$$
 ### {{context-engine}}
@@ -204,7 +220,7 @@ $$$agent-builder-action-policy-authoring-skill$$$ `action-policy-authoring` {app
 
 ### Anomaly detection
 
-$$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`serverless: experimental` {applies_to}`stack: experimental 9.6`
+$$$agent-builder-anomaly-detection-skill$$$ `anomaly-detection` {applies_to}`stack: experimental 9.6` {applies_to}`serverless: experimental`
 :   Use this skill to work with {{ml}} {{anomaly-jobs}} from within a conversation:
 
     * **Create:** Set up jobs by describing your data and goal. The skill explores your data, asks about your goal in everyday language, tests a setup on your historical data, and creates real-time jobs after you approve the results. For the full workflow, refer to [Create {{anomaly-jobs}} with AI in chat](/explore-analyze/machine-learning/anomaly-detection/ml-jobs-from-agent-builder.md).
@@ -383,9 +399,12 @@ $$$agent-builder-entity-analytics-skill$$$ `entity-analytics` {applies_to}`stack
 :   Finds and investigates security entities including hosts, users, services, and generic entities. Analyzes entity risk scores, asset criticality, and historical behavior, including signals from Security {{ml-app}} anomaly detection jobs. Use to discover risky entities or profile a specific entity by ID.
 
     :::{dropdown} Assigned tools
-    `security.get_entity`, `security.search_entities` <br><br>
-    {applies_to}`stack: ga 9.6+` Also `security.get_entity_graph`, `security.get_entity_risk_score_history`, `security.entity_relationship_history`, and `security.get_watchlist_id`, `security.build_redirect_url`.<br><br>
-    {applies_to}`stack: ga 9.5+` Also `security.set_asset_criticality`.<br><br>
+    `security.get_entity`, `security.search_entities`
+
+    {applies_to}`stack: ga 9.6+` Also `security.get_entity_graph`, `security.get_entity_risk_score_history`, `security.entity_relationship_history`, `security.get_watchlist_id`, and `security.build_redirect_url`.
+
+    {applies_to}`stack: ga 9.5+` Also `security.set_asset_criticality`.
+
     {applies_to}`stack: ga =9.5` Also `security.list_watchlists`.
     :::
 
@@ -414,7 +433,8 @@ $$$agent-builder-manage-watchlists-skill$$$ `manage-watchlists` {applies_to}`sta
 :   Manages Entity Analytics watchlists. Creates, updates, and deletes watchlists and adds or removes entity membership. Resolves watchlist names to IDs by discovering existing watchlists. All mutating actions require explicit user confirmation before running.
 
     :::{dropdown} Assigned tools
-    `security.list_watchlists`, `security.create_watchlist`, `security.update_watchlist`, `security.delete_watchlist`, `security.add_entities_to_watchlist`, `security.remove_entities_from_watchlist`<br><br>
+    `security.list_watchlists`, `security.create_watchlist`, `security.update_watchlist`, `security.delete_watchlist`, `security.add_entities_to_watchlist`, `security.remove_entities_from_watchlist`
+
     {applies_to}`stack: ga 9.6+` Also `security.get_watchlist_id`, `security.set_watchlist_rule_based_data_source`, `security.remove_watchlist_rule_based_data_source`, `security.list_watchlist_data_sources`, and `security.build_redirect_url`.
     :::
 

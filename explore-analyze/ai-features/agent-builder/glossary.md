@@ -311,7 +311,7 @@ Skill {applies_to}`stack: ga 9.4+`
 
 $$$skill-library$$$
 Skill library {applies_to}`stack: ga 9.4+`
-:   The deployment-wide collection of custom skills. Any custom agent can pull skills from the library. Built-in skills appear alongside them as read-only entries. See [](custom-skills.md#create-a-custom-skill).
+:   The deployment-wide collection of custom skills. Any custom agent can pull skills from the library. Most built-in skills appear alongside them as read-only entries. See [](custom-skills.md#create-a-custom-skill).
 
 $$$slash-command$$$
 Slash command {applies_to}`stack: ga 9.4+`

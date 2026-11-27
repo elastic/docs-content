@@ -189,6 +189,7 @@ Remove privileges that the client does not need:
 - Remove `feature_actions.read` if agents do not use {{kib}} connectors.
 - Remove `feature_workflowsManagement.read` if agents do not interact with workflows.
 - Add `feature_workflowsManagement.workflow_execute` if any agent uses a [workflow tool](tools/workflow-tools.md). Read access lets an agent reference a workflow; running one requires the execute privilege.
+- {applies_to}`stack: preview 9.7+` {applies_to}`serverless: preview` Add `feature_workflowsManagement.workflow_execute` if any agent has a GitHub or PagerDuty (MCP) connector. Without it, the agent can't use the [connector skill](builtin-skills-reference.md#agent-builder-connector-skills) for that connector.
 - Remove `monitor_inference` if agents and tools do not call the {{es}} Inference API.
 
 ## Create a key with management access

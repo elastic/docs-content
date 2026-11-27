@@ -246,7 +246,7 @@ serverless: preview
 
 New agents start with no connectors. To let your agent reach external systems, assign connectors after you save the agent: select the agent, select **Customize** → **Connectors** in the left sidebar, and then select **Add connector**.
 
-If you left **Enable Elastic capabilities** off, also assign the built-in `connector-discovery` skill on the agent's **Skills** page. Without it, the agent can't find its connectors.
+If you left **Enable Elastic capabilities** off, also assign the built-in `connector-discovery` skill on the agent's **Skills** tab. Without it, the agent can't look up its connectors' actions or run them.
 
 For more information, refer to [Assign connectors to an agent](connectors.md#assign-connectors-to-an-agent).
 
