@@ -32,8 +32,17 @@ To follow these steps, you need data that your query can turn into a location, s
    | LIMIT 10000
    ```
 
-4. Run the query. The map previews the layer. If the editor shows an error, refer to [](#maps-esql-layer-query) for what the query must return.
-5. Check the options that narrow the layer to the visible map area, the time range, and your search. They appear with the query editor. Refer to [](#maps-esql-layer-narrow).
+4. To preview the layer on the map, select **Search** or **Run query** (depending on your {{stack}} version) in the query editor. If the editor shows an error, refer to [](#maps-esql-layer-query) for what the query must return.
+
+   The layer uses the query that last ran. If you change the query and select **Add and continue** without running it again, the layer keeps the previous query.
+
+5. To choose which data the layer loads, keep or turn off the three switches that follow the query, such as **Dynamically filter for data in the visible map area**. Refer to [](#maps-esql-layer-narrow).
+
+   :::{image} /explore-analyze/images/kibana-maps-esql-layer-add.png
+   :alt: Add layer panel with an ES|QL query, the Search button, and the switches that narrow the layer, next to a map of request points
+   :screenshot:
+   :::
+
 6. Select **Add and continue**.
 7. In **Layer settings**, enter a **Name** for the layer, and adjust **Layer style** if you want.
 8. Select **Keep changes**.
@@ -66,13 +75,13 @@ An {{esql}} layer can ask only for the data that matters to the current view. Th
 These options apply as filters on the documents before your query runs, so a `STATS` command aggregates only the narrowed documents.
 
 **Dynamically filter for data in the visible map area**
-:   Limits the query to the documents inside the visible map area. **Filter by** lists the geospatial fields of your data. Select the one that the filter uses.
+:   Limits the query to the documents inside the visible map area. **Filter by** lists the geospatial fields of your data. Select the one that the filter uses. When the option is off, the layer loads matching rows from anywhere on the map, up to the query limit.
 
 **Apply global search to ES|QL statement**
-:   Applies the filters and the query that narrow the whole map. Refer to [Search geographic data](maps-search.md).
+:   Applies the query that you enter in the search bar of the map and the filters that you add, including shapes that you draw on the map. When the map is on a dashboard, the query and filters of the dashboard also apply. When the option is off, the layer ignores them. Refer to [Search geographic data](maps-search.md).
 
 **Apply global time range to ES|QL statement**
-:   Applies the time range of the map. **Filter by** lists the time fields of your data. Select the one that the range uses.
+:   Limits the query to the time range selected in the time filter of the map, or of the dashboard when the map is on one. **Filter by** lists the time fields of your data. Select the one that the range uses. When the option is off, the layer ignores the time range, unless the query uses the `?_tstart` and `?_tend` parameters.
 
 To apply the time range at a specific point in the query instead, use the `?_tstart` and `?_tend` parameters and turn off **Apply global time range to ES|QL statement**. The layer still runs the query again when the time range changes. Refer to [Custom time parameters](/explore-analyze/query-filter/languages/esql-kibana.md#_custom_time_parameters).
 
@@ -119,6 +128,11 @@ FROM kibana_sample_data_logs
 | EVAL tile = TO_GEOSHAPE(geotile)
 | KEEP tile, count, sumOfBytes
 ```
+
+:::{image} /explore-analyze/images/kibana-maps-esql-layer-zoom-grid.png
+:alt: Map of North America with requests grouped into grid cells, next to the layer editor with the grid query and the Resolution slider
+:screenshot:
+:::
 
 To draw a circle for each cell instead, like a [Clusters](maps-grid-aggregation.md) layer, return the center of the documents in each cell with [`ST_CENTROID_AGG`](elasticsearch://reference/query-languages/esql/functions-operators/aggregation-functions/st_centroid_agg.md):
 
