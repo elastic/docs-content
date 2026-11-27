@@ -129,7 +129,7 @@ FROM kibana_sample_data_logs
 
 **Result:** The table lists each HTTP response code with its event count. A chart appears above the table to visualize the aggregation, so you can see at a glance how traffic breaks down by status (200, 404, 503, and so on). A three-line query turned thousands of raw log entries into a breakdown with a chart. Notice that the field list in the sidebar now only shows the fields produced by the query (`event_count` and `response`), reflecting the narrower result set.
 
-{applies_to}`serverless: preview` {applies_to}`stack: preview 9.4+` Instead of a flat table, Discover shows each response code as a group that you can expand to see the documents behind it. To return to a flat table, open the **Group by** menu and select **none**. Refer to [Inspect grouped STATS results in Discover](discover/inspect-grouped-stats.md).
+{applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+, preview 9.4-9.6` Instead of a flat table, Discover shows each response code as a group that you can expand to see the documents behind it. To return to a flat table, open the **Group by** menu and select **none**. Refer to [Inspect grouped STATS results in Discover](discover/inspect-grouped-stats.md).
 
 :::{image} /explore-analyze/images/kibana-learning-tutorial-esql-aggregation.png
 :alt: Discover showing a STATS aggregation as a bar chart of event count by response code, with the response codes listed as expandable groups

@@ -24,7 +24,7 @@ If your logs are free-form messages, pattern analysis groups similar messages in
 - This example uses the [web logs sample data](/manage-data/ingest/sample-data.md). To follow along, add it and select its data view, or use your own log data.
 
 :::{tip}
-:applies_to: { serverless: preview, stack: preview 9.4+ }
+:applies_to: {"serverless": "ga", "stack": "ga 9.7+, preview 9.4-9.6"}
 In {{esql}} mode, you can [group similar messages in a query](inspect-grouped-stats.md#pattern-rendering).
 :::
 
