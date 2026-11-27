@@ -51,6 +51,12 @@ Choose **Vega** when you need full control of the specification, for example:
 
 ## Tutorials [_tutorials_create_custom_panels]
 
+<!-- MAINTENANCE: the Vega API payload examples in the tutorials were verified
+against a live Kibana. To re-verify after a schema change, run:
+  KIBANA_URL=… API_KEY=… python3 .github/scripts/verify-lens-api-examples.py --file custom-visualizations-with-vega.md
+Install jsonschema first to also validate each spec against its Vega or Vega-Lite schema.
+See .github/scripts/verify-lens-api-examples.py for full usage. -->
+
 These tutorials walk you through building **Vega** and **Vega-Lite** panels on a dashboard: define a data source, shape the chart, and optionally update {{kib}} filters from the visualization.
 
 As you edit the specs, work in small steps and save often. Small changes can cause unexpected results. Specs can use [HJSON](https://hjson.github.io/), which allows optional quotes and commas, comments, and multiline strings.
