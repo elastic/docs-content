@@ -178,8 +178,36 @@ Available actions include:
 
 - Choose a default model.
 - Add a model to a feature's list of assigned models.
+- {applies_to}`serverless: ga` {applies_to}`stack: ga 9.7+` Set how much a model reasons for a feature. For details, refer to [Set the reasoning effort for a model](#set-reasoning-effort).
 - Copy the list of assigned models across multiple features.
 - Reset all settings to their defaults.
 - Turn off feature-specific assigned models, which means all features can use only the default model.
 
 To change the order of precedence of models for each feature, select and drag items in the list.
+
+### Set the reasoning effort for a model [set-reasoning-effort]
+```{applies_to}
+serverless: ga
+stack: ga 9.7+
+```
+
+If you want a model to reason more or less for a specific feature, you can set its reasoning effort. If you don't set one, the model uses its own default effort, which varies by model. The effort you set applies only to that feature, so the same model can use a different effort in another one.
+
+This setting is available for [EIS](/explore-analyze/elastic-inference/eis.md) models that support reasoning effort.
+
+To set the effort for a model:
+
+1. In **Feature Settings**, find the feature you want to adjust.
+2. If **Use recommended defaults** is turned on for the feature, turn it off, then select **Turn off recommended defaults** to confirm.
+3. In the **Assigned models** list, hover over the model and select **Effort**. If the model already shows an effort, select that instead.
+4. In the **Reasoning effort** popover, select a level. The popover lists only the levels the model supports, out of **none**, **minimal**, **low**, **medium**, **high**, and **xhigh**.
+5. Select **Save settings**. The model's row shows the level you chose.
+
+:::{image} /explore-analyze/images/feature-settings-reasoning-effort.png
+:alt: The Reasoning effort popover open on a model in the Assigned models list of the AI Prompt step, showing the none, low, medium, high, and xhigh levels
+:screenshot:
+:::
+
+To stop customizing the effort for a model, open the **Reasoning effort** popover again, select **Remove effort customization**, and save your settings.
+
+When you copy a feature's assigned models to other features, the efforts you set come with them. Resetting a feature to its defaults also removes your custom efforts.
