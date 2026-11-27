@@ -26,8 +26,6 @@ The Managed {{es}} _bulk endpoint isn't a drop-in replacement for sending `_bulk
 
 ### When to send data to the managed endpoint [when-managed]
 
-The endpoint enqueues every 256 documents (default value) when that group is full. It enqueues a smaller final group only when it can parse the whole request. An `index`, `update`, or `delete` action stops the request with HTTP `400`. The endpoint does not enqueue the documents that are not yet in a full group. A full group that it already enqueued stays enqueued. Refer to [Delivery behavior](#delivery-behavior).
-
 - **You already use other managed inputs.** Your `_bulk` shippers can send data to the same ingest host as the [Managed OTLP Endpoint](managed-otlp-endpoint.md) and the [Managed Prometheus Remote Write endpoint](prometheus-remote-write.md), using the same API key.
 - **Your ingest volume is spiky.** The managed endpoint absorbs short spikes well above the usual rate, so you don't need to size every shipper's output for peak load.
 
