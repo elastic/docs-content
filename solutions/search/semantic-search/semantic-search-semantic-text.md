@@ -417,3 +417,4 @@ Tune cluster performance by monitoring thread pools and refresh interval.       
 * For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
 * To learn more about model autoscaling, refer to the [trained model autoscaling](../../../deploy-manage/autoscaling/trained-model-autoscaling.md) page.
 * To learn how to optimize storage and search performance when using dense vector embeddings, refer to [Optimizing vector storage](../vector/vector-storage-for-semantic-search.md).
+* To see worked examples of configuring chunking and `index_options` per field, refer to the Elastic Search Labs blog post [Customizing chunking & index options in Elasticsearch's semantic text field type](https://www.elastic.co/search-labs/blog/semantic-text-chunking-index-options).
